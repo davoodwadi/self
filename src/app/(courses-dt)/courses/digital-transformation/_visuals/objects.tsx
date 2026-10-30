@@ -9,7 +9,7 @@
    ========================================================================== */
 
 import React from "react";
-import { CREAM, INK, SKIN, SIGNAL, r2, Solid, Plate } from "./kit";
+import { WHITE, INK, SKIN, SIGNAL, r2, Solid, Plate } from "./kit";
 
 /* -- cast: Shop (160 × 150, origin top-left) ------------------------------ */
 
@@ -195,7 +195,7 @@ function HairSilhouette({ hair }: { hair: Hair }) {
           <path
             d="M -21.5 5.5 C -17.5 9.5 -17.5 15.5 -21.5 19.5"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={2}
             strokeLinecap="round"
           />
@@ -221,7 +221,7 @@ function HairSilhouette({ hair }: { hair: Hair }) {
           />
           <path
             d="M -21 16.5 L -18.5 30.5"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={2.2}
             strokeLinecap="round"
           />
@@ -237,7 +237,7 @@ function HairSilhouette({ hair }: { hair: Hair }) {
           <path
             d="M -25 63 C -17 65 -8 62 -4 56"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={2}
             strokeLinecap="round"
           />
@@ -260,7 +260,7 @@ function HairSilhouette({ hair }: { hair: Hair }) {
           <path
             d="M -24 65 C -13 72 5 73 18 67"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={2.2}
             strokeLinecap="round"
           />
@@ -296,7 +296,7 @@ function HairSilhouette({ hair }: { hair: Hair }) {
           <path
             d="M -21 19 Q 2 16.5 23.5 18.8"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={1.8}
             strokeLinecap="round"
           />
@@ -315,7 +315,7 @@ function HairSilhouette({ hair }: { hair: Hair }) {
           />
           <path
             d="M -25 22.5 H 32"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={2}
             strokeLinecap="round"
           />
@@ -398,14 +398,14 @@ function CollarSilhouette({
       <path
         d={baseBody}
         fill={INK}
-        stroke={gap ? CREAM : undefined}
+        stroke={gap ? WHITE : undefined}
         strokeWidth={gap ? r2(3 / k) : undefined}
       />
       {collar === "crew" && (
         <path
           d="M -9 63.5 Q 0 68.5 9 63.5"
           fill="none"
-          stroke={CREAM}
+          stroke={WHITE}
           strokeWidth={1.8}
           strokeLinecap="round"
         />
@@ -428,7 +428,7 @@ function CollarSilhouette({
           <path
             d="M -9.5 61.5 Q 0 64.5 9.5 61.5"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={1.8}
             strokeLinecap="round"
           />
@@ -436,27 +436,27 @@ function CollarSilhouette({
       )}
       {collar === "shirt" && (
         <g>
-          <path d="M -2 60 L 4.5 68.5 L 8 60 Z" fill={CREAM} />
+          <path d="M -2 60 L 4.5 68.5 L 8 60 Z" fill={WHITE} />
           <path
             d="M -8.5 61.5 L -2.5 67.5 L 3 64"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={1.8}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx={5} cy={74} r={1.6} fill={CREAM} />
-          <circle cx={5} cy={83} r={1.6} fill={CREAM} />
+          <circle cx={5} cy={74} r={1.6} fill={WHITE} />
+          <circle cx={5} cy={83} r={1.6} fill={WHITE} />
         </g>
       )}
       {collar === "lapel" && (
         <g>
-          <path d="M -3.5 60 L 3.5 81 L 7.8 60 Z" fill={CREAM} />
+          <path d="M -3.5 60 L 3.5 81 L 7.8 60 Z" fill={WHITE} />
           <path d="M 1 60 L 4.2 60 L 5.2 75.5 L 3.2 80 L 1.2 75.5 Z" fill={INK} />
           <path
             d="M -8.5 61 L -11 71 L -5.5 73 L 2.5 83"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={1.6}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -468,12 +468,12 @@ function CollarSilhouette({
           <path
             d="M -6.5 60.5 L 3.5 77.5 L 8.5 60.5"
             fill="none"
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={1.8}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <rect x={-0.5} y={77.5} width={8.5} height={11.5} rx={1.5} fill={CREAM} />
+          <rect x={-0.5} y={77.5} width={8.5} height={11.5} rx={1.5} fill={WHITE} />
           <line x1={1.5} y1={82} x2={6} y2={82} stroke={INK} strokeWidth={1.4} />
           <line x1={1.5} y1={85.5} x2={5} y2={85.5} stroke={INK} strokeWidth={1.4} />
         </g>
@@ -506,7 +506,7 @@ export function Person({
   /** Optional 0..11 preset index from PERSON_CAST */
   variant?: number;
   flip?: boolean;
-  /** a thin cream gap around the body, for a figure standing in front of another */
+  /** a thin white gap around the body, for a figure standing in front of another */
   gap?: boolean;
 }) {
   const preset =
@@ -537,32 +537,6 @@ export function Person({
       <CollarSilhouette collar={resolvedCollar} gap={gap} k={k} />
       <HairSilhouette hair={resolvedHair} />
     </g>
-  );
-}
-
-/* ==========================================================================
-   Class discussion: two people face each other
-   ========================================================================== */
-
-export function Conversation({
-  left = 0,
-  right = 1,
-}: {
-  left?: number;
-  right?: number;
-} = {}) {
-  return (
-    <Plate
-      h={246}
-      title="Two people in profile face each other, each with a speech bubble, in conversation"
-    >
-      <ellipse cx={164} cy={36} rx={32} ry={21} fill={INK} />
-      <path d="M 160 54 L 172 80 L 176 52 Z" fill={INK} />
-      <ellipse cx={236} cy={56} rx={32} ry={21} fill={INK} />
-      <path d="M 224 72 L 222 96 L 238 75 Z" fill={INK} />
-      <Person x={128} y={86} k={1.4} variant={left} />
-      <Person x={272} y={86} k={1.4} variant={right} flip />
-    </Plate>
   );
 }
 

@@ -45,10 +45,11 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const BODY = `${BODY_BASE} text-base md:text-[1.06rem]`;
+const BODY_BASE =
+  "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
 const LIST =
-  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
@@ -88,20 +89,20 @@ export default function DigitalTransformationWeek9() {
   const [activeFourthImpact, setActiveFourthImpact] = useState(0);
 
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 9: DIGITAL TRANSFORMATION"
-        title="Week 9: Industry 4.0"
+        category="Week 09: Digital Transformation"
+        title="Industry 4.0"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
@@ -150,7 +151,7 @@ export default function DigitalTransformationWeek9() {
             href="https://www.youtube.com/watch?v=xLhNP0qp38Q"
             target="_blank"
             rel="noreferrer"
-            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
           >
             The Industrial Revolution (18-19th Century)
           </a>
@@ -158,7 +159,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <SteamMillCrossSectionInteractive active={activeFirstPillar} onSelect={setActiveFirstPillar} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Mechanization of Production",
@@ -172,7 +173,7 @@ export default function DigitalTransformationWeek9() {
               title: "3. Factory System",
               desc: (
                 <>
-                  Large-scale production in <strong>centralized</strong> factories replaced cottage industries and small
+                  Large-scale production in centralized factories replaced cottage industries and small
                   workshops.
                 </>
               ),
@@ -195,11 +196,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -213,7 +214,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <FirstRevSocietySimulatorInteractive active={activeFirstImpact} onSelect={setActiveFirstImpact} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Urbanization",
@@ -241,11 +242,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -290,7 +291,7 @@ export default function DigitalTransformationWeek9() {
             href="https://www.youtube.com/watch?v=aLvJ8p9KIH8"
             target="_blank"
             rel="noreferrer"
-            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
           >
             The Second Industrial Revolution
           </a>
@@ -298,7 +299,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <SecondRevolutionPowerGridInteractive active={activeSecondPillar} onSelect={setActiveSecondPillar} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Mass Production & Assembly Line",
@@ -341,11 +342,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg mt-1">
                   <Dashes items={it.items} />
                 </div>
@@ -361,17 +362,17 @@ export default function DigitalTransformationWeek9() {
         title="The Second Industrial Revolution"
         exercise={exercise["second-revolution-key-inventions"]}
       >
-        <p className="font-heading font-bold text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">Key inventions</p>
+        <p className="font-sans font-bold text-xl border-l-2 border-[var(--dt-ink)]/25 pl-4">Key inventions</p>
         <PlateWell>
           <InventionsWorkbenchInteractive active={activeSecondInvention} onSelect={setActiveSecondInvention} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Electric Light Bulb",
               desc: (
                 <>
-                  Thomas Edison (1879) enabled <strong>night-time work</strong> and extended productivity.
+                  Thomas Edison (1879) enabled night-time work and extended productivity.
                 </>
               ),
             },
@@ -393,11 +394,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -411,7 +412,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <MegacitySkylineInteractive active={activeSecondImpact} onSelect={setActiveSecondImpact} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Urban Growth & Megacities",
@@ -443,11 +444,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -487,7 +488,7 @@ export default function DigitalTransformationWeek9() {
         label="DIGITAL REVOLUTION"
         title="The Third Industrial Revolution (Digital Revolution)"
       >
-        <div className={`${BODY} text-sm md:text-[0.95rem] border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <div className={`${BODY} text-sm md:text-[0.95rem] border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           <Bullets
             className="md:grid md:grid-cols-3 md:gap-4"
             items={[
@@ -506,7 +507,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <SiliconWaferCircuitInteractive active={activeThirdPillar} onSelect={setActiveThirdPillar} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Digital Computing & Microprocessors",
@@ -534,11 +535,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -554,13 +555,13 @@ export default function DigitalTransformationWeek9() {
         title="Key Innovations"
         exercise={exercise["third-revolution-key-innovations"]}
       >
-        <p className="font-heading font-bold text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">
+        <p className="font-sans font-bold text-xl border-l-2 border-[var(--dt-ink)]/25 pl-4">
           Innovation replaces invention
         </p>
         <PlateWell>
           <InnovationWaveInteractive active={activeThirdInnovation} onSelect={setActiveThirdInnovation} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Personal Computers (1970s-1980s)",
@@ -588,11 +589,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -628,7 +629,7 @@ export default function DigitalTransformationWeek9() {
             href="https://www.youtube.com/watch?v=SCGV1tNBoeU"
             target="_blank"
             rel="noreferrer"
-            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
           >
             The Fourth Industrial Revolution - WEF
           </a>
@@ -636,7 +637,7 @@ export default function DigitalTransformationWeek9() {
             href="https://www.youtube.com/watch?v=eH1fFdjzJAw"
             target="_blank"
             rel="noreferrer"
-            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
           >
             What will the future of jobs be like? - WEF
           </a>
@@ -644,7 +645,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <CyberPhysicalConvergenceInteractive active={activeFourthTech} onSelect={setActiveFourthTech} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Artificial Intelligence (AI) & Machine Learning",
@@ -680,11 +681,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>
@@ -705,7 +706,7 @@ export default function DigitalTransformationWeek9() {
             href="https://www.youtube.com/watch?v=hfqD5aW0X5U"
             target="_blank"
             rel="noreferrer"
-            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
           >
             Ready for Brain Transparency? - WEF
           </a>
@@ -713,7 +714,7 @@ export default function DigitalTransformationWeek9() {
         <PlateWell>
           <Industry4ImpactDialInteractive active={activeFourthImpact} onSelect={setActiveFourthImpact} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               title: "1. Hyper-Personalized Products & Services",
@@ -749,11 +750,11 @@ export default function DigitalTransformationWeek9() {
               <li
                 key={it.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
                 <div className="text-lg md:text-xl mt-1">
                   <Dashes items={[it.desc]} />
                 </div>

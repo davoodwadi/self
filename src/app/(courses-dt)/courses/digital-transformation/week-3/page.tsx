@@ -20,7 +20,6 @@ import {
   Kicker,
   Summary,
 } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroStairs,
   DiscToStream,
@@ -28,34 +27,24 @@ import {
   NetflixTimeline,
   NETFLIX_YEARS,
   NetflixConsiderations,
-  NetflixConsiderationsTall,
   AlignedChange,
   KotterStairs,
   KotterSteps1To4,
-  KotterSteps1To4Tall,
   KotterSteps5To8,
-  KotterSteps5To8Tall,
   BoxToCloud,
   MicrosoftKotter1To4,
   MicrosoftKotter5To8,
   AdkarOverview,
-  AdkarOverviewTall,
   AdkarFirstThree,
-  AdkarFirstThreeTall,
   AdkarLastTwo,
-  AdkarLastTwoTall,
   SmallReleases,
   TwoPaths,
   TradVsAgileInteractive,
-  TradVsAgileTall,
   RugbyScrum,
   ScrumPrinciples1To3,
-  ScrumPrinciples1To3Tall,
   ScrumPrinciples4To6,
-  ScrumPrinciples4To6Tall,
   ScrumProcess,
   ScrumRolesHub,
-  ScrumRolesHubTall,
 } from "./visuals";
 
 const SECTIONS = [
@@ -72,11 +61,12 @@ const SECTIONS = [
 // type that fits it, and it only tests what the slide has just taught.
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
+/* Body copy in upright sans-serif. */
+const BODY =
+  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 const LIST =
-  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
-const SUB = "font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem]";
+  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
+const SUB = "font-sans font-semibold text-sm tracking-normal text-[var(--ink-3)]";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -93,18 +83,18 @@ function Bullets({ items, className = "" }: { items: React.ReactNode[]; classNam
 /* A discussion question set under the points it belongs to. */
 function Ask({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mt-3 pt-3 border-t border-[var(--rule-2)] font-heading italic leading-snug [&_strong]:font-bold">
-      <span className={`${SUB} not-italic block mb-1`}>Question:</span> {children}
+    <p className="mt-3 pt-3 border-t border-[var(--dt-ink)]/15 font-sans text-base leading-relaxed text-[var(--dt-ink)] [&_strong]:font-semibold">
+      <span className={`${SUB} block mb-1`}>Question:</span> {children}
     </p>
   );
 }
 
 /* An ADKAR letter on its ink block. */
-function Letter({ l, size = "w-12 h-12 text-3xl" }: { l: string; size?: string }) {
+function Letter({ l, size = "w-10 h-10 text-xl" }: { l: string; size?: string }) {
   return (
     <span
       aria-hidden
-      className={`${size} shrink-0 inline-flex items-center justify-center bg-[var(--dt-ink)] text-[var(--dt-cream)] font-heading font-bold`}
+      className={`${size} shrink-0 inline-flex items-center justify-center bg-[var(--dt-ink)] text-[var(--dt-white)] font-sans font-bold`}
     >
       {l}
     </span>
@@ -131,19 +121,19 @@ export default function DigitalTransformationWeek3() {
   const [activeScrumArtifact, setActiveScrumArtifact] = useState(0);
 
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 03: DIGITAL TRANSFORMATION"
+        category="Week 03: Digital Transformation"
         title="Change Management, Project Management"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -166,27 +156,28 @@ export default function DigitalTransformationWeek3() {
 
       <Slide
         id="how-netflix-transformed-the-movie-industry"
-        label="CASE STUDY"
         title="How Netflix Transformed The Movie Industry"
       >
-        <p className="font-heading text-[clamp(1.5rem,2.6vw,2.1rem)] leading-snug max-w-4xl">
-          <strong>Prescriptive</strong> Analytics for Strategic Decision-Making in Business
+        <p className="font-sans text-xl md:text-2xl leading-[1.4] text-[var(--dt-ink)] max-w-4xl">
+          Prescriptive Analytics for Strategic Decision-Making in Business
         </p>
         <Row cols="lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <Kicker>Question:</Kicker>
+            <p className={SUB}>Question:</p>
             <ol className="mt-3">
               {[
                 <>
-                  What is <strong>Prescriptive</strong> Analytics?
+                  What is Prescriptive Analytics?
                 </>,
                 <>What other types of analytics do we have?</>,
               ].map((q, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-5 py-4 border-t-[3px] border-[var(--dt-ink)] first:border-t-0 font-heading font-bold text-[clamp(1.2rem,2vw,1.6rem)] leading-[1.25]"
+                  className="flex items-baseline gap-4 py-4 border-t border-[var(--dt-ink)]/15 first:border-t-0 font-sans text-lg md:text-xl leading-[1.45] text-[var(--dt-ink)]"
                 >
-                  <span className="text-3xl leading-none w-6 shrink-0">{i + 1}</span>
+                  <span className="font-sans text-sm font-semibold text-[var(--ink-3)] w-6 shrink-0 tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span>{q}</span>
                 </li>
               ))}
@@ -207,15 +198,15 @@ export default function DigitalTransformationWeek3() {
         <PlateWell>
           <FourTypes active={activeAnalytics} onSelect={setActiveAnalytics} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             {
               name: "Descriptive",
               q: "What happened?",
               def: (
                 <>
-                  <strong>Descriptive analytics</strong> is the process of summarizing <em>historical data</em> to
-                  understand <strong>what has happened</strong> in the past.
+                  <strong>Descriptive analytics</strong> is the process of summarizing historical data to
+                  understand what has happened in the past.
                 </>
               ),
             },
@@ -225,7 +216,7 @@ export default function DigitalTransformationWeek3() {
               def: (
                 <>
                   <strong>Diagnostic analytics</strong> is the process of examining data to uncover the{" "}
-                  <em>root causes</em> and <strong>why an outcome happened</strong>.
+                  root causes and why an outcome happened.
                 </>
               ),
             },
@@ -235,7 +226,7 @@ export default function DigitalTransformationWeek3() {
               def: (
                 <>
                   <strong>Prescriptive analytics</strong> is the process of using data to determine an{" "}
-                  <em>optimal course of action</em>, yielding <strong>recommendations</strong> for next steps.
+                  optimal course of action, yielding recommendations for next steps.
                 </>
               ),
             },
@@ -245,7 +236,7 @@ export default function DigitalTransformationWeek3() {
               def: (
                 <>
                   <strong>Predictive analytics</strong> is the process of using{" "}
-                  <em>historical data and statistical models</em> to <strong>forecast</strong> what might happen in the
+                  historical data and statistical models to forecast what might happen in the
                   future.
                 </>
               ),
@@ -256,18 +247,18 @@ export default function DigitalTransformationWeek3() {
               <li
                 key={item.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading text-2xl md:text-3xl leading-snug flex items-baseline gap-3">
-                  <span className="font-heading font-bold">{i + 1}.</span>
+                <p className="font-sans text-2xl md:text-3xl leading-snug flex items-baseline gap-3">
+                  <span className="font-sans font-bold">{i + 1}.</span>
                   <span>
                     <strong>{item.name}</strong>: {item.q}
                   </span>
                 </p>
-                <div className="border-t-[2px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-baseline">
-                  <p className="font-heading font-bold text-xl">{item.name} Analytics</p>
+                <div className="border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-baseline">
+                  <p className="font-sans font-bold text-xl">{item.name} Analytics</p>
                   <div>
                     <p className={`${SUB} mb-1`}>Definition:</p>
                     <p className="text-lg">{item.def}</p>
@@ -283,7 +274,7 @@ export default function DigitalTransformationWeek3() {
         <PlateWell>
           <NetflixTimeline active={activeTimeline} onSelect={setActiveTimeline} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             ["Netflix founded", "Pay-per-rental model"],
             ["Change in business model", "Monthly subscription"],
@@ -295,12 +286,12 @@ export default function DigitalTransformationWeek3() {
               <li
                 key={name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading text-2xl md:text-3xl leading-snug flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-heading font-bold">{NETFLIX_YEARS[i]}:</span>{" "}
+                <p className="font-sans text-2xl md:text-3xl leading-snug flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-sans font-bold">{NETFLIX_YEARS[i]}:</span>{" "}
                   <span>
                     <strong>{name}</strong>: {text}
                   </span>
@@ -318,23 +309,18 @@ export default function DigitalTransformationWeek3() {
         exercise={exercise["challenges-and-considerations"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <NetflixConsiderations active={activeChallenge} onSelect={setActiveChallenge} />
-          </div>
-          <div className="sm:hidden">
-            <NetflixConsiderationsTall active={activeChallenge} onSelect={setActiveChallenge} />
-          </div>
+          <NetflixConsiderations active={activeChallenge} onSelect={setActiveChallenge} />
         </PlateWell>
-        <div className={`${BODY} !text-lg md:!text-xl grid`}>
+        <div className={`${BODY} grid md:grid-cols-2 gap-6`}>
           {[
             {
               name: "Technology",
               items: [
                 <>
-                  <strong>Cloud infrastructure</strong> to support demand
+                  Cloud infrastructure to support demand
                 </>,
                 <>
-                  <strong>Video encoding</strong> technology (high fidelity yet lightweight)
+                  Video encoding technology (high fidelity yet lightweight)
                 </>,
               ],
             },
@@ -345,10 +331,10 @@ export default function DigitalTransformationWeek3() {
                   New <strong>business model</strong>: Movie rental -&gt; Stream on demand
                 </>,
                 <>
-                  <strong>Competition</strong> and <strong>Piracy</strong>
+                  Competition and Piracy
                 </>,
                 <>
-                  Consumer <strong>engagement</strong> and <strong>loyalty</strong>
+                  Consumer engagement and loyalty
                 </>,
               ],
             },
@@ -358,11 +344,11 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={group.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl md:text-3xl mb-3">{group.name}</p>
+                <p className="font-sans font-bold text-2xl md:text-3xl mb-3">{group.name}</p>
                 <Bullets items={group.items} />
               </div>
             );
@@ -382,13 +368,12 @@ export default function DigitalTransformationWeek3() {
           "What strategies might help ensure smooth transitions during change?",
           "How can leaders align people and processes during transformation?",
         ]}
-        plate={<Conversation left={6} right={8} />}
       />
 
       <Slide id="change-management" label="DEFINITION" title="Change Management">
-        <p className="font-heading text-[clamp(1.5rem,2.8vw,2.3rem)] leading-[1.3] max-w-5xl [&_strong]:font-bold">
+        <p className="font-sans text-[clamp(1.5rem,2.8vw,2.3rem)] leading-[1.3] max-w-5xl [&_strong]:font-bold">
           Change management ensures that organizations smoothly transition to digital transformation by aligning{" "}
-          <strong>people</strong>, <strong>processes</strong>, and <strong>technology</strong>.
+          people, processes, and technology.
         </p>
         <PlateWell>
           <AlignedChange />
@@ -397,12 +382,12 @@ export default function DigitalTransformationWeek3() {
 
       <Slide id="kotters-8-step-change-management" label="FRAMEWORK" title="Kotter's 8 Step Change Management">
         <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             Kotter&apos;s 8-Step Change Management Model is a framework developed by Dr. John Kotter, a professor at
-            Harvard Business School, to help organizations implement <strong>successful change initiatives</strong>.
+            Harvard Business School, to help organizations implement successful change initiatives.
           </p>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
-            The model outlines a <strong>step-by-step</strong> process for leading change and is widely used in various
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
+            The model outlines a step-by-step process for leading change and is widely used in various
             industries.
           </p>
         </div>
@@ -413,32 +398,27 @@ export default function DigitalTransformationWeek3() {
 
       <Slide id="the-eight-steps-1-to-4" label="KOTTER'S 8 STEPS" title="The Eight Steps: 1 to 4">
         <PlateWell>
-          <div className="hidden sm:block">
-            <KotterSteps1To4 active={activeKotter14} onSelect={setActiveKotter14} />
-          </div>
-          <div className="sm:hidden">
-            <KotterSteps1To4Tall active={activeKotter14} onSelect={setActiveKotter14} />
-          </div>
+          <KotterSteps1To4 active={activeKotter14} onSelect={setActiveKotter14} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               n: 1,
               name: "Create a Sense of Urgency",
               points: [
                 <>
-                  Highlight the <strong>importance of change</strong> and the potential{" "}
-                  <strong>risks of not changing</strong>.
+                  Highlight the importance of change and the potential{" "}
+                  risks of not changing.
                 </>,
                 <>
-                  This step involves <strong>communicating</strong> the need for change to <strong>motivate</strong>{" "}
+                  This step involves communicating the need for change to motivate{" "}
                   stakeholders and create a sense of urgency.
                 </>,
               ],
               ask: (
                 <>
-                  How can leaders effectively create urgency without causing <strong>panic</strong> or{" "}
-                  <strong>resistance</strong>?
+                  How can leaders effectively create urgency without causing panic or{" "}
+                  resistance?
                 </>
               ),
             },
@@ -447,12 +427,12 @@ export default function DigitalTransformationWeek3() {
               name: "Build a Guiding Coalition",
               points: [
                 <>
-                  Form a group of <strong>influential people</strong> within the organization who can lead the change
+                  Form a group of influential people within the organization who can lead the change
                   effort.
                 </>,
                 <>
-                  This coalition should have the <strong>authority</strong>, <strong>expertise</strong>, and{" "}
-                  <strong>credibility</strong> to drive the change process.
+                  This coalition should have the authority, expertise, and{" "}
+                  credibility to drive the change process.
                 </>,
               ],
               ask: <>What qualities should leaders look for when forming a guiding coalition?</>,
@@ -462,11 +442,11 @@ export default function DigitalTransformationWeek3() {
               name: "Form a Strategic Vision and Initiatives",
               points: [
                 <>
-                  Develop a clear <strong>vision</strong> for the future and outline the <strong>initiatives</strong>{" "}
+                  Develop a clear vision for the future and outline the initiatives{" "}
                   that will help achieve that vision.
                 </>,
                 <>
-                  This step involves <strong>articulating</strong> the <strong>desired outcomes</strong> and how the
+                  This step involves articulating the desired outcomes and how the
                   change will benefit the organization.
                 </>,
               ],
@@ -477,11 +457,11 @@ export default function DigitalTransformationWeek3() {
               name: "Communicate the Vision",
               points: [
                 <>
-                  Share the vision and strategy with <strong>all stakeholders</strong>.
+                  Share the vision and strategy with all stakeholders.
                 </>,
                 <>
-                  Effective communication is crucial to ensure that <em>everyone</em> <strong>understands</strong> the
-                  change and is <strong>aligned</strong> with the vision.
+                  Effective communication is crucial to ensure that everyone understands the
+                  change and is aligned with the vision.
                 </>,
               ],
               ask: (
@@ -497,18 +477,18 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={s.n}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <div>
-                  <p className="font-heading font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
-                    <span className="font-heading text-3xl leading-none">{s.n}.</span>
+                  <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
                     <span>{s.name}:</span>
                   </p>
                   <Bullets items={s.points} />
                 </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
                   <Ask>{s.ask}</Ask>
                 </div>
               </div>
@@ -524,26 +504,21 @@ export default function DigitalTransformationWeek3() {
         exercise={exercise["the-eight-steps-5-to-8"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <KotterSteps5To8 active={activeKotter58} onSelect={setActiveKotter58} />
-          </div>
-          <div className="sm:hidden">
-            <KotterSteps5To8Tall active={activeKotter58} onSelect={setActiveKotter58} />
-          </div>
+          <KotterSteps5To8 active={activeKotter58} onSelect={setActiveKotter58} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               n: 5,
               name: "Empower Broad-Based Action",
               points: [
                 <>
-                  Remove <strong>obstacles</strong> that may <em>hinder change</em> and empower employees to take{" "}
-                  <strong>action</strong>.
+                  Remove obstacles that may hinder change and empower employees to take{" "}
+                  action.
                 </>,
                 <>
-                  This may involve providing <strong>training</strong>, <strong>resources</strong>, and{" "}
-                  <strong>support</strong> to help individuals contribute to the change effort.
+                  This may involve providing training, resources, and{" "}
+                  support to help individuals contribute to the change effort.
                 </>,
               ],
               ask: "What challenges might organizations face when empowering employees to act on the change vision?",
@@ -553,11 +528,11 @@ export default function DigitalTransformationWeek3() {
               name: "Generate Short-Term Wins",
               points: [
                 <>
-                  Create and celebrate short-term successes to build <strong>momentum</strong> and{" "}
-                  <strong>demonstrate</strong> the <em>benefits</em> of the change.
+                  Create and celebrate short-term successes to build momentum and{" "}
+                  demonstrate the benefits of the change.
                 </>,
                 <>
-                  <strong>Recognizing</strong> and <strong>rewarding</strong> achievements can help maintain motivation
+                  Recognizing and rewarding achievements can help maintain motivation
                   and support for the change initiative.
                 </>,
               ],
@@ -568,12 +543,12 @@ export default function DigitalTransformationWeek3() {
               name: "Consolidate Gains and Produce More Change",
               points: [
                 <>
-                  Use the <strong>credibility</strong> gained from <em>short-term wins</em> to tackle{" "}
-                  <strong>larger</strong> change initiatives.
+                  Use the credibility gained from short-term wins to tackle{" "}
+                  larger change initiatives.
                 </>,
                 <>
-                  This step involves <strong>reinforcing</strong> the <em>change</em> and ensuring that it becomes part
-                  of the organizational <strong>culture</strong>.
+                  This step involves reinforcing the change and ensuring that it becomes part
+                  of the organizational culture.
                 </>,
               ],
               ask: "How can organizations avoid complacency after achieving initial success in change initiatives?",
@@ -583,12 +558,12 @@ export default function DigitalTransformationWeek3() {
               name: "Anchor New Approaches in the Culture",
               points: [
                 <>
-                  Ensure that the changes are <em>integrated</em> into the organization&apos;s <strong>culture</strong>{" "}
-                  and <strong>practices</strong>.
+                  Ensure that the changes are integrated into the organization&apos;s culture{" "}
+                  and practices.
                 </>,
                 <>
-                  This involves reinforcing the new behaviors and values through <strong>policies</strong>,{" "}
-                  <strong>procedures</strong>, and <strong>ongoing communication</strong>.
+                  This involves reinforcing the new behaviors and values through policies,{" "}
+                  procedures, and ongoing communication.
                 </>,
               ],
               ask: "What strategies can leaders use to ensure changes become permanent and part of the organizational culture?",
@@ -599,18 +574,18 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={s.n}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <div>
-                  <p className="font-heading font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
-                    <span className="font-heading text-3xl leading-none">{s.n}.</span>
+                  <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
                     <span>{s.name}:</span>
                   </p>
                   <Bullets items={s.points} />
                 </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
                   <Ask>{s.ask}</Ask>
                 </div>
               </div>
@@ -627,15 +602,15 @@ export default function DigitalTransformationWeek3() {
               <>around 2014 when he took over leadership</>,
               <>Nadella&apos;s approach to change management aligns well with Kotter&apos;s framework</>,
               <>
-                He sought to shift the company&apos;s <strong>culture</strong>
+                He sought to shift the company&apos;s culture
               </>,
               <>
-                Focus towards <strong>cloud computing</strong>
+                Focus towards cloud computing
               </>,
             ].map((s, i) => (
               <li
                 key={i}
-                className="font-heading text-[clamp(1.2rem,2vw,1.6rem)] leading-[1.35] py-3 border-t-[3px] border-[var(--dt-ink)] first:border-t-0 first:pt-0"
+                className="font-sans text-[clamp(1.2rem,2vw,1.6rem)] leading-[1.35] py-3 border-t border-[var(--dt-ink)]/15 first:border-t-0 first:pt-0"
               >
                 {s}
               </li>
@@ -656,21 +631,21 @@ export default function DigitalTransformationWeek3() {
           <PlateWell>
             <MicrosoftKotter1To4 active={activeMs14} onSelect={setActiveMs14} />
           </PlateWell>
-          <div className={`${BODY} !text-lg grid`}>
+          <div className={`${BODY} grid gap-4`}>
             {[
               {
                 n: 1,
                 name: "Create a Sense of Urgency",
                 items: [
                   <>
-                    Nadella&apos;s emphasis on adapting to a <strong>rapidly changing</strong> technology landscape
+                    Nadella&apos;s emphasis on adapting to a rapidly changing technology landscape
                   </>,
                   <>
-                    the rise of <strong>cloud computing</strong> and <strong>mobile</strong> technology
+                    the rise of cloud computing and mobile technology
                   </>,
                   <>
-                    He communicated the urgency of evolving from a <strong>traditional software</strong> company to a{" "}
-                    <strong>cloud-first</strong>, <strong>mobile-first</strong> organization.
+                    He communicated the urgency of evolving from a traditional software company to a{" "}
+                    cloud-first, mobile-first organization.
                   </>,
                 ],
               },
@@ -679,8 +654,8 @@ export default function DigitalTransformationWeek3() {
                 name: "Build a Guiding Coalition",
                 items: [
                   <>
-                    Nadella built a strong leadership team that included <strong>executives</strong> from{" "}
-                    <em>various divisions</em>.
+                    Nadella built a strong leadership team that included executives from{" "}
+                    various divisions.
                   </>,
                 ],
               },
@@ -696,7 +671,7 @@ export default function DigitalTransformationWeek3() {
                     />
                   </>,
                   <>
-                    Introduced initiatives like <strong>Microsoft Azure</strong> and <strong>Office 365</strong> to
+                    Introduced initiatives like Microsoft Azure and Office 365 to
                     support this vision
                   </>,
                 ],
@@ -710,8 +685,8 @@ export default function DigitalTransformationWeek3() {
                     <Bullets className="mt-1" items={["company-wide meetings,", "emails,", "public appearances"]} />
                   </>,
                   <>
-                    He encouraged <strong>open dialogue</strong> and <strong>feedback</strong>, fostering a{" "}
-                    <em>culture of transparency</em>.
+                    He encouraged open dialogue and feedback, fostering a{" "}
+                    culture of transparency.
                   </>,
                 ],
               },
@@ -721,12 +696,12 @@ export default function DigitalTransformationWeek3() {
                 <div
                   key={s.n}
                   aria-hidden={!isLit}
-                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-5 transition-opacity duration-200 ${
-                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                  }`}
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
                 >
-                  <p className="font-heading font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
-                    <span className="font-heading text-3xl md:text-4xl leading-none">{s.n}.</span>
+                  <p className="font-sans font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
+                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
                     <span>{s.name}:</span>
                   </p>
                   <Bullets className="gap-2" items={s.items} />
@@ -750,11 +725,11 @@ export default function DigitalTransformationWeek3() {
                 name: "Empower Broad-Based Action",
                 items: [
                   <>
-                    Nadella encouraged employees to <strong>take risks</strong> and <strong>innovate</strong>.
+                    Nadella encouraged employees to take risks and innovate.
                   </>,
                   <>
-                    He removed <strong>bureaucratic obstacles</strong> and promoted a <strong>growth mindset</strong>,
-                    allowing teams to experiment and <em>learn from failures</em>.
+                    He removed bureaucratic obstacles and promoted a growth mindset,
+                    allowing teams to experiment and learn from failures.
                   </>,
                 ],
               },
@@ -763,11 +738,11 @@ export default function DigitalTransformationWeek3() {
                 name: "Generate Short-Term Wins",
                 items: [
                   <>
-                    Microsoft saw <em>significant early successes</em> with the adoption of Azure and the growth of
+                    Microsoft saw significant early successes with the adoption of Azure and the growth of
                     Office 365.
                   </>,
                   <>
-                    These wins were <strong>celebrated</strong> and <strong>communicated</strong> throughout the
+                    These wins were celebrated and communicated throughout the
                     organization.
                   </>,
                 ],
@@ -777,12 +752,12 @@ export default function DigitalTransformationWeek3() {
                 name: "Consolidate Gains and Produce More Change",
                 items: [
                   <>
-                    Building on the initial successes, Microsoft continued to <strong>invest</strong> in cloud
-                    technology and expand its <strong>product offerings</strong>.
+                    Building on the initial successes, Microsoft continued to invest in cloud
+                    technology and expand its product offerings.
                   </>,
                   <>
-                    Nadella’s leadership helped to <strong>solidify</strong> the company’s position in the{" "}
-                    <em>cloud market</em>.
+                    Nadella’s leadership helped to solidify the company’s position in the{" "}
+                    cloud market.
                   </>,
                 ],
               },
@@ -791,14 +766,14 @@ export default function DigitalTransformationWeek3() {
                 name: "Anchor New Approaches in the Culture",
                 items: [
                   <>
-                    Nadella worked to embed a culture of <strong>collaboration</strong>, <strong>inclusivity</strong>,
-                    and <strong>continuous learning</strong> within Microsoft.
+                    Nadella worked to embed a culture of collaboration, inclusivity,
+                    and continuous learning within Microsoft.
                   </>,
                   <>
-                    He emphasized values such as <strong>empathy</strong> and <strong>teamwork</strong>
+                    He emphasized values such as empathy and teamwork
                   </>,
                   <>
-                    Ensuring that the new approaches became part of the <strong>organizational culture</strong>.
+                    Ensuring that the new approaches became part of the organizational culture.
                   </>,
                 ],
               },
@@ -808,12 +783,12 @@ export default function DigitalTransformationWeek3() {
                 <div
                   key={s.n}
                   aria-hidden={!isLit}
-                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-5 transition-opacity duration-200 ${
-                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                  }`}
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
                 >
-                  <p className="font-heading font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
-                    <span className="font-heading text-3xl md:text-4xl leading-none">{s.n}.</span>
+                  <p className="font-sans font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
+                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
                     <span>{s.name}:</span>
                   </p>
                   <Bullets className="gap-2" items={s.items} />
@@ -835,7 +810,7 @@ export default function DigitalTransformationWeek3() {
             className="gap-2"
             items={[
               <>
-                The <strong>Prosci ADKAR Model</strong> is a widely recognized framework for change management
+                The Prosci ADKAR Model is a widely recognized framework for change management
               </>,
               <>Developed by Prosci, a research and training organization focused on change management practices.</>,
             ]}
@@ -844,23 +819,18 @@ export default function DigitalTransformationWeek3() {
             className="gap-2"
             items={[
               <>
-                The model is designed to help organizations <strong>manage change effectively</strong> by focusing on
-                the <strong>individual aspects of change</strong>.
+                The model is designed to help organizations manage change effectively by focusing on
+                the individual aspects of change.
               </>,
               <>
-                ADKAR is an <em>acronym</em> that stands for the <em>five key outcomes</em> that{" "}
-                <strong>individuals</strong> need to achieve for successful change.
+                ADKAR is an acronym that stands for the five key outcomes that{" "}
+                individuals need to achieve for successful change.
               </>,
             ]}
           />
         </div>
         <PlateWell>
-          <div className="hidden sm:block">
-            <AdkarOverview active={activeAdkarOverview} onSelect={setActiveAdkarOverview} />
-          </div>
-          <div className="sm:hidden">
-            <AdkarOverviewTall active={activeAdkarOverview} onSelect={setActiveAdkarOverview} />
-          </div>
+          <AdkarOverview active={activeAdkarOverview} onSelect={setActiveAdkarOverview} />
         </PlateWell>
         <ol className="grid">
           {[
@@ -875,13 +845,13 @@ export default function DigitalTransformationWeek3() {
               <li
                 key={name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 flex items-center gap-4 border-[3px] border-[var(--dt-ink)] transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 flex items-center gap-4 border border-[var(--dt-ink)]/15 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <Letter l={l} size="w-14 h-14 text-4xl" />
-                <p className="font-body text-xl md:text-2xl leading-snug pr-4">
-                  <strong className="font-heading font-bold">{name}</strong> - {text}
+                <Letter l={l} size="w-10 h-10 text-xl" />
+                <p className="font-sans text-xl md:text-2xl leading-snug pr-4">
+                  <strong className="font-sans font-bold">{name}</strong> - {text}
                 </p>
               </li>
             );
@@ -891,29 +861,24 @@ export default function DigitalTransformationWeek3() {
 
       <Slide id="adkar-awareness-desire-knowledge" label="PROSCI - ADKAR" title="ADKAR: Awareness, Desire, Knowledge">
         <PlateWell>
-          <div className="hidden sm:block">
-            <AdkarFirstThree active={activeAdkar13} onSelect={setActiveAdkar13} />
-          </div>
-          <div className="sm:hidden">
-            <AdkarFirstThreeTall active={activeAdkar13} onSelect={setActiveAdkar13} />
-          </div>
+          <AdkarFirstThree active={activeAdkar13} onSelect={setActiveAdkar13} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               l: "A",
               name: "Awareness",
               points: [
                 <>
-                  Individuals must be aware of the <strong>need for change</strong>.
+                  Individuals must be aware of the need for change.
                 </>,
                 <>
-                  This involves understanding <em>why the change is necessary</em> and what the{" "}
-                  <em>drivers behind it</em> are.
+                  This involves understanding why the change is necessary and what the{" "}
+                  drivers behind it are.
                 </>,
                 <>
-                  <strong>Effective communication</strong> is crucial at this stage to ensure that everyone understands
-                  the <em>reasons for the change</em>.
+                  Effective communication is crucial at this stage to ensure that everyone understands
+                  the reasons for the change.
                 </>,
               ],
               ask: "Why is it important for employees to understand the reasons behind a change initiative?",
@@ -923,15 +888,15 @@ export default function DigitalTransformationWeek3() {
               name: "Desire",
               points: [
                 <>
-                  Once individuals are aware of the change, they need to have the desire to <strong>support</strong> and{" "}
-                  <strong>participate</strong> in it.
+                  Once individuals are aware of the change, they need to have the desire to support and{" "}
+                  participate in it.
                 </>,
                 <>
-                  This involves addressing any <strong>concerns</strong> or <strong>resistance</strong> and fostering a{" "}
-                  <strong>positive attitude</strong> towards the change.
+                  This involves addressing any concerns or resistance and fostering a{" "}
+                  positive attitude towards the change.
                 </>,
                 <>
-                  Engaging <strong>stakeholders</strong> and addressing their motivations can help build this desire.
+                  Engaging stakeholders and addressing their motivations can help build this desire.
                 </>,
               ],
               ask: "How can personal motivations and emotions influence an individual’s willingness to support change?",
@@ -941,14 +906,14 @@ export default function DigitalTransformationWeek3() {
               name: "Knowledge",
               points: [
                 <>
-                  Individuals must have the knowledge of <strong>how to change</strong>.
+                  Individuals must have the knowledge of how to change.
                 </>,
                 <>
-                  This includes <strong>understanding</strong> the <em>new processes</em>, <em>systems</em>, or{" "}
-                  <em>behaviors</em> that will be implemented.
+                  This includes understanding the new processes, systems, or{" "}
+                  behaviors that will be implemented.
                 </>,
                 <>
-                  <strong>Training</strong> and <strong>resources</strong> are essential to equip individuals with the
+                  Training and resources are essential to equip individuals with the
                   necessary skills and information.
                 </>,
               ],
@@ -960,21 +925,21 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={e.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <div>
                   <div className="flex items-center gap-4 mb-3">
-                    <Letter l={e.l} size="w-14 h-14 text-4xl" />
-                    <p className="font-heading font-bold text-2xl">
-                      <span className="font-accent text-base mr-2">{i + 1}.</span>
+                    <Letter l={e.l} size="w-10 h-10 text-xl" />
+                    <p className="font-sans font-bold text-2xl">
+                      <span className="font-sans text-base mr-2">{i + 1}.</span>
                       {e.name}:
                     </p>
                   </div>
                   <Bullets items={e.points} />
                 </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
                   <Ask>{e.ask}</Ask>
                 </div>
               </div>
@@ -990,12 +955,7 @@ export default function DigitalTransformationWeek3() {
         exercise={exercise["adkar-ability-reinforcement"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <AdkarLastTwo active={activeAdkar45} onSelect={setActiveAdkar45} />
-          </div>
-          <div className="sm:hidden">
-            <AdkarLastTwoTall active={activeAdkar45} onSelect={setActiveAdkar45} />
-          </div>
+          <AdkarLastTwo active={activeAdkar45} onSelect={setActiveAdkar45} />
         </PlateWell>
         <div className={`${BODY} md:!text-lg grid`}>
           {[
@@ -1006,10 +966,10 @@ export default function DigitalTransformationWeek3() {
               points: [
                 <>Having the knowledge is not enough</>,
                 <>
-                  individuals must also be able to <strong>implement</strong> the change.
+                  individuals must also be able to implement the change.
                 </>,
                 <>
-                  This involves practicing <strong>new skills</strong>, <strong>overcoming obstacles</strong>
+                  This involves practicing new skills, overcoming obstacles
                 </>,
               ],
               ask: "Why is practical application of skills essential for successful change implementation?",
@@ -1020,11 +980,11 @@ export default function DigitalTransformationWeek3() {
               name: "Reinforcement",
               points: [
                 <>
-                  Individuals need reinforcement to ensure that the change is <strong>maintained over time</strong>.
+                  Individuals need reinforcement to ensure that the change is maintained over time.
                 </>,
                 <>
-                  This can include <strong>recognition</strong>, <strong>rewards</strong>, and{" "}
-                  <strong>ongoing support</strong> to encourage continued adherence to the new ways of working.
+                  This can include recognition, rewards, and{" "}
+                  ongoing support to encourage continued adherence to the new ways of working.
                 </>,
               ],
               ask: "What risks do organizations face if they fail to reinforce changes after implementation?",
@@ -1035,24 +995,24 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={e.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 grid md:grid-cols-[auto_1.4fr_1fr] gap-x-8 gap-y-3 items-start pt-5 border-t-[4px] border-[var(--dt-ink)] transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 grid md:grid-cols-[auto_1.4fr_1fr] gap-x-8 gap-y-3 items-start pt-5 border-t border-[var(--dt-ink)]/15 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <div className="flex items-center gap-4">
                   <Letter l={e.l} size="w-16 h-16 text-5xl" />
-                  <p className="font-heading font-bold text-2xl md:hidden">
+                  <p className="font-sans font-bold text-2xl md:hidden">
                     {e.n}. {e.name}:
                   </p>
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-2xl mb-2 hidden md:block">
-                    <span className="font-accent text-base mr-2">{e.n}.</span>
+                  <p className="font-sans font-bold text-2xl mb-2 hidden md:block">
+                    <span className="font-sans text-base mr-2">{e.n}.</span>
                     {e.name}:
                   </p>
                   <Bullets items={e.points} />
                 </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
                   <Ask>{e.ask}</Ask>
                 </div>
               </div>
@@ -1066,10 +1026,10 @@ export default function DigitalTransformationWeek3() {
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Agile Project Management" />
 
-      <Slide id="agile-project-management" label="QUESTION" title="Agile Project Management">
+      <Slide id="agile-project-management" title="Agile Project Management">
         <Row cols="lg:grid-cols-[1fr_1.2fr]">
-          <p className="font-heading italic text-[clamp(1.3rem,2.2vw,1.8rem)] leading-snug">
-            <span className={`${SUB} not-italic block mb-2`}>Question:</span>
+          <p className="font-sans text-lg md:text-xl leading-[1.5] text-[var(--dt-ink)]">
+            <span className={`${SUB} block mb-2`}>Question:</span>
             Why do traditional project management methods often struggle to adapt to rapidly changing requirements?
           </p>
           <PlateWell>
@@ -1082,17 +1042,17 @@ export default function DigitalTransformationWeek3() {
               className="gap-2"
               items={[
                 <>
-                  A flexible and iterative approach to <strong>managing projects</strong>
+                  A flexible and iterative approach to managing projects
                 </>,
                 <>Particularly in software development</>,
                 <>Applicable to various fields</>,
                 <>
-                  Emphasizes <strong>collaboration</strong>, <strong>customer feedback</strong>, and{" "}
-                  <strong>small, rapid releases of products or features</strong>.
+                  Emphasizes collaboration, customer feedback, and{" "}
+                  small, rapid releases of products or features.
                 </>,
                 <>
-                  Designed to <strong>accommodate change</strong> and <strong>deliver value</strong> to customers more{" "}
-                  <em>efficiently</em>.
+                  Designed to accommodate change and deliver value to customers more{" "}
+                  efficiently.
                 </>,
               ]}
             />
@@ -1110,42 +1070,37 @@ export default function DigitalTransformationWeek3() {
         exercise={exercise["traditional-vs-agile-project-management"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <TradVsAgileInteractive active={activeTradAgile} onSelect={setActiveTradAgile} />
-          </div>
-          <div className="sm:hidden">
-            <TradVsAgileTall active={activeTradAgile} onSelect={setActiveTradAgile} />
-          </div>
+          <TradVsAgileInteractive active={activeTradAgile} onSelect={setActiveTradAgile} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               n: 1,
               name: "Goal Setting",
               trad: [
                 <>
-                  Define a <strong>fixed target</strong>
+                  Define a fixed target
                 </>,
                 <>
-                  <strong>upfront</strong>
+                  upfront
                 </>,
                 <>
-                  Based on <strong>detailed planning</strong>.
+                  Based on detailed planning.
                 </>,
                 <>
-                  Assumes <strong>stability</strong> and <strong>clear end goals</strong>
+                  Assumes stability and clear end goals
                 </>,
                 <>Suitable for predictable environments</>,
               ],
               agile: [
                 <>
-                  Define a <strong>flexible</strong> vision
+                  Define a flexible vision
                 </>,
                 <>
-                  serves as a <strong>guiding principle</strong>
+                  serves as a guiding principle
                 </>,
                 <>
-                  allowing <strong>adjustments</strong> based on <em>changing circumstances and feedback</em>.
+                  allowing adjustments based on changing circumstances and feedback.
                 </>,
               ],
             },
@@ -1154,18 +1109,18 @@ export default function DigitalTransformationWeek3() {
               name: "Initial Steps",
               trad: [
                 <>
-                  <em>Take aim</em> with detailed plans and schedules <strong>before starting</strong> the project.
+                  Take aim with detailed plans and schedules before starting the project.
                 </>,
                 <>
-                  The focus is on <strong>minimizing deviations</strong> from the original plan.
+                  The focus is on minimizing deviations from the original plan.
                 </>,
               ],
               agile: [
                 <>
-                  Begin in a <strong>broad direction</strong> with <em>minimal</em> but sufficient planning.
+                  Begin in a broad direction with minimal but sufficient planning.
                 </>,
                 <>
-                  <strong>Adjustments</strong> are expected as the project progresses.
+                  Adjustments are expected as the project progresses.
                 </>,
               ],
             },
@@ -1174,19 +1129,19 @@ export default function DigitalTransformationWeek3() {
               name: "Execution",
               trad: [
                 <>
-                  Launch the project and manage it according to the <strong>established plan</strong>.
+                  Launch the project and manage it according to the established plan.
                 </>,
                 <>
-                  Any <strong>changes</strong> to the plan require <strong>formal processes and approvals</strong>.
+                  Any changes to the plan require formal processes and approvals.
                 </>,
               ],
               agile: [
                 <>
-                  Learn and <strong>adapt continuously</strong> by breaking the project into <em>smaller</em>,{" "}
-                  <em>manageable iterations</em>.
+                  Learn and adapt continuously by breaking the project into smaller,{" "}
+                  manageable iterations.
                 </>,
                 <>
-                  <strong>Feedback from stakeholders</strong> informs <em>improvements after each iteration</em>.
+                  Feedback from stakeholders informs improvements after each iteration.
                 </>,
               ],
             },
@@ -1195,19 +1150,19 @@ export default function DigitalTransformationWeek3() {
               name: "Focus",
               trad: [
                 <>
-                  Strictly focus on achieving the <strong>original target</strong>,
+                  Strictly focus on achieving the original target,
                 </>,
                 <>
-                  Success measured by adherence to the <strong>initial plan, timeline, and budget</strong>.
+                  Success measured by adherence to the initial plan, timeline, and budget.
                 </>,
               ],
               agile: [
                 <>
-                  Evolve towards the target with <strong>iterative refinements</strong>.
+                  Evolve towards the target with iterative refinements.
                 </>,
                 <>
-                  Success is measured by <strong>delivering value incrementally</strong>, even if the{" "}
-                  <em>end goal shifts</em> over time.
+                  Success is measured by delivering value incrementally, even if the{" "}
+                  end goal shifts over time.
                 </>,
               ],
             },
@@ -1217,21 +1172,21 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={r.n}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl mb-4 flex items-baseline gap-3">
-                  <span className="font-heading text-3xl leading-none">{r.n}.</span>
+                <p className="font-sans font-bold text-2xl mb-4 flex items-baseline gap-3">
+                  <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{r.n}.</span>
                   <span>{r.name}:</span>
                 </p>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-                  <div className="border-t-[2px] border-[var(--dt-ink)] pt-3">
-                    <p className="font-heading font-bold text-xl mb-2">Traditional:</p>
+                  <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+                    <p className="font-sans font-bold text-xl mb-2">Traditional:</p>
                     <Bullets items={r.trad} />
                   </div>
-                  <div className="border-t-[2px] border-[var(--dt-ink)] pt-3">
-                    <p className="font-heading font-bold text-xl mb-2">Agile:</p>
+                  <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+                    <p className="font-sans font-bold text-xl mb-2">Agile:</p>
                     <Bullets items={r.agile} />
                   </div>
                 </div>
@@ -1246,40 +1201,40 @@ export default function DigitalTransformationWeek3() {
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Scrum" />
 
-      <Slide id="scrum" label="AGILE FRAMEWORK" title="Scrum">
-        <p className="font-heading italic text-[clamp(1.2rem,2vw,1.6rem)] leading-snug max-w-5xl">
-          <span className={`${SUB} not-italic block mb-2`}>Question:</span>
+      <Slide id="scrum" title="Scrum">
+        <p className="font-sans text-lg md:text-xl leading-[1.5] text-[var(--dt-ink)] max-w-4xl">
+          <span className={`${SUB} block mb-2`}>Question:</span>
           What challenges might arise when managing complex projects with multiple stakeholders?
         </p>
         <Row cols="lg:grid-cols-[1fr_1.3fr]" className="!items-start">
-          <div className={`${BODY} text-lg border-t-[4px] border-[var(--dt-ink)] pt-4`}>
+          <div className={`${BODY} text-lg border-t border-[var(--dt-ink)]/15 pt-4`}>
             <Bullets
               className="gap-2"
               items={[
                 <>Scrum is an Agile framework</>,
                 <>
-                  <strong>iterative and incremental development</strong>
+                  iterative and incremental development
                 </>,
                 <>
-                  Particularly popular in <em>software development</em>
+                  Particularly popular in software development
                 </>,
                 <>Can be applied to various fields</>,
               ]}
             />
           </div>
-          <div className={`${BODY} border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-4`}>
+          <div className={`${BODY} border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-4`}>
             <Bullets
               items={[
                 <>
-                  The term &quot;Scrum&quot; originates from the game of <strong>rugby</strong>.
+                  The term &quot;Scrum&quot; originates from the game of rugby.
                 </>,
                 <>
-                  In rugby, a &quot;scrum&quot; is a method of <strong>restarting play</strong> after a{" "}
-                  <em>minor infraction</em>
+                  In rugby, a &quot;scrum&quot; is a method of restarting play after a{" "}
+                  minor infraction
                 </>,
                 <>
-                  players from each team pack <em>closely together</em> with their heads down and attempt to{" "}
-                  <strong>gain possession</strong> of the ball.
+                  players from each team pack closely together with their heads down and attempt to{" "}
+                  gain possession of the ball.
                 </>,
               ]}
             />
@@ -1290,89 +1245,76 @@ export default function DigitalTransformationWeek3() {
         </Row>
       </Slide>
 
-      <Slide id="scrum-from-rugby-to-software">
-        <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-14 items-start">
-          <div>
-            <Kicker>SCRUM</Kicker>
-            <h3 className="font-heading font-bold text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] mt-3 max-w-[12ch]">
-              Scrum: From Rugby to Software
-            </h3>
-          </div>
-          <div className="flex flex-col gap-6">
-            {[
-              [
-                <>
-                  The use of the term in the context of project management was popularized by Ken Schwaber and Jeff
-                  Sutherland,
-                </>,
-                <>Developed the Scrum framework in the early 1990s</>,
-                <>
-                  They chose the name &quot;Scrum&quot; to reflect the importance of <strong>teamwork</strong> and{" "}
-                  <strong>collaboration</strong> in the development process
-                </>,
-                <>Similar to how players in a rugby scrum must work together to succeed.</>,
-              ],
-              [
-                <>In their 1995 paper titled &quot;Scrum Development Process,&quot;</>,
-                <>
-                  Schwaber and Sutherland drew parallels between the dynamics of a <strong>rugby scrum</strong> and the
-                  collaborative nature of <strong>Agile software development</strong>,
-                </>,
-                <>
-                  teams should be <strong className="text-[var(--dt-signal)]">self-organizing</strong>
-                </>,
-                <>Iterative development, continuous feedback, and adaptability.</>,
-              ],
-            ].map((group, g) => (
-              <ol key={g} className="flex flex-col border-t-[5px] border-[var(--dt-ink)] pt-2">
-                {group.map((s, i) => (
-                  <li
-                    key={i}
-                    className="font-heading text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.35] py-2 border-t border-[var(--rule-2)] first:border-t-0 [&_strong]:font-bold"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ol>
-            ))}
-          </div>
+      <Slide id="scrum-from-rugby-to-software" title="Scrum: From Rugby to Software">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          {[
+            [
+              <>
+                The use of the term in the context of project management was popularized by Ken Schwaber and Jeff
+                Sutherland,
+              </>,
+              <>Developed the Scrum framework in the early 1990s</>,
+              <>
+                They chose the name &quot;Scrum&quot; to reflect the importance of teamwork and{" "}
+                collaboration in the development process
+              </>,
+              <>Similar to how players in a rugby scrum must work together to succeed.</>,
+            ],
+            [
+              <>In their 1995 paper titled &quot;Scrum Development Process,&quot;</>,
+              <>
+                Schwaber and Sutherland drew parallels between the dynamics of a rugby scrum and the
+                collaborative nature of Agile software development,
+              </>,
+              <>
+                teams should be self-organizing
+              </>,
+              <>Iterative development, continuous feedback, and adaptability.</>,
+            ],
+          ].map((group, g) => (
+            <ol key={g} className="flex flex-col border-t border-[var(--dt-ink)]/15 pt-2">
+              {group.map((s, i) => (
+                <li
+                  key={i}
+                  className="font-sans text-base md:text-lg leading-[1.55] text-[var(--ink-2)] py-2.5 border-t border-[var(--dt-ink)]/12 first:border-t-0 [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]"
+                >
+                  {s}
+                </li>
+              ))}
+            </ol>
+          ))}
         </div>
       </Slide>
 
       <Slide id="principles-of-scrum-1-to-3" label="PRINCIPLES OF SCRUM" title="Principles of Scrum: 1 to 3">
         <PlateWell>
-          <div className="hidden sm:block">
-            <ScrumPrinciples1To3 active={activeScrum13} onSelect={setActiveScrum13} />
-          </div>
-          <div className="sm:hidden">
-            <ScrumPrinciples1To3Tall active={activeScrum13} onSelect={setActiveScrum13} />
-          </div>
+          <ScrumPrinciples1To3 active={activeScrum13} onSelect={setActiveScrum13} />
         </PlateWell>
         <div className={`${BODY} grid`}>
           <div
             aria-hidden={activeScrum13 !== 0}
-            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
               activeScrum13 === 0 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
             }`}
           >
-            <p className="font-heading font-bold text-2xl mb-3 flex items-baseline gap-3">
-              <span className="font-heading text-3xl leading-none">1.</span>
+            <p className="font-sans font-bold text-2xl mb-3 flex items-baseline gap-3">
+              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">1.</span>
               <span>Empirical Process Control:</span>
             </p>
             <div className="grid md:grid-cols-[1fr_1.3fr] gap-x-10 gap-y-3 items-start">
               <div>
-                <p className="font-heading font-bold">Definition:</p>
+                <p className="font-sans font-bold">Definition:</p>
                 <Bullets
                   items={[
                     <>
-                      This principle is based on the idea that <strong>knowledge comes from experience</strong>
+                      This principle is based on the idea that knowledge comes from experience
                     </>,
                     <>
-                      decisions should be made based on <strong>what is known</strong>.
+                      decisions should be made based on what is known.
                     </>,
                   ]}
                 />
-                <p className="font-heading font-bold mt-3">Application in Scrum:</p>
+                <p className="font-sans font-bold mt-3">Application in Scrum:</p>
                 <Bullets
                   items={[
                     <>
@@ -1381,13 +1323,13 @@ export default function DigitalTransformationWeek3() {
                         className="mt-1"
                         items={[
                           <>
-                            <strong>Transparency</strong>,
+                            Transparency,
                           </>,
                           <>
-                            <strong>Inspection</strong>,
+                            Inspection,
                           </>,
                           <>
-                            <strong>Adaptation</strong>.
+                            Adaptation.
                           </>,
                         ]}
                       />
@@ -1399,17 +1341,17 @@ export default function DigitalTransformationWeek3() {
                 className="gap-2"
                 items={[
                   <>
-                    <strong>Transparency</strong> ensures that <strong>all aspects</strong> of the process are visible
-                    to <em>those responsible for the outcome</em>.
+                    Transparency ensures that all aspects of the process are visible
+                    to those responsible for the outcome.
                   </>,
                   <>
-                    <strong>Inspection</strong> involves <strong>regularly</strong> checking{" "}
-                    <strong>progress and performance</strong> to identify any <strong>deviations</strong> from the
+                    Inspection involves regularly checking{" "}
+                    progress and performance to identify any deviations from the
                     expected results.
                   </>,
                   <>
-                    <strong>Adaptation</strong> means <strong>adjusting</strong> processes and plans based on the{" "}
-                    <strong>insights gained from inspection</strong>.
+                    Adaptation means <strong>adjusting</strong> processes and plans based on the{" "}
+                    insights gained from inspection.
                   </>,
                 ]}
               />
@@ -1418,42 +1360,42 @@ export default function DigitalTransformationWeek3() {
 
           <div
             aria-hidden={activeScrum13 !== 1}
-            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
               activeScrum13 === 1 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
             }`}
           >
-            <p className="font-heading font-bold text-2xl mb-3 flex items-baseline gap-3">
-              <span className="font-heading text-3xl leading-none">2.</span>
+            <p className="font-sans font-bold text-2xl mb-3 flex items-baseline gap-3">
+              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">2.</span>
               <span>Self-Organization:</span>
             </p>
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
               <div>
-                <p className="font-heading font-bold">Definition:</p>
+                <p className="font-sans font-bold">Definition:</p>
                 <Bullets
                   items={[
                     <>
-                      Teams are empowered to <strong>organize</strong> their work{" "}
-                      <strong>without being directed</strong> by outside authorities.
+                      Teams are empowered to organize their work{" "}
+                      without being directed by outside authorities.
                     </>,
                   ]}
                 />
               </div>
               <div>
-                <p className="font-heading font-bold">Application in Scrum:</p>
+                <p className="font-sans font-bold">Application in Scrum:</p>
                 <Bullets
                   items={[
                     <>
-                      Scrum teams are <strong>cross-functional</strong> and <strong>self-managing</strong>,
+                      Scrum teams are cross-functional and self-managing,
                     </>,
                     <>
-                      They decide <strong>how</strong> to accomplish their work.
+                      They decide how to accomplish their work.
                     </>,
                     <>
-                      This autonomy fosters <strong>creativity</strong>, <strong>accountability</strong>, and{" "}
-                      <strong>a sense of ownership</strong> among team members,
+                      This autonomy fosters creativity, accountability, and{" "}
+                      a sense of ownership among team members,
                     </>,
                     <>
-                      leading to higher <strong>motivation</strong> and better <strong>results</strong>.
+                      leading to higher motivation and better results.
                     </>,
                   ]}
                 />
@@ -1463,43 +1405,43 @@ export default function DigitalTransformationWeek3() {
 
           <div
             aria-hidden={activeScrum13 !== 2}
-            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
               activeScrum13 === 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
             }`}
           >
-            <p className="font-heading font-bold text-2xl mb-3 flex items-baseline gap-3">
-              <span className="font-heading text-3xl leading-none">3.</span>
+            <p className="font-sans font-bold text-2xl mb-3 flex items-baseline gap-3">
+              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">3.</span>
               <span>Collaboration:</span>
             </p>
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
               <div>
-                <p className="font-heading font-bold">Definition:</p>
+                <p className="font-sans font-bold">Definition:</p>
                 <Bullets
                   items={[
                     <>
-                      Effective <strong>teamwork</strong> and <strong>communication</strong> are essential in Scrum.
+                      Effective teamwork and communication are essential in Scrum.
                     </>,
                   ]}
                 />
               </div>
               <div>
-                <p className="font-heading font-bold">Application in Scrum:</p>
+                <p className="font-sans font-bold">Application in Scrum:</p>
                 <Bullets
                   items={[
                     <>Scrum promotes collaboration among team members, stakeholders, and customers.</>,
                     <>
-                      <em>Regular ceremonies</em>,
+                      Regular ceremonies,
                       <Bullets
                         className="mt-1"
                         items={[
                           <>
-                            <strong>Daily Scrums</strong>,
+                            Daily Scrums,
                           </>,
                           <>
-                            <strong>Sprint Reviews</strong>,
+                            Sprint Reviews,
                           </>,
                           <>
-                            <strong>Retrospectives</strong>,
+                            Retrospectives,
                           </>,
                         ]}
                       />
@@ -1519,33 +1461,28 @@ export default function DigitalTransformationWeek3() {
         exercise={exercise["principles-of-scrum-4-to-6"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <ScrumPrinciples4To6 active={activeScrum46} onSelect={setActiveScrum46} />
-          </div>
-          <div className="sm:hidden">
-            <ScrumPrinciples4To6Tall active={activeScrum46} onSelect={setActiveScrum46} />
-          </div>
+          <ScrumPrinciples4To6 active={activeScrum46} onSelect={setActiveScrum46} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               n: 4,
               name: "Value-Based Prioritization",
               def: (
                 <>
-                  Work should be prioritized based on the <strong>value</strong> it delivers to the customer and the
+                  Work should be prioritized based on the value it delivers to the customer and the
                   business.
                 </>
               ),
               app: [
                 <>
-                  <strong>The Product Owner</strong> is responsible for managing the <strong>Product Backlog</strong>{" "}
-                  and prioritizing items based on their <strong>value</strong>.
+                  The Product Owner is responsible for managing the Product Backlog{" "}
+                  and prioritizing items based on their value.
                 </>,
                 <>
-                  Ensures that the team focuses on <strong>delivering</strong> the{" "}
-                  <strong>most important features first</strong>, maximizing the <em>return on investment</em> and
-                  ensuring that <em>customer needs</em> are met.
+                  Ensures that the team focuses on delivering the{" "}
+                  most important features first, maximizing the return on investment and
+                  ensuring that customer needs are met.
                 </>,
               ],
             },
@@ -1554,8 +1491,8 @@ export default function DigitalTransformationWeek3() {
               name: "Time Boxing",
               def: (
                 <>
-                  Time boxing involves setting <strong>fixed time limits</strong> for activities to create a sense of{" "}
-                  <strong>urgency</strong> and <strong>focus</strong>.
+                  Time boxing involves setting fixed time limits for activities to create a sense of{" "}
+                  urgency and focus.
                 </>
               ),
             },
@@ -1564,8 +1501,8 @@ export default function DigitalTransformationWeek3() {
               name: "Iterative Development",
               def: (
                 <>
-                  Development is carried out in <strong>small</strong>, <strong>incremental cycles</strong>, allowing
-                  for regular <strong>feedback and adjustments</strong>.
+                  Development is carried out in small, incremental cycles, allowing
+                  for regular feedback and adjustments.
                 </>
               ),
             },
@@ -1575,22 +1512,22 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={p.n}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
-                  <span className="font-heading text-3xl leading-none">{p.n}.</span>
+                <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                  <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{p.n}.</span>
                   <span>{p.name}</span>
                 </p>
                 <div className={`grid ${p.app ? "md:grid-cols-2" : "md:grid-cols-1"} gap-6 md:gap-10`}>
                   <div>
-                    <p className="font-heading font-bold">Definition:</p>
+                    <p className="font-sans font-bold">Definition:</p>
                     <Bullets items={[p.def]} />
                   </div>
                   {p.app && (
                     <div>
-                      <p className="font-heading font-bold">Application in Scrum:</p>
+                      <p className="font-sans font-bold">Application in Scrum:</p>
                       <Bullets items={p.app} />
                     </div>
                   )}
@@ -1601,41 +1538,36 @@ export default function DigitalTransformationWeek3() {
         </div>
       </Slide>
 
-      <Slide id="scrum-methodology" label="HOW SCRUM WORKS" title="Scrum Methodology">
+      <Slide id="scrum-methodology" title="Scrum Methodology">
         <PlateWell>
           <ScrumProcess />
         </PlateWell>
-        <p className="font-body italic text-lg">
+        <p className="font-sans text-base text-[var(--ink-3)]">
           Note. backlog refers to a prioritized list of work items or tasks that need to be completed for a project
         </p>
       </Slide>
 
       <Slide id="roles-in-scrum" label="1. ROLES IN SCRUM" title="Roles in Scrum" exercise={exercise["roles-in-scrum"]}>
-        <p className="font-heading text-xl md:text-2xl leading-snug">
+        <p className="font-sans text-xl md:text-2xl leading-snug">
           Scrum defines three primary roles, each with specific responsibilities:
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <ScrumRolesHub active={activeScrumRole} onSelect={setActiveScrumRole} />
-          </div>
-          <div className="sm:hidden">
-            <ScrumRolesHubTall active={activeScrumRole} onSelect={setActiveScrumRole} />
-          </div>
+          <ScrumRolesHub active={activeScrumRole} onSelect={setActiveScrumRole} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               name: "Product Owner",
               points: [
                 <>
-                  Represents the <strong>stakeholders</strong> and the voice of the <strong>customer</strong>.
+                  Represents the stakeholders and the voice of the customer.
                 </>,
                 <>
-                  Responsible for defining the <strong>product vision</strong> and managing the{" "}
-                  <strong>product backlog</strong>.
+                  Responsible for defining the product vision and managing the{" "}
+                  product backlog.
                 </>,
                 <>
-                  Ensures that the <strong>team understands</strong> the <em>items in the backlog</em>.
+                  Ensures that the team understands the items in the backlog.
                 </>,
               ],
             },
@@ -1643,13 +1575,13 @@ export default function DigitalTransformationWeek3() {
               name: "Scrum Master",
               points: [
                 <>
-                  Acts as a <em>facilitator</em> and <em>coach</em> for the Scrum team.
+                  Acts as a facilitator and coach for the Scrum team.
                 </>,
                 <>
-                  <strong>Removes impediments</strong> that may hinder the team&apos;s progress.
+                  Removes impediments that may hinder the team&apos;s progress.
                 </>,
                 <>
-                  Shields the team from <strong>external distractions</strong> and <strong>interruptions</strong>.
+                  Shields the team from external distractions and interruptions.
                 </>,
               ],
             },
@@ -1657,15 +1589,15 @@ export default function DigitalTransformationWeek3() {
               name: "Development Team",
               points: [
                 <>
-                  A <strong>cross-functional</strong> group of professionals who work collaboratively to deliver the
+                  A cross-functional group of professionals who work collaboratively to deliver the
                   product increment.
                 </>,
                 <>
-                  Typically consists of <strong>3 to 9 members</strong> with various skills (e.g., <em>developers</em>,{" "}
-                  <em>testers</em>, <em>designers</em>).
+                  Typically consists of 3 to 9 members with various skills (e.g., developers,{" "}
+                  testers, designers).
                 </>,
                 <>
-                  <strong>Self-organizes</strong> to determine how to accomplish the work in the sprint.
+                  Self-organizes to determine how to accomplish the work in the sprint.
                 </>,
               ],
             },
@@ -1675,11 +1607,11 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={r.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 flex flex-col gap-3 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 flex flex-col gap-3 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl">{r.name}:</p>
+                <p className="font-sans font-bold text-2xl">{r.name}:</p>
                 <Bullets items={r.points} />
               </div>
             );
@@ -1694,11 +1626,11 @@ export default function DigitalTransformationWeek3() {
       >
         <div className="grid lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-12 items-start">
           <div className="flex flex-col gap-5">
-            <p className="font-heading italic text-xl leading-snug [&_strong]:font-bold">
-              <span className={`${SUB} not-italic block mb-2`}>Question:</span>
-              How can <strong>regular events</strong> like daily meetings improve team collaboration and accountability?
+            <p className="font-sans text-lg leading-[1.5] text-[var(--dt-ink)] [&_strong]:font-semibold">
+              <span className={`${SUB} block mb-2`}>Question:</span>
+              How can regular events like daily meetings improve team collaboration and accountability?
             </p>
-            <p className="font-heading text-xl">Events (ceremonies) that structure the workflow:</p>
+            <p className="font-sans font-semibold text-lg text-[var(--dt-ink)]">Events (ceremonies) that structure the workflow:</p>
           </div>
           <PlateWell>
             <ScrumProcess mode="events-first" active={activeScrumEvent1} onSelect={setActiveScrumEvent1} />
@@ -1710,14 +1642,14 @@ export default function DigitalTransformationWeek3() {
               name: "Sprint",
               items: [
                 <>
-                  A <strong>time-boxed iteration</strong>, usually lasting <em>1 to 4 weeks</em>
+                  A time-boxed iteration, usually lasting 1 to 4 weeks
                 </>,
                 <>
-                  A <em>potentially shippable product</em> increment is created.
+                  A potentially shippable product increment is created.
                 </>,
                 <>
-                  Each sprint begins with a <strong>planning session</strong> and ends with a{" "}
-                  <strong>review and retrospective</strong>.
+                  Each sprint begins with a planning session and ends with a{" "}
+                  review and retrospective.
                 </>,
               ],
             },
@@ -1726,14 +1658,14 @@ export default function DigitalTransformationWeek3() {
               items: [
                 <>
                   A meeting held at the beginning of each sprint where the team decides{" "}
-                  <strong>what work will be done</strong>.
+                  what work will be done.
                 </>,
                 <>
-                  The team selects <strong>items from the product backlog</strong> to include in the{" "}
-                  <strong>sprint backlog</strong> based on priority and team capacity.
+                  The team selects items from the product backlog to include in the{" "}
+                  sprint backlog based on priority and team capacity.
                 </>,
                 <>
-                  The team defines the <strong>sprint goal</strong>, which is a clear objective for the sprint.
+                  The team defines the sprint goal, which is a clear objective for the sprint.
                 </>,
               ],
             },
@@ -1743,11 +1675,11 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={ev.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl mb-2">{ev.name}:</p>
+                <p className="font-sans font-bold text-2xl mb-2">{ev.name}:</p>
                 <Bullets items={ev.items} />
               </div>
             );
@@ -1767,30 +1699,30 @@ export default function DigitalTransformationWeek3() {
         <div className={`${BODY} grid`}>
           <div
             aria-hidden={activeScrumEvent2 !== 0}
-            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
               activeScrumEvent2 === 0 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
             }`}
           >
-            <p className="font-heading font-bold text-2xl mb-2">Daily Scrum (Stand-up):</p>
+            <p className="font-sans font-bold text-2xl mb-2">Daily Scrum (Stand-up):</p>
             <div className="grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-10 items-start">
               <div>
                 <Bullets
                   items={[
                     <>
-                      A <strong>short</strong>, <strong>time-boxed</strong> meeting (<em>usually 15 minutes</em>) held
+                      A short, time-boxed meeting (usually 15 minutes) held
                       every day during the sprint.
                     </>,
                     <>Team members answer three questions:</>,
                     <>
-                      The purpose is to <strong>synchronize</strong> activities and identify any{" "}
-                      <strong>impediments</strong>.
+                      The purpose is to synchronize activities and identify any{" "}
+                      impediments.
                     </>,
                   ]}
                 />
               </div>
               <ol className="flex flex-col gap-1 bg-[var(--paper-2)] p-4">
                 {["What did I do yesterday?", "What will I do today?", "What obstacles are in my way?"].map((q) => (
-                  <li key={q} className="font-heading font-bold text-lg">
+                  <li key={q} className="font-sans font-bold text-lg">
                     {q}
                   </li>
                 ))}
@@ -1800,22 +1732,22 @@ export default function DigitalTransformationWeek3() {
 
           <div
             aria-hidden={activeScrumEvent2 !== 1}
-            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
               activeScrumEvent2 === 1 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
             }`}
           >
-            <p className="font-heading font-bold text-2xl mb-2">Sprint Review:</p>
+            <p className="font-sans font-bold text-2xl mb-2">Sprint Review:</p>
             <Bullets
               items={[
                 <>
-                  A meeting held at the <strong>end</strong> of the sprint to <strong>demonstrate</strong> the{" "}
-                  <em>completed work</em> to stakeholders.
+                  A meeting held at the end of the sprint to demonstrate the{" "}
+                  completed work to stakeholders.
                 </>,
                 <>
-                  The team presents the <em>product increment</em> and gathers <strong>feedback</strong>.
+                  The team presents the product increment and gathers feedback.
                 </>,
                 <>
-                  The <em>product backlog</em> may be <strong>adjusted</strong> based on feedback received.
+                  The product backlog may be adjusted based on feedback received.
                 </>,
               ]}
             />
@@ -1823,15 +1755,15 @@ export default function DigitalTransformationWeek3() {
 
           <div
             aria-hidden={activeScrumEvent2 !== 2}
-            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
               activeScrumEvent2 === 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
             }`}
           >
-            <p className="font-heading font-bold text-2xl mb-2">Sprint Retrospective:</p>
+            <p className="font-sans font-bold text-2xl mb-2">Sprint Retrospective:</p>
             <Bullets
               items={[
                 <>
-                  A meeting held <strong>after</strong> the sprint review to reflect on the sprint process.
+                  A meeting held after the sprint review to reflect on the sprint process.
                 </>,
                 <>
                   The team discusses
@@ -1839,13 +1771,13 @@ export default function DigitalTransformationWeek3() {
                     className="mt-1"
                     items={[
                       <>
-                        <em>what went well</em>,
+                        what went well,
                       </>,
                       <>
-                        <em>what could be improved</em>,
+                        what could be improved,
                       </>,
                       <>
-                        <em>how to implement changes</em> in the next sprint.
+                        how to implement changes in the next sprint.
                       </>,
                     ]}
                   />
@@ -1862,25 +1794,25 @@ export default function DigitalTransformationWeek3() {
         title="Artifacts in Scrum"
         exercise={exercise["artifacts-in-scrum"]}
       >
-        <p className="font-heading text-xl md:text-2xl leading-snug">
-          Scrum uses specific artifacts to <em>manage</em> work and provide <em>transparency</em>:
+        <p className="font-sans text-xl md:text-2xl leading-snug">
+          Scrum uses specific artifacts to manage work and provide transparency:
         </p>
         <PlateWell>
           <ScrumProcess mode="artifacts" active={activeScrumArtifact} onSelect={setActiveScrumArtifact} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               name: "Product Backlog",
               items: [
                 <>
-                  An <strong>ordered</strong> list of all desired work on the project,
-                  <span className="block mt-1 font-heading italic">
+                  An ordered list of all desired work on the project,
+                  <span className="block mt-1 font-sans text-[var(--ink-3)]">
                     features, enhancements, bug fixes, technical tasks.
                   </span>
                 </>,
                 <>
-                  The <strong>product owner</strong> is responsible for maintaining and prioritizing the backlog.
+                  The product owner is responsible for maintaining and prioritizing the backlog.
                 </>,
               ],
             },
@@ -1888,10 +1820,10 @@ export default function DigitalTransformationWeek3() {
               name: "Sprint Backlog",
               items: [
                 <>
-                  A subset of the product backlog items selected for the <strong>current sprint</strong>,
+                  A subset of the product backlog items selected for the current sprint,
                 </>,
                 <>
-                  The <strong>development team</strong> is responsible for managing the sprint backlog.
+                  The development team is responsible for managing the sprint backlog.
                 </>,
               ],
             },
@@ -1899,11 +1831,11 @@ export default function DigitalTransformationWeek3() {
               name: "Increment",
               items: [
                 <>
-                  The <strong>sum of all completed</strong> product backlog items at the end of a sprint.
+                  The sum of all completed product backlog items at the end of a sprint.
                 </>,
                 <>
-                  The increment must meet the team&apos;s <em>definition</em> of <strong>&quot;done,&quot;</strong>{" "}
-                  which includes <strong>quality</strong> criteria and <strong>acceptance</strong> criteria.
+                  The increment must meet the team&apos;s definition of &quot;done,&quot;{" "}
+                  which includes quality criteria and acceptance criteria.
                 </>,
               ],
             },
@@ -1913,11 +1845,11 @@ export default function DigitalTransformationWeek3() {
               <div
                 key={ar.name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl mb-2">{ar.name}:</p>
+                <p className="font-sans font-bold text-2xl mb-2">{ar.name}:</p>
                 <Bullets items={ar.items} />
               </div>
             );

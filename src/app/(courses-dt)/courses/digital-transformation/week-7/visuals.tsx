@@ -46,7 +46,7 @@ import {
   Scales,
 } from "@phosphor-icons/react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SIGNAL,
   COUNTER,
@@ -61,8 +61,8 @@ import {
 } from "../_visuals/kit";
 import { Person, Shop, Doc, Coins } from "../_visuals/objects";
 
-const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
-const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
+const HEAD = { fontFamily: "var(--font-sans)", fontWeight: 700 } as const;
+const BODY = { fontFamily: "var(--font-sans)", fontWeight: 600 } as const;
 
 /* ==========================================================================
    1. Hero: Peer-to-peer digital transaction recorded on a framed screen
@@ -74,12 +74,11 @@ export function HeroBlockchainLedger() {
     <Plate
       w={520}
       h={340}
-      title="Two people in profile exchange a transaction document on the left. A red arrow points into a framed screen holding three chained blocks (Block 1, Block 2, and a red verified Block 3)"
+      title="A transaction document and coins on the left point via a red arrow into a framed screen holding three chained blocks (Block 1, Block 2, and a red verified Block 3)"
     >
-      {/* Two transacting parties and their transaction record on the left */}
-      <Person x={52} y={16} k={0.72} variant={3} />
-      <Doc x={32} y={110} k={0.46} />
-      <Person x={52} y={188} k={0.72} variant={6} flip />
+      {/* Transaction record and value on the left */}
+      <Doc x={32} y={76} k={0.56} />
+      <Coins x={56} y={224} n={4} />
 
       <Arrow x1={98} x2={154} y={148} color={SIGNAL} />
 
@@ -90,37 +89,37 @@ export function HeroBlockchainLedger() {
         </text>
 
         {/* Block 1 */}
-        <rect x={188} y={80} width={72} height={116} fill={INK} />
-        <text x={224} y={108} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+        <rect x={188} y={80} width={72} height={116} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={224} y={108} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
           Block 1
         </text>
-        <LockKey x={208} y={122} size={32} weight="fill" color={CREAM} />
-        <rect x={202} y={166} width={44} height={6} fill={CREAM} />
-        <rect x={202} y={178} width={30} height={6} fill={CREAM} />
+        <LockKey x={208} y={122} size={32} weight="fill" color={INK} />
+        <rect x={202} y={166} width={44} height={6} fill={INK} fillOpacity={0.35} />
+        <rect x={202} y={178} width={30} height={6} fill={INK} fillOpacity={0.35} />
 
         {/* Chain link 1 -> 2 */}
         <Pointer x1={263} y1={138} x2={294} y2={138} w={3.5} head={10} color={INK} />
 
         {/* Block 2 */}
-        <rect x={297} y={80} width={72} height={116} fill={INK} />
-        <text x={333} y={108} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+        <rect x={297} y={80} width={72} height={116} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={333} y={108} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
           Block 2
         </text>
-        <LockKey x={317} y={122} size={32} weight="fill" color={CREAM} />
-        <rect x={311} y={166} width={44} height={6} fill={CREAM} />
-        <rect x={311} y={178} width={30} height={6} fill={CREAM} />
+        <LockKey x={317} y={122} size={32} weight="fill" color={INK} />
+        <rect x={311} y={166} width={44} height={6} fill={INK} fillOpacity={0.35} />
+        <rect x={311} y={178} width={30} height={6} fill={INK} fillOpacity={0.35} />
 
         {/* Chain link 2 -> 3 */}
         <Pointer x1={372} y1={138} x2={403} y2={138} w={3.5} head={10} color={SIGNAL} />
 
         {/* Block 3 (newly validated & immutable, SIGNAL red) */}
-        <rect x={406} y={80} width={72} height={116} fill={SIGNAL} />
-        <text x={442} y={108} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+        <rect x={406} y={80} width={72} height={116} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={442} y={108} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
           Block 3
         </text>
-        <ShieldCheck x={426} y={122} size={32} weight="fill" color={CREAM} />
-        <rect x={420} y={166} width={44} height={6} fill={CREAM} />
-        <rect x={420} y={178} width={30} height={6} fill={CREAM} />
+        <ShieldCheck x={426} y={122} size={32} weight="fill" color={SIGNAL} />
+        <rect x={420} y={166} width={44} height={6} fill={SIGNAL} fillOpacity={0.35} />
+        <rect x={420} y={178} width={30} height={6} fill={SIGNAL} fillOpacity={0.35} />
 
         {/* Footer caption inside monitor */}
         <text x={333} y={238} textAnchor="middle" {...BODY} fontSize={15} fill={INK}>
@@ -170,27 +169,27 @@ export function BlockchainPillarsInteractive({
         <ShieldCheck x={156} y={60} size={36} weight="fill" color={t0} />
         <LockKey x={198} y={60} size={34} weight="fill" color={t0} />
       </Monitor>
-      <text x={140} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={t0}>
+      <text x={140} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         Records securely
       </text>
 
-      {/* Panel 2: Transparency: two participants viewing the same shared screen */}
-      <Person x={308} y={56} k={0.72} variant={2} />
+      {/* Panel 2: Transparency: shared ledger screen visible across nodes */}
+      <Doc x={294} y={48} k={0.44} tone={t1} />
       <MiniScreen x={358} y={44}>
         <Eye x={383} y={55} size={34} weight="fill" color={t1} />
       </MiniScreen>
-      <Person x={492} y={56} k={0.72} variant={8} flip />
-      <text x={400} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={t1}>
+      <Doc x={464} y={48} k={0.44} tone={t1} />
+      <text x={400} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         Records transparently
       </text>
 
       {/* Panel 3: Efficiency: direct peer-to-peer transfer bypassing intermediary */}
       <Bank x={642} y={24} size={36} weight="fill" color={COUNTER} />
       <path d="M 636 22 L 684 62" stroke={SIGNAL} strokeWidth={4} />
-      <Person x={574} y={62} k={0.72} variant={4} />
-      <Pointer x1={612} y1={104} x2={708} y2={104} w={4} head={12} color={t2} />
-      <Person x={746} y={62} k={0.72} variant={9} flip />
-      <text x={660} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={t2}>
+      <Shop x={556} y={76} k={0.38} tone={t2} />
+      <Pointer x1={618} y1={104} x2={702} y2={104} w={4} head={12} color={t2} />
+      <Shop x={710} y={76} k={0.38} tone={t2} />
+      <text x={660} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         Difficult to alter | No middleman
       </text>
 
@@ -219,8 +218,8 @@ export function BlockchainPillarsInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
               {z.label}
             </text>
           </g>
@@ -262,11 +261,11 @@ export function BlockchainPillarsTall({
             onClick={onSelect ? () => onSelect(r.idx) : undefined}
           >
             <rect x={16} y={r.y0} width={368} height={84} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={r.y0} width={172} height={84} fill={tone} />
-            <text x={102} y={r.y0 + 38} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={16} y={r.y0} width={172} height={84} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={102} y={r.y0 + 38} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {r.label}
             </text>
-            <text x={102} y={r.y0 + 60} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={102} y={r.y0 + 60} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {r.sub}
             </text>
             {r.idx === 0 && <ShieldCheck x={262} y={r.y0 + 22} size={40} weight="fill" color={tone} />}
@@ -315,7 +314,7 @@ export function BlockchainFeaturesInteractive({
       <path d="M 52 68 L 40 94 M 68 68 L 80 94" stroke={COUNTER} strokeWidth={2.5} />
       <circle cx={40} cy={98} r={5.5} fill={COUNTER} />
       <circle cx={80} cy={98} r={5.5} fill={COUNTER} />
-      <text x={60} y={124} textAnchor="middle" {...BODY} fontSize={12.5} fill={COUNTER}>
+      <text x={60} y={124} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
         Cloud
       </text>
 
@@ -332,19 +331,19 @@ export function BlockchainFeaturesInteractive({
         [122, 96],
         [168, 96],
       ].map(([nx, ny], i) => (
-        <rect key={i} x={nx - 8} y={ny - 8} width={16} height={16} fill={toneOf(0)} stroke={CREAM} strokeWidth={2} />
+        <rect key={i} x={nx - 8} y={ny - 8} width={16} height={16} fill={toneOf(0)} stroke={WHITE} strokeWidth={2} />
       ))}
-      <text x={145} y={124} textAnchor="middle" {...BODY} fontSize={12.5} fill={toneOf(0)}>
+      <text x={145} y={124} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
         P2P Nodes
       </text>
 
       {/* 2. Immutable: Chained blocks locked in a Monitor */}
       <Monitor x={237} y={24} w={131} h={96}>
         <rect x={251} y={48} width={32} height={44} fill={toneOf(1)} />
-        <LockKey x={256} y={59} size={22} weight="fill" color={CREAM} />
+        <LockKey x={256} y={59} size={22} weight="fill" color={WHITE} />
         <Pointer x1={286} y1={70} x2={318} y2={70} w={3} head={8} color={toneOf(1)} />
         <rect x={321} y={48} width={32} height={44} fill={toneOf(1)} />
-        <LockKey x={326} y={59} size={22} weight="fill" color={CREAM} />
+        <LockKey x={326} y={59} size={22} weight="fill" color={WHITE} />
       </Monitor>
 
       {/* 3. Consensus: Three nodes agreeing on a validated block */}
@@ -354,8 +353,8 @@ export function BlockchainFeaturesInteractive({
           <Pointer x1={cx} y1={60} x2={cx} y2={102} w={3} head={9} color={toneOf(2)} />
         </g>
       ))}
-      <rect x={432} y={106} width={131} height={36} fill={toneOf(2)} />
-      <text x={497.5} y={129} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+      <rect x={432} y={106} width={131} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={497.5} y={129} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
         Valid Block
       </text>
 
@@ -391,11 +390,11 @@ export function BlockchainFeaturesInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={238} fill="transparent" />
-            <text x={z.cx} y={182} textAnchor="middle" {...BODY} fontSize={14.5} fill={tone}>
+            <text x={z.cx} y={182} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
               {z.sub}
             </text>
-            <rect x={z.x0} y={210} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={235} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={z.x0} y={210} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={235} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -433,11 +432,11 @@ export function BlockchainFeaturesTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={84} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={172} height={84} fill={tone} />
-            <text x={102} y={y0 + 38} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={y0} width={172} height={84} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={102} y={y0 + 38} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
-            <text x={102} y={y0 + 60} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={102} y={y0 + 60} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {z.sub}
             </text>
             <MiniScreen x={246} y={y0 + 7}>
@@ -484,25 +483,25 @@ export function SmartContractMechanismInteractive() {
       <MiniScreen x={148} y={42}>
         <FileCode x={173} y={53} size={34} weight="fill" color={toneOf(0)} />
       </MiniScreen>
-      <text x={138} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={toneOf(0)}>
+      <text x={138} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {SC_STAGE_ZONES[0].sub}
       </text>
 
       {/* Stage 2: Stored and replicated on a blockchain (Solana, Ethereum) */}
       <Monitor x={306} y={24} w={188} h={108}>
-        <rect x={326} y={46} width={66} height={34} fill={toneOf(1)} />
-        <text x={359} y={68} textAnchor="middle" {...BODY} fontSize={12.5} fill={CREAM}>
+        <rect x={326} y={46} width={66} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={359} y={68} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
           Ethereum
         </text>
-        <rect x={408} y={46} width={66} height={34} fill={toneOf(1)} />
-        <text x={441} y={68} textAnchor="middle" {...BODY} fontSize={12.5} fill={CREAM}>
+        <rect x={408} y={46} width={66} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={441} y={68} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
           Solana
         </text>
-        <text x={400} y={104} textAnchor="middle" {...BODY} fontSize={13} fill={toneOf(1)}>
+        <text x={400} y={104} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
           Replicated Nodes
         </text>
       </Monitor>
-      <text x={400} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={toneOf(1)}>
+      <text x={400} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {SC_STAGE_ZONES[1].sub}
       </text>
 
@@ -513,7 +512,7 @@ export function SmartContractMechanismInteractive() {
       </MiniScreen>
       <Pointer x1={652} y1={72} x2={696} y2={72} w={4} head={11} color={toneOf(2)} />
       <Coins x={732} y={114} n={4} />
-      <text x={662} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={toneOf(2)}>
+      <text x={662} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {SC_STAGE_ZONES[2].sub}
       </text>
 
@@ -539,7 +538,7 @@ export function SmartContractMechanismInteractive() {
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
             <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17.5} fill={CREAM}>
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -604,8 +603,8 @@ export function SmartContractUseCasesInteractive({
                 : undefined
             }
           >
-            <rect x={bx} y={14} width={103} height={38} fill={isLit ? SIGNAL : INK} />
-            <text x={r2(bx + 51.5)} y={38} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+            <rect x={bx} y={14} width={103} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={r2(bx + 51.5)} y={38} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
               {u.tab}
             </text>
           </g>
@@ -625,8 +624,8 @@ export function SmartContractUseCasesInteractive({
         <text x={392} y={104} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
           Immutable | Programmable
         </text>
-        <rect x={304} y={118} width={176} height={38} fill={SIGNAL} />
-        <text x={392} y={142} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+        <rect x={304} y={118} width={176} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={392} y={142} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
           {cur.code}
         </text>
       </Monitor>
@@ -634,11 +633,11 @@ export function SmartContractUseCasesInteractive({
       <Pointer x1={520} y1={132} x2={578} y2={132} w={4} head={12} color={SIGNAL} />
 
       {/* Right: Automated outcome box */}
-      <rect x={588} y={88} width={192} height={84} fill={INK} />
-      <text x={684} y={122} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+      <rect x={588} y={88} width={192} height={84} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={684} y={122} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         Automated Outcome
       </text>
-      <text x={684} y={148} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+      <text x={684} y={148} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
         {cur.out}
       </text>
     </Plate>
@@ -675,18 +674,18 @@ export function SmartContractUseCasesTall({
             style={onSelect ? { cursor: "pointer" } : undefined}
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
-            <rect x={bx} y={by} width={86} height={38} fill={isLit ? SIGNAL : INK} />
-            <text x={bx + 43} y={by + 24} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+            <rect x={bx} y={by} width={86} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={bx + 43} y={by + 24} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
               {u.tab}
             </text>
           </g>
         );
       })}
-      <rect x={18} y={120} width={364} height={92} fill={SIGNAL} />
-      <text x={200} y={156} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+      <rect x={18} y={120} width={364} height={92} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={200} y={156} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
         {cur.name}
       </text>
-      <text x={200} y={186} textAnchor="middle" {...BODY} fontSize={15} fill={CREAM}>
+      <text x={200} y={186} textAnchor="middle" {...BODY} fontSize={15} fill={INK}>
         {cur.code} → {cur.out}
       </text>
     </Plate>
@@ -727,7 +726,7 @@ export function SupplyChainComparisonInteractive({
       {/* Column 1: Manual Delays -> Automation */}
       <Doc x={48} y={22} k={0.42} tone={COUNTER} />
       <Clock x={96} y={28} size={34} weight="fill" color={COUNTER} />
-      <text x={190} y={50} textAnchor="middle" {...BODY} fontSize={13.5} fill={COUNTER}>
+      <text x={190} y={50} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         Manual Delays
       </text>
       <Pointer x1={140} y1={74} x2={140} y2={104} w={3.5} head={9} color={toneOf(0)} />
@@ -740,7 +739,7 @@ export function SupplyChainComparisonInteractive({
       {/* Column 2: Tracking Inefficiencies -> Real-Time Transparency */}
       <Truck x={312} y={26} size={38} weight="fill" color={COUNTER} />
       <Warning x={358} y={28} size={34} weight="fill" color={COUNTER} />
-      <text x={448} y={50} textAnchor="middle" {...BODY} fontSize={13.5} fill={COUNTER}>
+      <text x={448} y={50} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         Tracking Gaps
       </text>
       <Pointer x1={400} y1={74} x2={400} y2={104} w={3.5} head={9} color={toneOf(1)} />
@@ -752,7 +751,7 @@ export function SupplyChainComparisonInteractive({
       {/* Column 3: Mistrust -> Direct Verified Trust */}
       <Shop x={558} y={24} k={0.28} tone={COUNTER} />
       <Warning x={616} y={28} size={34} weight="fill" color={COUNTER} />
-      <text x={710} y={50} textAnchor="middle" {...BODY} fontSize={13.5} fill={COUNTER}>
+      <text x={710} y={50} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         Mistrust
       </text>
       <Pointer x1={660} y1={74} x2={660} y2={104} w={3.5} head={9} color={toneOf(2)} />
@@ -785,8 +784,8 @@ export function SupplyChainComparisonInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={232} fill="transparent" />
-            <rect x={z.x0} y={206} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={230} textAnchor="middle" {...HEAD} fontSize={17.5} fill={CREAM}>
+            <rect x={z.x0} y={206} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={230} textAnchor="middle" {...HEAD} fontSize={17.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -824,11 +823,11 @@ export function SupplyChainComparisonTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={80} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={186} height={80} fill={tone} />
-            <text x={109} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={16} y={y0} width={186} height={80} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={109} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {z.tab}
             </text>
-            <text x={109} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={109} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               Fixes: {z.issue}
             </text>
             {i === 0 && <Package x={274} y={y0 + 20} size={40} weight="fill" color={tone} />}
@@ -873,7 +872,7 @@ export function AmazonSupplyChainInteractive({
       title={`Five selectable stages of Amazon's supply chain smart contract process: 1. Order Placement (buyer triggers smart contract), 2. Shipment Tracking (IoT sensors monitor truck and update blockchain), 3. Delivery Confirmation (smart contract releases payment to supplier), 4. Documentation (immutable ledger record), and 5. Post-purchase Services (support and returns). ${cur.tab} is selected in red`}
     >
       {/* 1. Order Placement */}
-      <Person x={88} y={20} k={0.62} variant={7} />
+      <Package x={70} y={36} size={36} weight="fill" color={toneOf(0)} />
       <MiniScreen x={46} y={102}>
         <FileCode x={73} y={115} size={30} weight="fill" color={toneOf(0)} />
       </MiniScreen>
@@ -943,8 +942,8 @@ export function AmazonSupplyChainInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={232} fill="transparent" />
-            <rect x={z.x0} y={204} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+            <rect x={z.x0} y={204} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -982,8 +981,8 @@ export function AmazonSupplyChainTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={52} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={160} height={52} fill={tone} />
-            <text x={96} y={y0 + 32} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={y0} width={160} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={96} y={y0 + 32} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
             {i === 0 && <FileCode x={264} y={y0 + 10} size={32} weight="fill" color={tone} />}
@@ -1065,17 +1064,17 @@ export function NftOverviewInteractive({
 
             <Pointer x1={116} y1={r.y0 + 46} x2={150} y2={r.y0 + 46} w={3.5} head={9} color={tone} />
 
-            {/* Middle: Physical/human counterpart */}
-            {i === 0 && <Person x={182} y={r.y0 + 16} k={0.62} variant={9} />}
-            {i === 1 && <Person x={182} y={r.y0 + 16} k={0.62} variant={10} />}
+            {/* Middle: Asset/domain counterpart */}
+            {i === 0 && <Coins x={182} y={r.y0 + 62} n={3} />}
+            {i === 1 && <ShieldCheck x={163} y={r.y0 + 27} size={38} weight="fill" color={tone} />}
             {i === 2 && <House x={163} y={r.y0 + 27} size={38} weight="fill" color={tone} />}
 
             {/* Right: Label badge */}
-            <rect x={224} y={r.y0 + 18} width={150} height={58} fill={tone} />
-            <text x={299} y={r.y0 + 44} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+            <rect x={224} y={r.y0 + 18} width={150} height={58} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={299} y={r.y0 + 44} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
               {r.label}
             </text>
-            <text x={299} y={r.y0 + 63} textAnchor="middle" {...BODY} fontSize={12.5} fill={CREAM}>
+            <text x={299} y={r.y0 + 63} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
               {r.sub}
             </text>
           </g>
@@ -1118,23 +1117,18 @@ export function RealEstateComparisonPlate({
       title={`Visual comparison of Traditional Contracts (top, in blue) and Smart Contracts (bottom, in red) in Real Estate for feature ${active + 1}: ${feat}`}
     >
       {/* Feature header bar */}
-      <rect x={18} y={14} width={364} height={34} fill={INK} />
-      <text x={200} y={37} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+      <rect x={18} y={14} width={364} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={200} y={37} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
         {active + 1}. {feat}
       </text>
 
       {/* TOP HALF: Traditional Contracts (COUNTER blue) */}
-      <text x={22} y={96} {...HEAD} fontSize={16.5} fill={COUNTER}>
+      <text x={22} y={96} {...HEAD} fontSize={16.5} fill={INK}>
         Traditional
       </text>
       {active === 0 && <Doc x={166} y={58} k={0.52} tone={COUNTER} />}
-      {active === 1 && <Person x={190} y={56} k={0.64} variant={3} />}
-      {active === 2 && (
-        <>
-          <Person x={172} y={58} k={0.58} variant={2} />
-          <Person x={212} y={58} k={0.58} variant={5} gap />
-        </>
-      )}
+      {active === 1 && <Handshake x={168} y={66} size={46} weight="fill" color={COUNTER} />}
+      {active === 2 && <Bank x={168} y={66} size={46} weight="fill" color={COUNTER} />}
       {active === 3 && <Clock x={168} y={66} size={46} weight="fill" color={COUNTER} />}
       {active === 4 && (
         <>
@@ -1147,7 +1141,7 @@ export function RealEstateComparisonPlate({
       {active === 5 && <Gavel x={168} y={66} size={46} weight="fill" color={COUNTER} />}
       {active === 6 && <Warning x={168} y={66} size={46} weight="fill" color={COUNTER} />}
 
-      <text x={252} y={96} {...BODY} fontSize={13.5} fill={COUNTER}>
+      <text x={252} y={96} {...BODY} fontSize={13.5} fill={INK}>
         {active === 0 && "Manual | Paper"}
         {active === 1 && "Brokers | Lawyers"}
         {active === 2 && "Multiple Parties"}
@@ -1160,7 +1154,7 @@ export function RealEstateComparisonPlate({
       <path d="M 18 144 H 382" stroke={INK} strokeWidth={1.8} strokeDasharray="4 4" />
 
       {/* BOTTOM HALF: Smart Contracts (SIGNAL red) */}
-      <text x={22} y={196} {...HEAD} fontSize={16.5} fill={SIGNAL}>
+      <text x={22} y={196} {...HEAD} fontSize={16.5} fill={INK}>
         Smart Contract
       </text>
       <MiniScreen x={148} y={156}>
@@ -1173,7 +1167,7 @@ export function RealEstateComparisonPlate({
         {active === 6 && <LockKey x={175} y={169} size={30} weight="fill" color={SIGNAL} />}
       </MiniScreen>
 
-      <text x={252} y={196} {...BODY} fontSize={13.5} fill={SIGNAL}>
+      <text x={252} y={196} {...BODY} fontSize={13.5} fill={INK}>
         {active === 0 && "Auto-Executed"}
         {active === 1 && "Blockchain Trust"}
         {active === 2 && "No Middlemen"}
@@ -1197,8 +1191,8 @@ export function RealEstateComparisonPlate({
             style={onSelect ? { cursor: "pointer" } : undefined}
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
-            <rect x={bx} y={258} width={47} height={38} fill={isLit ? SIGNAL : INK} />
-            <text x={r2(bx + 23.5)} y={282} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+            <rect x={bx} y={258} width={47} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={r2(bx + 23.5)} y={282} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
               {i + 1}
             </text>
           </g>
@@ -1241,10 +1235,10 @@ export function FinancialServicesInteractive({
       <path d="M 270 18 V 192 M 530 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
       {/* 1. Issues of Traditional Systems (COUNTER blue contrast) */}
-      <Doc x={42} y={42} k={0.5} tone={tone0} />
-      <Clock x={108} y={52} size={38} weight="fill" color={tone0} />
-      <Person x={200} y={38} k={0.72} variant={5} flip />
-      <text x={140} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={tone0}>
+      <Doc x={56} y={42} k={0.5} tone={tone0} />
+      <Clock x={128} y={52} size={42} weight="fill" color={tone0} />
+      <Coins x={204} y={96} n={3} />
+      <text x={140} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {FIN_ZONES[0].sub}
       </text>
 
@@ -1257,17 +1251,17 @@ export function FinancialServicesInteractive({
       </MiniScreen>
       <Pointer x1={438} y1={76} x2={462} y2={76} w={3.5} head={8} color={tone1} />
       <Coins x={490} y={108} n={3} />
-      <text x={400} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={tone1}>
+      <text x={400} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {FIN_ZONES[1].sub}
       </text>
 
       {/* 3. Enhance Transparency */}
-      <Person x={572} y={44} k={0.68} variant={6} />
+      <Doc x={556} y={44} k={0.44} tone={tone2} />
       <MiniScreen x={618} y={42}>
         <Eye x={645} y={55} size={30} weight="fill" color={tone2} />
       </MiniScreen>
       <Bank x={720} y={52} size={42} weight="fill" color={tone2} />
-      <text x={660} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={tone2}>
+      <text x={660} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {FIN_ZONES[2].sub}
       </text>
 
@@ -1296,8 +1290,8 @@ export function FinancialServicesInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={btnTone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -1335,11 +1329,11 @@ export function FinancialServicesTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={80} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={206} height={80} fill={tone} />
-            <text x={119} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={y0} width={206} height={80} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={119} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
-            <text x={119} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={119} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {z.sub}
             </text>
             {i === 0 && <Clock x={284} y={y0 + 20} size={40} weight="fill" color={tone} />}
@@ -1371,14 +1365,13 @@ export function BankLoanSimulatorInteractive() {
       title={`Interactive Bank Loan Smart Contract: applicant submits loan application on the left, smart contract on the center screen checks identity and credit score (${score} vs 680 threshold), resulting in ${approved ? "automatic loan disbursement in minutes" : "application hold below threshold"}`}
     >
       {/* Status readout badge */}
-      <rect x={18} y={12} width={246} height={32} fill={activeTone} />
-      <text x={141} y={33} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+      <rect x={18} y={12} width={246} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={141} y={33} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         {approved ? `Score ${score} ≥ 680 → Auto-Disbursed` : `Score ${score} < 680 → Conditions Unmet`}
       </text>
 
-      {/* Step 1: Customer submits loan application */}
-      <Person x={48} y={56} k={0.64} variant={4} />
-      <Doc x={30} y={132} k={0.38} />
+      {/* Step 1: Loan application submitted */}
+      <Doc x={26} y={76} k={0.5} />
       <text x={48} y={212} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
         1. Apply
       </text>
@@ -1390,10 +1383,10 @@ export function BankLoanSimulatorInteractive() {
         <text x={200} y={78} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
           ID &amp; Docs: Verified
         </text>
-        <rect x={148} y={90} width={104} height={14} fill={CREAM} stroke={INK} strokeWidth={1.8} />
+        <rect x={148} y={90} width={104} height={14} fill={WHITE} stroke={INK} strokeWidth={1.8} />
         <rect x={148} y={90} width={barW} height={14} fill={activeTone} />
         <path d={`M ${threshX} 86 V 108`} stroke={INK} strokeWidth={2.5} />
-        <text x={200} y={126} textAnchor="middle" {...HEAD} fontSize={13.5} fill={activeTone}>
+        <text x={200} y={126} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
           {approved ? "Days → Minutes" : "Score < 680"}
         </text>
       </Monitor>
@@ -1407,14 +1400,14 @@ export function BankLoanSimulatorInteractive() {
       {approved ? (
         <Coins x={352} y={138} n={4} />
       ) : (
-        <rect x={324} y={84} width={56} height={48} fill={COUNTER} />
+        <rect x={324} y={84} width={56} height={48} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       )}
       {!approved && (
-        <text x={352} y={113} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+        <text x={352} y={113} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
           Hold
         </text>
       )}
-      <text x={352} y={212} textAnchor="middle" {...BODY} fontSize={12.5} fill={activeTone}>
+      <text x={352} y={212} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
         {approved ? "3. Disbursed" : "3. Paused"}
       </text>
 
@@ -1475,7 +1468,7 @@ export function LegalContractsInteractive({
       {/* Column 1: Complexity & Length -> Automated Transactions */}
       <Doc x={42} y={20} k={0.4} tone={COUNTER} />
       <Doc x={84} y={20} k={0.4} tone={COUNTER} />
-      <text x={190} y={48} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
+      <text x={190} y={48} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Convoluted Terms
       </text>
       <Pointer x1={140} y1={74} x2={140} y2={104} w={3.5} head={9} color={toneOf(0)} />
@@ -1487,7 +1480,7 @@ export function LegalContractsInteractive({
       {/* Column 2: Need for Legal Intervention -> Predefined Conditions */}
       <Gavel x={306} y={26} size={36} weight="fill" color={COUNTER} />
       <Clock x={350} y={28} size={34} weight="fill" color={COUNTER} />
-      <text x={450} y={48} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
+      <text x={450} y={48} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Court Delays
       </text>
       <Pointer x1={400} y1={74} x2={400} y2={104} w={3.5} head={9} color={toneOf(1)} />
@@ -1498,7 +1491,7 @@ export function LegalContractsInteractive({
 
       {/* Column 3: Disputes & Misinterpretations -> Built-in Mechanisms */}
       <Warning x={576} y={26} size={36} weight="fill" color={COUNTER} />
-      <text x={690} y={48} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
+      <text x={690} y={48} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Ambiguity
       </text>
       <Pointer x1={660} y1={74} x2={660} y2={104} w={3.5} head={9} color={toneOf(2)} />
@@ -1531,8 +1524,8 @@ export function LegalContractsInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={232} fill="transparent" />
-            <rect x={z.x0} y={206} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={230} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={z.x0} y={206} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={230} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -1570,11 +1563,11 @@ export function LegalContractsTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={80} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={206} height={80} fill={tone} />
-            <text x={119} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={y0} width={206} height={80} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={119} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
-            <text x={119} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
+            <text x={119} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
               Fixes: {z.issue}
             </text>
             {i === 0 && <FileCode x={284} y={y0 + 20} size={40} weight="fill" color={tone} />}
@@ -1647,7 +1640,7 @@ export function VotingSystemsInteractive({
       </MiniScreen>
 
       {/* 4. Transparent Validation */}
-      <Person x={556} y={14} k={0.54} variant={8} />
+      <CheckCircle x={538} y={24} size={36} weight="fill" color={toneOf(3)} />
       <MiniScreen x={514} y={76}>
         <Eye x={541} y={89} size={30} weight="fill" color={toneOf(3)} />
       </MiniScreen>
@@ -1683,11 +1676,11 @@ export function VotingSystemsInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={232} fill="transparent" />
-            <text x={z.cx} y={180} textAnchor="middle" {...BODY} fontSize={13.5} fill={tone}>
+            <text x={z.cx} y={180} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {z.sub}
             </text>
-            <rect x={z.x0} y={204} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+            <rect x={z.x0} y={204} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -1725,8 +1718,8 @@ export function VotingSystemsTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={52} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={176} height={52} fill={tone} />
-            <text x={104} y={y0 + 32} textAnchor="middle" {...HEAD} fontSize={16} fill={CREAM}>
+            <rect x={16} y={y0} width={176} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={104} y={y0 + 32} textAnchor="middle" {...HEAD} fontSize={16} fill={INK}>
               {z.tab}
             </text>
             {i === 0 && <LockKey x={274} y={y0 + 10} size={32} weight="fill" color={tone} />}
@@ -1786,7 +1779,7 @@ export function IpManagementInteractive({
       </MiniScreen>
 
       {/* 3. Immutable Records: Who Created It First */}
-      <Person x={438} y={24} k={0.62} variant={2} />
+      <Clock x={426} y={42} size={38} weight="fill" color={toneOf(2)} />
       <MiniScreen x={492} y={34}>
         <LockKey x={519} y={47} size={30} weight="fill" color={toneOf(2)} />
       </MiniScreen>
@@ -1824,11 +1817,11 @@ export function IpManagementInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={232} fill="transparent" />
-            <text x={z.cx} y={178} textAnchor="middle" {...BODY} fontSize={13.5} fill={tone}>
+            <text x={z.cx} y={178} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {z.sub}
             </text>
-            <rect x={z.x0} y={204} width={z.x1 - z.x0} height={38} fill={btnTone} />
-            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+            <rect x={z.x0} y={204} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -1866,11 +1859,11 @@ export function IpManagementTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={68} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={186} height={68} fill={tone} />
-            <text x={109} y={y0 + 30} textAnchor="middle" {...HEAD} fontSize={16} fill={CREAM}>
+            <rect x={16} y={y0} width={186} height={68} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={109} y={y0 + 30} textAnchor="middle" {...HEAD} fontSize={16} fill={INK}>
               {z.tab}
             </text>
-            <text x={109} y={y0 + 50} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
+            <text x={109} y={y0 + 50} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
               {z.sub}
             </text>
             {i === 0 && <Warning x={274} y={y0 + 16} size={36} weight="fill" color={tone} />}
@@ -1922,7 +1915,7 @@ export function OtherUseCasesInteractive({
       </MiniScreen>
       <Pointer x1={174} y1={64} x2={198} y2={64} w={3.5} head={8} color={toneOf(0)} />
       <Coins x={228} y={98} n={3} />
-      <text x={140} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={toneOf(0)}>
+      <text x={140} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {OTHER_ZONES[0].sub}
       </text>
 
@@ -1934,18 +1927,18 @@ export function OtherUseCasesInteractive({
       </MiniScreen>
       <Pointer x1={446} y1={64} x2={468} y2={64} w={3.5} head={8} color={toneOf(1)} />
       <FirstAid x={472} y={46} size={38} weight="fill" color={toneOf(1)} />
-      <text x={400} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={toneOf(1)}>
+      <text x={400} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {OTHER_ZONES[1].sub}
       </text>
 
       {/* 3. Education */}
-      <Person x={578} y={32} k={0.68} variant={7} />
+      <Doc x={568} y={38} k={0.44} tone={toneOf(2)} />
       <Pointer x1={614} y1={64} x2={646} y2={64} w={3.5} head={8} color={toneOf(2)} />
       <MiniScreen x={650} y={36}>
         <GraduationCap x={664} y={50} size={26} weight="fill" color={toneOf(2)} />
         <Certificate x={694} y={50} size={26} weight="fill" color={toneOf(2)} />
       </MiniScreen>
-      <text x={660} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={toneOf(2)}>
+      <text x={660} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
         {OTHER_ZONES[2].sub}
       </text>
 
@@ -1974,8 +1967,8 @@ export function OtherUseCasesInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -2013,11 +2006,11 @@ export function OtherUseCasesTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={80} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={196} height={80} fill={tone} />
-            <text x={114} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={16} y={y0} width={196} height={80} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={114} y={y0 + 36} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {z.tab}
             </text>
-            <text x={114} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={114} y={y0 + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {z.sub}
             </text>
             {i === 0 && <UsersThree x={280} y={y0 + 20} size={40} weight="fill" color={tone} />}

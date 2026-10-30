@@ -45,7 +45,7 @@ import {
   ShieldWarning,
 } from "@phosphor-icons/react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SIGNAL,
   COUNTER,
@@ -60,8 +60,8 @@ import {
 } from "../_visuals/kit";
 import { Person, Shop, Coins } from "../_visuals/objects";
 
-const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
-const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
+const HEAD = { fontFamily: "var(--font-sans)", fontWeight: 700 } as const;
+const BODY = { fontFamily: "var(--font-sans)", fontWeight: 600 } as const;
 
 /* ==========================================================================
    1. Hero: Physical trainee & aircraft on the left. Red arrow into a
@@ -73,11 +73,10 @@ export function HeroImmersivePlate() {
     <Plate
       w={540}
       h={270}
-      title="A person in profile and an airplane silhouette on cream, an arrow, and a framed screen holding the same airplane alongside three rising gamification steps topped with a red trophy"
+      title="An airplane silhouette on white, an arrow, and a framed screen holding the same airplane alongside three rising gamification steps topped with a red trophy"
     >
-      {/* Physical side: person and aircraft silhouette on cream */}
-      <Person x={76} y={28} k={0.96} variant={10} />
-      <AirplaneTilt x={38} y={144} size={76} weight="fill" color={INK} />
+      {/* Physical side: aircraft silhouette on white */}
+      <AirplaneTilt x={38} y={88} size={88} weight="fill" color={INK} />
 
       <Arrow x1={144} x2={208} y={128} />
 
@@ -112,33 +111,31 @@ export function PilotTrainingInteractive() {
     <Plate
       w={800}
       h={276}
-      title={`On the left, four people beside a car silhouette for a driver's license versus one person and a 10,000-hour requirement beside an airplane for a pilot's license. On the right, an interactive slider (currently ${simPct}% simulator share, ${simHours.toLocaleString()} simulator hours and ${airHours.toLocaleString()} aircraft hours) shifts training from a physical aircraft into a framed flight-simulator screen`}
+      title={`On the left, a car silhouette for a driver's license versus an airplane and a 10,000-hour requirement for a pilot's license. On the right, an interactive slider (currently ${simPct}% simulator share, ${simHours.toLocaleString()} simulator hours and ${airHours.toLocaleString()} aircraft hours) shifts training from a physical aircraft into a framed flight-simulator screen`}
     >
-      {/* Left comparison: Driver's license (many people) vs. Pilot's license (1 person, 10,000 hours) */}
+      {/* Left comparison: Driver's license vs. Pilot's license (10,000 hours) */}
       <text x={140} y={32} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
         Driver&apos;s vs. Pilot&apos;s License
       </text>
 
-      {/* Row 1: Driver's license: car + 4 drivers */}
+      {/* Row 1: Driver's license */}
       <rect x={20} y={48} width={240} height={88} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
-      <text x={32} y={68} {...HEAD} fontSize={14} fill={INK}>
+      <text x={32} y={70} {...HEAD} fontSize={14} fill={INK}>
         Driver&apos;s license
       </text>
-      <CarProfile x={30} y={80} size={42} weight="fill" color={INK} />
-      <Person x={102} y={76} k={0.48} variant={0} />
-      <Person x={140} y={76} k={0.48} variant={3} />
-      <Person x={178} y={76} k={0.48} variant={6} />
-      <Person x={216} y={76} k={0.48} variant={8} />
+      <CarProfile x={32} y={82} size={44} weight="fill" color={INK} />
+      <text x={94} y={110} {...BODY} fontSize={14} fill={INK}>
+        Everyday road practice
+      </text>
 
-      {/* Row 2: Pilot's license: aircraft + 1 pilot + 10,000 hours */}
-      <rect x={20} y={150} width={240} height={96} fill={CREAM} stroke={INK} strokeWidth={3} />
+      {/* Row 2: Pilot's license: aircraft + 10,000 hours */}
+      <rect x={20} y={150} width={240} height={96} fill={WHITE} stroke={INK} strokeWidth={3} />
       <text x={32} y={172} {...HEAD} fontSize={14} fill={INK}>
         Pilot&apos;s license
       </text>
-      <AirplaneTilt x={30} y={186} size={42} weight="fill" color={INK} />
-      <Person x={102} y={182} k={0.48} variant={10} />
-      <rect x={132} y={192} width={114} height={32} fill={SIGNAL} />
-      <text x={189} y={213} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+      <AirplaneTilt x={32} y={186} size={44} weight="fill" color={INK} />
+      <rect x={106} y={192} width={136} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={174} y={213} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
         10,000 hours
       </text>
 
@@ -158,20 +155,20 @@ export function PilotTrainingInteractive() {
       </Monitor>
 
       {/* Matched baseline for both hour labels (Rule 11 & Rule 15) */}
-      <text x={348} y={170} textAnchor="middle" {...BODY} fontSize={13.5} fill={COUNTER}>
+      <text x={348} y={170} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         {airHours.toLocaleString()} hrs air
       </text>
-      <text x={502} y={170} textAnchor="middle" {...HEAD} fontSize={13.5} fill={SIGNAL}>
+      <text x={502} y={170} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
         {simHours.toLocaleString()} hrs sim
       </text>
 
       {/* Cost & Risk gauge on far right */}
-      <rect x={586} y={44} width={194} height={106} fill={CREAM} stroke={INK} strokeWidth={3} />
+      <rect x={586} y={44} width={194} height={106} fill={WHITE} stroke={INK} strokeWidth={3} />
       <text x={683} y={70} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
         Real-flight cost &amp; risk
       </text>
       <rect x={602} y={84} width={162} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={602} y={84} width={r2((162 * costPct) / 100)} height={20} fill={COUNTER} />
+      <rect x={602} y={84} width={r2((162 * costPct) / 100)} height={20} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
       <text x={683} y={130} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         {costPct}% of all-aircraft
       </text>
@@ -180,7 +177,7 @@ export function PilotTrainingInteractive() {
       <rect x={296} y={186} width={airBarW} height={20} fill={COUNTER} />
       <rect x={r2(296 + airBarW)} y={186} width={simBarW} height={20} fill={SIGNAL} />
       <rect x={296} y={186} width={352} height={20} fill="none" stroke={INK} strokeWidth={2.5} />
-      <text x={662} y={201} {...HEAD} fontSize={14.5} fill={SIGNAL}>
+      <text x={662} y={201} {...HEAD} fontSize={14.5} fill={INK}>
         {simPct}% simulator
       </text>
 
@@ -216,7 +213,7 @@ export function SimulatingPlate() {
     <Plate
       w={400}
       h={184}
-      title="A physical airplane silhouette on cream, an arrow, and a framed screen simulating the same airplane environment in red"
+      title="A physical airplane silhouette on white, an arrow, and a framed screen simulating the same airplane environment in red"
     >
       <AirplaneTilt x={34} y={42} size={84} weight="fill" color={INK} />
       <Arrow x1={136} x2={198} y={84} />
@@ -232,14 +229,13 @@ export function InteractingPlate() {
     <Plate
       w={400}
       h={184}
-      title="A person in profile exchanging two-way arrows with a framed screen showing a hand manipulating a red virtual cube"
+      title="A hand gesture exchanging two-way arrows with a framed screen showing a red virtual cube"
     >
-      <Person x={72} y={46} k={1.16} variant={4} />
+      <HandPalm x={54} y={56} size={64} weight="fill" color={INK} />
       <Pointer x1={134} y1={68} x2={194} y2={68} w={4} head={12} color={SIGNAL} />
       <Pointer x1={194} y1={96} x2={134} y2={96} w={4} head={12} color={INK} />
       <Monitor x={206} y={18} w={170} h={114}>
-        <HandPalm x={234} y={51} size={48} weight="fill" color={INK} />
-        <Cube x={296} y={51} size={48} weight="fill" color={SIGNAL} />
+        <Cube x={264} y={48} size={54} weight="fill" color={SIGNAL} />
       </Monitor>
     </Plate>
   );
@@ -250,14 +246,13 @@ export function BlendingPlate() {
     <Plate
       w={400}
       h={184}
-      title="A person looking through a framed screen holding a red virtual cube, blended onto a physical shop in the real world"
+      title="A framed screen holding a red virtual cube blended onto a physical shop in the real world"
     >
-      <Person x={56} y={46} k={1.16} variant={8} />
-      <MiniScreen x={132} y={76}>
-        <Cube x={156} y={86} size={36} weight="fill" color={SIGNAL} />
+      <MiniScreen x={72} y={64}>
+        <Cube x={96} y={74} size={36} weight="fill" color={SIGNAL} />
       </MiniScreen>
-      <Pointer x1={224} y1={104} x2={264} y2={104} w={4} head={11} color={SIGNAL} />
-      <Shop x={272} y={60} k={0.68} />
+      <Pointer x1={172} y1={92} x2={244} y2={92} w={4} head={11} color={SIGNAL} />
+      <Shop x={260} y={48} k={0.72} />
     </Plate>
   );
 }
@@ -280,7 +275,7 @@ export function VirtualRealityPlate() {
       <Person x={68} y={52} k={1.1} hair="bob" collar="turtleneck" />
       {/* VR headset strap & visor aligned to the eye */}
       <rect x={44} y={78} width={32} height={5} fill={SIGNAL} />
-      <rect x={74} y={73} width={25} height={15} rx={3} fill={SIGNAL} stroke={CREAM} strokeWidth={1.5} />
+      <rect x={74} y={73} width={25} height={15} rx={3} fill={SIGNAL} stroke={WHITE} strokeWidth={1.5} />
 
       <Pointer x1={112} y1={92} x2={156} y2={92} w={4} head={12} color={SIGNAL} />
 
@@ -298,14 +293,13 @@ export function AugmentedRealityPlate() {
     <Plate
       w={400}
       h={180}
-      title="A person viewing a red digital cube on a framed screen that overlays onto a physical shop in the real world"
+      title="A red digital cube on a framed screen overlaying onto a physical shop in the real world"
     >
-      <Person x={56} y={52} k={1.1} variant={6} />
-      <MiniScreen x={132} y={76}>
-        <Cube x={156} y={86} size={36} weight="fill" color={SIGNAL} />
+      <MiniScreen x={72} y={64}>
+        <Cube x={96} y={74} size={36} weight="fill" color={SIGNAL} />
       </MiniScreen>
-      <Pointer x1={224} y1={104} x2={264} y2={104} w={4} head={11} color={SIGNAL} />
-      <Shop x={272} y={60} k={0.68} />
+      <Pointer x1={172} y1={92} x2={244} y2={92} w={4} head={11} color={SIGNAL} />
+      <Shop x={260} y={48} k={0.72} />
     </Plate>
   );
 }
@@ -322,7 +316,7 @@ export function SwipeVsSweepPlate() {
     <Plate
       w={400}
       h={216}
-      title="Two panels comparing Sweep on the left (a person with a broom on plain cream) and Swipe on the right (a person facing a framed screen delivering play via a game controller, achievement via a trophy, and social interaction via three people in red)"
+      title="Two panels comparing Sweep on the left (a broom on plain white) and Swipe on the right (a framed screen delivering play via a game controller, achievement via a trophy, and social interaction via three people in red)"
     >
       <path d="M 168 18 V 196" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -330,18 +324,16 @@ export function SwipeVsSweepPlate() {
       <text x={84} y={36} textAnchor="middle" {...HEAD} fontSize={20} fill={INK}>
         Sweep
       </text>
-      <Person x={52} y={90} k={1} variant={7} />
-      <Broom x={100} y={108} size={54} weight="fill" color={INK} />
+      <Broom x={52} y={82} size={68} weight="fill" color={INK} />
 
       {/* Right: Swipe the phone (play, achievement, social interaction on a screen) */}
-      <text x={284} y={36} textAnchor="middle" {...HEAD} fontSize={20} fill={SIGNAL}>
+      <text x={284} y={36} textAnchor="middle" {...HEAD} fontSize={20} fill={INK}>
         Swipe
       </text>
-      <Person x={214} y={90} k={1} variant={1} />
-      <Monitor x={264} y={56} w={120} h={104}>
-        <GameController x={280} y={70} size={34} weight="fill" color={SIGNAL} />
-        <Trophy x={332} y={70} size={34} weight="fill" color={SIGNAL} />
-        <UsersThree x={306} y={110} size={36} weight="fill" color={SIGNAL} />
+      <Monitor x={224} y={56} w={120} h={104}>
+        <GameController x={240} y={70} size={34} weight="fill" color={SIGNAL} />
+        <Trophy x={292} y={70} size={34} weight="fill" color={SIGNAL} />
+        <UsersThree x={266} y={110} size={36} weight="fill" color={SIGNAL} />
       </Monitor>
     </Plate>
   );
@@ -367,7 +359,7 @@ function ElementGlyph({ i, x, y, tone }: { i: number; x: number; y: number; tone
       return (
         <g>
           <Star x={x + 12} y={y + 16} size={24} weight="fill" color={tone} />
-          <text x={x + 56} y={y + 34} textAnchor="middle" {...HEAD} fontSize={14} fill={tone}>
+          <text x={x + 56} y={y + 34} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
             +100
           </text>
         </g>
@@ -453,7 +445,7 @@ export function GamificationElementsInteractive({
             <MiniScreen x={screenX} y={screenY}>
               <ElementGlyph i={i} x={screenX} y={screenY} tone={tone} />
             </MiniScreen>
-            <rect x={left} y={t} width={w} height={bottom - t} fill={tone} />
+            <rect x={left} y={t} width={w} height={bottom - t} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={j}
@@ -462,7 +454,7 @@ export function GamificationElementsInteractive({
                 textAnchor="middle"
                 {...BODY}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -515,7 +507,7 @@ export function GamificationElementsTall({
                 textAnchor="middle"
                 {...BODY}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -560,7 +552,7 @@ export function ProgressBarComparisonInteractive() {
                 cx={cx}
                 cy={58}
                 r={r}
-                fill={done ? SIGNAL : CREAM}
+                fill={done ? SIGNAL : WHITE}
                 stroke={done ? SIGNAL : INK}
                 strokeWidth={3}
               />
@@ -568,7 +560,7 @@ export function ProgressBarComparisonInteractive() {
                 <path
                   d={`M ${r2(cx - s)} 58 L ${r2(cx - s * 0.2)} ${r2(58 + s * 0.8)} L ${r2(cx + s * 1.1)} ${r2(58 - s * 0.9)}`}
                   fill="none"
-                  stroke={CREAM}
+                  stroke={WHITE}
                   strokeWidth={3}
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -595,7 +587,7 @@ export function ProgressBarComparisonInteractive() {
                 cx={cx}
                 cy={138}
                 r={uniformRadius}
-                fill={done ? COUNTER : CREAM}
+                fill={done ? COUNTER : WHITE}
                 stroke={done ? COUNTER : INK}
                 strokeWidth={3}
               />
@@ -603,7 +595,7 @@ export function ProgressBarComparisonInteractive() {
                 <path
                   d={`M ${cx - 6} 138 L ${cx - 1} 143 L ${cx + 7} 133`}
                   fill="none"
-                  stroke={CREAM}
+                  stroke={WHITE}
                   strokeWidth={3}
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -635,7 +627,7 @@ export function ProgressBarComparisonInteractive() {
         label="Completed milestone step from 1 to 5"
         onChange={setStep}
       />
-      <text x={660} y={240} textAnchor="end" {...HEAD} fontSize={15.5} fill={SIGNAL}>
+      <text x={660} y={240} textAnchor="end" {...HEAD} fontSize={15.5} fill={INK}>
         Step {step} of 5
       </text>
     </Plate>
@@ -665,7 +657,7 @@ export function OverjustificationInteractive() {
       <g transform="translate(0 -30)">
         {/* Extrinsic Rewards row (max 4 coins -> top at y=51) */}
         <Coins x={46} y={104} n={nCoins} />
-        <text x={88} y={58} {...HEAD} fontSize={14.5} fill={SIGNAL}>
+        <text x={88} y={58} {...HEAD} fontSize={14.5} fill={INK}>
           Extrinsic rewards ({extrinsic}%)
         </text>
         <rect x={88} y={68} width={280} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -673,7 +665,7 @@ export function OverjustificationInteractive() {
 
         {/* Intrinsic Motivation row */}
         <Heart x={28} y={120} size={36} weight="fill" color={COUNTER} />
-        <text x={88} y={128} {...HEAD} fontSize={14.5} fill={COUNTER}>
+        <text x={88} y={128} {...HEAD} fontSize={14.5} fill={INK}>
           Intrinsic motivation ({intrinsic}%)
         </text>
         <rect x={88} y={138} width={280} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -705,17 +697,16 @@ export function ExcessiveFreedomPlate() {
   return (
     <Plate
       w={400}
-      h={224}
-      title="A player facing a framed open-world screen where a central compass sends four arrows outward into empty space with no destination or objective"
+      h={204}
+      title="A framed open-world screen where a central compass sends four arrows outward into empty space with no destination or objective"
     >
-      <Person x={64} y={92} k={1.12} variant={9} />
-      <Monitor x={148} y={24} w={228} h={150}>
-        <Compass x={240} y={77} size={44} weight="fill" color={SIGNAL} />
+      <Monitor x={86} y={24} w={228} h={150}>
+        <Compass x={178} y={77} size={44} weight="fill" color={SIGNAL} />
         {/* Four diverging paths into empty space with no goal target */}
-        <Pointer x1={232} y1={72} x2={182} y2={48} w={3.5} head={11} color={INK} />
-        <Pointer x1={292} y1={72} x2={342} y2={48} w={3.5} head={11} color={INK} />
-        <Pointer x1={232} y1={126} x2={182} y2={150} w={3.5} head={11} color={INK} />
-        <Pointer x1={292} y1={126} x2={342} y2={150} w={3.5} head={11} color={INK} />
+        <Pointer x1={170} y1={72} x2={120} y2={48} w={3.5} head={11} color={INK} />
+        <Pointer x1={230} y1={72} x2={280} y2={48} w={3.5} head={11} color={INK} />
+        <Pointer x1={170} y1={126} x2={120} y2={150} w={3.5} head={11} color={INK} />
+        <Pointer x1={230} y1={126} x2={280} y2={150} w={3.5} head={11} color={INK} />
       </Monitor>
     </Plate>
   );
@@ -832,8 +823,8 @@ export function FlightSimCaseInteractive({
               color={tone}
               head={12}
             />
-            <rect x={x} y={y} width={cardW} height={cardH} fill={tone} />
-            <rect x={wx} y={wy} width={64} height={60} fill={CREAM} />
+            <rect x={x} y={y} width={cardW} height={cardH} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <rect x={wx} y={wy} width={64} height={60} fill={WHITE} stroke={tone} strokeWidth={1} strokeOpacity={0.25} />
             <FlightGlyph i={i} wx={wx} wy={wy} />
             {node.lines.map((line, j) => (
               <text
@@ -843,7 +834,7 @@ export function FlightSimCaseInteractive({
                 textAnchor="middle"
                 {...BODY}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -887,9 +878,9 @@ export function FlightSimCaseTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y} width={368} height={cardH} fill={tone} />
-            <rect x={wx} y={wy} width={64} height={60} fill={CREAM} />
+            <rect x={wx} y={wy} width={64} height={60} fill={WHITE} />
             <FlightGlyph i={i} wx={wx} wy={wy} />
-            <text x={236} y={cy + 6} textAnchor="middle" {...BODY} fontSize={16} fill={CREAM}>
+            <text x={236} y={cy + 6} textAnchor="middle" {...BODY} fontSize={16} fill={WHITE}>
               {node.lines.join(" ")}
             </text>
           </g>
@@ -956,20 +947,20 @@ export function GuitarHeroCurveInteractive() {
       <path d={ghPath} fill="none" stroke={SIGNAL} strokeWidth={4} />
 
       {/* Direct in-place labels aligned at the right end of each curve (Rule 4 & Rule 15) */}
-      <text x={266} y={r2(ghEndY + 5)} {...HEAD} fontSize={14} fill={SIGNAL}>
+      <text x={266} y={r2(ghEndY + 5)} {...HEAD} fontSize={14} fill={INK}>
         Guitar Hero
       </text>
-      <text x={266} y={r2(instEndY + 5)} {...HEAD} fontSize={14} fill={COUNTER}>
+      <text x={266} y={r2(instEndY + 5)} {...HEAD} fontSize={14} fill={INK}>
         Real instrument
       </text>
 
       {/* Active month cursor & points */}
       <path d={`M ${curX} 54 V 184`} stroke={INK} strokeWidth={2} strokeDasharray="4 4" />
-      <circle cx={curX} cy={ghY} r={6.5} fill={SIGNAL} stroke={CREAM} strokeWidth={2} />
-      <circle cx={curX} cy={instY} r={6.5} fill={COUNTER} stroke={CREAM} strokeWidth={2} />
+      <circle cx={curX} cy={ghY} r={6.5} fill={SIGNAL} stroke={WHITE} strokeWidth={2} />
+      <circle cx={curX} cy={instY} r={6.5} fill={COUNTER} stroke={WHITE} strokeWidth={2} />
 
       {/* Readout band */}
-      <rect x={24} y={200} width={352} height={42} fill={CREAM} stroke={INK} strokeWidth={2.5} />
+      <rect x={24} y={200} width={352} height={42} fill={WHITE} stroke={INK} strokeWidth={2.5} />
       <text x={200} y={226} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
         Month {month}: Guitar Hero {ghVal}% | Instrument {instVal}%
       </text>
@@ -1016,7 +1007,7 @@ export function ZombiesRunPlate() {
       title="Four connected stages of the Zombies, Run! gamified loop: 1. Walk or run (a runner in profile), 2. Hear your mission (headphones and music on a framed screen), 3. Collect supplies (a supply package and base building on a framed screen), and 4. Zombie chases! highlighted in red (alert lightning and sprint flag on a framed screen)"
     >
       {/* 1. Walk or run in the real world */}
-      <Person x={106} y={36} k={0.94} variant={7} />
+      <Compass x={82} y={64} size={48} weight="fill" color={INK} />
       <Pointer x1={156} y1={88} x2={248} y2={88} w={4} head={12} color={INK} />
 
       {/* 2. Hear your mission and music */}
@@ -1041,8 +1032,8 @@ export function ZombiesRunPlate() {
       {/* Aligned stage blocks below */}
       {stages.map((s) => (
         <g key={s.label}>
-          <rect x={s.x0} y={148} width={164} height={40} fill={s.tone} />
-          <text x={s.cx} y={173} textAnchor="middle" {...BODY} fontSize={15} fill={CREAM}>
+          <rect x={s.x0} y={148} width={164} height={40} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={s.cx} y={173} textAnchor="middle" {...BODY} fontSize={15} fill={INK}>
             {s.label}
           </text>
         </g>
@@ -1066,8 +1057,8 @@ export function ZombiesRunTall() {
     >
       {rows.map((r, i) => (
         <g key={r.label}>
-          <rect x={24} y={r.y0} width={352} height={48} fill={r.tone} />
-          <text x={200} y={r.y0 + 30} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+          <rect x={24} y={r.y0} width={352} height={48} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={200} y={r.y0 + 30} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
             {r.label}
           </text>
           {i < rows.length - 1 && (
@@ -1093,9 +1084,8 @@ export function MilitaryControllerPlate() {
       title="On the left, a young person uses a game controller with a framed gaming screen. A red arrow points to the right, where the same person uses the same red game controller to operate two framed military screens: Air Force RADBO (crosshair) and iRobot PackBot (robot)"
     >
       {/* Left: Gaming generation (console fluency) */}
-      <Person x={60} y={40} k={0.96} hair="crop" />
-      <GameController x={108} y={72} size={44} weight="fill" color={INK} />
-      <Pointer x1={158} y1={94} x2={184} y2={94} w={3.5} head={10} color={INK} />
+      <GameController x={88} y={66} size={56} weight="fill" color={INK} />
+      <Pointer x1={154} y1={94} x2={184} y2={94} w={3.5} head={10} color={INK} />
       <MiniScreen x={192} y={66}>
         <Trophy x={216} y={76} size={36} weight="fill" color={INK} />
       </MiniScreen>
@@ -1107,15 +1097,14 @@ export function MilitaryControllerPlate() {
       <Arrow x1={296} x2={352} y={94} color={SIGNAL} />
 
       {/* Right: Military systems controlled with the same Xbox/PlayStation controller */}
-      <Person x={392} y={40} k={0.96} hair="crop" />
-      <GameController x={440} y={72} size={44} weight="fill" color={SIGNAL} />
-      <Pointer x1={490} y1={94} x2={522} y2={94} w={3.5} head={10} color={SIGNAL} />
+      <GameController x={420} y={66} size={56} weight="fill" color={SIGNAL} />
+      <Pointer x1={486} y1={94} x2={522} y2={94} w={3.5} head={10} color={SIGNAL} />
 
       {/* RADBO screen */}
       <MiniScreen x={530} y={66}>
         <Crosshair x={554} y={76} size={36} weight="fill" color={SIGNAL} />
       </MiniScreen>
-      <text x={572} y={168} textAnchor="middle" {...HEAD} fontSize={15.5} fill={SIGNAL}>
+      <text x={572} y={168} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
         Air Force RADBO
       </text>
 
@@ -1123,7 +1112,7 @@ export function MilitaryControllerPlate() {
       <MiniScreen x={680} y={66}>
         <Robot x={704} y={76} size={36} weight="fill" color={SIGNAL} />
       </MiniScreen>
-      <text x={722} y={168} textAnchor="middle" {...HEAD} fontSize={15.5} fill={SIGNAL}>
+      <text x={722} y={168} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
         iRobot PackBot
       </text>
     </Plate>
@@ -1146,12 +1135,7 @@ const BIZ_CARDS = [
 function BizGlyph({ i, wx, wy }: { i: number; wx: number; wy: number }) {
   switch (i) {
     case 0:
-      return (
-        <g>
-          <Person x={wx + 17} y={wy + 10} k={0.44} variant={6} />
-          <Heart x={wx + 37} y={wy + 14} size={21} weight="fill" color={INK} />
-        </g>
-      );
+      return <Heart x={wx + 10} y={wy + 8} size={44} weight="fill" color={INK} />;
     case 1:
       return <BookOpen x={wx + 10} y={wy + 8} size={44} weight="fill" color={INK} />;
     case 2:
@@ -1210,8 +1194,8 @@ export function BusinessQuestionsPlate({
                 : undefined
             }
           >
-            <rect x={x} y={y} width={cardW} height={cardH} fill={tone} />
-            <rect x={wx} y={wy} width={64} height={60} fill={CREAM} />
+            <rect x={x} y={y} width={cardW} height={cardH} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <rect x={wx} y={wy} width={64} height={60} fill={WHITE} stroke={tone} strokeWidth={1} strokeOpacity={0.25} />
             <BizGlyph i={i} wx={wx} wy={wy} />
             {card.lines.map((line, j) => (
               <text
@@ -1221,7 +1205,7 @@ export function BusinessQuestionsPlate({
                 textAnchor="middle"
                 {...BODY}
                 fontSize={14.5}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>

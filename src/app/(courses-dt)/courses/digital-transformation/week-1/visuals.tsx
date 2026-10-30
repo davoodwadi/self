@@ -1,7 +1,7 @@
 /* ==========================================================================
    Week 1: plates (Flat Silhouette)
    --------------------------------------------------------------------------
-   A solid black silhouette on cream is the physical business. The same
+   A solid black silhouette on white is the physical business. The same
    silhouette on a framed screen is its digital version. Fixed cast:
      - Shop, the business
      - Doc, information (a paper page)
@@ -11,8 +11,8 @@
    ========================================================================== */
 
 import React from "react";
-import { Laptop, Gear, Heart, ArrowsClockwise } from "@phosphor-icons/react/dist/ssr";
-import { CREAM, INK, SIGNAL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } from "../_visuals/kit";
+import { Laptop, Gear, Heart, ArrowsClockwise, Handshake } from "@phosphor-icons/react/dist/ssr";
+import { WHITE, INK, SIGNAL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } from "../_visuals/kit";
 import { Shop, Doc, Person } from "../_visuals/objects";
 
 /* ==========================================================================
@@ -61,26 +61,25 @@ export function EqualFooting() {
    ========================================================================== */
 
 export function DataDecision() {
-  const bars = [40, 64, 96, 56];
-  const base = 144;
+  const bars = [48, 76, 112, 68];
+  const base = 156;
   return (
     <Plate
-      h={212}
-      title="A person looks at a screen showing four bars of data. The tallest bar, the one chosen, is red"
+      h={196}
+      title="A screen showing four bars of data. The tallest bar, the one chosen, is red"
     >
-      <Person x={84} y={66} k={1.3} variant={3} glasses="round" />
-      <Monitor x={170} y={26} w={200} h={140}>
+      <Monitor x={76} y={24} w={248} h={152}>
         {bars.map((hgt, i) => (
           <rect
             key={i}
-            x={194 + i * 42}
+            x={108 + i * 52}
             y={base - hgt}
-            width={26}
+            width={30}
             height={hgt}
             fill={i === 2 ? SIGNAL : INK}
           />
         ))}
-        <rect x={186} y={base + 2} width={168} height={2.5} fill={INK} />
+        <rect x={96} y={base + 2} width={208} height={2.5} fill={INK} />
       </Monitor>
     </Plate>
   );
@@ -105,19 +104,9 @@ function ComponentGlyph({ i, wx, wy }: { i: number; wx: number; wy: number }) {
     case 0:
       return <Laptop x={wx + 10} y={wy + 8} size={44} weight="fill" color={INK} />;
     case 1:
-      return (
-        <g>
-          <Person x={wx + 19} y={wy + 12} k={0.42} variant={6} />
-          <Person x={wx + 43} y={wy + 12} k={0.42} variant={1} gap />
-        </g>
-      );
+      return <Handshake x={wx + 10} y={wy + 8} size={44} weight="fill" color={INK} />;
     case 2:
-      return (
-        <g>
-          <Person x={wx + 21} y={wy + 10} k={0.44} variant={0} />
-          <Heart x={wx + 38} y={wy + 18} size={21} weight="fill" color={INK} />
-        </g>
-      );
+      return <Heart x={wx + 10} y={wy + 8} size={44} weight="fill" color={INK} />;
     case 3:
       return (
         <g>
@@ -203,8 +192,17 @@ export function KeyComponentsHub({
               color={tone}
               head={12}
             />
-            <rect x={x} y={y} width={cardW} height={cardH} fill={tone} />
-            <rect x={wx} y={wy} width={64} height={60} fill={CREAM} />
+            <rect
+              x={x}
+              y={y}
+              width={cardW}
+              height={cardH}
+              fill={INK}
+              fillOpacity={isLit ? 0.08 : 0.03}
+              stroke={INK}
+              strokeWidth={1.5}
+            />
+            <rect x={wx} y={wy} width={64} height={60} fill={WHITE} stroke={tone} strokeWidth={1} strokeOpacity={0.25} />
             <ComponentGlyph i={i} wx={wx} wy={wy} />
             {node.lines.map((line, j) => (
               <text
@@ -212,10 +210,10 @@ export function KeyComponentsHub({
                 x={tx}
                 y={r2(cy + 5.5 + (j - (node.lines.length - 1) / 2) * 21)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -274,7 +272,7 @@ export function KeyComponentsHubTall({
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
             <rect x={x} y={y} width={cardW} height={cardH} fill={tone} />
-            <rect x={wx} y={wy} width={64} height={60} fill={CREAM} />
+            <rect x={wx} y={wy} width={64} height={60} fill={WHITE} />
             <ComponentGlyph i={i} wx={wx} wy={wy} />
             {node.lines.map((line, j) => (
               <text
@@ -282,10 +280,10 @@ export function KeyComponentsHubTall({
                 x={tx}
                 y={r2(cy + 5 + (j - (node.lines.length - 1) / 2) * 19)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={13.5}
-                fill={CREAM}
+                fill={WHITE}
               >
                 {line}
               </text>
@@ -343,7 +341,19 @@ function StepGlyph({ i, x, y }: { i: number; x: number; y: number }) {
   }
 }
 
-function StepLabel({ i, cx, y, size }: { i: number; cx: number; y: number; size: number }) {
+function StepLabel({
+  i,
+  cx,
+  y,
+  size,
+  tone = INK,
+}: {
+  i: number;
+  cx: number;
+  y: number;
+  size: number;
+  tone?: string;
+}) {
   return (
     <>
       {STEP_NAMES[i].map((line, j) => (
@@ -352,10 +362,10 @@ function StepLabel({ i, cx, y, size }: { i: number; cx: number; y: number; size:
           x={cx}
           y={y + j * Math.round(size * 1.4)}
           textAnchor="middle"
-          fontFamily="var(--font-body)"
+          fontFamily="var(--font-sans)"
           fontWeight={600}
           fontSize={size}
-          fill={CREAM}
+          fill={INK}
         >
           {line}
         </text>
@@ -438,10 +448,10 @@ export function TransformationSteps({
                 x={cx}
                 y={y - 8 - (g.lines.length - 1 - j) * 26}
                 textAnchor="middle"
-                fontFamily="var(--font-heading)"
+                fontFamily="var(--font-sans)"
                 fontWeight={700}
                 fontSize={17.5}
-                fill={tone}
+                fill={INK}
               >
                 {line}
               </text>
@@ -450,8 +460,17 @@ export function TransformationSteps({
               const t = tops[i];
               return (
                 <g key={i}>
-                  <rect x={x0 + i * pitch} y={t} width={w} height={bottom - t} fill={tone} />
-                  <StepLabel i={i} cx={x0 + i * pitch + w / 2} y={t + 22} size={15} />
+                  <rect
+                    x={x0 + i * pitch}
+                    y={t}
+                    width={w}
+                    height={bottom - t}
+                    fill={INK}
+                    fillOpacity={isLit ? 0.1 : 0.04}
+                    stroke={INK}
+                    strokeWidth={1.5}
+                  />
+                  <StepLabel i={i} cx={x0 + i * pitch + w / 2} y={t + 22} size={15} tone={tone} />
                   <MiniScreen x={sx(i)} y={sy(i)}>
                     <StepGlyph i={i} x={sx(i)} y={sy(i)} />
                   </MiniScreen>
@@ -521,10 +540,10 @@ export function TransformationStepsTall({
             <text
               x={16}
               y={headY + 16}
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={20}
-              fill={tone}
+              fill={INK}
             >
               {`${gi + 1}. ${g.name}`}
             </text>
@@ -591,9 +610,7 @@ export function Pyramid({
         const y = bottom - (i + 1) * bandH - i * gap;
         const optional = i === LAYERS.length - 1;
         const isLit = i === active;
-        const fill = optional ? (isLit ? SIGNAL : CREAM) : isLit ? SIGNAL : INK;
-        const stroke = optional ? (isLit ? SIGNAL : INK) : "none";
-        const textFill = optional && !isLit ? INK : CREAM;
+        const tone = isLit ? SIGNAL : INK;
         const label = lines.join(" ");
         return (
           <g
@@ -616,13 +633,15 @@ export function Pyramid({
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
             <rect
-              x={cx - w / 2 + (optional ? 1.5 : 0)}
-              y={y + (optional ? 1.5 : 0)}
-              width={w - (optional ? 3 : 0)}
-              height={bandH - (optional ? 3 : 0)}
-              fill={fill}
-              stroke={stroke}
-              strokeWidth={optional ? 3 : 0}
+              x={cx - w / 2 + 1}
+              y={y + 1}
+              width={w - 2}
+              height={bandH - 2}
+              fill={INK}
+              fillOpacity={optional ? (isLit ? 0.08 : 0.01) : isLit ? 0.12 : 0.05}
+              stroke={INK}
+              strokeWidth={isLit ? 2 : 1.5}
+              strokeDasharray={optional ? "6 4" : undefined}
             />
             {lines.map((line, j) => (
               <text
@@ -630,10 +649,10 @@ export function Pyramid({
                 x={cx}
                 y={r2(y + bandH / 2 + 5.5 + (j - (lines.length - 1) / 2) * 22)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={15}
-                fill={textFill}
+                fill={INK}
               >
                 {line}
               </text>

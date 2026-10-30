@@ -19,33 +19,22 @@ import {
   DiscussionList,
   Summary,
 } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroBlockchainLedger,
   BlockchainPillarsInteractive,
-  BlockchainPillarsTall,
   BlockchainFeaturesInteractive,
-  BlockchainFeaturesTall,
   SmartContractMechanismInteractive,
   SmartContractUseCasesInteractive,
-  SmartContractUseCasesTall,
   SupplyChainComparisonInteractive,
-  SupplyChainComparisonTall,
   AmazonSupplyChainInteractive,
-  AmazonSupplyChainTall,
   NftOverviewInteractive,
   RealEstateComparisonPlate,
   FinancialServicesInteractive,
-  FinancialServicesTall,
   BankLoanSimulatorInteractive,
   LegalContractsInteractive,
-  LegalContractsTall,
   VotingSystemsInteractive,
-  VotingSystemsTall,
   IpManagementInteractive,
-  IpManagementTall,
   OtherUseCasesInteractive,
-  OtherUseCasesTall,
 } from "./visuals";
 
 const SECTIONS = [
@@ -61,11 +50,12 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
+/* Body copy in upright sans-serif. */
+const BODY_BASE =
+  "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
 const LIST =
-  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
@@ -108,20 +98,20 @@ export default function DigitalTransformationWeek7() {
   const [activeOtherTab, setActiveOtherTab] = useState(0);
 
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 7: DIGITAL TRANSFORMATION"
-        title="Week 7: Blockchain Technology"
+        category="Week 07: Digital Transformation"
+        title="Blockchain Technology"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
@@ -145,35 +135,29 @@ export default function DigitalTransformationWeek7() {
           "What if you could eliminate the need for intermediaries in your business dealings? How would that change the way you operate?",
           "How can we ensure that all parties involved in a transaction agree on the details and that there's no dispute later on?",
         ]}
-        plate={<Conversation left={0} right={3} />}
       />
 
       <Slide id="blockchain-and-why-it-matters" label="CORE CONCEPT" title="Blockchain & Why Does Blockchain Matter?">
-        <div className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <div className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           <p>Blockchain is a digital system that records information</p>
           <Dashes
             items={[
               <>
-                <strong>securely</strong>,
+                securely,
               </>,
               <>
-                <strong>transparently</strong>,
+                transparently,
               </>,
               <>
-                in a way that&apos;s <strong>difficult to alter</strong>.
+                in a way that&apos;s difficult to alter.
               </>,
             ]}
           />
         </div>
         <PlateWell>
-          <div className="hidden sm:block">
-            <BlockchainPillarsInteractive active={activePillar} onSelect={setActivePillar} />
-          </div>
-          <div className="sm:hidden">
-            <BlockchainPillarsTall active={activePillar} onSelect={setActivePillar} />
-          </div>
+          <BlockchainPillarsInteractive active={activePillar} onSelect={setActivePillar} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             <>
               <strong>Security</strong>: Ensures the integrity and security of digital transactions.
@@ -190,7 +174,7 @@ export default function DigitalTransformationWeek7() {
               <div
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 text-xl transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 text-xl transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
@@ -208,14 +192,9 @@ export default function DigitalTransformationWeek7() {
         exercise={exercise["features-of-blockchain"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <BlockchainFeaturesInteractive active={activeFeature} onSelect={setActiveFeature} />
-          </div>
-          <div className="sm:hidden">
-            <BlockchainFeaturesTall active={activeFeature} onSelect={setActiveFeature} />
-          </div>
+          <BlockchainFeaturesInteractive active={activeFeature} onSelect={setActiveFeature} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             <div key="decentralized">
               <p className="text-xl">
@@ -238,7 +217,7 @@ export default function DigitalTransformationWeek7() {
               <div
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
@@ -256,16 +235,16 @@ export default function DigitalTransformationWeek7() {
 
       <Slide id="smart-contracts" label="AUTOMATED AGREEMENTS" title="Smart Contracts">
         <div className={`${BODY} text-lg grid md:grid-cols-2 lg:grid-cols-4 gap-5`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             A smart contract is a self-executing program
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             Contains the terms of an agreement written directly into lines of code.
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             It is stored and replicated on a blockchain.
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             Solana, Ethereum, etc.
           </p>
         </div>
@@ -275,16 +254,11 @@ export default function DigitalTransformationWeek7() {
       </Slide>
 
       <Slide id="question-smart-contract-use-cases" label="QUESTION" title="Question">
-        <p className="font-heading font-bold text-xl md:text-2xl">
+        <p className="font-sans font-bold text-xl md:text-2xl">
           Come up with a use case for the immutability and programmability of smart contracts
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <SmartContractUseCasesInteractive active={activeUseCase} onSelect={setActiveUseCase} />
-          </div>
-          <div className="sm:hidden">
-            <SmartContractUseCasesTall active={activeUseCase} onSelect={setActiveUseCase} />
-          </div>
+          <SmartContractUseCasesInteractive active={activeUseCase} onSelect={setActiveUseCase} />
         </PlateWell>
         <ol className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-3`}>
           {[
@@ -301,11 +275,11 @@ export default function DigitalTransformationWeek7() {
               <li
                 key={i}
                 onClick={() => setActiveUseCase(i)}
-                className={`cursor-pointer border-t-[4px] pt-3 flex items-baseline gap-2.5 transition-colors ${
-                  isLit ? "border-[var(--dt-signal)] font-heading font-bold" : "border-[var(--dt-ink)]"
+                className={`cursor-pointer border-t-2 pt-3 flex items-baseline gap-2.5 transition-colors ${
+                  isLit ? "border-[var(--dt-signal)] font-sans font-bold" : "border-[var(--dt-ink)]"
                 }`}
               >
-                <span className="font-accent text-sm shrink-0">{i + 1}.</span>
+                <span className="font-sans text-sm shrink-0">{i + 1}.</span>
                 <span>{item}</span>
               </li>
             );
@@ -324,23 +298,18 @@ export default function DigitalTransformationWeek7() {
         title="Smart Contracts in Supply Chain Management"
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <SupplyChainComparisonInteractive active={activeScIssue} onSelect={setActiveScIssue} />
-          </div>
-          <div className="sm:hidden">
-            <SupplyChainComparisonTall active={activeScIssue} onSelect={setActiveScIssue} />
-          </div>
+          <SupplyChainComparisonInteractive active={activeScIssue} onSelect={setActiveScIssue} />
         </PlateWell>
         <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <div className="border-t-[4px] border-[var(--counter)] pt-4">
-            <p className="font-heading font-bold text-xl mb-2">Traditional Issues in Supply Chain Management</p>
+          <div className="border-t-2 border-[var(--counter)] pt-4">
+            <p className="font-sans font-bold text-xl mb-2">Traditional Issues in Supply Chain Management</p>
             <Dashes
               items={[
                 <>
-                  Inefficiencies in <strong>tracking</strong> and <strong>monitoring</strong> shipments.
+                  Inefficiencies in tracking and monitoring shipments.
                 </>,
                 <>
-                  Lack of <strong>transparency</strong> leading to mistrust between suppliers and buyers.
+                  Lack of transparency leading to mistrust between suppliers and buyers.
                 </>,
                 <>
                   <strong>Manual</strong> processes causing delays in payments and documentation.
@@ -348,7 +317,7 @@ export default function DigitalTransformationWeek7() {
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 grid">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 grid">
             {[
               <p key="auto" className="text-lg">
                 <strong>Automation</strong>: Automatically trigger actions like payments upon delivery confirmation.
@@ -383,9 +352,9 @@ export default function DigitalTransformationWeek7() {
         title="Case Study: Amazon"
         exercise={exercise["case-study-amazon"]}
       >
-        <div className={`${BODY} grid md:grid-cols-2 gap-6 border-b-[3px] border-[var(--dt-ink)] pb-4`}>
-          <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">
-            <p className="font-heading font-bold">Background:</p>
+        <div className={`${BODY} grid md:grid-cols-2 gap-6 border-b border-[var(--dt-ink)]/15 pb-4`}>
+          <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
+            <p className="font-sans font-bold">Background:</p>
             <Dashes
               items={[
                 <>
@@ -395,7 +364,7 @@ export default function DigitalTransformationWeek7() {
               ]}
             />
           </div>
-          <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">
+          <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
             <p>
               <strong>Implementation</strong>: Integrating smart contracts with IoT sensors to monitor shipments and
               automate payments.
@@ -403,16 +372,11 @@ export default function DigitalTransformationWeek7() {
           </div>
         </div>
         <PlateWell>
-          <div className="hidden sm:block">
-            <AmazonSupplyChainInteractive active={activeAmazonStep} onSelect={setActiveAmazonStep} />
-          </div>
-          <div className="sm:hidden">
-            <AmazonSupplyChainTall active={activeAmazonStep} onSelect={setActiveAmazonStep} />
-          </div>
+          <AmazonSupplyChainInteractive active={activeAmazonStep} onSelect={setActiveAmazonStep} />
         </PlateWell>
         <div className={BODY}>
-          <p className="font-heading font-bold text-lg mb-2">Process:</p>
-          <div className="grid">
+          <p className="font-sans font-bold text-lg mb-2">Process:</p>
+          <div className="grid gap-4">
             {[
               <>
                 <strong>Order Placement</strong>: Buyer places an order, triggering a smart contract.
@@ -436,9 +400,9 @@ export default function DigitalTransformationWeek7() {
                 <div
                   key={i}
                   aria-hidden={!isLit}
-                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-3 text-xl transition-opacity duration-200 ${
-                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                  }`}
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-3 text-xl transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
                 >
                   {item}
                 </div>
@@ -468,8 +432,8 @@ export default function DigitalTransformationWeek7() {
                 <p
                   key={i}
                   onClick={() => setActiveNft(rowIdx)}
-                  className={`cursor-pointer border-t-[4px] pt-3 transition-colors ${
-                    isLit ? "border-[var(--dt-signal)] font-heading font-bold" : "border-[var(--dt-ink)]"
+                  className={`cursor-pointer border-t-2 pt-3 transition-colors ${
+                    isLit ? "border-[var(--dt-signal)] font-sans font-bold" : "border-[var(--dt-ink)]"
                   }`}
                 >
                   {item}
@@ -490,7 +454,6 @@ export default function DigitalTransformationWeek7() {
           "What if somebody forged a deed? What resort do you have?",
           "What are some of the challenges when you wish to sell your house?",
         ]}
-        plate={<Conversation left={2} right={5} />}
       />
 
       <Slide
@@ -500,18 +463,18 @@ export default function DigitalTransformationWeek7() {
         exercise={exercise["smart-contracts-in-real-estate"]}
       >
         <Row cols="lg:grid-cols-[1.45fr_1fr]">
-          <div className="font-body text-sm md:text-[0.95rem] leading-[1.45] [&_strong]:font-heading [&_strong]:font-bold">
-            <table className="w-full border-collapse border-[3px] border-[var(--dt-ink)]">
+          <div className="font-sans text-sm md:text-[0.95rem] leading-[1.45] [&_strong]:font-sans [&_strong]:font-bold">
+            <table className="w-full border-collapse border border-[var(--dt-ink)]/15">
               <thead>
-                <tr className="bg-[var(--dt-ink)] text-[var(--dt-cream)] text-left">
-                  <th className="p-2.5 font-heading font-bold">
-                    <strong>Feature</strong>
+                <tr className="bg-[var(--dt-ink)] text-[var(--dt-white)] text-left">
+                  <th className="p-2.5 font-sans font-bold">
+                    Feature
                   </th>
-                  <th className="p-2.5 font-heading font-bold">
-                    <strong>Traditional Contracts</strong>
+                  <th className="p-2.5 font-sans font-bold">
+                    Traditional Contracts
                   </th>
-                  <th className="p-2.5 font-heading font-bold">
-                    <strong>Smart Contracts</strong>
+                  <th className="p-2.5 font-sans font-bold">
+                    Smart Contracts
                   </th>
                 </tr>
               </thead>
@@ -558,11 +521,11 @@ export default function DigitalTransformationWeek7() {
                     <tr
                       key={r.feature}
                       onClick={() => setActiveReRow(i)}
-                      className={`border-t-2 border-[var(--dt-ink)] cursor-pointer transition-colors ${
+                      className={`border-t border-[var(--dt-ink)]/15 cursor-pointer transition-colors ${
                         isLit ? "bg-[var(--paper-2)]" : ""
                       }`}
                     >
-                      <td className="p-2.5 font-heading font-bold">
+                      <td className="p-2.5 font-sans font-bold">
                         <strong>{r.feature}</strong>
                       </td>
                       <td className="p-2.5">{r.trad}</td>
@@ -590,7 +553,6 @@ export default function DigitalTransformationWeek7() {
           "Imagine you are planning on buying a home. To secure the funds, you explore different mortgage options. What challenges you might face when researching the best mortgage option?",
           "As a car owner, you have car insurance. If a collision occurs, what are the steps necessary to receive compensation? How can these steps be simplified using blockchain?",
         ]}
-        plate={<Conversation left={4} right={8} />}
       />
 
       <Slide
@@ -598,25 +560,20 @@ export default function DigitalTransformationWeek7() {
         label="FINANCIAL SERVICES"
         title="Smart Contracts in Financial Services"
       >
-        <p className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <p className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           Automate loan disbursements or insurance claims based on predefined conditions.
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <FinancialServicesInteractive active={activeFinTab} onSelect={setActiveFinTab} />
-          </div>
-          <div className="sm:hidden">
-            <FinancialServicesTall active={activeFinTab} onSelect={setActiveFinTab} />
-          </div>
+          <FinancialServicesInteractive active={activeFinTab} onSelect={setActiveFinTab} />
         </PlateWell>
         <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
           <div
             onClick={() => setActiveFinTab(0)}
-            className={`cursor-pointer border-t-[4px] pt-4 transition-colors ${
+            className={`cursor-pointer border-t-2 pt-4 transition-colors ${
               activeFinTab === 0 ? "border-[var(--counter)]" : "border-[var(--dt-ink)]"
             }`}
           >
-            <p className="font-heading font-bold text-xl mb-2">Issues of Traditional Systems</p>
+            <p className="font-sans font-bold text-xl mb-2">Issues of Traditional Systems</p>
             <Dashes
               items={[
                 <>Costly processes due to manual interventions.</>,
@@ -626,23 +583,23 @@ export default function DigitalTransformationWeek7() {
           </div>
           <div
             onClick={() => setActiveFinTab(activeFinTab === 2 ? 2 : 1)}
-            className={`cursor-pointer border-t-[4px] pt-4 transition-colors ${
+            className={`cursor-pointer border-t-2 pt-4 transition-colors ${
               activeFinTab >= 1 ? "border-[var(--dt-signal)]" : "border-[var(--dt-ink)]"
             }`}
           >
-            <p className="font-heading font-bold text-xl mb-2">Automate Processes:</p>
+            <p className="font-sans font-bold text-xl mb-2">Automate Processes:</p>
             <Dashes
               items={[
                 <>
-                  Loan disbursements triggered by conditions such as <strong>credit score</strong> or{" "}
-                  <strong>document verification</strong>.
+                  Loan disbursements triggered by conditions such as credit score or{" "}
+                  document verification.
                 </>,
                 <>
-                  Insurance claims paid automatically upon verification of <strong>required conditions</strong>.
+                  Insurance claims paid automatically upon verification of required conditions.
                 </>,
                 <>
                   Enhance Transparency: All parties have access to the same information,{" "}
-                  <strong>reducing disputes</strong>.
+                  reducing disputes.
                 </>,
               ]}
             />
@@ -658,11 +615,11 @@ export default function DigitalTransformationWeek7() {
       >
         <Row cols="lg:grid-cols-[1.15fr_1fr]">
           <div className={`${BODY} flex flex-col gap-5`}>
-            <p className="text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">
+            <p className="text-xl border-l-2 border-[var(--dt-ink)]/25 pl-4">
               A bank uses smart contracts to streamline the loan approval process.
             </p>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-4">
-              <p className="font-heading font-bold text-xl mb-2">Process:</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-4">
+              <p className="font-sans font-bold text-xl mb-2">Process:</p>
               <Dashes
                 items={[
                   <>Customer submits loan application.</>,
@@ -671,8 +628,8 @@ export default function DigitalTransformationWeek7() {
                 ]}
               />
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-4">
-              <p className="font-heading font-bold text-xl mb-2">Outcomes:</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-4">
+              <p className="font-sans font-bold text-xl mb-2">Outcomes:</p>
               <Dashes
                 items={[
                   <>Reduced processing time from days to minutes.</>,
@@ -695,7 +652,6 @@ export default function DigitalTransformationWeek7() {
           "When the web dev delivers your website, what potential issues can arise?",
           "How can you dispute and resolve those issues?",
         ]}
-        plate={<Conversation left={6} right={1} />}
       />
 
       <Slide
@@ -704,18 +660,13 @@ export default function DigitalTransformationWeek7() {
         title="Smart Contracts in Legal Contracts"
         exercise={exercise["smart-contracts-in-legal-contracts"]}
       >
-        <p className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <p className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           Automate the enforcement of contract terms, reducing the need for legal intervention.
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <LegalContractsInteractive active={activeLegalTab} onSelect={setActiveLegalTab} />
-          </div>
-          <div className="sm:hidden">
-            <LegalContractsTall active={activeLegalTab} onSelect={setActiveLegalTab} />
-          </div>
+          <LegalContractsInteractive active={activeLegalTab} onSelect={setActiveLegalTab} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               key: "pair-1",
@@ -746,16 +697,16 @@ export default function DigitalTransformationWeek7() {
               <div
                 key={p.key}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-2 gap-6 md:gap-10 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-2 gap-6 md:gap-10 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <div className="border-l-[4px] border-[var(--counter)] pl-4">
-                  <p className="font-heading font-bold text-xl mb-1">{p.tradHead}</p>
+                <div className="border-l-2 border-[var(--counter)]/60 pl-4">
+                  <p className="font-sans font-bold text-xl mb-1">{p.tradHead}</p>
                   <Dashes items={[<>{p.tradBody}</>]} />
                 </div>
-                <div className="border-l-[4px] border-[var(--dt-signal)] pl-4">
-                  <p className="font-heading font-bold text-xl mb-1">{p.smartHead}</p>
+                <div className="border-l-2 border-[var(--dt-signal)]/60 pl-4">
+                  <p className="font-sans font-bold text-xl mb-1">{p.smartHead}</p>
                   <Dashes items={[<>{p.smartBody}</>]} />
                 </div>
               </div>
@@ -776,7 +727,6 @@ export default function DigitalTransformationWeek7() {
           "How are these issues usually resolved?",
           "What steps can be taken to mitigate these issues?",
         ]}
-        plate={<Conversation left={7} right={9} />}
       />
 
       <Slide
@@ -785,25 +735,20 @@ export default function DigitalTransformationWeek7() {
         title="Smart Contracts in Voting Systems"
         exercise={exercise["smart-contracts-in-voting-systems"]}
       >
-        <p className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <p className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           Ensure transparent and tamper-proof vote counting.
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <VotingSystemsInteractive active={activeVotingTab} onSelect={setActiveVotingTab} />
-          </div>
-          <div className="sm:hidden">
-            <VotingSystemsTall active={activeVotingTab} onSelect={setActiveVotingTab} />
-          </div>
+          <VotingSystemsInteractive active={activeVotingTab} onSelect={setActiveVotingTab} />
         </PlateWell>
         <div className={`${BODY} grid md:grid-cols-[1.15fr_1fr] gap-6 md:gap-8`}>
-          <div className="border-t-[4px] border-[var(--counter)] pt-3">
-            <p className="font-heading font-bold text-lg mb-1.5">The Challenge in Traditional Voting Systems</p>
+          <div className="border-t-2 border-[var(--counter)] pt-3">
+            <p className="font-sans font-bold text-lg mb-1.5">The Challenge in Traditional Voting Systems</p>
             <Dashes
               items={[
                 <>
                   Vulnerability to Fraud: Traditional voting methods are susceptible to{" "}
-                  <strong>ballot tampering</strong>, <strong>miscounts</strong>, and <strong>fraud</strong>.
+                  ballot tampering, miscounts, and fraud.
                 </>,
                 <>
                   Lack of Transparency: Voters and stakeholders often lack visibility into the vote counting process,
@@ -811,13 +756,13 @@ export default function DigitalTransformationWeek7() {
                 </>,
                 <>
                   Complexity and Inefficiency: Manual counting processes can lead to errors and{" "}
-                  <strong>delays</strong> in results.
+                  delays in results.
                 </>,
                 <>Post-Election Disputes: Controversies arise from ambiguous voting procedures and results.</>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3 grid">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3 grid">
             {[
               <p key="immutable" className="text-lg">
                 <strong>Immutable Ledger</strong>: Central feature that ensures all votes are recorded and cannot be
@@ -869,7 +814,6 @@ export default function DigitalTransformationWeek7() {
           "Imagine you invented a new machine. What are some of the barriers for registering a patent?",
           "When you upload original content on YouTube, how can you ensure nobody else would steal your content and reupload it?",
         ]}
-        plate={<Conversation left={10} right={2} />}
       />
 
       <Slide
@@ -877,30 +821,25 @@ export default function DigitalTransformationWeek7() {
         label="INTELLECTUAL PROPERTY"
         title="Smart Contracts in Intellectual Property Management"
       >
-        <p className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <p className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           Automate licensing and tracking of intellectual property usage.
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <IpManagementInteractive active={activeIpTab} onSelect={setActiveIpTab} />
-          </div>
-          <div className="sm:hidden">
-            <IpManagementTall active={activeIpTab} onSelect={setActiveIpTab} />
-          </div>
+          <IpManagementInteractive active={activeIpTab} onSelect={setActiveIpTab} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             <div key="barriers" className="grid md:grid-cols-3 gap-5">
-              <div className="border-l-[4px] border-[var(--counter)] pl-4">
-                <p className="font-heading font-bold">Complexity of Contracts:</p>
+              <div className="border-l-2 border-[var(--counter)]/60 pl-4">
+                <p className="font-sans font-bold">Complexity of Contracts:</p>
                 <Dashes items={[<>Licensing agreements often involve complicated terms and conditions.</>]} />
               </div>
-              <div className="border-l-[4px] border-[var(--counter)] pl-4">
-                <p className="font-heading font-bold">Infringement Risks:</p>
+              <div className="border-l-2 border-[var(--counter)]/60 pl-4">
+                <p className="font-sans font-bold">Infringement Risks:</p>
                 <Dashes items={[<>Difficulty in monitoring unauthorized use or infringement of IP rights.</>]} />
               </div>
-              <div className="border-l-[4px] border-[var(--counter)] pl-4">
-                <p className="font-heading font-bold">Inefficiency in Enforcement:</p>
+              <div className="border-l-2 border-[var(--counter)]/60 pl-4">
+                <p className="font-sans font-bold">Inefficiency in Enforcement:</p>
                 <Dashes items={[<>Time-consuming legal processes to enforce rights and collect royalties.</>]} />
               </div>
             </div>,
@@ -908,11 +847,11 @@ export default function DigitalTransformationWeek7() {
               Self-executing contracts with the terms directly coded, automatically enforced when conditions are met.
             </p>,
             <div key="first" className="grid md:grid-cols-2 gap-6 text-xl">
-              <p className="border-l-[4px] border-[var(--dt-signal)] pl-4">
+              <p className="border-l-2 border-[var(--dt-signal)]/60 pl-4">
                 Immutable records of ownership and rights.
               </p>
-              <p className="border-l-[4px] border-[var(--dt-signal)] pl-4">
-                Who created in IP-protected content <strong>first</strong>.
+              <p className="border-l-2 border-[var(--dt-signal)]/60 pl-4">
+                Who created in IP-protected content first.
               </p>
             </div>,
             <p key="royalties" className="text-xl">
@@ -924,7 +863,7 @@ export default function DigitalTransformationWeek7() {
               <div
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
@@ -942,24 +881,19 @@ export default function DigitalTransformationWeek7() {
         exercise={exercise["other-use-cases-of-smart-contracts"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <OtherUseCasesInteractive active={activeOtherTab} onSelect={setActiveOtherTab} />
-          </div>
-          <div className="sm:hidden">
-            <OtherUseCasesTall active={activeOtherTab} onSelect={setActiveOtherTab} />
-          </div>
+          <OtherUseCasesInteractive active={activeOtherTab} onSelect={setActiveOtherTab} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             <div key="crowdfunding" className="text-xl">
               <p>
-                <strong>Crowdfunding</strong>
+                Crowdfunding
               </p>
               <Dashes items={[<>Automatically release funds to projects upon reaching specified milestones.</>]} />
             </div>,
             <div key="charity" className="text-xl">
               <p>
-                <strong>Donations and Charity</strong>
+                Donations and Charity
               </p>
               <Dashes
                 items={[
@@ -972,7 +906,7 @@ export default function DigitalTransformationWeek7() {
             </div>,
             <div key="education" className="text-xl">
               <p>
-                <strong>Education</strong>
+                Education
               </p>
               <Dashes items={[<>Automatically issue certificates upon course completion.</>]} />
             </div>,
@@ -982,7 +916,7 @@ export default function DigitalTransformationWeek7() {
               <div
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >

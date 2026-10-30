@@ -46,10 +46,11 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const BODY = `${BODY_BASE} text-base md:text-[1.06rem]`;
+const BODY_BASE =
+  "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
 const LIST =
-  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
@@ -85,24 +86,20 @@ export default function DigitalTransformationWeek10() {
   const [activeAiModel, setActiveAiModel] = useState(1);
 
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 10: DIGITAL TRANSFORMATION"
-        title={
-          <span className="block text-[clamp(1.95rem,3.3vw,2.95rem)] leading-[1.06]">
-            Week 10: Cyber Security, Ethics and Social Issues of Digital Transformation
-          </span>
-        }
+        category="Week 10: Digital Transformation"
+        title="Cyber Security, Ethics and Social Issues of Digital Transformation"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
@@ -132,14 +129,14 @@ export default function DigitalTransformationWeek10() {
                 <button
                   type="button"
                   onClick={() => setActiveReviewQ(i)}
-                  className={`w-full h-full text-left p-3.5 border-t-[4px] transition-colors cursor-pointer ${
+                  className={`w-full h-full text-left p-3.5 border-t-2 transition-colors cursor-pointer ${
                     isLit
                       ? "border-[var(--dt-signal)] bg-[var(--paper-2)]"
                       : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/60"
                   }`}
                 >
-                  <span className="font-heading font-bold text-lg block mb-1">{i + 1}.</span>
-                  <span className="font-heading font-bold text-[0.98rem] leading-snug block">{q}</span>
+                  <span className="font-sans font-bold text-lg block mb-1">{i + 1}.</span>
+                  <span className="font-sans font-bold text-[0.98rem] leading-snug block">{q}</span>
                 </button>
               </li>
             );
@@ -163,7 +160,7 @@ export default function DigitalTransformationWeek10() {
       >
         <Row cols="lg:grid-cols-[1fr_1.18fr]">
           <div className={`${BODY} flex flex-col gap-4`}>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
               <Bullets
                 items={[
                   <>
@@ -173,7 +170,7 @@ export default function DigitalTransformationWeek10() {
                       onClick={() => setActiveThreat(0)}
                       className="underline decoration-2 underline-offset-2 cursor-pointer"
                     >
-                      <strong>state-sponsored attacks</strong>
+                      state-sponsored attacks
                     </button>
                     ,{" "}
                     <button
@@ -181,7 +178,7 @@ export default function DigitalTransformationWeek10() {
                       onClick={() => setActiveThreat(1)}
                       className="underline decoration-2 underline-offset-2 cursor-pointer"
                     >
-                      <strong>ransomware</strong>
+                      ransomware
                     </button>
                     ,{" "}
                     <button
@@ -189,14 +186,14 @@ export default function DigitalTransformationWeek10() {
                       onClick={() => setActiveThreat(2)}
                       className="underline decoration-2 underline-offset-2 cursor-pointer"
                     >
-                      <strong>supply chain vulnerabilities</strong>
+                      supply chain vulnerabilities
                     </button>
                     )
                   </>,
                 ]}
               />
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
               <Bullets
                 items={[
                   <>
@@ -206,7 +203,7 @@ export default function DigitalTransformationWeek10() {
                 ]}
               />
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
               <Bullets
                 items={[
                   <>Economic impact of cybersecurity breaches on business operations and reputation</>,
@@ -225,10 +222,10 @@ export default function DigitalTransformationWeek10() {
 
       <Slide id="question-north-america-breach" label="CLASS INVESTIGATION" title="Question">
         <div className={`${BODY} grid md:grid-cols-3 gap-5 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets items={[<>Research a recent cyber security breaches in North America.</>]} />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
@@ -238,7 +235,7 @@ export default function DigitalTransformationWeek10() {
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets items={[<>How could the organization/business prevented the breach?</>]} />
           </div>
         </div>
@@ -250,7 +247,7 @@ export default function DigitalTransformationWeek10() {
       <Slide id="note-on-research" label="INFORMATION LITERACY" title="Note on Research">
         <Row cols="lg:grid-cols-[1.05fr_1.15fr]">
           <div className={`${BODY} flex flex-col gap-5`}>
-            <div className="border-l-[5px] border-[var(--dt-ink)] pl-5 py-1">
+            <div className="border-l-2 border-[var(--dt-ink)]/25 pl-5 py-1">
               <Bullets
                 className="text-lg md:text-xl gap-4"
                 items={[
@@ -261,7 +258,7 @@ export default function DigitalTransformationWeek10() {
                       href="https://www.etechcomputing.com/2024-in-review-the-most-notable-data-breaches-in-north-america/"
                       target="_blank"
                       rel="noreferrer"
-                      className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+                      className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
                     >
                       2024 in Review: The Most Notable Data Breaches in North America
                     </a>{" "}
@@ -306,11 +303,11 @@ export default function DigitalTransformationWeek10() {
                 <>Canadian Revenue Agency (CRA)</>,
                 <>Dating back to 2020</>,
                 <>
-                  Hackers obtained confidential data used by <strong>H&amp;R Block Canada</strong>, one of the
+                  Hackers obtained confidential data used by H&amp;R Block Canada, one of the
                   country&apos;s largest tax preparation firms
                 </>,
                 <>
-                  Unauthorized access allowed imposters to change <strong>direct deposit information</strong>, submit
+                  Unauthorized access allowed imposters to change direct deposit information, submit
                   false tax returns, and steal over $6 million in fraudulent refunds
                 </>,
               ],
@@ -334,7 +331,7 @@ export default function DigitalTransformationWeek10() {
                 <>An investigation is ongoing</>,
                 <>
                   Office of the Privacy Commissioner of Canada (OPC) is examining whether the CRA met its obligations
-                  under the <strong>Privacy Act</strong>
+                  under the Privacy Act
                 </>,
               ],
             },
@@ -352,7 +349,7 @@ export default function DigitalTransformationWeek10() {
                     setActiveCraStage(col.stage);
                   }
                 }}
-                className={`p-3 border-t-[4px] text-[0.95rem] leading-[1.48] transition-colors cursor-pointer ${
+                className={`p-3 border-t-2 text-[0.95rem] leading-[1.48] transition-colors cursor-pointer ${
                   isLit
                     ? "border-[var(--dt-signal)] bg-[var(--paper-2)]"
                     : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/50"
@@ -377,10 +374,10 @@ export default function DigitalTransformationWeek10() {
         exercise={exercise["ethics-in-digital-transformation"]}
       >
         <div className={`${BODY} grid md:grid-cols-3 gap-5 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets items={[<>Privacy by design methodologies</>]} />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
@@ -390,7 +387,7 @@ export default function DigitalTransformationWeek10() {
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
@@ -416,7 +413,7 @@ export default function DigitalTransformationWeek10() {
       >
         <Row cols="lg:grid-cols-[0.95fr_1.25fr]">
           <div className={`${BODY} flex flex-col gap-5`}>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
               <Bullets
                 items={[
                   <>
@@ -429,9 +426,9 @@ export default function DigitalTransformationWeek10() {
                             <button
                               type="button"
                               onClick={() => setActiveBias(i)}
-                              className={`w-full text-left px-3 py-1.5 border-l-[4px] transition-colors cursor-pointer ${
+                              className={`w-full text-left px-3 py-1.5 border-l-2 transition-colors cursor-pointer ${
                                 isLit
-                                  ? "border-[var(--dt-signal)] bg-[var(--paper-2)] font-heading font-bold"
+                                  ? "border-[var(--dt-signal)] bg-[var(--paper-2)] font-sans font-bold"
                                   : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/50"
                               }`}
                             >
@@ -445,7 +442,7 @@ export default function DigitalTransformationWeek10() {
                 ]}
               />
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
               <Bullets
                 items={[
                   <>
@@ -468,7 +465,7 @@ export default function DigitalTransformationWeek10() {
         title="Truth, Trust and Digital Information Integrity"
       >
         <div className={`${BODY} grid md:grid-cols-2 gap-6 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
@@ -481,7 +478,7 @@ export default function DigitalTransformationWeek10() {
                           href="https://www.etechcomputing.com/2024-in-review-the-most-notable-data-breaches-in-north-america/"
                           target="_blank"
                           rel="noreferrer"
-                          className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+                          className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
                         >
                           2024 in Review: The Most Notable Data Breaches in North America
                         </a>{" "}
@@ -493,7 +490,7 @@ export default function DigitalTransformationWeek10() {
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
@@ -519,7 +516,7 @@ export default function DigitalTransformationWeek10() {
         label="CARBON FOOTPRINT OF AI"
         title="Environmental Sustainability"
       >
-        <div className={`${BODY} border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <div className={`${BODY} border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           <Bullets items={[<>Carbon footprint of digital technologies</>]} />
         </div>
         <div className={`${BODY} grid md:grid-cols-3 gap-4`}>
@@ -550,7 +547,7 @@ export default function DigitalTransformationWeek10() {
                     setActiveAiModel(card.idx);
                   }
                 }}
-                className={`p-3.5 border-t-[4px] transition-colors cursor-pointer ${
+                className={`p-3.5 border-t-2 transition-colors cursor-pointer ${
                   isLit
                     ? "border-[var(--dt-signal)] bg-[var(--paper-2)]"
                     : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/50"
@@ -579,27 +576,27 @@ export default function DigitalTransformationWeek10() {
           <ExponentialCostForecasterInteractive />
         </PlateWell>
         <div className={`${BODY} grid md:grid-cols-3 gap-5 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
-                  From 2017 to 2023, costs rose from $930 for the <strong>Transformer model</strong> to over $78
-                  million for <strong>GPT-4</strong>.
+                  From 2017 to 2023, costs rose from $930 for the Transformer model to over $78
+                  million for GPT-4.
                 </>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
-                  Training costs for frontier AI models have grown by a factor of <strong>2x</strong> to{" "}
-                  <strong>3x</strong> per year for the past eight years.
+                  Training costs for frontier AI models have grown by a factor of 2x to{" "}
+                  3x per year for the past eight years.
                 </>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <Bullets
               items={[
                 <>
@@ -618,7 +615,7 @@ export default function DigitalTransformationWeek10() {
         exercise={exercise["platform-power-and-digital-monopolies"]}
       >
         <Row cols="lg:grid-cols-[0.95fr_1.25fr]">
-          <div className={`${BODY} border-t-[4px] border-[var(--dt-ink)] pt-4`}>
+          <div className={`${BODY} border-t border-[var(--dt-ink)]/15 pt-4`}>
             <Bullets
               className="text-lg md:text-xl"
               items={[
@@ -643,7 +640,7 @@ export default function DigitalTransformationWeek10() {
       </Slide>
 
       <Slide id="further-readings" label="RECOMMENDED LITERATURE" title="Further Readings">
-        <div className={`${BODY} border-l-[5px] border-[var(--dt-ink)] pl-5 text-lg md:text-xl`}>
+        <div className={`${BODY} border-l-2 border-[var(--dt-ink)]/25 pl-5 text-lg md:text-xl`}>
           <Bullets
             items={[
               <>

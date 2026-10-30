@@ -2,12 +2,7 @@ import path from "node:path";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { isDeckBuilt } from "@/lib/course-status";
-import { DECK_THEME, Diamond } from "./_visuals/kit";
-
-// The course masthead stays in view on the left while the curriculum scrolls
-// on the right, the same layout as the other course landings, styled in the
-// course's Flat Silhouette poster palette and typography. A week links out
-// only once its deck has been built.
+import { DECK_THEME } from "./_visuals/kit";
 
 export const dynamic = "force-static";
 
@@ -77,16 +72,13 @@ const COURSE_WEEKS = [
   },
 ];
 
-const LABEL =
-  "font-accent text-[0.7rem] font-bold uppercase tracking-[0.25em]";
-
 type Row = (typeof COURSE_WEEKS)[number] & { href: string; available: boolean };
 
 function BackLink() {
   return (
     <Link
       href="/courses"
-      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-300 text-[var(--ink-3)] hover:text-[var(--dt-signal)]"
+      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-200 text-[var(--ink-3)] hover:text-[var(--dt-signal)] hover:bg-[var(--dt-signal)]/5"
       aria-label="Back to all courses"
     >
       <ArrowLeft className="w-5 h-5" />
@@ -100,33 +92,33 @@ function RowBody({ week, n }: { week: Row; n: number }) {
   return (
     <>
       <span
-        className={`font-heading font-bold pt-0.5 text-lg tabular-nums transition-colors ${
+        className={`font-sans font-medium pt-0.5 text-[0.9375rem] leading-[1.4] tabular-nums transition-colors ${
           on
-            ? "text-[var(--dt-ink)] group-hover:text-[var(--dt-signal)]"
-            : "text-[var(--ink-3)] opacity-60"
+            ? "text-[var(--ink-3)]/80 group-hover:text-[var(--dt-signal)]"
+            : "text-[var(--ink-3)]/50"
         }`}
       >
         {String(n).padStart(2, "0")}
       </span>
       <div className="min-w-0">
         <h3
-          className={`font-heading font-bold text-[clamp(1.2rem,1.7vw,1.45rem)] leading-snug tracking-[-0.01em] transition-colors ${
+          className={`font-sans font-semibold text-[1.0625rem] leading-[1.35] tracking-normal transition-colors ${
             on
               ? "text-[var(--dt-ink)] group-hover:text-[var(--dt-signal)]"
-              : "text-[var(--ink-3)]"
+              : "text-[var(--ink-3)]/70"
           }`}
         >
           {week.title}
         </h3>
         <p
-          className={`font-body mt-1.5 max-w-[62ch] text-[0.98rem] leading-relaxed text-[var(--ink-3)] ${
-            on ? "" : "opacity-70"
+          className={`font-sans mt-1 max-w-2xl text-[0.9375rem] leading-[1.55] text-[var(--ink-3)] ${
+            on ? "" : "opacity-75"
           }`}
         >
           {week.subtitle}
         </p>
         {on ? null : (
-          <p className={`${LABEL} mt-2.5 !text-[0.65rem] text-[var(--ink-3)]`}>
+          <p className="font-sans mt-2 text-xs font-normal text-[var(--ink-3)]/70">
             In preparation
           </p>
         )}
@@ -134,7 +126,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
       {on ? (
         <ArrowRight
           aria-hidden
-          className="mt-1.5 size-4 text-[var(--dt-ink)] transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-[var(--dt-signal)]"
+          className="mt-1 size-4 text-[var(--dt-ink)]/40 transition-[color,transform] duration-150 group-hover:translate-x-0.5 group-hover:text-[var(--dt-signal)]"
         />
       ) : (
         <span aria-hidden />
@@ -144,7 +136,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
 }
 
 const ROW =
-  "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] gap-x-4 md:gap-x-6 py-5 -mx-3 px-3";
+  "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] gap-x-4 md:gap-x-5 py-5";
 
 export default function DigitalTransformationLanding() {
   const weeks: Row[] = COURSE_WEEKS.map((week) => ({
@@ -156,62 +148,49 @@ export default function DigitalTransformationLanding() {
   return (
     <div
       style={DECK_THEME}
-      className="min-h-screen bg-[var(--dt-cream)] text-[var(--dt-ink)] font-body"
+      className="min-h-screen bg-[var(--dt-white)] text-[var(--dt-ink)] font-sans overflow-x-clip"
     >
       <BackLink />
-      <div className="mx-auto grid w-full max-w-6xl gap-x-16 px-6 md:px-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+      <div className="mx-auto grid w-full max-w-7xl gap-x-16 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:px-12">
         {/* Masthead: stays in view beside the curriculum on wide screens. */}
         <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
-          <p className={`${LABEL} flex items-center gap-3 text-[var(--dt-signal)]`}>
-            <span
-              aria-hidden
-              className="inline-block w-2 h-2 rotate-45 shrink-0 bg-[var(--dt-signal)]"
-            />
-            CMPT 641. {weeks.length} Weeks
+          <p className="font-sans text-[0.875rem] font-medium leading-[1.4] text-[var(--ink-3)] [font-variant-numeric:tabular-nums]">
+            CMPT 641. {weeks.length} weeks
           </p>
 
-          <h1 className="mt-5 font-heading font-bold text-[clamp(2.6rem,4.4vw,3.9rem)] leading-[1.02] tracking-[-0.02em] text-[var(--dt-ink)]">
+          <h1 className="mt-3 font-sans font-bold text-[clamp(2rem,3.2vw,2.75rem)] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
             Digital Transformation
           </h1>
 
-          <div className="mt-6 h-[5px] w-24 bg-[var(--dt-signal)]" />
-
-          <p className="mt-6 max-w-[44ch] font-body text-lg leading-relaxed text-[var(--dt-ink)] md:text-xl">
+          <p className="mt-4 max-w-[42ch] font-sans text-[1.0625rem] font-normal leading-[1.6] text-[var(--ink-3)]">
             The intersection of business strategy, human systems, and emerging
             technologies. A ten-week course from foundations to the future of
             industry.
           </p>
 
-          <div className="mt-8 border-t-[3px] border-[var(--dt-ink)] pt-5">
-            <p className="flex items-center gap-3 font-accent text-sm font-bold tracking-wider text-[var(--dt-ink)]">
-              <Diamond />
-              Davood Wadi, PhD
-            </p>
-          </div>
+          <p className="mt-6 border-t border-[var(--dt-ink)]/15 pt-4 font-sans text-[0.9375rem] font-medium leading-[1.4] text-[var(--dt-ink)]">
+            Davood Wadi, PhD
+          </p>
         </header>
 
         {/* Curriculum */}
         <nav aria-label="Course weeks" className="pb-10 lg:py-20">
-          <div className="mb-4">
-            <h2 className={`${LABEL} flex items-center gap-3 text-[var(--dt-signal)]`}>
-              <span
-                aria-hidden
-                className="inline-block w-2 h-2 rotate-45 shrink-0 bg-[var(--dt-signal)]"
-              />
+          <div className="mb-3">
+            <h2 className="font-sans text-[0.875rem] font-semibold leading-[1.4] text-[var(--ink-3)]">
               Curriculum
             </h2>
           </div>
 
-          <ol className="border-t-[4px] border-[var(--dt-ink)]">
+          <ol className="border-t border-[var(--dt-ink)]/20">
             {weeks.map((week, idx) => (
               <li
                 key={week.slug}
-                className="border-b border-[var(--dt-ink)]/25 last:border-b-[3px] last:border-[var(--dt-ink)]"
+                className="border-b border-[var(--dt-ink)]/12"
               >
                 {week.available ? (
                   <Link
                     href={week.href}
-                    className={`group ${ROW} transition-colors duration-200 hover:bg-[var(--paper-2)]`}
+                    className={`group ${ROW} block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--dt-signal)]`}
                   >
                     <RowBody week={week} n={idx + 1} />
                   </Link>

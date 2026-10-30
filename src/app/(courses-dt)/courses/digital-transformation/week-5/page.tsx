@@ -7,7 +7,6 @@ import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise"
 import exercisesData from "./exercises.json";
 
 import { DECK_THEME, DeckNav, PosterHero, ChapterBand, Slide, Row, PlateWell, Summary } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroTiers,
   TenStoresOneServer,
@@ -45,14 +44,15 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const BODY = `${BODY_BASE} text-base md:text-[1.12rem]`;
+/* Body copy in upright sans-serif. */
+const BODY_BASE =
+  "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
 const LIST =
-  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-0.5 mt-1 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
-const SUB = "font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem]";
+const SUB = "font-sans font-semibold text-sm tracking-normal text-[var(--ink-3)]";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -92,11 +92,13 @@ function Item({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+    <div className="border-t border-[var(--dt-ink)]/15 pt-3">
       <p
-        className={`font-heading font-bold leading-tight flex items-baseline gap-2.5 ${big ? "text-[1.7rem] mb-3" : "text-lg mb-2"}`}
+        className={`font-sans font-semibold text-[var(--dt-ink)] leading-snug flex items-baseline gap-2.5 ${big ? "text-xl mb-3" : "text-lg mb-2"}`}
       >
-        <span className={`font-accent ${big ? "text-xl" : "text-base"}`}>{n}.</span>
+        <span className="font-sans font-medium text-sm text-[var(--ink-3)] tabular-nums">
+          {String(n).padStart(2, "0")}
+        </span>
         <span>{name}</span>
       </p>
       {children}
@@ -106,29 +108,25 @@ function Item({
 
 /* A Scenario or Solution block: a rule on its left. */
 function Lead({ children }: { children: React.ReactNode }) {
-  return <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">{children}</div>;
+  return <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">{children}</div>;
 }
 
 export default function DigitalTransformationWeek5() {
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 5: DIGITAL TRANSFORMATION"
-        title={
-          <>
-            <span className="text-[0.84em]">Cloud/Fog/Edge Computing</span>
-          </>
-        }
+        category="Week 05: Digital Transformation"
+        title="Cloud/Fog/Edge Computing"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
@@ -159,20 +157,20 @@ export default function DigitalTransformationWeek5() {
             className={BODY}
             items={[
               <>
-                FreshBake Bakery is a small but rapidly expanding business with <strong>10 physical stores</strong> in
+                FreshBake Bakery is a small but rapidly expanding business with 10 physical stores in
                 Vancouver.
               </>,
               <>
-                They currently <strong>host</strong> their website, inventory system, and customer loyalty program on an
-                aging <strong>on-premise</strong> server.
+                They currently host their website, inventory system, and customer loyalty program on an
+                aging on-premise server.
               </>,
               <>
-                During <strong>peak holiday seasons</strong>, their website crashes due to traffic spikes, inventory
+                During peak holiday seasons, their website crashes due to traffic spikes, inventory
                 updates lag, and IT maintenance costs are eating into profits.
               </>,
               <>
-                The owner wants to <strong>scale operations</strong>, <strong>improve customer experience</strong>, and{" "}
-                <strong>reduce IT headaches</strong> but lacks technical expertise.
+                The owner wants to scale operations, improve customer experience, and{" "}
+                reduce IT headaches but lacks technical expertise.
               </>,
               <>Your group is a tech advisory team hired by FreshBake.</>,
               <>Analyze their challenges and propose solutions.</>,
@@ -182,26 +180,26 @@ export default function DigitalTransformationWeek5() {
             <TenStoresOneServer />
           </PlateWell>
         </Row>
-        <div className="border-t-[4px] border-[var(--dt-ink)] pt-4">
-          <p className="font-heading font-bold text-xl mb-3">Questions</p>
+        <div className="border-t border-[var(--dt-ink)]/15 pt-4">
+          <p className="font-sans font-bold text-xl mb-3">Questions</p>
           <ol className="grid md:grid-cols-2 gap-x-10 gap-y-3">
             <li className="flex gap-4 items-baseline">
-              <span className="font-heading font-bold text-3xl leading-none w-6 shrink-0">1</span>
-              <span className="font-heading font-bold text-[1.2rem] leading-snug">
-                What are the key business outcomes <em>negatively</em> affected by the current digital infrastucture of
+              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">1</span>
+              <span className="font-sans font-bold text-[1.2rem] leading-snug">
+                What are the key business outcomes negatively affected by the current digital infrastucture of
                 the company?
               </span>
             </li>
             <li className="flex gap-4 items-baseline">
-              <span className="font-heading font-bold text-3xl leading-none w-6 shrink-0">2</span>
+              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">2</span>
               <div>
-                <p className="font-heading font-bold text-[1.2rem] leading-snug">
+                <p className="font-sans font-bold text-[1.2rem] leading-snug">
                   Propose a solution for the company outlining:
                 </p>
-                <ol className="mt-1.5 flex flex-wrap gap-x-6 gap-y-1 font-body text-[1.02rem]">
+                <ol className="mt-1.5 flex flex-wrap gap-x-6 gap-y-1 font-sans text-[1.02rem]">
                   {["First steps", "Transformation", "Expected improvements in outcomes"].map((t, i) => (
                     <li key={t} className="flex gap-2">
-                      <span className="font-accent font-bold">{i + 1}.</span>
+                      <span className="font-sans font-bold">{i + 1}.</span>
                       <span>{t}</span>
                     </li>
                   ))}
@@ -222,9 +220,9 @@ export default function DigitalTransformationWeek5() {
               <Dashes items={["storage,", "software,", "processing power"]} />
               <p className="mt-1">over the internet.</p>
             </div>
-            <p className="border-l-[5px] border-[var(--dt-ink)] pl-4">
+            <p className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
               Instead of owning physical servers, companies{" "}
-              <strong className="text-[var(--dt-signal)]">rent resources</strong> from cloud providers like AWS,
+              rent resources from cloud providers like AWS,
               Microsoft Azure, or Google Cloud.
             </p>
           </div>
@@ -245,10 +243,10 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Resources can be scaled <strong>up</strong> or <strong>down</strong> based on demand.
+                  Resources can be scaled up or down based on demand.
                 </>,
                 <>
-                  E-commerce platforms handle <strong>traffic spikes</strong> during sales.
+                  E-commerce platforms handle traffic spikes during sales.
                 </>,
               ]}
             />
@@ -257,10 +255,10 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Reduces capital expenses by eliminating the need for <strong>in-house hardware</strong>.
+                  Reduces capital expenses by eliminating the need for in-house hardware.
                 </>,
                 <>
-                  Pay only for what you use (&ldquo;<strong>pay-as-you-go</strong>&rdquo; model)
+                  Pay only for what you use (&ldquo;pay-as-you-go&rdquo; model)
                 </>,
               ]}
             />
@@ -269,7 +267,7 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Services are accessible from <strong>anywhere</strong> with an internet connection.
+                  Services are accessible from anywhere with an internet connection.
                 </>,
               ]}
             />
@@ -278,8 +276,8 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Supports <strong>rapid deployment</strong> of applications and services, fostering{" "}
-                  <strong>innovation</strong>.
+                  Supports rapid deployment of applications and services, fostering{" "}
+                  innovation.
                 </>,
               ]}
             />
@@ -296,9 +294,9 @@ export default function DigitalTransformationWeek5() {
       <ChapterBand id="ch2" number="02" title="Cloud Service Models" />
 
       <Slide id="airbnb" label="CASE STUDY" title="Airbnb">
-        <p className={`${BODY_BASE} text-lg md:text-[1.25rem] border-b-2 border-[var(--dt-ink)] pb-5`}>
+        <p className={`${BODY_BASE} text-lg md:text-[1.25rem] border-b border-[var(--dt-ink)]/15 pb-5`}>
           <strong>Scenario:</strong> Airbnb hosts millions of listings worldwide, requiring scalable infrastructure to
-          handle <strong>fluctuating demand</strong>.
+          handle fluctuating demand.
         </p>
         <Row cols="lg:grid-cols-[1fr_1fr]">
           <div className={`${BODY_BASE} text-lg md:text-[1.25rem]`}>
@@ -309,13 +307,13 @@ export default function DigitalTransformationWeek5() {
               className="mt-3 gap-2"
               items={[
                 <>
-                  Scale server capacity during <strong>peak travel seasons</strong>.
+                  Scale server capacity during peak travel seasons.
                 </>,
                 <>
-                  Reduce <strong>infrastructure costs</strong> by only paying for what they use.
+                  Reduce infrastructure costs by only paying for what they use.
                 </>,
                 <>
-                  Ensure <strong>high availability</strong> for its global user base.
+                  Ensure high availability for its global user base.
                 </>,
               ]}
             />
@@ -338,10 +336,10 @@ export default function DigitalTransformationWeek5() {
               />
             </Item>
             <div className="bg-[var(--paper-2)] p-5">
-              <p className="font-heading font-bold text-lg mb-2">Amazon Web Services (AWS) EC2</p>
+              <p className="font-sans font-bold text-lg mb-2">Amazon Web Services (AWS) EC2</p>
               <p>
-                <strong>Amazon Elastic Compute Cloud (EC2)</strong> is a prominent IaaS offering that allows businesses
-                to <strong>rent virtual servers</strong> for their computing needs.
+                Amazon Elastic Compute Cloud (EC2) is a prominent IaaS offering that allows businesses
+                to rent virtual servers for their computing needs.
               </p>
             </div>
           </div>
@@ -359,13 +357,13 @@ export default function DigitalTransformationWeek5() {
                 Imagine your group is advising a company considering migrating its on-premise IT infrastructure to an
                 IaaS provider (e.g., AWS, Azure, Google Cloud). Each group will be assigned a specific industry:
               </p>
-              <p className="mt-2 flex flex-wrap gap-x-5 font-heading font-bold">
+              <p className="mt-2 flex flex-wrap gap-x-5 font-sans font-bold">
                 {["healthcare,", "e-commerce,", "government,", "education."].map((t) => (
                   <span key={t}>{t}</span>
                 ))}
               </p>
             </div>
-            <ol className="flex flex-col border-t-[4px] border-[var(--dt-ink)]">
+            <ol className="flex flex-col border-t border-[var(--dt-ink)]/15">
               {[
                 <>
                   What are the top 3 factors (e.g., cost, scalability, security, compliance, latency) your assigned
@@ -384,7 +382,7 @@ export default function DigitalTransformationWeek5() {
                       "Each group will present their recommendations.",
                       <>
                         The class will then discuss:
-                        <span className="block font-heading font-bold mt-0.5">
+                        <span className="block font-sans font-bold mt-0.5">
                           Are there universal IaaS adoption principles across industries, or do priorities fundamentally
                           differ?
                         </span>
@@ -393,8 +391,8 @@ export default function DigitalTransformationWeek5() {
                   />
                 </>,
               ].map((q, i) => (
-                <li key={i} className="flex gap-4 py-3 border-b-2 border-[var(--dt-ink)] last:border-b-0">
-                  <span className="font-heading font-bold text-2xl leading-none w-5 shrink-0 pt-0.5">{i + 1}</span>
+                <li key={i} className="flex gap-4 py-3 border-b border-[var(--dt-ink)]/15 last:border-b-0">
+                  <span className="font-sans font-bold text-2xl leading-none w-5 shrink-0 pt-0.5">{i + 1}</span>
                   <div>{q}</div>
                 </li>
               ))}
@@ -415,7 +413,7 @@ export default function DigitalTransformationWeek5() {
             <Lead>
               <p>
                 <strong>Scenario:</strong> Snapchat needed a platform to support rapid user growth and enable its
-                engineers to <strong>focus on app development</strong> (company&apos;s main focus) rather than server
+                engineers to focus on app development (company&apos;s main focus) rather than server
                 management.
               </p>
             </Lead>
@@ -427,13 +425,13 @@ export default function DigitalTransformationWeek5() {
                 className="mt-2"
                 items={[
                   <>
-                    <strong>Deploy its app quickly</strong> without worrying about server provisioning.
+                    Deploy its app quickly without worrying about server provisioning.
                   </>,
                   <>
-                    <strong>Automatically scale</strong> resources as its user base expanded.
+                    Automatically scale resources as its user base expanded.
                   </>,
                   <>
-                    Simplify <strong>backend management</strong> with integrated tools and APIs.
+                    Simplify backend management with integrated tools and APIs.
                   </>,
                 ]}
               />
@@ -451,11 +449,11 @@ export default function DigitalTransformationWeek5() {
               />
             </Item>
             <div className="bg-[var(--paper-2)] p-5">
-              <p className="font-heading font-bold text-lg mb-2">Google App Engine (GAE)</p>
+              <p className="font-sans font-bold text-lg mb-2">Google App Engine (GAE)</p>
               <p>
-                <strong>Google App Engine (GAE)</strong> is a PaaS that enables developers to{" "}
-                <strong>build, deploy, and scale</strong> applications without managing the{" "}
-                <strong>underlying infrastructure</strong>.
+                Google App Engine (GAE) is a PaaS that enables developers to{" "}
+                build, deploy, and scale applications without managing the{" "}
+                underlying infrastructure.
               </p>
             </div>
           </div>
@@ -478,7 +476,7 @@ export default function DigitalTransformationWeek5() {
                 items={[
                   <>
                     <span>
-                      Delivers <strong>fully functional applications</strong> over the internet.
+                      Delivers fully functional applications over the internet.
                     </span>
                     <Dashes items={["Salesforce,", "Microsoft Office 365."]} />
                   </>,
@@ -486,11 +484,11 @@ export default function DigitalTransformationWeek5() {
               />
             </Item>
             <div className="bg-[var(--paper-2)] p-5">
-              <p className="font-heading font-bold text-lg mb-2">Salesforce CRM</p>
+              <p className="font-sans font-bold text-lg mb-2">Salesforce CRM</p>
               <p>
-                <strong>Salesforce</strong> is a leading SaaS platform offering Customer Relationship Management (CRM)
-                tools that help businesses <strong>manage customer interactions</strong>, <strong>sales</strong>, and{" "}
-                <strong>marketing activities</strong>.
+                Salesforce is a leading SaaS platform offering Customer Relationship Management (CRM)
+                tools that help businesses manage customer interactions, sales, and{" "}
+                marketing activities.
               </p>
             </div>
           </div>
@@ -517,15 +515,15 @@ export default function DigitalTransformationWeek5() {
                 className="mt-2 gap-2"
                 items={[
                   <>
-                    Provide <em>sales teams</em> with <strong>real-time access</strong> to customer data from any
+                    Provide sales teams with real-time access to customer data from any
                     device.
                   </>,
                   <>
-                    Streamline customer engagement and improve <strong>collaboration across departments</strong>.
+                    Streamline customer engagement and improve collaboration across departments.
                   </>,
                   <>
-                    <strong>Analyze customer behavior</strong> and generate insights to{" "}
-                    <em>optimize marketing strategies</em>.
+                    Analyze customer behavior and generate insights to{" "}
+                    optimize marketing strategies.
                   </>,
                 ]}
               />
@@ -543,7 +541,7 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Companies can quickly <strong>adapt</strong> to changes and deploy solutions faster.
+                  Companies can quickly adapt to changes and deploy solutions faster.
                 </>,
               ]}
             />
@@ -552,7 +550,7 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Outsourcing <strong>infrastructure management</strong> to cloud providers.
+                  Outsourcing infrastructure management to cloud providers.
                 </>,
               ]}
             />
@@ -571,7 +569,7 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Cloud data centers allow companies to operate globally with <strong>low latency</strong>.
+                  Cloud data centers allow companies to operate globally with low latency.
                 </>,
               ]}
             />
@@ -591,7 +589,7 @@ export default function DigitalTransformationWeek5() {
               name: "Security Concerns:",
               body: (
                 <>
-                  <strong>Data breaches</strong> and <strong>unauthorized access</strong> can occur if not managed
+                  Data breaches and unauthorized access can occur if not managed
                   properly.
                 </>
               ),
@@ -600,7 +598,7 @@ export default function DigitalTransformationWeek5() {
               name: "Dependence on Providers:",
               body: (
                 <>
-                  <strong>Outages from providers</strong> can disrupt operations.
+                  Outages from providers can disrupt operations.
                 </>
               ),
             },
@@ -608,16 +606,16 @@ export default function DigitalTransformationWeek5() {
               name: "Cost Management:",
               body: (
                 <>
-                  Poorly managed usage can lead to <strong>unexpected expenses</strong>.
+                  Poorly managed usage can lead to unexpected expenses.
                 </>
               ),
             },
           ].map((r, i) => (
-            <li key={r.name} className="border-t-[5px] border-[var(--dt-ink)] pt-5">
-              <p aria-hidden className="font-heading font-bold text-[6rem] leading-[0.85] mb-4">
+            <li key={r.name} className="border-t border-[var(--dt-ink)]/15 pt-5">
+              <p aria-hidden className="font-sans font-bold text-[6rem] leading-[0.85] mb-4">
                 {i + 1}
               </p>
-              <p className="font-heading font-bold text-[1.9rem] leading-tight mb-3">{r.name}</p>
+              <p className="font-sans font-bold text-[1.9rem] leading-tight mb-3">{r.name}</p>
               <p className={`${BODY_BASE} text-lg md:text-[1.25rem]`}>{r.body}</p>
             </li>
           ))}
@@ -627,12 +625,12 @@ export default function DigitalTransformationWeek5() {
       <Slide id="discussion-question-netflix" label="CLASS DISCUSSION" title="Discussion Question">
         <Row cols="lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col gap-6">
-            <p className="font-heading font-bold text-[clamp(1.5rem,2.6vw,2.2rem)] leading-[1.25]">
+            <p className="font-sans font-bold text-[clamp(1.5rem,2.6vw,2.2rem)] leading-[1.25]">
               How has Netflix leveraged cloud computing to transform its global streaming service?
             </p>
-            <p className={`${BODY_BASE} text-xl border-l-[5px] border-[var(--dt-ink)] pl-4`}>
-              Consider <strong>scalability</strong>, <strong>content delivery</strong>, and{" "}
-              <strong>customer experience</strong> in your answer.
+            <p className={`${BODY_BASE} text-xl border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
+              Consider scalability, content delivery, and{" "}
+              customer experience in your answer.
             </p>
           </div>
           <PlateWell>
@@ -661,11 +659,11 @@ export default function DigitalTransformationWeek5() {
               </>,
               <>Currently, all data from these devices is sent to a centralized cloud server for processing.</>,
               <>
-                However, during emergencies, doctors experience <strong>delays in alerts</strong>, and network
+                However, during emergencies, doctors experience delays in alerts, and network
                 congestion during peak hours causes critical data to arrive too late.
               </>,
               <>
-                The hospital also struggles with <strong>sky-high bandwidth costs</strong> and security concerns due to
+                The hospital also struggles with sky-high bandwidth costs and security concerns due to
                 transmitting vast amounts of sensitive patient data.
               </>,
               <>
@@ -685,68 +683,65 @@ export default function DigitalTransformationWeek5() {
         label="CLASS DISCUSSION"
         title="Discussion Question (Group Activity)"
       >
-        <Row cols="lg:grid-cols-[1.7fr_1fr]">
-          <div className={`${BODY} flex flex-col gap-4`}>
-            <Bullets
-              items={[
-                <>Your group is a tech innovation team tasked with advising HealthGuard.</>,
-                <>Analyze their challenges and propose a solution to transform their operations.</>,
-              ]}
-            />
-            <ol className="flex flex-col border-t-[4px] border-[var(--dt-ink)]">
-              {[
-                <>
-                  What are the <strong>key drawbacks</strong> of relying solely on a centralized cloud for real-time
-                  patient monitoring?
-                </>,
-                <>
-                  Which <strong>3 core benefits of edge computing</strong> (e.g., reduced latency, bandwidth
-                  optimization, data privacy, offline operation) would most directly address the hospital’s needs?
-                  Justify your choices.
-                </>,
-                <>
-                  What <strong>practical steps</strong> should the hospital take to implement edge computing? Consider
-                  hardware/software needs, hybrid cloud-edge integration, and staff training.
-                </>,
-              ].map((q, i) => (
-                <li key={i} className="flex gap-4 py-3 border-b-2 border-[var(--dt-ink)] last:border-b-0">
-                  <span className="font-heading font-bold text-2xl leading-none w-5 shrink-0 pt-0.5">{i + 1}</span>
-                  <p className="text-[1.1rem]">{q}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <div className="max-w-sm w-full mx-auto">
-            <Conversation left={7} right={10} />
-          </div>
-        </Row>
+        <div className={`${BODY} flex flex-col gap-4 max-w-4xl`}>
+          <Bullets
+            items={[
+              <>Your group is a tech innovation team tasked with advising HealthGuard.</>,
+              <>Analyze their challenges and propose a solution to transform their operations.</>,
+            ]}
+          />
+          <ol className="flex flex-col border-t border-[var(--dt-ink)]/15">
+            {[
+              <>
+                What are the key drawbacks of relying solely on a centralized cloud for real-time
+                patient monitoring?
+              </>,
+              <>
+                Which 3 core benefits of edge computing (e.g., reduced latency, bandwidth
+                optimization, data privacy, offline operation) would most directly address the hospital’s needs?
+                Justify your choices.
+              </>,
+              <>
+                What practical steps should the hospital take to implement edge computing? Consider
+                hardware/software needs, hybrid cloud-edge integration, and staff training.
+              </>,
+            ].map((q, i) => (
+              <li key={i} className="flex items-baseline gap-4 py-3 border-b border-[var(--dt-ink)]/15 last:border-b-0">
+                <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="text-[1.1rem]">{q}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Slide>
 
       <Slide id="what-is-edge-computing" label="DEFINITION" title="What is Edge Computing?">
         <div className={`${BODY_BASE} text-lg md:text-[1.25rem] grid md:grid-cols-[1.3fr_1fr] gap-x-10 gap-y-3`}>
           <div>
             <p>
-              <strong>Edge computing</strong> processes data <strong>close to its source</strong>,
+              <strong>Edge computing</strong> processes data close to its source,
             </p>
             <Dashes items={["IoT devices", "local servers"]} />
             <p className="mt-1">
-              instead of relying on <strong>centralized cloud data centers</strong>.
+              instead of relying on centralized cloud data centers.
             </p>
           </div>
           <Bullets
-            className="md:border-l-[4px] md:border-[var(--dt-ink)] md:pl-6"
+            className="md:border-l-2 md:border-[var(--dt-ink)] md:pl-6"
             items={[
               <>
-                reduces <strong>latency</strong>,
+                reduces latency,
               </>,
               <>
-                minimizes <strong>bandwidth usage</strong>,
+                minimizes bandwidth usage,
               </>,
               <>
-                enables <strong>faster decision-making</strong>
+                enables faster decision-making
               </>,
               <>
-                for <strong>time-sensitive</strong> applications.
+                for time-sensitive applications.
               </>,
             ]}
           />
@@ -765,7 +760,7 @@ export default function DigitalTransformationWeek5() {
                 <Bullets
                   items={[
                     <>
-                      Data is processed <strong>at or near</strong> the device generating it, reducing delays.
+                      Data is processed at or near the device generating it, reducing delays.
                     </>,
                   ]}
                 />
@@ -779,7 +774,7 @@ export default function DigitalTransformationWeek5() {
                   items={[
                     <>
                       <span>
-                        Critical for <strong>real-time operations</strong>
+                        Critical for real-time operations
                       </span>
                       <Dashes items={["autonomous vehicles", "industrial automation."]} />
                     </>,
@@ -794,13 +789,13 @@ export default function DigitalTransformationWeek5() {
                 <Bullets
                   items={[
                     <>
-                      <strong>Less data</strong> is sent to the cloud,
+                      Less data is sent to the cloud,
                     </>,
                     <>
-                      saving <strong>costs</strong>
+                      saving costs
                     </>,
                     <>
-                      reducing <strong>internet congestion</strong>.
+                      reducing internet congestion.
                     </>,
                   ]}
                 />
@@ -813,8 +808,8 @@ export default function DigitalTransformationWeek5() {
                 <Bullets
                   items={[
                     <>
-                      Systems can continue to function even with <strong>limited</strong> or{" "}
-                      <strong>no internet</strong> connectivity.
+                      Systems can continue to function even with limited or{" "}
+                      no internet connectivity.
                     </>,
                   ]}
                 />
@@ -846,13 +841,13 @@ export default function DigitalTransformationWeek5() {
                 className="mt-3 gap-2"
                 items={[
                   <>
-                    <strong>Monitor inventory</strong> in real-time.
+                    Monitor inventory in real-time.
                   </>,
                   <>
-                    <strong>Optimize energy usage</strong> for refrigeration and lighting systems.
+                    Optimize energy usage for refrigeration and lighting systems.
                   </>,
                   <>
-                    Process <strong>customer data locally</strong> for personalized shopping experiences.
+                    Process customer data locally for personalized shopping experiences.
                   </>,
                 ]}
               />
@@ -881,7 +876,7 @@ export default function DigitalTransformationWeek5() {
                 <>The data needs to be analyzed in real time to derive key business insights.</>,
               ]}
             />
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-2 font-heading font-bold text-[1.35rem] leading-snug">
+            <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-2 font-sans font-bold text-[1.35rem] leading-snug">
               <p>Propose a computing model for the factory.</p>
               <p>Discuss the pros and cons of your model.</p>
             </div>
@@ -896,12 +891,12 @@ export default function DigitalTransformationWeek5() {
         <Row cols="lg:grid-cols-[1.1fr_0.9fr]">
           <div className={`${BODY_BASE} text-lg md:text-[1.35rem] flex flex-col gap-6`}>
             <p>
-              <strong>Fog computing</strong> is a <strong>decentralized</strong> computing model that extends cloud
+              Fog computing is a decentralized computing model that extends cloud
               computing by bringing data processing closer to the network&apos;s edge.
             </p>
-            <p className="border-l-[5px] border-[var(--dt-ink)] pl-4">
-              It bridges the gap between <strong>cloud computing</strong> (centralized) and{" "}
-              <strong>edge computing</strong> (localized), enabling more efficient and scalable data processing across
+            <p className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
+              It bridges the gap between cloud computing (centralized) and{" "}
+              edge computing (localized), enabling more efficient and scalable data processing across
               distributed systems.
             </p>
           </div>
@@ -922,7 +917,7 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Sits between edge devices and the cloud, handling data <strong>locally</strong> but still connecting
+                  Sits between edge devices and the cloud, handling data locally but still connecting
                   to the cloud for large-scale analysis.
                 </>,
               ]}
@@ -932,7 +927,7 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Data is processed across multiple <strong>fog nodes</strong> (e.g., <strong>routers</strong>,
+                  Data is processed across multiple fog nodes (e.g., routers,
                   gateways) within the network (i.e. local network).
                 </>,
               ]}
@@ -943,7 +938,7 @@ export default function DigitalTransformationWeek5() {
               items={[
                 <>
                   Can handle large volumes of data from multiple IoT devices without{" "}
-                  <strong>overwhelming the cloud</strong>.
+                  overwhelming the cloud.
                 </>,
               ]}
             />
@@ -952,8 +947,8 @@ export default function DigitalTransformationWeek5() {
             <Bullets
               items={[
                 <>
-                  Offers low-latency processing for applications like <strong>smart cities</strong> and{" "}
-                  <strong>industrial IoT</strong>.
+                  Offers low-latency processing for applications like smart cities and{" "}
+                  industrial IoT.
                 </>,
               ]}
             />
@@ -983,13 +978,13 @@ export default function DigitalTransformationWeek5() {
                 className="mt-3 gap-2"
                 items={[
                   <>
-                    Managing <em>traffic lights</em> based on <strong>real-time traffic</strong> conditions.
+                    Managing traffic lights based on real-time traffic conditions.
                   </>,
                   <>
-                    Processing <em>surveillance camera</em> data locally for faster <strong>threat detection</strong>.
+                    Processing surveillance camera data locally for faster threat detection.
                   </>,
                   <>
-                    Enhancing <em>energy efficiency</em> through real-time <strong>monitoring of utilities</strong>.
+                    Enhancing energy efficiency through real-time monitoring of utilities.
                   </>,
                 ]}
               />

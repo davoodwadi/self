@@ -1,7 +1,7 @@
 "use client";
 
-/* Section markers on a cream tab with an ink rule, so they stay visible over
-   the ink chapter bands. The active section is a red diamond. */
+/* Section navigation rail on a white tab with a hairline border.
+   The active section is a red dot. */
 
 import React, { useEffect, useState } from "react";
 
@@ -27,7 +27,7 @@ export function DeckNav({ sections }: { sections: { id: string; label: string }[
   return (
     <nav
       aria-label="Sections"
-      className="hidden md:flex fixed right-3 top-1/2 -translate-y-1/2 z-50 flex-col gap-1 bg-[var(--dt-cream)] border-2 border-[var(--dt-ink)] p-1.5"
+      className="hidden md:flex fixed right-3 top-1/2 -translate-y-1/2 z-50 flex-col gap-1 bg-[var(--dt-white)]/95 border border-[var(--dt-ink)]/15 p-1.5"
     >
       {sections.map((s) => {
         const on = s.id === active;
@@ -40,11 +40,11 @@ export function DeckNav({ sections }: { sections: { id: string; label: string }[
             aria-current={on ? "true" : undefined}
           >
             <span
-              className={`rotate-45 transition-all duration-300 ${
-                on ? "w-2.5 h-2.5 bg-[var(--dt-signal)]" : "w-1.5 h-1.5 bg-[var(--dt-ink)]"
+              className={`rounded-full transition-all duration-200 ${
+                on ? "w-2 h-2 bg-[var(--dt-signal)]" : "w-1.5 h-1.5 bg-[var(--dt-ink)]/35"
               }`}
             />
-            <span className="pointer-events-none absolute right-8 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--dt-ink)] text-[var(--dt-cream)] font-accent font-bold uppercase tracking-[0.2em] text-[0.65rem] px-2 py-1">
+            <span className="pointer-events-none absolute right-8 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--dt-ink)] text-[var(--dt-white)] font-sans font-medium tracking-normal text-xs px-2.5 py-1">
               {s.label}
             </span>
           </button>

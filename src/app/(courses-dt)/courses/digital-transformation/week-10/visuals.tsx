@@ -23,7 +23,7 @@
 
 import React, { useState } from "react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SIGNAL,
   COUNTER,
@@ -36,8 +36,8 @@ import {
   Knob,
 } from "../_visuals/kit";
 
-const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
-const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
+const HEAD = { fontFamily: "var(--font-sans)", fontWeight: 700 } as const;
+const BODY = { fontFamily: "var(--font-sans)", fontWeight: 600 } as const;
 
 /* ==========================================================================
    Bespoke Silhouette Primitives for Week 10
@@ -73,7 +73,7 @@ function VaultWheelGlyph({
       <circle cx={cx} cy={cy} r={ir} fill="none" stroke={tone} strokeWidth={2} />
       <path d={bolts.join(" ")} stroke={tone} strokeWidth={r2(r * 0.14)} strokeLinecap="square" />
       <circle cx={cx} cy={cy} r={hr} fill={tone} />
-      <circle cx={cx} cy={cy} r={r2(hr * 0.38)} fill={CREAM} />
+      <circle cx={cx} cy={cy} r={r2(hr * 0.38)} fill={WHITE} />
     </g>
   );
 }
@@ -105,7 +105,7 @@ function CoolingTowerGlyph({
         fill={tone}
       />
       <rect x={-22} y={-76} width={44} height={5} fill={tone} />
-      <path d="M -22 -12 H 22 M -18 -38 H 18 M -18 -60 H 18" stroke={CREAM} strokeWidth={2.2} />
+      <path d="M -22 -12 H 22 M -18 -38 H 18 M -18 -60 H 18" stroke={WHITE} strokeWidth={2.2} />
     </g>
   );
 }
@@ -131,9 +131,9 @@ function CameraIrisGlyph({
   return (
     <g>
       <circle cx={cx} cy={cy} r={r} fill={tone} />
-      <circle cx={cx} cy={cy} r={r2(r - 6)} fill="none" stroke={CREAM} strokeWidth={2} />
+      <circle cx={cx} cy={cy} r={r2(r - 6)} fill="none" stroke={WHITE} strokeWidth={2} />
       {/* Inner opening that grows/shrinks with openness */}
-      <circle cx={cx} cy={cy} r={apertureR} fill={CREAM} />
+      <circle cx={cx} cy={cy} r={apertureR} fill={WHITE} />
       {/* Iris shutter blade seams */}
       {bladeAngles.map((deg) => {
         const rad1 = (deg * Math.PI) / 180;
@@ -149,7 +149,7 @@ function CameraIrisGlyph({
             y1={y1}
             x2={x2}
             y2={y2}
-            stroke={CREAM}
+            stroke={WHITE}
             strokeWidth={2.2}
           />
         );
@@ -194,7 +194,7 @@ function GearWheelGlyph({
     <g>
       <path d={toothList.join(" ")} stroke={tone} strokeWidth={8} strokeLinecap="butt" />
       <circle cx={cx} cy={cy} r={r} fill={tone} />
-      <circle cx={cx} cy={cy} r={r2(r * 0.56)} fill={CREAM} />
+      <circle cx={cx} cy={cy} r={r2(r * 0.56)} fill={WHITE} />
       <circle cx={cx} cy={cy} r={r2(r * 0.24)} fill={tone} />
     </g>
   );
@@ -271,14 +271,12 @@ export function HeroGovernanceCompassInteractive() {
             }}
             className="cursor-pointer"
           >
-            <rect
-              x={t.x}
+            <rect x={t.x}
               y={14}
               width={t.w}
               height={48}
-              fill={isLit ? SIGNAL : INK}
-            />
-            <text x={t.cx} y={34} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+              fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={t.cx} y={34} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
               {p.num} | {p.short}
             </text>
             <rect
@@ -286,7 +284,7 @@ export function HeroGovernanceCompassInteractive() {
               y={46}
               width={36}
               height={4}
-              fill={isLit ? CREAM : COUNTER_FILL}
+              fill={isLit ? WHITE : COUNTER_FILL}
             />
           </g>
         );
@@ -312,16 +310,16 @@ export function HeroGovernanceCompassInteractive() {
 
       {/* Central framed digital Monitor showing the governed digital system */}
       <Monitor x={184} y={76} w={318} h={196}>
-        <rect x={200} y={90} width={286} height={32} fill={INK} />
-        <text x={343} y={111} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+        <rect x={200} y={90} width={286} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={343} y={111} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
           {current.title}
         </text>
 
         {active === 0 && (
           <g>
             <VaultWheelGlyph cx={268} cy={184} r={34} angleDeg={30} tone={SIGNAL} />
-            <rect x={324} y={146} width={144} height={24} fill={INK} />
-            <text x={396} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <rect x={324} y={146} width={144} height={24} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={396} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               Perimeter Locked
             </text>
             <rect x={324} y={180} width={144} height={24} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -334,8 +332,8 @@ export function HeroGovernanceCompassInteractive() {
         {active === 1 && (
           <g>
             <CameraIrisGlyph cx={268} cy={184} r={36} openness={0.18} tone={INK} coreTone={SIGNAL} />
-            <rect x={324} y={146} width={144} height={24} fill={SIGNAL} />
-            <text x={396} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <rect x={324} y={146} width={144} height={24} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={396} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               Data Minimization
             </text>
             <rect x={324} y={180} width={144} height={24} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -349,8 +347,8 @@ export function HeroGovernanceCompassInteractive() {
           <g>
             <CoolingTowerGlyph bx={248} by={228} k={0.9} tone={INK} plume />
             <CoolingTowerGlyph bx={294} by={228} k={0.72} tone={INK} />
-            <rect x={332} y={146} width={138} height={24} fill={SIGNAL} />
-            <text x={401} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <rect x={332} y={146} width={138} height={24} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={401} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               2x: 3x / yr AI Cost
             </text>
             <rect x={332} y={180} width={138} height={24} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -364,12 +362,12 @@ export function HeroGovernanceCompassInteractive() {
           <g>
             <path d="M 318 228 L 343 182 L 368 228 Z" fill={INK} />
             <rect x={238} y={176} width={210} height={7} fill={INK} />
-            <rect x={242} y={142} width={88} height={28} fill={COUNTER} />
-            <text x={286} y={161} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <rect x={242} y={142} width={88} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={286} y={161} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               Innovation
             </text>
-            <rect x={356} y={142} width={88} height={28} fill={SIGNAL} />
-            <text x={400} y={161} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <rect x={356} y={142} width={88} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={400} y={161} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               Governance
             </text>
           </g>
@@ -472,7 +470,7 @@ export function ReviewRevolutionsDialInteractive({
             className="cursor-pointer"
           >
             <rect x={cx - 64} y={8} width={128} height={124} fill="transparent" />
-            <text x={cx} y={24} textAnchor="middle" {...HEAD} fontSize={13.5} fill={isLit ? SIGNAL : INK}>
+            <text x={cx} y={24} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {st.qNum} | {st.era}
             </text>
             <GearWheelGlyph cx={cx} cy={69} r={21} teeth={8} tone={isLit ? SIGNAL : INK} />
@@ -481,9 +479,10 @@ export function ReviewRevolutionsDialInteractive({
               y={108}
               width={104}
               height={22}
-              fill={isLit ? SIGNAL : COUNTER_FILL}
+              fill={INK}
+              fillOpacity={isLit ? 0.08 : 0.03}
               stroke={INK}
-              strokeWidth={1.5}
+              strokeWidth={isLit ? 2 : 1.25}
             />
             <text
               x={cx}
@@ -491,7 +490,7 @@ export function ReviewRevolutionsDialInteractive({
               textAnchor="middle"
               {...BODY}
               fontSize={12.5}
-              fill={isLit ? CREAM : INK}
+              fill={INK}
             >
               {st.short}
             </text>
@@ -501,18 +500,18 @@ export function ReviewRevolutionsDialInteractive({
 
       {/* Bottom synchronized inspection chamber */}
       <rect x={28} y={146} width={744} height={108} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
-      <rect x={28} y={146} width={136} height={108} fill={INK} />
-      <text x={96} y={194} textAnchor="middle" {...HEAD} fontSize={28} fill={SIGNAL}>
+      <rect x={28} y={146} width={136} height={108} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={96} y={194} textAnchor="middle" {...HEAD} fontSize={28} fill={INK}>
         {current.qNum}
       </text>
-      <text x={96} y={222} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+      <text x={96} y={222} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         {current.era}
       </text>
 
       <text x={184} y={184} {...HEAD} fontSize={19} fill={INK}>
         {current.title}
       </text>
-      <text x={184} y={210} {...HEAD} fontSize={15} fill={SIGNAL}>
+      <text x={184} y={210} {...HEAD} fontSize={15} fill={INK}>
         {current.mechanism}
       </text>
       <text x={184} y={234} {...BODY} fontSize={14} fill={INK}>
@@ -600,9 +599,12 @@ export function ThreatLandscapeDefenseDomeInteractive({
               y={12}
               width={tab.w}
               height={34}
-              fill={isLit ? SIGNAL : INK}
+              fill={INK}
+              fillOpacity={isLit ? 0.08 : 0.03}
+              stroke={INK}
+              strokeWidth={isLit ? 2 : 1.25}
             />
-            <text x={r2(tab.x + tab.w / 2)} y={34} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <text x={r2(tab.x + tab.w / 2)} y={34} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {tab.label}
             </text>
           </g>
@@ -610,8 +612,8 @@ export function ThreatLandscapeDefenseDomeInteractive({
       })}
 
       {/* Economic & Reputational risk readout */}
-      <rect x={264} y={56} width={260} height={28} fill={INK} />
-      <text x={394} y={75} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+      <rect x={264} y={56} width={260} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={394} y={75} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
         Breach Risk: {exposurePct}%
       </text>
 
@@ -642,16 +644,17 @@ export function ThreatLandscapeDefenseDomeInteractive({
               y={node.y}
               width={168}
               height={50}
-              fill={isTarget ? SIGNAL : COUNTER_FILL}
+              fill={INK}
+              fillOpacity={isTarget ? 0.08 : 0.03}
               stroke={INK}
-              strokeWidth={2.5}
+              strokeWidth={isTarget ? 2 : 1.25}
             />
             <text
               x={28}
               y={node.y + 22}
               {...HEAD}
               fontSize={14}
-              fill={isTarget ? CREAM : INK}
+              fill={INK}
             >
               {node.title}
             </text>
@@ -660,7 +663,7 @@ export function ThreatLandscapeDefenseDomeInteractive({
               y={node.y + 41}
               {...BODY}
               fontSize={12.5}
-              fill={isTarget ? CREAM : INK}
+              fill={INK}
             >
               {node.sub}
             </text>
@@ -695,7 +698,7 @@ export function ThreatLandscapeDefenseDomeInteractive({
         stroke={INK}
         strokeWidth={2.5}
       />
-      <rect x={338} y={108} width={140} height={98} fill={CREAM} />
+      <rect x={338} y={108} width={140} height={98} fill={WHITE} />
       <Monitor x={338} y={108} w={140} h={98}>
         <VaultWheelGlyph
           cx={408}
@@ -707,11 +710,11 @@ export function ThreatLandscapeDefenseDomeInteractive({
       </Monitor>
 
       {/* Active threat detail bar */}
-      <rect x={16} y={266} width={508} height={48} fill={INK} />
-      <text x={270} y={287} textAnchor="middle" {...HEAD} fontSize={14} fill={SIGNAL}>
+      <rect x={16} y={266} width={508} height={48} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={270} y={287} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
         {current.name} | {current.surface}
       </text>
-      <text x={270} y={306} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
+      <text x={270} y={306} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         {current.summary}
       </text>
 
@@ -809,8 +812,8 @@ export function NorthAmericaBreachLabInteractive() {
             }}
             className="cursor-pointer"
           >
-            <rect x={x} y={14} width={180} height={36} fill={isLit ? INK : COUNTER_FILL} stroke={INK} strokeWidth={2} />
-            <text x={x + 90} y={37} textAnchor="middle" {...HEAD} fontSize={13.5} fill={isLit ? CREAM : INK}>
+            <rect x={x} y={14} width={180} height={36} fill={INK} fillOpacity={isLit ? 0.08 : 0.03} stroke={INK} strokeWidth={isLit ? 2 : 1.25} />
+            <text x={x + 90} y={37} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {a.label}
             </text>
           </g>
@@ -837,17 +840,20 @@ export function NorthAmericaBreachLabInteractive() {
           y={14}
           width={176}
           height={36}
-          fill={prevented ? COUNTER : SIGNAL}
+          fill={INK}
+          fillOpacity={0.05}
+          stroke={INK}
+          strokeWidth={1.5}
         />
-        <text x={692} y={37} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+        <text x={692} y={37} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
           {prevented ? "Safeguard: ON" : "Safeguard: OFF"}
         </text>
       </g>
 
       {/* Stage 1: Who caused it? */}
-      <rect x={20} y={68} width={224} height={154} fill={CREAM} stroke={INK} strokeWidth={3} />
-      <rect x={20} y={68} width={224} height={32} fill={INK} />
-      <text x={132} y={89} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+      <rect x={20} y={68} width={224} height={154} fill={WHITE} stroke={INK} strokeWidth={3} />
+      <rect x={20} y={68} width={224} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={132} y={89} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
         1. Who caused it?
       </text>
       <VaultWheelGlyph cx={132} cy={138} r={22} angleDeg={0} tone={SIGNAL} />
@@ -861,9 +867,9 @@ export function NorthAmericaBreachLabInteractive() {
       <Pointer x1={244} y1={145} x2={284} y2={145} w={4.5} color={SIGNAL} />
 
       {/* Stage 2: What vulnerability enabled it? */}
-      <rect x={286} y={68} width={228} height={154} fill={CREAM} stroke={INK} strokeWidth={3} />
-      <rect x={286} y={68} width={228} height={32} fill={SIGNAL} />
-      <text x={400} y={89} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+      <rect x={286} y={68} width={228} height={154} fill={WHITE} stroke={INK} strokeWidth={3} />
+      <rect x={286} y={68} width={228} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={89} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
         2. What vulnerability?
       </text>
       <rect x={376} y={114} width={48} height={42} fill={INK} />
@@ -886,17 +892,17 @@ export function NorthAmericaBreachLabInteractive() {
 
       {/* Stage 3: How could the organization prevent it? */}
       <Monitor x={556} y={68} w={224} h={154}>
-        <rect x={568} y={80} width={200} height={28} fill={prevented ? COUNTER : INK} />
-        <text x={668} y={99} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+        <rect x={568} y={80} width={200} height={28} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+        <text x={668} y={99} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
           3. Prevention
         </text>
-        <text x={668} y={148} textAnchor="middle" {...HEAD} fontSize={14.5} fill={prevented ? COUNTER : INK}>
+        <text x={668} y={148} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
           {current.prev1}
         </text>
         <text x={668} y={172} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
           {current.prev2}
         </text>
-        <text x={668} y={202} textAnchor="middle" {...HEAD} fontSize={13} fill={prevented ? COUNTER : SIGNAL}>
+        <text x={668} y={202} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
           {prevented ? "BREACH PREVENTED" : "BREACH ACTIVE"}
         </text>
       </Monitor>
@@ -946,10 +952,10 @@ export function HallucinatedReportScannerInteractive() {
     >
       <Monitor x={24} y={16} w={452} h={246}>
         {/* Browser header bar */}
-        <rect x={38} y={30} width={424} height={28} fill={INK} />
+        <rect x={38} y={30} width={424} height={28} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
         <circle cx={54} cy={44} r={5} fill={SIGNAL} />
-        <circle cx={70} cy={44} r={5} fill={CREAM} />
-        <text x={258} y={49} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+        <circle cx={70} cy={44} r={5} fill={INK} fillOpacity={0.35} />
+        <text x={258} y={49} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
           Source Viability Scanner | Click a Report
         </text>
 
@@ -977,16 +983,17 @@ export function HallucinatedReportScannerInteractive() {
                 y={y}
                 width={416}
                 height={50}
-                fill={isLit ? (c.viable ? COUNTER_FILL : SIGNAL) : CREAM}
+                fill={INK}
+                fillOpacity={isLit ? 0.07 : 0.02}
                 stroke={INK}
-                strokeWidth={isLit ? 3 : 1.5}
+                strokeWidth={isLit ? 2 : 1.25}
               />
               <text
                 x={56}
                 y={y + 21}
                 {...HEAD}
                 fontSize={13.5}
-                fill={isLit && !c.viable ? CREAM : INK}
+                fill={INK}
               >
                 {c.headline}
               </text>
@@ -995,7 +1002,7 @@ export function HallucinatedReportScannerInteractive() {
                 y={y + 40}
                 {...BODY}
                 fontSize={12.5}
-                fill={isLit && !c.viable ? CREAM : INK}
+                fill={INK}
               >
                 {isLit ? `${c.verdict} - ${c.sub}` : "Click to verify source viability"}
               </text>
@@ -1010,9 +1017,12 @@ export function HallucinatedReportScannerInteractive() {
         y={302}
         width={452}
         height={34}
-        fill={current.viable ? COUNTER : SIGNAL}
+        fill={INK}
+        fillOpacity={0.05}
+        stroke={INK}
+        strokeWidth={1.5}
       />
-      <text x={250} y={324} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+      <text x={250} y={324} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
         {current.verdict} | {current.viable ? "Viable Regulatory Record" : "GenAI Fake: Did Not Happen!"}
       </text>
     </Plate>
@@ -1079,14 +1089,12 @@ export function CraBreachForensicTimelineInteractive({
             }}
             className="cursor-pointer"
           >
-            <rect
-              x={x}
+            <rect x={x}
               y={14}
               width={248}
               height={44}
-              fill={isLit ? SIGNAL : INK}
-            />
-            <text x={x + 124} y={35} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+              fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={x + 124} y={35} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
               {st.num} | {st.badge}
             </text>
             <rect
@@ -1094,7 +1102,7 @@ export function CraBreachForensicTimelineInteractive({
               y={46}
               width={80}
               height={4}
-              fill={isLit ? CREAM : COUNTER_FILL}
+              fill={isLit ? WHITE : COUNTER_FILL}
             />
           </g>
         );
@@ -1105,8 +1113,8 @@ export function CraBreachForensicTimelineInteractive({
         <g>
           {/* Left: H&R Block Canada credential vault */}
           <rect x={24} y={82} width={206} height={164} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
-          <rect x={24} y={82} width={206} height={34} fill={INK} />
-          <text x={127} y={104} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+          <rect x={24} y={82} width={206} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={127} y={104} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
             H&R Block Canada (2020)
           </text>
           <VaultWheelGlyph cx={74} cy={172} r={26} angleDeg={25} tone={SIGNAL} />
@@ -1116,7 +1124,7 @@ export function CraBreachForensicTimelineInteractive({
           <text x={156} y={180} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
             Data Obtained
           </text>
-          <text x={156} y={202} textAnchor="middle" {...BODY} fontSize={12.5} fill={SIGNAL}>
+          <text x={156} y={202} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
             Unauthorized Access
           </text>
 
@@ -1136,8 +1144,8 @@ export function CraBreachForensicTimelineInteractive({
             {/* Diverted imposter track (active SIGNAL red) */}
             <line x1={382} y1={146} x2={446} y2={182} stroke={SIGNAL} strokeWidth={6} />
             <circle cx={382} cy={146} r={7} fill={SIGNAL} />
-            <rect x={312} y={198} width={176} height={28} fill={SIGNAL} />
-            <text x={400} y={217} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <rect x={312} y={198} width={176} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={400} y={217} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               False Tax Returns Filed
             </text>
           </Monitor>
@@ -1145,17 +1153,17 @@ export function CraBreachForensicTimelineInteractive({
           <Pointer x1={520} y1={164} x2={566} y2={164} w={5} color={SIGNAL} />
 
           {/* Right: Over $6 Million stolen in fraudulent refunds */}
-          <rect x={570} y={82} width={206} height={164} fill={SIGNAL} stroke={INK} strokeWidth={3} />
-          <text x={673} y={138} textAnchor="middle" {...HEAD} fontSize={36} fill={CREAM}>
+          <rect x={570} y={82} width={206} height={164} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
+          <text x={673} y={138} textAnchor="middle" {...HEAD} fontSize={36} fill={INK}>
             $6M+
           </text>
-          <text x={673} y={170} textAnchor="middle" {...HEAD} fontSize={16} fill={CREAM}>
+          <text x={673} y={170} textAnchor="middle" {...HEAD} fontSize={16} fill={INK}>
             Fraudulent Refunds
           </text>
-          <text x={673} y={196} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+          <text x={673} y={196} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
             Direct deposit info altered
           </text>
-          <text x={673} y={216} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+          <text x={673} y={216} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
             by unauthorized imposters
           </text>
         </g>
@@ -1165,8 +1173,8 @@ export function CraBreachForensicTimelineInteractive({
       {activeStage === 1 && (
         <g>
           <Monitor x={36} y={76} w={336} h={172}>
-            <rect x={52} y={92} width={304} height={30} fill={SIGNAL} />
-            <text x={204} y={112} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+            <rect x={52} y={92} width={304} height={30} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={204} y={112} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
               CRA Internal Error: Gate Left Open
             </text>
             {/* 6 rows of 5 grid blocks = 30,000+ taxpayers */}
@@ -1189,19 +1197,19 @@ export function CraBreachForensicTimelineInteractive({
           <Pointer x1={376} y1={164} x2={428} y2={164} w={5} color={SIGNAL} />
 
           <rect x={432} y={82} width={344} height={164} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
-          <text x={604} y={120} textAnchor="middle" {...HEAD} fontSize={28} fill={SIGNAL}>
+          <text x={604} y={120} textAnchor="middle" {...HEAD} fontSize={28} fill={INK}>
             30,000+ Taxpayers
           </text>
-          <rect x={456} y={136} width={296} height={28} fill={INK} />
-          <text x={604} y={155} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+          <rect x={456} y={136} width={296} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={604} y={155} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
             Social Insurance Numbers (SIN)
           </text>
-          <rect x={456} y={172} width={142} height={28} fill={INK} />
-          <text x={527} y={191} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+          <rect x={456} y={172} width={142} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={527} y={191} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
             Tax Returns
           </text>
-          <rect x={610} y={172} width={142} height={28} fill={INK} />
-          <text x={681} y={191} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+          <rect x={610} y={172} width={142} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={681} y={191} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
             Financial Details
           </text>
           <text x={604} y={226} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
@@ -1213,26 +1221,26 @@ export function CraBreachForensicTimelineInteractive({
       {/* Stage 2 visual: Ongoing OPC Investigation under the Privacy Act */}
       {activeStage === 2 && (
         <g>
-          <rect x={36} y={82} width={316} height={164} fill={INK} />
-          <text x={194} y={122} textAnchor="middle" {...HEAD} fontSize={19} fill={CREAM}>
+          <rect x={36} y={82} width={316} height={164} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
+          <text x={194} y={122} textAnchor="middle" {...HEAD} fontSize={19} fill={INK}>
             Office of the Privacy
           </text>
-          <text x={194} y={146} textAnchor="middle" {...HEAD} fontSize={19} fill={CREAM}>
+          <text x={194} y={146} textAnchor="middle" {...HEAD} fontSize={19} fill={INK}>
             Commissioner (OPC)
           </text>
-          <rect x={72} y={166} width={244} height={32} fill={SIGNAL} />
-          <text x={194} y={187} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+          <rect x={72} y={166} width={244} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={194} y={187} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
             Investigation Ongoing
           </text>
-          <text x={194} y={224} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+          <text x={194} y={224} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
             Federal Privacy Oversight Watchdog
           </text>
 
           <Pointer x1={356} y1={164} x2={416} y2={164} w={5} color={SIGNAL} />
 
           <Monitor x={420} y={76} w={352} h={172}>
-            <rect x={438} y={92} width={316} height={32} fill={COUNTER} />
-            <text x={596} y={113} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+            <rect x={438} y={92} width={316} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={596} y={113} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
               Federal Privacy Act Obligations Audit
             </text>
             <VaultWheelGlyph cx={488} cy={176} r={30} angleDeg={0} tone={COUNTER} />
@@ -1242,7 +1250,7 @@ export function CraBreachForensicTimelineInteractive({
             <text x={626} y={178} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
               obligations under the
             </text>
-            <text x={626} y={202} textAnchor="middle" {...HEAD} fontSize={17} fill={SIGNAL}>
+            <text x={626} y={202} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               Privacy Act?
             </text>
           </Monitor>
@@ -1274,11 +1282,11 @@ export function PrivacyMinimizationApertureInteractive() {
     >
       {/* Left column: Privacy by Design & Data Minimization */}
       <rect x={20} y={16} width={236} height={212} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
-      <rect x={20} y={16} width={236} height={36} fill={COUNTER} />
-      <text x={138} y={39} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+      <rect x={20} y={16} width={236} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={138} y={39} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
         Privacy Rights & Minimization
       </text>
-      <text x={138} y={88} textAnchor="middle" {...HEAD} fontSize={34} fill={COUNTER}>
+      <text x={138} y={88} textAnchor="middle" {...HEAD} fontSize={34} fill={INK}>
         {privacyScore}%
       </text>
       <text x={138} y={114} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
@@ -1307,12 +1315,15 @@ export function PrivacyMinimizationApertureInteractive() {
           y={164}
           width={204}
           height={46}
-          fill={isZeroCollection ? SIGNAL : INK}
+          fill={INK}
+          fillOpacity={isZeroCollection ? 0.08 : 0.03}
+          stroke={INK}
+          strokeWidth={isZeroCollection ? 2 : 1.25}
         />
-        <text x={138} y={184} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+        <text x={138} y={184} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
           Privacy by Design Mode:
         </text>
-        <text x={138} y={201} textAnchor="middle" {...BODY} fontSize={12.5} fill={CREAM}>
+        <text x={138} y={201} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
           Do Not Collect Data At All (0%)
         </text>
       </g>
@@ -1330,7 +1341,7 @@ export function PrivacyMinimizationApertureInteractive() {
           tone={INK}
           coreTone={SIGNAL}
         />
-        <text x={400} y={176} textAnchor="middle" {...HEAD} fontSize={13} fill={isZeroCollection ? COUNTER : SIGNAL}>
+        <text x={400} y={176} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
           {isZeroCollection
             ? "Zero Data Collected (0%)"
             : `Collecting ${collectionLevel}% Personal Data`}
@@ -1338,12 +1349,12 @@ export function PrivacyMinimizationApertureInteractive() {
       </Monitor>
 
       {/* Right column: Data-Driven Business Model & Personalization */}
-      <rect x={544} y={16} width={236} height={212} fill={CREAM} stroke={INK} strokeWidth={3} />
-      <rect x={544} y={16} width={236} height={36} fill={SIGNAL} />
-      <text x={662} y={39} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+      <rect x={544} y={16} width={236} height={212} fill={WHITE} stroke={INK} strokeWidth={3} />
+      <rect x={544} y={16} width={236} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={662} y={39} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
         Data-Driven Personalization
       </text>
-      <text x={662} y={88} textAnchor="middle" {...HEAD} fontSize={34} fill={SIGNAL}>
+      <text x={662} y={88} textAnchor="middle" {...HEAD} fontSize={34} fill={INK}>
         {personalizationScore}%
       </text>
       <text x={662} y={114} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
@@ -1372,18 +1383,21 @@ export function PrivacyMinimizationApertureInteractive() {
           y={164}
           width={204}
           height={46}
-          fill={collectionLevel >= 70 ? SIGNAL : INK}
+          fill={INK}
+          fillOpacity={collectionLevel >= 70 ? 0.08 : 0.03}
+          stroke={INK}
+          strokeWidth={collectionLevel >= 70 ? 2 : 1.25}
         />
-        <text x={662} y={184} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+        <text x={662} y={184} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
           Data-Driven Model Mode:
         </text>
-        <text x={662} y={201} textAnchor="middle" {...BODY} fontSize={12.5} fill={CREAM}>
+        <text x={662} y={201} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
           Collect Personal Data (85%)
         </text>
       </g>
 
       {/* Bottom Interactive Knob Track */}
-      <text x={44} y={268} {...HEAD} fontSize={14} fill={COUNTER}>
+      <text x={44} y={268} {...HEAD} fontSize={14} fill={INK}>
         Minimization (0%)
       </text>
       <rect x={220} y={260} width={360} height={8} fill={INK} />
@@ -1400,7 +1414,7 @@ export function PrivacyMinimizationApertureInteractive() {
         label="Personal data collection aperture from 0% data minimization to 100% data-driven personalization"
         tone={SIGNAL}
       />
-      <text x={600} y={268} {...HEAD} fontSize={14} fill={SIGNAL}>
+      <text x={600} y={268} {...HEAD} fontSize={14} fill={INK}>
         Max Collection (100%)
       </text>
     </Plate>
@@ -1479,8 +1493,8 @@ export function AlgorithmGovernanceXrayInteractive({
             }}
             className="cursor-pointer"
           >
-            <rect x={x} y={12} width={122} height={36} fill={isLit ? SIGNAL : INK} />
-            <text x={x + 61} y={35} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <rect x={x} y={12} width={122} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={x + 61} y={35} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {b.name}
             </text>
           </g>
@@ -1489,19 +1503,19 @@ export function AlgorithmGovernanceXrayInteractive({
 
       {/* Framed digital Monitor holding the AI Decision Engine */}
       <Monitor x={20} y={60} w={500} h={216}>
-        <rect x={36} y={74} width={468} height={28} fill={INK} />
-        <text x={270} y={93} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+        <rect x={36} y={74} width={468} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={270} y={93} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
           How is the AI model making decisions? | {xrayOpen ? "Explainable View" : "Black-Box View"}
         </text>
 
         {!xrayOpen ? (
           /* Opaque Black Box state */
           <g>
-            <rect x={140} y={114} width={260} height={112} fill={INK} />
-            <text x={270} y={168} textAnchor="middle" {...HEAD} fontSize={32} fill={SIGNAL}>
+            <rect x={140} y={114} width={260} height={112} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={270} y={168} textAnchor="middle" {...HEAD} fontSize={32} fill={INK}>
               ? | BLACK BOX | ?
             </text>
-            <text x={270} y={204} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
+            <text x={270} y={204} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
               Decision weights hidden: cannot audit {current.name}
             </text>
           </g>
@@ -1520,15 +1534,15 @@ export function AlgorithmGovernanceXrayInteractive({
             <line x1={88} y1={224} x2={155} y2={208} stroke={COUNTER} strokeWidth={2.5} />
 
             {/* Explainability readout inside X-ray */}
-            <rect x={196} y={118} width={286} height={38} fill={SIGNAL} />
-            <text x={339} y={142} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+            <rect x={196} y={118} width={286} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={339} y={142} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
               {current.skewedProxy}
             </text>
             <text x={339} y={180} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {current.outcome}
             </text>
-            <rect x={196} y={198} width={286} height={34} fill={INK} />
-            <text x={339} y={220} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
+            <rect x={196} y={198} width={286} height={34} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+            <text x={339} y={220} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
               Fix: {current.correctedRule}
             </text>
           </g>
@@ -1555,9 +1569,12 @@ export function AlgorithmGovernanceXrayInteractive({
           y={316}
           width={500}
           height={42}
-          fill={xrayOpen ? COUNTER : SIGNAL}
+          fill={INK}
+          fillOpacity={0.05}
+          stroke={INK}
+          strokeWidth={1.5}
         />
-        <text x={270} y={342} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+        <text x={270} y={342} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
           {xrayOpen
             ? "Transparency & Explainability X-Ray: ON (Click to Hide)"
             : "Transparency & Explainability X-Ray: OFF (Click to Inspect)"}
@@ -1594,8 +1611,8 @@ export function InformationIntegrityFulcrumInteractive() {
       title={`Interactive content moderation balance fulcrum: drag the moderation strictness knob (${filterStrictness}%) between Battling Misinformation and Censorship Risk. Current state: ${stateLabel}`}
     >
       {/* Top status banner */}
-      <rect x={20} y={14} width={760} height={36} fill={stateTone} />
-      <text x={400} y={37} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+      <rect x={20} y={14} width={760} height={36} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={37} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
         {stateLabel}
       </text>
 
@@ -1606,7 +1623,7 @@ export function InformationIntegrityFulcrumInteractive() {
       {/* Tilting Balance Beam Group */}
       <g transform={`translate(400 172) rotate(${tiltDeg})`}>
         <rect x={-310} y={-5} width={620} height={10} fill={INK} />
-        <circle cx={0} cy={0} r={10} fill={CREAM} stroke={INK} strokeWidth={4} />
+        <circle cx={0} cy={0} r={10} fill={WHITE} stroke={INK} strokeWidth={4} />
 
         {/* Left Pan: Misinformation & Synthetic Media Challenges */}
         <g transform="translate(-230 -78)">
@@ -1614,7 +1631,7 @@ export function InformationIntegrityFulcrumInteractive() {
             <rect x={-26} y={14} width={52} height={10} fill={SIGNAL} />
             <rect x={-26} y={30} width={38} height={8} fill={INK} />
           </MiniScreen>
-          <text x={0} y={-10} textAnchor="middle" {...HEAD} fontSize={14} fill={SIGNAL}>
+          <text x={0} y={-10} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
             Misinformation & Synthetic Media
           </text>
         </g>
@@ -1633,7 +1650,7 @@ export function InformationIntegrityFulcrumInteractive() {
       </g>
 
       {/* Bottom Interactive Knob Track */}
-      <text x={24} y={272} {...HEAD} fontSize={13.5} fill={SIGNAL}>
+      <text x={24} y={272} {...HEAD} fontSize={13.5} fill={INK}>
         Misinformation Risk (0%)
       </text>
       <rect x={260} y={264} width={280} height={8} fill={INK} />
@@ -1733,8 +1750,8 @@ export function AiTrainingFootprintComparatorInteractive({
             }}
             className="cursor-pointer"
           >
-            <rect x={x} y={14} width={178} height={36} fill={isLit ? SIGNAL : INK} />
-            <text x={x + 89} y={37} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+            <rect x={x} y={14} width={178} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={x + 89} y={37} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
               {m.name}
             </text>
           </g>
@@ -1765,9 +1782,10 @@ export function AiTrainingFootprintComparatorInteractive({
           y={14}
           width={198}
           height={36}
-          fill={includeSalaries ? COUNTER : COUNTER_FILL}
+          fill={INK}
+          fillOpacity={includeSalaries ? 0.08 : 0.03}
           stroke={INK}
-          strokeWidth={2}
+          strokeWidth={includeSalaries ? 2 : 1.25}
         />
         <text
           x={681}
@@ -1775,7 +1793,7 @@ export function AiTrainingFootprintComparatorInteractive({
           textAnchor="middle"
           {...HEAD}
           fontSize={13}
-          fill={includeSalaries ? CREAM : INK}
+          fill={INK}
         >
           {includeSalaries ? "+ Staff Salaries: ON (>$100M)" : "+ Staff Salaries: OFF (Click)"}
         </text>
@@ -1831,7 +1849,7 @@ export function AiTrainingFootprintComparatorInteractive({
                 textAnchor="end"
                 {...HEAD}
                 fontSize={13.5}
-                fill={isLit ? SIGNAL : INK}
+                fill={INK}
               >
                 {m.name}
               </text>
@@ -1874,8 +1892,8 @@ export function AiTrainingFootprintComparatorInteractive({
       </Monitor>
 
       {/* Bottom readout */}
-      <rect x={20} y={278} width={760} height={28} fill={INK} />
-      <text x={400} y={297} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+      <rect x={20} y={278} width={760} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={297} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         {current.name}: {current.rangeText}
       </text>
     </Plate>
@@ -1917,8 +1935,8 @@ export function ExponentialCostForecasterInteractive() {
     >
       {/* Framed digital Monitor showing the logarithmic rising columns */}
       <Monitor x={20} y={14} w={760} h={212}>
-        <rect x={36} y={28} width={728} height={26} fill={INK} />
-        <text x={400} y={46} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+        <rect x={36} y={28} width={728} height={26} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={400} y={46} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
           2017 to 2027 Frontier Training Cost Trajectory (Log Scale | {factor}x / Year)
         </text>
 
@@ -1928,8 +1946,8 @@ export function ExponentialCostForecasterInteractive() {
           const barY = r2(baseY - m.logH);
           return (
             <g key={m.year}>
-              <rect x={cx - 48} y={barY} width={96} height={m.logH} fill={m.tone} />
-              <text x={cx} y={barY - 7} textAnchor="middle" {...HEAD} fontSize={13.5} fill={m.tone}>
+              <rect x={cx - 48} y={barY} width={96} height={m.logH} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+              <text x={cx} y={barY - 7} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
                 {m.costLabel}
               </text>
               <text x={cx} y={202} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
@@ -1968,7 +1986,7 @@ export function ExponentialCostForecasterInteractive() {
         label="Annual AI training cost growth factor between 2.0x and 3.0x per year"
         tone={SIGNAL}
       />
-      <text x={584} y={280} {...HEAD} fontSize={14} fill={COUNTER}>
+      <text x={584} y={280} {...HEAD} fontSize={14} fill={INK}>
         2027: &gt;$1B (~${projected2027B}B)
       </text>
     </Plate>
@@ -2007,7 +2025,7 @@ export function CloudMonopolyGravityInteractive() {
         return (
           <g key={sx}>
             <rect x={sx - 20} y={32} width={40} height={24} fill={INK} />
-            <rect x={sx - 16} y={36} width={32} height={16} fill={CREAM} />
+            <rect x={sx - 16} y={36} width={32} height={16} fill={WHITE} />
             <path
               d={`M ${sx} 56 C ${sx} 96 ${endX} 96 ${endX} 132`}
               fill="none"
@@ -2030,12 +2048,15 @@ export function CloudMonopolyGravityInteractive() {
               y={170}
               width={68}
               height={84}
-              fill={t > 0.5 ? SIGNAL : INK}
+              fill={INK}
+              fillOpacity={0.05}
+              stroke={t > 0.5 ? SIGNAL : INK}
+              strokeWidth={1.5}
             />
-            <rect x={cx - 24} y={182} width={48} height={6} fill={CREAM} />
-            <rect x={cx - 24} y={196} width={48} height={6} fill={CREAM} />
-            <rect x={cx - 24} y={210} width={48} height={6} fill={CREAM} />
-            <text x={cx} y={242} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+            <rect x={cx - 24} y={182} width={48} height={6} fill={t > 0.5 ? SIGNAL : INK} fillOpacity={0.45} />
+            <rect x={cx - 24} y={196} width={48} height={6} fill={t > 0.5 ? SIGNAL : INK} fillOpacity={0.45} />
+            <rect x={cx - 24} y={210} width={48} height={6} fill={t > 0.5 ? SIGNAL : INK} fillOpacity={0.45} />
+            <text x={cx} y={242} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
               Cloud #{i + 1}
             </text>
           </g>
@@ -2102,8 +2123,8 @@ export function WeaponsOfMathDestructionInteractive() {
       title={`Interactive three-gear diagram of Cathy O'Neil's Weapons of Math Destruction (2016): 01 Opacity, 02 Scale, and 03 Inequality & Democratic Harm. Currently inspecting Gear ${current.num}: ${current.name}`}
     >
       {/* Top header */}
-      <rect x={24} y={14} width={752} height={34} fill={INK} />
-      <text x={400} y={36} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+      <rect x={24} y={14} width={752} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={36} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
         O&apos;Neil (2016) | How Big Data Increases Inequality and Threatens Democracy (Click a Gear)
       </text>
 
@@ -2129,7 +2150,7 @@ export function WeaponsOfMathDestructionInteractive() {
           >
             <rect x={cx - 108} y={54} width={216} height={134} fill="transparent" />
             <GearWheelGlyph cx={cx} cy={112} r={34} teeth={10} tone={isLit ? SIGNAL : INK} />
-            <text x={cx} y={176} textAnchor="middle" {...HEAD} fontSize={14.5} fill={isLit ? SIGNAL : INK}>
+            <text x={cx} y={176} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
               {p.num} | {p.short}
             </text>
             {i < 2 && (
@@ -2139,9 +2160,9 @@ export function WeaponsOfMathDestructionInteractive() {
         );
       })}
 
-      {/* Bottom readout box + digital MiniScreen on cream */}
+      {/* Bottom readout box + digital MiniScreen on white */}
       <rect x={24} y={194} width={632} height={72} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
-      <text x={44} y={222} {...HEAD} fontSize={16} fill={SIGNAL}>
+      <text x={44} y={222} {...HEAD} fontSize={16} fill={INK}>
         {current.num} | {current.name}
       </text>
       <text x={44} y={248} {...BODY} fontSize={13.5} fill={INK}>

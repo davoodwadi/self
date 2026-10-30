@@ -36,7 +36,7 @@ import {
   Clock,
 } from "@phosphor-icons/react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SIGNAL,
   COUNTER,
@@ -61,10 +61,10 @@ export function HeroAcceptance() {
     <Plate
       w={560}
       h={240}
-      title="A person in profile faces a framed screen holding a digital shop, with a red arrow from the person to the screen showing technology acceptance and use"
+      title="A physical shop silhouette on the left, a red arrow showing technology acceptance and use, and a connected digital system on a framed screen on the right"
     >
-      <Person x={104} y={62} k={1.5} hair="bob" />
-      <Arrow x1={194} x2={294} y={118} color={SIGNAL} />
+      <Shop x={40} y={38} k={0.92} />
+      <Arrow x1={206} x2={294} y={112} color={SIGNAL} />
       <Monitor x={312} y={24} w={216} h={164}>
         <Shop x={357.6} y={48.5} k={0.78} />
       </Monitor>
@@ -81,7 +81,7 @@ function BoxLines({
   cy,
   lines,
   size = 15.5,
-  fill = CREAM,
+  fill = INK,
 }: {
   cx: number;
   cy: number;
@@ -99,10 +99,10 @@ function BoxLines({
           x={cx}
           y={r2(startY + i * step)}
           textAnchor="middle"
-          fontFamily="var(--font-body)"
+          fontFamily="var(--font-sans)"
           fontWeight={600}
           fontSize={size}
-          fill={fill}
+          fill={INK}
         >
           {line}
         </text>
@@ -119,27 +119,27 @@ export function TamFlowDiagram() {
       title="The Technology Acceptance Model: External Variables point to Perceived Usefulness (U) and Perceived Ease of Use (E). Perceived Ease of Use points up to Perceived Usefulness. Both point to Attitude Toward Using (A), which together with Perceived Usefulness points to Behavioral Intention to Use, leading to Actual System Use in red"
     >
       {/* External Variables */}
-      <rect x={12} y={66} width={116} height={92} fill={INK} />
+      <rect x={12} y={66} width={116} height={92} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={70} cy={112} lines={["External", "Variables"]} />
 
       {/* Perceived Usefulness (U) & Perceived Ease of Use (E) */}
-      <rect x={166} y={20} width={156} height={68} fill={INK} />
+      <rect x={166} y={20} width={156} height={68} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={244} cy={54} lines={["Perceived", "Usefulness (U)"]} />
 
-      <rect x={166} y={136} width={156} height={68} fill={INK} />
+      <rect x={166} y={136} width={156} height={68} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={244} cy={170} lines={["Perceived Ease", "of Use (E)"]} />
 
       {/* Attitude Toward Using (A) */}
-      <rect x={360} y={66} width={126} height={92} fill={INK} />
+      <rect x={360} y={66} width={126} height={92} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={423} cy={112} lines={["Attitude", "Toward", "Using (A)"]} />
 
       {/* Behavioral Intention to Use */}
-      <rect x={522} y={66} width={132} height={92} fill={INK} />
+      <rect x={522} y={66} width={132} height={92} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={588} cy={112} lines={["Behavioral", "Intention to", "Use"]} />
 
       {/* Actual System Use (SIGNAL red outcome) */}
-      <rect x={690} y={66} width={98} height={92} fill={SIGNAL} />
-      <BoxLines cx={739} cy={112} lines={["Actual", "System", "Use"]} />
+      <rect x={690} y={66} width={98} height={92} fill={INK} fillOpacity={0.08} stroke={INK} strokeWidth={1.5} />
+      <BoxLines cx={739} cy={112} lines={["Actual", "System", "Use"]} fill={SIGNAL} />
 
       {/* Connectors */}
       <Pointer x1={132} y1={94} x2={162} y2={62} w={3.5} head={12} />
@@ -183,14 +183,9 @@ function ExtGlyph({ n, y }: { n: number; y: number }) {
     case 1:
       return <SlidersHorizontal x={54} y={y - 16} size={32} weight="fill" color={INK} />;
     case 2:
-      return <Person x={70} y={y - 20} k={0.38} variant={0} />;
+      return <Star x={54} y={y - 16} size={32} weight="fill" color={INK} />;
     case 3:
-      return (
-        <g>
-          <Person x={58} y={y - 18} k={0.34} variant={6} />
-          <Person x={80} y={y - 18} k={0.34} variant={1} gap />
-        </g>
-      );
+      return <ChatCircle x={54} y={y - 16} size={32} weight="fill" color={INK} />;
     case 4:
       return <Doc x={56} y={y - 18} k={0.3} />;
     default:
@@ -235,7 +230,7 @@ export function ExternalVariablesInteractive() {
               y={y - 20}
               width={92}
               height={40}
-              fill={on ? COUNTER_FILL : CREAM}
+              fill={on ? COUNTER_FILL : WHITE}
               stroke={on ? SIGNAL : INK}
               strokeWidth={on ? 3 : 2}
             />
@@ -244,10 +239,10 @@ export function ExternalVariablesInteractive() {
               x={28}
               y={y + 6}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={16}
-              fill={CREAM}
+              fill={WHITE}
             >
               {v.n}
             </text>
@@ -277,29 +272,29 @@ export function ExternalVariablesInteractive() {
       />
 
       {/* Right: Perceived Usefulness (U) gauge card */}
-      <rect x={196} y={44} width={190} height={86} fill={CREAM} stroke={INK} strokeWidth={2.5} />
-      <text x={210} y={68} fontFamily="var(--font-heading)" fontWeight={700} fontSize={15.5} fill={INK}>
+      <rect x={196} y={44} width={190} height={86} fill={WHITE} stroke={INK} strokeWidth={2.5} />
+      <text x={210} y={68} fontFamily="var(--font-sans)" fontWeight={700} fontSize={15.5} fill={INK}>
         Perceived Usefulness (U)
       </text>
       <rect x={210} y={82} width={124} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={210} y={82} width={r2((active.u / 100) * 124)} height={22} fill={SIGNAL} />
-      <text x={374} y={99} textAnchor="end" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <rect x={210} y={82} width={r2((active.u / 100) * 124)} height={22} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={374} y={99} textAnchor="end" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${active.u}%`}
       </text>
 
       {/* Right: Perceived Ease of Use (E) gauge card */}
-      <rect x={196} y={156} width={190} height={86} fill={CREAM} stroke={INK} strokeWidth={2.5} />
-      <text x={210} y={180} fontFamily="var(--font-heading)" fontWeight={700} fontSize={15.5} fill={INK}>
+      <rect x={196} y={156} width={190} height={86} fill={WHITE} stroke={INK} strokeWidth={2.5} />
+      <text x={210} y={180} fontFamily="var(--font-sans)" fontWeight={700} fontSize={15.5} fill={INK}>
         Perceived Ease of Use (E)
       </text>
       <rect x={210} y={194} width={124} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={210} y={194} width={r2((active.e / 100) * 124)} height={22} fill={COUNTER} />
-      <text x={374} y={211} textAnchor="end" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={COUNTER}>
+      <rect x={210} y={194} width={r2((active.e / 100) * 124)} height={22} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={374} y={211} textAnchor="end" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${active.e}%`}
       </text>
 
       {/* Selected variable caption at bottom right */}
-      <text x={291} y={266} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={291} y={266} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${active.n}. ${active.name}`}
       </text>
     </Plate>
@@ -333,7 +328,7 @@ export function TamBeliefsInteractive() {
       title={`Interactive TAM sliders: Perceived Usefulness (PU) is set to ${pu}% and Perceived Ease of Use (PEOU) is set to ${peou}%, producing Attitude Toward Use of ${attitude}% and Behavioral Intention to Use of ${intention}%`}
     >
       {/* Left: Draggable input beliefs */}
-      <text x={trackX} y={44} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={trackX} y={44} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         Perceived Usefulness (PU)
       </text>
       <rect x={trackX} y={56} width={trackW} height={24} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
@@ -347,14 +342,14 @@ export function TamBeliefsInteractive() {
         onChange={setPu}
         label="Perceived Usefulness (PU)"
       />
-      <text x={trackX + trackW + 22} y={74} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={trackX + trackW + 22} y={74} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         {`${pu}%`}
       </text>
 
       {/* Upward TAM link: PEOU bolsters PU */}
       <Pointer x1={148} y1={134} x2={148} y2={90} w={3} head={11} />
 
-      <text x={trackX} y={160} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={trackX} y={160} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         Perceived Ease of Use (PEOU)
       </text>
       <rect x={trackX} y={172} width={trackW} height={24} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
@@ -368,7 +363,7 @@ export function TamBeliefsInteractive() {
         onChange={setPeou}
         label="Perceived Ease of Use (PEOU)"
       />
-      <text x={trackX + trackW + 22} y={190} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={trackX + trackW + 22} y={190} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         {`${peou}%`}
       </text>
 
@@ -378,21 +373,21 @@ export function TamBeliefsInteractive() {
       <Pointer x1={660} y1={92} x2={660} y2={132} w={4} color={SIGNAL} head={12} />
 
       {/* Right: Resulting Attitude & Behavioral Intention */}
-      <text x={outX} y={44} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={outX} y={44} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         Attitude Toward Use
       </text>
       <rect x={outX} y={56} width={outW} height={26} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
       <rect x={outX} y={56} width={r2((attitude / 100) * outW)} height={26} fill={COUNTER} />
-      <text x={outX + outW + 18} y={75} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={outX + outW + 18} y={75} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         {`${attitude}%`}
       </text>
 
-      <text x={outX} y={160} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={SIGNAL}>
+      <text x={outX} y={160} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         Behavioral Intention to Use
       </text>
       <rect x={outX} y={172} width={outW} height={28} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
       <rect x={outX} y={172} width={r2((intention / 100) * outW)} height={28} fill={SIGNAL} />
-      <text x={outX + outW + 18} y={193} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={SIGNAL}>
+      <text x={outX + outW + 18} y={193} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         {`${intention}%`}
       </text>
     </Plate>
@@ -415,21 +410,21 @@ export function BestBuyAssistantPlate() {
     >
       {rows.map((cy, i) => (
         <g key={cy}>
-          <rect x={16} y={cy - 20} width={96} height={40} fill={CREAM} stroke={INK} strokeWidth={2} />
-          <rect x={16} y={cy - 20} width={28} height={40} fill={INK} />
+          <rect x={16} y={cy - 20} width={96} height={40} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
+          <rect x={16} y={cy - 20} width={28} height={40} fill={INK} fillOpacity={0.06} stroke={INK} strokeWidth={1.5} />
           <text
             x={30}
             y={cy + 6}
             textAnchor="middle"
-            fontFamily="var(--font-heading)"
+            fontFamily="var(--font-sans)"
             fontWeight={700}
             fontSize={16}
-            fill={CREAM}
+            fill={INK}
           >
             {i + 1}
           </text>
           {i === 0 && <SlidersHorizontal x={58} y={cy - 15} size={30} weight="fill" color={INK} />}
-          {i === 1 && <Person x={74} y={cy - 19} k={0.36} hair="crop" />}
+          {i === 1 && <ChatCircle x={58} y={cy - 15} size={30} weight="fill" color={INK} />}
           {i === 2 && <Star x={58} y={cy - 15} size={30} weight="fill" color={INK} />}
           {i === 3 && <Doc x={60} y={cy - 17} k={0.29} />}
           <Pointer x1={118} y1={cy} x2={198} y2={r2(84 + i * 22)} w={3} head={11} />
@@ -489,7 +484,7 @@ export function BestBuyFeatureTradeoff() {
       </Monitor>
 
       {/* Feature count slider under the screen */}
-      <text x={28} y={200} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={28} y={200} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`System Features: ${features}`}
       </text>
       <rect x={28} y={210} width={240} height={12} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -507,30 +502,30 @@ export function BestBuyFeatureTradeoff() {
       <Pointer x1={232} y1={84} x2={372} y2={84} w={3.5} head={12} />
 
       {/* Right: Three resulting bars */}
-      <text x={barX} y={40} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={barX} y={40} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Perceived Usefulness (E)
       </text>
       <rect x={barX} y={48} width={barW} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={barX} y={48} width={r2((u / 100) * barW)} height={20} fill={INK} />
-      <text x={barX + barW + 16} y={64} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <rect x={barX} y={48} width={r2((u / 100) * barW)} height={20} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={barX + barW + 16} y={64} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${u}%`}
       </text>
 
-      <text x={barX} y={108} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={barX} y={108} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Perceived Ease of Use (U)
       </text>
       <rect x={barX} y={116} width={barW} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
       <rect x={barX} y={116} width={r2((e / 100) * barW)} height={20} fill={COUNTER} />
-      <text x={barX + barW + 16} y={132} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={barX + barW + 16} y={132} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${e}%`}
       </text>
 
-      <text x={barX} y={176} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={barX} y={176} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Actual System Use
       </text>
       <rect x={barX} y={184} width={barW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
       <rect x={barX} y={184} width={r2((use / 100) * barW)} height={22} fill={SIGNAL} />
-      <text x={barX + barW + 16} y={201} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={SIGNAL}>
+      <text x={barX + barW + 16} y={201} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         {`${use}%`}
       </text>
     </Plate>
@@ -546,20 +541,18 @@ export function BestBuyCatalogBridgePlate() {
   return (
     <Plate
       w={400}
-      h={216}
-      title="Left: a product catalog database above a manual document. Center: a red arrow connects them into a framed screen holding a chat bubble and digital shop, facing a customer on the right"
+      h={200}
+      title="Left: a product catalog database above a manual document. Right: a red arrow connects them into a framed screen holding a chat bubble and digital shop"
     >
-      <Database x={26} y={26} size={52} weight="fill" color={INK} />
-      <Doc x={28} y={96} k={0.54} />
+      <Database x={42} y={24} size={52} weight="fill" color={INK} />
+      <Doc x={44} y={96} k={0.54} />
 
-      <Arrow x1={92} x2={146} y={90} color={SIGNAL} />
+      <Arrow x1={116} x2={188} y={86} color={SIGNAL} />
 
-      <Monitor x={156} y={24} w={130} h={104}>
-        <ChatCircle x={174} y={48} size={40} weight="fill" color={SIGNAL} />
-        <Shop x={220} y={62} k={0.32} />
+      <Monitor x={204} y={24} w={164} h={116}>
+        <ChatCircle x={228} y={54} size={44} weight="fill" color={SIGNAL} />
+        <Shop x={286} y={66} k={0.36} />
       </Monitor>
-
-      <Person x={344} y={54} k={0.95} variant={9} flip />
     </Plate>
   );
 }
@@ -592,29 +585,29 @@ export function HospitalTriageFlow() {
     <Plate
       w={800}
       h={208}
-      title="Two patients in profile face a triage chatbot on a framed screen. From the screen, a black arrow leads to a house labeled At home, and a red arrow leads to a medical cross labeled Urgent care"
+      title="Incoming symptom inquiries enter a triage chatbot on a framed screen. From the screen, a black arrow leads to a house labeled At home, and a red arrow leads to a medical cross labeled Urgent care"
     >
-      <Person x={68} y={54} k={1.05} variant={2} />
-      <Person x={132} y={42} k={1.18} variant={8} gap />
-      <Arrow x1={194} x2={256} y={96} />
+      <ChatCircle x={52} y={56} size={52} weight="fill" color={INK} />
+      <ChatCircle x={118} y={72} size={52} weight="fill" color={SIGNAL} />
+      <Arrow x1={186} x2={256} y={96} />
 
       <Monitor x={268} y={16} w={164} h={108}>
         <ChatCircle x={350 - 28} y={70 - 28} size={56} weight="fill" color={INK} />
       </Monitor>
-      <text x={350} y={190} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={350} y={190} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         Triage
       </text>
 
       {/* Fork: At home (INK) vs Urgent care (SIGNAL) */}
       <Pointer x1={444} y1={62} x2={556} y2={48} w={4} head={13} />
       <HouseGlyph x={572} y={18} />
-      <text x={644} y={52} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={INK}>
+      <text x={644} y={52} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         At home
       </text>
 
       <Pointer x1={444} y1={98} x2={556} y2={136} w={5} color={SIGNAL} head={14} />
       <MedicalCross x={574} y={114} tone={SIGNAL} />
-      <text x={644} y={147} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={SIGNAL}>
+      <text x={644} y={147} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         Urgent care
       </text>
     </Plate>
@@ -642,7 +635,7 @@ export function HospitalPeakSimulator() {
       title={`Interactive hospital triage simulator: when the chatbot filters ${filterPct}% of non-urgent cases, Waiting times drop to ${waitPct}% and Staff focus on critical patients rises to ${criticalFocus}%`}
     >
       {/* Draggable input: Non-urgent cases filtered by chatbot */}
-      <text x={trackX} y={42} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={trackX} y={42} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Non-urgent cases filtered
       </text>
       <rect x={trackX} y={54} width={trackW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -656,24 +649,24 @@ export function HospitalPeakSimulator() {
         onChange={setFilterPct}
         label="Percentage of non-urgent cases filtered by the hospital chatbot"
       />
-      <text x={trackX + trackW + 22} y={71} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={trackX + trackW + 22} y={71} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${filterPct}%`}
       </text>
 
       <Pointer x1={144} y1={86} x2={144} y2={114} w={3.5} color={SIGNAL} head={11} />
 
       {/* Outcome 1: Waiting times */}
-      <text x={trackX} y={138} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={trackX} y={138} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Waiting times
       </text>
       <rect x={trackX} y={148} width={trackW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
       <rect x={trackX} y={148} width={r2((waitPct / 100) * trackW)} height={22} fill={COUNTER} />
-      <text x={trackX + trackW + 22} y={165} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={COUNTER}>
+      <text x={trackX + trackW + 22} y={165} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${waitPct}%`}
       </text>
 
       {/* Outcome 2: Critical patient focus */}
-      <text x={trackX} y={204} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={trackX} y={204} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Focus on critical patients
       </text>
       <rect x={trackX} y={214} width={trackW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
@@ -681,10 +674,10 @@ export function HospitalPeakSimulator() {
       <text
         x={trackX + trackW + 22}
         y={231}
-        fontFamily="var(--font-heading)"
+        fontFamily="var(--font-sans)"
         fontWeight={700}
         fontSize={16}
-        fill={SIGNAL}
+        fill={INK}
       >
         {`${criticalFocus}%`}
       </text>
@@ -708,7 +701,7 @@ export function HospitalEhrIntegrationPlate() {
       <Monitor x={20} y={24} w={132} h={108}>
         <Doc x={64} y={46} k={0.48} />
       </Monitor>
-      <text x={86} y={188} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={86} y={188} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         EHR
       </text>
 
@@ -741,7 +734,7 @@ export function IkeaKioskReturn() {
         <Person key={x} x={x} y={38} k={1.02} variant={queueVariants[i]} gap={i > 0} />
       ))}
       <rect x={312} y={78} width={54} height={62} fill={INK} />
-      <text x={200} y={184} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+      <text x={200} y={184} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
         Waiting in line
       </text>
 
@@ -758,10 +751,10 @@ export function IkeaKioskReturn() {
         x={600}
         y={184}
         textAnchor="middle"
-        fontFamily="var(--font-heading)"
+        fontFamily="var(--font-sans)"
         fontWeight={700}
         fontSize={18}
-        fill={SIGNAL}
+        fill={INK}
       >
         Self-return kiosk
       </text>
@@ -789,21 +782,20 @@ export function IkeaKioskStepsPlate() {
       </Monitor>
       <Arrow x1={190} x2={254} y={60} color={SIGNAL} />
       <Clock x={282} y={24} size={56} weight="fill" color={SIGNAL} />
-      <text x={310} y={104} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={310} y={104} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Faster returns
       </text>
 
       <path d="M 20 152 H 380" stroke={INK} strokeWidth={1.5} strokeDasharray="5 5" />
 
       {/* Bottom: Staff focus on complex issues + Cost savings */}
-      <Person x={64} y={162} k={0.84} variant={10} />
-      <Gear x={118} y={172} size={38} weight="fill" color={INK} />
-      <Gear x={158} y={198} size={30} weight="fill" color={INK} />
+      <Gear x={62} y={172} size={46} weight="fill" color={INK} />
+      <Gear x={114} y={194} size={36} weight="fill" color={INK} />
       <Coins x={262} y={240} n={4} />
-      <text x={340} y={210} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={340} y={210} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Cost
       </text>
-      <text x={340} y={234} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={340} y={234} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         savings
       </text>
     </Plate>
@@ -832,29 +824,29 @@ export function UtautSynthesisPlate() {
       {/* Left: Three prior models */}
       {sources.map(([lines, cy]) => (
         <g key={cy}>
-          <rect x={14} y={cy - 26} width={122} height={52} fill={INK} />
+          <rect x={14} y={cy - 26} width={122} height={52} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
           <BoxLines cx={75} cy={cy} lines={lines} size={15} />
           <Pointer x1={140} y1={cy} x2={182} y2={r2(96 + (cy - 42) * 0.34)} w={3.5} head={11} />
         </g>
       ))}
 
       {/* Center: UTAUT (2003) */}
-      <rect x={188} y={76} width={96} height={96} fill={SIGNAL} />
-      <BoxLines cx={236} cy={124} lines={["UTAUT", "2003"]} size={18} />
+      <rect x={188} y={76} width={96} height={96} fill={INK} fillOpacity={0.08} stroke={INK} strokeWidth={1.5} />
+      <BoxLines cx={236} cy={124} lines={["UTAUT", "2003"]} size={18} fill={SIGNAL} />
 
       {/* Right: Four numbered primary constructs */}
       {fourY.map((cy, i) => (
         <g key={cy}>
           <Pointer x1={288} y1={r2(92 + i * 21)} x2={334} y2={cy} w={3.5} color={SIGNAL} head={11} />
-          <rect x={340} y={cy - 20} width={44} height={40} fill={INK} />
+          <rect x={340} y={cy - 20} width={44} height={40} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
           <text
             x={362}
             y={cy + 7}
             textAnchor="middle"
-            fontFamily="var(--font-heading)"
+            fontFamily="var(--font-sans)"
             fontWeight={700}
             fontSize={20}
-            fill={CREAM}
+            fill={INK}
           >
             {i + 1}
           </text>
@@ -906,17 +898,18 @@ export function UtautModelInteractive() {
       {/* Four primary constructs */}
       {constructs.map((c) => {
         const lit = isLit(c.id);
+        const tone = lit ? SIGNAL : INK;
         return (
           <g key={c.id}>
-            <rect x={16} y={c.y} width={212} height={42} fill={lit ? SIGNAL : INK} />
+            <rect x={16} y={c.y} width={212} height={42} fill={INK} fillOpacity={lit ? 0.08 : 0.04} stroke={INK} strokeWidth={1.5} />
             <text
               x={122}
               y={c.y + 27}
               textAnchor="middle"
-              fontFamily="var(--font-body)"
+              fontFamily="var(--font-sans)"
               fontWeight={600}
               fontSize={15.5}
-              fill={CREAM}
+              fill={INK}
             >
               {c.label}
             </text>
@@ -925,11 +918,11 @@ export function UtautModelInteractive() {
       })}
 
       {/* Behavioral Intention */}
-      <rect x={368} y={56} width={164} height={68} fill={INK} />
+      <rect x={368} y={56} width={164} height={68} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={450} cy={90} lines={["Behavioral", "Intention"]} />
 
       {/* Use Behavior */}
-      <rect x={620} y={114} width={164} height={68} fill={INK} />
+      <rect x={620} y={114} width={164} height={68} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
       <BoxLines cx={702} cy={148} lines={["Use", "Behavior"]} />
 
       {/* Construct -> Outcome arrows */}
@@ -997,18 +990,19 @@ export function UtautModelInteractive() {
               y={234}
               width={m.w}
               height={36}
-              fill={on ? SIGNAL : COUNTER_FILL}
-              stroke={on ? SIGNAL : INK}
-              strokeWidth={2.5}
+              fill={INK}
+              fillOpacity={on ? 0.1 : 0.04}
+              stroke={INK}
+              strokeWidth={1.5}
             />
             <text
               x={r2(m.x + m.w / 2)}
               y={257}
               textAnchor="middle"
-              fontFamily="var(--font-body)"
+              fontFamily="var(--font-sans)"
               fontWeight={600}
               fontSize={15}
-              fill={on ? CREAM : INK}
+              fill={INK}
             >
               {m.label}
             </text>
@@ -1044,13 +1038,11 @@ export function IkeaUtautDriversPlate() {
       </MiniScreen>
 
       {/* 3. Social Influence: observing other customers & word-of-mouth */}
-      <Person x={cx[2] - 42} y={20} k={0.68} variant={4} />
-      <Person x={cx[2] + 42} y={20} k={0.68} variant={6} flip />
-      <ChatCircle x={cx[2] - 14} y={6} size={28} weight="fill" color={SIGNAL} />
+      <ChatCircle x={cx[2] - 42} y={24} size={46} weight="fill" color={INK} />
+      <ChatCircle x={cx[2] - 2} y={36} size={46} weight="fill" color={SIGNAL} />
 
-      {/* 4. Facilitating Conditions: on-site support staff & clear guidance */}
-      <Person x={cx[3] - 26} y={16} k={0.72} variant={10} />
-      <Doc x={cx[3] + 14} y={24} k={0.52} />
+      {/* 4. Facilitating Conditions: on-site support & clear guidance */}
+      <Doc x={cx[3] - 18} y={22} k={0.56} />
 
       {/* Shared horizontal collector bar & downward arrows to outcomes */}
       <path d="M 104 114 H 696" stroke={INK} strokeWidth={3.5} />
@@ -1120,17 +1112,18 @@ export function IkeaModeratorsInteractive() {
               y={y - 19}
               width={142}
               height={38}
-              fill={on ? SIGNAL : COUNTER_FILL}
-              stroke={on ? SIGNAL : INK}
-              strokeWidth={2.5}
+              fill={INK}
+              fillOpacity={on ? 0.08 : 0.03}
+              stroke={INK}
+              strokeWidth={on ? 2 : 1.25}
             />
             <text
               x={26}
               y={y + 6}
-              fontFamily="var(--font-body)"
-              fontWeight={600}
+              fontFamily="var(--font-sans)"
+              fontWeight={on ? 700 : 600}
               fontSize={14}
-              fill={on ? CREAM : INK}
+              fill={INK}
             >
               {`${m.n}. ${m.short}`}
             </text>
@@ -1142,26 +1135,26 @@ export function IkeaModeratorsInteractive() {
       <Pointer x1={162} y1={rowY(sel)} x2={194} y2={140} w={3.5} color={SIGNAL} head={11} />
 
       {/* Right: Segment comparison card */}
-      <rect x={200} y={42} width={186} height={198} fill={CREAM} stroke={INK} strokeWidth={2.5} />
-      <text x={214} y={70} fontFamily="var(--font-heading)" fontWeight={700} fontSize={14.5} fill={INK}>
+      <rect x={200} y={42} width={186} height={198} fill={WHITE} stroke={INK} strokeWidth={2.5} />
+      <text x={214} y={70} fontFamily="var(--font-sans)" fontWeight={700} fontSize={14.5} fill={INK}>
         {active.hiLabel}
       </text>
       <rect x={214} y={82} width={118} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={214} y={82} width={r2((active.hiVal / 100) * 118)} height={22} fill={SIGNAL} />
-      <text x={374} y={99} textAnchor="end" fontFamily="var(--font-heading)" fontWeight={700} fontSize={15} fill={SIGNAL}>
+      <rect x={214} y={82} width={r2((active.hiVal / 100) * 118)} height={22} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={374} y={99} textAnchor="end" fontFamily="var(--font-sans)" fontWeight={700} fontSize={15} fill={INK}>
         {`${active.hiVal}%`}
       </text>
 
-      <text x={214} y={154} fontFamily="var(--font-heading)" fontWeight={700} fontSize={14.5} fill={INK}>
+      <text x={214} y={154} fontFamily="var(--font-sans)" fontWeight={700} fontSize={14.5} fill={INK}>
         {active.loLabel}
       </text>
       <rect x={214} y={166} width={118} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
       <rect x={214} y={166} width={r2((active.loVal / 100) * 118)} height={22} fill={COUNTER} />
-      <text x={374} y={183} textAnchor="end" fontFamily="var(--font-heading)" fontWeight={700} fontSize={15} fill={COUNTER}>
+      <text x={374} y={183} textAnchor="end" fontFamily="var(--font-sans)" fontWeight={700} fontSize={15} fill={INK}>
         {`${active.loVal}%`}
       </text>
 
-      <text x={293} y={222} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={13.5} fill={INK}>
+      <text x={293} y={222} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={13.5} fill={INK}>
         Adoption &amp; satisfaction
       </text>
     </Plate>
@@ -1202,7 +1195,7 @@ export function IotLoopInteractive() {
       {/* 1. Collect */}
       <circle cx={136} cy={76} r={52} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
       <IotGlyph id={dev} cx={136} cy={76} size={58} tone={INK} />
-      <text x={136} y={172} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={INK}>
+      <text x={136} y={172} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         Collect
       </text>
 
@@ -1213,7 +1206,7 @@ export function IotLoopInteractive() {
         <IotGlyph id={dev} cx={376} cy={63} size={44} tone={INK} />
         <Pulse x={414} y={41} size={44} weight="fill" color={INK} />
       </Monitor>
-      <text x={400} y={172} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={INK}>
+      <text x={400} y={172} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         Share
       </text>
 
@@ -1221,15 +1214,15 @@ export function IotLoopInteractive() {
 
       {/* 3. Act */}
       <circle cx={664} cy={76} r={52} fill={SIGNAL} />
-      <IotGlyph id={dev} cx={664} cy={76} size={58} tone={CREAM} />
+      <IotGlyph id={dev} cx={664} cy={76} size={58} tone={WHITE} />
       <text
         x={664}
         y={172}
         textAnchor="middle"
-        fontFamily="var(--font-heading)"
+        fontFamily="var(--font-sans)"
         fontWeight={700}
         fontSize={20}
-        fill={SIGNAL}
+        fill={INK}
       >
         Act
       </text>
@@ -1258,18 +1251,19 @@ export function IotLoopInteractive() {
               y={196}
               width={d.w}
               height={34}
-              fill={on ? INK : COUNTER_FILL}
+              fill={INK}
+              fillOpacity={on ? 0.08 : 0.03}
               stroke={INK}
-              strokeWidth={2.5}
+              strokeWidth={on ? 2 : 1.25}
             />
             <text
               x={r2(d.x + d.w / 2)}
               y={218}
               textAnchor="middle"
-              fontFamily="var(--font-body)"
+              fontFamily="var(--font-sans)"
               fontWeight={600}
               fontSize={15}
-              fill={on ? CREAM : INK}
+              fill={INK}
             >
               {d.label}
             </text>
@@ -1302,7 +1296,7 @@ export function IotSecurityPractices() {
       <path d={`M ${cx[1] - 54} 58 H ${cx[1] + 54}`} stroke={INK} strokeWidth={5} />
       <circle cx={cx[1] - 54} cy={58} r={8} fill={INK} />
       <circle cx={cx[1] + 54} cy={58} r={8} fill={INK} />
-      <circle cx={cx[1]} cy={58} r={26} fill={CREAM} stroke={INK} strokeWidth={3.5} />
+      <circle cx={cx[1]} cy={58} r={26} fill={SIGNAL} stroke={INK} strokeWidth={3.5} />
       <LockKey x={cx[1] - 18} y={40} size={36} weight="fill" color={INK} />
 
       {/* 3. Keep software and firmware updated */}
@@ -1336,27 +1330,30 @@ export function IotSecurityPractices() {
       />
 
       {/* 5. Educate users on IoT security */}
-      <Person x={cx[4] - 20} y={14} k={0.82} variant={8} />
-      <ShieldCheck x={cx[4] + 10} y={32} size={44} weight="fill" color={SIGNAL} />
+      <Doc x={cx[4] - 32} y={24} k={0.48} />
+      <ShieldCheck x={cx[4] + 2} y={32} size={44} weight="fill" color={SIGNAL} />
 
       {/* Shared plinth rail & numerals */}
-      <path d="M 24 128 H 776" stroke={INK} strokeWidth={4} />
-      {cx.map((x, i) => (
-        <g key={x}>
-          <rect x={x - 18} y={128} width={36} height={36} fill={i === 4 ? SIGNAL : INK} />
-          <text
-            x={x}
-            y={153}
-            textAnchor="middle"
-            fontFamily="var(--font-heading)"
-            fontWeight={700}
-            fontSize={20}
-            fill={CREAM}
-          >
-            {i + 1}
-          </text>
-        </g>
-      ))}
+      <path d="M 24 128 H 776" stroke={INK} strokeWidth={2} />
+      {cx.map((x, i) => {
+        const tone = i === 4 ? SIGNAL : INK;
+        return (
+          <g key={x}>
+            <rect x={x - 18} y={128} width={36} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text
+              x={x}
+              y={153}
+              textAnchor="middle"
+              fontFamily="var(--font-sans)"
+              fontWeight={700}
+              fontSize={20}
+              fill={INK}
+            >
+              {i + 1}
+            </text>
+          </g>
+        );
+      })}
     </Plate>
   );
 }
@@ -1401,23 +1398,23 @@ export function IotDeviceLifecycle() {
 
       {/* Stage 1: Provisioning and Authentication */}
       <circle cx={cx[0]} cy={cy} r={r} fill={INK} />
-      <Key x={cx[0] - 24} y={cy - 24} size={48} weight="fill" color={CREAM} />
+      <Key x={cx[0] - 24} y={cy - 24} size={48} weight="fill" color={WHITE} />
 
       {/* Stage 2: Configuration and Control */}
       <circle cx={cx[1]} cy={cy} r={r} fill={INK} />
-      <SlidersHorizontal x={cx[1] - 24} y={cy - 24} size={48} weight="fill" color={CREAM} />
+      <SlidersHorizontal x={cx[1] - 24} y={cy - 24} size={48} weight="fill" color={WHITE} />
 
       {/* Stage 3: Monitoring and Diagnostics */}
       <circle cx={cx[2]} cy={cy} r={r} fill={INK} />
-      <Pulse x={cx[2] - 24} y={cy - 24} size={48} weight="fill" color={CREAM} />
+      <Pulse x={cx[2] - 24} y={cy - 24} size={48} weight="fill" color={WHITE} />
 
       {/* Stage 4: Software Updates and Maintenance */}
       <circle cx={cx[3]} cy={cy} r={r} fill={INK} />
-      <ArrowsClockwise x={cx[3] - 24} y={cy - 24} size={48} weight="fill" color={CREAM} />
+      <ArrowsClockwise x={cx[3] - 24} y={cy - 24} size={48} weight="fill" color={WHITE} />
 
       {/* Stage 5: Decommissioning */}
       <circle cx={cx[4]} cy={cy} r={r} fill={SIGNAL} />
-      <Power x={cx[4] - 24} y={cy - 24} size={48} weight="fill" color={CREAM} />
+      <Power x={cx[4] - 24} y={cy - 24} size={48} weight="fill" color={WHITE} />
     </Plate>
   );
 }
@@ -1434,11 +1431,12 @@ export function CloudComputingHub() {
       h={216}
       title="A central framed screen labeled Central data center holds a cloud, storage database, and processor. Arrows connect it to remote people on the left and a remote business shop on the right"
     >
-      {/* Left: Remote users */}
-      <Person x={72} y={48} k={1.05} variant={7} />
-      <Person x={136} y={38} k={1.15} variant={3} gap />
-      <Pointer x1={276} y1={84} x2={196} y2={84} w={4} color={SIGNAL} head={13} />
-      <Pointer x1={196} y1={108} x2={276} y2={108} w={3.5} head={12} />
+      {/* Left: Remote endpoints */}
+      <MiniScreen x={76} y={54}>
+        <Doc x={103} y={62} k={0.34} />
+      </MiniScreen>
+      <Pointer x1={276} y1={84} x2={176} y2={84} w={4} color={SIGNAL} head={13} />
+      <Pointer x1={176} y1={108} x2={276} y2={108} w={3.5} head={12} />
 
       {/* Center: Central data center on a framed screen */}
       <Monitor x={290} y={16} w={220} h={124}>
@@ -1450,10 +1448,10 @@ export function CloudComputingHub() {
         x={400}
         y={198}
         textAnchor="middle"
-        fontFamily="var(--font-heading)"
+        fontFamily="var(--font-sans)"
         fontWeight={700}
         fontSize={18}
-        fill={SIGNAL}
+        fill={INK}
       >
         Central data center
       </text>
@@ -1498,8 +1496,8 @@ export function EdgeFogCloudInteractive() {
     >
       {/* Leftmost: Data source (Autonomous vehicle / Factory machine) */}
       <circle cx={68} cy={66} r={44} fill={INK} />
-      <Car x={68 - 26} y={66 - 26} size={52} weight="fill" color={CREAM} />
-      <text x={68} y={134} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <Car x={68 - 26} y={66 - 26} size={52} weight="fill" color={WHITE} />
+      <text x={68} y={134} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Source
       </text>
 
@@ -1527,7 +1525,7 @@ export function EdgeFogCloudInteractive() {
               y={14}
               width={128}
               height={128}
-              fill={on ? COUNTER_FILL : CREAM}
+              fill={on ? COUNTER_FILL : WHITE}
               stroke={on ? SIGNAL : INK}
               strokeWidth={on ? 3.5 : 1.5}
             />
@@ -1544,10 +1542,10 @@ export function EdgeFogCloudInteractive() {
               x={t.cx}
               y={128}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={18}
-              fill={on ? SIGNAL : INK}
+              fill={INK}
             >
               {t.label}
             </text>
@@ -1559,21 +1557,21 @@ export function EdgeFogCloudInteractive() {
       <Pointer x1={116} y1={160} x2={active.cx} y2={160} w={5} color={SIGNAL} head={14} />
 
       {/* Bottom: Latency and Bandwidth usage bars */}
-      <text x={28} y={202} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={28} y={202} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Latency
       </text>
       <rect x={108} y={186} width={200} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
       <rect x={108} y={186} width={r2((active.latency / 100) * 200)} height={20} fill={SIGNAL} />
-      <text x={320} y={202} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={SIGNAL}>
+      <text x={320} y={202} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${active.latency}%`}
       </text>
 
-      <text x={384} y={202} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={384} y={202} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         Bandwidth usage
       </text>
       <rect x={528} y={186} width={140} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
       <rect x={528} y={186} width={r2((active.bandwidth / 100) * 140)} height={20} fill={COUNTER} />
-      <text x={680} y={202} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
+      <text x={680} y={202} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
         {`${active.bandwidth}%`}
       </text>
 
@@ -1632,18 +1630,19 @@ export function ArchitectureStackInteractive() {
               y={l.y}
               width={136}
               height={42}
-              fill={on ? SIGNAL : COUNTER_FILL}
-              stroke={on ? SIGNAL : INK}
-              strokeWidth={2.5}
+              fill={INK}
+              fillOpacity={on ? 0.08 : 0.03}
+              stroke={INK}
+              strokeWidth={on ? 2 : 1.25}
             />
             <text
               x={84}
               y={l.y + 27}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={18}
-              fill={on ? CREAM : INK}
+              fill={INK}
             >
               {l.name}
             </text>

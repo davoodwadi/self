@@ -19,13 +19,10 @@ import {
   DiscussionList,
   Summary,
 } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroAiLayers,
   IntelligenceTypesInteractive,
-  IntelligenceTypesTall,
   WhichOneIsAiInteractive,
-  WhichOneIsAiTall,
   RulesVsMlInteractive,
   RiseOfMlInteractive,
   DecisionTreeInteractive,
@@ -33,14 +30,10 @@ import {
   LogisticRegressionInteractive,
   EnsembleWeatherInteractive,
   RandomForestInteractive,
-  RandomForestTall,
   SupervisedVsUnsupervisedInteractive,
-  SupervisedVsUnsupervisedTall,
   ParadigmLensInteractive,
-  ParadigmLensTall,
   ComparisonAspectPlate,
   CaseStudiesInteractive,
-  CaseStudiesTall,
 } from "./visuals";
 
 const SECTIONS = [
@@ -54,11 +47,12 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
+/* Body copy in upright sans-serif. */
+const BODY_BASE =
+  "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
 const LIST =
-  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
@@ -96,20 +90,20 @@ export default function DigitalTransformationWeek6() {
   const [activeAspect, setActiveAspect] = useState(0);
   const [activeCase, setActiveCase] = useState(0);
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 6: DIGITAL TRANSFORMATION"
-        title="Week 6: AI/ML/DL"
+        category="Week 06: Digital Transformation"
+        title="AI/ML/DL"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
@@ -137,7 +131,6 @@ export default function DigitalTransformationWeek6() {
           "Have you interacted with AI today without realizing it? Let’s brainstorm hidden AI in daily life.",
           "How is a ‘smart’ app like ChatGPT different from a basic calculator? What makes it ‘AI’?",
         ]}
-        plate={<Conversation left={2} right={5} />}
       />
 
       <DiscussionList
@@ -147,28 +140,22 @@ export default function DigitalTransformationWeek6() {
           "What kind of topics do you post on your social media?",
           "If you trained an AI using only your social media posts, what might it ‘learn’ about people?",
         ]}
-        plate={<Conversation left={6} right={3} />}
       />
 
       <Slide id="artificial-intelligence" label="CORE CONCEPT" title="Artificial Intelligence">
-        <div className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <div className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           <p>
             <strong>Artificial Intelligence</strong>: Intelligence shown by machines.
           </p>
         </div>
         <PlateWell>
-          <div className="hidden sm:block">
-            <IntelligenceTypesInteractive active={activeIntel} onSelect={setActiveIntel} />
-          </div>
-          <div className="sm:hidden">
-            <IntelligenceTypesTall active={activeIntel} onSelect={setActiveIntel} />
-          </div>
+          <IntelligenceTypesInteractive active={activeIntel} onSelect={setActiveIntel} />
         </PlateWell>
         <div className={BODY}>
-          <p className="font-heading font-bold text-xl mb-3">
+          <p className="font-sans font-bold text-xl mb-3">
             <strong>Intelligence</strong>:
           </p>
-          <div className="grid">
+          <div className="grid gap-4">
             {[
               {
                 name: "Animal",
@@ -204,9 +191,9 @@ export default function DigitalTransformationWeek6() {
                 <div
                   key={item.name}
                   aria-hidden={!isLit}
-                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 text-lg transition-opacity duration-200 ${
-                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                  }`}
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 text-lg transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
                 >
                   {item.content}
                 </div>
@@ -222,16 +209,11 @@ export default function DigitalTransformationWeek6() {
         title="Artificial Intelligence: Which One Is AI?"
         exercise={exercise["artificial-intelligence-which-one-is-ai"]}
       >
-        <p className="font-heading font-bold text-2xl">Which one is AI?</p>
+        <p className="font-sans font-bold text-2xl">Which one is AI?</p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <WhichOneIsAiInteractive active={activeCandidate} onSelect={setActiveCandidate} />
-          </div>
-          <div className="sm:hidden">
-            <WhichOneIsAiTall active={activeCandidate} onSelect={setActiveCandidate} />
-          </div>
+          <WhichOneIsAiInteractive active={activeCandidate} onSelect={setActiveCandidate} />
         </PlateWell>
-        <ol className={`${BODY} grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {[
             <>
               A computer chess game playing against humans beats a human player. It uses rules-based algorithms to
@@ -246,11 +228,11 @@ export default function DigitalTransformationWeek6() {
               <li
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 flex items-baseline gap-4 text-xl transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 flex items-baseline gap-4 text-xl transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <span className="font-heading font-bold text-2xl shrink-0">{i + 1}.</span>
+                <span className="font-sans font-bold text-2xl shrink-0">{i + 1}.</span>
                 <span>{item}</span>
               </li>
             );
@@ -265,11 +247,11 @@ export default function DigitalTransformationWeek6() {
 
       <Slide id="machine-learning" label="DEFINITION" title="Machine Learning">
         <div className={`${BODY} text-lg grid md:grid-cols-3 gap-6`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             A technique that uses Data and Performance Metric to automatically find how to solve a Task.
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">Contrasted with Rules-Based Expert Systems.</p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">Gained popularity in the 21st century.</p>
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">Contrasted with Rules-Based Expert Systems.</p>
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">Gained popularity in the 21st century.</p>
         </div>
         <PlateWell>
           <RulesVsMlInteractive />
@@ -290,11 +272,11 @@ export default function DigitalTransformationWeek6() {
                 <li
                   key={i}
                   onClick={() => setActiveDriver(i)}
-                  className={`cursor-pointer border-t-[4px] pt-4 flex items-baseline gap-3 font-heading font-bold text-xl transition-colors ${
+                  className={`cursor-pointer border-t-2 pt-4 flex items-baseline gap-3 font-sans font-bold text-xl transition-colors ${
                     isLit ? "border-[var(--dt-signal)]" : "border-[var(--dt-ink)]"
                   }`}
                 >
-                  <span className="font-accent text-base">{i + 1}.</span>
+                  <span className="font-sans text-base">{i + 1}.</span>
                   <span>{item}</span>
                 </li>
               );
@@ -313,10 +295,10 @@ export default function DigitalTransformationWeek6() {
 
       <Slide id="decision-trees" label="ML ALGORITHMS" title="Decision Trees">
         <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             Imagine you are decision whether to go outside to play tennis.
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             To make your decision you use a mentally formed Decision Tree.
           </p>
         </div>
@@ -328,13 +310,13 @@ export default function DigitalTransformationWeek6() {
       <Slide id="linear-regression" label="ML ALGORITHMS" title="Linear Regression">
         <Row cols="lg:grid-cols-[1.15fr_1fr]">
           <div className={`${BODY_BASE} text-lg md:text-[1.35rem] flex flex-col gap-5`}>
-            <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-4">
               Imagine you have recorded transaction data for a retail store.
             </p>
-            <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-4">
               You have the price of the items and their sales.
             </p>
-            <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-4">
               You wish to predict sales based on the prices.
             </p>
           </div>
@@ -355,13 +337,13 @@ export default function DigitalTransformationWeek6() {
             <LogisticRegressionInteractive />
           </PlateWell>
           <div className={`${BODY_BASE} text-lg md:text-[1.35rem] flex flex-col gap-5`}>
-            <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-4">
               Imagine you have recorded historical click data for a retail website.
             </p>
-            <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-4">
               You have product and customer characteristics in a database.
             </p>
-            <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-4">
               You wish to predict whether a given customer will click on the product.
             </p>
           </div>
@@ -369,24 +351,24 @@ export default function DigitalTransformationWeek6() {
       </Slide>
 
       <Slide id="ensemble-learning" label="ML ALGORITHMS" title="Ensemble Learning">
-        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-b-[3px] border-[var(--dt-ink)] pb-5`}>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-b border-[var(--dt-ink)]/15 pb-5`}>
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             Ensemble learning combines multiple models to improve prediction accuracy,
           </p>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             Much like seeking advice from several experts to make a better decision.
           </p>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             The idea is that the collective &ldquo;wisdom&rdquo; of diverse models reduces individual errors.
           </p>
         </div>
         <Row cols="lg:grid-cols-[1.15fr_1fr]">
           <div className={`${BODY} flex flex-col gap-4`}>
-            <p className="font-heading font-bold text-xl">
-              <em>Scenario</em>: You want to predict if it will rain tomorrow.
+            <p className="font-sans font-bold text-xl">
+              Scenario: You want to predict if it will rain tomorrow.
             </p>
-            <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">
-              <p className="font-heading font-bold">Single Model (Apple Weather):</p>
+            <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
+              <p className="font-sans font-bold">Single Model (Apple Weather):</p>
               <Dashes
                 items={[
                   <>Apple Whether predicts rain with 70% accuracy.</>,
@@ -394,8 +376,8 @@ export default function DigitalTransformationWeek6() {
                 ]}
               />
             </div>
-            <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">
-              <p className="font-heading font-bold">
+            <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
+              <p className="font-sans font-bold">
                 Ensemble Approach (Apple Weather, AccuWeather, Google Weather):
               </p>
               <Dashes
@@ -425,17 +407,12 @@ export default function DigitalTransformationWeek6() {
       </Slide>
 
       <Slide id="random-forest" label="ENSEMBLE ALGORITHM" title="Random Forest" exercise={exercise["random-forest"]}>
-        <p className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <p className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve predictive
           accuracy and control overfitting. It is widely used for both classification and regression tasks.
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <RandomForestInteractive active={activeRf} onSelect={setActiveRf} />
-          </div>
-          <div className="sm:hidden">
-            <RandomForestTall active={activeRf} onSelect={setActiveRf} />
-          </div>
+          <RandomForestInteractive active={activeRf} onSelect={setActiveRf} />
         </PlateWell>
         <div className={`${BODY} text-lg grid`}>
           {[
@@ -471,7 +448,7 @@ export default function DigitalTransformationWeek6() {
               <div
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
@@ -489,20 +466,15 @@ export default function DigitalTransformationWeek6() {
 
       <Slide id="supervised-vs-unsupervised-learning" label="LEARNING PARADIGMS" title="Supervised vs. Unsupervised Learning">
         <PlateWell>
-          <div className="hidden sm:block">
-            <SupervisedVsUnsupervisedInteractive active={activeParadigm} onSelect={setActiveParadigm} />
-          </div>
-          <div className="sm:hidden">
-            <SupervisedVsUnsupervisedTall active={activeParadigm} onSelect={setActiveParadigm} />
-          </div>
+          <SupervisedVsUnsupervisedInteractive active={activeParadigm} onSelect={setActiveParadigm} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               key: "supervised",
               def: (
                 <>
-                  <strong>Supervised Learning</strong>: Algorithms learn from <strong>labeled data</strong>, where each
+                  <strong>Supervised Learning</strong>: Algorithms learn from labeled data, where each
                   input example is paired with a corresponding output (target). The model aims to map inputs to outputs
                   for prediction or classification.
                 </>
@@ -519,7 +491,7 @@ export default function DigitalTransformationWeek6() {
               key: "unsupervised",
               def: (
                 <>
-                  <strong>Unsupervised Learning</strong>: Algorithms analyze <strong>unlabeled data</strong> to discover
+                  <strong>Unsupervised Learning</strong>: Algorithms analyze unlabeled data to discover
                   hidden patterns, groupings, or structures without predefined outcomes.
                 </>
               ),
@@ -537,7 +509,7 @@ export default function DigitalTransformationWeek6() {
               <div
                 key={p.key}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.25fr_1fr] gap-6 md:gap-10 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.25fr_1fr] gap-6 md:gap-10 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
@@ -545,8 +517,8 @@ export default function DigitalTransformationWeek6() {
                   <p className="text-lg">{p.def}</p>
                   <Dashes items={[p.ex]} />
                 </div>
-                <div className="md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
-                  <p className="font-heading font-bold text-xl mb-2">
+                <div className="md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
+                  <p className="font-sans font-bold text-xl mb-2">
                     <strong>{p.head}</strong>:
                   </p>
                   <Dashes items={p.items} />
@@ -563,14 +535,9 @@ export default function DigitalTransformationWeek6() {
         title="Popular Algorithms, When to Use, and Challenges"
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <ParadigmLensInteractive active={activeLens} onSelect={setActiveLens} />
-          </div>
-          <div className="sm:hidden">
-            <ParadigmLensTall active={activeLens} onSelect={setActiveLens} />
-          </div>
+          <ParadigmLensInteractive active={activeLens} onSelect={setActiveLens} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               title: "Popular Algorithms",
@@ -598,20 +565,20 @@ export default function DigitalTransformationWeek6() {
               <div
                 key={item.title}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
-                <p className="font-heading font-bold text-2xl mb-3">
+                <p className="font-sans font-bold text-2xl mb-3">
                   <strong>{item.title}</strong>
                 </p>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-10 text-lg">
-                  <div className="border-l-[4px] border-[var(--dt-signal)] pl-4">
+                  <div className="border-l-2 border-[var(--dt-signal)]/60 pl-4">
                     <p>
                       <strong>Supervised</strong>: {item.sup}
                     </p>
                   </div>
-                  <div className="border-l-[4px] border-[var(--counter)] pl-4">
+                  <div className="border-l-2 border-[var(--counter)]/60 pl-4">
                     <p>
                       <strong>Unsupervised</strong>: {item.unsup}
                     </p>
@@ -631,17 +598,17 @@ export default function DigitalTransformationWeek6() {
       >
         <Row cols="lg:grid-cols-[1.35fr_1fr]">
           <div className={BODY}>
-            <table className="w-full border-collapse border-[3px] border-[var(--dt-ink)]">
+            <table className="w-full border-collapse border border-[var(--dt-ink)]/15">
               <thead>
-                <tr className="bg-[var(--dt-ink)] text-[var(--dt-cream)] text-left">
-                  <th className="p-3 font-heading font-bold">
-                    <strong>Aspect</strong>
+                <tr className="bg-[var(--dt-ink)] text-[var(--dt-white)] text-left">
+                  <th className="p-3 font-sans font-bold">
+                    Aspect
                   </th>
-                  <th className="p-3 font-heading font-bold">
-                    <strong>Supervised Learning</strong>
+                  <th className="p-3 font-sans font-bold">
+                    Supervised Learning
                   </th>
-                  <th className="p-3 font-heading font-bold">
-                    <strong>Unsupervised Learning</strong>
+                  <th className="p-3 font-sans font-bold">
+                    Unsupervised Learning
                   </th>
                 </tr>
               </thead>
@@ -678,11 +645,11 @@ export default function DigitalTransformationWeek6() {
                     <tr
                       key={r.aspect}
                       onClick={() => setActiveAspect(i)}
-                      className={`border-t-2 border-[var(--dt-ink)] cursor-pointer transition-colors ${
+                      className={`border-t border-[var(--dt-ink)]/15 cursor-pointer transition-colors ${
                         isLit ? "bg-[var(--paper-2)]" : ""
                       }`}
                     >
-                      <td className="p-3 font-heading font-bold">
+                      <td className="p-3 font-sans font-bold">
                         <strong>{r.aspect}</strong>
                       </td>
                       <td className="p-3">{r.sup}</td>
@@ -709,23 +676,18 @@ export default function DigitalTransformationWeek6() {
           Test your understanding by classifying these scenarios into Supervised vs. Unsupervised Learning
         </p>
         <PlateWell>
-          <div className="hidden sm:block">
-            <CaseStudiesInteractive active={activeCase} onSelect={setActiveCase} />
-          </div>
-          <div className="sm:hidden">
-            <CaseStudiesTall active={activeCase} onSelect={setActiveCase} />
-          </div>
+          <CaseStudiesInteractive active={activeCase} onSelect={setActiveCase} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             {
               n: 1,
               scenario: (
-                <em>
+                <>
                   A company wants to predict customer churn (whether a customer will stop using their service) based on
                   usage patterns and demographics. They have historical data showing which customers churned in the
                   past.
-                </em>
+                </>
               ),
               answer: "Supervised Learning",
               why: "The model uses labeled data (past churn outcomes) to learn patterns and predict future churn.",
@@ -733,10 +695,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 2,
               scenario: (
-                <em>
+                <>
                   A biologist has gene expression data from 1,000 patients but no prior labels. They want to group
                   patients into clusters to identify potential subtypes of a disease.
-                </em>
+                </>
               ),
               answer: "Unsupervised Learning",
               why: "No predefined labels exist. The goal is to discover hidden patterns (disease subtypes) in the data.",
@@ -744,10 +706,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 3,
               scenario: (
-                <em>
+                <>
                   A streaming service uses viewing history to recommend movies by predicting how users will rate films
                   they haven’t seen yet. They use past user ratings as training data.
-                </em>
+                </>
               ),
               answer: "Supervised Learning",
               why: "The model learns from labeled data (user ratings) to predict future ratings.",
@@ -755,10 +717,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 4,
               scenario: (
-                <em>
+                <>
                   A retail store analyzes purchase histories to find products frequently bought together (e.g.,
                   &ldquo;customers who bought X also bought Y&rdquo;).
-                </em>
+                </>
               ),
               answer: "Unsupervised Learning",
               why: "The goal is to discover associations in unlabeled transaction data (no predefined rules or labels).",
@@ -766,10 +728,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 5,
               scenario: (
-                <em>
+                <>
                   A weather app predicts tomorrow’s temperature using historical data on temperature, humidity, and wind
                   speed.
-                </em>
+                </>
               ),
               answer: "Supervised Learning",
               why: "The model uses labeled data (historical temperatures) to predict a continuous output (regression).",
@@ -777,10 +739,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 6,
               scenario: (
-                <em>
+                <>
                   A photographer uses an algorithm to organize 10,000 unlabeled images into groups of similar landscapes
                   (e.g., beaches, forests, mountains).
-                </em>
+                </>
               ),
               answer: "Unsupervised Learning",
               why: "No labels are provided. The algorithm identifies visual patterns to cluster images.",
@@ -788,10 +750,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 7,
               scenario: (
-                <em>
+                <>
                   A bank trains a model to approve or reject loan applications using historical data on applicant
                   income, credit score, and past loan defaults.
-                </em>
+                </>
               ),
               answer: "Supervised Learning",
               why: "The model learns from labeled outcomes (approved/rejected loans) to make decisions.",
@@ -799,10 +761,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 8,
               scenario: (
-                <em>
+                <>
                   A researcher reduces a 50-dimensional dataset into 2 dimensions to visualize relationships between
                   data points.
-                </em>
+                </>
               ),
               answer: "Unsupervised Learning",
               why: "Dimensionality reduction (e.g., PCA) uncovers structure in unlabeled data for visualization.",
@@ -810,10 +772,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 9,
               scenario: (
-                <em>
+                <>
                   A hospital uses patient data (symptoms, age, medical history) to diagnose whether a patient has
                   diabetes, using records of past diagnoses.
-                </em>
+                </>
               ),
               answer: "Supervised Learning",
               why: "The model is trained on labeled data (past diagnoses) to classify new cases.",
@@ -821,10 +783,10 @@ export default function DigitalTransformationWeek6() {
             {
               n: 10,
               scenario: (
-                <em>
+                <>
                   A social media platform groups users into communities based on shared interests, without predefined
                   categories.
-                </em>
+                </>
               ),
               answer: "Unsupervised Learning",
               why: "The algorithm identifies natural groupings in unlabeled user behavior data.",
@@ -835,22 +797,22 @@ export default function DigitalTransformationWeek6() {
               <div
                 key={c.n}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.25fr_1fr] gap-6 md:gap-10 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.25fr_1fr] gap-6 md:gap-10 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <div>
-                  <p className="font-heading font-bold text-2xl mb-2">
-                    <strong>Case {c.n}</strong>
+                  <p className="font-sans font-bold text-2xl mb-2">
+                    Case {c.n}
                   </p>
                   <p className="text-lg">{c.scenario}</p>
                 </div>
-                <div className="md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6 flex flex-col gap-2">
+                <div className="md:border-l md:border-[var(--dt-ink)]/15 md:pl-6 flex flex-col gap-2">
                   <p className="text-lg">
                     <strong>Answer</strong>: {c.answer}
                   </p>
                   <p>
-                    <strong>Why?</strong> {c.why}
+                    Why? {c.why}
                   </p>
                 </div>
               </div>

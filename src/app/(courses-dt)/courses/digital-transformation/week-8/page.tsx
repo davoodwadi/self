@@ -28,15 +28,12 @@ import {
   AugmentedRealityPlate,
   SwipeVsSweepPlate,
   GamificationElementsInteractive,
-  GamificationElementsTall,
   ProgressBarComparisonInteractive,
   OverjustificationInteractive,
   ExcessiveFreedomPlate,
   FlightSimCaseInteractive,
-  FlightSimCaseTall,
   GuitarHeroCurveInteractive,
   ZombiesRunPlate,
-  ZombiesRunTall,
   MilitaryControllerPlate,
   BusinessQuestionsPlate,
 } from "./visuals";
@@ -52,11 +49,12 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
+/* Body copy in upright sans-serif. */
+const BODY_BASE =
+  "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
 const LIST =
-  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
@@ -90,20 +88,20 @@ export default function DigitalTransformationWeek8() {
   const [activeBizQuestion, setActiveBizQuestion] = useState(0);
 
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 8: DIGITAL TRANSFORMATION"
-        title="Week 8: Immersive Technologies"
+        category="Week 08: Digital Transformation"
+        title="Immersive Technologies"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
@@ -141,32 +139,32 @@ export default function DigitalTransformationWeek8() {
       </Slide>
 
       <Slide id="immersive-technologies" label="CORE CONCEPT" title="Immersive technologies">
-        <div className={`${BODY} text-xl md:text-2xl border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <div className={`${BODY} text-xl md:text-2xl border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           <p>
             Immersive technologies: a group of digital tools and techniques that create or enhance{" "}
-            <strong>user experiences</strong>
+            user experiences
           </p>
         </div>
         <div className={`${BODY} grid md:grid-cols-3 gap-6 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <p className="text-lg md:text-xl">
-              <strong>simulating</strong> realistic environments,
+              simulating realistic environments,
             </p>
             <PlateWell>
               <SimulatingPlate />
             </PlateWell>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <p className="text-lg md:text-xl">
-              <strong>interacting</strong> with virtual elements,
+              interacting with virtual elements,
             </p>
             <PlateWell>
               <InteractingPlate />
             </PlateWell>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <p className="text-lg md:text-xl">
-              <strong>blending</strong> digital content with the physical world.
+              blending digital content with the physical world.
             </p>
             <PlateWell>
               <BlendingPlate />
@@ -182,15 +180,15 @@ export default function DigitalTransformationWeek8() {
         exercise={exercise["virtual-reality-vr-and-augmented-reality-ar"]}
       >
         <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-8 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <div>
               <p className="text-xl">
-                1. <strong>Virtual Reality (VR)</strong>
+                1. Virtual Reality (VR)
               </p>
               <Dashes
                 items={[
                   <>
-                    using headsets to create a <em>fully computer-generated</em> environment that users can interact
+                    using headsets to create a fully computer-generated environment that users can interact
                     with.
                   </>,
                   <>
@@ -203,29 +201,29 @@ export default function DigitalTransformationWeek8() {
             <PlateWell>
               <VirtualRealityPlate />
             </PlateWell>
-            <p className="border-l-[4px] border-[var(--dt-ink)] pl-3 text-[0.98rem]">
-              Research <em>three</em> VR hardware. Find what their use cases are. Write the information down and share
+            <p className="border-l-2 border-[var(--dt-ink)]/25 pl-3 text-[0.98rem]">
+              Research three VR hardware. Find what their use cases are. Write the information down and share
               it with the class.
             </p>
           </div>
 
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <div>
               <p className="text-xl">
-                2. <strong>Augmented Reality (AR)</strong>
+                2. Augmented Reality (AR)
               </p>
               <Dashes
                 items={[
                   <>
-                    AR <strong>overlays</strong> digital information or objects onto the real world,
+                    AR overlays digital information or objects onto the real world,
                   </>,
                   <>enhancing the perception of the surroundings.</>,
                   <>
                     Users can view AR content through devices like{" "}
-                    <strong>smartphones, tablets, or AR glasses</strong>,
+                    smartphones, tablets, or AR glasses,
                   </>,
                   <>
-                    allowing for interaction with <strong>both</strong> virtual and physical elements.
+                    allowing for interaction with both virtual and physical elements.
                   </>,
                 ]}
               />
@@ -233,8 +231,8 @@ export default function DigitalTransformationWeek8() {
             <PlateWell>
               <AugmentedRealityPlate />
             </PlateWell>
-            <p className="border-l-[4px] border-[var(--dt-ink)] pl-3 text-[0.98rem]">
-              Research <em>three</em> AR hardware. Find what their use cases are. Write the information down and share
+            <p className="border-l-2 border-[var(--dt-ink)]/25 pl-3 text-[0.98rem]">
+              Research three AR hardware. Find what their use cases are. Write the information down and share
               it with the class.
             </p>
           </div>
@@ -252,23 +250,23 @@ export default function DigitalTransformationWeek8() {
             <Bullets
               items={[
                 <>
-                  Gamification is the application of <strong>game-design</strong> elements, principles, and mechanics in
+                  Gamification is the application of game-design elements, principles, and mechanics in
                   non-game contexts
                 </>,
                 <>
-                  <strong>engage and motivate</strong> individuals to achieve specific goals, enhance user experience,
+                  engage and motivate individuals to achieve specific goals, enhance user experience,
                   and drive behavior.
                 </>,
                 <>
-                  to leverage humans&apos; <strong>natural tendencies</strong> toward{" "}
-                  <em>play, achievement, and social interaction</em>,
+                  to leverage humans&apos; natural tendencies toward{" "}
+                  play, achievement, and social interaction,
                 </>,
                 <>
-                  making tasks feel <em>more enjoyable and rewarding</em>.
+                  making tasks feel more enjoyable and rewarding.
                 </>,
               ]}
             />
-            <p className="font-heading font-bold text-xl border-t-[4px] border-[var(--dt-ink)] pt-4">
+            <p className="font-sans font-bold text-xl border-t border-[var(--dt-ink)]/15 pt-4">
               Why are people more willing to swipe their phone than sweep their floor?
             </p>
           </div>
@@ -285,14 +283,9 @@ export default function DigitalTransformationWeek8() {
         exercise={exercise["elements-of-gamification"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <GamificationElementsInteractive active={activeElement} onSelect={setActiveElement} />
-          </div>
-          <div className="sm:hidden">
-            <GamificationElementsTall active={activeElement} onSelect={setActiveElement} />
-          </div>
+          <GamificationElementsInteractive active={activeElement} onSelect={setActiveElement} />
         </PlateWell>
-        <div className={`${BODY} grid`}>
+        <div className={`${BODY} grid gap-4`}>
           {[
             <p key="points" className="text-xl">
               1. <strong>Points</strong>: Users earn points for completing tasks, achieving milestones, or participating
@@ -306,7 +299,7 @@ export default function DigitalTransformationWeek8() {
               <Dashes
                 items={[
                   <>
-                    They provide <em>recognition</em> and can <em>motivate</em> further participation.
+                    They provide recognition and can motivate further participation.
                   </>,
                 ]}
               />
@@ -319,7 +312,7 @@ export default function DigitalTransformationWeek8() {
               <Dashes
                 items={[
                   <>
-                    This element taps into people&apos;s desire for <em>social comparison and status</em>.
+                    This element taps into people&apos;s desire for social comparison and status.
                   </>,
                 ]}
               />
@@ -330,7 +323,7 @@ export default function DigitalTransformationWeek8() {
                 of adventure and engagement. Users may be motivated to complete these tasks to overcome obstacles or
                 unlock rewards.
               </p>
-              <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">
+              <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
                 <Bullets
                   items={[
                     <>Why some people are drawn to challenging games?</>,
@@ -341,7 +334,7 @@ export default function DigitalTransformationWeek8() {
             </div>,
             <p key="levels" className="text-xl">
               5. <strong>Levels and Progression</strong>: Users can advance through levels by completing certain
-              objectives or accumulating points. This system provides a <strong>sense of progression</strong>.
+              objectives or accumulating points. This system provides a sense of progression.
             </p>,
           ].map((item, i) => {
             const isLit = i === activeElement;
@@ -349,7 +342,7 @@ export default function DigitalTransformationWeek8() {
               <div
                 key={i}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
@@ -361,16 +354,16 @@ export default function DigitalTransformationWeek8() {
       </Slide>
 
       <Slide id="progress-bar-and-group-question" label="PROGRESSION DESIGN" title="Progress Bar and Group Question">
-        <p className="font-heading font-bold text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">
+        <p className="font-sans font-bold text-xl border-l-2 border-[var(--dt-ink)]/25 pl-4">
           What is the difference between these two progress bars in terms of design?
         </p>
         <PlateWell>
           <ProgressBarComparisonInteractive />
         </PlateWell>
-        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-t-[4px] border-[var(--dt-ink)] pt-4`}>
+        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-t border-[var(--dt-ink)]/15 pt-4`}>
           <p>Think about your MBA program.</p>
           <p>
-            Does the two-year completion timelime provide enough <strong>progression</strong> to give you a sense of
+            Does the two-year completion timelime provide enough progression to give you a sense of
             progression?
           </p>
           <p>Provide a proposal that would enhance the sense of progression for the students.</p>
@@ -384,17 +377,17 @@ export default function DigitalTransformationWeek8() {
         exercise={exercise["challenges-of-gamification"]}
       >
         <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-8 items-start`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <div>
               <p className="text-xl mb-1.5">
-                <strong>Overjustification Effect</strong>
+                Overjustification Effect
               </p>
               <Dashes
                 items={[
                   <>
-                    Relying too heavily on <strong>extrinsic rewards</strong> can undermine{" "}
-                    <strong>intrinsic motivation</strong>, leading users to only engage in activities for the{" "}
-                    <em>rewards</em> rather than for personal growth or <em>enjoyment</em>.
+                    Relying too heavily on extrinsic rewards can undermine{" "}
+                    intrinsic motivation, leading users to only engage in activities for the{" "}
+                    rewards rather than for personal growth or enjoyment.
                   </>,
                   <>e.g., when you finish a game you tend to enjoy the game world less.</>,
                 ]}
@@ -404,10 +397,10 @@ export default function DigitalTransformationWeek8() {
               <OverjustificationInteractive />
             </PlateWell>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
             <div>
               <p className="text-xl mb-1.5">
-                <strong>Excessive Freedom</strong>
+                Excessive Freedom
               </p>
               <Dashes
                 items={[
@@ -446,33 +439,28 @@ export default function DigitalTransformationWeek8() {
               <div
                 key={i}
                 onClick={() => setActiveFlightFeature(i)}
-                className={`cursor-pointer border-t-[4px] border-[var(--dt-ink)] pt-3 flex items-baseline gap-2.5 transition-colors ${
-                  isLit ? "font-heading font-bold" : ""
+                className={`cursor-pointer border-t border-[var(--dt-ink)]/15 pt-3 flex items-baseline gap-2.5 transition-colors ${
+                  isLit ? "font-sans font-bold" : ""
                 }`}
               >
-                <span className="font-accent text-sm shrink-0">{i + 1}.</span>
+                <span className="font-sans text-sm shrink-0">{i + 1}.</span>
                 <span>{item}</span>
               </div>
             );
           })}
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <a
               href="https://www.youtube.com/watch?v=LPoZx88OQQg"
               target="_blank"
               rel="noreferrer"
-              className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+              className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
             >
               Motion Simulator build and test flight
             </a>
           </div>
         </div>
         <PlateWell>
-          <div className="hidden sm:block">
-            <FlightSimCaseInteractive active={activeFlightFeature} onSelect={setActiveFlightFeature} />
-          </div>
-          <div className="sm:hidden">
-            <FlightSimCaseTall active={activeFlightFeature} onSelect={setActiveFlightFeature} />
-          </div>
+          <FlightSimCaseInteractive active={activeFlightFeature} onSelect={setActiveFlightFeature} />
         </PlateWell>
       </Slide>
 
@@ -491,7 +479,7 @@ export default function DigitalTransformationWeek8() {
                   href="https://www.youtube.com/watch?v=Fneaa0E6PwE"
                   target="_blank"
                   rel="noreferrer"
-                  className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+                  className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
                 >
                   ONE BY METALLICA ~ 150% SPEED ~ FIRST EVER 100% FC!!!!!!!!!!
                 </a>,
@@ -505,27 +493,22 @@ export default function DigitalTransformationWeek8() {
       </Slide>
 
       <Slide id="zombies-run" label="CASE STUDY" title="Zombies, Run!" exercise={exercise["zombies-run"]}>
-        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-t-[4px] border-[var(--dt-ink)] pt-4`}>
+        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-t border-[var(--dt-ink)]/15 pt-4`}>
           <p>
             <a
               href="https://www.youtube.com/watch?v=QXV5akCoHSQ"
               target="_blank"
               rel="noreferrer"
-              className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+              className="underline font-sans font-bold hover:text-[var(--dt-signal)]"
             >
               Trailer
             </a>
           </p>
           <p>What do you think this trailer is?</p>
-          <p className="font-heading font-bold">Zombies, Run!</p>
+          <p className="font-sans font-bold">Zombies, Run!</p>
         </div>
         <PlateWell>
-          <div className="hidden sm:block">
-            <ZombiesRunPlate />
-          </div>
-          <div className="sm:hidden">
-            <ZombiesRunTall />
-          </div>
+          <ZombiesRunPlate />
         </PlateWell>
       </Slide>
 
@@ -535,7 +518,7 @@ export default function DigitalTransformationWeek8() {
       <ChapterBand id="ch4" number="04" title="Ethical Concerns & Business Strategy" />
 
       <Slide id="ethical-concerns" label="ETHICAL CONCERNS" title="Ethical Concerns" exercise={exercise["ethical-concerns"]}>
-        <div className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+        <div className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
           <Bullets
             items={[
               <>US Military has been using Xbox Controllers for controlling advanced weapons systems.</>,
@@ -547,12 +530,12 @@ export default function DigitalTransformationWeek8() {
           <MilitaryControllerPlate />
         </PlateWell>
         <div className={`${BODY} grid md:grid-cols-2 gap-6`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             &ldquo;For RADBO, the operators are generally a much younger audience,&rdquo; an Air Force spokesman tells
             WIRED. &ldquo;Therefore, utilizing a PlayStation or Xbox type of controller such as the FMCU seems to be a
             natural transition for the gaming generation.&rdquo;
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
             &ldquo;By 2006, games like Halo were dominant in the military,&rdquo; Tom Phelps, then a product director at
             iRobot, told Business Insider in 2013 of the company’s adoption of a standard Xbox controller for its
             PackBot IED disposal robot. &ldquo;So we worked with the military to socialize and standardize the concept …
@@ -570,7 +553,7 @@ export default function DigitalTransformationWeek8() {
       >
         <Row cols="lg:grid-cols-[1.25fr_1fr]">
           <div className="flex flex-col gap-4">
-            <p className="font-heading font-bold text-xl">Questions to ask</p>
+            <p className="font-sans font-bold text-xl">Questions to ask</p>
             <ol className={`${BODY} flex flex-col gap-3`}>
               {[
                 <>Do my users struggle with intrinsic motivation?</>,
@@ -583,11 +566,11 @@ export default function DigitalTransformationWeek8() {
                   <li
                     key={i}
                     onClick={() => setActiveBizQuestion(i)}
-                    className={`cursor-pointer border-t-[4px] border-[var(--dt-ink)] pt-3 flex items-baseline gap-3 text-lg transition-colors ${
-                      isLit ? "font-heading font-bold" : ""
+                    className={`cursor-pointer border-t border-[var(--dt-ink)]/15 pt-3 flex items-baseline gap-3 text-lg transition-colors ${
+                      isLit ? "font-sans font-bold" : ""
                     }`}
                   >
-                    <span className="font-accent text-sm shrink-0">{i + 1}.</span>
+                    <span className="font-sans text-sm shrink-0">{i + 1}.</span>
                     <span>{q}</span>
                   </li>
                 );

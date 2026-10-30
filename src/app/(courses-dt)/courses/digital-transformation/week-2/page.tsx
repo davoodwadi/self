@@ -19,7 +19,6 @@ import {
   Term,
   Summary,
 } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroDataToValue,
   StructuredTable,
@@ -34,7 +33,6 @@ import {
   AnalyticsTimeline,
   ValueChain,
   DataChain,
-  DataChainTall,
   PeopleAndTechnology,
   SocialNetwork,
 } from "./visuals";
@@ -55,25 +53,27 @@ const SECTIONS = [
 // type that fits it, and it only tests what the slide has just taught.
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const LIST = "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+/* Body copy in upright sans-serif. */
+const BODY =
+  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const LIST =
+  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 
 export default function DigitalTransformationWeek2() {
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 02: DIGITAL TRANSFORMATION"
+        category="Week 02: Digital Transformation"
         title="Big Data, Porter's Value Chain, and Socio-Technical Systems"
         subtitle="Exploring data structures, Big Data concepts, and organizational frameworks."
         author="Dr. Davood Wadi"
@@ -88,13 +88,12 @@ export default function DigitalTransformationWeek2() {
 
       <Slide
         id="structured-and-unstructured-data"
-        label="CORE CONCEPT"
         title="Structured and Unstructured Data"
         exercise={exercise["structured-and-unstructured-data"]}
       >
-        <p className="font-heading text-xl md:text-2xl leading-snug max-w-4xl">
+        <p className="font-sans text-xl md:text-2xl leading-[1.4] text-[var(--dt-ink)] max-w-4xl">
           Structured and unstructured data are two primary categories of data that differ in their{" "}
-          <span className="text-[var(--dt-signal)]">organization, format, and ease of analysis</span>.
+          organization, format, and ease of analysis.
         </p>
         <Row className="!items-start">
           <div className={`${BODY} flex flex-col gap-4`}>
@@ -106,7 +105,7 @@ export default function DigitalTransformationWeek2() {
               <StructuredTable />
             </PlateWell>
             <div>
-              <p className="font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem] mb-2">Examples:</p>
+              <p className="font-sans font-semibold text-sm text-[var(--ink-3)] mb-2">Examples:</p>
               <ul className={`${LIST} sm:grid sm:grid-cols-2 sm:gap-x-6`}>
                 <li>Customer databases (e.g., names, addresses, phone numbers)</li>
                 <li>Transaction records (e.g., sales data)</li>
@@ -124,7 +123,7 @@ export default function DigitalTransformationWeek2() {
               <UnstructuredHeap />
             </PlateWell>
             <div>
-              <p className="font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem] mb-2">Examples:</p>
+              <p className="font-sans font-semibold text-sm text-[var(--ink-3)] mb-2">Examples:</p>
               <ul className={`${LIST} sm:grid sm:grid-cols-2 sm:gap-x-6`}>
                 <li>Social media posts and comments</li>
                 <li>Emails and text messages</li>
@@ -143,7 +142,6 @@ export default function DigitalTransformationWeek2() {
           "How to distinguish between Structured and Unstructured Data?",
           "Why did companies focus more on Structured data vs. Unstructured data?",
         ]}
-        plate={<Conversation left={4} right={5} />}
       />
 
       {/* ================================================================
@@ -153,18 +151,17 @@ export default function DigitalTransformationWeek2() {
 
       <Slide
         id="big-data-and-the-three-vs"
-        label="DEFINITION"
         title="Big Data and the Three Vs"
         exercise={exercise["big-data-and-the-three-vs"]}
       >
-        <p className="font-heading text-xl md:text-2xl leading-snug max-w-5xl">
-          <strong>Big Data</strong> refers to the vast volumes of structured and unstructured data that are
+        <p className="font-sans text-xl md:text-2xl leading-[1.4] text-[var(--dt-ink)] max-w-5xl">
+          <strong className="font-semibold">Big Data</strong> refers to the vast volumes of structured and unstructured data that are
           generated at high velocity from various sources, including social media, sensors, devices,
           transactions, and more.
         </p>
-        <p className={`${BODY}`}>
+        <p className={BODY}>
           Big Data is often characterized by the{" "}
-          <span className="font-heading font-bold text-[var(--dt-signal)]">&ldquo;Three Vs&rdquo;</span>:
+          <strong className="font-semibold">&ldquo;Three Vs&rdquo;</strong>:
         </p>
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {[
@@ -184,9 +181,11 @@ export default function DigitalTransformationWeek2() {
               plate: <Variety />,
             },
           ].map((v, i) => (
-            <div key={v.name} className={`${BODY} flex flex-col gap-3 border-t-[4px] border-[var(--dt-ink)] pt-4`}>
-              <p className="font-heading font-bold text-2xl leading-none flex items-baseline gap-3">
-                <span className="text-base font-accent">{i + 1}</span>
+            <div key={v.name} className={`${BODY} flex flex-col gap-3 border-t border-[var(--dt-ink)]/15 pt-4`}>
+              <p className="font-sans font-semibold text-xl leading-snug text-[var(--dt-ink)] flex items-baseline gap-3">
+                <span className="text-sm font-medium text-[var(--ink-3)] tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 {v.name}
               </p>
               <p className="md:min-h-[6.4em]">{v.text}</p>
@@ -201,9 +200,9 @@ export default function DigitalTransformationWeek2() {
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Big Data Analytics Technology" />
 
-      <Slide id="data-storage" label="TECHNOLOGY" title="Data Storage" exercise={exercise["data-storage"]}>
+      <Slide id="data-storage" title="Data Storage" exercise={exercise["data-storage"]}>
         <Row className="!items-start">
-          <div className={`${BODY} flex flex-col gap-4 text-lg`}>
+          <div className={`${BODY} flex flex-col gap-4`}>
             <Term name="Data Lakes">
               Repositories that store vast amounts of raw data in its native format until it is needed for
               analysis.
@@ -212,7 +211,7 @@ export default function DigitalTransformationWeek2() {
               <DataLake />
             </PlateWell>
           </div>
-          <div className={`${BODY} flex flex-col gap-4 text-lg`}>
+          <div className={`${BODY} flex flex-col gap-4`}>
             <Term name="Data Warehouses">
               Centralized repositories that store structured data from multiple sources, optimized for query and
               analysis.
@@ -224,7 +223,7 @@ export default function DigitalTransformationWeek2() {
         </Row>
       </Slide>
 
-      <Slide id="data-processing-frameworks" label="TECHNOLOGY" title="Data Processing Frameworks">
+      <Slide id="data-processing-frameworks" title="Data Processing Frameworks">
         {[
           {
             name: "Batch Processing",
@@ -238,7 +237,7 @@ export default function DigitalTransformationWeek2() {
           },
         ].map((p) => (
           <Row key={p.name} cols="md:grid-cols-[1fr_1.6fr]">
-            <div className={`${BODY} text-lg`}>
+            <div className={BODY}>
               <Term name={p.name}>{p.text}</Term>
             </div>
             <PlateWell>{p.plate}</PlateWell>
@@ -246,7 +245,7 @@ export default function DigitalTransformationWeek2() {
         ))}
       </Slide>
 
-      <Slide id="analytics-tools" label="TECHNOLOGY" title="Analytics Tools" exercise={exercise["analytics-tools"]}>
+      <Slide id="analytics-tools" title="Analytics Tools" exercise={exercise["analytics-tools"]}>
         <div className={`${BODY} grid md:grid-cols-3 gap-6 md:gap-8`}>
           <Term name="Descriptive Analytics">
             Tools that summarize historical data to understand what has happened (e.g., dashboards, reporting
@@ -258,7 +257,7 @@ export default function DigitalTransformationWeek2() {
           </Term>
           <Term name="Prescriptive Analytics">
             Advanced analytics that{" "}
-            <span className="text-[var(--dt-signal)] font-semibold">recommends actions</span> based on data
+            recommends actions based on data
             analysis, often using optimization algorithms.
           </Term>
         </div>
@@ -272,48 +271,39 @@ export default function DigitalTransformationWeek2() {
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Porter's Value Chain" />
 
-      <Slide id="porters-value-chain">
-        <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-14 items-start">
-          <div>
-            <Kicker>FRAMEWORK</Kicker>
-            <p aria-hidden className="font-heading font-bold leading-[0.85] text-[clamp(5rem,13vw,10rem)] mt-4">
-              1985
-            </p>
-          </div>
-          <ol className="flex flex-col">
-            {[
-              <>The Porter Value Chain is a concept developed by Michael E. Porter in his 1985 book.</>,
-              <>
-                It is a framework that helps businesses analyze their internal activities to identify areas where
-                they can create value and gain a{" "}
-                <span className="text-[var(--dt-signal)]">competitive advantage</span>.
-              </>,
-              <>The value chain breaks down a company&apos;s activities into primary and support activities.</>,
-              <>
-                allowing organizations to understand how each contributes to the overall value delivered to
-                customers.
-              </>,
-            ].map((s, i) => (
-              <li
-                key={i}
-                className="font-heading text-[clamp(1.2rem,2vw,1.6rem)] leading-[1.35] py-4 border-t-[3px] border-[var(--dt-ink)] first:border-t-0 first:pt-0"
-              >
-                {s}
-              </li>
-            ))}
-          </ol>
-        </div>
+      <Slide id="porters-value-chain" title="Porter's Value Chain">
+        <ol className="flex flex-col max-w-4xl">
+          {[
+            <>The Porter Value Chain is a concept developed by Michael E. Porter in his 1985 book.</>,
+            <>
+              It is a framework that helps businesses analyze their internal activities to identify areas where
+              they can create value and gain a{" "}
+              competitive advantage.
+            </>,
+            <>The value chain breaks down a company&apos;s activities into primary and support activities.</>,
+            <>
+              allowing organizations to understand how each contributes to the overall value delivered to
+              customers.
+            </>,
+          ].map((s, i) => (
+            <li
+              key={i}
+              className="font-sans text-lg md:text-xl leading-[1.55] text-[var(--dt-ink)] py-4 border-t border-[var(--dt-ink)]/12 first:border-t-0 first:pt-0"
+            >
+              {s}
+            </li>
+          ))}
+        </ol>
       </Slide>
 
       <Slide
         id="primary-and-support-activities"
-        label="FRAMEWORK"
         title="Primary and Support Activities"
         exercise={exercise["primary-and-support-activities"]}
       >
-        <div className={`${BODY} !text-[0.95rem] !leading-[1.5] grid md:grid-cols-2 gap-6 md:gap-10`}>
+        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
           <div>
-            <p className="font-heading font-bold text-xl mb-2">Primary Activities</p>
+            <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-2">Primary Activities</p>
             <ul className={LIST}>
               <li><Term name="Inbound Logistics">Receiving, warehousing, and inventory management of raw materials.</Term></li>
               <li><Term name="Operations">Processes that transform inputs into the final product or service.</Term></li>
@@ -323,7 +313,7 @@ export default function DigitalTransformationWeek2() {
             </ul>
           </div>
           <div>
-            <p className="font-heading font-bold text-xl mb-2">Support Activities</p>
+            <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-2">Support Activities</p>
             <ul className={LIST}>
               <li><Term name="Procurement">The process of acquiring the goods and services a company needs to carry out its operations.</Term></li>
               <li><Term name="Technology Development">Activities related to managing and developing technology, including research and development, process automation, and product design.</Term></li>
@@ -377,21 +367,18 @@ export default function DigitalTransformationWeek2() {
           ],
         },
       ].map((s) => (
-        <Slide key={s.id} id={s.id} label="FRAMEWORK" title={s.title} exercise={exercise[s.id]}>
-          {s.lead && <p className="font-heading text-xl md:text-2xl leading-snug max-w-5xl">{s.lead}</p>}
+        <Slide key={s.id} id={s.id} title={s.title} exercise={exercise[s.id]}>
+          {s.lead && <p className="font-sans text-lg md:text-xl leading-[1.5] text-[var(--dt-ink)] max-w-4xl">{s.lead}</p>}
           <PlateWell>
-            <div className="hidden sm:block">
-              <DataChain active={s.from} />
-            </div>
-            <div className="sm:hidden">
-              <DataChainTall active={s.from} />
-            </div>
+            <DataChain active={s.from} />
           </PlateWell>
           <ol className={`${BODY} grid md:grid-cols-3 gap-6 md:gap-8`}>
             {s.stages.map(([name, text], i) => (
-              <li key={name} className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-                <p className="font-heading font-bold text-xl mb-1 flex items-baseline gap-3">
-                  <span className="font-accent text-base">{s.from + i + 1}.</span>
+              <li key={name} className="border-t border-[var(--dt-ink)]/15 pt-3">
+                <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-1 flex items-baseline gap-3">
+                  <span className="font-sans font-medium text-sm text-[var(--ink-3)] tabular-nums">
+                    {String(s.from + i + 1).padStart(2, "0")}
+                  </span>
                   {name}
                 </p>
                 <p>{text}</p>
@@ -406,9 +393,9 @@ export default function DigitalTransformationWeek2() {
           ================================================================ */}
       <ChapterBand id="ch6" number="06" title="Socio-Technical Systems" />
 
-      <Slide id="socio-technical-systems" label="FRAMEWORK" title="Socio-Technical Systems">
+      <Slide id="socio-technical-systems" title="Socio-Technical Systems">
         <Row cols="lg:grid-cols-[1fr_1.1fr]">
-          <div className="font-body text-lg md:text-xl leading-[1.6] flex flex-col gap-5 [&_strong]:font-heading [&_strong]:font-bold">
+          <div className={`${BODY} text-lg flex flex-col gap-5`}>
             <p>
               <strong>Socio-Technical Systems (STS)</strong> refer to an approach to complex organizational work
               design that recognizes the interaction between people (the social system) and technology (the
@@ -416,7 +403,7 @@ export default function DigitalTransformationWeek2() {
             </p>
             <p>
               The concept emphasizes that both social and technical elements must be{" "}
-              <span className="text-[var(--dt-signal)] font-semibold">considered together</span> to optimize
+              considered together to optimize
               performance, enhance productivity, and improve overall system effectiveness.
             </p>
           </div>
@@ -426,9 +413,9 @@ export default function DigitalTransformationWeek2() {
         </Row>
       </Slide>
 
-      <Slide id="social-system" label="THE SOCIAL SYSTEM" title="Social System">
+      <Slide id="social-system" title="Social System">
         <Row cols="lg:grid-cols-[1.3fr_1fr]">
-          <div className="font-body text-lg leading-[1.6] flex flex-col gap-4 [&_strong]:font-heading [&_strong]:font-bold">
+          <div className={`${BODY} text-lg flex flex-col gap-4`}>
             <p>
               A <strong>social system</strong> refers to the network of relationships, interactions, and structures
               that exist among individuals and groups within a society or organization.
@@ -443,22 +430,22 @@ export default function DigitalTransformationWeek2() {
           </PlateWell>
         </Row>
         <div>
-          <p className="font-heading font-bold text-xl mb-3">Characteristics of a Social System</p>
-          <div className={`${BODY} !text-[0.95rem] grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-3">Characteristics of a Social System</p>
+          <div className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
+            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
               <strong>Interdependence</strong>: The members of a social system are interdependent, meaning that the
               actions of one individual or group can impact others.
             </p>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
               <strong>Adaptability</strong>: Social systems can adapt to changes in their environment, including
               shifts in technology, market conditions, or social norms.
             </p>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
               <strong>Complexity</strong>: Social systems are complex and dynamic, with multiple interacting
               elements. This complexity can lead to emergent behaviors that are not easily predictable based on the
               individual components.
             </p>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
               <strong>Stability and Change</strong>: While social systems strive for stability and cohesion, they
               are also subject to change. Factors such as leadership changes, organizational restructuring, or
               shifts in external conditions can disrupt the status quo.
@@ -469,18 +456,17 @@ export default function DigitalTransformationWeek2() {
 
       <Slide
         id="technical-system"
-        label="THE TECHNICAL SYSTEM"
         title="Technical System"
         exercise={exercise["technical-system"]}
       >
-        <p className="font-heading text-xl md:text-2xl leading-snug max-w-5xl">
-          A <strong>technical system</strong> refers to the collection of tools, technologies, processes, and
+        <p className="font-sans text-lg md:text-xl leading-[1.5] text-[var(--dt-ink)] max-w-4xl">
+          A <strong className="font-semibold">technical system</strong> refers to the collection of tools, technologies, processes, and
           structures that are used to perform tasks and achieve objectives within an organization or a specific
           context.
         </p>
         <div>
-          <p className="font-heading font-bold text-xl mb-3">Components of a Technical System</p>
-          <ol className={`${BODY} !text-[0.95rem] grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5`}>
+          <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-3">Components of a Technical System</p>
+          <ol className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5`}>
             {[
               ["Hardware", "This includes the physical devices and equipment used in the system, such as computers, servers, machinery, and other tools."],
               ["Software", "Software encompasses the programs and applications that run on hardware. This includes operating systems, productivity software, specialized applications, and databases that support various functions within the organization."],
@@ -490,9 +476,11 @@ export default function DigitalTransformationWeek2() {
               ["User Interfaces", "The design of user interfaces (UIs) is crucial for ensuring that users can effectively interact with the technical system. Good UI design enhances usability and user experience, making it easier for individuals to perform their tasks."],
               ["Support and Maintenance", "troubleshooting, updates, training for users to keep the system running smoothly."],
             ].map(([name, text], i) => (
-              <li key={name} className="border-t-[3px] border-[var(--dt-ink)] pt-3">
-                <p className="font-heading font-bold text-lg mb-1 flex items-baseline gap-2">
-                  <span className="font-accent text-sm">{i + 1}.</span>
+              <li key={name} className="border-t border-[var(--dt-ink)]/15 pt-3">
+                <p className="font-sans font-semibold text-base text-[var(--dt-ink)] mb-1 flex items-baseline gap-2">
+                  <span className="font-sans font-medium text-xs text-[var(--ink-3)] tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   {name}
                 </p>
                 <p>{text}</p>

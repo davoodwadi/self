@@ -3,9 +3,8 @@
    --------------------------------------------------------------------------
    What every week builds with: the palette, the plate frame, drawing
    primitives (solid shapes, framed screens, arrows) and the deck's slide
-   layout blocks. Poster-like page pieces: warm cream ground, heavy ink rules
-   with a thin inner rule, small ink diamonds as the only ornament, SIGNAL red
-   for the kicker and numerals. Flat colour only.
+   layout blocks. Clean academic layout: white ground, 1px ink hairlines,
+   upright sans-serif typography, and SIGNAL red reserved for focal emphasis.
    Every coordinate is a literal or rounded, so server and client match.
    ========================================================================== */
 
@@ -15,7 +14,7 @@ import type { CourseExercise } from "@/lib/course-exercise";
 
 export { DeckNav } from "./deck-nav";
 
-export const CREAM = "#fffffe";
+export const WHITE = "#fffffe";
 export const INK = "#1D1B1A";
 export const SKIN = "#d7c9b1";
 export const SIGNAL = "#A63A2C";
@@ -43,7 +42,7 @@ export function Plate({
       role="img"
       aria-label={title}
       className="block w-full h-auto select-none [&_*]:outline-none [&_*:focus]:outline-none [&_*:focus-visible]:outline-none"
-      style={{ background: CREAM }}
+      style={{ background: WHITE }}
     >
       <title>{title}</title>
       {children}
@@ -51,7 +50,7 @@ export function Plate({
   );
 }
 
-/* A physical shape: solid ink, holes left as cream gaps. */
+/* A physical shape: solid ink, holes left as white gaps. */
 export function Solid({
   outer,
   holes = "",
@@ -64,7 +63,7 @@ export function Solid({
   return <path d={`${outer} ${holes}`} fill={tone} fillRule="evenodd" />;
 }
 
-/* -- cast: Monitor (heavy frame, thin inner rule, stand) ------------------ */
+/* -- cast: Monitor (clean diagram container frame) ------------------------ */
 
 export function Monitor({
   x,
@@ -79,7 +78,6 @@ export function Monitor({
   h: number;
   children?: React.ReactNode;
 }) {
-  const cx = r2(x + w / 2);
   return (
     <g>
       <rect
@@ -87,26 +85,11 @@ export function Monitor({
         y={y}
         width={w}
         height={h}
-        fill="none"
+        fill={INK}
+        fillOpacity={0.03}
         stroke={INK}
-        strokeWidth={8}
-      />
-      <rect
-        x={x + 9}
-        y={y + 9}
-        width={w - 18}
-        height={h - 18}
-        fill="none"
-        stroke={INK}
+        strokeOpacity={0.35}
         strokeWidth={1.5}
-      />
-      <path
-        d={`M ${cx - 10} ${y + h + 4} H ${cx + 10} V ${y + h + 22} H ${cx - 10} Z`}
-        fill={INK}
-      />
-      <path
-        d={`M ${cx - 40} ${y + h + 22} H ${cx + 40} V ${y + h + 30} H ${cx - 40} Z`}
-        fill={INK}
       />
       {children}
     </g>
@@ -128,9 +111,9 @@ export function Arrow({
 }) {
   return (
     <g>
-      <path d={`M ${x1} ${y} H ${x2 - 14}`} stroke={color} strokeWidth={6} />
+      <path d={`M ${x1} ${y} H ${x2 - 8}`} stroke={color} strokeWidth={2} />
       <path
-        d={`M ${x2 - 18} ${y - 12} L ${x2} ${y} L ${x2 - 18} ${y + 12} Z`}
+        d={`M ${x2 - 10} ${y - 5.5} L ${x2} ${y} L ${x2 - 10} ${y + 5.5} Z`}
         fill={color}
       />
     </g>
@@ -143,7 +126,7 @@ export function Pointer({
   y1,
   x2,
   y2,
-  w = 4,
+  w = 2,
   color = INK,
   head,
 }: {
@@ -156,19 +139,20 @@ export function Pointer({
   /** arrowhead length. Its half-width is a little over half of it */
   head?: number;
 }) {
+  const sw = Math.min(w, 2.25);
   const len = Math.hypot(x2 - x1, y2 - y1);
   const ux = (x2 - x1) / len;
   const uy = (y2 - y1) / len;
-  const hl = head ?? 14 + w * 2;
-  const hw = head ? r2(head * 0.6) : 8 + w;
+  const hl = Math.min(head ?? 9, 10);
+  const hw = r2(hl * 0.55);
   const bx = x2 - ux * hl;
   const by = y2 - uy * hl;
   return (
     <g>
       <path
-        d={`M ${x1} ${y1} L ${r2(bx + ux * 2)} ${r2(by + uy * 2)}`}
+        d={`M ${x1} ${y1} L ${r2(bx + ux * 1.5)} ${r2(by + uy * 1.5)}`}
         stroke={color}
-        strokeWidth={w}
+        strokeWidth={sw}
       />
       <path
         d={`M ${x2} ${y2} L ${r2(bx - uy * hw)} ${r2(by + ux * hw)} L ${r2(bx + uy * hw)} ${r2(by - ux * hw)} Z`}
@@ -178,7 +162,7 @@ export function Pointer({
   );
 }
 
-/* -- MiniScreen: a small screen (heavy frame, thin inner rule, short stand) holding one glyph -- */
+/* -- MiniScreen: a compact diagram node frame (84 × 56) ------------------- */
 
 export function MiniScreen({
   x,
@@ -191,7 +175,6 @@ export function MiniScreen({
 }) {
   const w = 84;
   const h = 56;
-  const cx = x + w / 2;
   return (
     <g>
       <rect
@@ -199,26 +182,11 @@ export function MiniScreen({
         y={y}
         width={w}
         height={h}
-        fill="none"
-        stroke={INK}
-        strokeWidth={5}
-      />
-      <rect
-        x={x + 6}
-        y={y + 6}
-        width={w - 12}
-        height={h - 12}
-        fill="none"
-        stroke={INK}
-        strokeWidth={1}
-      />
-      <path
-        d={`M ${cx - 5} ${y + h + 2.5} H ${cx + 5} V ${y + h + 10} H ${cx - 5} Z`}
         fill={INK}
-      />
-      <path
-        d={`M ${cx - 20} ${y + h + 10} H ${cx + 20} V ${y + h + 14} H ${cx - 20} Z`}
-        fill={INK}
+        fillOpacity={0.03}
+        stroke={INK}
+        strokeOpacity={0.35}
+        strokeWidth={1.5}
       />
       {children}
     </g>
@@ -227,7 +195,7 @@ export function MiniScreen({
 
 /* -- Knob: a draggable handle on a track (for interactive plates) --------- */
 
-/* A cream handle with two arrowheads that moves along a track starting at
+/* A white handle with two arrowheads that moves along a track starting at
    (x, y) and running `len` units right (axis "x") or up (axis "y"). Drag it,
    or use the arrow keys. */
 export function Knob({
@@ -318,7 +286,7 @@ export function Knob({
         cx={kx}
         cy={ky}
         r={11}
-        fill={CREAM}
+        fill={WHITE}
         stroke={tone}
         strokeWidth={3.5}
       />
@@ -334,47 +302,41 @@ export function Knob({
 
 /* Theme tokens for the shared ProgressBar / FloatingNav, scoped to the deck. */
 export const DECK_THEME = {
-  "--background": CREAM,
-  "--background-alt": CREAM,
-  "--card": CREAM,
-  "--border": INK,
+  "--background": WHITE,
+  "--background-alt": "#f5f4f0",
+  "--card": WHITE,
+  "--border": "#d9d6cf",
   "--text-primary": INK,
-  "--text-secondary": INK,
-  "--text-muted": INK,
+  "--text-secondary": "#2d2b29",
+  "--text-muted": "#5e5850",
   "--accent1": SIGNAL,
   "--accent2": SIGNAL,
   "--highlight": SIGNAL,
   "--glow": "transparent",
-  "--dt-cream": CREAM,
+  "--dt-white": WHITE,
   "--dt-ink": INK,
   "--dt-signal": SIGNAL,
   /* tokens the shared exercises read (src/components/exercises) */
-  "--paper": CREAM,
-  "--paper-2": "#E5E0D6",
+  "--paper": WHITE,
+  "--paper-2": "#f5f4f0",
   "--ink": INK,
-  "--ink-2": INK,
-  "--ink-3": "#5E5850",
-  "--rule": "#D1CBBF",
-  "--rule-2": "#9C9384",
+  "--ink-2": "#2d2b29",
+  "--ink-3": "#5e5850",
+  "--rule": "#e2dfd9",
+  "--rule-2": "#c8c3ba",
   "--signal": SIGNAL,
-  "--signal-tint": "rgba(166, 58, 44, 0.1)",
+  "--signal-tint": "rgba(166, 58, 44, 0.08)",
   "--counter": COUNTER,
   "--affirm": COUNTER,
-  "--affirm-tint": "rgba(31, 95, 175, 0.1)",
-  background: CREAM,
+  "--affirm-tint": "rgba(31, 95, 175, 0.08)",
+  background: WHITE,
   color: INK,
 } as React.CSSProperties;
 
-/* -- small marks ---------------------------------------------------------- */
+export const MICRO =
+  "font-sans text-[0.875rem] font-medium tracking-normal text-[var(--ink-3)] [font-variant-numeric:tabular-nums]";
 
-export function Diamond({ className = "" }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={`inline-block w-2 h-2 rotate-45 shrink-0 bg-[var(--dt-ink)] ${className}`}
-    />
-  );
-}
+/* -- small marks ---------------------------------------------------------- */
 
 export function Kicker({
   children,
@@ -385,57 +347,30 @@ export function Kicker({
 }) {
   return (
     <p
-      className={`flex items-start gap-3 font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem] ${
-        light ? "text-[var(--dt-cream)]" : "text-[var(--dt-signal)]"
+      className={`font-sans text-[0.875rem] font-medium tracking-normal [font-variant-numeric:tabular-nums] ${
+        light ? "text-[var(--dt-white)]/80" : "text-[var(--ink-3)]"
       }`}
     >
-      <span
-        aria-hidden
-        className="inline-block w-2 h-2 mt-[0.2em] rotate-45 shrink-0 bg-[var(--dt-signal)]"
-      />
       {children}
     </p>
   );
 }
 
-/* -- frame: heavy ink rule, thin inner rule, corner diamonds -------------- */
+/* -- frame and plate wrapper ---------------------------------------------- */
 
 export function Frame({
   children,
   className = "",
-  inner = "bg-[var(--dt-cream)]",
 }: {
   children: React.ReactNode;
   className?: string;
   inner?: string;
 }) {
-  return (
-    <div
-      className={`relative border-[5px] border-[var(--dt-ink)] p-[6px] ${className}`}
-    >
-      <div className={`border border-[var(--dt-ink)] ${inner}`}>{children}</div>
-      {[
-        "-top-[7px] -left-[7px]",
-        "-top-[7px] -right-[7px]",
-        "-bottom-[7px] -left-[7px]",
-        "-bottom-[7px] -right-[7px]",
-      ].map((pos) => (
-        <span
-          key={pos}
-          aria-hidden
-          className={`absolute ${pos} w-[9px] h-[9px] rotate-45 bg-[var(--dt-cream)] border-2 border-[var(--dt-ink)]`}
-        />
-      ))}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 }
 
 export function PlateWell({ children }: { children: React.ReactNode }) {
-  return (
-    <Frame>
-      <div className="p-3 sm:p-4">{children}</div>
-    </Frame>
-  );
+  return <div className="w-full">{children}</div>;
 }
 
 /* -- hero ----------------------------------------------------------------- */
@@ -464,76 +399,64 @@ export function PosterHero({
     <section
       data-slide
       id="hero"
-      className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-10"
+      className="min-h-svh flex items-center px-6 lg:px-12 py-10 md:py-12"
     >
-      <Frame className="w-full max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center p-6 sm:p-10 md:p-12">
-          <div>
-            <Kicker>{category}</Kicker>
-            <h1 className="font-heading font-bold text-[clamp(2.4rem,5vw,4.4rem)] leading-[1.02] tracking-[-0.02em] mt-6 mb-6">
-              {title}
-            </h1>
-            <div className="h-[5px] w-24 bg-[var(--dt-signal)] mb-6" />
-            {subtitle && (
-              <p className="font-body text-lg md:text-xl leading-relaxed max-w-xl">
-                {subtitle}
+      <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+        <div>
+          <div className={MICRO}>{category}</div>
+          <h1 className="mt-4 font-sans font-bold text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
+            {title}
+          </h1>
+          <div className="mt-6 h-px w-full bg-[var(--dt-ink)]/15" />
+          {subtitle && (
+            <p className="mt-6 font-sans text-lg md:text-[1.25rem] font-normal leading-relaxed text-[var(--ink-2)] max-w-2xl">
+              {subtitle}
+            </p>
+          )}
+          {agenda && (
+            <div className="mt-6 max-w-2xl">
+              <p className="font-sans text-[0.875rem] font-semibold tracking-normal text-[var(--ink-3)]">
+                Agenda
               </p>
-            )}
-            {agenda && (
-              <div className="mt-6 max-w-xl">
-                <p className="font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem]">
-                  Agenda
-                </p>
-                {/* a long agenda runs down two columns, so the hero stays one screen */}
-                <ol
-                  className={`mt-3 ${agenda.length > 4 ? "sm:grid sm:grid-flow-col sm:gap-x-8" : ""}`}
-                  style={
-                    agenda.length > 4
-                      ? {
-                          gridTemplateRows: `repeat(${Math.ceil(agenda.length / 2)}, auto)`,
-                        }
-                      : undefined
-                  }
-                >
-                  {agenda.map((item, i) => (
-                    <li
-                      key={item}
-                      className={`flex items-baseline gap-4 py-2 border-t-[3px] border-[var(--dt-ink)] first:border-t-0 ${
-                        agenda.length > 4 && i === Math.ceil(agenda.length / 2)
-                          ? "sm:border-t-0"
-                          : ""
-                      }`}
-                    >
-                      <span className="font-heading font-bold text-lg w-5 shrink-0">
-                        {i + 1}
-                      </span>
-                      <span className="font-heading font-bold text-lg leading-snug">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-accent text-sm">
-              <span className="font-bold">{author}</span>
-              {date && (
-                <span className="flex items-center gap-4">
-                  <Diamond />
-                  {date}
-                </span>
-              )}
-              <span className="flex items-center gap-4">
-                <Diamond />
-                {institution}
-              </span>
+              <ol
+                className={`mt-2 ${agenda.length > 4 ? "sm:grid sm:grid-flow-col sm:gap-x-8" : ""}`}
+                style={
+                  agenda.length > 4
+                    ? {
+                        gridTemplateRows: `repeat(${Math.ceil(agenda.length / 2)}, auto)`,
+                      }
+                    : undefined
+                }
+              >
+                {agenda.map((item, i) => (
+                  <li
+                    key={item}
+                    className={`flex items-baseline gap-3.5 py-2 border-t border-[var(--dt-ink)]/12 first:border-t-0 ${
+                      agenda.length > 4 && i === Math.ceil(agenda.length / 2)
+                        ? "sm:border-t-0"
+                        : ""
+                    }`}
+                  >
+                    <span className={`${MICRO} w-6 shrink-0`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-sans font-medium text-base leading-snug text-[var(--dt-ink)]">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ol>
             </div>
-          </div>
-          <div className="border-t-[5px] lg:border-t-0 border-[var(--dt-ink)] pt-10 lg:pt-0">
-            <div className="max-w-xl mx-auto">{plate}</div>
+          )}
+          <div className="mt-10 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--dt-ink)]/12 pt-5">
+            <span className={MICRO}>{author}</span>
+            <span className="font-sans text-[0.875rem] font-normal text-[var(--ink-3)]/80">
+              {date ? `${date} | ${institution}` : institution}
+            </span>
           </div>
         </div>
-      </Frame>
+        <div className="w-full max-w-xl mx-auto">{plate}</div>
+      </div>
     </section>
   );
 }
@@ -555,23 +478,19 @@ export function ChapterBand({
     <section
       data-slide
       id={id}
-      className="bg-[var(--dt-ink)] text-[var(--dt-cream)] px-4 sm:px-8 md:px-16 py-28 md:py-36 min-h-svh flex items-center"
+      className="border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12 min-h-svh flex items-center"
     >
-      <div className="max-w-6xl w-full mx-auto grid md:grid-cols-[auto_1fr] gap-8 md:gap-16 items-end">
-        <p
-          aria-hidden
-          className="font-heading font-bold leading-[0.8] text-[clamp(6rem,18vw,13rem)] text-[var(--dt-signal)]"
-        >
-          {number}
-        </p>
-        <div>
-          <Kicker light>CHAPTER {number}</Kicker>
-          <div className="h-px w-full bg-[var(--dt-cream)] opacity-40 my-6" />
-          <h2 className="font-heading font-bold text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] mb-6">
+      <div className="max-w-6xl w-full mx-auto">
+        <div className="w-full max-w-4xl">
+          <div className="font-sans text-[0.875rem] font-semibold tracking-normal text-[var(--dt-signal)] [font-variant-numeric:tabular-nums]">
+            Part {number}
+          </div>
+          <h2 className="mt-3 font-sans font-bold text-[2rem] md:text-[2.75rem] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
             {title}
           </h2>
+          <div className="mt-6 h-px w-full bg-[var(--dt-ink)]/15" />
           {description && (
-            <p className="font-body text-lg md:text-xl leading-relaxed max-w-2xl opacity-90">
+            <p className="mt-6 font-sans text-lg md:text-xl font-normal leading-relaxed text-[var(--ink-2)] max-w-3xl">
               {description}
             </p>
           )}
@@ -585,7 +504,6 @@ export function ChapterBand({
 
 export function Slide({
   id,
-  label,
   title,
   exercise,
   exerciseArt,
@@ -605,19 +523,15 @@ export function Slide({
       <section
         data-slide
         id={id}
-        className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-10 md:py-12"
+        className="min-h-svh flex flex-col justify-center border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12"
       >
         <div className="max-w-6xl w-full mx-auto">
-          {(label || title) && (
+          {title && (
             <header className="mb-6 md:mb-8">
-              {label && <Kicker>{label}</Kicker>}
-              {title && (
-                <h3 className="font-heading font-bold text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] mt-3">
-                  {title}
-                </h3>
-              )}
-              <div className="h-[4px] w-full bg-[var(--dt-ink)] mt-5" />
-              <div className="h-px w-full bg-[var(--dt-ink)] mt-[4px]" />
+              <h2 className="max-w-4xl font-sans font-bold text-[1.75rem] md:text-[2.375rem] leading-[1.2] tracking-[-0.015em] text-[var(--dt-ink)]">
+                {title}
+              </h2>
+              <div className="h-px w-full bg-[var(--dt-ink)]/12 mt-5" />
             </header>
           )}
           <div className="flex flex-col gap-6 md:gap-8">{children}</div>
@@ -629,7 +543,7 @@ export function Slide({
         <section
           data-slide
           aria-label="Exercise"
-          className="min-h-svh flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-[14svh] pb-16 bg-[var(--paper-2)]"
+          className="min-h-svh flex flex-col justify-start border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 pt-[14svh] pb-16 bg-[var(--paper-2)]"
         >
           <div className="max-w-6xl w-full mx-auto">
             <Exercise data={exercise} art={exerciseArt} />
@@ -666,23 +580,25 @@ export function DiscussionSlide({
 }: {
   quote: string;
   author: string;
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
 }) {
   return (
     <section
       data-slide
-      className="px-4 sm:px-8 md:px-16 py-24 md:py-32 min-h-svh flex items-center"
+      className="border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12 min-h-svh flex items-center"
     >
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="font-heading font-bold text-[clamp(1.7rem,3.6vw,2.9rem)] leading-[1.25]">
-          {quote}
-        </p>
-        <div className="flex items-center justify-center gap-4 mt-10">
-          <span className="h-[3px] w-12 bg-[var(--dt-ink)]" />
-          <Kicker>{author}</Kicker>
-          <span className="h-[3px] w-12 bg-[var(--dt-ink)]" />
-        </div>
-        <div className="max-w-sm mx-auto mt-12">{plate}</div>
+      <div
+        className={`max-w-6xl w-full mx-auto ${
+          plate ? "grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center" : ""
+        }`}
+      >
+        <aside className="max-w-4xl border border-[var(--dt-ink)]/15 p-6 md:p-8">
+          <div className={MICRO}>{author || "Discussion"}</div>
+          <p className="mt-3 font-sans text-xl md:text-[1.5rem] font-semibold leading-[1.4] tracking-[-0.01em] text-[var(--dt-ink)]">
+            {quote}
+          </p>
+        </aside>
+        {plate && <div className="max-w-sm w-full mx-auto">{plate}</div>}
       </div>
     </section>
   );
@@ -705,44 +621,44 @@ export function Summary({
     <section
       data-slide
       id={id}
-      className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 md:py-14"
+      className="min-h-svh flex flex-col justify-center border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12"
     >
-      <Frame className="w-full max-w-5xl mx-auto">
-        <div className="p-6 sm:p-8 md:p-10">
-          <Kicker>CONCLUSION</Kicker>
-          <h2 className="font-heading font-bold text-[clamp(2.2rem,4.5vw,3.4rem)] leading-none mt-4 mb-6">
+      <div className="w-full max-w-6xl mx-auto">
+        <header className="mb-6 md:mb-8">
+          <div className={MICRO}>Summary</div>
+          <h2 className="mt-2 max-w-4xl font-sans font-bold text-[1.75rem] md:text-[2.375rem] leading-[1.2] tracking-[-0.015em] text-[var(--dt-ink)]">
             {title}
           </h2>
           {summary && (
-            <p className="font-body text-lg leading-[1.7] max-w-3xl">
+            <p className="mt-4 font-sans text-lg leading-[1.6] text-[var(--ink-2)] max-w-3xl">
               {summary}
             </p>
           )}
-          <div className="mt-8 bg-[var(--dt-ink)] text-[var(--dt-cream)] p-6 sm:p-7 md:p-8">
-            <h4 className="font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem] text-[var(--dt-cream)]">
-              KEY TAKEAWAYS
-            </h4>
-            <ol className="mt-4">
-              {takeaways.map((t, i) => (
-                <li
-                  key={t}
-                  className="flex items-start gap-5 py-4 border-t border-[var(--dt-cream)]/30 first:border-t-0 first:pt-0 last:pb-0"
-                >
-                  <span className="font-heading font-bold text-3xl leading-none text-[var(--dt-signal)] w-8 shrink-0">
-                    {i + 1}
-                  </span>
-                  <span className="font-body text-lg leading-relaxed">{t}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
+        </header>
+        <div className="border-t border-[var(--dt-ink)]/15 pt-6">
+          <h3 className={MICRO}>Key takeaways</h3>
+          <ol className="mt-4">
+            {takeaways.map((t, i) => (
+              <li
+                key={t}
+                className="flex items-baseline gap-5 py-4 border-t border-[var(--dt-ink)]/12 first:border-t-0 first:pt-0 last:pb-0"
+              >
+                <span className="font-sans text-[0.875rem] font-semibold text-[var(--dt-signal)] w-6 shrink-0 [font-variant-numeric:tabular-nums]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-sans text-lg leading-[1.6] text-[var(--dt-ink)]">
+                  {t}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
-      </Frame>
+      </div>
     </section>
   );
 }
 
-/* -- class discussion: several questions, numbered, beside a plate -------- */
+/* -- class discussion: several questions, numbered ------------------------ */
 
 export function DiscussionList({
   id,
@@ -751,34 +667,38 @@ export function DiscussionList({
 }: {
   id?: string;
   questions: string[];
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
 }) {
   return (
     <section
       data-slide
       id={id}
-      className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-12"
+      className="min-h-svh flex items-center border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12"
     >
-      <div className="max-w-6xl w-full mx-auto grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center">
-        <div>
-          <Kicker>CLASS DISCUSSION</Kicker>
-          <ol className="mt-6">
+      <div
+        className={`max-w-6xl w-full mx-auto ${
+          plate ? "grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center" : ""
+        }`}
+      >
+        <aside className="max-w-4xl border border-[var(--dt-ink)]/15 p-6 md:p-8">
+          <div className={MICRO}>Discussion</div>
+          <ol className="mt-4">
             {questions.map((q, i) => (
               <li
                 key={q}
-                className="flex items-start gap-5 py-5 border-t-[3px] border-[var(--dt-ink)] first:border-t-0"
+                className="flex items-baseline gap-4 py-4 border-t border-[var(--dt-ink)]/12 first:border-t-0 first:pt-0 last:pb-0"
               >
-                <span className="font-heading font-bold text-4xl leading-none w-8 shrink-0">
-                  {i + 1}
+                <span className="font-sans text-[0.875rem] font-semibold text-[var(--ink-3)] w-6 shrink-0 [font-variant-numeric:tabular-nums]">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-heading font-bold text-[clamp(1.3rem,2.3vw,1.9rem)] leading-[1.25]">
+                <span className="font-sans text-lg md:text-[1.1875rem] font-normal leading-relaxed text-[var(--dt-ink)]">
                   {q}
                 </span>
               </li>
             ))}
           </ol>
-        </div>
-        <div className="max-w-sm w-full mx-auto">{plate}</div>
+        </aside>
+        {plate && <div className="max-w-sm w-full mx-auto">{plate}</div>}
       </div>
     </section>
   );
@@ -795,7 +715,7 @@ export function Term({
 }) {
   return (
     <p>
-      <strong className="font-heading font-bold">{name}</strong>: {children}
+      <strong className="font-sans font-semibold text-[var(--dt-ink)]">{name}</strong>: {children}
     </p>
   );
 }

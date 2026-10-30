@@ -28,7 +28,7 @@ import {
   Tray,
   Target,
 } from "@phosphor-icons/react/dist/ssr";
-import { CREAM, INK, SIGNAL, COUNTER_FILL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } from "../_visuals/kit";
+import { WHITE, INK, SIGNAL, COUNTER_FILL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } from "../_visuals/kit";
 import { Shop, Coins, Person } from "../_visuals/objects";
 
 /* -- cast: Table (structured data), origin top-left ----------------------- */
@@ -53,7 +53,7 @@ export function Table({
   /** a body row (0-based) whose cells are filled SIGNAL: the record found */
   lit?: number;
 }) {
-  // a solid block. Body cells cut out as cream, header row left solid
+  // a solid block. Body cells cut out as white, header row left solid
   const g = Math.max(2, r2(w / 40));
   const head = r2(h / (rows + 1));
   const cw = r2((w - g * (cols + 1)) / cols);
@@ -120,7 +120,7 @@ export function Database({
   n,
   disc = 20,
   tone = INK,
-  ground = CREAM,
+  ground = WHITE,
 }: {
   cx: number;
   bottom: number;
@@ -219,9 +219,9 @@ export function UnstructuredHeap() {
 
 export function Volume() {
   return (
-    <Plate h={230} title="A person stands beside a stack of database discs nearly twice their height">
-      <Person x={132} y={118} k={1} variant={8} />
-      <Database cx={268} bottom={218} w={124} n={9} disc={19} />
+    <Plate h={230} title="A small two-disc storage stack beside a towering nine-disc database stack">
+      <Database cx={120} bottom={218} w={96} n={2} disc={19} />
+      <Database cx={268} bottom={218} w={132} n={9} disc={19} tone={SIGNAL} />
     </Plate>
   );
 }
@@ -420,7 +420,7 @@ export function AnalyticsTimeline() {
   const now = past[past.length - 1];
   const end: [number, number] = [500, 70];
   const label = (x: number, s: string, tone = INK) => (
-    <text x={x} y={206} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={tone}>
+    <text x={x} y={206} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
       {s}
     </text>
   );
@@ -476,7 +476,7 @@ export function ValueChain() {
   const bottom = 216;
   const cw = (R - L - 4 * gap) / 5;
   const word = (x: number, y: number, s: string, fill: string, size = 16) => (
-    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={size} fill={fill}>
+    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={size} fill={INK}>
       {s}
     </text>
   );
@@ -503,14 +503,14 @@ export function ValueChain() {
             <rect x={x} y={pTop} width={r2(cw)} height={bottom - pTop} fill={INK} />
             {lines.map((s, j) => (
               <React.Fragment key={s}>
-                {word(r2(x + cw / 2), r2(cy + 6 + (j - (lines.length - 1) / 2) * 22), s, CREAM)}
+                {word(r2(x + cw / 2), r2(cy + 6 + (j - (lines.length - 1) / 2) * 22), s, WHITE)}
               </React.Fragment>
             ))}
           </g>
         );
       })}
       <path d={`M ${R + gap} ${top} L 780 ${(top + bottom) / 2} L ${R + gap} ${bottom} Z`} fill={SIGNAL} />
-      {word(R + 44, (top + bottom) / 2 + 7, "Value", CREAM, 20)}
+      {word(R + 44, (top + bottom) / 2 + 7, "Value", WHITE, 20)}
     </Plate>
   );
 }
@@ -534,17 +534,17 @@ export function DataChainTall({ active }: { active: number }) {
     >
       {CHAIN.map((name, i) => (
         <g key={name}>
-          <circle cx={cx} cy={y(i)} r={r} fill={lit(i) ? SIGNAL : CREAM} stroke={lit(i) ? SIGNAL : INK} strokeWidth={3} />
+          <circle cx={cx} cy={y(i)} r={r} fill={lit(i) ? SIGNAL : WHITE} stroke={lit(i) ? SIGNAL : INK} strokeWidth={3} />
           <g transform={`translate(${cx} ${y(i)}) scale(0.68) translate(${-cx} ${-y(i)})`}>
-            <ChainGlyph i={i} cx={cx} cy={y(i)} color={lit(i) ? CREAM : INK} ground={lit(i) ? SIGNAL : CREAM} />
+            <ChainGlyph i={i} cx={cx} cy={y(i)} color={lit(i) ? WHITE : INK} ground={lit(i) ? SIGNAL : WHITE} />
           </g>
           <text
             x={cx + r + 18}
             y={y(i) + 6}
-            fontFamily="var(--font-body)"
+            fontFamily="var(--font-sans)"
             fontWeight={600}
             fontSize={18}
-            fill={lit(i) ? SIGNAL : INK}
+            fill={INK}
           >
             {name}
           </text>
@@ -562,10 +562,10 @@ export function DataChainTall({ active }: { active: number }) {
         x={right - 14}
         y={y(4)}
         textAnchor="middle"
-        fontFamily="var(--font-body)"
+        fontFamily="var(--font-sans)"
         fontWeight={600}
         fontSize={16}
-        fill={loopTone}
+        fill={INK}
         transform={`rotate(-90 ${right - 14} ${y(4)})`}
       >
         Feedback and Iteration
@@ -581,7 +581,7 @@ export function DataChainTall({ active }: { active: number }) {
 
 function SystemLabel({ x, y, s }: { x: number; y: number; s: string }) {
   return (
-    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
+    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
       {s}
     </text>
   );
@@ -724,18 +724,18 @@ export function DataChain({ active }: { active: number }) {
     >
       {CHAIN.map((name, i) => (
         <g key={name}>
-          <circle cx={r2(x(i))} cy={cy} r={r} fill={lit(i) ? SIGNAL : CREAM} stroke={lit(i) ? SIGNAL : INK} strokeWidth={4} />
+          <circle cx={r2(x(i))} cy={cy} r={r} fill={lit(i) ? SIGNAL : WHITE} stroke={lit(i) ? SIGNAL : INK} strokeWidth={4} />
           <g transform={`translate(${r2(x(i))} ${cy}) scale(0.82) translate(${r2(-x(i))} ${-cy})`}>
-            <ChainGlyph i={i} cx={r2(x(i))} cy={cy} color={lit(i) ? CREAM : INK} ground={lit(i) ? SIGNAL : CREAM} />
+            <ChainGlyph i={i} cx={r2(x(i))} cy={cy} color={lit(i) ? WHITE : INK} ground={lit(i) ? SIGNAL : WHITE} />
           </g>
           <text
             x={r2(x(i))}
             y={cy + r + 24}
             textAnchor="middle"
-            fontFamily="var(--font-body)"
+            fontFamily="var(--font-sans)"
             fontWeight={600}
             fontSize={13}
-            fill={lit(i) ? SIGNAL : INK}
+            fill={INK}
           >
             {name}
           </text>
@@ -760,10 +760,10 @@ export function DataChain({ active }: { active: number }) {
         x={400}
         y={loopY - 10}
         textAnchor="middle"
-        fontFamily="var(--font-body)"
+        fontFamily="var(--font-sans)"
         fontWeight={600}
         fontSize={14}
-        fill={loopTone}
+        fill={INK}
       >
         Feedback and Iteration
       </text>

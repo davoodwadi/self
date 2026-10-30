@@ -6,7 +6,7 @@
      - Monitor / MiniScreen, anything digital (course kit)
      - Disc, boxed media: the rental film, traditional software
      - Package, a product release / increment (Phosphor, fill)
-     - Backlog, a list of work items (ink card, cream item lines)
+     - Backlog, a list of work items (ink card, white item lines)
    Every coordinate is a literal or rounded, so server and client match.
    ========================================================================== */
 
@@ -32,7 +32,7 @@ import {
   Gear,
   ArrowsClockwise,
 } from "@phosphor-icons/react/dist/ssr";
-import { INK, SIGNAL, CREAM, COUNTER_FILL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } from "../_visuals/kit";
+import { INK, SIGNAL, WHITE, COUNTER_FILL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } from "../_visuals/kit";
 import { Person, Shop, Doc } from "../_visuals/objects";
 
 /* -- the rental disc in its mailer envelope (physical film) --------------- */
@@ -42,9 +42,9 @@ function Mailer({ x, y, discTone = INK }: { x: number; y: number; discTone?: str
   return (
     <g transform={`translate(${x} ${y})`}>
       <path d="M 60 0 A 34 34 0 1 0 60.01 0 Z M 60 26 A 8 8 0 1 1 59.99 26 Z" fill={discTone} fillRule="evenodd" />
-      <circle cx={60} cy={34} r={15} fill="none" stroke={CREAM} strokeWidth={3} />
-      <path d="M 0 40 H 120 V 110 H 0 Z" fill={INK} stroke={CREAM} strokeWidth={4} />
-      <path d="M 4 44 L 60 78 L 116 44" fill="none" stroke={CREAM} strokeWidth={3} />
+      <circle cx={60} cy={34} r={15} fill="none" stroke={WHITE} strokeWidth={3} />
+      <path d="M 0 40 H 120 V 110 H 0 Z" fill={INK} stroke={WHITE} strokeWidth={4} />
+      <path d="M 4 44 L 60 78 L 116 44" fill="none" stroke={WHITE} strokeWidth={3} />
     </g>
   );
 }
@@ -166,7 +166,7 @@ export function FourTypes({
       {/* Recommended upper path to the optimal target */}
       <Pointer x1={end[0] + 10} y1={end[1] - 4} x2={718} y2={48} w={active === 2 ? 6.5 : 4.5} head={15} color={prescTone} />
       <circle cx={744} cy={42} r={18} fill={prescTone} />
-      <path d="M 736 42 L 742 48 L 753 36" fill="none" stroke={CREAM} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M 736 42 L 742 48 L 753 36" fill="none" stroke={WHITE} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
 
       {/* Interactive hit zones and bottom tab bars */}
       {ANALYTICS_ZONES.map((z) => {
@@ -193,15 +193,15 @@ export function FourTypes({
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
             <rect x={z.x0} y={16} width={z.x1 - z.x0} height={232} fill="transparent" />
-            <rect x={z.x0 + 8} y={base + 8} width={z.x1 - z.x0 - 16} height={isLit ? 6 : 2} fill={tone} />
+            <rect x={z.x0 + 8} y={base + 8} width={z.x1 - z.x0 - 16} height={isLit ? 6 : 2} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={z.cx}
               y={238}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={19}
-              fill={tone}
+              fill={INK}
             >
               {z.label}
             </text>
@@ -225,9 +225,9 @@ function Calendar({ x, y, tone = INK }: { x: number; y: number; tone?: string })
     <g transform={`translate(${x} ${y})`}>
       <path d={`M 0 30 H 90 V 96 H 0 Z ${days.join(" ")}`} fill={INK} fillRule="evenodd" />
       <path d="M 0 10 H 90 V 30 H 0 Z" fill={tone} />
-      <path d="M 0 30 H 90" stroke={CREAM} strokeWidth={3} />
-      <rect x={20} y={0} width={10} height={22} rx={3} fill={INK} stroke={CREAM} strokeWidth={3} />
-      <rect x={60} y={0} width={10} height={22} rx={3} fill={INK} stroke={CREAM} strokeWidth={3} />
+      <path d="M 0 30 H 90" stroke={WHITE} strokeWidth={3} />
+      <rect x={20} y={0} width={10} height={22} rx={3} fill={INK} stroke={WHITE} strokeWidth={3} />
+      <rect x={60} y={0} width={10} height={22} rx={3} fill={INK} stroke={WHITE} strokeWidth={3} />
     </g>
   );
 }
@@ -283,35 +283,35 @@ export function NetflixConsiderations({
           x={144}
           y={28}
           textAnchor="middle"
-          fontFamily="var(--font-heading)"
+          fontFamily="var(--font-sans)"
           fontWeight={700}
           fontSize={20}
-          fill={techTone}
+          fill={INK}
         >
           1. Technology
         </text>
         <path d="M 24 46 V 36 H 264 V 46" fill="none" stroke={techTone} strokeWidth={3} />
 
         {/* Tech card 1: Cloud infrastructure */}
-        <rect x={24} y={58} width={240} height={76} fill={techTone} />
-        <rect x={32} y={66} width={60} height={60} fill={CREAM} />
+        <rect x={24} y={58} width={240} height={76} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <rect x={32} y={66} width={60} height={60} fill={WHITE} stroke={techTone} strokeWidth={1} strokeOpacity={0.25} />
         <Cloud x={42} y={76} size={40} weight="fill" color={INK} />
-        <text x={176} y={91} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={15.5} fill={CREAM}>
+        <text x={176} y={91} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={15.5} fill={INK}>
           Cloud
         </text>
-        <text x={176} y={112} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={15.5} fill={CREAM}>
+        <text x={176} y={112} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={15.5} fill={INK}>
           infrastructure
         </text>
         <Pointer x1={268} y1={96} x2={308} y2={102} w={active === 0 ? 4.5 : 3} color={techTone} head={12} />
 
         {/* Tech card 2: Video encoding */}
-        <rect x={24} y={154} width={240} height={76} fill={techTone} />
-        <rect x={32} y={162} width={60} height={60} fill={CREAM} />
+        <rect x={24} y={154} width={240} height={76} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <rect x={32} y={162} width={60} height={60} fill={WHITE} stroke={techTone} strokeWidth={1} strokeOpacity={0.25} />
         <FilmSlate x={42} y={172} size={40} weight="fill" color={INK} />
-        <text x={176} y={187} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={15.5} fill={CREAM}>
+        <text x={176} y={187} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={15.5} fill={INK}>
           Video
         </text>
-        <text x={176} y={208} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={15.5} fill={CREAM}>
+        <text x={176} y={208} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={15.5} fill={INK}>
           encoding
         </text>
         <Pointer x1={268} y1={192} x2={308} y2={140} w={active === 0 ? 4.5 : 3} color={techTone} head={12} />
@@ -341,38 +341,38 @@ export function NetflixConsiderations({
           x={656}
           y={28}
           textAnchor="middle"
-          fontFamily="var(--font-heading)"
+          fontFamily="var(--font-sans)"
           fontWeight={700}
           fontSize={20}
-          fill={bizTone}
+          fill={INK}
         >
           2. Business
         </text>
         <path d="M 536 46 V 36 H 776 V 46" fill="none" stroke={bizTone} strokeWidth={3} />
 
         {/* Business card 1: Stream on demand */}
-        <rect x={536} y={58} width={240} height={52} fill={bizTone} />
-        <rect x={544} y={64} width={44} height={40} fill={CREAM} />
+        <rect x={536} y={58} width={240} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <rect x={544} y={64} width={44} height={40} fill={WHITE} stroke={bizTone} strokeWidth={1} strokeOpacity={0.25} />
         <Play x={552} y={70} size={28} weight="fill" color={INK} />
-        <text x={680} y={90} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={15} fill={CREAM}>
+        <text x={680} y={90} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={15} fill={INK}>
           Stream on demand
         </text>
         <Pointer x1={532} y1={84} x2={492} y2={96} w={active === 1 ? 4.5 : 3} color={bizTone} head={12} />
 
         {/* Business card 2: Competition & Piracy */}
-        <rect x={536} y={118} width={240} height={52} fill={bizTone} />
-        <rect x={544} y={124} width={44} height={40} fill={CREAM} />
+        <rect x={536} y={118} width={240} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <rect x={544} y={124} width={44} height={40} fill={WHITE} stroke={bizTone} strokeWidth={1} strokeOpacity={0.25} />
         <ShieldCheck x={552} y={130} size={28} weight="fill" color={INK} />
-        <text x={680} y={150} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={14.5} fill={CREAM}>
+        <text x={680} y={150} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={14.5} fill={INK}>
           Competition &amp; Piracy
         </text>
         <Pointer x1={532} y1={144} x2={492} y2={120} w={active === 1 ? 4.5 : 3} color={bizTone} head={12} />
 
         {/* Business card 3: Engagement & loyalty */}
-        <rect x={536} y={178} width={240} height={52} fill={bizTone} />
-        <rect x={544} y={184} width={44} height={40} fill={CREAM} />
+        <rect x={536} y={178} width={240} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <rect x={544} y={184} width={44} height={40} fill={WHITE} stroke={bizTone} strokeWidth={1} strokeOpacity={0.25} />
         <Heart x={552} y={190} size={28} weight="fill" color={INK} />
-        <text x={680} y={210} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={14.5} fill={CREAM}>
+        <text x={680} y={210} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={14.5} fill={INK}>
           Engagement &amp; loyalty
         </text>
         <Pointer x1={532} y1={204} x2={492} y2={148} w={active === 1 ? 4.5 : 3} color={bizTone} head={12} />
@@ -418,13 +418,13 @@ export function NetflixConsiderationsTall({
         className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
       >
         <rect x={14} y={12} width={180} height={204} fill={techTone} />
-        <rect x={26} y={24} width={156} height={74} fill={CREAM} />
+        <rect x={26} y={24} width={156} height={74} fill={WHITE} />
         <Cloud x={46} y={38} size={46} weight="fill" color={INK} />
         <FilmSlate x={116} y={38} size={46} weight="fill" color={INK} />
-        <text x={104} y={138} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={CREAM}>
+        <text x={104} y={138} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={WHITE}>
           1. Technology
         </text>
-        <text x={104} y={166} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={14} fill={CREAM}>
+        <text x={104} y={166} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={14} fill={WHITE}>
           Cloud &amp; Encoding
         </text>
       </g>
@@ -449,14 +449,14 @@ export function NetflixConsiderationsTall({
         className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
       >
         <rect x={206} y={12} width={180} height={204} fill={bizTone} />
-        <rect x={218} y={24} width={156} height={74} fill={CREAM} />
+        <rect x={218} y={24} width={156} height={74} fill={WHITE} />
         <Play x={232} y={42} size={38} weight="fill" color={INK} />
         <ShieldCheck x={278} y={42} size={38} weight="fill" color={INK} />
         <Heart x={324} y={42} size={38} weight="fill" color={INK} />
-        <text x={296} y={138} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={CREAM}>
+        <text x={296} y={138} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={WHITE}>
           2. Business
         </text>
-        <text x={296} y={166} textAnchor="middle" fontFamily="var(--font-body)" fontWeight={600} fontSize={14} fill={CREAM}>
+        <text x={296} y={166} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={14} fill={WHITE}>
           Model, Piracy, Loyalty
         </text>
       </g>
@@ -527,10 +527,10 @@ export function NetflixTimeline({
               x={x}
               y={rail + 34}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={tone}
+              fill={INK}
             >
               {NETFLIX_YEARS[i]}
             </text>
@@ -563,7 +563,7 @@ function Process({ x, y }: { x: number; y: number }) {
 export function AlignedChange() {
   const rows = [56, 120, 184];
   const label = (y: number, s: string) => (
-    <text x={164} y={y + 7} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={INK}>
+    <text x={164} y={y + 7} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
       {s}
     </text>
   );
@@ -617,15 +617,15 @@ export function KotterStairs() {
         const top = base - h;
         return (
           <g key={i}>
-            <rect x={x} y={top} width={w} height={h} fill={INK} />
+            <rect x={x} y={top} width={w} height={h} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={x + w / 2}
               y={base - 12}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={CREAM}
+              fill={INK}
               style={{ fontVariantNumeric: "lining-nums" }}
             >
               {i + 1}
@@ -636,7 +636,7 @@ export function KotterStairs() {
                 x={x + w / 2}
                 y={r2(top - 10 - (lines.length - 1 - j) * 19.6)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={14}
                 fill={INK}
@@ -713,8 +713,7 @@ export function KotterSteps1To4({
             {/* Scene perched on top of step */}
             {i === 0 && (
               <g>
-                <Person x={72} y={78} k={0.8} variant={3} />
-                <Clock x={112} y={84} size={58} weight="fill" color={tone} />
+                <Clock x={78} y={82} size={60} weight="fill" color={tone} />
               </g>
             )}
             {i === 1 && (
@@ -726,33 +725,30 @@ export function KotterSteps1To4({
             )}
             {i === 2 && (
               <g>
-                <Person x={446} y={54} k={0.8} variant={3} />
-                <MiniScreen x={492} y={64}>
-                  <Shop x={513.2} y={72.5} k={0.26} tone={tone} />
+                <MiniScreen x={450} y={64}>
+                  <Shop x={471.2} y={72.5} k={0.26} tone={tone} />
                 </MiniScreen>
               </g>
             )}
             {i === 3 && (
               <g>
-                <Person x={636} y={42} k={0.8} variant={3} />
-                <Megaphone x={668} y={50} size={38} weight="fill" color={tone} />
-                <Person x={720} y={56} k={0.64} variant={1} flip />
-                <Person x={758} y={56} k={0.64} variant={4} flip gap />
+                <Megaphone x={638} y={46} size={46} weight="fill" color={tone} />
+                <ChatCircle x={698} y={50} size={44} weight="fill" color={INK} />
               </g>
             )}
 
             {/* Rising step block */}
-            <rect x={x} y={top} width={w} height={bottom - top} fill={tone} />
+            <rect x={x} y={top} width={w} height={bottom - top} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={line}
                 x={cx}
                 y={r2(top + 34 + j * 22)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -801,17 +797,17 @@ export function KotterSteps1To4Tall({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={x} y={y} width={180} height={76} fill={tone} />
+            <rect x={x} y={y} width={180} height={76} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={line}
                 x={x + 90}
                 y={r2(y + 32 + j * 21)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={14.5}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -880,15 +876,13 @@ export function KotterSteps5To8({
             {/* Scene perched on top of step */}
             {i === 0 && (
               <g>
-                <Person x={58} y={78} k={0.8} variant={7} />
-                <Person x={106} y={78} k={0.8} variant={8} gap />
-                <Lightning x={136} y={90} size={56} weight="fill" color={tone} />
+                <Gear x={62} y={92} size={52} weight="fill" color={INK} />
+                <Lightning x={122} y={88} size={58} weight="fill" color={tone} />
               </g>
             )}
             {i === 1 && (
               <g>
-                <Person x={270} y={66} k={0.8} variant={4} />
-                <Trophy x={312} y={76} size={64} weight="fill" color={tone} />
+                <Trophy x={268} y={76} size={64} weight="fill" color={tone} />
               </g>
             )}
             {i === 2 && (
@@ -910,17 +904,17 @@ export function KotterSteps5To8({
             )}
 
             {/* Rising step block */}
-            <rect x={x} y={top} width={w} height={bottom - top} fill={tone} />
+            <rect x={x} y={top} width={w} height={bottom - top} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={line}
                 x={cx}
                 y={r2(top + 34 + j * 22)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -969,17 +963,17 @@ export function KotterSteps5To8Tall({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={x} y={y} width={180} height={76} fill={tone} />
+            <rect x={x} y={y} width={180} height={76} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={line}
                 x={x + 90}
                 y={r2(y + 32 + j * 21)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={14.5}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -1004,7 +998,7 @@ function Disc({ cx, cy }: { cx: number; cy: number }) {
         fill={INK}
         fillRule="evenodd"
       />
-      <circle cx={cx} cy={cy} r={22} fill="none" stroke={CREAM} strokeWidth={3} />
+      <circle cx={cx} cy={cy} r={22} fill="none" stroke={WHITE} strokeWidth={3} />
     </g>
   );
 }
@@ -1072,17 +1066,17 @@ export function MicrosoftKotter1To4({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={12} y={y} width={164} height={62} fill={tone} />
+            <rect x={12} y={y} width={164} height={62} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={line}
                 x={94}
                 y={r2(y + 27 + j * 20)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={14}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -1095,7 +1089,7 @@ export function MicrosoftKotter1To4({
       <Pointer x1={178} y1={activeY} x2={198} y2={activeY} w={4} color={SIGNAL} head={10} />
 
       {/* Right stage box */}
-      <rect x={202} y={14} width={186} height={272} fill={CREAM} stroke={INK} strokeWidth={3} />
+      <rect x={202} y={14} width={186} height={272} fill={WHITE} stroke={INK} strokeWidth={3} />
 
       {/* Step 1 scene: Traditional software disc evolving to Cloud-first screen */}
       {active === 0 && (
@@ -1142,10 +1136,9 @@ export function MicrosoftKotter1To4({
       {/* Step 4 scene: Open dialogue and feedback across channels */}
       {active === 3 && (
         <g>
-          <ChatCircle x={236} y={54} size={48} weight="fill" color={SIGNAL} />
-          <ChatCircle x={302} y={72} size={48} weight="fill" color={INK} />
-          <Person x={244} y={146} k={0.86} variant={9} />
-          <Person x={346} y={146} k={0.86} variant={8} flip />
+          <Megaphone x={256} y={58} size={64} weight="fill" color={SIGNAL} />
+          <ChatCircle x={236} y={148} size={52} weight="fill" color={INK} />
+          <ChatCircle x={306} y={162} size={52} weight="fill" color={SIGNAL} />
         </g>
       )}
     </Plate>
@@ -1203,17 +1196,17 @@ export function MicrosoftKotter5To8({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={12} y={y} width={164} height={62} fill={tone} />
+            <rect x={12} y={y} width={164} height={62} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {step.lines.map((line, j) => (
               <text
                 key={line}
                 x={94}
                 y={r2(y + 27 + j * 20)}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={14}
-                fill={CREAM}
+                fill={INK}
               >
                 {line}
               </text>
@@ -1226,13 +1219,13 @@ export function MicrosoftKotter5To8({
       <Pointer x1={178} y1={activeY} x2={198} y2={activeY} w={4} color={SIGNAL} head={10} />
 
       {/* Right stage box */}
-      <rect x={202} y={14} width={186} height={272} fill={CREAM} stroke={INK} strokeWidth={3} />
+      <rect x={202} y={14} width={186} height={272} fill={WHITE} stroke={INK} strokeWidth={3} />
 
       {/* Step 5 scene: Growth mindset, innovation, and experimentation */}
       {active === 0 && (
         <g>
-          <Lightbulb x={267} y={46} size={56} weight="fill" color={SIGNAL} />
-          <Person x={295} y={118} k={1.15} variant={4} />
+          <Lightbulb x={259} y={56} size={72} weight="fill" color={SIGNAL} />
+          <Gear x={265} y={156} size={60} weight="fill" color={INK} />
         </g>
       )}
 
@@ -1261,9 +1254,8 @@ export function MicrosoftKotter5To8({
       {/* Step 8 scene: Empathy, teamwork, and inclusive culture */}
       {active === 3 && (
         <g>
-          <Heart x={269} y={52} size={52} weight="fill" color={SIGNAL} />
-          <Person x={244} y={142} k={0.86} variant={6} />
-          <Person x={346} y={142} k={0.86} variant={7} flip />
+          <Heart x={265} y={58} size={60} weight="fill" color={SIGNAL} />
+          <Anchor x={265} y={152} size={60} weight="fill" color={INK} />
         </g>
       )}
     </Plate>
@@ -1355,23 +1347,16 @@ export function AdkarOverview({
               className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
             >
               <rect x={x} y={10} width={w} height={214} fill="transparent" />
-              {isLit ? (
-                <g>
-                  <Person x={cx - 26} y={26} k={0.82} variant={7} />
-                  <AdkarMark i={i} cx={cx + 32} y={50} tone={SIGNAL} />
-                </g>
-              ) : (
-                <AdkarMark i={i} cx={cx} y={50} tone={INK} />
-              )}
-              <rect x={x} y={boxY} width={w} height={boxH} fill={tone} />
+              <AdkarMark i={i} cx={cx} y={50} tone={tone} />
+              <rect x={x} y={boxY} width={w} height={boxH} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
               <text
                 x={cx}
                 y={boxY + 54}
                 textAnchor="middle"
-                fontFamily="var(--font-heading)"
+                fontFamily="var(--font-sans)"
                 fontWeight={700}
                 fontSize={42}
-                fill={CREAM}
+                fill={INK}
               >
                 {st.letter}
               </text>
@@ -1379,10 +1364,10 @@ export function AdkarOverview({
                 x={cx}
                 y={boxY + 86}
                 textAnchor="middle"
-                fontFamily="var(--font-body)"
+                fontFamily="var(--font-sans)"
                 fontWeight={600}
                 fontSize={15}
-                fill={CREAM}
+                fill={INK}
               >
                 {st.name}
               </text>
@@ -1433,25 +1418,25 @@ export function AdkarOverviewTall({
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
             <rect x={14} y={y} width={372} height={40} fill={tone} />
-            <rect x={18} y={y + 4} width={36} height={32} fill={CREAM} />
+            <rect x={18} y={y + 4} width={36} height={32} fill={WHITE} />
             <text
               x={36}
               y={y + 27}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={tone}
+              fill={INK}
             >
               {st.letter}
             </text>
             <text
               x={72}
               y={y + 26}
-              fontFamily="var(--font-body)"
+              fontFamily="var(--font-sans)"
               fontWeight={600}
               fontSize={16}
-              fill={CREAM}
+              fill={WHITE}
             >
               {st.name}
             </text>
@@ -1529,37 +1514,34 @@ export function AdkarFirstThree({
               {/* Stage scene */}
               {i === 0 && (
                 <g>
-                  <Megaphone x={40} y={48} size={48} weight="fill" color={tone} />
-                  <Eye x={104} y={44} size={38} weight="fill" color={tone} />
-                  <Person x={198} y={26} k={0.96} variant={7} flip />
+                  <Megaphone x={76} y={44} size={54} weight="fill" color={tone} />
+                  <Eye x={152} y={48} size={46} weight="fill" color={tone} />
                 </g>
               )}
               {i === 1 && (
                 <g>
-                  <Person x={328} y={32} k={0.9} variant={3} />
-                  <Heart x={378} y={48} size={44} weight="fill" color={tone} />
-                  <Person x={472} y={32} k={0.9} variant={7} flip />
+                  <Heart x={346} y={42} size={56} weight="fill" color={tone} />
+                  <Lightning x={412} y={44} size={52} weight="fill" color={INK} />
                 </g>
               )}
               {i === 2 && (
                 <g>
-                  <Person x={592} y={26} k={0.96} variant={7} />
-                  <Doc x={648} y={34} k={0.54} tone={tone} />
-                  <Gear x={712} y={50} size={46} weight="fill" color={tone} />
+                  <Doc x={608} y={32} k={0.56} tone={tone} />
+                  <Gear x={678} y={46} size={50} weight="fill" color={tone} />
                 </g>
               )}
 
               {/* Bottom banner */}
-              <rect x={x} y={134} width={w} height={86} fill={tone} />
-              <rect x={x + 14} y={152} width={50} height={50} fill={CREAM} />
+              <rect x={x} y={134} width={w} height={86} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+              <rect x={x + 14} y={152} width={50} height={50} fill={WHITE} stroke={tone} strokeWidth={1.5} />
               <text
                 x={x + 39}
                 y={188}
                 textAnchor="middle"
-                fontFamily="var(--font-heading)"
+                fontFamily="var(--font-sans)"
                 fontWeight={700}
                 fontSize={32}
-                fill={tone}
+                fill={INK}
               >
                 {st.letter}
               </text>
@@ -1567,10 +1549,10 @@ export function AdkarFirstThree({
                 x={x + 144}
                 y={184}
                 textAnchor="middle"
-                fontFamily="var(--font-heading)"
+                fontFamily="var(--font-sans)"
                 fontWeight={700}
                 fontSize={20}
-                fill={CREAM}
+                fill={INK}
               >
                 {`${st.n}. ${st.name}`}
               </text>
@@ -1617,25 +1599,25 @@ export function AdkarFirstThreeTall({
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
             <rect x={14} y={y} width={372} height={44} fill={tone} />
-            <rect x={18} y={y + 4} width={36} height={36} fill={CREAM} />
+            <rect x={18} y={y + 4} width={36} height={36} fill={WHITE} />
             <text
               x={36}
               y={y + 29}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={tone}
+              fill={INK}
             >
               {st.letter}
             </text>
             <text
               x={72}
               y={y + 28}
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={18}
-              fill={CREAM}
+              fill={WHITE}
             >
               {`${st.n}. ${st.name}`}
             </text>
@@ -1710,35 +1692,33 @@ export function AdkarLastTwo({
             {/* Stage 4: Ability: applying skills on a digital screen to deliver results */}
             {i === 0 && (
               <g>
-                <Person x={92} y={26} k={0.96} variant={7} />
-                <MiniScreen x={156} y={44}>
-                  <Gear x={178} y={52} size={40} weight="fill" color={tone} />
+                <MiniScreen x={106} y={44}>
+                  <Gear x={128} y={52} size={40} weight="fill" color={tone} />
                 </MiniScreen>
-                <Pointer x1={246} y1={72} x2={278} y2={72} w={4} color={tone} head={10} />
-                <Package x={286} y={44} size={56} weight="fill" color={tone} />
+                <Pointer x1={198} y1={72} x2={244} y2={72} w={4} color={tone} head={10} />
+                <Package x={256} y={44} size={56} weight="fill" color={tone} />
               </g>
             )}
 
             {/* Stage 5: Reinforcement: recognition, rewards, and ongoing support */}
             {i === 1 && (
               <g>
-                <Person x={496} y={26} k={0.96} variant={3} />
-                <Trophy x={566} y={38} size={64} weight="fill" color={tone} />
-                <Person x={700} y={26} k={0.96} variant={7} flip />
+                <Trophy x={534} y={38} size={64} weight="fill" color={tone} />
+                <Anchor x={614} y={40} size={60} weight="fill" color={INK} />
               </g>
             )}
 
             {/* Bottom banner */}
-            <rect x={x} y={134} width={w} height={86} fill={tone} />
-            <rect x={x + 18} y={152} width={50} height={50} fill={CREAM} />
+            <rect x={x} y={134} width={w} height={86} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <rect x={x + 18} y={152} width={50} height={50} fill={WHITE} stroke={tone} strokeWidth={1.5} />
             <text
               x={x + 43}
               y={188}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={32}
-              fill={tone}
+              fill={INK}
             >
               {st.letter}
             </text>
@@ -1746,10 +1726,10 @@ export function AdkarLastTwo({
               x={x + 206}
               y={185}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={CREAM}
+              fill={INK}
             >
               {`${st.n}. ${st.name}`}
             </text>
@@ -1795,25 +1775,25 @@ export function AdkarLastTwoTall({
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
             <rect x={14} y={y} width={372} height={44} fill={tone} />
-            <rect x={18} y={y + 4} width={36} height={36} fill={CREAM} />
+            <rect x={18} y={y + 4} width={36} height={36} fill={WHITE} />
             <text
               x={36}
               y={y + 29}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={tone}
+              fill={INK}
             >
               {st.letter}
             </text>
             <text
               x={72}
               y={y + 28}
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={18}
-              fill={CREAM}
+              fill={WHITE}
             >
               {`${st.n}. ${st.name}`}
             </text>
@@ -1834,15 +1814,15 @@ export function SmallReleases() {
     <Plate
       w={400}
       h={200}
-      title="Four small red packages released one after another along an arrow to a customer, and a black arrow of feedback running back from the speech bubble at the customer's face"
+      title="Four small red packages released one after another along an arrow to a target, and a black arrow of feedback running back"
     >
       <ChatCircle x={266} y={34} size={42} weight="fill" color={INK} />
-      <Pointer x1={256} y1={55} x2={24} y2={55} w={6} />
+      <Pointer x1={256} y1={55} x2={24} y2={55} w={4} />
       {[24, 84, 144, 204].map((x) => (
         <Package key={x} x={x} y={92} size={48} weight="fill" color={SIGNAL} />
       ))}
       <Arrow x1={24} x2={292} y={164} />
-      <Person x={348} y={66} k={1.2} variant={10} flip />
+      <Shop x={306} y={76} k={0.5} />
     </Plate>
   );
 }
@@ -1856,9 +1836,9 @@ function Bullseye({ cx, cy }: { cx: number; cy: number }) {
   return (
     <g>
       {[34, 24, 14].map((r, i) => (
-        <circle key={r} cx={cx} cy={cy} r={r} fill={i % 2 ? CREAM : INK} />
+        <circle key={r} cx={cx} cy={cy} r={r} fill={i % 2 ? WHITE : INK} />
       ))}
-      <circle cx={cx} cy={cy} r={6} fill={CREAM} />
+      <circle cx={cx} cy={cy} r={6} fill={WHITE} />
     </g>
   );
 }
@@ -1874,7 +1854,7 @@ export function TwoPaths() {
   ];
   const last = agile[agile.length - 1];
   const label = (y: number, s: string, tone: string) => (
-    <text x={20} y={y + 7} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={tone}>
+    <text x={20} y={y + 7} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
       {s}
     </text>
   );
@@ -1960,15 +1940,15 @@ export function TradVsAgileInteractive({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={x} y={12} width={w} height={44} fill={tone} />
+            <rect x={x} y={12} width={w} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={x + w / 2}
               y={40}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={17}
-              fill={CREAM}
+              fill={INK}
             >
               {st.label}
             </text>
@@ -1977,11 +1957,11 @@ export function TradVsAgileInteractive({
       })}
 
       {/* Lane labels and divider */}
-      <text x={20} y={116} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={INK}>
+      <text x={20} y={116} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         Traditional
       </text>
       <path d="M 20 154 H 780" stroke={INK} strokeWidth={1.5} />
-      <text x={20} y={208} fontFamily="var(--font-heading)" fontWeight={700} fontSize={20} fill={SIGNAL}>
+      <text x={20} y={208} fontFamily="var(--font-sans)" fontWeight={700} fontSize={20} fill={INK}>
         Agile
       </text>
 
@@ -2101,15 +2081,15 @@ export function TradVsAgileTall({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={x} y={y} width={180} height={48} fill={tone} />
+            <rect x={x} y={y} width={180} height={48} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={x + 90}
               y={y + 30}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={16}
-              fill={CREAM}
+              fill={INK}
             >
               {st.label}
             </text>
@@ -2136,7 +2116,7 @@ function Bent({ x, y, flip }: { x: number; y: number; flip?: boolean }) {
   );
   return (
     <g transform={`translate(${x} ${y}) scale(${flip ? -1 : 1} 1)`}>
-      {parts(CREAM, 6)}
+      {parts(WHITE, 6)}
       {parts(INK, 0)}
     </g>
   );
@@ -2160,7 +2140,7 @@ export function RugbyScrum() {
       ))}
       <g transform="rotate(-15 200 136)">
         <ellipse cx={200} cy={136} rx={24} ry={14} fill={SIGNAL} />
-        <path d="M 190 131 H 210 M 194 127 V 135 M 200 127 V 135 M 206 127 V 135" stroke={CREAM} strokeWidth={2} />
+        <path d="M 190 131 H 210 M 194 127 V 135 M 200 127 V 135 M 206 127 V 135" stroke={WHITE} strokeWidth={2} />
       </g>
     </Plate>
   );
@@ -2231,36 +2211,31 @@ export function ScrumPrinciples1To3({
             {/* Principle 2: Self-Organization */}
             {i === 1 && (
               <g>
-                <Gear x={346} y={16} size={38} weight="fill" color={tone} />
-                <Lightbulb x={416} y={14} size={40} weight="fill" color={tone} />
-                <Person x={344} y={68} k={0.84} variant={4} />
-                <Person x={400} y={68} k={0.84} variant={8} gap />
-                <Person x={456} y={68} k={0.84} variant={6} gap />
+                <Gear x={342} y={48} size={56} weight="fill" color={tone} />
+                <Lightbulb x={408} y={44} size={60} weight="fill" color={tone} />
               </g>
             )}
 
             {/* Principle 3: Collaboration */}
             {i === 2 && (
               <g>
-                <ChatCircle x={604} y={18} size={46} weight="fill" color={tone} />
-                <ChatCircle x={672} y={32} size={46} weight="fill" color={INK} />
-                <Person x={604} y={64} k={0.92} variant={2} />
-                <Person x={720} y={64} k={0.92} variant={8} flip />
+                <ChatCircle x={604} y={44} size={58} weight="fill" color={tone} />
+                <ChatCircle x={668} y={64} size={58} weight="fill" color={INK} />
               </g>
             )}
 
             {/* Bottom banner */}
-            <rect x={x} y={172} width={w} height={64} fill={tone} />
+            <rect x={x} y={172} width={w} height={64} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {i === 0 ? (
               <>
                 <text
                   x={cx}
                   y={199}
                   textAnchor="middle"
-                  fontFamily="var(--font-heading)"
+                  fontFamily="var(--font-sans)"
                   fontWeight={700}
                   fontSize={17}
-                  fill={CREAM}
+                  fill={INK}
                 >
                   1. Empirical Process
                 </text>
@@ -2268,10 +2243,10 @@ export function ScrumPrinciples1To3({
                   x={cx}
                   y={222}
                   textAnchor="middle"
-                  fontFamily="var(--font-heading)"
+                  fontFamily="var(--font-sans)"
                   fontWeight={700}
                   fontSize={17}
-                  fill={CREAM}
+                  fill={INK}
                 >
                   Control
                 </text>
@@ -2281,10 +2256,10 @@ export function ScrumPrinciples1To3({
                 x={cx}
                 y={211}
                 textAnchor="middle"
-                fontFamily="var(--font-heading)"
+                fontFamily="var(--font-sans)"
                 fontWeight={700}
                 fontSize={18}
-                fill={CREAM}
+                fill={INK}
               >
                 {names[i]}
               </text>
@@ -2331,15 +2306,15 @@ export function ScrumPrinciples1To3Tall({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={14} y={y} width={372} height={44} fill={tone} />
+            <rect x={14} y={y} width={372} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={200}
               y={y + 28}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={17}
-              fill={CREAM}
+              fill={INK}
             >
               {name}
             </text>
@@ -2397,9 +2372,9 @@ export function ScrumPrinciples4To6({
             {/* Principle 4: Value-Based Prioritization */}
             {i === 0 && (
               <g>
-                <Person x={78} y={52} k={1.04} variant={2} />
-                <Backlog x={138} y={36} w={88} n={5} tone={INK} />
-                {isLit && <rect x={150} y={54} width={64} height={6} fill={SIGNAL} />}
+                <Trophy x={54} y={56} size={56} weight="fill" color={tone} />
+                <Backlog x={126} y={36} w={96} n={5} tone={INK} />
+                {isLit && <rect x={138} y={54} width={72} height={6} fill={SIGNAL} />}
               </g>
             )}
 
@@ -2423,17 +2398,17 @@ export function ScrumPrinciples4To6({
             )}
 
             {/* Bottom banner */}
-            <rect x={x} y={172} width={w} height={64} fill={tone} />
+            <rect x={x} y={172} width={w} height={64} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             {i === 0 && (
               <>
                 <text
                   x={cx}
                   y={199}
                   textAnchor="middle"
-                  fontFamily="var(--font-heading)"
+                  fontFamily="var(--font-sans)"
                   fontWeight={700}
                   fontSize={17}
-                  fill={CREAM}
+                  fill={INK}
                 >
                   4. Value-Based
                 </text>
@@ -2441,10 +2416,10 @@ export function ScrumPrinciples4To6({
                   x={cx}
                   y={222}
                   textAnchor="middle"
-                  fontFamily="var(--font-heading)"
+                  fontFamily="var(--font-sans)"
                   fontWeight={700}
                   fontSize={17}
-                  fill={CREAM}
+                  fill={INK}
                 >
                   Prioritization
                 </text>
@@ -2455,10 +2430,10 @@ export function ScrumPrinciples4To6({
                 x={cx}
                 y={211}
                 textAnchor="middle"
-                fontFamily="var(--font-heading)"
+                fontFamily="var(--font-sans)"
                 fontWeight={700}
                 fontSize={18}
-                fill={CREAM}
+                fill={INK}
               >
                 5. Time Boxing
               </text>
@@ -2469,10 +2444,10 @@ export function ScrumPrinciples4To6({
                   x={cx}
                   y={199}
                   textAnchor="middle"
-                  fontFamily="var(--font-heading)"
+                  fontFamily="var(--font-sans)"
                   fontWeight={700}
                   fontSize={17}
-                  fill={CREAM}
+                  fill={INK}
                 >
                   6. Iterative
                 </text>
@@ -2480,10 +2455,10 @@ export function ScrumPrinciples4To6({
                   x={cx}
                   y={222}
                   textAnchor="middle"
-                  fontFamily="var(--font-heading)"
+                  fontFamily="var(--font-sans)"
                   fontWeight={700}
                   fontSize={17}
-                  fill={CREAM}
+                  fill={INK}
                 >
                   Development
                 </text>
@@ -2531,15 +2506,15 @@ export function ScrumPrinciples4To6Tall({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={14} y={y} width={372} height={44} fill={tone} />
+            <rect x={14} y={y} width={372} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={200}
               y={y + 28}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={17}
-              fill={CREAM}
+              fill={INK}
             >
               {name}
             </text>
@@ -2555,14 +2530,14 @@ export function ScrumPrinciples4To6Tall({
    its daily scrum, and the increment. `lit` marks the events or artifacts.
    ========================================================================== */
 
-/* A backlog: an ink card with `n` cream item lines, origin top-left. */
+/* A backlog: an ink card with `n` white item lines, origin top-left. */
 function Backlog({ x, y, w, n, tone = INK }: { x: number; y: number; w: number; n: number; tone?: string }) {
   const lines = Array.from({ length: n }, (_, i) => `M ${x + 12} ${y + 18 + i * 20} h ${w - 24} v 6 h ${-(w - 24)} Z`);
   return <path d={`M ${x} ${y} h ${w} v ${n * 20 + 16} h ${-w} Z ${lines.join(" ")}`} fill={tone} fillRule="evenodd" />;
 }
 
 const word = (x: number, y: number, s: string, tone: string, anchor: "middle" | "start" = "middle", size = 16) => (
-  <text x={x} y={y} textAnchor={anchor} fontFamily="var(--font-body)" fontWeight={600} fontSize={size} fill={tone}>
+  <text x={x} y={y} textAnchor={anchor} fontFamily="var(--font-sans)" fontWeight={600} fontSize={size} fill={INK}>
     {s}
   </text>
 );
@@ -2690,10 +2665,10 @@ export function ScrumProcess({
           x={cx}
           y={cy + 2}
           textAnchor="middle"
-          fontFamily="var(--font-heading)"
+          fontFamily="var(--font-sans)"
           fontWeight={700}
           fontSize={26}
-          fill={sprintTone}
+          fill={INK}
         >
           Sprint
         </text>
@@ -2706,7 +2681,7 @@ export function ScrumProcess({
         <Pointer x1={254} y1={cy} x2={cx - R - 14} y2={cy} w={isPlanning ? 5 : 4} color={planTone} />
         {word(296, 118, "Sprint", planTone, "middle", 14)}
         {word(296, 137, "Planning", planTone, "middle", 14)}
-        <circle cx={planX} cy={planY} r={isPlanning ? 14 : 12} fill={planTone} stroke={CREAM} strokeWidth={3} />
+        <circle cx={planX} cy={planY} r={isPlanning ? 14 : 12} fill={planTone} stroke={WHITE} strokeWidth={3} />
       </g>
 
       {/* Event: Daily Scrum */}
@@ -2720,14 +2695,14 @@ export function ScrumProcess({
       {/* Event: Sprint Review */}
       <g {...btnProps(mode === "events-second", 1, "Sprint Review", isReview)}>
         <rect x={revX - 18} y={revY - 18} width={148} height={42} fill="transparent" />
-        <circle cx={revX} cy={revY} r={isReview ? 14 : 12} fill={reviewTone} stroke={CREAM} strokeWidth={3} />
+        <circle cx={revX} cy={revY} r={isReview ? 14 : 12} fill={reviewTone} stroke={WHITE} strokeWidth={3} />
         {word(at(40, R + 20)[0], at(40, R + 20)[1] + 8, "Sprint Review", reviewTone, "start", 14)}
       </g>
 
       {/* Event: Sprint Retrospective */}
       <g {...btnProps(mode === "events-second", 2, "Sprint Retrospective", isRetro)}>
         <rect x={retX - 86} y={retY - 18} width={172} height={66} fill="transparent" />
-        <circle cx={retX} cy={retY} r={isRetro ? 14 : 12} fill={retroTone} stroke={CREAM} strokeWidth={3} />
+        <circle cx={retX} cy={retY} r={isRetro ? 14 : 12} fill={retroTone} stroke={WHITE} strokeWidth={3} />
         {word(at(100, R + 24)[0], at(100, R + 24)[1] + 12, "Sprint Retrospective", retroTone, "middle", 14)}
       </g>
 
@@ -2817,15 +2792,15 @@ export function ScrumRolesHub({
             )}
 
             {/* Bottom banner */}
-            <rect x={x} y={172} width={w} height={64} fill={tone} />
+            <rect x={x} y={172} width={w} height={64} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={cx}
               y={211}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={18}
-              fill={CREAM}
+              fill={INK}
             >
               {SCRUM_ROLES[i]}
             </text>
@@ -2870,15 +2845,15 @@ export function ScrumRolesHubTall({
             }
             className={onSelect ? "cursor-pointer outline-none focus:outline-none" : undefined}
           >
-            <rect x={14} y={y} width={372} height={44} fill={tone} />
+            <rect x={14} y={y} width={372} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
             <text
               x={200}
               y={y + 28}
               textAnchor="middle"
-              fontFamily="var(--font-heading)"
+              fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={17}
-              fill={CREAM}
+              fill={INK}
             >
               {name}
             </text>

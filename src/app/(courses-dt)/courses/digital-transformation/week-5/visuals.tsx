@@ -44,7 +44,7 @@ import {
   Gauge,
 } from "@phosphor-icons/react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SIGNAL,
   COUNTER,
@@ -58,8 +58,8 @@ import {
 } from "../_visuals/kit";
 import { Person, Shop } from "../_visuals/objects";
 
-const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
-const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
+const HEAD = { fontFamily: "var(--font-sans)", fontWeight: 700 } as const;
+const BODY = { fontFamily: "var(--font-sans)", fontWeight: 600 } as const;
 
 /* -- cast: Server (a rack of three units, 60 × 66, origin top-left) -------- */
 
@@ -69,8 +69,8 @@ export function Server({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: 
       {[0, 1, 2].map((i) => (
         <g key={i}>
           <rect x={0} y={i * 23} width={60} height={20} rx={2} fill={tone} />
-          <circle cx={10} cy={i * 23 + 10} r={3} fill={CREAM} />
-          <rect x={22} y={i * 23 + 8} width={30} height={4} fill={CREAM} />
+          <circle cx={10} cy={i * 23 + 10} r={3} fill={WHITE} />
+          <rect x={22} y={i * 23 + 8} width={30} height={4} fill={WHITE} />
         </g>
       ))}
     </g>
@@ -86,9 +86,9 @@ export function Router({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: 
       <rect x={61} y={0} width={5} height={26} fill={tone} />
       <rect x={0} y={24} width={80} height={26} rx={4} fill={tone} />
       {[18, 32, 46].map((cx) => (
-        <circle key={cx} cx={cx} cy={37} r={3.2} fill={CREAM} />
+        <circle key={cx} cx={cx} cy={37} r={3.2} fill={WHITE} />
       ))}
-      <rect x={56} y={35} width={14} height={4} fill={CREAM} />
+      <rect x={56} y={35} width={14} height={4} fill={WHITE} />
     </g>
   );
 }
@@ -209,7 +209,7 @@ export function OwnVsRent() {
       h={392}
       title="Top: a business owns a physical server, drawn in blue. Bottom: the same business links in red to three screens holding storage, software and processing power, rented over the internet"
     >
-      <text x={20} y={70} {...HEAD} fontSize={22} fill={COUNTER}>
+      <text x={20} y={70} {...HEAD} fontSize={22} fill={INK}>
         Own
       </text>
       <Shop x={130} y={22} k={0.5} />
@@ -217,7 +217,7 @@ export function OwnVsRent() {
 
       <path d="M 20 122 H 380" stroke={INK} strokeWidth={1.5} />
 
-      <text x={20} y={190} {...HEAD} fontSize={22} fill={SIGNAL}>
+      <text x={20} y={190} {...HEAD} fontSize={22} fill={INK}>
         Rent
       </text>
       <Shop x={160} y={144} k={0.5} />
@@ -292,8 +292,8 @@ function Tab({
         }
       }}
     >
-      <rect x={x} y={y} width={w} height={34} fill={on ? INK : CREAM} stroke={INK} strokeWidth={2.5} />
-      <text x={r2(x + w / 2)} y={y + 23} textAnchor="middle" {...BODY} fontSize={16} fill={on ? CREAM : INK}>
+      <rect x={x} y={y} width={w} height={34} fill={INK} fillOpacity={on ? 0.08 : 0.02} stroke={INK} strokeWidth={on ? 2 : 1.25} />
+      <text x={r2(x + w / 2)} y={y + 23} textAnchor="middle" {...BODY} fontSize={16} fill={INK}>
         {label}
       </text>
     </g>
@@ -344,13 +344,13 @@ export function CapacityPlanner() {
       <text x={520} y={20} textAnchor="end" {...BODY} fontSize={14} fill={INK}>
         Weeks the site crashes
       </text>
-      <text x={520} y={50} textAnchor="end" {...HEAD} fontSize={24} fill={crashWeeks ? SIGNAL : INK}>
+      <text x={520} y={50} textAnchor="end" {...HEAD} fontSize={24} fill={INK}>
         {crashWeeks}
       </text>
       <text x={712} y={20} textAnchor="end" {...BODY} fontSize={14} fill={INK}>
         Paid for, unused
       </text>
-      <text x={712} y={50} textAnchor="end" {...HEAD} fontSize={24} fill={COUNTER}>
+      <text x={712} y={50} textAnchor="end" {...HEAD} fontSize={24} fill={INK}>
         {`${idlePct}%`}
       </text>
 
@@ -389,7 +389,7 @@ export function CapacityPlanner() {
         y={r2((mode === "cloud" ? yOf(CLOUD_CAP[WEEKS - 1]) : yOf(cap)) - 20)}
         {...HEAD}
         fontSize={16}
-        fill={COUNTER}
+        fill={INK}
       >
         Capacity
       </text>
@@ -417,7 +417,7 @@ export function CapacityPlanner() {
           textAnchor="end"
           {...HEAD}
           fontSize={16}
-          fill={SIGNAL}
+          fill={INK}
         >
           Crashes
         </text>
@@ -463,7 +463,7 @@ export function SeasonalServers() {
       h={268}
       title="Twelve monthly stacks of server units: three base units every month in black, and extra units in red added only in the summer and December peak travel seasons"
     >
-      <text x={200} y={26} textAnchor="middle" {...HEAD} fontSize={18} fill={SIGNAL}>
+      <text x={200} y={26} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
         Peak travel seasons
       </text>
       <Pointer x1={170} y1={38} x2={r2(X0 + 6.5 * colW)} y2={r2(Yb - 8 * uh - 10)} w={3} color={SIGNAL} head={11} />
@@ -485,8 +485,8 @@ export function SeasonalServers() {
             return (
               <g key={i}>
                 <rect x={x} y={y} width={24} height={11} rx={1.5} fill={tone} />
-                <circle cx={x + 5} cy={y + 5.5} r={1.6} fill={CREAM} />
-                <rect x={x + 10} y={y + 4.5} width={10} height={2} fill={CREAM} />
+                <circle cx={x + 5} cy={y + 5.5} r={1.6} fill={WHITE} />
+                <rect x={x + 10} y={y + 4.5} width={10} height={2} fill={WHITE} />
               </g>
             );
           })}
@@ -573,8 +573,17 @@ export function ServiceStack({ upTo = 3 }: { upTo?: 1 | 2 | 3 }) {
               const x = X0 + j * (sw + gap);
               return (
                 <g key={j}>
-                  <rect x={x} y={y} width={sw} height={rh} fill={rented ? SIGNAL : INK} />
-                  <text x={r2(x + sw / 2)} y={y + rh / 2 + 5} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
+                  <rect
+                    x={x}
+                    y={y}
+                    width={sw}
+                    height={rh}
+                    fill={INK}
+                    fillOpacity={rented ? 0.1 : 0.04}
+                    stroke={INK}
+                    strokeWidth={1.5}
+                  />
+                  <text x={r2(x + sw / 2)} y={y + rh / 2 + 5} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
                     {rented ? "Provider" : "You"}
                   </text>
                 </g>
@@ -603,13 +612,12 @@ export function FocusOnApp() {
   return (
     <Plate
       h={196}
-      title="An engineer in profile faces a screen of app code in red, with their back turned to two blue server racks behind them"
+      title="Two blue server racks managed in the background on the left, and a screen of app code highlighted in red on the right"
     >
-      <Server x={14} y={114} k={1} tone={COUNTER} />
-      <Server x={84} y={132.5} k={0.72} tone={COUNTER} />
-      <Person x={196} y={40} k={1.4} variant={8} />
-      <Monitor x={268} y={22} w={118} h={92}>
-        <Code x={327 - 30} y={68 - 30} size={60} weight="bold" color={SIGNAL} />
+      <Server x={34} y={114} k={1} tone={COUNTER} />
+      <Server x={112} y={132.5} k={0.72} tone={COUNTER} />
+      <Monitor x={228} y={28} w={144} h={108}>
+        <Code x={300 - 30} y={82 - 30} size={60} weight="bold" color={SIGNAL} />
       </Monitor>
     </Plate>
   );
@@ -692,7 +700,7 @@ export function MigrateIndustries() {
         return (
           <g key={i}>
             <circle cx={cx} cy={204} r={38} fill={INK} />
-            <Icon x={cx - 23} y={204 - 23} size={46} weight="fill" color={CREAM} />
+            <Icon x={cx - 23} y={204 - 23} size={46} weight="fill" color={WHITE} />
           </g>
         );
       })}
@@ -732,16 +740,14 @@ export function GlobalStreaming() {
 export function LateAlert() {
   return (
     <Plate
-      h={262}
-      title="A patient with a smartwatch on the left sends data on a long arrow up to the cloud on a screen. The alert travels back down to a doctor on the right, marked by a red hourglass for the delay"
+      h={242}
+      title="A smartwatch on the left sends data on a long arrow up to the cloud on a screen. The alert travels back down to a medical cross on the right, marked by a red hourglass for the delay"
     >
       <CloudScreen x={150} y={12} w={100} h={66} />
-      <Person x={58} y={150} k={1.05} variant={4} />
-      <Watch x={104} y={170} size={50} weight="fill" color={INK} />
-      <Person x={342} y={150} k={1.05} variant={2} flip />
-      <FirstAid x={342 - 13} y={222} size={26} weight="fill" color={CREAM} />
-      <Pointer x1={132} y1={164} x2={174} y2={122} w={3.5} />
-      <Pointer x1={226} y1={122} x2={300} y2={172} w={3.5} color={SIGNAL} />
+      <Watch x={56} y={156} size={64} weight="fill" color={INK} />
+      <FirstAid x={286} y={158} size={60} weight="fill" color={SIGNAL} />
+      <Pointer x1={124} y1={164} x2={174} y2={112} w={3.5} />
+      <Pointer x1={226} y1={112} x2={282} y2={164} w={3.5} color={SIGNAL} />
       <Hourglass x={292} y={66} size={46} weight="fill" color={SIGNAL} />
     </Plate>
   );
@@ -800,7 +806,7 @@ export function AlertDelay() {
       </text>
 
       {/* cloud lane: every reading travels to a distant data centre */}
-      <text x={20} y={127} {...HEAD} fontSize={20} fill={COUNTER}>
+      <text x={20} y={127} {...HEAD} fontSize={20} fill={INK}>
         Cloud
       </text>
       <Watch x={BX} y={100} size={40} weight="fill" color={INK} />
@@ -813,15 +819,15 @@ export function AlertDelay() {
       </MiniScreen>
       <Pointer x1={562} y1={120} x2={604} y2={120} w={3} head={11} />
       <BellRinging x={610} y={100} size={40} weight="fill" color={COUNTER} />
-      <rect x={BX} y={170} width={sx(dc)} height={16} fill={COUNTER} />
-      <text x={BX + sx(dc) + 10} y={184} {...HEAD} fontSize={18} fill={COUNTER}>
+      <rect x={BX} y={170} width={sx(dc)} height={16} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={BX + sx(dc) + 10} y={184} {...HEAD} fontSize={18} fill={INK}>
         {fmtS(dc)}
       </text>
 
       <path d="M 20 210 H 780" stroke={INK} strokeWidth={1} />
 
       {/* edge lane: a chip right beside the device decides on the spot */}
-      <text x={20} y={257} {...HEAD} fontSize={20} fill={SIGNAL}>
+      <text x={20} y={257} {...HEAD} fontSize={20} fill={INK}>
         Edge
       </text>
       <Watch x={BX} y={230} size={40} weight="fill" color={INK} />
@@ -830,7 +836,7 @@ export function AlertDelay() {
       <Pointer x1={216} y1={250} x2={244} y2={250} w={3} head={10} />
       <BellRinging x={248} y={230} size={40} weight="fill" color={SIGNAL} />
       <rect x={BX} y={280} width={Math.max(2, sx(de))} height={16} fill={SIGNAL} />
-      <text x={BX + Math.max(2, sx(de)) + 10} y={294} {...HEAD} fontSize={18} fill={SIGNAL}>
+      <text x={BX + Math.max(2, sx(de)) + 10} y={294} {...HEAD} fontSize={18} fill={INK}>
         {fmtS(de)}
       </text>
     </Plate>
@@ -910,7 +916,7 @@ export function StoreEdge() {
     { x: 56, y: 132, el: <Package x={56 - 24} y={132 - 24} size={48} weight="fill" color={INK} /> },
     { x: 66, y: 236, el: <Snowflake x={66 - 24} y={236 - 24} size={48} weight="fill" color={INK} /> },
     { x: 334, y: 236, el: <Lightbulb x={334 - 24} y={236 - 24} size={48} weight="fill" color={INK} /> },
-    { x: 344, y: 132, el: <Person x={344} y={100} k={0.62} variant={6} /> },
+    { x: 344, y: 132, el: <Watch x={344 - 24} y={132 - 24} size={48} weight="fill" color={INK} /> },
   ];
   return (
     <Plate
@@ -973,7 +979,7 @@ function Machine({
         />
       ))}
       <circle cx={cx} cy={cy} r={r2(s * 0.36)} fill={tone} />
-      <circle cx={cx} cy={cy} r={r2(s * 0.14)} fill={CREAM} />
+      <circle cx={cx} cy={cy} r={r2(s * 0.14)} fill={COUNTER} />
       {signal && (
         <>
           <path
@@ -1044,7 +1050,7 @@ export function FogBridge() {
         { x: 330, t: "Cloud", sub: "(centralized)" },
       ].map(({ x, t, sub }) => (
         <g key={t}>
-          <text x={x} y={258} textAnchor="middle" {...HEAD} fontSize={20} fill={t === "Fog" ? SIGNAL : INK}>
+          <text x={x} y={258} textAnchor="middle" {...HEAD} fontSize={20} fill={INK}>
             {t}
           </text>
           {sub && (
@@ -1132,17 +1138,17 @@ export function FogLoad() {
       <text x={BX + CLOUD_LIMIT * unit} y={156} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Cloud capacity
       </text>
-      <text x={BX} y={186} {...HEAD} fontSize={15} fill={COUNTER}>
+      <text x={BX} y={186} {...HEAD} fontSize={15} fill={INK}>
         Straight to the cloud
       </text>
       <rect x={BX} y={194} width={raw * unit} height={18} fill={COUNTER} />
-      <text x={BX} y={240} {...HEAD} fontSize={15} fill={SIGNAL}>
+      <text x={BX} y={240} {...HEAD} fontSize={15} fill={INK}>
         Through fog nodes
       </text>
       <rect x={BX} y={248} width={Math.max(2, r2(viaFog * unit))} height={18} fill={SIGNAL} />
       <path d={`M ${BX + CLOUD_LIMIT * unit} 164 V 280`} stroke={INK} strokeWidth={2.5} />
       {over && (
-        <text x={BX + CLOUD_LIMIT * unit + 10} y={186} {...HEAD} fontSize={15} fill={COUNTER}>
+        <text x={BX + CLOUD_LIMIT * unit + 10} y={186} {...HEAD} fontSize={15} fill={INK}>
           Overwhelming the cloud
         </text>
       )}

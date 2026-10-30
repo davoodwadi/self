@@ -18,7 +18,6 @@ import {
   DiscussionSlide,
   Summary,
 } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroAcceptance,
   TamFlowDiagram,
@@ -55,12 +54,14 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const SMALL = "font-body text-[0.95rem] leading-[1.5] [&_strong]:font-heading [&_strong]:font-bold";
+/* Body copy in upright sans-serif. */
+const BODY =
+  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+const SMALL =
+  "font-sans text-[0.95rem] leading-[1.55] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 const LIST =
-  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
-const SUB = "font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem]";
+  "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
+const SUB = "font-sans font-semibold text-sm tracking-normal text-[var(--ink-3)]";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -76,9 +77,11 @@ function Bullets({ items, className = "" }: { items: React.ReactNode[]; classNam
 
 function Step({ n, name, children }: { n: number; name: React.ReactNode; children?: React.ReactNode }) {
   return (
-    <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-      <p className="font-heading font-bold text-lg leading-tight mb-2 flex items-baseline gap-2.5">
-        <span className="font-accent text-base">{n}.</span>
+    <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+      <p className="font-sans font-semibold text-base text-[var(--dt-ink)] leading-snug mb-2 flex items-baseline gap-2.5">
+        <span className="font-sans font-medium text-xs text-[var(--ink-3)] tabular-nums">
+          {String(n).padStart(2, "0")}
+        </span>
         <span>{name}</span>
       </p>
       {children}
@@ -88,19 +91,19 @@ function Step({ n, name, children }: { n: number; name: React.ReactNode; childre
 
 export default function DigitalTransformationWeek4() {
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 04: DIGITAL TRANSFORMATION"
+        category="Week 04: Digital Transformation"
         title="TAM, UTAUT, IoT, Cloud, Edge, Fog"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -124,18 +127,17 @@ export default function DigitalTransformationWeek4() {
           "Think of a time you adopted a new app or tool (e.g., TikTok, Zoom, ChatGPT, a fitness tracker). What specific factors convinced you to use it? Was it because it solved a problem quickly, was easy to learn, or because peers recommended it? If you avoided a tool (e.g., Twitter/X, a new software update), what turned you off?",
           "Did you care more about how intuitive it was or how much value it added? For example, did you stick with Instagram Reels because it felt familiar, or switch to TikTok for better features?",
         ]}
-        plate={<Conversation left={1} right={6} />}
       />
 
       <Slide id="technology-acceptance-model-tam" label="THEORETICAL FRAMEWORK" title="Technology Acceptance Model (TAM)">
         <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
-            The Technology Acceptance Model (TAM) is a theoretical framework that helps to <em>explain</em> and{" "}
-            <em>predict</em> how users come to <strong className="text-[var(--dt-signal)]">accept and use</strong> a
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
+            The Technology Acceptance Model (TAM) is a theoretical framework that helps to explain and{" "}
+            predict how users come to accept and use a
             technology.
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
-            Developed by Fred Davis in 1986, TAM is widely used in <em>information systems</em> research to understand
+          <p className="border-t border-[var(--dt-ink)]/15 pt-4">
+            Developed by Fred Davis in 1986, TAM is widely used in information systems research to understand
             user behavior regarding technology adoption.
           </p>
         </div>
@@ -151,20 +153,20 @@ export default function DigitalTransformationWeek4() {
       >
         <Row cols="lg:grid-cols-[1.35fr_1fr]" className="!items-start">
           <div className="flex flex-col gap-4">
-            <div className={`${BODY} text-lg border-l-[5px] border-[var(--dt-signal)] pl-4`}>
+            <div className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
               <p>
                 <strong>External variables</strong>: Factors outside the model that influence{" "}
-                <strong>perceived usefulness (U)</strong> and <strong>perceived ease of use (E)</strong>.
+                perceived usefulness (U) and perceived ease of use (E).
               </p>
             </div>
-            <ol className={`${BODY} flex flex-col divide-y-2 divide-[var(--dt-ink)] border-y-[4px] border-[var(--dt-ink)]`}>
+            <ol className={`${BODY} flex flex-col divide-y divide-[var(--dt-ink)]/12 border-y border-[var(--dt-ink)]/15`}>
               {[
                 {
                   n: 1,
                   name: "System Features:",
                   body: (
                     <>
-                      The <strong>functionality</strong>, <strong>design</strong>, and <strong>interface</strong> of the
+                      The functionality, design, and interface of the
                       technology.
                     </>
                   ),
@@ -174,8 +176,8 @@ export default function DigitalTransformationWeek4() {
                   name: "User Characteristics:",
                   body: (
                     <>
-                      <strong>Age</strong>, <strong>education</strong>, <strong>prior experience</strong>, or{" "}
-                      <strong>computer self-efficacy</strong>.
+                      Age, education, prior experience, or{" "}
+                      computer self-efficacy.
                     </>
                   ),
                 },
@@ -184,8 +186,8 @@ export default function DigitalTransformationWeek4() {
                   name: "Social Influence:",
                   body: (
                     <>
-                      <strong>Peer pressure</strong>, <strong>organizational culture</strong>, or{" "}
-                      <strong>support from leadership</strong>.
+                      Peer pressure, organizational culture, or{" "}
+                      support from leadership.
                     </>
                   ),
                 },
@@ -194,7 +196,7 @@ export default function DigitalTransformationWeek4() {
                   name: "Training and Support:",
                   body: (
                     <>
-                      Availability of <strong>resources to help</strong> users understand the system.
+                      Availability of resources to help users understand the system.
                     </>
                   ),
                 },
@@ -203,15 +205,15 @@ export default function DigitalTransformationWeek4() {
                   name: "Task Characteristics:",
                   body: (
                     <>
-                      <strong>Complexity</strong> and <strong>relevance</strong> of the tasks the technology is designed
+                      Complexity and relevance of the tasks the technology is designed
                       to support.
                     </>
                   ),
                 },
               ].map((item) => (
                 <li key={item.n} className="grid sm:grid-cols-[13.5rem_1fr] gap-x-4 gap-y-1 py-2.5 items-baseline">
-                  <p className="font-heading font-bold text-lg flex items-baseline gap-2.5">
-                    <span className="inline-flex items-center justify-center w-6 h-6 bg-[var(--dt-ink)] text-[var(--dt-cream)] font-accent text-xs shrink-0">
+                  <p className="font-sans font-bold text-lg flex items-baseline gap-2.5">
+                    <span className="inline-flex items-center justify-center w-6 h-6 bg-[var(--dt-ink)] text-[var(--dt-white)] font-sans text-xs shrink-0">
                       {item.n}
                     </span>
                     <span>{item.name}</span>
@@ -239,10 +241,10 @@ export default function DigitalTransformationWeek4() {
               items={[
                 <>
                   The degree to which a person believes that using a particular technology will enhance their{" "}
-                  <strong>job performance or productivity</strong>.
+                  job performance or productivity.
                 </>,
                 <>
-                  If users perceive a technology as useful, they are <strong>more likely</strong> to adopt it.
+                  If users perceive a technology as useful, they are more likely to adopt it.
                 </>,
               ]}
             />
@@ -252,31 +254,31 @@ export default function DigitalTransformationWeek4() {
               items={[
                 <>
                   This is the degree to which a person believes that using a technology will be{" "}
-                  <strong>free of effort</strong>.
+                  free of effort.
                 </>,
                 <>
-                  If a technology is easy to use, users are <strong>more likely</strong> to accept and utilize it.
+                  If a technology is easy to use, users are more likely to accept and utilize it.
                 </>,
               ]}
             />
           </Step>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-lg leading-tight mb-2">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-bold text-lg leading-tight mb-2">
               <strong>Attitude Toward Use</strong>:
             </p>
             <Bullets
               items={[
                 <>
-                  <strong>Determined by</strong> perceived usefulness and perceived ease of use
+                  Determined by perceived usefulness and perceived ease of use
                 </>,
                 <>
-                  A positive attitude can lead to a higher likelihood of <strong>technology adoption</strong>.
+                  A positive attitude can lead to a higher likelihood of technology adoption.
                 </>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-lg leading-tight mb-2">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-bold text-lg leading-tight mb-2">
               <strong>Behavioral Intention to Use</strong>:
             </p>
             <p>The attitude toward use affects the behavioral intention to use the technology.</p>
@@ -297,13 +299,13 @@ export default function DigitalTransformationWeek4() {
         label="CASE STUDY 01: E-COMMERCE"
         title="Example: Application of TAM in E-Commerce"
       >
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 border-b-[4px] border-[var(--dt-ink)] pb-4`}>
+        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 border-b border-[var(--dt-ink)]/15 pb-4`}>
           <p>
-            <strong>BestBuy</strong> is introducing a new <em>AI-powered virtual shopping assistant</em> to improve the
+            BestBuy is introducing a new AI-powered virtual shopping assistant to improve the
             online shopping experience.
           </p>
           <p>
-            The <strong>Technology Acceptance Model (TAM)</strong> can be applied to analyze how customers adopt this
+            The Technology Acceptance Model (TAM) can be applied to analyze how customers adopt this
             technology.
           </p>
         </div>
@@ -312,29 +314,29 @@ export default function DigitalTransformationWeek4() {
             <BestBuyAssistantPlate />
           </PlateWell>
           <div>
-            <p className={`${SUB} mb-3 text-[var(--dt-signal)]`}>External Variables</p>
+            <p className={`${SUB} mb-3`}>External Variables</p>
             <div className={`${BODY} grid sm:grid-cols-2 gap-5`}>
               <Step n={1} name="System Features:">
                 <p>
-                  The virtual assistant provides <strong>personalized product recommendations</strong> and fast
+                  The virtual assistant provides personalized product recommendations and fast
                   responses.
                 </p>
               </Step>
               <Step n={2} name="User Characteristics:">
                 <p>
-                  Target audience includes <strong>tech-savvy millennials</strong> who are comfortable using AI-based
+                  Target audience includes tech-savvy millennials who are comfortable using AI-based
                   tools.
                 </p>
               </Step>
               <Step n={3} name="Social Influence:">
                 <p>
-                  <strong>Online reviews</strong> and <strong>endorsements</strong> by influencers promote the virtual
+                  Online reviews and endorsements by influencers promote the virtual
                   assistant.
                 </p>
               </Step>
               <Step n={4} name="Training and Support:">
                 <p>
-                  <strong>Tutorials</strong> and <strong>FAQs</strong> are provided to educate users on how to use the
+                  Tutorials and FAQs are provided to educate users on how to use the
                   assistant.
                 </p>
               </Step>
@@ -351,12 +353,12 @@ export default function DigitalTransformationWeek4() {
       >
         <div className={`${SMALL} grid md:grid-cols-3 gap-6`}>
           <div className="flex flex-col gap-4">
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-lg mb-1.5">Perceived Ease of Use (U)</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-bold text-lg mb-1.5">Perceived Ease of Use (U)</p>
               <Bullets
                 items={[
                   <>
-                    Do users believe the assistant is <strong>easy to interact with</strong> due to its intuitive chat
+                    Do users believe the assistant is easy to interact with due to its intuitive chat
                     interface?
                   </>,
                   <>Should we add voice commands?</>,
@@ -364,12 +366,12 @@ export default function DigitalTransformationWeek4() {
                 ]}
               />
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-lg mb-1.5">Perceived Usefulness (E)</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-bold text-lg mb-1.5">Perceived Usefulness (E)</p>
               <Bullets
                 items={[
                   <>
-                    Do customers find the assistant helpful because it <strong>saves time</strong> by suggesting
+                    Do customers find the assistant helpful because it saves time by suggesting
                     relevant products and streamlining the shopping process?
                   </>,
                 ]}
@@ -378,22 +380,22 @@ export default function DigitalTransformationWeek4() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-lg mb-1.5">Attitude Toward Using (A)</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-bold text-lg mb-1.5">Attitude Toward Using (A)</p>
               <p>
                 Do positive perceptions of usefulness and ease of use lead customers to{" "}
-                <strong>feel favorable</strong> toward using the virtual assistant?
+                feel favorable toward using the virtual assistant?
               </p>
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-lg mb-1.5">Behavioral Intention to Use (B)</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-bold text-lg mb-1.5">Behavioral Intention to Use (B)</p>
               <p>
-                Because of their positive attitude, do customers <strong>intend</strong> to use the assistant in their
+                Because of their positive attitude, do customers intend to use the assistant in their
                 future shopping activities?
               </p>
             </div>
-            <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-lg mb-1.5">Actual System Use</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-bold text-lg mb-1.5">Actual System Use</p>
               <p>
                 Over time, do users actively use the virtual assistant to explore and purchase products on the
                 e-commerce platform?
@@ -401,24 +403,26 @@ export default function DigitalTransformationWeek4() {
             </div>
           </div>
 
-          <div className="border-t-[4px] border-[var(--dt-signal)] pt-3">
-            <p className="font-heading font-bold text-lg mb-3 text-[var(--dt-signal)]">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-semibold text-lg mb-3 text-[var(--dt-ink)]">
               Measuring Benefits of Technology
             </p>
             <ol className="flex flex-col gap-3">
               {[
                 <>
-                  Increased <strong>customer satisfaction</strong> due to a smoother shopping experience?
+                  Increased customer satisfaction due to a smoother shopping experience?
                 </>,
                 <>
-                  Higher <strong>conversion rates</strong> as customers are more likely to complete purchases?
+                  Higher conversion rates as customers are more likely to complete purchases?
                 </>,
                 <>
-                  Enhanced <strong>brand loyalty</strong> as users find the platform innovative and user-friendly?
+                  Enhanced brand loyalty as users find the platform innovative and user-friendly?
                 </>,
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="font-heading font-bold text-xl text-[var(--dt-signal)] shrink-0">{i + 1}.</span>
+                <li key={i} className="flex items-baseline gap-3">
+                  <span className="font-sans font-medium text-xs text-[var(--ink-3)] tabular-nums shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -442,33 +446,33 @@ export default function DigitalTransformationWeek4() {
               <ol className="flex flex-col">
                 {[
                   <>
-                    How can perceived ease of use be improved for users who are <strong>less tech-savvy</strong>?
+                    How can perceived ease of use be improved for users who are less tech-savvy?
                     (Minority group)
                   </>,
                   <>
-                    What <strong>additional features</strong> could make the virtual shopping assistant more useful?
+                    What additional features could make the virtual shopping assistant more useful?
                   </>,
                   <>
-                    How can social influence, such as <strong>peer reviews</strong>, be leveraged to encourage adoption?
+                    How can social influence, such as peer reviews, be leveraged to encourage adoption?
                   </>,
                 ].map((q, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-5 py-4 border-t-[3px] border-[var(--dt-ink)] first:border-t-0"
+                    className="flex items-start gap-5 py-4 border-t border-[var(--dt-ink)]/15 first:border-t-0"
                   >
-                    <span className="font-heading font-bold text-3xl leading-none w-7 shrink-0">{i + 1}</span>
-                    <span className="font-heading font-bold text-xl leading-snug">{q}</span>
+                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">{i + 1}</span>
+                    <span className="font-sans font-bold text-xl leading-snug">{q}</span>
                   </li>
                 ))}
               </ol>
             </div>
-            <div className="border-t-[4px] border-[var(--dt-signal)] pt-4">
-              <p className={`${SUB} text-[var(--dt-signal)] mb-2`}>Research Questions</p>
-              <div className="flex items-start gap-5">
-                <span className="font-heading font-bold text-3xl leading-none text-[var(--dt-signal)] w-7 shrink-0">
-                  4
+            <div className="border-t border-[var(--dt-ink)]/15 pt-4">
+              <p className={`${SUB} mb-2`}>Research Questions</p>
+              <div className="flex items-baseline gap-4">
+                <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums w-6 shrink-0">
+                  04
                 </span>
-                <p className="font-heading font-bold text-xl leading-snug">
+                <p className="font-sans font-medium text-lg leading-snug text-[var(--dt-ink)]">
                   What AI tool can be incorporated to give the chatbot access to BestBuy&apos;s product catalog and
                   manuals?
                 </p>
@@ -489,59 +493,59 @@ export default function DigitalTransformationWeek4() {
         <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-4`}>
           {[
             <>
-              A hospital adopts an AI-powered chatbot to assist patients in <strong>triage</strong>,
+              A hospital adopts an AI-powered chatbot to assist patients in triage,
             </>,
             <>
-              offering <strong>preliminary medical advice</strong>
+              offering preliminary medical advice
             </>,
             <>
-              determining whether they need <strong>urgent care</strong> or can manage their symptoms{" "}
-              <strong>at home</strong>.
+              determining whether they need urgent care or can manage their symptoms{" "}
+              at home.
             </>,
             <>
-              TAM can help evaluate how <em>staff</em> and <em>patients</em> accept this technology.
+              TAM can help evaluate how staff and patients accept this technology.
             </>,
           ].map((line, i) => (
-            <p key={i} className="border-t-[3px] border-[var(--dt-ink)] pt-2.5">
+            <p key={i} className="border-t border-[var(--dt-ink)]/15 pt-2.5">
               {line}
             </p>
           ))}
         </div>
         <div>
-          <p className={`${SUB} mb-2 text-[var(--dt-signal)]`}>External Variables</p>
+          <p className={`${SUB} mb-2`}>External Variables</p>
           <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
             <Step n={1} name="System Features:">
               <p>
-                The chatbot uses natural language processing (NLP) to understand <strong>patient queries</strong> and
-                provides <strong>accurate recommendations</strong> based on <em>medical databases</em>.
+                The chatbot uses natural language processing (NLP) to understand patient queries and
+                provides accurate recommendations based on medical databases.
               </p>
             </Step>
             <Step n={2} name="User Characteristics:">
               <Bullets
                 items={[
                   <>
-                    <strong>Patients</strong> may range from <em>tech-savvy individuals</em> to{" "}
-                    <em>older adults with limited technology experience</em>.
+                    Patients may range from tech-savvy individuals to{" "}
+                    older adults with limited technology experience.
                   </>,
                   <>
-                    <strong>Nurses</strong> may initially feel skeptical about its reliability.
+                    Nurses may initially feel skeptical about its reliability.
                   </>,
                   <>
-                    <strong>Medical doctors</strong> who feel threatened.
+                    Medical doctors who feel threatened.
                   </>,
                 ]}
               />
             </Step>
             <Step n={3} name="Social Influence:">
               <p>
-                <strong>Healthcare professionals</strong> and <strong>community leaders</strong> endorse the chatbot,
-                increasing <strong>trust</strong> among patients.
+                Healthcare professionals and community leaders endorse the chatbot,
+                increasing trust among patients.
               </p>
             </Step>
             <Step n={4} name="Training and Support:">
               <p>
-                Hospitals offer <strong>tutorials</strong> and <strong>demos</strong> to help <em>patients</em> and{" "}
-                <em>staff</em> navigate the chatbot.
+                Hospitals offer tutorials and demos to help patients and{" "}
+                staff navigate the chatbot.
               </p>
             </Step>
           </div>
@@ -558,47 +562,47 @@ export default function DigitalTransformationWeek4() {
         exercise={exercise["tam-for-ai-chatbots-in-a-hospital-adoption-and-benefits"]}
       >
         <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-5 gap-4`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1">Perceived Ease of Use (E)</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1">Perceived Ease of Use (E)</p>
             <p>
-              Patients find the chatbot user-friendly because of its <strong>simple interface</strong>,{" "}
-              <strong>quick responses</strong>, and ability to handle <strong>non-technical language</strong>.
+              Patients find the chatbot user-friendly because of its simple interface,{" "}
+              quick responses, and ability to handle non-technical language.
             </p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1">Perceived Usefulness (U)</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1">Perceived Usefulness (U)</p>
             <Bullets
               items={[
                 <>
-                  The chatbot <strong>reduces waiting times</strong> and improves patient outcomes by streamlining the
+                  The chatbot reduces waiting times and improves patient outcomes by streamlining the
                   triage process.
                 </>,
                 <>
-                  Medical staff find it useful as it filters <strong>non-urgent cases</strong>, allowing them to focus
-                  on <strong>critical</strong> patients.
+                  Medical staff find it useful as it filters non-urgent cases, allowing them to focus
+                  on critical patients.
                 </>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1">Attitude Toward Using (A)</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1">Attitude Toward Using (A)</p>
             <p>
-              Both patients and staff develop a <em>positive attitude</em> toward the chatbot, appreciating its
+              Both patients and staff develop a positive attitude toward the chatbot, appreciating its
               efficiency and time-saving benefits.
             </p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1">Behavioral Intention to Use (BI)</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1">Behavioral Intention to Use (BI)</p>
             <p>
-              Due to their favorable attitude, patients and staff <em>intend to use</em> the chatbot regularly. Patients
+              Due to their favorable attitude, patients and staff intend to use the chatbot regularly. Patients
               plan to consult it for initial assessments, while staff use its data to prioritize cases.
             </p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-signal)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1 text-[var(--dt-signal)]">Actual System Use</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-semibold text-base mb-1 text-[var(--dt-ink)]">Actual System Use</p>
             <p>
               The chatbot becomes widely used in the hospital, helping patients and supporting staff during{" "}
-              <strong>peak hours</strong> or <strong>emergencies</strong>.
+              peak hours or emergencies.
             </p>
           </div>
         </div>
@@ -606,8 +610,8 @@ export default function DigitalTransformationWeek4() {
           <PlateWell>
             <HospitalPeakSimulator />
           </PlateWell>
-          <div className="border-[4px] border-[var(--dt-ink)] p-4 sm:p-5">
-            <p className="font-heading font-bold text-lg mb-3 text-[var(--dt-signal)]">Benefits for the Hospital</p>
+          <div className="border border-[var(--dt-ink)]/15 p-4 sm:p-5">
+            <p className="font-sans font-semibold text-lg mb-3 text-[var(--dt-ink)]">Benefits for the Hospital</p>
             <div className={`${SMALL} grid sm:grid-cols-3 gap-4`}>
               <Step n={1} name="Improved Patient Experience:">
                 <p>Patients receive quicker responses and guidance for their symptoms.</p>
@@ -617,7 +621,7 @@ export default function DigitalTransformationWeek4() {
               </Step>
               <Step n={3} name="Operational Efficiency:">
                 <p>
-                  Triage times are reduced, leading to better <em>resource allocation</em>.
+                  Triage times are reduced, leading to better resource allocation.
                 </p>
               </Step>
             </div>
@@ -645,21 +649,21 @@ export default function DigitalTransformationWeek4() {
                 ].map((q, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-5 py-4 border-t-[3px] border-[var(--dt-ink)] first:border-t-0"
+                    className="flex items-start gap-5 py-4 border-t border-[var(--dt-ink)]/15 first:border-t-0"
                   >
-                    <span className="font-heading font-bold text-3xl leading-none w-7 shrink-0">{i + 1}</span>
-                    <span className="font-heading font-bold text-xl leading-snug">{q}</span>
+                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">{i + 1}</span>
+                    <span className="font-sans font-bold text-xl leading-snug">{q}</span>
                   </li>
                 ))}
               </ol>
             </div>
-            <div className="border-t-[4px] border-[var(--dt-signal)] pt-4">
-              <p className={`${SUB} text-[var(--dt-signal)] mb-2`}>Research Question</p>
-              <div className="flex items-start gap-5">
-                <span className="font-heading font-bold text-3xl leading-none text-[var(--dt-signal)] w-7 shrink-0">
-                  4
+            <div className="border-t border-[var(--dt-ink)]/15 pt-4">
+              <p className={`${SUB} mb-2`}>Research Question</p>
+              <div className="flex items-baseline gap-4">
+                <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums w-6 shrink-0">
+                  04
                 </span>
-                <p className="font-heading font-bold text-xl leading-snug">
+                <p className="font-sans font-medium text-lg leading-snug text-[var(--dt-ink)]">
                   What AI tool can help integrate electronic health records (EHRs) into the chatbot?
                 </p>
               </div>
@@ -674,18 +678,18 @@ export default function DigitalTransformationWeek4() {
         title="Example: TAM for IKEA’s Self-Return Kiosk"
       >
         <div className={`${BODY} grid md:grid-cols-3 gap-5`}>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             IKEA has introduced a self-return kiosk at its stores
           </p>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
-            Customers <strong>should</strong> process product returns without staff assistance.
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
+            Customers should process product returns without staff assistance.
           </p>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             Let&apos;s apply TAM to understand how customers would accept this technology.
           </p>
         </div>
         <div>
-          <p className={`${SUB} mb-2 text-[var(--dt-signal)]`}>External Variables</p>
+          <p className={`${SUB} mb-2`}>External Variables</p>
           <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
             <Step n={1} name="System Features:">
               <p className="mb-1">The kiosk features</p>
@@ -696,19 +700,19 @@ export default function DigitalTransformationWeek4() {
                 items={[
                   "Customers vary in their familiarity with self-service technologies,",
                   <>
-                    from <em>tech-savvy individuals</em> to those who <em>prefer in-person interaction</em>.
+                    from tech-savvy individuals to those who prefer in-person interaction.
                   </>,
                 ]}
               />
             </Step>
             <Step n={3} name="Social Influence:">
               <p>
-                <em>Other customers</em> using the kiosk successfully <em>influence</em> hesitant users to try it.
+                Other customers using the kiosk successfully influence hesitant users to try it.
               </p>
             </Step>
             <Step n={4} name="Training and Support:">
               <p>
-                <strong>On-screen guidance</strong> and <strong>staff nearby</strong> to assist reduce apprehension
+                On-screen guidance and staff nearby to assist reduce apprehension
                 among first-time users.
               </p>
             </Step>
@@ -728,22 +732,22 @@ export default function DigitalTransformationWeek4() {
         <Row cols="lg:grid-cols-[1.35fr_1fr]" className="!items-center">
           <div className={`${SMALL} flex flex-col gap-4`}>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-                <p className="font-heading font-bold text-base mb-1">Perceived Ease of Use (E)</p>
+              <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+                <p className="font-sans font-bold text-base mb-1">Perceived Ease of Use (E)</p>
                 <p>
-                  Customers find the kiosk intuitive due to its <strong>step-by-step instructions</strong>,{" "}
-                  <strong>visual aids</strong>, and <strong>quick processing time</strong>.
+                  Customers find the kiosk intuitive due to its step-by-step instructions,{" "}
+                  visual aids, and quick processing time.
                 </p>
               </div>
-              <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-                <p className="font-heading font-bold text-base mb-1">Perceived Usefulness (U)</p>
+              <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+                <p className="font-sans font-bold text-base mb-1">Perceived Usefulness (U)</p>
                 <Bullets
                   items={[
                     <>
-                      The kiosk eliminates <strong>waiting in line</strong>
+                      The kiosk eliminates waiting in line
                     </>,
                     <>
-                      This is particularly beneficial during <strong>peak hours</strong>.
+                      This is particularly beneficial during peak hours.
                     </>,
                   ]}
                 />
@@ -751,21 +755,21 @@ export default function DigitalTransformationWeek4() {
             </div>
 
             <div className="grid sm:grid-cols-3 gap-4">
-              <div className="border-t-[3px] border-[var(--dt-ink)] pt-2">
-                <p className="font-heading font-bold text-base mb-1">Attitude Toward Using (A)</p>
+              <div className="border-t border-[var(--dt-ink)]/15 pt-2">
+                <p className="font-sans font-bold text-base mb-1">Attitude Toward Using (A)</p>
                 <p>
-                  Customers to <strong>view</strong> the kiosk as an effective solution.
+                  Customers to view the kiosk as an effective solution.
                 </p>
               </div>
-              <div className="border-t-[3px] border-[var(--dt-ink)] pt-2">
-                <p className="font-heading font-bold text-base mb-1">Behavioral Intention to Use (BI)</p>
+              <div className="border-t border-[var(--dt-ink)]/15 pt-2">
+                <p className="font-sans font-bold text-base mb-1">Behavioral Intention to Use (BI)</p>
                 <p>
-                  Customers <strong>intend</strong> to use the kiosk for future returns and may{" "}
-                  <strong>recommend</strong> it to others.
+                  Customers intend to use the kiosk for future returns and may{" "}
+                  recommend it to others.
                 </p>
               </div>
-              <div className="border-t-[3px] border-[var(--dt-ink)] pt-2">
-                <p className="font-heading font-bold text-base mb-1">Actual System Use</p>
+              <div className="border-t border-[var(--dt-ink)]/15 pt-2">
+                <p className="font-sans font-bold text-base mb-1">Actual System Use</p>
                 <p>
                   Over time, the kiosk sees increased adoption, with customers actively using it for returns, leading to
                   faster service times and reduced staff workload.
@@ -773,22 +777,22 @@ export default function DigitalTransformationWeek4() {
               </div>
             </div>
 
-            <div className="border-t-[4px] border-[var(--dt-signal)] pt-3">
-              <p className="font-heading font-bold text-base mb-2 text-[var(--dt-signal)]">Benefits for IKEA</p>
+            <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-semibold text-base mb-2 text-[var(--dt-ink)]">Benefits for IKEA</p>
               <div className="grid sm:grid-cols-3 gap-4">
                 <Step n={1} name="Enhanced Customer Experience:">
                   <p>
-                    <strong>Faster returns</strong> process improves overall satisfaction.
+                    Faster returns process improves overall satisfaction.
                   </p>
                 </Step>
                 <Step n={2} name="Operational Efficiency:">
                   <p>
-                    Staff focus on <strong>complex issues</strong> while routine returns are handled by the kiosk.
+                    Staff focus on complex issues while routine returns are handled by the kiosk.
                   </p>
                 </Step>
                 <Step n={3} name="Cost Savings:">
                   <p>
-                    Lower dependency on staff for <strong>simple returns</strong> reduces operational costs.
+                    Lower dependency on staff for simple returns reduces operational costs.
                   </p>
                 </Step>
               </div>
@@ -805,46 +809,41 @@ export default function DigitalTransformationWeek4() {
         label="CLASS DISCUSSION: IKEA SELF-RETURN KIOSK"
         title="Apprehensions & Discussion Questions"
       >
-        <Row cols="lg:grid-cols-[1.4fr_1fr]">
-          <div className="flex flex-col gap-5">
-            <div className="border-l-[5px] border-[var(--dt-signal)] pl-4">
-              <p className={`${SUB} text-[var(--dt-signal)] mb-1`}>Question</p>
-              <p className="font-heading font-bold text-xl leading-snug">
-                Think about your own experience: when forced to use a new technology in public what types of
-                apprehensions do you face? How can these apprehensions be alleviated?
-              </p>
-            </div>
-            <div>
-              <p className={`${SUB} mb-2`}>Discussion Questions</p>
-              <ol className="flex flex-col">
-                {[
-                  <>
-                    What <strong>design elements</strong> can IKEA add to make the kiosk more accessible to older
-                    customers?
-                  </>,
-                  <>
-                    How can IKEA promote the kiosk to customers <strong>hesitant</strong> about using technology?
-                  </>,
-                  <>
-                    What features could make the kiosk even more useful (e.g., integrating loyalty rewards during
-                    returns)?
-                  </>,
-                ].map((q, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-5 py-3.5 border-t-[3px] border-[var(--dt-ink)] first:border-t-0"
-                  >
-                    <span className="font-heading font-bold text-3xl leading-none w-7 shrink-0">{i + 1}</span>
-                    <span className="font-heading font-bold text-lg leading-snug">{q}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
+        <div className="flex flex-col gap-5 max-w-4xl">
+          <div className="border-l-2 border-[var(--dt-ink)]/25 pl-4">
+            <p className={`${SUB} mb-1`}>Question</p>
+            <p className="font-sans font-medium text-lg leading-snug text-[var(--dt-ink)]">
+              Think about your own experience: when forced to use a new technology in public what types of
+              apprehensions do you face? How can these apprehensions be alleviated?
+            </p>
           </div>
-          <PlateWell>
-            <Conversation left={3} right={9} />
-          </PlateWell>
-        </Row>
+          <div>
+            <p className={`${SUB} mb-2`}>Discussion Questions</p>
+            <ol className="flex flex-col">
+              {[
+                <>
+                  What design elements can IKEA add to make the kiosk more accessible to older
+                  customers?
+                </>,
+                <>
+                  How can IKEA promote the kiosk to customers hesitant about using technology?
+                </>,
+                <>
+                  What features could make the kiosk even more useful (e.g., integrating loyalty rewards during
+                  returns)?
+                </>,
+              ].map((q, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-5 py-3.5 border-t border-[var(--dt-ink)]/15 first:border-t-0"
+                >
+                  <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">{i + 1}</span>
+                  <span className="font-sans font-bold text-lg leading-snug">{q}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
       </Slide>
 
       {/* ================================================================
@@ -859,7 +858,6 @@ export default function DigitalTransformationWeek4() {
       <DiscussionSlide
         quote="Your company recently rolled out a new collaboration platform (e.g., Slack, Asana, or a mandatory AI tool). While TAM focuses on perceived usefulness and ease of use, what one factor outside of these two do you think most influenced adoption or resistance? For example, was it pressure from leadership, lack of training, or compatibility with existing workflows? Use a real-world case to argue why this factor mattered more than pure ‘usefulness’ or ‘ease of use’."
         author="Question"
-        plate={<Conversation left={5} right={2} />}
       />
 
       <Slide
@@ -868,13 +866,13 @@ export default function DigitalTransformationWeek4() {
         title="The Unified Theory of Acceptance and Use of Technology (UTAUT)"
         exercise={exercise["the-unified-theory-of-acceptance-and-use-of-technology-utaut"]}
       >
-        <div className={`${SMALL} grid md:grid-cols-3 gap-5 border-b-[4px] border-[var(--dt-ink)] pb-4`}>
+        <div className={`${SMALL} grid md:grid-cols-3 gap-5 border-b border-[var(--dt-ink)]/15 pb-4`}>
           <p>
             The Unified Theory of Acceptance and Use of Technology (UTAUT) is a theoretical framework developed to
-            understand the factors that influence individuals&apos; <strong>acceptance and use</strong> of technology.
+            understand the factors that influence individuals&apos; acceptance and use of technology.
           </p>
           <p>
-            It was introduced by Venkatesh et al. in <strong>2003</strong>
+            It was introduced by Venkatesh et al. in 2003
           </p>
           <p>
             integrates elements from several existing models of technology acceptance: Technology Acceptance Model
@@ -886,30 +884,30 @@ export default function DigitalTransformationWeek4() {
             <UtautSynthesisPlate />
           </PlateWell>
           <div>
-            <p className="font-heading font-bold text-lg mb-3">
-              <strong>Four</strong> primary constructs that significantly influence technology acceptance and usage:
+            <p className="font-sans font-bold text-lg mb-3">
+              Four primary constructs that significantly influence technology acceptance and usage:
             </p>
             <div className={`${SMALL} grid sm:grid-cols-2 gap-4`}>
               <Step n={1} name="Performance Expectancy:">
                 <p>
-                  How much the technology is perceived to <strong>enhance job performance</strong>.
+                  How much the technology is perceived to enhance job performance.
                 </p>
               </Step>
               <Step n={2} name="Effort Expectancy:">
                 <p>
-                  This construct reflects the <strong>ease of use</strong> associated with the technology.
+                  This construct reflects the ease of use associated with the technology.
                 </p>
               </Step>
               <Step n={3} name="Social Influence:">
                 <p>
                   How much individuals perceive that{" "}
-                  <strong>important others (e.g., peers, family, or colleagues)</strong> believe they should use the new
+                  important others (e.g., peers, family, or colleagues) believe they should use the new
                   technology.
                 </p>
               </Step>
               <Step n={4} name="Facilitating Conditions:">
                 <p>
-                  The <strong>resources and support</strong> available to individuals for using the technology:
+                  The resources and support available to individuals for using the technology:
                   infrastructure, training, technical support.
                 </p>
               </Step>
@@ -919,24 +917,24 @@ export default function DigitalTransformationWeek4() {
       </Slide>
 
       <Slide id="moderating-variables" label="UTAUT MODEL" title="Moderating Variables">
-        <p className="font-heading font-bold text-xl text-[var(--dt-signal)]">
-          What are <strong>moderators</strong> in a theoretical framework?
+        <p className="font-sans font-semibold text-lg text-[var(--dt-ink)]">
+          What are moderators in a theoretical framework?
         </p>
         <div className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-xl mb-1">Age:</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-bold text-xl mb-1">Age:</p>
             <p>Different age groups may have varying levels of technology acceptance.</p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-xl mb-1">Gender:</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-bold text-xl mb-1">Gender:</p>
             <p>Men and women may have different perceptions and attitudes toward technology.</p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-xl mb-1">Experience:</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-bold text-xl mb-1">Experience:</p>
             <p>Prior experience with similar technologies can influence acceptance.</p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-xl mb-1">Voluntariness of Use:</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="font-sans font-bold text-xl mb-1">Voluntariness of Use:</p>
             <p>Whether the use of the technology is mandatory or voluntary can affect acceptance.</p>
           </div>
         </div>
@@ -947,45 +945,45 @@ export default function DigitalTransformationWeek4() {
 
       <Slide id="utaut-for-ikeas-self-return-kiosk" label="CASE STUDY: UTAUT" title="UTAUT for IKEA's Self-Return Kiosk">
         <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1.5">Performance Expectancy</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1.5">Performance Expectancy</p>
             <p>
-              Do customers believe the kiosk enhances efficiency by <strong>saving time</strong> and{" "}
-              <strong>reducing waiting lines</strong>, especially during <strong>peak hours</strong>?
+              Do customers believe the kiosk enhances efficiency by saving time and{" "}
+              reducing waiting lines, especially during peak hours?
             </p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1.5">Effort Expectancy</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1.5">Effort Expectancy</p>
             <p>
-              Is kiosk is perceived as <strong>easy to use</strong> due to its{" "}
-              <strong>intuitive touch screen</strong>, <strong>step-by-step instructions</strong>, and{" "}
-              <strong>visual aids</strong>?
+              Is kiosk is perceived as easy to use due to its{" "}
+              intuitive touch screen, step-by-step instructions, and{" "}
+              visual aids?
             </p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1.5">Social Influence</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1.5">Social Influence</p>
             <Bullets
               items={[
                 <>
-                  Observing <strong>other customers</strong> successfully using the kiosk encourages{" "}
-                  <strong>hesitant users</strong> to try it.
+                  Observing other customers successfully using the kiosk encourages{" "}
+                  hesitant users to try it.
                 </>,
                 <>
-                  Positive <strong>word-of-mouth</strong> promotes trust in the system.
+                  Positive word-of-mouth promotes trust in the system.
                 </>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1.5">Facilitating Conditions</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-bold text-base mb-1.5">Facilitating Conditions</p>
             <Bullets
               items={[
                 <>
-                  <strong>On-site support staff</strong> and <strong>clear guidance</strong> help users overcome
+                  On-site support staff and clear guidance help users overcome
                   technical or usability challenges.
                 </>,
                 <>
-                  <strong>Accessible design</strong> ensures inclusion for diverse user groups, such as those with
+                  Accessible design ensures inclusion for diverse user groups, such as those with
                   limited technology familiarity.
                 </>,
               ]}
@@ -996,18 +994,18 @@ export default function DigitalTransformationWeek4() {
           <IkeaUtautDriversPlate />
         </PlateWell>
         <div className={`${SMALL} grid md:grid-cols-2 gap-6`}>
-          <div className="border-t-[4px] border-[var(--dt-signal)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1 text-[var(--dt-signal)]">Behavioral Intention</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-semibold text-base mb-1 text-[var(--dt-ink)]">Behavioral Intention</p>
             <p>
-              Customers show an <strong>intention to use</strong> the kiosk in the future and to{" "}
-              <strong>recommend</strong> it to others based on their experience.
+              Customers show an intention to use the kiosk in the future and to{" "}
+              recommend it to others based on their experience.
             </p>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-signal)] pt-2.5">
-            <p className="font-heading font-bold text-base mb-1 text-[var(--dt-signal)]">Actual Use</p>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
+            <p className="font-sans font-semibold text-base mb-1 text-[var(--dt-ink)]">Actual Use</p>
             <p>
-              Over time, increased confidence and trust lead to <strong>higher adoption rates</strong>, resulting in{" "}
-              <strong>streamlined operations</strong> and <strong>reduced staff workload</strong>.
+              Over time, increased confidence and trust lead to higher adoption rates, resulting in{" "}
+              streamlined operations and reduced staff workload.
             </p>
           </div>
         </div>
@@ -1020,7 +1018,7 @@ export default function DigitalTransformationWeek4() {
         exercise={exercise["utaut-for-ikeas-self-return-kiosk-moderating-variables"]}
       >
         <Row cols="lg:grid-cols-[1.35fr_1fr]" className="!items-center">
-          <ol className={`${BODY} flex flex-col divide-y-2 divide-[var(--dt-ink)] border-y-[4px] border-[var(--dt-ink)]`}>
+          <ol className={`${BODY} flex flex-col divide-y divide-[var(--dt-ink)]/12 border-y border-[var(--dt-ink)]/15`}>
             {[
               {
                 n: 1,
@@ -1042,7 +1040,7 @@ export default function DigitalTransformationWeek4() {
                 name: "Voluntariness of Use:",
                 body: (
                   <>
-                    If customers feel <strong>forced</strong> to use the kiosk (e.g., no alternative for returns),
+                    If customers feel forced to use the kiosk (e.g., no alternative for returns),
                     satisfaction and adoption rates may be impacted.
                   </>
                 ),
@@ -1053,14 +1051,14 @@ export default function DigitalTransformationWeek4() {
                 body: (
                   <>
                     Acceptance may vary based on regional or cultural familiarity with{" "}
-                    <strong>self-service technology</strong>.
+                    self-service technology.
                   </>
                 ),
               },
             ].map((item) => (
               <li key={item.n} className="grid sm:grid-cols-[13.5rem_1fr] gap-x-4 gap-y-1 py-3 items-baseline">
-                <p className="font-heading font-bold text-lg flex items-baseline gap-2.5">
-                  <span className="inline-flex items-center justify-center w-6 h-6 bg-[var(--dt-ink)] text-[var(--dt-cream)] font-accent text-xs shrink-0">
+                <p className="font-sans font-bold text-lg flex items-baseline gap-2.5">
+                  <span className="inline-flex items-center justify-center w-6 h-6 bg-[var(--dt-ink)] text-[var(--dt-white)] font-sans text-xs shrink-0">
                     {item.n}
                   </span>
                   <span>{item.name}</span>
@@ -1082,18 +1080,18 @@ export default function DigitalTransformationWeek4() {
 
       <Slide id="what-is-iot" label="INTERNET OF THINGS" title="What is IoT?">
         <div className={`${BODY} text-lg grid md:grid-cols-3 gap-6`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <strong>Internet of Things (IoT)</strong> refers to a network of <em>interconnected devices</em> that{" "}
-            <strong className="text-[var(--dt-signal)]">collect, share, and act</strong> on data.
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <strong>Internet of Things (IoT)</strong> refers to a network of interconnected devices that{" "}
+            collect, share, and act on data.
           </p>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             smart thermostats, wearable fitness trackers, and connected cars.
           </p>
-          <div className="border-t-[4px] border-[var(--dt-signal)] pt-3">
-            <p className={`${SUB} text-[var(--dt-signal)] mb-1`}>Discussion Question</p>
-            <p className="font-heading font-bold text-lg leading-snug">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className={`${SUB} mb-1`}>Discussion Question</p>
+            <p className="font-sans font-medium text-base leading-snug text-[var(--dt-ink)]">
               How does IoT influence the way businesses interact with customers?{" "}
-              <strong>Troubleshooting your fridge</strong>
+              Troubleshooting your fridge
             </p>
           </div>
         </div>
@@ -1159,9 +1157,11 @@ export default function DigitalTransformationWeek4() {
             "Software Updates and Maintenance",
             "Decommissioning",
           ].map((stage, i) => (
-            <li key={stage} className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-lg leading-snug">
-                <span className="font-accent text-base mr-2 text-[var(--dt-signal)]">{i + 1}.</span>
+            <li key={stage} className="border-t border-[var(--dt-ink)]/15 pt-3">
+              <p className="font-sans font-semibold text-base text-[var(--dt-ink)] leading-snug">
+                <span className="font-sans font-medium text-xs mr-2 text-[var(--ink-3)] tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <strong>{stage}</strong>
               </p>
             </li>
@@ -1174,29 +1174,29 @@ export default function DigitalTransformationWeek4() {
 
       <Slide id="what-is-cloud-computing" label="CLOUD COMPUTING" title="What is Cloud Computing?">
         <div className={`${BODY} text-lg grid md:grid-cols-3 gap-6`}>
-          <p className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <strong>Cloud computing</strong> delivers <strong>computing resources</strong> (storage, processing, and
-            software) over the <strong>internet</strong>.
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <strong>Cloud computing</strong> delivers computing resources (storage, processing, and
+            software) over the internet.
           </p>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
             <p className="mb-2">Google Drive, Amazon Web Services (AWS).</p>
             <Bullets
               items={[
                 <>
-                  <strong>scalability</strong>
+                  scalability
                 </>,
                 <>
-                  <strong>remote access</strong>
+                  remote access
                 </>,
                 <>
-                  <strong>central data center</strong>.
+                  central data center.
                 </>,
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-signal)] pt-3">
-            <p className={`${SUB} text-[var(--dt-signal)] mb-1`}>Discussion Question</p>
-            <p className="font-heading font-bold text-xl leading-snug">
+          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className={`${SUB} mb-1`}>Discussion Question</p>
+            <p className="font-sans font-medium text-base leading-snug text-[var(--dt-ink)]">
               What are the benefits and challenges of cloud computing for businesses?
             </p>
           </div>
@@ -1208,50 +1208,50 @@ export default function DigitalTransformationWeek4() {
 
       <Slide id="what-is-edge-and-fog-computing" label="DISTRIBUTED COMPUTING" title="What is Edge & Fog Computing?">
         <div className={`${BODY} grid md:grid-cols-2 gap-8`}>
-          <div className="border-t-[5px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
-            <h4 className="font-heading font-bold text-2xl">What is Edge Computing?</h4>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
+            <h4 className="font-sans font-semibold text-xl text-[var(--dt-ink)]">What is Edge Computing?</h4>
             <Bullets
               items={[
                 <>
-                  <strong>Edge computing</strong> processes data near its <strong>source</strong> (e.g., on{" "}
-                  <em>IoT devices</em> or <em>local servers</em>).
+                  <strong>Edge computing</strong> processes data near its source (e.g., on{" "}
+                  IoT devices or local servers).
                 </>,
                 <>
-                  Reduces <strong>latency</strong> and <strong>bandwidth usage</strong>,
+                  Reduces latency and bandwidth usage,
                 </>,
                 <>
-                  critical for <strong>real-time tasks</strong> like autonomous vehicles.
+                  critical for real-time tasks like autonomous vehicles.
                 </>,
               ]}
             />
-            <div className="mt-2 pt-3 border-t border-[var(--rule-2)]">
-              <p className={`${SUB} text-[var(--dt-signal)] mb-1`}>Discussion Question</p>
-              <p className="font-heading font-bold text-lg">
+            <div className="mt-2 pt-3 border-t border-[var(--dt-ink)]/12">
+              <p className={`${SUB} mb-1`}>Discussion Question</p>
+              <p className="font-sans font-medium text-base text-[var(--dt-ink)]">
                 In what scenarios is edge computing preferred over cloud computing?
               </p>
             </div>
           </div>
 
-          <div className="border-t-[5px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
-            <h4 className="font-heading font-bold text-2xl">What is Fog Computing?</h4>
+          <div className="border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-3">
+            <h4 className="font-sans font-semibold text-xl text-[var(--dt-ink)]">What is Fog Computing?</h4>
             <Bullets
               items={[
                 <>
-                  <strong>Fog computing</strong> acts as a <strong>bridge</strong> between cloud and edge computing.
+                  <strong>Fog computing</strong> acts as a bridge between cloud and edge computing.
                 </>,
                 <>
-                  It distributes processing tasks across <strong>local networks</strong> (closer than cloud but farther
+                  It distributes processing tasks across local networks (closer than cloud but farther
                   than edge).
                 </>,
                 <>
-                  A factory uses fog to analyze <strong>machine data</strong> locally and send summaries to the cloud.
+                  A factory uses fog to analyze machine data locally and send summaries to the cloud.
                 </>,
               ]}
             />
-            <div className="mt-2 pt-3 border-t border-[var(--rule-2)]">
-              <p className={`${SUB} text-[var(--dt-signal)] mb-1`}>Discussion Question</p>
-              <p className="font-heading font-bold text-lg">
-                How does fog computing <strong>complement</strong> both cloud and edge computing?
+            <div className="mt-2 pt-3 border-t border-[var(--dt-ink)]/12">
+              <p className={`${SUB} mb-1`}>Discussion Question</p>
+              <p className="font-sans font-medium text-base text-[var(--dt-ink)]">
+                How does fog computing complement both cloud and edge computing?
               </p>
             </div>
           </div>
@@ -1268,33 +1268,33 @@ export default function DigitalTransformationWeek4() {
         exercise={exercise["disambiguating-the-terms"]}
       >
         <Row cols="lg:grid-cols-[1.35fr_1fr]" className="!items-center">
-          <div className="overflow-x-auto border-[4px] border-[var(--dt-ink)]">
-            <table className="w-full text-left border-collapse font-body">
+          <div className="overflow-x-auto border border-[var(--dt-ink)]/15">
+            <table className="w-full text-left border-collapse font-sans">
               <thead>
-                <tr className="bg-[var(--dt-ink)] text-[var(--dt-cream)] font-heading text-lg">
+                <tr className="bg-[var(--dt-ink)] text-[var(--dt-white)] font-sans text-lg">
                   <th className="py-3 px-4">Concept</th>
                   <th className="py-3 px-4">Definition</th>
                   <th className="py-3 px-4">Use Case</th>
                 </tr>
               </thead>
-              <tbody className="divide-y-2 divide-[var(--dt-ink)] text-base">
+              <tbody className="divide-y divide-[var(--dt-ink)]/12 text-base">
                 <tr>
-                  <td className="py-3 px-4 font-heading font-bold">IoT</td>
+                  <td className="py-3 px-4 font-sans font-bold">IoT</td>
                   <td className="py-3 px-4">Devices connected to the internet that collect and transmit data.</td>
                   <td className="py-3 px-4">Smart home appliances</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-heading font-bold">Cloud</td>
+                  <td className="py-3 px-4 font-sans font-bold">Cloud</td>
                   <td className="py-3 px-4">Centralized data storage and processing over the internet.</td>
                   <td className="py-3 px-4">Data analytics for e-commerce</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-heading font-bold">Edge</td>
+                  <td className="py-3 px-4 font-sans font-bold">Edge</td>
                   <td className="py-3 px-4">Localized data processing at or near the source.</td>
                   <td className="py-3 px-4">Autonomous vehicles</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-heading font-bold">Fog</td>
+                  <td className="py-3 px-4 font-sans font-bold">Fog</td>
                   <td className="py-3 px-4">
                     Distributed processing between cloud and edge, closer to the local network.
                   </td>

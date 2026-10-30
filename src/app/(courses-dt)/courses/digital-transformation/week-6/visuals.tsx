@@ -47,7 +47,7 @@ import {
   Dna,
 } from "@phosphor-icons/react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SIGNAL,
   COUNTER,
@@ -62,8 +62,8 @@ import {
 } from "../_visuals/kit";
 import { Person, Shop, Doc } from "../_visuals/objects";
 
-const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
-const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
+const HEAD = { fontFamily: "var(--font-sans)", fontWeight: 700 } as const;
+const BODY = { fontFamily: "var(--font-sans)", fontWeight: 600 } as const;
 
 /* ==========================================================================
    1. Hero: Data documents feed into a framed screen holding nested realms
@@ -92,14 +92,14 @@ export function HeroAiLayers() {
         </text>
 
         {/* Middle zone: Machine Learning */}
-        <rect x={212} y={78} width={242} height={172} fill={CREAM} stroke={INK} strokeWidth={3} />
+        <rect x={212} y={78} width={242} height={172} fill={WHITE} stroke={INK} strokeWidth={3} />
         <text x={333} y={104} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
           Machine Learning
         </text>
 
         {/* Inner core: Deep Learning (SIGNAL red) */}
-        <rect x={242} y={118} width={182} height={118} fill={SIGNAL} />
-        <text x={333} y={142} textAnchor="middle" {...BODY} fontSize={15.5} fill={CREAM}>
+        <rect x={242} y={118} width={182} height={118} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={333} y={142} textAnchor="middle" {...BODY} fontSize={15.5} fill={INK}>
           Deep Learning
         </text>
 
@@ -109,7 +109,7 @@ export function HeroAiLayers() {
             <path
               key={`l-${ly}-${ry}`}
               d={`M 284 ${ly} L 333 ${ry}`}
-              stroke={CREAM}
+              stroke={WHITE}
               strokeWidth={1.6}
             />
           )),
@@ -119,19 +119,19 @@ export function HeroAiLayers() {
             <path
               key={`r-${my}-${oy}`}
               d={`M 333 ${my} L 382 ${oy}`}
-              stroke={CREAM}
+              stroke={WHITE}
               strokeWidth={1.6}
             />
           )),
         )}
         {[166, 192, 218].map((y) => (
-          <circle key={`in-${y}`} cx={284} cy={y} r={5.5} fill={CREAM} />
+          <circle key={`in-${y}`} cx={284} cy={y} r={5.5} fill={WHITE} />
         ))}
         {[166, 192, 218].map((y) => (
-          <circle key={`hid-${y}`} cx={333} cy={y} r={5.5} fill={CREAM} />
+          <circle key={`hid-${y}`} cx={333} cy={y} r={5.5} fill={WHITE} />
         ))}
         {[179, 205].map((y) => (
-          <circle key={`out-${y}`} cx={382} cy={y} r={6.5} fill={CREAM} />
+          <circle key={`out-${y}`} cx={382} cy={y} r={6.5} fill={WHITE} />
         ))}
       </Monitor>
     </Plate>
@@ -168,7 +168,7 @@ function HiveCluster({ cx, cy, tone = INK }: { cx: number; cy: number; tone?: st
       const a = (Math.PI / 3) * i - Math.PI / 6;
       return `${r2(hx + r * Math.cos(a))},${r2(hy + r * Math.sin(a))}`;
     }).join(" ");
-    return <polygon key={`${hx}-${hy}`} points={pts} fill={tone} stroke={CREAM} strokeWidth={2.5} />;
+    return <polygon key={`${hx}-${hy}`} points={pts} fill={tone} stroke={WHITE} strokeWidth={2.5} />;
   };
   return (
     <g>
@@ -208,8 +208,8 @@ export function IntelligenceTypesInteractive({
 
       {/* Panel 2: Human intelligence: person in profile + equation & music */}
       <Person x={354} y={64} k={1.18} variant={9} />
-      <rect x={422} y={38} width={66} height={46} rx={4} fill={t1} />
-      <text x={455} y={68} textAnchor="middle" {...HEAD} fontSize={21} fill={CREAM}>
+      <rect x={422} y={38} width={66} height={46} rx={4} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={455} y={68} textAnchor="middle" {...HEAD} fontSize={21} fill={INK}>
         ∑x²
       </text>
       <MusicNotes x={430} y={106} size={50} weight="fill" color={t1} />
@@ -246,8 +246,8 @@ export function IntelligenceTypesInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
               {z.label}
             </text>
           </g>
@@ -289,8 +289,8 @@ export function IntelligenceTypesTall({
             onClick={onSelect ? () => onSelect(r.idx) : undefined}
           >
             <rect x={16} y={r.y0} width={368} height={90} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={r.y0} width={140} height={90} fill={tone} />
-            <text x={86} y={r.y0 + 52} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+            <rect x={16} y={r.y0} width={140} height={90} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={86} y={r.y0 + 52} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
               {r.label}
             </text>
             {r.idx === 0 && (
@@ -410,11 +410,11 @@ export function WhichOneIsAiInteractive({
             }
           >
             <rect x={c.x0} y={14} width={c.x1 - c.x0} height={238} fill="transparent" />
-            <text x={c.cx} y={182} textAnchor="middle" {...BODY} fontSize={15} fill={tone}>
+            <text x={c.cx} y={182} textAnchor="middle" {...BODY} fontSize={15} fill={INK}>
               {c.badge}
             </text>
-            <rect x={c.x0} y={210} width={c.x1 - c.x0} height={38} fill={tone} />
-            <text x={c.cx} y={235} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={c.x0} y={210} width={c.x1 - c.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={c.cx} y={235} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {c.tab}
             </text>
           </g>
@@ -452,11 +452,11 @@ export function WhichOneIsAiTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={84} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={156} height={84} fill={tone} />
-            <text x={94} y={y0 + 38} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={16} y={y0} width={156} height={84} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={94} y={y0 + 38} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {c.tab}
             </text>
-            <text x={94} y={y0 + 60} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={94} y={y0 + 60} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {c.badge}
             </text>
             <MiniScreen x={236} y={y0 + 7}>
@@ -494,25 +494,24 @@ export function RulesVsMlInteractive() {
       <path d="M 392 18 V 226" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
       {/* LEFT: Rules-Based Expert Systems (COUNTER blue contrast) */}
-      <text x={200} y={32} textAnchor="middle" {...HEAD} fontSize={19} fill={COUNTER}>
+      <text x={200} y={32} textAnchor="middle" {...HEAD} fontSize={19} fill={INK}>
         Rules-Based Expert Systems
       </text>
-      <Person x={68} y={56} k={0.85} variant={5} />
-      <Doc x={132} y={66} k={0.52} tone={COUNTER} />
-      <Pointer x1={188} y1={98} x2={220} y2={98} w={4} head={12} color={COUNTER} />
-      <Monitor x={228} y={48} w={138} h={96}>
-        <text x={297} y={84} textAnchor="middle" {...BODY} fontSize={14.5} fill={COUNTER}>
+      <Doc x={88} y={58} k={0.62} tone={COUNTER} />
+      <Pointer x1={154} y1={96} x2={208} y2={96} w={4} head={12} color={COUNTER} />
+      <Monitor x={218} y={48} w={148} h={96}>
+        <text x={297} y={84} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
           Fixed Rules
         </text>
         <rect x={251} y={98} width={92} height={14} fill={COUNTER_FILL} stroke={COUNTER} strokeWidth={1.5} />
-        <rect x={251} y={98} width={r2((rulesScore / 100) * 92)} height={14} fill={COUNTER} />
-        <text x={297} y={128} textAnchor="middle" {...BODY} fontSize={13.5} fill={COUNTER}>
+        <rect x={251} y={98} width={r2((rulesScore / 100) * 92)} height={14} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={297} y={128} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
           Metric: {rulesScore}%
         </text>
       </Monitor>
 
       {/* RIGHT: Machine Learning (SIGNAL red focal point) */}
-      <text x={596} y={32} textAnchor="middle" {...HEAD} fontSize={19} fill={SIGNAL}>
+      <text x={596} y={32} textAnchor="middle" {...HEAD} fontSize={19} fill={INK}>
         Machine Learning (21st Century)
       </text>
       <Doc x={428} y={58} k={0.62} tone={SIGNAL} />
@@ -521,9 +520,9 @@ export function RulesVsMlInteractive() {
         <text x={649} y={76} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
           Performance Metric: {mlScore}%
         </text>
-        <rect x={577} y={86} width={144} height={16} fill={CREAM} stroke={INK} strokeWidth={2} />
+        <rect x={577} y={86} width={144} height={16} fill={COUNTER} stroke={INK} strokeWidth={2} />
         <rect x={577} y={86} width={barW} height={16} fill={SIGNAL} />
-        <text x={649} y={124} textAnchor="middle" {...HEAD} fontSize={15.5} fill={SIGNAL}>
+        <text x={649} y={124} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
           Solves Task
         </text>
       </Monitor>
@@ -600,12 +599,12 @@ export function RiseOfMlInteractive({
             <MiniScreen x={c.cx - 42} y={24}>
               <Icon x={c.cx - 16} y={36} size={32} weight="fill" color={tone} />
             </MiniScreen>
-            <text x={c.cx} y={124} textAnchor="middle" {...HEAD} fontSize={18} fill={tone}>
+            <text x={c.cx} y={124} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
               {c.title}
             </text>
-            <rect x={c.cx - 92} y={138} width={184} height={18} fill={CREAM} stroke={INK} strokeWidth={2} />
-            <rect x={c.cx - 92} y={138} width={barW} height={18} fill={tone} />
-            <text x={c.cx} y={180} textAnchor="middle" {...BODY} fontSize={15} fill={tone}>
+            <rect x={c.cx - 92} y={138} width={184} height={18} fill={WHITE} stroke={INK} strokeWidth={2} />
+            <rect x={c.cx - 92} y={138} width={barW} height={18} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={c.cx} y={180} textAnchor="middle" {...BODY} fontSize={15} fill={INK}>
               {c.up ? `↑ ${c.val}` : `↓ ${c.val}`}
             </text>
           </g>
@@ -684,17 +683,17 @@ export function DecisionTreeInteractive() {
 
       {/* Branch labels under Outlook */}
       <Sun x={186} y={30} size={22} weight="fill" color={isSunny ? activeTone : INK} />
-      <text x={214} y={47} {...BODY} fontSize={14.5} fill={isSunny ? activeTone : INK}>
+      <text x={214} y={47} {...BODY} fontSize={14.5} fill={INK}>
         Sunny
       </text>
 
       <Cloud x={364} y={96} size={22} weight="fill" color={isOvercast ? activeTone : INK} />
-      <text x={412} y={113} {...BODY} fontSize={14.5} fill={isOvercast ? activeTone : INK}>
+      <text x={412} y={113} {...BODY} fontSize={14.5} fill={INK}>
         Overcast
       </text>
 
       <CloudRain x={538} y={30} size={22} weight="fill" color={isRain ? activeTone : INK} />
-      <text x={566} y={47} {...BODY} fontSize={14.5} fill={isRain ? activeTone : INK}>
+      <text x={566} y={47} {...BODY} fontSize={14.5} fill={INK}>
         Rain
       </text>
 
@@ -704,7 +703,7 @@ export function DecisionTreeInteractive() {
         stroke={pathIdx === 0 ? activeTone : INK}
         strokeWidth={pathIdx === 0 ? 5 : 2.5}
       />
-      <text x={82} y={160} textAnchor="end" {...BODY} fontSize={14} fill={pathIdx === 0 ? activeTone : INK}>
+      <text x={82} y={160} textAnchor="end" {...BODY} fontSize={14} fill={INK}>
         High
       </text>
 
@@ -713,7 +712,7 @@ export function DecisionTreeInteractive() {
         stroke={pathIdx === 1 ? activeTone : INK}
         strokeWidth={pathIdx === 1 ? 5 : 2.5}
       />
-      <text x={238} y={160} {...BODY} fontSize={14} fill={pathIdx === 1 ? activeTone : INK}>
+      <text x={238} y={160} {...BODY} fontSize={14} fill={INK}>
         Normal
       </text>
 
@@ -723,7 +722,7 @@ export function DecisionTreeInteractive() {
         stroke={pathIdx === 3 ? activeTone : INK}
         strokeWidth={pathIdx === 3 ? 5 : 2.5}
       />
-      <text x={562} y={160} textAnchor="end" {...BODY} fontSize={14} fill={pathIdx === 3 ? activeTone : INK}>
+      <text x={562} y={160} textAnchor="end" {...BODY} fontSize={14} fill={INK}>
         Strong
       </text>
 
@@ -732,25 +731,25 @@ export function DecisionTreeInteractive() {
         stroke={pathIdx === 4 ? activeTone : INK}
         strokeWidth={pathIdx === 4 ? 5 : 2.5}
       />
-      <text x={718} y={160} {...BODY} fontSize={14} fill={pathIdx === 4 ? activeTone : INK}>
+      <text x={718} y={160} {...BODY} fontSize={14} fill={INK}>
         Weak
       </text>
 
       {/* Root Node: Outlook */}
-      <rect x={336} y={16} width={128} height={40} fill={ activeTone } />
-      <text x={400} y={42} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+      <rect x={336} y={16} width={128} height={40} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={42} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
         Outlook
       </text>
 
       {/* Internal Node: Humidity */}
-      <rect x={96} y={96} width={128} height={38} fill={isSunny ? activeTone : INK} />
-      <text x={160} y={121} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+      <rect x={96} y={96} width={128} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={160} y={121} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
         Humidity
       </text>
 
       {/* Internal Node: Wind */}
-      <rect x={576} y={96} width={128} height={38} fill={isRain ? activeTone : INK} />
-      <text x={640} y={121} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+      <rect x={576} y={96} width={128} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={640} y={121} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
         Wind
       </text>
 
@@ -781,17 +780,18 @@ export function DecisionTreeInteractive() {
               y={184}
               width={92}
               height={40}
-              fill={leafTone}
-              stroke={isLit ? CREAM : undefined}
-              strokeWidth={isLit ? 2 : undefined}
+              fill={INK}
+              fillOpacity={isLit ? 0.12 : 0.05}
+              stroke={INK}
+              strokeWidth={isLit ? 2 : 1.5}
             />
-            <text x={p.leafX} y={210} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+            <text x={p.leafX} y={210} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
               {p.play ? "Yes" : "No"}
             </text>
 
             {/* Bottom scenario selector button */}
-            <rect x={tabX} y={248} width={144} height={40} fill={leafTone} />
-            <text x={tabX + 72} y={273} textAnchor="middle" {...BODY} fontSize={14.5} fill={CREAM}>
+            <rect x={tabX} y={248} width={144} height={40} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={tabX + 72} y={273} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
               {p.label}
             </text>
           </g>
@@ -836,8 +836,8 @@ export function LinearRegressionInteractive() {
       title={`Linear Regression scatter plot of retail store transactions with Price on the horizontal axis and Sales on the vertical axis. At Price $${price}, the red regression line predicts Sales of ${predSales} units`}
     >
       {/* Prediction readout badge above plot */}
-      <rect x={68} y={10} width={196} height={30} fill={SIGNAL} />
-      <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
+      <rect x={68} y={10} width={196} height={30} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
         Price ${price} → Sales: {predSales}
       </text>
 
@@ -873,7 +873,7 @@ export function LinearRegressionInteractive() {
         strokeWidth={2.2}
         strokeDasharray="5 4"
       />
-      <circle cx={px} cy={py} r={8.5} fill={SIGNAL} stroke={CREAM} strokeWidth={2.5} />
+      <circle cx={px} cy={py} r={8.5} fill={SIGNAL} stroke={WHITE} strokeWidth={2.5} />
 
       {/* Interactive Price slider */}
       <text x={68} y={232} {...BODY} fontSize={14.5} fill={INK}>
@@ -930,20 +930,20 @@ export function LogisticRegressionInteractive() {
       title={`Logistic Regression S-curve for retail website click prediction: customer match score ${score} yields ${pct}% probability, predicting ${willClick ? "Click (1)" : "No Click (0)"}`}
     >
       {/* Binary prediction badge above plot */}
-      <rect x={68} y={10} width={196} height={30} fill={activeTone} />
-      <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
+      <rect x={68} y={10} width={196} height={30} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
         {willClick ? `Click (1) | ${pct}%` : `No Click (0) | ${pct}%`}
       </text>
 
       {/* Axes */}
       <path d="M 68 48 V 196 H 376" fill="none" stroke={INK} strokeWidth={3} />
-      <text x={56} y={64} textAnchor="end" {...BODY} fontSize={12.5} fill={SIGNAL}>
+      <text x={56} y={64} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
         1
       </text>
       <text x={56} y={128} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
         0.5
       </text>
-      <text x={56} y={192} textAnchor="end" {...BODY} fontSize={12.5} fill={COUNTER}>
+      <text x={56} y={192} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
         0
       </text>
 
@@ -963,7 +963,7 @@ export function LogisticRegressionInteractive() {
 
       {/* Active customer projection & point */}
       <path d={`M ${cx} 196 V ${cy} H 68`} fill="none" stroke={activeTone} strokeWidth={2.2} strokeDasharray="4 4" />
-      <circle cx={cx} cy={cy} r={8.5} fill={activeTone} stroke={CREAM} strokeWidth={2.5} />
+      <circle cx={cx} cy={cy} r={8.5} fill={activeTone} stroke={WHITE} strokeWidth={2.5} />
 
       {/* Customer & product match slider */}
       <text x={68} y={232} {...BODY} fontSize={14.5} fill={INK}>
@@ -1044,7 +1044,7 @@ export function EnsembleWeatherInteractive() {
             <text x={110} y={y0 + 24} {...BODY} fontSize={13} fill={INK}>
               {name}
             </text>
-            <text x={110} y={y0 + 45} {...HEAD} fontSize={15} fill={tone}>
+            <text x={110} y={y0 + 45} {...HEAD} fontSize={15} fill={INK}>
               {saysRain ? "“rain”" : "“no rain”"}
             </text>
             <Pointer x1={208} y1={y0 + 34} x2={250} y2={targetY} w={3.5} head={10} color={tone} />
@@ -1053,14 +1053,14 @@ export function EnsembleWeatherInteractive() {
       })}
 
       {/* Majority Vote Ensemble Box */}
-      <rect x={256} y={76} width={128} height={116} fill={outTone} />
-      <text x={320} y={106} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
+      <rect x={256} y={76} width={128} height={116} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
+      <text x={320} y={106} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
         Majority Vote
       </text>
-      <text x={320} y={134} textAnchor="middle" {...HEAD} fontSize={22} fill={CREAM}>
+      <text x={320} y={134} textAnchor="middle" {...HEAD} fontSize={22} fill={INK}>
         {ensembleRain ? "“rain”" : "“no rain”"}
       </text>
-      <text x={320} y={162} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+      <text x={320} y={162} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
         {rainCount} of 3 apps
       </text>
 
@@ -1083,8 +1083,17 @@ export function EnsembleWeatherInteractive() {
             style={{ cursor: "pointer" }}
             onClick={() => setVotes(p.state)}
           >
-            <rect x={bx} y={290} width={116} height={36} fill={activePreset ? outTone : INK} />
-            <text x={bx + 58} y={313} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
+            <rect
+              x={bx}
+              y={290}
+              width={116}
+              height={36}
+              fill={INK}
+              fillOpacity={activePreset ? 0.08 : 0.03}
+              stroke={INK}
+              strokeWidth={activePreset ? 2 : 1.25}
+            />
+            <text x={bx + 58} y={313} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
               {p.label}
             </text>
           </g>
@@ -1172,15 +1181,24 @@ export function RandomForestInteractive({
       {/* 3. Voting / Averaging */}
       {[50, 88, 126].map((y, i) => (
         <g key={y}>
-          <rect x={340} y={y - 12} width={36} height={24} fill={i < 2 ? toneOf(2) : COUNTER} />
-          <text x={358} y={y + 5} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+          <rect
+            x={340}
+            y={y - 12}
+            width={36}
+            height={24}
+            fill={INK}
+            fillOpacity={0.04}
+            stroke={INK}
+            strokeWidth={1.5}
+          />
+          <text x={358} y={y + 5} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
             {i < 2 ? "A" : "B"}
           </text>
           <Pointer x1={380} y1={y} x2={412} y2={88} w={3} head={9} color={toneOf(2)} />
         </g>
       ))}
-      <rect x={416} y={64} width={48} height={48} fill={toneOf(2)} />
-      <text x={440} y={95} textAnchor="middle" {...HEAD} fontSize={20} fill={CREAM}>
+      <rect x={416} y={64} width={48} height={48} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+      <text x={440} y={95} textAnchor="middle" {...HEAD} fontSize={20} fill={INK}>
         A
       </text>
 
@@ -1201,7 +1219,7 @@ export function RandomForestInteractive({
       />
 
       {/* 5. Advantages: Feature importance bars */}
-      <text x={712} y={40} textAnchor="middle" {...BODY} fontSize={13} fill={toneOf(4)}>
+      <text x={712} y={40} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Feature Importance
       </text>
       {[
@@ -1242,8 +1260,8 @@ export function RandomForestInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -1281,8 +1299,8 @@ export function RandomForestTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={52} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={160} height={52} fill={tone} />
-            <text x={96} y={y0 + 32} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={y0} width={160} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={96} y={y0 + 32} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
             {i === 0 && <Doc x={266} y={y0 + 8} k={0.31} tone={tone} />}
@@ -1321,14 +1339,14 @@ export function SupervisedVsUnsupervisedInteractive({
       <path d="M 400 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
       {/* LEFT: Supervised Learning: Labeled data (Hedonic vs Utility) */}
-      <Person x={52} y={32} k={0.55} variant={0} />
+      <Doc x={36} y={36} k={0.42} tone={supTone} />
       <Tag x={82} y={42} size={22} weight="fill" color={supTone} />
-      <Person x={52} y={102} k={0.55} variant={3} />
+      <Doc x={36} y={104} k={0.42} tone={COUNTER} />
       <Tag x={82} y={112} size={22} weight="fill" color={COUNTER} />
       <Pointer x1={112} y1={90} x2={144} y2={90} w={3.5} head={11} color={supTone} />
 
       <Monitor x={152} y={22} w={216} h={132}>
-        <text x={208} y={48} textAnchor="middle" {...BODY} fontSize={13.5} fill={supTone}>
+        <text x={208} y={48} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
           Hedonic
         </text>
         <circle cx={192} cy={68} r={6} fill={supTone} />
@@ -1338,7 +1356,7 @@ export function SupervisedVsUnsupervisedInteractive({
         {/* Learned decision boundary */}
         <path d="M 244 38 L 272 138" stroke={supTone} strokeWidth={3.5} strokeDasharray="5 4" />
 
-        <text x={312} y={48} textAnchor="middle" {...BODY} fontSize={13.5} fill={COUNTER}>
+        <text x={312} y={48} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
           Utility
         </text>
         <rect x={294} y={66} width={11} height={11} fill={COUNTER} />
@@ -1347,8 +1365,8 @@ export function SupervisedVsUnsupervisedInteractive({
       </Monitor>
 
       {/* RIGHT: Unsupervised Learning: Unlabeled data grouped into clusters */}
-      <Person x={436} y={32} k={0.55} variant={4} />
-      <Person x={436} y={102} k={0.55} variant={6} />
+      <Doc x={428} y={36} k={0.42} tone={unsupTone} />
+      <Doc x={428} y={104} k={0.42} tone={unsupTone} />
       <Pointer x1={484} y1={90} x2={524} y2={90} w={3.5} head={11} color={unsupTone} />
 
       <Monitor x={532} y={22} w={216} h={132}>
@@ -1393,8 +1411,8 @@ export function SupervisedVsUnsupervisedInteractive({
             }
           >
             <rect x={t.x0} y={14} width={t.x1 - t.x0} height={228} fill="transparent" />
-            <rect x={t.x0} y={202} width={t.x1 - t.x0} height={38} fill={tone} />
-            <text x={t.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={t.x0} y={202} width={t.x1 - t.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={t.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {t.label}
             </text>
           </g>
@@ -1435,11 +1453,11 @@ export function SupervisedVsUnsupervisedTall({
             onClick={onSelect ? () => onSelect(r.idx) : undefined}
           >
             <rect x={16} y={r.y0} width={368} height={96} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={r.y0} width={216} height={96} fill={tone} />
-            <text x={124} y={r.y0 + 44} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={r.y0} width={216} height={96} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={124} y={r.y0 + 44} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {r.label}
             </text>
-            <text x={124} y={r.y0 + 68} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
+            <text x={124} y={r.y0 + 68} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
               {r.sub}
             </text>
             {r.idx === 0 ? (
@@ -1489,7 +1507,7 @@ export function ParadigmLensInteractive({
         <circle cx={62} cy={52} r={4.5} fill={toneOf(0)} />
         <circle cx={96} cy={72} r={4.5} fill={COUNTER} />
       </MiniScreen>
-      <text x={80} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={toneOf(0)}>
+      <text x={80} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         SVM | Trees
       </text>
 
@@ -1499,7 +1517,7 @@ export function ParadigmLensInteractive({
         <circle cx={186} cy={62} r={3.5} fill={COUNTER} />
         <circle cx={214} cy={62} r={3.5} fill={COUNTER} />
       </MiniScreen>
-      <text x={200} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
+      <text x={200} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         K-Means | PCA
       </text>
 
@@ -1507,14 +1525,14 @@ export function ParadigmLensInteractive({
       <MiniScreen x={298} y={34}>
         <ChartLineUp x={324} y={46} size={32} weight="fill" color={toneOf(1)} />
       </MiniScreen>
-      <text x={340} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={toneOf(1)}>
+      <text x={340} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Sales Goal
       </text>
 
       <MiniScreen x={418} y={34}>
         <Dna x={444} y={46} size={32} weight="fill" color={COUNTER} />
       </MiniScreen>
-      <text x={460} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
+      <text x={460} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Group Genes
       </text>
 
@@ -1523,14 +1541,14 @@ export function ParadigmLensInteractive({
         <Tag x={572} y={48} size={26} weight="fill" color={toneOf(2)} />
         <Warning x={602} y={48} size={26} weight="fill" color={toneOf(2)} />
       </MiniScreen>
-      <text x={600} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={toneOf(2)}>
+      <text x={600} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Overfitting
       </text>
 
       <MiniScreen x={678} y={34}>
         <MagnifyingGlass x={704} y={46} size={32} weight="fill" color={COUNTER} />
       </MiniScreen>
-      <text x={720} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
+      <text x={720} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Subjective
       </text>
 
@@ -1559,8 +1577,8 @@ export function ParadigmLensInteractive({
             }
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
-            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
               {z.tab}
             </text>
           </g>
@@ -1598,8 +1616,8 @@ export function ParadigmLensTall({
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
             <rect x={16} y={y0} width={368} height={74} fill="none" stroke={tone} strokeWidth={isLit ? 4 : 2} />
-            <rect x={16} y={y0} width={224} height={74} fill={tone} />
-            <text x={128} y={y0 + 43} textAnchor="middle" {...HEAD} fontSize={16.5} fill={CREAM}>
+            <rect x={16} y={y0} width={224} height={74} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={128} y={y0 + 43} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
               {z.tab}
             </text>
             {i === 0 && <TreeStructure x={292} y={y0 + 18} size={38} weight="fill" color={tone} />}
@@ -1636,13 +1654,13 @@ export function ComparisonAspectPlate({
       title={`Visual comparison of Supervised Learning (top, in red) and Unsupervised Learning (bottom, in blue) for ${aspectName}`}
     >
       {/* Aspect header bar */}
-      <rect x={20} y={14} width={360} height={34} fill={INK} />
-      <text x={200} y={37} textAnchor="middle" {...HEAD} fontSize={17} fill={CREAM}>
+      <rect x={20} y={14} width={360} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={200} y={37} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
         Aspect: {aspectName}
       </text>
 
       {/* TOP HALF: Supervised Learning (SIGNAL red) */}
-      <text x={24} y={84} {...HEAD} fontSize={17} fill={SIGNAL}>
+      <text x={24} y={84} {...HEAD} fontSize={17} fill={INK}>
         Supervised
       </text>
       <MiniScreen x={164} y={58}>
@@ -1651,12 +1669,12 @@ export function ComparisonAspectPlate({
         {active === 2 && <CheckCircle x={190} y={70} size={32} weight="fill" color={SIGNAL} />}
         {active === 3 && <path d="M 178 100 L 234 72" stroke={SIGNAL} strokeWidth={4} />}
         {active === 4 && (
-          <text x={206} y={92} textAnchor="middle" {...HEAD} fontSize={16} fill={SIGNAL}>
+          <text x={206} y={92} textAnchor="middle" {...HEAD} fontSize={16} fill={INK}>
             F1 | RMSE
           </text>
         )}
       </MiniScreen>
-      <text x={264} y={92} {...BODY} fontSize={13.5} fill={SIGNAL}>
+      <text x={264} y={92} {...BODY} fontSize={13.5} fill={INK}>
         {active === 0 && "Inputs + Labels"}
         {active === 1 && "Predict / Classify"}
         {active === 2 && "Direct Feedback"}
@@ -1667,7 +1685,7 @@ export function ComparisonAspectPlate({
       <path d="M 20 144 H 380" stroke={INK} strokeWidth={1.8} strokeDasharray="4 4" />
 
       {/* BOTTOM HALF: Unsupervised Learning (COUNTER blue) */}
-      <text x={24} y={184} {...HEAD} fontSize={17} fill={COUNTER}>
+      <text x={24} y={184} {...HEAD} fontSize={17} fill={INK}>
         Unsupervised
       </text>
       <MiniScreen x={164} y={158}>
@@ -1682,7 +1700,7 @@ export function ComparisonAspectPlate({
         )}
         {active === 4 && <path d="M 180 170 L 198 194 L 232 198" fill="none" stroke={COUNTER} strokeWidth={3.5} />}
       </MiniScreen>
-      <text x={264} y={192} {...BODY} fontSize={13.5} fill={COUNTER}>
+      <text x={264} y={192} {...BODY} fontSize={13.5} fill={INK}>
         {active === 0 && "Inputs Only"}
         {active === 1 && "Find Patterns"}
         {active === 2 && "No Feedback"}
@@ -1704,8 +1722,8 @@ export function ComparisonAspectPlate({
             style={onSelect ? { cursor: "pointer" } : undefined}
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
-            <rect x={bx} y={256} width={68} height={38} fill={isLit ? SIGNAL : INK} />
-            <text x={bx + 34} y={280} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+            <rect x={bx} y={256} width={68} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={bx + 34} y={280} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
               {i + 1}
             </text>
           </g>
@@ -1741,7 +1759,7 @@ const CASE_META: {
 function CaseDomainGlyph({ n, tone }: { n: number; tone: string }) {
   switch (n) {
     case 1:
-      return <Person x={116} y={88} k={0.92} variant={7} />;
+      return <Tag x={88} y={102} size={58} weight="fill" color={tone} />;
     case 2:
       return <Dna x={88} y={102} size={58} weight="fill" color={tone} />;
     case 3:
@@ -1804,8 +1822,8 @@ export function CaseStudiesInteractive({
                 : undefined
             }
           >
-            <rect x={r2(bx)} y={14} width={71} height={38} fill={btnTone} />
-            <text x={r2(bx + 35.5)} y={38} textAnchor="middle" {...HEAD} fontSize={15} fill={CREAM}>
+            <rect x={r2(bx)} y={14} width={71} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={r2(bx + 35.5)} y={38} textAnchor="middle" {...HEAD} fontSize={15} fill={INK}>
               Case {item.n}
             </text>
           </g>
@@ -1823,11 +1841,11 @@ export function CaseStudiesInteractive({
 
       {/* Framed Screen in center showing Labeled Mapping vs Unlabeled Structure */}
       <Monitor x={276} y={72} w={212} h={118}>
-        <text x={382} y={106} textAnchor="middle" {...BODY} fontSize={14.5} fill={tone}>
+        <text x={382} y={106} textAnchor="middle" {...BODY} fontSize={14.5} fill={INK}>
           {c.supervised ? "Labeled Data" : "Unlabeled Data"}
         </text>
-        <rect x={306} y={120} width={152} height={36} fill={tone} />
-        <text x={382} y={144} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+        <rect x={306} y={120} width={152} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={382} y={144} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
           {c.task}
         </text>
       </Monitor>
@@ -1840,9 +1858,10 @@ export function CaseStudiesInteractive({
         y={78}
         width={220}
         height={48}
-        fill={c.supervised ? SIGNAL : CREAM}
+        fill={INK}
+        fillOpacity={c.supervised ? 0.08 : 0.02}
         stroke={INK}
-        strokeWidth={2.5}
+        strokeWidth={c.supervised ? 2 : 1.25}
       />
       <text
         x={668}
@@ -1850,7 +1869,7 @@ export function CaseStudiesInteractive({
         textAnchor="middle"
         {...HEAD}
         fontSize={16.5}
-        fill={c.supervised ? CREAM : INK}
+        fill={INK}
       >
         Supervised Learning
       </text>
@@ -1860,9 +1879,10 @@ export function CaseStudiesInteractive({
         y={140}
         width={220}
         height={48}
-        fill={!c.supervised ? COUNTER : CREAM}
+        fill={INK}
+        fillOpacity={!c.supervised ? 0.08 : 0.02}
         stroke={INK}
-        strokeWidth={2.5}
+        strokeWidth={!c.supervised ? 2 : 1.25}
       />
       <text
         x={668}
@@ -1870,7 +1890,7 @@ export function CaseStudiesInteractive({
         textAnchor="middle"
         {...HEAD}
         fontSize={16.5}
-        fill={!c.supervised ? CREAM : INK}
+        fill={INK}
       >
         Unsupervised Learning
       </text>
@@ -1910,18 +1930,18 @@ export function CaseStudiesTall({
             style={onSelect ? { cursor: "pointer" } : undefined}
             onClick={onSelect ? () => onSelect(i) : undefined}
           >
-            <rect x={bx} y={by} width={68} height={38} fill={btnTone} />
-            <text x={bx + 34} y={by + 24} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+            <rect x={bx} y={by} width={68} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={bx + 34} y={by + 24} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
               Case {item.n}
             </text>
           </g>
         );
       })}
-      <rect x={18} y={120} width={364} height={86} fill={tone} />
-      <text x={200} y={154} textAnchor="middle" {...HEAD} fontSize={18} fill={CREAM}>
+      <rect x={18} y={120} width={364} height={86} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={200} y={154} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
         Case {c.n}: {c.short}
       </text>
-      <text x={200} y={184} textAnchor="middle" {...BODY} fontSize={15.5} fill={CREAM}>
+      <text x={200} y={184} textAnchor="middle" {...BODY} fontSize={15.5} fill={INK}>
         {c.supervised ? "Supervised Learning" : "Unsupervised Learning"} | {c.task}
       </text>
     </Plate>

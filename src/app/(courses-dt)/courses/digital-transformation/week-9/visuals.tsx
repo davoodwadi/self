@@ -19,7 +19,7 @@
 
 import React, { useState } from "react";
 import {
-  CREAM,
+  WHITE,
   INK,
   SKIN,
   SIGNAL,
@@ -33,8 +33,8 @@ import {
   Knob,
 } from "../_visuals/kit";
 
-const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
-const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
+const HEAD = { fontFamily: "var(--font-sans)", fontWeight: 700 } as const;
+const BODY = { fontFamily: "var(--font-sans)", fontWeight: 600 } as const;
 
 /* -- Reusable custom industrial silhouette primitives --------------------- */
 
@@ -87,10 +87,10 @@ function RobotArmGlyph({
       <path d="M -26 0 H 26 V -10 H 16 L 12 -24 H -12 L -16 -10 H -26 Z" fill={tone} />
       {/* Lower boom */}
       <path d="M -8 -24 L -20 -64 L -8 -68 L 6 -24 Z" fill={tone} />
-      <circle cx={-14} cy={-64} r={8} fill={tone} stroke={CREAM} strokeWidth={2.5} />
+      <circle cx={-14} cy={-64} r={8} fill={tone} stroke={WHITE} strokeWidth={2.5} />
       {/* Upper forearm */}
       <path d="M -14 -70 L 22 -84 L 25 -74 L -10 -60 Z" fill={tone} />
-      <circle cx={22} cy={-79} r={6.5} fill={tone} stroke={CREAM} strokeWidth={2} />
+      <circle cx={22} cy={-79} r={6.5} fill={tone} stroke={WHITE} strokeWidth={2} />
       {/* Two-prong gripper claw */}
       <path
         d="M 26 -83 L 40 -91 L 44 -83 L 34 -79 L 44 -75 L 40 -67 L 26 -75 Z"
@@ -133,10 +133,10 @@ function SiliconChipGlyph({
         width={core}
         height={core}
         fill="none"
-        stroke={CREAM}
+        stroke={WHITE}
         strokeWidth={2.5}
       />
-      <circle cx={cx} cy={cy} r={3.5} fill={CREAM} />
+      <circle cx={cx} cy={cy} r={3.5} fill={WHITE} />
     </g>
   );
 }
@@ -194,14 +194,14 @@ export function HeroFourRevolutionsEngine() {
     >
       {/* Top readout banner showing the engaged Industrial Revolution */}
       <rect x={16} y={12} width={488} height={46} fill={INK} />
-      <rect x={22} y={18} width={66} height={34} fill={SIGNAL} />
-      <text x={55} y={41} textAnchor="middle" {...HEAD} fontSize={19} fill={CREAM}>
+      <rect x={22} y={18} width={66} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={55} y={41} textAnchor="middle" {...HEAD} fontSize={19} fill={INK}>
         {current.num}
       </text>
-      <text x={102} y={33} {...HEAD} fontSize={15.5} fill={CREAM}>
+      <text x={102} y={33} {...HEAD} fontSize={15.5} fill={INK}>
         {current.title}
       </text>
-      <text x={102} y={50} {...BODY} fontSize={12.5} fill={CREAM}>
+      <text x={102} y={50} {...BODY} fontSize={12.5} fill={INK}>
         {current.era} | {current.sub}
       </text>
 
@@ -274,15 +274,15 @@ export function HeroFourRevolutionsEngine() {
             )}
 
             {/* Stepped industrial plinth */}
-            <rect x={c.x} y={c.stepY} width={c.w} height={c.stepH} fill={tone} />
+            <rect x={c.x} y={c.stepY} width={c.w} height={c.stepH} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
 
-            <text x={c.cx} y={c.stepY + 34} textAnchor="middle" {...HEAD} fontSize={23} fill={CREAM}>
+            <text x={c.cx} y={c.stepY + 34} textAnchor="middle" {...HEAD} fontSize={23} fill={INK}>
               {ep.num}
             </text>
-            <text x={c.cx} y={c.stepY + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
+            <text x={c.cx} y={c.stepY + 58} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
               {ep.era}
             </text>
-            {isLit && <rect x={c.x + 16} y={c.stepY + 68} width={c.w - 32} height={4} fill={CREAM} />}
+            {isLit && <rect x={c.x + 16} y={c.stepY + 68} width={c.w - 32} height={4} fill={WHITE} />}
           </g>
         );
       })}
@@ -448,8 +448,8 @@ export function Canada1759Interactive() {
             )}
 
             {/* Bottom label tab */}
-            <rect x={z.x} y={198} width={z.w} height={48} fill={tone} />
-            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
+            <rect x={z.x} y={198} width={z.w} height={48} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={228} textAnchor="middle" {...HEAD} fontSize={15.5} fill={INK}>
               {p.label}
             </text>
           </g>
@@ -476,7 +476,7 @@ export function Canada1759Interactive() {
       <text x={552} y={124} {...BODY} fontSize={14} fill={INK}>
         Daily output: {output} {chosen.unit}
       </text>
-      <rect x={552} y={134} width={212} height={24} fill={CREAM} stroke={INK} strokeWidth={2.5} />
+      <rect x={552} y={134} width={212} height={24} fill={WHITE} stroke={INK} strokeWidth={2.5} />
       <rect x={556} y={138} width={barW} height={16} fill={SIGNAL} />
 
       {/* Draggable Workday Hours Knob */}
@@ -630,7 +630,7 @@ export function SteamMillCrossSectionInteractive({
                 <path d="M 194 90 H 210 L 214 164 H 190 Z" fill={tone} />
                 {/* Overhead rocking beam */}
                 <path d="M 164 78 L 240 96" stroke={tone} strokeWidth={7} strokeLinecap="round" />
-                <circle cx={202} cy={87} r={5} fill={CREAM} />
+                <circle cx={202} cy={87} r={5} fill={WHITE} />
                 {/* Connecting rod + flywheel */}
                 <path d="M 238 96 V 136" stroke={tone} strokeWidth={4} />
                 <SteamFlywheelGlyph cx={238} cy={136} r={22} tone={tone} />
@@ -692,9 +692,9 @@ export function SteamMillCrossSectionInteractive({
                 <rect x={668} y={84} width={64} height={24} rx={4} fill={tone} />
                 <rect x={666} y={70} width={22} height={36} fill={tone} />
                 <rect x={722} y={64} width={8} height={22} fill={tone} />
-                <circle cx={680} cy={114} r={8.5} fill={tone} stroke={CREAM} strokeWidth={2} />
-                <circle cx={702} cy={114} r={8.5} fill={tone} stroke={CREAM} strokeWidth={2} />
-                <circle cx={724} cy={114} r={7} fill={tone} stroke={CREAM} strokeWidth={2} />
+                <circle cx={680} cy={114} r={8.5} fill={tone} stroke={WHITE} strokeWidth={2} />
+                <circle cx={702} cy={114} r={8.5} fill={tone} stroke={WHITE} strokeWidth={2} />
+                <circle cx={724} cy={114} r={7} fill={tone} stroke={WHITE} strokeWidth={2} />
                 {/* Stone viaduct bridge with two arches */}
                 <path
                   d="M 660 122 H 774 V 144 H 762 A 16 14 0 0 0 730 144 H 712 A 16 14 0 0 0 680 144 H 660 Z"
@@ -707,8 +707,8 @@ export function SteamMillCrossSectionInteractive({
             )}
 
             {/* Bottom station nameplate */}
-            <rect x={x} y={180} width={w} height={42} fill={tone} />
-            <text x={cx} y={206} textAnchor="middle" {...HEAD} fontSize={12.5} fill={CREAM}>
+            <rect x={x} y={180} width={w} height={42} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={cx} y={206} textAnchor="middle" {...HEAD} fontSize={12.5} fill={INK}>
               {st.short}
             </text>
           </g>
@@ -845,8 +845,8 @@ export function FirstRevSocietySimulatorInteractive({
                 <circle cx={248} cy={68} r={10} fill={tone} />
                 {/* Hull + paddle wheel housing */}
                 <path d="M 232 126 H 314 L 304 156 H 242 Z" fill={tone} />
-                <circle cx={273} cy={146} r={14} fill={tone} stroke={CREAM} strokeWidth={2.5} />
-                <path d="M 263 146 H 283 M 273 136 V 156" stroke={CREAM} strokeWidth={2} />
+                <circle cx={273} cy={146} r={14} fill={tone} stroke={WHITE} strokeWidth={2.5} />
+                <path d="M 263 146 H 283 M 273 136 V 156" stroke={WHITE} strokeWidth={2} />
               </g>
             )}
 
@@ -886,8 +886,8 @@ export function FirstRevSocietySimulatorInteractive({
             )}
 
             {/* Bottom label tab */}
-            <rect x={z.x} y={192} width={z.w} height={46} fill={tone} />
-            <text x={z.cx} y={220} textAnchor="middle" {...HEAD} fontSize={11.5} fill={CREAM}>
+            <rect x={z.x} y={192} width={z.w} height={46} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={z.cx} y={220} textAnchor="middle" {...HEAD} fontSize={11.5} fill={INK}>
               {imp.short}
             </text>
           </g>
@@ -906,19 +906,19 @@ export function FirstRevSocietySimulatorInteractive({
       <text x={556} y={54} {...BODY} fontSize={13} fill={INK}>
         Urban share: {urbanPct}%
       </text>
-      <rect x={556} y={62} width={220} height={14} fill={CREAM} stroke={INK} strokeWidth={2} />
-      <rect x={559} y={65} width={r2((urbanPct / 60) * 214)} height={8} fill={SIGNAL} />
+      <rect x={556} y={62} width={220} height={14} fill={WHITE} stroke={INK} strokeWidth={2} />
+      <rect x={559} y={65} width={r2((urbanPct / 60) * 214)} height={8} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
 
       <text x={556} y={98} {...BODY} fontSize={13} fill={INK}>
         Manufactured goods: {tradeMult}×
       </text>
-      <rect x={556} y={106} width={220} height={14} fill={CREAM} stroke={INK} strokeWidth={2} />
+      <rect x={556} y={106} width={220} height={14} fill={SIGNAL} stroke={INK} strokeWidth={2} />
       <rect x={559} y={109} width={r2((tradeMult / 9) * 214)} height={8} fill={INK} />
 
       <text x={556} y={142} {...BODY} fontSize={13} fill={INK}>
         Forest cover left: {forestPct}%
       </text>
-      <rect x={556} y={150} width={220} height={14} fill={CREAM} stroke={INK} strokeWidth={2} />
+      <rect x={556} y={150} width={220} height={14} fill={WHITE} stroke={INK} strokeWidth={2} />
       <rect x={559} y={153} width={r2((forestPct / 100) * 214)} height={8} fill={COUNTER} />
 
       {/* Year slider Knob */}
@@ -1000,11 +1000,11 @@ export function Transition1890BridgeInteractive() {
       {/* Hand wheel + horse cart wheel + anvil silhouette */}
       <SteamFlywheelGlyph cx={78} cy={104} r={24} tone={INK} />
       <path d="M 118 126 L 132 120 H 172 V 130 L 160 138 V 150 H 126 V 136 Z" fill={INK} />
-      <rect x={26} y={160} width={172} height={58} fill={INK} />
-      <text x={112} y={183} textAnchor="middle" {...BODY} fontSize={12.5} fill={CREAM}>
+      <rect x={26} y={160} width={172} height={58} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={112} y={183} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
         From:
       </text>
-      <text x={112} y={204} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+      <text x={112} y={204} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
         {current.from}
       </text>
 
@@ -1015,14 +1015,14 @@ export function Transition1890BridgeInteractive() {
       <g>
         {/* Bell cupola on top of pitched roof */}
         <path d="M 342 34 L 360 18 L 378 34 V 56 H 342 Z" fill={INK} />
-        <circle cx={360} cy={44} r={5} fill={CREAM} />
+        <circle cx={360} cy={44} r={5} fill={WHITE} />
         {/* Pitched roof */}
         <path d="M 252 94 L 360 50 L 468 94 Z" fill={INK} />
         {/* Schoolhouse main hall */}
-        <rect x={256} y={94} width={208} height={140} fill={INK} />
-        {/* Interior chalkboard screen (cream inset) */}
-        <rect x={268} y={104} width={184} height={76} fill={CREAM} />
-        <text x={360} y={128} textAnchor="middle" {...HEAD} fontSize={16.5} fill={SIGNAL}>
+        <rect x={256} y={94} width={208} height={140} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+        {/* Interior chalkboard screen (white inset) */}
+        <rect x={268} y={104} width={184} height={76} fill={WHITE} stroke={INK} strokeWidth={1} strokeOpacity={0.25} />
+        <text x={360} y={128} textAnchor="middle" {...HEAD} fontSize={16.5} fill={INK}>
           1890 Schoolhouse
         </text>
         <text x={360} y={149} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
@@ -1032,7 +1032,7 @@ export function Transition1890BridgeInteractive() {
           {current.skill}
         </text>
         {/* Schoolhouse steps at base */}
-        <text x={360} y={212} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
+        <text x={360} y={212} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
           Transition Bridge
         </text>
       </g>
@@ -1082,7 +1082,7 @@ export function Transition1890BridgeInteractive() {
           >
             <rect x={518} y={ry} width={266} height={42} fill={tone} />
             {/* Small bespoke emblem inside each career bar */}
-            <rect x={524} y={ry + 6} width={34} height={30} fill={CREAM} />
+            <rect x={524} y={ry + 6} width={34} height={30} fill={WHITE} />
             {i === 0 && (
               <g>
                 <rect x={529} y={ry + 16} width={24} height={10} fill={tone} />
@@ -1111,10 +1111,10 @@ export function Transition1890BridgeInteractive() {
               <g>
                 {/* Accounting ledger grid */}
                 <rect x={531} y={ry + 10} width={20} height={22} fill={tone} />
-                <path d={`M 535 ${ry + 16} H 547 M 535 ${ry + 22} H 547`} stroke={CREAM} strokeWidth={2} />
+                <path d={`M 535 ${ry + 16} H 547 M 535 ${ry + 22} H 547`} stroke={WHITE} strokeWidth={2} />
               </g>
             )}
-            <text x={570} y={ry + 27} {...HEAD} fontSize={15.5} fill={CREAM}>
+            <text x={570} y={ry + 27} {...HEAD} fontSize={15.5} fill={WHITE}>
               {p.label}
             </text>
           </g>
@@ -1143,9 +1143,9 @@ function ModelTCarGlyph({ x, y, k = 1, tone = INK }: { x: number; y: number; k?:
     <g transform={`translate(${x} ${y}) scale(${k})`}>
       {/* Boxy Model-T cab & hood */}
       <path d="M 4 14 V 2 H 28 V 10 H 44 V 20 H 2 V 14 Z" fill={tone} />
-      <rect x={8} y={5} width={16} height={7} fill={CREAM} />
-      <circle cx={11} cy={22} r={6} fill={tone} stroke={CREAM} strokeWidth={1.8} />
-      <circle cx={35} cy={22} r={6} fill={tone} stroke={CREAM} strokeWidth={1.8} />
+      <rect x={8} y={5} width={16} height={7} fill={WHITE} />
+      <circle cx={11} cy={22} r={6} fill={tone} stroke={WHITE} strokeWidth={1.8} />
+      <circle cx={35} cy={22} r={6} fill={tone} stroke={WHITE} strokeWidth={1.8} />
     </g>
   );
 }
@@ -1263,7 +1263,7 @@ export function SecondRevolutionPowerGridInteractive({
                 <rect x={502} y={66} width={16} height={32} fill={tone} />
                 <rect x={498} y={62} width={24} height={6} fill={tone} />
                 <circle cx={510} cy={126} r={28} fill={tone} />
-                <path d="M 490 118 H 530" stroke={CREAM} strokeWidth={3} />
+                <path d="M 490 118 H 530" stroke={WHITE} strokeWidth={3} />
                 <path d="M 518 76 L 548 90 V 106" fill="none" stroke={tone} strokeWidth={4} />
                 {/* Medical cross (modern medicine) */}
                 <path
@@ -1299,8 +1299,8 @@ export function SecondRevolutionPowerGridInteractive({
             )}
 
             {/* Bottom station nameplate */}
-            <rect x={x} y={186} width={w} height={44} fill={tone} />
-            <text x={cx} y={214} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <rect x={x} y={186} width={w} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={cx} y={214} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {st.short}
             </text>
           </g>
@@ -1404,13 +1404,13 @@ export function InventionsWorkbenchInteractive({
               y={c.y}
               width={c.w}
               height={c.h}
-              fill={isLit ? COUNTER_FILL : CREAM}
+              fill={isLit ? COUNTER_FILL : WHITE}
               stroke={tone}
               strokeWidth={isLit ? 4 : 2.5}
             />
             {/* Year badge in top-left corner */}
-            <rect x={c.x + 8} y={c.y + 8} width={44} height={22} fill={tone} />
-            <text x={c.x + 30} y={c.y + 24} textAnchor="middle" {...HEAD} fontSize={12.5} fill={CREAM}>
+            <rect x={c.x + 8} y={c.y + 8} width={44} height={22} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={c.x + 30} y={c.y + 24} textAnchor="middle" {...HEAD} fontSize={12.5} fill={INK}>
               {inv.year}
             </text>
 
@@ -1422,7 +1422,7 @@ export function InventionsWorkbenchInteractive({
                 <path
                   d={`M ${c.x + 109} ${c.y + 42} V ${c.y + 28} A 5 5 0 0 1 ${c.x + 119} ${c.y + 28} V ${c.y + 42}`}
                   fill="none"
-                  stroke={CREAM}
+                  stroke={WHITE}
                   strokeWidth={2}
                 />
                 <rect x={c.x + 107} y={c.y + 48} width={14} height={10} fill={tone} />
@@ -1458,8 +1458,8 @@ export function InventionsWorkbenchInteractive({
             )}
 
             {/* Bottom label bar inside card */}
-            <rect x={c.x} y={c.y + 66} width={c.w} height={32} fill={tone} />
-            <text x={c.cx} y={c.y + 87} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <rect x={c.x} y={c.y + 66} width={c.w} height={32} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={c.cx} y={c.y + 87} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {inv.short}
             </text>
           </g>
@@ -1467,9 +1467,9 @@ export function InventionsWorkbenchInteractive({
       })}
 
       {/* Right Interactive Chamber */}
-      <rect x={356} y={14} width={428} height={230} fill={CREAM} stroke={INK} strokeWidth={3.5} />
-      <rect x={356} y={14} width={428} height={38} fill={INK} />
-      <text x={370} y={38} {...HEAD} fontSize={14.5} fill={CREAM}>
+      <rect x={356} y={14} width={428} height={230} fill={WHITE} stroke={INK} strokeWidth={3.5} />
+      <rect x={356} y={14} width={428} height={38} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={370} y={38} {...HEAD} fontSize={14.5} fill={INK}>
         {current.title}
       </text>
 
@@ -1480,7 +1480,7 @@ export function InventionsWorkbenchInteractive({
           <path d="M 446 52 V 66" stroke={INK} strokeWidth={4} />
           <rect x={438} y={66} width={16} height={10} fill={INK} />
           <circle cx={446} cy={98} r={24} fill={SIGNAL} />
-          <path d="M 439 108 V 88 A 7 7 0 0 1 453 88 V 108" fill="none" stroke={CREAM} strokeWidth={2.5} />
+          <path d="M 439 108 V 88 A 7 7 0 0 1 453 88 V 108" fill="none" stroke={WHITE} strokeWidth={2.5} />
           {/* Light rays when power > 20 */}
           {power >= 20 &&
             [-50, -25, 0, 25, 50].map((deg) => {
@@ -1493,8 +1493,8 @@ export function InventionsWorkbenchInteractive({
             })}
 
           {/* Night-shift factory windows on right */}
-          <rect x={534} y={66} width={224} height={96} fill={INK} />
-          <text x={646} y={86} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+          <rect x={534} y={66} width={224} height={96} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <text x={646} y={86} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
             Night-Time Factory Shift ({Math.round(10 + frac * 14)} hrs/day)
           </text>
           {[552, 602, 652, 702].map((wx, wi) => {
@@ -1506,7 +1506,7 @@ export function InventionsWorkbenchInteractive({
                 y={98}
                 width={38}
                 height={48}
-                fill={windowLit ? SIGNAL : CREAM}
+                fill={windowLit ? SIGNAL : WHITE}
               />
             );
           })}
@@ -1692,7 +1692,7 @@ export function MegacitySkylineInteractive({
               <g>
                 {/* Rooftop advertising billboard on struts */}
                 <rect x={156} y={34} width={98} height={44} fill={tone} />
-                <rect x={162} y={40} width={86} height={32} fill={CREAM} />
+                <rect x={162} y={40} width={86} height={32} fill={WHITE} />
                 {/* Starburst ad mark + bold ad bars */}
                 <circle cx={182} cy={56} r={9} fill={tone} />
                 <rect x={198} y={48} width={42} height={6} fill={tone} />
@@ -1704,7 +1704,7 @@ export function MegacitySkylineInteractive({
                 <path d="M 170 156 V 126 H 174 V 114 H 180 V 126 H 184 V 156 Z" fill={tone} />
                 <path d="M 192 146 H 220 V 152 H 192 Z M 196 146 C 196 130 216 130 216 146 Z" fill={tone} />
                 <rect x={226} y={124} width={18} height={32} rx={3} fill={tone} />
-                <circle cx={235} cy={135} r={4} fill={CREAM} />
+                <circle cx={235} cy={135} r={4} fill={WHITE} />
               </g>
             )}
 
@@ -1713,17 +1713,17 @@ export function MegacitySkylineInteractive({
               <g>
                 {/* Top executive management node */}
                 <rect x={305} y={38} width={56} height={30} fill={tone} />
-                <circle cx={333} cy={49} r={5} fill={CREAM} />
-                <path d="M 323 63 C 323 56 343 56 343 63 Z" fill={CREAM} />
+                <circle cx={333} cy={49} r={5} fill={WHITE} />
+                <path d="M 323 63 C 323 56 343 56 343 63 Z" fill={WHITE} />
                 {/* Org-chart tree connectors */}
                 <path d="M 333 68 V 92 M 294 92 H 372 M 294 92 V 108 M 333 92 V 108 M 372 92 V 108" stroke={tone} strokeWidth={3.5} />
                 {/* Three department manager/workforce nodes */}
                 {[278, 317, 356].map((nx) => (
                   <g key={nx}>
                     <rect x={nx} y={108} width={32} height={54} fill={tone} />
-                    <circle cx={nx + 16} cy={124} r={5} fill={CREAM} />
-                    <path d={`M ${nx + 7} 142 C ${nx + 7} 134 ${nx + 25} 134 ${nx + 25} 142 Z`} fill={CREAM} />
-                    <rect x={nx + 6} y={148} width={20} height={6} fill={CREAM} />
+                    <circle cx={nx + 16} cy={124} r={5} fill={WHITE} />
+                    <path d={`M ${nx + 7} 142 C ${nx + 7} 134 ${nx + 25} 134 ${nx + 25} 142 Z`} fill={WHITE} />
+                    <rect x={nx + 6} y={148} width={20} height={6} fill={WHITE} />
                   </g>
                 ))}
               </g>
@@ -1750,13 +1750,13 @@ export function MegacitySkylineInteractive({
               <g>
                 {/* Two raised union placards on poles clear above worker heads */}
                 <rect x={537} y={38} width={38} height={26} fill={tone} />
-                <rect x={543} y={45} width={26} height={4.5} fill={CREAM} />
-                <rect x={543} y={53} width={18} height={4.5} fill={CREAM} />
+                <rect x={543} y={45} width={26} height={4.5} fill={WHITE} />
+                <rect x={543} y={53} width={18} height={4.5} fill={WHITE} />
                 <path d="M 556 64 V 108" stroke={tone} strokeWidth={3.5} />
 
                 <rect x={601} y={44} width={38} height={26} fill={tone} />
-                <rect x={607} y={51} width={26} height={4.5} fill={CREAM} />
-                <rect x={607} y={59} width={18} height={4.5} fill={CREAM} />
+                <rect x={607} y={51} width={26} height={4.5} fill={WHITE} />
+                <rect x={607} y={59} width={18} height={4.5} fill={WHITE} />
                 <path d="M 620 70 V 108" stroke={tone} strokeWidth={3.5} />
 
                 {/* Three worker silhouettes at base (y=118..168, clear below y=108 poles) */}
@@ -1782,13 +1782,13 @@ export function MegacitySkylineInteractive({
                 <path d="M 702 82 H 714 L 718 168 H 698 Z" fill={tone} />
                 {/* Ribbed chemical drum on the right */}
                 <rect x={730} y={114} width={34} height={54} rx={4} fill={tone} />
-                <path d="M 730 130 H 764 M 730 150 H 764" stroke={CREAM} strokeWidth={2.5} />
+                <path d="M 730 130 H 764 M 730 150 H 764" stroke={WHITE} strokeWidth={2.5} />
               </g>
             )}
 
             {/* Bottom station nameplate */}
-            <rect x={x} y={182} width={w} height={44} fill={tone} />
-            <text x={cx} y={210} textAnchor="middle" {...HEAD} fontSize={12.5} fill={CREAM}>
+            <rect x={x} y={182} width={w} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={cx} y={210} textAnchor="middle" {...HEAD} fontSize={12.5} fill={INK}>
               {imp.short}
             </text>
           </g>
@@ -1823,8 +1823,8 @@ export function WorkerBalance1932Interactive() {
 
       {/* Central 1932 riveted steel truss fulcrum */}
       <path d="M 366 184 L 392 68 H 408 L 434 184 Z" fill={INK} />
-      <rect x={352} y={180} width={96} height={12} fill={INK} />
-      <text x={400} y={168} textAnchor="middle" {...HEAD} fontSize={16} fill={CREAM}>
+      <rect x={352} y={180} width={96} height={12} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={168} textAnchor="middle" {...HEAD} fontSize={16} fill={INK}>
         1932
       </text>
 
@@ -1832,7 +1832,7 @@ export function WorkerBalance1932Interactive() {
       <g transform={`rotate(${tiltDeg} 400 66)`}>
         <rect x={140} y={58} width={520} height={16} fill={INK} />
         {[180, 230, 280, 330, 470, 520, 570, 620].map((rx) => (
-          <circle key={rx} cx={rx} cy={66} r={2.5} fill={CREAM} />
+          <circle key={rx} cx={rx} cy={66} r={2.5} fill={WHITE} />
         ))}
         <circle cx={400} cy={66} r={6} fill={SIGNAL} />
       </g>
@@ -1852,18 +1852,19 @@ export function WorkerBalance1932Interactive() {
         }}
         className="cursor-pointer"
       >
-        <path d="M 180 66 V 106" stroke={impTone} strokeWidth={4} />
+        <path d="M 180 66 V 106" stroke={INK} strokeWidth={2.5} />
         <rect
           x={24}
           y={106}
           width={312}
           height={82}
-          fill={side === 0 ? COUNTER_FILL : CREAM}
-          stroke={impTone}
-          strokeWidth={side === 0 ? 4 : 2.5}
+          fill={INK}
+          fillOpacity={side === 0 ? 0.05 : 0.02}
+          stroke={INK}
+          strokeWidth={side === 0 ? 2 : 1.5}
         />
-        <rect x={24} y={106} width={312} height={28} fill={impTone} />
-        <text x={180} y={125} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+        <rect x={24} y={106} width={312} height={28} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+        <text x={180} y={125} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
           1. How It Improved (Output +{Math.round(80 + pace * 2.2)}%)
         </text>
 
@@ -1900,18 +1901,19 @@ export function WorkerBalance1932Interactive() {
         }}
         className="cursor-pointer"
       >
-        <path d="M 620 66 V 106" stroke={worTone} strokeWidth={4} />
+        <path d="M 620 66 V 106" stroke={INK} strokeWidth={2.5} />
         <rect
           x={464}
           y={106}
           width={312}
           height={82}
-          fill={side === 1 ? COUNTER_FILL : CREAM}
-          stroke={worTone}
-          strokeWidth={side === 1 ? 4 : 2.5}
+          fill={INK}
+          fillOpacity={side === 1 ? 0.05 : 0.02}
+          stroke={INK}
+          strokeWidth={side === 1 ? 2 : 1.5}
         />
-        <rect x={464} y={106} width={312} height={28} fill={worTone} />
-        <text x={620} y={125} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
+        <rect x={464} y={106} width={312} height={28} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+        <text x={620} y={125} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
           2. How It Worsened (Strain {pace}%)
         </text>
 
@@ -1922,8 +1924,8 @@ export function WorkerBalance1932Interactive() {
         </text>
 
         <path d="M 604 142 L 620 172 H 588 Z" fill={worTone} />
-        <rect x={602} y={151} width={4} height={11} fill={CREAM} />
-        <circle cx={604} cy={167} r={2} fill={CREAM} />
+        <rect x={602} y={151} width={4} height={11} fill={WHITE} />
+        <circle cx={604} cy={167} r={2} fill={WHITE} />
         <text x={626} y={162} {...BODY} fontSize={12.5} fill={INK}>
           Hazards
         </text>
@@ -2020,7 +2022,7 @@ export function SiliconWaferCircuitInteractive({
 
             {/* PCB solder pad & vertical trace drop */}
             <circle cx={cx} cy={30} r={isLit ? 6.5 : 5} fill={tone} />
-            <circle cx={cx} cy={30} r={2} fill={CREAM} />
+            <circle cx={cx} cy={30} r={2} fill={WHITE} />
             <path d={`M ${cx} 36 V 52`} stroke={tone} strokeWidth={isLit ? 3.5 : 2.5} />
 
             {/* 1. Digital Computing & Microprocessors: 1947 Transistor -> 1971 Chip on MiniScreen */}
@@ -2079,10 +2081,10 @@ export function SiliconWaferCircuitInteractive({
                     transform={`rotate(${deg} 513 92)`}
                   />
                 ))}
-                <circle cx={513} cy={92} r={5} fill={tone} stroke={CREAM} strokeWidth={1.5} />
+                <circle cx={513} cy={92} r={5} fill={tone} stroke={WHITE} strokeWidth={1.5} />
                 {/* Solar photovoltaic panel array on stand */}
                 <path d="M 548 148 L 566 112 H 618 L 600 148 Z" fill={tone} />
-                <path d="M 557 130 H 609 M 584 112 L 566 148 M 601 112 L 583 148" stroke={CREAM} strokeWidth={2} />
+                <path d="M 557 130 H 609 M 584 112 L 566 148 M 601 112 L 583 148" stroke={WHITE} strokeWidth={2} />
                 <path d="M 576 148 V 168 M 592 148 V 168" stroke={tone} strokeWidth={4} />
               </g>
             )}
@@ -2109,8 +2111,8 @@ export function SiliconWaferCircuitInteractive({
             )}
 
             {/* Bottom station nameplate */}
-            <rect x={x} y={180} width={w} height={44} fill={tone} />
-            <text x={cx} y={208} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+            <rect x={x} y={180} width={w} height={44} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={cx} y={208} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
               {st.short}
             </text>
           </g>
@@ -2156,11 +2158,11 @@ export function InnovationWaveInteractive({
         Invention
       </text>
       <SiliconChipGlyph cx={74} cy={116} s={44} tone={INK} />
-      <rect x={24} y={166} width={100} height={52} fill={INK} />
-      <text x={74} y={189} textAnchor="middle" {...BODY} fontSize={12} fill={CREAM}>
+      <rect x={24} y={166} width={100} height={52} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={74} y={189} textAnchor="middle" {...BODY} fontSize={12} fill={INK}>
         1947 / 1971
       </text>
-      <text x={74} y={207} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+      <text x={74} y={207} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
         Silicon Base
       </text>
 
@@ -2251,7 +2253,7 @@ export function InnovationWaveInteractive({
                 <MiniScreen x={x + 18} y={52}>
                   {/* Package box + trade arrow inside screen */}
                   <rect x={x + 34} y={68} width={24} height={24} fill={tone} />
-                  <path d={`M ${x + 46} 68 V 92 M ${x + 34} 78 H ${x + 58}`} stroke={CREAM} strokeWidth={2} />
+                  <path d={`M ${x + 46} 68 V 92 M ${x + 34} 78 H ${x + 58}`} stroke={WHITE} strokeWidth={2} />
                   <Pointer x1={x + 62} y1={80} x2={x + 88} y2={80} w={3} head={8} color={tone} />
                 </MiniScreen>
               </g>
@@ -2276,11 +2278,11 @@ export function InnovationWaveInteractive({
             )}
 
             {/* Rising platform step plinth */}
-            <rect x={x} y={stepY} width={w} height={stepH} fill={tone} />
-            <text x={cx} y={stepY + 24} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+            <rect x={x} y={stepY} width={w} height={stepH} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={cx} y={stepY + 24} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
               {inv.short}
             </text>
-            <text x={cx} y={stepY + 44} textAnchor="middle" {...BODY} fontSize={12} fill={CREAM}>
+            <text x={cx} y={stepY + 44} textAnchor="middle" {...BODY} fontSize={12} fill={INK}>
               {inv.era}
             </text>
           </g>
@@ -2335,11 +2337,11 @@ export function Workflow2006AdapterInteractive() {
       title={`Interactive 2006 workplace adaptation switchboard with four job domains converting from physical tools on top to framed digital screens below: 1. Records and Data (filing cabinet to database screen), 2. Communication (paper post to web/email screen), 3. Commerce (cash register to e-commerce screen), and 4. Field Work (clipboard to wireless mobile screen). Active: ${current.short} - ${current.analog} to ${current.digital}`}
     >
       {/* Top interactive status header */}
-      <rect x={18} y={12} width={764} height={36} fill={INK} />
-      <text x={32} y={35} {...HEAD} fontSize={14.5} fill={CREAM}>
+      <rect x={18} y={12} width={764} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={32} y={35} {...HEAD} fontSize={14.5} fill={INK}>
         2006 Job Adaptation{current.short}:
       </text>
-      <text x={768} y={35} textAnchor="end" {...BODY} fontSize={13.5} fill={CREAM}>
+      <text x={768} y={35} textAnchor="end" {...BODY} fontSize={13.5} fill={INK}>
         {current.analog} → {current.digital}
       </text>
 
@@ -2370,7 +2372,7 @@ export function Workflow2006AdapterInteractive() {
               y={56}
               width={w}
               height={188}
-              fill={isLit ? COUNTER_FILL : CREAM}
+              fill={isLit ? COUNTER_FILL : WHITE}
               stroke={tone}
               strokeWidth={isLit ? 3.5 : 2}
             />
@@ -2381,7 +2383,7 @@ export function Workflow2006AdapterInteractive() {
               <g>
                 <rect x={x + 14} y={76} width={38} height={68} fill={tone} />
                 {[82, 102, 122].map((dy) => (
-                  <rect key={dy} x={x + 20} y={dy} width={26} height={14} fill={CREAM} />
+                  <rect key={dy} x={x + 20} y={dy} width={26} height={14} fill={WHITE} />
                 ))}
                 <Pointer x1={x + 56} y1={110} x2={x + 84} y2={110} w={3.5} head={8} color={tone} />
                 <MiniScreen x={x + 90} y={76}>
@@ -2396,11 +2398,11 @@ export function Workflow2006AdapterInteractive() {
             {i === 1 && (
               <g>
                 <rect x={x + 12} y={92} width={42} height={30} fill={tone} />
-                <path d={`M ${x + 14} 94 L ${x + 33} 110 L ${x + 52} 94`} fill="none" stroke={CREAM} strokeWidth={2.5} />
+                <path d={`M ${x + 14} 94 L ${x + 33} 110 L ${x + 52} 94`} fill="none" stroke={WHITE} strokeWidth={2.5} />
                 <Pointer x1={x + 58} y1={108} x2={x + 84} y2={108} w={3.5} head={8} color={tone} />
                 <MiniScreen x={x + 90} y={76}>
                   <rect x={x + 108} y={90} width={48} height={28} fill={tone} />
-                  <path d={`M ${x + 110} 92 L ${x + 132} 106 L ${x + 154} 92`} fill="none" stroke={CREAM} strokeWidth={2.2} />
+                  <path d={`M ${x + 110} 92 L ${x + 132} 106 L ${x + 154} 92`} fill="none" stroke={WHITE} strokeWidth={2.2} />
                 </MiniScreen>
               </g>
             )}
@@ -2410,7 +2412,7 @@ export function Workflow2006AdapterInteractive() {
               <g>
                 <path d={`M ${x + 14} 134 H ${x + 54} V 114 L ${x + 46} 90 H ${x + 22} L ${x + 14} 114 Z`} fill={tone} />
                 <rect x={x + 24} y={78} width={20} height={10} fill={tone} />
-                <rect x={x + 22} y={98} width={24} height={10} fill={CREAM} />
+                <rect x={x + 22} y={98} width={24} height={10} fill={WHITE} />
                 <Pointer x1={x + 58} y1={108} x2={x + 84} y2={108} w={3.5} head={8} color={tone} />
                 <MiniScreen x={x + 90} y={76}>
                   <rect x={x + 114} y={88} width={36} height={24} fill={tone} />
@@ -2425,9 +2427,9 @@ export function Workflow2006AdapterInteractive() {
               <g>
                 <rect x={x + 14} y={80} width={38} height={54} fill={tone} />
                 <rect x={x + 24} y={74} width={18} height={8} fill={tone} />
-                <rect x={x + 20} y={92} width={26} height={5} fill={CREAM} />
-                <rect x={x + 20} y={104} width={26} height={5} fill={CREAM} />
-                <rect x={x + 20} y={116} width={18} height={5} fill={CREAM} />
+                <rect x={x + 20} y={92} width={26} height={5} fill={WHITE} />
+                <rect x={x + 20} y={104} width={26} height={5} fill={WHITE} />
+                <rect x={x + 20} y={116} width={18} height={5} fill={WHITE} />
                 <Pointer x1={x + 58} y1={108} x2={x + 88} y2={108} w={3.5} head={8} color={tone} />
                 {/* Framed Smartphone Screen + wireless wave arcs */}
                 <path
@@ -2445,8 +2447,8 @@ export function Workflow2006AdapterInteractive() {
             )}
 
             {/* Bottom card title banner */}
-            <rect x={x} y={162} width={w} height={36} fill={tone} />
-            <text x={cx} y={185} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+            <rect x={x} y={162} width={w} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={cx} y={185} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
               {item.short}
             </text>
             <text x={cx} y={222} textAnchor="middle" {...BODY} fontSize={12} fill={INK}>
@@ -2565,7 +2567,7 @@ export function CyberPhysicalConvergenceInteractive({
               y={n.y}
               width={n.w}
               height={n.h}
-              fill={isLit ? COUNTER_FILL : CREAM}
+              fill={isLit ? COUNTER_FILL : WHITE}
               stroke={tone}
               strokeWidth={isLit ? 3.5 : 2}
             />
@@ -2645,7 +2647,7 @@ export function CyberPhysicalConvergenceInteractive({
 
             {/* Bottom label strip */}
             <rect x={n.x} y={n.y + 66} width={n.w} height={32} fill={tone} />
-            <text x={n.cx} y={n.y + 87} textAnchor="middle" {...HEAD} fontSize={12} fill={CREAM}>
+            <text x={n.cx} y={n.y + 87} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
               {tech.short}
             </text>
           </g>
@@ -2658,8 +2660,8 @@ export function CyberPhysicalConvergenceInteractive({
       {/* Right Side: Live Industry 4.0 Digital Twin Monitor */}
       <Monitor x={478} y={16} w={306} h={182}>
         {/* Top banner inside monitor */}
-        <rect x={492} y={30} width={278} height={28} fill={INK} />
-        <text x={631} y={49} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
+        <rect x={492} y={30} width={278} height={28} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+        <text x={631} y={49} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
           {current.example}
         </text>
 
@@ -2668,21 +2670,21 @@ export function CyberPhysicalConvergenceInteractive({
           <g>
             {/* User query bubble on left */}
             <rect x={504} y={76} width={74} height={44} fill={INK} />
-            <rect x={514} y={88} width={54} height={6} fill={CREAM} />
-            <rect x={514} y={100} width={38} height={6} fill={CREAM} />
+            <rect x={514} y={88} width={54} height={6} fill={WHITE} />
+            <rect x={514} y={100} width={38} height={6} fill={WHITE} />
             <Pointer x1={582} y1={98} x2={614} y2={98} w={3.5} head={8} color={SIGNAL} />
             {/* AI self-learning node hub */}
             <circle cx={634} cy={98} r={16} fill={SIGNAL} />
-            <circle cx={634} cy={98} r={6} fill={CREAM} />
+            <circle cx={634} cy={98} r={6} fill={WHITE} />
             <Pointer x1={654} y1={90} x2={686} y2={78} w={3} head={8} color={SIGNAL} />
             <Pointer x1={654} y1={106} x2={686} y2={118} w={3} head={8} color={SIGNAL} />
             {/* Recommended media & product cards (Netflix / Amazon) */}
-            <rect x={690} y={66} width={66} height={26} fill={SIGNAL} />
-            <text x={723} y={84} textAnchor="middle" {...HEAD} fontSize={11.5} fill={CREAM}>
+            <rect x={690} y={66} width={66} height={26} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={723} y={84} textAnchor="middle" {...HEAD} fontSize={11.5} fill={INK}>
               Match 98%
             </text>
-            <rect x={690} y={104} width={66} height={26} fill={INK} />
-            <text x={723} y={122} textAnchor="middle" {...HEAD} fontSize={11.5} fill={CREAM}>
+            <rect x={690} y={104} width={66} height={26} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={723} y={122} textAnchor="middle" {...HEAD} fontSize={11.5} fill={INK}>
               Match 94%
             </text>
             <text x={631} y={168} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
@@ -2699,10 +2701,10 @@ export function CyberPhysicalConvergenceInteractive({
             <Pointer x1={636} y1={104} x2={668} y2={104} w={3.5} head={8} color={SIGNAL} />
             {/* Self-diagnosis status panel */}
             <rect x={672} y={72} width={88} height={64} fill={SIGNAL} />
-            <text x={716} y={96} textAnchor="middle" {...HEAD} fontSize={12} fill={CREAM}>
+            <text x={716} y={96} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
               IoT Sensor
             </text>
-            <text x={716} y={118} textAnchor="middle" {...BODY} fontSize={11.5} fill={CREAM}>
+            <text x={716} y={118} textAnchor="middle" {...BODY} fontSize={11.5} fill={INK}>
               Auto-Optimized
             </text>
             <text x={631} y={168} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
@@ -2721,8 +2723,8 @@ export function CyberPhysicalConvergenceInteractive({
             />
             {/* Warehouse on left -> Cloud -> Delivery fleet on right */}
             <rect x={506} y={92} width={48} height={46} fill={INK} />
-            <rect x={516} y={104} width={12} height={12} fill={CREAM} />
-            <rect x={532} y={104} width={12} height={12} fill={CREAM} />
+            <rect x={516} y={104} width={12} height={12} fill={WHITE} />
+            <rect x={532} y={104} width={12} height={12} fill={WHITE} />
             <Pointer x1={558} y1={110} x2={590} y2={102} w={3.5} head={8} color={SIGNAL} />
             <Pointer x1={666} y1={102} x2={698} y2={110} w={3.5} head={8} color={SIGNAL} />
             <ModelTCarGlyph x={702} y={102} k={1.15} tone={SIGNAL} />
@@ -2737,12 +2739,12 @@ export function CyberPhysicalConvergenceInteractive({
           <g>
             {[510, 598, 686].map((bx, bi) => (
               <g key={bx}>
-                <rect x={bx} y={74} width={64} height={64} fill={bi === 2 ? SIGNAL : INK} />
-                <text x={bx + 32} y={98} textAnchor="middle" {...HEAD} fontSize={12} fill={CREAM}>
+                <rect x={bx} y={74} width={64} height={64} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+                <text x={bx + 32} y={98} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
                   Block {bi + 1}
                 </text>
-                <rect x={bx + 14} y={110} width={36} height={6} fill={CREAM} />
-                <rect x={bx + 14} y={122} width={24} height={6} fill={CREAM} />
+                <rect x={bx + 14} y={110} width={36} height={6} fill={bi === 2 ? SIGNAL : INK} fillOpacity={0.35} />
+                <rect x={bx + 14} y={122} width={24} height={6} fill={bi === 2 ? SIGNAL : INK} fillOpacity={0.35} />
                 {bi < 2 && <Pointer x1={bx + 66} y1={106} x2={bx + 86} y2={106} w={3.5} head={7} color={SIGNAL} />}
               </g>
             ))}
@@ -2760,7 +2762,7 @@ export function CyberPhysicalConvergenceInteractive({
               <g key={rx}>
                 {/* Shelving rack pod carried by autonomous robot */}
                 <rect x={rx - 22} y={72} width={44} height={38} fill={ri === 1 ? SIGNAL : INK} />
-                <path d={`M ${rx - 16} 86 H ${rx + 16} M ${rx - 16} 98 H ${rx + 16}`} stroke={CREAM} strokeWidth={2.5} />
+                <path d={`M ${rx - 16} 86 H ${rx + 16} M ${rx - 16} 98 H ${rx + 16}`} stroke={WHITE} strokeWidth={2.5} />
                 {/* Wheeled AGV robot base */}
                 <rect x={rx - 26} y={114} width={52} height={16} rx={6} fill={SIGNAL} />
                 <circle cx={rx - 14} cy={136} r={6} fill={INK} />
@@ -2811,7 +2813,7 @@ export function CyberPhysicalConvergenceInteractive({
 
             {/* 5G high-speed wave link */}
             <Pointer x1={594} y1={104} x2={654} y2={104} w={4} head={9} color={SIGNAL} />
-            <text x={624} y={92} textAnchor="middle" {...HEAD} fontSize={13} fill={SIGNAL}>
+            <text x={624} y={92} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
               5G
             </text>
 
@@ -2928,8 +2930,8 @@ export function Industry4ImpactDialInteractive({
             }
             className={onSelect ? "cursor-pointer" : undefined}
           >
-            <rect x={16} y={ly} width={188} height={40} fill={tone} />
-            <text x={110} y={ly + 25} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <rect x={16} y={ly} width={188} height={40} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={110} y={ly + 25} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {item.short}
             </text>
           </g>
@@ -2966,8 +2968,8 @@ export function Industry4ImpactDialInteractive({
             }
             className={onSelect ? "cursor-pointer" : undefined}
           >
-            <rect x={596} y={ry} width={188} height={56} fill={tone} />
-            <text x={690} y={ry + 33} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
+            <rect x={596} y={ry} width={188} height={56} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+            <text x={690} y={ry + 33} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
               {item.short}
             </text>
           </g>
@@ -2975,9 +2977,9 @@ export function Industry4ImpactDialInteractive({
       })}
 
       {/* Center Stage: Live Impact Scene */}
-      <rect x={220} y={14} width={360} height={212} fill={CREAM} stroke={INK} strokeWidth={3.5} />
-      <rect x={220} y={14} width={360} height={34} fill={INK} />
-      <text x={400} y={36} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
+      <rect x={220} y={14} width={360} height={212} fill={WHITE} stroke={INK} strokeWidth={3.5} />
+      <rect x={220} y={14} width={360} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+      <text x={400} y={36} textAnchor="middle" {...HEAD} fontSize={14} fill={INK}>
         {current.full}
       </text>
 
@@ -2986,7 +2988,7 @@ export function Industry4ImpactDialInteractive({
         <g>
           <MiniScreen x={242} y={76}>
             <circle cx={284} cy={104} r={14} fill={SIGNAL} />
-            <circle cx={284} cy={104} r={5} fill={CREAM} />
+            <circle cx={284} cy={104} r={5} fill={WHITE} />
           </MiniScreen>
           {/* Three tailored arrows to three custom packages/profiles */}
           <Pointer x1={334} y1={90} x2={396} y2={72} w={3.5} head={8} color={SIGNAL} />
@@ -2994,8 +2996,8 @@ export function Industry4ImpactDialInteractive({
           <Pointer x1={334} y1={118} x2={396} y2={156} w={3.5} head={8} color={SIGNAL} />
           {[60, 102, 144].map((py, pi) => (
             <g key={py}>
-              <rect x={404} y={py} width={148} height={26} fill={pi === 0 ? SIGNAL : INK} />
-              <text x={478} y={py + 18} textAnchor="middle" {...HEAD} fontSize={12} fill={CREAM}>
+              <rect x={404} y={py} width={148} height={26} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
+              <text x={478} y={py + 18} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
                 Custom Profile #{pi + 1}
               </text>
             </g>
@@ -3014,8 +3016,8 @@ export function Industry4ImpactDialInteractive({
           />
           {/* Smart traffic signal post */}
           <rect x={312} y={82} width={26} height={58} rx={4} fill={INK} />
-          <circle cx={325} cy={95} r={5} fill={CREAM} />
-          <circle cx={325} cy={111} r={5} fill={CREAM} />
+          <circle cx={325} cy={95} r={5} fill={WHITE} />
+          <circle cx={325} cy={111} r={5} fill={WHITE} />
           <circle cx={325} cy={127} r={5} fill={SIGNAL} />
           <rect x={322} y={140} width={6} height={36} fill={INK} />
           {/* IoT sensor wave arcs */}
@@ -3037,7 +3039,7 @@ export function Industry4ImpactDialInteractive({
           {/* Rising productivity bars on center-right */}
           <rect x={356} y={134} width={28} height={40} fill={INK} />
           <rect x={392} y={104} width={28} height={70} fill={INK} />
-          <rect x={428} y={68} width={28} height={106} fill={SIGNAL} />
+          <rect x={428} y={68} width={28} height={106} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
           <text x={406} y={192} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
             Output ↑
           </text>
@@ -3057,7 +3059,7 @@ export function Industry4ImpactDialInteractive({
           {/* Central Digital Platform Screen */}
           <MiniScreen x={358} y={72}>
             <circle cx={400} cy={100} r={14} fill={SIGNAL} />
-            <path d="M 392 100 H 408 M 400 92 V 108" stroke={CREAM} strokeWidth={2.5} />
+            <path d="M 392 100 H 408 M 400 92 V 108" stroke={WHITE} strokeWidth={2.5} />
           </MiniScreen>
           {/* Left: Ride & Home Platform (Uber / Airbnb) */}
           <ModelTCarGlyph x={246} y={72} k={1.05} tone={INK} />
@@ -3066,9 +3068,9 @@ export function Industry4ImpactDialInteractive({
           {/* Right: Subscription SaaS & Streaming (Netflix / SaaS) */}
           <Pointer x1={450} y1={104} x2={492} y2={104} w={3.5} head={8} color={SIGNAL} />
           <rect x={498} y={72} width={62} height={42} fill={SIGNAL} />
-          <polygon points="522,84 522,102 538,93" fill={CREAM} />
+          <polygon points="522,84 522,102 538,93" fill={SIGNAL} />
           <rect x={498} y={124} width={62} height={36} fill={INK} />
-          <text x={529} y={147} textAnchor="middle" {...HEAD} fontSize={12} fill={CREAM}>
+          <text x={529} y={147} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
             SaaS
           </text>
         </g>
@@ -3102,8 +3104,8 @@ export function Industry4ImpactDialInteractive({
             d="M 356 68 H 416 V 114 C 416 142 386 160 386 166 C 386 160 356 142 356 114 Z"
             fill={SIGNAL}
           />
-          <rect x={374} y={104} width={24} height={20} fill={CREAM} />
-          <path d="M 379 104 V 96 A 7 7 0 0 1 393 96 V 104" fill="none" stroke={CREAM} strokeWidth={3} />
+          <rect x={374} y={104} width={24} height={20} fill={WHITE} />
+          <path d="M 379 104 V 96 A 7 7 0 0 1 393 96 V 104" fill="none" stroke={WHITE} strokeWidth={3} />
           {/* Protected data screen on right */}
           <MiniScreen x={452} y={76}>
             <rect x={468} y={92} width={52} height={8} fill={INK} />
@@ -3128,7 +3130,7 @@ export function Industry4ImpactDialInteractive({
               d="M 454 104 C 466 88 490 88 502 104 C 490 120 466 120 454 104 Z"
               fill={SIGNAL}
             />
-            <circle cx={478} cy={104} r={6} fill={CREAM} />
+            <circle cx={478} cy={104} r={6} fill={WHITE} />
             <circle cx={478} cy={104} r={2.5} fill={INK} />
           </MiniScreen>
           <path d="M 236 172 H 564" stroke={INK} strokeWidth={3} />

@@ -18,15 +18,12 @@ import {
   DiscussionSlide,
   Summary,
 } from "../_visuals/kit";
-import { Conversation } from "../_visuals/objects";
 import {
   HeroShopScreen,
   EqualFooting,
   DataDecision,
   KeyComponentsHub,
-  KeyComponentsHubTall,
   TransformationSteps,
-  TransformationStepsTall,
   Pyramid,
 } from "./visuals";
 
@@ -43,8 +40,9 @@ const SECTIONS = [
 // type that fits it, and it only tests what the slide has just taught.
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif. Terms set bold in the display serif. */
-const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
+/* Body copy in upright sans-serif. */
+const BODY =
+  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 
 const COMPONENTS: [string, React.ReactNode][] = [
   [
@@ -104,7 +102,7 @@ const STAGES: [string, string, string[]][] = [
 ];
 
 const LIST =
-  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.58em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 
 const LAYERS = [
   ["Foundation Layer (Technology Infrastructure)", "This is the base of the pyramid and includes the essential technology infrastructure that supports digital initiatives. It encompasses hardware, software, networks, and data management systems.", "Cloud computing, data storage solutions, cybersecurity measures, and network infrastructure."],
@@ -121,19 +119,19 @@ export default function DigitalTransformationWeek1() {
   const [activeLayer, setActiveLayer] = useState(0);
 
   return (
-    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
+    <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
       <ProgressBar />
       <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-200"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
       <PosterHero
-        category="WEEK 01: DIGITAL TRANSFORMATION"
+        category="Week 01: Digital Transformation"
         title="Introduction to digital transformation"
         subtitle="Foundations of Digital Transformation"
         author="Dr. Davood Wadi"
@@ -153,36 +151,35 @@ export default function DigitalTransformationWeek1() {
 
       <Slide
         id="digital-transformation"
-        label="CORE CONCEPT"
         title="Digital Transformation"
         exercise={exercise["digital-transformation"]}
       >
-        <p className="font-heading text-2xl md:text-[1.95rem] leading-snug max-w-5xl">
+        <p className="font-sans text-xl md:text-2xl leading-[1.4] text-[var(--dt-ink)] max-w-4xl">
           Digital transformation is the{" "}
-          <strong className="font-bold">
+          
             integration of digital technology into all areas of a business
-          </strong>
+          
           .
         </p>
-        <div className={`${BODY} !text-lg md:!text-[1.18rem] grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             It fundamentally changes how businesses operate and deliver value to customers.
           </p>
-          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             It requires a cultural shift that challenges the status quo.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
-          <div className={`${BODY} !text-lg flex flex-col gap-3`}>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <div className={`${BODY} flex flex-col gap-3`}>
+            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
               Technology is a key enabler, but people and processes are equally important.
             </p>
             <PlateWell>
               <EqualFooting />
             </PlateWell>
           </div>
-          <div className={`${BODY} !text-lg flex flex-col gap-3`}>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+          <div className={`${BODY} flex flex-col gap-3`}>
+            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
               Data-driven decision-making is essential for successful transformation.
             </p>
             <PlateWell>
@@ -194,32 +191,28 @@ export default function DigitalTransformationWeek1() {
 
       <Slide
         id="key-components"
-        label="SIX COMPONENTS"
         title="Key Components of Digital Transformation"
         exercise={exercise["key-components"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <KeyComponentsHub active={activeComponent} onSelect={setActiveComponent} />
-          </div>
-          <div className="sm:hidden">
-            <KeyComponentsHubTall active={activeComponent} onSelect={setActiveComponent} />
-          </div>
+          <KeyComponentsHub active={activeComponent} onSelect={setActiveComponent} />
         </PlateWell>
-        <ol className={`${BODY} !text-lg md:!text-[1.14rem] !leading-[1.65] grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {COMPONENTS.map(([name, text], i) => {
             const isLit = i === activeComponent;
             return (
               <li
                 key={name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-2 transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 flex flex-col gap-2 transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <p className="flex items-baseline gap-3">
-                  <span className="font-heading font-bold text-2xl md:text-3xl leading-none">{i + 1}.</span>
-                  <strong className="text-xl md:text-2xl leading-tight">{name}:</strong>
+                  <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <strong className="text-lg md:text-xl leading-snug text-[var(--dt-ink)]">{name}:</strong>
                 </p>
                 <p>{text}</p>
               </li>
@@ -231,7 +224,6 @@ export default function DigitalTransformationWeek1() {
       <DiscussionSlide
         quote="Which company exemplifies Digital Transformation?"
         author="Discussion Question"
-        plate={<Conversation left={0} right={1} />}
       />
 
       {/* ================================================================
@@ -241,43 +233,37 @@ export default function DigitalTransformationWeek1() {
 
       <Slide
         id="digitization-digitalization-transformation"
-        label="FROM DIGITIZATION TO TRANSFORMATION"
         title="Digitization, Digitalization, and Digital Transformation"
         exercise={exercise["digitization-digitalization-transformation"]}
       >
         <PlateWell>
-          <div className="hidden sm:block">
-            <TransformationSteps active={activeStage} onSelect={setActiveStage} />
-          </div>
-          <div className="sm:hidden">
-            <TransformationStepsTall active={activeStage} onSelect={setActiveStage} />
-          </div>
+          <TransformationSteps active={activeStage} onSelect={setActiveStage} />
         </PlateWell>
-        <ol className={`${BODY} !text-base md:!text-[1.06rem] !leading-[1.58] grid`}>
+        <ol className={`${BODY} grid gap-4`}>
           {STAGES.map(([name, definition, examples], i) => {
             const isLit = i === activeStage;
             return (
               <li
                 key={name}
                 aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-10 items-start transition-opacity duration-200 ${
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-10 items-start transition-opacity duration-200 ${
                   isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
                 }`}
               >
                 <div className="flex flex-col gap-2">
                   <p className="flex items-baseline gap-3">
-                    <span className="font-heading font-bold text-2xl md:text-3xl leading-none">
-                      {i + 1}.
+                    <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <strong className="text-xl md:text-2xl leading-tight">{name}</strong>
+                    <strong className="text-lg md:text-xl leading-snug text-[var(--dt-ink)]">{name}</strong>
                   </p>
                   <p>
                     <strong>Definition</strong>: {definition}
                   </p>
                 </div>
-                <div className="border-t-[2px] lg:border-t-0 lg:border-l-[2px] border-[var(--dt-ink)] pt-3 lg:pt-0 lg:pl-8">
-                  <p className="mb-1.5">
-                    <strong>Examples</strong>:
+                <div className="border-t lg:border-t-0 lg:border-l border-[var(--dt-ink)]/15 pt-3 lg:pt-0 lg:pl-8">
+                  <p className="mb-1.5 font-sans text-sm font-semibold text-[var(--ink-3)]">
+                    Examples:
                   </p>
                   <ul className={LIST}>
                     {examples.map((ex) => (
@@ -296,7 +282,6 @@ export default function DigitalTransformationWeek1() {
       <DiscussionSlide
         quote="How can organizations ensure that their digitization efforts align with their overall digital transformation strategy?"
         author="Discussion Question"
-        plate={<Conversation left={2} right={3} />}
       />
 
       {/* ================================================================
@@ -306,7 +291,6 @@ export default function DigitalTransformationWeek1() {
 
       <Slide
         id="pyramid"
-        label="FRAMEWORK"
         title="The Digital Transformation Pyramid"
         exercise={exercise["pyramid"]}
       >
@@ -314,29 +298,29 @@ export default function DigitalTransformationWeek1() {
           <PlateWell>
             <Pyramid active={activeLayer} onSelect={setActiveLayer} />
           </PlateWell>
-          <ol className={`${BODY} !text-lg md:!text-[1.14rem] !leading-[1.65] grid`}>
+          <ol className={`${BODY} grid gap-4`}>
             {LAYERS.map(([name, description, components], i) => {
               const isLit = i === activeLayer;
               return (
                 <li
                   key={name}
                   aria-hidden={!isLit}
-                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-5 flex flex-col gap-4 transition-opacity duration-200 ${
-                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                  }`}
+                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 flex flex-col gap-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
                 >
                   <p className="flex items-baseline gap-3">
-                    <span className="font-heading font-bold text-3xl md:text-4xl leading-none">
-                      {i + 1}.
+                    <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <strong className="text-2xl md:text-[1.65rem] leading-tight">
+                    <strong className="text-xl md:text-2xl leading-snug text-[var(--dt-ink)]">
                       {name}
                     </strong>
                   </p>
-                  <p className="border-t-[2px] border-[var(--dt-ink)] pt-4">
+                  <p className="border-t border-[var(--dt-ink)]/15 pt-4">
                     <strong>Description</strong>: {description}
                   </p>
-                  <p className="border-t-[2px] border-[var(--dt-ink)] pt-4">
+                  <p className="border-t border-[var(--dt-ink)]/15 pt-4">
                     <strong>Key Components</strong>: {components}
                   </p>
                 </li>

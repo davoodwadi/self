@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer
       style={DECK_THEME}
-      className="py-8 text-center px-6 relative z-10 w-full bg-[var(--dt-cream)] text-[var(--ink-3)] font-body"
+      className="py-8 text-center px-6 relative z-10 w-full bg-[var(--dt-white)] text-[var(--ink-3)] font-sans"
     >
       <p className="text-sm">
         &copy; {new Date().getFullYear()}{" "}

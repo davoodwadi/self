@@ -1,42 +1,40 @@
-# Digital Transformation: plate style
+# Digital Transformation: design and plate style
 
-These rules cover every SVG plate in this course (all weeks, anything new).
+These rules govern the course landing page, every weekly slide deck, and every SVG plate in this course.
 
-The course takes only the **look and feel** of the Flat Silhouette style below. What gets drawn, where it sits and what text is allowed are decided by the SVG rules in the root `CLAUDE.md`, and they win wherever the two could disagree.
+## Design system, colours, and typography
+
+The course uses a clean, straightforward academic sans-serif design system paired with Flat Silhouette SVG plates, avoiding ornate editorial flourishes and AI-generated visual tropes. Only `Source Sans 3` (`--font-source-sans`) is loaded in `(courses-dt)/layout.tsx`, and `--font-sans` in `(courses-dt)/globals.css` resolves to `var(--font-source-sans), ui-sans-serif, system-ui, -apple-system, sans-serif`. All headings, body copy, callouts, discussion prompts, exercises, and diagram labels are set in upright sans-serif. Never use display serifs, italic callout or discussion prompts, decorative small-caps tracking, rotated diamond ornaments, or heavy double-bordered frames around slides or plates.
 
 ## Look: Flat Silhouette
 
-A bold, quiet poster: solid black silhouettes on warm cream, a red accent, and framed screens for anything digital. It borrows from mid-century and Swiss poster design: confident shapes and lots of empty space. It should feel considered and hand-designed, like a printed poster, not like generic stock illustration.
+A bold, quiet plate style: solid black silhouettes on white, a red accent (optional), and framed screens for anything digital.
 
 ### Palette
 
-Deep, muted poster inks on warm cream, like colours printed on paper: calm to look at and comfortable to read at any size. Each accent sits at 5:1 contrast or more against cream, so red or blue text reads as easily as black, and cream text reads on a red shape. The same values colour the plates and the page around them (kickers, numerals, rules, the section marker), so the deck stays one palette. Every fill is flat.
-
-| Constant | Colour | Use | Hex | Contrast on cream |
+| Constant | Colour | Use | Hex | Contrast on white |
 |---|---|---|---|---|
-| `CREAM` | Soft warm white | plate and page background, gaps between shapes, badges, text on a coloured shape | `#EFEBE3` |: |
-| `INK` | Warm black | silhouettes, frames, rules, text | `#1D1B1A` | 14.4:1 |
-| `SKIN` | Pale beige | visible skin | `#DCCFB8` |: |
-| `SIGNAL` | Brick red | what is learned, lit or chosen (rule 10) | `#A63A2C` | 5.4:1 |
-| `COUNTER` | Deep blue | the contrast (rule 10) | `#1F5FAF` | 5.3:1 |
-| `COUNTER_FILL` | Pale blue | fill for a contrast zone | `#CFDDF0` |: |
-
-When a new colour value is needed, choose a deep, slightly muted tone in the same family and check it reaches 5:1 on cream before using it.
+| `WHITE` | White | plate and page background, gaps between shapes, badges, text on a coloured shape | `#FFFFFE` | : |
+| `INK` | Warm black | silhouettes, frames, rules, text | `#1D1B1A` | 17.2:1 |
+| `SKIN` | Pale beige | visible skin | `#D7C9B1` | : |
+| `SIGNAL` | Brick red | what is learned, lit or chosen (rule 10) | `#A63A2C` | 6.2:1 |
+| `COUNTER` | Deep blue | the contrast (rule 10) | `#1F5FAF` | 6.1:1 |
+| `COUNTER_FILL` | Pale blue | fill for a contrast zone | `#CFDDF0` | : |
 
 No gradients, shading, shadows, highlights, textures, grain, halftone or noise anywhere.
 
 ### Background
 
-- Flat warm cream across the whole plate.
-- No scenery: no rooms, floors, skies or furniture unless the sentence needs that one object.
-- Generous plain cream around the subject.
+- Clean white across the whole plate and slide surface, separated by quiet hairlines (`border-[var(--dt-ink)]/12` or `border-[var(--dt-ink)]/15`).
+- No decorative outer frames or corner diamonds around plates.
+- Generous empty space around the subject.
 
 ### Silhouettes
 
 - Each figure or object is one strong, solid black shape, recognisable from its outline alone.
 - No outline strokes and no inner lines on black shapes.
 - Pick poses and angles that give the clearest outline: profiles, turned heads, raised arms, clear gaps between limbs and body.
-- Where two black shapes overlap (an arm across a body, a hand over an object), separate them with a thin cream gap: give the front shape a cream stroke of about 3 units.
+- Where two black shapes overlap (an arm across a body, a hand over an object), separate them with a thin gap of about 3 units.
 - Smooth, deliberate shapes: clean curves, crisp corners, no wobble or sketchiness.
 
 ### People
@@ -52,45 +50,32 @@ No gradients, shading, shadows, highlights, textures, grain, halftone or noise a
 Anything digital (a digitized record, an online business, a digital initiative, a system) is shown **on a screen**:
 
 - the thing itself is the same **solid black silhouette** used for the physical version (same path, same glyph), so the viewer connects the two at once.
-- it sits inside a **framed screen**: a heavy black rule, a thin inner rule set just inside, and a short black stand (neck and base). The screen is what says "digital".
-- centre the glyph in the screen's inner area with clear cream on every side (rule 13). Scale the glyph and keep the frame's rule weights fixed, so every screen in a plate reads as the same object (rule 11).
-- several digital things are several identical screens, one glyph each (rule 7), with clear space between one screen's stand and the next screen.
-- a physical-to-digital change is the black silhouette on cream, an arrow, then the same silhouette on a screen.
+- it sits inside a **framed screen** (`Monitor` or `MiniScreen`): a clean `1.5px` hairline rectangle with a subtle surface tint (`fillOpacity={0.03}`, `strokeOpacity={0.35}`).
+- centre the glyph in the screen's inner area with clear space on every side (rule 13). Scale the glyph and keep the frame's rule weights fixed, so every screen in a plate reads as the same object (rule 11).
+- several digital things are several identical screens, one glyph each (rule 7), with clear space between screens.
+- a physical-to-digital change is the black silhouette, an arrow, then the same silhouette on a screen.
 
-Solid black on cream (physical) against the same solid black on a screen (digital) is the core of the look. Keep it identical on every plate.
+### Slide structure and text colour
 
-### Frames and small marks
-
-- Frames (mirrors, screens, windows, panels) are heavy black rules, like a printed border, with a thin inner rule set just inside.
-- Corners may carry a small solid black diamond, the only ornament.
-- Small marks are simple geometry (circles, stars, arrows, short rules) in solid black or red, or cream on a coloured shape.
-- Badges and logos are generic: a cream circle with a simple black mark such as a star. No real brands.
-
-### Type and text colour
-
-Text inside a plate follows rule 3. When text is allowed, write it in sentence case, as it appears in the source ("Digital transformation", "Digitize information"), in INK or SIGNAL, or CREAM on a coloured shape:
-
-- headings and stage or group names: bold display serif (`var(--font-heading)`, weight 700), about 20 units.
-- names set on a shape (a step, a bar, a block): the reading serif (`var(--font-body)`, weight 600), about 15 to 17 units.
-- lines of a two-line label about 1.4× the font size apart, so descenders clear the line below.
-
-**Avoid using `SIGNAL` red to highlight slide text.** Build hierarchy on the slide with type and space: font size, bold `INK` (`<strong>` in `var(--font-heading)`), rules and white space. Keep headings, subheadings, defined terms, list numerals, borders and body copy in `INK`. When a plate already uses `SIGNAL` red for its focal or active element, the text beside it stays in `INK` so it never competes with the visual. At most one short key phrase on a text-only slide may take `SIGNAL`. A slide with no red body text at all is preferred.
+- Weekly title slides, chapter dividers (`ChapterBand`), content slides (`Slide`), discussion slides (`DiscussionSlide`, `DiscussionList`), and conclusions (`Summary`) use left-aligned upright sans-serif headings and hairlines without full-bleed inverted black backgrounds, giant display numerals, or double borders.
+- Text inside a plate follows rule 3 and uses upright `var(--font-sans)` in neutral `INK` (`fill={INK}`):
+  - headings and stage or group names: weight 600 or 700, about 18 to 20 units, `fill={INK}`.
+  - names set on a shape (a step, a bar, a block): weight 600, about 14 to 16 units, `fill={INK}`.
+- **Never colour slide text or SVG `<text>` labels in `SIGNAL` red or `COUNTER` blue.** Build hierarchy on the slide and inside plates with type and space: font size, bold `INK` (`<strong>` in `var(--font-sans)`), hairlines and white space. Keep headings, subheadings, defined terms, list numerals, card/tab borders, card/tab background tints, and all SVG `<text>` labels in `INK`. Reserve `SIGNAL` strictly for the focal glyph, icon, bar, or curve inside the diagram.
 
 ### Avoid
 
 - Textures, grain, halftone, noise, gradients, drop shadows, 3D shading.
-- Outline-style drawing, sketchy lines, hand-drawn wobble.
-- Detailed faces, facial expressions, fingers, fabric folds.
-- Colours outside the palette.
+- Display serifs, italic callouts, tracked uppercase eyebrow labels, rotated diamond bullets or corner ornaments, and heavy double borders.
+- Full-bleed inverted black chapter or takeaway boxes and oversized display numerals.
 - Overusing `SIGNAL` red on slide text, headings, numerals or rules.
-- Busy backgrounds, decorative clutter, real logos or brand names.
 
 ### Look checklist (with rules 22 to 24)
 
 - Can you recognise every person and object from its silhouette alone?
 - Are all fills flat, with no texture or gradient anywhere?
 - Is every digital element a solid black glyph inside a framed screen, clearly the same shape as its physical version?
-- Is there plenty of empty cream around the subject?
+- Is there plenty of empty white space around the subject?
 - Does it sit in a set with the course's other plates?
 
 ## Course notes on the SVG rules
@@ -98,5 +83,5 @@ Text inside a plate follows rule 3. When text is allowed, write it in sentence c
 The SVG rules in the root `CLAUDE.md` apply. In this course:
 
 - **Rule 10:** INK (black) is neutral, SIGNAL (red) is what is learned, lit or chosen, COUNTER (blue, with its pale blue fill) is the contrast. Digital is shown by a screen frame. Never use SIGNAL for decoration.
-- **Rule 19:** plates are filled cream, so an unstroked cream fill disappears. Put filled zones in pale blue, pale beige or black, and never draw cream detail on a cream fill (cream is only for gaps and badges on a coloured shape).
+- **Rule 19:** plates sit on a white ground (`WHITE`), so an unstroked white fill disappears. Put filled zones in pale blue, pale beige, or a tinted hairline box, and never draw white detail on a white fill (`WHITE` is only for gaps and cutouts inside a solid shape).
 - **Rule 28:** colour comes only from the palette constants (INK, SIGNAL, COUNTER). Use `weight="fill"` so icons read as solid silhouettes like everything else in the plate.
