@@ -7,7 +7,7 @@ import React from "react";
 import { Slide } from "@/app/(courses-ai)/_components/SlideComponents";
 import { type CourseQuiz } from "@/lib/course-quiz";
 
-/** Academic rubric label treatment used for every eyebrow, axis tick and numeral. */
+/** Academic rubric label treatment used for axis ticks, step indices, and metadata. */
 export const MICRO =
   "font-sans text-[0.875rem] font-medium tracking-normal [font-variant-numeric:tabular-nums]";
 
@@ -138,26 +138,15 @@ export function Discussion2({
   );
 }
 
-/** Eyebrow plus slide heading, the masthead every content slide opens with. */
+/** Slide heading, the masthead every content slide opens with. */
 export function Head1({
-  eyebrow,
   children,
-  signal = false,
 }: {
-  eyebrow: string;
   children: React.ReactNode;
-  signal?: boolean;
 }) {
   return (
     <div>
-      <div
-        className={`${MICRO} ${
-          signal ? "text-[var(--crimson)]" : "text-[var(--charcoal-light)]"
-        }`}
-      >
-        {eyebrow}
-      </div>
-      <h2 className="mt-3 max-w-4xl font-sans text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.375rem]">
+      <h2 className="max-w-4xl font-sans text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.375rem]">
         {children}
       </h2>
     </div>
@@ -165,48 +154,35 @@ export function Head1({
 }
 
 /**
- * Eyebrow plus slide heading. When a heading opens with a "Label:" prefix, the
- * prefix is set as a crimson kicker on its own line, inside the same h2 so the
- * heading still reads as one sentence.
+ * Slide heading. When a heading opens with a "Label:" prefix, it is rendered
+ * inline inside the same h2 so the heading reads as one sentence.
  */
 export function Head2({
-  eyebrow,
   kicker,
   children,
 }: {
-  eyebrow: string;
   kicker?: string;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <div className={`${MICRO} text-[var(--charcoal-light)]`}>{eyebrow}</div>
-      <h2 className="mt-3 max-w-4xl font-sans text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.375rem]">
-        {kicker && (
-          <>
-            <span className="mb-1.5 block font-sans text-[1.125rem] font-semibold leading-snug tracking-normal text-[var(--crimson)] md:text-[1.375rem]">
-              {kicker}
-            </span>{" "}
-          </>
-        )}
+      <h2 className="max-w-4xl font-sans text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.375rem]">
+        {kicker ? `${kicker} ` : ""}
         {children}
       </h2>
     </div>
   );
 }
 
-/** Eyebrow plus slide heading. */
+/** Slide heading. */
 export function Head3({
-  eyebrow,
   children,
 }: {
-  eyebrow: string;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <div className={`${MICRO} text-[var(--charcoal-light)]`}>{eyebrow}</div>
-      <h2 className="mt-3 max-w-4xl font-sans text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.375rem]">
+      <h2 className="max-w-4xl font-sans text-[1.75rem] font-bold leading-[1.2] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.375rem]">
         {children}
       </h2>
     </div>

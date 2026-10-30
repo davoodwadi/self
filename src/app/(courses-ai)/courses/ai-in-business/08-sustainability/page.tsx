@@ -210,7 +210,7 @@ export default function Week08Sustainability() {
           industry's road forking at a pivot point.          [quiz topic]
       ================================================================== */}
       <Slide id="paradox" border align="left">
-        <Head2 eyebrow="Opening">The AI Sustainability Paradox</Head2>
+        <Head2>The AI Sustainability Paradox</Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -315,7 +315,7 @@ export default function Week08Sustainability() {
           of magnitude, dashed because "likely".
       ================================================================== */}
       <Slide id="hidden-cost" border align="left">
-        <Head2 eyebrow="Part 1: 01 / 08">The Hidden Cost of Compute</Head2>
+        <Head2>The Hidden Cost of Compute</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -391,7 +391,7 @@ export default function Week08Sustainability() {
           same scale.                                         [quiz topic]
       ================================================================== */}
       <Slide id="inference" border align="left">
-        <Head2 eyebrow="Part 1: 02 / 08" kicker="Inference:">
+        <Head2 kicker="Inference:">
           The Sleeping Giant
         </Head2>
 
@@ -469,7 +469,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["google-report"]}
       >
-        <Head2 eyebrow="Part 1: 03 / 08" kicker="Case Study:">
+        <Head2 kicker="Case Study:">
           Google&apos;s 2025 Report
         </Head2>
 
@@ -544,7 +544,7 @@ export default function Week08Sustainability() {
           cooling loop. The GPT-3 estimate and the 2027 demand set large.
       ================================================================== */}
       <Slide id="water" border align="left">
-        <Head2 eyebrow="Part 1: 04 / 08" kicker="Water Consumption:">
+        <Head2 kicker="Water Consumption:">
           A Critical Metric
         </Head2>
 
@@ -612,7 +612,7 @@ export default function Week08Sustainability() {
           and scale pulling against each other.            [quiz: water]
       ================================================================== */}
       <Slide id="bottles" border align="left" quizData={quiz["bottles"]}>
-        <Head2 eyebrow="Part 1: 05 / 08">
+        <Head2>
           The &quot;Bottles of Water&quot; Debate
         </Head2>
 
@@ -703,7 +703,7 @@ export default function Week08Sustainability() {
           Compute Carbon Intensity cut to a third.
       ================================================================== */}
       <Slide id="hardware" border align="left">
-        <Head2 eyebrow="Part 1: 06 / 08">
+        <Head2>
           Hardware Lifecycle and Embodied Carbon
         </Head2>
 
@@ -798,7 +798,7 @@ export default function Week08Sustainability() {
           with its hazardous contents named.
       ================================================================== */}
       <Slide id="e-waste" border align="left">
-        <Head2 eyebrow="Part 1: 07 / 08">The E-Waste Challenge</Head2>
+        <Head2>The E-Waste Challenge</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -882,7 +882,7 @@ export default function Week08Sustainability() {
           WUE and PUE on one balance.                        [quiz topic]
       ================================================================== */}
       <Slide id="data-center" border align="left">
-        <Head2 eyebrow="Part 1: 08 / 08">Data Center Innovation</Head2>
+        <Head2>Data Center Innovation</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1015,7 +1015,7 @@ export default function Week08Sustainability() {
           joined as a graph.                                 [quiz topic]
       ================================================================== */}
       <Slide id="weather" border align="left">
-        <Head2 eyebrow="Part 2: 01 / 04">Revolutionizing Weather Prediction</Head2>
+        <Head2>Revolutionizing Weather Prediction</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1129,7 +1129,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["fourcastnet"]}
       >
-        <Head2 eyebrow="Part 2: 02 / 04">FourCastNet and Geometric ML</Head2>
+        <Head2>FourCastNet and Geometric ML</Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_12rem] md:gap-14">
@@ -1235,7 +1235,7 @@ export default function Week08Sustainability() {
           predicts. One learner managing two unlike stores.  [quiz topic]
       ================================================================== */}
       <Slide id="renewable" border align="left">
-        <Head2 eyebrow="Part 2: 03 / 04">Optimizing Renewable Energy</Head2>
+        <Head2>Optimizing Renewable Energy</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1362,7 +1362,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["agriculture"]}
       >
-        <Head2 eyebrow="Part 2: 04 / 04">Precision Agriculture</Head2>
+        <Head2>Precision Agriculture</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1498,7 +1498,7 @@ export default function Week08Sustainability() {
           is primary. Progress and consumption untied.       [quiz topic]
       ================================================================== */}
       <Slide id="red-green" border align="left">
-        <Head2 eyebrow="Part 3: 01 / 05">Red AI vs. Green AI</Head2>
+        <Head2>Red AI vs. Green AI</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1619,7 +1619,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["compression"]}
       >
-        <Head2 eyebrow="Part 3: 02 / 05">Model Compression Techniques</Head2>
+        <Head2>Model Compression Techniques</Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -1737,7 +1737,7 @@ export default function Week08Sustainability() {
                                                [quiz: compression]
       ================================================================== */}
       <Slide id="slms" border align="left" quizData={quiz["slms"]}>
-        <Head2 eyebrow="Part 3: 03 / 05">Small Language Models (SLMs)</Head2>
+        <Head2>Small Language Models (SLMs)</Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1814,7 +1814,7 @@ export default function Week08Sustainability() {
           The memory-processor shuttle struck out.           [quiz topic]
       ================================================================== */}
       <Slide id="neuromorphic" border align="left">
-        <Head2 eyebrow="Part 3: 04 / 05">Neuromorphic Computing</Head2>
+        <Head2>Neuromorphic Computing</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1909,7 +1909,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["neuromorphic-gains"]}
       >
-        <Head2 eyebrow="Part 3: 05 / 05">Neuromorphic Efficiency Gains</Head2>
+        <Head2>Neuromorphic Efficiency Gains</Head2>
 
         <div className="w-full">
           <div
@@ -2010,7 +2010,7 @@ export default function Week08Sustainability() {
           bins. A passport tracing recovered materials.
       ================================================================== */}
       <Slide id="circular" border align="left">
-        <Head2 eyebrow="Part 4: 01 / 08">AI and the Circular Economy</Head2>
+        <Head2>AI and the Circular Economy</Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_18rem] md:gap-14">
@@ -2166,7 +2166,7 @@ export default function Week08Sustainability() {
           words of the last line listed.
       ================================================================== */}
       <Slide id="biodiversity" border align="left">
-        <Head2 eyebrow="Part 4: 02 / 08">Biodiversity Monitoring</Head2>
+        <Head2>Biodiversity Monitoring</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2261,7 +2261,7 @@ export default function Week08Sustainability() {
           those past 10^23 inside the rule.                   [quiz topic]
       ================================================================== */}
       <Slide id="eu-ai-act" border align="left">
-        <Head2 eyebrow="Part 4: 03 / 08" kicker="The EU AI Act:">
+        <Head2 kicker="The EU AI Act:">
           Article 40
         </Head2>
 
@@ -2352,7 +2352,7 @@ export default function Week08Sustainability() {
                                                     [quiz: eu-ai-act]
       ================================================================== */}
       <Slide id="iso" border align="left" quizData={quiz["iso"]}>
-        <Head2 eyebrow="Part 4: 04 / 08">ISO Standards and Frameworks</Head2>
+        <Head2>ISO Standards and Frameworks</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2418,7 +2418,7 @@ export default function Week08Sustainability() {
           overheads it misses.                               [quiz topic]
       ================================================================== */}
       <Slide id="measurement" border align="left">
-        <Head2 eyebrow="Part 4: 05 / 08">Measurement Tools</Head2>
+        <Head2>Measurement Tools</Head2>
 
         <div className="w-full">
           <div
@@ -2514,7 +2514,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["developers"]}
       >
-        <Head2 eyebrow="Part 4: 06 / 08" kicker="Actionable Insights:">
+        <Head2 kicker="Actionable Insights:">
           Developers
         </Head2>
 
@@ -2606,7 +2606,7 @@ export default function Week08Sustainability() {
           reports held to one edge.
       ================================================================== */}
       <Slide id="organizations" border align="left">
-        <Head2 eyebrow="Part 4: 07 / 08" kicker="Actionable Insights:">
+        <Head2 kicker="Actionable Insights:">
           Organizations
         </Head2>
 
@@ -2711,7 +2711,7 @@ export default function Week08Sustainability() {
           consumption both climbing.                         [quiz topic]
       ================================================================== */}
       <Slide id="future" border align="left">
-        <Head2 eyebrow="Part 4: 08 / 08">Future Directions</Head2>
+        <Head2>Future Directions</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2789,7 +2789,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["conclusion"]}
       >
-        <Head2 eyebrow="Closing">Conclusion</Head2>
+        <Head2>Conclusion</Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           {[
@@ -2830,7 +2830,7 @@ export default function Week08Sustainability() {
           Superscript citations across the deck jump here.
       ================================================================== */}
       <Slide id="sources" border align="left">
-        <Head2 eyebrow="References">Sources</Head2>
+        <Head2>Sources</Head2>
 
         <div className="w-full">
           <ol className="mt-10 w-full max-w-5xl border-t border-[var(--charcoal)]/15">

@@ -141,7 +141,7 @@ export default function Week05OperationsSupplyChain() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="global-complexity" border align="left">
-        <Head1 eyebrow="Opening">The Complexity of Global Operations</Head1>
+        <Head1>The Complexity of Global Operations</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -504,16 +504,12 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["ai-vs-traditional"]}
       >
-        <Head1 eyebrow="Two ways to optimize">
+        <Head1>
           AI vs. Traditional Optimization
         </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Traditional operations research
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Traditional operations research relies on static constraints and
               linear programming models.
             </p>
@@ -569,9 +565,7 @@ export default function Week05OperationsSupplyChain() {
             </svg>
           </div>
 
-          <div>
-            <div className={`${MICRO} text-[var(--crimson)]`}>AI systems</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               AI systems continuously learn from new data, dynamically adjusting
               operational constraints in real time.
             </p>
@@ -725,21 +719,17 @@ export default function Week05OperationsSupplyChain() {
           indicators and moves weeks before. Crisis management struck.
       ================================================================== */}
       <Slide id="reactive-to-predictive" border align="left">
-        <Head1 eyebrow="A change of posture">
+        <Head1>
           The Shift from Reactive to Predictive
         </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Reactive</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Historical supply chains focused on reacting quickly to
               disruptions after they occurred.
             </p>
           </div>
-          <div>
-            <div className={`${MICRO} text-[var(--crimson)]`}>Predictive</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Predictive models analyze leading indicators to forecast
               disruptions weeks before they impact operations.
             </p>
@@ -884,7 +874,7 @@ export default function Week05OperationsSupplyChain() {
           on the models. Departments walled off from each other.
       ================================================================== */}
       <Slide id="data-core" border align="left">
-        <Head1 eyebrow="What the models run on">
+        <Head1>
           Data: The Core of Operations AI
         </Head1>
 
@@ -1073,24 +1063,16 @@ export default function Week05OperationsSupplyChain() {
           long before it reaches the sales ledger.            [quiz topic]
       ================================================================== */}
       <Slide id="beyond-averages" border align="left">
-        <Head1 eyebrow="Demand sensing">Beyond Historical Averages</Head1>
+        <Head1>Beyond Historical Averages</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Traditional forecasting
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Traditional forecasting relies heavily on historical sales data
               and seasonal trends.
             </p>
             <Terms items={["historical sales data", "seasonal trends"]} />
           </div>
-          <div>
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              AI-driven demand sensing
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               AI-driven demand sensing incorporates real-time signals like
               social media sentiment, weather forecasts, and economic
               indicators.
@@ -1249,7 +1231,7 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["bullwhip"]}
       >
-        <Head1 eyebrow="Amplification upstream" signal>
+        <Head1>
           Mitigating the Bullwhip Effect
         </Head1>
 
@@ -1475,12 +1457,10 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["dynamic-inventory"]}
       >
-        <Head1 eyebrow="Stock that moves">Dynamic Inventory Optimization</Head1>
+        <Head1>Dynamic Inventory Optimization</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Static</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Maintaining static safety stock levels leads to either excess
               holding costs or stockouts.
             </p>
@@ -1585,9 +1565,7 @@ export default function Week05OperationsSupplyChain() {
             </figure>
           </div>
 
-          <div>
-            <div className={`${MICRO} text-[var(--crimson)]`}>Dynamic</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               AI dynamically adjusts optimal inventory targets based on
               real-time demand probabilities and supplier lead times.
             </p>
@@ -1749,7 +1727,7 @@ export default function Week05OperationsSupplyChain() {
           A fit that re-sets its slope at a structural break.
       ================================================================== */}
       <Slide id="time-series" border align="left">
-        <Head1 eyebrow="Under the hood">Deep Learning for Time-Series Data</Head1>
+        <Head1>Deep Learning for Time-Series Data</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1979,7 +1957,7 @@ export default function Week05OperationsSupplyChain() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="routing-at-scale" border align="left">
-        <Head1 eyebrow="Routing">Solving Complex Routing at Scale</Head1>
+        <Head1>Solving Complex Routing at Scale</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2214,7 +2192,7 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["last-mile"]}
       >
-        <Head1 eyebrow="The final stretch">
+        <Head1>
           Autonomous Vehicles and Last-Mile Delivery
         </Head1>
 
@@ -2395,7 +2373,7 @@ export default function Week05OperationsSupplyChain() {
           struck against a longer lifespan.                   [quiz topic]
       ================================================================== */}
       <Slide id="predictive-maintenance" border align="left">
-        <Head1 eyebrow="Keeping the fleet moving">
+        <Head1>
           Predictive Maintenance in Fleet Management
         </Head1>
 
@@ -2591,25 +2569,17 @@ export default function Week05OperationsSupplyChain() {
           risk indicators lifted out.                         [quiz topic]
       ================================================================== */}
       <Slide id="supplier-risk" border align="left">
-        <Head1 eyebrow="Procurement risk">
+        <Head1>
           Proactive Supplier Risk Management
         </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Traditionally
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Procurement teams traditionally assess supplier risk through
               annual audits and financial reviews.
             </p>
           </div>
-          <div>
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Continuously
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               AI systems continuously monitor global news, geopolitical events,
               and financial filings to flag emerging supplier risks.
             </p>
@@ -2791,7 +2761,7 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["nlp-contracts"]}
       >
-        <Head1 eyebrow="Reading the paperwork">
+        <Head1>
           NLP for Contract and Spend Analysis
         </Head1>
 
@@ -3067,7 +3037,7 @@ export default function Week05OperationsSupplyChain() {
           one tier-three factory, the hidden choke point.
       ================================================================== */}
       <Slide id="multi-tier" border align="left">
-        <Head1 eyebrow="Seeing past tier one" signal>
+        <Head1>
           Multi-Tier Supply Chain Visibility
         </Head1>
 
@@ -3260,7 +3230,7 @@ export default function Week05OperationsSupplyChain() {
           order profiles and layout rules.
       ================================================================== */}
       <Slide id="distribution-center" border align="left">
-        <Head1 eyebrow="Inside the building">
+        <Head1>
           The AI-Powered Distribution Center
         </Head1>
 
@@ -3466,7 +3436,7 @@ export default function Week05OperationsSupplyChain() {
           defect caught. Three checks done in milliseconds.   [quiz topic]
       ================================================================== */}
       <Slide id="cv-quality" border align="left">
-        <Head1 eyebrow="Inspection at speed">
+        <Head1>
           Computer Vision for Quality Control
         </Head1>
 
@@ -3609,7 +3579,7 @@ export default function Week05OperationsSupplyChain() {
           down and efficiency up.                        [quiz: cv-quality]
       ================================================================== */}
       <Slide id="cobots" border align="left" quizData={quiz["cobots"]}>
-        <Head1 eyebrow="Working side by side">
+        <Head1>
           Collaborative Robotics and Human Synergy
         </Head1>
 
@@ -3778,7 +3748,7 @@ export default function Week05OperationsSupplyChain() {
           adding its predicted impact.                        [quiz topic]
       ================================================================== */}
       <Slide id="digital-twins" border align="left">
-        <Head1 eyebrow="Test before you change">
+        <Head1>
           Digital Twins for Facility Layouts
         </Head1>
 
@@ -3941,7 +3911,7 @@ export default function Week05OperationsSupplyChain() {
           scenarios compared on carbon impact before the decision.
       ================================================================== */}
       <Slide id="carbon-footprint" border align="left">
-        <Head1 eyebrow="Emissions">Optimizing the Carbon Footprint</Head1>
+        <Head1>Optimizing the Carbon Footprint</Head1>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -4103,7 +4073,7 @@ export default function Week05OperationsSupplyChain() {
           meet them.                                          [quiz topic]
       ================================================================== */}
       <Slide id="reverse-logistics" border align="left">
-        <Head1 eyebrow="Goods coming back">
+        <Head1>
           AI in Reverse Logistics and Returns
         </Head1>
 
@@ -4321,7 +4291,7 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["waste-reduction"]}
       >
-        <Head1 eyebrow="Less left over">
+        <Head1>
           Waste Reduction via Precision Forecasting
         </Head1>
 
@@ -4459,7 +4429,7 @@ export default function Week05OperationsSupplyChain() {
           between operators and systems.                      [quiz topic]
       ================================================================== */}
       <Slide id="black-box" border align="left">
-        <Head1 eyebrow="Trust" signal>
+        <Head1>
           The Black Box Problem in Operations
         </Head1>
 
@@ -4624,7 +4594,7 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["legacy-systems"]}
       >
-        <Head1 eyebrow="Plumbing first">
+        <Head1>
           Overcoming Data Silos and Legacy Systems
         </Head1>
 
@@ -4870,7 +4840,7 @@ export default function Week05OperationsSupplyChain() {
           aimed at the model itself.
       ================================================================== */}
       <Slide id="cybersecurity" border align="left">
-        <Head1 eyebrow="Connected and exposed">
+        <Head1>
           Cybersecurity in Connected Networks
         </Head1>
 
@@ -5068,7 +5038,7 @@ export default function Week05OperationsSupplyChain() {
           Three investments. Change management weighed above technology.
       ================================================================== */}
       <Slide id="human-ai-transition" border align="left">
-        <Head1 eyebrow="People">The Human-AI Transition in Operations</Head1>
+        <Head1>The Human-AI Transition in Operations</Head1>
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
@@ -5140,7 +5110,7 @@ export default function Week05OperationsSupplyChain() {
         className="relative overflow-hidden"
       >
 
-        <Head1 eyebrow="What to carry forward">
+        <Head1>
           Conclusion: The Autonomous Supply Chain
         </Head1>
 

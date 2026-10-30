@@ -67,9 +67,7 @@ function Labelled({
 }) {
   return (
     <p className={className}>
-      <span className="mb-1.5 block font-sans text-[1.125rem] leading-snug text-[var(--crimson)] md:text-[1.3125rem]">
-        {label}
-      </span>{" "}
+      <strong className="font-semibold text-[var(--charcoal)]">{label}</strong>{" "}
       {children}
     </p>
   );
@@ -128,7 +126,7 @@ export default function Week09ProductDevelopment() {
           firms up toward regulatory compliance.              [quiz topic]
       ================================================================== */}
       <Slide id="paradigm-shift" border align="left">
-        <Head3 eyebrow="Opening">The Paradigm Shift</Head3>
+        <Head3>The Paradigm Shift</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -249,7 +247,7 @@ export default function Week09ProductDevelopment() {
         align="left"
         quizData={quiz["three-shifts"]}
       >
-        <Head3 eyebrow="Opening">Three Transformative Shifts</Head3>
+        <Head3>Three Transformative Shifts</Head3>
 
         <ol className="mt-11 grid w-full max-w-5xl gap-12 md:grid-cols-3 md:gap-0">
           <li className="block md:pr-8">
@@ -371,7 +369,7 @@ export default function Week09ProductDevelopment() {
                                                               [quiz topic]
       ================================================================== */}
       <Slide id="divergent-convergent" border align="left">
-        <Head3 eyebrow="Part 1: 01 / 05">Divergent vs. Convergent Thinking</Head3>
+        <Head3>Divergent vs. Convergent Thinking</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -485,7 +483,7 @@ export default function Week09ProductDevelopment() {
         align="left"
         quizData={quiz["persona-simulation"]}
       >
-        <Head3 eyebrow="Part 1: 02 / 05">Persona Simulation</Head3>
+        <Head3>Persona Simulation</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -616,7 +614,7 @@ export default function Week09ProductDevelopment() {
           one open region ringed. Twelve months set large.
       ================================================================== */}
       <Slide id="market-trends" border align="left">
-        <Head3 eyebrow="Part 1: 03 / 05">Predictive Market Trends</Head3>
+        <Head3>Predictive Market Trends</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -711,7 +709,7 @@ export default function Week09ProductDevelopment() {
           the last focus group. Product and market cut to fit.
       ================================================================== */}
       <Slide id="latent-needs" border align="left">
-        <Head3 eyebrow="Part 1: 04 / 05">Uncovering Latent Needs</Head3>
+        <Head3>Uncovering Latent Needs</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -834,7 +832,7 @@ export default function Week09ProductDevelopment() {
           gather into one marked block of intelligence.
       ================================================================== */}
       <Slide id="competitor-analysis" border align="left">
-        <Head3 eyebrow="Part 1: 05 / 05">Automated Competitor Analysis</Head3>
+        <Head3>Automated Competitor Analysis</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -929,7 +927,7 @@ export default function Week09ProductDevelopment() {
           below.
       ================================================================== */}
       <Slide id="manufacturability" border align="left">
-        <Head3 eyebrow="Part 2: 01 / 04">Mainstream Manufacturability</Head3>
+        <Head3>Mainstream Manufacturability</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -998,7 +996,7 @@ export default function Week09ProductDevelopment() {
           four sparse points. The solver's long wait against real time.
       ================================================================== */}
       <Slide id="pinns" border align="left">
-        <Head3 eyebrow="Part 2: 02 / 04">
+        <Head3>
           Physics-Informed Neural Networks (PINNs)
         </Head3>
 
@@ -1130,7 +1128,7 @@ export default function Week09ProductDevelopment() {
           The same outline with both tails marked.
       ================================================================== */}
       <Slide id="synthetic-engineering" border align="left">
-        <Head3 eyebrow="Part 2: 03 / 04">Synthetic Data for Engineering</Head3>
+        <Head3>Synthetic Data for Engineering</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1222,7 +1220,7 @@ export default function Week09ProductDevelopment() {
           shortening one after another.
       ================================================================== */}
       <Slide id="privacy-speed" border align="left">
-        <Head3 eyebrow="Part 2: 04 / 04">Data Privacy and Speed</Head3>
+        <Head3>Data Privacy and Speed</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1348,7 +1346,7 @@ export default function Week09ProductDevelopment() {
           through before one clean part. One mark repeated at every site.
       ================================================================== */}
       <Slide id="parameter-optimization" border align="left">
-        <Head3 eyebrow="Part 3: 01 / 03">Parameter Optimization</Head3>
+        <Head3>Parameter Optimization</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1455,7 +1453,7 @@ export default function Week09ProductDevelopment() {
           failure line.
       ================================================================== */}
       <Slide id="cognitive-twins" border align="left">
-        <Head3 eyebrow="Part 3: 02 / 03">Cognitive Digital Twins</Head3>
+        <Head3>Cognitive Digital Twins</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1585,7 +1583,7 @@ export default function Week09ProductDevelopment() {
           trace. Testing placed on the line before physical prototyping.
       ================================================================== */}
       <Slide id="vr-ux" border align="left">
-        <Head3 eyebrow="Part 3: 03 / 03">VR and AI-Assisted UX</Head3>
+        <Head3>VR and AI-Assisted UX</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1707,7 +1705,7 @@ export default function Week09ProductDevelopment() {
           line. An LCA store feeding a shorter footprint.
       ================================================================== */}
       <Slide id="sustainable-materials" border align="left">
-        <Head3 eyebrow="Part 4: 01 / 02">Sustainable Material Selection</Head3>
+        <Head3>Sustainable Material Selection</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1799,7 +1797,7 @@ export default function Week09ProductDevelopment() {
           warnings. A price record running on into a forecast.
       ================================================================== */}
       <Slide id="supply-resilience" border align="left">
-        <Head3 eyebrow="Part 4: 02 / 02">Supply Chain Resilience</Head3>
+        <Head3>Supply Chain Resilience</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1936,7 +1934,7 @@ export default function Week09ProductDevelopment() {
           stray one brought back in. One person in the process, then many.
       ================================================================== */}
       <Slide id="generative-customization" border align="left">
-        <Head3 eyebrow="Part 5: 01 / 02">Generative Customization</Head3>
+        <Head3>Generative Customization</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2081,7 +2079,7 @@ export default function Week09ProductDevelopment() {
           on an otherwise straight path.
       ================================================================== */}
       <Slide id="iot-loops" border align="left">
-        <Head3 eyebrow="Part 5: 02 / 02">IoT Feedback Loops (Version 2.0)</Head3>
+        <Head3>IoT Feedback Loops (Version 2.0)</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -2193,7 +2191,7 @@ export default function Week09ProductDevelopment() {
           balance. A checklist whose last line is algorithmic fairness.
       ================================================================== */}
       <Slide id="mitigation-tools" border align="left">
-        <Head3 eyebrow="Part 6: 01 / 02">Mitigation Tools</Head3>
+        <Head3>Mitigation Tools</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2295,7 +2293,7 @@ export default function Week09ProductDevelopment() {
           back through a graph to ISO/IEC 42001.
       ================================================================== */}
       <Slide id="compliance-automation" border align="left">
-        <Head3 eyebrow="Part 6: 02 / 02">Compliance Automation</Head3>
+        <Head3>Compliance Automation</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -2408,7 +2406,7 @@ export default function Week09ProductDevelopment() {
           unbuildable piece struck from a design.
       ================================================================== */}
       <Slide id="summary" border align="left">
-        <Head3 eyebrow="Closing | 01 / 04">Summary of Findings</Head3>
+        <Head3>Summary of Findings</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2505,7 +2503,7 @@ export default function Week09ProductDevelopment() {
           conjunction set at display weight and marked.
       ================================================================== */}
       <Slide id="speed-safety" border align="left">
-        <Head3 eyebrow="Closing | 02 / 04">Speed + Safety</Head3>
+        <Head3>Speed + Safety</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2573,7 +2571,7 @@ export default function Week09ProductDevelopment() {
           three failure cells.
       ================================================================== */}
       <Slide id="future" border align="left">
-        <Head3 eyebrow="Closing | 03 / 04">Future Directions</Head3>
+        <Head3>Future Directions</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2666,7 +2664,7 @@ export default function Week09ProductDevelopment() {
           network held inside its physics frame.
       ================================================================== */}
       <Slide id="insights" border align="left">
-        <Head3 eyebrow="Closing | 04 / 04">Actionable Insights</Head3>
+        <Head3>Actionable Insights</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2770,7 +2768,7 @@ export default function Week09ProductDevelopment() {
           superscripts point to, set as a quiet grid.
       ================================================================== */}
       <Slide id="references" border align="left">
-        <Head3 eyebrow="Sources">References</Head3>
+        <Head3>References</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>

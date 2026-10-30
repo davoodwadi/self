@@ -15,9 +15,9 @@ import type { CourseExercise } from "@/lib/course-exercise";
 
 export { DeckNav } from "./deck-nav";
 
-export const CREAM = "#f2f0eb";
+export const CREAM = "#fffffe";
 export const INK = "#1D1B1A";
-export const SKIN = "#DCCFB8";
+export const SKIN = "#d7c9b1";
 export const SIGNAL = "#A63A2C";
 export const COUNTER = "#1F5FAF";
 export const COUNTER_FILL = "#CFDDF0";

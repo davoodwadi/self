@@ -154,7 +154,7 @@ export default function Week02Marketing() {
           strategic question closes as a signed verdict.
       ================================================================== */}
       <Slide id="why-marketing-ml" border align="left">
-        <Head1 eyebrow="Opening">
+        <Head1>
           Why Marketing Became a Machine Learning Domain
         </Head1>
 
@@ -448,11 +448,7 @@ export default function Week02Marketing() {
         </div>
 
         <div className="w-full">
-          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              The strategic question
-            </div>
-            <blockquote className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">            <blockquote className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               The strategic question is not where to &quot;use AI&quot; in
               isolation, but which customer and budget decisions should be
               machine-assisted.
@@ -472,7 +468,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["customer-lifecycle"]}
       >
-        <Head1 eyebrow="A chain of decisions">
+        <Head1>
           The Customer Lifecycle as a Decision Chain
         </Head1>
 
@@ -639,7 +635,7 @@ export default function Week02Marketing() {
           clean readings. Then the say/do gap as two unequal rules.
       ================================================================== */}
       <Slide id="consumer-insight" border align="left">
-        <Head1 eyebrow="Listening at scale">
+        <Head1>
           Consumer Insight from Unstructured Signals
         </Head1>
 
@@ -923,7 +919,7 @@ export default function Week02Marketing() {
           clusters drawn around the people.            [quiz topic]
       ================================================================== */}
       <Slide id="segmentation" border align="left">
-        <Head1 eyebrow="Who belongs together">
+        <Head1>
           Segmentation Beyond Static Demographics
         </Head1>
 
@@ -1145,7 +1141,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["targeting"]}
       >
-        <Head1 eyebrow="Who sees what">
+        <Head1>
           Targeting and Next-Best-Audience Decisions
         </Head1>
 
@@ -1319,9 +1315,7 @@ export default function Week02Marketing() {
         </div>
 
         <div className="w-full">
-          <div className="mt-8 max-w-4xl border border-[var(--crimson)]/45 p-6 md:p-8">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Test it</div>
-            <p className="mt-3 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
+          <div className="mt-8 max-w-4xl border border-[var(--crimson)]/45 p-6 md:p-8">            <p className="mt-3 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
               Managers should test whether algorithmic targeting improves
               business value or merely shifts exposure toward already active
               customers.
@@ -1336,7 +1330,7 @@ export default function Week02Marketing() {
           leadership decides.
       ================================================================== */}
       <Slide id="positioning" border align="left">
-        <Head1 eyebrow="What resonates">
+        <Head1>
           Positioning Intelligence and Message-Market Fit
         </Head1>
 
@@ -1520,7 +1514,7 @@ export default function Week02Marketing() {
           rule list. The trust curve that rises and then turns over.
       ================================================================== */}
       <Slide id="personalization" border align="left">
-        <Head1 eyebrow="A policy, not a mail merge">
+        <Head1>
           Personalization as a Managed Policy
         </Head1>
 
@@ -1638,11 +1632,7 @@ export default function Week02Marketing() {
         </div>
 
         <div className="mt-7 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-10">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              When not to personalize
-            </div>
-            <p className={`${BODY} mt-3`}>
+          <div className="md:pr-10">            <p className={`${BODY} mt-3`}>
               Effective personalization requires rules for when not to
               personalize, especially when data is sparse, sensitive, or likely
               to overfit recent behavior.
@@ -1706,11 +1696,7 @@ export default function Week02Marketing() {
             </svg>
           </div>
 
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-10">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Over-personalization
-            </div>
-            <p className={`${BODY} mt-3`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-10">            <p className={`${BODY} mt-3`}>
               Over-personalization can feel intrusive, narrow exploration, and
               erode trust if consumers perceive manipulation.
             </p>
@@ -1794,7 +1780,7 @@ export default function Week02Marketing() {
           leaders. Three failure modes struck through.   [quiz topic]
       ================================================================== */}
       <Slide id="recommendation-systems" border align="left">
-        <Head1 eyebrow="Ranking under constraints">
+        <Head1>
           Recommendation Systems in Commerce
         </Head1>
 
@@ -2020,7 +2006,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["creative-systems"]}
       >
-        <Head1 eyebrow="Content operations">
+        <Head1>
           Creative Systems and Content Operations
         </Head1>
 
@@ -2228,11 +2214,7 @@ export default function Week02Marketing() {
         </div>
 
         <div className="w-full">
-          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Marketing leadership owns
-            </div>
-            <blockquote className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">            <blockquote className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               Marketing leadership still owns taste, positioning discipline, and
               the decision about which ideas deserve distribution.
             </blockquote>
@@ -2246,7 +2228,7 @@ export default function Week02Marketing() {
           set on one time ruler because they differ in horizon.
       ================================================================== */}
       <Slide id="pricing-promotion" border align="left">
-        <Head1 eyebrow="Price and promotion">
+        <Head1>
           Pricing and Promotional Optimization
         </Head1>
 
@@ -2329,7 +2311,7 @@ export default function Week02Marketing() {
           variation, set against each other across one rule.
       ================================================================== */}
       <Slide id="dynamic-pricing" border align="left">
-        <Head1 eyebrow="Prices that move" signal>
+        <Head1>
           Revenue Lift, Brand Risk, and Dynamic Pricing
         </Head1>
 
@@ -2381,11 +2363,7 @@ export default function Week02Marketing() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 max-w-4xl border border-[var(--crimson)]/45 p-7 md:p-9">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              The managerial challenge
-            </div>
-            <p className="mt-4 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+          <div className="mt-12 max-w-4xl border border-[var(--crimson)]/45 p-7 md:p-9">            <p className="mt-4 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
               The managerial challenge is to separate economically rational price
               adaptation from practices that damage trust or invite regulatory
               scrutiny.
@@ -2415,7 +2393,7 @@ export default function Week02Marketing() {
           conflict as two opposed arrows.
       ================================================================== */}
       <Slide id="campaign-optimization" border align="left">
-        <Head1 eyebrow="One score, many channels">
+        <Head1>
           Campaign Optimization Across Channels
         </Head1>
 
@@ -2503,7 +2481,7 @@ export default function Week02Marketing() {
           sealed box. Then the three conditions for the control model.
       ================================================================== */}
       <Slide id="budget-bidding" border align="left">
-        <Head1 eyebrow="Spend decisions">Budget Allocation, Bidding, and Pacing</Head1>
+        <Head1>Budget Allocation, Bidding, and Pacing</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_20rem] md:gap-14">
           <div>
@@ -2592,7 +2570,7 @@ export default function Week02Marketing() {
           Only the crimson increment is what the campaign caused. [quiz topic]
       ================================================================== */}
       <Slide id="experimentation" border align="left">
-        <Head1 eyebrow="What actually caused it">
+        <Head1>
           Experimentation and Incrementality
         </Head1>
 
@@ -2667,7 +2645,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["causal-inference"]}
       >
-        <Head1 eyebrow="When a clean test is not possible">
+        <Head1>
           Causal Inference Without Clean Randomization
         </Head1>
 
@@ -2720,11 +2698,7 @@ export default function Week02Marketing() {
         </div>
 
         <div className="w-full">
-          <figure className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              What managers need to ask
-            </div>
-            <blockquote className="mt-3 font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+          <figure className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">            <blockquote className="mt-3 font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Managers do not need to master the statistics, but they do need to
               ask what assumptions make the estimated lift believable.
             </blockquote>
@@ -2738,7 +2712,7 @@ export default function Week02Marketing() {
           over time. Closed by three overlapping lenses.
       ================================================================== */}
       <Slide id="attribution-mmm" border align="left">
-        <Head1 eyebrow="Two instruments">
+        <Head1>
           Attribution, Marketing Mix Models, and Their Limits
         </Head1>
 
@@ -2843,7 +2817,7 @@ export default function Week02Marketing() {
           line. Then the three foundations holding up the beam.
       ================================================================== */}
       <Slide id="crm-orchestration" border align="left">
-        <Head1 eyebrow="Across the journey">CRM Orchestration Across the Journey</Head1>
+        <Head1>CRM Orchestration Across the Journey</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_1fr] md:gap-14">
           <div>
@@ -2932,7 +2906,7 @@ export default function Week02Marketing() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="retention-clv" border align="left">
-        <Head1 eyebrow="Who to keep">
+        <Head1>
           Retention, Churn, and Customer Lifetime Value
         </Head1>
 
@@ -2993,9 +2967,7 @@ export default function Week02Marketing() {
 
         <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
-            <div className="border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-              <div className={`${MICRO} text-[var(--crimson)]`}>The managerial danger</div>
-              <p className="mt-3 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+            <div className="border-l-2 border-[var(--crimson)] pl-6 md:pl-8">              <p className="mt-3 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
                 The managerial danger is treating predicted value as destiny and
                 underinvesting in customers whose future potential can still be
                 shaped.
@@ -3028,7 +3000,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["conversational-commerce"]}
       >
-        <Head1 eyebrow="Chat, voice, messaging">
+        <Head1>
           Conversational Commerce and Service Automation
         </Head1>
 
@@ -3128,7 +3100,7 @@ export default function Week02Marketing() {
           clauses. Three strategic capabilities.          [quiz topic]
       ================================================================== */}
       <Slide id="privacy-consent" border align="left">
-        <Head1 eyebrow="Trust architecture">
+        <Head1>
           Privacy, Consent, and Trust Architecture
         </Head1>
 
@@ -3216,7 +3188,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["manipulation-bias"]}
       >
-        <Head1 eyebrow="Consumer welfare" signal>
+        <Head1>
           Manipulation, Bias, and Consumer Welfare
         </Head1>
 
@@ -3330,7 +3302,7 @@ export default function Week02Marketing() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="operating-model" border align="left">
-        <Head1 eyebrow="How the work is organized">
+        <Head1>
           Marketing Operating Model for AI
         </Head1>
 
@@ -3424,7 +3396,7 @@ export default function Week02Marketing() {
         align="left"
         quizData={quiz["build-buy-partner"]}
       >
-        <Head1 eyebrow="The stack question">
+        <Head1>
           Build, Buy, or Partner: The Stack Question
         </Head1>
 
@@ -3512,7 +3484,7 @@ export default function Week02Marketing() {
       ================================================================== */}
       <Slide id="synthesis" border align="left" className="relative overflow-hidden">
 
-        <Head1 eyebrow="What to carry forward">Synthesis and Managerial Action</Head1>
+        <Head1>Synthesis and Managerial Action</Head1>
 
         <div className="w-full">
           <ol

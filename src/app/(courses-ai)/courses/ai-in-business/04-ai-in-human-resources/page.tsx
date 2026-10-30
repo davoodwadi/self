@@ -99,7 +99,7 @@ export default function Week04HumanResources() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="why-hr-ai" border align="left">
-        <Head1 eyebrow="Opening">Why HR Became an AI Domain</Head1>
+        <Head1>Why HR Became an AI Domain</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-7 max-w-4xl`}>
@@ -255,7 +255,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["decision-architecture"]}
       >
-        <Head1 eyebrow="Strategy into people decisions">
+        <Head1>
           The HR Function as a Decision Architecture
         </Head1>
 
@@ -494,7 +494,7 @@ export default function Week04HumanResources() {
           each carrying its own sources of gain.
       ================================================================== */}
       <Slide id="value-creation" border align="left">
-        <Head1 eyebrow="Where the value comes from">
+        <Head1>
           Value Creation in AI-Enabled HR
         </Head1>
 
@@ -575,7 +575,7 @@ export default function Week04HumanResources() {
           model complexity.
       ================================================================== */}
       <Slide id="hr-data-signal" border align="left">
-        <Head1 eyebrow="What the models read">
+        <Head1>
           HR Data, Signal Quality, and Context
         </Head1>
 
@@ -700,7 +700,7 @@ export default function Week04HumanResources() {
           struck tag.                                       [quiz topic]
       ================================================================== */}
       <Slide id="method-to-task" border align="left">
-        <Head1 eyebrow="The right tool for the task">
+        <Head1>
           Matching AI Method to the HR Task
         </Head1>
 
@@ -782,7 +782,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["human-judgment"]}
       >
-        <Head1 eyebrow="High stakes" signal>
+        <Head1>
           Human Judgment in High-Stakes People Decisions
         </Head1>
 
@@ -864,11 +864,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Human oversight
-            </div>
-            <p className={`${BODY} mt-3 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">            <p className={`${BODY} mt-3 max-w-4xl`}>
               Human oversight is most important when evidence is incomplete,
               context is sensitive, or the decision can materially alter a
               person&apos;s trajectory.
@@ -926,7 +922,7 @@ export default function Week04HumanResources() {
           Transactional throughput set against enterprise outcomes.
       ================================================================== */}
       <Slide id="measuring-success" border align="left">
-        <Head1 eyebrow="What counts as success">
+        <Head1>
           Measuring Success Beyond Efficiency
         </Head1>
 
@@ -1034,7 +1030,7 @@ export default function Week04HumanResources() {
           applicants set against better access.
       ================================================================== */}
       <Slide id="sourcing" border align="left">
-        <Head1 eyebrow="Finding talent">Sourcing and Candidate Discovery</Head1>
+        <Head1>Sourcing and Candidate Discovery</Head1>
 
         <div className="mt-9 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_25rem] md:gap-14">
           <div>
@@ -1188,7 +1184,7 @@ export default function Week04HumanResources() {
           structured review.                                 [quiz topic]
       ================================================================== */}
       <Slide id="resume-screening" border align="left">
-        <Head1 eyebrow="Matching">Resume Screening and Candidate Matching</Head1>
+        <Head1>Resume Screening and Candidate Matching</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-7 max-w-4xl`}>
@@ -1321,11 +1317,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-8 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-[1fr_20rem] md:gap-12">
-            <div className="border border-[var(--crimson)]/45 p-6 md:p-7">
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Usefulness depends on
-              </div>
-              <p className={`${LEAD} mt-3`}>
+            <div className="border border-[var(--crimson)]/45 p-6 md:p-7">              <p className={`${LEAD} mt-3`}>
                 Their usefulness depends on whether job requirements are
                 current, outcome labels are reliable, and the model is not
                 simply replicating historical preference.
@@ -1381,7 +1373,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["interview-intelligence"]}
       >
-        <Head1 eyebrow="Assessment">
+        <Head1>
           Interview Intelligence and Structured Assessment
         </Head1>
 
@@ -1536,7 +1528,7 @@ export default function Week04HumanResources() {
           accountability.
       ================================================================== */}
       <Slide id="candidate-experience" border align="left">
-        <Head1 eyebrow="Recruiting operations">
+        <Head1>
           Candidate Experience and Recruiting Operations
         </Head1>
 
@@ -1661,7 +1653,7 @@ export default function Week04HumanResources() {
           employment risk kept by the employer.              [quiz topic]
       ================================================================== */}
       <Slide id="fairness-hiring" border align="left">
-        <Head1 eyebrow="Under scrutiny" signal>
+        <Head1>
           Fairness, Adverse Impact, and Hiring Governance
         </Head1>
 
@@ -1769,16 +1761,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-2 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Should an employer accept a materially faster recruiting process
-              if the scoring logic remains only partially explainable to
-              candidates, managers, and legal reviewers?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Should an employer accept a materially faster recruiting process if the scoring logic remains only partially explainable to candidates, managers, and legal reviewers?
+        </Discussion1>
       </Slide>
 
       <ModulePlate2
@@ -1798,7 +1783,7 @@ export default function Week04HumanResources() {
           off course by three shocks.
       ================================================================== */}
       <Slide id="workforce-forecasting" border align="left">
-        <Head1 eyebrow="Labor demand">Workforce Demand Forecasting</Head1>
+        <Head1>Workforce Demand Forecasting</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1980,7 +1965,7 @@ export default function Week04HumanResources() {
           trust.                                             [quiz topic]
       ================================================================== */}
       <Slide id="skills-graphs" border align="left">
-        <Head1 eyebrow="Internal labor market">
+        <Head1>
           Skills Graphs and the Internal Labor Market
         </Head1>
 
@@ -2127,16 +2112,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Should firms rely on inferred skills data to shape promotion and
-              mobility opportunities when many high-value capabilities are still
-              informal, relational, or poorly documented?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Should firms rely on inferred skills data to shape promotion and mobility opportunities when many high-value capabilities are still informal, relational, or poorly documented?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2150,7 +2128,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["scheduling-staffing"]}
       >
-        <Head1 eyebrow="Frontline allocation">
+        <Head1>
           Scheduling, Staffing, and Frontline Allocation
         </Head1>
 
@@ -2304,7 +2282,7 @@ export default function Week04HumanResources() {
           tests for a legitimate action.
       ================================================================== */}
       <Slide id="attrition-risk" border align="left">
-        <Head1 eyebrow="Before exit">Attrition Risk and Retention Intervention</Head1>
+        <Head1>Attrition Risk and Retention Intervention</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-7 max-w-4xl`}>
@@ -2431,16 +2409,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              When does predictive retention become a strategic advantage, and
-              when does it become an intrusive practice that changes the
-              employment relationship for the worse?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          When does predictive retention become a strategic advantage, and when does it become an intrusive practice that changes the employment relationship for the worse?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2449,7 +2420,7 @@ export default function Week04HumanResources() {
           Four uses. Visibility tipping into surveillance.
       ================================================================== */}
       <Slide id="network-analysis" border align="left">
-        <Head1 eyebrow="How work flows">
+        <Head1>
           Organizational Network Analysis and Collaboration Patterns
         </Head1>
 
@@ -2644,7 +2615,7 @@ export default function Week04HumanResources() {
           carried through to real opportunities.
       ================================================================== */}
       <Slide id="personalized-learning" border align="left">
-        <Head1 eyebrow="Capability building">
+        <Head1>
           Personalized Learning and Capability Building
         </Head1>
 
@@ -2807,7 +2778,7 @@ export default function Week04HumanResources() {
           with ambiguity escalated to people.
       ================================================================== */}
       <Slide id="manager-copilots" border align="left">
-        <Head1 eyebrow="Manager support">
+        <Head1>
           Knowledge Retrieval and Manager Copilots
         </Head1>
 
@@ -2947,7 +2918,7 @@ export default function Week04HumanResources() {
           accountability.
       ================================================================== */}
       <Slide id="performance-management" border align="left">
-        <Head1 eyebrow="Calibration">
+        <Head1>
           Performance Management and Goal Calibration
         </Head1>
 
@@ -3079,7 +3050,7 @@ export default function Week04HumanResources() {
           The three sensitive decisions.                     [quiz topic]
       ================================================================== */}
       <Slide id="pay-equity" border align="left">
-        <Head1 eyebrow="Rewards" signal>
+        <Head1>
           Rewards, Promotion, and Pay Equity Analytics
         </Head1>
 
@@ -3245,16 +3216,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Should firms use algorithmic recommendations in promotion and
-              compensation cycles if doing so improves consistency but may
-              narrow managerial discretion and contextual judgment?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Should firms use algorithmic recommendations in promotion and compensation cycles if doing so improves consistency but may narrow managerial discretion and contextual judgment?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -3268,7 +3232,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["productivity-analytics"]}
       >
-        <Head1 eyebrow="Monitoring">
+        <Head1>
           Productivity Analytics and Responsible Monitoring
         </Head1>
 
@@ -3359,9 +3323,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="mt-6 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-10">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Used well</div>
-            <p className={`${BODY} mt-2.5`}>
+          <div className="md:pr-10">            <p className={`${BODY} mt-2.5`}>
               Used well, productivity analytics can support redesign of work,
               team staffing, and manager coaching rather than individual
               policing.
@@ -3384,9 +3346,7 @@ export default function Week04HumanResources() {
               </span>
             </div>
           </div>
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-10">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Used poorly</div>
-            <p className={`${BODY} mt-2.5`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-10">            <p className={`${BODY} mt-2.5`}>
               Used poorly, the same tools can create fear, gaming behavior, and
               degraded trust across the workforce.
             </p>
@@ -3403,15 +3363,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Where is the boundary between legitimate operational analytics and
-              unacceptable employee surveillance in knowledge-intensive work?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Where is the boundary between legitimate operational analytics and unacceptable employee surveillance in knowledge-intensive work?
+        </Discussion1>
       </Slide>
 
       <ModulePlate2
@@ -3430,7 +3384,7 @@ export default function Week04HumanResources() {
           What distorts what employees choose to say.
       ================================================================== */}
       <Slide id="employee-listening" border align="left">
-        <Head1 eyebrow="Listening at scale">
+        <Head1>
           Employee Listening and Sentiment Interpretation
         </Head1>
 
@@ -3600,7 +3554,7 @@ export default function Week04HumanResources() {
           cause or its remedy.                               [quiz topic]
       ================================================================== */}
       <Slide id="dei-analytics" border align="left">
-        <Head1 eyebrow="Inclusion analytics" signal>
+        <Head1>
           DEI Analytics and Representation Risk
         </Head1>
 
@@ -3755,7 +3709,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["case-triage"]}
       >
-        <Head1 eyebrow="Employee relations">
+        <Head1>
           Employee Relations, Case Triage, and Policy Guidance
         </Head1>
 
@@ -3918,7 +3872,7 @@ export default function Week04HumanResources() {
           analysis drawn inside what is technically possible.
       ================================================================== */}
       <Slide id="privacy-law" border align="left">
-        <Head1 eyebrow="Legal boundaries" signal>
+        <Head1>
           Privacy, Consent, and Employment Law Boundaries
         </Head1>
 
@@ -4034,16 +3988,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-2 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Which categories of workforce data should remain off-limits for
-              predictive modeling even if they would improve forecast accuracy
-              or managerial control?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Which categories of workforce data should remain off-limits for predictive modeling even if they would improve forecast accuracy or managerial control?
+        </Discussion1>
       </Slide>
 
       <ModulePlate2
@@ -4062,7 +4009,7 @@ export default function Week04HumanResources() {
           value lives in the columns linked to it.           [quiz topic]
       ================================================================== */}
       <Slide id="governance-lifecycle" border align="left">
-        <Head1 eyebrow="Controls">AI Governance for HR Across the Lifecycle</Head1>
+        <Head1>AI Governance for HR Across the Lifecycle</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4203,7 +4150,7 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["build-buy-partner"]}
       >
-        <Head1 eyebrow="Sourcing capability">
+        <Head1>
           Build, Buy, or Partner in the HR Technology Stack
         </Head1>
 
@@ -4291,16 +4238,9 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Which HR AI capabilities should be treated as strategic internal
-              assets, and which are mature enough to buy as standardized
-              infrastructure?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Which HR AI capabilities should be treated as strategic internal assets, and which are mature enough to buy as standardized infrastructure?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -4309,7 +4249,7 @@ export default function Week04HumanResources() {
           set against claims of objectivity.
       ================================================================== */}
       <Slide id="change-trust" border align="left">
-        <Head1 eyebrow="Adoption">Change Management and Workforce Trust</Head1>
+        <Head1>Change Management and Workforce Trust</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-7 max-w-4xl`}>
@@ -4445,7 +4385,7 @@ export default function Week04HumanResources() {
           to managerial capability.
       ================================================================== */}
       <Slide id="talent-strategy" border align="left">
-        <Head1 eyebrow="People and skills">
+        <Head1>
           Talent Strategy for an AI-Enabled HR Function
         </Head1>
 
@@ -4584,7 +4524,7 @@ export default function Week04HumanResources() {
           HR domain.
       ================================================================== */}
       <Slide id="operating-model" border align="left">
-        <Head1 eyebrow="At enterprise scale">
+        <Head1>
           Strategic Operating Model for Enterprise HR AI
         </Head1>
 
@@ -4707,7 +4647,7 @@ export default function Week04HumanResources() {
         className="relative overflow-hidden"
       >
 
-        <Head1 eyebrow="What to carry forward">
+        <Head1>
           Conclusion: HR as a Strategic Intelligence Function
         </Head1>
 

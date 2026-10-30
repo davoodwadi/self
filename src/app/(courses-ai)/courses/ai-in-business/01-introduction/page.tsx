@@ -98,7 +98,7 @@ export default function Week01Introduction() {
           right, and the strategic goal set apart as a signed verdict.
       ================================================================== */}
       <Slide id="why-leaders" border align="left">
-        <Head1 eyebrow="Opening">
+        <Head1>
           Why Business Leaders Must Understand AI
         </Head1>
 
@@ -251,11 +251,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <figure className="mt-10 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              The strategic goal
-            </div>
-            <blockquote className={`${DISPLAY} mt-2`}>
+          <figure className="mt-10 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">            <blockquote className={`${DISPLAY} mt-2`}>
               The primary strategic goal is knowing which business decisions can
               be improved with machine assistance.
             </blockquote>
@@ -275,7 +271,7 @@ export default function Week01Introduction() {
         quizData={quiz["business-decisions"]}
       >
         <div>
-          <Head1 eyebrow="The unit of value">
+          <Head1>
             Business as a Series of Decisions
           </Head1>
           <p className={`${LEAD} mt-7 max-w-3xl !text-[var(--charcoal-light)]`}>
@@ -284,16 +280,6 @@ export default function Week01Introduction() {
         </div>
 
         <div className="mt-10 w-full max-w-5xl">
-          <div>
-            <div
-              className={`${MICRO} grid grid-cols-1 gap-2 border-b border-[var(--charcoal)]/15 pb-3 text-[var(--charcoal-light)]/45 md:grid-cols-[10rem_1fr_19rem] md:gap-8`}
-            >
-              <span>Function</span>
-              <span>The choice, made again and again</span>
-              <span className="hidden md:block">Operational choice</span>
-            </div>
-          </div>
-
           {[
             {
               n: "01",
@@ -549,9 +535,6 @@ export default function Week01Introduction() {
                   >
                     {row.n}
                   </span>
-                  <span className="font-sans text-[1rem] font-medium tracking-normal text-[var(--charcoal)] md:mt-2 md:block">
-                    {row.who}
-                  </span>
                 </div>
                 <p className={BODY}>
                   {row.line}
@@ -592,7 +575,7 @@ export default function Week01Introduction() {
           and rigid. Right: a scatter of data with a fitted line.
       ================================================================== */}
       <Slide id="defining-ai" border align="left">
-        <Head1 eyebrow="Definition">
+        <Head1>
           Defining Artificial Intelligence
         </Head1>
 
@@ -609,11 +592,7 @@ export default function Week01Introduction() {
 
         <div className="mt-12 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-10 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-14">
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Traditional software
-              </div>
-              <p className={`${BODY} mt-4 !text-[var(--charcoal-light)]`}>
+            <div>              <p className={`${BODY} mt-4 !text-[var(--charcoal-light)]`}>
                 Traditional software follows rigid rules written directly by
                 human programmers.
               </p>
@@ -681,11 +660,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-14">
-            <div>
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Modern AI systems
-              </div>
-              <p className={`${BODY} mt-4`}>
+            <div>              <p className={`${BODY} mt-4`}>
                 Modern AI systems learn patterns directly from historical data.
               </p>
             </div>
@@ -762,7 +737,7 @@ export default function Week01Introduction() {
           frames, each label tied to its frame by a leader line.      [quiz]
       ================================================================== */}
       <Slide id="ai-ml-dl" border align="left" quizData={quiz["ai-ml-dl"]}>
-        <Head1 eyebrow="Three nested terms">
+        <Head1>
           Artificial Intelligence, Machine Learning, and Deep Learning
         </Head1>
 
@@ -789,10 +764,6 @@ export default function Week01Introduction() {
               },
             ].map((layer) => (
               <div key={layer.tag}>
-                <div className="flex items-center gap-3">
-                  <span className={`h-px w-8 shrink-0 ${layer.rule}`} />
-                  <span className={`${MICRO} ${layer.tone}`}>{layer.tag}</span>
-                </div>
                 <p className={`${BODY} mt-2.5 max-w-xl`}>
                   {layer.line}
                 </p>
@@ -938,11 +909,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Why it matters
-            </div>
-            <p className={`${LEAD} mt-3`}>
+          <div className="mt-14 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">            <p className={`${LEAD} mt-3`}>
               Deep learning works exceptionally well on complex data such as
               images, audio, and free-form text.
             </p>
@@ -961,17 +928,13 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["predictive-generative"]}
       >
-        <Head1 eyebrow="Two families">
+        <Head1>
           Predictive AI Versus Generative AI
         </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                Predictive AI
-              </div>
-              <p className={`${BODY} mt-4`}>
+            <div>              <p className={`${BODY} mt-4`}>
                 Predictive AI analyzes past data to forecast future events,
                 estimate numbers, or classify items into categories.
               </p>
@@ -1068,11 +1031,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div>
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Generative AI
-              </div>
-              <p className={`${BODY} mt-4`}>
+            <div>              <p className={`${BODY} mt-4`}>
                 Generative AI creates new content such as text, images, audio,
                 or computer code based on learned patterns.
               </p>
@@ -1194,7 +1153,7 @@ export default function Week01Introduction() {
           carries the warning and is the only one marked in crimson.
       ================================================================== */}
       <Slide id="chatbots-to-agents" border align="left">
-        <Head1 eyebrow="The autonomy staircase">
+        <Head1>
           From Chatbots to Autonomous Agents
         </Head1>
 
@@ -1244,15 +1203,6 @@ export default function Week01Introduction() {
                       }`}
                     >
                       {step.n}
-                    </span>
-                    <span
-                      className={`${MICRO} ${
-                        step.warn
-                          ? "text-[var(--crimson)]"
-                          : "text-[var(--charcoal-light)]/60"
-                      }`}
-                    >
-                      {step.tag}
                     </span>
                   </div>
                   <p className={`${BODY} mt-1 max-w-2xl`}>
@@ -1487,7 +1437,7 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="cost-of-prediction" border align="left">
         <div>
-          <Head1 eyebrow="A familiar economic pattern">
+          <Head1>
             The Cost of Prediction Drops to Zero
           </Head1>
           <p className={`${BODY} mt-7 max-w-3xl !text-[var(--charcoal-light)]`}>
@@ -1514,17 +1464,7 @@ export default function Week01Introduction() {
               now: true,
             },
           ].map((era) => (
-            <div key={era.tag}>
-              <div
-                className={`${MICRO} ${
-                  era.now
-                    ? "text-[var(--crimson)]"
-                    : "text-[var(--charcoal-light)]/50"
-                }`}
-              >
-                {era.tag}
-              </div>
-              <p
+            <div key={era.tag}>              <p
                 className={`${BODY} mt-3 ${
                   era.now ? "" : "!text-[var(--charcoal-light)]"
                 }`}
@@ -1644,23 +1584,17 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["prediction-judgment"]}
       >
-        <Head1 eyebrow="What machines cannot do">
+        <Head1>
           Prediction Versus Judgment
         </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Prediction
-            </div>
-            <p className={`${BODY} mt-3`}>
+          <div className="md:pr-12">            <p className={`${BODY} mt-3`}>
               A prediction is an estimate of what is likely to happen when
               information is incomplete.
             </p>
           </div>
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Judgment</div>
-            <p className={`${BODY} mt-3`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">            <p className={`${BODY} mt-3`}>
               A judgment is an evaluation of what outcome matters most, what is
               fair, and what risk is acceptable.
             </p>
@@ -1668,11 +1602,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-8 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-              The limit
-            </div>
-            <p className={`${BODY} mt-2 !text-[var(--charcoal-light)]`}>
+          <div className="mt-8 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">            <p className={`${BODY} mt-2 !text-[var(--charcoal-light)]`}>
               Machines handle prediction at scale, but they do not possess moral
               principles, business ethics, or context.
             </p>
@@ -1822,7 +1752,7 @@ export default function Week01Introduction() {
           a single mandate at the foot.
       ================================================================== */}
       <Slide id="three-sources-of-value" border align="left">
-        <Head1 eyebrow="Where the money is">
+        <Head1>
           The Three Sources of Business Value
         </Head1>
 
@@ -1854,11 +1784,7 @@ export default function Week01Introduction() {
             >
               <div className="font-sans text-[2.75rem] font-black leading-none tracking-[-0.04em] text-[var(--charcoal)]/12 md:text-[3.5rem]">
                 {col.n}
-              </div>
-              <div className={`${MICRO} mt-4 text-[var(--champagne)]`}>
-                {col.tag}
-              </div>
-              <p className={`${BODY} mt-3`}>
+              </div>              <p className={`${BODY} mt-3`}>
                 {col.line}
               </p>
             </div>
@@ -2023,7 +1949,7 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="plug-and-play" border align="left">
         <div>
-          <Head1 eyebrow="The commoditisation trap">
+          <Head1>
             The Fallacy of Plug and Play
           </Head1>
           <p className={`${DISPLAY} mt-6 max-w-4xl`}>
@@ -2034,11 +1960,7 @@ export default function Week01Introduction() {
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                Public models and subscriptions
-              </div>
-              <p className={`${BODY} mt-3 !text-[var(--charcoal-light)]`}>
+            <div>              <p className={`${BODY} mt-3 !text-[var(--charcoal-light)]`}>
                 Anyone can purchase the same public models and software
                 subscriptions.
               </p>
@@ -2097,11 +2019,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div>
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Unique workflows and proprietary data
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Real business advantage comes from connecting AI directly to
                 unique business workflows and high-quality proprietary data.
               </p>
@@ -2256,7 +2174,7 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["front-office"]}
       >
-        <Head1 eyebrow="Front office | the customer sees this" signal>
+        <Head1>
           Front-Office Applications: Customer Engagement
         </Head1>
 
@@ -2281,11 +2199,7 @@ export default function Week01Introduction() {
                   className={`py-5 ${
                     i > 0 ? "border-t border-[var(--charcoal)]/8" : "pt-0"
                   }`}
-                >
-                  <div className={`${MICRO} text-[var(--champagne)]`}>
-                    {pane.tag}
-                  </div>
-                  <p className={`${BODY} mt-2.5 max-w-2xl`}>
+                >                  <p className={`${BODY} mt-2.5 max-w-2xl`}>
                     {pane.line}
                   </p>
                 </div>
@@ -2518,9 +2432,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
-            <div className={`${MICRO} text-[var(--crimson)]`}>The goal</div>
-            <p className={`${LEAD} mt-3`}>
+          <div className="mt-12 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">            <p className={`${LEAD} mt-3`}>
               The goal is reducing customer friction while maintaining a
               consistent and trustworthy brand image.
             </p>
@@ -2534,7 +2446,7 @@ export default function Week01Introduction() {
           to ink. Nobody outside the firm sees this work.
       ================================================================== */}
       <Slide id="back-office" border align="left">
-        <Head1 eyebrow="Back office | internal workflows">
+        <Head1>
           Back-Office Applications: Operations and Finance
         </Head1>
 
@@ -2559,11 +2471,7 @@ export default function Week01Introduction() {
                   className={`py-5 ${
                     i > 0 ? "border-t border-[var(--charcoal)]/8" : "pt-0"
                   }`}
-                >
-                  <div className={`${MICRO} text-[var(--champagne)]`}>
-                    {row.tag}
-                  </div>
-                  <p className={`${BODY} mt-2.5 max-w-2xl`}>
+                >                  <p className={`${BODY} mt-2.5 max-w-2xl`}>
                     {row.line}
                   </p>
                 </div>
@@ -2694,17 +2602,13 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["human-in-the-loop"]}
       >
-        <Head1 eyebrow="Where the human sits">
+        <Head1>
           Human in the Loop Versus Full Autonomy
         </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Full autonomy
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Full autonomy means the computer makes the decision and takes
                 action without waiting for human approval.
               </p>
@@ -2821,11 +2725,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div>
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Human-in-the-loop
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Human-in-the-loop means a person must review and approve the
                 machine recommendation before it takes effect.
               </p>
@@ -2987,7 +2887,7 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="data-raw-material" border align="left">
         <div>
-          <Head1 eyebrow="Raw material">
+          <Head1>
             Data Is the Raw Material of AI
           </Head1>
           <p className={`${DISPLAY} mt-8`}>
@@ -2997,11 +2897,7 @@ export default function Week01Introduction() {
 
         <div className="mt-10 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Structured data
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Structured data includes numbers, dates, and clear tables like
                 spreadsheet rows or SQL databases.
               </p>
@@ -3080,11 +2976,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div>
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Unstructured data
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Unstructured data includes emails, video footage, audio
                 recordings, customer reviews, and scanned PDFs.
               </p>
@@ -3148,11 +3040,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Why it matters
-            </div>
-            <p className={`${LEAD} mt-3`}>
+          <div className="mt-14 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">            <p className={`${LEAD} mt-3`}>
               Modern deep learning allows companies to extract clear business
               insights from unstructured data for the first time.
             </p>
@@ -3172,7 +3060,7 @@ export default function Week01Introduction() {
         quizData={quiz["data-quality"]}
       >
         <div>
-          <Head1 eyebrow="Garbage in, garbage out">
+          <Head1>
             Data Quality, Bias, and the Garbage-In Principle
           </Head1>
           <p className={`${DISPLAY} mt-6`}>
@@ -3181,20 +3069,12 @@ export default function Week01Introduction() {
         </div>
 
         <div className="mt-8 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Past human biases
-            </div>
-            <p className={`${BODY} mt-3`}>
+          <div className="md:pr-12">            <p className={`${BODY} mt-3`}>
               If historical data contains past human biases or missing records,
               the model will learn and repeat those errors.
             </p>
           </div>
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Incomplete records and bad labels
-            </div>
-            <p className={`${BODY} mt-3`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">            <p className={`${BODY} mt-3`}>
               Incomplete records and bad labels create noisy forecasts that
               mislead decision makers.
             </p>
@@ -3408,7 +3288,7 @@ export default function Week01Introduction() {
           the direction of travel.
       ================================================================== */}
       <Slide id="flywheel" border align="left">
-        <Head1 eyebrow="A cycle, not a launch">
+        <Head1>
           The Feedback Loop and Data Flywheel
         </Head1>
 
@@ -3441,11 +3321,7 @@ export default function Week01Introduction() {
                   <span className={`${MICRO} pt-1.5 text-[var(--champagne)]`}>
                     {stage.n}
                   </span>
-                  <div>
-                    <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                      {stage.tag}
-                    </div>
-                    <p className={`${BODY} mt-1.5 max-w-xl`}>
+                  <div>                    <p className={`${BODY} mt-1.5 max-w-xl`}>
                       {stage.line}
                     </p>
                   </div>
@@ -3720,7 +3596,7 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["why-projects-fail"]}
       >
-        <Head1 eyebrow="Post-mortem">
+        <Head1>
           Why Business AI Projects Fail
         </Head1>
 
@@ -3750,9 +3626,6 @@ export default function Week01Introduction() {
                 <span className={`${MICRO} text-[var(--champagne)]`}>
                   {cause.n}
                 </span>
-                <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                  {cause.tag}
-                </span>
               </div>
               <p className={`${BODY} mt-3`}>
                 {cause.line}
@@ -3761,11 +3634,7 @@ export default function Week01Introduction() {
           ))}
         </div>
 
-        <div className="mt-7 w-full max-w-5xl border-l-2 border-[var(--crimson)] pl-6">
-          <div className={`${MICRO} text-[var(--crimson)]`}>
-            What adoption actually requires
-          </div>
-          <p className={`${LEAD} mt-2 max-w-4xl`}>
+        <div className="mt-7 w-full max-w-5xl border-l-2 border-[var(--crimson)] pl-6">          <p className={`${LEAD} mt-2 max-w-4xl`}>
             Clear executive sponsorship, realistic timelines, and change
             management are essential for adoption.
           </p>
@@ -4009,17 +3878,13 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["hallucinations"]}
       >
-        <Head1 eyebrow="Two failures of trust">
+        <Head1>
           Hallucinations, Accuracy, and the Black Box Problem
         </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
-            <div>
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Hallucinations
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Generative models can produce convincing answers that are
                 factually wrong, known as hallucinations.
               </p>
@@ -4112,11 +3977,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Black boxes
-              </div>
-              <p className={`${BODY} mt-3`}>
+            <div>              <p className={`${BODY} mt-3`}>
                 Many deep learning models are black boxes, meaning humans cannot
                 easily trace how the system reached a conclusion.
               </p>
@@ -4239,11 +4100,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-8 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-              Regulated industries
-            </div>
-            <p className={`${BODY} mt-2 !text-[var(--charcoal-light)]`}>
+          <div className="mt-8 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">            <p className={`${BODY} mt-2 !text-[var(--charcoal-light)]`}>
               In regulated fields like banking and healthcare, companies must be
               able to explain the exact logic behind their decisions.
             </p>
@@ -4264,7 +4121,7 @@ export default function Week01Introduction() {
           the slide as a single ruled line.
       ================================================================== */}
       <Slide id="privacy-security-ip" border align="left">
-        <Head1 eyebrow="Three exposures">
+        <Head1>
           Privacy, Security, and Intellectual Property
         </Head1>
 
@@ -4291,9 +4148,6 @@ export default function Week01Introduction() {
                 <div className="flex items-baseline gap-3">
                   <span className="font-sans text-[1.25rem] font-black leading-none text-[var(--champagne)]">
                     {panel.n}
-                  </span>
-                  <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                    {panel.tag}
                   </span>
                 </div>
                 <p className={`${BODY} mt-2.5`}>
@@ -4471,7 +4325,7 @@ export default function Week01Introduction() {
           clauses, and the slide closes on a signature line.
       ================================================================== */}
       <Slide id="governance" border align="left">
-        <Head1 eyebrow="Who is answerable">
+        <Head1>
           Governance and Executive Accountability
         </Head1>
 
@@ -4766,7 +4620,7 @@ export default function Week01Introduction() {
           read at a glance rather than scrolled.
       ================================================================== */}
       <Slide id="roadmap" border align="left">
-        <Head1 eyebrow="Eight weeks ahead">
+        <Head1>
           Semester Roadmap: Applications of AI in Business
         </Head1>
 
@@ -4825,7 +4679,7 @@ export default function Week01Introduction() {
           student should leave holding.
       ================================================================== */}
       <Slide id="summary" border align="left">
-        <Head1 eyebrow="Four things to carry forward">
+        <Head1>
           Summary and Core Principles for Leaders
         </Head1>
 

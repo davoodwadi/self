@@ -132,14 +132,10 @@ export default function Week06BusinessStrategy() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="strategic-landscape" border align="left">
-        <Head1 eyebrow="Opening">The New Strategic Landscape</Head1>
+        <Head1>The New Strategic Landscape</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Traditional strategy
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Traditional strategy relied on static industry analysis and slow
               adaptation.
             </p>
@@ -210,9 +206,7 @@ export default function Week06BusinessStrategy() {
             </svg>
           </div>
 
-          <div>
-            <div className={`${MICRO} text-[var(--crimson)]`}>AI</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               AI introduces dynamic, predictive capabilities that reshape market
               boundaries.
             </p>
@@ -381,7 +375,7 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["strategic-asset"]}
       >
-        <Head1 eyebrow="The true asset">AI as a Strategic Asset</Head1>
+        <Head1>AI as a Strategic Asset</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -682,23 +676,15 @@ export default function Week06BusinessStrategy() {
           the margin arrow carrying the compound benefits.
       ================================================================== */}
       <Slide id="value-chain" border align="left">
-        <Head1 eyebrow="Across the chain">Rethinking the Value Chain</Head1>
+        <Head1>Rethinking the Value Chain</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Primary activities
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               AI transforms primary activities, from inbound logistics to
               customer service.
             </p>
           </div>
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Support activities
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Support activities like human resources and procurement become
               intelligent and predictive.
             </p>
@@ -865,7 +851,7 @@ export default function Week06BusinessStrategy() {
           uneven edge. Strategy and architecture joined at every seam.
       ================================================================== */}
       <Slide id="plug-and-play" border align="left">
-        <Head1 eyebrow="Off the shelf" signal>
+        <Head1>
           The Fallacy of Plug and Play
         </Head1>
 
@@ -1085,7 +1071,7 @@ export default function Week06BusinessStrategy() {
           Initiatives lined up across functions toward business goals.
       ================================================================== */}
       <Slide id="leadership" border align="left">
-        <Head1 eyebrow="Who owns it">The Leadership Imperative</Head1>
+        <Head1>The Leadership Imperative</Head1>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1334,7 +1320,7 @@ export default function Week06BusinessStrategy() {
           Then the three set against strategic return.     [quiz topic]
       ================================================================== */}
       <Slide id="value-dimensions" border align="left">
-        <Head1 eyebrow="Three dimensions">Dimensions of Value Creation</Head1>
+        <Head1>Dimensions of Value Creation</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-10">
           <div>
@@ -1575,7 +1561,7 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["product-service"]}
       >
-        <Head1 eyebrow="From product to service">
+        <Head1>
           Product and Service Transformation
         </Head1>
 
@@ -1747,7 +1733,7 @@ export default function Week06BusinessStrategy() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="ai-economics" border align="left">
-        <Head1 eyebrow="Cost curves">The Economics of AI</Head1>
+        <Head1>The Economics of AI</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1994,7 +1980,7 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["ecosystems"]}
       >
-        <Head1 eyebrow="Beyond the firm">Capturing Value from Ecosystems</Head1>
+        <Head1>Capturing Value from Ecosystems</Head1>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2186,7 +2172,7 @@ export default function Week06BusinessStrategy() {
           shaded, then each bar priced at its own height. The risks named.
       ================================================================== */}
       <Slide id="pricing" border align="left">
-        <Head1 eyebrow="Price">Pricing Strategy in the AI Era</Head1>
+        <Head1>Pricing Strategy in the AI Era</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2386,7 +2372,7 @@ export default function Week06BusinessStrategy() {
           arrows, some reaching the objectives and some drifting off.
       ================================================================== */}
       <Slide id="metrics" border align="left">
-        <Head1 eyebrow="Measuring">Metrics for AI Strategy</Head1>
+        <Head1>Metrics for AI Strategy</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2588,7 +2574,7 @@ export default function Week06BusinessStrategy() {
           to each step of a proprietary workflow.          [quiz topic]
       ================================================================== */}
       <Slide id="data-moat" border align="left">
-        <Head1 eyebrow="Not all data is a moat" signal>
+        <Head1>
           The Data Moat Fallacy
         </Head1>
 
@@ -2840,7 +2826,7 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["network-effects"]}
       >
-        <Head1 eyebrow="Virtuous cycle">Algorithmic Network Effects</Head1>
+        <Head1>Algorithmic Network Effects</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -3105,7 +3091,7 @@ export default function Week06BusinessStrategy() {
           point beyond it that has both. One narrow crimson segment in a row.
       ================================================================== */}
       <Slide id="positioning" border align="left">
-        <Head1 eyebrow="Positioning">Strategic Positioning</Head1>
+        <Head1>Strategic Positioning</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -3293,7 +3279,7 @@ export default function Week06BusinessStrategy() {
           rest bought.                                     [quiz topic]
       ================================================================== */}
       <Slide id="build-buy" border align="left">
-        <Head1 eyebrow="The dilemma">The Build versus Buy Dilemma</Head1>
+        <Head1>The Build versus Buy Dilemma</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           {[
@@ -3316,11 +3302,7 @@ export default function Week06BusinessStrategy() {
               ],
             },
           ].map((side) => (
-            <div key={side.label}>
-              <div className={`${MICRO} text-[var(--champagne)]`}>
-                {side.label}
-              </div>
-              <p className={`${BODY} mt-4`}>{side.sentence}</p>
+            <div key={side.label}>              <p className={`${BODY} mt-4`}>{side.sentence}</p>
               <div aria-hidden className="mt-6 border-b border-[var(--charcoal)]/12">
                 {side.ledger.map((row) => (
                   <div
@@ -3433,22 +3415,16 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["open-source"]}
       >
-        <Head1 eyebrow="Taking and giving">Open Source Strategy</Head1>
+        <Head1>Open Source Strategy</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Leveraging</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Leveraging open source models accelerates development and reduces
               fixed costs.
             </p>
             <Terms items={["accelerates development", "reduces fixed costs"]} />
           </div>
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Contributing
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Contributing to open source can attract top talent and establish
               industry standards.
             </p>
@@ -3640,7 +3616,7 @@ export default function Week06BusinessStrategy() {
           over into the market. What incumbents hold in defence.
       ================================================================== */}
       <Slide id="disruption" border align="left">
-        <Head1 eyebrow="New entrants">Disruptive AI Innovation</Head1>
+        <Head1>Disruptive AI Innovation</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -3829,9 +3805,7 @@ export default function Week06BusinessStrategy() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Incumbents</div>
-            <p className={`${DISPLAY} mt-4 max-w-4xl`}>
+          <div className={RULED}>            <p className={`${DISPLAY} mt-4 max-w-4xl`}>
               Incumbents must leverage their existing customer base and domain
               expertise defensively.
             </p>
@@ -3860,7 +3834,7 @@ export default function Week06BusinessStrategy() {
           coil that loops quickly while climbing.            [quiz topic]
       ================================================================== */}
       <Slide id="operating-model" border align="left">
-        <Head1 eyebrow="Operating model">The AI Operating Model</Head1>
+        <Head1>The AI Operating Model</Head1>
 
         {(() => {
           const glyph = (kind: number, x: number, y: number, stroke: string) => {
@@ -4107,12 +4081,10 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["centralized"]}
       >
-        <Head1 eyebrow="Where AI sits">Centralized versus Decentralized AI</Head1>
+        <Head1>Centralized versus Decentralized AI</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Centralized</div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Centralized centers of excellence ensure standard practices and
               resource efficiency.
             </p>
@@ -4164,11 +4136,7 @@ export default function Week06BusinessStrategy() {
             <Terms items={["standard practices", "resource efficiency"]} />
           </div>
 
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              Decentralized
-            </div>
-            <p className={`${BODY} mt-4`}>
+          <div>            <p className={`${BODY} mt-4`}>
               Decentralized teams embed AI capabilities directly into business
               units for faster execution.
             </p>
@@ -4287,7 +4255,7 @@ export default function Week06BusinessStrategy() {
           between technical and business teams.
       ================================================================== */}
       <Slide id="talent" border align="left">
-        <Head1 eyebrow="Talent">Talent Strategy and Acquisition</Head1>
+        <Head1>Talent Strategy and Acquisition</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4453,7 +4421,7 @@ export default function Week06BusinessStrategy() {
           last one crimson. A small square growing to full scale.
       ================================================================== */}
       <Slide id="agile" border align="left">
-        <Head1 eyebrow="Method">Agile AI Development</Head1>
+        <Head1>Agile AI Development</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4714,7 +4682,7 @@ export default function Week06BusinessStrategy() {
           the organization. Every asset with its own crimson owner.
       ================================================================== */}
       <Slide id="governance" border align="left">
-        <Head1 eyebrow="Governance">Data Governance as Strategy</Head1>
+        <Head1>Data Governance as Strategy</Head1>
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
@@ -4905,7 +4873,7 @@ export default function Week06BusinessStrategy() {
           An automated decision passing through a wall of resistance.
       ================================================================== */}
       <Slide id="culture" border align="left">
-        <Head1 eyebrow="Culture">Cultivating an AI Culture</Head1>
+        <Head1>Cultivating an AI Culture</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -5135,7 +5103,7 @@ export default function Week06BusinessStrategy() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="execution-gap" border align="left">
-        <Head1 eyebrow="Pilot to production" signal>
+        <Head1>
           The Execution Gap
         </Head1>
 
@@ -5364,7 +5332,7 @@ export default function Week06BusinessStrategy() {
         align="left"
         quizData={quiz["algorithmic-risk"]}
       >
-        <Head1 eyebrow="Model drift">Managing Algorithmic Risk</Head1>
+        <Head1>Managing Algorithmic Risk</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -5587,7 +5555,7 @@ export default function Week06BusinessStrategy() {
           Resources shifted from one bar to another.
       ================================================================== */}
       <Slide id="agility" border align="left">
-        <Head1 eyebrow="Agility">Strategic Agility</Head1>
+        <Head1>Strategic Agility</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -5824,7 +5792,7 @@ export default function Week06BusinessStrategy() {
           out. Constraint struck for differentiator.
       ================================================================== */}
       <Slide id="regulatory" border align="left">
-        <Head1 eyebrow="Regulation">Regulatory Strategy</Head1>
+        <Head1>Regulatory Strategy</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -6004,7 +5972,7 @@ export default function Week06BusinessStrategy() {
           open, see-through system linked to customers and stakeholders.
       ================================================================== */}
       <Slide id="csr" border align="left">
-        <Head1 eyebrow="Responsibility">
+        <Head1>
           AI and Corporate Social Responsibility
         </Head1>
 
@@ -6233,7 +6201,7 @@ export default function Week06BusinessStrategy() {
         align="left"
         className="relative overflow-hidden"
       >
-        <Head1 eyebrow="What to carry forward">
+        <Head1>
           The Future Strategic Horizon
         </Head1>
 

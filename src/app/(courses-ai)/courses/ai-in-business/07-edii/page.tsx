@@ -173,7 +173,7 @@ export default function Week07Edii() {
           repeated at scale. The four risks.                  [quiz topic]
       ================================================================== */}
       <Slide id="mirror" border align="left">
-        <Head2 eyebrow="01 / 05" kicker="The Problem:">
+        <Head2 kicker="The Problem:">
           AI as a Mirror of Society
         </Head2>
 
@@ -289,7 +289,7 @@ export default function Week07Edii() {
         align="left"
         quizData={quiz["learn-bias"]}
       >
-        <Head2 eyebrow="02 / 05" kicker="Technical Concept:">
+        <Head2 kicker="Technical Concept:">
           How Algorithms Learn Bias
         </Head2>
 
@@ -499,7 +499,7 @@ export default function Week07Edii() {
                                      [quiz: learn-bias] [quiz topic]
       ================================================================== */}
       <Slide id="roi" border align="left" quizData={quiz["roi"]}>
-        <Head2 eyebrow="03 / 05" kicker="Business Impact:">
+        <Head2 kicker="Business Impact:">
           The ROI of Inclusive AI
         </Head2>
 
@@ -610,7 +610,7 @@ export default function Week07Edii() {
         align="left"
         quizData={quiz["data-sovereignty"]}
       >
-        <Head2 eyebrow="04 / 05">Indigeneity and Data Sovereignty</Head2>
+        <Head2>Indigeneity and Data Sovereignty</Head2>
 
         <div className="w-full">
           <Unfold words={EDII} mark={3} className="mt-10 w-full max-w-4xl" />
@@ -733,7 +733,7 @@ export default function Week07Edii() {
         align="left"
         quizData={quiz["mitigation"]}
       >
-        <Head2 eyebrow="05 / 05" kicker="Strategy:">
+        <Head2 kicker="Strategy:">
           Mitigation for Business Leaders
         </Head2>
 

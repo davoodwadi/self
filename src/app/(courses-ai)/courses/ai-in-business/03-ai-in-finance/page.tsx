@@ -120,7 +120,7 @@ export default function Week03Finance() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="why-finance-ai" border align="left">
-        <Head1 eyebrow="Opening">Why Finance Became an AI Domain</Head1>
+        <Head1>Why Finance Became an AI Domain</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -341,7 +341,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["decision-architecture"]}
       >
-        <Head1 eyebrow="Information into decisions">
+        <Head1>
           The Financial Firm as a Decision Architecture
         </Head1>
 
@@ -497,7 +497,7 @@ export default function Week03Finance() {
           each carrying its own sources of gain.
       ================================================================== */}
       <Slide id="value-creation" border align="left">
-        <Head1 eyebrow="Where the value comes from">
+        <Head1>
           Value Creation in Finance
         </Head1>
 
@@ -561,7 +561,7 @@ export default function Week03Finance() {
           ahead of model novelty.
       ================================================================== */}
       <Slide id="data-signal-quality" border align="left">
-        <Head1 eyebrow="What the models read">
+        <Head1>
           Data Types and Signal Quality in Financial Services
         </Head1>
 
@@ -848,7 +848,7 @@ export default function Week03Finance() {
           struck tag.                                     [quiz topic]
       ================================================================== */}
       <Slide id="method-to-task" border align="left">
-        <Head1 eyebrow="The right tool for the task">
+        <Head1>
           Matching Method to Financial Task
         </Head1>
 
@@ -931,7 +931,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["human-judgment"]}
       >
-        <Head1 eyebrow="High stakes" signal>
+        <Head1>
           Human Judgment in High-Stakes Finance
         </Head1>
 
@@ -1026,11 +1026,7 @@ export default function Week03Finance() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Human oversight
-            </div>
-            <p className={`${BODY} mt-4 max-w-4xl`}>
+          <div className={RULED}>            <p className={`${BODY} mt-4 max-w-4xl`}>
               Human oversight is most important when exceptions are novel,
               customers are vulnerable, or adverse outcomes are hard to
               reverse.
@@ -1151,7 +1147,7 @@ export default function Week03Finance() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="credit-scoring" border align="left">
-        <Head1 eyebrow="Beyond the scorecard">
+        <Head1>
           Credit Scoring Beyond Static Rules
         </Head1>
 
@@ -1384,7 +1380,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["underwriting"]}
       >
-        <Head1 eyebrow="Broader signals">Underwriting with Broader Signals</Head1>
+        <Head1>Underwriting with Broader Signals</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
           <div>
@@ -1497,9 +1493,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_18rem] md:gap-12">
-            <div className="border border-[var(--crimson)]/45 p-7 md:p-8">
-              <div className={`${MICRO} text-[var(--crimson)]`}>New inputs</div>
-              <p className={`${LEAD} mt-4`}>
+            <div className="border border-[var(--crimson)]/45 p-7 md:p-8">              <p className={`${LEAD} mt-4`}>
                 New inputs also raise questions about relevance, stability, and
                 whether the model is learning structural disadvantage rather
                 than true risk.
@@ -1536,7 +1530,7 @@ export default function Week03Finance() {
           against what it can worsen.
       ================================================================== */}
       <Slide id="pricing-limits" border align="left">
-        <Head1 eyebrow="After approval">
+        <Head1>
           Pricing, Limit Setting, and Profitability
         </Head1>
 
@@ -1682,7 +1676,7 @@ export default function Week03Finance() {
           response teams need.
       ================================================================== */}
       <Slide id="early-warning" border align="left">
-        <Head1 eyebrow="Before default">
+        <Head1>
           Early Warning Systems and Portfolio Surveillance
         </Head1>
 
@@ -1808,7 +1802,7 @@ export default function Week03Finance() {
           policy boundaries.
       ================================================================== */}
       <Slide id="collections" border align="left">
-        <Head1 eyebrow="Treatment design">
+        <Head1>
           Collections Strategy and Treatment Design
         </Head1>
 
@@ -1996,7 +1990,7 @@ export default function Week03Finance() {
           across segments, outcomes and contexts.          [quiz topic]
       ================================================================== */}
       <Slide id="explainability-fairness" border align="left">
-        <Head1 eyebrow="Under scrutiny" signal>
+        <Head1>
           Explainability, Fairness, and Adverse Action
         </Head1>
 
@@ -2068,11 +2062,7 @@ export default function Week03Finance() {
         </div>
 
         <div className="w-full">
-          <figure className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <div className={`${MICRO} text-[var(--champagne)]`}>
-              The core governance question
-            </div>
-            <blockquote className={`${DISPLAY} mt-4`}>
+          <figure className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">            <blockquote className={`${DISPLAY} mt-4`}>
               The core governance question is whether a model&apos;s
               performance is acceptable across segments, outcomes, and decision
               contexts.
@@ -2107,7 +2097,7 @@ export default function Week03Finance() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="fraud-adversarial" border align="left">
-        <Head1 eyebrow="An opponent that adapts">
+        <Head1>
           Fraud Detection as an Adversarial Problem
         </Head1>
 
@@ -2328,7 +2318,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["transaction-monitoring"]}
       >
-        <Head1 eyebrow="Financial crime">
+        <Head1>
           Transaction Monitoring and Anti-Money Laundering
         </Head1>
 
@@ -2440,7 +2430,7 @@ export default function Week03Finance() {
           phones. Broken links and weak links drawn side by side.
       ================================================================== */}
       <Slide id="graph-entity" border align="left">
-        <Head1 eyebrow="Connecting the network">
+        <Head1>
           Graph Analytics and Entity Resolution
         </Head1>
 
@@ -2674,7 +2664,7 @@ export default function Week03Finance() {
           groups are caught.
       ================================================================== */}
       <Slide id="false-positives" border align="left">
-        <Head1 eyebrow="The cost of caution">
+        <Head1>
           False Positives, Customer Friction, and Inclusion
         </Head1>
 
@@ -2848,7 +2838,7 @@ export default function Week03Finance() {
           in front of the formal record.
       ================================================================== */}
       <Slide id="compliance-copilots" border align="left">
-        <Head1 eyebrow="Investigator support">
+        <Head1>
           Compliance Copilots and Case Productivity
         </Head1>
 
@@ -2939,7 +2929,7 @@ export default function Week03Finance() {
           and once as overfit noise.
       ================================================================== */}
       <Slide id="market-forecasting" border align="left">
-        <Head1 eyebrow="Reading the market">
+        <Head1>
           Market Forecasting and Signal Extraction
         </Head1>
 
@@ -3139,7 +3129,7 @@ export default function Week03Finance() {
           automated execution.                              [quiz topic]
       ================================================================== */}
       <Slide id="portfolio-construction" border align="left">
-        <Head1 eyebrow="Decision support">
+        <Head1>
           Portfolio Construction and Decision Support
         </Head1>
 
@@ -3304,7 +3294,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["model-risk"]}
       >
-        <Head1 eyebrow="When the world shifts" signal>
+        <Head1>
           Model Risk in Non-Stationary Environments
         </Head1>
 
@@ -3485,7 +3475,7 @@ export default function Week03Finance() {
           what matters before a crisis.
       ================================================================== */}
       <Slide id="stress-testing" border align="left">
-        <Head1 eyebrow="Severe but plausible">
+        <Head1>
           Stress Testing and Scenario Analysis
         </Head1>
 
@@ -3611,7 +3601,7 @@ export default function Week03Finance() {
           rule over what they are intertwined with.
       ================================================================== */}
       <Slide id="treasury-liquidity" border align="left">
-        <Head1 eyebrow="The balance sheet">
+        <Head1>
           Treasury, Liquidity, and Balance Sheet Management
         </Head1>
 
@@ -3695,7 +3685,7 @@ export default function Week03Finance() {
           evaluation checklist with local accuracy marked as not enough.
       ================================================================== */}
       <Slide id="pricing-hedging" border align="left">
-        <Head1 eyebrow="Where automation stops">
+        <Head1>
           Pricing, Hedging, and the Limits of Automation
         </Head1>
 
@@ -3788,7 +3778,7 @@ export default function Week03Finance() {
           benefit that matters.
       ================================================================== */}
       <Slide id="document-processing" border align="left">
-        <Head1 eyebrow="Documents at scale">Intelligent Document Processing</Head1>
+        <Head1>Intelligent Document Processing</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3896,7 +3886,7 @@ export default function Week03Finance() {
           Prompts set against hidden rules.
       ================================================================== */}
       <Slide id="reconciliation" border align="left">
-        <Head1 eyebrow="Control rooms">
+        <Head1>
           Reconciliation, Exceptions, and Control Rooms
         </Head1>
 
@@ -4064,7 +4054,7 @@ export default function Week03Finance() {
           trays for interactions.
       ================================================================== */}
       <Slide id="customer-service" border align="left">
-        <Head1 eyebrow="Relationship support">
+        <Head1>
           Customer Service, Advice, and Relationship Support
         </Head1>
 
@@ -4159,7 +4149,7 @@ export default function Week03Finance() {
           Four guardrails drawn as rails.
       ================================================================== */}
       <Slide id="conduct-risk" border align="left">
-        <Head1 eyebrow="Conduct" signal>
+        <Head1>
           Personalization, Suitability, and Conduct Risk
         </Head1>
 
@@ -4357,7 +4347,7 @@ export default function Week03Finance() {
           columns that make it useful.                      [quiz topic]
       ================================================================== */}
       <Slide id="model-governance" border align="left">
-        <Head1 eyebrow="Across the lifecycle">
+        <Head1>
           Model Governance Across the Lifecycle
         </Head1>
 
@@ -4492,7 +4482,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["data-governance"]}
       >
-        <Head1 eyebrow="Control function">
+        <Head1>
           Data Governance, Privacy, and Cybersecurity
         </Head1>
 
@@ -4632,7 +4622,7 @@ export default function Week03Finance() {
           while accountability stays.
       ================================================================== */}
       <Slide id="build-buy-partner" border align="left">
-        <Head1 eyebrow="Sourcing capability">Build, Buy, or Partner</Head1>
+        <Head1>Build, Buy, or Partner</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4728,14 +4718,12 @@ export default function Week03Finance() {
           across teams.                                     [quiz topic]
       ================================================================== */}
       <Slide id="genai-red-lines" border align="left">
-        <Head1 eyebrow="Generative AI" signal>
+        <Head1>
           Generative AI in Finance: High-Value Uses and Red Lines
         </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Strongest</div>
-            <p className={`${BODY} mt-4`}>
+          <div className="md:pr-12">            <p className={`${BODY} mt-4`}>
               Generative systems are strongest in summarization, knowledge
               retrieval, drafting, coding assistance, and analyst support.
             </p>
@@ -4756,9 +4744,7 @@ export default function Week03Finance() {
               ))}
             </div>
           </div>
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Weakest</div>
-            <p className={`${BODY} mt-4`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">            <p className={`${BODY} mt-4`}>
               They are weakest when used as unchecked authorities for regulated
               advice, formal disclosures, or final risk approval.
             </p>
@@ -4890,7 +4876,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["operating-model"]}
       >
-        <Head1 eyebrow="People and process">
+        <Head1>
           Operating Model, Talent, and Change Management
         </Head1>
 
@@ -5054,7 +5040,7 @@ export default function Week03Finance() {
         className="relative overflow-hidden"
       >
 
-        <Head1 eyebrow="What to carry forward">
+        <Head1>
           Conclusion: AI in Finance as Institutional Capability
         </Head1>
 
