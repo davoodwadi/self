@@ -24,12 +24,14 @@ week: week12
 - Two complementary mechanisms anchor this structure: the Three Lines of Defense model and the cross-functional RACI matrix.
 
 ## The Three Lines of Defense in Enterprise AI Governance [exercise]
+[figure: the three lines of defense: product teams that build and operate the system, an independent risk and ethics function with binding sign-off, and internal and external auditors who evaluate both, each with its own reporting line]
 - The First Line of Defense consists of the business units, product owners, data scientists, and marketing engineers who build, prompt, and operate AI systems. They own day-to-day quality control, initial dataset documentation, and baseline testing.
 - The Second Line of Defense consists of an independent AI Risk, Compliance, and Ethics Review function (including legal, privacy, and behavioral auditing specialists) that sets governance standards, defines risk tiers, conducts pre-launch behavioral audits, and holds binding sign-off authority over high-risk deployments.
 - The Third Line of Defense consists of internal audit and external independent conformity assessors who periodically evaluate whether both the First and Second Lines are following the governance charter accurately and without conflicts of interest.
 - Separating these three lines ensures that the team whose bonus depends on shipping a feature is never the sole judge of whether that feature is fair, safe, and compliant.
 
 ## Cross-Functional Accountability: The RACI Matrix for AI Launches [exercise]
+[figure: RACI matrix of AI launch milestones by role, marking who is Responsible, Accountable, Consulted, and Informed, with exactly one Accountable owner per milestone]
 - To prevent the problem of many hands introduced in Week 1, a governance charter assigns four explicit roles for every milestone in the AI lifecycle using a RACI matrix: Responsible, Accountable, Consulted, and Informed.
 - Responsible (R) designates the practitioners who execute the task, such as the ML engineering team running the exact-PMF fairness audit or drafting the model card.
 - Accountable (A) designates the single executive or governance officer who owns final approval and bears institutional liability for the decision. Crucially, each governance gate must have exactly one Accountable owner so responsibility cannot be diffused.
@@ -37,6 +39,7 @@ week: week12
 - Informed (I) designates downstream teams, such as customer support, public relations, and executive leadership, who receive structured updates once the decision is logged.
 
 ## Stage-Gate Release Controls and Stop-the-Line Authority [no-exercise]
+[figure: interactive stage gates from scoping approval through data-provenance clearance and pre-deployment sign-off to monitoring readiness, where a release cannot pass a gate until its audit results meet the threshold for its risk tier]
 - Inspired by high-reliability manufacturing, stage-gate governance divides the AI lifecycle into mandatory checkpoints: scoping approval, data-provenance clearance, pre-deployment behavioral and red-team sign-off, and production monitoring readiness.
 - A system cannot advance to production traffic until its audit dossier satisfies the quantitative release thresholds defined for its risk tier.
 - Stop-the-line authority empowers any engineer, auditor, or human-on-the-loop operator who detects a severe safety breach, discriminatory disparity, or data leak to halt deployment or trigger an automated fallback without retaliation.
@@ -78,6 +81,7 @@ week: week12
 - Step 6 is post-incident review and restitution, compensating harmed consumers, reversing erroneous automated decisions, and updating the governance charter so the failure class cannot recur.
 
 ## Post-Deployment Monitoring, Drift Detection, and Sunset Protocols [no-exercise]
+[figure: interactive live disparate-impact ratio drifting over the weeks after launch, with weekly canary audits flagging the breach and automatic decommissioning at the recertification date]
 - Markets, consumer language, competitor pricing, and platform catalogs evolve continuously after an AI system is launched.
 - Covariate and concept drift occur when live production inputs diverge from the distribution on which the model was trained and audited, degrading both accuracy and group fairness over time.
 - Post-deployment governance runs scheduled canary audits (re-evaluating a fixed benchmark of synthetic and historical cases weekly) and tracks live disparate-impact ratios, recourse rates, and customer override frequencies.
@@ -93,12 +97,14 @@ week: week12
 - Under the EU AI Act (including Article 40 standards on resource performance), providers of general-purpose and high-risk AI systems face growing obligations to measure, document, and reduce energy and water consumption.
 
 ## Optimization Efficiency in Training: Sign-Conscious Adaptive Learning Rates (ActiveLR) [no-exercise]
+[figure: interactive optimization path on a loss surface, where a fixed learning rate overshoots or crawls depending on its initial value while a sign-conscious adaptive rate grows when a parameter's gradient sign stays consistent across epochs and shrinks when it flips]
 - A major source of wasted compute and carbon emissions during deep neural network development is hyperparameter search: training the same architecture dozens or hundreds of times to tune the initial learning rate and mini-batch size.
 - Wadi, Fredette, and Senecal (2023) introduced ActiveLR, a sign-conscious optimization meta-algorithm applied to standard optimizers including SGD with momentum, AdamW, RAdam, and AdaBelief.
 - By tracking whether the gradient of each individual parameter changes sign between consecutive epochs, ActiveLR dynamically adapts local learning rates in real time, increasing step sizes when gradients remain consistent and shrinking them when oscillations indicate overshoot.
 - Across vision and language benchmarks, ActiveLR improves generalization and training speed while rendering training robust to initial learning-rate choices and large mini-batch sizes, eliminating the heavy computational and carbon cost of grid-search tuning (Wadi, Fredette, & Senecal, 2023).
 
 ## Resource Rationality in Agentic Inference and Tool Use [exercise]
+[figure: cost per query against position bias for frontier models at default settings and a lightweight model with configured reasoning effort (Wadi & Ma, 2026a)]
 - At inference time, deploying the largest available frontier model with unconstrained reasoning and exhaustive tool calls for every routine query wastes energy, increases latency, and inflates operational cost.
 - Grounded in resource-rational planning (Callaway et al., 2022, Lieder & Griffiths, 2020), the Tool-Lab framework formulates an AI agent's sequential information search and tool calling as a cost-constrained Markov Decision Process (Wadi, 2026, Wadi & Ma, 2026b).
 - Rather than evaluating an agent solely on whether its final answer is correct, Tool-Lab evaluates the optimality of the agent's planning policy: whether the sequence of tools it calls maximizes expected decision utility net of token, API, and latency costs.

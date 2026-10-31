@@ -10,12 +10,14 @@ week: week10
 - Human-centered algorithmic governance designs systems around diverse physical, sensory, cognitive, and linguistic needs, prevents deskilling and alert fatigue in human operators, and engages affected communities as co-designers rather than passive data sources.
 
 ## Who Is the "Average User" in Algorithmic Design? [no-exercise]
+[figure: interactive distribution of users' speech and interaction styles, with model error low for the majority of observations and rising for users in the statistical tails]
 - Commercial software and machine learning systems are routinely optimized for an unstated default user: an individual with standard vision, hearing, motor control, neurotypical information processing, high digital literacy, and fluent proficiency in a dominant language.
 - Because statistical models minimize average loss across the majority of observations in a dataset, users whose speech patterns, facial movements, reading speeds, or interaction styles sit in the statistical tails are frequently treated by algorithms as noise or anomalies.
 - Over one billion people worldwide live with a physical, sensory, or cognitive disability, and billions more interact with digital markets in a second language or under situational constraints.
 - Governing AI for inclusion requires shifting from designing for a mythical average user to designing systems that adapt to human variability from the start.
 
 ## The Medical Versus Social Model of Disability in Technology [exercise]
+[figure: a deaf customer blocked by a voice-only banking interface, beside a multimodal interface supporting text, voice, and visual interaction that removes the barrier by design]
 - The medical model of disability views disability as an individual biological deficit residing inside the person that must be fixed, cured, or accommodated through specialized exceptions.
 - The social and relational model of disability views disability as a mismatch between an individual's functional characteristics and the design of the surrounding physical, digital, and institutional environment.
 - Under the social model, a voice-only banking interface disables a deaf customer or a customer with a speech impairment by choice of architecture, whereas a multimodal interface that supports text, voice, and visual interaction removes the barrier by design.
@@ -26,6 +28,7 @@ week: week10
 - In digital and AI-mediated services, universal design benefits both users with permanent disabilities and the broader market.
 
 ## Universal Design and the Curb-Cut Effect [no-exercise]
+[figure: a sidewalk curb cut used by a wheelchair user, a parent pushing a stroller, a traveler pulling luggage, and a delivery worker rolling a cart]
 - The curb-cut effect takes its name from sidewalk ramps originally advocated for by wheelchair users, which subsequently proved indispensable for parents pushing strollers, travelers pulling luggage, and delivery workers rolling carts.
 - Every major assistive technology in computing has followed the curb-cut pattern: closed captions built for deaf viewers are used by commuters in noisy transit, screen-reader semantic markup enables search engines and AI shopping agents to parse webpages, and voice dictation built for users with motor impairments powers hands-free mobile interfaces.
 - Designing AI systems for edge-case accessibility therefore improves robustness, clarity, and usability across the entire customer base under situational constraints such as glare, noise, multitasking, or cognitive fatigue.
@@ -53,6 +56,7 @@ week: week10
 - Unlike static accommodations that provide a single fixed alternative format, generative systems allow the user to ask follow-up questions at their own pace and preferred level of detail.
 
 ## Personalized Formative Support and Cognitive Scaffolding: The AILSS Architecture [no-exercise]
+[figure: timeline of a traditional accommodation, which passes through diagnosis disclosure and human scheduling and arrives after the assessment moment, beside immediate AI formative support at the moment comprehension breaks down]
 - In educational and consumer decision-support settings, learners and buyers with disabilities often face a timing gap: traditional accommodations require formal diagnosis disclosures and delayed human scheduling, arriving after the decision or assessment moment has passed.
 - The AI-Powered Learning Support System (AILSS) architecture addresses this gap by using large language models to deliver immediate, low-stakes formative assessment and personalized cognitive scaffolding.
 - Rather than handing the user a finished answer (which undermines learning and agency), a formative support system diagnoses the specific step where comprehension broke down, re-represents the concept using an alternative modality or analogy, and adapts pacing without time pressure.
@@ -92,17 +96,20 @@ week: week10
 - As introduced in Week 1, placing a human in the loop fails if the interface ignores human cognitive ergonomics.
 
 ## Complementarity Versus Substitution in Human-AI Teams [no-exercise]
+[figure: decision accuracy of the human alone, the AI alone, a naive human-AI team, and a team designed around asymmetric strengths, where only the designed team exceeds both]
 - True human-AI complementarity occurs when the combined performance of the human-plus-AI team exceeds both the human working alone and the AI model operating alone.
 - Empirical studies of human-AI decision making show that naive teaming often fails to achieve complementarity: humans either defer to the AI when the AI is wrong (automation bias) or override the AI when the AI is right (algorithm aversion).
 - Achieving complementarity requires designing the workflow around asymmetric strengths: algorithms excel at consistent aggregation across high-dimensional historical records, whereas humans excel at detecting unmodeled context shifts, rare causal exceptions, and normative edge cases.
 
 ## Deskilling, Alert Fatigue, and Cognitive Offloading [exercise]
+[figure: interactive false-positive alarm volume showing the share of alerts operators actually inspect falling as alarms grow, and genuine cases passing through unexamined]
 - Cognitive offloading and deskilling occur when workers rely on automated recommendations for routine cases over months or years, causing their independent diagnostic, analytical, or domain judgment skills to atrophy.
 - Paradox of automation: as an automated system becomes more reliable on routine cases, the human operator becomes less practiced and less attentive, yet the rare cases where the automation fails and hands control back to the human are precisely the hardest, most ambiguous edge cases.
 - Alert fatigue occurs in human-on-the-loop monitoring when a safety filter or fraud detector generates a high volume of false-positive alarms, conditioning operators to click "dismiss" or "approve" habitually without inspecting the underlying evidence.
 - Moral crumple zone exposure occurs when frontline employees are held personally liable for overriding or failing to override an opaque model whose inputs and error bounds they cannot inspect.
 
 ## Designing Cognitive Forcing Functions for Effective Oversight [exercise]
+[figure: interactive review screen that withholds the model's score until the reviewer records a provisional assessment, then shows the model's uncertainty and the strongest evidence for approval and for rejection]
 - Cognitive forcing functions are deliberate interface patterns that interrupt automatic System 1 deference and prompt analytical System 2 evaluation during high-stakes human-in-the-loop reviews (Buçinca, Malaya, & Gajos, 2021).
 - Delayed recommendation (human-first judgment) requires the reviewer to inspect the core case facts and record an initial provisional assessment before the interface reveals the AI model's score and rationale.
 - Calibrated uncertainty and disagreement highlights display the model's predictive dispersion or ordinal dissension alongside the point score, visually flagging low-consensus cases where human scrutiny is most needed.
@@ -112,6 +119,7 @@ week: week10
 - Designing accessible, culturally respectful, and ergonomically sound AI systems requires involving affected users and frontline workers throughout the governance lifecycle rather than consulting them only after harm occurs.
 
 ## Arnstein's Ladder and Participatory AI Design [exercise]
+[figure: ladder of participation in AI design rising from non-participation and extraction through tokenistic consultation to partnership and co-design with veto authority]
 - Adapted from Sherry Arnstein's (1969) ladder of citizen participation, participatory AI governance distinguishes tokenistic consultation from genuine shared power.
 - Non-participation and extraction occur when firms scrape community data or substitute synthetic LLM personas (Week 6) in place of speaking with real disabled or marginalized stakeholders.
 - Tokenism and surface consultation occur when an organization holds a one-off focus group after the model architecture and objective function are already locked in, offering participants no authority to alter the system.

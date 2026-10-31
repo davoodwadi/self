@@ -16,6 +16,7 @@ week: week11
 - Because digital services and foundation models cross national borders instantly, enterprises must design compliance architectures that satisfy the strictest overlapping requirements across jurisdictions.
 
 ## Horizontal Versus Sectoral AI Regulation [exercise]
+[figure: one horizontal statute spanning every industry, beside separate domain-specific statutes and regulators for finance, employment, healthcare, housing, and consumer protection]
 - Horizontal regulation establishes a single, cross-cutting statutory framework that governs artificial intelligence systems across all industries based on their risk level, as exemplified by the European Union AI Act.
 - Sectoral regulation governs algorithmic systems through existing domain-specific statutes and regulators in finance, employment, healthcare, housing, and consumer protection, as exemplified by the federal enforcement model in the United States.
 - Hybrid jurisdictions combine horizontal data protection and automated decision-making laws with sectoral guidelines and technical management standards, as seen in Canada and several Asia-Pacific economies.
@@ -25,6 +26,7 @@ week: week11
 - Rather than regulating every algorithm identically, the Act assigns proportional obligations across four distinct risk tiers and adds dedicated rules for general-purpose AI models.
 
 ## The Four Risk Tiers of the EU AI Act [exercise]
+[figure: the four risk tiers of the EU AI Act, from prohibited unacceptable-risk systems through high-risk and limited-risk systems to minimal-risk systems, each with example systems and its obligations]
 - Unacceptable-risk systems are strictly prohibited from being placed on the market or put into service in the European Union because they contravene fundamental rights and values.
 - High-risk systems are permitted on the market only if they pass a rigorous ex-ante conformity assessment and comply with strict technical, documentation, and oversight mandates.
 - Limited-risk (transparency-risk) systems are subject to specific disclosure obligations ensuring that humans know when they are interacting with an AI system or viewing synthetic media.
@@ -36,11 +38,13 @@ week: week11
 - Providers and deployers of high-risk systems must maintain a continuous risk management system, govern training and testing datasets for representative quality and bias, compile detailed technical documentation, enable automatic event logging for traceability, provide clear instructions for use, build human-oversight interfaces, and verify accuracy, robustness, and cybersecurity.
 
 ## Obligations for General-Purpose AI (GPAI) Models and Systemic Risk [no-exercise]
+[figure: interactive cumulative training compute on a logarithmic scale, with the 10 to the power of 25 FLOP threshold above which a general-purpose AI model takes on systemic-risk obligations]
 - Because foundation models can be adapted to hundreds of downstream tasks, the EU AI Act establishes a dedicated governance layer for providers of General-Purpose AI (GPAI) models.
 - All GPAI providers must maintain technical documentation for downstream deployers and regulators, establish policies to respect copyright and text-and-data-mining opt-outs, and publish a sufficiently detailed summary of the content used for pre-training.
 - GPAI models classified as posing systemic risk, including models trained with cumulative compute exceeding 10 to the power of 25 floating-point operations (FLOPs), must additionally conduct standardized model evaluations and adversarial red-teaming, assess and mitigate systemic risks, report serious incidents to the European AI Office, and ensure strong cybersecurity for model weights.
 
 ## The Brussels Effect and Extraterritorial Reach [no-exercise]
+[figure: interactive global annual turnover setting the maximum EU AI Act penalty for prohibited practices and for high-risk violations, as the fixed sum or the percentage of turnover]
 - Like the General Data Protection Regulation (GDPR), the EU AI Act applies extraterritorially: it binds any provider or deployer worldwide whose AI system is placed on the EU market or whose output is used within the European Union, regardless of where the firm is headquartered.
 - Penalties for non-compliance reach up to 35 million euros or 7 percent of global annual turnover for prohibited AI practices, and up to 15 million euros or 3 percent of global turnover for violations of high-risk obligations.
 - Through the Brussels Effect (Bradford, 2020), multinational firms frequently adopt EU-compliant documentation, risk tiers, and audit trails as their global baseline rather than maintaining separate, lower-standard engineering pipelines for other regions.
@@ -54,6 +58,7 @@ week: week11
 - Furthermore, PIPEDA's appropriate-purpose restriction (Section 5(3)) limits data processing to purposes that a reasonable person would consider appropriate in the circumstances, even if a consumer clicked an agreement banner.
 
 ## Quebec Law 25 and Automated Decision-Making Rights [exercise]
+[figure: an automated credit decision sent to a Quebec resident, showing the notice that the decision was automated, the principal factors and parameters available on request, and the route to review by a staff member]
 - Quebec's Law 25 (modernizing the province's private-sector privacy statute) establishes some of the strictest enforceable rights regarding automated decision-making in North America, applying to any enterprise processing personal information of Quebec residents.
 - Mandatory automated-decision notice requires an enterprise that uses personal information to render a decision based exclusively on automated processing to inform the individual of that fact no later than the time the decision is communicated.
 - Right to explanation and provenance grants the individual the right, upon request, to be informed of the personal information used to render the decision, the reasons and the principal factors and parameters that led to the decision, and the right to have inaccurate personal information rectified.
@@ -77,6 +82,7 @@ week: week11
 - At the state and municipal levels, targeted statutes such as New York City Local Law 144 (mandating annual independent bias audits of automated employment decision tools) and the Colorado AI Act (imposing a statutory duty of reasonable care on developers and deployers of high-risk AI systems to prevent algorithmic discrimination) create binding compliance gates.
 
 ## FTC Enforcement Under Section 5: Unfair and Deceptive AI Practices [exercise]
+[figure: algorithmic disgorgement, in which both the unlawfully collected dataset and the model weights trained on it are ordered destroyed]
 - Under Section 5 of the Federal Trade Commission Act, the FTC holds broad authority to prosecute "unfair or deceptive acts or practices in or affecting commerce," applying this authority directly to artificial intelligence and automated marketing.
 - Unsubstantiated AI capability claims (AI hype and snake oil) violate Section 5 when a vendor markets an algorithm as predicting human behavior, detecting fraud, or eliminating bias without rigorous, independent scientific evidence supporting that claim.
 - Deceptive synthetic media and dark patterns violate Section 5 when firms deploy undisclosed AI-generated customer reviews, deepfake endorsements, anthropomorphic bots that impersonate humans, or manipulative subscription sludges.
@@ -88,6 +94,7 @@ week: week11
 - Two international frameworks serve as the global lingua franca of enterprise AI governance: the NIST AI Risk Management Framework and ISO/IEC 42001.
 
 ## The NIST AI Risk Management Framework (AI RMF) [exercise]
+[figure: the NIST AI RMF with Govern as the cross-cutting core and Map, Measure, and Manage as the continuous cycle around it]
 - Published by the US National Institute of Standards and Technology, the NIST AI RMF (and its Generative AI Profile) organizes trustworthy AI management into four continuous operational functions: Govern, Map, Measure, and Manage.
 - Govern is a cross-cutting function that establishes organizational culture, risk tolerance, clear executive accountability, policies, and workforce competencies across the entire AI lifecycle.
 - Map establishes the context of a specific AI deployment before launch, identifying the intended business purpose, the affected stakeholder groups, data provenance, value-chain dependencies, and foreseeable socio-technical risks.
