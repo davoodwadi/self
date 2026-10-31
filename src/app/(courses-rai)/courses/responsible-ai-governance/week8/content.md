@@ -10,12 +10,14 @@ week: week8
 - When consumers delegate search and purchasing to AI assistants deployed by advertising-funded platforms, algorithmic governance must resolve structural conflicts of duty, sponsorship bias, and position effects that human-centric disclosure rules cannot fix.
 
 ## From Dyadic Exchange to the Agentic Triad [no-exercise]
+[figure: interactive comparison of a consumer inspecting a marketplace's listings directly with an AI agent standing between the consumer and the marketplace, reading the listings and sponsorship tags on the consumer's behalf]
 - Classical consumer protection law models commerce as a dyad: a seller or platform presents offers, and a human consumer inspects them and decides what to buy.
 - Agentic commerce replaces this dyad with a triad in which an autonomous AI agent stands between the consumer and the marketplace, translating the consumer's high-level goal into search queries, product inspections, and transactions.
 - As the consumer hands evaluative judgment to the AI agent, the consumer no longer sees the raw search results page, the competing alternatives that were discarded, or the advertising disclosures attached to promoted listings.
 - The governance question is therefore no longer only whether the storefront deceives the human eye, but whose economic interests the intermediary AI agent is configured to serve.
 
 ## Levels of Delegation in Agentic Commerce [exercise]
+[figure: interactive level of delegation showing which of the steps from suggestion through search, comparison, and choice to purchase the human performs and which the AI agent performs]
 - Level 1 is advisory recommendation, in which the AI suggests candidate products or summarizes reviews while the human consumer still conducts the search, compares listings, and executes the purchase.
 - Level 2 is delegated search and curation, in which the AI agent ingests the full catalog, filters alternatives, and presents a narrow shortlist of two or three options from which the human chooses.
 - Level 3 is pre-authorized selection, in which the AI agent selects a single product and prepares the checkout cart, leaving the human consumer only a final confirmation click.
@@ -25,23 +27,27 @@ week: week8
 - Whenever one party delegates discretionary decision-making authority to another party who possesses superior information or analytical capacity, economics and law analyze the relationship through principal-agent theory and fiduciary duty.
 
 ## Principal-Agent Theory and Information Asymmetry [no-exercise]
+[figure: interactive comparison of the single hotel the consumer sees with the dozens of alternatives and the system prompt the agent worked from]
 - In a principal-agent relationship, the principal delegates a task to an agent, but the agent's actions and internal effort are only partially observable to the principal.
 - Moral hazard and agency loss arise when the agent's incentives diverge from the principal's welfare and the principal cannot easily verify whether the agent selected the best available option.
 - In delegated shopping, information asymmetry is extreme: the consumer sees only the single hotel or product the AI assistant recommends, not the ninety-nine alternatives the agent passed over or the system prompt that governed its evaluation.
 
 ## Fiduciary Duties: The Duty of Care and the Duty of Loyalty [no-exercise]
+[figure: an agent inspecting each alternative before recommending one, beside an agent whose link to a third party's interest is cut so that it serves only the beneficiary]
 - In law and business ethics, advisors who invite and receive heightened trust from clients, such as financial fiduciaries, physicians, and legal counsel, are bound by two core obligations: the duty of care and the duty of loyalty.
 - The duty of care requires the agent to exercise competent, diligent skill in gathering information and evaluating alternatives on the principal's behalf.
 - The duty of loyalty requires the agent to act solely in the best interest of the beneficiary, prohibiting the agent from subordinating the beneficiary's welfare to the agent's own profit or to the interests of a third party.
 - Legal scholars such as Jack Balkin argue that digital platforms and AI assistants that invite consumers to rely on their personalized advisory judgment take on the ethical obligations of information fiduciaries.
 
 ## Evaluative Invariance as a Normative Standard for AI Advisors [exercise]
+[figure: interactive balance weighing a sponsored listing against an identical organic one, which stays level when the system prompt names the traveler as employer and tips toward the sponsored listing when it names the booking platform]
 - To operationalize the duty of loyalty for algorithmic audits, Wadi and Ma (2026c) introduce the normative standard of evaluative invariance.
 - Evaluative invariance requires that an AI agent advertised to consumers as an assistant or advisor evaluate the identical set of market alternatives in the same way, without shifting its judgment to the consumer's detriment based on which party is named as its employer or deployer.
 - Specifically, if a sponsored listing is inferior or warrants skepticism when the agent acts for the consumer, the agent must not soften its skepticism or inflate its preference for that paid listing merely because the platform's name appears in its system prompt.
 - Any systematic shift in evaluation toward paid placements induced by platform role assignment violates evaluative invariance and constitutes an algorithmic breach of loyalty.
 
 ## Part 2: Conflicts of Duty When Platforms Deploy Shopping Assistants [no-exercise]
+[figure: an AI shopping assistant connected both to the consumer who relies on its advice and to the advertising-funded platform that wrote its system prompt]
 - In practice, most conversational shopping assistants are not paid for directly by consumers through subscription fees. They are deployed free of charge by retail marketplaces, search engines, and booking platforms that earn high-margin revenue from sponsored advertising.
 - This business model places the AI agent in a structural conflict of duty between two principals: the consumer who relies on its advice and the platform that wrote its system prompt.
 
@@ -52,6 +58,7 @@ week: week8
 - Developers routinely begin enterprise system prompts with a role definition such as "You are a helpful shopping assistant for [Platform Name]," assuming that naming the deploying company is harmless branding.
 
 ## How Role Assignment Induces Sponsorship Bias in LLM Recommenders [no-exercise]
+[figure: interactive choice shares of a sponsored and an organic listing when the agent is delegated by the traveler and when it is delegated by the booking platform (Wadi & Ma, 2026c)]
 - In controlled factorial choice experiments across matched hotel listings, Wadi and Ma (2026c) manipulated a single sentence in the system prompt to define the AI agent as a delegate of either the traveler or the booking platform.
 - When delegated by the traveler, the AI agent applied strong persuasion skepticism to paid placements, choosing a sponsored listing 50.2 percentage points less often than a matched organic listing.
 - When delegated by the booking platform, that sponsorship penalty significantly attenuated to 29.2 percentage points, causing the agent to recommend inferior or higher-priced sponsored hotels substantially more often.
@@ -59,6 +66,7 @@ week: week8
 - Coding the agents' pre-choice reasoning traces revealed the psychological mechanism: platform delegation systematically weakened the skepticism that sponsorship disclosures triggered during the agent's deliberation (Wadi & Ma, 2026c).
 
 ## Platform Attribution and the Semantic Trigger of Sponsorship Bias [exercise]
+[figure: interactive disclosure label in which the wording (Promoted or Sponsored) and attribution to the platform change how often the platform-delegated and consumer-delegated agents choose the paid listing (Wadi & Ma, 2026c)]
 - To isolate why role assignment shifts choice, Study 2 of Wadi and Ma (2026c) decomposed the sponsorship disclosure label along two dimensions: the explicitness of the paid placement ("Sponsored" versus "Promoted") and whether the promotion was attributed to the platform ("by the platform").
 - When the label remained unattributed ("Sponsored" or "Promoted"), the platform-delegated agent still penalized paid listings relative to organic listings, though less strongly than the traveler-delegated agent.
 - When the label explicitly attributed the promotion to the platform ("Promoted by the platform"), the divergence between the two delegates widened dramatically: the platform-delegated agent abandoned the penalty altogether and preferred the paid listing 74.2 percent of the time, compared with 34.6 percent for the consumer-delegated agent.
@@ -73,16 +81,19 @@ week: week8
 - Agentic commerce breaks the causal chain on which disclosure regulation depends.
 
 ## How Sponsorship Disclosures Work for Human Shoppers [no-exercise]
+[figure: interactive prominence of a Sponsored label on a search listing and the human shopper's resulting recognition that the listing is a paid placement]
 - Under Friestad and Wright's (1994) Persuasion Knowledge Model, when a human shopper notices a clear "Sponsored" label on a search listing, the label activates persuasion knowledge: the recognition that the listing is there because the seller paid for placement rather than because of organic merit.
 - Activating persuasion knowledge triggers cognitive skepticism, leading the shopper to discount exaggerated claims, inspect organic alternatives more carefully, and penalize the paid listing unless its objective attributes justify the choice.
 - Human disclosure mandates therefore focus on visual prominence, font size, contrast, and plain wording so that the human eye notices and understands the label.
 
 ## The Intermediation Gap: When Disclosures Reach the Agent Instead of the Consumer [no-exercise]
+[figure: listings with a sponsorship badge passing into an AI agent, which returns a single recommendation to the consumer with the badge stripped away]
 - When a consumer delegates search to an AI shopping agent, the disclosure label inside the webpage HTML or search API reaches the AI agent, not the human consumer.
 - The AI agent digests the listing page privately inside its context window and returns a conversational summary or a single recommended product to the user, routinely stripping away the original sponsorship badge.
 - Consequently, the consumer's own persuasion knowledge is never activated, and consumer protection depends entirely on how the AI agent itself evaluates the disclosure label.
 
 ## Explicit Disclosure Wording Versus Beneficiary Specification [exercise]
+[figure: interactive comparison of changing the label wording, which leaves the gap between platform-delegated and consumer-delegated agents intact, with adding a beneficiary sentence to the system prompt, which closes it (Wadi & Ma, 2026c)]
 - Regulators often propose tightening disclosure wording, such as banning ambiguous terms like "Promoted" or "Featured" and mandating the explicit word "Sponsored."
 - Empirical testing shows that while replacing "Promoted" with "Sponsored" reduces the overall selection rate of paid listings across agents, it does not close the conflict-of-duty gap between a platform-delegated agent and a consumer-delegated agent when the placement is attributed to the platform (Wadi & Ma, 2026c).
 - By contrast, adding a single fiduciary beneficiary sentence to the platform's system prompt, explicitly instructing the agent that its recommendations must serve the traveler's best interest, completely eliminated the sponsorship penalty attenuation (Wadi & Ma, 2026c).
@@ -93,17 +104,20 @@ week: week8
 - Understanding whether and how search rankings influence AI shopping agents is essential for governing self-preferencing, search engine optimization, and marketplace fairness.
 
 ## Why Human Search Rankings Command a Premium [no-exercise]
+[figure: a human shopper scanning only the top few listings of a 100-item results page, which form the consideration set]
 - In human online shopping, top-ranked listings receive a massive share of clicks and purchases because human attention is scarce, sequential, and costly to expend (Ursu, 2018).
 - A human shopper scans from the top of the page downward, faces physical and cognitive scrolling costs, and typically terminates search after inspecting very few options. In hotel search field data, the average human session produces only 1.12 clicks (Ursu, 2018).
 - Because humans rarely scroll to the middle or bottom of a 100-item list, rank determines which products enter the human consideration set.
 
 ## Search Depth, Non-Monotonic Inspection, and the No-Buy Gap in AI Agents [exercise]
+[figure: interactive probability of inspection at each rank of a 100-item list for several AI agents compared with human shoppers, with each agent's search depth and no-buy rate (Wadi & Ma, 2026a)]
 - Across 7,000 randomized hotel search sessions comparing five proprietary foundation models against human field benchmarks (plus 3,500 robustness and open-weight sessions), Wadi and Ma (2026a) show that AI shopping agents behave fundamentally differently from human shoppers.
 - Deeper search: because an AI agent receives all 100 listings in its context window at once without physical scrolling costs, it inspects between 1.63 and 5.83 listings per session at default reasoning effort, searching more broadly than the 1.12 human average.
 - Non-monotonic U-shaped position bias: position still affects which listings an AI agent inspects (at less than half the magnitude of the human position penalty), but rather than declining monotonically to the bottom of the page, inspection probability reaches its minimum between ranks 62 and 81 and rises again at the very bottom, consistent with the lost-in-the-middle attention limitation of transformer models (Liu et al., 2024, Wadi & Ma, 2026a).
 - Absence of the no-buy option: whereas human shoppers decline to book in roughly one-third of search sessions, AI agents complete a booking in nearly every session even when the prompt and tool schema explicitly permit ending the session without a purchase (Wadi & Ma, 2026a).
 
 ## Reasoning Effort as a Configurable Governance Lever [no-exercise]
+[figure: interactive probability of choice by rank under different reasoning-effort settings, with the cost per query of each setting (Wadi & Ma, 2026a)]
 - Because AI agents inspect multiple alternatives before choosing, a positional advantage at the inspection stage does not automatically force a biased final choice if the agent compares the inspected options carefully.
 - Wadi and Ma (2026a) demonstrate that position bias at the final choice stage is concentrated at lower levels of model reasoning effort.
 - Increasing the configured reasoning effort (deliberation token budget) significantly reduces the lost-in-the-middle penalty across every model that exhibits it, allowing agents to converge on the undominated listing regardless of where it was ranked on the page.

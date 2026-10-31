@@ -312,67 +312,6 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
   );
 }
 
-/** A run of chain links from (x1, y1) to (x2, y2), alternating face-on and edge-on. */
-function Chain({ x1, y1, x2, y2, n, c = PAT.ink }: { x1: number; y1: number; x2: number; y2: number; n: number; c?: string }) {
-  const dx = (x2 - x1) / n;
-  const dy = (y2 - y1) / n;
-  const ang = r2((Math.atan2(dy, dx) * 180) / Math.PI);
-  const len = Math.hypot(dx, dy);
-  return (
-    <g>
-      {Array.from({ length: n }, (_, i) => {
-        const cx = r2(x1 + dx * (i + 0.5));
-        const cy = r2(y1 + dy * (i + 0.5));
-        const rx = r2(len * 0.68);
-        return i % 2 === 0 ? (
-          <g key={i} transform={`rotate(${ang} ${cx} ${cy})`}>
-            <ellipse cx={cx} cy={cy} rx={rx} ry={6} fill="none" stroke={c} strokeWidth={LINE.bold} />
-            <ellipse cx={cx} cy={cy} rx={r2(rx - 5)} ry={2} fill="none" stroke={c} strokeWidth={LINE.hair} />
-          </g>
-        ) : (
-          <g key={i} transform={`rotate(${ang} ${cx} ${cy})`}>
-            <rect x={r2(cx - rx)} y={r2(cy - 1.6)} width={r2(rx * 2)} height={3.2} rx={1.6} fill={PAT.paper} stroke={c} strokeWidth={LINE.bold} />
-          </g>
-        );
-      })}
-    </g>
-  );
-}
-
-/**
- * The causal chain of disclosure regulation, drawn as a chain. It runs from
- * the sponsored badge on a listing to the agent housing. Between the housing
- * and the shopper's hand it is broken, the open link in red, and the
- * shopper's end hangs slack.
- */
-export function BrokenChain() {
-  const id = "w8-chain";
-  const g = 196;
-  return (
-    <Frame
-      width={880}
-      height={164}
-      label="Patent drawing of a broken chain. At left a hotel listing wears a Sponsored badge. A chain runs from the badge to an AI agent housing in the middle. Between the housing and a shopper standing at right the chain is broken: an open link, drawn in red, hangs from the housing, and the shopper holds the other end, which droops slack to the floor."
-    >
-      <PatentDefs id={id} />
-      <g transform="translate(0 -40)">
-      <line x1={10} y1={g} x2={870} y2={g} {...hair} />
-      <Listing id={id} x={20} y={66} w={176} h={56} badge="Sponsored" badgeSize={12} />
-      <Chain x1={204} y1={92} x2={404} y2={110} n={10} />
-      <SmallModel id={id} x={404} y={g - 108} w={96} h={108} />
-      {/* the open link */}
-      <path d="M552 116A20 9 0 1 0 552 128" fill="none" stroke={R} strokeWidth={LINE.bold} />
-      <path d="M546 118A13 3 0 1 0 546 126" fill="none" stroke={R} strokeWidth={LINE.hair} />
-      <path d="M557 111L561 117M557 133L561 127" fill="none" stroke={R} strokeWidth={LINE.hair} />
-      {/* the slack end */}
-      <Chain x1={736} y1={g - 98} x2={652} y2={g - 30} n={6} />
-      <Chain x1={652} y1={g - 30} x2={590} y2={g - 6} n={4} />
-      <Figure id={id} x={782} y={g} s={1.9} arm="reach" flip />
-      </g>
-    </Frame>
-  );
-}
-
 /**
  * The two duties as two figures. Care: the agent works along a row of
  * listings with its lens, ticking each one it has examined. Loyalty: the
@@ -516,53 +455,6 @@ export function DelegationLevels() {
       </Frame>
       <Slider label="Level of delegation" value={level} min={1} max={4} onChange={setLevel} />
     </div>
-  );
-}
-
-/**
- * Delegation as an instrument on file: the principal hands a sealed warrant
- * of discretionary authority (red seal) to the agent housing, which already
- * holds a lens over a tall stack of records the principal cannot see.
- */
-export function DelegationWarrant() {
-  const id = "w8-warrant";
-  const g = 246;
-  return (
-    <Frame
-      width={500}
-      height={192}
-      label="Patent drawing of delegation. A principal at left reaches out with a sealed warrant, a sheet with lines of text and a red wax seal, toward an AI agent, a large model housing with two gears. The housing holds a hand lens on an arm over a tall stack of records at right, the superior information on which it will decide."
-    >
-      <PatentDefs id={id} />
-      <g transform="translate(0 -64)">
-      <line x1={10} y1={g} x2={490} y2={g} {...hair} />
-      <Figure id={id} x={64} y={g} s={2.05} arm="reach" />
-      {/* the warrant */}
-      <g transform="rotate(-6 150 140)">
-        <path d="M122 108H170L178 116V176H122Z" fill={PAT.paper} {...ink} />
-        <path d="M170 108V116H178" fill="none" {...hair} />
-        {[122, 130, 138, 146, 154].map((y, i) => (
-          <line key={y} x1={130} y1={y} x2={i === 4 ? 150 : 168} y2={y} {...hair} />
-        ))}
-        <circle cx={162} cy={164} r={8} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.outline} />
-        <path d="M157 172L154 184L160 180L163 186L165 172" fill={PAT.paper} stroke={R} strokeWidth={LINE.hair} strokeLinejoin="round" />
-      </g>
-      {/* the agent */}
-      <SmallModel id={id} x={206} y={g - 104} w={104} h={104} />
-      {/* the records, and the arm and lens over them */}
-      {Array.from({ length: 12 }, (_, k) => (
-        <Sheet key={k} id={id} x={378} y={g - 4 - k * 6} w={66} d={18} sk={16} t={3} lines={k === 11 ? 3 : 0} />
-      ))}
-      <path d="M320 156L350 112L384 108" fill="none" {...ink} strokeWidth={LINE.bold} />
-      <circle cx={320} cy={156} r={3} fill={PAT.paper} {...ink} />
-      <circle cx={350} cy={112} r={3} fill={PAT.paper} {...ink} />
-      <Lens id={id} cx={414} cy={112} r={28} a={Math.PI} handle={2}>
-        {[104, 112, 120].map((y, i) => (
-          <line key={y} x1={398} y1={y} x2={i === 2 ? 416 : 430} y2={y} {...ink} />
-        ))}
-      </Lens>
-      </g>
-    </Frame>
   );
 }
 
@@ -1239,56 +1131,6 @@ export function LabelProminence() {
 }
 
 /**
- * Where governance aims. Left: the human visual layout, a results page with
- * a rule measuring its Sponsored badge. Right: the agent configuration and
- * prompt architecture, a housing cut open on its system prompt and effort
- * dial, with the regulator's seal (red) set on the prompt.
- */
-export function LayoutVsConfig() {
-  const id = "w8-aim";
-  const zig = (x0: number, y0: number, y1: number, n: number, amp: number) =>
-    Array.from({ length: n + 1 }, (_, i) => `${r2(x0 + (i % 2 ? amp : 0))} ${r2(y0 + ((y1 - y0) * i) / n)}`).join("L");
-  return (
-    <Frame
-      width={560}
-      height={252}
-      label="Patent drawing in two figures. Human visual layout: a results page of three hotel listings, the middle one wearing a Sponsored badge whose height is measured by a small rule. Agent configuration and prompt architecture: an AI agent housing cut open with a zig-zag break, showing a system prompt sheet and a reasoning-effort dial inside. A red regulator's seal is set on the prompt sheet."
-    >
-      <PatentDefs id={id} />
-      {/* human visual layout */}
-      <ObliqueBox id={id} x={20} y={20} w={200} h={180} dx={8} dy={5} />
-      {[34, 92, 150].map((y, i) => (
-        <Listing key={y} id={id} x={30} y={y + 8} w={168} h={38} badge={i === 1 ? "Sponsored" : undefined} badgeSize={11} />
-      ))}
-      {/* a dimension line on the badge's height */}
-      <line x1={80} y1={80} x2={80} y2={98} {...hair} />
-      <path d={`M76 79.5H86M76 98.5H86`} fill="none" {...hair} />
-      <path d={headAlongPath(80, 80, 0, -1, 4)} fill="none" {...hair} />
-      <path d={headAlongPath(80, 98, 0, 1, 4)} fill="none" {...hair} />
-      <FigureName x={124} y={226} size={14}>
-        human visual layout
-      </FigureName>
-      <line x1={262} y1={14} x2={262} y2={236} {...hair} strokeDasharray={CENTRE_DASH} />
-      {/* agent configuration */}
-      <ObliqueBox id={id} x={292} y={30} w={240} h={170} dx={14} dy={9} />
-      <path d={`M302 42L${zig(522, 42, 190, 12, -6)}L${zig(302, 190, 42, 12, 6)}Z`} fill={stip(id, "dense")} {...ink} />
-      <PromptSheet id={id} x={318} y={56} w={124} h={118} lines={[{ t: "" }, { t: "" }, { t: "" }, { t: "" }, { t: "" }]} gap={18} />
-      <Dial cx={482} cy={116} r={24} deg={50} />
-      {/* the regulator's seal on the prompt */}
-      <circle cx={420} cy={154} r={17} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.bold} />
-      <circle cx={420} cy={154} r={11} fill={PAT.paper} stroke={R} strokeWidth={LINE.outline} />
-      <path d={star(420, 154, 6)} fill="none" stroke={R} strokeWidth={LINE.hair} />
-      <FigureName x={420} y={226} size={14}>
-        agent configuration and
-      </FigureName>
-      <FigureName x={420} y={244} size={14}>
-        prompt architecture
-      </FigureName>
-    </Frame>
-  );
-}
-
-/**
  * What the principal can observe. The shopper sees one recommended listing on
  * a stand. Behind a roller shutter lies everything the agent worked from: a
  * board of one hundred listings and the system prompt. Rolling the shutter up
@@ -1424,69 +1266,6 @@ export function PayPerClick({ part }: { part: "fee" | "prompt" }) {
       <path d={headAlongPath(405, 62, 0.6, 0.8, 8)} fill="none" stroke={R} strokeWidth={LINE.outline} />
       <ellipse cx={298} cy={37} rx={13} ry={4.5} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.outline} />
       <path d="M285 37V42A13 4.5 0 0 0 311 42V37" fill={PAT.paper} stroke={R} strokeWidth={LINE.outline} />
-    </Frame>
-  );
-}
-
-/**
- * Rank as a commercial lever, drawn as one: a results column of numbered
- * slots, and a lever on an A-frame whose short end, weighed with coins, lifts
- * a listing (red) from slot 6 to slot 1 along a dashed path.
- */
-export function RankLever() {
-  const id = "w8-lever";
-  const g = 252;
-  const sx = 48;
-  const sw = 168;
-  const slot = (i: number) => 24 + i * 32;
-  return (
-    <Frame
-      width={560}
-      height={262}
-      label="Patent drawing of rank as a lever. A results column of seven numbered slots stands at left. A long lever rests on an A-frame. Its right end is weighed down with a stack of coins and its raised left end holds a listing, drawn in red, at slot 1. A dashed outline at slot 6 and a dashed red path show where the listing was lifted from."
-    >
-      <PatentDefs id={id} />
-      <line x1={10} y1={g} x2={550} y2={g} {...hair} />
-      {/* the results column */}
-      <ObliqueBox id={id} x={sx - 10} y={12} w={sw + 20} h={g - 12} dx={8} dy={5} />
-      {Array.from({ length: 7 }, (_, i) => {
-        const y = slot(i);
-        const lifted = i === 0;
-        const ghost = i === 5;
-        return (
-          <g key={i}>
-            <rect
-              x={sx}
-              y={y}
-              width={sw}
-              height={24}
-              fill={lifted ? stip(id, "signal") : PAT.paper}
-              stroke={lifted ? R : PAT.ink}
-              strokeWidth={lifted ? LINE.bold : ghost ? LINE.hair : LINE.outline}
-              strokeDasharray={ghost ? "4 3" : undefined}
-            />
-            {lifted ? <rect x={sx + 26} y={y + 5} width={sw - 34} height={14} fill={PAT.paper} stroke="none" /> : null}
-            <Num x={sx + 12} y={y + 17} size={14} fill={lifted ? R : PAT.ink}>
-              {i + 1}
-            </Num>
-            {!ghost ? (
-              <g>
-                <line x1={sx + 32} y1={y + 9} x2={sx + sw - 20} y2={y + 9} stroke={lifted ? R : PAT.ink} strokeWidth={LINE.hair} />
-                <line x1={sx + 32} y1={y + 16} x2={sx + 100} y2={y + 16} stroke={lifted ? R : PAT.ink} strokeWidth={LINE.hair} />
-              </g>
-            ) : null}
-          </g>
-        );
-      })}
-      <path d={`M${sx - 14} ${slot(5) + 12}C${sx - 34} ${slot(4)} ${sx - 34} ${slot(1)} ${sx - 14} ${slot(0) + 12}`} fill="none" stroke={R} strokeWidth={LINE.outline} strokeDasharray="4 3" />
-      <path d={headAlongPath(sx - 13, slot(0) + 12, 1, -0.3, 7)} fill="none" stroke={R} strokeWidth={LINE.outline} />
-      {/* the lever */}
-      <path d={`M366 ${g}L404 140L442 ${g}Z`} fill={PAT.paper} {...ink} />
-      <path d={`M404 140L414 134L452 ${g - 6}L442 ${g}Z`} fill={stip(id, "dense")} {...ink} />
-      <path d={`M${sx + sw - 6} 46L520 196`} fill="none" {...ink} strokeWidth={3} />
-      <path d={`M${sx + sw - 6} 46L520 196`} fill="none" stroke={PAT.paper} strokeWidth={1.2} />
-      <circle cx={404} cy={140} r={4} fill={PAT.paper} {...ink} />
-      <Coins id={id} cx={508} y={189} n={7} rx={16} ry={5} h={5} />
     </Frame>
   );
 }

@@ -7,10 +7,8 @@ import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Dis
 import exercisesData from "./exercises.json";
 import {
   AuditBench,
-  BrokenChain,
   CareAndLoyalty,
   DelegationLevels,
-  DelegationWarrant,
   DyadTriad,
   EffortLever,
   HumanScan,
@@ -18,10 +16,8 @@ import {
   InvarianceBalance,
   LabelBuilder,
   LabelProminence,
-  LayoutVsConfig,
   PassedOver,
   PayPerClick,
-  RankLever,
   Remedy,
   RoleAssignment,
   StrippedBadge,
@@ -158,7 +154,7 @@ export default function Week8Page() {
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Fiduciary Duty and Evaluative Invariance in Digital Markets" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
+        <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               Whenever one party delegates discretionary decision-making
@@ -168,9 +164,6 @@ export default function Week8Page() {
               <Term>principal-agent theory and fiduciary duty</Term>.
             </p>
           </Ruled>
-          <Plate>
-            <DelegationWarrant />
-          </Plate>
         </div>
       </Slide>
 
@@ -548,9 +541,6 @@ export default function Week8Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mx-auto mt-6 max-w-[900px]">
-          <BrokenChain />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -694,11 +684,8 @@ export default function Week8Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Search Rankings and Position Bias When AI Agents Shop" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <RankLever />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 Alongside sponsored badges,{" "}
@@ -867,7 +854,7 @@ export default function Week8Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Governing Agent-Mediated Marketplaces" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+        <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               Together, the empirical findings on sponsorship bias, position
@@ -879,9 +866,6 @@ export default function Week8Page() {
               rather than human visual layout alone.
             </p>
           </Ruled>
-          <Plate>
-            <LayoutVsConfig />
-          </Plate>
         </div>
       </Slide>
 
