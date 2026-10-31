@@ -8,18 +8,13 @@ import exercisesData from "./exercises.json";
 import {
   AgentParse,
   AgentReady,
-  AlignmentBurr,
   AnthropomorphicCues,
   AuditSteps,
-  AutonomyStool,
   BaselineComparison,
   CancelByLetter,
   ConversionOptimizer,
   DarkPattern,
-  DelegatedShopper,
   GoalAmbiguity,
-  MeasuringStorefront,
-  NudgeExamples,
   RewardDrift,
   RouteThroughJudgment,
   ShelfOrder,
@@ -114,24 +109,21 @@ export default function Week7Page() {
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 Grounded in the deontological ethics introduced in Week 1,{" "}
                 <Term>consumer autonomy</Term> requires that
                 individuals retain meaningful control over their preferences,
                 attention, and purchasing decisions.
-              </P>
+              </p>
             </Ruled>
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 An autonomous choice requires three conditions: intelligible
                 information about the options and their consequences, freedom from
                 hidden coercion or artificial friction, and alignment between the
                 action taken and the consumer&apos;s own endorsed goals.
-              </P>
+              </p>
             </Ruled>
-            <Plate className="mt-auto">
-              <AutonomyStool />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
@@ -186,45 +178,42 @@ export default function Week7Page() {
         <div className="grid w-full gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10">
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 A <Term>nudge</Term> is an aspect of choice architecture
                 that alters behavior in a predictable way without forbidding any
                 options or significantly changing their economic incentives,
                 designed to make the decision maker better off as judged by
                 themselves (Thaler &amp; Sunstein, 2008).
-              </P>
+              </p>
             </Ruled>
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 Classic pro-consumer nudges include automatic enrollment in
                 retirement savings with easy opt-out, nutritional traffic-light
                 labels, and plain-language summaries of credit card repayment
                 costs.
-              </P>
+              </p>
             </Ruled>
-            <Plate className="mt-auto">
-              <NudgeExamples />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 A <Term>sludge</Term>, formalized by Sunstein (2020), is
                 excessive friction, paperwork, waiting time, or confusing
                 navigation that impedes people from achieving their preferred
                 outcome, such as requiring a mailed physical letter to cancel an
                 online subscription.
-              </P>
+              </p>
             </Ruled>
             <Plate className="mb-3">
               <CancelByLetter />
             </Plate>
             <Ruled className="mt-auto">
-              <P>
+              <p className={BIG}>
                 When nudging and sludging techniques are deployed systematically to
                 benefit the firm at the expense of the consumer, they constitute{" "}
                 <Term>dark patterns</Term>.
-              </P>
+              </p>
             </Ruled>
           </div>
         </div>
@@ -550,11 +539,8 @@ export default function Week7Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Model Sycophancy and Epistemic Distortion" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <AlignmentBurr />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 Not all manipulation in conversational AI is deliberately
@@ -749,9 +735,6 @@ export default function Week7Page() {
               </p>
             </Ruled>
         </div>
-        <Plate className="mx-auto mt-6 max-w-[780px]">
-          <DelegatedShopper />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -927,10 +910,7 @@ export default function Week7Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Measuring Consumer Autonomy and Welfare Losses" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <MeasuringStorefront />
-          </Plate>
+        <div className="mt-8 w-full">
           <Ruled>
             <p className={BIG}>
               To enforce consumer protection in both human and agent-mediated
