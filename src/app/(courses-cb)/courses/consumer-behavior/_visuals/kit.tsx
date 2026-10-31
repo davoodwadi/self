@@ -348,3 +348,193 @@ export function PlateToggle<T extends string>({ options, value, onChange }: { op
     </div>
   );
 }
+
+/* -- slide layout blocks ---------------------------------------------------- */
+
+/** Content slides trim the section's 7rem padding so each topic fits one screen. */
+export const TIGHT = "md:!py-14";
+
+export type Tone = "signal" | "counter" | "ink";
+
+const BORDER: Record<Tone, string> = {
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
+};
+
+const TEXT: Record<Tone, string> = {
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
+  ink: "text-[var(--ink)]",
+};
+
+/** One verbatim sentence at reading size. */
+export function P({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <p className={`type-body max-w-[var(--measure)] ${className}`.trim()}>{children}</p>
+  );
+}
+
+/** A sentence promoted to lead size. */
+export function Lead({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <p className={`type-lead max-w-[54ch] ${className}`.trim()}>{children}</p>;
+}
+
+/** A sentence set at quote/statement size. */
+export function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <p className={`type-quote max-w-[36ch] ${className}`.trim()}>{children}</p>;
+}
+
+/** A sentence set at h2 size. */
+export function Big({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <p className={`type-h2 !font-normal ${className}`.trim()}>{children}</p>;
+}
+
+/** Defined term inside a sentence in bold ink. */
+export function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
+  return <strong className={`font-semibold ${TEXT[tone]}`}>{children}</strong>;
+}
+
+/** Inline emphasis for a key phrase inside a sentence. */
+export function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
+  return <strong className={`font-semibold ${TEXT[tone]}`}>{children}</strong>;
+}
+
+/** Hairline-topped block. */
+export function Ruled({
+  tone = "ink",
+  children,
+  className = "",
+}: {
+  tone?: Tone;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`min-w-0 border-t pt-4 ${BORDER[tone]} ${className}`.trim()}>
+      {children}
+    </div>
+  );
+}
+
+/** A plate container that sits directly on the clean white slide surface. */
+export function Plate({
+  children,
+  wide = false,
+  className = "",
+}: {
+  children: React.ReactNode;
+  wide?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`figure-well w-full min-w-0 p-2 ${wide ? "overflow-x-auto" : ""} ${className}`.trim()}
+    >
+      {wide ? <div className="min-w-[480px] lg:min-w-0">{children}</div> : children}
+    </div>
+  );
+}
+
+/** Slide heading with an optional kicker prefix and a hairline rule beneath. */
+export function SlideHeading({
+  kicker,
+  children,
+  className = "",
+}: {
+  kicker?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mb-7 w-full md:mb-8 ${className}`.trim()}>
+      <h2 className="type-h1 max-w-[34ch]">
+        {kicker ? (
+          <>
+            <span className="type-label mb-3 block !text-[0.8rem] !text-[var(--ink-3)]">
+              {kicker}
+            </span>{" "}
+          </>
+        ) : null}
+        {children}
+      </h2>
+      <div className="mt-4 h-px w-full bg-[var(--rule)]" />
+    </div>
+  );
+}
+
+/** Part opener heading with a non-zero-padded numeral and hairline rule. */
+export function PartHead({
+  n,
+  title,
+  className = "",
+}: {
+  n: number;
+  title: string;
+  className?: string;
+}) {
+  return (
+    <div className={`mb-8 w-full ${className}`.trim()}>
+      <div className="flex items-baseline gap-5 sm:gap-7">
+        <span
+          aria-hidden
+          className="select-none font-sans text-[3rem] font-bold leading-none text-[var(--ink-3)]/45 sm:text-[4rem]"
+        >
+          {n}
+        </span>
+        <h2 className="type-display max-w-[26ch]">
+          <span className="type-label mb-2 block !text-[0.8rem] !text-[var(--ink-3)]">
+            {`Part ${n}:`}
+          </span>{" "}
+          {title}
+        </h2>
+      </div>
+      <div className="mt-5 h-px w-full bg-[var(--rule)]" />
+    </div>
+  );
+}
+
+/** Numbered item with a non-zero-padded tabular numeral above its content. */
+export function Numbered({
+  n,
+  children,
+  className = "",
+}: {
+  n: number;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`min-w-0 border-t border-[var(--rule)] pt-4 ${className}`.trim()}>
+      <span
+        aria-hidden
+        className="type-label mb-2 block tabular-nums !text-[var(--ink-3)]"
+      >
+        {n}
+      </span>
+      {children}
+    </div>
+  );
+}
+
+/** Discussion prompt block in upright sans-serif. */
+export function Prompt({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`w-full max-w-4xl border-l-2 border-[var(--rule-2)] py-2 pl-6 ${className}`.trim()}
+    >
+      <p className="type-quote max-w-[48ch] !text-[clamp(1.2rem,2vw,1.6rem)]">
+        <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--ink-3)]">
+          Discussion:
+        </span>{" "}
+        {children}
+      </p>
+    </div>
+  );
+}

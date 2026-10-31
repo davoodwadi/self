@@ -1,90 +1,170 @@
 ---
-topic: Post-Purchase Behavior, Satisfaction, and Loyalty
+topic: "Post-Purchase Behavior, Satisfaction, and Loyalty"
 lecturer: "Davood Wadi, PhD"
-course: Consumer Behavior
-week: week9
+course: "Consumer Behavior"
+week: "week9"
 ---
 
 ## Title Slide
 - Week 9
-- The sale is not the end of the relationship. What happens after the purchase decides whether the consumer returns.
+- Postpurchase evaluation, dissonance reduction, product disposition, review writing, and repeat patronage determine whether a single transaction develops into durable brand loyalty.
 
-## After the Purchase [no-exercise]
-- Postpurchase behavior includes everything the consumer does after buying: using the product, judging it, talking about it, and eventually getting rid of it.
-- In this stage, the consumer decides whether the purchase was a good one.
-- That judgment shapes repeat purchases, reviews, recommendations, and complaints.
-- Keeping an existing customer usually costs less than winning a new one.
-- For this reason, marketers study the postpurchase stage as closely as the purchase itself.
+## The Strategic Value of the Postpurchase Stage [no-exercise]
+- Postpurchase behavior encompasses all psychological evaluations and overt actions a consumer undertakes after acquiring a product or service.
+- These activities include assembling and using the item, judging its performance against expectations, communicating word of mouth, requesting service, and eventually disposing of the good.
+- Postpurchase evaluation closes the feedback loop of the consumption process by updating the brand attitudes stored in long-term memory.
+- A positive postpurchase experience strengthens the probability that the brand enters the consideration set automatically on the next purchase occasion.
+- Conversely, unresolved postpurchase disappointment triggers brand switching and negative online reviews.
 
-## Expectations and Reality: The Disconfirmation Model [exercise]
-- Customer satisfaction is the consumer's overall feeling about a product after purchase and use.
-- The expectancy disconfirmation model states that satisfaction depends on the gap between expectations and perceived performance (Oliver, 1980).
-- Positive disconfirmation occurs when performance exceeds expectations. The consumer is satisfied or delighted.
-- Confirmation occurs when performance matches expectations. The consumer is satisfied.
-- Negative disconfirmation occurs when performance falls below expectations. The consumer is dissatisfied.
-- Marketers who promise too much in advertising raise expectations and make negative disconfirmation more likely.
+## Postpurchase Evaluation and Customer Retention Economics [no-exercise]
+- Acquiring a new customer through advertising and promotional discounting typically costs several times more than retaining an existing buyer.
+- Retained customers purchase more frequently, are less sensitive to small competitor price cuts, and cost less to serve over time.
+- Customer lifetime value rises sharply when small improvements in postpurchase satisfaction reduce annual defection rates (Reichheld & Sasser, 1990).
+- Marketing managers therefore monitor postpurchase metrics, including Net Promoter Scores, repeat purchase rates, return reasons, and warranty claims, alongside initial sales volume.
+- Treating the checkout receipt as the end of the marketing funnel sacrifices the most profitable phase of the customer relationship.
 
-## Other Influences on Satisfaction
-- Perceived quality is the consumer's judgment of how well the product performs its function.
-- Equity theory states that consumers judge whether an exchange was fair. They compare what they gave, such as money and effort, with what they received.
-- Attribution theory explains how consumers assign the cause of a product failure.
-- If a consumer blames the company for a failure that the company could have prevented, dissatisfaction is stronger.
-- If a consumer blames chance or their own misuse, dissatisfaction is weaker.
+## Part 1: Customer Satisfaction, Equity, and Attribution [no-exercise]
+- Customer satisfaction is not determined by objective product performance in isolation.
+- Instead, consumers evaluate postpurchase outcomes through three complementary psychological frameworks: expectancy disconfirmation, equity theory, and causal attribution.
+
+## The Expectancy Disconfirmation Model of Satisfaction [exercise]
+[figure: expectancy disconfirmation model comparing prepurchase expectations with perceived performance to produce positive disconfirmation, confirmation, or negative disconfirmation]
+- Formulated by Richard Oliver (1980), the expectancy disconfirmation model states that customer satisfaction results from comparing perceived product performance against prepurchase expectations.
+- Prepurchase expectations are formed from prior brand experience, word of mouth, price level, and advertising claims.
+- Positive disconfirmation occurs when perceived performance exceeds prepurchase expectations, producing high satisfaction or customer delight.
+- Simple confirmation occurs when perceived performance matches expectations, producing baseline satisfaction and neutral stability.
+- Negative disconfirmation occurs when perceived performance falls short of expectations, producing dissatisfaction, regret, and potential complaint behavior.
+
+## Equity Theory and Perceived Exchange Fairness [no-exercise]
+- Equity theory proposes that consumers evaluate satisfaction by comparing the ratio of their own outcomes to inputs against the perceived ratio of the seller or another customer (Adams, 1965, and Oliver & Swan, 1989).
+- Consumer inputs include the price paid, shopping time, waiting effort, and courtesy extended during the transaction.
+- Consumer outcomes include product quality, service responsiveness, status, and warranty support.
+- Perceived inequity arises when a buyer discovers that another passenger in the same airline row paid half the fare or received a complimentary upgrade without clear justification.
+- Even when functional product performance meets expectations, perceived procedural or distributive unfairness produces strong dissatisfaction.
+
+## Attribution Theory in Product and Service Failures [exercise]
+[figure: three causal attribution dimensions following a service failure: locus of causality, stability, and controllability]
+- When a product fails or a service is delayed, consumers engage in causal attribution to explain why the failure occurred (Folkes, 1984, and Weiner, 2000).
+- Locus of causality asks who is responsible: an internal attribution blames the consumer's own misuse, whereas an external attribution blames the manufacturer, retailer, or environment.
+- Stability asks whether the cause is temporary and unusual (an isolated shipping storm) or permanent and systemic (chronic understaffing at a call center).
+- Controllability asks whether the firm had the power to foresee and prevent the failure or whether the event was genuinely beyond human control.
+- Dissatisfaction, anger, and desire for retaliation are highest when the consumer attributes a failure to an external, stable, and firm-controllable cause.
+
+## Part 2: Postpurchase Cognitive Dissonance and Dissatisfaction Responses [no-exercise]
+- Even when a product functions properly, buyers frequently experience psychological tension immediately after making a high-stakes commitment.
+- Understanding postpurchase cognitive dissonance and complaint pathways allows firms to reassure anxious buyers and recover dissatisfied customers.
 
 ## Cognitive Dissonance and Buyer's Regret [exercise]
-- Cognitive dissonance is the discomfort a person feels when holding two conflicting beliefs (Festinger, 1957).
-- Postpurchase dissonance occurs when a consumer doubts a purchase decision after making it.
-- Buyer's regret is the feeling that another option would have been better.
-- Dissonance is most likely when the purchase is expensive, important, and hard to reverse.
-- Dissonance is also more likely when the rejected alternatives had attractive features that the chosen product lacks.
+- Derived from Leon Festinger's (1957) theory of cognitive dissonance, postpurchase dissonance is the state of psychological discomfort a buyer feels when holding inconsistent cognitions after a decision.
+- Choosing Brand A requires giving up the attractive, unique features offered by rejected Brands B and C, creating doubt about whether the choice was optimal.
+- Postpurchase dissonance is magnified when the purchase is expensive, irrevocable, and high in social or psychological involvement.
+- Dissonance also increases as the number of attractive rejected alternatives grows and when those alternatives differed on qualitatively distinct attributes.
+- Left unresolved, severe postpurchase dissonance leads to product returns, order cancellations, or durable dissatisfaction.
 
-## Reducing Postpurchase Dissonance [exercise]
-- Consumers reduce dissonance on their own. They seek information that supports their choice, avoid information that favors the rejected options, or lower the importance of the missing features.
-- Marketers can help. A follow-up message thanks the customer and confirms the benefits of the product.
-- Guarantees, warranties, and easy return policies reduce the risk that the consumer feels after buying.
-- Advertising that shows satisfied owners reassures recent buyers as well as future ones.
-- Customer service that responds quickly to problems prevents doubt from turning into dissatisfaction.
+## Consumer and Marketer Strategies for Reducing Dissonance [no-exercise]
+- To restore cognitive consistency after a purchase, consumers actively seek information that confirms the wisdom of their choice and avoid advertisements for rejected brands.
+- Recent automobile buyers, for example, read advertisements for the car they just purchased more attentively than prospective buyers who have not yet decided (Ehrlich et al., 1957).
+- Consumers also re-evaluate alternatives defensively by inflating the importance of the chosen brand's strengths and discounting the features of rejected options.
+- Marketers assist dissonance reduction through postpurchase onboarding emails, congratulatory owner communications, clear instructional guides, and visible community testimonials.
+- Liberal return policies and comprehensive warranties also reduce the perceived irrevocability of the commitment before and after checkout.
 
-## Responses to Dissatisfaction
-- A dissatisfied consumer can respond in three ways (Singh, 1988).
-- A voice response means complaining directly to the seller and asking for a refund or repair.
-- A private response means switching brands and warning friends and family.
-- A third-party response means taking action through an outside party, such as a consumer agency, a court, or a public online review.
-- Most dissatisfied customers never complain to the firm. A complaint is therefore an opportunity to recover the customer.
+## Voice, Private, and Third-Party Responses to Dissatisfaction [exercise]
+[figure: taxonomy of consumer dissatisfaction responses: voice responses to the seller, private word-of-mouth and exit, and third-party complaints]
+- Jagdip Singh (1988) classified consumer behavioral responses to dissatisfaction into three distinct pathways: voice, private, and third-party actions.
+- Voice responses direct complaint behavior toward the seller itself, seeking redress through a refund, replacement, repair, or apology.
+- Private responses involve quietly exiting the relationship (switching brands) and warning friends, family, and colleagues through negative interpersonal word of mouth.
+- Third-party responses escalate the dispute to external institutions, including consumer protection agencies, legal action, or public review platforms and social media.
+- Because the majority of dissatisfied buyers simply defect privately without contacting the firm, accessible complaint channels and empowered front-line recovery turn voice responses into retention opportunities.
 
-## Product Disposal and Secondary Markets [exercise]
-- Disposal is the final stage of consumption.
-- A consumer can keep a product, using it for its original purpose, finding a new use for it, or storing it.
-- A consumer can get rid of a product temporarily, by renting it out or lending it.
-- A consumer can get rid of a product permanently, by throwing it away, giving it away, trading it, or selling it.
-- Lateral cycling occurs when one consumer's used product passes to another consumer, through a garage sale, a thrift store, or a resale app.
-- Secondary markets for clothing, electronics, and furniture give products a second life and create new business models for brands.
+## Discussion: Turning a Service Failure into Customer Recovery
+- Discussion: A direct-to-consumer meal delivery service ships a holiday dinner box that arrives 36 hours late with spoiled ingredients because the firm's warehouse software misrouted the courier batch. Using expectancy disconfirmation, equity theory, attribution theory (locus, stability, controllability), and Singh's (1988) dissatisfaction taxonomy, explain how customers will interpret this failure and design a service-recovery protocol that prevents private exit and third-party escalation.
 
-## Online Reviews as Postpurchase Behavior [exercise]
-- Writing an online review is one of the most visible postpurchase behaviors.
-- Consumers write reviews to help other shoppers, to express satisfaction or anger, to gain recognition, or to return a favor to the firm.
-- Social exchange theory helps explain the request to write a review. A request to help other shoppers reinforces a social exchange. A request to help the company reinforces a reciprocal exchange.
-- When a review request offered a financial incentive, asking customers to help the company worked less well than asking them to help other shoppers (Wadi et al., 2026a).
-- Incentives paid only for helpful reviews raised review writing and review length more among first-time reviewers than among experienced reviewers (Wadi et al., 2026b).
-- A message framed as a reciprocal exchange with the company led reviewers to write longer reviews, but fewer customers chose to write one (Wadi et al., 2026b).
-- Reviews now have two audiences. They inform human shoppers and the AI agents that read reviews on shoppers' behalf.
+## Part 3: Product Disposal and Secondary Markets [no-exercise]
+- Consumption does not end with product use. Every physical good eventually reaches a disposition stage in which the owner decides whether to retain, repurpose, or part with the item.
+- Disposition behavior shapes environmental waste streams, peer-to-peer resale platforms, and primary brand demand.
 
-## From Satisfaction to Loyalty [exercise]
-- Brand loyalty is a pattern of repeat purchase supported by a positive attitude toward the brand (Dick & Basu, 1994).
-- True loyalty combines frequent repeat purchase with a strong positive attitude.
-- Spurious loyalty is repeat purchase without a strong attitude. The consumer buys out of habit, convenience, or lack of alternatives.
-- Latent loyalty is a strong positive attitude without repeat purchase. The consumer likes the brand but rarely buys it, perhaps because of price or availability.
-- Satisfaction does not guarantee loyalty. Satisfied customers still switch when a competitor offers a better deal.
-- Loyalty programs reward repeat purchase, but they build true loyalty only when customers also value the brand.
+## The Taxonomy of Product Disposition Options [exercise]
+[figure: decision tree of product disposition options branching into keep, temporarily dispose, and permanently dispose]
+- Jacoby, Berning, and Dietvorst (1977) organized consumer product disposition into three primary branches: keep the product, temporarily dispose of it, or permanently dispose of it.
+- Keeping the product includes continuing to use it for its original function, converting it to a new secondary function, or storing it unused in closets and garages.
+- Temporary disposition includes lending the item to peers or renting it out through sharing platforms.
+- Permanent disposition includes throwing the item away (trashing or recycling), giving it away to charity or family, trading it in, or selling it directly to another buyer.
+- The chosen path depends on the item's residual economic value, physical condition, storage cost, and emotional attachment.
 
-## Brand Loyalty and Delegated Repurchase [exercise]
-- AI agents can now reorder routine products for the consumer, such as detergent, coffee, or pet food.
-- When an agent handles the repurchase, loyalty can take two forms.
-- Loyalty to the brand appears when the consumer names the brand in the instruction, for example "reorder my usual coffee."
-- Reliance on the agent appears when the consumer states only a goal, for example "buy coffee at the best price," and lets the agent choose the brand.
-- In the second case, the agent's choice depends on the goal it was given and the information it gathers (Wadi & Ma, 2026b). The consumer's past attachment to a brand may count for little unless the instruction mentions it.
-- Spurious loyalty based on habit is therefore at risk when repurchase is delegated. A brand is more secure when the consumer names it in the instruction or when it remains the best option under the consumer's criteria.
-- Brands that depend on delegated repurchase compete to be named in the consumer's instruction and to present clear product information to the agent.
+## Lateral Cycling, Resale Platforms, and Circular Business Models [no-exercise]
+- Lateral cycling occurs when an already-purchased object is exchanged from one consumer to another so that its useful consumption life continues without new manufacturing (Sherry, 1990).
+- Digital peer-to-peer marketplaces, consignment apps, and brand-operated trade-in programs have sharply lowered the transaction costs of lateral cycling for apparel, electronics, and furniture.
+- A liquid secondary market can increase consumers' willingness to pay for a new primary product because buyers anticipate recovering part of the purchase price at resale.
+- At the same time, high-quality pre-owned inventory competes directly with a brand's entry-level new merchandise.
+- Many manufacturers now operate certified refurbished programs to capture secondary-market margin and control brand presentation.
 
-## Discussion: The Review You Did Not Write
-- Discussion: Think of a product you were very satisfied or dissatisfied with. Did you write a review? What would have made you write one, and would the answer change if the firm had offered you a reward?
+## Psychological Barriers to Disposing of Possessions [no-exercise]
+- Consumers frequently retain possessions long after their functional utility has ended because the objects remain incorporated into the extended self.
+- Disposing of an object linked to a past life stage, a deceased relative, or a hard-won achievement feels like erasing the memory or identity attached to the item.
+- In a study of cherished possessions, consumers were much more willing to part with meaningful items when they first took a photograph of the object to preserve its memory trace (Winterich, Reczek, & Irwin, 2017).
+- Consumers also resist throwing away functional items out of perceived wastefulness or creative reuse intentions ("unused utility"), even when the item sits untouched for years (Haws et al., 2012).
+- Trade-in and donation programs overcome disposition guilt by assuring the owner that the item will be valued and used by another person.
+
+## Part 4: Online Review Writing as Postpurchase Behavior [no-exercise]
+- Writing an online product review is a consequential postpurchase action that converts private consumption experience into public market information.
+- How firms solicit and incentivize reviews alters both who participates and what they write.
+
+## Motives for Writing Online Product Reviews [no-exercise]
+- Consumers expend time and effort writing online reviews for several distinct psychological motives (Hennig-Thurau et al., 2004).
+- Altruistic concern for other consumers motivates reviewers to warn peers against defective goods or highlight exceptional value.
+- Helping the company motivates satisfied buyers to reciprocate a positive purchase experience by supporting a favored seller.
+- Self-enhancement and social status motivate contributors to earn "top reviewer" badges and community recognition, while venting negative feelings provides emotional release after dissatisfaction.
+- Because unprompted reviews often over-represent extreme satisfaction or extreme anger, retailers send postpurchase solicitation emails to gather a broader sample of feedback.
+
+## Social Exchange Versus Reciprocal Exchange in Review Solicitation [exercise]
+[figure: comparison of social-exchange ("help other shoppers") and reciprocal-exchange ("help the company") review requests paired with financial incentives]
+- Social exchange theory distinguishes generalized social exchanges directed toward the broader community from direct reciprocal exchanges between the customer and the firm.
+- A solicitation message asking buyers to "help other shoppers make informed decisions" activates a generalized social-exchange norm, whereas asking buyers to "help our company improve" activates a firm-directed reciprocal norm.
+- In a field experiment and follow-up studies with online retail buyers, asking customers to help other shoppers produced higher review submission rates than asking them to help the company (Wadi et al., 2026a).
+- When the firm added a financial incentive (such as a 10-dollar credit), pairing the reward with "help other shoppers" outperformed pairing the same reward with "help the company" (Wadi et al., 2026a).
+- Framing a review request as a reciprocal exchange with the company caused the minority who did respond to write longer reviews, but lowered overall participation (Wadi et al., 2026b).
+
+## Conditional Helpfulness Incentives and Dual Review Audiences [no-exercise]
+- To encourage informative reviews rather than brief one-line comments, platforms sometimes offer conditional incentives paid only if a review receives a "helpful" vote from subsequent readers.
+- Research demonstrates that conditional helpfulness rewards interact with the consumer's prior reviewing experience (Wadi et al., 2026b).
+- For first-time reviewers who have not yet established an intrinsic reviewing habit, a conditional helpfulness reward significantly increased both review incidence and review length (Wadi et al., 2026b).
+- For experienced reviewers, the same conditional incentive yielded much smaller gains over their existing baseline behavior (Wadi et al., 2026b).
+- Today, the resulting corpus of online reviews serves two audiences simultaneously: human shoppers reading product pages and AI shopping agents parsing review text to evaluate candidate brands.
+
+## Part 5: Brand Loyalty and Delegated Repurchase [no-exercise]
+- True brand loyalty requires more than observing a customer buy the same package twice in a row.
+- As consumers delegate routine reordering to AI shopping agents, the distinction between attitudinal loyalty and habitual convenience determines which brands survive.
+
+## Attitude and Repeat Purchase: The Four Loyalty Quadrants [exercise]
+[figure: two-by-two loyalty matrix crossing relative attitude strength with repeat patronage to define true loyalty, latent loyalty, spurious loyalty, and no loyalty]
+- Alan Dick and Kunal Basu (1994) demonstrated that defining loyalty solely by repeat purchase frequency confounds commitment with convenience.
+- Crossing relative attitude strength (high versus low) with repeat patronage (high versus low) yields four distinct loyalty conditions.
+- True loyalty combines a strong, favorable relative attitude with high repeat patronage, insulating the brand against competitor promotions.
+- Spurious loyalty combines high repeat patronage with a weak relative attitude: the buyer repurchases out of shelf habit, low involvement, or lack of alternatives.
+- Latent loyalty combines a strong favorable attitude with low repeat purchase (often due to high price or limited distribution), while no loyalty combines weak attitude and low repeat buying.
+
+## Loyalty to the Brand Versus Reliance on the AI Agent [exercise]
+[figure: delegated repurchase paths comparing a brand-specific instruction ("reorder my usual coffee") with a goal-only instruction ("buy coffee at the best price")]
+- When a consumer delegates routine replenishment (such as detergent, coffee, or pet food) to an AI shopping agent, repeat buying splits into two distinct behavioral pathways.
+- The first pathway is brand-directed delegation: the consumer holds true attitudinal loyalty and explicitly names the brand in the prompt, such as "reorder my usual 12-ounce bag of Brand X coffee."
+- The second pathway is agent-reliant delegation: the consumer delegates brand selection to the agent by stating only a category goal, such as "order instant coffee at the best value."
+- Under agent-reliant delegation, the consumer's prior purchase habit does not constrain the agent unless past preference is explicitly provided as a rule.
+- Instead, the agent evaluates available listings from scratch based on the stated goal and the product attributes it acquires in the storefront (Wadi & Ma, 2026b).
+
+## Vulnerability of Spurious Loyalty Under AI Replenishment [no-exercise]
+- Delegated repurchase poses a severe strategic threat to incumbent brands whose market share rests on spurious loyalty and human System 1 inertia.
+- A human shopper walking down an aisle often grabs the familiar box to save five seconds of mental effort, even when a competing package offers a better unit price.
+- An AI agent instructed to optimize price per unit or rating has no visual attachment to familiar shelf colors and will immediately switch away from an overpriced incumbent (Wadi & Ma, 2026b).
+- Conversely, a brand that has cultivated true attitudinal loyalty is protected when the consumer specifies the brand by name in the delegation instruction.
+- Competing in automated replenishment therefore requires either building strong enough brand equity to be named in the user's prompt or offering demonstrably superior objective value in machine-readable catalog data.
+
+## Discussion: Defending a Consumer Packaged Goods Brand in Automated Replenishment
+- Discussion: A leading national dish-detergent brand commands a 35 percent supermarket share largely through prominent eye-level shelf placement and habitual repeat buying, while charging a 15 percent unit-price premium over comparable store brands. As households shift toward smart-home replenishment and AI shopping assistants, use Dick and Basu's (1994) loyalty matrix and the findings of Wadi and Ma (2026b) to diagnose the brand's vulnerability and recommend how management should adapt its brand-building, packaging data, and loyalty program strategy.
+
+## Key Takeaways
+- Postpurchase evaluation updates brand attitudes in memory and drives customer retention, which is substantially more profitable than continuous customer acquisition.
+- Customer satisfaction is explained by the expectancy disconfirmation model (performance relative to expectations), equity theory (perceived input-outcome fairness), and causal attribution (locus, stability, and controllability of failures).
+- High-stakes decisions generate postpurchase cognitive dissonance, and dissatisfied consumers respond through voice complaints to the seller, private exit and word of mouth, or third-party escalation.
+- Product disposition branches into keeping, temporary disposal, and permanent disposal, with lateral cycling and resale platforms creating circular secondary markets.
+- In postpurchase online review solicitation, community-focused appeals ("help other shoppers") outperform company-focused appeals, especially when paired with financial incentives, and conditional helpfulness rewards are most effective among first-time reviewers.
+- Dick and Basu's matrix separates true loyalty from spurious, latent, and no loyalty, showing why brands dependent on habitual spurious loyalty risk losing share when consumers delegate replenishment to AI agents without naming a specific brand.

@@ -453,7 +453,7 @@ export function ConsumptionCycle() {
       id="sk-cycle"
       width={800}
       height={320}
-      label="Three sketched stages in a loop: Stage 1 Prepurchase (a magnifying glass), Stage 2 Purchase (a shopping bag), Stage 3 Postpurchase (a star rating). An arrow from Postpurchase curves back to Prepurchase, marked repeat purchases."
+      label="Three sketched stages in a loop: Stage 1 Prepurchase (a magnifying glass), Stage 2 Purchase (a shopping bag), Stage 3 Postpurchase (a star rating). An arrow from Postpurchase curves back to Prepurchase, marked repeat sales."
     >
       <Backwash cx={400} cy={170} rx={360} ry={120} seed={200} opacity={0.4} />
       {xs.map((x, i) => (
@@ -476,7 +476,7 @@ export function ConsumptionCycle() {
         seed={264}
       />
       <SketchText x={400} y={272} anchor="middle" size={12}>
-        REPEAT PURCHASES
+        REPEAT SALES
       </SketchText>
     </SketchFrame>
   );
@@ -545,7 +545,7 @@ export function BuysUses() {
       id="sk-buys-uses"
       width={800}
       height={250}
-      label="A parent in a camel coat pays with a card for a jar of baby food: the customer, who buys it and weighs price and nutrition. A baby in a wooden high chair reaches a spoon into the bowl: the consumer, who uses it and cares about taste and texture."
+      label="A parent in a camel coat pays with a card for infant formula: the customer, who buys it and responds to packaging and pricing. An infant in a wooden high chair reaches a spoon into the bowl: the consumer, who uses it and experiences product performance."
     >
       <Backwash cx={400} cy={112} rx={372} ry={92} seed={330} opacity={0.4} />
       <Ground x0={70} x1={730} y={g} seed={332} />
@@ -578,13 +578,13 @@ export function BuysUses() {
         CUSTOMER
       </SketchText>
       <SketchText x={170} y={228} anchor="middle" size={12}>
-        price | nutrition
+        packaging | pricing
       </SketchText>
       <SketchText x={641} y={206} anchor="middle" size={12}>
         CONSUMER
       </SketchText>
       <SketchText x={641} y={228} anchor="middle" size={12}>
-        taste | texture
+        product performance
       </SketchText>
     </SketchFrame>
   );
@@ -705,13 +705,13 @@ function HabitLoop({ x, y, r = 19, seed }: { x: number; y: number; r?: number; s
   return <SketchArrow pts={arc} seed={seed} width={1.6} head={8} />;
 }
 
-/** Mood, habits, brand loyalty and social pressure all pull on one choice. */
+/** Emotional states, habit, brand familiarity, and social context pull on one choice. */
 export function FourPulls() {
   const src = [
-    { x: 130, label: "MOOD" },
-    { x: 310, label: "HABITS" },
-    { x: 490, label: "BRAND LOYALTY" },
-    { x: 670, label: "SOCIAL PRESSURE" },
+    { x: 130, label: "EMOTIONAL STATES" },
+    { x: 310, label: "HABIT" },
+    { x: 490, label: "BRAND FAMILIARITY" },
+    { x: 670, label: "SOCIAL CONTEXT" },
   ];
   const gy = 52;
   const g = 306;
@@ -720,7 +720,7 @@ export function FourPulls() {
       id="sk-four-pulls"
       width={800}
       height={320}
-      label="Four forces, each a hand-drawn arrow converging on one shopper thinking with a hand to the chin: mood (a round face with a wavering mouth), habits (a looping arrow), brand loyalty (a heart) and social pressure (three people watching)."
+      label="Four behavioral forces, each a hand-drawn arrow converging on one shopper thinking with a hand to the chin: emotional states (a round face with a wavering mouth), habit (a looping arrow), brand familiarity (a heart), and social context (three peers watching)."
     >
       <Backwash cx={400} cy={170} rx={372} ry={136} seed={540} opacity={0.4} />
       <MoodFace x={130} y={gy} r={24} seed={550} />
@@ -807,32 +807,39 @@ function TeaCup({ x, y, seed }: { x: number; y: number; seed: number }) {
 }
 
 export function NeedWantTrio() {
-  const needs = ["THIRST", "HUNGER", "SHELTER", "BELONGING"];
-  const pillY = (i: number) => 96 + i * 56;
+  const needs = ["HYDRATION", "SAFETY", "BELONGING"];
+  const pillY = (i: number) => 112 + i * 68;
   const tY = pillY(0);
-  const mtl = 110;
-  const other = 280;
+  const topWant = 122;
+  const botWant = 266;
   return (
     <SketchFrame
       id="sk-need-want"
       width={800}
       height={350}
-      label="Needs on the left as four hand-drawn pills: thirst, highlighted, then hunger, shelter and belonging. Thirst branches into two wants: in Montreal, a glass of cold water with ice or a soda can. In another country, a steaming cup of hot tea."
+      label="Three stages from left to right: Need (three pills for hydration, safety, and belonging, with hydration highlighted), Want (hydration branching into cold drinks above and hot tea below), and Demand (the chosen drink backed by a payment card and a teal check mark)."
     >
-      <Backwash cx={420} cy={180} rx={380} ry={160} seed={700} opacity={0.35} />
+      <Backwash cx={410} cy={182} rx={376} ry={156} seed={700} opacity={0.35} />
       <SketchText x={40} y={34} size={12}>
-        NEEDS
+        NEED
       </SketchText>
       <SketchText x={40} y={56} size={12}>
-        exist before marketing
+        prior to marketing
       </SketchText>
-      <SketchText x={320} y={34} size={12}>
-        WANTS
+      <InkLine pts={[[254, 22], [255, 64]]} seed={701} width={0.8} />
+      <SketchText x={280} y={34} size={12}>
+        WANT
       </SketchText>
-      <SketchText x={320} y={56} size={12}>
-        shaped by culture and personality
+      <SketchText x={280} y={56} size={12}>
+        shaped by culture and habit
       </SketchText>
-      <InkLine pts={[[286, 22], [287, 64]]} seed={701} width={0.8} />
+      <InkLine pts={[[548, 22], [549, 64]]} seed={702} width={0.8} />
+      <SketchText x={574} y={34} size={12}>
+        DEMAND
+      </SketchText>
+      <SketchText x={574} y={56} size={12}>
+        ability + willingness to pay
+      </SketchText>
 
       {needs.map((n, i) => {
         const y = pillY(i);
@@ -857,27 +864,40 @@ export function NeedWantTrio() {
         );
       })}
 
-      {/* thirst branches into two wants */}
-      <InkLine pts={curvePts([212, tY], [290, tY], [318, mtl], 10)} seed={730} />
-      <InkLine pts={curvePts([212, tY], [270, other], [318, other], 14)} seed={731} />
-      <path d={wobble(rp(blobPts(320, mtl, 4, 4, 732, 8, 0.1)), 732, 0.2, 4, true)} fill={SK.ink} />
-      <path d={wobble(rp(blobPts(320, other, 4, 4, 733, 8, 0.1)), 733, 0.2, 4, true)} fill={SK.ink} />
-      <SketchText x={334} y={mtl + 4} size={12}>
-        MONTREAL
-      </SketchText>
-      <SketchText x={334} y={other + 4} size={12}>
-        ANOTHER COUNTRY
-      </SketchText>
+      {/* hydration branches into culturally shaped wants */}
+      <SketchArrow pts={curvePts([212, tY], [272, tY], [312, topWant], 10)} seed={730} />
+      <SketchArrow pts={curvePts([212, tY], [268, botWant], [336, botWant], 14)} seed={731} />
 
-      <g transform={`translate(530 ${mtl + 44}) scale(1.35) translate(-530 ${-(mtl + 44)})`}>
-        <Glass1 x={530} y={mtl + 44} seed={740} />
+      <g transform={`translate(366 ${topWant + 36}) scale(1.3) translate(-366 ${-(topWant + 36)})`}>
+        <Glass1 x={366} y={topWant + 36} seed={740} />
       </g>
-      <g transform={`translate(630 ${mtl + 44}) scale(1.35) translate(-630 ${-(mtl + 44)})`}>
-        <Can1 x={630} y={mtl + 44} seed={750} />
+      <g transform={`translate(456 ${topWant + 36}) scale(1.3) translate(-456 ${-(topWant + 36)})`}>
+        <Can1 x={456} y={topWant + 36} seed={750} />
       </g>
-      <g transform={`translate(580 ${other + 44}) scale(1.35) translate(-580 ${-(other + 44)})`}>
-        <TeaCup x={580} y={other + 44} seed={760} />
+      <g transform={`translate(410 ${botWant + 32}) scale(1.3) translate(-410 ${-(botWant + 32)})`}>
+        <TeaCup x={410} y={botWant + 32} seed={760} />
       </g>
+
+      {/* want backed by purchasing power becomes demand */}
+      <SketchArrow pts={[[500, topWant + 4], [596, topWant + 4]]} seed={770} />
+      <PayCard x={656} y={topWant + 6} w={54} tilt={-8} seed={772} />
+      <path
+        d={wobble(
+          [
+            [704, topWant + 4],
+            [716, topWant + 16],
+            [738, topWant - 10],
+          ],
+          775,
+          0.6,
+          6,
+        )}
+        fill="none"
+        stroke={SK.teal}
+        strokeWidth={3}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </SketchFrame>
   );
 }
@@ -897,7 +917,7 @@ export function FamilyCar() {
       id="sk-family-car"
       width={800}
       height={236}
-      label="A household buying a family car, washed teal. On the left two parents, one holding out a payment card: parents buy. On the right two children, speech bubbles raised with a heart and an exclamation mark, an arrow from them to the car: children influence."
+      label="A household buying a family car, washed teal. On the left two parents, one holding out a payment card: buyer and user. On the right two children, speech bubbles raised with a heart and an exclamation mark, an arrow from them to the car: initiator and influencer."
     >
       <Backwash cx={400} cy={112} rx={372} ry={100} seed={900} opacity={0.4} />
       <Ground x0={40} x1={760} y={g} seed={902} />
@@ -920,10 +940,10 @@ export function FamilyCar() {
       <SketchArrow pts={curvePts([562, 52], [512, 52], [480, 88], 8)} seed={1370} />
 
       <SketchText x={133} y={214} anchor="middle" size={12}>
-        PARENTS BUY
+        BUYER | USER
       </SketchText>
       <SketchText x={656} y={214} anchor="middle" size={12}>
-        CHILDREN INFLUENCE
+        INITIATOR | INFLUENCER
       </SketchText>
     </SketchFrame>
   );
@@ -1074,9 +1094,10 @@ export function SortedGroups() {
   );
 }
 
-/** What each pillar stands on: ages, a place, a feeling, a repeat purchase. */
+/** What each pillar stands on: a place, ages, a feeling, a repeat purchase. */
 function PillarGlyph({ i, x, y }: { i: number; x: number; y: number }) {
-  if (i === 0)
+  if (i === 0) return <MapPin x={x} y={y + 30} s={1.1} seed={1960} />;
+  if (i === 1)
     return (
       <g>
         <Figure x={x - 28} y={y + 42} k={0.44} headScale={1.5} look={{ hair: "curly", hairTone: SK.brown, skin: SK.brown, skinOpacity: 0.5, wear: SK.ochre, legs: SK.tan }} arms={["down", "down"]} seed={1700} />
@@ -1084,7 +1105,6 @@ function PillarGlyph({ i, x, y }: { i: number; x: number; y: number }) {
         <Figure x={x + 28} y={y + 42} k={0.66} look={{ hair: "short", hairTone: SK.earth, wear: SK.charcoal, legs: SK.tan, outfit: "jacket" }} arms={["down", "down"]} seed={1900} />
       </g>
     );
-  if (i === 1) return <MapPin x={x} y={y + 30} s={1.1} seed={1960} />;
   if (i === 2) return <Heart x={x} y={y} s={2.2} seed={1970} />;
   const loop = rp(
     Array.from({ length: 10 }, (_, k) => {
@@ -1100,7 +1120,7 @@ function PillarGlyph({ i, x, y }: { i: number; x: number; y: number }) {
   );
 }
 
-export const PILLARS = ["DEMOGRAPHICS", "GEOGRAPHICS", "PSYCHOGRAPHICS", "BEHAVIORAL"];
+export const PILLARS = ["GEOGRAPHIC", "DEMOGRAPHIC", "PSYCHOGRAPHIC", "BEHAVIORAL"];
 
 export function SegmentationPillars() {
   const xs = [100, 300, 500, 700];
@@ -1112,7 +1132,7 @@ export function SegmentationPillars() {
       id="sk-pillars"
       width={800}
       height={330}
-      label="A sketched temple front labelled market segmentation, held up by four pillars: demographics (a child, an adult and an older person), geographics (a map pin), psychographics (a heart), behavioral (a shopping cart with a repeat arrow)."
+      label="A sketched temple front labelled market segmentation, held up by four pillars: geographic (a map pin), demographic (a child, an adult, and an older person), psychographic (a heart), and behavioral (a shopping cart with a repeat arrow)."
     >
       <Backwash cx={400} cy={170} rx={380} ry={150} seed={1600} opacity={0.35} />
       <Paper pts={roof} seed={1601} />
@@ -1473,10 +1493,10 @@ export function HiddenUnitPrice() {
           <g key={l.x}>
             <Paper pts={box} seed={3430 + i * 5} />
             <InkLine pts={box} seed={3431 + i * 5} width={1} closed />
-            <SketchText x={l.x} y={g + 36} anchor="middle" size={16}>
+            <SketchText x={l.x} y={g + 34} anchor="middle" size={16}>
               {l.price}
             </SketchText>
-            <SketchText x={l.x} y={g + 52} anchor="middle" size={10.5} fill={SK.pencil}>
+            <SketchText x={l.x} y={g + 54} anchor="middle" size={10.5} fill={SK.pencil}>
               {l.unit}
             </SketchText>
           </g>

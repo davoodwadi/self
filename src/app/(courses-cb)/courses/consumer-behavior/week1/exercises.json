@@ -2,7 +2,7 @@
   {
     "type": "sort",
     "slide_id": "the-three-stages-of-consumption",
-    "prompt": "Each moment below belongs to one stage of consumption. Sort them into Prepurchase, Purchase and Postpurchase.",
+    "prompt": "Each activity below occurs in one stage of the consumption process. Sort them into Prepurchase, Purchase, and Postpurchase.",
     "bins": [
       { "id": "pre", "label": "Prepurchase" },
       { "id": "purchase", "label": "Purchase" },
@@ -11,166 +11,256 @@
     "cards": [
       {
         "id": "worn-shoes",
-        "text": "A runner notices her shoes are worn out and reads reviews of new ones.",
+        "text": "A commuter notices her winter boots are leaking and compares waterproof ratings across three brands.",
         "bin": "pre",
-        "explanation": "In prepurchase the consumer identifies a need and searches for information."
+        "explanation": "In the prepurchase stage, the consumer recognizes a need, searches for information, and evaluates alternatives."
       },
       {
-        "id": "logo-test",
-        "text": "A juice brand asks shoppers how they feel about its new bottle before launch.",
+        "id": "attitude-study",
+        "text": "A beverage company tests which package claims attract attention and build favorable attitudes before launch.",
         "bin": "pre",
-        "explanation": "In prepurchase the marketer studies how consumer attitudes form."
+        "explanation": "In the prepurchase stage, the marketer studies how attitudes form and which cues attract attention."
       },
       {
-        "id": "checkout",
-        "text": "A shopper gives up because the website's checkout page keeps crashing.",
+        "id": "checkout-friction",
+        "text": "A shopper abandons an online order because the payment form requires creating an account.",
         "bin": "purchase",
-        "explanation": "In the purchase stage the consumer experiences the store, website, and checkout."
+        "explanation": "In the purchase stage, the consumer experiences the retail environment, time pressure, and payment process."
       },
       {
-        "id": "music",
-        "text": "A bookstore changes its lighting and music to make browsing feel calmer.",
+        "id": "shelf-display",
+        "text": "A grocery retailer places cold beverages near the express register to reduce checkout friction.",
         "bin": "purchase",
-        "explanation": "In the purchase stage the marketer focuses on packaging, convenience, and store atmosphere."
+        "explanation": "In the purchase stage, the marketer manages packaging, shelf placement, and checkout friction."
       },
       {
-        "id": "headphones",
-        "text": "After a week of use, a buyer decides his new headphones feel cheap.",
+        "id": "evaluate-fit",
+        "text": "After two weeks of daily use, a buyer decides his new desk lamp is too dim for reading.",
         "bin": "post",
-        "explanation": "In postpurchase the consumer uses the product and judges its quality."
+        "explanation": "In the postpurchase stage, the consumer uses the item and evaluates whether it met expectations."
       },
       {
-        "id": "returns",
-        "text": "A coffee-machine brand counts how many machines come back and how many buyers reorder pods.",
+        "id": "return-rate",
+        "text": "An appliance brand tracks warranty claims, product returns, and repeat orders across retail channels.",
         "bin": "post",
-        "explanation": "In postpurchase the marketer monitors satisfaction, returns, and repeat purchases."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "why-consumers-are-not-calculators",
-    "prompt": "Which of these shoppers fits the old economic model, and which behaves like a real person? Sort them into the two groups.",
-    "bins": [
-      { "id": "calculator", "label": "The old model: perfectly rational" },
-      { "id": "real", "label": "Real people" }
-    ],
-    "cards": [
-      {
-        "id": "compare-all",
-        "text": "Reads the label of every cereal on the shelf before choosing one.",
-        "bin": "calculator",
-        "explanation": "The old model assumed buyers compare all choices."
-      },
-      {
-        "id": "spreadsheet",
-        "text": "Works out the full cost of every phone plan, then picks the cheapest overall.",
-        "bin": "calculator",
-        "explanation": "The old model assumed buyers calculate costs and pick the best option."
-      },
-      {
-        "id": "same-brand",
-        "text": "Grabs the same toothpaste as always without looking at the others.",
-        "bin": "real",
-        "explanation": "Habits and brand loyalty act as a mental shortcut."
-      },
-      {
-        "id": "bad-day",
-        "text": "Buys a cake after a bad day at work.",
-        "bin": "real",
-        "explanation": "Real decisions depend on mood."
-      },
-      {
-        "id": "friends",
-        "text": "Buys the sneakers everyone in her friend group is wearing.",
-        "bin": "real",
-        "explanation": "Real decisions depend on social pressure."
-      },
-      {
-        "id": "tired",
-        "text": "Tired after a long shift, takes the first familiar pasta sauce he sees.",
-        "bin": "real",
-        "explanation": "Real people have limited time and energy, so they use mental shortcuts instead."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "the-ai-agent-as-a-surrogate-consumer",
-    "prompt": "A student asks an AI agent to buy her hiking boots. Who does each step: the consumer or the AI agent? Sort them into the two groups.",
-    "bins": [
-      { "id": "consumer", "label": "The consumer" },
-      { "id": "agent", "label": "The AI agent" }
-    ],
-    "cards": [
-      {
-        "id": "goal",
-        "text": "Asks for waterproof hiking boots under $150.",
-        "bin": "consumer",
-        "explanation": "The consumer states a goal."
-      },
-      {
-        "id": "search",
-        "text": "Looks through the boots sold by six online stores.",
-        "bin": "agent",
-        "explanation": "The AI agent searches for options."
-      },
-      {
-        "id": "compare",
-        "text": "Lines up the prices, weights and ratings of four pairs.",
-        "bin": "agent",
-        "explanation": "The AI agent compares the options."
-      },
-      {
-        "id": "checkout",
-        "text": "Pays for the chosen pair with the saved card.",
-        "bin": "agent",
-        "explanation": "The AI agent can complete the purchase, acting as the buyer."
-      },
-      {
-        "id": "hike",
-        "text": "Wears the boots on a weekend hike.",
-        "bin": "consumer",
-        "explanation": "The consumer still uses the product and remains the user."
-      },
-      {
-        "id": "judge",
-        "text": "Decides after a month that the boots were worth the price.",
-        "bin": "consumer",
-        "explanation": "The consumer judges the product's quality after the sale."
+        "explanation": "Postpurchase outcomes determine repeat sales, product returns, and word-of-mouth recommendations."
       }
     ]
   },
   {
     "type": "match",
-    "slide_id": "market-segmentation-who-are-we-talking-to",
-    "prompt": "Match each segmentation base with the company that is using it.",
+    "slide_id": "market-segmentation-bases",
+    "prompt": "Match each market segmentation base with the company strategy that applies it.",
     "term_label": "Segmentation base",
-    "match_label": "What the company does",
+    "match_label": "Marketing strategy",
     "pairs": [
       {
-        "id": "demographics",
-        "term": "Demographics",
-        "match": "A bank designs an account for students under 25.",
-        "explanation": "Demographics group people by age, gender, income, and education."
+        "id": "geographic",
+        "term": "Geographic",
+        "match": "A hardware chain stocks snow blowers in northern regions and dehumidifiers in humid coastal cities.",
+        "explanation": "Geographic segmentation groups buyers by physical location, region, urban density, or climate."
       },
       {
-        "id": "geographics",
-        "term": "Geographics",
-        "match": "A ski shop sends one offer to snowy cities and another to warm coastal cities.",
-        "explanation": "Geographics group people by location, city size, and climate."
+        "id": "demographic",
+        "term": "Demographic",
+        "match": "A retail bank introduces a no-fee checking account tailored to university students aged 18 to 24.",
+        "explanation": "Demographic segmentation groups buyers by observable statistics such as age, income, education, and household structure."
       },
       {
-        "id": "psychographics",
-        "term": "Psychographics",
-        "match": "A clothing brand targets people who value an outdoor, eco-friendly lifestyle.",
-        "explanation": "Psychographics group people by lifestyle, values, and personality."
+        "id": "psychographic",
+        "term": "Psychographic",
+        "match": "A travel company designs wilderness expeditions for consumers who value adventure and environmental stewardship.",
+        "explanation": "Psychographic segmentation groups buyers by psychological traits, values, interests, and lifestyles."
       },
       {
         "id": "behavioral",
         "term": "Behavioral",
-        "match": "A café rewards the customers who come in every single day.",
-        "explanation": "Behavioral segments group people by how often they buy and how they use the item."
+        "match": "A coffee roaster sends a bulk refill offer to customers who order beans every two weeks.",
+        "explanation": "Behavioral segmentation groups buyers by observed actions such as usage frequency, occasion, and brand loyalty."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "customers-versus-consumers",
+    "prompt": "For each person highlighted below, identify whether they act only as the customer, only as the consumer, or as both.",
+    "options": [
+      { "id": "customer", "label": "Customer only" },
+      { "id": "consumer", "label": "Consumer only" },
+      { "id": "both", "label": "Both customer and consumer" }
+    ],
+    "cases": [
+      {
+        "id": "dog-owner",
+        "text": "Maya pays at the pet store for a bag of grain-free dog food for her golden retriever.",
+        "answer": "customer",
+        "explanation": "Maya purchases and pays for the dog food, while her dog is the consumer that eats it."
+      },
+      {
+        "id": "toddler",
+        "text": "Leo, an eighteen-month-old child, eats the organic applesauce his father bought at the supermarket.",
+        "answer": "consumer",
+        "explanation": "Leo uses and experiences the product, while his father was the customer who paid for it."
+      },
+      {
+        "id": "commuter-coffee",
+        "text": "Sam buys a hot espresso at the station kiosk and drinks it on the morning train.",
+        "answer": "both",
+        "explanation": "Sam both pays for the espresso (customer) and drinks it himself (consumer)."
+      },
+      {
+        "id": "office-manager",
+        "text": "A clinic administrator orders and pays for twenty ergonomic keyboards for the nursing staff.",
+        "answer": "customer",
+        "explanation": "The administrator executes the purchase, while the nursing staff are the users who consume the keyboards."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "household-decision-making-roles",
+    "prompt": "A family is purchasing a new dishwasher. Match each decision role with the family member who performs it.",
+    "term_label": "Decision role",
+    "match_label": "Family member's action",
+    "pairs": [
+      {
+        "id": "initiator",
+        "term": "Initiator",
+        "match": "An older teenager points out that the current dishwasher leaves dishes wet and suggests replacing it.",
+        "explanation": "The initiator is the person who first recognizes an unmet need or proposes acquiring a product."
+      },
+      {
+        "id": "gatekeeper",
+        "term": "Gatekeeper",
+        "match": "One parent bookmarks three energy-efficient models and only prints those brochures for the family to review.",
+        "explanation": "The gatekeeper or information gatherer controls the flow of product information that reaches the group."
+      },
+      {
+        "id": "influencer",
+        "term": "Influencer",
+        "match": "An uncle who repairs appliances recommends choosing a stainless-steel tub over a plastic tub.",
+        "explanation": "The influencer provides recommendations, expertise, or preferences that sway how alternatives are evaluated."
+      },
+      {
+        "id": "buyer",
+        "term": "Buyer",
+        "match": "The other parent completes the checkout on the appliance store website using her credit card.",
+        "explanation": "The buyer executes the transaction and pays for the item."
+      },
+      {
+        "id": "user",
+        "term": "User",
+        "match": "Every member of the household loads dishes into the machine and runs it after dinner.",
+        "explanation": "The user consumes the product and judges its performance in daily life."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "bounded-rationality-and-psychological-influences",
+    "prompt": "Sort each purchasing description into the assumptions of the classical rational economic model or bounded rationality and psychological influences.",
+    "bins": [
+      { "id": "rational", "label": "Classical rational economic model" },
+      { "id": "bounded", "label": "Bounded rationality and psychology" }
+    ],
+    "cards": [
+      {
+        "id": "all-specs",
+        "text": "A buyer inspects every television sold in the city and calculates a weighted utility score for each attribute.",
+        "bin": "rational",
+        "explanation": "The classical economic model assumes complete information and exhaustive computation across all options."
+      },
+      {
+        "id": "invariant-price",
+        "text": "A shopper's preference between two insurance plans remains identical regardless of how the deductible is worded.",
+        "bin": "rational",
+        "explanation": "The classical model assumes stable preferences that do not shift with message framing."
+      },
+      {
+        "id": "habit-pasta",
+        "text": "Pressed for time after work, a shopper grabs the familiar blue box of pasta without checking competing prices.",
+        "bin": "bounded",
+        "explanation": "Bounded rationality and brand familiarity allow shoppers to repeat satisfactory past choices under time limits."
+      },
+      {
+        "id": "mood-comfort",
+        "text": "After a stressful exam, a student buys a premium dessert she would normally skip.",
+        "bin": "bounded",
+        "explanation": "Emotional states alter how buyers evaluate product attractiveness and spending."
+      },
+      {
+        "id": "peer-jacket",
+        "text": "A new employee buys the same style of rain jacket worn by colleagues in his department.",
+        "bin": "bounded",
+        "explanation": "Social context shapes choices because consumers seek approval from peers."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "delegating-search-evaluation-and-purchase-to-ai-agents",
+    "prompt": "A runner delegates buying replacement running shoes to an AI shopping agent. Sort each action by whether it is performed by the human consumer or the AI shopping agent.",
+    "bins": [
+      { "id": "human", "label": "Human consumer" },
+      { "id": "agent", "label": "AI shopping agent" }
+    ],
+    "cards": [
+      {
+        "id": "prompt-goal",
+        "text": "Specifies the goal of finding stability running shoes for flat feet under 120 dollars.",
+        "bin": "human",
+        "explanation": "In delegated shopping, the human consumer recognizes the need and specifies the goal and constraints."
+      },
+      {
+        "id": "query-catalogs",
+        "text": "Queries six online shoe catalogs and extracts arch-support specifications and customer review scores.",
+        "bin": "agent",
+        "explanation": "The AI shopping agent queries retail databases and reads product attributes and customer reviews."
+      },
+      {
+        "id": "shortlist-checkout",
+        "text": "Narrows forty listings to the best matching pair in stock and submits the order within the budget limit.",
+        "bin": "agent",
+        "explanation": "The AI agent filters alternatives and executes the transaction on the buyer's behalf."
+      },
+      {
+        "id": "wear-evaluate",
+        "text": "Runs ten kilometers in the delivered shoes and evaluates whether the cushioning prevents arch pain.",
+        "bin": "human",
+        "explanation": "The human consumer remains the final user who experiences the product after delivery."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "dark-patterns-aimed-at-human-shoppers",
+    "prompt": "Match each dark pattern with the interface design that exemplifies it.",
+    "term_label": "Dark pattern",
+    "match_label": "Interface design",
+    "pairs": [
+      {
+        "id": "drip-pricing",
+        "term": "Drip pricing",
+        "match": "A concert ticket site advertises seats at 60 dollars and reveals a mandatory 22-dollar service fee only on the final payment step.",
+        "explanation": "Drip pricing conceals mandatory fees until the final checkout screen after the shopper has invested time."
+      },
+      {
+        "id": "confirmshaming",
+        "term": "Confirmshaming",
+        "match": "A pop-up decline button reads: No thanks, I prefer paying full price and wasting money.",
+        "explanation": "Confirmshaming uses guilt-inducing language on opt-out buttons to pressure users into accepting an offer."
+      },
+      {
+        "id": "roach-motel",
+        "term": "Roach-motel subscription",
+        "match": "A streaming trial starts with one click online, but canceling requires calling a support line during weekday business hours.",
+        "explanation": "Roach-motel designs make signing up effortless while making cancellation slow and difficult."
+      },
+      {
+        "id": "false-scarcity",
+        "term": "False scarcity",
+        "match": "A product page displays a ten-minute countdown timer that resets to ten minutes every time the browser page is refreshed.",
+        "explanation": "False scarcity and countdown timers fabricate urgency to prevent consumers from comparing alternatives."
       }
     ]
   }
