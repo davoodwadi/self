@@ -10,6 +10,7 @@ week: week5
 - Governing opaque algorithms requires distinguishing intrinsic interpretability from post-hoc approximations, testing whether language-model reasoning traces are faithful to actual choices, and matching explanations to the decisions stakeholders must make.
 
 ## Why Opacity Is a Governance Problem [no-exercise]
+[figure: input variables entering a sealed model whose internal routes are hidden, and decisions leaving it (a denied loan, a raised premium, a supplier crossed off a shortlist) with no visible link to the variables that drove them]
 - Modern marketing and financial pipelines rely on gradient-boosted ensembles, deep neural networks, and billion-parameter language models whose internal computations cannot be inspected by reading a short formula.
 - When an opaque model denies a loan, raises an insurance premium, or excludes a supplier from a procurement shortlist, neither the customer nor the manager can immediately see which variables drove the outcome.
 - Opacity undermines three pillars of algorithmic governance: internal debugging of spurious correlations, regulatory verification of non-discrimination compliance, and a consumer's ability to contest an erroneous decision.
@@ -22,10 +23,12 @@ week: week5
 - A firm can provide high process transparency while deploying a black-box model, or use post-hoc explainability tools on an opaque model without making the underlying model intrinsically interpretable.
 
 ## Part 1: Intrinsic Interpretability Versus Black-Box Complexity [no-exercise]
+[figure: a constrained interpretable model and a black-box ensemble balanced level on out-of-sample accuracy]
 - A widespread assumption in commercial data science is that predictive accuracy always requires complex black-box architectures, leaving post-hoc explanation as the only path to accountability.
 - On structured tabular business data, however, constrained interpretable models frequently match the out-of-sample accuracy of black-box ensembles when features are carefully engineered (Rudin, 2019).
 
 ## Intrinsically Interpretable Models: Linear Models, Generalized Additive Models, and Rule Lists [no-exercise]
+[figure: interactive fraud score for one transaction read directly from a sparse linear model's coefficients, a generalized additive model's shape functions, and a falling rule list, as transaction velocity and account age change]
 - Sparse linear and logistic regression models assign a single weight to each input variable, allowing an analyst to read the exact direction and magnitude of each feature's contribution directly from the coefficients.
 - Generalized additive models (GAMs) extend linear models by fitting a smooth, nonlinear shape function for each individual feature while keeping the features additive, so that each variable's exact response curve can be plotted and inspected in isolation.
 - Shallow decision trees and falling rule lists express predictions as a short sequence of if-then conditions, such as flagging an account if transaction velocity exceeds three per hour and account age is under seven days.
@@ -38,6 +41,7 @@ week: week5
 - Even when a model's source code and weights are publicly released, its high-dimensional parameter space remains functionally opaque to human inspection without analytical tools.
 
 ## When High-Stakes Decisions Should Use Interpretable Models [exercise]
+[figure: interactive post-hoc surrogate approximating a black-box decision boundary with a chosen number of pieces, counting the applicants whose explanation contradicts the black box's actual decision]
 - As Rudin (2019) argues, post-hoc explanations of black-box models are necessarily approximations: if a post-hoc explanation were completely faithful to the black box in every case, the black box would not be needed.
 - In high-stakes tabular domains such as consumer credit underwriting, medical risk scoring, and criminal justice, relying on a black box plus an approximate post-hoc explanation risks hiding critical edge-case failures.
 - When structured tabular features already capture the domain signal and errors carry severe legal or human consequences, governance frameworks favor intrinsically interpretable models with monotonicity constraints.
@@ -48,18 +52,21 @@ week: week5
 - Post-hoc methods are divided by scope into global explanations of the model as a whole and local explanations of a single prediction for one individual.
 
 ## Global Versus Local Explanations [no-exercise]
+[figure: interactive comparison of a global explanation averaged over a population of customers with the local explanation for one selected applicant's default probability]
 - A global explanation summarizes how a model behaves across the entire population of customers, identifying which features carry the greatest overall weight and how predictions shift on average as a feature changes.
 - Global explanations are used by model developers, risk committees, and regulators to audit whether a model relies on sensible domain predictors or suspect demographic proxies.
 - A local explanation accounts for why the model produced a specific prediction for one individual customer, such as why Applicant 4082 received a default probability of 0.42.
 - Local explanations are used by customer service representatives, loan officers, and affected consumers who need to understand or challenge an individual decision.
 
 ## Permutation Feature Importance and Partial Dependence [no-exercise]
+[figure: interactive shuffling of one feature column and the resulting rise in holdout error, beside a partial dependence curve that can be split into individual conditional expectation curves]
 - Permutation feature importance is a global method that measures how much the model's holdout error increases when the values of a single feature are randomly shuffled across observations, breaking the link between that feature and the outcome.
 - Partial dependence plots (PDPs) show the marginal effect of one or two features on the predicted outcome by averaging the model's predictions over the empirical distribution of all other features.
 - Individual conditional expectation (ICE) curves disaggregate a partial dependence plot by drawing one curve per observation, revealing whether a feature's effect is uniform across customers or varies through interactions.
 - Both permutation importance and partial dependence plots can produce misleading artifacts when input features are strongly correlated, because shuffling or varying one feature independently creates unrealistic combinations of customer attributes.
 
 ## Local Surrogates and Game-Theoretic Attributions: LIME and SHAP [no-exercise]
+[figure: a local linear surrogate fitted to perturbed points around one customer on a nonlinear decision boundary, beside interactive joining orders whose marginal contributions average into Shapley values]
 - Local Interpretable Model-agnostic Explanations (LIME) approximates a black-box model around a single customer's profile by perturbing that profile, querying the black box on the perturbed points, and fitting a simple weighted linear model locally (Ribeiro, Singh, & Guestrin, 2016).
 - SHapley Additive exPlanations (SHAP) draws on cooperative game theory to treat input features as players in a coalition and computes each feature's Shapley value: its average marginal contribution to the prediction across all possible subsets of features (Lundberg & Lee, 2017).
 - SHAP satisfies three desirable axiomatic properties that heuristic attribution methods lack: local accuracy (attributions sum to the difference between the individual prediction and the baseline mean), missingness, and consistency.
@@ -80,12 +87,14 @@ week: week5
 - Counterfactual explanations and algorithmic recourse shift the focus from internal feature weights to the minimum changes required to achieve a favorable outcome.
 
 ## Counterfactual Explanations: What Would Have Changed the Decision [no-exercise]
+[figure: interactive decision boundary over annual income and credit utilization, showing the smallest change that moves a denied applicant to approval]
 - Introduced to algorithmic governance by Wachter, Mittelstadt, and Russell (2017), a counterfactual explanation states the smallest modification to an individual's input profile that alters the model's prediction to a desired target outcome.
 - Rather than opening the black box or approximating gradients, a counterfactual explanation takes the form: "Your loan application was denied. If your annual income had been 4,000 dollars higher or your credit card utilization had been below 30 percent, your application would have been approved."
 - Because counterfactual explanations specify an exact point on the other side of the model's decision boundary, they are fully faithful to the model's actual decision rule at that boundary point.
 - Multiple valid counterfactuals typically exist for the same individual, requiring an optimization criterion that balances proximity to the current profile, sparsity of changed features, and plausibility within the data manifold.
 
 ## From Explanation to Actionable Recourse [exercise]
+[figure: interactive features of a denied applicant split into mutable and immutable ones, beside two groups whose members sit at unequal distances from the decision boundary]
 - Actionable recourse, formalized by Ustun, Spangher, and Liu (2019), requires that a counterfactual explanation alter only mutable features that the individual can realistically change through their own actions.
 - Immutable features, such as age, birthplace, or protected demographic attributes, and conditionally immutable history, such as "never having missed a payment five years ago," can explain a model's score but provide zero actionable recourse.
 - Directionally constrained features must only move in feasible directions, such as increasing educational attainment or savings rather than decreasing years of work experience.
@@ -97,12 +106,14 @@ week: week5
 - These traces offer a rich qualitative window into agent decision-making, but they also introduce a critical governance trap if managers mistake fluent text for a faithful trace of the model's internal computation.
 
 ## Chain-of-Thought and Reasoning Traces as Verbal Protocols [no-exercise]
+[figure: interactive codebook applied to a shopper's think-aloud transcript and to an AI agent's reasoning trace, highlighting the same coded variables in both]
 - When prompted to think step by step or trained with reinforcement learning on reasoning tokens, a language model outputs an intermediate text sequence that lists the attributes it inspects, the rules it applies, and the trade-offs it weighs before selecting an option.
 - In consumer and marketing research, human decision processes are studied through think-aloud verbal protocols, in which participants speak their thoughts aloud while shopping and researchers code those transcripts with a structured codebook.
 - The reasoning traces of AI shopping agents can be analyzed with the exact same methodology: researchers develop a codebook of decision constructs and use human coders, or AI coders validated against human intercoder reliability, to classify thousands of agent traces (Wadi & Ma, 2026b, 2026c).
 - Coded traces reveal process-level variables that final choices alone cannot show, such as which product attributes the agent compared, which goal it formulated, and whether it noticed a disclosure label.
 
 ## Plausibility Versus Faithfulness in LLM Explanations [exercise]
+[figure: interactive prompt whose examples always place the correct answer in position A, producing a highly plausible chain-of-thought explanation that never mentions the cue that drove the choice]
 - Plausibility means that an explanation reads as convincing, logical, and satisfying to a human reader.
 - Faithfulness means that the explanation accurately reflects the true causal factors and internal computations that produced the model's output.
 - In autoregressive language models, a reasoning trace is itself a sequence of predicted tokens conditioned on the prompt, not a diagnostic readout of the neural network's weights or attention activations.
@@ -132,6 +143,7 @@ week: week5
 - Together, datasheets, model cards, and system transparency notes create an auditable chain of custody across the AI value chain introduced in Week 1.
 
 ## Dark Transparency and Disclosure Overload [no-exercise]
+[figure: interactive disclosure length showing that as pages are added the share of readers who reach the material error rate on page 2 falls]
 - More information is not always better governance: inundating consumers with technical parameters, thirty-page privacy policies, or uncalibrated confidence scores can obscure rather than clarify how a system works.
 - Dark transparency, or strategic opacity through overload, occurs when an organization releases voluminous technical disclosures to create the appearance of openness while burying conflicts of interest or adverse error rates.
 - Furthermore, displaying fluent, authoritative chain-of-thought explanations alongside a model's recommendation can amplify automation bias in human users, causing them to trust incorrect answers more than when no explanation is shown.

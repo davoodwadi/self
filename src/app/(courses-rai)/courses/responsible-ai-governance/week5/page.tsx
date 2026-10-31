@@ -6,15 +6,10 @@ import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise"
 import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  BlackBoxes,
-  BoundaryFence,
   BuriedDisclosure,
-  ChainOfCustody,
-  ClampOnMeter,
   CodedProtocols,
   CounterfactualPlane,
   CoveredCue,
-  EvidenceBinder,
   FourAudiences,
   FourLimits,
   GlobalLocal,
@@ -22,16 +17,12 @@ import {
   LevelBalance,
   LimeFit,
   OpaqueDecisions,
-  PrincipalSkepticism,
   ReadableModels,
   RecourseBurden,
   RecourseLevers,
   ShapleyOrders,
   ShuffleColumn,
   SurrogateGap,
-  ThreeForms,
-  TraceScroll,
-  VolumeObjective,
 } from "./visuals";
 
 // ============================================================================
@@ -126,53 +117,50 @@ export default function Week5Page() {
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Process transparency</Term> concerns
                   institutional and procedural openness: disclosing that an
                   automated system is in use, documenting its training data
                   provenance, and publishing its governance and auditing
                   standards.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Intrinsic interpretability</Term> is a
                   property of a model whose mathematical structure is simple and
                   constrained enough that a human can directly trace how input
                   features combine to produce a prediction.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Post-hoc explainability</Term> is the use of
                   a secondary mathematical procedure or surrogate model to
                   approximate and summarize why a complex black-box model
                   produced its outputs after the fact.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
         </ol>
-        <div className="mt-5 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-12">
+        <div className="mt-6 w-full">
           <Ruled>
-            <P>
+            <p className={BIG}>
               A firm can provide{" "}
               <Term>high process transparency while deploying a black-box model</Term>,
               or use post-hoc explainability tools on an opaque model without
               making the underlying model intrinsically interpretable.
-            </P>
+            </p>
           </Ruled>
-          <Plate>
-            <ThreeForms />
-          </Plate>
         </div>
       </Slide>
 
@@ -263,40 +251,37 @@ export default function Week5Page() {
           ================================================================ */}
       <Slide id="black-box-models-ensembles-deep-neural-networks-and-foundation-models" border className="!py-8">
         <SlideHeading>Black-Box Models: Ensembles, Deep Neural Networks, and Foundation Models</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <BlackBoxes />
-          </Plate>
-          <div className="grid gap-4">
+        <div className="w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Random forests and gradient-boosted trees combine hundreds of
                 deep trees whose high-order feature interactions cannot be
                 summarized by a single rule list or additive curve.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Deep neural networks and transformer foundation models
                 distribute representations across millions or billions of
                 continuous parameters and attention heads.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Black-box architectures provide genuine performance advantages
                 primarily on unstructured data, such as raw text, speech, images,
                 and multi-turn conversational interactions, where raw inputs must
                 be mapped into latent representations.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Even when a model&apos;s source code and weights are publicly
                 released, its high-dimensional parameter space{" "}
                 <Term>remains functionally opaque</Term> to human
                 inspection without analytical tools.
-              </P>
+              </p>
             </Ruled>
           </div>
         </div>
@@ -356,11 +341,8 @@ export default function Week5Page() {
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Post-Hoc Feature Attribution Methods" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <ClampOnMeter />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 When an organization deploys an ensemble or neural network,
@@ -625,8 +607,8 @@ export default function Week5Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Counterfactual Explanations and Actionable Recourse" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 Knowing which features contributed to an unfavorable score{" "}
@@ -641,9 +623,6 @@ export default function Week5Page() {
               </p>
             </Ruled>
           </div>
-          <Plate>
-            <BoundaryFence />
-          </Plate>
         </div>
       </Slide>
 
@@ -766,11 +745,8 @@ export default function Week5Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Reasoning Traces in Large Language Models as Verbal Protocols" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <TraceScroll />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 Unlike tabular classifiers that output a numeric score, large
@@ -912,62 +888,56 @@ export default function Week5Page() {
       >
         <SlideHeading className="!mb-4 [&_h2]:!max-w-none">Auditing Reasoning Traces Alongside Observed Choices</SlideHeading>
         <Ruled>
-          <P className="!max-w-none">
+          <p className={BIG}>
             Because reasoning traces can omit true drivers or rationalize biased
             outputs, behavioral governance{" "}
             <Term>never relies on reasoning traces in isolation</Term>.
             It pairs coded verbal protocols with controlled factorial choice
             experiments.
-          </P>
+          </p>
         </Ruled>
         <div className="mt-4 grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 In audits of resource rationality in AI shopping agents, coding
                 the reasoning trace identifies whether the agent explicitly states
                 unit-price minimization versus total-price minimization as its
                 goal, which precedes how many product details the agent acquires
                 and whether it selects the dominated option (Wadi &amp; Ma,
                 2026b).
-              </P>
+              </p>
             </Ruled>
-            <Plate className="mt-auto">
-              <VolumeObjective />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 In audits of sponsorship disclosure in agentic commerce, coding
                 the reasoning trace measures whether the agent expresses explicit
                 skepticism toward paid placements when the system prompt assigns
                 the platform versus the traveler as the agent&apos;s principal
                 (Wadi &amp; Ma, 2026c).
-              </P>
+              </p>
             </Ruled>
-            <Plate className="mt-auto">
-              <PrincipalSkepticism />
-            </Plate>
           </div>
         </div>
         <div className="mt-4 grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Ruled>
-            <P>
+            <p className={BIG}>
               When a manipulation shifts both the coded reasoning trace (such as
               attenuating stated skepticism toward sponsored listings) and the
               final choice probability in a controlled experiment, the trace
               provides <Term>convergent process-tracing evidence</Term>{" "}
               for the behavioral mechanism.
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               Conversely, when an agent&apos;s choice shifts across experimental
               conditions while its reasoning trace never mentions the
               manipulated factor, the divergence{" "}
               <Term>exposes unfaithful rationalization and hidden bias</Term>.
-            </P>
+            </p>
           </Ruled>
         </div>
       </Slide>
@@ -977,7 +947,7 @@ export default function Week5Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Designing Disclosures and Documentation for Stakeholders" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
+        <div className="mt-8 w-full">
           <Ruled>
             <p className={BIG}>
               Effective algorithmic governance translates technical
@@ -986,9 +956,6 @@ export default function Week5Page() {
               <Term>tailored to the audience that must act on them</Term>.
             </p>
           </Ruled>
-          <Plate>
-            <EvidenceBinder />
-          </Plate>
         </div>
       </Slide>
 
@@ -1046,52 +1013,49 @@ export default function Week5Page() {
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Datasheets for Datasets</Term>, introduced by
                   Gebru and colleagues (2021), standardize documentation of a
                   dataset&apos;s motivation, composition, collection process,
                   preprocessing, allowed uses, and maintenance plan.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Model Cards</Term>, introduced by Mitchell and
                   colleagues (2019), accompany a trained model to report its
                   intended use cases, out-of-scope uses, architecture, evaluation
                   datasets, disaggregated performance across demographic groups,
                   and known ethical limitations.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>System-level transparency notes</Term> extend
                   model cards to cover the complete deployed application,
                   including system prompts, retrieval sources, guardrail filters,
                   human oversight regimes, and the date of the most recent
                   behavioral audit.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
         </ol>
-        <Plate className="mt-4">
-          <ChainOfCustody />
-        </Plate>
         <Ruled className="mt-4">
-          <P className="!max-w-none">
+          <p className={BIG}>
             Together, datasheets, model cards, and system transparency notes
             create an{" "}
             <Term>auditable chain of custody</Term> across the AI
             value chain introduced in Week 1.
-          </P>
+          </p>
         </Ruled>
       </Slide>
 
