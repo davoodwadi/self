@@ -17,7 +17,7 @@ import {
   seeded,
   stip,
 } from "../_visuals/kit";
-import { Coins, Dial, Figure, Gear, Hall, House, Lens, Sheet, SmallModel, Tag, headAlongPath, star, tick } from "../_visuals/objects";
+import { Coins, Dial, Figure, Gear, Hall, Lens, SmallModel, Tag, headAlongPath, star } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 9 PLATES: PATENT DRAWING
@@ -209,51 +209,6 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
   );
 }
 
-/** A hand stamp: a knob, a neck, a body and an inked (red) face. (cx, y) the face's bottom centre. */
-function Stamp({ id, cx, y }: { id: string; cx: number; y: number }) {
-  return (
-    <g>
-      <ellipse cx={cx} cy={y - 50} rx={10} ry={8} fill={stip(id, "light")} {...ink} />
-      <path d={`M${cx - 4} ${y - 43}V${y - 30}M${cx + 4} ${y - 43}V${y - 30}`} fill="none" {...ink} />
-      <ObliqueBox id={id} x={cx - 18} y={y - 30} w={36} h={20} dx={6} dy={4} />
-      <rect x={cx - 20} y={y - 10} width={40} height={6} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.outline} />
-    </g>
-  );
-}
-
-/**
- * Four competition authorities, drawn as four hand stamps, coming down on
- * the two enforcement priorities on the examiner's bench: a pricing
- * algorithm and a gatekeeper platform's hall.
- */
-export function AuditorsLens() {
-  const id = "w9-enforce";
-  return (
-    <Frame
-      width={560}
-      height={250}
-      label="Patent drawing of four hand stamps, their faces inked red, poised on centre lines above an examiner's bench: two above a pricing algorithm housing and two above a gatekeeper platform's columned hall."
-    >
-      <PatentDefs id={id} />
-      {[84, 178, 360, 454].map((cx) => (
-        <g key={cx}>
-          <Stamp id={id} cx={cx} y={74} />
-          <line x1={cx} y1={80} x2={cx} y2={cx < 300 ? 110 : 104} {...hair} strokeDasharray={CENTRE_DASH} />
-        </g>
-      ))}
-      <SmallModel id={id} x={74} y={122} w={110} h={88} />
-      <Hall id={id} x={356} y={210} w={104} h={96} />
-      <ObliqueBox id={id} x={30} y={210} w={490} h={14} dx={16} dy={10} />
-      <FigureName x={134} y={244} size={14}>
-        algorithmic pricing
-      </FigureName>
-      <FigureName x={412} y={244} size={14}>
-        gatekeeper self-preferencing
-      </FigureName>
-    </Frame>
-  );
-}
-
 /**
  * Pricing bot meets buying bot, on four published findings. The seller's
  * pricing algorithm (left) faces a shopper's AI agent (right). What passes
@@ -385,75 +340,6 @@ export function BotMeetsBot() {
         onChange={setT}
       />
     </div>
-  );
-}
-
-/**
- * Left: the static optimization model, a ruled sheet with a profit curve over
- * price and its peak marked. Right: the brand as a storefront whose sign and
- * facade are split by a red crack, two shoppers walking away from it.
- */
-export function BrandEquity() {
-  const id = "w9-brand";
-  const curve = Array.from({ length: 41 }, (_, i) => {
-    const t = i / 40;
-    return `${r2(46 + t * 180)} ${r2(186 - 118 * (4 * t * (1 - t)) ** 1.4)}`;
-  });
-  return (
-    <Frame
-      width={600}
-      height={262}
-      label="Patent drawing in two figures. Static optimization model: a ruled sheet with a profit curve over price, its peak marked with a tick. Brand equity: a storefront with a blank sign and an awning, split from sign to step by a red crack, and two shoppers walking away from it."
-    >
-      <PatentDefs id={id} />
-      {/* the model sheet */}
-      <path d="M30 24H232L250 42V214H30Z" fill={PAT.paper} {...ink} />
-      <path d="M232 24V42H250" fill="none" {...hair} />
-      <path d="M250 42L256 46V218L250 214Z" fill={stip(id, "dense")} {...ink} />
-      <path d="M30 214L36 218H256L250 214Z" fill={stip(id, "dense")} {...ink} />
-      <line x1={46} y1={50} x2={46} y2={190} {...ink} />
-      <line x1={46} y1={190} x2={234} y2={190} {...ink} />
-      <path d={`M${curve.join("L")}`} fill="none" {...ink} strokeWidth={LINE.bold} />
-      <line x1={136} y1={68} x2={136} y2={190} {...hair} strokeDasharray="3 2" />
-      <circle cx={136} cy={68} r={3.5} fill={PAT.paper} {...ink} />
-      <path d={tick(160, 50, 7)} fill="none" {...ink} strokeWidth={LINE.bold} />
-      <PatentKey x={52} y={44} size={12} anchor="start">
-        Profit
-      </PatentKey>
-      <PatentKey x={232} y={206} size={12} anchor="end">
-        Price
-      </PatentKey>
-      <FigureName x={140} y={248} size={15}>
-        static optimization model
-      </FigureName>
-
-      {/* the storefront */}
-      <ObliqueBox id={id} x={316} y={78} w={160} h={126} dx={18} dy={11} />
-      <rect x={326} y={46} width={140} height={28} fill={PAT.paper} {...ink} />
-      <line x1={340} y1={58} x2={420} y2={58} {...hair} />
-      <line x1={340} y1={64} x2={400} y2={64} {...hair} />
-      <path d="M316 92H476L466 112H326Z" fill={stip(id, "light")} {...ink} />
-      <rect x={334} y={126} width={60} height={50} fill={PAT.paper} {...ink} />
-      <line x1={364} y1={126} x2={364} y2={176} {...hair} />
-      <rect x={414} y={126} width={42} height={78} fill={PAT.paper} {...ink} />
-      <circle cx={420} cy={166} r={1.6} fill={PAT.ink} />
-      <ObliqueBox id={id} x={306} y={204} w={180} h={8} dx={18} dy={11} />
-      <path
-        d="M402 46L396 58L405 68L398 80L408 96L400 112L410 128L403 146L411 164L404 184L410 204"
-        fill="none"
-        stroke={R}
-        strokeWidth={LINE.bold}
-        strokeLinejoin="round"
-      />
-      {[150, 160, 170].map((yy) => (
-        <line key={yy} x1={500} y1={yy} x2={512} y2={yy} {...hair} strokeDasharray="3 2" />
-      ))}
-      <Figure id={id} x={526} y={214} s={1.35} />
-      <Figure id={id} x={572} y={214} s={1.35} coat="dense" />
-      <FigureName x={420} y={248} size={15}>
-        brand equity
-      </FigureName>
-    </Frame>
   );
 }
 
@@ -589,55 +475,6 @@ function Shopfront({ id, x, y, w = 70, h = 56 }: { id: string; x: number; y: num
       <rect x={r2(x + w * 0.14)} y={r2(y - h * 0.48)} width={r2(w * 0.28)} height={r2(h * 0.48)} fill={PAT.paper} {...hair} />
       <rect x={r2(x + w * 0.54)} y={r2(y - h * 0.48)} width={r2(w * 0.32)} height={r2(h * 0.28)} fill={PAT.paper} {...hair} />
     </g>
-  );
-}
-
-/**
- * Left: an explicit cartel, two executives shaking hands over a signed
- * agreement on a table. Right: conscious parallelism, two rival shops each
- * watching the other's public price through a lens, the two prices equal,
- * with nothing passing between them.
- */
-export function CartelVsParallel() {
-  const id = "w9-cartel";
-  return (
-    <Frame
-      width={560}
-      height={190}
-      label="Patent drawing in two figures. Explicit cartel: two executives shake hands across a table over a signed agreement. Conscious parallelism: two rival shopfronts, each watching the other's posted price of $9.40 through a lens, with nothing passing between them."
-    >
-      <PatentDefs id={id} />
-      {/* the cartel */}
-      <Figure id={id} x={86} y={164} s={1.4} arm="reach" />
-      <Figure id={id} x={172} y={164} s={1.4} arm="reach" flip coat="dense" />
-      <circle cx={129} cy={88} r={4} fill={PAT.paper} {...ink} />
-      <path d="M106 16H146L154 24V68H106Z" fill={PAT.paper} {...ink} />
-      <path d="M146 16V24H154" fill="none" {...hair} />
-      {[28, 36, 44].map((y) => (
-        <line key={y} x1={112} y1={y} x2={146} y2={y} {...hair} />
-      ))}
-      <path d="M112 60Q116 54 119 60T126 58" fill="none" {...hair} />
-      <path d="M134 60Q138 54 141 60T148 58" fill="none" {...hair} />
-      <FigureName x={130} y={182} size={14}>
-        explicit cartel
-      </FigureName>
-
-      <line x1={280} y1={12} x2={280} y2={176} {...hair} strokeDasharray={CENTRE_DASH} />
-
-      {/* conscious parallelism */}
-      <Shopfront id={id} x={300} y={150} />
-      <Shopfront id={id} x={466} y={150} />
-      <line x1={296} y1={150} x2={552} y2={150} {...ink} />
-      <Tag cx={346} cy={66} text="$9.40" w={46} size={13} />
-      <Tag cx={512} cy={66} text="$9.40" w={46} size={13} />
-      <line x1={340} y1={78} x2={340} y2={88} {...hair} />
-      <line x1={506} y1={78} x2={506} y2={88} {...hair} />
-      <Lens id={id} cx={408} cy={86} r={11} a={2.4} handle={14} />
-      <Lens id={id} cx={444} cy={86} r={11} a={0.74} handle={14} />
-      <FigureName x={426} y={182} size={14}>
-        conscious parallelism
-      </FigureName>
-    </Frame>
   );
 }
 
@@ -991,168 +828,6 @@ function Bag({ id, x, y, w = 26, h = 28, stroke = PAT.ink }: { id: string; x: nu
   );
 }
 
-/** A market stall: a counter, two posts and a striped awning. (x, y) the counter's bottom-left. */
-function Stall({ id, x, y, w = 74, red = false }: { id: string; x: number; y: number; w?: number; red?: boolean }) {
-  const c = red ? R : PAT.ink;
-  return (
-    <g>
-      <line x1={x + 4} y1={y - 26} x2={x + 4} y2={y - 64} {...ink} stroke={c} />
-      <line x1={x + w - 4} y1={y - 26} x2={x + w - 4} y2={y - 64} {...ink} stroke={c} />
-      <path d={`M${x - 4} ${y - 64}H${x + w + 4}L${x + w - 2} ${y - 78}H${x + 2}Z`} fill={red ? stip(id, "signal") : stip(id, "light")} {...ink} stroke={c} />
-      <ObliqueBox id={id} x={x} y={y - 26} w={w} h={26} dx={8} dy={5} stroke={c} />
-      <ObliqueBox id={id} x={x + 12} y={y - 38} w={14} h={12} dx={4} dy={3} stroke={c} />
-      <ObliqueBox id={id} x={r2(x + w - 30)} y={y - 38} w={14} h={12} dx={4} dy={3} stroke={c} />
-    </g>
-  );
-}
-
-/**
- * Two vertical risks. Referee and merchant: the platform's hall carries the
- * referee's balance on its roof, and its own stall (red) stands at its door
- * beside a third-party merchant's stall. Seller algorithms and shopping
- * agents: a seller's pricing algorithm passes a price tag across to a shopper's AI
- * agent holding a shopping bag.
- */
-export function DualRole() {
-  const id = "w9-dualrole";
-  const g = 176;
-  return (
-    <Frame
-      width={640}
-      height={206}
-      label="Patent drawing in two figures. Marketplace referee and competing merchant: the platform's columned hall with a referee's balance on its roof. Beside it stands its own stall, in red and carrying the hall's pediment, beside a third-party merchant's stall. Seller algorithms and consumer shopping agents: a seller's pricing algorithm housing passes a price tag across to a shopping agent housing that holds a shopping bag."
-    >
-      <PatentDefs id={id} />
-      <line x1={10} y1={g} x2={316} y2={g} {...ink} />
-      <Hall id={id} x={104} y={g} w={96} h={96} />
-      {/* the referee's balance on the roof */}
-      <line x1={152} y1={g - 118} x2={152} y2={g - 156} {...ink} />
-      <line x1={114} y1={g - 156} x2={190} y2={g - 156} {...ink} strokeWidth={LINE.bold} />
-      <circle cx={152} cy={g - 156} r={3} fill={PAT.paper} {...ink} />
-      {[114, 190].map((cx) => (
-        <g key={cx}>
-          <line x1={cx} y1={g - 156} x2={cx - 12} y2={g - 140} {...hair} />
-          <line x1={cx} y1={g - 156} x2={cx + 12} y2={g - 140} {...hair} />
-          <path d={`M${cx - 14} ${g - 140}Q${cx} ${g - 134} ${cx + 14} ${g - 140}Z`} fill={stip(id, "dense")} {...ink} />
-        </g>
-      ))}
-      <Stall id={id} x={14} y={g} w={64} />
-      <Stall id={id} x={238} y={g} w={64} red />
-      <path d={`M256 ${g - 78}L270 ${g - 90}L284 ${g - 78}Z`} fill={PAT.paper} stroke={R} strokeWidth={LINE.outline} strokeLinejoin="round" />
-      <FigureName x={160} y={g + 22} size={14}>
-        marketplace referee and competing merchant
-      </FigureName>
-
-      <line x1={330} y1={10} x2={330} y2={196} {...hair} strokeDasharray={CENTRE_DASH} />
-
-      {/* pricing bot meets buying bot */}
-      <SmallModel id={id} x={354} y={60} w={86} h={86} />
-      <SmallModel id={id} x={528} y={60} w={86} h={86} />
-      <Bag id={id} x={562} y={59} />
-      <line x1={452} y1={102} x2={516} y2={102} {...hair} strokeDasharray="4 3" />
-      <path d={headAlongPath(520, 102, 1, 0, 7)} fill="none" {...ink} />
-      <Tag cx={486} cy={82} text="$9.40" w={42} size={13} />
-      <line x1={340} y1={146} x2={630} y2={146} {...ink} />
-      <FigureName x={484} y={g + 22} size={14}>
-        seller algorithms and shopping agents
-      </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * The evidence tray of a collusion case, three compartments: communication,
- * a shared vendor, and the algorithm's own learned strategy. Messenger
- * leaves a signed agreement. Hub-and-Spoke leaves the shared vendor engine.
- * Pure Autonomous Machine collusion leaves both compartments empty (red
- * dashed, the liability gap). Auditing the algorithm fills the third
- * compartment with its forced-cut test: the punish-and-return price path.
- */
-type Route = "messenger" | "hub" | "autonomous";
-
-export function EvidenceTray() {
-  const [route, setRoute] = useState<Route>("autonomous");
-  const [audit, setAudit] = useState<string[]>([]);
-  const id = "w9-evidence";
-  const audited = audit.includes("audit");
-  const slots = [
-    { key: "Communication", has: route === "messenger" },
-    { key: "Shared vendor", has: route === "hub" },
-    { key: "Learned strategy", has: audited },
-  ];
-  const x0 = 14;
-  const sw = 184;
-  const top = 150;
-  const label = `Patent drawing of a collusion case's evidence tray with three compartments: communication, shared vendor and learned strategy. For the ${route === "messenger" ? "Messenger pathway the communication compartment holds a signed price-fixing agreement" : route === "hub" ? "Hub-and-Spoke pathway the shared vendor compartment holds one pricing engine piped to three rivals" : "Autonomous Machine pathway the communication and shared vendor compartments are empty and outlined in red dashes"}. ${audited ? "With the algorithm audited, the learned strategy compartment holds a test card showing a price cut punished and then returned." : "The learned strategy compartment is empty until the algorithm is audited."}`;
-  return (
-    <div>
-      <Frame width={600} height={206} label={label}>
-        <PatentDefs id={id} />
-        {/* tray */}
-        <path d={`M${x0} ${top}L${x0 + 26} ${top - 16}H${x0 + 3 * sw + 26}L${x0 + 3 * sw} ${top}Z`} fill={stip(id, "light")} {...ink} />
-        {slots.map((s, i) => {
-          const x = x0 + i * sw;
-          const gap = !s.has && (i < 2 ? route === "autonomous" : false);
-          return (
-            <g key={s.key}>
-              <rect x={x} y={top} width={sw} height={44} fill={PAT.paper} {...ink} />
-              <PatentKey x={r2(x + sw / 2 + 2)} y={top + 27} size={11.5} fill={gap ? R : PAT.ink}>
-                {s.key}
-              </PatentKey>
-              {gap ? (
-                <path d={`M${x + 14} ${top - 4}L${x + 34} ${top - 14}H${x + sw + 10}L${x + sw - 10} ${top - 4}Z`} fill="none" stroke={R} strokeWidth={LINE.outline} strokeDasharray="5 3" />
-              ) : null}
-            </g>
-          );
-        })}
-        <path d={`M${x0 + 3 * sw} ${top}L${x0 + 3 * sw + 26} ${top - 16}V${top + 28}L${x0 + 3 * sw} ${top + 44}Z`} fill={stip(id, "dense")} {...ink} />
-        {/* the evidence */}
-        {slots[0].has ? <Agreement x={x0 + 52} y={top - 106} w={80} h={92} /> : null}
-        {slots[1].has ? (
-          <g>
-            <SmallModel id={id} x={x0 + sw + 54} y={top - 78} w={70} h={62} />
-            {[-1, 0, 1].map((k) => (
-              <g key={k}>
-                <line x1={x0 + sw + 89 + k * 20} y1={top - 84} x2={x0 + sw + 89 + k * 44} y2={top - 106} {...ink} />
-                <SellerMark cx={x0 + sw + 89 + k * 44} cy={top - 118} />
-              </g>
-            ))}
-          </g>
-        ) : null}
-        {slots[2].has ? (
-          <g>
-            <path d={`M${x0 + 2 * sw + 30} ${top - 12}V${top - 116}H${x0 + 2 * sw + 150}V${top - 12}Z`} fill={PAT.paper} {...ink} />
-            <path
-              d={`M${x0 + 2 * sw + 40} ${top - 96}H${x0 + 2 * sw + 62}V${top - 60}H${x0 + 2 * sw + 78}V${top - 34}H${x0 + 2 * sw + 96}V${top - 52}H${x0 + 2 * sw + 112}V${top - 96}H${x0 + 2 * sw + 140}`}
-              fill="none"
-              {...ink}
-              strokeWidth={LINE.bold}
-            />
-            <path
-              d={`M${x0 + 2 * sw + 40} ${top - 100}H${x0 + 2 * sw + 78}V${top - 30}H${x0 + 2 * sw + 96}V${top - 58}H${x0 + 2 * sw + 112}V${top - 100}H${x0 + 2 * sw + 140}`}
-              fill="none"
-              stroke={R}
-              strokeWidth={LINE.bold}
-              strokeDasharray="5 3"
-            />
-          </g>
-        ) : null}
-      </Frame>
-      <Segmented
-        label="Pathway"
-        options={[
-          { id: "messenger", label: "Messenger" },
-          { id: "hub", label: "Hub-and-Spoke" },
-          { id: "autonomous", label: "Autonomous Machine" },
-        ]}
-        value={route}
-        onChange={setRoute}
-      />
-      <Toggles label="Regulators" options={[{ id: "audit", label: "Audit the algorithm" }]} value={audit} onChange={setAudit} />
-    </div>
-  );
-}
-
 /**
  * Two rival pricing algorithms face each other with no wire between them.
  * Between them, each one's price over time: both start near the competitive
@@ -1483,83 +1158,6 @@ export function Guardrail({ kind }: { kind: "cap" | "framing" | "reward" | "fire
   );
 }
 
-/** A wall clock: a circle with two hands at (h, m). */
-function Clock({ cx, cy, r, h, m }: { cx: number; cy: number; r: number; h: number; m: number }) {
-  const ah = ((h % 12) / 12 + m / 720) * Math.PI * 2 - Math.PI / 2;
-  const am = (m / 60) * Math.PI * 2 - Math.PI / 2;
-  return (
-    <g>
-      <circle cx={cx} cy={cy} r={r} fill={PAT.paper} {...ink} />
-      {Array.from({ length: 12 }, (_, i) => {
-        const a = (i / 12) * Math.PI * 2;
-        return <line key={i} x1={r2(cx + Math.cos(a) * (r - 2))} y1={r2(cy + Math.sin(a) * (r - 2))} x2={r2(cx + Math.cos(a) * (r - 4.5))} y2={r2(cy + Math.sin(a) * (r - 4.5))} {...hair} />;
-      })}
-      <line x1={cx} y1={cy} x2={r2(cx + Math.cos(ah) * r * 0.5)} y2={r2(cy + Math.sin(ah) * r * 0.5)} {...ink} strokeWidth={LINE.bold} />
-      <line x1={cx} y1={cy} x2={r2(cx + Math.cos(am) * r * 0.78)} y2={r2(cy + Math.sin(am) * r * 0.78)} {...ink} />
-    </g>
-  );
-}
-
-/**
- * The three sources of outrage, one small scene each. Horizontal inequity:
- * two shoppers under one clock holding the identical boxed item, tagged $80
- * and (red) $100. Privacy betrayal: a loyalty card full of stamps fed into
- * the pricing algorithm, which issues a higher (red) tag. Vulnerability
- * exploitation: an anxious shopper, hand to forehead, before a box of
- * medical supplies whose tag has doubled (red).
- */
-export function Outrage({ kind }: { kind: "inequity" | "betrayal" | "vulnerability" }) {
-  const id = `w9-outrage-${kind}`;
-  const label = {
-    inequity: "Patent drawing of horizontal inequity: two shoppers under one wall clock, each holding the identical boxed item. One is tagged $80 and the other a red $100.",
-    betrayal: "Patent drawing of perceived privacy betrayal: a loyalty card full of stamps fed into the pricing algorithm housing, which issues a red $112 tag instead of a reward.",
-    vulnerability: "Patent drawing of vulnerability exploitation: an anxious shopper with a hand raised to the forehead before a box of medical supplies whose $12 tag is struck out and replaced by a red $24.",
-  }[kind];
-  return (
-    <Frame width={400} height={176} label={label}>
-      <PatentDefs id={id} />
-      {kind === "inequity" ? (
-        <g>
-          <Clock cx={200} cy={26} r={17} h={3} m={10} />
-          <Figure id={id} x={120} y={166} s={1.35} arm="reach" />
-          <Figure id={id} x={280} y={166} s={1.35} arm="reach" flip coat="dense" />
-          <ObliqueBox id={id} x={150} y={84} w={22} h={18} dx={6} dy={4} />
-          <ObliqueBox id={id} x={222} y={84} w={22} h={18} dx={6} dy={4} />
-          <Tag cx={166} cy={62} text="$80" w={38} size={15} />
-          <Tag cx={244} cy={62} text="$100" w={46} size={15} red />
-        </g>
-      ) : kind === "betrayal" ? (
-        <g>
-          <Sheet id={id} x={28} y={122} w={104} d={44} sk={26} />
-          {Array.from({ length: 8 }, (_, i) => {
-            const row = Math.floor(i / 4);
-            const cx = r2(52 + (i % 4) * 22 + (1 - row) * 13 + 4);
-            const cy = r2(110 - row * 20 + 1);
-            return <circle key={i} cx={cx} cy={cy} r={5.5} fill={stip(id, "dense")} {...ink} />;
-          })}
-          <line x1={148} y1={104} x2={186} y2={104} {...ink} />
-          <path d={headAlongPath(190, 104, 1, 0, 8)} fill="none" {...ink} />
-          <SmallModel id={id} x={196} y={70} w={70} h={70} />
-          <line x1={280} y1={104} x2={306} y2={104} {...ink} />
-          <path d={headAlongPath(310, 104, 1, 0, 8)} fill="none" {...ink} />
-          <Tag cx={350} cy={104} text="$112" w={52} size={16} red />
-        </g>
-      ) : (
-        <g>
-          <Figure id={id} x={110} y={166} s={1.4} arm="head" />
-          {/* a box of medical supplies */}
-          <ObliqueBox id={id} x={210} y={92} w={70} h={56} dx={14} dy={9} />
-          <path d="M239 104h12v12h12v12h-12v12h-12v-12h-12v-12h12z" fill={PAT.paper} {...ink} />
-          <ObliqueBox id={id} x={196} y={148} w={110} h={8} dx={14} dy={9} />
-          <Tag cx={336} cy={58} text="$12" w={40} size={14} />
-          <line x1={312} y1={64} x2={352} y2={52} {...ink} />
-          <Tag cx={340} cy={112} text="$24" w={44} size={16} red />
-        </g>
-      )}
-    </Frame>
-  );
-}
-
 /**
  * Ten buyers at their willingness to pay, from higher-income (left) to
  * lower-income (right). One price: $40, or $62 when supply is fixed at four
@@ -1853,51 +1451,6 @@ export function PricingThenNow() {
       <FigureName x={590} y={218} size={14}>
         milliseconds before a page loads
       </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * Two neighborhoods on one street, split by a dashed boundary: detached
- * houses on the left, apartment blocks on the right. Every home is quoted
- * for the same insurance policy: $40 on the left, $52 (red) on the right.
- */
-export function ProxyMap() {
-  const id = "w9-proxymap";
-  const base = 128;
-  return (
-    <Frame
-      width={560}
-      height={142}
-      label="Patent drawing of one street in two neighborhoods split by a dashed boundary: four detached houses on the left, each tagged $40, and four apartment blocks on the right, each tagged a red $52, for the same insurance policy."
-    >
-      <PatentDefs id={id} />
-      <line x1={10} y1={base} x2={550} y2={base} {...ink} />
-      {[0, 1, 2, 3].map((i) => {
-        const x = 18 + i * 62;
-        return (
-          <g key={`h${i}`}>
-            <House id={id} x={x} y={base} w={42} h={32} dx={10} dy={6} roof={18} />
-            <line x1={x + 21} y1={base - 52} x2={x + 21} y2={base - 64} {...hair} />
-            <Tag cx={x + 25} cy={base - 74} text="$40" w={34} size={13} />
-          </g>
-        );
-      })}
-      <line x1={274} y1={10} x2={274} y2={base + 12} {...ink} strokeDasharray="6 3" />
-      {[0, 1, 2, 3].map((i) => {
-        const x = 296 + i * 62;
-        const h = 78;
-        return (
-          <g key={`a${i}`}>
-            <ObliqueBox id={id} x={x} y={base - h} w={40} h={h} dx={10} dy={6} />
-            {Array.from({ length: 5 }, (_, r) =>
-              [0, 1].map((c) => <rect key={`${r}-${c}`} x={x + 7 + c * 16} y={base - h + 7 + r * 14} width={10} height={8} fill={PAT.paper} {...hair} />),
-            )}
-            <line x1={x + 20} y1={base - h - 4} x2={x + 20} y2={base - h - 14} {...hair} stroke={R} />
-            <Tag cx={x + 24} cy={base - h - 24} text="$52" w={34} size={13} red />
-          </g>
-        );
-      })}
     </Frame>
   );
 }

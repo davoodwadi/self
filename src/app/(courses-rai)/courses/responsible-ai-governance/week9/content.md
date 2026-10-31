@@ -10,33 +10,39 @@ week: week9
 - When algorithms set prices continuously and interact with competing algorithms, governance must address granular price discrimination, consumer fairness perceptions, tacit algorithmic collusion, and platform self-preferencing.
 
 ## When Algorithms Set Market Prices [no-exercise]
+[figure: shelf price tags updated by hand across a row of products, beside a pricing algorithm that reads competitor prices, inventory, search traffic, and customer telemetry and sets a price before a page loads]
 - Price is the central coordinating signal of a market economy and the only element of the marketing mix that directly generates revenue.
 - Historically, changing prices across thousands of products required manual analysis and physical menu or shelf updates, which kept prices relatively stable and uniform across shoppers.
 - Today, automated pricing algorithms observe competitor prices, inventory levels, search traffic, and individual customer telemetry in real time, updating prices milliseconds before a page loads.
 - This speed and granularity create two major governance challenges: at the individual level, algorithms can extract consumer surplus through opaque personalized pricing. At the market level, competing algorithms can learn to sustain supra-competitive prices without an explicit human cartel.
 
 ## Dynamic Pricing Versus Personalized Pricing [exercise]
+[figure: interactive fare for the same ride over a day, where dynamic pricing charges two riders the same price at each moment and personalized pricing charges them different prices at the same moment]
 - Dynamic pricing adjusts the market price of a product over time in response to aggregate supply and demand conditions, so that two consumers shopping at the exact same moment see the same price, as in airline seat inventory or ride-hailing surge pricing.
 - Personalized pricing (or surveillance pricing) charges different prices to different consumers at the exact same moment for the identical product, based on each individual's estimated willingness to pay derived from behavioral, geographic, or device data.
 - Both techniques rely on predictive algorithms, but they carry very different ethical, perceptual, and regulatory risks: dynamic pricing reflects aggregate scarcity, whereas personalized pricing targets individual consumer characteristics.
 
 ## Part 1: Algorithmic Price Discrimination and Consumer Welfare [no-exercise]
+[figure: shoppers sorted into three price tiers in brick-and-mortar retail, beside each shopper receiving an individual price under machine learning and digital tracking]
 - Economics classifies price discrimination into three degrees according to how finely a seller segments the market to capture willingness to pay.
 - Machine learning and digital tracking allow firms to approximate theoretical first-degree price discrimination far more closely than was ever possible in brick-and-mortar retail.
 
 ## First-, Second-, and Third-Degree Price Discrimination [exercise]
+[figure: interactive demand curve showing the surplus a seller captures under one price and under first-, second-, and third-degree discrimination, beside an estimate of one consumer's reservation price that narrows as more variables are observed]
 - First-degree (perfect) price discrimination charges each individual consumer their exact maximum willingness to pay for each unit, transferring the entire consumer surplus to the seller.
 - Second-degree price discrimination offers a menu of product versions, quantities, or service tiers (such as economy versus business class, or freemium versus enterprise software) and lets consumers self-select based on their preferences.
 - Third-degree price discrimination charges different prices to observable demographic or situational segments, such as student, senior, or regional discounts.
 - Behavioral surveillance pricing blurs the line between third-degree and first-degree discrimination by combining hundreds of observed and inferred variables (browsing history, loyalty status, battery level, or device model) to estimate an individual-specific reservation price.
 
 ## Welfare Effects of Granular Price Discrimination [no-exercise]
+[figure: interactive willingness to pay of a line of consumers under one price and under personalized prices, showing that personalization expands output when supply can expand and only extracts surplus when supply is fixed]
 - In economic theory, the aggregate welfare effect of price discrimination is ambiguous and depends on whether total market output expands.
 - Price discrimination can improve social welfare when lower personalized prices allow lower-income or price-sensitive consumers to buy a product they would otherwise be priced out of, while higher-income consumers pay more.
 - However, algorithmic price discrimination reduces consumer welfare when it operates primarily as a surplus-extraction mechanism under fixed supply, or when it charges higher prices to captive, urgent, or digitally unsophisticated buyers who fail to comparison-shop.
 - When willingness-to-pay predictions rely on proxies correlated with protected attributes or neighborhood disadvantage, personalized pricing can result in lower-income or minority households paying more for essential financial, insurance, or retail goods.
 
 ## Search Steering and Price Discrimination by Proxy [no-exercise]
+[figure: interactive results page that ranks costlier listings higher for a shopper predicted to be price-insensitive, beside two carts at the same list price where only one receives a silent coupon]
 - Because quoting two shoppers different prices for the exact same item on the same URL invites public backlash if discovered, many platforms implement price segmentation through personalized search steering rather than direct price alteration.
 - In search steering, every shopper sees the same price on a given product page, but the ranking algorithm places higher-priced, higher-margin products at the top of the search results for shoppers predicted to be price-insensitive (Hannak et al., 2014).
 - For example, early empirical audits of travel platforms documented that users browsing on certain operating systems or arriving from specific referral channels were systematically steered toward costlier hotel rooms.
@@ -47,17 +53,20 @@ week: week9
 - Behavioral economics explains why consumers accept some price variations as legitimate while judging others as unfair.
 
 ## Dual Entitlement and Reference Transactions [no-exercise]
+[figure: interactive price increase from 15 to 20 dollars judged acceptable when it passes on a higher input cost and unfair when it exploits a spike in buyer need (Kahneman, Knetsch, & Thaler, 1986)]
 - Formulated by Kahneman, Knetsch, and Thaler (1986), the principle of dual entitlement states that consumers evaluate the fairness of a price against a reference transaction: consumers believe they are entitled to the terms of the reference price, and firms are entitled to their reference profit.
 - Under dual entitlement, consumers generally accept a price increase as fair when it passes through a genuine increase in the seller's input costs, because the firm is protecting its reference profit rather than exploiting the buyer.
 - Conversely, consumers judge a price increase as unfair when the firm raises prices purely to capitalize on a sudden spike in buyer need or scarcity (such as doubling the price of snow shovels during a blizzard or bottled water during an emergency) without a corresponding rise in unit cost.
 
 ## Why Personalized Pricing Triggers Moral Outrage and Trust Erosion [exercise]
+[figure: interactive ledger of the short-term revenue gained from personalized pricing against the larger loss in brand trust that follows its discovery]
 - Horizontal inequity occurs when a shopper discovers that another peer paid a lower price for the identical item at the same time, violating the social norm of equal treatment in public retail markets.
 - Perceived privacy betrayal occurs when consumers realize that their own past loyalty, search urgency, or personal data were used against them to calculate a higher price rather than to reward their relationship.
 - Vulnerability exploitation occurs when dynamic or personalized pricing extracts a premium from acute distress, such as surge pricing for rides away from a transit shutdown or higher medical-supply prices for anxious shoppers.
 - Empirical studies show that discovering opaque personalized pricing triggers immediate anger, negative word of mouth, cart abandonment, and a lasting drop in brand trust that outweighs short-term margin gains.
 
 ## Framing and Transparency in Algorithmic Pricing [no-exercise]
+[figure: the same 80-dollar price framed as a 20-dollar discount from 100 and as a 20-dollar surcharge on 80, beside a posted student discount rule and an opaque algorithmic score that silently raises a price]
 - Prospect theory (Kahneman & Tversky, 1979) shows that framing a price difference as a discount below a standard reference price is judged significantly fairer than framing the identical price difference as a surcharge above a low baseline.
 - Furthermore, verifiable eligibility rules (such as a published student discount, an off-peak matinee rate, or a loyalty tier with transparent thresholds) preserve fairness perceptions because any consumer can understand the rule and see how to qualify.
 - Opaque algorithmic scores that silently alter prices without disclosed criteria violate both procedural fairness and consumer autonomy.
@@ -67,16 +76,19 @@ week: week9
 - Analyze this defense using dual entitlement theory, welfare economics, and algorithmic governance, and propose how the platform's pricing algorithm should be constrained during civic emergencies.
 
 ## Part 3: Tacit Algorithmic Collusion in Automated Markets [no-exercise]
+[figure: the prices of two competing pricing algorithms rising over time from the competitive level toward a collusive level without any communication between them]
 - Beyond how a single firm prices to its customers, algorithmic governance must address what happens when competing firms in an oligopoly delegate their pricing decisions to autonomous learning algorithms.
 - Recent economic and computational research demonstrates that pricing algorithms can learn to sustain collusive, supra-competitive prices without ever being programmed to collude or exchanging a single message.
 
 ## Explicit Cartels Versus Tacit Coordination [no-exercise]
+[figure: interactive time a rival needs to detect a price cut, showing that the gain from undercutting shrinks as detection becomes near-instant]
 - Under competition and antitrust law (such as Section 1 of the US Sherman Act and Section 45 of Canada's Competition Act), an explicit cartel in which competitors communicate to fix prices, rig bids, or divide markets is a per se unlawful criminal offense.
 - Conscious parallelism, or tacit coordination, occurs in concentrated oligopolies when each firm independently observes its rivals' public prices and recognizes that undercutting a rival will trigger a retaliatory price war that lowers profits for everyone.
 - Historically, sustaining tacit coordination among human managers was difficult because markets are noisy, demand fluctuates, and human decision makers are slow to distinguish a rival's cheating from a normal response to demand shocks.
 - High-frequency pricing algorithms remove those frictions: they monitor rivals' prices continuously, detect price cuts within seconds, and execute immediate, credible retaliation.
 
 ## How Reinforcement-Learning Pricing Agents Learn to Collude [no-exercise]
+[figure: interactive replication of two Q-learning pricing agents in which a forced price cut by one firm triggers a temporary price war before both prices return toward the monopoly level (Calvano et al., 2020)]
 - In a landmark study published in the American Economic Review, Calvano, Calzolari, Denicolò, and Pastorello (2020) placed independent Q-learning pricing algorithms in a simulated repeated Bertrand oligopoly where each algorithm sought only to maximize its own firm's discounted cumulative profit.
 - The algorithms had no prior knowledge of the market structure, could not communicate with one another, and were given no instructions to cooperate.
 - Across thousands of simulations, the reinforcement-learning agents consistently learned to charge supra-competitive prices well above the static Nash equilibrium, capturing a large fraction of the monopoly profit gap.
@@ -94,12 +106,14 @@ week: week9
 - Competition risks in digital markets also arise vertically when a dominant digital platform acts simultaneously as the marketplace referee and as a competing merchant, and when seller algorithms interact with consumer shopping agents.
 
 ## Dual-Role Gatekeepers and Algorithmic Self-Preferencing [exercise]
+[figure: interactive ranking of a platform's own listing against third-party listings under neutral ranking, self-preferencing, and tying, beside a platform copying a third-party seller's best-selling product from its sales data]
 - Many dominant e-commerce, app-store, and search platforms operate as dual-role gatekeepers: they run the marketplace infrastructure on which third-party merchants depend while also selling their own first-party or private-label products in the same categories.
 - Algorithmic self-preferencing occurs when the platform designs its search ranking, recommendation assistant, or "Buy Box" algorithm to favor its own first-party products or logistics services over superior or lower-priced third-party offerings.
 - Data appropriation occurs when the platform's retail arm accesses non-public, granular transaction and clickstream data generated by third-party sellers on the marketplace to identify profitable niche products, replicate them as private-label goods, and undercut the original sellers.
 - Algorithmic tying and buy-box conditioning occur when a platform makes top ranking or default assistant selection contingent on a third-party seller purchasing the platform's own fulfillment, payment, or advertising services.
 
 ## When Pricing Algorithms Meet AI Shopping Agents [no-exercise]
+[figure: interactive storefront tactics such as anchor prices, buried weights, and platform tags compared across human shoppers and AI agents by how many listings each inspects]
 - As consumers adopt autonomous AI shopping agents (Weeks 7 and 8), retail markets transition toward algorithm-versus-algorithm exchange in which pricing bots face buying bots.
 - On the one hand, well-configured AI shopping agents can intensify price competition by inspecting more listings than humans (Wadi & Ma, 2026a), calculating exact unit prices when specifications are accessible (Wadi & Ma, 2026b), and bypassing brand inertia.
 - On the other hand, seller pricing algorithms can exploit the systematic behavioral vulnerabilities of AI shopping agents: setting high arbitrary reference prices to trigger LLM anchoring bias (Wadi & Fredette, 2025), using just-below prices and promotional badges while burying unit weights behind costly tool calls (Wadi & Ma, 2026b), or purchasing platform-attributed sponsorship tags that attenuate the agent's skepticism (Wadi & Ma, 2026c).

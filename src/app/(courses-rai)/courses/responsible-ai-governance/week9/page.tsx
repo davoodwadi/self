@@ -7,26 +7,19 @@ import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Dis
 import exercisesData from "./exercises.json";
 import {
   AuditBench,
-  AuditorsLens,
   BotMeetsBot,
-  BrandEquity,
   BuyBox,
-  CartelVsParallel,
   CouponDispersion,
   DataAppropriation,
   DetectionLag,
   DualEntitlement,
-  DualRole,
-  EvidenceTray,
   FacingMachines,
   ForcedCut,
   Frames,
   Guardrail,
-  Outrage,
   OutputExpansion,
   Pathway,
   PricingThenNow,
-  ProxyMap,
   ReservationEstimate,
   RuleVsScore,
   SameMoment,
@@ -278,16 +271,13 @@ export default function Week9Page() {
             <OutputExpansion />
           </Plate>
         </div>
-        <div className="mt-5 grid w-full items-center gap-6 border-t border-[var(--rule)] pt-5 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-10">
+        <div className="mt-5 w-full border-t border-[var(--rule)] pt-5">
           <P className="!max-w-none">
             When willingness-to-pay predictions rely on proxies correlated with
             protected attributes or neighborhood disadvantage, personalized pricing
             can result in lower-income or minority households paying more for
             essential financial, insurance, or retail goods.
           </P>
-          <Plate className="!p-2">
-            <ProxyMap />
-          </Plate>
         </div>
       </Slide>
 
@@ -351,11 +341,8 @@ export default function Week9Page() {
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Consumer Fairness Perceptions and Dual Entitlement" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <BrandEquity />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 A pricing algorithm that is profitable in a static optimization
@@ -461,17 +448,14 @@ export default function Week9Page() {
             ] as const
           ).map(([kind, text]) => (
             <li key={kind} className="flex min-w-0 flex-col">
-              <Ruled className="mb-3">
-                <P>{text}</P>
+              <Ruled>
+                <p className={BIG}>{text}</p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <Outrage kind={kind} />
-              </Plate>
             </li>
           ))}
         </ol>
         <div className="mt-5 grid w-full items-center gap-6 border-t border-[var(--rule)] pt-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
-          <P className="!max-w-none">
+          <p className={BIG}>
             Empirical studies show that discovering opaque personalized pricing
             triggers immediate anger, negative word of mouth, cart abandonment,
             and{" "}
@@ -479,7 +463,7 @@ export default function Week9Page() {
               a lasting drop in brand trust that outweighs short-term margin gains
             </Term>
             .
-          </P>
+          </p>
           <Plate className="!p-2">
             <TrustLedger />
           </Plate>
@@ -580,42 +564,39 @@ export default function Week9Page() {
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 Under competition and antitrust law (such as Section 1 of the US
                 Sherman Act and Section 45 of Canada&apos;s Competition Act), an{" "}
                 <Term>explicit cartel</Term> in which competitors
                 communicate to fix prices, rig bids, or divide markets is a per se
                 unlawful criminal offense.
-              </P>
+              </p>
             </Ruled>
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 <Term>Conscious parallelism</Term>, or tacit
                 coordination, occurs in concentrated oligopolies when each firm
                 independently observes its rivals&apos; public prices and
                 recognizes that undercutting a rival will trigger a retaliatory
                 price war that lowers profits for everyone.
-              </P>
+              </p>
             </Ruled>
-            <Plate className="mt-auto">
-              <CartelVsParallel />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 Historically, sustaining tacit coordination among human managers
                 was difficult because markets are noisy, demand fluctuates, and
                 human decision makers are slow to distinguish a rival&apos;s
                 cheating from a normal response to demand shocks.
-              </P>
+              </p>
             </Ruled>
             <Ruled className="mb-3">
-              <P>
+              <p className={BIG}>
                 <Term>High-frequency pricing algorithms remove those frictions</Term>:
                 they monitor rivals&apos; prices continuously, detect price cuts
                 within seconds, and execute immediate, credible retaliation.
-              </P>
+              </p>
             </Ruled>
             <Plate className="mt-auto">
               <DetectionLag />
@@ -762,7 +743,7 @@ export default function Week9Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+        <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               Competition risks in digital markets also arise vertically when{" "}
@@ -773,9 +754,6 @@ export default function Week9Page() {
               , and when seller algorithms interact with consumer shopping agents.
             </p>
           </Ruled>
-          <Plate>
-            <DualRole />
-          </Plate>
         </div>
       </Slide>
 
@@ -894,7 +872,7 @@ export default function Week9Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Antitrust Enforcement and Auditing Pricing Algorithms" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
+        <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               Competition authorities worldwide, including the US Department of
@@ -907,9 +885,6 @@ export default function Week9Page() {
               .
             </p>
           </Ruled>
-          <Plate>
-            <AuditorsLens />
-          </Plate>
         </div>
       </Slide>
 
@@ -918,22 +893,19 @@ export default function Week9Page() {
           ================================================================ */}
       <Slide id="the-liability-gap-in-competition-law" border className="!py-8">
         <SlideHeading className="!mb-5">The Liability Gap in Competition Law</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <EvidenceTray />
-          </Plate>
-          <div className="grid content-start gap-4">
+        <div className="w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Classical antitrust statutes prohibit &quot;agreements,&quot;
                 &quot;conspiracies,&quot; or &quot;concerted practices&quot; in
                 restraint of trade, which courts have historically interpreted as
                 requiring evidence of communication or a conscious meeting of the
                 minds between competitors.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 While Messenger and Hub-and-Spoke arrangements (such as competitors
                 feeding non-public data into a shared rental-housing or hotel
                 pricing vendor) are actively prosecuted as unlawful coordination,{" "}
@@ -942,17 +914,17 @@ export default function Week9Page() {
                   evidentiary standards
                 </Term>{" "}
                 because no human communication or shared vendor exists.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Legal and economic scholars therefore propose shifting regulatory
                 scrutiny from searching for smoke-filled-room communications to
                 auditing the algorithms themselves: prohibiting reward functions or
                 state spaces that condition on rivals&apos; real-time price changes
                 solely to punish discounting, and holding firms strictly liable for
                 the collusive strategies their deployed agents learn.
-              </P>
+              </p>
             </Ruled>
           </div>
         </div>
