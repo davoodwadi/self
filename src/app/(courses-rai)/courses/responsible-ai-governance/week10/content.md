@@ -65,7 +65,8 @@ week: week10
 - Hallucination vulnerability in sensory translation occurs when a vision-to-speech model confidently fabricates details on a medication label, currency note, or product warning that a blind user cannot independently cross-check visually.
 
 ## Discussion: Automated Video Interview Screening
-- Discussion: A national retail chain adopts an AI video-screening platform to evaluate 50,000 entry-level job applicants per year. Applicants record three-minute video answers, and the model scores their vocal tone, speaking pace, eye contact, and facial micro-expressions to filter out the bottom 70 percent of candidates. Analyze this system using the social model of disability, measurement bias (Week 2), and accessibility governance, and explain why simply offering an "accommodation request form" fails to make the pipeline equitable.
+- A national retail chain adopts an AI video-screening platform to evaluate 50,000 entry-level job applicants per year. Applicants record three-minute video answers, and the model scores their vocal tone, speaking pace, eye contact, and facial micro-expressions to filter out the bottom 70 percent of candidates.
+- Analyze this system using the social model of disability, measurement bias (Week 2), and accessibility governance, and explain why simply offering an "accommodation request form" fails to make the pipeline equitable.
 
 ## Part 3: Language, Literacy, and the Three Levels of the Digital Divide [no-exercise]
 - Inclusion in AI-mediated markets extends beyond physical and cognitive accessibility to the socioeconomic, linguistic, and cultural divides that determine who benefits from algorithmic systems and who bears their costs.
@@ -125,7 +126,8 @@ week: week10
 - Step 6 is conducting compensated participatory usability and red-team sessions with users with disabilities and frontline workers before launch sign-off.
 
 ## Discussion: Designing an Accessible Municipal Benefits Assistant
-- Discussion: A provincial government agency plans to deploy a conversational AI assistant to help residents apply for disability and low-income housing benefits, replacing several paper forms and telephone intake lines. Using the social model of disability, the three levels of the digital divide, privacy safeguards for inferred disability data, and cognitive forcing functions for caseworkers, design a governance charter for this system that ensures equitable access without turning the assistant into a barrier or surveillance tool.
+- A provincial government agency plans to deploy a conversational AI assistant to help residents apply for disability and low-income housing benefits, replacing several paper forms and telephone intake lines.
+- Using the social model of disability, the three levels of the digital divide, privacy safeguards for inferred disability data, and cognitive forcing functions for caseworkers, design a governance charter for this system that ensures equitable access without turning the assistant into a barrier or surveillance tool.
 
 ## Key Takeaways
 - The social model of disability locates accessibility barriers in the design of digital and algorithmic environments rather than in individual deficits. Universal design and the curb-cut effect improve robustness for all users.

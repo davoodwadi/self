@@ -221,7 +221,7 @@ export function Tag({ cx, cy, text, red = false, w = 54, size = 13 }: { cx: numb
         strokeLinejoin="round"
       />
       <circle cx={r2(x0 - 2)} cy={cy} r={1.8} fill="none" stroke={c} strokeWidth={LINE.hair} />
-      <text x={r2(cx + 2)} y={r2(cy + size * 0.35)} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={size} fill={c}>
+      <text x={r2(cx + 2)} y={r2(cy + size * 0.35)} textAnchor="middle" fontFamily="var(--font-body)" fontSize={size} fill={c}>
         {text}
       </text>
     </g>
@@ -295,7 +295,7 @@ export function Numeral({ n, x, y, tx, ty, bold = false }: { n: number | string;
   return (
     <g>
       <path d={`M${x} ${sy}Q${mx} ${my} ${tx} ${ty}`} fill="none" {...hair} />
-      <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={bold ? 18 : 14} fill={PAT.ink}>
+      <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={bold ? 18 : 14} fill={PAT.ink}>
         {n}
       </text>
     </g>
@@ -352,15 +352,6 @@ export function Flag({ id, x, y, red = false }: { id: string; x: number; y: numb
         strokeLinejoin="round"
       />
     </g>
-  );
-}
-
-/** A quantity set large in Caslon on the plate (a rate, a multiple). */
-export function Display1({ x, y, text, red = false, size = 20 }: { x: number; y: number; text: string; red?: boolean; size?: number }) {
-  return (
-    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={size} fill={red ? PAT.signal : PAT.ink}>
-      {text}
-    </text>
   );
 }
 

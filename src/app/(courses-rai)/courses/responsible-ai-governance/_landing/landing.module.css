@@ -1,0 +1,139 @@
+/* ============================================================================
+   RAI landing. The masthead holds the left column while the curriculum
+   scrolls on the right. Plain sans throughout, sentence case, one accent for
+   hover only.
+   ============================================================================ */
+
+.page {
+  --sans: var(--font-body);
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+/* ---- Masthead ---------------------------------------------------------- */
+
+.courseMeta {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  margin: 0.75rem 0 0;
+  font-family: var(--sans);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.standfirst {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.credit {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* ---- Curriculum -------------------------------------------------------- */
+
+.sectionHeading {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: var(--ink-3);
+}
+
+.numeral {
+  display: block;
+  padding-top: 0.15rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+  transition: color 0.15s ease;
+}
+
+.rowTitle {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: normal;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+
+.rowText {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.statusNote {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.arrow {
+  color: color-mix(in oklab, var(--ink) 40%, transparent);
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.rowMuted .rowTitle {
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+.rowMuted .rowText {
+  opacity: 0.75;
+}
+
+.rowLink:hover .numeral,
+.rowLink:focus-visible .numeral,
+.rowLink:hover .rowTitle,
+.rowLink:focus-visible .rowTitle,
+.rowLink:hover .arrow,
+.rowLink:focus-visible .arrow {
+  color: var(--signal);
+}
+
+.rowLink:hover .arrow,
+.rowLink:focus-visible .arrow {
+  transform: translateX(2px);
+}
+
+.rowLink:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .numeral,
+  .rowTitle,
+  .arrow {
+    transition: none;
+  }
+}

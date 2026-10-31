@@ -5,8 +5,8 @@
 **Program**: Marketing & Business Analytics  
 **Duration**: 12 Weeks  
 **Instructor**: Davood Wadi, PhD  
-**Summary**: Examines how organizations audit, govern, and deploy artificial intelligence responsibly in market settings. Topics include algorithmic fairness, cultural bias, behavioral auditing, explainability, data privacy, dark patterns, fiduciary duty in AI agents, and global regulation.  
-**Overview**: This course examines how organizations design, audit, and govern artificial intelligence systems that interact with consumers and shape market outcomes. Students analyze ethical frameworks, fairness trade-offs, privacy rules, and regulatory regimes, and pair policy analysis with empirical behavioral audits of large language models and autonomous shopping agents. Across the curriculum, artificial intelligence is studied both as an organizational tool that requires oversight and as a market actor whose biases, disclosures, and conflicts of duty must be measured and governed.
+**Summary**: The responsible audit, governance, and deployment of artificial intelligence in market settings: algorithmic fairness, cultural bias, behavioral auditing, explainability, data privacy, dark patterns, fiduciary duty in AI agents, and global regulation.  
+**Overview**: The design, audit, and governance of artificial intelligence systems that interact with consumers and shape market outcomes, from ethical frameworks, fairness trade-offs, privacy rules, and regulatory regimes to empirical behavioral audits of large language models and autonomous shopping agents. Artificial intelligence appears in two roles: as an organizational tool that requires oversight, and as a market actor whose biases, disclosures, and conflicts of duty must be measured and governed.
 
 ---
 
@@ -40,7 +40,7 @@
 - Mitigating cultural bias through prompt design, fine-tuning, and distributional evaluation.
 
 ### Week 4: Behavioral Auditing and Statistical Evaluation of AI Systems
-**Summary**: Moving beyond static single-sample benchmarks to statistically grounded behavioral audits using Monte-Carlo sampling, token-level probability distributions, and controlled factorial experiments.
+**Summary**: Statistically grounded behavioral audits in place of static single-sample benchmarks, using Monte-Carlo sampling, token-level probability distributions, and controlled factorial experiments.
 
 - Why single-prompt evaluations fail to capture stochastic model behavior and latent attitudes.
 - Monte-Carlo sampling frameworks for estimating model preferences with statistical guarantees.
@@ -103,7 +103,7 @@
 - Participatory design and co-creation with marginalized and underrepresented stakeholder groups.
 
 ### Week 11: Global AI Regulation, Standards, and Compliance
-**Summary**: Comparative analysis of risk-based AI legislation, consumer protection enforcement, privacy laws, and international management standards governing commercial AI deployment.
+**Summary**: Risk-based AI legislation, consumer protection enforcement, privacy laws, and international management standards governing commercial AI deployment, compared across jurisdictions.
 
 - The European Union AI Act and its risk tiers, prohibited practices, and obligations for general-purpose AI models.
 - Canadian privacy and artificial intelligence governance frameworks, including PIPEDA, Quebec Law 25, and federal AI policy.
@@ -112,7 +112,7 @@
 - Translating statutory requirements into product requirements, conformity assessments, and audit trails.
 
 ### Week 12: Organizational AI Governance, Red-Teaming, and Sustainability
-**Summary**: Building internal AI ethics and review boards, red-teaming protocols, incident response, environmental and computational resource rationality, and continuous post-deployment monitoring.
+**Summary**: Internal AI ethics and review boards, red-teaming protocols, incident response, environmental and computational resource rationality, and continuous post-deployment monitoring.
 
 - Structuring internal AI governance committees, review gates, and cross-functional accountability (RACI).
 - Model cards, datasheets for datasets, and system-level impact assessments before launch.

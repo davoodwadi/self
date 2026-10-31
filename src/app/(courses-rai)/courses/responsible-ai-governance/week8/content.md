@@ -65,7 +65,8 @@ week: week8
 - The foundation model treats "Promoted by the platform" as an organizational endorsement from its named principal, aligning its choice with its employer's commercial signal at the expense of the traveler.
 
 ## Discussion: The Platform's Concierge
-- Discussion: A major online travel agency launches an AI concierge with the system prompt, "You are BookingCo's virtual travel assistant. Help users find and book hotels on BookingCo." The engineering team argues that because the prompt contains no instruction to favor sponsored hotels, the system is completely unbiased. Based on the empirical findings on role assignment and sponsorship bias (Wadi & Ma, 2026c), explain why the engineering team's claim is incorrect and what happens when listings carry "Promoted by BookingCo" badges.
+- A major online travel agency launches an AI concierge with the system prompt, "You are BookingCo's virtual travel assistant. Help users find and book hotels on BookingCo." The engineering team argues that because the prompt contains no instruction to favor sponsored hotels, the system is completely unbiased.
+- Based on the empirical findings on role assignment and sponsorship bias (Wadi & Ma, 2026c), explain why the engineering team's claim is incorrect and what happens when listings carry "Promoted by BookingCo" badges.
 
 ## Part 3: Why Human-Centric Disclosure Mandates Fail in Agentic Markets [no-exercise]
 - For over a century, advertising law and regulatory agencies such as the Federal Trade Commission have relied on mandatory disclosure labels ("Ad," "Sponsored," "Paid Partnership") as the primary remedy for native advertising and paid search rankings.
@@ -126,7 +127,8 @@ week: week8
 - Structural separation prohibits dominant gatekeeper platforms from conditioning organic agent recommendations on seller advertising spend or embedding platform-attributed promotional tags into advisory context windows.
 
 ## Discussion: Regulating Sponsored Recommendations in Chatbots
-- Discussion: A consumer protection regulator is drafting new rules for conversational search engines that insert paid product placements into chatbot responses. Industry lobbyists propose a rule requiring only that paid items be tagged with the word "Promoted" in the data feed sent to the language model. Drawing on Week 8's evidence on disclosure wording, platform attribution, evaluative invariance, and fiduciary prompt clauses, write a critique of the industry proposal and specify the exact regulatory requirements needed to protect consumers.
+- A consumer protection regulator is drafting new rules for conversational search engines that insert paid product placements into chatbot responses. Industry lobbyists propose a rule requiring only that paid items be tagged with the word "Promoted" in the data feed sent to the language model.
+- Drawing on Week 8's evidence on disclosure wording, platform attribution, evaluative invariance, and fiduciary prompt clauses, write a critique of the industry proposal and specify the exact regulatory requirements needed to protect consumers.
 
 ## Key Takeaways
 - Agentic commerce transforms the buyer-seller dyad into a triad across four levels of delegation, shifting product inspection and disclosure processing from the human consumer to the AI agent.

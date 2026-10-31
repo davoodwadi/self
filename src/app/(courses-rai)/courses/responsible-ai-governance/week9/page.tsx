@@ -3,7 +3,7 @@
 import React from "react";
 import { SlideDeck, Slide, Title, Subtitle } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Prompt } from "../_visuals/kit";
+import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
   AuditBench,
@@ -27,13 +27,11 @@ import {
   Pathway,
   PricingThenNow,
   ProxyMap,
-  RentHub,
   ReservationEstimate,
   RuleVsScore,
   SameMoment,
   SieveStack,
   SteeredResults,
-  StormSurge,
   SurplusCapture,
   TrustLedger,
 } from "./visuals";
@@ -54,23 +52,23 @@ export default function Week9Page() {
   return (
     <SlideDeck label="Week 9">
       {/* ================================================================
-          01. Title Slide
+          Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 9: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">Algorithmic Pricing, Collusion, and Fair Competition</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[58ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-10 max-w-[58ch] !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           When algorithms set prices continuously and interact with competing
           algorithms, governance must address granular price discrimination,
           consumer fairness perceptions,{" "}
-          <span className="text-[var(--signal)]">tacit algorithmic collusion</span>,
+          tacit algorithmic collusion,
           and platform self-preferencing.
         </p>
       </Slide>
 
       {/* ================================================================
-          02. When Algorithms Set Market Prices [no-exercise]
+          When Algorithms Set Market Prices [no-exercise]
           ================================================================ */}
       <Slide id="when-algorithms-set-market-prices" border className="!py-8">
         <SlideHeading className="!mb-5">When Algorithms Set Market Prices</SlideHeading>
@@ -79,14 +77,14 @@ export default function Week9Page() {
           only element of the marketing mix that directly generates revenue.
         </Statement>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Historically, changing prices across thousands of products required
               manual analysis and physical menu or shelf updates, which kept prices
               relatively stable and uniform across shoppers.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Today, automated pricing algorithms observe competitor prices,
               inventory levels, search traffic, and individual customer telemetry
@@ -102,7 +100,7 @@ export default function Week9Page() {
             This speed and granularity create two major governance challenges: at
             the individual level, algorithms can extract consumer surplus through
             opaque personalized pricing. At the market level,{" "}
-            <Term tone="signal">
+            <Term>
               competing algorithms can learn to sustain supra-competitive prices
               without an explicit human cartel
             </Term>
@@ -112,7 +110,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          03. Dynamic Pricing Versus Personalized Pricing [exercise]
+          Dynamic Pricing Versus Personalized Pricing [exercise]
           ================================================================ */}
       <Slide
         id="dynamic-pricing-versus-personalized-pricing"
@@ -123,18 +121,18 @@ export default function Week9Page() {
         <SlideHeading className="!mb-5">Dynamic Pricing Versus Personalized Pricing</SlideHeading>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                <Term tone="ink">Dynamic pricing</Term> adjusts the market price of
+                <Term>Dynamic pricing</Term> adjusts the market price of
                 a product over time in response to aggregate supply and demand
                 conditions, so that two consumers shopping at the exact same moment
                 see the same price, as in airline seat inventory or ride-hailing
                 surge pricing.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                <Term tone="ink">Personalized pricing</Term> (or surveillance
+                <Term>Personalized pricing</Term> (or surveillance
                 pricing) charges different prices to different consumers at the
                 exact same moment for the identical product, based on each
                 individual&apos;s estimated willingness to pay derived from
@@ -151,7 +149,7 @@ export default function Week9Page() {
                 Both techniques rely on predictive algorithms, but they carry very
                 different ethical, perceptual, and regulatory risks: dynamic pricing
                 reflects aggregate scarcity, whereas{" "}
-                <Term tone="signal">personalized pricing targets individual consumer characteristics</Term>.
+                <Term>personalized pricing targets individual consumer characteristics</Term>.
               </P>
             </Ruled>
           </div>
@@ -159,7 +157,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          04. Part 1: Algorithmic Price Discrimination and Consumer Welfare [no-exercise]
+          Part 1: Algorithmic Price Discrimination and Consumer Welfare [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Algorithmic Price Discrimination and Consumer Welfare" />
@@ -175,7 +173,7 @@ export default function Week9Page() {
             <Ruled>
               <p className={BIG}>
                 Machine learning and digital tracking allow firms to approximate{" "}
-                <Term tone="signal">theoretical first-degree price discrimination</Term>{" "}
+                <Term>theoretical first-degree price discrimination</Term>{" "}
                 far more closely than was ever possible in brick-and-mortar
                 retail.
               </p>
@@ -188,7 +186,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          05. First-, Second-, and Third-Degree Price Discrimination [exercise]
+          First-, Second-, and Third-Degree Price Discrimination [exercise]
           ================================================================ */}
       <Slide
         id="first-second-and-third-degree-price-discrimination"
@@ -198,25 +196,25 @@ export default function Week9Page() {
       >
         <SlideHeading className="!mb-5">First-, Second-, and Third-Degree Price Discrimination</SlideHeading>
         <div className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              <Term tone="ink">First-degree (perfect) price discrimination</Term>{" "}
+              <Term>First-degree (perfect) price discrimination</Term>{" "}
               charges each individual consumer their exact maximum willingness to
               pay for each unit, transferring the entire consumer surplus to the
               seller.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              <Term tone="ink">Second-degree price discrimination</Term> offers a
+              <Term>Second-degree price discrimination</Term> offers a
               menu of product versions, quantities, or service tiers (such as
               economy versus business class, or freemium versus enterprise
               software) and lets consumers self-select based on their preferences.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              <Term tone="ink">Third-degree price discrimination</Term> charges
+              <Term>Third-degree price discrimination</Term> charges
               different prices to observable demographic or situational segments,
               such as student, senior, or regional discounts.
             </P>
@@ -229,12 +227,12 @@ export default function Week9Page() {
           <div className="flex min-w-0 flex-col">
             <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Behavioral surveillance pricing</Term> blurs the
+                <Term>Behavioral surveillance pricing</Term> blurs the
                 line between third-degree and first-degree discrimination by
                 combining hundreds of observed and inferred variables (browsing
                 history, loyalty status, battery level, or device model) to
                 estimate{" "}
-                <Term tone="signal">an individual-specific reservation price</Term>.
+                <Term>an individual-specific reservation price</Term>.
               </P>
             </Ruled>
             <Plate className="mt-auto">
@@ -245,20 +243,20 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          06. Welfare Effects of Granular Price Discrimination [no-exercise]
+          Welfare Effects of Granular Price Discrimination [no-exercise]
           ================================================================ */}
       <Slide id="welfare-effects-of-granular-price-discrimination" border className="!py-8">
         <SlideHeading className="!mb-5">Welfare Effects of Granular Price Discrimination</SlideHeading>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In economic theory, the aggregate welfare effect of price
                 discrimination is ambiguous and depends on whether total market
                 output expands.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Price discrimination can improve social welfare when lower
                 personalized prices allow lower-income or price-sensitive
@@ -266,11 +264,11 @@ export default function Week9Page() {
                 while higher-income consumers pay more.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 However, algorithmic price discrimination reduces consumer welfare
                 when it operates primarily as{" "}
-                <Term tone="signal">a surplus-extraction mechanism under fixed supply</Term>,
+                <Term>a surplus-extraction mechanism under fixed supply</Term>,
                 or when it charges higher prices to captive, urgent, or digitally
                 unsophisticated buyers who fail to comparison-shop.
               </P>
@@ -294,12 +292,12 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          07. Search Steering and Price Discrimination by Proxy [no-exercise]
+          Search Steering and Price Discrimination by Proxy [no-exercise]
           ================================================================ */}
       <Slide id="search-steering-and-price-discrimination-by-proxy" border className="!py-8">
         <SlideHeading className="!mb-5">Search Steering and Price Discrimination by Proxy</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Because quoting two shoppers different prices for the exact same
               item on the same URL invites public backlash if discovered, many
@@ -307,11 +305,11 @@ export default function Week9Page() {
               steering rather than direct price alteration.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              In <Term tone="ink">search steering</Term>, every shopper sees the
+              In <Term>search steering</Term>, every shopper sees the
               same price on a given product page, but{" "}
-              <Term tone="signal">
+              <Term>
                 the ranking algorithm places higher-priced, higher-margin products
                 at the top of the search results for shoppers predicted to be
                 price-insensitive
@@ -325,7 +323,7 @@ export default function Week9Page() {
             <SteeredResults />
           </Plate>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 For example, early empirical audits of travel platforms documented
                 that users browsing on certain operating systems or arriving from
@@ -333,9 +331,9 @@ export default function Week9Page() {
                 costlier hotel rooms.
               </P>
             </Ruled>
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Personalized discount targeting</Term> achieves the
+                <Term>Personalized discount targeting</Term> achieves the
                 same mathematical price dispersion as personalized surcharges by
                 holding the public list price high and silently issuing targeted
                 digital coupons only to shoppers predicted to abandon their carts.
@@ -349,7 +347,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          08. Part 2: Consumer Fairness Perceptions and Dual Entitlement [no-exercise]
+          Part 2: Consumer Fairness Perceptions and Dual Entitlement [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Consumer Fairness Perceptions and Dual Entitlement" />
@@ -362,7 +360,7 @@ export default function Week9Page() {
               <p className={BIG}>
                 A pricing algorithm that is profitable in a static optimization
                 model can{" "}
-                <Term tone="signal">destroy brand equity</Term> if consumers
+                <Term>destroy brand equity</Term> if consumers
                 perceive its rules as exploitative.
               </p>
             </Ruled>
@@ -377,14 +375,14 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          09. Dual Entitlement and Reference Transactions [no-exercise]
+          Dual Entitlement and Reference Transactions [no-exercise]
           ================================================================ */}
       <Slide id="dual-entitlement-and-reference-transactions" border className="!py-8">
         <SlideHeading className="!mb-5">Dual Entitlement and Reference Transactions</SlideHeading>
-        <Ruled weight="thin" className="mb-5 w-full">
+        <Ruled className="mb-5 w-full">
           <P className="!max-w-none">
             Formulated by Kahneman, Knetsch, and Thaler (1986), the principle of{" "}
-            <Term tone="ink">dual entitlement</Term> states that consumers evaluate
+            <Term>dual entitlement</Term> states that consumers evaluate
             the fairness of a price against a reference transaction: consumers
             believe they are entitled to the terms of the reference price, and
             firms are entitled to their reference profit.
@@ -392,7 +390,7 @@ export default function Week9Page() {
         </Ruled>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Under dual entitlement, consumers generally accept a price increase
                 as fair when it passes through a genuine increase in the
@@ -403,7 +401,7 @@ export default function Week9Page() {
             <Ruled>
               <P>
                 Conversely,{" "}
-                <Term tone="signal">
+                <Term>
                   consumers judge a price increase as unfair when the firm raises
                   prices purely to capitalize on a sudden spike in buyer need or
                   scarcity
@@ -421,7 +419,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          10. Why Personalized Pricing Triggers Moral Outrage and Trust Erosion [exercise]
+          Why Personalized Pricing Triggers Moral Outrage and Trust Erosion [exercise]
           ================================================================ */}
       <Slide
         id="why-personalized-pricing-triggers-moral-outrage-and-trust-erosion"
@@ -436,7 +434,7 @@ export default function Week9Page() {
               [
                 "inequity",
                 <>
-                  <Term tone="ink">Horizontal inequity</Term> occurs when a shopper
+                  <Term>Horizontal inequity</Term> occurs when a shopper
                   discovers that another peer paid a lower price for the identical
                   item at the same time, violating the social norm of equal
                   treatment in public retail markets.
@@ -445,7 +443,7 @@ export default function Week9Page() {
               [
                 "betrayal",
                 <>
-                  <Term tone="ink">Perceived privacy betrayal</Term> occurs when
+                  <Term>Perceived privacy betrayal</Term> occurs when
                   consumers realize that their own past loyalty, search urgency, or
                   personal data were used against them to calculate a higher price
                   rather than to reward their relationship.
@@ -454,7 +452,7 @@ export default function Week9Page() {
               [
                 "vulnerability",
                 <>
-                  <Term tone="ink">Vulnerability exploitation</Term> occurs when
+                  <Term>Vulnerability exploitation</Term> occurs when
                   dynamic or personalized pricing extracts a premium from acute
                   distress, such as surge pricing for rides away from a transit
                   shutdown or higher medical-supply prices for anxious shoppers.
@@ -463,7 +461,7 @@ export default function Week9Page() {
             ] as const
           ).map(([kind, text]) => (
             <li key={kind} className="flex min-w-0 flex-col">
-              <Ruled weight="thin" className="mb-3">
+              <Ruled className="mb-3">
                 <P>{text}</P>
               </Ruled>
               <Plate className="mt-auto !p-2">
@@ -477,7 +475,7 @@ export default function Week9Page() {
             Empirical studies show that discovering opaque personalized pricing
             triggers immediate anger, negative word of mouth, cart abandonment,
             and{" "}
-            <Term tone="signal">
+            <Term>
               a lasting drop in brand trust that outweighs short-term margin gains
             </Term>
             .
@@ -489,15 +487,15 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          11. Framing and Transparency in Algorithmic Pricing [no-exercise]
+          Framing and Transparency in Algorithmic Pricing [no-exercise]
           ================================================================ */}
       <Slide id="framing-and-transparency-in-algorithmic-pricing" border className="!py-8">
         <SlideHeading className="!mb-5">Framing and Transparency in Algorithmic Pricing</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Prospect theory</Term> (Kahneman &amp; Tversky,
+                <Term>Prospect theory</Term> (Kahneman &amp; Tversky,
                 1979) shows that framing a price difference as a discount below a
                 standard reference price is judged significantly fairer than
                 framing the identical price difference as a surcharge above a low
@@ -509,9 +507,9 @@ export default function Week9Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                Furthermore, <Term tone="ink">verifiable eligibility rules</Term>{" "}
+                Furthermore, <Term>verifiable eligibility rules</Term>{" "}
                 (such as a published student discount, an off-peak matinee rate,
                 or a loyalty tier with transparent thresholds) preserve fairness
                 perceptions because any consumer can understand the rule and see
@@ -520,7 +518,7 @@ export default function Week9Page() {
             </Ruled>
             <Ruled className="mb-3">
               <P>
-                <Term tone="signal">
+                <Term>
                   Opaque algorithmic scores that silently alter prices without
                   disclosed criteria
                 </Term>{" "}
@@ -535,30 +533,18 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          12. Discussion: Surge Pricing During an Emergency
+          Discussion: Surge Pricing During an Emergency
           ================================================================ */}
       <Slide id="discussion-surge-pricing-during-an-emergency" border className="!py-8">
-        <SlideHeading>Surge Pricing During an Emergency</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <Plate>
-            <StormSurge />
-          </Plate>
-          <Prompt className="[&_p]:!text-[clamp(1.1rem,1.55vw,1.38rem)]">
-            During a sudden severe rainstorm and municipal subway outage, a
-            ride-hailing platform&apos;s automated pricing algorithm increases
-            fares by 350 percent across the affected downtown core. The
-            company&apos;s economics team defends the algorithm by arguing that
-            higher prices incentivize more drivers to enter the zone and allocate
-            scarce rides to passengers with the highest urgency. Analyze this
-            defense using dual entitlement theory, welfare economics, and
-            algorithmic governance, and propose how the platform&apos;s pricing
-            algorithm should be constrained during civic emergencies.
-          </Prompt>
-        </div>
+        <SlideHeading>Discussion: Surge Pricing During an Emergency</SlideHeading>
+        <Discussion
+          scenario={"During a sudden severe rainstorm and municipal subway outage, a ride-hailing platform's automated pricing algorithm increases fares by 350 percent across the affected downtown core. The company's economics team defends the algorithm by arguing that higher prices incentivize more drivers to enter the zone and allocate scarce rides to passengers with the highest urgency."}
+          question={"Analyze this defense using dual entitlement theory, welfare economics, and algorithmic governance, and propose how the platform's pricing algorithm should be constrained during civic emergencies."}
+        />
       </Slide>
 
       {/* ================================================================
-          13. Part 3: Tacit Algorithmic Collusion in Automated Markets [no-exercise]
+          Part 3: Tacit Algorithmic Collusion in Automated Markets [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Tacit Algorithmic Collusion in Automated Markets" />
@@ -575,7 +561,7 @@ export default function Week9Page() {
             <p className={BIG}>
               Recent economic and computational research demonstrates that pricing
               algorithms can learn to sustain{" "}
-              <Term tone="signal">collusive, supra-competitive prices</Term>{" "}
+              <Term>collusive, supra-competitive prices</Term>{" "}
               without ever being programmed to collude or exchanging a single
               message.
             </p>
@@ -587,24 +573,24 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          14. Explicit Cartels Versus Tacit Coordination [no-exercise]
+          Explicit Cartels Versus Tacit Coordination [no-exercise]
           ================================================================ */}
       <Slide id="explicit-cartels-versus-tacit-coordination" border className="!py-8">
         <SlideHeading className="!mb-5">Explicit Cartels Versus Tacit Coordination</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 Under competition and antitrust law (such as Section 1 of the US
                 Sherman Act and Section 45 of Canada&apos;s Competition Act), an{" "}
-                <Term tone="ink">explicit cartel</Term> in which competitors
+                <Term>explicit cartel</Term> in which competitors
                 communicate to fix prices, rig bids, or divide markets is a per se
                 unlawful criminal offense.
               </P>
             </Ruled>
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Conscious parallelism</Term>, or tacit
+                <Term>Conscious parallelism</Term>, or tacit
                 coordination, occurs in concentrated oligopolies when each firm
                 independently observes its rivals&apos; public prices and
                 recognizes that undercutting a rival will trigger a retaliatory
@@ -616,7 +602,7 @@ export default function Week9Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 Historically, sustaining tacit coordination among human managers
                 was difficult because markets are noisy, demand fluctuates, and
@@ -626,7 +612,7 @@ export default function Week9Page() {
             </Ruled>
             <Ruled className="mb-3">
               <P>
-                <Term tone="signal">High-frequency pricing algorithms remove those frictions</Term>:
+                <Term>High-frequency pricing algorithms remove those frictions</Term>:
                 they monitor rivals&apos; prices continuously, detect price cuts
                 within seconds, and execute immediate, credible retaliation.
               </P>
@@ -639,30 +625,30 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          15. How Reinforcement-Learning Pricing Agents Learn to Collude [no-exercise]
+          How Reinforcement-Learning Pricing Agents Learn to Collude [no-exercise]
           ================================================================ */}
       <Slide id="how-reinforcement-learning-pricing-agents-learn-to-collude" border className="!py-8">
         <SlideHeading className="!mb-5">How Reinforcement-Learning Pricing Agents Learn to Collude</SlideHeading>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In a landmark study published in the American Economic Review,
                 Calvano, Calzolari, Denicolò, and Pastorello (2020) placed
-                independent <Term tone="ink">Q-learning</Term> pricing algorithms
+                independent <Term>Q-learning</Term> pricing algorithms
                 in a simulated repeated Bertrand oligopoly where each algorithm
                 sought only to maximize its own firm&apos;s discounted cumulative
                 profit.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 The algorithms had no prior knowledge of the market structure,
                 could not communicate with one another, and were given no
                 instructions to cooperate.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Across thousands of simulations, the reinforcement-learning agents
                 consistently learned to charge supra-competitive prices well above
@@ -672,11 +658,11 @@ export default function Week9Page() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 Crucially, the researchers proved that the elevated prices were not
                 the result of naive learning mistakes:{" "}
-                <Term tone="signal">
+                <Term>
                   when the researchers manually forced one algorithm to cut its
                   price for a single period, the rival algorithm immediately
                   punished the deviation with a temporary price war
@@ -688,7 +674,7 @@ export default function Week9Page() {
             <Plate className="mb-3">
               <ForcedCut />
             </Plate>
-            <Ruled weight="thin" className="mt-auto">
+            <Ruled className="mt-auto">
               <P>
                 The algorithms had autonomously discovered the classic
                 reward-and-punishment enforcement mechanism of an economic cartel
@@ -700,7 +686,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          16. Four Pathways to Algorithmic Price Coordination [exercise]
+          Four Pathways to Algorithmic Price Coordination [exercise]
           ================================================================ */}
       <Slide
         id="four-pathways-to-algorithmic-price-coordination"
@@ -720,7 +706,7 @@ export default function Week9Page() {
               [
                 "messenger",
                 <>
-                  <Term tone="ink">Messenger</Term> occurs when human executives
+                  <Term>Messenger</Term> occurs when human executives
                   explicitly agree to fix prices and merely use software algorithms
                   as the operational tool to monitor compliance and update prices.
                   This is a traditional illegal cartel.
@@ -729,7 +715,7 @@ export default function Week9Page() {
               [
                 "hub",
                 <>
-                  <Term tone="ink">Hub-and-Spoke</Term> occurs when multiple
+                  <Term>Hub-and-Spoke</Term> occurs when multiple
                   competing firms (the spokes) all adopt the same third-party
                   pricing algorithm or vendor (the hub), pooling confidential data
                   or delegating pricing to a single shared optimization engine that
@@ -740,7 +726,7 @@ export default function Week9Page() {
               [
                 "predictable",
                 <>
-                  <Term tone="ink">Predictable Agent</Term> occurs when each firm
+                  <Term>Predictable Agent</Term> occurs when each firm
                   unilaterally deploys its own rule-based pricing algorithm (such as
                   automated price-matching plus a margin floor) designed to react
                   predictably and transparently to rivals&apos; moves, dampening
@@ -750,7 +736,7 @@ export default function Week9Page() {
               [
                 "autonomous",
                 <>
-                  <Term tone="ink">Autonomous Machine</Term> occurs when each firm
+                  <Term>Autonomous Machine</Term> occurs when each firm
                   independently deploys a self-learning reinforcement or foundation
                   model given only the goal &quot;maximize long-term profit,&quot;
                   and the models autonomously learn tacit punishment-and-reward
@@ -760,7 +746,7 @@ export default function Week9Page() {
             ] as const
           ).map(([kind, text]) => (
             <li key={kind} className="flex min-w-0 flex-col">
-              <Ruled weight="thin" className="mb-3">
+              <Ruled className="mb-3">
                 <P>{text}</P>
               </Ruled>
               <Plate className="mt-auto !p-2">
@@ -772,7 +758,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          17. Part 4: Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots [no-exercise]
+          Part 4: Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots" />
@@ -780,7 +766,7 @@ export default function Week9Page() {
           <Ruled>
             <p className={BIG}>
               Competition risks in digital markets also arise vertically when{" "}
-              <Term tone="signal">
+              <Term>
                 a dominant digital platform acts simultaneously as the marketplace
                 referee and as a competing merchant
               </Term>
@@ -794,7 +780,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          18. Dual-Role Gatekeepers and Algorithmic Self-Preferencing [exercise]
+          Dual-Role Gatekeepers and Algorithmic Self-Preferencing [exercise]
           ================================================================ */}
       <Slide
         id="dual-role-gatekeepers-and-algorithmic-self-preferencing"
@@ -803,10 +789,10 @@ export default function Week9Page() {
         exercise={exercise["dual-role-gatekeepers-and-algorithmic-self-preferencing"]}
       >
         <SlideHeading className="!mb-5">Dual-Role Gatekeepers and Algorithmic Self-Preferencing</SlideHeading>
-        <Ruled weight="thin" className="mb-5 w-full">
+        <Ruled className="mb-5 w-full">
           <P className="!max-w-none">
             Many dominant e-commerce, app-store, and search platforms operate as{" "}
-            <Term tone="ink">dual-role gatekeepers</Term>: they run the marketplace
+            <Term>dual-role gatekeepers</Term>: they run the marketplace
             infrastructure on which third-party merchants depend while also selling
             their own first-party or private-label products in the same categories.
           </P>
@@ -816,16 +802,16 @@ export default function Week9Page() {
             <div className="mb-3 grid gap-x-6 gap-y-3 md:grid-cols-2">
               <Ruled>
                 <P>
-                  <Term tone="signal">Algorithmic self-preferencing</Term> occurs
+                  <Term>Algorithmic self-preferencing</Term> occurs
                   when the platform designs its search ranking, recommendation
                   assistant, or &quot;Buy Box&quot; algorithm to favor its own
                   first-party products or logistics services over superior or
                   lower-priced third-party offerings.
                 </P>
               </Ruled>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">Algorithmic tying and buy-box conditioning</Term>{" "}
+                  <Term>Algorithmic tying and buy-box conditioning</Term>{" "}
                   occur when a platform makes top ranking or default assistant
                   selection contingent on a third-party seller purchasing the
                   platform&apos;s own fulfillment, payment, or advertising services.
@@ -837,9 +823,9 @@ export default function Week9Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Data appropriation</Term> occurs when the
+                <Term>Data appropriation</Term> occurs when the
                 platform&apos;s retail arm accesses non-public, granular transaction
                 and clickstream data generated by third-party sellers on the
                 marketplace to identify profitable niche products, replicate them
@@ -854,20 +840,20 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          19. When Pricing Algorithms Meet AI Shopping Agents [no-exercise]
+          When Pricing Algorithms Meet AI Shopping Agents [no-exercise]
           ================================================================ */}
       <Slide id="when-pricing-algorithms-meet-ai-shopping-agents" border className="!py-8">
         <SlideHeading className="!mb-5">When Pricing Algorithms Meet AI Shopping Agents</SlideHeading>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 As consumers adopt autonomous AI shopping agents (Weeks 7 and 8),
                 retail markets transition toward algorithm-versus-algorithm
                 exchange in which pricing bots face buying bots.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 On the one hand, well-configured AI shopping agents can intensify
                 price competition by inspecting more listings than humans (Wadi
@@ -875,10 +861,10 @@ export default function Week9Page() {
                 are accessible (Wadi &amp; Ma, 2026b), and bypassing brand inertia.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 On the other hand,{" "}
-                <Term tone="signal">
+                <Term>
                   seller pricing algorithms can exploit the systematic behavioral
                   vulnerabilities of AI shopping agents
                 </Term>
@@ -895,7 +881,7 @@ export default function Week9Page() {
             <Plate className="mb-4">
               <BotMeetsBot />
             </Plate>
-            <Statement className="mt-auto !max-w-none border-t border-[var(--ink)] pt-4 !text-[clamp(1.1rem,1.6vw,1.4rem)]">
+            <Statement className="mt-auto !max-w-none border-t border-[var(--rule-2)] pt-4 !text-[clamp(1.1rem,1.6vw,1.4rem)]">
               Fair competition in agentic markets therefore requires governing both
               sides of the automated interface.
             </Statement>
@@ -904,7 +890,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          20. Part 5: Antitrust Enforcement and Auditing Pricing Algorithms [no-exercise]
+          Part 5: Antitrust Enforcement and Auditing Pricing Algorithms [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Antitrust Enforcement and Auditing Pricing Algorithms" />
@@ -914,7 +900,7 @@ export default function Week9Page() {
               Competition authorities worldwide, including the US Department of
               Justice, the Federal Trade Commission, the Canadian Competition
               Bureau, and the European Commission, have made{" "}
-              <Term tone="signal">
+              <Term>
                 algorithmic pricing and gatekeeper self-preferencing top
                 enforcement priorities
               </Term>
@@ -928,7 +914,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          21. The Liability Gap in Competition Law [no-exercise]
+          The Liability Gap in Competition Law [no-exercise]
           ================================================================ */}
       <Slide id="the-liability-gap-in-competition-law" border className="!py-8">
         <SlideHeading className="!mb-5">The Liability Gap in Competition Law</SlideHeading>
@@ -937,7 +923,7 @@ export default function Week9Page() {
             <EvidenceTray />
           </Plate>
           <div className="grid content-start gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Classical antitrust statutes prohibit &quot;agreements,&quot;
                 &quot;conspiracies,&quot; or &quot;concerted practices&quot; in
@@ -946,19 +932,19 @@ export default function Week9Page() {
                 minds between competitors.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 While Messenger and Hub-and-Spoke arrangements (such as competitors
                 feeding non-public data into a shared rental-housing or hotel
                 pricing vendor) are actively prosecuted as unlawful coordination,{" "}
-                <Term tone="signal">
+                <Term>
                   pure Autonomous Machine tacit collusion challenges traditional
                   evidentiary standards
                 </Term>{" "}
                 because no human communication or shared vendor exists.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Legal and economic scholars therefore propose shifting regulatory
                 scrutiny from searching for smoke-filled-room communications to
@@ -973,7 +959,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          22. Six Steps of an Algorithmic Pricing and Competition Audit [exercise]
+          Six Steps of an Algorithmic Pricing and Competition Audit [exercise]
           ================================================================ */}
       <Slide
         id="six-steps-of-an-algorithmic-pricing-and-competition-audit"
@@ -989,7 +975,7 @@ export default function Week9Page() {
             "Step 3 is evaluating price presentation and search steering against dual-entitlement and dark-pattern standards, verifying that discounts, reference prices, and dynamic surge rules are transparent and verifiable.",
           ].map((step) => (
             <li key={step} className="min-w-0">
-              <Ruled weight="thin">
+              <Ruled>
                 <P>{step}</P>
               </Ruled>
             </li>
@@ -1005,7 +991,7 @@ export default function Week9Page() {
             "Step 6 is implementing hard algorithmic guardrails, including emergency surge caps, human-on-the-loop circuit breakers, and Chinese walls separating marketplace seller data from first-party retail teams.",
           ].map((step) => (
             <li key={step} className="min-w-0">
-              <Ruled weight="thin">
+              <Ruled>
                 <P>{step}</P>
               </Ruled>
             </li>
@@ -1017,7 +1003,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          23. Governance Guardrails for Ethical and Compliant Pricing [exercise]
+          Governance Guardrails for Ethical and Compliant Pricing [exercise]
           ================================================================ */}
       <Slide
         id="governance-guardrails-for-ethical-and-compliant-pricing"
@@ -1032,7 +1018,7 @@ export default function Week9Page() {
               [
                 "cap",
                 <>
-                  <Term tone="ink">Emergency and vulnerability price caps</Term> set
+                  <Term>Emergency and vulnerability price caps</Term> set
                   hard upper bounds on dynamic surge multipliers during declared
                   emergencies, natural disasters, or acute public disruptions.
                 </>,
@@ -1040,7 +1026,7 @@ export default function Week9Page() {
               [
                 "framing",
                 <>
-                  <Term tone="ink">Transparent discount framing</Term> replaces
+                  <Term>Transparent discount framing</Term> replaces
                   covert personalized list-price inflation with published base
                   prices and clearly stated, non-discriminatory eligibility rules
                   for loyalty or promotional discounts.
@@ -1049,7 +1035,7 @@ export default function Week9Page() {
               [
                 "reward",
                 <>
-                  <Term tone="ink">Collusion-resistant reward design</Term> restricts
+                  <Term>Collusion-resistant reward design</Term> restricts
                   reinforcement-learning pricing agents from conditioning
                   multi-period punishment policies on individual rivals&apos;
                   high-frequency price deviations.
@@ -1058,7 +1044,7 @@ export default function Week9Page() {
               [
                 "firewall",
                 <>
-                  <Term tone="ink">Firewall and ranking neutrality mandates</Term>{" "}
+                  <Term>Firewall and ranking neutrality mandates</Term>{" "}
                   prohibit dual-role platforms from using non-public third-party
                   seller data for private-label development and require identical
                   ranking weights for first-party and third-party goods.
@@ -1068,7 +1054,7 @@ export default function Week9Page() {
           ).map(([kind, text], i) => (
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
-                <Ruled weight="thin" className="mb-3">
+                <Ruled className="mb-3">
                   <P>{text}</P>
                 </Ruled>
                 <Plate className="mt-auto !p-2">
@@ -1081,32 +1067,18 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          24. Discussion: The Shared Rental Pricing Algorithm
+          Discussion: The Shared Rental Pricing Algorithm
           ================================================================ */}
       <Slide id="discussion-the-shared-rental-pricing-algorithm" border className="!py-8">
-        <SlideHeading>The Shared Rental Pricing Algorithm</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <Plate>
-            <RentHub />
-          </Plate>
-          <Prompt className="[&_p]:!text-[clamp(1.05rem,1.45vw,1.3rem)]">
-            Twelve competing property-management companies that control 70 percent
-            of the apartment buildings in a metropolitan city license the same
-            cloud-based revenue-management software. Every night, each landlord
-            uploads its private lease renewal rates, vacancy counts, and applicant
-            traffic to the vendor&apos;s model, which returns recommended daily
-            rents for every unit. Public records show that after adopting the
-            software, landlords left more units vacant during slow months while
-            average rents across the city rose 18 percent above historical trends.
-            Using Ezrachi and Stucke&apos;s four pathways and competition
-            governance principles, analyze whether this arrangement constitutes
-            unlawful coordination and how an auditor would test the software.
-          </Prompt>
-        </div>
+        <SlideHeading>Discussion: The Shared Rental Pricing Algorithm</SlideHeading>
+        <Discussion
+          scenario={"Twelve competing property-management companies that control 70 percent of the apartment buildings in a metropolitan city license the same cloud-based revenue-management software. Every night, each landlord uploads its private lease renewal rates, vacancy counts, and applicant traffic to the vendor's model, which returns recommended daily rents for every unit. Public records show that after adopting the software, landlords left more units vacant during slow months while average rents across the city rose 18 percent above historical trends."}
+          question={"Using Ezrachi and Stucke's four pathways and competition governance principles, analyze whether this arrangement constitutes unlawful coordination and how an auditor would test the software."}
+        />
       </Slide>
 
       {/* ================================================================
-          25. Key Takeaways
+          Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1122,7 +1094,7 @@ export default function Week9Page() {
           ].map((takeaway, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P>{takeaway}</P>
                 </Ruled>
               </Numbered>

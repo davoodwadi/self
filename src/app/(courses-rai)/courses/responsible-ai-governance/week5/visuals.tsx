@@ -25,7 +25,7 @@ import { Chip, Dial, Figure, Flag, Gear, House, Sheet, SmallModel, Tag, cross, h
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
-   in Caslon italic and one examiner's red for the finding. See the course
+   in the body face and one examiner's red for the finding. See the course
    CLAUDE.md.
    ========================================================================== */
 
@@ -41,7 +41,7 @@ const hair = {
   strokeLinecap: "round" as const,
 };
 
-/** Caslon numerals or a quantity on a plate. */
+/** Numerals or a quantity on a plate. */
 function Num({
   x,
   y,
@@ -49,7 +49,6 @@ function Num({
   size = 14,
   anchor = "middle",
   fill = PAT.ink,
-  italic = false,
 }: {
   x: number;
   y: number;
@@ -57,16 +56,14 @@ function Num({
   size?: number;
   anchor?: "start" | "middle" | "end";
   fill?: string;
-  italic?: boolean;
 }) {
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
-      fontFamily="var(--font-heading)"
+      fontFamily="var(--font-body)"
       fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
       fill={fill}
       style={{ fontVariantNumeric: "lining-nums" }}
     >
@@ -76,7 +73,7 @@ function Num({
 }
 
 /* --------------------------------------------------------------------------
-   02. Why Opacity Is a Governance Problem
+   Why Opacity Is a Governance Problem
    -------------------------------------------------------------------------- */
 
 /**
@@ -99,7 +96,7 @@ export function OpaqueDecisions() {
     <Frame
       width={560}
       height={262}
-      label="Patent drawing of a sealed model housing. Six input cards feed its left face, and three decisions leave its right face: a loan letter stamped DENIED, an insurance premium tag raised by 18 percent, and a supplier shortlist with one name crossed off. Inside the housing, the routes from the inputs to the decisions are hidden lines, dashed in red, so which variables drove each outcome cannot be seen."
+      label="Patent drawing of a sealed model housing. Six input cards feed its left face, and three decisions leave its right face: a loan letter stamped denied, an insurance premium tag raised by 18 percent, and a supplier shortlist with one name crossed off. Inside the housing, the routes from the inputs to the decisions are hidden lines, dashed in red, so which variables drove each outcome cannot be seen."
     >
       <PatentDefs id={id} />
       {/* input cards */}
@@ -138,7 +135,7 @@ export function OpaqueDecisions() {
       <g transform={`rotate(-8 ${exitX + 74} ${outs[0] + 12})`}>
         <rect x={exitX + 46} y={outs[0] + 3} width={56} height={17} fill="none" {...ink} />
         <PatentKey x={exitX + 75} y={outs[0] + 15.5} size={10}>
-          DENIED
+          Denied
         </PatentKey>
       </g>
       {/* premium tag, raised */}
@@ -166,7 +163,7 @@ export function OpaqueDecisions() {
 }
 
 /* --------------------------------------------------------------------------
-   03. Transparency Versus Explainability Versus Interpretability
+   Transparency Versus Explainability Versus Interpretability
    -------------------------------------------------------------------------- */
 
 type Form = "process" | "intrinsic" | "posthoc";
@@ -200,7 +197,7 @@ export function ThreeForms() {
             <line x1={84} y1={150} x2={84} y2={206} {...ink} strokeWidth={LINE.bold} />
             <ObliqueBox id={id} x={24} y={58} w={120} h={92} dx={8} dy={5} />
             <PatentKey x={84} y={80} size={13}>
-              NOTICE
+              Notice
             </PatentKey>
             {[0, 1, 2, 3].map((k) => (
               <line key={k} x1={40} y1={96 + k * 13} x2={k === 3 ? 100 : 128} y2={96 + k * 13} {...hair} />
@@ -297,7 +294,7 @@ export function ThreeForms() {
 }
 
 /* --------------------------------------------------------------------------
-   04. Part 1: Intrinsic Interpretability Versus Black-Box Complexity
+   Part 1: Intrinsic Interpretability Versus Black-Box Complexity
    -------------------------------------------------------------------------- */
 
 /** A small decision tree: a root, two branches and four leaves, centred on (cx, y). */
@@ -335,7 +332,7 @@ export function LevelBalance() {
       {/* base with its key */}
       <ObliqueBox id={id} x={52} y={262} w={424} h={30} dx={14} dy={9} />
       <PatentKey x={cx} y={282} size={13}>
-        OUT-OF-SAMPLE ACCURACY
+        Out-of-sample accuracy
       </PatentKey>
       {/* column and beam */}
       <rect x={cx - 8} y={beamY + 8} width={16} height={262 - beamY - 8} fill={PAT.paper} {...ink} />
@@ -382,7 +379,7 @@ export function LevelBalance() {
 }
 
 /* --------------------------------------------------------------------------
-   05. Intrinsically Interpretable Models
+   Intrinsically Interpretable Models
    -------------------------------------------------------------------------- */
 
 const LIN = { b: -2, v: 0.6, a: -0.15 };
@@ -457,14 +454,14 @@ export function ReadableModels() {
         {/* sparse linear model */}
         <line x1={zx} y1={64} x2={zx} y2={170} {...ink} />
         <PatentKey x={14} y={60} size={11} anchor="start">
-          VELOCITY
+          Velocity
         </PatentKey>
         {bar(68, cv)}
         <Num x={r2(zx + Math.max(0, cv) * u + 6)} y={81} anchor="start" size={13}>
           {`${LIN.v} × ${v}`}
         </Num>
         <PatentKey x={14} y={118} size={11} anchor="start">
-          ACCOUNT AGE
+          Account age
         </PatentKey>
         {bar(126, ca)}
         <Num x={r2(zx + 6)} y={139} anchor="start" size={13}>
@@ -479,11 +476,11 @@ export function ReadableModels() {
 
         {/* generalized additive model */}
         <PatentKey x={300} y={30} size={11} anchor="start">
-          VELOCITY
+          Velocity
         </PatentKey>
         {plot(38, 8, gamV, v, -1.3, 1.3)}
         <PatentKey x={300} y={130} size={11} anchor="start">
-          ACCOUNT AGE
+          Account age
         </PatentKey>
         {plot(138, 30, gamA, a, -0.6, 1)}
         <FigureName x={410} y={230} size={14}>
@@ -497,7 +494,7 @@ export function ReadableModels() {
             key={i}
             x={590}
             y={78 + i * 30 + (i === 3 ? 6 : 0)}
-            fontFamily="var(--font-heading)"
+            fontFamily="var(--font-body)"
             fontSize={14}
             fill={r.on ? PAT.signal : PAT.ink}
           >
@@ -518,7 +515,7 @@ export function ReadableModels() {
 }
 
 /* --------------------------------------------------------------------------
-   06. Black-Box Models
+   Black-Box Models
    -------------------------------------------------------------------------- */
 
 /** A binary decision tree `depth` levels deep, root at (cx, y), spread `w` wide. */
@@ -613,7 +610,7 @@ export function BlackBoxes() {
 }
 
 /* --------------------------------------------------------------------------
-   07. When High-Stakes Decisions Should Use Interpretable Models
+   When High-Stakes Decisions Should Use Interpretable Models
    -------------------------------------------------------------------------- */
 
 /** The black box's decision boundary over the applicant plane (both axes 0..1). */
@@ -670,8 +667,8 @@ export function SurrogateGap() {
     }
     return [X(u0), r2(below ? bottom + 16 : top - 8)];
   };
-  const kb = clear(BB_PEAK, "BLACK BOX", false);
-  const ke = clear(BB_PEAK, "EXPLANATION", true);
+  const kb = clear(BB_PEAK, "Black box", false);
+  const ke = clear(BB_PEAK, "Explanation", true);
   const keyAt = ([x, y]: number[], text: string) => (
     <g>
       <rect x={r2(x - (text.length * 9.6) / 2)} y={r2(y - 11)} width={r2(text.length * 9.6)} height={15} fill={PAT.paper} />
@@ -713,8 +710,8 @@ export function SurrogateGap() {
             />
           );
         })}
-        {keyAt(kb, "BLACK BOX")}
-        {keyAt(ke, "EXPLANATION")}
+        {keyAt(kb, "Black box")}
+        {keyAt(ke, "Explanation")}
         <Num x={x0} y={300} anchor="start" size={15} fill={PAT.signal}>
           {`${wrong.length} of ${APPLICANTS.length} applicants explained wrongly`}
         </Num>
@@ -734,7 +731,7 @@ export function SurrogateGap() {
 }
 
 /* --------------------------------------------------------------------------
-   08. Part 2: Post-Hoc Feature Attribution Methods
+   Part 2: Post-Hoc Feature Attribution Methods
    -------------------------------------------------------------------------- */
 
 /**
@@ -750,7 +747,7 @@ export function ClampOnMeter() {
     <Frame
       width={560}
       height={300}
-      label="Patent drawing of a sealed model housing whose predictions leave along a shaft as small slips. An attribution meter is clamped onto the shaft after the model. Its face shows four feature bars of different lengths, and a selector knob on it switches between GLOBAL and LOCAL scope."
+      label="Patent drawing of a sealed model housing whose predictions leave along a shaft as small slips. An attribution meter is clamped onto the shaft after the model. Its face shows four feature bars of different lengths, and a selector knob on it switches between global and local scope."
     >
       <PatentDefs id={id} />
       {/* the deployed model */}
@@ -778,23 +775,23 @@ export function ClampOnMeter() {
       ))}
       {/* the scope selector */}
       <PatentKey x={418} y={64} size={12}>
-        GLOBAL
+        Global
       </PatentKey>
       <circle cx={418} cy={92} r={15} fill={stip(id, "light")} {...ink} />
       <circle cx={418} cy={92} r={9} fill={PAT.paper} {...ink} />
       <line x1={418} y1={92} x2={418} y2={73} {...ink} strokeWidth={LINE.bold} />
       <PatentKey x={418} y={130} size={12}>
-        LOCAL
+        Local
       </PatentKey>
     </Frame>
   );
 }
 
 /* --------------------------------------------------------------------------
-   09. Global Versus Local Explanations
+   Global Versus Local Explanations
    -------------------------------------------------------------------------- */
 
-const GL_FEATURES = ["UTILIZATION", "INQUIRIES", "INCOME", "TENURE"];
+const GL_FEATURES = ["Utilization", "Inquiries", "Income", "Tenure"];
 const GL_BASE = 0.18;
 const GL_FOCUS = 13;
 /** 24 customers: an id, four signed attributions and the default probability they sum to. */
@@ -918,13 +915,13 @@ export function GlobalLocal() {
 }
 
 /* --------------------------------------------------------------------------
-   10. Permutation Feature Importance and Partial Dependence
+   Permutation Feature Importance and Partial Dependence
    -------------------------------------------------------------------------- */
 
 type ShuffleCol = "none" | "income" | "util";
 const SH_COLS: { id: Exclude<ShuffleCol, "none">; key: string }[] = [
-  { id: "income", key: "INCOME" },
-  { id: "util", key: "UTILIZATION" },
+  { id: "income", key: "Income" },
+  { id: "util", key: "Utilization" },
 ];
 const SH_ERROR: Record<ShuffleCol, number> = { none: 0.12, income: 0.18, util: 0.29 };
 /** Eight holdout customers: two feature values (0..1) and whether they defaulted. */
@@ -980,7 +977,7 @@ export function ShuffleColumn() {
           </PatentKey>
         ))}
         <PatentKey x={cx0 + cw * 2 + 45} y={top - 13} size={11}>
-          OUTCOME
+          Outcome
         </PatentKey>
         {SH_ROWS.map((r, i) => (
           <g key={i}>
@@ -1081,10 +1078,10 @@ export function IceCurves() {
         <line x1={x0} y1={y0} x2={x0} y2={y1 + 0.5} {...ink} />
         <line x1={x0} y1={y1 + 0.5} x2={x1} y2={y1 + 0.5} {...ink} />
         <PatentKey x={x1} y={y1 + 28} size={11} anchor="end">
-          INCOME
+          Income
         </PatentKey>
         <PatentKey x={x0 + 8} y={y0 + 4} size={11} anchor="start">
-          PREDICTED DEFAULT
+          Predicted default
         </PatentKey>
         {view === "ice"
           ? ICE.map((c, i) => (
@@ -1112,7 +1109,7 @@ export function IceCurves() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Local Surrogates and Game-Theoretic Attributions: LIME and SHAP
+   Local Surrogates and Game-Theoretic Attributions: LIME and SHAP
    -------------------------------------------------------------------------- */
 
 /** The black box's curved boundary over the plane (0..1 each way): above it, denied. */
@@ -1191,9 +1188,9 @@ export function LimeFit() {
 
 type Player = "I" | "U" | "N";
 const PLAYERS: { id: Player; key: string; tone: "light" | "dense" | "paper" }[] = [
-  { id: "I", key: "INQUIRIES", tone: "dense" },
-  { id: "U", key: "UTILIZATION", tone: "light" },
-  { id: "N", key: "INCOME", tone: "paper" },
+  { id: "I", key: "Inquiries", tone: "dense" },
+  { id: "U", key: "Utilization", tone: "light" },
+  { id: "N", key: "Income", tone: "paper" },
 ];
 /** The model's prediction when only the features in the coalition are known (the rest at baseline). */
 const COALITION: Record<string, number> = { "": 0.18, I: 0.26, U: 0.22, N: 0.24, IU: 0.3, IN: 0.36, NU: 0.27, INU: 0.42 };
@@ -1289,7 +1286,7 @@ export function ShapleyOrders() {
 }
 
 /* --------------------------------------------------------------------------
-   12. Limitations and Vulnerabilities of Post-Hoc Attributions
+   Limitations and Vulnerabilities of Post-Hoc Attributions
    -------------------------------------------------------------------------- */
 
 /** Four reruns of the same explanation: each feature's attribution under a new random seed. */
@@ -1299,7 +1296,7 @@ const RERUNS = [
   { seed: 3, v: [0.18, 0.17, 0.27] },
   { seed: 4, v: [0.29, 0.25, 0.1] },
 ];
-const RERUN_KEYS = ["UTILIZATION", "INQUIRIES", "INCOME"];
+const RERUN_KEYS = ["Utilization", "Inquiries", "Income"];
 const AGE_HISTORY = (() => {
   const rnd = seeded(19);
   return Array.from({ length: 48 }, () => {
@@ -1336,11 +1333,11 @@ export function FourLimits({ kind }: { kind: "causal" | "instability" | "correla
         <PatentDefs id={id} />
         <rect x={10} y={12} width={256} height={124} fill={PAT.paper} {...hair} strokeDasharray="5 3" />
         <PatentKey x={26} y={42} size={12} anchor="start">
-          POSTAL CODE
+          Postal code
         </PatentKey>
         <rect x={26} y={50} width={214} height={16} fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} />
         <PatentKey x={26} y={94} size={12} anchor="start">
-          INCOME
+          Income
         </PatentKey>
         <rect x={26} y={102} width={70} height={16} fill={stip(id, "light")} {...ink} />
         <FigureName x={138} y={154} size={14}>
@@ -1418,10 +1415,10 @@ export function FourLimits({ kind }: { kind: "causal" | "instability" | "correla
           age 19, 20-year history
         </Num>
         <PatentKey x={546} y={154} size={12} anchor="end">
-          AGE
+          Age
         </PatentKey>
         <PatentKey x={68} y={22} size={12} anchor="start">
-          CREDIT HISTORY
+          Credit history
         </PatentKey>
         {[20, 40, 60].map((a) => (
           <Num key={a} x={X(a)} y={150} size={12}>
@@ -1466,11 +1463,11 @@ export function FourLimits({ kind }: { kind: "causal" | "instability" | "correla
       <path d={headAlongPath(388, 130, 1, 0, 8)} fill="none" stroke={PAT.signal} strokeWidth={LINE.outline} />
       <Box id={id} x={394} y={14} w={130} h={48} />
       <PatentKey x={459} y={43} size={12}>
-        FAIR
+        Fair
       </PatentKey>
       <Box id={id} x={394} y={106} w={130} h={48} red />
       <PatentKey x={459} y={135} size={12} fill={PAT.signal}>
-        BIASED
+        Biased
       </PatentKey>
       <FigureName x={156} y={26} size={14}>
         synthetic
@@ -1483,64 +1480,7 @@ export function FourLimits({ kind }: { kind: "causal" | "instability" | "correla
 }
 
 /* --------------------------------------------------------------------------
-   13. Discussion: The Disputed Credit Denial
-   -------------------------------------------------------------------------- */
-
-/**
- * The bank's portal page as a sheet: a DECLINED stamp, then the top three
- * negative SHAP values as bars running left from a zero line, each with its
- * feature name as printed on the page. The postal-code bar is red.
- */
-export function PortalLetter() {
-  const id = "w5-portal";
-  const zx = 352;
-  const rows = [
-    { text: "Number of recent credit inquiries", v: 0.11 },
-    { text: "Postal code commercial density", v: 0.08, red: true },
-    { text: "Average monthly balance volatility", v: 0.06 },
-  ];
-  return (
-    <Frame
-      width={400}
-      height={318}
-      label="Patent drawing of the bank's customer portal page for a working-capital application, stamped DECLINED. It lists the top three negative SHAP values as bars running left from a zero line: number of recent credit inquiries, the longest. Postal code commercial density, in red. And average monthly balance volatility."
-    >
-      <PatentDefs id={id} />
-      <ObliqueBox id={id} x={14} y={22} w={362} h={286} dx={10} dy={6} />
-      {/* header */}
-      <line x1={32} y1={54} x2={190} y2={54} {...ink} strokeWidth={LINE.bold} />
-      <line x1={32} y1={68} x2={150} y2={68} {...hair} />
-      <g transform="rotate(-6 302 62)">
-        <rect x={244} y={46} width={118} height={30} fill="none" {...ink} strokeWidth={LINE.bold} />
-        <PatentKey x={303} y={66} size={14}>
-          DECLINED
-        </PatentKey>
-      </g>
-      <line x1={32} y1={98} x2={360} y2={98} {...hair} />
-      {/* the three reasons */}
-      <line x1={zx + 0.5} y1={112} x2={zx + 0.5} y2={290} {...ink} />
-      {rows.map((r, i) => {
-        const y = 134 + i * 56;
-        const w = r2(r.v * 1500);
-        const c = r.red ? PAT.signal : PAT.ink;
-        return (
-          <g key={r.text}>
-            <text x={32} y={y} fontFamily="var(--font-heading)" fontSize={16} fill={c}>
-              {r.text}
-            </text>
-            <rect x={r2(zx - w)} y={y + 10} width={w} height={18} fill={stip(id, r.red ? "signal" : "light")} stroke={c} strokeWidth={LINE.outline} />
-            <Num x={r2(zx - w - 8)} y={y + 24} anchor="end" size={15} fill={c}>
-              {`−${r.v.toFixed(2)}`}
-            </Num>
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   14. Part 3: Counterfactual Explanations and Actionable Recourse
+   Part 3: Counterfactual Explanations and Actionable Recourse
    -------------------------------------------------------------------------- */
 
 /**
@@ -1581,10 +1521,10 @@ export function BoundaryFence() {
         <line key={i} x1={x} y1={y} x2={x} y2={r2(y - 26)} {...ink} strokeWidth={LINE.bold} />
       ))}
       <PatentKey x={150} y={108} size={13}>
-        DENIED
+        Denied
       </PatentKey>
       <PatentKey x={400} y={128} size={13}>
-        APPROVED
+        Approved
       </PatentKey>
       {/* the applicant with a card of weights */}
       <Figure id={id} x={me[0]} y={me[1]} s={0.9} arm="reach" coat="paper" />
@@ -1606,7 +1546,7 @@ export function BoundaryFence() {
 }
 
 /* --------------------------------------------------------------------------
-   15. Counterfactual Explanations: What Would Have Changed the Decision
+   Counterfactual Explanations: What Would Have Changed the Decision
    -------------------------------------------------------------------------- */
 
 const CF_ME = { inc: 52, util: 42 };
@@ -1660,10 +1600,10 @@ export function CounterfactualPlane() {
           </Num>
         ))}
         <PatentKey x={x1} y={y1 + 40} size={12} anchor="end">
-          ANNUAL INCOME
+          Annual income
         </PatentKey>
         <PatentKey x={x0 + 8} y={y0 + 18} size={12} anchor="start">
-          UTILIZATION
+          Utilization
         </PatentKey>
         {/* the two counterfactuals on the boundary */}
         {[
@@ -1681,7 +1621,7 @@ export function CounterfactualPlane() {
         <g transform="rotate(-6 424 70)">
           <rect x={366} y={54} width={116} height={30} fill="none" stroke={ok ? PAT.signal : PAT.ink} strokeWidth={LINE.bold} />
           <PatentKey x={425} y={74} size={13} fill={ok ? PAT.signal : PAT.ink}>
-            {ok ? "APPROVED" : "DENIED"}
+            {ok ? "Approved" : "Denied"}
           </PatentKey>
         </g>
         <Num x={366} y={128} anchor="start" size={15}>
@@ -1700,16 +1640,16 @@ export function CounterfactualPlane() {
 }
 
 /* --------------------------------------------------------------------------
-   16. From Explanation to Actionable Recourse
+   From Explanation to Actionable Recourse
    -------------------------------------------------------------------------- */
 
 type LeverKind = "mutable" | "oneway" | "locked";
 const LEVERS: { key: string; kind: LeverKind }[] = [
-  { key: "SAVINGS", kind: "mutable" },
-  { key: "UTILIZATION", kind: "mutable" },
-  { key: "EDUCATION", kind: "oneway" },
-  { key: "AGE", kind: "locked" },
-  { key: "BIRTHPLACE", kind: "locked" },
+  { key: "Savings", kind: "mutable" },
+  { key: "Utilization", kind: "mutable" },
+  { key: "Education", kind: "oneway" },
+  { key: "Age", kind: "locked" },
+  { key: "Birthplace", kind: "locked" },
 ];
 /** The counterfactual each search returns: how far each lever moves (−1..1) and its printed change. */
 const SEARCH: Record<"all" | "actionable", { move: number[]; text: string[] }> = {
@@ -1815,8 +1755,8 @@ export function RecourseBurden() {
   const id = "w5-burden";
   const bx = 262;
   const rows = [
-    { key: "GROUP A", y: 54, d: BURDEN.A, red: false },
-    { key: "GROUP B", y: 128, d: BURDEN.B, red: true },
+    { key: "Group A", y: 54, d: BURDEN.A, red: false },
+    { key: "Group B", y: 128, d: BURDEN.B, red: true },
   ];
   return (
     <Frame
@@ -1827,10 +1767,10 @@ export function RecourseBurden() {
       <PatentDefs id={id} />
       <line x1={bx} y1={18} x2={bx} y2={172} {...ink} strokeWidth={LINE.bold} />
       <PatentKey x={bx - 12} y={186} size={12} anchor="end">
-        REJECTED
+        Rejected
       </PatentKey>
       <PatentKey x={bx + 12} y={186} size={12} anchor="start">
-        APPROVED
+        Approved
       </PatentKey>
       {rows.map((r) => {
         const mean = r.d.rejected.reduce((a, b) => a + b, 0) / r.d.rejected.length;
@@ -1863,7 +1803,7 @@ export function RecourseBurden() {
 }
 
 /* --------------------------------------------------------------------------
-   17. Part 4: Reasoning Traces in Large Language Models as Verbal Protocols
+   Part 4: Reasoning Traces in Large Language Models as Verbal Protocols
    -------------------------------------------------------------------------- */
 
 /**
@@ -1923,7 +1863,7 @@ export function TraceScroll() {
 }
 
 /* --------------------------------------------------------------------------
-   18. Chain-of-Thought and Reasoning Traces as Verbal Protocols
+   Chain-of-Thought and Reasoning Traces as Verbal Protocols
    -------------------------------------------------------------------------- */
 
 type Code = "goal" | "attributes" | "disclosure";
@@ -1956,7 +1896,7 @@ export function CodedProtocols() {
     <g>
       <rect x={x} y={20} width={318} height={128} fill={PAT.paper} {...ink} />
       {rows.map((spans, i) => (
-        <text key={i} x={x + 16} y={48 + i * 22} fontFamily="var(--font-heading)" fontSize={14} fill={PAT.ink}>
+        <text key={i} x={x + 16} y={48 + i * 22} fontFamily="var(--font-body)" fontSize={14} fill={PAT.ink}>
           {spans.map(([t, c], j) => (
             <tspan key={j} fill={c === code ? PAT.signal : PAT.ink} style={c === code ? { textDecoration: "underline" } : undefined}>
               {t}
@@ -2008,7 +1948,7 @@ export function CodedProtocols() {
 }
 
 /* --------------------------------------------------------------------------
-   19. Plausibility Versus Faithfulness in LLM Explanations
+   Plausibility Versus Faithfulness in LLM Explanations
    -------------------------------------------------------------------------- */
 
 const CUE_TRACE = {
@@ -2078,12 +2018,12 @@ export function CoveredCue() {
         {/* the reply */}
         <rect x={310} y={20} width={252} height={130} fill={PAT.paper} stroke={red} strokeWidth={LINE.outline} />
         {trace.map((t, i) => (
-          <text key={i} x={324} y={46 + i * 26} fontFamily="var(--font-heading)" fontSize={14} fill={red}>
+          <text key={i} x={324} y={46 + i * 26} fontFamily="var(--font-body)" fontSize={14} fill={red}>
             {t}
           </text>
         ))}
-        {meter(186, "PLAUSIBILITY", 0.92, PAT.ink)}
-        {meter(236, "FAITHFULNESS", cue ? 0.18 : 0.9, red)}
+        {meter(186, "Plausibility", 0.92, PAT.ink)}
+        {meter(236, "Faithfulness", cue ? 0.18 : 0.9, red)}
         <FigureName x={436} y={290} size={14}>
           chain-of-thought explanation
         </FigureName>
@@ -2099,7 +2039,7 @@ export function CoveredCue() {
 }
 
 /* --------------------------------------------------------------------------
-   20. Auditing Reasoning Traces Alongside Observed Choices
+   Auditing Reasoning Traces Alongside Observed Choices
    -------------------------------------------------------------------------- */
 
 /**
@@ -2137,7 +2077,7 @@ export function VolumeObjective() {
         <PatentDefs id={id} />
         {/* coded traces */}
         <PatentKey x={10} y={20} size={11} anchor="start">
-          STATED GOAL
+          Stated goal
         </PatentKey>
         {Array.from({ length: 10 }, (_, i) => {
           const red = i < reds;
@@ -2161,7 +2101,7 @@ export function VolumeObjective() {
 
         {/* diagnostic details acquired */}
         <PatentKey x={178} y={20} size={11} anchor="start">
-          DETAILS ACQUIRED
+          Details acquired
         </PatentKey>
         {Array.from({ length: 6 }, (_, i) => {
           const x = 180 + (i % 3) * 46;
@@ -2180,7 +2120,7 @@ export function VolumeObjective() {
 
         {/* optimal choice */}
         <PatentKey x={340} y={20} size={11} anchor="start">
-          OPTIMAL CHOICE
+          Optimal choice
         </PatentKey>
         <rect x={342} y={34} width={36} height={82} fill={PAT.paper} {...ink} />
         <rect x={342} y={r2(34 + 82 * (1 - v.opt))} width={36} height={r2(82 * v.opt)} fill={stip(id, "dense")} {...ink} />
@@ -2203,8 +2143,8 @@ export function VolumeObjective() {
  * the system prompt and whether the hotel carries the sponsor tag.
  */
 const PRINCIPAL = [
-  { key: "TRAVELER", organic: { skep: 1.14, booked: 0.53 }, sponsored: { skep: 5.62, booked: 0.028 } },
-  { key: "PLATFORM", organic: { skep: 1.09, booked: 0.542 }, sponsored: { skep: 4.16, booked: 0.25 } },
+  { key: "Traveler", organic: { skep: 1.14, booked: 0.53 }, sponsored: { skep: 5.62, booked: 0.028 } },
+  { key: "Platform", organic: { skep: 1.09, booked: 0.542 }, sponsored: { skep: 4.16, booked: 0.25 } },
 ];
 
 /**
@@ -2247,15 +2187,15 @@ export function PrincipalSkepticism() {
           <g>
             <rect x={16} y={108} width={102} height={22} fill={PAT.paper} {...ink} />
             <PatentKey x={68} y={123} size={11}>
-              SPONSORED
+              Sponsored
             </PatentKey>
           </g>
         ) : null}
         <PatentKey x={sx0} y={16} size={11} anchor="start">
-          SKEPTICISM
+          Skepticism
         </PatentKey>
         <PatentKey x={bx} y={16} size={11} anchor="start">
-          BOOKED
+          Booked
         </PatentKey>
         {PRINCIPAL.map((p, i) => {
           const v = tag ? p.sponsored : p.organic;
@@ -2293,7 +2233,7 @@ export function PrincipalSkepticism() {
 }
 
 /* --------------------------------------------------------------------------
-   21. Part 5: Designing Disclosures and Documentation for Stakeholders
+   Part 5: Designing Disclosures and Documentation for Stakeholders
    -------------------------------------------------------------------------- */
 
 /**
@@ -2394,7 +2334,7 @@ export function EvidenceBinder() {
 }
 
 /* --------------------------------------------------------------------------
-   22. Tailoring Explanations to Stakeholder Needs
+   Tailoring Explanations to Stakeholder Needs
    -------------------------------------------------------------------------- */
 
 /** A standing document: white front with a thin stippled edge, (x, y) its top-left. */
@@ -2449,7 +2389,7 @@ export function FourAudiences({ kind }: { kind: "engineer" | "executive" | "regu
         <PatentDefs id={id} />
         <Doc id={id} x={6} y={20} w={128} h={126}>
           <PatentKey x={70} y={42} size={12}>
-            MODEL CARD
+            Model card
           </PatentKey>
           <line x1={22} y1={50} x2={118} y2={50} {...ink} />
           {[0, 1, 2, 3, 4].map((k) => (
@@ -2493,7 +2433,7 @@ export function FourAudiences({ kind }: { kind: "engineer" | "executive" | "regu
       <PatentDefs id={id} />
       <Doc id={id} x={12} y={16} w={232} h={134}>
         <PatentKey x={26} y={38} size={12} anchor="start">
-          AUTOMATED DECISION
+          Automated decision
         </PatentKey>
         <line x1={26} y1={46} x2={230} y2={46} {...ink} />
         {[0, 1].map((k) => (
@@ -2509,7 +2449,7 @@ export function FourAudiences({ kind }: { kind: "engineer" | "executive" | "regu
 }
 
 /* --------------------------------------------------------------------------
-   23. Model Cards, Datasheets, and System Transparency Notes
+   Model Cards, Datasheets, and System Transparency Notes
    -------------------------------------------------------------------------- */
 
 /** A chain of oval links from (x0, y) to (x1, y). */
@@ -2539,9 +2479,9 @@ function Chain({ x0, x1, y }: { x0: number; x1: number; y: number }) {
 export function ChainOfCustody() {
   const id = "w5-custody";
   const docs = [
-    { x: 40, key: "DATASHEET" },
-    { x: 310, key: "MODEL CARD" },
-    { x: 580, key: "SYSTEM NOTE" },
+    { x: 40, key: "Datasheet" },
+    { x: 310, key: "Model card" },
+    { x: 580, key: "System note" },
   ];
   const w = 180;
   const h = 140;
@@ -2599,7 +2539,7 @@ export function ChainOfCustody() {
 }
 
 /* --------------------------------------------------------------------------
-   24. Dark Transparency and Disclosure Overload
+   Dark Transparency and Disclosure Overload
    -------------------------------------------------------------------------- */
 
 /** Share of readers who get as far as page k: most stop after the first few pages. */
@@ -2669,60 +2609,3 @@ export function BuriedDisclosure() {
     </div>
   );
 }
-
-/* --------------------------------------------------------------------------
-   25. Discussion: When the Reasoning Trace Looks Clean
-   -------------------------------------------------------------------------- */
-
-/**
- * The assistant's pick on the shelf: two boxed products with identical star
- * rows, the private-label box at the higher price chosen and ticked (red),
- * the third-party brand cheaper. Above them the collapsible "Why I picked
- * this product" panel, open, praising build quality.
- */
-export function CleanTrace() {
-  const id = "w5-clean";
-  const box = (x: number, price: string, mine: boolean) => {
-    const c = mine ? PAT.signal : PAT.ink;
-    return (
-      <g>
-        <ObliqueBox id={id} x={x} y={190} w={110} h={86} dx={14} dy={9} stroke={c} />
-        {[0, 1, 2, 3, 4].map((s) => (
-          <path key={s} d={star(r2(x + 22 + s * 16), 214, 6)} fill={s < 4 ? c : PAT.paper} stroke={c} strokeWidth={LINE.hair} />
-        ))}
-        {mine ? (
-          <rect x={x + 18} y={236} width={74} height={20} fill="none" stroke={c} strokeWidth={LINE.hair} />
-        ) : (
-          <circle cx={x + 55} cy={246} r={11} fill="none" stroke={c} strokeWidth={LINE.hair} />
-        )}
-        <Tag cx={x + 64} cy={300} text={price} w={60} size={15} />
-      </g>
-    );
-  };
-  return (
-    <Frame
-      width={400}
-      height={330}
-      label="Patent drawing of an AI shopping assistant's pick. Two boxed products sit side by side with identical four-star ratings: the private-label box, at 24 dollars, is ticked and drawn in red. The third-party brand, at 19 dollars, is not. Above them, the open “Why I picked this product” panel praises the private-label product's build quality."
-    >
-      <PatentDefs id={id} />
-      {/* the trace panel */}
-      <rect x={14} y={14} width={372} height={136} fill={PAT.paper} {...ink} />
-      <path d="M28 34l6 6 6-6" fill="none" {...ink} />
-      <text x={50} y={40} fontFamily="var(--font-heading)" fontSize={15} fill={PAT.ink}>
-        Why I picked this product
-      </text>
-      <line x1={14} y1={52} x2={386} y2={52} {...hair} />
-      {["The casing is solid and the hinges feel", "well made. Its build quality should hold", "up to daily use better than the rest."].map((t, i) => (
-        <text key={i} x={28} y={78 + i * 24} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={15} fill={PAT.ink}>
-          {t}
-        </text>
-      ))}
-      <path d="M104 150L96 184" fill="none" {...hair} strokeDasharray="3 3" />
-      {box(40, "$24", true)}
-      {box(226, "$19", false)}
-      <path d={tick(22, 236, 9)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} />
-    </Frame>
-  );
-}
-

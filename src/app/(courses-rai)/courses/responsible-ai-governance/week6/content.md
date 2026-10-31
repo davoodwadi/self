@@ -65,7 +65,8 @@ week: week6
 - Pre-selected defaults exploit status quo bias by automatically enrolling existing accounts into new AI training programs unless the user notices a quiet policy update and manually opts out.
 
 ## Discussion: Training on Customer Support Calls
-- Discussion: A telecommunications company updates its terms of service with a banner stating, "We use customer interactions to improve our services and AI technologies," and begins fine-tuning a commercial voice agent on five years of recorded billing and technical-support calls. Analyze this decision using Nissenbaum's five parameters of contextual integrity, identify why notice-and-choice is insufficient here, and specify what governance steps would be required before any call recordings could be used.
+- A telecommunications company updates its terms of service with a banner stating, "We use customer interactions to improve our services and AI technologies," and begins fine-tuning a commercial voice agent on five years of recorded billing and technical-support calls.
+- Analyze this decision using Nissenbaum's five parameters of contextual integrity, identify why notice-and-choice is insufficient here, and specify what governance steps would be required before any call recordings could be used.
 
 ## Part 3: Technical Privacy Risks and Safeguards [no-exercise]
 - When organizations share datasets with researchers, train predictive models, or deploy language models, removing direct identifiers such as names and account numbers is only the beginning of technical privacy protection.
@@ -131,7 +132,8 @@ week: week6
 - Distinguish studying AI as a proxy from studying AI as an actor: using an LLM to guess how human shoppers feel is a fragile proxy, whereas auditing how an LLM shopping agent itself evaluates products (Wadi & Ma, 2026a, 2026b, 2026c) is direct empirical measurement of the actual market actor.
 
 ## Discussion: The Synthetic Consumer Pretest
-- Discussion: A healthcare consumer-products firm plans to launch a home diagnostic kit designed for low-income rural seniors. To save six weeks of recruitment and REB review, a consultancy proposes surveying 2,000 LLM personas prompted with rural postal codes, ages 65 to 85, and low household incomes, and using the results to finalize pricing and instructional packaging. Evaluate this proposal on both statistical validity and research ethics, and specify what role, if any, synthetic testing could legitimately play in the project.
+- A healthcare consumer-products firm plans to launch a home diagnostic kit designed for low-income rural seniors. To save six weeks of recruitment and REB review, a consultancy proposes surveying 2,000 LLM personas prompted with rural postal codes, ages 65 to 85, and low household incomes, and using the results to finalize pricing and instructional packaging.
+- Evaluate this proposal on both statistical validity and research ethics, and specify what role, if any, synthetic testing could legitimately play in the project.
 
 ## Key Takeaways
 - Customer and training data fall into four provenance categories (volunteered, observed, inferred, and scraped), and repurposing historical interaction data for AI training without a fresh legal basis violates purpose limitation.

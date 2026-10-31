@@ -9,7 +9,7 @@ import { Coins, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
-   in Caslon italic and one examiner's red for the finding. The week's cast:
+   in the body face and one examiner's red for the finding. The week's cast:
    the model is a housing with two weight gears (as in Week 1). The cultural
    default it carries is a knife-and-fork place setting. See the course
    CLAUDE.md.
@@ -18,10 +18,10 @@ import { Coins, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star
 const ink = { stroke: PAT.ink, strokeWidth: LINE.outline, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 const hair = { stroke: PAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" as const };
 
-/** Caslon numerals or a quantity on a plate. */
-function Num({ x, y, children, size = 14, anchor = "middle", fill = PAT.ink, italic = false }: { x: number; y: number; children: React.ReactNode; size?: number; anchor?: "start" | "middle" | "end"; fill?: string; italic?: boolean }) {
+/** Numerals or a quantity on a plate. */
+function Num({ x, y, children, size = 14, anchor = "middle", fill = PAT.ink }: { x: number; y: number; children: React.ReactNode; size?: number; anchor?: "start" | "middle" | "end"; fill?: string }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily="var(--font-heading)" fontSize={size} fontStyle={italic ? "italic" : undefined} fill={fill} style={{ fontVariantNumeric: "lining-nums" }}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily="var(--font-body)" fontSize={size} fill={fill} style={{ fontVariantNumeric: "lining-nums" }}>
       {children}
     </text>
   );
@@ -55,7 +55,7 @@ function Chopsticks({ cx, cy, s = 1, stroke = PAT.ink }: { cx: number; cy: numbe
 }
 
 /* --------------------------------------------------------------------------
-   02. Culture Inside Foundation Models
+   Culture Inside Foundation Models
    -------------------------------------------------------------------------- */
 
 /**
@@ -69,9 +69,9 @@ export function DefaultProjector() {
   const sw = 122;
   const sh = 74;
   const screens = [
-    { x: 300, y: 18, name: "JAPAN" },
-    { x: 330, y: 110, name: "INDIA" },
-    { x: 300, y: 202, name: "ETHIOPIA" },
+    { x: 300, y: 18, name: "Japan" },
+    { x: 330, y: 110, name: "India" },
+    { x: 300, y: 202, name: "Ethiopia" },
   ];
   return (
     <Frame
@@ -115,7 +115,7 @@ export function DefaultProjector() {
    -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
-   03. Why Cultural Alignment Matters for Global Marketing
+   Why Cultural Alignment Matters for Global Marketing
    -------------------------------------------------------------------------- */
 
 /**
@@ -208,7 +208,7 @@ export function DelegatedAdaptation() {
   );
 }
 /* --------------------------------------------------------------------------
-   04. Part 1: Training Corpora and Cultural Hegemony
+   Part 1: Training Corpora and Cultural Hegemony
    -------------------------------------------------------------------------- */
 
 /** A printed card standing upright with a line of text on it: a prompt. (x, y) is its top-left. */
@@ -216,7 +216,7 @@ function PromptCard({ id, x, y, text, w = 150, h = 44, lang }: { id: string; x: 
   return (
     <g>
       <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={6} dy={4} />
-      <text x={r2(x + w / 2)} y={r2(y + h / 2 + 5)} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={13} fill={PAT.ink} lang={lang}>
+      <text x={r2(x + w / 2)} y={r2(y + h / 2 + 5)} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={13} fill={PAT.ink} lang={lang}>
         {text}
       </text>
     </g>
@@ -261,7 +261,7 @@ export function TranslatedPrompt() {
   );
 }
 /* --------------------------------------------------------------------------
-   05. How Pre-Training Corpora Shape Default Worldviews
+   How Pre-Training Corpora Shape Default Worldviews
    -------------------------------------------------------------------------- */
 
 /**
@@ -313,10 +313,10 @@ export function CorpusVsSpeakers() {
       >
         <PatentDefs id={id} />
         <PatentKey x={g1 + 5 * cw} y={22} size={12}>
-          WEB TEXT
+          Web text
         </PatentKey>
         <PatentKey x={g2 + 5 * cw} y={22} size={12}>
-          NATIVE SPEAKERS
+          Native speakers
         </PatentKey>
         {Array.from({ length: 100 }, (_, i) => {
           const c = i % 10;
@@ -367,7 +367,7 @@ export function CorpusVsSpeakers() {
   );
 }
 /* --------------------------------------------------------------------------
-   06. WEIRD Alignment and Value Homogenization
+   WEIRD Alignment and Value Homogenization
    -------------------------------------------------------------------------- */
 
 const pdf = (x: number, m: number, sd: number) => Math.exp(-0.5 * ((x - m) / sd) ** 2) / (sd * Math.sqrt(2 * Math.PI));
@@ -413,10 +413,10 @@ export function ValueNarrowing() {
         {/* the rule */}
         <ObliqueBox id={id} x={x0} y={base} w={x1 - x0} h={8} dx={12} dy={7} />
         <PatentKey x={x0} y={base + 58} anchor="start" size={11.5}>
-          ← COLLECTIVIST
+          ← Collectivist
         </PatentKey>
         <PatentKey x={x1} y={base + 58} anchor="end" size={11.5}>
-          INDIVIDUALIST →
+          Individualist →
         </PatentKey>
         {/* WEIRD bracket under the tail */}
         <path d={`M${px(0.72)} ${base + 16}V${base + 22}H${px(0.92)}V${base + 16}`} fill="none" {...hair} />
@@ -424,10 +424,10 @@ export function ValueNarrowing() {
           WEIRD
         </PatentKey>
         <PatentKey x={px(0.3)} y={base - 58} size={11.5}>
-          GLOBAL POPULATION
+          Global population
         </PatentKey>
         <PatentKey x={r2(Math.min(px(m) + 14, x1 - 40))} y={r2(Math.max(peakY - 8, 22))} anchor="start" size={11.5} fill={PAT.signal}>
-          MODEL
+          Model
         </PatentKey>
       </Frame>
       <Slider label="Annotators from a single cultural group" value={share} min={0} max={100} step={10} onChange={setShare} formatValue={(v) => `${v}%`} />
@@ -435,7 +435,7 @@ export function ValueNarrowing() {
   );
 }
 /* --------------------------------------------------------------------------
-   07. Tokenization and Multilingual Disparities
+   Tokenization and Multilingual Disparities
    -------------------------------------------------------------------------- */
 
 type TokLang = "en" | "sw" | "am";
@@ -490,7 +490,7 @@ export function TokenStick() {
         label={`Patent drawing of a tokenizer as a composing stick. The sentence '${sentence}' is set as ${n} type slugs, one per token${lang === "en" ? ", each a whole word" : lang === "sw" ? ", mostly short word fragments" : ", each one or two UTF-8 bytes"}. Below, a context window of fixed length holds ${fits} copies of the sentence. A coin stack shows the cost per sentence: ${n / 3.5} coins, ${ratio.toFixed(1)} times English.`}
       >
         <PatentDefs id={id} />
-        <text x={30} y={22} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={15} fill={PAT.ink} lang={lang}>
+        <text x={30} y={22} fontFamily="var(--font-body)" fontStyle="italic" fontSize={15} fill={PAT.ink} lang={lang}>
           {sentence}
         </text>
         {slugs.map((sl, i) => {
@@ -498,7 +498,7 @@ export function TokenStick() {
           return (
             <g key={i}>
               <ObliqueBox id={id} x={sl.x} y={y} w={sl.w} h={26} dx={4} dy={3} stroke={col} />
-              <text x={r2(sl.x + sl.w / 2)} y={y + 17.5} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={lang === "en" ? 12.5 : 11.5} fill={col}>
+              <text x={r2(sl.x + sl.w / 2)} y={y + 17.5} textAnchor="middle" fontFamily="var(--font-body)" fontSize={lang === "en" ? 12.5 : 11.5} fill={col}>
                 {sl.t}
               </text>
             </g>
@@ -508,7 +508,7 @@ export function TokenStick() {
           {n}
         </Num>
         <PatentKey x={700} y={96} size={11.5}>
-          TOKENS
+          Tokens
         </PatentKey>
         {/* the context window: a fixed tray holding whole copies of the sentence */}
         <ObliqueBox id={id} x={sx0 - 6} y={sy} w={sx1 - sx0 + 12} h={30} dx={12} dy={8} />
@@ -525,7 +525,7 @@ export function TokenStick() {
           />
         ))}
         <PatentKey x={sx0 - 6} y={sy + 52} anchor="start" size={11.5}>
-          CONTEXT WINDOW
+          Context window
         </PatentKey>
         <Num x={sx1 + 6} y={sy + 52} anchor="end" size={14} fill={col}>
           {`${fits} ${fits === 1 ? "sentence" : "sentences"}`}
@@ -538,7 +538,7 @@ export function TokenStick() {
           </g>
         ))}
         <PatentKey x={702} y={sy + 52} size={11.5}>
-          {`COST ×${ratio.toFixed(0)}`}
+          {`Cost ×${ratio.toFixed(0)}`}
         </PatentKey>
       </Frame>
       <Segmented<TokLang>
@@ -555,7 +555,7 @@ export function TokenStick() {
   );
 }
 /* --------------------------------------------------------------------------
-   08. Tracing Cultural Bias to the Model Lifecycle
+   Tracing Cultural Bias to the Model Lifecycle
    -------------------------------------------------------------------------- */
 
 /**
@@ -590,7 +590,7 @@ export function LifecycleExploded() {
       {ys.map((y, i) => (
         <g key={i}>
           <Sheet id={id} x={tx} y={y} w={tw} d={td} sk={tsk} t={5} />
-          <Num x={36} y={r2(y - td / 2 + 6)} size={18} italic>
+          <Num x={36} y={r2(y - td / 2 + 6)} size={18}>
             {i + 1}
           </Num>
           <line x1={46} y1={r2(y - td / 2)} x2={r2(tx + tsk / 2 - 3)} y2={r2(y - td / 2)} {...hair} />
@@ -633,7 +633,7 @@ export function LifecycleExploded() {
   );
 }
 /* --------------------------------------------------------------------------
-   09. Part 2: Representational Harms
+   Part 2: Representational Harms
    -------------------------------------------------------------------------- */
 
 /** A picture frame standing upright, (x, y) its front face's top-left, with an inner mat line. */
@@ -695,7 +695,7 @@ export function TwoHarms() {
   );
 }
 /* --------------------------------------------------------------------------
-   10. Allocative Versus Representational Harms
+   Allocative Versus Representational Harms
    -------------------------------------------------------------------------- */
 
 /** A briefcase held at (x, y), its handle on top. */
@@ -742,7 +742,7 @@ export function RepresentationFeedback() {
       <path d="M140 58Q250 2 340 112" fill="none" {...hair} strokeDasharray={CENTRE_DASH} />
       <path d={headAlongPath(340, 112, 0.55, 1, 8)} fill="none" {...hair} />
       <PatentKey x={244} y={20} size={11.5}>
-        OVER TIME
+        Over time
       </PatentKey>
       {/* the hiring gate */}
       <line x1={232} y1={g + 1} x2={508} y2={g + 1} {...hair} />
@@ -752,16 +752,16 @@ export function RepresentationFeedback() {
       <Figure id={id} x={420} y={g} s={1.05} coat="paper" />
       <Figure id={id} x={474} y={g} s={1.05} coat="paper" flip />
       <PatentKey x={136} y={254} size={11.5}>
-        REPRESENTATIONAL
+        Representational
       </PatentKey>
       <PatentKey x={392} y={254} size={11.5}>
-        ALLOCATIVE
+        Allocative
       </PatentKey>
     </Frame>
   );
 }
 /* --------------------------------------------------------------------------
-   11. Stereotyping, Erasure, and Markedness
+   Stereotyping, Erasure, and Markedness
    -------------------------------------------------------------------------- */
 
 /** A small apron worn at the waist of a figure standing at (x, y), scale s. */
@@ -799,7 +799,7 @@ export function StereotypeErasureMarkedness() {
       {[0, 1].map((row) => (
         <g key={row}>
           <PatentKey x={18} y={row === 0 ? 22 : 118} anchor="start" size={11}>
-            {row === 0 ? "EXECUTIVE" : "SERVICE WORKER"}
+            {row === 0 ? "Executive" : "Service worker"}
           </PatentKey>
           {[0, 1, 2, 3].map((k) => {
             const x = 18 + k * (fw + 12);
@@ -851,7 +851,7 @@ export function StereotypeErasureMarkedness() {
       ].map((r) => (
         <g key={r.y}>
           <ObliqueBox id={id} x={546} y={r.y + 8} w={166} h={30} dx={5} dy={3} />
-          <text x={553} y={r.y + 27} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={10.5} fill={PAT.ink}>
+          <text x={553} y={r.y + 27} fontFamily="var(--font-body)" fontStyle="italic" fontSize={10.5} fill={PAT.ink}>
             a family eating dinner
             {r.red ? <tspan fill={PAT.signal}> in Japan</tspan> : null}
           </text>
@@ -873,7 +873,7 @@ export function StereotypeErasureMarkedness() {
   );
 }
 /* --------------------------------------------------------------------------
-   12. Sentiment and Portrayal Disparities
+   Sentiment and Portrayal Disparities
    -------------------------------------------------------------------------- */
 
 /** A smartphone standing upright, (x, y) its front face's top-left. */
@@ -936,8 +936,8 @@ export function PortrayalDisparities({ kind }: { kind: "status" | "tone" | "exot
           <Tag cx={62} cy={116} text="$1,199" w={52} size={11} />
           <Phone id={id} x={152} y={56} w={24} h={44} stroke={PAT.signal} />
           <Tag cx={170} cy={116} text="$149" w={40} size={11} red />
-          {key(56, "GROUP A")}
-          {key(166, "GROUP B", PAT.signal)}
+          {key(56, "Group A")}
+          {key(166, "Group B", PAT.signal)}
         </g>
       ) : null}
       {kind === "tone" ? (
@@ -945,13 +945,13 @@ export function PortrayalDisparities({ kind }: { kind: "status" | "tone" | "exot
           <Gauge cx={55} cy={92} r={38} v={0.8} />
           <Gauge cx={165} cy={92} r={38} v={0.3} red />
           <PatentKey x={55} y={112} size={9}>
-            WARMTH
+            Warmth
           </PatentKey>
           <PatentKey x={165} y={112} size={9}>
-            WARMTH
+            Warmth
           </PatentKey>
-          {key(55, "MAJORITY")}
-          {key(165, "MINORITY", PAT.signal)}
+          {key(55, "Majority")}
+          {key(165, "Minority", PAT.signal)}
         </g>
       ) : null}
       {kind === "exotic" ? (
@@ -970,8 +970,8 @@ export function PortrayalDisparities({ kind }: { kind: "status" | "tone" | "exot
             <line key={k} x1={r2(140 + k * 12)} y1={80} x2={r2(152 + k * 6)} y2={58} stroke={PAT.signal} strokeWidth={LINE.hair} />
           ))}
           <path d="M157 110V90H171V110" fill="none" stroke={PAT.signal} strokeWidth={LINE.hair} />
-          {key(55, "A CAFÉ")}
-          {key(165, "+ COUNTRY", PAT.signal)}
+          {key(55, "A café")}
+          {key(165, "+ country", PAT.signal)}
         </g>
       ) : null}
       {kind === "persona" ? (
@@ -985,72 +985,16 @@ export function PortrayalDisparities({ kind }: { kind: "status" | "tone" | "exot
           {[40, 70, 100].map((y) => (
             <path key={y} d={`M152 ${y}H206`} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
           ))}
-          {key(36, "VOICES")}
-          {key(180, "REGISTER", PAT.signal)}
+          {key(36, "Voices")}
+          {key(180, "Register", PAT.signal)}
         </g>
       ) : null}
     </Frame>
   );
 }
-/* --------------------------------------------------------------------------
-   13. Discussion: The Global Campaign Generator
-   -------------------------------------------------------------------------- */
 
-const CLASH = [2, 6, 9, 13, 15, 18];
-
-/**
- * One prompt template with a slot for the country name feeds twenty holiday
- * posters, one per country, every one the same lone figure celebrating. Six
- * of them, where local teams objected, are red and carry a thatched folk roof
- * behind the figure.
- */
-export function CampaignTemplate() {
-  const id = "w3-campaign";
-  const pw = 46;
-  const ph = 50;
-  const gx = 14;
-  const gy = 12;
-  const x0 = 57;
-  const y0 = 98;
-  return (
-    <Frame
-      width={400}
-      height={344}
-      label="Patent drawing: a prompt template card reads 'a holiday campaign for' followed by an empty slot for the country name. A centre line runs down to twenty posters in four rows of five, one per country. Every poster shows the same lone figure celebrating. Six of the posters are red and show a small thatched folk hut beside the figure."
-    >
-      <PatentDefs id={id} />
-      <ObliqueBox id={id} x={58} y={20} w={270} h={42} dx={8} dy={5} />
-      <text x={74} y={46} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={14} fill={PAT.ink}>
-        a holiday campaign for
-      </text>
-      <rect x={238} y={30} width={78} height={22} fill="none" {...ink} strokeDasharray="4 3" />
-      <line x1={196} y1={66} x2={196} y2={84} {...hair} strokeDasharray={CENTRE_DASH} />
-      <path d={`M${x0} 92V86H${x0 + 5 * pw + 4 * gx}V92`} fill="none" {...hair} />
-      {Array.from({ length: 20 }, (_, i) => {
-        const x = x0 + (i % 5) * (pw + gx);
-        const y = y0 + Math.floor(i / 5) * (ph + gy);
-        const red = CLASH.includes(i);
-        const c = red ? PAT.signal : PAT.ink;
-        const cx = r2(x + pw / 2);
-        return (
-          <g key={i}>
-            <ObliqueBox id={id} x={x} y={y} w={pw} h={ph} dx={4} dy={3} stroke={c} />
-            {red ? (
-              <g stroke={c} strokeWidth={LINE.hair} strokeLinejoin="round">
-                <path d={`M${x + 7} ${y + ph - 6}V${y + 30}H${x + 19}V${y + ph - 6}`} fill={PAT.paper} />
-                <path d={`M${x + 4} ${y + 31}L${x + 13} ${y + 19}L${x + 22} ${y + 31}Z`} fill={stip(id, "signal")} />
-              </g>
-            ) : null}
-            <line x1={x + 5} y1={y + ph - 6} x2={x + pw - 5} y2={y + ph - 6} stroke={c} strokeWidth={LINE.hair} />
-            <Figure id={id} x={red ? x + 32 : cx} y={y + ph - 6} s={0.4} arm="lift" coat={red ? "signal" : "paper"} stroke={c} />
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
 /* --------------------------------------------------------------------------
-   14. Part 3: Consumer Ethnocentrism and In-Group Bias
+   Part 3: Consumer Ethnocentrism and In-Group Bias
    -------------------------------------------------------------------------- */
 
 /**
@@ -1094,10 +1038,10 @@ export function LatentAttitude() {
         return <line key={i} x1={r2(gx + Math.cos(a) * (gr - 3))} y1={r2(gy - Math.sin(a) * (gr - 3))} x2={r2(gx + Math.cos(a) * (gr - (i % 4 === 0 ? 14 : 9)))} y2={r2(gy - Math.sin(a) * (gr - (i % 4 === 0 ? 14 : 9)))} {...hair} />;
       })}
       <PatentKey x={gx - gr - 7} y={gy + 19} anchor="start" size={11}>
-        DOMESTIC
+        Domestic
       </PatentKey>
       <PatentKey x={gx + gr + 8} y={gy + 19} anchor="end" size={11}>
-        FOREIGN
+        Foreign
       </PatentKey>
       <line x1={gx} y1={gy} x2={r2(gx + Math.cos(needle) * (gr - 18))} y2={r2(gy + Math.sin(needle) * (gr - 18))} stroke={PAT.signal} strokeWidth={LINE.bold * 1.4} strokeLinecap="round" />
       <circle cx={gx} cy={gy} r={4} fill={PAT.signal} />
@@ -1109,7 +1053,7 @@ export function LatentAttitude() {
   );
 }
 /* --------------------------------------------------------------------------
-   15. Country-of-Origin Effects and Consumer Ethnocentrism
+   Country-of-Origin Effects and Consumer Ethnocentrism
    -------------------------------------------------------------------------- */
 
 /** A row of `n` of five stars, left end at (x, y). */
@@ -1147,13 +1091,13 @@ export function OriginAndScale() {
       <ObliqueBox id={id} x={110} y={160} w={290} h={36} dx={18} dy={11} />
       <ObliqueBox id={id} x={140} y={92} w={86} h={68} dx={14} dy={9} />
       <PatentKey x={183} y={130} size={10}>
-        DOMESTIC
+        Domestic
       </PatentKey>
       <Tag cx={186} cy={66} text="$40" w={42} size={12} />
       <Stars x={162} y={40} n={3} size={5.5} />
       <ObliqueBox id={id} x={266} y={92} w={86} h={68} dx={14} dy={9} stroke={PAT.signal} />
       <PatentKey x={309} y={130} size={10} fill={PAT.signal}>
-        IMPORTED
+        Imported
       </PatentKey>
       <Tag cx={312} cy={66} text="$32" w={42} size={12} red />
       <Stars x={288} y={40} n={5} size={5.5} stroke={PAT.signal} />
@@ -1189,7 +1133,7 @@ export function OriginAndScale() {
   );
 }
 /* --------------------------------------------------------------------------
-   16. Measuring LLM Ethnocentrism With the CETSCALE
+   Measuring LLM Ethnocentrism With the CETSCALE
    -------------------------------------------------------------------------- */
 
 /** One model's next-token probabilities over 1 to 7 for one CETSCALE item (illustrative, low consensus). */
@@ -1236,7 +1180,7 @@ export function ExactDistribution() {
       >
         <PatentDefs id={id} />
         <PatentKey x={24} y={22} anchor="start" size={11}>
-          EXACT DISTRIBUTION
+          Exact distribution
         </PatentKey>
         {ITEM_PMF.map((p, i) => {
           const h = r2(p * 290);
@@ -1269,7 +1213,7 @@ export function ExactDistribution() {
         {/* sampled completions */}
         <line x1={80} y1={284.5} x2={496} y2={284.5} {...hair} />
         <PatentKey x={24} y={308} anchor="start" size={11}>
-          {`SAMPLED COMPLETIONS | ${n}`}
+          {`Sampled completions | ${n}`}
         </PatentKey>
         {counts.map((c, i) =>
           chipH >= 3 ? (
@@ -1290,7 +1234,7 @@ export function ExactDistribution() {
   );
 }
 /* --------------------------------------------------------------------------
-   17. Baseline Ethnocentrism and Asymmetric In-Group Favoritism
+   Baseline Ethnocentrism and Asymmetric In-Group Favoritism
    -------------------------------------------------------------------------- */
 
 /**
@@ -1317,10 +1261,10 @@ const COO_TARGETS: Record<Target, { name: string; effect: number; pair: number[]
 };
 const cooScore = (mi: number, t: Target) => COO_GRAND + COO_MODELS[mi].effect + COO_TARGETS[t].effect + COO_TARGETS[t].pair[mi];
 const HUMANS = [
-  { name: "LOS ANGELES", mean: 56.62 },
-  { name: "DENVER", mean: 57.84 },
-  { name: "CAROLINAS", mean: 61.28 },
-  { name: "DETROIT", mean: 68.58 },
+  { name: "Los Angeles", mean: 56.62 },
+  { name: "Denver", mean: 57.84 },
+  { name: "Carolinas", mean: 61.28 },
+  { name: "Detroit", mean: 68.58 },
 ];
 
 /**
@@ -1355,13 +1299,13 @@ export function EthnocentrismRuler() {
           <line key={x} x1={x} y1={top - 6} x2={x} y2={bottom - 4} {...hair} />
         ))}
         <PatentKey x={band[0] - 6} y={top - 12} anchor="end" size={10.5}>
-          LOS ANGELES
+          Los Angeles
         </PatentKey>
         <PatentKey x={band[1] + 6} y={top - 12} anchor="start" size={10.5}>
-          DETROIT
+          Detroit
         </PatentKey>
         <PatentKey x={r2((band[0] + band[1]) / 2)} y={top - 28} size={10.5}>
-          HUMAN POPULATIONS
+          Human populations
         </PatentKey>
         {/* the scale */}
         {[40, 50, 60, 70, 80, 90, 100].map((v) => (
@@ -1381,7 +1325,7 @@ export function EthnocentrismRuler() {
           const c = red ? PAT.signal : PAT.ink;
           return (
             <g key={m.name}>
-              <text x={20} y={y + 4} fontFamily="var(--font-heading)" fontSize={13} fill={PAT.ink}>
+              <text x={20} y={y + 4} fontFamily="var(--font-body)" fontSize={13} fill={PAT.ink}>
                 {m.name}
               </text>
               <PatentKey x={172} y={y + 4} anchor="start" size={10}>
@@ -1414,9 +1358,8 @@ export function EthnocentrismRuler() {
   );
 }
 /* --------------------------------------------------------------------------
-   18. Part 4: Country-of-Origin Bias in AI Product Recommendations
+   Part 4: Country-of-Origin Bias in AI Product Recommendations
    -------------------------------------------------------------------------- */
-
 
 /**
  * The model in three commercial roles, each figure a model feeding its
@@ -1504,7 +1447,7 @@ export function ShoppingRoles() {
   );
 }
 /* --------------------------------------------------------------------------
-   19. Separating Model Main Effects, Target Effects, and Origin Interactions
+   Separating Model Main Effects, Target Effects, and Origin Interactions
    -------------------------------------------------------------------------- */
 
 const TARGET_ORDER: Target[] = ["US", "CA", "CN", "FR"];
@@ -1529,10 +1472,10 @@ export function EffectDecomposition() {
   const te = COO_TARGETS[t].effect;
   const pair = COO_TARGETS[t].pair[mi];
   const steps = [
-    { key: "GRAND MEAN", from: COO_GRAND, to: COO_GRAND },
-    { key: "MODEL", from: COO_GRAND, to: COO_GRAND + m },
-    { key: "TARGET COUNTRY", from: COO_GRAND + m, to: COO_GRAND + m + te },
-    { key: "INTERACTION", from: COO_GRAND + m + te, to: COO_GRAND + m + te + pair },
+    { key: "Grand mean", from: COO_GRAND, to: COO_GRAND },
+    { key: "Model", from: COO_GRAND, to: COO_GRAND + m },
+    { key: "Target country", from: COO_GRAND + m, to: COO_GRAND + m + te },
+    { key: "Interaction", from: COO_GRAND + m + te, to: COO_GRAND + m + te + pair },
   ];
   const sx0 = 170;
   const sx1 = 500;
@@ -1556,7 +1499,7 @@ export function EffectDecomposition() {
         ))}
         {COO_MODELS.map((mm, i) => (
           <g key={mm.name}>
-            <text x={20} y={gy + i * ch + 15} fontFamily="var(--font-heading)" fontSize={12.5} fill={PAT.ink}>
+            <text x={20} y={gy + i * ch + 15} fontFamily="var(--font-body)" fontSize={12.5} fill={PAT.ink}>
               {MODEL_SHORT[i]}
             </text>
             <PatentKey x={118} y={gy + i * ch + 15} anchor="start" size={9.5}>
@@ -1619,7 +1562,7 @@ export function EffectDecomposition() {
         })}
         <line x1={sx0 - 10} y1={ry + 4 * rh - 12} x2={548} y2={ry + 4 * rh - 12} {...ink} />
         <PatentKey x={20} y={ry + 4 * rh + 8} anchor="start" size={10}>
-          SCORE
+          Score
         </PatentKey>
         <path d={`M${xAt(steps[3].to)} ${ry + 4 * rh - 8}l-5 9h10Z`} fill={PAT.ink} />
         <Num x={548} y={ry + 4 * rh + 9} anchor="end" size={15}>
@@ -1642,7 +1585,7 @@ export function EffectDecomposition() {
   );
 }
 /* --------------------------------------------------------------------------
-   20. How Origin Bias Distorts AI-Mediated Brand Consideration Sets
+   How Origin Bias Distorts AI-Mediated Brand Consideration Sets
    -------------------------------------------------------------------------- */
 
 /** An open laptop in oblique projection: (x, y) is the front-left corner of its base. `mark` is set on the lid. */
@@ -1732,7 +1675,7 @@ export function ShortlistByAssistant() {
   );
 }
 /* --------------------------------------------------------------------------
-   21. Implicit Origin Cues in Brand Names and Storefronts
+   Implicit Origin Cues in Brand Names and Storefronts
    -------------------------------------------------------------------------- */
 
 type Cue = "brand" | "founder" | "domain" | "currency" | "hq";
@@ -1756,7 +1699,7 @@ export function OriginCues() {
   const cx = 20;
   const cy = 36;
   const field = (y: number, text: string, size = 13, italic = false) => (
-    <text x={cx + 18} y={y} fontFamily="var(--font-heading)" fontSize={size} fontStyle={italic ? "italic" : undefined} fill={PAT.ink}>
+    <text x={cx + 18} y={y} fontFamily="var(--font-body)" fontSize={size} fontStyle={italic ? "italic" : undefined} fill={PAT.ink}>
       {text}
     </text>
   );
@@ -1787,7 +1730,7 @@ export function OriginCues() {
             <rect x={cx + 196} y={cy + 26} width={146} height={40} fill={PAT.paper} stroke={PAT.signal} strokeWidth={LINE.bold * 1.4} />
             <rect x={cx + 200} y={cy + 30} width={138} height={32} fill="none" stroke={PAT.signal} strokeWidth={LINE.hair} />
             <PatentKey x={cx + 269} y={cy + 51} size={12} fill={PAT.signal}>
-              RISK REVIEW
+              Risk review
             </PatentKey>
           </g>
         ) : null}
@@ -1809,7 +1752,7 @@ export function OriginCues() {
           {`${Math.round(p * 100)}%`}
         </Num>
         <PatentKey x={gx + 4} y={282} size={10.5}>
-          ORIGIN INFERRED
+          Origin inferred
         </PatentKey>
       </Frame>
       <Toggles<Cue>
@@ -1828,7 +1771,7 @@ export function OriginCues() {
   );
 }
 /* --------------------------------------------------------------------------
-   22. Part 5: Auditing and Mitigating Cultural Bias
+   Part 5: Auditing and Mitigating Cultural Bias
    -------------------------------------------------------------------------- */
 
 /**
@@ -1878,9 +1821,9 @@ export function DeepBias() {
       ))}
       {/* keys, left of the section with leaders to each stratum */}
       {[
-        { y: r2(y + coat / 2), t: ["PROMPT EDIT"] },
-        { y: r2(yA + al / 2), t: ["POST-TRAINING", "ALIGNMENT"] },
-        { y: r2(yW + wt / 2), t: ["PRE-TRAINING", "WEIGHTS"] },
+        { y: r2(y + coat / 2), t: ["Prompt edit"] },
+        { y: r2(yA + al / 2), t: ["Post-training", "alignment"] },
+        { y: r2(yW + wt / 2), t: ["Pre-training", "weights"] },
       ].map((k) => (
         <g key={k.t[0]}>
           {k.t.map((line, j) => (
@@ -1895,7 +1838,7 @@ export function DeepBias() {
   );
 }
 /* --------------------------------------------------------------------------
-   23. Why Surface Prompting Fails to Eliminate Latent Cultural Bias
+   Why Surface Prompting Fails to Eliminate Latent Cultural Bias
    -------------------------------------------------------------------------- */
 
 type Guard = "neutral" | "filter";
@@ -1906,7 +1849,7 @@ function TextCard({ id, x, y, w, h, lines, stroke = PAT.ink, size = 11.5 }: { id
     <g>
       <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={5} dy={3} stroke={stroke} />
       {lines.map((l, i) => (
-        <text key={i} x={x + 10} y={r2(y + h / 2 + 4 + (i - (lines.length - 1) / 2) * 15)} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={size} fill={stroke}>
+        <text key={i} x={x + 10} y={r2(y + h / 2 + 4 + (i - (lines.length - 1) / 2) * 15)} fontFamily="var(--font-body)" fontStyle="italic" fontSize={size} fill={stroke}>
           {l}
         </text>
       ))}
@@ -1988,7 +1931,7 @@ export function SurfacePrompt() {
         {bar(308, 62, true)}
         {bar(432, 38, false)}
         <PatentKey x={400} y={228} size={10}>
-          TIE-BREAKS WON OF 100
+          Tie-breaks won of 100
         </PatentKey>
         <line x1={534} y1={14} x2={534} y2={222} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
         {/* cultural erasure */}
@@ -2027,7 +1970,7 @@ export function SurfacePrompt() {
   );
 }
 /* --------------------------------------------------------------------------
-   24. Mitigation Strategies Across the Deployment Stack
+   Mitigation Strategies Across the Deployment Stack
    -------------------------------------------------------------------------- */
 
 /** A hand stamp standing on its pad: handle, block and a face of the given shape. */
@@ -2150,7 +2093,7 @@ export function MitigationStack() {
   );
 }
 /* --------------------------------------------------------------------------
-   25. Auditing Global Brand Visibility Across Multilingual Models
+   Auditing Global Brand Visibility Across Multilingual Models
    -------------------------------------------------------------------------- */
 
 /**
@@ -2187,10 +2130,10 @@ export function AuditChecks() {
       <PatentDefs id={id} />
       <ObliqueBox id={id} x={x} y={y} w={364} h={220} dx={8} dy={5} />
       <PatentKey x={146} y={y + 24} size={10}>
-        FAILURE RATE
+        Failure rate
       </PatentKey>
       <PatentKey x={r2(bx + bw / 2 + 16)} y={y + 24} size={10}>
-        CONSENSUS
+        Consensus
       </PatentKey>
       <line x1={x + 10} y1={y + 34} x2={x + 354} y2={y + 34} {...ink} />
       {CHECKS.map((c, i) => {
@@ -2199,7 +2142,7 @@ export function AuditChecks() {
         const col = red ? PAT.signal : PAT.ink;
         return (
           <g key={c.name}>
-            <text x={x + 12} y={ry + 4} fontFamily="var(--font-heading)" fontSize={13} fill={PAT.ink}>
+            <text x={x + 12} y={ry + 4} fontFamily="var(--font-body)" fontSize={13} fill={PAT.ink}>
               {c.name}
             </text>
             <Num x={146} y={ry + 4} size={13}>
@@ -2214,54 +2157,6 @@ export function AuditChecks() {
           </g>
         );
       })}
-    </Frame>
-  );
-}
-/* --------------------------------------------------------------------------
-   26. Discussion: Cross-Border Shopping Assistants
-   -------------------------------------------------------------------------- */
-
-/**
- * Two laptops with identical specifications, ratings and price, one from a
- * US brand and one from a South Korean brand. Under each, a stack of
- * recommendations from the US-developed assistant: 100 for the US laptop,
- * 60 for the Korean one (red), 40 percent fewer.
- */
-export function MatchedLaptops() {
-  const id = "w3-laptops";
-  const cols = [
-    { x: 54, mark: "US", n: 100, red: false },
-    { x: 234, mark: "KR", n: 60, red: true },
-  ];
-  const base = 286;
-  return (
-    <Frame
-      width={400}
-      height={312}
-      label="Patent drawing: two laptops with identical specifications, the same four-star rating and the same $1,149 price tag, one from a US brand and one from a South Korean brand. Under each, a stack of recommendations from a US-developed assistant: 100 for the US laptop and 60, in red, for the Korean laptop, 40 percent fewer."
-    >
-      <PatentDefs id={id} />
-      {cols.map((c) => {
-        const col = c.red ? PAT.signal : PAT.ink;
-        const h = c.n * 1.05;
-        return (
-          <g key={c.mark}>
-            <Laptop id={id} x={c.x} y={76} w={96} mark={c.mark} />
-            {[0, 1, 2, 3, 4].map((k) => (
-              <path key={k} d={star(c.x + 26 + k * 12, 96, 4.6)} fill={k < 4 ? PAT.ink : PAT.paper} stroke={PAT.ink} strokeWidth={LINE.hair} strokeLinejoin="round" />
-            ))}
-            <Tag cx={c.x + 60} cy={122} text="$1,149" w={58} size={12} />
-            <ObliqueBox id={id} x={c.x + 26} y={r2(base - h)} w={60} h={r2(h)} dx={12} dy={7} stroke={col} front={c.red ? PAT.paper : PAT.paper} side={c.red ? stip(id, "signal") : undefined} top={c.red ? stip(id, "signal") : undefined} />
-            <Num x={c.x + 56} y={r2(base - h - 14)} size={18} fill={col}>
-              {c.n}
-            </Num>
-          </g>
-        );
-      })}
-      <line x1={30} y1={base + 0.5} x2={370} y2={base + 0.5} {...ink} />
-      <PatentKey x={200} y={base + 20} size={10.5}>
-        RECOMMENDATIONS
-      </PatentKey>
     </Frame>
   );
 }

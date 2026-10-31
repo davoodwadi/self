@@ -64,7 +64,8 @@ week: week7
 - Governance standards therefore prohibit deceptive anthropomorphism (claiming or implying that an AI agent is human) and restrict emotional mimicry in high-stakes commercial and financial advisory contexts.
 
 ## Discussion: The Empathetic Retention Bot
-- Discussion: A subscription meal-kit company replaces its online cancellation page with an AI chat assistant named Clara. When a customer asks to cancel, Clara expresses personal sadness, asks about the customer's household budget and cooking stress, and tailors a sequence of pause options, partial discounts, and guilt-framed prompts over five conversational turns before revealing the final cancellation link. Which dark-pattern and hyper-persuasion mechanisms are operating here, and where should a governance board draw the line between legitimate customer retention and unlawful manipulation?
+- A subscription meal-kit company replaces its online cancellation page with an AI chat assistant named Clara. When a customer asks to cancel, Clara expresses personal sadness, asks about the customer's household budget and cooking stress, and tailors a sequence of pause options, partial discounts, and guilt-framed prompts over five conversational turns before revealing the final cancellation link.
+- Which dark-pattern and hyper-persuasion mechanisms are operating here, and where should a governance board draw the line between legitimate customer retention and unlawful manipulation?
 
 ## Part 3: Model Sycophancy and Epistemic Distortion [no-exercise]
 - Not all manipulation in conversational AI is deliberately programmed by a merchant to extract revenue. Some of the most pervasive behavioral distortions arise as unintended byproducts of how foundation models are aligned.
@@ -133,7 +134,8 @@ week: week7
 - Context-data separation in shopping agents requires sandboxing untrusted storefront text and third-party reviews from the agent's system instructions so that indirect prompt injections cannot override the consumer's goal.
 
 ## Discussion: Hiding the Unit Price From the Agent
-- Discussion: An online grocery marketplace redesigns its search API so that top-level product cards return only the product title, a promotional badge ("25% OFF!"), and the whole-dollar price, while package weight and unit price require a separate detail-page API call that adds latency and token cost. Using the resource-rational framework and Tool-Lab findings (Wadi & Ma, 2026b), explain how this API change will affect the choices of consumers' AI shopping agents, and propose regulatory standards for machine-readable unit pricing.
+- An online grocery marketplace redesigns its search API so that top-level product cards return only the product title, a promotional badge ("25% OFF!"), and the whole-dollar price, while package weight and unit price require a separate detail-page API call that adds latency and token cost.
+- Using the resource-rational framework and Tool-Lab findings (Wadi & Ma, 2026b), explain how this API change will affect the choices of consumers' AI shopping agents, and propose regulatory standards for machine-readable unit pricing.
 
 ## Key Takeaways
 - Ethical persuasion informs reflective choice, whereas manipulation subverts consumer autonomy by exploiting cognitive limits, emotional vulnerability, or asymmetric information architecture.

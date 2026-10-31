@@ -24,7 +24,7 @@ import { Chip, Detail, Dial, Figure, Gear, Sheet, SmallModel, Tag, cross, headAl
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
-   in Caslon italic and one examiner's red for the finding. See the course
+   in the body face and one examiner's red for the finding. See the course
    CLAUDE.md.
    ========================================================================== */
 
@@ -40,7 +40,7 @@ const hair = {
   strokeLinecap: "round" as const,
 };
 
-/** Caslon numerals or a quantity on a plate. */
+/** Numerals or a quantity on a plate. */
 function Num({
   x,
   y,
@@ -48,7 +48,6 @@ function Num({
   size = 14,
   anchor = "middle",
   fill = PAT.ink,
-  italic = false,
 }: {
   x: number;
   y: number;
@@ -56,16 +55,14 @@ function Num({
   size?: number;
   anchor?: "start" | "middle" | "end";
   fill?: string;
-  italic?: boolean;
 }) {
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
-      fontFamily="var(--font-heading)"
+      fontFamily="var(--font-body)"
       fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
       fill={fill}
       style={{ fontVariantNumeric: "lining-nums" }}
     >
@@ -103,7 +100,7 @@ function Housing({ id, x, y, w, h, open = false }: { id: string; x: number; y: n
 }
 
 /* --------------------------------------------------------------------------
-   02. From Anecdotal Prompts to Scientific Behavioral Audits
+   From Anecdotal Prompts to Scientific Behavioral Audits
    -------------------------------------------------------------------------- */
 
 const SLIP_PILE = [1, 3, 6, 8, 5, 3, 1];
@@ -166,7 +163,7 @@ export function AuditBench() {
 }
 
 /* --------------------------------------------------------------------------
-   03. Why Single-Prompt Evaluations Fail
+   Why Single-Prompt Evaluations Fail
    -------------------------------------------------------------------------- */
 
 /** A wide, two-humped response density over 0..1 (unnormalised). */
@@ -204,7 +201,7 @@ export function OneDraw() {
       <line x1={x0 - 10} y1={base + 0.5} x2={x1 + 10} y2={base + 0.5} {...ink} />
       <line x1={dx} y1={base} x2={dx} y2={r2(dy - 26)} stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
       <circle cx={dx} cy={r2(dy - 30)} r={4} fill={PAT.paper} stroke={PAT.signal} strokeWidth={LINE.bold} />
-      <Num x={r2(dx + 10)} y={r2(dy - 26)} anchor="start" size={15} fill={PAT.signal} italic>
+      <Num x={r2(dx + 10)} y={r2(dy - 26)} anchor="start" size={15} fill={PAT.signal}>
         n = 1
       </Num>
       <FigureName x={200} y={204} size={14}>
@@ -232,7 +229,7 @@ export function OneDraw() {
 }
 
 /* --------------------------------------------------------------------------
-   04. Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions
+   Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions
    -------------------------------------------------------------------------- */
 
 const BOARD_PILE = [1, 4, 7, 9, 6, 3, 1];
@@ -305,7 +302,7 @@ export function SampleDispenser() {
 }
 
 /* --------------------------------------------------------------------------
-   05. Stochastic Generation and Response Entropy
+   Stochastic Generation and Response Entropy
    -------------------------------------------------------------------------- */
 
 /** Standard normal draws from a seeded stream (Box-Muller). */
@@ -345,8 +342,8 @@ export function TwoModelsOneDraw() {
   const x1 = 540;
   const xAt = (v: number) => r2(x0 + ((v - 20) / 90) * (x1 - x0));
   const rows = [
-    { key: "MODEL A", m: MODEL_A, base: 104, draw: PAIRS[n - 1].a },
-    { key: "MODEL B", m: MODEL_B, base: 206, draw: PAIRS[n - 1].b },
+    { key: "Model A", m: MODEL_A, base: 104, draw: PAIRS[n - 1].a },
+    { key: "Model B", m: MODEL_B, base: 206, draw: PAIRS[n - 1].b },
   ];
   const shown = PAIRS.slice(0, n);
   const reversed = shown.filter((p) => p.b <= p.a).length;
@@ -424,7 +421,7 @@ export function TwoModelsOneDraw() {
 }
 
 /* --------------------------------------------------------------------------
-   06. The Monte-Carlo Estimator and Its Statistical Guarantees
+   The Monte-Carlo Estimator and Its Statistical Guarantees
    -------------------------------------------------------------------------- */
 
 const MC = { mean: 58, sd: 15 };
@@ -527,7 +524,7 @@ export function EstimatorConverges() {
 }
 
 /* --------------------------------------------------------------------------
-   07. Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation
+   Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation
    -------------------------------------------------------------------------- */
 
 const LIST_PRICE = 55;
@@ -594,7 +591,7 @@ export function ValidityMetrics() {
         {/* valid range */}
         <rect x={xAt(VALID[0])} y={base + 1} width={r2(xAt(VALID[1]) - xAt(VALID[0]))} height={9} fill={stip(id, "light")} {...hair} />
         <PatentKey x={xAt(98)} y={base + 58} size={11}>
-          VALID RANGE
+          Valid range
         </PatentKey>
         {/* the ruler, broken at both ends */}
         <line x1={x0} y1={base + 0.5} x2={x1} y2={base + 0.5} {...ink} />
@@ -663,7 +660,7 @@ export function ValidityMetrics() {
 }
 
 /* --------------------------------------------------------------------------
-   08. Anchoring Bias and Generational Regression in LLMs
+   Anchoring Bias and Generational Regression in LLMs
    -------------------------------------------------------------------------- */
 
 /** A graduated cylinder filled to `p` (0 to 1) of its height `h`. The fill is dense stipple. */
@@ -706,14 +703,14 @@ export function AnchoringFindings() {
       {/* anchoring */}
       <line x1={zx} y1={40} x2={zx} y2={172} {...hair} strokeDasharray={CENTRE_DASH} />
       <PatentKey x={zx - 10} y={86} anchor="end" size={11}>
-        HIGH ANCHOR
+        High anchor
       </PatentKey>
       <ObliqueBox id={id} x={zx} y={70} w={r2(31.62 * sc)} h={18} dx={8} dy={5} />
       <Num x={r2(zx + 31.62 * sc + 20)} y={84} anchor="start" size={15}>
         +$31.62
       </Num>
       <PatentKey x={zx + 10} y={146} anchor="start" size={11}>
-        LOW ANCHOR
+        Low anchor
       </PatentKey>
       <ObliqueBox id={id} x={r2(zx - 15.7 * sc)} y={112} w={r2(15.7 * sc)} h={18} dx={8} dy={5} />
       <Num x={r2(zx - 15.7 * sc - 6)} y={126} anchor="end" size={15}>
@@ -758,10 +755,10 @@ export function AnchoringFindings() {
       </Num>
       <line x1={560} y1={150.5} x2={782} y2={150.5} {...ink} />
       <PatentKey x={600} y={170} size={10.5}>
-        LLAMA 2 70B
+        Llama 2 70B
       </PatentKey>
       <PatentKey x={740} y={170} size={10.5}>
-        LLAMA 3 70B
+        Llama 3 70B
       </PatentKey>
       <FigureName x={670} y={208} size={14}>
         generational regression
@@ -771,7 +768,7 @@ export function AnchoringFindings() {
 }
 
 /* --------------------------------------------------------------------------
-   09. Part 2: Exact Token-Level Probability Distributions for Rating Scales
+   Part 2: Exact Token-Level Probability Distributions for Rating Scales
    -------------------------------------------------------------------------- */
 
 const LIKERT_PMF = [0.03, 0.05, 0.08, 0.14, 0.27, 0.29, 0.14];
@@ -823,7 +820,7 @@ export function LikertLogprobs() {
 }
 
 /* --------------------------------------------------------------------------
-   10. Why Text Sampling Is Redundant When Token Probabilities Are Observable
+   Why Text Sampling Is Redundant When Token Probabilities Are Observable
    -------------------------------------------------------------------------- */
 
 /**
@@ -892,7 +889,7 @@ export function SampleVsRead() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Why Shannon Entropy Fails on Ordinal Rating Scales
+   Why Shannon Entropy Fails on Ordinal Rating Scales
    -------------------------------------------------------------------------- */
 
 type Split = "17" | "26" | "35" | "34" | "4";
@@ -927,8 +924,8 @@ export function EntropyVsConsensus() {
   const xAt = (k: number) => r2(90 + (k - 1) * 64);
   const base = 206;
   const gauges = [
-    { key: "SHANNON ENTROPY", v: H, max: Math.log2(7), text: `${H.toFixed(2)} bits`, red: true, ticks: [0, 1, 2] },
-    { key: "CONSENSUS", v: C, max: 1, text: C.toFixed(2), red: false, ticks: [0, 0.5, 1] },
+    { key: "Shannon entropy", v: H, max: Math.log2(7), text: `${H.toFixed(2)} bits`, red: true, ticks: [0, 1, 2] },
+    { key: "Consensus", v: C, max: 1, text: C.toFixed(2), red: false, ticks: [0, 0.5, 1] },
   ];
   const g0 = 196;
   const g1 = 470;
@@ -1001,7 +998,7 @@ export function EntropyVsConsensus() {
 }
 
 /* --------------------------------------------------------------------------
-   12. The Three-Layer Exact-PMF Pipeline
+   The Three-Layer Exact-PMF Pipeline
    -------------------------------------------------------------------------- */
 
 /** Discrete convolution of two PMFs. */
@@ -1108,9 +1105,9 @@ export function ThreeLayerExploded() {
       <ObliqueBox id={id} x={552} y={base + 2} w={230} h={10} dx={10} dy={6} />
 
       {[
-        { x: 144, t: "CONSTRAINT" },
-        { x: 413, t: "CONSENSUS" },
-        { x: 672, t: "CONSTRUCT" },
+        { x: 144, t: "Constraint" },
+        { x: 413, t: "Consensus" },
+        { x: 672, t: "Construct" },
       ].map((k) => (
         <PatentKey key={k.t} x={k.x} y={base + 52} size={12}>
           {k.t}
@@ -1121,57 +1118,7 @@ export function ThreeLayerExploded() {
 }
 
 /* --------------------------------------------------------------------------
-   13. Discussion: Sampling Versus Exact Probabilities
-   -------------------------------------------------------------------------- */
-
-/**
- * The two candidate models as the week's two housings. Model A, broken open
- * to its gears (log-probabilities exposed), yields one record per scenario.
- * Model B, closed behind its interface slot, yields a tall stack of sampled
- * completions per scenario. Five scenarios stand for the 500.
- */
-export function TwoInterfaces() {
-  const id = "w4-two";
-  const base = 262;
-  const cols = [
-    { key: "MODEL A", x: 24, open: true, k: 1, name: "next-token log-probabilities" },
-    { key: "MODEL B", x: 244, open: false, k: 12, name: "sampled text completions" },
-  ];
-  return (
-    <Frame
-      width={440}
-      height={318}
-      label="Patent drawing of the two candidate models. Model A, its housing cut open to show its gears, yields one record per customer scenario, each carrying its seven-point probability distribution: next-token log-probabilities. Model B, a closed housing, yields a tall stack of twelve sampled text completions per scenario. Five scenarios are drawn for each."
-    >
-      <PatentDefs id={id} />
-      {cols.map((c) => (
-        <g key={c.key}>
-          <PatentKey x={c.x + 86} y={26} size={12}>
-            {c.key}
-          </PatentKey>
-          <Housing id={id} x={c.x + 26} y={52} w={110} h={72} open={c.open} />
-          {Array.from({ length: 5 }, (_, i) =>
-            Array.from({ length: c.k }, (_, j) => <Sheet key={`${i}-${j}`} id={id} x={c.x + i * 36} y={r2(base - j * 7)} w={24} d={9} sk={9} t={2} />),
-          )}
-          {c.open
-            ? Array.from({ length: 5 }, (_, i) =>
-                LIKERT_PMF.map((p, k) => {
-                  const x = r2(c.x + i * 36 + 6 + k * 3.2);
-                  return <line key={`${i}-${k}`} x1={x} y1={base - 4} x2={x} y2={r2(base - 4 - p * 70)} {...ink} />;
-                }),
-              )
-            : null}
-          <FigureName x={c.x + 86} y={base + 36} size={13}>
-            {c.name}
-          </FigureName>
-        </g>
-      ))}
-    </Frame>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   14. Part 3: Distributional ANOVA and Hoeffding Decomposition
+   Part 3: Distributional ANOVA and Hoeffding Decomposition
    -------------------------------------------------------------------------- */
 
 /** Seventeen item PMFs over 1 to 7, each a peaked distribution around its own centre. */
@@ -1237,7 +1184,7 @@ export function ItemStack() {
 }
 
 /* --------------------------------------------------------------------------
-   15. Convolving Item Distributions Into a Composite Construct Score
+   Convolving Item Distributions Into a Composite Construct Score
    -------------------------------------------------------------------------- */
 
 /**
@@ -1305,7 +1252,7 @@ export function ConvolutionBuild() {
 }
 
 /* --------------------------------------------------------------------------
-   16. Hoeffding Decomposition of Main Effects and Interactions
+   Hoeffding Decomposition of Main Effects and Interactions
    -------------------------------------------------------------------------- */
 
 /**
@@ -1342,27 +1289,27 @@ export function HoeffdingStack() {
         <rect x={x} y={target} width={w} height={r2(final - target)} fill={stip(id, "light")} stroke={PAT.ink} strokeWidth={LINE.hair} strokeDasharray="3 2" />
         {/* keys */}
         <PatentKey x={x - 14} y={r2((base + grand) / 2 - 4)} anchor="end" size={12}>
-          GRAND MEAN
+          Grand mean
         </PatentKey>
         <Num x={x - 14} y={r2((base + grand) / 2 + 16)} anchor="end" size={15}>
           66.25
         </Num>
         <PatentKey x={x - 14} y={r2((grand + model) / 2 - 4)} anchor="end" size={12}>
-          MODEL EFFECT
+          Model effect
         </PatentKey>
         <Num x={x - 14} y={r2((grand + model) / 2 + 16)} anchor="end" size={15}>
           +21.19
         </Num>
         <line x1={x - 10} y1={r2(target - 14)} x2={x - 2} y2={r2((model + target) / 2)} {...hair} />
         <PatentKey x={x - 14} y={r2(target - 26)} anchor="end" size={12}>
-          TARGET EFFECT
+          Target effect
         </PatentKey>
         <Num x={x - 14} y={r2(target - 8)} anchor="end" size={15}>
           +2.84
         </Num>
         <line x1={x + w - 8} y1={r2(final - 1)} x2={x + w + 22} y2={r2(final + 22)} {...hair} />
         <PatentKey x={x + w + 26} y={r2(final + 30)} anchor="start" size={12}>
-          INTERACTION
+          Interaction
         </PatentKey>
         <Num x={x + w + 26} y={r2(final + 48)} anchor="start" size={15}>
           −1.18
@@ -1372,10 +1319,10 @@ export function HoeffdingStack() {
         {/* the composite score */}
         <ObliqueBox id={id} x={cx} y={cTop} w={w} h={r2(base - cTop)} dx={14} dy={8} />
         <PatentKey x={cx + w / 2 + 3} y={r2(cTop - 38)} size={11.5}>
-          AYA EXPANSE 32B
+          Aya Expanse 32B
         </PatentKey>
         <PatentKey x={cx + w / 2 + 3} y={r2(cTop - 22)} size={11.5}>
-          UNITED STATES
+          United States
         </PatentKey>
         <Num x={cx + w / 2} y={r2(cTop + 30)} size={18}>
           89.11
@@ -1393,7 +1340,7 @@ export function HoeffdingStack() {
 }
 
 /* --------------------------------------------------------------------------
-   17. Four Distributional Inference Metrics
+   Four Distributional Inference Metrics
    -------------------------------------------------------------------------- */
 
 /**
@@ -1426,7 +1373,7 @@ export function EffectInstrument() {
   const xAt = (k: number) => r2(x0 + (k + 20.5) * bw);
   const base = 136;
   const rows = [
-    { key: "MEAN SHIFT", v: `${E >= 0 ? "+" : "−"}${Math.abs(E).toFixed(2)}` },
+    { key: "Mean shift", v: `${E >= 0 ? "+" : "−"}${Math.abs(E).toFixed(2)}` },
     { key: "SD", v: SD.toFixed(2) },
     { key: "dPD", v: dpd.toFixed(2) },
     { key: "SNR", v: snr.toFixed(2) },
@@ -1497,7 +1444,7 @@ export function EffectInstrument() {
 }
 
 /* --------------------------------------------------------------------------
-   18. Part 4: Designing Controlled Factorial Choice and Rating Experiments
+   Part 4: Designing Controlled Factorial Choice and Rating Experiments
    -------------------------------------------------------------------------- */
 
 /** A lever standing in a slot on a top face: pivot (px, py), tilted `deg` from upright (positive = right). */
@@ -1565,10 +1512,10 @@ export function WeldedLevers() {
                 />
               ) : null}
               <PatentKey x={p1 + 3} y={234} size={11}>
-                FACTOR A
+                Factor A
               </PatentKey>
               <PatentKey x={p2 + 3} y={234} size={11}>
-                FACTOR B
+                Factor B
               </PatentKey>
               <FigureName x={b.x + 113} y={280} size={14}>
                 {b.name}
@@ -1582,7 +1529,7 @@ export function WeldedLevers() {
 }
 
 /* --------------------------------------------------------------------------
-   19. Why Isolated Vignettes Cannot Isolate Causes
+   Why Isolated Vignettes Cannot Isolate Causes
    -------------------------------------------------------------------------- */
 
 /** A handwritten-story card standing upright: folded corner, two lines of story, then its three fields. */
@@ -1596,13 +1543,13 @@ function VignetteCard({ x, y, name, job, city }: { x: number; y: number; name: s
       {[22, 34].map((dy, i) => (
         <line key={dy} x1={x + 18} y1={y + dy} x2={x + (i ? 150 : 176)} y2={y + dy} {...hair} />
       ))}
-      <text x={x + 18} y={y + 66} fontFamily="var(--font-heading)" fontSize={20} fill={PAT.ink}>
+      <text x={x + 18} y={y + 66} fontFamily="var(--font-body)" fontSize={20} fill={PAT.ink}>
         {name}
       </text>
-      <text x={x + 18} y={y + 100} fontFamily="var(--font-heading)" fontSize={15} fill={PAT.ink}>
+      <text x={x + 18} y={y + 100} fontFamily="var(--font-body)" fontSize={15} fill={PAT.ink}>
         {job}
       </text>
-      <text x={x + 18} y={y + 132} fontFamily="var(--font-heading)" fontSize={15} fill={PAT.ink}>
+      <text x={x + 18} y={y + 132} fontFamily="var(--font-body)" fontSize={15} fill={PAT.ink}>
         {city}
       </text>
     </g>
@@ -1620,10 +1567,10 @@ export function ConfoundedVignettes() {
   const rx = 510;
   const top = 12;
   const rows = [
-    { key: "GENDER", ky: 58, fy: top + 60 },
-    { key: "ETHNICITY", ky: 80, fy: top + 60 },
-    { key: "OCCUPATION", ky: top + 96, fy: top + 95 },
-    { key: "CITY", ky: top + 128, fy: top + 127 },
+    { key: "Gender", ky: 58, fy: top + 60 },
+    { key: "Ethnicity", ky: 80, fy: top + 60 },
+    { key: "Occupation", ky: top + 96, fy: top + 95 },
+    { key: "City", ky: top + 128, fy: top + 127 },
   ];
   const red = { stroke: PAT.signal, strokeWidth: LINE.hair, strokeLinecap: "round" as const };
   return (
@@ -1650,7 +1597,7 @@ export function ConfoundedVignettes() {
 }
 
 /* --------------------------------------------------------------------------
-   20. Fully Crossed Factorial Designs and Context Isolation
+   Fully Crossed Factorial Designs and Context Isolation
    -------------------------------------------------------------------------- */
 
 /**
@@ -1675,10 +1622,10 @@ export function CrossedGrid() {
     >
       <PatentDefs id={id} />
       <PatentKey x={gx + 2 * cw} y={16} size={11.5}>
-        FACTOR B
+        Factor B
       </PatentKey>
       <PatentKey x={20} y={gy + 1.5 * ch + 4} anchor="start" size={11.5}>
-        FACTOR A
+        Factor A
       </PatentKey>
       {[0, 1, 2, 3].map((c) => (
         <Num key={c} x={gx + c * cw + cw / 2} y={36} size={13}>
@@ -1749,7 +1696,7 @@ export function CrossedGrid() {
 }
 
 /* --------------------------------------------------------------------------
-   21. Controlling Prompt Sensitivity, Order Effects, and Framing
+   Controlling Prompt Sensitivity, Order Effects, and Framing
    -------------------------------------------------------------------------- */
 
 /** A small product glyph for list rows: one shape per product. */
@@ -1879,7 +1826,7 @@ export function FourControls({ kind }: { kind: "template" | "polarity" | "positi
             <ProductMark cx={x + 48} cy={36} shape={i === 0 ? 0 : 2} />
             <Tag cx={x + 52} cy={68} text="$49" w={40} size={12} />
             <PatentKey x={x + 48} y={98} size={11.5}>
-              2 YR
+              2 yr
             </PatentKey>
             <StarRow id={id} x={x + 18} y={120} n={4} />
             <Detail cx={x + 48} cy={36} r={15} />
@@ -1891,7 +1838,7 @@ export function FourControls({ kind }: { kind: "template" | "polarity" | "positi
 }
 
 /* --------------------------------------------------------------------------
-   22. Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows
+   Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows
    -------------------------------------------------------------------------- */
 
 /** A barrier gate: a post with a striped boom, raised or lowered across the track to its left. */
@@ -1975,7 +1922,7 @@ export function LifecycleGates() {
 }
 
 /* --------------------------------------------------------------------------
-   23. Pre-Deployment Red-Teaming Versus Behavioral Auditing
+   Pre-Deployment Red-Teaming Versus Behavioral Auditing
    -------------------------------------------------------------------------- */
 
 /** A probe: a slim tool with a handle, its tip at (tx, ty), coming in along (dx, dy). */
@@ -2074,7 +2021,7 @@ export function ProbeVsGrid({ kind }: { kind: "probe" | "grid" }) {
 }
 
 /* --------------------------------------------------------------------------
-   24. Six Steps of an Enterprise Behavioral Audit
+   Six Steps of an Enterprise Behavioral Audit
    -------------------------------------------------------------------------- */
 
 /**
@@ -2095,7 +2042,7 @@ export function AuditDossier() {
     <Frame
       width={360}
       height={180}
-      label="Patent drawing of a model dossier lying open, with six numbered index tabs, 1 to 6, along its far edge. Its page carries hairline entries and a red RE-TEST stamp imprint. The stamp that made it stands on the table beside the dossier."
+      label="Patent drawing of a model dossier lying open, with six numbered index tabs, 1 to 6, along its far edge. Its page carries hairline entries and a red re-test stamp imprint. The stamp that made it stands on the table beside the dossier."
     >
       <PatentDefs id={id} />
       {/* index tabs, behind the page */}
@@ -2123,7 +2070,7 @@ export function AuditDossier() {
       <g transform={`rotate(-6 ${stampAt.x} ${stampAt.y})`}>
         <rect x={r2(stampAt.x - 50)} y={r2(stampAt.y - 14)} width={100} height={28} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} />
         <PatentKey x={r2(stampAt.x + 1)} y={r2(stampAt.y + 5)} size={13} fill={PAT.signal}>
-          RE-TEST
+          Re-test
         </PatentKey>
       </g>
       {/* the stamp, set down beside the dossier */}
@@ -2135,7 +2082,7 @@ export function AuditDossier() {
 }
 
 /* --------------------------------------------------------------------------
-   25. Continuous Post-Deployment Drift Monitoring and Version Pinning
+   Continuous Post-Deployment Drift Monitoring and Version Pinning
    -------------------------------------------------------------------------- */
 
 /**
@@ -2151,8 +2098,8 @@ export function PinnedVsLatest() {
   const x0 = 40;
   const x1 = 780;
   const tracks = [
-    { key: "UNPINNED ENDPOINT", top: 34, pinned: false },
-    { key: "PINNED SNAPSHOT", top: 132, pinned: true },
+    { key: "Unpinned endpoint", top: 34, pinned: false },
+    { key: "Pinned snapshot", top: 132, pinned: true },
   ];
   const updates = [270, 500];
   return (
@@ -2204,46 +2151,6 @@ export function PinnedVsLatest() {
           </g>
         );
       })}
-    </Frame>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   26. Discussion: The Model Upgrade Regression
-   -------------------------------------------------------------------------- */
-
-/**
- * The proposed switch. Last year's 30-billion-parameter model in service on
- * the left. The larger 70-billion-parameter model waits on the right behind
- * the release gate, its red boom lowered.
- */
-export function UpgradeGate() {
-  const id = "w4-upgrade";
-  const ground = 172;
-  return (
-    <Frame
-      width={440}
-      height={196}
-      label="Patent drawing of the proposed model upgrade. On the left, last year's 30-billion-parameter model housing on its wheels. On the right, a larger 70-billion-parameter housing, waits behind a release gate whose red-striped boom is lowered between them."
-    >
-      <PatentDefs id={id} />
-      <line x1={10} y1={ground + 0.5} x2={430} y2={ground + 0.5} {...ink} strokeWidth={LINE.bold} />
-      {Array.from({ length: 21 }, (_, i) => (
-        <line key={i} x1={16 + i * 20} y1={ground + 2} x2={10 + i * 20} y2={ground + 9} {...hair} />
-      ))}
-      <SmallModel id={id} x={22} y={ground - 74} w={78} h={60} />
-      <circle cx={38} cy={ground - 7} r={7} fill={PAT.paper} {...ink} />
-      <circle cx={84} cy={ground - 7} r={7} fill={PAT.paper} {...ink} />
-      <Num x={66} y={ground - 92} size={16}>
-        30B
-      </Num>
-      <BarrierGate id={id} x={226} ground={ground} raised={false} />
-      <SmallModel id={id} x={262} y={ground - 112} w={120} h={96} />
-      <circle cx={286} cy={ground - 8} r={8} fill={PAT.paper} {...ink} />
-      <circle cx={358} cy={ground - 8} r={8} fill={PAT.paper} {...ink} />
-      <Num x={330} y={ground - 132} size={16}>
-        70B
-      </Num>
     </Frame>
   );
 }

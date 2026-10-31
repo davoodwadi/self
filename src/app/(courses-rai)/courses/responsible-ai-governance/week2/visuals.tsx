@@ -9,7 +9,7 @@ import { Chip, Coins, Figure, Gear, House, Lens, Numeral, Pan, Tag, cross, headA
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names in
-   Caslon italic and one examiner's red for the finding. The protected group
+   the body face and one examiner's red for the finding. The protected group
    keeps one mark all week: a figure in a dense-stippled coat. See the course
    CLAUDE.md.
    ========================================================================== */
@@ -17,10 +17,10 @@ import { Chip, Coins, Figure, Gear, House, Lens, Numeral, Pan, Tag, cross, headA
 const ink = { stroke: PAT.ink, strokeWidth: LINE.outline, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 const hair = { stroke: PAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" as const };
 
-/** Caslon numerals or a quantity on a plate. */
+/** Numerals or a quantity on a plate. */
 function Num({ x, y, children, size = 14, anchor = "middle", fill = PAT.ink }: { x: number; y: number; children: React.ReactNode; size?: number; anchor?: "start" | "middle" | "end"; fill?: string }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily="var(--font-heading)" fontSize={size} fill={fill} style={{ fontVariantNumeric: "lining-nums" }}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily="var(--font-body)" fontSize={size} fill={fill} style={{ fontVariantNumeric: "lining-nums" }}>
       {children}
     </text>
   );
@@ -68,10 +68,10 @@ export function StatisticalToMarket() {
         {/* threshold blade standing in the rail */}
         <ObliqueBox id={id} x={blade - 3} y={46} w={6} h={104} dx={8} dy={5} />
         <PatentKey x={blade - 14} y={52} anchor="end" size={10.5}>
-          LOW
+          Low
         </PatentKey>
         <PatentKey x={blade + 20} y={52} anchor="start" size={10.5}>
-          HIGH
+          High
         </PatentKey>
       </g>
     );
@@ -86,7 +86,7 @@ export function StatisticalToMarket() {
       {fig(26, "ABABABABAB", false)}
       <line x1={81} y1={34} x2={81} y2={76} {...hair} />
       <PatentKey x={70} y={28} anchor="start" size={10.5}>
-        PROTECTED GROUP
+        Protected group
       </PatentKey>
       <line x1={400} y1={20} x2={400} y2={192} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
       {fig(430, "BBABBAABAA", true)}
@@ -216,7 +216,7 @@ export function FourFifthsRule() {
         <Cylinder id={id} cx={240} top={top} bottom={bottom} level={rateB / 70} red={adverse} />
         <line x1={62} y1={line} x2={274} y2={line} {...ink} strokeDasharray="5 3" />
         <PatentKey x={280} y={r2(line + 4)} anchor="start" size={11.5}>
-          FOUR-FIFTHS
+          Four-fifths
         </PatentKey>
         <Num x={96} y={17} size={15}>
           50%
@@ -225,16 +225,16 @@ export function FourFifthsRule() {
           {`${rateB}%`}
         </Num>
         <PatentKey x={96} y={173} size={11.5}>
-          HIGHEST-SELECTED
+          Highest-selected
         </PatentKey>
         <PatentKey x={240} y={173} size={11.5}>
-          PROTECTED
+          Protected
         </PatentKey>
         <Num x={344} y={134} size={30} fill={adverse ? PAT.signal : PAT.ink}>
           {ratio.toFixed(2)}
         </Num>
         <PatentKey x={344} y={156} size={11.5}>
-          RATIO
+          Ratio
         </PatentKey>
       </Frame>
       <Slider label="Protected group selection rate" value={rateB} min={10} max={60} step={2} onChange={setRateB} formatValue={(v) => `${v}%`} />
@@ -256,7 +256,7 @@ export function PipelineStages() {
   const w = 172;
   const xs = [18, 214, 410, 606];
   const red = { stroke: PAT.signal, strokeWidth: LINE.bold, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  const keys = ["DATA GENERATION", "MEASUREMENT", "MODEL SPECIFICATION", "MARKET DEPLOYMENT"];
+  const keys = ["Data generation", "Measurement", "Model specification", "Market deployment"];
   return (
     <Frame
       width={800}
@@ -376,7 +376,7 @@ export function HistoricalBias() {
         <Portrait key={i} id={id} x={22 + (i % 5) * 26} y={48 + Math.floor(i / 5) * 46} w={22} h={38} coat={g ? "dense" : "paper"} />
       ))}
       <PatentKey x={85} y={166} size={11.5}>
-        10 YEARS
+        10 years
       </PatentKey>
 
       {/* The hiring model trained on that record */}
@@ -448,7 +448,7 @@ export function RepresentationBias() {
           <Portrait key={i} id={id} x={20 + (i % 5) * 28} y={30 + Math.floor(i / 5) * 32} w={22} h={28} coat={seats.has(i) ? "dense" : "paper"} />
         ))}
         <PatentKey x={300} y={30} size={11.5}>
-          ERROR RATE
+          Error rate
         </PatentKey>
         <Meter cx={250} cy={104} r={42} value={errA} max={36} />
         <Meter cx={350} cy={104} r={42} value={errB} max={36} red={high} />
@@ -599,10 +599,10 @@ export function AggregationBias() {
         <ObliqueBox id={id} x={30} y={14} w={352} h={156} dx={10} dy={6} />
         <path d="M54 22V146H372" fill="none" {...ink} />
         <PatentKey x={370} y={162} anchor="end" size={11.5}>
-          PREDICTOR
+          Predictor
         </PatentKey>
-        <text x={44} y={86} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={11.5} letterSpacing="0.22em" fill={PAT.ink} transform="rotate(-90 44 86)">
-          OUTCOME
+        <text x={44} y={86} textAnchor="middle" fontFamily="var(--font-body)" fontSize={11.5} fill={PAT.ink} transform="rotate(-90 44 86)">
+          Outcome
         </text>
 
         {/* residuals of the minority points */}
@@ -652,7 +652,7 @@ export function AggregationBias() {
 export function ProxyReconstruction() {
   const [k, setK] = useState(4);
   const id = "w2-proxy";
-  const rows = ["POSTAL CODE", "DEVICE BRAND", "BROWSER LANGUAGE", "SHOPPING SCHEDULE"];
+  const rows = ["Postal code", "Device brand", "Browser language", "Shopping schedule"];
   const precision = [50, 64, 78, 88, 95][k];
   const rowY = (i: number) => 20 + i * 28;
   return (
@@ -680,7 +680,7 @@ export function ProxyReconstruction() {
         })}
         <rect x={12} y={140} width={186} height={26} fill="none" {...hair} strokeDasharray="4 3" />
         <PatentKey x={22} y={158} anchor="start" size={9.5}>
-          PROTECTED ATTRIBUTE
+          Protected attribute
         </PatentKey>
 
         {/* the model */}
@@ -705,7 +705,7 @@ export function ProxyReconstruction() {
           {`${precision}%`}
         </Num>
         <PatentKey x={344} y={110} size={10}>
-          PRECISION
+          Precision
         </PatentKey>
       </Frame>
       <Slider label="Behavioral features combined" value={k} min={0} max={4} onChange={setK} />
@@ -761,7 +761,7 @@ export function FeedbackLoop() {
       {/* nothing comes back from the denied one */}
       <path d="M337 120V166H84" {...red} strokeWidth={LINE.outline} strokeDasharray="5 3.5" />
       <PatentKey x={208} y={182} fill={PAT.signal} size={10}>
-        NEVER OBSERVED
+        Never observed
       </PatentKey>
     </Frame>
   );
@@ -927,10 +927,10 @@ export function ThreeFamilies() {
           </Num>
           <Matrix id={id} x={f.x + 160} y={46} given={f.given} count={f.count} />
           <PatentKey x={f.x + 82} y={130} size={10}>
-            GROUP A
+            Group A
           </PatentKey>
           <PatentKey x={f.x + 204} y={130} size={10}>
-            GROUP B
+            Group B
           </PatentKey>
           <FigureName x={f.x + 126} y={164} size={12}>
             {f.name}
@@ -952,8 +952,8 @@ export function ConfusionCutoff() {
   const [cut, setCut] = useState(60);
   const id = "w2-conf";
   const groups = [
-    { name: "GROUP A", y: 44, pos: [45, 55, 62, 68, 72, 78, 84, 90, 95], neg: [15, 25, 33, 40, 50, 58, 66] },
-    { name: "GROUP B", y: 118, pos: [38, 44, 52, 60, 70, 82], neg: [8, 14, 22, 28, 34, 42, 49, 57, 65, 76] },
+    { name: "Group A", y: 44, pos: [45, 55, 62, 68, 72, 78, 84, 90, 95], neg: [15, 25, 33, 40, 50, 58, 66] },
+    { name: "Group B", y: 118, pos: [38, 44, 52, 60, 70, 82], neg: [8, 14, 22, 28, 34, 42, 49, 57, 65, 76] },
   ];
   const X = (v: number) => r2(124 + v * 3.9);
   const pct = (a: number, b: number) => (b === 0 ? "n/a" : `${Math.round((100 * a) / b)}%`);
@@ -1108,12 +1108,12 @@ export function DemographicParity() {
         label={`Patent drawing: two groups of ten applicants, Group A in white coats and Group B in dense coats. Applicants who are qualified hold up a certificate. Each group has a platform for the 30% approved under demographic parity. Group A's three qualified applicants stand on its platform. ${q * 10}% of Group B is qualified. With three of its ten approved, ${errors}.`}
       >
         <PatentDefs id={id} />
-        {group(14, groupA.up, groupA.down, "paper", "GROUP A")}
+        {group(14, groupA.up, groupA.down, "paper", "Group A")}
         <line x1={400} y1={10} x2={400} y2={164} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-        {group(420, upB, downB, "dense", "GROUP B")}
+        {group(420, upB, downB, "dense", "Group B")}
         <line x1={52} y1={22} x2={52} y2={40} {...hair} />
         <PatentKey x={40} y={16} anchor="start" size={10}>
-          QUALIFIED
+          Qualified
         </PatentKey>
       </Frame>
       <Slider label="Group B qualification rate" value={rateB} min={10} max={60} step={10} onChange={setRateB} formatValue={(v) => `${v}%`} />
@@ -1172,16 +1172,16 @@ export function SeparationTrays() {
       </Num>
       <line x1={94} y1={80} x2={94} y2={94} {...hair} />
       <PatentKey x={84} y={106} anchor="start" size={10}>
-        SELECTED
+        Selected
       </PatentKey>
       {figs.map((f, i) => (
         <g key={f.name}>
           {i > 0 ? <line x1={f.x - 12} y1={10} x2={f.x - 12} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} /> : null}
           <PatentKey x={f.x + 56} y={22} size={10}>
-            GROUP A
+            Group A
           </PatentKey>
           <PatentKey x={f.x + 172} y={22} size={10}>
-            GROUP B
+            Group B
           </PatentKey>
           <Tray id={id} x={f.x} y={82} chosen={f.a[0]} />
           <Tray id={id} x={f.x + 116} y={82} chosen={f.b[0]} red={i === 0} />
@@ -1247,11 +1247,11 @@ export function CalibrationTubes() {
       {fig(414, false, 2, "a stricter predictive standard")}
       <path d="M196 16H206L211 26" fill="none" {...hair} />
       <PatentKey x={192} y={20} anchor="end" size={10}>
-        GROUP A
+        Group A
       </PatentKey>
       <path d="M252 16H242L237 26" fill="none" {...hair} />
       <PatentKey x={256} y={20} anchor="start" size={10}>
-        GROUP B
+        Group B
       </PatentKey>
     </Frame>
   );
@@ -1330,10 +1330,10 @@ export function CriterionContexts() {
         </g>
       ))}
       <PatentKey x={442} y={134} size={10}>
-        GROUP A
+        Group A
       </PatentKey>
       <PatentKey x={558} y={134} size={10}>
-        GROUP B
+        Group B
       </PatentKey>
 
       <line x1={600} y1={16} x2={600} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
@@ -1397,7 +1397,7 @@ export function GroupAverageVsIndividual() {
       <line x1={20} y1={g + 1} x2={480} y2={g + 1} {...hair} />
       <ObliqueBox id={id} x={40} y={18} w={420} h={22} dx={10} dy={6} />
       <PatentKey x={250} y={34} size={11}>
-        GROUP AVERAGE 50%
+        Group average 50%
       </PatentKey>
       {members.map((m, i) => {
         const x = 62 + i * 54;
@@ -1459,13 +1459,13 @@ export function IndividualFairness() {
       {/* The first figure: the profile span bounds the prediction span */}
       <ObliqueBox id={id} x={50} y={92} w={290} h={8} dx={10} dy={6} />
       <PatentKey x={50} y={78} anchor="start" size={10}>
-        PROFILES
+        Profiles
       </PatentKey>
       <Portrait id={id} x={152} y={48} w={26} h={40} />
       <Portrait id={id} x={190} y={48} w={26} h={40} />
       <ObliqueBox id={id} x={50} y={160} w={290} h={8} dx={10} dy={6} />
       <PatentKey x={50} y={146} anchor="start" size={10}>
-        PREDICTIONS
+        Predictions
       </PatentKey>
       <line x1={165} y1={102} x2={165} y2={152} {...hair} strokeDasharray="4 3" />
       <line x1={203} y1={102} x2={203} y2={152} {...hair} strokeDasharray="4 3" />
@@ -1566,10 +1566,10 @@ export function CausalPipework() {
         <Tank id={id} cx={tx} top={y} red={red} />
         <ObliqueBox id={id} x={dx - 16} y={y + 2} w={32} h={20} dx={8} dy={5} stroke={red ? PAT.signal : PAT.ink} />
         {[
-          [ax, ["PROTECTED", "ATTRIBUTE"]],
-          [mx, ["SCHOOL", "QUALITY"]],
-          [tx, ["TEST", "SCORES"]],
-          [dx + 4, ["DECISION"]],
+          [ax, ["Protected", "attribute"]],
+          [mx, ["School", "quality"]],
+          [tx, ["Test", "scores"]],
+          [dx + 4, ["Decision"]],
         ].map(([x, lines]) =>
           (lines as string[]).map((l, k) => (
             <PatentKey key={l} x={x as number} y={36 + k * 13 - ((lines as string[]).length - 1) * 13 + 13} size={9.5}>
@@ -1608,9 +1608,9 @@ export function CausalPipework() {
 export function IncompatibleTriad() {
   const id = "w2-triad";
   const pins = [
-    { x: 250, top: 78, tip: 120, hole: [250, 166], key: "INDEPENDENCE", kx: 236, ky: 104, anchor: "end" as const },
-    { x: 550, top: 78, tip: 120, hole: [550, 166], key: "SEPARATION", kx: 564, ky: 104, anchor: "start" as const },
-    { x: 430, top: 40, tip: 108, hole: [398, 134], key: "SUFFICIENCY", kx: 436, ky: 22, anchor: "middle" as const, red: true },
+    { x: 250, top: 78, tip: 120, hole: [250, 166], key: "Independence", kx: 236, ky: 104, anchor: "end" as const },
+    { x: 550, top: 78, tip: 120, hole: [550, 166], key: "Separation", kx: 564, ky: 104, anchor: "start" as const },
+    { x: 430, top: 40, tip: 108, hole: [398, 134], key: "Sufficiency", kx: 436, ky: 22, anchor: "middle" as const, red: true },
   ];
   return (
     <Frame
@@ -1687,8 +1687,8 @@ export function ImpossibilityLevels() {
 
         {/* base rates: ten applicants per group, those who would repay dense */}
         {[
-          { y: 58, p: pA, name: "GROUP A" },
-          { y: 128, p: pB, name: "GROUP B" },
+          { y: 58, p: pA, name: "Group A" },
+          { y: 128, p: pB, name: "Group B" },
         ].map((g) => (
           <g key={g.name}>
             <PatentKey x={18} y={g.y - 30} anchor="start" size={10}>
@@ -1857,58 +1857,6 @@ export function DomainTradeoffs() {
 }
 
 /**
- * Discussion case: the calibrated bank's false rejection rates, in two
- * graduated cylinders: creditworthy young adults rejected at 35 percent
- * (red), older borrowers at 18 percent.
- */
-export function CreditAgeTradeoff() {
-  const id = "w2-age";
-  const top = 40;
-  const bottom = 178;
-  const yAt = (p: number) => r2(bottom - ((bottom - top) * p) / 40);
-  return (
-    <Frame
-      width={400}
-      height={240}
-      label="Patent drawing: two graduated cylinders of false rejection rates among creditworthy borrowers. The young adults' cylinder is filled to 35% and drawn in red, the older borrowers' to 18%."
-    >
-      <PatentDefs id={id} />
-      <PatentKey x={200} y={18} size={13}>
-        FALSE REJECTION RATE
-      </PatentKey>
-      {[0, 10, 20, 30, 40].map((p) => (
-        <g key={p}>
-          <line x1={68} y1={yAt(p)} x2={76} y2={yAt(p)} {...hair} />
-          <Num x={60} y={r2(yAt(p) + 5)} size={14} anchor="end">
-            {p}
-          </Num>
-        </g>
-      ))}
-      <Cylinder id={id} cx={132} top={top} bottom={bottom} rx={42} ry={9} level={35 / 40} red />
-      <Cylinder id={id} cx={300} top={top} bottom={bottom} rx={42} ry={9} level={18 / 40} />
-      <Num x={180} y={r2(yAt(35) + 8)} size={22} anchor="start" fill={PAT.signal}>
-        35%
-      </Num>
-      <Num x={348} y={r2(yAt(18) + 8)} size={22} anchor="start">
-        18%
-      </Num>
-      <PatentKey x={132} y={216} size={13}>
-        YOUNG
-      </PatentKey>
-      <PatentKey x={132} y={233} size={13}>
-        ADULTS
-      </PatentKey>
-      <PatentKey x={300} y={216} size={13}>
-        OLDER
-      </PatentKey>
-      <PatentKey x={300} y={233} size={13}>
-        BORROWERS
-      </PatentKey>
-    </Frame>
-  );
-}
-
-/**
  * Part 5. The first figure: the human marketer's brief, its exclusions box left empty.
  * The second figure: the platform's automated systems, each serving a customer from each
  * group: ad delivery fills one screen and leaves the other blank, dynamic
@@ -1919,9 +1867,9 @@ export function MarketingPipelines() {
   const id = "w2-mkt";
   const red = { stroke: PAT.signal, strokeWidth: LINE.outline, strokeLinejoin: "round" as const };
   const rows = [
-    { y: 26, key: "AD DELIVERY" },
-    { y: 84, key: "DYNAMIC PRICING" },
-    { y: 142, key: "PERSONALIZATION" },
+    { y: 26, key: "Ad delivery" },
+    { y: 84, key: "Dynamic pricing" },
+    { y: 142, key: "Personalization" },
   ];
   const screen = (x: number, y: number, on: boolean) => (
     <g>
@@ -1949,7 +1897,7 @@ export function MarketingPipelines() {
         <line key={y} x1={76} y1={y} x2={y === 108 ? 140 : 170} y2={y} {...hair} />
       ))}
       <PatentKey x={123} y={134} size={10}>
-        EXCLUSIONS
+        Exclusions
       </PatentKey>
       <rect x={78} y={141} width={90} height={18} fill="none" {...ink} />
 
@@ -2015,8 +1963,8 @@ export function AdAuctionSkew() {
   const women = Math.round(20 * share);
   const men = 20 - women;
   const lanes = [
-    { y: 52, key: "YOUNG WOMEN", n: women, price: `$${cost.toFixed(2)}`, red: women < 10 },
-    { y: 134, key: "MEN", n: men, price: "$1.00", red: false },
+    { y: 52, key: "Young women", n: women, price: `$${cost.toFixed(2)}`, red: women < 10 },
+    { y: 134, key: "Men", n: men, price: "$1.00", red: false },
   ];
   return (
     <div>
@@ -2063,8 +2011,8 @@ export function AdAuctionSkew() {
 
         {/* The second figure: listings steered by click probability */}
         {[
-          { y: 34, text: "LUXURY RENTAL", red: false },
-          { y: 112, text: "SUBPRIME CREDIT", red: true },
+          { y: 34, text: "Luxury rental", red: false },
+          { y: 112, text: "Subprime credit", red: true },
         ].map((a) => (
           <g key={a.text}>
             <ObliqueBox id={id} x={528} y={a.y} w={134} h={34} dx={8} dy={5} stroke={a.red ? PAT.signal : PAT.ink} />
@@ -2142,9 +2090,9 @@ export function MitigationFrontier() {
           </g>
         ))}
         {[
-          [64, "PRE-PROCESSING"],
-          [197, "IN-PROCESSING"],
-          [340, "POST-PROCESSING"],
+          [64, "Pre-processing"],
+          [197, "In-processing"],
+          [340, "Post-processing"],
         ].map(([x, t]) => (
           <PatentKey key={t as string} x={x as number} y={162} size={9.5}>
             {t}
@@ -2156,10 +2104,10 @@ export function MitigationFrontier() {
         {/* The second figure: the accuracy-fairness frontier */}
         <path d="M470 22V150H772" fill="none" {...ink} />
         <PatentKey x={772} y={166} anchor="end" size={10}>
-          FAIRNESS
+          Fairness
         </PatentKey>
-        <text x={456} y={86} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={10} letterSpacing="0.22em" fill={PAT.ink} transform="rotate(-90 456 86)">
-          ACCURACY
+        <text x={456} y={86} textAnchor="middle" fontFamily="var(--font-body)" fontSize={10} fill={PAT.ink} transform="rotate(-90 456 86)">
+          Accuracy
         </text>
         <path d={curve} fill="none" {...ink} strokeWidth={LINE.bold} />
         <line x1={X(0)} y1={Y(0.9)} x2={X(lam)} y2={Y(0.9)} {...hair} strokeDasharray="4 3" />
@@ -2174,13 +2122,13 @@ export function MitigationFrontier() {
           {`${(a * 100).toFixed(1)}%`}
         </Num>
         <PatentKey x={548} y={118} anchor="start" size={9.5}>
-          ACCURACY
+          Accuracy
         </PatentKey>
         <Num x={486} y={140} size={14} anchor="start">
           {disparity.toFixed(2)}
         </Num>
         <PatentKey x={548} y={140} anchor="start" size={9.5}>
-          DISPARITY
+          Disparity
         </PatentKey>
 
         <FigureName x={208} y={190} size={12}>
@@ -2266,55 +2214,6 @@ export function AuditSteps() {
       {xs.map((x, i) => (
         <Numeral key={x} n={i + 1} x={x - 16} y={174} tx={x - 4} ty={g + 4} />
       ))}
-    </Frame>
-  );
-}
-
-/**
- * Discussion case: the university's neutral targeting card goes into the ad
- * platform, which piles 82 percent of the impressions on men (red) and 18
- * percent on women.
- */
-export function UniversityAdSkew() {
-  const id = "w2-univ";
-  return (
-    <Frame
-      width={400}
-      height={244}
-      label="Patent drawing: a targeting card reading age 21 to 40 and bachelor's degree feeds into an ad platform's housing, which delivers the ad's impressions into two piles: a tall pile of 82% served to men, drawn in red, and a short pile of 18% served to women."
-    >
-      <PatentDefs id={id} />
-      {/* the neutral targeting card */}
-      <ObliqueBox id={id} x={86} y={12} w={200} h={52} dx={10} dy={6} />
-      <PatentKey x={186} y={34} size={11.5}>
-        AGE 21 TO 40
-      </PatentKey>
-      <PatentKey x={186} y={54} size={11.5}>
-        BACHELOR&apos;S DEGREE
-      </PatentKey>
-      <line x1={186} y1={68} x2={186} y2={84} {...hair} strokeDasharray={CENTRE_DASH} />
-      {/* the ad platform */}
-      <ObliqueBox id={id} x={150} y={86} w={72} h={58} dx={10} dy={6} />
-      <circle cx={186} cy={115} r={20} fill={stip(id, "light")} {...ink} />
-      <Gear cx={180} cy={110} r={9} n={9} />
-      <Gear cx={195} cy={124} r={6} n={7} phase={0.3} />
-      <path d="M150 128C110 128 100 140 100 150" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} />
-      <path d="M232 128C280 128 290 170 290 186" fill="none" {...hair} />
-      {/* the two piles of impressions */}
-      <Pile id={id} x={66} y={214} n={20} w={60} red />
-      <Pile id={id} x={262} y={214} n={4} w={60} />
-      <Num x={140} y={168} size={22} anchor="start" fill={PAT.signal}>
-        82%
-      </Num>
-      <Num x={336} y={204} size={22} anchor="start">
-        18%
-      </Num>
-      <PatentKey x={98} y={236} size={12}>
-        MEN
-      </PatentKey>
-      <PatentKey x={294} y={236} size={12}>
-        WOMEN
-      </PatentKey>
     </Frame>
   );
 }

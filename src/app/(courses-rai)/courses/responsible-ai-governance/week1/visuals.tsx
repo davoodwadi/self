@@ -7,9 +7,7 @@ import {
   Coins,
   Detail,
   Dial,
-  Display1,
   Figure,
-  Flag,
   Gear,
   House,
   Lens,
@@ -28,7 +26,7 @@ import {
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names in
-   Caslon italic and one examiner's red for the finding. See the course
+   the body face and one examiner's red for the finding. See the course
    CLAUDE.md.
    ========================================================================== */
 
@@ -72,7 +70,7 @@ export function ScalingRule() {
         {/* The second figure: one rule bar pressing five cards */}
         <ObliqueBox id={id} x={270} y={58} w={490} h={32} dx={15} dy={10} />
         <PatentKey x={515} y={78.5} size={13}>
-          SAME DECISION RULE
+          Same decision rule
         </PatentKey>
         {cards.map((c, i) => {
           const harmed = biased && i < 4;
@@ -126,9 +124,9 @@ export function GovernanceAuthority() {
   const cx = 178;
   const cy = 148;
   const stops = [
-    { deg: -52, name: "APPROVE", anchor: "end" as const },
-    { deg: 0, name: "RESTRICT", anchor: "middle" as const },
-    { deg: 52, name: "HALT", anchor: "start" as const },
+    { deg: -52, name: "Approve", anchor: "end" as const },
+    { deg: 0, name: "Restrict", anchor: "middle" as const },
+    { deg: 52, name: "Halt", anchor: "start" as const },
   ];
   const at = (deg: number, r: number) => {
     const a = (deg * Math.PI) / 180;
@@ -152,7 +150,7 @@ export function GovernanceAuthority() {
         <line key={y} x1={r2(222 + (18 - y) * 1.6)} y1={y} x2={r2(310 + (18 - y) * 1.6)} y2={y} {...hair} strokeWidth={0.45} />
       ))}
       <PatentKey x={267} y={36} size={9.5}>
-        EVIDENCE
+        Evidence
       </PatentKey>
       {[47, 55, 63, 71].map((y) => (
         <line key={y} x1={234} y1={y} x2={y === 71 ? 266 : 298} y2={y} {...hair} />
@@ -219,7 +217,7 @@ export function EthicsWashing() {
         <g>
           <ObliqueBox id={id} x={c - 72} y={58} w={102} h={56} dx={4} dy={3} />
           <PatentKey x={c - 21} y={77} size={9.5}>
-            OUR VALUES
+            Our values
           </PatentKey>
           {[88, 96, 104].map((y) => (
             <line key={y} x1={c - 54} y1={y} x2={c + (y === 104 ? 0 : 12)} y2={y} {...hair} />
@@ -273,7 +271,7 @@ export function ThreeLenses() {
         <line key={y} x1={350} y1={y} x2={450} y2={y} {...hair} />
       ))}
       <PatentKey x={400} y={204} size={11}>
-        SAME DEPLOYMENT
+        Same deployment
       </PatentKey>
 
       {/* Sight lines from each lens to the housing */}
@@ -285,21 +283,21 @@ export function ThreeLenses() {
         <path d={tick(154, 92, 16)} fill="none" {...ink} strokeWidth={LINE.bold} />
       </Lens>
       <PatentKey x={154} y={156} size={11}>
-        CONSEQUENTIALISM
+        Consequentialism
       </PatentKey>
 
       <Lens id={id} cx={408} cy={46} r={30} a={-0.35} handle={32}>
         <path d={cross(408, 46, 10)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
       </Lens>
       <PatentKey x={364} y={50} anchor="end" size={11}>
-        DEONTOLOGY
+        Deontology
       </PatentKey>
 
       <Lens id={id} cx={646} cy={92} r={40} a={-0.59} handle={40}>
         <path d={cross(646, 92, 13)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
       </Lens>
       <PatentKey x={646} y={156} size={11}>
-        VIRTUE ETHICS
+        Virtue ethics
       </PatentKey>
     </Frame>
   );
@@ -371,7 +369,7 @@ export function WelfareTradeoff() {
         {minority > 0 ? <ObliqueBox id={id} x={430} y={r2(base - 6 - minority * u)} w={36} h={r2(minority * u)} dx={12} dy={8} /> : null}
         <Figure id={id} x={452} y={minority > 0 ? r2(base - 9 - minority * u) : base - 9} s={0.5} stroke={excluded ? PAT.signal : PAT.ink} />
         <PatentKey x={422} y={base + 26} anchor="end" fill={excluded ? PAT.signal : PAT.ink} size={9.5}>
-          MINORITY SEGMENT
+          Minority segment
         </PatentKey>
 
         <line x1={560} y1={16} x2={560} y2={184} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
@@ -387,11 +385,11 @@ export function WelfareTradeoff() {
             strokeDasharray="4 2.5"
           />
         ) : null}
-        <text x={676} y={r2(base - 18 - total * k)} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={18} fill={PAT.ink}>
+        <text x={676} y={r2(base - 18 - total * k)} textAnchor="middle" fontFamily="var(--font-body)" fontSize={18} fill={PAT.ink}>
           {`+${total}`}
         </text>
         <PatentKey x={690} y={base + 40} size={10}>
-          AGGREGATE OUTCOMES
+          Aggregate outcomes
         </PatentKey>
       </Frame>
       <Segmented
@@ -462,13 +460,13 @@ export function DeontologicalDuty() {
       <ObliqueBox id={id} x={418} y={36} w={36} h={128} dx={12} dy={8} />
       <path d="M418 164H454" {...ink} strokeWidth={LINE.bold} />
       <PatentKey x={476} y={52} anchor="start" size={11}>
-        INVIOLABLE CONSTRAINT
+        Inviolable constraint
       </PatentKey>
 
       {/* Disclosure lying open beyond the bolt */}
       <Sheet id={id} x={560} y={146} w={130} d={44} sk={36} t={3} lines={4} />
       <PatentKey x={640} y={198} size={10.5}>
-        INFORMED CONSENT
+        Informed consent
       </PatentKey>
     </Frame>
   );
@@ -581,14 +579,14 @@ export function Consequentialism() {
       <Coins id={id} cx={86} y={147} n={6} rx={9} ry={3} h={5} />
       <Coins id={id} cx={106} y={147} n={4} rx={9} ry={3} h={5} />
       <PatentKey x={L.x} y={194} size={15}>
-        BENEFITS
+        Benefits
       </PatentKey>
 
       {/* Right pan: harms */}
       <Pan id={id} cx={R.x} hookY={R.y + 3} y={112} w={64} />
       <ObliqueBox id={id} x={292} y={98} w={20} h={13} dx={6} dy={4} front={stip(id, "signal")} top={PAT.paper} stroke={PAT.signal} />
       <PatentKey x={R.x} y={154} fill={PAT.signal} size={15}>
-        HARMS
+        Harms
       </PatentKey>
     </Frame>
   );
@@ -663,10 +661,10 @@ export function VirtueEthics() {
       <ObliqueBox id={id} x={56} y={169} w={268} h={24} dx={14} dy={9} />
       <ObliqueBox id={id} x={72} y={147} w={236} h={22} dx={14} dy={9} />
       <PatentKey x={190} y={163} size={15}>
-        HONEST
+        Honest
       </PatentKey>
       <PatentKey x={190} y={186} size={15}>
-        RESPONSIBLE
+        Responsible
       </PatentKey>
 
       {/* Pediment and entablature */}
@@ -675,7 +673,7 @@ export function VirtueEthics() {
       <path d="M98 45L190 23L282 45Z" fill="none" {...hair} />
       <ObliqueBox id={id} x={72} y={50} w={236} h={24} dx={14} dy={9} top={PAT.paper} />
       <PatentKey x={190} y={67} size={15}>
-        TRUSTWORTHY
+        Trustworthy
       </PatentKey>
 
       {/* Columns */}
@@ -731,10 +729,10 @@ export function LoanWide() {
       ))}
 
       <PatentKey x={228} y={208} size={16.5}>
-        POSTAL CODE A
+        Postal code A
       </PatentKey>
       <PatentKey x={598} y={208} size={16.5}>
-        POSTAL CODE B
+        Postal code B
       </PatentKey>
       </g>
     </Frame>
@@ -749,10 +747,10 @@ export function LoanWide() {
 export function FragmentedChain() {
   const id = "w1-chain";
   const layers = [
-    { y: 56, name: "USED", mark: "diamond" },
-    { y: 102, name: "DEPLOYED", mark: "square" },
-    { y: 148, name: "TRAINED", mark: "triangle" },
-    { y: 194, name: "BUILT", mark: "circle" },
+    { y: 56, name: "Used", mark: "diamond" },
+    { y: 102, name: "Deployed", mark: "square" },
+    { y: 148, name: "Trained", mark: "triangle" },
+    { y: 194, name: "Built", mark: "circle" },
   ];
   const x = 220;
   const w = 380;
@@ -873,7 +871,7 @@ export function ValueChainFiveActors() {
         {[0, 1, 2].map((i) => (
           <g key={i}>
             <rect x={360} y={74 + i * 30} width={76} height={22} fill={PAT.paper} {...ink} />
-            <text x={370} y={89 + i * 30} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={11} fill={PAT.ink}>
+            <text x={370} y={89 + i * 30} textAnchor="middle" fontFamily="var(--font-body)" fontSize={11} fill={PAT.ink}>
               {i + 1}
             </text>
             <line x1={380} y1={82 + i * 30} x2={426} y2={82 + i * 30} {...hair} />
@@ -973,7 +971,7 @@ export function ManyHands() {
             <circle cx={532} cy={104} r={2.4} fill={PAT.ink} />
             <circle cx={630} cy={104} r={2.4} fill={PAT.ink} />
             <PatentKey x={581} y={92} size={10.5}>
-              ACCOUNTABLE
+              Accountable
             </PatentKey>
           </g>
         )}
@@ -1046,7 +1044,7 @@ export function AccountabilityDossiers() {
       ))}
       <rect x={474} y={64} width={80} height={11} fill={PAT.paper} {...ink} />
       <PatentKey x={514} y={72.6} size={8.2}>
-        SPONSORED
+        Sponsored
       </PatentKey>
       <FigureName x={506} y={196} size={11}>
         sponsorship disclosures
@@ -1062,65 +1060,11 @@ export function AccountabilityDossiers() {
       <ellipse cx={704} cy={142} rx={42} ry={15} fill="none" {...ink} />
       <ellipse cx={704} cy={142} rx={37} ry={12} fill="none" {...hair} />
       <PatentKey x={704} y={145.5} size={8.2}>
-        VERIFIED
+        Verified
       </PatentKey>
       <FigureName x={700} y={196} size={11}>
         independent verification
       </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * Discussion case: two claim forms with identical loss lines, one written by
- * a native and one by a non-native English speaker, pass through the licensed
- * model. The native claim draws one fraud flag, the non-native claim two
- * (red).
- */
-export function InsuranceClaims() {
-  const id = "w1-claims";
-  const form = (y: number) => (
-    <g>
-      <ObliqueBox id={id} x={30} y={y} w={74} h={50} dx={8} dy={5} />
-      <line x1={38} y1={y + 10} x2={78} y2={y + 10} {...ink} />
-      {[18, 25, 32].map((d) => (
-        <line key={d} x1={38} y1={y + d} x2={96} y2={y + d} {...hair} />
-      ))}
-      <rect x={70} y={y + 37} width={26} height={8} fill="none" {...hair} />
-    </g>
-  );
-  return (
-    <Frame
-      width={400}
-      height={215}
-      label="Patent drawing: two claim forms with identical lines, marked native and non-native, pass through one licensed model housing. The native claim comes out with one fraud flag, the non-native claim with two red flags, twice the rate."
-    >
-      <PatentDefs id={id} />
-
-      {form(40)}
-      <PatentKey x={70} y={112} size={11}>
-        NATIVE
-      </PatentKey>
-      {form(128)}
-      <PatentKey x={70} y={200} size={11}>
-        NON-NATIVE
-      </PatentKey>
-
-      {/* Licensed model */}
-      <line x1={114} y1={64} x2={160} y2={92} {...hair} strokeDasharray={CENTRE_DASH} />
-      <line x1={114} y1={152} x2={160} y2={136} {...hair} strokeDasharray={CENTRE_DASH} />
-      <ObliqueBox id={id} x={162} y={72} w={76} h={84} dx={14} dy={9} />
-      <Gear cx={192} cy={104} r={11} n={9} />
-      <Gear cx={216} cy={128} r={9} n={8} phase={0.25} />
-      <line x1={254} y1={92} x2={292} y2={64} {...hair} strokeDasharray={CENTRE_DASH} />
-      <line x1={254} y1={136} x2={292} y2={152} {...hair} strokeDasharray={CENTRE_DASH} />
-
-      {/* Flags out */}
-      <Flag id={id} x={304} y={88} />
-      <Display1 x={372} y={80} text="1×" />
-      <Flag id={id} x={300} y={176} red />
-      <Flag id={id} x={326} y={176} red />
-      <Display1 x={372} y={168} text="2×" red />
     </Frame>
   );
 }
@@ -1150,7 +1094,7 @@ export function BenchmarkGap() {
         [196, 146, "1"],
         [258, 158, "3"],
       ].map(([x, y, n]) => (
-        <text key={n} x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={16} fill={PAT.ink}>
+        <text key={n} x={x} y={y} textAnchor="middle" fontFamily="var(--font-body)" fontSize={16} fill={PAT.ink}>
           {n}
         </text>
       ))}
@@ -1202,7 +1146,7 @@ export function ProbabilisticRuns() {
   counts[2] = Math.max(0, runs - counts[0] - counts[1]);
   const top = counts.indexOf(Math.max(...counts));
   const bins = [268, 400, 532];
-  const brand = ["BRAND A", "BRAND B", "BRAND C"];
+  const brand = ["Brand A", "Brand B", "Brand C"];
   const pegs: [number, number][] = [];
   for (let i = 0; i < 6; i++) for (let j = 0; j <= i; j++) pegs.push([r2(400 + (j - i / 2) * 40), 58 + i * 11]);
   const tilt = framing === "standard" ? -1 : 1;
@@ -1254,7 +1198,7 @@ export function ProbabilisticRuns() {
                   />
                 );
               })}
-              <text x={bx + 50} y={196} fontFamily="var(--font-heading)" fontSize={13} fill={hot ? PAT.signal : PAT.ink}>
+              <text x={bx + 50} y={196} fontFamily="var(--font-body)" fontSize={13} fill={hot ? PAT.signal : PAT.ink}>
                 {n}
               </text>
               <PatentKey x={bx} y={216} size={9.5}>
@@ -1308,13 +1252,13 @@ export function BenchmarkFailures() {
         {/* The first figure: construct mismatch */}
         <ObliqueBox id={id} x={62} y={50} w={70} h={34} dx={10} dy={6} />
         <PatentKey x={97} y={71} size={10}>
-          TRIVIA
+          Trivia
         </PatentKey>
         <line x1={97} y1={90} x2={97} y2={118} {...hair} strokeDasharray={CENTRE_DASH} />
         <ObliqueBox id={id} x={46} y={140} w={104} h={14} dx={24} dy={16} top={PAT.paper} />
         <ellipse cx={110} cy={132} rx={20} ry={5} fill={stip(id, "dense")} {...ink} />
         <PatentKey x={98} y={174} size={10}>
-          CREDIT
+          Credit
         </PatentKey>
         <FigureName x={100} y={202} size={11}>
           construct mismatch
@@ -1357,14 +1301,14 @@ export function BenchmarkFailures() {
           <line key={y} x1={624} y1={y} x2={674} y2={y} {...hair} />
         ))}
         <PatentKey x={649} y={178} size={10}>
-          TEST
+          Test
         </PatentKey>
         <ObliqueBox id={id} x={708} y={112} w={58} h={48} dx={20} dy={14} top={PAT.paper} />
         {[120, 128, 136, 144, 152].map((y) => (
           <line key={y} x1={708} y1={y} x2={766} y2={y} {...hair} />
         ))}
         <PatentKey x={737} y={178} size={10}>
-          TRAIN
+          Train
         </PatentKey>
         <path d="M660 112Q686 62 728 92" {...redLine} />
         <path d={headAlongPath(728, 92, 42, 30, 8)} {...redLine} />
@@ -1464,7 +1408,7 @@ export function SixStages() {
         <path d="M690 76V34H330V80" fill="none" {...ink} strokeWidth={LINE.bold} />
         <path d={headAlongPath(330, 84, 0, 1, 8)} fill="none" {...ink} strokeWidth={LINE.bold} />
         <PatentKey x={510} y={25} size={12}>
-          ROLLBACK
+          Rollback
         </PatentKey>
 
         {/* Reference numerals */}
@@ -1535,7 +1479,7 @@ export function SharedAuthority() {
       <Chip id={id} x={330} y={188} red />
       <Chip id={id} x={356} y={188} red />
       <PatentKey x={420} y={28} fill={PAT.signal} size={10.5}>
-        COGNITIVE LIMITS
+        Cognitive limits
       </PatentKey>
 
       {/* Desk and the one case on it */}
@@ -1638,7 +1582,7 @@ export function Autonomous() {
       ))}
       <ObliqueBox id={id} x={44} y={122} w={270} h={6} dx={4} dy={2.5} />
       <PatentKey x={180} y={110} size={15}>
-        CONSTRAINTS
+        Constraints
       </PatentKey>
       <Belt id={id} at={[]} x1={296} />
       {[44, 100, 156, 212, 260].map((x) => (
@@ -1701,7 +1645,7 @@ export function OversightFailures() {
           </g>
         )}
         <PatentKey x={300} y={40} size={10}>
-          {`${casesPerHour} CASES / HR`}
+          {`${casesPerHour} Cases / HR`}
         </PatentKey>
         <FigureName x={195} y={204} size={11}>
           rubber-stamping
@@ -1923,14 +1867,14 @@ export function SurrogateConsumer() {
           <ObliqueBox id={id} x={82} y={r.y + 10} w={20} h={18} dx={5} dy={3} />
           <line x1={112} y1={r.y + 13} x2={r.ad ? 158 : 210} y2={r.y + 13} {...hair} />
           <line x1={112} y1={r.y + 22} x2={190} y2={r.y + 22} {...hair} />
-          <text x={306} y={r.y + 22} textAnchor="end" fontFamily="var(--font-heading)" fontSize={14} fill={PAT.ink}>
+          <text x={306} y={r.y + 22} textAnchor="end" fontFamily="var(--font-body)" fontSize={14} fill={PAT.ink}>
             {r.price}
           </text>
           {r.ad ? (
             <g>
               <rect x={164} y={r.y + 4} width={98} height={16} fill={PAT.paper} {...ink} />
               <PatentKey x={214} y={r.y + 15.8} size={9.5}>
-                SPONSORED
+                Sponsored
               </PatentKey>
             </g>
           ) : null}
@@ -1997,7 +1941,7 @@ export function DualAgencyRisks() {
             stroke={i === 0 ? PAT.signal : PAT.ink}
             strokeWidth={i === 0 ? LINE.bold : LINE.outline}
           />
-          <text x={314} y={54 + i * 21} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={10} fill={i === 0 ? PAT.signal : PAT.ink}>
+          <text x={314} y={54 + i * 21} textAnchor="middle" fontFamily="var(--font-body)" fontSize={10} fill={i === 0 ? PAT.signal : PAT.ink}>
             {i + 1}
           </text>
           {i === 0 ? null : <line x1={324} y1={50 + i * 21} x2={i === 4 ? 344 : 360} y2={50 + i * 21} {...hair} />}
@@ -2040,9 +1984,9 @@ export function DualAgencyRisks() {
       ))}
       <line x1={630} y1={110} x2={672} y2={110} stroke={PAT.signal} strokeWidth={LINE.bold} />
       {[
-        ["CONSUMER", 52],
-        ["PLATFORM", 92],
-        ["DEVELOPER", 132],
+        ["Consumer", 52],
+        ["Platform", 92],
+        ["Developer", 132],
       ].map(([n, y]) => (
         <g key={n}>
           <line x1={686} y1={88} x2={700} y2={(y as number) - 4} {...hair} strokeDasharray="3 3" />
@@ -2055,67 +1999,6 @@ export function DualAgencyRisks() {
       <FigureName x={700} y={194} size={9.5}>
         liability ambiguity
       </FigureName>
-    </Frame>
-  );
-}
-
-/** A hotel block with a grid of windows. (x, y) is the front face's top-left. */
-function Hotel({ id, x, y, w = 84, h = 112 }: { id: string; x: number; y: number; w?: number; h?: number }) {
-  const cols = 3;
-  const rows = 5;
-  return (
-    <g>
-      <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={14} dy={9} />
-      {Array.from({ length: rows * cols }, (_, k) => {
-        const c = k % cols;
-        const r = Math.floor(k / cols);
-        return <rect key={k} x={r2(x + 10 + c * ((w - 20) / cols))} y={y + 10 + r * 17} width={14} height={10} fill={PAT.paper} {...hair} />;
-      })}
-      <rect x={r2(x + w / 2 - 9)} y={y + h - 18} width={18} height={18} fill={PAT.paper} {...ink} />
-    </g>
-  );
-}
-
-/**
- * Discussion case: the agent pins the first-ranked, sponsored hotel, which
- * lets the street noise in (red). The quiet four-star hotel beside it is
- * passed over.
- */
-export function TravelAgentHotel() {
-  const id = "w1-hotel";
-  const arc = (r: number) => `M${r2(236 - r * 0.5)} ${r2(112 - r * 0.87)}A${r} ${r} 0 0 0 ${r2(236 - r * 0.5)} ${r2(112 + r * 0.87)}`;
-  return (
-    <Frame
-      width={400}
-      height={215}
-      label="Patent drawing: two hotel blocks. The left one carries a sponsored sign on its roof and red noise waves at its side, and the AI agent beside it takes hold of it. The right one, with four stars on its roof sign, is quiet and passed over."
-    >
-      <PatentDefs id={id} />
-      <line x1={20} y1={190} x2={380} y2={190} {...hair} />
-
-      {/* Sponsored hotel, ranked first, letting the noise in */}
-      <Hotel id={id} x={84} y={60} />
-      <rect x={76} y={32} width={100} height={18} fill={PAT.paper} {...ink} />
-      <line x1={100} y1={50} x2={100} y2={58} {...ink} />
-      <line x1={152} y1={50} x2={152} y2={58} {...ink} />
-      <PatentKey x={127} y={45} size={11}>
-        SPONSORED
-      </PatentKey>
-      {[16, 26, 36].map((r) => (
-        <path key={r} d={arc(r)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
-      ))}
-
-      {/* Quiet four-star hotel, passed over */}
-      <Hotel id={id} x={264} y={60} />
-      <rect x={272} y={34} width={68} height={16} fill={PAT.paper} {...ink} />
-      <line x1={280} y1={50} x2={280} y2={58} {...ink} />
-      <line x1={332} y1={50} x2={332} y2={58} {...ink} />
-      {[0, 1, 2, 3].map((i) => (
-        <path key={i} d={star(285 + i * 14, 42, 5)} fill="none" {...ink} />
-      ))}
-
-      {/* The agent pins the sponsored hotel */}
-      <Agent id={id} x={14} y={190} gx={92} gy={178} />
     </Frame>
   );
 }

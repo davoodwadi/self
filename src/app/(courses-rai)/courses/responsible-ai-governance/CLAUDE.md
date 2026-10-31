@@ -1,6 +1,6 @@
 # Responsible AI & Algorithmic Governance: plate style
 
-Every SVG plate in this course is a **patent drawing**: the algorithm, the rule or the market is drawn as an invention on file, so students can inspect how it works and where it fails. Fine black line work on white, shading by stipple, oblique projection, Caslon type, and one examiner's red for the finding.
+Every SVG plate in this course is a **patent drawing**: the algorithm, the rule or the market is drawn as an invention on file, so students can inspect how it works and where it fails. Fine black line work on white, shading by stipple, oblique projection, plain sans type, and one examiner's red for the finding.
 
 The reference plate is the Week 1 "Why market algorithms require governance" plate as previewed in the style round (one hand stamp in the first figure, one rule bar pressing five cards in the second, four stippled red). Match its line weights, stipple densities and type.
 
@@ -12,8 +12,8 @@ The style is a medium, not a scene template: each plate is invented for its sent
 - **Tone by stipple.** Shading comes only from the dot patterns in `PatentDefs`: `light` on top faces, `dense` on side faces and cast shadows, white on front faces. No grey fills, gradients or shadows.
 - **Oblique projection.** Solids are drawn with a white front face and the depth running up and to the right (`ObliqueBox`, default `dx 10, dy 6`). Flat objects lying down (cards, forms, maps) are parallelograms with a thin stippled edge. Cylinders get ellipse caps.
 - **Hidden and moving parts.** Hidden edges are dashed hairlines. A path of motion or a drop (a stamp coming down, a value flowing) is a centre line (`CENTRE_DASH`) or a short dashed hairline. Cutaways show an internal mechanism by drawing the housing's front face open with a broken edge (a zig-zag break line), as in a patent section.
-- **Figure names.** When a plate sets two or more figures side by side, each is identified by its name alone, set with `<FigureName>` underneath: a concept or quantity from the slide in Caslon italic (`thousands of decisions per second`). Figure names name a concept. They never explain the drawing (root rule 2).
-- **Keys.** Concept names set on or beside a part use `PatentKey` (Caslon capitals, tracked 0.22em). A concept name set into a solid sits on its white front face.
+- **Figure names.** When a plate sets two or more figures side by side, each is identified by its name alone, set with `<FigureName>` underneath: a concept or quantity from the slide in sentence case (`thousands of decisions per second`). Figure names name a concept. They never explain the drawing (root rule 2).
+- **Keys.** Concept names set on or beside a part use `PatentKey` (sentence case at normal letter spacing). A concept name set into a solid sits on its white front face.
 - **People.** When the body carries the idea, draw people as patent figures: clean outline, no skin-tone fills, stipple for clothing shade, hands and tools drawn in the same line.
 
 ## Palette (`PAT` in `_visuals/kit.tsx`, tokens in `(courses-rai)/globals.css`)
@@ -30,11 +30,12 @@ A red finding is drawn in red line and/or red stipple (`stip(id, "signal")`). It
 
 ## Type
 
-- Headings and display: **Libre Caslon Text** 400 (`--font-heading`), italic for figure names.
-- Body and labels: **Libre Franklin** (`--font-body`).
-- Inside plates and their controls everything is Caslon, weight 400: keys and any word printed on a drawn object (a badge, a sign, a stamp) are `PatentKey` capitals at 0.22em tracking. Numerals and quantities are plain Caslon. Figure names are Caslon italic. No sans and no bold in a plate.
+- **Libre Franklin** throughout (`--font-body`): headings, body, labels, plates and controls. Headings take their weight from 600 semibold, not from a second typeface.
+- Inside plates everything is set at weight 400 in sentence case at normal letter spacing: keys and any word printed on a drawn object (a badge, a sign, a stamp) use `PatentKey`, numerals and quantities are plain, and figure names use `FigureName`. Acronyms and proper nouns keep their capitals. No bold in a plate.
 - Size by what students see, not by viewBox units: measured at 1440×900 after `FitSlides` has run, keys and object words read at 11 to 13px, figure names at 12 to 15px, and quantities larger. A column plate renders far smaller than a full-width one, so the same idea needs bigger units there. When a slide shrinks its plates to fit, give the slide more room (a side-by-side layout, a shorter plate) rather than smaller type.
-- The controls under a plate (`Segmented`, `Slider`, `PlateButton`) use the same Caslon tracked capitals in ink. Their labels are terms from the slide.
+- The controls under a plate (`Segmented`, `Slider`, `PlateButton`) use the same small sentence-case keys in ink. Their labels are terms from the slide.
+
+Slide text stays plain: headings and labels in sentence case, sentences in ink with key terms in bold ink, thin grey rules between blocks, and Part and discussion headings written as ordinary headings. Colour belongs to the data in the plates.
 
 ## Visual variety across a week
 
@@ -66,7 +67,7 @@ New objects are drawn in the week's `visuals.tsx` and move to `_visuals/objects.
 Render each plate, screenshot it at full size, and check:
 
 - **Line and stipple:** only ink outlines at the three weights and stipple tone. No grey or flat fills.
-- **Type:** every label in Caslon at the sizes above, measured on the rendered slide.
+- **Type:** every label in sentence case at the sizes above, measured on the rendered slide.
 - **Projection:** solids share one oblique direction and depth within the plate. Front faces white.
 - **One finding:** red marks one subject, as line or stipple.
 - **Variety:** a different kind of drawing from the plates before and after it.

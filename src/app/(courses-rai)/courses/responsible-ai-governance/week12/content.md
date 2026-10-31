@@ -57,7 +57,8 @@ week: week12
 - A vendor that refuses to disclose disaggregated performance or blocks independent black-box behavioral auditing fails procurement qualification for high-risk or customer-facing deployments.
 
 ## Discussion: The Vendor Who Refuses an Audit
-- Discussion: A hospital network is procuring an AI patient-triage and appointment-scheduling assistant from a commercial software vendor. The vendor claims its proprietary model is "99 percent bias-free," but refuses to allow the hospital's governance team to run a factorial behavioral audit across patient age, language, and disability profiles, citing trade-secret protection. How should the hospital's Second Line of Defense respond, and what contractual and technical verification terms should be mandatory in enterprise AI procurement?
+- A hospital network is procuring an AI patient-triage and appointment-scheduling assistant from a commercial software vendor. The vendor claims its proprietary model is "99 percent bias-free," but refuses to allow the hospital's governance team to run a factorial behavioral audit across patient age, language, and disability profiles, citing trade-secret protection.
+- How should the hospital's Second Line of Defense respond, and what contractual and technical verification terms should be mandatory in enterprise AI procurement?
 
 ## Part 3: Adversarial Red-Teaming, Stress-Testing, and Incident Response [no-exercise]
 - While systematic behavioral audits (Week 4) measure expected behavior and distributional bias across standard operating conditions, organizations must also prepare for adversarial attacks, extreme edge cases, and post-launch failures.
@@ -115,7 +116,8 @@ week: week12
 - Pillar 5 is Agentic Fiduciary Integrity and Resource Rationality: mandating consumer-beneficiary prompt clauses, evaluative invariance across sponsored listings, upfront machine-readable unit pricing, and Tool-Lab resource efficiency alongside continuous drift monitoring and kill-switch playbooks.
 
 ## Discussion: Writing the Chief AI Officer's Charter
-- Discussion: You have just been appointed Chief AI Governance Officer at a multinational retail and financial-services marketplace that operates a consumer credit arm, an advertising-funded e-commerce search engine, and a new autonomous AI shopping assistant. The board of directors gives you ninety days to establish a binding governance charter. Which three systems do you audit first, what quantitative release gates do you institute for the shopping assistant, and how do you structure the Three Lines of Defense so product teams cannot bypass your review?
+- You have just been appointed Chief AI Governance Officer at a multinational retail and financial-services marketplace that operates a consumer credit arm, an advertising-funded e-commerce search engine, and a new autonomous AI shopping assistant. The board of directors gives you ninety days to establish a binding governance charter.
+- Which three systems do you audit first, what quantitative release gates do you institute for the shopping assistant, and how do you structure the Three Lines of Defense so product teams cannot bypass your review?
 
 ## The Course in Review [no-exercise]
 - Weeks 1 through 3 established the normative and social foundations of algorithmic governance: ethical frameworks (consequentialism, deontology, virtue ethics), value-chain accountability, group and individual fairness under the impossibility theorem, and cultural and country-of-origin biases in foundation models.

@@ -75,7 +75,8 @@ week: week1
 - Auditors and ethics boards are accountable for independent verification, conflict-of-interest independence, and accurate reporting of risks to leadership and regulators.
 
 ## Discussion: When a Pricing Model Discriminates
-- Discussion: A national insurance firm licenses a third-party foundation model to summarize claim narratives and flag suspected fraud. An internal review reveals that claims written by non-native English speakers are flagged for investigation at twice the rate of claims with identical loss profiles written by native speakers. How does the problem of many hands appear in this case, and how should accountability be divided between the model vendor and the insurance firm?
+- A national insurance firm licenses a third-party foundation model to summarize claim narratives and flag suspected fraud. An internal review reveals that claims written by non-native English speakers are flagged for investigation at twice the rate of claims with identical loss profiles written by native speakers.
+- How does the problem of many hands appear in this case, and how should accountability be divided between the model vendor and the insurance firm?
 
 ## Part 3: The Governance Gap Between Benchmarks and Markets [no-exercise]
 - Organizations frequently rely on public AI leaderboards and technical benchmarks to select models for commercial deployment.
@@ -139,7 +140,8 @@ week: week1
 - Liability ambiguity arises when an autonomous agent completes an unauthorized, unsuitable, or overpriced transaction, raising the question of whether the consumer, the platform, or the model developer bears the loss.
 
 ## Discussion: The Autonomous Travel Agent
-- Discussion: A traveler instructs an AI assistant integrated into an online booking platform to book a quiet four-star hotel in Montreal under 250 dollars per night. The assistant selects a non-refundable sponsored listing with poor soundproofing reviews that was ranked first on the platform's results page. Using the ethical frameworks, value-chain accountability roles, and agentic governance risks introduced this week, analyze who bears responsibility for this outcome and what governance controls should have prevented it.
+- A traveler instructs an AI assistant integrated into an online booking platform to book a quiet four-star hotel in Montreal under 250 dollars per night. The assistant selects a non-refundable sponsored listing with poor soundproofing reviews that was ranked first on the platform's results page.
+- Using the ethical frameworks, value-chain accountability roles, and agentic governance risks introduced this week, analyze who bears responsibility for this outcome and what governance controls should have prevented it.
 
 ## Key Takeaways
 - Market algorithms scale decision rules across thousands of consumers instantly, requiring institutional governance rather than aspirational ethical principles alone.

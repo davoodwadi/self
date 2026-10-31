@@ -3,7 +3,7 @@
 import React from "react";
 import { SlideDeck, Slide, Title, Subtitle } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Prompt } from "../_visuals/kit";
+import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
   BlackBoxes,
@@ -11,7 +11,6 @@ import {
   BuriedDisclosure,
   ChainOfCustody,
   ClampOnMeter,
-  CleanTrace,
   CodedProtocols,
   CounterfactualPlane,
   CoveredCue,
@@ -23,7 +22,6 @@ import {
   LevelBalance,
   LimeFit,
   OpaqueDecisions,
-  PortalLetter,
   PrincipalSkepticism,
   ReadableModels,
   RecourseBurden,
@@ -52,29 +50,29 @@ export default function Week5Page() {
   return (
     <SlideDeck label="Week 5">
       {/* ================================================================
-          01. Title Slide
+          Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 5: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Transparency, Explainability, and Reasoning Traces</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[52ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.25rem,2vw,1.7rem)]">
+        <p className="type-quote mt-10 max-w-[52ch] !text-[clamp(1.25rem,2vw,1.7rem)]">
           Governing opaque algorithms requires distinguishing intrinsic
           interpretability from post-hoc approximations, testing whether
           language-model reasoning traces are{" "}
-          <span className="text-[var(--signal)]">faithful to actual choices</span>,
+          faithful to actual choices,
           and matching explanations to the decisions stakeholders must make.
         </p>
       </Slide>
 
       {/* ================================================================
-          02. Why Opacity Is a Governance Problem [no-exercise]
+          Why Opacity Is a Governance Problem [no-exercise]
           ================================================================ */}
       <Slide id="why-opacity-is-a-governance-problem" border className="!py-8">
         <SlideHeading>Why Opacity Is a Governance Problem</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Modern marketing and financial pipelines rely on gradient-boosted
                 ensembles, deep neural networks, and billion-parameter language
@@ -82,12 +80,12 @@ export default function Week5Page() {
                 a short formula.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 When an opaque model denies a loan, raises an insurance premium,
                 or excludes a supplier from a procurement shortlist, neither the
                 customer nor the manager can immediately see{" "}
-                <Term tone="signal">which variables drove the outcome</Term>.
+                <Term>which variables drove the outcome</Term>.
               </P>
             </Ruled>
           </div>
@@ -96,7 +94,7 @@ export default function Week5Page() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Opacity undermines three pillars of algorithmic governance:
               internal debugging of spurious correlations, regulatory
@@ -104,7 +102,7 @@ export default function Week5Page() {
               consumer&apos;s ability to contest an erroneous decision.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Yet not every stakeholder needs the same form of visibility. An
               explanation that helps a machine learning engineer diagnose
@@ -115,7 +113,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          03. Transparency Versus Explainability Versus Interpretability [exercise]
+          Transparency Versus Explainability Versus Interpretability [exercise]
           ================================================================ */}
       <Slide
         id="transparency-versus-explainability-versus-interpretability"
@@ -127,9 +125,9 @@ export default function Week5Page() {
         <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           <li className="min-w-0">
             <Numbered n={1}>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">Process transparency</Term> concerns
+                  <Term>Process transparency</Term> concerns
                   institutional and procedural openness: disclosing that an
                   automated system is in use, documenting its training data
                   provenance, and publishing its governance and auditing
@@ -140,9 +138,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">Intrinsic interpretability</Term> is a
+                  <Term>Intrinsic interpretability</Term> is a
                   property of a model whose mathematical structure is simple and
                   constrained enough that a human can directly trace how input
                   features combine to produce a prediction.
@@ -152,9 +150,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">Post-hoc explainability</Term> is the use of
+                  <Term>Post-hoc explainability</Term> is the use of
                   a secondary mathematical procedure or surrogate model to
                   approximate and summarize why a complex black-box model
                   produced its outputs after the fact.
@@ -167,7 +165,7 @@ export default function Week5Page() {
           <Ruled>
             <P>
               A firm can provide{" "}
-              <Term tone="signal">high process transparency while deploying a black-box model</Term>,
+              <Term>high process transparency while deploying a black-box model</Term>,
               or use post-hoc explainability tools on an opaque model without
               making the underlying model intrinsically interpretable.
             </P>
@@ -179,7 +177,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          04. Part 1: Intrinsic Interpretability Versus Black-Box Complexity [no-exercise]
+          Part 1: Intrinsic Interpretability Versus Black-Box Complexity [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Intrinsic Interpretability Versus Black-Box Complexity" />
@@ -197,7 +195,7 @@ export default function Week5Page() {
               <p className={BIG}>
                 On structured tabular business data, however, constrained
                 interpretable models{" "}
-                <Term tone="signal">frequently match the out-of-sample accuracy</Term>{" "}
+                <Term>frequently match the out-of-sample accuracy</Term>{" "}
                 of black-box ensembles when features are carefully engineered
                 (Rudin, 2019).
               </p>
@@ -210,13 +208,13 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          05. Intrinsically Interpretable Models [no-exercise]
+          Intrinsically Interpretable Models [no-exercise]
           ================================================================ */}
       <Slide id="intrinsically-interpretable-models-linear-models-generalized-additive-models-and-rule-lists" border className="!py-8">
         <SlideHeading className="[&_h2]:!max-w-none">Intrinsically Interpretable Models: Linear Models, Generalized Additive Models, and Rule Lists</SlideHeading>
         <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           <li className="min-w-0">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Sparse linear and logistic regression models assign a single
                 weight to each input variable, allowing an analyst to read the
@@ -226,7 +224,7 @@ export default function Week5Page() {
             </Ruled>
           </li>
           <li className="min-w-0">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Generalized additive models (GAMs) extend linear models by
                 fitting a smooth, nonlinear shape function for each individual
@@ -237,7 +235,7 @@ export default function Week5Page() {
             </Ruled>
           </li>
           <li className="min-w-0">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Shallow decision trees and falling rule lists express
                 predictions as a short sequence of if-then conditions, such as
@@ -250,10 +248,10 @@ export default function Week5Page() {
         <Plate className="mx-auto mt-4 max-w-[900px]">
           <ReadableModels />
         </Plate>
-        <Ruled weight="thin" className="mt-4">
+        <Ruled className="mt-4">
           <P className="!max-w-none">
             In each of these architectures,{" "}
-            <Term tone="signal">the explanation is the model itself</Term>: there
+            <Term>the explanation is the model itself</Term>: there
             is zero discrepancy between how the model computes the decision and
             how the explanation describes it.
           </P>
@@ -261,7 +259,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          06. Black-Box Models [no-exercise]
+          Black-Box Models [no-exercise]
           ================================================================ */}
       <Slide id="black-box-models-ensembles-deep-neural-networks-and-foundation-models" border className="!py-8">
         <SlideHeading>Black-Box Models: Ensembles, Deep Neural Networks, and Foundation Models</SlideHeading>
@@ -270,21 +268,21 @@ export default function Week5Page() {
             <BlackBoxes />
           </Plate>
           <div className="grid gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Random forests and gradient-boosted trees combine hundreds of
                 deep trees whose high-order feature interactions cannot be
                 summarized by a single rule list or additive curve.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Deep neural networks and transformer foundation models
                 distribute representations across millions or billions of
                 continuous parameters and attention heads.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Black-box architectures provide genuine performance advantages
                 primarily on unstructured data, such as raw text, speech, images,
@@ -292,11 +290,11 @@ export default function Week5Page() {
                 be mapped into latent representations.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Even when a model&apos;s source code and weights are publicly
                 released, its high-dimensional parameter space{" "}
-                <Term tone="signal">remains functionally opaque</Term> to human
+                <Term>remains functionally opaque</Term> to human
                 inspection without analytical tools.
               </P>
             </Ruled>
@@ -305,7 +303,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          07. When High-Stakes Decisions Should Use Interpretable Models [exercise]
+          When High-Stakes Decisions Should Use Interpretable Models [exercise]
           ================================================================ */}
       <Slide
         id="when-high-stakes-decisions-should-use-interpretable-models"
@@ -317,7 +315,7 @@ export default function Week5Page() {
         <Statement className="!max-w-none !text-[clamp(1.2rem,1.8vw,1.55rem)]">
           As Rudin (2019) argues, post-hoc explanations of black-box models are
           necessarily approximations: if a post-hoc explanation were{" "}
-          <span className="text-[var(--signal)]">completely faithful</span> to
+          completely faithful to
           the black box in every case, the black box would not be needed.
         </Statement>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
@@ -325,7 +323,7 @@ export default function Week5Page() {
             <SurrogateGap />
           </Plate>
           <div className="grid gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In high-stakes tabular domains such as consumer credit
                 underwriting, medical risk scoring, and criminal justice, relying
@@ -333,15 +331,15 @@ export default function Week5Page() {
                 hiding critical edge-case failures.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 When structured tabular features already capture the domain
                 signal and errors carry severe legal or human consequences,
                 governance frameworks favor{" "}
-                <Term tone="ink">intrinsically interpretable models with monotonicity constraints</Term>.
+                <Term>intrinsically interpretable models with monotonicity constraints</Term>.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Complex black-box models are reserved for unstructured perception
                 and language tasks, or for lower-stakes ranking tasks where the
@@ -354,7 +352,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          08. Part 2: Post-Hoc Feature Attribution Methods [no-exercise]
+          Part 2: Post-Hoc Feature Attribution Methods [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Post-Hoc Feature Attribution Methods" />
@@ -373,8 +371,8 @@ export default function Week5Page() {
             <Ruled>
               <p className={BIG}>
                 Post-hoc methods are divided by scope into{" "}
-                <Term tone="ink">global explanations</Term> of the model as a
-                whole and <Term tone="ink">local explanations</Term> of a single
+                <Term>global explanations</Term> of the model as a
+                whole and <Term>local explanations</Term> of a single
                 prediction for one individual.
               </p>
             </Ruled>
@@ -383,7 +381,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          09. Global Versus Local Explanations [no-exercise]
+          Global Versus Local Explanations [no-exercise]
           ================================================================ */}
       <Slide id="global-versus-local-explanations" border className="!py-8">
         <SlideHeading>Global Versus Local Explanations</SlideHeading>
@@ -391,13 +389,13 @@ export default function Week5Page() {
           <div className="grid content-start gap-4">
             <Ruled>
               <P>
-                A <Term tone="ink">global explanation</Term> summarizes how a
+                A <Term>global explanation</Term> summarizes how a
                 model behaves across the entire population of customers,
                 identifying which features carry the greatest overall weight and
                 how predictions shift on average as a feature changes.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Global explanations are used by model developers, risk
                 committees, and regulators to audit whether a model relies on
@@ -408,12 +406,12 @@ export default function Week5Page() {
           <div className="grid content-start gap-4">
             <Ruled>
               <P>
-                A <Term tone="ink">local explanation</Term> accounts for why the
+                A <Term>local explanation</Term> accounts for why the
                 model produced a specific prediction for one individual customer,
                 such as why Applicant 4082 received a default probability of 0.42.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Local explanations are used by customer service
                 representatives, loan officers, and affected consumers who need
@@ -428,15 +426,15 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          10. Permutation Feature Importance and Partial Dependence [no-exercise]
+          Permutation Feature Importance and Partial Dependence [no-exercise]
           ================================================================ */}
       <Slide id="permutation-feature-importance-and-partial-dependence" border className="!py-8">
         <SlideHeading>Permutation Feature Importance and Partial Dependence</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Permutation feature importance</Term> is a
+                <Term>Permutation feature importance</Term> is a
                 global method that measures how much the model&apos;s holdout
                 error increases when the values of a single feature are randomly
                 shuffled across observations, breaking the link between that
@@ -448,17 +446,17 @@ export default function Week5Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Partial dependence plots (PDPs)</Term> show the
+                <Term>Partial dependence plots (PDPs)</Term> show the
                 marginal effect of one or two features on the predicted outcome
                 by averaging the model&apos;s predictions over the empirical
                 distribution of all other features.
               </P>
             </Ruled>
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Individual conditional expectation (ICE) curves</Term>{" "}
+                <Term>Individual conditional expectation (ICE) curves</Term>{" "}
                 disaggregate a partial dependence plot by drawing one curve per
                 observation, revealing whether a feature&apos;s effect is uniform
                 across customers or varies through interactions.
@@ -469,10 +467,10 @@ export default function Week5Page() {
             </Plate>
           </div>
         </div>
-        <Ruled weight="thin" className="mt-4">
+        <Ruled className="mt-4">
           <P className="!max-w-none">
             Both permutation importance and partial dependence plots can produce{" "}
-            <Term tone="signal">misleading artifacts when input features are strongly correlated</Term>,
+            <Term>misleading artifacts when input features are strongly correlated</Term>,
             because shuffling or varying one feature independently creates
             unrealistic combinations of customer attributes.
           </P>
@@ -480,15 +478,15 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          11. Local Surrogates and Game-Theoretic Attributions: LIME and SHAP [no-exercise]
+          Local Surrogates and Game-Theoretic Attributions: LIME and SHAP [no-exercise]
           ================================================================ */}
       <Slide id="local-surrogates-and-game-theoretic-attributions-lime-and-shap" border className="!py-8">
         <SlideHeading>Local Surrogates and Game-Theoretic Attributions: LIME and SHAP</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-10">
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Local Interpretable Model-agnostic Explanations (LIME)</Term>{" "}
+                <Term>Local Interpretable Model-agnostic Explanations (LIME)</Term>{" "}
                 approximates a black-box model around a single customer&apos;s
                 profile by perturbing that profile, querying the black box on the
                 perturbed points, and fitting a simple weighted linear model
@@ -500,9 +498,9 @@ export default function Week5Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">SHapley Additive exPlanations (SHAP)</Term>{" "}
+                <Term>SHapley Additive exPlanations (SHAP)</Term>{" "}
                 draws on cooperative game theory to treat input features as
                 players in a coalition and computes each feature&apos;s Shapley
                 value: its average marginal contribution to the prediction across
@@ -515,16 +513,16 @@ export default function Week5Page() {
           </div>
         </div>
         <div className="mt-4 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               SHAP satisfies three desirable axiomatic properties that heuristic
               attribution methods lack:{" "}
-              <Term tone="signal">local accuracy</Term> (attributions sum to the
+              <Term>local accuracy</Term> (attributions sum to the
               difference between the individual prediction and the baseline
               mean), missingness, and consistency.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Aggregating absolute SHAP values across a holdout dataset also
               provides a consistent global summary of feature importance
@@ -535,7 +533,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          12. Limitations and Vulnerabilities of Post-Hoc Attributions [exercise]
+          Limitations and Vulnerabilities of Post-Hoc Attributions [exercise]
           ================================================================ */}
       <Slide
         id="limitations-and-vulnerabilities-of-post-hoc-attributions"
@@ -547,7 +545,7 @@ export default function Week5Page() {
         <ol className="grid w-full gap-x-10 gap-y-3 md:grid-cols-2">
           <li className="min-w-0">
             <div className="flex h-full flex-col">
-              <Ruled weight="thin" className="mb-2 !pt-3">
+              <Ruled className="mb-2 !pt-3">
                 <P>
                   Feature attributions describe how the model uses its inputs,
                   not the causal effect of those variables in the real world. A
@@ -562,9 +560,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <div className="flex h-full flex-col">
-              <Ruled weight="thin" className="mb-2 !pt-3">
+              <Ruled className="mb-2 !pt-3">
                 <P>
-                  <Term tone="ink">Instability under perturbation</Term> occurs
+                  <Term>Instability under perturbation</Term> occurs
                   when small changes in the background reference distribution,
                   neighborhood kernel width, or random seed cause LIME or
                   empirical SHAP estimates to rank different features as the top
@@ -578,9 +576,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <div className="flex h-full flex-col">
-              <Ruled weight="thin" className="mb-2 !pt-3">
+              <Ruled className="mb-2 !pt-3">
                 <P>
-                  <Term tone="ink">Correlated-feature distortion</Term> occurs
+                  <Term>Correlated-feature distortion</Term> occurs
                   when marginal attribution procedures evaluate off-manifold
                   combinations of correlated variables, such as pairing a
                   twenty-year credit history with an age of nineteen.
@@ -593,9 +591,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <div className="flex h-full flex-col">
-              <Ruled weight="thin" className="mb-2 !pt-3">
+              <Ruled className="mb-2 !pt-3">
                 <P>
-                  <Term tone="ink">Adversarial scaffolding</Term>, demonstrated by
+                  <Term>Adversarial scaffolding</Term>, demonstrated by
                   Slack and colleagues (2020), shows that a malicious or
                   non-compliant developer can wrap a discriminatory model in an
                   out-of-distribution detector that returns fair behavior on
@@ -612,30 +610,18 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          13. Discussion: The Disputed Credit Denial
+          Discussion: The Disputed Credit Denial
           ================================================================ */}
       <Slide id="discussion-the-disputed-credit-denial" border className="!py-8">
-        <SlideHeading>The Disputed Credit Denial</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Prompt>
-            A small-business owner is denied a working-capital line of credit by
-            an automated gradient-boosted model. The bank&apos;s customer portal
-            displays the top three negative SHAP values for the application:
-            &ldquo;Number of recent credit inquiries,&rdquo; &ldquo;Postal code
-            commercial density,&rdquo; and &ldquo;Average monthly balance
-            volatility.&rdquo; Does this display satisfy the governance goals of
-            transparency and contestability for the business owner, and what
-            risks arise if the bank relies solely on SHAP values for regulatory
-            compliance?
-          </Prompt>
-          <Plate>
-            <PortalLetter />
-          </Plate>
-        </div>
+        <SlideHeading>Discussion: The Disputed Credit Denial</SlideHeading>
+        <Discussion
+          scenario={"A small-business owner is denied a working-capital line of credit by an automated gradient-boosted model. The bank's customer portal displays the top three negative SHAP values for the application: “Number of recent credit inquiries,” “Postal code commercial density,” and “Average monthly balance volatility.”"}
+          question={"Does this display satisfy the governance goals of transparency and contestability for the business owner, and what risks arise if the bank relies solely on SHAP values for regulatory compliance?"}
+        />
       </Slide>
 
       {/* ================================================================
-          14. Part 3: Counterfactual Explanations and Actionable Recourse [no-exercise]
+          Part 3: Counterfactual Explanations and Actionable Recourse [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Counterfactual Explanations and Actionable Recourse" />
@@ -644,7 +630,7 @@ export default function Week5Page() {
             <Ruled>
               <p className={BIG}>
                 Knowing which features contributed to an unfavorable score{" "}
-                <Term tone="signal">does not tell a consumer what concrete steps will reverse the decision</Term>.
+                <Term>does not tell a consumer what concrete steps will reverse the decision</Term>.
               </p>
             </Ruled>
             <Ruled>
@@ -662,22 +648,22 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          15. Counterfactual Explanations: What Would Have Changed the Decision [no-exercise]
+          Counterfactual Explanations: What Would Have Changed the Decision [no-exercise]
           ================================================================ */}
       <Slide id="counterfactual-explanations-what-would-have-changed-the-decision" border className="!py-8">
         <SlideHeading>Counterfactual Explanations: What Would Have Changed the Decision</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-10">
           <div className="grid gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Introduced to algorithmic governance by Wachter, Mittelstadt, and
-                Russell (2017), a <Term tone="ink">counterfactual explanation</Term>{" "}
+                Russell (2017), a <Term>counterfactual explanation</Term>{" "}
                 states the smallest modification to an individual&apos;s input
                 profile that alters the model&apos;s prediction to a desired
                 target outcome.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Rather than opening the black box or approximating gradients, a
                 counterfactual explanation takes the form: &ldquo;Your loan
@@ -686,15 +672,15 @@ export default function Week5Page() {
                 percent, your application would have been approved.&rdquo;
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Because counterfactual explanations specify an exact point on the
                 other side of the model&apos;s decision boundary, they are{" "}
-                <Term tone="signal">fully faithful</Term> to the model&apos;s
+                <Term>fully faithful</Term> to the model&apos;s
                 actual decision rule at that boundary point.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Multiple valid counterfactuals typically exist for the same
                 individual, requiring an optimization criterion that balances
@@ -710,7 +696,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          16. From Explanation to Actionable Recourse [exercise]
+          From Explanation to Actionable Recourse [exercise]
           ================================================================ */}
       <Slide
         id="from-explanation-to-actionable-recourse"
@@ -721,24 +707,24 @@ export default function Week5Page() {
         <SlideHeading>From Explanation to Actionable Recourse</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
-                <Term tone="ink">Actionable recourse</Term>, formalized by Ustun,
+                <Term>Actionable recourse</Term>, formalized by Ustun,
                 Spangher, and Liu (2019), requires that a counterfactual
                 explanation alter only mutable features that the individual can
                 realistically change through their own actions.
               </P>
             </Ruled>
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 Immutable features, such as age, birthplace, or protected
                 demographic attributes, and conditionally immutable history, such
                 as &ldquo;never having missed a payment five years ago,&rdquo; can
                 explain a model&apos;s score but provide{" "}
-                <Term tone="signal">zero actionable recourse</Term>.
+                <Term>zero actionable recourse</Term>.
               </P>
             </Ruled>
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 Directionally constrained features must only move in feasible
                 directions, such as increasing educational attainment or savings
@@ -750,7 +736,7 @@ export default function Week5Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 Recourse audits also test whether the cost and difficulty of
                 achieving recourse are equal across demographic groups. A model
@@ -762,7 +748,7 @@ export default function Week5Page() {
             <Plate className="mb-3">
               <RecourseBurden />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Finally, publishing exact decision thresholds creates a strategic
                 gaming trade-off (Goodhart&apos;s Law): when applicants
@@ -776,7 +762,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          17. Part 4: Reasoning Traces in Large Language Models as Verbal Protocols [no-exercise]
+          Part 4: Reasoning Traces in Large Language Models as Verbal Protocols [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Reasoning Traces in Large Language Models as Verbal Protocols" />
@@ -798,7 +784,7 @@ export default function Week5Page() {
                 These traces offer a rich qualitative window into agent
                 decision-making, but they also introduce a critical governance
                 trap if managers{" "}
-                <Term tone="signal">mistake fluent text for a faithful trace</Term>{" "}
+                <Term>mistake fluent text for a faithful trace</Term>{" "}
                 of the model&apos;s internal computation.
               </p>
             </Ruled>
@@ -807,12 +793,12 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          18. Chain-of-Thought and Reasoning Traces as Verbal Protocols [no-exercise]
+          Chain-of-Thought and Reasoning Traces as Verbal Protocols [no-exercise]
           ================================================================ */}
       <Slide id="chain-of-thought-and-reasoning-traces-as-verbal-protocols" border className="!py-8">
         <SlideHeading>Chain-of-Thought and Reasoning Traces as Verbal Protocols</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               When prompted to think step by step or trained with reinforcement
               learning on reasoning tokens, a language model outputs an
@@ -821,10 +807,10 @@ export default function Week5Page() {
               an option.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               In consumer and marketing research, human decision processes are
-              studied through <Term tone="ink">think-aloud verbal protocols</Term>,
+              studied through <Term>think-aloud verbal protocols</Term>,
               in which participants speak their thoughts aloud while shopping and
               researchers code those transcripts with a structured codebook.
             </P>
@@ -834,19 +820,19 @@ export default function Week5Page() {
           <CodedProtocols />
         </Plate>
         <div className="mt-4 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               The reasoning traces of AI shopping agents can be analyzed with{" "}
-              <Term tone="ink">the exact same methodology</Term>: researchers
+              <Term>the exact same methodology</Term>: researchers
               develop a codebook of decision constructs and use human coders, or
               AI coders validated against human intercoder reliability, to
               classify thousands of agent traces (Wadi &amp; Ma, 2026b, 2026c).
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Coded traces reveal{" "}
-              <Term tone="signal">process-level variables that final choices alone cannot show</Term>,
+              <Term>process-level variables that final choices alone cannot show</Term>,
               such as which product attributes the agent compared, which goal it
               formulated, and whether it noticed a disclosure label.
             </P>
@@ -855,7 +841,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          19. Plausibility Versus Faithfulness in LLM Explanations [exercise]
+          Plausibility Versus Faithfulness in LLM Explanations [exercise]
           ================================================================ */}
       <Slide
         id="plausibility-versus-faithfulness-in-llm-explanations"
@@ -867,13 +853,13 @@ export default function Week5Page() {
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Ruled>
             <P>
-              <Term tone="ink">Plausibility</Term> means that an explanation
+              <Term>Plausibility</Term> means that an explanation
               reads as convincing, logical, and satisfying to a human reader.
             </P>
           </Ruled>
           <Ruled>
             <P>
-              <Term tone="ink">Faithfulness</Term> means that the explanation
+              <Term>Faithfulness</Term> means that the explanation
               accurately reflects the true causal factors and internal
               computations that produced the model&apos;s output.
             </P>
@@ -884,7 +870,7 @@ export default function Week5Page() {
             <CoveredCue />
           </Plate>
           <div className="grid gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In autoregressive language models, a reasoning trace is itself a
                 sequence of predicted tokens conditioned on the prompt, not a
@@ -892,18 +878,18 @@ export default function Week5Page() {
                 attention activations.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Controlled experiments by Turpin and colleagues (2023)
                 demonstrate that language models can be systematically biased by
                 covert cues, such as answer ordering or demographic stereotypes,
                 while generating{" "}
-                <Term tone="signal">highly plausible chain-of-thought explanations</Term>{" "}
+                <Term>highly plausible chain-of-thought explanations</Term>{" "}
                 that rationalize the biased choice using entirely
                 neutral-sounding criteria.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Post-hoc rationalization is even more severe when a model is
                 asked to explain its choice after outputting the decision, as the
@@ -916,7 +902,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          20. Auditing Reasoning Traces Alongside Observed Choices [exercise]
+          Auditing Reasoning Traces Alongside Observed Choices [exercise]
           ================================================================ */}
       <Slide
         id="auditing-reasoning-traces-alongside-observed-choices"
@@ -929,14 +915,14 @@ export default function Week5Page() {
           <P className="!max-w-none">
             Because reasoning traces can omit true drivers or rationalize biased
             outputs, behavioral governance{" "}
-            <Term tone="ink">never relies on reasoning traces in isolation</Term>.
+            <Term>never relies on reasoning traces in isolation</Term>.
             It pairs coded verbal protocols with controlled factorial choice
             experiments.
           </P>
         </Ruled>
         <div className="mt-4 grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 In audits of resource rationality in AI shopping agents, coding
                 the reasoning trace identifies whether the agent explicitly states
@@ -951,7 +937,7 @@ export default function Week5Page() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Ruled weight="thin" className="mb-3">
+            <Ruled className="mb-3">
               <P>
                 In audits of sponsorship disclosure in agentic commerce, coding
                 the reasoning trace measures whether the agent expresses explicit
@@ -966,28 +952,28 @@ export default function Week5Page() {
           </div>
         </div>
         <div className="mt-4 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               When a manipulation shifts both the coded reasoning trace (such as
               attenuating stated skepticism toward sponsored listings) and the
               final choice probability in a controlled experiment, the trace
-              provides <Term tone="ink">convergent process-tracing evidence</Term>{" "}
+              provides <Term>convergent process-tracing evidence</Term>{" "}
               for the behavioral mechanism.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Conversely, when an agent&apos;s choice shifts across experimental
               conditions while its reasoning trace never mentions the
               manipulated factor, the divergence{" "}
-              <Term tone="signal">exposes unfaithful rationalization and hidden bias</Term>.
+              <Term>exposes unfaithful rationalization and hidden bias</Term>.
             </P>
           </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          21. Part 5: Designing Disclosures and Documentation for Stakeholders [no-exercise]
+          Part 5: Designing Disclosures and Documentation for Stakeholders [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Designing Disclosures and Documentation for Stakeholders" />
@@ -997,7 +983,7 @@ export default function Week5Page() {
               Effective algorithmic governance translates technical
               interpretability, post-hoc attributions, counterfactuals, and
               behavioral audit results into structured documentation{" "}
-              <Term tone="signal">tailored to the audience that must act on them</Term>.
+              <Term>tailored to the audience that must act on them</Term>.
             </p>
           </Ruled>
           <Plate>
@@ -1007,7 +993,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          22. Tailoring Explanations to Stakeholder Needs [exercise]
+          Tailoring Explanations to Stakeholder Needs [exercise]
           ================================================================ */}
       <Slide
         id="tailoring-explanations-to-stakeholder-needs"
@@ -1039,7 +1025,7 @@ export default function Week5Page() {
           ).map(([kind, text], i) => (
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
-                <Ruled weight="thin" className="mb-3">
+                <Ruled className="mb-3">
                   <P>{text}</P>
                 </Ruled>
                 <Plate className="mt-auto !p-2">
@@ -1052,16 +1038,16 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          23. Model Cards, Datasheets, and System Transparency Notes [no-exercise]
+          Model Cards, Datasheets, and System Transparency Notes [no-exercise]
           ================================================================ */}
       <Slide id="model-cards-datasheets-and-system-transparency-notes" border className="!py-8">
         <SlideHeading>Model Cards, Datasheets, and System Transparency Notes</SlideHeading>
         <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           <li className="min-w-0">
             <Numbered n={1}>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">Datasheets for Datasets</Term>, introduced by
+                  <Term>Datasheets for Datasets</Term>, introduced by
                   Gebru and colleagues (2021), standardize documentation of a
                   dataset&apos;s motivation, composition, collection process,
                   preprocessing, allowed uses, and maintenance plan.
@@ -1071,9 +1057,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">Model Cards</Term>, introduced by Mitchell and
+                  <Term>Model Cards</Term>, introduced by Mitchell and
                   colleagues (2019), accompany a trained model to report its
                   intended use cases, out-of-scope uses, architecture, evaluation
                   datasets, disaggregated performance across demographic groups,
@@ -1084,9 +1070,9 @@ export default function Week5Page() {
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
-              <Ruled weight="thin">
+              <Ruled>
                 <P>
-                  <Term tone="ink">System-level transparency notes</Term> extend
+                  <Term>System-level transparency notes</Term> extend
                   model cards to cover the complete deployed application,
                   including system prompts, retrieval sources, guardrail filters,
                   human oversight regimes, and the date of the most recent
@@ -1099,24 +1085,24 @@ export default function Week5Page() {
         <Plate className="mt-4">
           <ChainOfCustody />
         </Plate>
-        <Ruled weight="thin" className="mt-4">
+        <Ruled className="mt-4">
           <P className="!max-w-none">
             Together, datasheets, model cards, and system transparency notes
             create an{" "}
-            <Term tone="signal">auditable chain of custody</Term> across the AI
+            <Term>auditable chain of custody</Term> across the AI
             value chain introduced in Week 1.
           </P>
         </Ruled>
       </Slide>
 
       {/* ================================================================
-          24. Dark Transparency and Disclosure Overload [no-exercise]
+          Dark Transparency and Disclosure Overload [no-exercise]
           ================================================================ */}
       <Slide id="dark-transparency-and-disclosure-overload" border className="!py-8">
         <SlideHeading>Dark Transparency and Disclosure Overload</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 More information is not always better governance: inundating
                 consumers with technical parameters, thirty-page privacy
@@ -1124,16 +1110,16 @@ export default function Week5Page() {
                 than clarify how a system works.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                <Term tone="ink">Dark transparency</Term>, or strategic opacity
+                <Term>Dark transparency</Term>, or strategic opacity
                 through overload, occurs when an organization releases
                 voluminous technical disclosures to create the appearance of
                 openness while{" "}
-                <Term tone="signal">burying conflicts of interest or adverse error rates</Term>.
+                <Term>burying conflicts of interest or adverse error rates</Term>.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Furthermore, displaying fluent, authoritative chain-of-thought
                 explanations alongside a model&apos;s recommendation can amplify
@@ -1141,7 +1127,7 @@ export default function Week5Page() {
                 answers more than when no explanation is shown.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Governance standards therefore evaluate disclosures empirically
                 by testing whether human users and downstream agents actually
@@ -1156,31 +1142,18 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          25. Discussion: When the Reasoning Trace Looks Clean
+          Discussion: When the Reasoning Trace Looks Clean
           ================================================================ */}
       <Slide id="discussion-when-the-reasoning-trace-looks-clean" border className="!py-8">
-        <SlideHeading>When the Reasoning Trace Looks Clean</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Prompt>
-            A retail marketplace deploys an AI shopping assistant that displays a
-            collapsible &ldquo;Why I picked this product&rdquo; reasoning trace to
-            shoppers. In a pre-deployment factorial audit, researchers find that
-            the assistant selects higher-margin private-label products 28
-            percent more often than superior third-party brands with identical
-            ratings and lower prices, yet the displayed reasoning trace never
-            mentions brand ownership or margin and instead praises the
-            private-label product&apos;s build quality. How is this divergence
-            possible, why does displaying the trace create a governance risk for
-            shoppers, and how should the marketplace&apos;s audit board respond?
-          </Prompt>
-          <Plate>
-            <CleanTrace />
-          </Plate>
-        </div>
+        <SlideHeading>Discussion: When the Reasoning Trace Looks Clean</SlideHeading>
+        <Discussion
+          scenario={"A retail marketplace deploys an AI shopping assistant that displays a collapsible “Why I picked this product” reasoning trace to shoppers. In a pre-deployment factorial audit, researchers find that the assistant selects higher-margin private-label products 28 percent more often than superior third-party brands with identical ratings and lower prices, yet the displayed reasoning trace never mentions brand ownership or margin and instead praises the private-label product's build quality."}
+          question={"How is this divergence possible, why does displaying the trace create a governance risk for shoppers, and how should the marketplace's audit board respond?"}
+        />
       </Slide>
 
       {/* ================================================================
-          26. Key Takeaways
+          Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1196,7 +1169,7 @@ export default function Week5Page() {
           ].map((takeaway, i) => (
             <li key={i} className={i === 6 ? "min-w-0 md:col-span-2 lg:col-span-3" : "min-w-0"}>
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P className={i === 6 ? "!max-w-none" : ""}>{takeaway}</P>
                 </Ruled>
               </Numbered>

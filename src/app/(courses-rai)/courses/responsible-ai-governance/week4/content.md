@@ -72,7 +72,8 @@ week: week4
 - Together, the three layers ensure that an auditor never interprets a model's attitudinal score without first verifying that the model adhered to the scale constraints and formed a coherent ordinal position.
 
 ## Discussion: Sampling Versus Exact Probabilities
-- Discussion: An enterprise governance team wants to audit two candidate models across 500 customer fairness scenarios. Model A is hosted on an internal server that exposes full next-token log-probabilities, while Model B is accessed through a commercial chat interface that returns only sampled text completions. How should the team design the evaluation protocol for each model, and what trade-offs in cost, precision, and construct coverage arise between the two approaches?
+- An enterprise governance team wants to audit two candidate models across 500 customer fairness scenarios. Model A is hosted on an internal server that exposes full next-token log-probabilities, while Model B is accessed through a commercial chat interface that returns only sampled text completions.
+- How should the team design the evaluation protocol for each model, and what trade-offs in cost, precision, and construct coverage arise between the two approaches?
 
 ## Part 3: Distributional ANOVA and Hoeffding Decomposition [no-exercise]
 - Psychometric constructs such as ethnocentrism, brand trust, or algorithm aversion are measured with multi-item scales rather than single questions, because single items are noisy and narrow.
@@ -140,7 +141,8 @@ week: week4
 - Whenever a provider deprecates a snapshot, or when the deploying firm edits its system prompt or product catalog schema, the automated behavioral audit suite must run again before the update reaches production traffic.
 
 ## Discussion: The Model Upgrade Regression
-- Discussion: An e-commerce platform's engineering team proposes upgrading its customer-facing price-comparison assistant from last year's 30-billion-parameter model to a newly released 70-billion-parameter model that scores 14 points higher on standard coding and reasoning leaderboards. Before approving the switch, what behavioral audit evidence should the governance board require, why might the newer model perform worse on the platform's pricing task, and how should the release gate be structured?
+- An e-commerce platform's engineering team proposes upgrading its customer-facing price-comparison assistant from last year's 30-billion-parameter model to a newly released 70-billion-parameter model that scores 14 points higher on standard coding and reasoning leaderboards.
+- Before approving the switch, what behavioral audit evidence should the governance board require, why might the newer model perform worse on the platform's pricing task, and how should the release gate be structured?
 
 ## Key Takeaways
 - Single-prompt (pass-at-one) evaluations fail as a governance standard because stochastic language models exhibit high response entropy and framing sensitivity.

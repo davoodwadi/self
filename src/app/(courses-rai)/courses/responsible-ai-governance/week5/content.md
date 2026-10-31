@@ -72,7 +72,8 @@ week: week5
 - Adversarial scaffolding, demonstrated by Slack and colleagues (2020), shows that a malicious or non-compliant developer can wrap a discriminatory model in an out-of-distribution detector that returns fair behavior on synthetic LIME/SHAP perturbations while continuing to discriminate on real customer profiles.
 
 ## Discussion: The Disputed Credit Denial
-- Discussion: A small-business owner is denied a working-capital line of credit by an automated gradient-boosted model. The bank's customer portal displays the top three negative SHAP values for the application: "Number of recent credit inquiries," "Postal code commercial density," and "Average monthly balance volatility." Does this display satisfy the governance goals of transparency and contestability for the business owner, and what risks arise if the bank relies solely on SHAP values for regulatory compliance?
+- A small-business owner is denied a working-capital line of credit by an automated gradient-boosted model. The bank's customer portal displays the top three negative SHAP values for the application: "Number of recent credit inquiries," "Postal code commercial density," and "Average monthly balance volatility."
+- Does this display satisfy the governance goals of transparency and contestability for the business owner, and what risks arise if the bank relies solely on SHAP values for regulatory compliance?
 
 ## Part 3: Counterfactual Explanations and Actionable Recourse [no-exercise]
 - Knowing which features contributed to an unfavorable score does not tell a consumer what concrete steps will reverse the decision.
@@ -137,7 +138,8 @@ week: week5
 - Governance standards therefore evaluate disclosures empirically by testing whether human users and downstream agents actually comprehend and act appropriately on the explanation provided.
 
 ## Discussion: When the Reasoning Trace Looks Clean
-- Discussion: A retail marketplace deploys an AI shopping assistant that displays a collapsible "Why I picked this product" reasoning trace to shoppers. In a pre-deployment factorial audit, researchers find that the assistant selects higher-margin private-label products 28 percent more often than superior third-party brands with identical ratings and lower prices, yet the displayed reasoning trace never mentions brand ownership or margin and instead praises the private-label product's build quality. How is this divergence possible, why does displaying the trace create a governance risk for shoppers, and how should the marketplace's audit board respond?
+- A retail marketplace deploys an AI shopping assistant that displays a collapsible "Why I picked this product" reasoning trace to shoppers. In a pre-deployment factorial audit, researchers find that the assistant selects higher-margin private-label products 28 percent more often than superior third-party brands with identical ratings and lower prices, yet the displayed reasoning trace never mentions brand ownership or margin and instead praises the private-label product's build quality.
+- How is this divergence possible, why does displaying the trace create a governance risk for shoppers, and how should the marketplace's audit board respond?
 
 ## Key Takeaways
 - Process transparency discloses how a system is governed, intrinsic interpretability builds models whose structure is directly readable, and post-hoc explainability approximates complex black-box models after training.

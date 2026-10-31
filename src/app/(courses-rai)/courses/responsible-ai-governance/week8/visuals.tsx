@@ -23,7 +23,7 @@ import { Coins, Cylinder, Dial, Figure, Gear, Hall, Lens, Sheet, SmallModel, cro
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
-   in Caslon italic and one examiner's red for the finding. See the course
+   in the body face and one examiner's red for the finding. See the course
    CLAUDE.md.
 
    Week cast: the consumer is a patent Figure. The AI agent is the model
@@ -45,7 +45,7 @@ const hair = {
 };
 const R = PAT.signal;
 
-/** Caslon numerals or a quantity on a plate. */
+/** Numerals or a quantity on a plate. */
 function Num({
   x,
   y,
@@ -53,7 +53,6 @@ function Num({
   size = 14,
   anchor = "middle",
   fill = PAT.ink,
-  italic = false,
 }: {
   x: number;
   y: number;
@@ -61,16 +60,14 @@ function Num({
   size?: number;
   anchor?: "start" | "middle" | "end";
   fill?: string;
-  italic?: boolean;
 }) {
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
-      fontFamily="var(--font-heading)"
+      fontFamily="var(--font-body)"
       fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
       fill={fill}
       style={{ fontVariantNumeric: "lining-nums" }}
     >
@@ -79,21 +76,21 @@ function Num({
   );
 }
 
-/** Width a run of tracked Caslon capitals takes at `size`. */
-const capsWidth = (text: string, size: number) => r2(text.length * size * 0.92);
+/** Width a sentence-case label takes at `size` in the body face. */
+const labelWidth = (text: string, size: number) => r2(text.length * size * 0.56);
 
 /**
- * A paid-placement badge: a small outlined plate with its label in tracked
- * capitals, centred on (cx, cy). Red when the badge is the finding.
+ * A paid-placement badge: a small outlined plate with its label,
+ * centred on (cx, cy). Red when the badge is the finding.
  */
 function Badge({ cx, cy, text, size = 10, red = false }: { cx: number; cy: number; text: string; size?: number; red?: boolean }) {
-  const w = capsWidth(text, size) + 10;
+  const w = labelWidth(text, size) + 10;
   const h = size + 8;
   const c = red ? R : PAT.ink;
   return (
     <g>
       <rect x={r2(cx - w / 2)} y={r2(cy - h / 2)} width={r2(w)} height={h} fill={PAT.paper} stroke={c} strokeWidth={red ? LINE.bold : LINE.outline} />
-      <PatentKey x={r2(cx + size * 0.11)} y={r2(cy + size * 0.36)} size={size} fill={c}>
+      <PatentKey x={cx} y={r2(cy + size * 0.36)} size={size} fill={c}>
         {text}
       </PatentKey>
     </g>
@@ -159,18 +156,18 @@ function Listing({
         <line x1={tx} y1={r2(w >= 100 ? y + h - 12 : y + h * 0.55)} x2={r2(tx + (w - (tx - x)) * 0.5)} y2={r2(w >= 100 ? y + h - 12 : y + h * 0.55)} {...hair} stroke={stroke} />
       )}
       {price ? (
-        <text x={r2(x + w - 8)} y={r2(y + h - 7)} textAnchor="end" fontFamily="var(--font-heading)" fontSize={13} fill={stroke}>
+        <text x={r2(x + w - 8)} y={r2(y + h - 7)} textAnchor="end" fontFamily="var(--font-body)" fontSize={13} fill={stroke}>
           {price}
         </text>
       ) : null}
-      {badge ? <Badge cx={r2(Math.max(x + capsWidth(badge, badgeSize) / 2 + 5, x + w - capsWidth(badge, badgeSize) / 2 - 8))} cy={r2(y - badgeSize / 2 - 6)} text={badge} size={badgeSize} red={red} /> : null}
+      {badge ? <Badge cx={r2(Math.max(x + labelWidth(badge, badgeSize) / 2 + 5, x + w - labelWidth(badge, badgeSize) / 2 - 8))} cy={r2(y - badgeSize / 2 - 6)} text={badge} size={badgeSize} red={red} /> : null}
     </g>
   );
 }
 
 /**
- * A system prompt: an upright sheet with a turned corner and lines of Caslon
- * italic. A line may be red (the finding) or a plain hairline (`""`).
+ * A system prompt: an upright sheet with a turned corner and lines of
+ * italic text. A line may be red (the finding) or a plain hairline (`""`).
  */
 function PromptSheet({
   id,
@@ -203,7 +200,7 @@ function PromptSheet({
             key={i}
             x={x + 12}
             y={y + 24 + i * gap}
-            fontFamily="var(--font-heading)"
+            fontFamily="var(--font-body)"
             fontStyle="italic"
             fontSize={size}
             fill={l.red ? R : PAT.ink}
@@ -360,7 +357,7 @@ export function BrokenChain() {
       <PatentDefs id={id} />
       <g transform="translate(0 -40)">
       <line x1={10} y1={g} x2={870} y2={g} {...hair} />
-      <Listing id={id} x={20} y={66} w={176} h={56} badge="SPONSORED" badgeSize={12} />
+      <Listing id={id} x={20} y={66} w={176} h={56} badge="Sponsored" badgeSize={12} />
       <Chain x1={204} y1={92} x2={404} y2={110} n={10} />
       <SmallModel id={id} x={404} y={g - 108} w={96} h={108} />
       {/* the open link */}
@@ -430,46 +427,6 @@ export function CareAndLoyalty() {
 }
 
 /**
- * The case on the discussion slide: BookingCo's concierge (the agent housing
- * with its one-line system prompt) reading a rack of hotel listings, two of
- * which carry the red "Promoted by BookingCo" badge.
- */
-export function ConciergeDesk() {
-  const id = "w8-concierge";
-  const g = 290;
-  return (
-    <Frame
-      width={432}
-      height={300}
-      label="Patent drawing of a platform's AI concierge. At left, a system prompt sheet reads: You are BookingCo's virtual travel assistant. A dashed line runs from it down into an AI agent housing. At right, a rack of three hotel listings. The first and third wear red badges reading Promoted by BookingCo."
-    >
-      <PatentDefs id={id} />
-      <line x1={10} y1={g} x2={424} y2={g} {...hair} />
-      <PromptSheet
-        id={id}
-        x={8}
-        y={34}
-        w={160}
-        h={88}
-        size={14}
-        gap={20}
-        lines={[{ t: "You are BookingCo's" }, { t: "virtual travel" }, { t: "assistant." }]}
-      />
-      <line x1={72} y1={130} x2={72} y2={172} {...hair} strokeDasharray="4 3" />
-      <path d={headAlongPath(72, 174, 0, 1, 7)} fill="none" {...hair} />
-      <SmallModel id={id} x={22} y={g - 108} w={96} h={108} />
-      {/* the rack */}
-      <ObliqueBox id={id} x={176} y={24} w={238} h={g - 24} dx={12} dy={7} />
-      {[54, 136, 218].map((y, i) => (
-        <Listing key={y} id={id} x={184} y={y + 14} w={222} h={52} badge={i === 1 ? undefined : "PROMOTED BY BOOKINGCO"} red badgeSize={11} />
-      ))}
-      <line x1={124} y1={g - 54} x2={170} y2={g - 54} {...hair} strokeDasharray="4 3" />
-      <path d={headAlongPath(172, g - 54, 1, 0, 7)} fill="none" {...hair} />
-    </Frame>
-  );
-}
-
-/**
  * Five work stations of a purchase, from suggesting candidates to paying.
  * The level slider moves the hand-over point: stations left of it are worked
  * by the agent housing, the rest by the shopper. At Level 4 the shopper
@@ -479,7 +436,7 @@ export function DelegationLevels() {
   const [level, setLevel] = useState(1);
   const id = "w8-levels";
   const g = 182;
-  const stations = ["SUGGEST", "SEARCH", "COMPARE", "CHOOSE", "PURCHASE"];
+  const stations = ["Suggest", "Search", "Compare", "Choose", "Purchase"];
   const cut = [1, 3, 4, 5][level - 1];
   const cs = [170, 324, 478, 632, 786];
   const object = (i: number, c: number) => {
@@ -641,7 +598,7 @@ export function DyadTriad() {
         <path d={`M${px} 46L${px + 8} 41H${px + 158}L${px + 150} 46Z`} fill={stip(id, "light")} {...ink} />
         <rect x={px} y={46} width={150} height={g - 54} fill={PAT.paper} {...ink} />
         {rows.map((y, i) => (
-          <Listing key={y} id={id} x={px + 10} y={y + 8} w={126} h={38} badge={i === 1 ? "SPONSORED" : undefined} red={triad && i === 1} />
+          <Listing key={y} id={id} x={px + 10} y={y + 8} w={126} h={38} badge={i === 1 ? "Sponsored" : undefined} red={triad && i === 1} />
         ))}
         {/* the shopper */}
         <Figure id={id} x={56} y={g} s={1.85} arm={triad ? "reach" : "down"} />
@@ -781,27 +738,27 @@ export function EffortLever() {
           </Num>
         ))}
         <PatentKey x={x1} y={base + 30} size={11} anchor="end">
-          RANK
+          Rank
         </PatentKey>
         <PatentKey x={x0} y={top - 14} size={11} anchor="start">
-          PROBABILITY OF CHOICE
+          Probability of choice
         </PatentKey>
         {/* verdict and cost */}
         <line x1={14} y1={232} x2={546} y2={232} {...hair} />
         <PatentKey x={16} y={262} size={12} anchor="start" fill={neutral ? PAT.ink : R}>
-          {neutral ? "POSITION-NEUTRAL" : "POSITION-DEPENDENT"}
+          {neutral ? "Position-neutral" : "Position-dependent"}
         </PatentKey>
-        <Num x={16} y={280} size={12} anchor="start" italic>
+        <Num x={16} y={280} size={12} anchor="start">
           {`χ²(2) = ${L.chi.toFixed(2)}`}
         </Num>
         <Num x={336} y={264} size={20} anchor="start">
           {`$${L.cost.toFixed(4)}`}
         </Num>
-        <Num x={336} y={282} size={12} anchor="start" italic>
+        <Num x={336} y={282} size={12} anchor="start">
           {`${share < 10 ? share.toFixed(1) : share.toFixed(0)}% of Pro at high effort`}
         </Num>
         <PatentKey x={436} y={263} size={11} anchor="start">
-          PER SESSION
+          Per session
         </PatentKey>
       </Frame>
       <Segmented
@@ -874,16 +831,16 @@ export function HumanScan() {
       {/* consideration set */}
       <path d={`M${px + pw + 16} ${ry(0)}H${px + pw + 24}V${ry(2) + 8}H${px + pw + 16}`} fill="none" stroke={R} strokeWidth={LINE.bold} />
       <PatentKey x={px + pw + 32} y={ry(0) + 9} size={12} anchor="start" fill={R}>
-        CONSIDERATION
+        Consideration
       </PatentKey>
       <PatentKey x={px + pw + 32} y={ry(2) + 4} size={12} anchor="start" fill={R}>
-        SET
+        set
       </PatentKey>
       <Num x={px + pw + 32} y={ry(5) + 4} size={20} anchor="start">
         1.12
       </Num>
       <PatentKey x={px + pw + 78} y={ry(5) + 4} size={12} anchor="start">
-        CLICKS
+        Clicks
       </PatentKey>
       {/* the shopper */}
       <Figure id={id} x={62} y={g} s={2.05} />
@@ -949,7 +906,7 @@ export function InspectionCurve() {
           </g>
         ))}
         <PatentKey x={x0 + 8} y={yTop - 14} size={12} anchor="start">
-          PROBABILITY OF INSPECTION
+          Probability of inspection
         </PatentKey>
         {/* the rank strip */}
         {Array.from({ length: 100 }, (_, i) => {
@@ -978,7 +935,7 @@ export function InspectionCurve() {
           </Num>
         ))}
         <PatentKey x={x1} y={y0 + 52} size={12} anchor="end">
-          RANK
+          Rank
         </PatentKey>
         {/* the agent's curve as a volume */}
         <path d={`M${X(1)} ${y0}L${pts.join("L")}L${X(100)} ${y0}Z`} fill={stip(id, "light")} stroke="none" style={{ transition: "all 400ms ease" }} />
@@ -995,21 +952,21 @@ export function InspectionCurve() {
         {/* search depth and the no-buy option */}
         <line x1={14} y1={250} x2={546} y2={250} {...hair} />
         <PatentKey x={x0} y={272} size={12} anchor="start">
-          LISTINGS INSPECTED
+          Listings inspected
         </PatentKey>
         <Num x={x0 + 214} y={274} size={20} anchor="start">
           {m.mean.toFixed(2)}
         </Num>
-        <Num x={x0 + 214} y={292} size={12} anchor="start" italic>
+        <Num x={x0 + 214} y={292} size={12} anchor="start">
           human 1.12
         </Num>
         <PatentKey x={330} y={272} size={12} anchor="start">
-          NO BOOKING
+          No booking
         </PatentKey>
         <Num x={460} y={274} size={20} anchor="start">
           0%
         </Num>
-        <Num x={460} y={292} size={12} anchor="start" italic>
+        <Num x={460} y={292} size={12} anchor="start">
           human 34%
         </Num>
       </Frame>
@@ -1090,7 +1047,7 @@ export function InvarianceBalance() {
               <line x1={e.x} y1={e.y} x2={r2(e.x + 44)} y2={panY} {...hair} />
               <path d={`M${r2(e.x - 52)} ${panY}Q${e.x} ${r2(panY + 14)} ${r2(e.x + 52)} ${panY}`} fill={stip(id, "dense")} {...ink} />
               <ellipse cx={e.x} cy={panY} rx={52} ry={4} fill={PAT.paper} {...ink} />
-              <Listing id={id} x={r2(e.x - 46)} y={r2(panY - 44)} w={86} h={40} badge={i === 0 ? "SPONSORED" : undefined} badgeSize={11} />
+              <Listing id={id} x={r2(e.x - 46)} y={r2(panY - 44)} w={86} h={40} badge={i === 0 ? "Sponsored" : undefined} badgeSize={11} />
             </g>
           );
         })}
@@ -1140,8 +1097,8 @@ export function LabelBuilder() {
   const id = "w8-label";
   const by = attr.includes("platform");
   const [cons, plat] = LABEL_SHARE[type][by ? "yes" : "no"];
-  const word = type === "promoted" ? "PROMOTED" : "SPONSORED";
-  const badge = by ? `${word} BY THE PLATFORM` : word;
+  const word = type === "promoted" ? "Promoted" : "Sponsored";
+  const badge = by ? `${word} By the platform` : word;
   const base = 226;
   const H = 176;
   const max = 0.9;
@@ -1174,10 +1131,10 @@ export function LabelBuilder() {
         </Num>
         <path d={`M508 ${yOf(plat)}H520V${yOf(cons)}H508`} fill="none" stroke={R} strokeWidth={LINE.bold} style={{ transition: "all 400ms ease" }} />
         <line x1={384} y1={yOf(cons)} x2={506} y2={yOf(cons)} stroke={R} strokeWidth={LINE.hair} strokeDasharray="2 3" />
-        <Num x={524} y={r2((yOf(plat) + yOf(cons)) / 2 + 5)} size={14} anchor="start" fill={R}>
+        <Num x={523} y={r2((yOf(plat) + yOf(cons)) / 2 + 5)} size={13} anchor="start" fill={R}>
           {`+${gap.toFixed(1)}`}
         </Num>
-        {[["CONSUMER", "DELEGATED"], ["PLATFORM", "DELEGATED"]].map((k, i) => (
+        {[["Consumer", "delegated"], ["Platform", "delegated"]].map((k, i) => (
           <g key={i}>
             <PatentKey x={cx[i]} y={248} size={11}>
               {k[0]}
@@ -1215,7 +1172,7 @@ export function LabelProminence() {
   const noticed = p >= 3;
   const g = 292;
   const size = [10.6, 11.5, 13, 15.5, 18][p - 1];
-  const bw = r2(capsWidth("SPONSORED", size) + 10);
+  const bw = r2(labelWidth("Sponsored", size) + 10);
   const bh = r2(size + 8);
   const cx = 196;
   const cy = 62;
@@ -1238,7 +1195,7 @@ export function LabelProminence() {
         <ObliqueBox id={id} x={cx} y={cy} w={330} h={116} dx={8} dy={5} />
         <path d={`M${cx + 228} ${cy + 100}V${cy + 50}L${cx + 262} ${cy + 22}L${cx + 296} ${cy + 50}V${cy + 100}Z`} fill={PAT.paper} {...ink} />
         <rect x={cx + 254} y={cy + 78} width={16} height={22} fill={PAT.paper} {...hair} />
-        <text x={cx + 16} y={cy + 66} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={19} fill={PAT.ink}>
+        <text x={cx + 16} y={cy + 66} fontFamily="var(--font-body)" fontStyle="italic" fontSize={19} fill={PAT.ink}>
           Best hotel in town!
         </text>
         {noticed ? <line x1={cx + 12} y1={cy + 60} x2={cx + 198} y2={cy + 60} stroke={R} strokeWidth={LINE.bold} /> : null}
@@ -1259,7 +1216,7 @@ export function LabelProminence() {
             strokeDasharray={p <= 2 ? "1.5 2" : undefined}
           />
           <PatentKey x={r2(cx + 12 + bw / 2 + size * 0.11)} y={r2(cy + 8 + bh / 2 + size * 0.36)} size={size}>
-            SPONSORED
+            Sponsored
           </PatentKey>
         </g>
         {/* the organic alternative */}
@@ -1301,7 +1258,7 @@ export function LayoutVsConfig() {
       {/* human visual layout */}
       <ObliqueBox id={id} x={20} y={20} w={200} h={180} dx={8} dy={5} />
       {[34, 92, 150].map((y, i) => (
-        <Listing key={y} id={id} x={30} y={y + 8} w={168} h={38} badge={i === 1 ? "SPONSORED" : undefined} badgeSize={11} />
+        <Listing key={y} id={id} x={30} y={y + 8} w={168} h={38} badge={i === 1 ? "Sponsored" : undefined} badgeSize={11} />
       ))}
       {/* a dimension line on the badge's height */}
       <line x1={80} y1={80} x2={80} y2={98} {...hair} />
@@ -1458,7 +1415,7 @@ export function PayPerClick({ part }: { part: "fee" | "prompt" }) {
       <PatentDefs id={id} />
       <line x1={10} y1={188} x2={470} y2={188} {...hair} />
       <Hall id={id} x={360} y={188} w={92} h={110} slot />
-      <Listing id={id} x={14} y={46} w={164} h={52} badge="SPONSORED" badgeSize={12} />
+      <Listing id={id} x={14} y={46} w={164} h={52} badge="Sponsored" badgeSize={12} />
       <Listing id={id} x={14} y={124} w={164} h={52} />
       {cursor(146, 66)}
       {cursor(146, 144)}
@@ -1467,55 +1424,6 @@ export function PayPerClick({ part }: { part: "fee" | "prompt" }) {
       <path d={headAlongPath(405, 62, 0.6, 0.8, 8)} fill="none" stroke={R} strokeWidth={LINE.outline} />
       <ellipse cx={298} cy={37} rx={13} ry={4.5} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.outline} />
       <path d="M285 37V42A13 4.5 0 0 0 311 42V37" fill={PAT.paper} stroke={R} strokeWidth={LINE.outline} />
-    </Frame>
-  );
-}
-
-/**
- * The lobbyists' rule on the discussion slide: a continuous-form data feed of
- * product rows runs into the language model's housing. One row is tagged
- * only "Promoted" (red). Out of the model comes a chatbot answer bubble.
- */
-export function PromotedFeed() {
-  const id = "w8-feed";
-  const rows = [34, 66, 98, 130, 162, 194];
-  return (
-    <Frame
-      width={460}
-      height={300}
-      label="Patent drawing of a data feed sent to a language model: a continuous paper form with sprocket holes down both edges and six product rows, one tagged Promoted in red. The form feeds into the slot of an AI agent housing at right, which puts out a chatbot answer bubble above it."
-    >
-      <PatentDefs id={id} />
-      {/* continuous form */}
-      <path d="M26 290V18H222V290" fill={PAT.paper} {...ink} />
-      <path d="M26 290Q124 300 222 290" fill="none" {...hair} />
-      {Array.from({ length: 13 }, (_, i) => (
-        <g key={i}>
-          <circle cx={36} cy={28 + i * 21} r={3} fill={PAT.paper} {...hair} />
-          <circle cx={212} cy={28 + i * 21} r={3} fill={PAT.paper} {...hair} />
-        </g>
-      ))}
-      <line x1={46} y1={18} x2={46} y2={290} {...hair} strokeDasharray="2 3" />
-      <line x1={202} y1={18} x2={202} y2={290} {...hair} strokeDasharray="2 3" />
-      {rows.map((y, i) => (
-        <g key={y}>
-          <rect x={54} y={y} width={22} height={18} fill={PAT.paper} {...hair} />
-          <path d={`M57 ${y + 14}V${y + 8}L65 ${y + 3}L73 ${y + 8}V${y + 14}`} fill="none" {...hair} />
-          <line x1={84} y1={y + 6} x2={i === 2 ? 84 : 194} y2={y + 6} {...hair} />
-          {i === 2 ? null : <line x1={84} y1={y + 14} x2={140} y2={y + 14} {...hair} />}
-          {i === 2 ? <Badge cx={144} cy={y + 9} text="PROMOTED" size={12} red /> : null}
-        </g>
-      ))}
-      {/* into the model */}
-      <line x1={226} y1={128} x2={292} y2={150} {...hair} strokeDasharray="4 3" />
-      <path d={headAlongPath(294, 151, 1, 0.33, 7)} fill="none" {...hair} />
-      <SmallModel id={id} x={300} y={150} w={110} h={130} />
-      <rect x={300} y={158} width={3} height={30} fill={PAT.ink} stroke="none" />
-      {/* the chatbot answer */}
-      <path d="M302 20H436Q446 20 446 30V96Q446 106 436 106H392L380 124L382 106H302Q292 106 292 96V30Q292 20 302 20Z" fill={PAT.paper} {...ink} />
-      {[42, 58, 74, 90].map((y, i) => (
-        <line key={y} x1={306} y1={y} x2={i === 3 ? 380 : 432} y2={y} {...hair} />
-      ))}
     </Frame>
   );
 }
@@ -1622,7 +1530,7 @@ export function Remedy({ kind }: { kind: "clause" | "passthrough" | "deliberatio
         <PatentDefs id={id} />
         <SmallModel id={id} x={10} y={66} w={60} h={70} />
         <path d="M98 34H240Q248 34 248 42V118Q248 126 240 126H98Q90 126 90 118V96L76 90L90 84V42Q90 34 98 34Z" fill={PAT.paper} {...ink} />
-        <Listing id={id} x={100} y={70} w={134} h={44} badge="SPONSORED" badgeSize={12} />
+        <Listing id={id} x={100} y={70} w={134} h={44} badge="Sponsored" badgeSize={12} />
       </Frame>
     );
   }
@@ -1720,10 +1628,10 @@ export function RoleAssignment() {
         </Num>
         <line x1={160} y1={yOf(other.sponsored)} x2={212} y2={yOf(other.sponsored)} {...hair} strokeDasharray="3 3" />
         <PatentKey x={70} y={250} size={11}>
-          ORGANIC
+          Organic
         </PatentKey>
         <PatentKey x={186} y={250} size={11}>
-          SPONSORED
+          Sponsored
         </PatentKey>
         {/* the penalty bracket */}
         <path
@@ -1761,7 +1669,7 @@ export function RoleAssignment() {
           {d.skeptic.toFixed(2)}
         </Num>
         <PatentKey x={gx} y={250} size={11}>
-          SKEPTICISM
+          Skepticism
         </PatentKey>
       </Frame>
       <Segmented
@@ -1800,13 +1708,13 @@ export function StrippedBadge() {
       {/* the listing page */}
       <ObliqueBox id={id} x={18} y={22} w={170} h={170} dx={8} dy={5} />
       {[30, 92, 150].map((y, i) => (
-        <Listing key={y} id={id} x={26} y={y + 6} w={150} h={34} badge={i === 1 ? "SPONSORED" : undefined} badgeSize={11} />
+        <Listing key={y} id={id} x={26} y={y + 6} w={150} h={34} badge={i === 1 ? "Sponsored" : undefined} badgeSize={11} />
       ))}
       {/* the agent, cut open */}
       <ObliqueBox id={id} x={290} y={40} w={200} h={152} dx={14} dy={9} />
       <path d={`M304 54L${zig(476, 54, 180, 10, -6)}L${zig(304, 180, 54, 10, 6)}Z`} fill={stip(id, "dense")} {...ink} />
       <rect x={316} y={70} width={150} height={92} fill={PAT.paper} {...ink} />
-      <Listing id={id} x={326} y={104} w={130} h={42} badge="SPONSORED" badgeSize={11} red />
+      <Listing id={id} x={326} y={104} w={130} h={42} badge="Sponsored" badgeSize={11} red />
       <line x1={204} y1={116} x2={280} y2={116} {...hair} strokeDasharray="4 3" />
       <path d={headAlongPath(282, 116, 1, 0, 7)} fill="none" {...hair} />
       <line x1={508} y1={116} x2={556} y2={116} {...hair} strokeDasharray="4 3" />
@@ -1877,7 +1785,7 @@ export function TwoRemedies() {
   const id = "w8-remedies";
   const ben = clause.includes("beneficiary");
   const [cons, plat] = word === "promoted" ? [0.346, 0.742] : [0.036, 0.212];
-  const badge = word === "promoted" ? "PROMOTED BY THE PLATFORM" : "SPONSORED BY THE PLATFORM";
+  const badge = word === "promoted" ? "Promoted by the platform" : "Sponsored by the platform";
   const base = 168;
   const H = 120;
   const max = 1;
@@ -1911,7 +1819,7 @@ export function TwoRemedies() {
         <Num x={306} y={r2((yOf(plat) + yOf(cons)) / 2 + 5)} size={15} anchor="start" fill={R}>
           {`+${gap.toFixed(1)}`}
         </Num>
-        {[["CONSUMER", "DELEGATED"], ["PLATFORM", "DELEGATED"]].map((kk, i) => (
+        {[["Consumer", "delegated"], ["Platform", "delegated"]].map((kk, i) => (
           <g key={i}>
             <PatentKey x={cx[i]} y={186} size={11}>
               {kk[0]}
@@ -1942,8 +1850,8 @@ export function TwoRemedies() {
         />
         {(
           [
-            ["consumer", ["CONSUMER", "DELEGATED"], 124],
-            ["platform", ["PLATFORM", "DELEGATED"], 170],
+            ["consumer", ["Consumer", "delegated"], 124],
+            ["platform", ["Platform", "delegated"], 170],
           ] as const
         ).map(([key, kk, y]) => {
           const v = pen[key];
@@ -1985,4 +1893,3 @@ export function TwoRemedies() {
     </div>
   );
 }
-

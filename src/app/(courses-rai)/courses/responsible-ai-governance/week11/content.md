@@ -65,7 +65,8 @@ week: week11
 - Alongside legislative reform, Canada's Voluntary Code of Conduct on the Responsible Development and Management of Advanced Generative AI Systems commits signatories to six operational pillars: accountability, safety, fairness and equity, transparency (including watermarking AI-generated content), human oversight, and robustness testing.
 
 ## Discussion: Deploying a Hiring and Credit Model Across Montreal, Toronto, and Paris
-- Discussion: A Canadian financial-technology company based in Toronto builds an automated small-business loan approval and recruitment platform and plans to launch it simultaneously in Montreal (Quebec), Toronto (Ontario), and Paris (France). Map the overlapping statutory obligations the company faces under Quebec Law 25, PIPEDA, and the EU AI Act, and explain whether a single unified governance workflow can satisfy all three jurisdictions.
+- A Canadian financial-technology company based in Toronto builds an automated small-business loan approval and recruitment platform and plans to launch it simultaneously in Montreal (Quebec), Toronto (Ontario), and Paris (France).
+- Map the overlapping statutory obligations the company faces under Quebec Law 25, PIPEDA, and the EU AI Act, and explain whether a single unified governance workflow can satisfy all three jurisdictions.
 
 ## Part 3: United States Sectoral Enforcement and the FTC [no-exercise]
 - Rather than enacting a single federal AI statute, the United States regulates commercial algorithms through vigorous enforcement of federal consumer protection, civil rights, and credit laws, supplemented by targeted state and municipal statutes.
@@ -122,7 +123,8 @@ week: week11
 - Machine-readable unit-price and ranking gap: consumer unit-pricing laws require shelf labels for human eyes, leaving storefronts free to bury unit weights behind costly API tool calls that induce resource-rational search truncation (Wadi & Ma, 2026b) or exploit lost-in-the-middle rank positions (Wadi & Ma, 2026a).
 
 ## Discussion: The Algorithmic Disgorgement Order
-- Discussion: A retail analytics startup scrapes four million consumer photos and product reviews from social media without consent and uses them to train a proprietary multimodal recommendation model that now powers 80 percent of its enterprise product revenue. Following an investigation, the FTC proposes a consent decree requiring algorithmic disgorgement (deletion of both the scraped dataset and the trained foundation model weights). Analyze why regulators impose algorithmic disgorgement rather than a simple monetary fine, and explain what data-provenance and ISO/IEC 42001 controls would have prevented this existential business loss.
+- A retail analytics startup scrapes four million consumer photos and product reviews from social media without consent and uses them to train a proprietary multimodal recommendation model that now powers 80 percent of its enterprise product revenue. Following an investigation, the FTC proposes a consent decree requiring algorithmic disgorgement (deletion of both the scraped dataset and the trained foundation model weights).
+- Analyze why regulators impose algorithmic disgorgement rather than a simple monetary fine, and explain what data-provenance and ISO/IEC 42001 controls would have prevented this existential business loss.
 
 ## Key Takeaways
 - Global AI regulation has shifted from voluntary ethics pledges to binding statutes that combine horizontal risk-based laws (EU AI Act), privacy and automated-decision rights (PIPEDA, Quebec Law 25), and sectoral consumer-protection enforcement (FTC Section 5, ECOA, NYC Local Law 144).

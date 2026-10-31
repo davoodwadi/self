@@ -18,7 +18,7 @@ import {
   seeded,
   stip,
 } from "../_visuals/kit";
-import { Cursor, Eye, Headset, Megaphone, ShoppingCart } from "@phosphor-icons/react/dist/ssr";
+import { Cursor, Eye, Megaphone, ShoppingCart } from "@phosphor-icons/react/dist/ssr";
 import { Chip, Coins, Detail, Dial, Lens, Tag, Figure, Gear, House, Sheet, SmallModel, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
@@ -26,7 +26,7 @@ import { Chip, Coins, Detail, Dial, Lens, Tag, Figure, Gear, House, Sheet, Small
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
-   in Caslon italic and one examiner's red for the finding. See the course
+   in the body face and one examiner's red for the finding. See the course
    CLAUDE.md.
    ========================================================================== */
 
@@ -42,7 +42,7 @@ const hair = {
   strokeLinecap: "round" as const,
 };
 
-/** Caslon numerals or a quantity on a plate. */
+/** Numerals or a quantity on a plate. */
 function Num({
   x,
   y,
@@ -50,7 +50,6 @@ function Num({
   size = 14,
   anchor = "middle",
   fill = PAT.ink,
-  italic = false,
 }: {
   x: number;
   y: number;
@@ -58,16 +57,14 @@ function Num({
   size?: number;
   anchor?: "start" | "middle" | "end";
   fill?: string;
-  italic?: boolean;
 }) {
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
-      fontFamily="var(--font-heading)"
+      fontFamily="var(--font-body)"
       fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
       fill={fill}
       style={{ fontVariantNumeric: "lining-nums" }}
     >
@@ -77,7 +74,7 @@ function Num({
 }
 
 /* --------------------------------------------------------------------------
-   02. Why AI Transforms Data Governance
+   Why AI Transforms Data Governance
    -------------------------------------------------------------------------- */
 
 /**
@@ -176,10 +173,10 @@ export function LifecycleStations() {
   const xs = [78, 228, 378, 528];
   const base = 104;
   const keys = [
-    ["BEFORE", "COLLECTION"],
-    ["DURING", "TRAINING"],
-    ["AT", "INFERENCE"],
-    ["RETIREMENT OR", "UNLEARNING"],
+    ["Before", "collection"],
+    ["During", "training"],
+    ["At", "inference"],
+    ["Retirement or", "unlearning"],
   ];
   return (
     <Frame
@@ -242,7 +239,7 @@ export function LifecycleStations() {
 }
 
 /* --------------------------------------------------------------------------
-   03. From Data Ownership to Contextual Integrity
+   From Data Ownership to Contextual Integrity
    -------------------------------------------------------------------------- */
 
 /** A shipping label: a card with address lines and a barcode. */
@@ -341,7 +338,7 @@ export function ContextFlows() {
 }
 
 /* --------------------------------------------------------------------------
-   04. Part 1: Data Provenance in Training and Personalization
+   Part 1: Data Provenance in Training and Personalization
    -------------------------------------------------------------------------- */
 
 /** A dataset drum: an upright cylinder with hairline bands and a light-stippled cap. */
@@ -369,7 +366,7 @@ function Drum({ id, cx, y, rx = 34, ry = 10, h = 70, bands = 3 }: { id: string; 
 export function ProvenanceTag() {
   const id = "w6-prov";
   const R = PAT.ink;
-  const rows = ["ORIGIN", "AUTHORITY", "TRANSFORMATION", "DOWNSTREAM MODELS"];
+  const rows = ["Origin", "Authority", "Transformation", "Downstream models"];
   return (
     <Frame
       width={600}
@@ -421,7 +418,7 @@ export function ProvenanceTag() {
 }
 
 /* --------------------------------------------------------------------------
-   05. A Taxonomy of Customer Data
+   A Taxonomy of Customer Data
    -------------------------------------------------------------------------- */
 
 /** A small upright form, front view, with hairline rows and tick boxes. */
@@ -589,7 +586,7 @@ export function DataOrigin({ kind }: { kind: "volunteered" | "observed" | "infer
 }
 
 /* --------------------------------------------------------------------------
-   06. Purpose Limitation and Secondary Use in Foundation Models
+   Purpose Limitation and Secondary Use in Foundation Models
    -------------------------------------------------------------------------- */
 
 /** A tape reel seen face on: rim, hub and three spokes. */
@@ -674,10 +671,10 @@ export function PurposeGate() {
         <g transform="rotate(-4 95 211)">
           <rect x={36} y={194} width={118} height={36} fill={PAT.paper} {...ink} />
           <PatentKey x={95} y={207} size={12.5}>
-            QUALITY
+            Quality
           </PatentKey>
           <PatentKey x={95} y={225} size={12.5}>
-            ASSURANCE
+            assurance
           </PatentKey>
         </g>
         {/* the pipe */}
@@ -693,7 +690,7 @@ export function PurposeGate() {
         <line x1={gx + 1} y1={open ? py - 60 : py - 14} x2={gx + 1} y2={py - 76} {...ink} />
         <circle cx={gx + 1} cy={py - 80} r={4} fill={PAT.paper} {...ink} />
         <PatentKey x={gx + 1} y={py + 56} size={12.5}>
-          PURPOSE LIMITATION
+          Purpose limitation
         </PatentKey>
         <path d={headAlongPath(gx - 10, py, 1, 0, 9)} fill="none" stroke={fc} strokeWidth={LINE.outline} />
         {open ? <path d={headAlongPath(496, py, 1, 0, 9)} fill="none" {...ink} /> : null}
@@ -702,7 +699,7 @@ export function PurposeGate() {
         <Gear cx={538} cy={118} r={15} n={12} />
         <Gear cx={574} cy={152} r={11} n={10} phase={0.25} />
         <PatentKey x={554} y={204} size={12.5}>
-          FINE-TUNING
+          Fine-tuning
         </PatentKey>
       </Frame>
       <Toggles
@@ -811,10 +808,10 @@ export function SensitiveInference() {
         <line x1={gx} y1={gy} x2={nx} y2={ny} stroke={sens ? PAT.signal : PAT.ink} strokeWidth={LINE.bold} strokeLinecap="round" style={{ transition: "all 400ms ease" }} />
         <circle cx={gx} cy={gy} r={3} fill={PAT.ink} />
         <PatentKey x={gx + 62} y={84} size={12} anchor="end">
-          SENSITIVE
+          Sensitive
         </PatentKey>
         <PatentKey x={gx} y={178} size={12}>
-          INFERRED DATA
+          Inferred data
         </PatentKey>
       </Frame>
       <Toggles
@@ -828,7 +825,7 @@ export function SensitiveInference() {
 }
 
 /* --------------------------------------------------------------------------
-   07. Shadow Data Pipelines and Third-Party API Leakage
+   Shadow Data Pipelines and Third-Party API Leakage
    -------------------------------------------------------------------------- */
 
 /** A small padlock centred on (cx, cy). */
@@ -929,15 +926,15 @@ export function ShadowPipeline() {
         {ent ? (
           <g>
             <PatentKey x={518} y={114} size={11.5}>
-              ZERO DATA
+              Zero data
             </PatentKey>
             <PatentKey x={518} y={130} size={11.5}>
-              RETENTION
+              retention
             </PatentKey>
           </g>
         ) : (
           <PatentKey x={596} y={82} size={12.5} anchor="end">
-            RETAINED
+            Retained
           </PatentKey>
         )}
         {/* reviewed: a contractor reading */}
@@ -952,7 +949,7 @@ export function ShadowPipeline() {
         )}
         {!ent ? (
           <PatentKey x={596} y={172} size={12.5} anchor="end">
-            REVIEWED
+            Reviewed
           </PatentKey>
         ) : null}
         {/* training: a run of gears fed records */}
@@ -963,7 +960,7 @@ export function ShadowPipeline() {
         {!ent ? <line x1={496} y1={295} x2={520} y2={291} stroke={R} strokeWidth={LINE.hair} /> : null}
         {!ent ? (
           <PatentKey x={596} y={262} size={12.5} anchor="end">
-            TRAINING
+            Training
           </PatentKey>
         ) : null}
         {!ent ? <path d={headAlongPath(428, py, 1, 0, 8)} fill="none" stroke={R} strokeWidth={LINE.outline} /> : null}
@@ -983,7 +980,7 @@ export function ShadowPipeline() {
 }
 
 /* --------------------------------------------------------------------------
-   08. Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice
+   Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice
    -------------------------------------------------------------------------- */
 
 /**
@@ -1021,7 +1018,7 @@ export function PolicyScroll() {
       <ObliqueBox id={id} x={340} y={232} w={180} h={60} dx={12} dy={8} />
       <ObliqueBox id={id} x={372} y={250} w={100} h={22} dx={6} dy={4} />
       <PatentKey x={422} y={266} size={12.5}>
-        I AGREE
+        I agree
       </PatentKey>
       <Cursor x={468} y={262} size={30} weight="light" color={PAT.ink} />
     </Frame>
@@ -1029,7 +1026,7 @@ export function PolicyScroll() {
 }
 
 /* --------------------------------------------------------------------------
-   09. Contextual Integrity and Informational Norms
+   Contextual Integrity and Informational Norms
    -------------------------------------------------------------------------- */
 
 /** A classical office front (pediment and columns): the insurer. */
@@ -1067,11 +1064,11 @@ export function FlowParameters() {
   const bad = recip || princ;
   const fy = 300;
   const tags: { k: [string, string]; v: string; x: number; tx: number; ty: number; red: boolean }[] = [
-    { k: ["DATA", "SUBJECT"], v: "the patient", x: 70, tx: 112, ty: 170, red: false },
-    { k: ["", "SENDER"], v: "the patient", x: 210, tx: 170, ty: 214, red: false },
-    { k: ["INFORMATION", "TYPE"], v: "a support-group post", x: 352, tx: 352, ty: 196, red: false },
-    { k: ["TRANSMISSION", "PRINCIPLE"], v: princ ? "commercial underwriting" : "mutual support", x: 520, tx: 432, ty: 196, red: princ },
-    { k: ["", "RECIPIENT"], v: recip ? "an insurer" : "peers", x: 720, tx: 720, ty: 168, red: recip },
+    { k: ["Data", "subject"], v: "the patient", x: 70, tx: 112, ty: 170, red: false },
+    { k: ["", "Sender"], v: "the patient", x: 210, tx: 170, ty: 214, red: false },
+    { k: ["Information", "type"], v: "a support-group post", x: 352, tx: 352, ty: 196, red: false },
+    { k: ["Transmission", "principle"], v: princ ? "commercial underwriting" : "mutual support", x: 520, tx: 432, ty: 196, red: princ },
+    { k: ["", "Recipient"], v: recip ? "an insurer" : "peers", x: 720, tx: 720, ty: 168, red: recip },
   ];
   return (
     <div>
@@ -1142,7 +1139,7 @@ export function FlowParameters() {
         <g transform="rotate(-5 520 276)">
           <rect x={434} y={260} width={172} height={32} fill="none" stroke={bad ? R : PAT.ink} strokeWidth={LINE.bold} />
           <PatentKey x={520} y={281} size={12} fill={bad ? R : PAT.ink}>
-            {bad ? "PRIVACY VIOLATION" : "APPROPRIATE FLOW"}
+            {bad ? "Privacy violation" : "Appropriate flow"}
           </PatentKey>
         </g>
       </Frame>
@@ -1160,7 +1157,7 @@ export function FlowParameters() {
 }
 
 /* --------------------------------------------------------------------------
-   10. Why Notice-and-Choice Fails in AI Ecosystems
+   Why Notice-and-Choice Fails in AI Ecosystems
    -------------------------------------------------------------------------- */
 
 /** Minutes to read one typical privacy policy at reading speed. */
@@ -1195,7 +1192,7 @@ export function PolicyHours() {
           {`${n}`}
         </Num>
         <PatentKey x={150} y={by} size={12} anchor="start">
-          POLICIES
+          Policies
         </PatentKey>
         {/* thirty working days, filled per eight hours read */}
         {Array.from({ length: 30 }, (_, k) => {
@@ -1215,7 +1212,7 @@ export function PolicyHours() {
           {`${Math.round(hours)}`}
         </Num>
         <PatentKey x={430} y={76} size={12} anchor="start">
-          HOURS
+          Hours
         </PatentKey>
         <Num x={430} y={112} size={15} anchor="start">
           {`${Math.round(days * 10) / 10} working days`}
@@ -1247,7 +1244,7 @@ export function HiddenFuture() {
       <Form x={82} y={28} w={44} h={58} rows={3} ticks={3} />
       <line x1={104} y1={92} x2={104} y2={ty + 6} {...ink} />
       <PatentKey x={106} y={138} size={12}>
-        MOMENT OF CONSENT
+        Moment of consent
       </PatentKey>
       {Array.from({ length: 22 }, (_, i) => (
         <circle key={i} cx={r2(136 + i * 6.6)} cy={r2(ty - 18 + Math.sin(i * 1.3) * 5)} r={1.8} fill={PAT.ink} />
@@ -1266,7 +1263,7 @@ export function HiddenFuture() {
         <line x1={472} y1={74} x2={488} y2={74} {...hair} />
       </g>
       <PatentKey x={470} y={138} size={12}>
-        FUTURE MODEL
+        Future model
       </PatentKey>
     </Frame>
   );
@@ -1339,7 +1336,7 @@ export function TakeItOrLeaveIt() {
       <path d="M176 74L196 84V132L176 132Z" fill={stip(id, "light")} {...ink} />
       <rect x={150} y={50} width={122} height={19} fill={PAT.paper} {...hair} />
       <PatentKey x={211} y={64} size={12}>
-        ACCEPT ALL
+        Accept all
       </PatentKey>
       <path d="M30 136Q120 140 168 120" fill="none" {...hair} strokeDasharray={CENTRE_DASH} />
       <path d={headAlongPath(176, 116, 1, -0.5, 8)} fill="none" {...ink} />
@@ -1356,14 +1353,14 @@ export function TakeItOrLeaveIt() {
         </g>
       ))}
       <PatentKey x={349} y={64} size={12} fill={R}>
-        DECLINE
+        Decline
       </PatentKey>
     </Frame>
   );
 }
 
 /* --------------------------------------------------------------------------
-   11. Dark Patterns in Consent Management and Opt-Out Design
+   Dark Patterns in Consent Management and Opt-Out Design
    -------------------------------------------------------------------------- */
 
 type Pattern = "roach" | "shame" | "bundle" | "default";
@@ -1421,7 +1418,7 @@ export function ConsentBanner() {
           <g>
             <rect x={sx + 12} y={py + 196} width={sw - 24} height={44} fill={stip(id, "light")} {...ink} strokeWidth={LINE.bold} />
             <PatentKey x={sx + sw / 2} y={py + 223} size={14}>
-              ACCEPT
+              Accept
             </PatentKey>
             <Num x={sx + sw / 2} y={py + 258} size={14}>
               1 click
@@ -1459,21 +1456,21 @@ export function ConsentBanner() {
           <g>
             <rect x={sx + 12} y={py + 176} width={sw - 24} height={44} fill={stip(id, "light")} {...ink} strokeWidth={LINE.bold} />
             <PatentKey x={sx + sw / 2} y={py + 203} size={14}>
-              ACCEPT
+              Accept
             </PatentKey>
-            <text x={sx + sw / 2} y={py + 268} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={8} fill={R}>
+            <text x={sx + sw / 2} y={py + 268} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={8} fill={R}>
               no thanks, I don&apos;t mind
             </text>
-            <text x={sx + sw / 2} y={py + 278} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={8} fill={R}>
+            <text x={sx + sw / 2} y={py + 278} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={8} fill={R}>
               worse recommendations
             </text>
             <Detail cx={sx + sw / 2} cy={py + 273} r={46} />
             <line x1={r2(sx + sw / 2 + 46 * 0.93)} y1={r2(py + 273 - 46 * 0.37)} x2={r2(404 - 92 * 0.93)} y2={r2(py + 214 + 92 * 0.37)} {...hair} />
             <circle cx={404} cy={py + 214} r={92} fill={PAT.paper} {...ink} />
-            <text x={404} y={py + 209} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={14} fill={R}>
+            <text x={404} y={py + 209} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={14} fill={R}>
               no thanks, I don&apos;t mind
             </text>
-            <text x={404} y={py + 229} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={14} fill={R}>
+            <text x={404} y={py + 229} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={14} fill={R}>
               worse recommendations
             </text>
           </g>
@@ -1481,9 +1478,9 @@ export function ConsentBanner() {
         {p === "bundle" ? (
           <g>
             {[
-              ["BASIC SERVICE", 120],
-              ["PROFILING", 160],
-              ["AI TRAINING", 200],
+              ["Basic service", 120],
+              ["Profiling", 160],
+              ["AI training", 200],
             ].map(([k, d]) => (
               <g key={k}>
                 <line x1={sx + 12} y1={py + Number(d)} x2={sx + sw - 46} y2={py + Number(d)} {...hair} />
@@ -1500,11 +1497,11 @@ export function ConsentBanner() {
             {/* the bundle drawn out beside the phone: the service chained to two weights */}
             <ObliqueBox id={id} x={262} y={150} w={92} h={60} dx={12} dy={8} />
             <PatentKey x={308} y={185} size={11}>
-              SERVICE
+              Service
             </PatentKey>
             {[
-              [118, "PROFILING"],
-              [242, "AI TRAINING"],
+              [118, "Profiling"],
+              [242, "AI training"],
             ].map(([wy, k]) => {
               const y = Number(wy);
               const links = Array.from({ length: 5 }, (_, i) => {
@@ -1527,9 +1524,9 @@ export function ConsentBanner() {
         ) : null}
         {p === "default" ? (
           <g>
-            {["ANALYTICS", "LOCATION", "MARKETING", "AI TRAINING"].map((k, i) => {
+            {["Analytics", "Location", "Marketing", "AI training"].map((k, i) => {
               const y = py + 104 + i * 40;
-              const red = k === "AI TRAINING";
+              const red = k === "AI training";
               return (
                 <g key={k}>
                   <PatentKey x={sx + 10} y={y + 12} size={10.5} anchor="start" fill={red ? R : PAT.ink}>
@@ -1539,14 +1536,14 @@ export function ConsentBanner() {
                 </g>
               );
             })}
-            <text x={sx + 12} y={py + 284} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={8} fill={PAT.ink}>
+            <text x={sx + 12} y={py + 284} fontFamily="var(--font-body)" fontStyle="italic" fontSize={8} fill={PAT.ink}>
               Our policy has been updated.
             </text>
             <Detail cx={sx + sw - 27} cy={py + 232} r={26} />
             <line x1={sx + sw + 2} y1={py + 228} x2={330} y2={py + 200} {...hair} />
             <circle cx={400} cy={py + 190} r={70} fill={PAT.paper} {...ink} />
             <PatentKey x={400} y={py + 164} size={12} fill={R}>
-              AI TRAINING
+              AI training
             </PatentKey>
             <g transform={`translate(${400 - 48} ${py + 178}) scale(2.8)`}>
               <rect x={0} y={0} width={34} height={16} rx={8} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.outline / 2.8} />
@@ -1571,76 +1568,7 @@ export function ConsentBanner() {
 }
 
 /* --------------------------------------------------------------------------
-   12. Discussion: Training on Customer Support Calls
-   -------------------------------------------------------------------------- */
-
-/**
- * Five years of recorded support calls as five canisters of reels, one per
- * year, carried along a belt into a voice-agent housing with a headset and
- * a speaker grille. Above the belt runs the terms-of-service banner.
- */
-export function CallArchive() {
-  const id = "w6-calls";
-  const years = [2021, 2022, 2023, 2024, 2025];
-  const fy = 300;
-  return (
-    <Frame
-      width={460}
-      height={256}
-      label="Patent drawing of five canisters of call-recording reels, one each for 2021 to 2025, stacked and fed along a belt into a voice-agent housing with a headset and a speaker grille. Above runs a long terms-of-service banner covered in written lines."
-    >
-      <PatentDefs id={id} />
-      <g transform="translate(0 -56)">
-      <line x1={10} y1={fy} x2={450} y2={fy} {...hair} />
-      {/* the banner */}
-      <line x1={146} y1={132} x2={146} y2={fy - 34} {...ink} />
-      <line x1={294} y1={132} x2={294} y2={fy - 34} {...ink} />
-      <path d="M134 104H306L298 120L306 136H134L142 120Z" fill={PAT.paper} {...ink} />
-      {[114, 121, 128].map((y, i) => (
-        <line key={y} x1={156} y1={y} x2={i === 2 ? 230 : 286} y2={y} {...hair} />
-      ))}
-      {/* five canisters, one per year */}
-      {years.map((yr, i) => {
-        const y = fy - 34 - i * 46;
-        return (
-          <g key={yr}>
-            <path d={`M32 ${y}V${y + 24}A48 10 0 0 0 128 ${y + 24}V${y}`} fill={PAT.paper} {...ink} />
-            <ellipse cx={80} cy={y} rx={48} ry={10} fill={stip(id, "light")} {...ink} />
-            <ellipse cx={80} cy={y} rx={14} ry={3} fill={PAT.paper} {...hair} />
-            <Num x={80} y={y + 25} size={13}>
-              {yr}
-            </Num>
-          </g>
-        );
-      })}
-      {/* the belt */}
-      <rect x={140} y={fy - 34} width={160} height={10} rx={5} fill={stip(id, "dense")} {...ink} />
-      {[150, 290].map((cx) => (
-        <circle key={cx} cx={cx} cy={fy - 29} r={8} fill={PAT.paper} {...ink} />
-      ))}
-      <line x1={150} y1={fy - 21} x2={150} y2={fy} {...ink} />
-      <line x1={290} y1={fy - 21} x2={290} y2={fy} {...ink} />
-      {[176, 222].map((x) => (
-        <g key={x}>
-          <ellipse cx={x + 16} cy={fy - 46} rx={18} ry={5} fill={stip(id, "light")} {...ink} />
-          <path d={`M${x - 2} ${fy - 46}V${fy - 38}A18 5 0 0 0 ${x + 34} ${fy - 38}V${fy - 46}`} fill={PAT.paper} {...ink} />
-        </g>
-      ))}
-      <path d={headAlongPath(314, fy - 40, 1, 0, 8)} fill="none" {...ink} />
-      <line x1={302} y1={fy - 40} x2={308} y2={fy - 40} {...hair} />
-      {/* the voice agent */}
-      <ObliqueBox id={id} x={318} y={150} w={110} h={150} dx={14} dy={9} />
-      {Array.from({ length: 6 }, (_, r) => (
-        <line key={r} x1={340} y1={232 + r * 8} x2={406} y2={232 + r * 8} {...hair} />
-      ))}
-      <Headset x={343} y={160} size={60} weight="light" color={PAT.ink} />
-      </g>
-    </Frame>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   13. Part 3: Technical Privacy Risks and Safeguards
+   Part 3: Technical Privacy Risks and Safeguards
    -------------------------------------------------------------------------- */
 
 /**
@@ -1654,11 +1582,11 @@ export function RedactedRecord() {
   const y = 20;
   const w = 340;
   const rows: [string, string | null][] = [
-    ["NAME", null],
-    ["ACCOUNT NO.", null],
-    ["POSTAL CODE", "H2X 1Y4"],
-    ["BIRTH DATE", "1984-03-12"],
-    ["GENDER", "F"],
+    ["Name", null],
+    ["Account no.", null],
+    ["Postal code", "H2X 1Y4"],
+    ["Birth date", "1984-03-12"],
+    ["Gender", "F"],
   ];
   return (
     <Frame
@@ -1697,7 +1625,7 @@ export function RedactedRecord() {
 }
 
 /* --------------------------------------------------------------------------
-   14. The Failure of Naive Anonymization and Re-Identification Attacks
+   The Failure of Naive Anonymization and Re-Identification Attacks
    -------------------------------------------------------------------------- */
 
 type QI = "zip" | "dob" | "sex";
@@ -1732,7 +1660,7 @@ export function QuasiIdentifiers() {
   const lx = 10;
   const rx = 340;
   const colX = { zip: 0, dob: 52, sex: 126 } as const;
-  const head = { zip: "ZIP", dob: "BIRTH", sex: "SEX" } as const;
+  const head = { zip: "ZIP", dob: "Birth", sex: "Sex" } as const;
   return (
     <div>
       <Frame
@@ -1754,11 +1682,11 @@ export function QuasiIdentifiers() {
               ))}
               {side === "L" ? (
                 <PatentKey x={x0 + 174} y={top - 8} size={11.5} anchor="start">
-                  DIAGNOSIS
+                  Diagnosis
                 </PatentKey>
               ) : (
                 <PatentKey x={x0 + 10} y={top - 8} size={11.5} anchor="start">
-                  NAME
+                  Name
                 </PatentKey>
               )}
               {PEOPLE.map((p, i) => {
@@ -1952,8 +1880,8 @@ export function KAnonymity() {
         <rect x={8} y={top - 24} width={300} height={rh * 9 + 30} fill={PAT.paper} {...ink} />
         {[
           ["ZIP", 20],
-          ["AGE", 96],
-          ["DIAGNOSIS", 180],
+          ["Age", 96],
+          ["Diagnosis", 180],
         ].map(([k2, x]) => (
           <PatentKey key={String(k2)} x={Number(x)} y={top - 8} size={12.5} anchor="start">
             {k2}
@@ -1971,7 +1899,7 @@ export function KAnonymity() {
               <Num x={96} y={y + 13} size={13} anchor="start">
                 {r.age}
               </Num>
-              <Num x={180} y={y + 13} size={13} anchor="start" fill={red ? R : PAT.ink} italic>
+              <Num x={180} y={y + 13} size={13} anchor="start" fill={red ? R : PAT.ink}>
                 {r.dx}
               </Num>
             </g>
@@ -2005,7 +1933,7 @@ export function KAnonymity() {
 }
 
 /* --------------------------------------------------------------------------
-   15. Training Data Memorization and Membership Inference in LLMs
+   Training Data Memorization and Membership Inference in LLMs
    -------------------------------------------------------------------------- */
 
 /** Chance the model completes the prefix verbatim, rising with copies in training. */
@@ -2043,13 +1971,13 @@ export function ExtractionPrefix() {
         {[86, 96, 106].map((y, i) => (
           <line key={y} x1={24} y1={y} x2={i === 2 ? 70 : 108} y2={y} {...hair} />
         ))}
-        <text x={24} y={128} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={12} fill={PAT.ink}>
+        <text x={24} y={128} fontFamily="var(--font-body)" fontStyle="italic" fontSize={12} fill={PAT.ink}>
           Jane Roe,
         </text>
-        <text x={24} y={144} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={12} fill={PAT.ink}>
+        <text x={24} y={144} fontFamily="var(--font-body)" fontStyle="italic" fontSize={12} fill={PAT.ink}>
           555-0142,
         </text>
-        <text x={24} y={160} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={12} fill={PAT.ink}>
+        <text x={24} y={160} fontFamily="var(--font-body)" fontStyle="italic" fontSize={12} fill={PAT.ink}>
           12 Elm St.
         </text>
         {[176, 186].map((y) => (
@@ -2066,7 +1994,7 @@ export function ExtractionPrefix() {
         <Gear cx={216} cy={140} r={9} n={9} phase={0.25} />
         {/* the prefix card */}
         <rect x={128} y={14} width={150} height={30} fill={PAT.paper} {...ink} />
-        <text x={203} y={34} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={14} fill={PAT.ink}>
+        <text x={203} y={34} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={14} fill={PAT.ink}>
           Contact Jane Roe at
         </text>
         <line x1={203} y1={44} x2={203} y2={70} {...hair} />
@@ -2075,7 +2003,7 @@ export function ExtractionPrefix() {
         <line x1={254} y1={124} x2={266} y2={124} {...hair} />
         <path d={headAlongPath(272, 124, 1, 0, 8)} fill="none" {...ink} />
         <path d="M276 106H530L522 124L530 142H276Z" fill={PAT.paper} stroke={verbatim ? R : PAT.ink} strokeWidth={verbatim ? LINE.bold : LINE.outline} strokeLinejoin="round" />
-        <text x={288} y={129} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={15} fill={verbatim ? R : PAT.ink}>
+        <text x={288} y={129} fontFamily="var(--font-body)" fontStyle="italic" fontSize={15} fill={verbatim ? R : PAT.ink}>
           {verbatim ? "555-0142, 12 Elm St." : "the front desk."}
         </text>
         {/* the gauge: chance of verbatim recall */}
@@ -2083,7 +2011,7 @@ export function ExtractionPrefix() {
         <rect x={276} y={180} width={r2(254 * p)} height={12} fill={stip(id, verbatim ? "signal" : "dense")} stroke={verbatim ? R : PAT.ink} strokeWidth={LINE.hair} />
         <line x1={403} y1={174} x2={403} y2={198} {...hair} strokeDasharray="2 2" />
         <PatentKey x={276} y={170} size={12.5} anchor="start">
-          VERBATIM
+          Verbatim
         </PatentKey>
         <Num x={530} y={170} size={14} anchor="end" fill={verbatim ? R : PAT.ink}>
           {`${Math.round(p * 100)}%`}
@@ -2151,7 +2079,7 @@ export function MembershipGap() {
           </g>
         ))}
         <PatentKey x={(x0 + x1) / 2} y={base + 40} size={12.5}>
-          MODEL CONFIDENCE
+          Model confidence
         </PatentKey>
         <line x1={X(thr)} y1={30} x2={X(thr)} y2={base} {...ink} strokeDasharray={CENTRE_DASH} />
         <FigureName x={X(m0) - 70} y={46} size={13.5}>
@@ -2164,7 +2092,7 @@ export function MembershipGap() {
           {`${Math.round(acc * 100)}%`}
         </Num>
         <PatentKey x={30} y={84} size={12.5} anchor="start">
-          ATTACK ACCURACY
+          Attack accuracy
         </PatentKey>
       </Frame>
       <Slider label="Training epochs" value={epochs} min={0} max={20} onChange={setEpochs} />
@@ -2173,7 +2101,7 @@ export function MembershipGap() {
 }
 
 /* --------------------------------------------------------------------------
-   16. Differential Privacy, Federated Learning, and Machine Unlearning
+   Differential Privacy, Federated Learning, and Machine Unlearning
    -------------------------------------------------------------------------- */
 
 /**
@@ -2227,7 +2155,7 @@ export function EpsilonNoise() {
         <FigureName x={X(101) + 8} y={30} size={13.5} anchor="start">
           with one record
         </FigureName>
-        <text x={x1} y={86} textAnchor="end" fontFamily="var(--font-heading)" fontSize={22} fill={PAT.ink}>
+        <text x={x1} y={86} textAnchor="end" fontFamily="var(--font-body)" fontSize={22} fill={PAT.ink}>
           <tspan>e</tspan>
           <tspan dy={-9} fontSize={14}>
             ε
@@ -2317,7 +2245,7 @@ export function ClipAndNoise() {
         <circle cx={r2(mx + mean[0])} cy={r2(my + mean[1])} r={noise} fill={stip(id, "light")} {...hair} />
         <circle cx={mx} cy={my} r={2.5} fill={PAT.ink} />
         <PatentKey x={r2(mx + mean[0] - noise - 8)} y={r2(my + mean[1] + 4)} size={12} anchor="end">
-          NOISE
+          Noise
         </PatentKey>
       </Frame>
       <Slider label="Clipping norm C" value={c} min={40} max={120} step={10} onChange={setC} />
@@ -2348,7 +2276,7 @@ export function FederatedPlan() {
       {/* secure aggregation */}
       <rect x={180} y={72} width={200} height={26} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
       <PatentKey x={280} y={90} size={12}>
-        SECURE AGGREGATION
+        Secure aggregation
       </PatentKey>
       {xs.map((x, i) => (
         <g key={x}>
@@ -2432,7 +2360,7 @@ export function ShardUnlearning() {
 }
 
 /* --------------------------------------------------------------------------
-   17. Part 4: Research Ethics Board Governance for Human and AI Studies
+   Part 4: Research Ethics Board Governance for Human and AI Studies
    -------------------------------------------------------------------------- */
 
 /**
@@ -2481,7 +2409,7 @@ export function ProtocolDossier() {
       <ellipse cx={300} cy={54} rx={24} ry={12} fill={stip(id, "light")} {...ink} />
       <path d="M236 146H364L362 152H238Z" fill={stip(id, "dense")} {...ink} />
       <PatentKey x={300} y={138} size={13}>
-        APPROVED
+        Approved
       </PatentKey>
       </g>
     </Frame>
@@ -2489,7 +2417,7 @@ export function ProtocolDossier() {
 }
 
 /* --------------------------------------------------------------------------
-   18. Core Principles of Human-Subjects Research Ethics
+   Core Principles of Human-Subjects Research Ethics
    -------------------------------------------------------------------------- */
 
 /**
@@ -2560,7 +2488,7 @@ export function WelfareBalance() {
         <path key={d} d={`M${lx + d - 5} ${ly + 58}L${lx + d - 3} ${ly + 50}H${lx + d + 3}L${lx + d + 5} ${ly + 58}Z`} fill={PAT.paper} {...ink} />
       ))}
       <PatentKey x={lx} y={ly + 94} size={13.5}>
-        RISKS
+        Risks
       </PatentKey>
       {/* benefit pan */}
       <line x1={rx} y1={ry} x2={rx - 34} y2={ry + 58} {...hair} />
@@ -2568,7 +2496,7 @@ export function WelfareBalance() {
       <path d={`M${rx - 38} ${ry + 58}Q${rx} ${ry + 74} ${rx + 38} ${ry + 58}Z`} fill={stip(id, "dense")} {...ink} />
       <path d={`M${rx - 20} ${ry + 58}L${rx - 14} ${ry + 30}H${rx + 14}L${rx + 20} ${ry + 58}Z`} fill={PAT.paper} {...ink} />
       <PatentKey x={rx} y={ry + 94} size={13.5}>
-        BENEFITS
+        Benefits
       </PatentKey>
     </Frame>
   );
@@ -2593,10 +2521,10 @@ export function JusticeBurden() {
       <PatentDefs id={id} />
       <line x1={110} y1={fy} x2={394} y2={fy} {...hair} />
       <PatentKey x={8} y={44} size={13.5} anchor="start">
-        BURDENS
+        Burdens
       </PatentKey>
       <PatentKey x={8} y={178} size={13.5} anchor="start">
-        BENEFITS
+        Benefits
       </PatentKey>
       {xs.map((x, g) => (
         <g key={x}>
@@ -2614,7 +2542,7 @@ export function JusticeBurden() {
 }
 
 /* --------------------------------------------------------------------------
-   19. Deception, Debriefing, and Minimal Risk in Behavioral Experiments
+   Deception, Debriefing, and Minimal Risk in Behavioral Experiments
    -------------------------------------------------------------------------- */
 
 type Condition = "necessary" | "minimal" | "debrief";
@@ -2632,9 +2560,9 @@ export function DeceptionInterlock() {
   const R = PAT.signal;
   const all = on.length === 3;
   const pins: { c: Condition; k: [string, string] }[] = [
-    { c: "necessary", k: ["NO OTHER", "WAY"] },
-    { c: "minimal", k: ["MINIMAL", "RISK"] },
-    { c: "debrief", k: ["DEBRIEFING", ""] },
+    { c: "necessary", k: ["No other", "way"] },
+    { c: "minimal", k: ["Minimal", "risk"] },
+    { c: "debrief", k: ["Debriefing", ""] },
   ];
   const fy = 260;
   const lx = 298;
@@ -2682,7 +2610,7 @@ export function DeceptionInterlock() {
         <g transform={`rotate(-4 ${lx + 160} 252)`}>
           <rect x={lx + 80} y={236} width={160} height={30} fill="none" stroke={all ? PAT.ink : R} strokeWidth={LINE.bold} />
           <PatentKey x={lx + 160} y={256} size={13} fill={all ? PAT.ink : R}>
-            {all ? "PERMITTED" : "NOT PERMITTED"}
+            {all ? "Permitted" : "Not permitted"}
           </PatentKey>
         </g>
         </g>
@@ -2720,10 +2648,10 @@ export function DisguisedSurvey() {
       <path d="M96 20H442V106H96Z" fill={PAT.paper} {...ink} />
       <path d="M96 20L269 66L442 20" fill="none" {...hair} />
       <PatentKey x={214} y={84} size={12.5}>
-        MARKET RESEARCH
+        Market research
       </PatentKey>
       <PatentKey x={214} y={100} size={12.5}>
-        SURVEY
+        Survey
       </PatentKey>
       {/* the cutaway */}
       <path d="M336 52L348 46L358 56L370 48L380 58L392 50L404 60L428 52V100H336Z" fill={PAT.paper} {...ink} />
@@ -2734,7 +2662,7 @@ export function DisguisedSurvey() {
 }
 
 /* --------------------------------------------------------------------------
-   20. REB Oversight When AI Tools Process Participant Data
+   REB Oversight When AI Tools Process Participant Data
    -------------------------------------------------------------------------- */
 
 type Detail = "name" | "workplace" | "events" | "quote";
@@ -2778,13 +2706,13 @@ export function TranscriptStrip() {
         <path d="M20 26L32 18H372L360 26Z" fill={stip(id, "light")} {...ink} />
         <rect x={20} y={26} width={340} height={288} fill={PAT.paper} {...ink} />
         <PatentKey x={38} y={50} size={12.5} anchor="start">
-          INTERVIEW 07
+          Interview 7
         </PatentKey>
         {rows.map((r) =>
           removed.includes(r.d) ? (
             <rect key={r.l} x={38} y={r.y - 14} width={r2(Math.min(300, r.l.length * 7.4))} height={18} fill={stip(id, "dense")} {...hair} />
           ) : (
-            <text key={r.l} x={38} y={r.y} fontFamily="var(--font-heading)" fontStyle="italic" fontSize={15} fill={R}>
+            <text key={r.l} x={38} y={r.y} fontFamily="var(--font-body)" fontStyle="italic" fontSize={15} fill={R}>
               {r.l}
             </text>
           ),
@@ -2797,7 +2725,7 @@ export function TranscriptStrip() {
           {m}
         </Num>
         <PatentKey x={480} y={272} size={12.5}>
-          {m === "1" ? "PERSON FITS" : "PEOPLE FIT"}
+          {m === "1" ? "Person fits" : "People fit"}
         </PatentKey>
       </Frame>
       <Toggles
@@ -2816,7 +2744,7 @@ export function TranscriptStrip() {
 }
 
 /* --------------------------------------------------------------------------
-   21. Part 5: Ethical and Epistemic Boundaries of Synthetic AI Respondents
+   Part 5: Ethical and Epistemic Boundaries of Synthetic AI Respondents
    -------------------------------------------------------------------------- */
 
 /** A persona card: a portrait outline and written attribute lines. */
@@ -2876,7 +2804,7 @@ export function PersonaPress() {
 }
 
 /* --------------------------------------------------------------------------
-   22. Silicon Samples: Language Models as Simulated Survey Respondents
+   Silicon Samples: Language Models as Simulated Survey Respondents
    -------------------------------------------------------------------------- */
 
 /**
@@ -2886,10 +2814,10 @@ export function PersonaPress() {
 export function PersonaPrompt() {
   const id = "w6-persona";
   const rows: [string, string][] = [
-    ["AGE", "72"],
-    ["INCOME", "$28,000"],
-    ["REGION", "rural north"],
-    ["POLITICS", "moderate"],
+    ["Age", "72"],
+    ["Income", "$28,000"],
+    ["Region", "rural north"],
+    ["Politics", "moderate"],
   ];
   return (
     <Frame
@@ -2906,7 +2834,7 @@ export function PersonaPrompt() {
           <PatentKey x={28} y={54 + i * 30} size={13} anchor="start">
             {k}
           </PatentKey>
-          <Num x={130} y={54 + i * 30} size={16} anchor="start" italic>
+          <Num x={130} y={54 + i * 30} size={16} anchor="start">
             {v}
           </Num>
           <line x1={28} y1={62 + i * 30} x2={218} y2={62 + i * 30} {...hair} />
@@ -2959,7 +2887,7 @@ export function PersonVsDistribution() {
         <PatentDefs id={id} />
         <line x1={14} y1={base} x2={130} y2={base} {...hair} />
         <Figure id={id} x={70} y={base} s={1.55} />
-        <FigureName x={70} y={226} size={13.5}>
+        <FigureName x={72} y={226} size={13}>
           a member of the group
         </FigureName>
         {/* pages written about the group */}
@@ -3004,7 +2932,7 @@ export function PersonVsDistribution() {
 }
 
 /* --------------------------------------------------------------------------
-   23. Epistemic and Ethical Risks of Replacing Human Panels With AI
+   Epistemic and Ethical Risks of Replacing Human Panels With AI
    -------------------------------------------------------------------------- */
 
 /**
@@ -3074,7 +3002,7 @@ export function VarianceCollapse() {
           </g>
         ))}
         <PatentKey x={(x0 + x1) / 2} y={base + 40} size={13}>
-          CETSCALE SCORE
+          CETSCALE score
         </PatentKey>
         <FigureName x={X(28)} y={92} size={13.5}>
           humans
@@ -3166,7 +3094,7 @@ export function TemperatureShift() {
 }
 
 /* --------------------------------------------------------------------------
-   24. Governance Rules for Hybrid Human-AI Research
+   Governance Rules for Hybrid Human-AI Research
    -------------------------------------------------------------------------- */
 
 /**
@@ -3214,7 +3142,7 @@ export function PilotNotReplace() {
  */
 export function DisclosedReport() {
   const id = "w6-disclose";
-  const rows = ["HUMAN", "HUMAN", "SIMULATED", "SIMULATED", "HUMAN"];
+  const rows = ["Human", "Human", "Simulated", "Simulated", "Human"];
   return (
     <Frame
       width={380}
@@ -3231,7 +3159,7 @@ export function DisclosedReport() {
       ))}
       {rows.map((k, i) => {
         const y = 60 + i * 18;
-        const sim = k === "SIMULATED";
+        const sim = k === "Simulated";
         return (
           <g key={i}>
             <rect x={26} y={y - 12} width={136} height={15} fill={PAT.paper} {...hair} strokeDasharray={sim ? "3 2" : undefined} />
@@ -3244,11 +3172,11 @@ export function DisclosedReport() {
       })}
       <line x1={26} y1={146} x2={304} y2={146} {...ink} />
       <PatentKey x={26} y={163} size={12.5} anchor="start">
-        MODEL VERSION
+        Model version
       </PatentKey>
       <line x1={200} y1={160} x2={304} y2={160} {...hair} />
       <PatentKey x={26} y={179} size={12.5} anchor="start">
-        SAMPLING PROTOCOL
+        Sampling protocol
       </PatentKey>
       <line x1={244} y1={176} x2={304} y2={176} {...hair} />
       </g>
@@ -3308,47 +3236,3 @@ export function ProxyVsActor() {
     </Frame>
   );
 }
-
-/* --------------------------------------------------------------------------
-   25. Discussion: The Synthetic Consumer Pretest
-   -------------------------------------------------------------------------- */
-
-/**
- * The home diagnostic kit and its instruction leaflet in the middle. On the
- * left a stack of 2,000 persona cards. On the right a rural senior with a
- * cane outside a farmhouse.
- */
-export function RuralPretest() {
-  const id = "w6-rural";
-  const fy = 270;
-  return (
-    <Frame
-      width={460}
-      height={218}
-      label="Patent drawing of a home diagnostic kit box with its instruction leaflet in the middle. On the left a tall stack of 2,000 persona cards. On the right a rural senior with a cane standing outside a farmhouse."
-    >
-      <PatentDefs id={id} />
-      <g transform="translate(0 -66)">
-      <line x1={10} y1={fy} x2={450} y2={fy} {...hair} />
-      {/* persona cards */}
-      {Array.from({ length: 20 }, (_, k) => (
-        <Sheet key={k} id={id} x={20} y={r2(fy - 2 - k * 7)} w={76} d={26} sk={20} t={3} lines={k === 19 ? 2 : 0} />
-      ))}
-      <Num x={68} y={r2(fy - 2 - 19 * 7 - 40)} size={17}>
-        2,000
-      </Num>
-      {/* the kit and leaflet */}
-      <ObliqueBox id={id} x={150} y={190} w={90} h={80} dx={16} dy={10} />
-      <path d="M170 210H220M170 222H220" {...hair} />
-      <path d="M176 238H214V258H176Z" fill="none" {...hair} />
-      <path d="M195 241V255M188 248H202" {...ink} />
-      <Sheet id={id} x={162} y={188} w={56} d={8} sk={10} t={2} lines={1} />
-      {/* the farmhouse and the senior */}
-      <House id={id} x={334} y={fy} w={70} h={56} dx={16} dy={10} roof={30} />
-      <Figure id={id} x={312} y={fy} s={1.25} flip arm="reach" />
-      <line x1={284} y1={fy} x2={280} y2={r2(fy - 66)} {...ink} strokeWidth={LINE.bold} />
-      </g>
-    </Frame>
-  );
-}
-

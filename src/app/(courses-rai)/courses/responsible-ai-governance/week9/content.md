@@ -63,7 +63,8 @@ week: week9
 - Opaque algorithmic scores that silently alter prices without disclosed criteria violate both procedural fairness and consumer autonomy.
 
 ## Discussion: Surge Pricing During an Emergency
-- Discussion: During a sudden severe rainstorm and municipal subway outage, a ride-hailing platform's automated pricing algorithm increases fares by 350 percent across the affected downtown core. The company's economics team defends the algorithm by arguing that higher prices incentivize more drivers to enter the zone and allocate scarce rides to passengers with the highest urgency. Analyze this defense using dual entitlement theory, welfare economics, and algorithmic governance, and propose how the platform's pricing algorithm should be constrained during civic emergencies.
+- During a sudden severe rainstorm and municipal subway outage, a ride-hailing platform's automated pricing algorithm increases fares by 350 percent across the affected downtown core. The company's economics team defends the algorithm by arguing that higher prices incentivize more drivers to enter the zone and allocate scarce rides to passengers with the highest urgency.
+- Analyze this defense using dual entitlement theory, welfare economics, and algorithmic governance, and propose how the platform's pricing algorithm should be constrained during civic emergencies.
 
 ## Part 3: Tacit Algorithmic Collusion in Automated Markets [no-exercise]
 - Beyond how a single firm prices to its customers, algorithmic governance must address what happens when competing firms in an oligopoly delegate their pricing decisions to autonomous learning algorithms.
@@ -127,7 +128,8 @@ week: week9
 - Firewall and ranking neutrality mandates prohibit dual-role platforms from using non-public third-party seller data for private-label development and require identical ranking weights for first-party and third-party goods.
 
 ## Discussion: The Shared Rental Pricing Algorithm
-- Discussion: Twelve competing property-management companies that control 70 percent of the apartment buildings in a metropolitan city license the same cloud-based revenue-management software. Every night, each landlord uploads its private lease renewal rates, vacancy counts, and applicant traffic to the vendor's model, which returns recommended daily rents for every unit. Public records show that after adopting the software, landlords left more units vacant during slow months while average rents across the city rose 18 percent above historical trends. Using Ezrachi and Stucke's four pathways and competition governance principles, analyze whether this arrangement constitutes unlawful coordination and how an auditor would test the software.
+- Twelve competing property-management companies that control 70 percent of the apartment buildings in a metropolitan city license the same cloud-based revenue-management software. Every night, each landlord uploads its private lease renewal rates, vacancy counts, and applicant traffic to the vendor's model, which returns recommended daily rents for every unit. Public records show that after adopting the software, landlords left more units vacant during slow months while average rents across the city rose 18 percent above historical trends.
+- Using Ezrachi and Stucke's four pathways and competition governance principles, analyze whether this arrangement constitutes unlawful coordination and how an auditor would test the software.
 
 ## Key Takeaways
 - Dynamic pricing varies prices over time based on aggregate market supply and demand, whereas personalized (surveillance) pricing charges different prices to different individuals at the same moment based on estimated willingness to pay.

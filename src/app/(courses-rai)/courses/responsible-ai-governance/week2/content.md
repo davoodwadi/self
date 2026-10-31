@@ -119,7 +119,8 @@ week: week2
 - In medical triage or fraud intervention, equalized odds is prioritized so that neither missed diagnoses nor burdensome false investigations fall disproportionately on one demographic segment.
 
 ## Discussion: The Credit Scoring Trade-Off
-- Discussion: A digital bank's credit model is perfectly calibrated across age and income groups, meaning that among approved borrowers at any score threshold, default rates are identical across groups. However, an internal audit reveals that creditworthy young adults who would have repaid their loans are rejected at a 35 percent rate, compared with an 18 percent false rejection rate for older borrowers. Should the bank preserve calibration or adjust group thresholds to achieve equal opportunity, and how should it justify that choice to regulators and customers?
+- A digital bank's credit model is perfectly calibrated across age and income groups, meaning that among approved borrowers at any score threshold, default rates are identical across groups. However, an internal audit reveals that creditworthy young adults who would have repaid their loans are rejected at a 35 percent rate, compared with an 18 percent false rejection rate for older borrowers.
+- Should the bank preserve calibration or adjust group thresholds to achieve equal opportunity, and how should it justify that choice to regulators and customers?
 
 ## Part 5: Auditing and Mitigating Disparate Impact in Marketing Pipelines [no-exercise]
 - In digital marketing, algorithmic discrimination most often appears not in explicit exclusions by a human marketer, but in automated ad delivery, dynamic pricing, and personalization systems.
@@ -146,7 +147,8 @@ week: week2
 - Step 6 is recording the decision in a formal audit report and configuring continuous production alerts to detect fairness drift after launch.
 
 ## Discussion: Neutral Targeting, Skewed Delivery
-- Discussion: A university uses an automated social media ad platform to recruit applicants for its new Master of Financial Technology program, specifying only age 21 to 40 and a bachelor's degree as targeting criteria. After two weeks, platform logs show that 82 percent of ad impressions were served to men. Explain the algorithmic mechanisms that can produce this disparity under neutral targeting, and propose how the university and the platform should intervene.
+- A university uses an automated social media ad platform to recruit applicants for its new Master of Financial Technology program, specifying only age 21 to 40 and a bachelor's degree as targeting criteria. After two weeks, platform logs show that 82 percent of ad impressions were served to men.
+- Explain the algorithmic mechanisms that can produce this disparity under neutral targeting, and propose how the university and the platform should intervene.
 
 ## Key Takeaways
 - Statistical discrimination becomes market discrimination when automated predictions systematically disadvantage protected groups through disparate treatment or disparate impact.

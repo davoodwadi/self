@@ -24,7 +24,7 @@ import { Coins, Dial, Figure, Gear, Hall, House, Lens, Sheet, SmallModel, Tag, h
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
-   in Caslon italic and one examiner's red for the finding. See the course
+   in the body face and one examiner's red for the finding. See the course
    CLAUDE.md.
 
    Week cast: a pricing algorithm is the model housing with two gears
@@ -46,7 +46,7 @@ const hair = {
 };
 const R = PAT.signal;
 
-/** Caslon numerals or a quantity on a plate. */
+/** Numerals or a quantity on a plate. */
 function Num({
   x,
   y,
@@ -54,7 +54,6 @@ function Num({
   size = 14,
   anchor = "middle",
   fill = PAT.ink,
-  italic = false,
 }: {
   x: number;
   y: number;
@@ -62,16 +61,14 @@ function Num({
   size?: number;
   anchor?: "start" | "middle" | "end";
   fill?: string;
-  italic?: boolean;
 }) {
   return (
     <text
       x={x}
       y={y}
       textAnchor={anchor}
-      fontFamily="var(--font-heading)"
+      fontFamily="var(--font-body)"
       fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
       fill={fill}
       style={{ fontVariantNumeric: "lining-nums" }}
     >
@@ -79,7 +76,6 @@ function Num({
     </text>
   );
 }
-
 
 /** A short brick wall in front elevation, (x, y) its bottom-left. */
 function Wall({ id, x, y, w, h, stroke = PAT.ink }: { id: string; x: number; y: number; w: number; h: number; stroke?: string }) {
@@ -180,7 +176,7 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
             const y = 36 + k * 44;
             return (
               <g key={k}>
-                <Num x={370} y={y + 22} size={16} italic>
+                <Num x={370} y={y + 22} size={16}>
                   {k === 0 ? "1" : "4"}
                 </Num>
                 <rect x={384} y={y} width={196} height={34} fill={PAT.paper} stroke={k === 0 ? R : PAT.ink} strokeWidth={k === 0 ? LINE.bold : LINE.outline} />
@@ -338,41 +334,41 @@ export function BotMeetsBot() {
             <Num x={340} y={88} size={16} anchor="end">$129</Num>
             <rect x={180} y={28} width={226} height={20} fill={PAT.paper} stroke={R} strokeWidth={LINE.bold} />
             <PatentKey x={295} y={42} size={12} fill={R}>
-              PROMOTED BY PLATFORM
+              Promoted by platform
             </PatentKey>
           </g>
         )}
         {/* the findings */}
         {t === "inspect" ? (
           <>
-            {bar(140, "HUMANS", 0, 1.12, 7.5, "1.12")}
-            {bar(190, "AI AGENTS", 1.63, 5.83, 7.5, "1.63 to 5.83", false, true)}
+            {bar(140, "Humans", 0, 1.12, 7.5, "1.12")}
+            {bar(190, "AI agents", 1.63, 5.83, 7.5, "1.63 to 5.83", false, true)}
             <PatentKey x={bx0} y={240} size={12} anchor="start">
-              LISTINGS INSPECTED
+              Listings inspected
             </PatentKey>
           </>
         ) : t === "anchor" ? (
           <>
-            {bar(140, "NO ANCHOR", 0, 0, 40, "$0")}
-            {bar(190, "HIGH ANCHOR", 0, 31.62, 40, "+$31.62", true)}
+            {bar(140, "No anchor", 0, 0, 40, "$0")}
+            {bar(190, "High anchor", 0, 31.62, 40, "+$31.62", true)}
             <PatentKey x={bx0} y={240} size={12} anchor="start">
-              SHIFT IN WILLINGNESS TO PAY
+              Shift in willingness to pay
             </PatentKey>
           </>
         ) : t === "weights" ? (
           <>
-            {bar(140, "WEIGHTS VISIBLE", 0, 0.89, 1, "0.89")}
-            {bar(190, "COSTLY TOOL CALL", 0, 0.29, 1, "0.29", true)}
+            {bar(140, "Weights visible", 0, 0.89, 1, "0.89")}
+            {bar(190, "Costly tool call", 0, 0.29, 1, "0.29", true)}
             <PatentKey x={bx0} y={240} size={12} anchor="start">
-              OPTIMAL CHOICE
+              Optimal choice
             </PatentKey>
           </>
         ) : (
           <>
-            {bar(140, "PROMOTED", 0, 39.6, 100, "39.6%")}
-            {bar(190, "BY PLATFORM", 0, 74.2, 100, "74.2%", true)}
+            {bar(140, "Promoted", 0, 39.6, 100, "39.6%")}
+            {bar(190, "By platform", 0, 74.2, 100, "74.2%", true)}
             <PatentKey x={bx0} y={240} size={12} anchor="start">
-              PAID LISTING CHOSEN
+              Paid listing chosen
             </PatentKey>
           </>
         )}
@@ -422,10 +418,10 @@ export function BrandEquity() {
       <circle cx={136} cy={68} r={3.5} fill={PAT.paper} {...ink} />
       <path d={tick(160, 50, 7)} fill="none" {...ink} strokeWidth={LINE.bold} />
       <PatentKey x={52} y={44} size={12} anchor="start">
-        PROFIT
+        Profit
       </PatentKey>
       <PatentKey x={232} y={206} size={12} anchor="end">
-        PRICE
+        Price
       </PatentKey>
       <FigureName x={140} y={248} size={15}>
         static optimization model
@@ -560,7 +556,7 @@ export function BuyBox() {
         })}
         {/* the Buy Box */}
         <PatentKey x={480} y={52} size={12}>
-          BUY BOX
+          Buy box
         </PatentKey>
         <rect x={400} y={62} width={160} height={150} fill={PAT.paper} {...ink} stroke={c} strokeWidth={red ? LINE.bold : LINE.outline} />
         {o.own ? <Emblem cx={480} cy={90} s={1.5} stroke={c} /> : <SellerMark cx={480} cy={92} stroke={c} />}
@@ -819,7 +815,7 @@ export function DetectionLag() {
         <line x1={x0} y1={20} x2={x0} y2={96} {...ink} />
         <line x1={x0} y1={96} x2={x1 + 6} y2={96} {...ink} />
         <PatentKey x={x0 + 6} y={16} size={13} anchor="start">
-          PRICE
+          Price
         </PatentKey>
         {[0, 10, 20, 30, 40].map((d) => (
           <g key={d}>
@@ -853,10 +849,10 @@ export function DetectionLag() {
           <Num x={px + arm + 46} y={py + 46} size={15} anchor="start" fill={R}>{`$${loss}k`}</Num>
         </g>
         <PatentKey x={20} y={260} size={12.5} anchor="start">
-          GAIN FROM UNDERCUTTING
+          Gain from undercutting
         </PatentKey>
         <PatentKey x={px + arm} y={260} size={12.5} fill={R}>
-          PRICE WAR
+          Price war
         </PatentKey>
       </Frame>
       <Slider label="Time to detect a cut" value={k} min={0} max={LAGS.length - 1} onChange={setK} formatValue={(v) => LAGS[v].label} />
@@ -944,10 +940,10 @@ export function DualEntitlement() {
           </>
         )}
         <PatentKey x={396} y={r2((aCost + aTop) / 2 + 4)} size={11} anchor="start" fill={why === "need" ? R : PAT.ink}>
-          PROFIT
+          Profit
         </PatentKey>
         <PatentKey x={396} y={r2((aCost + base) / 2 + 4)} size={11} anchor="start">
-          UNIT COST
+          Unit cost
         </PatentKey>
         {/* the survey */}
         <line x1={14} y1={222} x2={546} y2={222} {...hair} />
@@ -960,12 +956,12 @@ export function DualEntitlement() {
               <rect x={x0} y={250} width={r2(xf - x0)} height={22} fill={stip(id, "light")} {...ink} />
               <rect x={xf} y={250} width={r2(x0 + w - xf)} height={22} fill={why === "need" ? stip(id, "signal") : stip(id, "dense")} {...ink} stroke={why === "need" ? R : PAT.ink} />
               <PatentKey x={x0} y={243} size={11} anchor="start">
-                {`ACCEPTABLE ${d.fair}%`}
+                {`Acceptable ${d.fair}%`}
               </PatentKey>
               <PatentKey x={x0 + w} y={243} size={11} anchor="end" fill={why === "need" ? R : PAT.ink}>
-                {`UNFAIR ${100 - d.fair}%`}
+                {`Unfair ${100 - d.fair}%`}
               </PatentKey>
-              <Num x={x0 + w} y={292} size={13} anchor="end" italic>
+              <Num x={x0 + w} y={292} size={13} anchor="end">
                 {`${d.n} respondents`}
               </Num>
             </g>
@@ -1080,9 +1076,9 @@ export function EvidenceTray() {
   const id = "w9-evidence";
   const audited = audit.includes("audit");
   const slots = [
-    { key: "COMMUNICATION", has: route === "messenger" },
-    { key: "SHARED VENDOR", has: route === "hub" },
-    { key: "LEARNED STRATEGY", has: audited },
+    { key: "Communication", has: route === "messenger" },
+    { key: "Shared vendor", has: route === "hub" },
+    { key: "Learned strategy", has: audited },
   ];
   const x0 = 14;
   const sw = 184;
@@ -1196,18 +1192,18 @@ export function FacingMachines() {
       <line x1={x0} y1={yM} x2={x1} y2={yM} stroke={R} strokeWidth={LINE.hair} strokeDasharray="5 3" />
       <line x1={x0} y1={yC} x2={x1} y2={yC} {...hair} strokeDasharray="5 3" />
       <PatentKey x={x0 + 8} y={yM - 14} size={12} anchor="start" fill={R}>
-        COLLUSIVE
+        Collusive
       </PatentKey>
       <PatentKey x={x1} y={yC + 14} size={12} anchor="end">
-        COMPETITIVE
+        Competitive
       </PatentKey>
       <path d={`M${trace(3)}`} fill="none" {...ink} strokeWidth={LINE.bold} />
       <path d={`M${trace(8)}`} fill="none" {...ink} strokeWidth={LINE.outline} strokeDasharray="6 3" />
       <PatentKey x={r2((x0 + x1) / 2)} y={206} size={12}>
-        TIME
+        Time
       </PatentKey>
       <PatentKey x={x0 - 8} y={36} size={12} anchor="end">
-        PRICE
+        Price
       </PatentKey>
     </Frame>
   );
@@ -1280,10 +1276,10 @@ export function ForcedCut() {
         <line x1={X(5)} y1={Y(MONOPOLY)} x2={x1} y2={Y(MONOPOLY)} {...hair} strokeDasharray="5 3" />
         <line x1={x0} y1={Y(NASH)} x2={x1} y2={Y(NASH)} {...hair} strokeDasharray="5 3" />
         <PatentKey x={x1} y={r2(Y(MONOPOLY) - 7)} size={12} anchor="end">
-          MONOPOLY
+          Monopoly
         </PatentKey>
         <PatentKey x={x1} y={r2(Y(NASH) + 15)} size={12} anchor="end">
-          STATIC NASH EQUILIBRIUM
+          Static Nash equilibrium
         </PatentKey>
         {/* the forced period */}
         <rect x={X(3)} y={yTop - 4} width={r2(X(4) - X(3))} height={yBot - yTop + 4} fill={stip(id, "light")} stroke="none" />
@@ -1298,10 +1294,10 @@ export function ForcedCut() {
           </g>
         ))}
         <PatentKey x={x1} y={yBot + 36} size={12} anchor="end">
-          PERIOD
+          Period
         </PatentKey>
         <PatentKey x={r2((X(3) + X(4)) / 2)} y={yTop - 9} size={12}>
-          FORCED CUT
+          Forced cut
         </PatentKey>
         <FigureName x={r2(X(0) + 9)} y={r2(Y(PRICES[12]) - 8)} size={13} anchor="start">
           firm 1
@@ -1326,11 +1322,11 @@ function Easel({ id, x, y, big, small, red = false }: { id: string; x: number; y
       <line x1={x + w - 22} y1={y + h} x2={x + w - 6} y2={y + h + 40} {...ink} />
       <line x1={x + w / 2 + 8} y1={y + 10} x2={x + w / 2 + 30} y2={y + h + 34} {...hair} strokeDasharray="3 2" />
       <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={6} dy={4} />
-      <text x={x + w / 2} y={y + 56} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={38} fill={PAT.ink}>
+      <text x={x + w / 2} y={y + 56} textAnchor="middle" fontFamily="var(--font-body)" fontSize={38} fill={PAT.ink}>
         {big}
       </text>
       <line x1={x + 22} y1={y + 70} x2={x + w - 22} y2={y + 70} {...hair} />
-      <text x={x + w / 2} y={y + 96} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={22} fill={c}>
+      <text x={x + w / 2} y={y + 96} textAnchor="middle" fontFamily="var(--font-body)" fontSize={22} fill={c}>
         {small}
       </text>
     </g>
@@ -1424,7 +1420,7 @@ export function Guardrail({ kind }: { kind: "cap" | "framing" | "reward" | "fire
   if (kind === "cap") return <SurgeCap />;
   const id = `w9-guard-${kind}`;
   const label = {
-    framing: "Patent drawing of transparent discount framing: a price board reading $100 beside a posted rule sheet reading LOYALTY −10% with its terms beneath.",
+    framing: "Patent drawing of transparent discount framing: a price board reading $100 beside a posted rule sheet reading loyalty −10% with its terms beneath.",
     reward: "Patent drawing of collusion-resistant reward design: a pricing agent housing whose input line from a rival's price tag is cut through by a break line, so it cannot feed the agent's policy.",
     firewall: "Patent drawing of firewall and ranking neutrality mandates: a brick wall shutting off a third-party seller's sales record, and beyond it a level balance holding the platform's own box and a third-party box at equal height.",
   }[kind];
@@ -1434,7 +1430,7 @@ export function Guardrail({ kind }: { kind: "cap" | "framing" | "reward" | "fire
       {kind === "framing" ? (
         <g>
           <ObliqueBox id={id} x={20} y={40} w={110} h={84} dx={6} dy={4} />
-          <text x={75} y={96} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={34} fill={PAT.ink}>
+          <text x={75} y={96} textAnchor="middle" fontFamily="var(--font-body)" fontSize={34} fill={PAT.ink}>
             $100
           </text>
           <line x1={40} y1={124} x2={30} y2={160} {...ink} />
@@ -1442,9 +1438,9 @@ export function Guardrail({ kind }: { kind: "cap" | "framing" | "reward" | "fire
           <path d="M148 34H222L230 42V146H148Z" fill={PAT.paper} {...ink} />
           <path d="M222 34V42H230" fill="none" {...hair} />
           <PatentKey x={190} y={58} size={12}>
-            LOYALTY
+            Loyalty
           </PatentKey>
-          <text x={189} y={86} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={20} fill={PAT.ink}>
+          <text x={189} y={86} textAnchor="middle" fontFamily="var(--font-body)" fontSize={20} fill={PAT.ink}>
             −10%
           </text>
           {[102, 114, 126].map((y) => (
@@ -1610,7 +1606,7 @@ export function OutputExpansion() {
           </g>
         ))}
         <PatentKey x={x0 + 8} y={18} size={12} anchor="start">
-          WILLINGNESS TO PAY
+          Willingness to pay
         </PatentKey>
         {WTP10.map((w, i) => {
           const p = plan[i];
@@ -1635,22 +1631,22 @@ export function OutputExpansion() {
           <g>
             <ObliqueBox id={id} x={r2(bx(4) - gap / 2 - 3)} y={30} w={6} h={170} dx={6} dy={4} />
             <PatentKey x={r2(bx(4) + 12)} y={44} size={11} anchor="start">
-              FIXED SUPPLY
+              Fixed supply
             </PatentKey>
           </g>
         ) : null}
         {/* readouts */}
         <line x1={14} y1={222} x2={546} y2={222} {...hair} />
         <PatentKey x={x0} y={250} size={11} anchor="start">
-          UNITS SOLD
+          Units sold
         </PatentKey>
         <Num x={x0 + 118} y={252} size={18} anchor="start">{`${sold}`}</Num>
         <PatentKey x={210} y={250} size={11} anchor="start">
-          SURPLUS
+          Surplus
         </PatentKey>
         <Num x={292} y={252} size={18} anchor="start" fill={pricing === "personalized" ? R : PAT.ink}>{`$${cs}`}</Num>
         <PatentKey x={370} y={250} size={11} anchor="start">
-          WELFARE
+          Welfare
         </PatentKey>
         <Num x={548} y={252} size={18} anchor="end">{`$${welfare}`}</Num>
       </Frame>
@@ -1754,7 +1750,7 @@ export function Pathway({ kind }: { kind: "messenger" | "hub" | "predictable" | 
             </g>
           ))}
           <PatentKey x={125} y={168} size={12} fill={R}>
-            MARGIN FLOOR
+            Margin floor
           </PatentKey>
         </g>
       ) : (
@@ -1784,10 +1780,10 @@ export function Pathway({ kind }: { kind: "messenger" | "hub" | "predictable" | 
 export function PricingThenNow() {
   const id = "w9-thennow";
   const inputs = [
-    { key: "COMPETITOR PRICES", y: 44 },
-    { key: "INVENTORY LEVELS", y: 86 },
-    { key: "SEARCH TRAFFIC", y: 128 },
-    { key: "CUSTOMER TELEMETRY", y: 170 },
+    { key: "Competitor prices", y: 44 },
+    { key: "Inventory levels", y: 86 },
+    { key: "Search traffic", y: 128 },
+    { key: "Customer telemetry", y: 170 },
   ];
   const hx = 610;
   const hy = 72;
@@ -1907,57 +1903,6 @@ export function ProxyMap() {
 }
 
 /**
- * The shared rental pricing algorithm. Twelve rival landlords' apartment
- * blocks stand in a row under a night sky. From each a line runs up to the
- * one cloud-hosted revenue-management engine. Dark windows are units left
- * vacant. The engine's rent tag reads +18% (red).
- */
-export function RentHub() {
-  const id = "w9-renthub";
-  const g = 292;
-  const rnd = seeded(5);
-  const hx = 250;
-  const hy = 118;
-  const blocks = Array.from({ length: 12 }, (_, i) => {
-    const x = 22 + i * 38;
-    const h = 62 + Math.round(rnd() * 34);
-    return { x, h };
-  });
-  const cloud = "M196 96Q194 70 220 70Q228 50 252 56Q270 42 288 60Q312 58 310 82Q326 90 316 108Q318 124 296 124H206Q184 122 190 106Q182 98 196 96Z";
-  return (
-    <Frame
-      width={500}
-      height={304}
-      label="Patent drawing of twelve rival landlords' apartment blocks in a row under a crescent moon. From each block a line runs up to one cloud-hosted revenue-management engine with gears. Several windows in each block are dark, units left vacant. Beside the engine a red tag reads +18%."
-    >
-      <PatentDefs id={id} />
-      <path d="M44 28A16 16 0 1 0 64 50A12 12 0 1 1 44 28Z" fill={stip(id, "light")} {...ink} />
-      <path d={cloud} fill={PAT.paper} {...ink} />
-      <Gear cx={238} cy={96} r={13} n={10} />
-      <Gear cx={270} cy={102} r={9} n={8} phase={0.3} />
-      <Tag cx={374} cy={88} text="+18%" w={56} size={17} red />
-      <line x1={318} y1={92} x2={338} y2={90} stroke={R} strokeWidth={LINE.hair} />
-      <line x1={10} y1={g} x2={490} y2={g} {...ink} />
-      {blocks.map(({ x, h }, i) => {
-        const top = g - h;
-        return (
-          <g key={i}>
-            <line x1={x + 15} y1={top - 6} x2={r2(hx - 44 + i * 8)} y2={hy + 8} {...hair} strokeDasharray="3 3" />
-            <ObliqueBox id={id} x={x} y={top} w={30} h={h} dx={6} dy={4} />
-            {Array.from({ length: Math.floor((h - 12) / 12) }, (_, r) =>
-              [0, 1].map((c) => {
-                const dark = rnd() < 0.28;
-                return <rect key={`${r}-${c}`} x={x + 5 + c * 12} y={top + 6 + r * 12} width={8} height={7} fill={dark ? stip(id, "dense") : PAT.paper} {...hair} />;
-              }),
-            )}
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
-
-/**
  * One shopper's reservation price ($70, the upright line under the bust)
  * and the seller's estimate of it, drawn as a red stippled bell. With a few
  * observed variables the estimate is the segment's average and wide. As the
@@ -2003,13 +1948,13 @@ export function ReservationEstimate() {
         <line x1={X(truth)} y1={44} x2={X(truth)} y2={ax} {...ink} strokeWidth={LINE.bold} />
         <Bust cx={X(truth)} y={40} s={1.1} fill={stip(id, "light")} />
         <PatentKey x={r2(X(truth) - 16)} y={24} size={11} anchor="end">
-          RESERVATION PRICE
+          Reservation price
         </PatentKey>
         {/* the surplus left */}
         {left > 0 ? (
           <>
             <path d={`M${X(price)} ${ax + 30}V${ax + 36}H${X(truth)}V${ax + 30}`} fill="none" {...ink} />
-            <Num x={r2((X(price) + X(truth)) / 2)} y={ax + 51} size={13} italic>{`$${left}`}</Num>
+            <Num x={r2((X(price) + X(truth)) / 2)} y={ax + 51} size={13}>{`$${left}`}</Num>
           </>
         ) : null}
       </Frame>
@@ -2038,7 +1983,7 @@ export function RuleVsScore() {
     <Frame
       width={560}
       height={222}
-      label="Patent drawing in two figures. Verifiable eligibility rules: a pinned notice reading STUDENT −20% with hairline terms beneath, and a shopper holding up a student card. Opaque algorithmic scores: a sealed, screwed housing with a score dial. Its criteria run inside as hidden red dashed routes, and a $93 tag comes out of it."
+      label="Patent drawing in two figures. Verifiable eligibility rules: a pinned notice reading student −20% with hairline terms beneath, and a shopper holding up a student card. Opaque algorithmic scores: a sealed, screwed housing with a score dial. Its criteria run inside as hidden red dashed routes, and a $93 tag comes out of it."
     >
       <PatentDefs id={id} />
       {/* the notice */}
@@ -2046,9 +1991,9 @@ export function RuleVsScore() {
       <path d="M160 22L166 26V154L160 150Z" fill={stip(id, "dense")} {...ink} />
       <circle cx={98} cy={30} r={3} fill={stip(id, "dense")} {...ink} />
       <PatentKey x={98} y={56} size={13}>
-        STUDENT
+        Student
       </PatentKey>
-      <text x={98} y={86} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={26} fill={PAT.ink}>
+      <text x={98} y={86} textAnchor="middle" fontFamily="var(--font-body)" fontSize={26} fill={PAT.ink}>
         −20%
       </text>
       {[104, 116, 128, 140].map((y, i) => (
@@ -2143,10 +2088,10 @@ export function SameMoment() {
           </g>
         ))}
         <PatentKey x={x0 + 8} y={yTop - 14} size={12} anchor="start">
-          FARE FOR THE SAME RIDE
+          Fare for the same ride
         </PatentKey>
         <PatentKey x={x1 + 4} y={y0 + 40} size={12} anchor="end">
-          TIME OF DAY
+          Time of day
         </PatentKey>
         {/* the fares */}
         {split ? (
@@ -2165,7 +2110,7 @@ export function SameMoment() {
         <circle cx={X(t)} cy={Y(fareA(t))} r={3.2} fill={PAT.paper} {...ink} />
         {split ? <circle cx={X(t)} cy={Y(fareB(t))} r={3.2} fill={PAT.paper} stroke={R} strokeWidth={LINE.outline} /> : null}
         {/* the two shoppers at that moment */}
-        <Num x={466} y={30} size={15} italic>
+        <Num x={466} y={30} size={15}>
           {fmtTime(t)}
         </Num>
         <Tag cx={434} cy={68} text={`$${a}`} w={46} size={15} />
@@ -2247,12 +2192,12 @@ export function SieveStack() {
     >
       <PatentDefs id={id} />
       <PatentKey x={X0} y={24} size={12} anchor="start">
-        BRICK-AND-MORTAR RETAIL
+        Brick-and-mortar retail
       </PatentKey>
       {row(50, 3, 18, false)}
       <line x1={X0} y1={156} x2={X0 + W + 10} y2={156} {...hair} strokeDasharray={CENTRE_DASH} />
       <PatentKey x={X0} y={184} size={12} anchor="start">
-        MACHINE LEARNING AND DIGITAL TRACKING
+        Machine learning and digital tracking
       </PatentKey>
       {row(208, 12, 6, true)}
     </Frame>
@@ -2313,7 +2258,7 @@ export function SteeredResults() {
           <circle key={k} cx={wx - 6 + k * 7} cy={22} r={2} fill="none" {...hair} />
         ))}
         {[1, 2, 3, 4, 5].map((n, i) => (
-          <Num key={n} x={wx - 22 + 4} y={top + i * 42 + 24} size={13} italic>
+          <Num key={n} x={wx - 22 + 4} y={top + i * 42 + 24} size={13}>
             {n}
           </Num>
         ))}
@@ -2344,7 +2289,7 @@ export function SteeredResults() {
           $189
         </Num>
         <PatentKey x={455} y={274} size={12}>
-          PRODUCT PAGE
+          Product page
         </PatentKey>
         </g>
       </Frame>
@@ -2358,80 +2303,6 @@ export function SteeredResults() {
         onChange={setWho}
       />
     </div>
-  );
-}
-
-/**
- * The emergency: rain over a closed subway entrance (folding gate drawn
- * shut across the stair), a rider under an umbrella holding a phone, and in
- * a detail circle the phone's fare screen showing a ×4.5 surge (red), the
- * 350 percent increase.
- */
-export function StormSurge() {
-  const id = "w9-storm";
-  const ground = 262;
-  const rnd = seeded(9);
-  const keepOut = [
-    [20, 120, 200, 270],
-    [150, 50, 300, 270],
-    [300, 30, 490, 230],
-  ];
-  const rain = Array.from({ length: 170 }, () => [r2(10 + rnd() * 480), r2(8 + rnd() * 240)]).filter(
-    ([x, y]) => !keepOut.some(([a, b, c, d]) => x > a - 8 && x < c + 8 && y > b - 16 && y < d),
-  );
-  return (
-    <Frame
-      width={500}
-      height={290}
-      label="Patent drawing of a city emergency: rain falling over a subway entrance whose folding gate is drawn shut across the stair, a rider under an umbrella holding a phone, and a detail circle of the phone's ride screen showing a red ×4.5 surge multiplier on the fare."
-    >
-      <PatentDefs id={id} />
-      {rain.map(([x, y], i) => (
-        <line key={i} x1={x} y1={y} x2={r2(x - 4)} y2={r2(y + 11)} {...hair} />
-      ))}
-      <line x1={10} y1={ground} x2={490} y2={ground} {...ink} />
-      {/* subway entrance: railings, a stair going down, and a folding gate */}
-      <path d={`M30 ${ground}V${ground - 8}H190V${ground}`} fill={stip(id, "dense")} {...ink} />
-      {[0, 1, 2, 3].map((k) => (
-        <line key={k} x1={34 + k * 16} y1={ground + 4 + k * 5} x2={186 - k * 16} y2={ground + 4 + k * 5} {...hair} strokeDasharray="4 3" />
-      ))}
-      <path d={`M30 ${ground - 8}V${ground - 78}M190 ${ground - 8}V${ground - 78}`} {...ink} strokeWidth={LINE.bold} fill="none" />
-      <path d={`M30 ${ground - 78}H190`} {...ink} fill="none" />
-      <rect x={70} y={ground - 108} width={80} height={24} fill={PAT.paper} {...ink} />
-      <line x1={110} y1={ground - 84} x2={110} y2={ground - 78} {...ink} />
-      <PatentKey x={110} y={ground - 91} size={13}>
-        SUBWAY
-      </PatentKey>
-      {Array.from({ length: 9 }, (_, k) => {
-        const x = 38 + k * 18;
-        return <line key={k} x1={x} y1={ground - 74} x2={x} y2={ground - 12} {...ink} />;
-      })}
-      {Array.from({ length: 8 }, (_, k) => {
-        const x = 38 + k * 18;
-        return (
-          <path key={k} d={`M${x} ${ground - 70}L${x + 18} ${ground - 44}L${x} ${ground - 18}M${x + 18} ${ground - 70}L${x} ${ground - 44}L${x + 18} ${ground - 18}`} fill="none" {...hair} />
-        );
-      })}
-      {/* the rider under an umbrella */}
-      <Figure id={id} x={238} y={ground} s={1.6} arm="reach" />
-      <path d="M166 104Q214 58 262 104Q254 98 246 104Q238 98 230 104Q222 98 214 104Q206 98 198 104Q190 98 182 104Q174 98 166 104Z" fill={stip(id, "light")} {...ink} />
-      <line x1={214} y1={76} x2={214} y2={66} {...ink} />
-      <path d="M214 104V200Q214 206 208 206" fill="none" {...ink} />
-      <rect x={282} y={163} width={10} height={17} rx={1.6} fill={PAT.paper} {...ink} />
-      {/* detail of the phone */}
-      <line x1={296} y1={164} x2={330} y2={150} {...hair} />
-      <circle cx={398} cy={118} r={84} fill={PAT.paper} {...hair} strokeDasharray="6 3" />
-      <rect x={358} y={52} width={80} height={134} rx={10} fill={PAT.paper} {...ink} />
-      <line x1={358} y1={70} x2={438} y2={70} {...hair} />
-      <line x1={358} y1={170} x2={438} y2={170} {...hair} />
-      <rect x={366} y={78} width={64} height={30} fill={stip(id, "light")} {...hair} />
-      <path d="M372 100L384 88L396 96L412 84L424 92" fill="none" {...hair} />
-      <text x={398} y={136} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={26} fill={R}>
-        ×4.5
-      </text>
-      <line x1={370} y1={150} x2={426} y2={150} {...hair} />
-      <line x1={376} y1={158} x2={420} y2={158} {...hair} />
-    </Frame>
   );
 }
 
@@ -2484,7 +2355,7 @@ export function SurplusCapture() {
     if (g && g.tier === t && g.b === i - 1) g.b = i;
     else groups.push({ tier: t, a: i, b: i });
   });
-  const tierKey: Record<string, string> = { student: "STUDENT", full: "FULL PRICE", business: "BUSINESS", economy: "ECONOMY" };
+  const tierKey: Record<string, string> = { student: "Student", full: "Full price", business: "Business", economy: "Economy" };
   return (
     <div>
       <Frame
@@ -2502,7 +2373,7 @@ export function SurplusCapture() {
           </g>
         ))}
         <PatentKey x={x0 + 8} y={18} size={12} anchor="start">
-          WILLINGNESS TO PAY
+          Willingness to pay
         </PatentKey>
         {WTP_BARS.map((w, i) => {
           const p = plan[i];
@@ -2534,15 +2405,15 @@ export function SurplusCapture() {
         <line x1={14} y1={244} x2={546} y2={244} {...hair} />
         <rect x={x0} y={259} width={14} height={14} fill={stip(id, "light")} {...hair} />
         <PatentKey x={x0 + 22} y={271} size={11} anchor="start">
-          CONSUMER SURPLUS
+          Consumer surplus
         </PatentKey>
         <Num x={x0 + 200} y={273} size={18} anchor="start" fill={cs === 0 ? R : PAT.ink}>{`$${cs}`}</Num>
         <rect x={322} y={259} width={14} height={14} fill={stip(id, "dense")} {...hair} />
         <PatentKey x={344} y={271} size={11} anchor="start">
-          REVENUE
+          Revenue
         </PatentKey>
         <Num x={430} y={273} size={18} anchor="start">{`$${rev}`}</Num>
-        <Num x={548} y={273} size={13} anchor="end" italic>{`${served} of 12 buy`}</Num>
+        <Num x={548} y={273} size={13} anchor="end">{`${served} of 12 buy`}</Num>
       </Frame>
       <Segmented
         label="Degree"
@@ -2620,7 +2491,7 @@ export function TrustLedger() {
         {/* discovery */}
         <line x1={X(0)} y1={16} x2={X(0)} y2={182} {...hair} strokeDasharray={CENTRE_DASH} />
         <PatentKey x={r2(X(0) + 8)} y={24} size={12} anchor="start">
-          DISCOVERY
+          Discovery
         </PatentKey>
         <FigureName x={r2(X(-11))} y={r2(Y(52) - 9)} size={13}>
           short-term margin gains

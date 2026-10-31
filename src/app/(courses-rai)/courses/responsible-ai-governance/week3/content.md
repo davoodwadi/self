@@ -71,7 +71,8 @@ week: week3
 - Brand-persona mismatch occurs when an AI copywriting tool flattens distinct subcultural voices into a uniform corporate register that alienates the community the campaign intends to reach.
 
 ## Discussion: The Global Campaign Generator
-- Discussion: A multinational beverage brand uses a text-to-image and copywriting model to localize a holiday campaign across twenty countries by inserting each country's name into a standard prompt template. In several markets, local teams report that the generated visuals depict outdated folkloric stereotypes while the copy uses individualist slogans that clash with local family holiday rituals. Which mechanisms in the model lifecycle explain this outcome, and how should the brand redesign its localization workflow?
+- A multinational beverage brand uses a text-to-image and copywriting model to localize a holiday campaign across twenty countries by inserting each country's name into a standard prompt template. In several markets, local teams report that the generated visuals depict outdated folkloric stereotypes while the copy uses individualist slogans that clash with local family holiday rituals.
+- Which mechanisms in the model lifecycle explain this outcome, and how should the brand redesign its localization workflow?
 
 ## Part 3: Consumer Ethnocentrism and In-Group Bias in Large Language Models [no-exercise]
 - Beyond visual and linguistic stereotypes, foundation models encode latent attitudes toward nations and their products that directly affect cross-border commerce.
@@ -139,7 +140,8 @@ week: week3
 - Step 5 is testing mitigation interventions, such as origin-blinded attribute tables or localized fine-tuning, and re-running the factorial audit before market launch.
 
 ## Discussion: Cross-Border Shopping Assistants
-- Discussion: An electronics manufacturer based in South Korea discovers that when North American shoppers ask a leading US-developed conversational assistant for laptop recommendations under 1,200 dollars, its laptops are recommended 40 percent less often than US-branded laptops with identical specifications and user ratings. How would you design a factorial audit to determine whether this gap is driven by brand awareness, a corpus-wide target-country effect, or an in-group interaction bias in the assistant, and what remedies could the manufacturer or platform pursue?
+- An electronics manufacturer based in South Korea discovers that when North American shoppers ask a leading US-developed conversational assistant for laptop recommendations under 1,200 dollars, its laptops are recommended 40 percent less often than US-branded laptops with identical specifications and user ratings.
+- How would you design a factorial audit to determine whether this gap is driven by brand awareness, a corpus-wide target-country effect, or an in-group interaction bias in the assistant, and what remedies could the manufacturer or platform pursue?
 
 ## Key Takeaways
 - Foundation models are not culturally neutral. Pre-training web scrapes, subword tokenizers, and post-training RLHF raters embed dominant linguistic and WEIRD cultural defaults.
