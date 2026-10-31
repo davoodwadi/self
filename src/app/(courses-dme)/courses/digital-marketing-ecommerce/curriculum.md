@@ -5,8 +5,8 @@
 **Program**: Marketing & Information Systems  
 **Duration**: 12 Weeks  
 **Instructor**: Davood Wadi, PhD  
-**Summary**: Examines how digital channels, e-commerce platforms, and marketplace algorithms acquire, convert, and retain customers. Topics include storefront architecture, search and recommender systems, programmatic advertising, social commerce, CRM and lifecycle automation, online reviews, dynamic pricing, omnichannel fulfillment, multi-touch attribution, and autonomous AI shopping agents.  
-**Overview**: This course sits at the intersection of marketing strategy and information systems. Students examine how digital storefronts and multi-sided marketplaces are architected, how algorithmic channels such as search engines, recommender systems, programmatic ad exchanges, and social feeds allocate consumer attention, and how firms manage conversion, online reputation, pricing, fulfillment, and attribution. Across every topic, the course tracks the shift from human-browsed web storefronts to agent-mediated commerce, where AI assistants search, evaluate rankings, read reviews, and transact on the customer's behalf.
+**Summary**: How digital channels, e-commerce platforms, and marketplace algorithms acquire, convert, and retain customers: storefront architecture, search and recommender systems, programmatic advertising, social commerce, CRM and lifecycle automation, online reviews, dynamic pricing, omnichannel fulfillment, multi-touch attribution, and autonomous AI shopping agents.  
+**Overview**: Marketing strategy and information systems in digital commerce: the architecture of digital storefronts and multi-sided marketplaces, the allocation of consumer attention by search engines, recommender systems, programmatic ad exchanges, and social feeds, and the management of conversion, online reputation, pricing, fulfillment, and attribution. Each topic follows the shift from human-browsed web storefronts to agent-mediated commerce, where AI assistants search, evaluate rankings, read reviews, and transact on the customer's behalf.
 
 ---
 
