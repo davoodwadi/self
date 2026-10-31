@@ -11,7 +11,6 @@ import {
   ConsentBanner,
   ContextFlows,
   DataOrigin,
-  DeceptionInterlock,
   DisguisedSurvey,
   DisclosedReport,
   EpsilonNoise,
@@ -21,16 +20,12 @@ import {
   HiddenFuture,
   JusticeBurden,
   KAnonymity,
-  LifecycleStations,
   MembershipGap,
-  PersonaPress,
   PersonaPrompt,
   PersonVsDistribution,
   PilotNotReplace,
   PolicyHours,
   PolicyScroll,
-  ProtocolDossier,
-  ProvenanceTag,
   ProxyVsActor,
   PurposeGate,
   QuasiIdentifiers,
@@ -114,7 +109,7 @@ export default function Week6Page() {
             <RowsVsWeights />
           </Plate>
         </div>
-        <div className="mt-6 grid w-full items-center gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+        <div className="mt-6 w-full">
           <Ruled>
             <P>
               Effective data governance therefore operates across the entire data
@@ -122,9 +117,6 @@ export default function Week6Page() {
               time, and during retirement or unlearning.
             </P>
           </Ruled>
-          <Plate className="!py-2">
-            <LifecycleStations />
-          </Plate>
         </div>
       </Slide>
 
@@ -168,11 +160,8 @@ export default function Week6Page() {
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Data Provenance in Training and Personalization" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <ProvenanceTag />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 <strong className="font-semibold">Data provenance</strong> is the
@@ -792,8 +781,8 @@ export default function Week6Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Research Ethics Board Governance for Human and AI Studies" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 Academic researchers and corporate behavioral labs that study
@@ -811,9 +800,6 @@ export default function Week6Page() {
               </p>
             </Ruled>
           </div>
-          <Plate>
-            <ProtocolDossier />
-          </Plate>
         </div>
       </Slide>
 
@@ -912,11 +898,7 @@ export default function Week6Page() {
             </P>
           </Ruled>
         </div>
-        <div className="mt-5 grid w-full items-center gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10">
-          <Plate className="!py-3">
-            <DeceptionInterlock />
-          </Plate>
-          <div className="grid gap-4">
+        <div className="mt-5 grid w-full items-center gap-6 lg:grid-cols-2 lg:gap-10">
             <Ruled>
               <P>
                 Coercive incentives or deceptive commercial solicitation
@@ -927,7 +909,6 @@ export default function Week6Page() {
             <Plate className="!py-2">
               <DisguisedSurvey />
             </Plate>
-          </div>
         </div>
       </Slide>
 
@@ -1000,11 +981,8 @@ export default function Week6Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Ethical and Epistemic Boundaries of Synthetic AI Respondents" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <PersonaPress />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 Across marketing and consumer research, commercial vendors

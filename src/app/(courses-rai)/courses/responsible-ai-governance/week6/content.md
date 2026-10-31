@@ -10,12 +10,14 @@ week: week6
 - Governing data in the age of artificial intelligence requires tracking provenance from collection to model weights, enforcing contextual integrity beyond checkbox consent, and upholding research ethics for both human participants and synthetic respondents.
 
 ## Why AI Transforms Data Governance [no-exercise]
+[figure: interactive deletion of one customer's record, which removes a single row from a database table but leaves that customer's contribution spread across a trained model's continuous weights]
 - Traditional database governance treated personal data as discrete rows in a table that could be queried, corrected, or deleted on request.
 - Machine learning and foundation models transform personal data in two ways that challenge classical database controls: they infer sensitive attributes that were never collected, and they compress training examples into millions or billions of continuous model weights.
 - Once customer transcripts, browsing logs, or public posts are absorbed into a model's parameters, tracing provenance or deleting a single individual's contribution is no longer a simple database query.
 - Effective data governance therefore operates across the entire data lifecycle, before collection, during model training, at inference time, and during retirement or unlearning.
 
 ## From Data Ownership to Contextual Integrity [no-exercise]
+[figure: interactive information flows in which a shopper shares a home address with a retailer and medical symptoms with a pharmacist, and the same details are later reused to train an advertising model]
 - Public debates often frame privacy as either absolute secrecy (hiding information completely) or individual property ownership (selling personal data in a market).
 - Neither framing explains everyday consumer expectations: a shopper willingly shares a home address with a retailer to receive a package and shares medical symptoms with a pharmacist, yet objects if either party uses those details to train an advertising model.
 - Privacy in commercial markets is governed not by whether information was once shared with someone, but by whether the flow of information respects the norms of the context in which it was shared.
@@ -31,22 +33,26 @@ week: week6
 - Scraped data are harvested in bulk from publicly accessible web pages, forums, product review sites, and social networks without a direct relationship with the individuals who authored the content.
 
 ## Purpose Limitation and Secondary Use in Foundation Models [no-exercise]
+[figure: interactive purpose-limitation gate that blocks quality-assurance recordings from fine-tuning unless explicit opt-in or rigorous de-identification is added, beside non-sensitive inputs combining into an inferred sensitive attribute]
 - A foundational principle of modern privacy law is purpose limitation: personal data collected for one specified, legitimate purpose may not be repurposed for an incompatible secondary use without a new legal basis or fresh consent.
 - A recurring governance failure in commercial AI is retroactive repurposing, in which firms take historical customer service recordings, chat transcripts, or loyalty records collected years earlier and feed them into foundation model fine-tuning pipelines.
 - Because the original privacy notice contemplated quality assurance or order fulfillment rather than training a generative model, secondary training use violates purpose limitation unless explicit opt-in consent or rigorous de-identification is established.
 - Furthermore, inferred data often create sensitive personal data out of non-sensitive inputs, triggering heightened regulatory protections even when the raw inputs were benign.
 
 ## Shadow Data Pipelines and Third-Party API Leakage [no-exercise]
+[figure: interactive comparison of an employee pasting customer records into an external AI tool under consumer-grade terms, where the vendor retains, reviews, and trains on them, and under enterprise controls]
 - Even when an organization governs its central data warehouse carefully, employees frequently create shadow data pipelines by pasting customer records, interview transcripts, or proprietary strategy documents into external generative AI tools.
 - Submitting personal data to an external AI provider constitutes a third-party data transfer and processing event under data protection law.
 - Under consumer-grade terms of service, prompts and uploaded files may be retained by the vendor, reviewed by human contractors, and incorporated into future training runs.
 - Enterprise data governance therefore enforces technical data-loss prevention (DLP) guardrails, zero-data-retention enterprise API contracts, and local or private-cloud model hosting for workflows touching personal data.
 
 ## Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice [no-exercise]
+[figure: a towering privacy policy beside a consumer clicking I agree]
 - For decades, commercial digital markets relied on notice-and-choice (publishing a lengthy privacy policy and treating continued website use as consent) to legitimize data collection.
 - Both privacy scholarship and contemporary regulation recognize that notice-and-choice breaks down in complex algorithmic ecosystems.
 
 ## Contextual Integrity and Informational Norms [exercise]
+[figure: interactive information flow specified by its five parameters (data subject, sender, recipient, information type, transmission principle), where changing the recipient or the transmission principle breaches the norm]
 - Developed by Helen Nissenbaum (2004), the theory of contextual integrity defines privacy as the appropriate flow of information according to the norms of a specific social context, such as healthcare, education, banking, or retail.
 - Every information flow is specified by five independent parameters: the data subject (whom the data describe), the sender (who transmits the data), the recipient (who receives the data), the information type (the nature of the attribute), and the transmission principle (the condition or constraint under which the data flow, such as confidentiality, reciprocity, or warrant).
 - A privacy violation occurs whenever an algorithmic system alters any one of these five parameters in a way that breaches entrenched contextual norms, even if the data were not strictly secret.
@@ -59,6 +65,7 @@ week: week6
 - Structural power asymmetry: when essential financial, educational, or workplace services bundle core functionality with broad AI training consent on a take-it-or-leave-it basis, agreement is coerced rather than freely given.
 
 ## Dark Patterns in Consent Management and Opt-Out Design [exercise]
+[figure: interactive consent screen comparing a one-click accept with the nested steps required to opt out under roach motel, confirmshaming, bundled, and pre-selected designs]
 - Asymmetric friction (roach motels) occurs when opting in to data sharing and AI training requires a single prominent click, whereas opting out requires navigating multiple nested settings menus.
 - Confirmshaming and visual interference occur when the privacy-protective choice is styled in low-contrast grey text or framed with manipulative language that penalizes the user for declining.
 - Bundled consent occurs when a platform forces users to accept behavioral profiling and AI model training as a condition of receiving basic product functionality that does not technically require those data.
@@ -69,16 +76,19 @@ week: week6
 - Analyze this decision using Nissenbaum's five parameters of contextual integrity, identify why notice-and-choice is insufficient here, and specify what governance steps would be required before any call recordings could be used.
 
 ## Part 3: Technical Privacy Risks and Safeguards [no-exercise]
+[figure: a customer record with name and account number removed while postal code, birth date, and gender remain]
 - When organizations share datasets with researchers, train predictive models, or deploy language models, removing direct identifiers such as names and account numbers is only the beginning of technical privacy protection.
 - Algorithmic governance requires evaluating formal re-identification and extraction threats and pairing them with mathematical privacy guarantees.
 
 ## The Failure of Naive Anonymization and Re-Identification Attacks [no-exercise]
+[figure: interactive linkage of a pseudonymized table to a public register through ZIP code, birth date, and sex, beside known transaction points that single out one card holder and a table generalized to k-anonymity]
 - Naive pseudonymization replaces direct identifiers (name, email, social insurance number) with a random token while leaving quasi-identifiers (postal code, birth date, gender, transaction timestamps) intact.
 - In a classic demonstration, Latanya Sweeney showed that 87 percent of the United States population could be uniquely identified by the combination of five-digit ZIP code, date of birth, and sex alone, allowing "anonymized" state hospital records to be linked directly to a public voter registration list.
 - In high-dimensional behavioral data, sparsity makes re-identification even easier: four spatiotemporal credit-card transaction points or browsing history pairs are sufficient to uniquely re-identify more than 90 percent of individuals in a de-identified mobility or retail trace (de Montjoye et al., 2015).
 - Syntactic privacy models such as k-anonymity require that every combination of quasi-identifiers appear at least k times in a released table, but they remain vulnerable when sensitive attributes lack diversity within a group or when an attacker possesses high-dimensional auxiliary data.
 
 ## Training Data Memorization and Membership Inference in LLMs [no-exercise]
+[figure: interactive extraction of a memorized contact record from a prompt prefix as its number of duplicates in training rises, beside the gap between a model's confidence on training and non-training records that a membership inference attack exploits]
 - Deep neural networks and large language models do not merely learn abstract statistical rules. They can memorize verbatim sequences from their training corpora, particularly sequences that appear repeatedly or sit in unusual outliers.
 - In a training data extraction attack, an adversary prompts a language model with a prefix and recovers verbatim personal names, phone numbers, physical addresses, or proprietary code that appeared in the pre-training or fine-tuning data (Carlini et al., 2021).
 - In a membership inference attack, an adversary inspects a model's output probabilities on a target record to determine whether that specific individual's record was included in the model's training set, which is itself a severe privacy breach when the training set comes from a sensitive cohort such as a disease registry or a high-risk credit list.
@@ -100,12 +110,14 @@ week: week6
 - Justice requires that the burdens and benefits of research participation be distributed fairly across social groups, neither exploiting vulnerable populations for convenient sampling nor excluding groups from beneficial research.
 
 ## Deception, Debriefing, and Minimal Risk in Behavioral Experiments [exercise]
+[figure: a sales pitch with a price tag disguised as a market research survey]
 - A study qualifies as minimal risk when the probability and magnitude of possible harms anticipated in the research are no greater than those encountered by participants in the aspects of their everyday life that relate to the research.
 - Incomplete disclosure or experimental deception, such as telling participants they are interacting with a human advisor when the advisor is an AI agent (or vice versa), is permitted by an REB only when the research question cannot be answered without deception and the risk remains minimal.
 - Whenever deception is authorized, the protocol must include a mandatory post-study debriefing that explains the true nature of the manipulation and grants the participant the right to withdraw their data retroactively after learning the truth.
 - Coercive incentives or deceptive commercial solicitation disguised as academic or market research (sugging) are strictly prohibited.
 
 ## REB Oversight When AI Tools Process Participant Data [exercise]
+[figure: interactive interview transcript from which names, workplace, life events, and verbatim quotes can be stripped, counting how many people the remaining details still identify]
 - Informed consent scope: if researchers plan to transcribe interviews, code open-ended responses, or analyze participant records using an external AI service, that processing and any third-party data transfer must be disclosed explicitly in the consent form before participation begins.
 - Identifiability of qualitative text: as examined in research ethics reviews, stripping a participant's name from an interview transcript does not make it anonymous if detailed life events, workplace descriptions, or verbatim quotes remain before submission to an external language model.
 - Automated moderation and distress safeguards: when an AI interviewer conducts qualitative interviews or when participants interact with an unscripted conversational agent, the protocol must define guardrails for unexpected harmful outputs and provide immediate human contact channels.
@@ -116,11 +128,13 @@ week: week6
 - Governing the use of synthetic respondents requires separating legitimate exploratory uses from epistemic and ethical failures.
 
 ## Silicon Samples: Language Models as Simulated Survey Respondents [no-exercise]
+[figure: a persona prompt with age, income, region, and political orientation passed to a language model that fills in a questionnaire, beside the contrast between a member of the group and the model's conditional probability distribution over answers]
 - In a silicon-sampling workflow, a researcher constructs a prompt specifying demographic and psychographic attributes (such as age, income, region, and political orientation) and asks a language model to complete a questionnaire or choice task as that persona.
 - Proponents argue that synthetic panels reduce data collection costs to pennies, return results in minutes, allow pretesting of fragile survey instruments, and avoid burdening human respondents during early design iterations.
 - However, a language model conditioned on a demographic label is not a member of that demographic group. It is a conditional probability distribution over text learned from how that group is written about in training corpora.
 
 ## Epistemic and Ethical Risks of Replacing Human Panels With AI [exercise]
+[figure: interactive variance of language-model responses against the variance of human populations, beside a response distribution that shifts with sampling temperature and item wording (Wadi & Fredette, 2025, Wadi, Ghodrat, & Philp, 2026)]
 - Variance collapse and hyper-consistency occur when language models produce artificially tight, stereotyped distributions that understate true within-group human heterogeneity and fail to capture idiosyncratic consumer preferences.
 - Historical and WEIRD bias projection occurs when the model fills gaps in underrepresented personas by falling back to dominant Western cultural norms or caricatured demographic stereotypes, as examined in Week 3.
 - Non-invariance to prompt and scale formatting occurs when minor changes in persona wording, temperature, or single-response sampling shift the simulated sample's mean and variance (Wadi & Fredette, 2025, Wadi, Ghodrat, & Philp, 2026).
