@@ -16,34 +16,40 @@ week: week4
 - Depending on whether the model produces open-ended numerical or text outputs in a black-box interface or evaluates structured scales with accessible token probabilities, auditors use two complementary frameworks: Monte-Carlo sampling and exact probability mass function analysis.
 
 ## Why Single-Prompt Evaluations Fail [no-exercise]
+[figure: a model's distribution over possible completions with a single pass-at-one draw marked on it, beside a crowd of consumers from which only one is surveyed]
 - Standard machine learning leaderboards rely on pass-at-one evaluation, which draws a single completion per test item and scores whether that single output is correct.
 - At non-zero sampling temperatures, a language model defines a probability distribution over many possible completions, so a single draw is a sample of size one from a high-entropy distribution.
 - Drawing a conclusion about a model's bias, safety, or pricing accuracy from a single completion commits the same statistical error as surveying a single consumer to estimate market demand.
 - Furthermore, open-ended text generation is prone to fence-sitting, in which a model produces evasive disclaimers rather than revealing the latent preference that governs its downstream choices.
 
 ## Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions [no-exercise]
+[figure: repeated independent samples of a model's willingness-to-pay answer falling into dollar bins and building up the output distribution]
 - When a model generates open-ended quantities or multi-token decisions, such as willingness-to-pay dollar estimates, product recommendations, or negotiation offers, its full output distribution over multi-token sequences cannot be read off a single token's vocabulary probabilities.
 - In these settings, the Monte-Carlo behavioral evaluation framework estimates the model's true expected behavior by drawing repeated independent samples under controlled conditions (Wadi & Fredette, 2025).
 
 ## Stochastic Generation and Response Entropy [no-exercise]
+[figure: interactive draws from two models with different response distributions, where a single draw from each misstates the difference that repeated draws reveal]
 - Given a prompt p, a reference benchmark y, and a stochastic language model operating at temperature T, each generated response r is a random draw from the model's conditional distribution.
 - An evaluation function f(p, y, r) maps each generated response to a quantitative behavioral outcome, such as the dollar price quoted or an indicator of whether a sponsored product was chosen.
 - The true behavioral parameter of interest is the expected value of f(p, y, r) over the model's response distribution, alongside its variance across repeated draws.
 - Because different models and tasks exhibit widely different levels of response entropy, comparing two models on a single draw confounds true behavioral differences with random sampling noise.
 
 ## The Monte-Carlo Estimator and Its Statistical Guarantees [no-exercise]
+[figure: interactive sample size K showing the sample mean's 95 percent interval narrowing and the standard error falling with the square root of K (Wadi & Fredette, 2025)]
 - The Monte-Carlo estimator computes the sample mean of the evaluation function across K independent and identically distributed responses drawn from the model for the same prompt condition (Wadi & Fredette, 2025).
 - By Theorem 1 of the framework, this sample mean is an unbiased estimator of the model's true expected behavior under that prompt condition.
 - By Theorem 2, the variance of the estimator decays in inverse proportion to the sample size K, converging to zero as K grows large.
 - By the central limit theorem corollary, the sampling distribution of the estimator converges to a normal distribution with standard error equal to the response standard deviation divided by the square root of K, enabling exact confidence intervals and hypothesis tests.
 
 ## Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation [exercise]
+[figure: interactive distribution of sampled willingness-to-pay answers for several models against the valid range and the list price, with each model's CSVR, APD, and coefficient of variation]
 - Common Sense Validity Rate (CSVR) measures task adherence and plausibility: the proportion of sampled responses that fall within the empirically valid range for the product category, filtering out hallucinations and formatting failures.
 - Absolute Price Deviation (APD) measures estimation error: the absolute difference between the model's stated willingness to pay and the product's actual market list price.
 - Coefficient of Variation (CV), defined as the standard deviation of the sampled responses divided by their mean, measures within-model behavioral instability across repeated runs of the identical prompt.
 - A model is suitable for autonomous commercial deployment only when it simultaneously achieves a high validity rate, a low deviation from normative benchmarks, and a low coefficient of variation.
 
 ## Anchoring Bias and Generational Regression in LLMs [no-exercise]
+[figure: the shift in willingness to pay under high and low anchors, the anchor-response correlation of language models against the human benchmark, and the larger anchoring of the newer model generation (Wadi & Fredette, 2025)]
 - Applying the Monte-Carlo framework (K = 100 samples per condition across 16 models and 6 product categories) to Ariely, Loewenstein, and Prelec's (2003) anchoring paradigm reveals that language models are strongly susceptible to arbitrary numerical anchors (Wadi & Fredette, 2025).
 - Exposing models to a high arbitrary anchor raised mean willingness to pay by 31.62 dollars, whereas a low anchor reduced it by 15.70 dollars, with a mean anchor-response correlation of 0.697 that exceeded the human benchmark of 0.388.
 - Crucially, a three-way interaction among parameter count, model generation, and anchoring condition demonstrated a generational performance regression: newer and larger models exhibited larger pricing deviations and greater susceptibility to anchoring than earlier generations from the same providers.
@@ -54,18 +60,21 @@ week: week4
 - When the response is a single ordinal token and the model's next-token probabilities (logprobs) are accessible, text sampling is unnecessary and introduces avoidable epistemic sampling error (Wadi, Ghodrat, & Philp, 2026).
 
 ## Why Text Sampling Is Redundant When Token Probabilities Are Observable [no-exercise]
+[figure: random samples of answers drawn from a human population that cannot be observed directly, beside a model's exact conditional probability for each point of a 1-to-7 scale]
 - In human behavioral research, scientists draw random samples of respondents because the true probability distribution of attitudes inside a human population cannot be observed directly.
 - A language model, by contrast, computes an exact deterministic conditional probability mass function (PMF) over its entire vocabulary before any token is sampled.
 - Generating text completions from a Likert prompt simply draws random samples from a discrete distribution that the model has already computed exactly.
 - Reading the token-level PMF directly eliminates epistemic sampling error, requires only a single forward pass per item rather than dozens of sampled completions, and captures the exact aleatoric uncertainty of the model's internal state (Wadi, Ghodrat, & Philp, 2026).
 
 ## Why Shannon Entropy Fails on Ordinal Rating Scales [exercise]
+[figure: interactive splits of probability mass between two scale points, showing Shannon entropy unchanged whether the points are adjacent or at opposite extremes while ordinal consensus distinguishes them]
 - Standard machine learning evaluations use Shannon entropy to measure uncertainty across a model's predicted token probabilities.
 - Shannon entropy treats all tokens as unordered nominal categories, meaning it is invariant to the numerical distance between scale points.
 - Under Shannon entropy, a model that splits its probability mass equally between 1 (Strongly Disagree) and 7 (Strongly Agree) has the exact same entropy as a model that splits its mass equally between 3 (Somewhat Disagree) and 4 (Neutral).
 - Yet those two distributions represent opposite behavioral states: the first model is maximally polarized at the extremes of the scale, whereas the second holds a concentrated, moderate attitude.
 
 ## The Three-Layer Exact-PMF Pipeline: Constraint, Consensus, and Construct [exercise]
+[figure: the three layers applied to model output: probability mass on invalid tokens removed, consensus measured on the renormalized item distribution, and item distributions combined into a composite score]
 - Layer 1 is the Constraint layer, which sums the raw probability mass assigned to valid scale tokens (such as the digits 1 through 7), defines the complement as the model's task failure rate, and renormalizes the valid probabilities into an exact ordinal item PMF (Wadi, Ghodrat, & Philp, 2026).
 - Layer 2 is the Consensus layer, which computes a multivariate ordinal consensus metric (extending Tastle & Wierman, 2007) that penalizes probability spread in proportion to Euclidean distance on the ordinal scale, distinguishing concentrated agreement from extreme polarization.
 - Layer 3 is the Construct layer, which combines item-level PMFs into a composite multi-item scale distribution and decomposes variance across experimental factors using distributional analysis of variance.
@@ -80,17 +89,20 @@ week: week4
 - To preserve the full uncertainty of the model across all K items of a scale, the Construct layer replaces arithmetic averaging of sampled numbers with exact probability convolution and orthogonal factor decomposition (Wadi, Ghodrat, & Philp, 2026).
 
 ## Convolving Item Distributions Into a Composite Construct Score [no-exercise]
+[figure: interactive number of scale items, each with its own probability distribution, convolved into the exact distribution of the composite score]
 - Because each item k in a scale is administered in an isolated context window under experimental condition lambda, the item responses are conditionally independent given the condition.
 - By probability theory, the exact probability mass function of the sum of K independent discrete random variables is given by the discrete convolution of their individual item PMFs.
 - Convolving the K item PMFs produces the exact probability distribution of the composite scale score without collapsing item-level uncertainty into a single mean.
 - This composite distribution propagates all token-level aleatoric uncertainty forward into the factor-level comparisons.
 
 ## Hoeffding Decomposition of Main Effects and Interactions [no-exercise]
+[figure: a composite construct score decomposed into the grand mean, the model main effect, the target main effect, and their interaction (Wadi, Ghodrat, & Philp, 2026)]
 - In a fully crossed factorial experiment, the composite construct score depends on multiple factors, such as the model tested, the target demographic or country, and the framing of the instruction.
 - Using Hoeffding decomposition, the composite score distribution is decomposed into an overall grand mean, isolated main effects for each factor, and two-way or higher-order interaction effects (Wadi, Ghodrat, & Philp, 2026).
 - Theorem 1 of the exact-PMF framework proves that the expected values of these decomposed random variables equal the classical fixed-effect parameters of traditional human Analysis of Variance (ANOVA), while retaining the full probability distribution of each effect.
 
 ## Four Distributional Inference Metrics: Mean Shift, Dispersion, dPD, and SNR [exercise]
+[figure: interactive effect distribution whose mean shift and dispersion can be varied, with the resulting mean shift, standard deviation, dPD, and signal-to-noise ratio]
 - Expected Effect Size (Mean Shift) is the expected value of the decomposed effect distribution, quantifying the exact magnitude and direction by which a factor level or interaction shifts the composite scale score.
 - Predictive Dispersion (SD) is the standard deviation of the effect distribution, capturing the model's intrinsic aleatoric uncertainty around that shift.
 - Discrete Probability of Direction (dPD) is the total probability mass of the effect distribution that lies strictly on the dominant side of zero (plus half the mass at zero), measuring the certainty of the effect's sign on a scale from 0.50 to 1.00.
@@ -101,11 +113,13 @@ week: week4
 - Whether an audit uses Monte-Carlo sampling or exact token PMFs, isolating the cause of an algorithmic bias requires controlled factorial experimentation.
 
 ## Why Isolated Vignettes Cannot Isolate Causes [no-exercise]
+[figure: two vignettes, a software engineer named John in Boston and a nurse named Maria in Miami, that differ at once in gender, ethnicity, occupation, and city]
 - Many published AI evaluations test bias using a small set of handwritten story vignettes that vary several attributes at once, such as comparing a software engineer named John in Boston with a nurse named Maria in Miami.
 - When a model responds differently to those two vignettes, the auditor cannot determine whether the difference was caused by gender, ethnicity, occupation, city, or their interaction.
 - In consumer and market audits, similarly, testing real brand names in uncrossed scenarios confounds country of origin with brand equity, price tier, and historical market share.
 
 ## Fully Crossed Factorial Designs and Context Isolation [no-exercise]
+[figure: a grid crossing every level of factor A with every level of factor B, beside carryover between consecutive questions for a human respondent and a fresh context window for each model call]
 - A fully crossed factorial design specifies two or more independent factors, each with defined levels, and tests every possible combination of factor levels across the design grid.
 - Orthogonality across factors guarantees that the main effect of each factor and every interaction effect can be estimated independently of all other manipulated variables.
 - Unlike human participants, who remember previous questions and suffer from fatigue, boredom, and within-subject carryover effects, language models are stateless across separate API calls.
@@ -136,6 +150,7 @@ week: week4
 - Step 6 is comparing effect sizes, dPD, and SNR against governance release gates, documenting failures in the model dossier, and re-testing after mitigation.
 
 ## Continuous Post-Deployment Drift Monitoring and Version Pinning [no-exercise]
+[figure: an unpinned model endpoint whose behavior shifts with each silent provider update, beside a pinned snapshot that changes only when the audit is rerun]
 - A behavioral audit certifies only the exact combination of model checkpoint, tokenizer, system prompt, and retrieval pipeline that was tested.
 - Because foundation model providers frequently update hosted weights, safety filters, or quantization settings behind API endpoints, and because newer model generations can regress on behavioral stability (Wadi & Fredette, 2025), enterprise deployments pin exact model version snapshots.
 - Whenever a provider deprecates a snapshot, or when the deploying firm edits its system prompt or product catalog schema, the automated behavioral audit suite must run again before the update reaches production traffic.

@@ -18,8 +18,6 @@ import {
 import exercisesData from "./exercises.json";
 import {
   AnchoringFindings,
-  AuditBench,
-  AuditDossier,
   ConfoundedVignettes,
   ConvolutionBuild,
   CrossedGrid,
@@ -28,9 +26,6 @@ import {
   EstimatorConverges,
   FourControls,
   HoeffdingStack,
-  ItemStack,
-  LifecycleGates,
-  LikertLogprobs,
   OneDraw,
   PinnedVsLatest,
   ProbeVsGrid,
@@ -39,7 +34,6 @@ import {
   ThreeLayerExploded,
   TwoModelsOneDraw,
   ValidityMetrics,
-  WeldedLevers,
 } from "./visuals";
 
 // ============================================================================
@@ -84,39 +78,36 @@ export default function Week4Page() {
           deployment, testing a handful of prompts and inspecting the generated
           answers <Term>is not an audit</Term>.
         </Lead>
-        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-4">
+        <div className="mt-6 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Anecdotal prompting cannot tell a manager whether an observed
                 error is a rare tail event or the model&apos;s dominant
                 tendency, nor can it separate the effect of a suspect attribute
                 from the wording of the prompt.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 <Term>Behavioral auditing</Term> applies the
                 experimental and statistical methods of behavioral science to
                 artificial intelligence systems, treating the model as a
                 decision-making subject whose preferences, biases, and
                 consistency are measured with known precision.
-              </P>
+              </p>
             </Ruled>
             <Ruled>
-              <P>
+              <p className={BIG}>
                 Depending on whether the model produces open-ended numerical or
                 text outputs in a black-box interface or evaluates structured
                 scales with accessible token probabilities, auditors use two
                 complementary frameworks:{" "}
                 <Term>Monte-Carlo sampling</Term> and{" "}
                 <Term>exact probability mass function analysis</Term>.
-              </P>
+              </p>
             </Ruled>
           </div>
-          <Plate>
-            <AuditBench />
-          </Plate>
         </div>
       </Slide>
 
@@ -413,11 +404,8 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Exact Token-Level Probability Distributions for Rating Scales" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <LikertLogprobs />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Ruled>
               <p className={BIG}>
                 While Monte-Carlo sampling is necessary for multi-token
@@ -636,9 +624,6 @@ export default function Week4Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <ItemStack />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -796,8 +781,8 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Designing Controlled Factorial Choice and Rating Experiments" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
             <Statement className="!max-w-none !text-[clamp(1.3rem,2.1vw,1.8rem)]">
               Statistical sophistication in the analysis stage{" "}
               cannot rescue a confounded experimental design.
@@ -810,9 +795,6 @@ export default function Week4Page() {
               </p>
             </Ruled>
           </div>
-          <Plate>
-            <WeldedLevers />
-          </Plate>
         </div>
       </Slide>
 
@@ -990,9 +972,6 @@ export default function Week4Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <LifecycleGates />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1065,8 +1044,8 @@ export default function Week4Page() {
         exercise={exercise["six-steps-of-an-enterprise-behavioral-audit"]}
       >
         <SlideHeading>Six Steps of an Enterprise Behavioral Audit</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-12">
-          <ol className="grid w-full gap-x-6 gap-y-3 md:grid-cols-2">
+        <div className="w-full">
+          <ol className="grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
             {[
               "Step 1 is defining the target construct, the decision context, and the normative governance threshold, such as zero sponsorship penalty divergence or parity across demographic profiles.",
               "Step 2 is constructing the fully crossed factorial design grid, specifying the focal factors (such as demographic cues, anchors, or role assignments) and nuisance factors to counterbalance.",
@@ -1077,14 +1056,11 @@ export default function Week4Page() {
             ].map((step, i) => (
               <li key={i} className="min-w-0">
                 <Ruled className="!pt-2.5">
-                  <P className="!max-w-none">{step}</P>
+                  <p className={BIG}>{step}</p>
                 </Ruled>
               </li>
             ))}
           </ol>
-          <Plate>
-            <AuditDossier />
-          </Plate>
         </div>
       </Slide>
 

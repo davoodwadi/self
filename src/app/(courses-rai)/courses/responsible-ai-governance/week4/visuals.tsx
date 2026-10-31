@@ -17,7 +17,7 @@ import {
   seeded,
   stip,
 } from "../_visuals/kit";
-import { Chip, Detail, Dial, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star, tick } from "../_visuals/objects";
+import { Detail, Dial, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 4 PLATES: PATENT DRAWING
@@ -102,65 +102,6 @@ function Housing({ id, x, y, w, h, open = false }: { id: string; x: number; y: n
 /* --------------------------------------------------------------------------
    From Anecdotal Prompts to Scientific Behavioral Audits
    -------------------------------------------------------------------------- */
-
-const SLIP_PILE = [1, 3, 6, 8, 5, 3, 1];
-const READ_PMF = [0.04, 0.07, 0.12, 0.21, 0.31, 0.17, 0.08];
-
-/**
- * The two frameworks side by side. Left: a closed housing (a black-box
- * interface) drops answer slips one by one into a pile that builds a
- * histogram. Right: the housing is broken open and its seven scale
- * probabilities are read straight off as columns.
- */
-export function AuditBench() {
-  const id = "w4-bench";
-  const base = 262;
-  return (
-    <Frame
-      width={560}
-      height={318}
-      label="Patent drawing of the two audit frameworks. Left, Monte-Carlo sampling: a closed model housing drops sampled answer slips that pile up into a histogram. Right, exact probability mass function analysis: the housing is cut open to show its gears, and seven probability columns over the scale points 1 to 7 are read off it directly."
-    >
-      <PatentDefs id={id} />
-      {/* Monte-Carlo sampling */}
-      <g transform="translate(-60 0)">
-        <Housing id={id} x={110} y={40} w={150} h={96} />
-        {[0, 1].map((k) => (
-          <g key={k}>
-            <line x1={r2(187 + k * 4)} y1={r2(146 + k * 26)} x2={r2(187 + k * 4)} y2={r2(152 + k * 26)} {...hair} />
-            <Chip id={id} x={r2(178 + k * 4)} y={r2(164 + k * 26)} w={16} d={5} sk={5} />
-          </g>
-        ))}
-        <line x1={100} y1={base + 0.5} x2={288} y2={base + 0.5} {...ink} />
-        {SLIP_PILE.map((c, i) =>
-          Array.from({ length: c }, (_, j) => <Chip key={`${i}-${j}`} id={id} x={r2(104 + i * 25)} y={r2(base - 1 - j * 7)} w={17} d={5} sk={5} />),
-        )}
-        <FigureName x={194} y={300} size={14}>
-          Monte-Carlo sampling
-        </FigureName>
-      </g>
-
-      {/* Exact probability mass function analysis */}
-      <g transform="translate(-200 0)">
-        <Housing id={id} x={520} y={40} w={150} h={96} open />
-        {READ_PMF.map((p, i) => {
-          const h = r2(p * 300);
-          const x = 510 + i * 25;
-          return <ObliqueBox key={i} id={id} x={x} y={r2(base - h)} w={16} h={h} dx={6} dy={4} />;
-        })}
-        <line x1={500} y1={base + 0.5} x2={694} y2={base + 0.5} {...ink} />
-        {READ_PMF.map((_, i) => (
-          <Num key={i} x={518 + i * 25} y={base + 16} size={12}>
-            {i + 1}
-          </Num>
-        ))}
-        <FigureName x={600} y={300} size={14}>
-          exact probability mass function analysis
-        </FigureName>
-      </g>
-    </Frame>
-  );
-}
 
 /* --------------------------------------------------------------------------
    Why Single-Prompt Evaluations Fail
@@ -773,52 +714,6 @@ export function AnchoringFindings() {
 
 const LIKERT_PMF = [0.03, 0.05, 0.08, 0.14, 0.27, 0.29, 0.14];
 
-/**
- * A rating-scale item lying flat with seven answer boxes, 1 to 7. On each box stands a column as tall as the model's
- * next-token probability for that digit, read in one pass.
- */
-export function LikertLogprobs() {
-  const id = "w4-likert";
-  const cx0 = 22;
-  const cy0 = 330;
-  const w = 436;
-  const d = 96;
-  const sk = 66;
-  const at = (u: number, v: number) => ({ x: r2(cx0 + u * w + v * sk), y: r2(cy0 - v * d) });
-  const boxV = 0.36;
-  return (
-    <Frame
-      width={540}
-      height={350}
-      label={`Patent drawing of a rating-scale item card lying flat with seven answer boxes numbered 1 to 7. On each box stands a column as tall as the model's next-token probability for that digit: ${LIKERT_PMF.map((p, i) => `${i + 1}: ${Math.round(p * 100)}%`).join(", ")}.`}
-    >
-      <PatentDefs id={id} />
-      <Sheet id={id} x={cx0} y={cy0} w={w} d={d} sk={sk} t={4} />
-      {LIKERT_PMF.map((p, i) => {
-        const u = (i + 0.5) / 7;
-        const c = at(u, boxV);
-        const bw = 13;
-        const bd = 0.14;
-        const q = [at(u - bw / w, boxV - bd / 2), at(u + bw / w, boxV - bd / 2), at(u + bw / w, boxV + bd / 2), at(u - bw / w, boxV + bd / 2)];
-        const n = at(u, 0.1);
-        const h = r2(p * 880);
-        return (
-          <g key={i}>
-            <path d={`M${q.map((pt) => `${pt.x} ${pt.y}`).join("L")}Z`} fill={PAT.paper} {...hair} />
-            <Num x={n.x} y={r2(n.y + 4)} size={13}>
-              {i + 1}
-            </Num>
-            <ObliqueBox id={id} x={r2(c.x - 9)} y={r2(c.y - h)} w={18} h={h} dx={7} dy={4} />
-            <Num x={r2(c.x + 3)} y={r2(c.y - h - 12)} size={12}>
-              {`${Math.round(p * 100)}%`}
-            </Num>
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
-
 /* --------------------------------------------------------------------------
    Why Text Sampling Is Redundant When Token Probabilities Are Observable
    -------------------------------------------------------------------------- */
@@ -1133,56 +1028,6 @@ const SCALE_ITEMS = (() => {
   });
 })();
 
-/**
- * * A seventeen-item scale as a row of upright item cards, each carrying its
- * own seven-point PMF. Beside them, the composite score's exact
- * distribution over 17 to 119, the convolution of all seventeen.
- */
-export function ItemStack() {
-  const id = "w4-items";
-  const composite = SCALE_ITEMS.slice(1).reduce((acc, p) => convolve(acc, p), SCALE_ITEMS[0]);
-  const peak = Math.max(...composite);
-  const base = 118;
-  return (
-    <Frame
-      width={800}
-      height={166}
-      label="Patent drawing of a multi-item scale: seventeen upright item cards in a row, each carrying a small seven-point probability distribution. Beside them, the composite construct score's exact distribution over 17 to 119, the convolution of the seventeen item distributions."
-    >
-      <PatentDefs id={id} />
-      {SCALE_ITEMS.map((p, i) => {
-        const x = r2(20 + i * 30.5);
-        return (
-          <g key={i}>
-            <ObliqueBox id={id} x={x} y={base - 74} w={24} h={74} dx={5} dy={3} />
-            {p.map((q, k) => {
-              const lx = r2(x + 3.2 + k * 2.9);
-              return <line key={k} x1={lx} y1={base - 8} x2={lx} y2={r2(base - 8 - q * 90)} {...ink} />;
-            })}
-          </g>
-        );
-      })}
-      <FigureName x={278} y={154} size={14}>
-        multi-item scale
-      </FigureName>
-      {composite.map((q, i) => {
-        const x = r2(578 + i * 2);
-        const h = r2((q / peak) * 100);
-        return h > 0.6 ? <line key={i} x1={x} y1={base} x2={x} y2={r2(base - h)} {...hair} /> : null;
-      })}
-      <line x1={574} y1={base + 0.5} x2={r2(582 + 102 * 2)} y2={base + 0.5} {...ink} />
-      {[17, 68, 119].map((v) => (
-        <Num key={v} x={r2(578 + (v - 17) * 2)} y={base + 17} size={12}>
-          {v}
-        </Num>
-      ))}
-      <FigureName x={680} y={154} size={14}>
-        composite construct score
-      </FigureName>
-    </Frame>
-  );
-}
-
 /* --------------------------------------------------------------------------
    Convolving Item Distributions Into a Composite Construct Score
    -------------------------------------------------------------------------- */
@@ -1446,87 +1291,6 @@ export function EffectInstrument() {
 /* --------------------------------------------------------------------------
    Part 4: Designing Controlled Factorial Choice and Rating Experiments
    -------------------------------------------------------------------------- */
-
-/** A lever standing in a slot on a top face: pivot (px, py), tilted `deg` from upright (positive = right). */
-function Lever({ px, py, deg, len = 104 }: { px: number; py: number; deg: number; len?: number }) {
-  const a = (deg * Math.PI) / 180;
-  const kx = r2(px + Math.sin(a) * len);
-  const ky = r2(py - Math.cos(a) * len);
-  const nx = r2(Math.cos(a) * 3);
-  const ny = r2(Math.sin(a) * 3);
-  return (
-    <g>
-      <path d={`M${r2(px - 12)} ${py + 2}L${r2(px - 6)} ${py - 2}H${r2(px + 18)}L${r2(px + 12)} ${py + 2}Z`} fill={PAT.ink} />
-      <path
-        d={`M${r2(px - nx)} ${r2(py - ny)}L${r2(kx - nx)} ${r2(ky - ny)}L${r2(kx + nx)} ${r2(ky + ny)}L${r2(px + nx)} ${r2(py + ny)}Z`}
-        fill={PAT.paper}
-        {...ink}
-      />
-      <circle cx={kx} cy={ky} r={9} fill={PAT.paper} {...ink} />
-      <circle cx={r2(kx + 2.5)} cy={r2(ky - 2.5)} r={2.5} fill="none" {...hair} />
-    </g>
-  );
-}
-
-/**
- * Two figures of the same two-lever bench. Confounded design: the factor
- * levers are welded together (red), so neither can move alone. Controlled
- * factorial experimentation: the levers are free and set independently.
- */
-export function WeldedLevers() {
-  const id = "w4-levers";
-  const benches = [
-    { x: 22, degs: [22, 22], weld: true, name: "confounded design" },
-    { x: 296, degs: [-22, 22], weld: false, name: "controlled factorial experimentation" },
-  ];
-  const at = (px: number, py: number, deg: number, t: number) => {
-    const a = (deg * Math.PI) / 180;
-    return { x: r2(px + Math.sin(a) * 104 * t), y: r2(py - Math.cos(a) * 104 * t) };
-  };
-  return (
-    <Frame
-      width={540}
-      height={232}
-      label="Patent drawing of a two-lever bench in two figures. Confounded design: the levers for factor A and factor B lean the same way and are welded together by a red bar, so neither can move alone. Controlled factorial experimentation: the two levers are free, one set left and one set right."
-    >
-      <PatentDefs id={id} />
-      <g transform="translate(0 -70)">
-        {benches.map((b) => {
-          const py = 205;
-          const p1 = b.x + 66;
-          const p2 = b.x + 160;
-          const w1 = at(p1, py, b.degs[0], 0.62);
-          const w2 = at(p2, py, b.degs[1], 0.62);
-          return (
-            <g key={b.name}>
-              <ObliqueBox id={id} x={b.x} y={214} w={210} h={30} dx={16} dy={10} />
-              <Lever px={p1} py={py} deg={b.degs[0]} />
-              <Lever px={p2} py={py} deg={b.degs[1]} />
-              {b.weld ? (
-                <path
-                  d={`M${w1.x} ${r2(w1.y - 5)}L${w2.x} ${r2(w2.y - 5)}V${r2(w2.y + 5)}L${w1.x} ${r2(w1.y + 5)}Z`}
-                  fill={stip(id, "signal")}
-                  stroke={PAT.signal}
-                  strokeWidth={LINE.bold}
-                  strokeLinejoin="round"
-                />
-              ) : null}
-              <PatentKey x={p1 + 3} y={234} size={11}>
-                Factor A
-              </PatentKey>
-              <PatentKey x={p2 + 3} y={234} size={11}>
-                Factor B
-              </PatentKey>
-              <FigureName x={b.x + 113} y={280} size={14}>
-                {b.name}
-              </FigureName>
-            </g>
-          );
-        })}
-      </g>
-    </Frame>
-  );
-}
 
 /* --------------------------------------------------------------------------
    Why Isolated Vignettes Cannot Isolate Causes
@@ -1841,86 +1605,6 @@ export function FourControls({ kind }: { kind: "template" | "polarity" | "positi
    Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows
    -------------------------------------------------------------------------- */
 
-/** A barrier gate: a post with a striped boom, raised or lowered across the track to its left. */
-function BarrierGate({ id, x, ground, raised }: { id: string; x: number; ground: number; raised: boolean }) {
-  const py = ground - 58;
-  const len = raised ? 84 : 96;
-  const segs = 6;
-  const along = (t: number) => (raised ? { x: r2(x + 4 - Math.sin(0.25) * len * t), y: r2(py - Math.cos(0.25) * len * t) } : { x: r2(x + 4 - len * t), y: py });
-  return (
-    <g>
-      {Array.from({ length: segs }, (_, i) => {
-        const a = along(i / segs);
-        const b = along((i + 1) / segs);
-        const nx = raised ? r2(Math.cos(0.25) * 3.5) : 0;
-        const ny = raised ? r2(-Math.sin(0.25) * 3.5) : 3.5;
-        return (
-          <path
-            key={i}
-            d={`M${r2(a.x - nx)} ${r2(a.y - ny)}L${r2(b.x - nx)} ${r2(b.y - ny)}L${r2(b.x + nx)} ${r2(b.y + ny)}L${r2(a.x + nx)} ${r2(a.y + ny)}Z`}
-            fill={i % 2 ? PAT.paper : stip(id, "signal")}
-            stroke={PAT.signal}
-            strokeWidth={LINE.outline}
-            strokeLinejoin="round"
-          />
-        );
-      })}
-      <ObliqueBox id={id} x={x} y={py - 4} w={9} h={ground - py + 4} dx={5} dy={3} />
-      <circle cx={x + 4.5} cy={py} r={2.4} fill={PAT.ink} />
-    </g>
-  );
-}
-
-/** A model housing on two wheels, with its version keyed on the front. */
-function ModelCar({ id, x, ground, v }: { id: string; x: number; ground: number; v: string }) {
-  return (
-    <g>
-      <SmallModel id={id} x={x} y={ground - 60} w={64} h={46} />
-      <circle cx={x + 14} cy={ground - 7} r={7} fill={PAT.paper} {...ink} />
-      <circle cx={x + 50} cy={ground - 7} r={7} fill={PAT.paper} {...ink} />
-      <PatentKey x={x + 32} y={ground - 70} size={12}>
-        {v}
-      </PatentKey>
-    </g>
-  );
-}
-
-/**
- * The model lifecycle as a track in side elevation. Version 1 has passed the
- * first audit gate (boom raised) and runs past monitoring dials. Version 2
- * waits at the next gate, its boom lowered. Each gate is red: the audit
- * recurs with every version.
- */
-export function LifecycleGates() {
-  const id = "w4-gates";
-  const ground = 176;
-  return (
-    <Frame
-      width={800}
-      height={196}
-      label="Patent drawing of the model lifecycle as a track in side elevation. Version 1, a model housing on wheels, has passed a first audit gate whose red-striped boom is raised, and runs past two monitoring dials on posts. Version 2 waits at a second gate with its red-striped boom lowered across the track."
-    >
-      <PatentDefs id={id} />
-      <line x1={14} y1={ground + 0.5} x2={786} y2={ground + 0.5} {...ink} strokeWidth={LINE.bold} />
-      {Array.from({ length: 39 }, (_, i) => (
-        <line key={i} x1={20 + i * 20} y1={ground + 2} x2={14 + i * 20} y2={ground + 9} {...hair} />
-      ))}
-      <BarrierGate id={id} x={196} ground={ground} raised />
-      <ModelCar id={id} x={252} ground={ground} v="V1" />
-      {[392, 456].map((x) => (
-        <g key={x}>
-          <line x1={x} y1={ground} x2={x} y2={ground - 70} {...ink} />
-          <Dial cx={x} cy={ground - 86} r={15} deg={x === 392 ? -15 : 10} />
-        </g>
-      ))}
-      <ModelCar id={id} x={500} ground={ground} v="V2" />
-      <BarrierGate id={id} x={694} ground={ground} raised={false} />
-      <line x1={740} y1={ground} x2={740} y2={ground - 70} {...ink} />
-      <Dial cx={740} cy={ground - 86} r={15} deg={0} />
-    </Frame>
-  );
-}
-
 /* --------------------------------------------------------------------------
    Pre-Deployment Red-Teaming Versus Behavioral Auditing
    -------------------------------------------------------------------------- */
@@ -2023,63 +1707,6 @@ export function ProbeVsGrid({ kind }: { kind: "probe" | "grid" }) {
 /* --------------------------------------------------------------------------
    Six Steps of an Enterprise Behavioral Audit
    -------------------------------------------------------------------------- */
-
-/**
- * The model dossier lying open, six numbered index tabs along its far edge,
- * one per step. Its page holds hairline entries and a red RE-TEST imprint.
- * The stamp that made it stands beside the dossier.
- */
-export function AuditDossier() {
-  const id = "w4-dossier";
-  const x = 10;
-  const y = 160;
-  const w = 222;
-  const d = 128;
-  const sk = 76;
-  const at = (u: number, v: number) => ({ x: r2(x + u * w + v * sk), y: r2(y - v * d) });
-  const stampAt = at(0.6, 0.3);
-  return (
-    <Frame
-      width={360}
-      height={180}
-      label="Patent drawing of a model dossier lying open, with six numbered index tabs, 1 to 6, along its far edge. Its page carries hairline entries and a red re-test stamp imprint. The stamp that made it stands on the table beside the dossier."
-    >
-      <PatentDefs id={id} />
-      {/* index tabs, behind the page */}
-      {[1, 2, 3, 4, 5, 6].map((n, i) => {
-        const u0 = 0.03 + i * 0.16;
-        const a = at(u0, 1);
-        const b = at(u0 + 0.13, 1);
-        return (
-          <g key={n}>
-            <path d={`M${a.x} ${a.y}L${r2(a.x + 3)} ${r2(a.y - 20)}H${r2(b.x - 3)}L${b.x} ${b.y}Z`} fill={PAT.paper} {...ink} />
-            <Num x={r2((a.x + b.x) / 2)} y={r2(a.y - 6)} size={12}>
-              {n}
-            </Num>
-          </g>
-        );
-      })}
-      <Sheet id={id} x={x} y={y} w={w} d={d} sk={sk} t={5} />
-      {/* entries */}
-      {[0.86, 0.74, 0.62].map((v, i) => {
-        const p0 = at(0.08, v);
-        const p1 = at(i === 2 ? 0.5 : 0.82, v);
-        return <line key={v} x1={p0.x} y1={p0.y} x2={p1.x} y2={p1.y} {...hair} />;
-      })}
-      {/* the imprint */}
-      <g transform={`rotate(-6 ${stampAt.x} ${stampAt.y})`}>
-        <rect x={r2(stampAt.x - 50)} y={r2(stampAt.y - 14)} width={100} height={28} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} />
-        <PatentKey x={r2(stampAt.x + 1)} y={r2(stampAt.y + 5)} size={13} fill={PAT.signal}>
-          Re-test
-        </PatentKey>
-      </g>
-      {/* the stamp, set down beside the dossier */}
-      <ObliqueBox id={id} x={268} y={134} w={62} h={18} dx={10} dy={6} />
-      <ObliqueBox id={id} x={292} y={100} w={14} h={34} dx={5} dy={3} />
-      <ellipse cx={r2(301.5)} cy={94} rx={15} ry={5} fill={stip(id, "light")} {...ink} />
-    </Frame>
-  );
-}
 
 /* --------------------------------------------------------------------------
    Continuous Post-Deployment Drift Monitoring and Version Pinning
