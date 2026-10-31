@@ -1,0 +1,307 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "the-medical-versus-social-model-of-disability-in-technology",
+    "prompt": "Each card is a statement a product team made after users with disabilities struggled with its service. Sort each statement by the model of disability it reflects.",
+    "bins": [
+      { "id": "medical", "label": "Medical model" },
+      { "id": "social", "label": "Social and relational model" }
+    ],
+    "cards": [
+      {
+        "id": "hearing-aid",
+        "text": "Customers who cannot hear the phone menu should get a better hearing aid before calling us.",
+        "bin": "medical",
+        "explanation": "The problem is placed inside the person, as a deficit to be fixed."
+      },
+      {
+        "id": "captions",
+        "text": "Our training videos exclude deaf staff because we never added captions, so we will add them to every video.",
+        "bin": "social",
+        "explanation": "The barrier is the design of the environment, and the fix is a design change."
+      },
+      {
+        "id": "special-request",
+        "text": "Applicants with a diagnosed condition can file a special request, and we will review it case by case.",
+        "bin": "medical",
+        "explanation": "Access is granted as a specialized exception tied to a diagnosis rather than built into the design."
+      },
+      {
+        "id": "keyboard",
+        "text": "The checkout fails for anyone who cannot use a mouse, so the checkout is what needs fixing.",
+        "bin": "social",
+        "explanation": "Disability is read as a mismatch between the person and an interface that could be designed otherwise."
+      },
+      {
+        "id": "misread",
+        "text": "Our face-matching tool keeps rejecting users with facial palsy, so we will widen its evaluation set and change how it decides.",
+        "bin": "social",
+        "explanation": "The defect is located in the system's design and evaluation scope, not in the user."
+      },
+      {
+        "id": "abnormal",
+        "text": "The voice assistant works fine. Some users simply have abnormal speech that it cannot be expected to handle.",
+        "bin": "medical",
+        "explanation": "Users are framed as the anomaly, and the system's design is left unquestioned."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "the-four-pour-principles-of-digital-accessibility",
+    "prompt": "Each case describes an accessibility failure found in an audit. Identify which POUR principle it breaks.",
+    "options": [
+      { "id": "perceivable", "label": "Perceivable" },
+      { "id": "operable", "label": "Operable" },
+      { "id": "understandable", "label": "Understandable" },
+      { "id": "robust", "label": "Robust" }
+    ],
+    "cases": [
+      {
+        "id": "chart",
+        "text": "A pension website shows the projected balance only as a line chart, with no text description.",
+        "answer": "perceivable",
+        "explanation": "Information carried only in a visual channel cannot be perceived by a screen-reader user."
+      },
+      {
+        "id": "timer",
+        "text": "A bank's verification prompt locks the account if the code is not typed within 15 seconds, and the code field cannot be reached by keyboard.",
+        "answer": "operable",
+        "explanation": "The control does not work by keyboard and imposes a punitive time limit."
+      },
+      {
+        "id": "jargon",
+        "text": "A loan chatbot explains a denial as 'adverse amortization covariance in your obligor profile' and offers no simpler wording.",
+        "answer": "understandable",
+        "explanation": "The explanation uses opaque jargon and cannot be adjusted in reading complexity."
+      },
+      {
+        "id": "divs",
+        "text": "A store builds its buttons from unlabeled generic page elements, so braille displays announce them only as 'group'.",
+        "answer": "robust",
+        "explanation": "Without standardized semantic markup, assistive technologies cannot parse the content reliably."
+      },
+      {
+        "id": "podcast",
+        "text": "A news app publishes AI-generated audio summaries with no transcript or captions.",
+        "answer": "perceivable",
+        "explanation": "Generated audio needs captions or text so it can be perceived through another sensory channel."
+      },
+      {
+        "id": "shift",
+        "text": "Each time a user scrolls, the insurance form reorders its fields and moves the submit button to a new place.",
+        "answer": "understandable",
+        "explanation": "Disorienting layout shifts make navigation unpredictable."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "privacy-and-autonomy-risks-in-assistive-ai-systems",
+    "prompt": "Each case describes an assistive AI tool going wrong. Identify the risk it shows.",
+    "options": [
+      { "id": "profiling", "label": "Inferred disability profiling" },
+      { "id": "creep", "label": "Assistive surveillance creep" },
+      { "id": "override", "label": "Paternalistic override" },
+      { "id": "hallucination", "label": "Hallucination vulnerability in sensory translation" }
+    ],
+    "cases": [
+      {
+        "id": "large-text",
+        "text": "A shopper turns on large text and simplified layouts. Weeks later, an insurer that buys data from the retailer raises the shopper's quote.",
+        "answer": "profiling",
+        "explanation": "Use of accessibility features was logged as an inferred disability attribute and leaked into insurance scoring."
+      },
+      {
+        "id": "reading-tracker",
+        "text": "A call centre gives an employee with dyslexia an eye-tracking reading aid, then uses its gaze logs to rank every agent's focus in performance reviews.",
+        "answer": "creep",
+        "explanation": "Telemetry collected for support is repurposed for productivity surveillance."
+      },
+      {
+        "id": "hide-options",
+        "text": "A banking assistant detects that a user relies on a screen reader and hides investment products from that user because they are 'too complex'.",
+        "answer": "override",
+        "explanation": "The system restricts options on assumptions about what the user can decide."
+      },
+      {
+        "id": "dosage",
+        "text": "A vision-to-speech app reads a pill bottle aloud and confidently states a dosage that is not printed on the label.",
+        "answer": "hallucination",
+        "explanation": "A blind user cannot cross-check the fabricated detail visually."
+      },
+      {
+        "id": "keystrokes",
+        "text": "A university installs a typing-support tool for students with motor impairments, and the registrar starts using its keystroke records to flag 'disengaged' students.",
+        "answer": "creep",
+        "explanation": "Assistive keystroke telemetry is turned to monitoring."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "the-three-levels-of-the-ai-digital-divide",
+    "prompt": "Each card describes a gap between two households using AI. Sort each card by the level of the digital divide it shows.",
+    "bins": [
+      { "id": "access", "label": "First level: access" },
+      { "id": "capability", "label": "Second level: capability and literacy" },
+      { "id": "outcome", "label": "Third level: outcome and agency" }
+    ],
+    "cards": [
+      {
+        "id": "phone-data",
+        "text": "One family shares a single phone with a capped data plan, while another has home fibre and a paid frontier-model subscription.",
+        "bin": "access",
+        "explanation": "The gap is in connectivity, hardware and the ability to pay for a frontier model."
+      },
+      {
+        "id": "free-tier",
+        "text": "A student can afford only the ad-funded free tier of a chatbot, which runs a smaller model.",
+        "bin": "access",
+        "explanation": "Paying for frontier models versus relying on lower-capability free tiers is the access divide."
+      },
+      {
+        "id": "verify",
+        "text": "Both neighbours use the same assistant, but only one knows to ask for sources and notices when an answer is invented.",
+        "bin": "capability",
+        "explanation": "Recognizing hallucinations and verifying outputs is epistemic literacy."
+      },
+      {
+        "id": "effort",
+        "text": "Two coworkers have the same tool, but only one knows how to raise its reasoning effort for hard questions.",
+        "bin": "capability",
+        "explanation": "Configuring reasoning effort is a capability gap, not an access gap."
+      },
+      {
+        "id": "agent-deals",
+        "text": "Everyone in a town has access to AI, yet residents with configured shopping agents consistently pay lower all-in prices than residents who shop alone.",
+        "bin": "outcome",
+        "explanation": "Even with widespread access, those with advanced agents capture more market surplus."
+      },
+      {
+        "id": "disputes",
+        "text": "A firm with an AI agent settles billing disputes in a day, while individual customers of the same supplier wait weeks.",
+        "bin": "outcome",
+        "explanation": "Faster dispute resolution for the better equipped side is an outcome divide."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "deskilling-alert-fatigue-and-cognitive-offloading",
+    "prompt": "Each case describes a problem in a team that works with automation. Identify the concept it shows.",
+    "options": [
+      { "id": "deskilling", "label": "Cognitive offloading and deskilling" },
+      { "id": "paradox", "label": "Paradox of automation" },
+      { "id": "fatigue", "label": "Alert fatigue" },
+      { "id": "crumple", "label": "Moral crumple zone" }
+    ],
+    "cases": [
+      {
+        "id": "dismiss",
+        "text": "A content filter flags 600 posts a night, nearly all harmless. Moderators begin clearing the queue with one click each without opening the posts.",
+        "answer": "fatigue",
+        "explanation": "A high volume of false alarms conditions operators to dismiss without inspecting the evidence."
+      },
+      {
+        "id": "radiology",
+        "text": "After three years of reading scans with an AI assistant, a radiologist performs noticeably worse when the assistant is offline for a week.",
+        "answer": "deskilling",
+        "explanation": "Relying on recommendations for routine cases let independent judgment atrophy."
+      },
+      {
+        "id": "pilot",
+        "text": "An autopilot handles almost every flight, then hands control to a rarely practiced pilot in a sudden storm with conflicting sensor readings.",
+        "answer": "paradox",
+        "explanation": "The more reliable the automation, the less practiced the human, yet the handed-back cases are the hardest."
+      },
+      {
+        "id": "blamed-clerk",
+        "text": "A loan clerk is disciplined for approving a loan the model scored as safe, though the clerk could never see the model's inputs or error range.",
+        "answer": "crumple",
+        "explanation": "The frontline employee absorbs liability for an opaque model they could not inspect."
+      },
+      {
+        "id": "navigation",
+        "text": "Delivery drivers who have used turn-by-turn routing for years can no longer plan a route across their own city from memory.",
+        "answer": "deskilling",
+        "explanation": "Long reliance on automated guidance erodes the underlying skill."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "designing-cognitive-forcing-functions-for-effective-oversight",
+    "prompt": "Match each cognitive forcing function to the interface feature that applies it in an insurance claims review tool.",
+    "term_label": "Cognitive forcing function",
+    "match_label": "Interface feature",
+    "pairs": [
+      {
+        "id": "delayed",
+        "term": "Delayed recommendation (human-first judgment)",
+        "match": "The adjuster must enter a payout decision from the claim file before the fraud score appears.",
+        "explanation": "The reviewer records a provisional assessment before the model's score is revealed."
+      },
+      {
+        "id": "uncertainty",
+        "term": "Calibrated uncertainty and disagreement highlights",
+        "match": "Claims on which the model's estimates are widely spread are outlined and marked for closer review.",
+        "explanation": "Predictive dispersion is shown with the score, flagging low-consensus cases."
+      },
+      {
+        "id": "contrastive",
+        "term": "On-demand contrastive explanations",
+        "match": "A button shows the two strongest signs the claim is genuine next to the two strongest signs it is not.",
+        "explanation": "Evidence for both outcomes is presented instead of a one-sided summary."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "arnsteins-ladder-and-participatory-ai-design",
+    "prompt": "Each card describes how a company involved users when building an AI hearing-test app. Sort each card by its rung group on the ladder of participation.",
+    "bins": [
+      { "id": "extraction", "label": "Non-participation and extraction" },
+      { "id": "tokenism", "label": "Tokenism and surface consultation" },
+      { "id": "partnership", "label": "Partnership and co-design" }
+    ],
+    "cards": [
+      {
+        "id": "forum-scrape",
+        "text": "The team scrapes posts from an online forum for deaf people to train the app, without asking the forum's members.",
+        "bin": "extraction",
+        "explanation": "Community data is taken with no participation at all."
+      },
+      {
+        "id": "personas",
+        "text": "Instead of recruiting hard-of-hearing users, the team asks a language model to role-play twenty of them and reads the replies.",
+        "bin": "extraction",
+        "explanation": "Synthetic personas replace real stakeholders."
+      },
+      {
+        "id": "launch-panel",
+        "text": "One week before launch, with the model frozen, the company invites deaf users to a single feedback session.",
+        "bin": "tokenism",
+        "explanation": "Consultation comes after the design is locked, so participants cannot alter the system."
+      },
+      {
+        "id": "survey",
+        "text": "The company posts a satisfaction survey for users with hearing loss but states that the results will not change the roadmap.",
+        "bin": "tokenism",
+        "explanation": "Input is gathered with no authority attached to it."
+      },
+      {
+        "id": "paid-board",
+        "text": "A paid advisory board of deaf users helps choose the training data and test prototypes, and it can block the launch.",
+        "bin": "partnership",
+        "explanation": "Compensated roles from scoping through testing, with veto authority."
+      },
+      {
+        "id": "redteam",
+        "text": "Audiologists and hard-of-hearing users co-write the app's success criteria and run its pre-launch red-team sessions.",
+        "bin": "partnership",
+        "explanation": "Affected users share power across the lifecycle, including pre-launch red-teaming."
+      }
+    ]
+  }
+]
