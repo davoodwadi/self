@@ -910,7 +910,7 @@ export default function Week7Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Measuring Consumer Autonomy and Welfare Losses" />
-        <div className="mt-8 w-full">
+        <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               To enforce consumer protection in both human and agent-mediated

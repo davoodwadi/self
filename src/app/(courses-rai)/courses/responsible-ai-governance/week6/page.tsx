@@ -109,7 +109,7 @@ export default function Week6Page() {
             <RowsVsWeights />
           </Plate>
         </div>
-        <div className="mt-6 w-full">
+        <div className="mt-6 w-full max-w-[56rem]">
           <Ruled>
             <P>
               Effective data governance therefore operates across the entire data

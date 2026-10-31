@@ -152,7 +152,7 @@ export default function Week5Page() {
             </Numbered>
           </li>
         </ol>
-        <div className="mt-6 w-full">
+        <div className="mt-6 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               A firm can provide{" "}
@@ -947,7 +947,7 @@ export default function Week5Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Designing Disclosures and Documentation for Stakeholders" />
-        <div className="mt-8 w-full">
+        <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
               Effective algorithmic governance translates technical
