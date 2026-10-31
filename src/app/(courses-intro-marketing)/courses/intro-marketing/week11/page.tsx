@@ -5,507 +5,40 @@ import {
   SlideDeck,
   Slide,
   Title,
-  Subtitle,
-  Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
-import { cn } from "@/lib/utils";
-import { Plate } from "../_visuals/kit";
-import quizzesData from "./quizzes.json";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import {
-  ChannelGlyph,
-  type ChannelKind,
-  FormatGlyph,
-  type FormatKind,
-  Transition,
-  MediaTimeline,
-  Precision,
-  Blend,
-  LegacyGap,
-  ConsistencyDrift,
-  ToolPile,
-  Expectation,
-  DeviceBoundary,
-  ChannelsConnect,
-  TrackAdjust,
-  Broadcast,
-  Conversation,
-  SharedCampaign,
-  CoCreators,
-  EcosystemHub,
+  Big,
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
+import exercisesData from "./exercises.json";
+import {
+  AgentRankAndLabels,
   OwnedPaidEarned,
-  Foundation,
-  Serp,
-  SeoThree,
-  SeoTraffic,
-  AlgorithmSieve,
-  KeywordAuction,
-  QueryTarget,
-  Monitoring,
-  ContentCadence,
-  AttractRetainAct,
-  EducateEntertain,
-  Retention,
-  Segmented,
-  JourneyTriggers,
-  ValueOrFlood,
-  SeoSemFork,
-  RelationshipShift,
-  Storytelling,
-  Community,
-  Humanize,
-  SupportThread,
-  PlatformAudiences,
-  VisualPlatform,
-  ProfessionalNetwork,
-  ShortFormVideo,
-  EngagementStairs,
-  InteractivePoll,
-  ReplyTrust,
-  UgcAmplify,
-  Listening,
-  UnfilteredInsights,
-  Escalation,
-  InsightToProduct,
-  InfluencerNiche,
-  TrustRelay,
-  MicroVsCeleb,
-  Alignment,
-  TangledReturn,
-  MetricSpan,
-  EngagementToRevenue,
-  VanityVsObjective,
-  DataBoundaries,
-  Regulations,
-  Protective,
-  PrivacyScale,
-  DataDilemma,
-  GlyphTransformed,
-  GlyphFourStrategies,
-  GlyphCommunity,
-  GlyphEthics,
+  SeoVsSemSerp,
+  TenLinksToAiAnswers,
 } from "./visuals";
 
 // ============================================================================
-// WEEK 11: DIGITAL AND SOCIAL MEDIA MARKETING
+// INTRODUCTION TO MARKETING | WEEK 11: DIGITAL AND SOCIAL MEDIA MARKETING
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
-//
-// Colour code for the week: SIGNAL is paid (ads, SEM) and the operative case,
-// COUNTER is earned and organic (SEO, shares, reviews) or the risk, INK is
-// owned media and the neutral case.
-//
-// Quizzes: in this route group `Slide` renders `quizData` AFTER its section.
-// Each [quiz]-tagged topic carries its own quiz, which tests that slide and
-// the ones before it.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
-
-const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
-
-type Tone = "signal" | "counter" | "ink";
-
-const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
-};
-
-/** One verbatim line at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
-/** A line promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-lead max-w-[46ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A line set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-quote max-w-[30ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A line at h2 size. */
-function Big({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-h2 !font-normal", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** Coloured term inside a line. */
-function Term({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
-}
-
-/** Inline colour for a phrase inside a serif line. */
-function Tint({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <span
-      className={
-        tone === "signal" ? "text-[var(--signal)]" : "text-[var(--counter)]"
-      }
-    >
-      {children}
-    </span>
-  );
-}
-
-/** Hairline-topped block. */
-function Ruled({
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
-      {children}
-    </div>
-  );
-}
-
-/**
- * A slide heading. A "Label:" prefix from the content ("Strategy:",
- * "Discussion:") is set as a small tracked kicker inside the same h2, so the
- * heading text stays exactly as written.
- */
-function Heading({
-  kicker,
-  children,
-  tone = "signal",
-}: {
-  kicker?: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <div className="w-full mb-8 md:mb-12">
-      <h2 className="type-h1 max-w-[24ch]">
-        {kicker ? (
-          <>
-            <span
-              className={cn(
-                "type-label block mb-4 !text-[0.8rem]",
-                tone === "counter" && "!text-[var(--counter)]",
-              )}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Discussion prompt. The line's own "Discussion:" opens it as a kicker. */
-function Prompt({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
-      <p className="type-quote !text-[clamp(1.35rem,2.5vw,2.1rem)] max-w-[46ch]">
-        <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-          Discussion:
-        </span>{" "}
-        {children}
-      </p>
-    </div>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   Wayfinding
-   -------------------------------------------------------------------------- */
-
-const SECTIONS = [
-  "Traditional to Digital",
-  "SEO, SEM, Content, Email",
-  "Social Media Marketing",
-  "ROI, Ethics and Privacy",
-];
-
-/** The four parts of the week as a strip. The current one is lit. */
-function SectionStrip({
-  active,
-  className = "",
-}: {
-  active: number;
-  className?: string;
-}) {
-  return (
-    <ol
-      aria-hidden
-      className={cn("grid w-full grid-cols-4 gap-2 sm:gap-4", className)}
-    >
-      {SECTIONS.map((name, i) => {
-        const on = i === active;
-        const done = i < active;
-        return (
-          <li
-            key={name}
-            className={cn(
-              "min-w-0 border-t-2 pt-3",
-              on
-                ? "border-[var(--signal)]"
-                : done
-                  ? "border-[var(--ink)]"
-                  : "border-[var(--rule)]",
-            )}
-          >
-            <span
-              className={cn(
-                "type-label block !text-[0.68rem]",
-                on ? "!text-[var(--signal)]" : "!text-[var(--ink-3)]",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span
-              className={cn(
-                "mt-1.5 hidden sm:block text-[0.8rem] leading-snug",
-                on ? "font-semibold text-[var(--ink)]" : "text-[var(--ink-3)]",
-              )}
-            >
-              {name}
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-const STRATEGIES: { kind: ChannelKind; name: string }[] = [
-  { kind: "seo", name: "SEO" },
-  { kind: "sem", name: "SEM" },
-  { kind: "content", name: "Content Marketing" },
-  { kind: "email", name: "Email Marketing" },
-];
-
-/** The four digital strategies as glyphs. The one this slide covers is lit. */
-function StrategyStrip({ active }: { active: number }) {
-  return (
-    <ol aria-hidden className="mb-10 grid w-full grid-cols-4 gap-2 sm:gap-4">
-      {STRATEGIES.map((s, i) => {
-        const on = i === active;
-        const tone = on ? (s.kind === "seo" ? "var(--counter)" : "var(--signal)") : "var(--ink)";
-        return (
-          <li
-            key={s.kind}
-            className={cn(
-              "flex min-w-0 flex-col items-center gap-2 border-b-2 pb-3",
-              on
-                ? s.kind === "seo"
-                  ? "border-[var(--counter)]"
-                  : "border-[var(--signal)]"
-                : "border-[var(--rule)] opacity-45",
-            )}
-          >
-            <ChannelGlyph kind={s.kind} tone={tone} size={52} />
-            <span
-              className={cn(
-                "hidden sm:block text-center text-[0.72rem] leading-tight",
-                on ? "font-semibold text-[var(--ink)]" : "text-[var(--ink-3)]",
-              )}
-            >
-              {s.name}
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-/** A topic slide: part strip, heading, optional strip, then the content. */
-function TopicSlide({
-  id,
-  section,
-  kicker,
-  title,
-  strip,
-  children,
-}: {
-  id: string;
-  section: number;
-  kicker?: string;
-  title: string;
-  strip?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border quizData={quiz[id]}>
-      <SectionStrip active={section} className="mb-12 md:mb-16" />
-      <Heading kicker={kicker}>{title}</Heading>
-      {strip}
-      {children}
-    </Slide>
-  );
-}
-
-/** A column: a ruled line with its plate beneath. */
-function PlateColumn({
-  tone = "ink",
-  text,
-  plate,
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col gap-6">
-      <Ruled tone={tone}>
-        <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">{text}</P>
-      </Ruled>
-      <Plate>{plate}</Plate>
-    </div>
-  );
-}
-
-/** Two plate columns side by side. */
-function Columns({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-/** A line and a column plate side by side. */
-function Pair({
-  plateFirst = false,
-  plate,
-  children,
-  className = "",
-}: {
-  plateFirst?: boolean;
-  plate: React.ReactNode;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn("grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14", className)}
-    >
-      {plateFirst ? <Plate>{plate}</Plate> : null}
-      <div className="min-w-0">{children}</div>
-      {plateFirst ? null : <Plate>{plate}</Plate>}
-    </div>
-  );
-}
-
-const numerals = `.step-n::before { content: attr(data-n); }`;
-
-const FORMATS: { kind: FormatKind; name: string }[] = [
-  { kind: "blog", name: "blog posts" },
-  { kind: "video", name: "videos" },
-  { kind: "infographic", name: "infographics" },
-  { kind: "podcast", name: "podcasts" },
-];
-
-/** "Formats include blog posts, videos, …": each format sits over its glyph. */
-function FormatRow() {
-  return (
-    <div className="w-full border-t-2 border-[var(--ink)] pt-6">
-      <p className="type-h2 !font-normal">
-        Formats include
-        <span className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-4">
-          {FORMATS.map((f, i) => (
-            <span key={f.kind} className="flex min-w-0 flex-col items-start gap-4">
-              <FormatGlyph kind={f.kind} size={88} />
-              <span className="text-[var(--signal)]">
-                {" "}
-                {i === FORMATS.length - 1 ? "and " : ""}
-                {f.name}
-                {i === FORMATS.length - 1 ? "" : ","}
-              </span>
-            </span>
-          ))}
-        </span>
-      </p>
-    </div>
-  );
-}
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 export default function Week11() {
   return (
@@ -513,798 +46,1068 @@ export default function Week11() {
       {/* ================================================================
           Title Slide
           ================================================================ */}
-      <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 11: Introduction to Marketing</Subtitle>
-        <p className="type-lead mt-6 !text-[var(--ink)]">
-          Welcome to Week 11
-        </p>
-        <Title className="mt-4 !max-w-[20ch]">
-          Digital and Social Media{" "}
-          <span className="text-[var(--signal)]">Marketing</span>
-        </Title>
-        <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <div className="mt-12 w-full max-w-4xl">
-          <div className="figure-well w-full p-3 sm:p-6">
-            <Transition />
+      <Slide id="title-slide" align="left">
+        <div className="w-full max-w-4xl">
+          <p className="type-label text-[var(--ink-3)]">Week 11</p>
+          <p className="type-caption mt-2">
+            Introduction to Marketing | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">Digital and Social Media Marketing</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              Digital and social media marketing connect brands with customers
+              through{" "}
+              <Tint>interactive owned, paid, and earned channels</Tint>, while
+              the rise of conversational AI answers and shopping agents reshapes
+              search visibility and sponsored placements.
+            </p>
           </div>
         </div>
-        <p className="type-lead mx-auto mt-10 max-w-[48ch] text-center">
-          Exploring the transition from{" "}
-          <span className="text-[var(--ink)]">traditional strategies</span> to{" "}
-          <span className="text-[var(--signal)]">digital ecosystems</span>
-        </p>
       </Slide>
 
       {/* ================================================================
-          Part 1: Traditional to Digital
+          Defining Digital and Direct Marketing
           ================================================================ */}
-      <TopicSlide
-        id="the-evolution-traditional-to-digital"
-        section={0}
-        kicker="The Evolution:"
-        title="Traditional to Digital"
-      >
-        <Lead className="!max-w-[62ch]">
-          Marketing has shifted from{" "}
-          <Term tone="ink">static, one-way communication</Term> to{" "}
-          <Term>interactive dialogues</Term>
-        </Lead>
-        <Figure height="auto">
-          <MediaTimeline />
-        </Figure>
-        <Ruled tone="ink" className="w-full">
-          <Big className="max-w-[56ch]">
-            Traditional channels relied on mass broadcast models like print,
-            radio, and television
-          </Big>
-        </Ruled>
-        <Columns className="mt-16">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                Digital platforms enable <Term>precision targeting</Term> and{" "}
-                <Term tone="counter">measurable engagement</Term>
-              </>
-            }
-            plate={<Precision />}
-          />
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                The modern marketer must blend{" "}
-                <Term tone="ink">traditional principles</Term> with{" "}
-                <Term>digital agility</Term>
-              </>
-            }
-            plate={<Blend />}
-          />
-        </Columns>
-      </TopicSlide>
-
-      <TopicSlide
-        id="the-problem-adapting-to-digital-channels"
-        section={0}
-        kicker="The Problem:"
-        title="Adapting to Digital Channels"
-      >
-        <Lead className="!max-w-[62ch]">
-          Companies often <Term tone="counter">struggle to transition</Term>{" "}
-          legacy operations into the digital space
-        </Lead>
-        <Figure height="auto">
-          <LegacyGap />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                Maintaining <Term tone="counter">brand consistency</Term> across
-                multiple fast-paced platforms is challenging
-              </>
-            }
-            plate={<ConsistencyDrift />}
-          />
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                The <Term tone="counter">sheer volume</Term> of digital tools can
-                overwhelm organizations without a clear strategy
-              </>
-            }
-            plate={<ToolPile />}
-          />
-        </Columns>
-        <Statement className="mt-16 !max-w-[34ch]">
-          Customers now expect <Tint>immediate, personalized</Tint> responses
-          from brands
+      <Slide className={TIGHT} id="defining-digital-and-direct-marketing" border>
+        <SlideHeading>Defining Digital and Direct Marketing</SlideHeading>
+        <Statement>
+          <Term>Direct and digital marketing</Term> involves engaging directly
+          with carefully targeted individual consumers and customer communities
+          to both obtain an immediate response and build lasting customer
+          relationships.
         </Statement>
-        <Figure height="auto">
-          <Expectation />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="what-is-digital-marketing"
-        section={0}
-        kicker="Core Concept:"
-        title="What is Digital Marketing?"
-      >
-        <Ruled tone="signal" className="w-full">
-          <Big className="max-w-[52ch]">
-            Digital marketing encompasses{" "}
-            <Tint>all marketing efforts</Tint> that use an electronic device or
-            the internet
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <DeviceBoundary />
-        </Figure>
-        <Lead className="!max-w-[68ch]">
-          Businesses leverage digital channels such as{" "}
-          <Term tone="ink">
-            search engines, social media, email, and other websites
-          </Term>{" "}
-          to connect with current and prospective customers
+        <Lead className="mt-6">
+          For most companies today, direct and digital marketing are not merely
+          supplementary promotion channels, but a{" "}
+          <Tint>complete model for doing business</Tint> and interacting with
+          buyers.
         </Lead>
-        <Figure height="auto">
-          <ChannelsConnect />
-        </Figure>
-        <Statement className="!max-w-[36ch]">
-          It allows for <Tint>real-time tracking</Tint>,{" "}
-          <Tint tone="counter">immediate feedback</Tint>, and{" "}
-          <Tint>rapid campaign adjustment</Tint>
-        </Statement>
-        <Figure height="auto">
-          <TrackAdjust />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="the-paradigm-shift-interactive-vs-broadcast-marketing"
-        section={0}
-        kicker="The Paradigm Shift:"
-        title="Interactive vs. Broadcast Marketing"
-      >
-        <Columns>
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                Traditional broadcast marketing delivers a{" "}
-                <Term tone="ink">uniform message</Term> to a broad audience
-              </>
-            }
-            plate={<Broadcast />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                Interactive digital marketing invites consumers to participate
-                in a <Term>two-way conversation</Term>
-              </>
-            }
-            plate={<Conversation />}
-          />
-        </Columns>
-        <Ruled tone="counter" className="mt-16 w-full">
-          <Big className="max-w-[56ch]">
-            Campaigns are now designed to be <Tint tone="counter">shared</Tint>,
-            commented on, and <Tint>personalized</Tint>
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <SharedCampaign />
-        </Figure>
-        <Pair plateFirst plate={<CoCreators />}>
-          <Statement>
-            This shift empowers consumers, making them{" "}
-            <Tint tone="counter">co-creators of brand value</Tint>
-          </Statement>
-        </Pair>
-      </TopicSlide>
-
-      <TopicSlide
-        id="the-digital-marketing-ecosystem"
-        section={0}
-        title="The Digital Marketing Ecosystem"
-      >
-        <Figure height="auto" className="!mt-0">
-          <EcosystemHub />
-        </Figure>
-        <Lead className="!max-w-[62ch]">
-          The digital ecosystem is a{" "}
-          <Term tone="ink">complex network</Term> of interconnected channels
-          and platforms
-        </Lead>
-        <Ruled tone="ink" className="mt-12 w-full">
-          <Big className="max-w-[60ch]">
-            It includes <Term tone="ink">owned media</Term> (websites),{" "}
-            <Tint>paid media</Tint> (ads), and{" "}
-            <Tint tone="counter">earned media</Tint> (shares and reviews)
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <OwnedPaidEarned />
-        </Figure>
-        <Statement className="!max-w-[36ch]">
-          A successful digital strategy <Tint>seamlessly integrates</Tint> these
-          different elements
-        </Statement>
-        <Pair plate={<Foundation />} className="mt-16">
-          <Ruled tone="ink">
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Digital marketing</Term> uses electronic devices, the
+              internet, mobile networks, and connected applications to reach
+              buyers wherever they work, shop, and socialize.
+            </P>
+          </Ruled>
+          <Ruled>
             <Big>
-              <Term tone="ink">Data analytics</Term> forms the foundation,
-              guiding decisions across the entire ecosystem
+              Because digital interactions are logged at the{" "}
+              <Term>individual session level</Term>, marketers can track
+              audience responses in real time and adjust creative messages,
+              targeting, and budgets continuously.
             </Big>
           </Ruled>
-        </Pair>
-      </TopicSlide>
+        </div>
+      </Slide>
 
       {/* ================================================================
-          Part 2: SEO, SEM, Content, Email
+          The Shift from One-Way Broadcast to Two-Way Interactive Engagement
           ================================================================ */}
-      <TopicSlide
-        id="strategy-search-engine-optimization-seo"
-        section={1}
-        kicker="Strategy:"
-        title="Search Engine Optimization (SEO)"
-        strip={<StrategyStrip active={0} />}
+      <Slide
+        className={TIGHT}
+        id="the-shift-from-one-way-broadcast-to-two-way-interactive-engagement"
+        border
       >
-        <Pair plate={<Serp mode="organic" />}>
-          <Lead>
-            SEO is the practice of optimizing web content to{" "}
-            <Term tone="counter">rank higher in organic</Term> search engine
-            results
-          </Lead>
-        </Pair>
-        <Ruled tone="counter" className="mt-16 w-full">
-          <Big className="max-w-[60ch]">
-            It involves <Tint tone="counter">technical website adjustments</Tint>
-            , <Tint tone="counter">keyword research</Tint>, and{" "}
-            <Tint tone="counter">high-quality content creation</Tint>
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <SeoThree />
-        </Figure>
-        <Statement className="!max-w-[38ch]">
-          A strong SEO foundation builds{" "}
-          <Tint tone="counter">long-term, sustainable traffic</Tint> without
-          direct advertising costs
-        </Statement>
-        <Figure height="auto">
-          <SeoTraffic />
-        </Figure>
-        <Ruled tone="ink" className="w-full">
-          <Big className="max-w-[56ch]">
-            The algorithm prioritizes <Tint tone="counter">user intent</Tint>,{" "}
-            <Tint tone="counter">relevance</Tint>, and{" "}
-            <Tint tone="counter">website authority</Tint>
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <AlgorithmSieve />
-        </Figure>
-      </TopicSlide>
+        <SlideHeading>
+          The Shift from One-Way Broadcast to Two-Way Interactive Engagement
+        </SlideHeading>
+        <div className="grid w-full items-start gap-10 lg:grid-cols-2 lg:gap-12">
+          <Ruled>
+            <Lead>
+              Traditional mass marketing relied on{" "}
+              <Term>one-way broadcast communication</Term>: the firm designed a
+              uniform message and projected it via television, radio, or print
+              to a passive mass audience.
+            </Lead>
+          </Ruled>
+          <Ruled>
+            <Lead>
+              Digital and social media marketing shifts communication to an{" "}
+              <Term>interactive, two-way dialogue</Term> in which consumers
+              actively search for information, ask questions, post public
+              product reviews, and share brand content with peers.
+            </Lead>
+          </Ruled>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              In this interactive environment, consumers exercise{" "}
+              <Tint>substantial control</Tint> over which commercial messages
+              they view, skip, block, or amplify.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Statement>
+              Effective digital marketing therefore focuses on{" "}
+              <Term>customer-initiated attraction</Term> and{" "}
+              <Term>permission-based engagement</Term> rather than intrusive
+              interruption alone.
+            </Statement>
+          </Ruled>
+        </div>
+      </Slide>
 
-      <TopicSlide
-        id="strategy-search-engine-marketing-sem"
-        section={1}
-        kicker="Strategy:"
-        title="Search Engine Marketing (SEM)"
-        strip={<StrategyStrip active={1} />}
+      {/* ================================================================
+          Part 1: The Digital Marketing Ecosystem
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-1-the-digital-marketing-ecosystem"
+        border
       >
-        <Pair plate={<Serp mode="paid" />}>
-          <Lead>
-            SEM focuses on gaining visibility through{" "}
-            <Term>paid search advertising</Term>
-          </Lead>
-        </Pair>
-        <Ruled tone="signal" className="mt-16 w-full">
-          <Big className="max-w-[56ch]">
-            Advertisers <Tint>bid on keywords</Tint> to appear at the top of
-            search engine results pages
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <KeywordAuction />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                It provides <Term>immediate visibility</Term> and precise
-                targeting based on user search queries
-              </>
-            }
-            plate={<QueryTarget />}
-          />
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                Campaigns require <Term tone="ink">constant monitoring</Term>{" "}
-                and budget optimization to maximize return on ad spend
-              </>
-            }
-            plate={<Monitoring />}
-          />
-        </Columns>
-      </TopicSlide>
-
-      <TopicSlide
-        id="strategy-content-marketing"
-        section={1}
-        kicker="Strategy:"
-        title="Content Marketing"
-        strip={<StrategyStrip active={2} />}
-      >
-        <Lead className="!max-w-[66ch]">
-          Content marketing is a strategic approach focused on creating and
-          distributing <Term>valuable, relevant, and consistent</Term> content
-        </Lead>
-        <Figure height="auto">
-          <ContentCadence />
-        </Figure>
-        <Ruled tone="signal" className="w-full">
-          <Big className="max-w-[60ch]">
-            The goal is to <Tint>attract</Tint> and{" "}
-            <Tint tone="counter">retain</Tint> a clearly defined audience and
-            ultimately drive <Tint>profitable customer action</Tint>
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <AttractRetainAct />
-        </Figure>
-        <Pair plateFirst plate={<EducateEntertain />} className="mb-16">
+        <PartHead n={1} title="The Digital Marketing Ecosystem" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
           <Statement>
-            Effective content <Tint>educates or entertains</Tint> rather than
-            directly selling a product
+            A modern digital strategy coordinates three interconnected media
+            categories: <Term>owned media</Term>, <Term>paid media</Term>, and{" "}
+            <Term>earned media</Term>.
           </Statement>
-        </Pair>
-        <FormatRow />
-      </TopicSlide>
+          <Ruled>
+            <Lead>
+              Balancing these three media pillars across desktop and mobile
+              touchpoints creates a{" "}
+              <Tint>resilient digital acquisition and retention funnel</Tint>.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
 
-      <TopicSlide
-        id="strategy-email-marketing-campaigns"
-        section={1}
-        kicker="Strategy:"
-        title="Email Marketing Campaigns"
-        strip={<StrategyStrip active={3} />}
+      {/* ================================================================
+          Owned, Paid, and Earned Digital Media
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="owned-paid-and-earned-digital-media"
+        border
+        exercise={exercise["owned-paid-and-earned-digital-media"]}
       >
-        <Pair plate={<Retention />}>
+        <SlideHeading>Owned, Paid, and Earned Digital Media</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1.55fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Numbered n={1}>
+              <P>
+                <Term>Owned media</Term> consist of digital properties that the
+                brand controls directly, including its corporate website,
+                e-commerce storefront, mobile application, blog, and opted-in
+                email subscriber list.
+              </P>
+            </Numbered>
+            <Numbered n={2}>
+              <P>
+                <Term>Paid media</Term> consist of external digital placements
+                for which the brand pays to acquire reach and traffic, including
+                paid search advertisements, programmatic display banners, paid
+                social-media promotions, and paid influencer sponsorships.
+              </P>
+            </Numbered>
+            <Numbered n={3}>
+              <P>
+                <Term>Earned media</Term> consist of organic exposure generated
+                voluntarily by consumers, journalists, and independent creators
+                through customer reviews, social shares, forum recommendations,
+                and press coverage.
+              </P>
+            </Numbered>
+          </div>
+          <Plate wide>
+            <OwnedPaidEarned />
+          </Plate>
+        </div>
+        <Ruled className="mt-6">
           <Lead>
-            Email marketing remains one of the most effective direct channels
-            for <Term tone="counter">customer retention</Term>
+            Owned media build <Term>long-term customer equity</Term> at low
+            marginal cost, paid media provide{" "}
+            <Tint>immediate scalable traffic</Tint> for new launches, and earned
+            media supply the <Term>third-party credibility</Term> that converts
+            skeptical prospects.
           </Lead>
-        </Pair>
-        <Ruled tone="ink" className="mt-16 w-full">
-          <Big className="max-w-[56ch]">
-            It allows for highly <Tint>personalized</Tint> and{" "}
-            <Tint>segmented</Tint> communication based on user behavior
-          </Big>
         </Ruled>
-        <Figure height="auto">
-          <Segmented />
-        </Figure>
-        <Ruled tone="signal" className="w-full">
-          <Big className="max-w-[56ch]">
-            <Tint>Automation tools</Tint> can trigger specific messages during
-            critical points in the customer journey
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <JourneyTriggers />
-        </Figure>
-        <Statement className="!max-w-[40ch]">
-          Success relies on <Tint>delivering value</Tint> rather than{" "}
-          <Tint tone="counter">overwhelming subscribers</Tint> with promotional
-          material
-        </Statement>
-        <Figure height="auto">
-          <ValueOrFlood />
-        </Figure>
-      </TopicSlide>
+      </Slide>
 
-      <Slide id="discussion-seo-vs-sem-investment" border>
-        <SectionStrip active={1} className="mb-12 md:mb-16" />
-        <Heading kicker="Discussion:" tone="counter">
-          SEO vs. SEM Investment
-        </Heading>
-        <Figure height="auto" className="!mt-0">
-          <SeoSemFork />
-        </Figure>
+      {/* ================================================================
+          Websites, Landing Pages, and Conversion Optimization
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="websites-landing-pages-and-conversion-optimization"
+        border
+      >
+        <SlideHeading>
+          Websites, Landing Pages, and Conversion Optimization
+        </SlideHeading>
+        <Lead>
+          For most organizations, the first step in conducting digital marketing
+          is creating a <Term>brand website</Term> or{" "}
+          <Term>storefront</Term> that serves as the central destination for
+          owned, paid, and earned traffic.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Whereas a <Term>corporate brand website</Term> builds general
+              goodwill and answers stakeholder questions, an e-commerce or{" "}
+              <Term>campaign landing page</Term> is engineered to guide visitors
+              toward a specific <Term>conversion action</Term>, such as
+              completing a purchase, booking a demo, or subscribing to a
+              newsletter.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              To attract repeat visitors and minimize <Term>bounce rates</Term>,
+              marketers focus on clear navigation, fast page loading speeds,
+              transparent pricing, and frictionless checkout flows.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketers continuously refine digital pages through{" "}
+              <Term>randomized A/B testing</Term>, comparing two versions of a
+              headline, product layout, or call-to-action button on live visitor
+              traffic to measure which design yields a higher{" "}
+              <Term>conversion rate</Term>.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Mobile Marketing and Omnichannel Integration
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="mobile-marketing-and-omnichannel-integration"
+        border
+      >
+        <SlideHeading>Mobile Marketing and Omnichannel Integration</SlideHeading>
+        <Statement>
+          <Term>Mobile marketing</Term> features marketing messages,
+          promotions, and other content delivered to on-the-go consumers
+          through their smartphones and wearable devices.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Because smartphones accompany consumers throughout the day,
+              mobile channels allow brands to deliver{" "}
+              <Tint>time-sensitive, location-aware information</Tint> and
+              immediate one-tap payment options.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Shoppers frequently use mobile devices inside{" "}
+              <Term>physical retail aisles</Term> to look up product ratings,
+              compare competitor prices, and redeem digital loyalty rewards.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Designing <Term>mobile-first interfaces</Term> ensures that
+              product specifications, reviews, and checkout buttons remain
+              legible and responsive on small screens.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 2: Search, Content, and Email Marketing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-2-search-content-and-email-marketing"
+        border
+      >
+        <PartHead n={2} title="Search, Content, and Email Marketing" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            <Term>Search engines</Term>, <Term>content libraries</Term>, and{" "}
+            <Term>email campaigns</Term> form the workhorse channels of digital
+            customer acquisition and retention.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Comparing organic search optimization with paid search advertising
+              and permission-based email clarifies how firms balance{" "}
+              <Tint>short-term sales with long-term organic equity</Tint>.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Search Engine Optimization (SEO) Versus Search Engine Marketing (SEM)
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="search-engine-optimization-seo-versus-search-engine-marketing-sem"
+        border
+        exercise={
+          exercise[
+            "search-engine-optimization-seo-versus-search-engine-marketing-sem"
+          ]
+        }
+      >
+        <SlideHeading>
+          Search Engine Optimization (SEO) Versus Search Engine Marketing (SEM)
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1.45fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled>
+              <P>
+                <Term>Search Engine Optimization (SEO)</Term> is the practice of
+                structuring web pages, technical metadata, site speed, and
+                authoritative content so a brand ranks highly in unpaid
+                (organic) search engine results when users query relevant
+                topics.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                Search engines rank organic pages based on relevance to the
+                user&apos;s <Term>query intent</Term>,{" "}
+                <Term>technical crawlability</Term>, and{" "}
+                <Term>domain authority</Term> (signaled by reputable external
+                websites linking to the page).
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <SeoVsSemSerp />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Search Engine Marketing (SEM)</Term>, often called{" "}
+              <Term>paid search</Term> or{" "}
+              <Term>pay-per-click (PPC) advertising</Term>, involves bidding on
+              specific keywords in real-time ad auctions so a sponsored text or
+              product listing appears above or beside organic search results.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              SEM delivers <Tint>immediate, predictable visibility</Tint> as
+              soon as a campaign budget is turned on (and stops the moment
+              spending stops), whereas SEO requires months of sustained content
+              investment but compounds into{" "}
+              <Tint>durable, high-trust traffic</Tint> without a per-click ad
+              fee.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Content Marketing Strategy
+          ================================================================ */}
+      <Slide className={TIGHT} id="content-marketing-strategy" border>
+        <SlideHeading>Content Marketing Strategy</SlideHeading>
+        <Statement>
+          <Term>Content marketing</Term> is the strategic creation and
+          distribution of valuable, relevant, and consistent content (such as
+          educational guides, comparison articles, how-to videos, webinars, and
+          interactive calculators) to attract and retain a clearly defined
+          audience.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Rather than pitching a product directly in every message, content
+              marketing solves practical problems that target buyers research
+              during the early <Term>need-recognition</Term> and{" "}
+              <Term>information-search</Term> stages of their journey.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              A home-improvement retailer that publishes step-by-step
+              tile-installation videos and mortar calculators builds{" "}
+              <Tint>authority and trust</Tint> with homeowners, who then
+              purchase the required tools and materials from that retailer.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big>
+              High-quality educational content also fuels both{" "}
+              <Term>organic SEO rankings</Term> and{" "}
+              <Term>social media sharing</Term>.
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Permission-Based Email Marketing and Lifecycle Automation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="permission-based-email-marketing-and-lifecycle-automation"
+        border
+        exercise={
+          exercise["permission-based-email-marketing-and-lifecycle-automation"]
+        }
+      >
+        <SlideHeading>
+          Permission-Based Email Marketing and Lifecycle Automation
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <Lead>
+              <Term>Email marketing</Term> remains one of the highest-return
+              digital channels because it reaches an{" "}
+              <Term>opted-in audience</Term> directly without paying an
+              intermediary platform for each impression.
+            </Lead>
+          </Ruled>
+          <Ruled>
+            <Lead>
+              Effective email marketing relies on <Term>segmentation</Term> and{" "}
+              <Term>behavioral lifecycle automation</Term> rather than blasting
+              identical promotional flyers to an entire mailing list.
+            </Lead>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Automated lifecycle triggers</Term> send timely, relevant
+              messages based on a customer&apos;s specific actions: a welcome
+              sequence after account creation, a helpful reminder after an
+              abandoned shopping cart, a care guide after product delivery, or a
+              replenishment prompt when a consumable item is due to run out.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Conversely, sending unsolicited commercial email (<Term>spam</Term>)
+              violates anti-spam laws (such as <Term>CAN-SPAM</Term> in the
+              United States and <Term>CASL</Term> in Canada), triggers spam
+              filters, and damages brand reputation.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Allocating a Startup Budget Across Paid Search, SEO Content, and Email
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-allocating-a-startup-budget-across-paid-search-seo-content-and-email"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Allocating a Startup Budget Across Paid Search, SEO Content, and Email
+        </SlideHeading>
         <Prompt>
-          A startup has limited funds and must decide whether to invest
-          entirely in <Tint>immediate SEM campaigns</Tint> for quick sales or{" "}
-          <Tint tone="counter">long-term SEO strategy</Tint> for sustainable
-          growth. Which path creates a more resilient digital presence?
+          A direct-to-consumer ergonomic desk manufacturer has a 15,000-dollar
+          monthly digital marketing budget and needs both immediate
+          first-quarter sales to pay suppliers and lower customer acquisition
+          costs over the next two years. Using SEO, SEM (pay-per-click), content
+          marketing, and permission-based email automation, design a phased
+          allocation of the budget and explain how each channel supports the
+          others across the customer journey.
         </Prompt>
       </Slide>
 
       {/* ================================================================
-          Part 3: Social Media Marketing
+          Part 3: Leveraging Social Media for Customer Engagement
           ================================================================ */}
-      <TopicSlide
-        id="the-power-of-social-media-marketing"
-        section={2}
-        title="The Power of Social Media Marketing"
+      <Slide
+        className={TIGHT}
+        id="part-3-leveraging-social-media-for-customer-engagement"
+        border
       >
-        <Lead className="!max-w-[62ch]">
-          Social media platforms have <Term>transformed</Term> how brands build
-          relationships with consumers
-        </Lead>
-        <Figure height="auto">
-          <RelationshipShift />
-        </Figure>
-        <Ruled tone="ink" className="w-full">
-          <Big className="max-w-[56ch]">
-            They provide unique opportunities for <Tint>storytelling</Tint> and{" "}
-            <Tint tone="counter">community building</Tint>
-          </Big>
-        </Ruled>
-        <div className="mt-10 grid w-full gap-12 lg:grid-cols-2 lg:gap-14">
-          <Plate>
-            <Storytelling />
-          </Plate>
-          <Plate>
-            <Community />
-          </Plate>
-        </div>
-        <Columns className="mt-16">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                Brands can <Term>humanize their image</Term> by interacting
-                directly with users
-              </>
-            }
-            plate={<Humanize />}
-          />
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                Social platforms serve as crucial touchpoints for{" "}
-                <Term tone="ink">customer service and support</Term>
-              </>
-            }
-            plate={<SupportThread />}
-          />
-        </Columns>
-      </TopicSlide>
-
-      <TopicSlide
-        id="social-media-platforms-and-demographics"
-        section={2}
-        title="Social Media Platforms and Demographics"
-      >
-        <Lead className="!max-w-[64ch]">
-          Different platforms attract <Term tone="ink">distinct user demographics</Term>{" "}
-          and require <Term>tailored content strategies</Term>
-        </Lead>
-        <Figure height="auto">
-          <PlatformAudiences />
-        </Figure>
-        <div className="grid w-full items-start gap-12 lg:grid-cols-3 lg:gap-10">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Visual platforms</Term> excel in lifestyle and product
-                showcasing
-              </>
-            }
-            plate={<VisualPlatform />}
-          />
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                <Term tone="ink">Professional networks</Term> are essential for
-                B2B marketing and corporate branding
-              </>
-            }
-            plate={<ProfessionalNetwork />}
-          />
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Short-form video platforms</Term> dominate
-                younger demographics and trend creation
-              </>
-            }
-            plate={<ShortFormVideo />}
-          />
-        </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="strategy-building-customer-engagement"
-        section={2}
-        kicker="Strategy:"
-        title="Building Customer Engagement"
-      >
-        <Lead className="!max-w-[62ch]">
-          Engagement goes beyond likes and follows to foster{" "}
-          <Term>genuine brand advocacy</Term>
-        </Lead>
-        <Figure height="auto">
-          <EngagementStairs />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                Brands must create <Term tone="ink">interactive content</Term>{" "}
-                that encourages user participation and sharing
-              </>
-            }
-            plate={<InteractivePoll />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Prompt and authentic responses</Term> to comments and
-                messages build trust
-              </>
-            }
-            plate={<ReplyTrust />}
-          />
-        </Columns>
-        <Statement className="mt-16 !max-w-[38ch]">
-          <Tint tone="counter">User-generated content</Tint> can be leveraged to
-          amplify reach and credibility
-        </Statement>
-        <Figure height="auto">
-          <UgcAmplify />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="the-concept-social-listening"
-        section={2}
-        kicker="The Concept:"
-        title="Social Listening"
-      >
-        <Lead className="!max-w-[66ch]">
-          Social listening involves <Term>monitoring digital conversations</Term>{" "}
-          to understand what customers are saying about a brand or industry
-        </Lead>
-        <Figure height="auto">
-          <Listening />
-        </Figure>
-        <Ruled tone="ink" className="w-full">
-          <Big className="max-w-[58ch]">
-            It provides <Tint>unfiltered insights</Tint> into customer
-            sentiment, pain points, and emerging trends
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <UnfilteredInsights />
-        </Figure>
-        <Statement className="!max-w-[38ch]">
-          Brands can <Tint>proactively address issues</Tint> before they
-          escalate into <Tint tone="counter">crises</Tint>
-        </Statement>
-        <Figure height="auto">
-          <Escalation />
-        </Figure>
-        <Pair plateFirst plate={<InsightToProduct />}>
-          <Ruled tone="signal">
-            <Big>
-              These insights can directly inform{" "}
-              <Tint>product development and marketing strategies</Tint>
-            </Big>
-          </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      <TopicSlide
-        id="strategy-influencer-marketing"
-        section={2}
-        kicker="Strategy:"
-        title="Influencer Marketing"
-      >
-        <Lead className="!max-w-[68ch]">
-          Influencer marketing partners with individuals who have a{" "}
-          <Term tone="ink">dedicated social following</Term> and are viewed as{" "}
-          <Term tone="counter">experts within their niche</Term>
-        </Lead>
-        <Figure height="auto">
-          <InfluencerNiche />
-        </Figure>
-        <Pair plate={<TrustRelay />}>
+        <PartHead
+          n={3}
+          title="Leveraging Social Media for Customer Engagement"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
           <Statement>
-            It relies on the <Tint tone="counter">trust</Tint> that influencers
-            have built with their audience
+            <Term>Social media</Term> are independent and commercial online
+            communities where people congregate to socialize and share messages,
+            opinions, pictures, videos, and other content.
           </Statement>
-        </Pair>
-        <Ruled tone="signal" className="mt-16 w-full">
-          <Big className="max-w-[56ch]">
-            <Tint tone="counter">Micro-influencers</Tint> often yield{" "}
-            <Tint>higher engagement rates</Tint> than high-profile celebrities
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <MicroVsCeleb />
-        </Figure>
-        <Pair plateFirst plate={<Alignment />}>
-          <Ruled tone="ink">
-            <Big>
-              Successful partnerships require{" "}
-              <Tint>authentic alignment</Tint> between the brand and the
-              influencer
-            </Big>
+          <Ruled>
+            <Lead>
+              Marketers participate in social networks to{" "}
+              <Tint>build brand communities</Tint>, listen to customer
+              sentiment, and partner with credible creators.
+            </Lead>
           </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      {/* ================================================================
-          Part 4: ROI, Ethics and Privacy
-          ================================================================ */}
-      <TopicSlide
-        id="the-challenge-measuring-roi"
-        section={3}
-        kicker="The Challenge:"
-        title="Measuring ROI"
-      >
-        <Lead className="!max-w-[64ch]">
-          Measuring the <Term>exact return on investment</Term> for digital and
-          social campaigns remains <Term tone="counter">complex</Term>
-        </Lead>
-        <Figure height="auto">
-          <TangledReturn />
-        </Figure>
-        <Ruled tone="ink" className="w-full">
-          <Big className="max-w-[60ch]">
-            Marketers must navigate a <Tint tone="counter">multitude of metrics</Tint>
-            , from click-through rates to conversion attribution models
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <MetricSpan />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                Tying social engagement directly to revenue requires{" "}
-                <Term tone="ink">sophisticated analytics tracking</Term>
-              </>
-            }
-            plate={<EngagementToRevenue />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                The focus must remain on metrics that align with{" "}
-                <Term>overarching business objectives</Term> rather than vanity
-                numbers
-              </>
-            }
-            plate={<VanityVsObjective />}
-          />
-        </Columns>
-      </TopicSlide>
-
-      <TopicSlide
-        id="ethics-and-privacy-in-digital-marketing"
-        section={3}
-        title="Ethics and Privacy in Digital Marketing"
-      >
-        <Lead className="!max-w-[64ch]">
-          Digital marketing strategies must navigate complex{" "}
-          <Term tone="counter">ethical boundaries</Term> regarding consumer data
-        </Lead>
-        <Figure height="auto">
-          <DataBoundaries />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                Increasing regulations require{" "}
-                <Term tone="counter">transparent</Term> data collection and
-                usage practices
-              </>
-            }
-            plate={<Regulations />}
-          />
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                Consumers are becoming more{" "}
-                <Term tone="counter">protective</Term> of their personal
-                information
-              </>
-            }
-            plate={<Protective />}
-          />
-        </Columns>
-        <Statement className="mt-16 !max-w-[38ch]">
-          Building trust requires prioritizing{" "}
-          <Tint tone="counter">user privacy</Tint> over{" "}
-          <Tint>aggressive data harvesting</Tint>
-        </Statement>
-        <Figure height="auto">
-          <PrivacyScale />
-        </Figure>
-      </TopicSlide>
-
-      <Slide id="discussion-navigating-data-privacy" border>
-        <SectionStrip active={3} className="mb-12 md:mb-16" />
-        <Heading kicker="Discussion:" tone="counter">
-          Navigating Data Privacy
-        </Heading>
-        <Figure height="auto" className="!mt-0">
-          <DataDilemma />
-        </Figure>
-        <Prompt>
-          A marketing team realizes that using{" "}
-          <Tint>third-party data</Tint> will double their ad conversion rate
-          but risks alienating customers concerned about surveillance. Should
-          they prioritize the campaign&apos;s success or strictly adhere to{" "}
-          <Tint tone="counter">first-party data</Tint>?
-        </Prompt>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Conclusion
+          Social Media Platforms, Demographics, and Use Cases
           ================================================================ */}
-      <Slide id="conclusion-digital-and-social-media-marketing" border>
-        <Heading kicker="Conclusion:">Digital and Social Media Marketing</Heading>
-        <ol className="grid w-full gap-x-14 gap-y-12 md:grid-cols-2">
-          {[
-            {
-              glyph: <GlyphTransformed />,
-              text: "Digital channels have fundamentally transformed the marketing landscape",
-            },
-            {
-              glyph: <GlyphFourStrategies />,
-              text: "A comprehensive strategy must integrate SEO, SEM, content, and email marketing",
-            },
-            {
-              glyph: <GlyphCommunity />,
-              text: "Social media offers unparalleled opportunities for community building and engagement",
-            },
-            {
-              glyph: <GlyphEthics />,
-              text: "Ethical data practices and continuous adaptation are crucial for long-term digital success",
-            },
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
-            >
-              <div aria-hidden className="flex items-center justify-between">
-                <span
-                  data-n={String(i + 1).padStart(2, "0")}
-                  className="step-n text-[2.2rem] leading-none text-[var(--signal)]"
-                  style={SERIF}
-                />
-                {item.glyph}
-              </div>
-              <p className="type-h2 !font-normal">{item.text}</p>
-            </li>
-          ))}
+      <Slide
+        className={TIGHT}
+        id="social-media-platforms-demographics-and-use-cases"
+        border
+        exercise={exercise["social-media-platforms-demographics-and-use-cases"]}
+      >
+        <SlideHeading>
+          Social Media Platforms, Demographics, and Use Cases
+        </SlideHeading>
+        <Lead>
+          Rather than treating social media as a single uniform channel,
+          marketers match their content formats and objectives to the{" "}
+          <Tint>distinct demographics and usage norms</Tint> of each platform.
+        </Lead>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Visual discovery</Term> and lifestyle platforms (such as
+              Instagram and Pinterest) excel at showcasing aesthetics, fashion,
+              food, and home design during early inspiration and consideration.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Short-form video platforms</Term> (such as TikTok and
+              YouTube Shorts) rely on <Term>algorithmic interest graphs</Term>{" "}
+              rather than follower graphs alone, enabling rapid organic reach
+              and product demonstrations among younger and mainstream audiences.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Professional networks</Term> (such as LinkedIn) are
+              essential for B2B thought leadership, executive networking, and
+              account-based marketing, while <Term>discussion forums</Term>{" "}
+              (such as Reddit) host detailed peer product evaluations.
+            </P>
+          </Numbered>
         </ol>
-        <style>{numerals}</style>
+      </Slide>
+
+      {/* ================================================================
+          Building Customer Engagement and Social Listening
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="building-customer-engagement-and-social-listening"
+        border
+      >
+        <SlideHeading>
+          Building Customer Engagement and Social Listening
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Because social media are interactive, using them solely to
+              broadcast one-way sales announcements generates{" "}
+              <Tint>low engagement</Tint>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Successful brands foster genuine <Term>customer engagement</Term>{" "}
+              by creating shareable stories, responding promptly and helpfully
+              to customer service inquiries in public threads, and encouraging{" "}
+              <Term>user-generated content (UGC)</Term> from real buyers.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Social listening</Term> is the systematic monitoring of
+              digital conversations across social networks, forums, and review
+              sites to understand what customers are saying about a brand, its
+              competitors, and its industry.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Unfiltered social listening helps marketers detect{" "}
+              <Tint>emerging product defects or service crises</Tint> early,
+              uncover unmet customer use cases, and adopt the natural vocabulary
+              buyers use to describe their problems.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Influencer Marketing and Creator Partnerships
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="influencer-marketing-and-creator-partnerships"
+        border
+      >
+        <SlideHeading>
+          Influencer Marketing and Creator Partnerships
+        </SlideHeading>
+        <Statement>
+          <Term>Influencer marketing</Term> involves partnering with individuals
+          who have built a dedicated social following and are viewed as
+          knowledgeable or relatable <Term>opinion leaders</Term> within a
+          specific niche.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Macro-influencers</Term> and celebrities offer massive broad
+              reach for awareness campaigns, whereas{" "}
+              <Term>micro-influencers</Term> (with smaller, highly focused
+              audiences) frequently generate higher engagement rates and
+              stronger purchase conversion because followers view their
+              recommendations as authentic peer advice.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In accordance with the <Term>match-up hypothesis</Term>,
+              influencer partnerships succeed only when the creator&apos;s
+              expertise and values align naturally with the product category.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Consumer protection agencies require both brands and creators to
+              disclose <Term>material connections</Term> clearly (for example,
+              using prominent <Term>#Ad</Term> or{" "}
+              <Term>Paid Partnership</Term> labels) so audiences are not
+              deceived into mistaking paid promotions for independent reviews.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 4: Measuring Digital ROI and Protecting Consumer Privacy
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-4-measuring-digital-roi-and-protecting-consumer-privacy"
+        border
+      >
+        <PartHead
+          n={4}
+          title="Measuring Digital ROI and Protecting Consumer Privacy"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Although digital channels generate abundant metrics, translating
+            clicks and impressions into <Tint>true incremental profit</Tint>{" "}
+            requires disciplined attribution and privacy governance.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Marketers must separate <Term>vanity metrics</Term> from
+              actionable business outcomes while respecting data protection
+              laws.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Digital Metrics and Conversion Attribution
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="digital-metrics-and-conversion-attribution"
+        border
+        exercise={exercise["digital-metrics-and-conversion-attribution"]}
+      >
+        <SlideHeading>Digital Metrics and Conversion Attribution</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Numbered n={1}>
+            <P>
+              Digital platforms report dozens of performance indicators across
+              the funnel: <Term>impressions</Term> (total views),{" "}
+              <Term>click-through rate</Term> (clicks divided by impressions),{" "}
+              <Term>cost per click (CPC)</Term>, <Term>conversion rate</Term>{" "}
+              (purchases divided by clicks),{" "}
+              <Term>customer acquisition cost (CAC)</Term>, and{" "}
+              <Term>return on ad spend</Term> (ROAS).
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              A common pitfall in social and digital reporting is optimizing for{" "}
+              <Term>vanity metrics</Term>, such as raw follower counts, video
+              views, or post likes, that look impressive on a slide but do not
+              correlate with actual sales or retention.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Because a single customer may see a social video, read a blog
+              post, and click a paid brand search link before buying, marketers
+              use <Term>attribution modeling</Term> (such as first-touch,
+              last-touch, or multi-touch attribution) to assign credit across
+              touchpoints.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              To measure true <Term>causal incrementality</Term> rather than
+              mere correlation, analytics teams run{" "}
+              <Term>randomized holdout experiments</Term> that compare
+              conversion rates with and without the digital campaign.
+            </P>
+          </Numbered>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Digital Privacy Regulations and the Shift to First-Party Data
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="digital-privacy-regulations-and-the-shift-to-first-party-data"
+        border
+      >
+        <SlideHeading>
+          Digital Privacy Regulations and the Shift to First-Party Data
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <Lead>
+              Digital targeting historically relied heavily on{" "}
+              <Term>third-party cookies</Term> and cross-app tracking
+              identifiers that followed users silently across unrelated
+              websites.
+            </Lead>
+          </Ruled>
+          <Ruled>
+            <P>
+              Growing consumer concern over surveillance and strict privacy
+              laws, including the European Union&apos;s{" "}
+              <Term>General Data Protection Regulation</Term> (GDPR) and state
+              privacy laws in North America, have restricted non-consensual
+              third-party tracking.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Major web browsers and mobile operating systems have likewise
+              deprecated third-party cookies and mandated{" "}
+              <Term>explicit opt-in</Term> tracking prompts.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Forward-looking marketers are replacing opaque third-party
+              tracking with transparent <Term>first-party data</Term>{" "}
+              strategies built on direct customer accounts, loyalty programs,
+              and <Term>contextual advertising</Term> that matches ads to page
+              content rather than personal surveillance profiles.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Ethical Boundaries in Behavioral Targeting and Personalization
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="ethical-boundaries-in-behavioral-targeting-and-personalization"
+        border
+      >
+        <SlideHeading>
+          Ethical Boundaries in Behavioral Targeting and Personalization
+        </SlideHeading>
+        <Statement>
+          Even when data collection complies with statutory law, aggressive{" "}
+          <Term>behavioral profiling</Term> can cross ethical boundaries and
+          alienate customers.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Retargeting ads</Term> that follow a shopper across dozens
+              of websites after a single product view often trigger feelings of{" "}
+              <Term>surveillance and reactance</Term> rather than goodwill.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Targeting <Term>vulnerable consumers</Term> based on inferred
+              financial distress, health anxieties, or compulsive habits
+              violates marketing ethics and damages long-term brand trust.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Giving consumers clear <Term>preference centers</Term> to view,
+              edit, or delete their stored profile data builds durable trust
+              alongside personalized convenience.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: From Search Engines to AI Answers and Agent Rankings
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-from-search-engines-to-ai-answers-and-agent-rankings"
+        border
+      >
+        <PartHead
+          n={5}
+          title="From Search Engines to AI Answers and Agent Rankings"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Search behavior is undergoing a structural shift as consumers ask{" "}
+            <Term>conversational AI assistants</Term> for synthesized answers
+            and delegate shopping searches to{" "}
+            <Term>autonomous AI agents</Term>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Empirical research on how AI agents process{" "}
+              <Tint>ranked lists and sponsorship disclosures</Tint> shows how
+              both organic search and paid search are changing.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          From Ten Blue Links to Conversational AI Answers
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="from-ten-blue-links-to-conversational-ai-answers"
+        border
+      >
+        <SlideHeading>
+          From Ten Blue Links to Conversational AI Answers
+        </SlideHeading>
+        <div className="mb-6 w-full">
+          <Plate wide>
+            <TenLinksToAiAnswers />
+          </Plate>
+        </div>
+        <div className="grid w-full gap-6 md:grid-cols-2">
+          <Ruled>
+            <P>
+              For two decades, digital search followed a consistent pattern: a
+              consumer typed a short keyword phrase into a search engine,
+              received a page of links, and clicked through to visit individual
+              brand websites.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Increasingly, consumers ask conversational AI assistants complete
+              questions and receive a single synthesized answer and product
+              recommendation list directly inside the chat interface, often
+              without clicking out to external websites (<Term>zero-click search</Term>).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In this environment, brand visibility depends on whether the AI
+              system retrieves and cites the brand&apos;s content when
+              constructing its answer, a discipline sometimes called{" "}
+              <Term>generative engine optimization (GEO)</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Clear, factual, well-structured documentation, authoritative
+              third-party reviews, and consistent <Term>schema markup</Term>{" "}
+              help a brand earn inclusion in both traditional organic search
+              results and AI-generated answers.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          List Position Effects When AI Agents Search
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="list-position-effects-when-ai-agents-search"
+        border
+        exercise={exercise["list-position-effects-when-ai-agents-search"]}
+      >
+        <SlideHeading>List Position Effects When AI Agents Search</SlideHeading>
+        <Lead>
+          When an <Term>AI shopping agent</Term> searches an online marketplace
+          or search engine on a consumer&apos;s behalf, the agent reads{" "}
+          <Term>ranked product lists</Term> rather than browsing a physical
+          store shelf.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              One might assume that a software agent evaluates every item on a
+              page equally regardless of rank order, but empirical studies
+              demonstrate the opposite (Wadi &amp; Ma, 2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Controlled experiments show that AI shopping agents exhibit strong{" "}
+              <Term>position effects</Term>: agents favor options simply because
+              of where they appear in a ranked list, even when objective product
+              attributes and prices are held constant (Wadi &amp; Ma, 2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big>
+              Securing <Term>top rank placement</Term> in marketplace search
+              feeds and structured data indices therefore remains critical when
+              the searcher is an AI agent rather than a human shopper (Wadi
+              &amp; Ma, 2026a).
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Sponsored Labels and Paid Placements in Agent-Mediated Search
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="sponsored-labels-and-paid-placements-in-agent-mediated-search"
+        border
+        exercise={
+          exercise[
+            "sponsored-labels-and-paid-placements-in-agent-mediated-search"
+          ]
+        }
+      >
+        <SlideHeading>
+          Sponsored Labels and Paid Placements in Agent-Mediated Search
+        </SlideHeading>
+        <div className="mb-6 w-full">
+          <Plate wide>
+            <AgentRankAndLabels />
+          </Plate>
+        </div>
+        <div className="grid w-full gap-6 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Paid search placements</Term> and{" "}
+              <Term>retail media ads</Term> now reach AI shopping agents
+              alongside human consumers, raising the question of how agents
+              react to <Term>disclosure labels</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In human search, regulators require paid listings to carry clear
+              labels so shoppers can distinguish paid ads from organic rankings.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              When AI agents evaluate ranked product lists, the exact wording of
+              the disclosure label significantly alters agent choice: AI agents
+              chose a paid listing less often when it was labeled
+              &quot;Sponsored&quot; than when the identical paid listing was
+              labeled &quot;Promoted&quot; (Wadi &amp; Ma, 2026c).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Digital marketers bidding on retail media placements and policy
+              makers standardizing ad disclosures must therefore account for how
+              AI agents interpret <Term>sponsorship labels</Term> (Wadi &amp;
+              Ma, 2026c).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Adapting Search and Paid Media Strategy for AI Shopping Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-adapting-search-and-paid-media-strategy-for-ai-shopping-agents"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Adapting Search and Paid Media Strategy for AI Shopping Agents
+        </SlideHeading>
+        <Prompt>
+          An online travel and outdoor-gear retailer spends 60 percent of its
+          digital budget bidding on paid search placements labeled
+          &quot;Sponsored&quot; or &quot;Promoted&quot; and 40 percent on SEO
+          blog articles written for human keyword searches. Drawing on
+          conversational AI answers, list position effects in AI agents (Wadi
+          &amp; Ma, 2026a), and the differential impact of &quot;Sponsored&quot;
+          versus &quot;Promoted&quot; labels on AI agent choice (Wadi &amp; Ma,
+          2026c), how should the retailer audit and adjust its search content
+          and paid placement strategy as more customers shop through AI
+          assistants?
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Digital and social media marketing shift customer communication
+              from one-way mass broadcasting to interactive, measurable, two-way
+              engagement across desktop and mobile devices.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              A balanced digital ecosystem integrates owned media (websites,
+              apps, and email lists), paid media (search and display ads), and
+              earned media (organic reviews, shares, and press mentions).
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Search Engine Optimization (SEO) builds long-term organic
+              visibility through relevant content and site authority, whereas
+              Search Engine Marketing (SEM) buys immediate top-of-page
+              visibility through keyword auctions, complemented by educational
+              content marketing and lifecycle email automation.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              Social media strategy matches content to platform-specific
+              demographics and norms, combining community engagement, social
+              listening, and transparently disclosed influencer partnerships.
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              Digital performance evaluation prioritizes incremental conversion
+              attribution and return on ad spend over vanity metrics, while
+              privacy regulations and browser changes shift targeting toward
+              consented first-party data.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              As search moves from keyword links to conversational AI answers
+              and delegated AI shopping agents, visibility depends on structured
+              factual content, list rank position because AI agents exhibit
+              position effects (Wadi &amp; Ma, 2026a), and sponsorship label
+              wording because AI agents penalize listings labeled
+              &quot;Sponsored&quot; more than those labeled &quot;Promoted&quot;
+              (Wadi &amp; Ma, 2026c).
+            </P>
+          </Numbered>
+        </ol>
       </Slide>
     </SlideDeck>
   );
 }
+

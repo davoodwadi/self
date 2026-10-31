@@ -5,1238 +5,1101 @@ import {
   SlideDeck,
   Slide,
   Title,
-  Subtitle,
-  Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
-import { cn } from "@/lib/utils";
-import { Plate } from "../_visuals/kit";
-import quizzesData from "./quizzes.json";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import {
-  ProductionToConsumption,
-  Interdependent,
-  MakeAvailable,
-  ChannelSpan,
-  LargerNetwork,
-  NetworkMembers,
-  SystemPerformance,
-  InformationHub,
-  MoreThanAlone,
-  FourResources,
-  AssortmentTransform,
-  FnInformation,
-  FnPromotion,
-  FnContacting,
-  FnNegotiating,
-  FnPhysical,
-  FnFinancing,
-  LevelLayer,
-  ChannelLength,
-  DirectChannel,
-  IndirectLevels,
-  ControlComplexity,
-  TwoRoutes,
-  BehavioralSystem,
-  ThreeGoals,
-  WorkTogether,
-  GoalsRolesRewards,
-  HorizontalConflict,
-  VerticalConflict,
-  SeparateBusinesses,
-  VmsCascade,
-  ThreePowers,
-  EconomiesImpact,
-  CorporateVms,
-  ContractualVms,
-  AdministeredVms,
-  MultiChannels,
-  ComplexMarkets,
-  CoverageAndConflict,
-  CutOut,
-  NewIntermediaries,
-  OpportunityThreat,
-  StreamingBypass,
-  ThreeDomains,
-  SoldToWhom,
-  EfficientFlow,
-  FinalSteps,
-  ShopperToBuyer,
-  TargetAndPositioning,
-  BetterOrCheaper,
-  ManySmallCustomers,
-  HoldInventory,
-  PlanImplementControl,
-  FourRights,
-  ThreeDistributions,
-  UpstreamDownstream,
-  ServiceAndCost,
-  SupplyFunctions,
-  OutsourceLogistics,
-  ThreeGains,
-  ComplexEnvironment,
-  GlyphLink,
-  GlyphBalance,
-  GlyphAdvantage,
+  Big,
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
+import exercisesData from "./exercises.json";
+import {
+  AgenticCommerceChannel,
+  ChannelLevelsDiagram,
+  ConventionalVsVms,
+  LogisticsFlows,
+  NineVsSixTransactions,
 } from "./visuals";
 
 // ============================================================================
-// WEEK 9: SUPPLY CHAIN AND DISTRIBUTION CHANNELS (THE THIRD P)
+// INTRODUCTION TO MARKETING | WEEK 9: SUPPLY CHAIN AND DISTRIBUTION CHANNELS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
-//
-// Colour carries meaning across the week: SIGNAL marks whatever the channel
-// or its members do, INK the producer's own side, COUNTER the outward and
-// contrasting case (the wider network, the conflict, the upstream flow).
-//
-// Quizzes: in this route group `Slide` renders `quizData` AFTER its section.
-// Each [quiz]-tagged topic therefore carries its own quiz, which tests that
-// slide and the ones before it.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
-
-const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
-
-type Tone = "signal" | "counter" | "ink";
-
-const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
-};
-
-/** One verbatim sentence at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
-/** A sentence promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-lead max-w-[46ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A sentence set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-quote max-w-[30ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A sentence at h2 size. */
-function Big({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-h2 !font-normal", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** Coloured term inside a sentence, without the Highlight underline. */
-function Term({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
-}
-
-/** Inline colour for a phrase inside a serif sentence. */
-function Tint({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <span
-      className={
-        tone === "signal" ? "text-[var(--signal)]" : "text-[var(--counter)]"
-      }
-    >
-      {children}
-    </span>
-  );
-}
-
-/** Hairline-topped block with a verbatim sentence. */
-function Ruled({
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
-      {children}
-    </div>
-  );
-}
-
-/**
- * A slide heading. When the content gives a "Label:" prefix ("Module 1:",
- * "Discussion:") it is set as a small tracked kicker inside the same h2, so
- * the heading text stays exactly as written.
- */
-function Heading({
-  kicker,
-  children,
-  tone = "signal",
-}: {
-  kicker?: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <div className="w-full mb-8 md:mb-12">
-      <h2 className="type-h1 max-w-[24ch]">
-        {kicker ? (
-          <>
-            <span
-              className={cn(
-                "type-label block mb-4 !text-[0.8rem]",
-                tone === "counter" && "!text-[var(--counter)]",
-              )}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
-function Prompt({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
-      <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
-        {children}
-      </p>
-    </div>
-  );
-}
-
-function PromptKicker() {
-  return (
-    <span className="type-label !text-[var(--counter)] block mb-6 !text-[0.8rem] !leading-none">
-      Discussion:
-    </span>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   Wayfinding: the three modules of the week
-   -------------------------------------------------------------------------- */
-
-const SECTIONS = [
-  "The Nature of Marketing Channels",
-  "Channel Behavior and Organization",
-  "Retailing, Wholesaling, and Logistics",
-];
-
-/**
- * The three modules as a strip. On each topic slide the current one is lit
- * and those behind it are inked, so students always know where they are.
- */
-function SectionStrip({
-  active,
-  className = "",
-}: {
-  active: number;
-  className?: string;
-}) {
-  return (
-    <ol
-      aria-hidden
-      className={cn("grid w-full grid-cols-3 gap-2 sm:gap-4", className)}
-    >
-      {SECTIONS.map((name, i) => {
-        const on = i === active;
-        const done = i < active;
-        return (
-          <li
-            key={name}
-            className={cn(
-              "min-w-0 border-t-2 pt-3",
-              on
-                ? "border-[var(--signal)]"
-                : done
-                  ? "border-[var(--ink)]"
-                  : "border-[var(--rule)]",
-            )}
-          >
-            <span
-              className={cn(
-                "type-label block !text-[0.68rem]",
-                on ? "!text-[var(--signal)]" : "!text-[var(--ink-3)]",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span
-              className={cn(
-                "mt-1.5 hidden sm:block text-[0.8rem] leading-snug",
-                on ? "font-semibold text-[var(--ink)]" : "text-[var(--ink-3)]",
-              )}
-            >
-              {name}
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-/** A topic slide: module strip, heading, then the slide's content. */
-function TopicSlide({
-  id,
-  section,
-  kicker,
-  title,
-  children,
-}: {
-  id: string;
-  section: number;
-  kicker?: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border quizData={quiz[id]}>
-      <SectionStrip active={section} className="mb-12 md:mb-16" />
-      <Heading kicker={kicker}>{title}</Heading>
-      {children}
-    </Slide>
-  );
-}
-
-/** A module opener: outlined numeral, "Module N:" kicker, and the strip lit. */
-function ModulePlate({
-  id,
-  n,
-  title,
-  children,
-}: {
-  id: string;
-  n: number;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border quizData={quiz[id]}>
-      <SectionStrip active={n - 1} className="mb-12 md:mb-16" />
-      <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
-        <div
-          aria-hidden
-          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
-          style={{ ...SERIF, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
-            <span className="type-label block mb-6 !text-[0.8rem]">
-              {`Module ${n}:`}
-            </span>{" "}
-            {title}
-          </h2>
-          <div className="mt-10 h-px w-full bg-[var(--rule)]" />
-          {children}
-        </div>
-      </div>
-    </Slide>
-  );
-}
-
-/** A column: a ruled sentence with its plate beneath. */
-function PlateColumn({
-  tone = "ink",
-  text,
-  plate,
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col gap-6">
-      <Ruled tone={tone}>
-        <P>{text}</P>
-      </Ruled>
-      <Plate>{plate}</Plate>
-    </div>
-  );
-}
-
-/** A plate on the left, a sentence on the right, ruled across the top. */
-function PlateRow({
-  plate,
-  tone = "ink",
-  children,
-}: {
-  plate: React.ReactNode;
-  tone?: Tone;
-  children: React.ReactNode;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid w-full items-center gap-6 border-t-2 py-8 md:grid-cols-[minmax(0,27rem)_1fr] md:gap-12",
-        BORDER[tone],
-      )}
-    >
-      <Plate className="!p-2 sm:!p-3">{plate}</Plate>
-      <p className="type-h2 !font-normal max-w-[32ch]">{children}</p>
-    </div>
-  );
-}
-
-/** A sentence and a column plate side by side. */
-function Pair({
-  plateFirst = false,
-  plate,
-  children,
-  className = "",
-}: {
-  plateFirst?: boolean;
-  plate: React.ReactNode;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn("grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14", className)}
-    >
-      {plateFirst ? <Plate>{plate}</Plate> : null}
-      {children}
-      {plateFirst ? null : <Plate>{plate}</Plate>}
-    </div>
-  );
-}
-
-/** The four Ps, with Place lit: where this week sits in the mix. */
-function MixStrip() {
-  return (
-    <ol
-      aria-hidden
-      className="mx-auto mt-10 grid w-full max-w-2xl grid-cols-4 gap-3"
-    >
-      {["Product", "Price", "Place", "Promotion"].map((p, i) => (
-        <li
-          key={p}
-          className={cn(
-            "border-t-2 pt-3 text-center text-[clamp(1rem,1.6vw,1.35rem)]",
-            i === 2
-              ? "border-[var(--signal)] text-[var(--signal)]"
-              : i < 2
-                ? "border-[var(--ink)] text-[var(--ink-3)]"
-                : "border-[var(--rule)] text-[var(--ink-3)]",
-          )}
-          style={SERIF}
-        >
-          {p}
-        </li>
-      ))}
-    </ol>
-  );
-}
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 export default function Week9() {
   return (
-    <SlideDeck
-      label="Week 9"
-    >
+    <SlideDeck label="Week 9">
       {/* ================================================================
           Title Slide
           ================================================================ */}
-      <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 9: Introduction to Marketing</Subtitle>
-        <Title className="mt-6 !max-w-[22ch]">
-          Supply Chain and Distribution Channels{" "}
-          <span className="text-[var(--signal)]">(The Third P)</span>
-        </Title>
-        <p className="type-caption mt-2">Davood Wadi, PhD</p>
-
-        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
-          <p className="type-lead !text-[var(--ink)]">Welcome to Week 9.</p>
-          <p className="type-lead">
-            Today we explore the Third P:{" "}
-            <span className="text-[var(--signal)]">Place</span>.
+      <Slide id="title-slide" align="left">
+        <div className="w-full max-w-4xl">
+          <p className="type-label text-[var(--ink-3)]">Week 9</p>
+          <p className="type-caption mt-2">
+            Introduction to Marketing | Davood Wadi, PhD
           </p>
-        </div>
-        <MixStrip />
-
-        <div className="mt-14 w-full max-w-3xl border-t border-[var(--rule)] pt-8">
-          <p className="type-body mx-auto text-center">
-            We will unpack how products move from{" "}
-            <strong className="font-semibold text-[var(--ink)]">
-              production
-            </strong>{" "}
-            to{" "}
-            <strong className="font-semibold text-[var(--signal)]">
-              consumption
-            </strong>
-            .
-          </p>
-          <div className="mx-auto mt-6 w-full max-w-xl">
-            <ProductionToConsumption />
+          <Title className="mt-6">
+            Supply Chain and Distribution Channels (The Third P)
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              Marketing channels and supply chain networks bridge the gap
+              between producers and final buyers, and autonomous{" "}
+              <Tint>AI shopping agents</Tint> now act as a new digital
+              intermediary that reshapes channel power and disintermediation.
+            </p>
           </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          Module 1: The Nature of Marketing Channels
+          The Value Delivery Network and Marketing Channels
           ================================================================ */}
-      <ModulePlate id="module-1" n={1} title="The Nature of Marketing Channels">
-        <div className="mt-10 grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                A <Term>marketing channel</Term> is a set of interdependent
-                organizations.
-              </>
-            }
-            plate={<Interdependent />}
-          />
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                These organizations help make a product{" "}
-                <Term tone="ink">available</Term> for use or consumption.
-              </>
-            }
-            plate={<MakeAvailable />}
-          />
-        </div>
-        <Statement className="mt-16 !max-w-[38ch]">
-          They <Tint>bridge the gap</Tint> between producers and users in terms
-          of time, place, and possession.
-        </Statement>
-        <Figure height="auto">
-          <ChannelSpan />
-        </Figure>
-      </ModulePlate>
-
-      <TopicSlide
-        id="the-value-delivery-network"
-        section={0}
-        title="The Value Delivery Network"
+      <Slide
+        className={TIGHT}
+        id="the-value-delivery-network-and-marketing-channels"
+        border
       >
-        <Lead className="!max-w-[58ch]">
-          Marketing channels are part of a{" "}
-          <Term tone="counter">larger value delivery network</Term>.
+        <SlideHeading>
+          The Value Delivery Network and Marketing Channels
+        </SlideHeading>
+        <Lead>
+          Few producers sell their goods directly to final users: instead, most
+          work with a network of partners to bring their offerings to market.
         </Lead>
-        <Figure height="auto">
-          <LargerNetwork />
-        </Figure>
-        <Ruled tone="counter" className="w-full">
-          <Big className="max-w-[48ch]">
-            This network includes the{" "}
-            <Tint tone="counter">
-              company, suppliers, distributors, and customers
-            </Tint>
-            .
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <NetworkMembers />
-        </Figure>
-        <Pair plate={<SystemPerformance />}>
-          <Ruled tone="counter">
-            <Big>
-              Everyone partners to improve the performance of the{" "}
-              <Tint tone="counter">entire system</Tint>.
-            </Big>
-          </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      <TopicSlide
-        id="how-channels-add-value"
-        section={0}
-        title="How Channels Add Value"
-      >
-        <Figure height="auto">
-          <InformationHub />
-        </Figure>
-        <Pair plateFirst plate={<MoreThanAlone />}>
-          <Ruled tone="signal">
-            <Big>
-              Intermediaries offer the firm{" "}
-              <Tint>more than it can achieve on its own</Tint>.
-            </Big>
-          </Ruled>
-        </Pair>
-        <Ruled className="mt-16 w-full">
-          <Big className="max-w-[50ch]">
-            They provide <Term tone="ink">contacts</Term>,{" "}
-            <Term tone="ink">experience</Term>,{" "}
-            <Term tone="ink">specialization</Term>, and{" "}
-            <Term>scale of operation</Term>.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <FourResources />
-        </Figure>
-        <Statement className="mt-4 !max-w-[36ch]">
-          They <Tint>transform the assortments</Tint> of products made by
-          producers into the assortments wanted by consumers.
+        <Statement className="mt-6">
+          A <Term>value delivery network</Term> is composed of the company,
+          suppliers, distributors, and, ultimately, customers who partner with
+          each other to improve the performance of the entire system in
+          delivering customer value.
         </Statement>
-        <Figure height="auto">
-          <AssortmentTransform />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="key-functions-of-intermediaries"
-        section={0}
-        title="Key Functions of Intermediaries"
-      >
-        <div className="grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Information gathering</Term> about consumers and
-                competitors.
-              </>
-            }
-            plate={<FnInformation />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Promotion development and dissemination</Term> about an
-                offer.
-              </>
-            }
-            plate={<FnPromotion />}
-          />
-        </div>
-        <div className="mt-16 w-full">
-          <PlateRow plate={<FnContacting />} tone="signal">
-            <Tint>Contacting prospective buyers</Tint> and matching offers to
-            meet buyer needs.
-          </PlateRow>
-        </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="additional-functions"
-        section={0}
-        title="Additional Functions"
-      >
-        <div className="w-full">
-          <PlateRow plate={<FnNegotiating />} tone="ink">
-            <Tint>Negotiating price and other terms</Tint> so that ownership can
-            be transferred.
-          </PlateRow>
-          <PlateRow plate={<FnPhysical />} tone="signal">
-            <Tint>Physical distribution</Tint> of goods.
-          </PlateRow>
-          <PlateRow plate={<FnFinancing />} tone="counter">
-            <Tint>Financing the channel work</Tint> and taking risks of carrying
-            out the channel work.
-          </PlateRow>
-        </div>
-      </TopicSlide>
-
-      <TopicSlide id="channel-levels" section={0} title="Channel Levels">
-        <Lead className="!max-w-[62ch]">
-          A <Term>channel level</Term> is a layer of intermediaries that
-          performs some work in bringing the product closer to the final buyer.
-        </Lead>
-        <Figure height="auto">
-          <LevelLayer />
-        </Figure>
-        <Ruled className="w-full">
-          <Big className="max-w-[48ch]">
-            The number of intermediary levels indicates the{" "}
-            <Term tone="ink">length of a channel</Term>.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ChannelLength />
-        </Figure>
-        <Pair plate={<DirectChannel />}>
-          <Ruled tone="signal">
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Within that network, a <Term>marketing channel</Term> (or{" "}
+              <Term>distribution channel</Term>) is a set of interdependent
+              organizations that help make a product or service available for
+              use or consumption by the consumer or business user.
+            </P>
+          </Ruled>
+          <Ruled>
             <Big>
-              <Tint>Direct marketing channels</Tint> have no intermediary
-              levels.
+              A company&apos;s <Term>channel decisions</Term> directly affect
+              every other marketing decision, from pricing and sales force
+              structure to brand positioning, and often involve long-term
+              contractual commitments.
             </Big>
           </Ruled>
-        </Pair>
-      </TopicSlide>
+        </div>
+      </Slide>
 
-      <TopicSlide
-        id="indirect-marketing-channels"
-        section={0}
-        title="Indirect Marketing Channels"
-      >
-        <Statement className="!max-w-[34ch]">
-          <Tint>Indirect marketing channels</Tint> contain one or more
-          intermediary levels.
-        </Statement>
-        <Figure height="auto">
-          <IndirectLevels />
-        </Figure>
-        <Pair plate={<ControlComplexity />}>
-          <div className="flex flex-col gap-10">
+      {/* ================================================================
+          How Channel Intermediaries Add Value
+          ================================================================ */}
+      <Slide className={TIGHT} id="how-channel-intermediaries-add-value" border>
+        <SlideHeading>How Channel Intermediaries Add Value</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.05fr_1.45fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <P>
+              Producers give up some control over how and to whom their products
+              are sold when they use <Term>intermediaries</Term>, yet they rely
+              on intermediaries because channel partners add efficiency and
+              assortment value that a producer cannot easily match alone.
+            </P>
             <Ruled>
               <P>
-                Common levels include{" "}
-                <Term tone="ink">wholesalers, jobbers, and retailers</Term>.
+                Through their <Term>contacts</Term>, <Term>experience</Term>,{" "}
+                <Term>specialization</Term>, and <Term>scale of operation</Term>,
+                intermediaries usually offer the firm more than it can achieve
+                on its own by reducing the number of channel transactions
+                required between producers and consumers.
               </P>
             </Ruled>
-            <Ruled tone="signal">
-              <Big>
-                More levels mean <Tint>less control</Tint> and greater channel
-                complexity for the producer.
-              </Big>
+          </div>
+          <Plate wide>
+            <NineVsSixTransactions />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Producers make <Term>narrow assortments</Term> of products in
+              large quantities, whereas consumers want{" "}
+              <Term>broad assortments</Term> of products in small quantities.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketing channel members buy large quantities from many producers
+              and break them down into the smaller quantities and broader
+              assortments wanted by consumers, bridging the major{" "}
+              <Term>time</Term>, <Term>place</Term>, and{" "}
+              <Term>possession gaps</Term> that separate goods from those who
+              use them.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 1: Functions and Structure of Marketing Channels
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-1-functions-and-structure-of-marketing-channels"
+        border
+      >
+        <PartHead
+          n={1}
+          title="Functions and Structure of Marketing Channels"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Members of the marketing channel perform <Term>key functions</Term>{" "}
+            that move goods from producers to consumers and determine the length
+            and breadth of the <Term>channel structure</Term>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Analyzing these functions clarifies that eliminating an
+              intermediary does not eliminate the work that the intermediary
+              performs.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Eight Key Functions Performed by Channel Members
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="eight-key-functions-performed-by-channel-members"
+        border
+        exercise={exercise["eight-key-functions-performed-by-channel-members"]}
+      >
+        <SlideHeading>
+          Eight Key Functions Performed by Channel Members
+        </SlideHeading>
+        <Lead>
+          Members of the marketing channel perform{" "}
+          <Term>eight key functions</Term>: the first five help to complete
+          transactions, and the last three help to fulfill the completed
+          transactions.
+        </Lead>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Numbered n={1}>
+            <P>
+              The <Term>transaction-completing functions</Term> are{" "}
+              <Term>information</Term> (gathering and distributing information
+              about consumers, producers, and channel actors),{" "}
+              <Term>promotion</Term> (developing and spreading persuasive
+              communications about an offer), <Term>contact</Term> (finding and
+              engaging prospective buyers), <Term>matching</Term> (shaping and
+              fitting the offer to the buyer&apos;s needs, including grading,
+              assembling, and packaging), and <Term>negotiation</Term> (reaching
+              an agreement on price and other terms of the offer so that
+              ownership or possession can be transferred).
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              The <Term>transaction-fulfilling functions</Term> are{" "}
+              <Term>physical distribution</Term> (transporting and storing
+              goods), <Term>financing</Term> (acquiring and using funds to cover
+              the costs of the channel work), and <Term>risk taking</Term>{" "}
+              (assuming the risks of carrying out the channel work).
+            </P>
+          </Numbered>
+        </ol>
+        <Ruled className="mt-8 w-full">
+          <Big>
+            In dividing up the work of the channel, the various functions should
+            be assigned to the channel members who can add the most value for
+            the cost.
+          </Big>
+        </Ruled>
+      </Slide>
+
+      {/* ================================================================
+          Direct and Indirect Marketing Channel Levels
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="direct-and-indirect-marketing-channel-levels"
+        border
+        exercise={exercise["direct-and-indirect-marketing-channel-levels"]}
+      >
+        <SlideHeading>
+          Direct and Indirect Marketing Channel Levels
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.1fr_1.4fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement>
+              Each layer of marketing intermediaries that performs some work in
+              bringing the product and its ownership closer to the final buyer
+              is a <Term>channel level</Term>.
+            </Statement>
+            <Ruled>
+              <P>
+                Because both the producer and the final consumer perform some
+                work, they are part of every channel, and the number of
+                intermediary levels indicates the{" "}
+                <Term>length of a channel</Term>.
+              </P>
             </Ruled>
           </div>
-        </Pair>
-      </TopicSlide>
-
-      <Slide id="discussion-direct-vs-indirect-channels" border>
-        <Heading kicker="Discussion:" tone="counter">
-          Direct vs. Indirect Channels
-        </Heading>
-        <Figure height="auto">
-          <TwoRoutes />
-        </Figure>
-        <Prompt>
-          <PromptKicker /> If you were launching a new organic snack brand,
-          would you sell <Tint>directly through your website</Tint> or{" "}
-          <Tint tone="counter">pitch to a major grocery chain</Tint>?
-        </Prompt>
+          <Plate wide>
+            <ChannelLevelsDiagram />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              A <Term>direct marketing channel</Term> has no intermediary
+              levels: the company sells directly to consumers, as when a bakery
+              sells bread in its own shop or an apparel brand sells exclusively
+              through its own website.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              An <Term>indirect marketing channel</Term> contains one or more
+              intermediary levels, such as a manufacturer selling to a
+              wholesaler who sells to a retailer who sells to the consumer,
+              where more levels expand geographic reach but reduce the
+              producer&apos;s direct control.
+            </P>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Module 2: Channel Behavior and Organization
+          Channel Intensity: Intensive, Selective, and Exclusive Distribution
           ================================================================ */}
-      <ModulePlate id="module-2" n={2} title="Channel Behavior and Organization">
-        <Lead className="mt-10 !max-w-[56ch]">
-          Distribution channels are{" "}
-          <Term tone="counter">complex behavioral systems</Term>.
+      <Slide
+        className={TIGHT}
+        id="channel-intensity-intensive-selective-and-exclusive-distribution"
+        border
+      >
+        <SlideHeading>
+          Channel Intensity: Intensive, Selective, and Exclusive Distribution
+        </SlideHeading>
+        <Lead>
+          Companies must also decide on the number of channel members to use at
+          each level across three <Term>distribution strategies</Term>:
+          intensive, exclusive, and selective distribution.
         </Lead>
-        <Figure height="auto">
-          <BehavioralSystem />
-        </Figure>
-        <Ruled tone="counter" className="w-full">
-          <Big className="max-w-[48ch]">
-            People and companies interact to accomplish{" "}
-            <Tint tone="counter">individual, company, and channel goals</Tint>.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ThreeGoals />
-        </Figure>
-        <Pair plate={<WorkTogether />}>
-          <Ruled tone="signal">
-            <Big>
-              Success depends on <Tint>how well the channel members work
-              together</Tint>.
-            </Big>
-          </Ruled>
-        </Pair>
-      </ModulePlate>
-
-      <TopicSlide id="channel-conflict" section={1} title="Channel Conflict">
-        <Lead className="!max-w-[60ch]">
-          <Term>Channel conflict</Term> occurs when members disagree over goals,
-          roles, and rewards.
-        </Lead>
-        <Figure height="auto">
-          <GoalsRolesRewards />
-        </Figure>
-        <div className="grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Horizontal conflict</Term> occurs among firms at the same
-                level of the channel.
-              </>
-            }
-            plate={<HorizontalConflict />}
-          />
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Vertical conflict</Term> occurs between
-                different levels of the same channel.
-              </>
-            }
-            plate={<VerticalConflict />}
-          />
-        </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="conventional-distribution-systems"
-        section={1}
-        title="Conventional Distribution Systems"
-      >
-        <Lead className="!max-w-[60ch]">
-          Consist of one or more{" "}
-          <Term tone="ink">
-            independent producers, wholesalers, and retailers
-          </Term>
-          .
-        </Lead>
-        <div className="mt-12 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="signal">
-            <Big>
-              Each is a <Tint>separate business</Tint> seeking to maximize its
-              own profits.
-            </Big>
-          </Ruled>
-          <Ruled tone="ink">
-            <Big>
-              No channel member has much{" "}
-              <strong className="font-semibold">control</strong> over the other
-              members.
-            </Big>
-          </Ruled>
-        </div>
-        <Figure height="auto">
-          <SeparateBusinesses />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="vertical-marketing-systems-vms"
-        section={1}
-        title="Vertical Marketing Systems (VMS)"
-      >
-        <Statement className="!max-w-[38ch]">
-          A <Tint>VMS</Tint> consists of producers, wholesalers, and retailers
-          acting as a unified system.
-        </Statement>
-        <Figure height="auto">
-          <VmsCascade />
-        </Figure>
-        <Ruled className="w-full">
-          <Big className="max-w-[56ch]">
-            <strong className="font-semibold">One channel member</strong> owns
-            the others, has contracts with them, or wields so much power they
-            all cooperate.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ThreePowers />
-        </Figure>
-        <Pair plate={<EconomiesImpact />}>
-          <Ruled tone="signal">
-            <Big>
-              Designed to achieve{" "}
-              <Tint>channel economies and maximum impact</Tint>.
-            </Big>
-          </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      <TopicSlide
-        id="types-of-vertical-marketing-systems"
-        section={1}
-        title="Types of Vertical Marketing Systems"
-      >
-        <div className="w-full">
-          <PlateRow plate={<CorporateVms />} tone="signal">
-            <Tint>Corporate VMS</Tint> integrates successive stages of
-            production and distribution under single ownership.
-          </PlateRow>
-          <PlateRow plate={<ContractualVms />} tone="ink">
-            <strong className="font-semibold">Contractual VMS</strong> consists
-            of independent firms at different levels joining together through
-            contracts.
-          </PlateRow>
-          <PlateRow plate={<AdministeredVms />} tone="counter">
-            <Tint tone="counter">Administered VMS</Tint> coordinates successive
-            stages through the size and power of one of the parties.
-          </PlateRow>
-        </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="multichannel-distribution-systems"
-        section={1}
-        title="Multichannel Distribution Systems"
-      >
-        <Lead className="!max-w-[62ch]">
-          A <Term>single firm</Term> sets up two or more marketing channels to
-          reach one or more customer segments.
-        </Lead>
-        <Figure height="auto">
-          <MultiChannels />
-        </Figure>
-        <Pair plateFirst plate={<ComplexMarkets />}>
-          <Ruled tone="signal">
-            <Big>
-              Offers advantages for companies facing{" "}
-              <Tint>large and complex markets</Tint>.
-            </Big>
-          </Ruled>
-        </Pair>
-        <Ruled tone="counter" className="mt-16 w-full">
-          <Big className="max-w-[54ch]">
-            Expands sales and market coverage but can be{" "}
-            <Tint tone="counter">harder to control</Tint> and generate conflict.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <CoverageAndConflict />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="the-trend-of-disintermediation"
-        section={1}
-        title="The Trend of Disintermediation"
-      >
-        <Statement className="!max-w-[34ch]">
-          <Tint>Disintermediation</Tint> occurs when product and service
-          producers cut out intermediaries.
-        </Statement>
-        <Figure height="auto">
-          <CutOut />
-        </Figure>
-        <Pair plate={<NewIntermediaries />}>
-          <Ruled tone="signal">
-            <Big>
-              This includes going{" "}
-              <Tint>directly to final buyers</Tint> or displacing traditional
-              resellers with new types of intermediaries.
-            </Big>
-          </Ruled>
-        </Pair>
-        <Pair plateFirst plate={<OpportunityThreat />} className="mt-16">
-          <Ruled tone="counter">
-            <Big>
-              Presents both <Tint>opportunities</Tint> and{" "}
-              <Tint tone="counter">strategic threats</Tint> to established
-              firms.
-            </Big>
-          </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      <Slide id="discussion-surviving-disintermediation" border>
-        <Heading kicker="Discussion:" tone="counter">
-          Surviving Disintermediation
-        </Heading>
-        <Figure height="auto">
-          <StreamingBypass />
-        </Figure>
-        <Prompt>
-          <PromptKicker /> As streaming services bypass traditional cable
-          providers, how can cable companies adapt to{" "}
-          <Tint>remain relevant in the distribution channel</Tint>?
-        </Prompt>
-      </Slide>
-
-      {/* ================================================================
-          Module 3: Retailing, Wholesaling, and Logistics
-          ================================================================ */}
-      <ModulePlate
-        id="module-3"
-        n={3}
-        title="Retailing, Wholesaling, and Logistics"
-      >
-        <Figure height="auto">
-          <ThreeDomains />
-        </Figure>
-        <div className="grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Retailing</Term> includes all activities involved in
-                selling goods directly to final consumers.
-              </>
-            }
-            plate={<SoldToWhom side="retail" />}
-          />
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Wholesaling</Term> includes all activities
-                involved in selling goods to those buying for resale or business
-                use.
-              </>
-            }
-            plate={<SoldToWhom side="wholesale" />}
-          />
-        </div>
-        <Pair plate={<EfficientFlow />} className="mt-16">
-          <Ruled tone="ink">
-            <Big>
-              <strong className="font-semibold">Logistics management</strong>{" "}
-              ensures the efficient flow of materials and final goods.
-            </Big>
-          </Ruled>
-        </Pair>
-      </ModulePlate>
-
-      <TopicSlide id="the-role-of-retailing" section={2} title="The Role of Retailing">
-        <Lead className="!max-w-[62ch]">
-          <Term>Retailers</Term> connect brands with consumers in the final
-          steps of the distribution process.
-        </Lead>
-        <Figure height="auto">
-          <FinalSteps />
-        </Figure>
-        <Ruled tone="signal" className="w-full">
-          <Big className="max-w-[56ch]">
-            <Tint>Shopper marketing</Tint> focuses the entire marketing process
-            on turning shoppers into buyers at the point of sale.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ShopperToBuyer />
-        </Figure>
-        <Pair plate={<TargetAndPositioning />}>
-          <Ruled>
-            <Big>
-              Retailers must carefully define their{" "}
-              <Term tone="ink">target markets and positioning</Term>.
-            </Big>
-          </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      <TopicSlide
-        id="the-value-of-wholesaling"
-        section={2}
-        title="The Value of Wholesaling"
-      >
-        <Statement className="!max-w-[38ch]">
-          <Tint>Wholesalers add value</Tint> by performing channel functions
-          better or more cost effectively than producers.
-        </Statement>
-        <Figure height="auto">
-          <BetterOrCheaper />
-        </Figure>
-        <Ruled className="w-full">
-          <Big className="max-w-[52ch]">
-            They help manufacturers reach{" "}
-            <Term tone="ink">many small customers</Term> at a low cost.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ManySmallCustomers />
-        </Figure>
-        <Ruled tone="signal" className="mt-4 w-full">
-          <Big className="max-w-[56ch]">
-            They <Tint>hold inventories</Tint>, reducing inventory costs and
-            risks to suppliers and customers.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <HoldInventory />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide id="marketing-logistics" section={2} title="Marketing Logistics">
-        <Lead className="!max-w-[62ch]">
-          <Term>Marketing logistics</Term> involves planning, implementing, and
-          controlling the physical flow of goods.
-        </Lead>
-        <Figure height="auto">
-          <PlanImplementControl />
-        </Figure>
-        <Statement className="!max-w-[36ch]">
-          Focuses on getting the <Tint>right product</Tint> to the{" "}
-          <Tint>right customer</Tint> in the <Tint>right place</Tint> at the{" "}
-          <Tint>right time</Tint>.
-        </Statement>
-        <Figure height="auto">
-          <FourRights />
-        </Figure>
-        <Ruled tone="counter" className="mt-4 w-full">
-          <Big className="max-w-[56ch]">
-            Involves{" "}
-            <Tint tone="counter">
-              inbound distribution, outbound distribution, and reverse
-              distribution
-            </Tint>
-            .
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ThreeDistributions />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="supply-chain-management"
-        section={2}
-        title="Supply Chain Management"
-      >
-        <Lead className="!max-w-[64ch]">
-          Managing{" "}
-          <Term>upstream and downstream value-added flows</Term> of materials,
-          final goods, and related information.
-        </Lead>
-        <Figure height="auto">
-          <UpstreamDownstream />
-        </Figure>
-        <Pair plate={<ServiceAndCost />}>
-          <Ruled tone="signal">
-            <Big>
-              Aims to <Tint>maximize customer service</Tint> while minimizing
-              distribution costs.
-            </Big>
-          </Ruled>
-        </Pair>
-        <Ruled className="mt-16 w-full">
-          <Big className="max-w-[58ch]">
-            Major functions include{" "}
-            <Term tone="ink">
-              warehousing, inventory management, transportation, and logistics
-              information management
-            </Term>
-            .
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <SupplyFunctions />
-        </Figure>
-      </TopicSlide>
-
-      <TopicSlide
-        id="third-party-logistics-3pl"
-        section={2}
-        title="Third-Party Logistics (3PL)"
-      >
-        <Statement className="!max-w-[34ch]">
-          <Tint>Outsourcing logistics functions</Tint> to third-party
-          providers.
-        </Statement>
-        <Figure height="auto">
-          <OutsourceLogistics />
-        </Figure>
-        <Ruled tone="signal" className="w-full">
-          <Big className="max-w-[58ch]">
-            <Tint>3PL providers</Tint> can help companies save money, improve
-            service, and focus on core competencies.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <ThreeGains />
-        </Figure>
-        <Pair plate={<ComplexEnvironment />}>
-          <Ruled>
-            <Big>
-              They understand{" "}
-              <Term tone="ink">increasingly complex logistics environments</Term>
-              .
-            </Big>
-          </Ruled>
-        </Pair>
-      </TopicSlide>
-
-      {/* ================================================================
-          Conclusion
-          ================================================================ */}
-      <Slide id="conclusion" border>
-        <Heading kicker="Conclusion:">
-          Supply Chain and Distribution Channels
-        </Heading>
-        <ol className="grid w-full gap-x-12 gap-y-12 md:grid-cols-3">
-          {[
-            {
-              glyph: <GlyphLink />,
-              text: "Distribution channels are the critical link between producers and final consumers.",
-            },
-            {
-              glyph: <GlyphBalance />,
-              text: "Choosing the right channel structure balances control, coverage, and cost.",
-            },
-            {
-              glyph: <GlyphAdvantage />,
-              text: "Effective channel management and logistics create sustainable competitive advantages.",
-            },
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
-            >
-              <div aria-hidden className="flex items-center justify-between">
-                <span
-                  data-n={String(i + 1).padStart(2, "0")}
-                  className="step-n text-[2.2rem] leading-none text-[var(--signal)]"
-                  style={SERIF}
-                />
-                {item.glyph}
-              </div>
-              <p className="type-h2 !font-normal">{item.text}</p>
-            </li>
-          ))}
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Intensive distribution</Term> stocks the product in as many
+              outlets as possible so that convenience goods (such as toothpaste,
+              soft drinks, and snacks) are available wherever and whenever
+              consumers want them.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Exclusive distribution</Term> gives a limited number of
+              dealers the exclusive right to distribute the company&apos;s
+              products in their territories, often used for luxury automobiles
+              or prestige apparel to enhance brand image and secure strong
+              dealer support.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Selective distribution</Term> lies between intensive and
+              exclusive distribution, using more than one, but fewer than all,
+              of the intermediaries willing to carry the company&apos;s products
+              (common for appliances, televisions, and fine furniture).
+            </P>
+          </Numbered>
         </ol>
-        <style>{`.step-n::before { content: attr(data-n); }`}</style>
+      </Slide>
+
+      {/* ================================================================
+          Part 2: Channel Behavior, Organization, and Conflict
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-2-channel-behavior-organization-and-conflict"
+        border
+      >
+        <PartHead
+          n={2}
+          title="Channel Behavior, Organization, and Conflict"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Marketing channels are not merely economic pipelines, but{" "}
+            <Term>complex behavioral systems</Term> in which people and
+            companies interact to accomplish individual, company, and channel
+            goals.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Managing <Term>channel conflict</Term> and designing vertical,
+              horizontal, or multichannel systems allow channel partners to
+              operate as a coordinated unit.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+      {/* ================================================================
+          Channel Cooperation and Channel Conflict
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="channel-cooperation-and-channel-conflict"
+        border
+        exercise={exercise["channel-cooperation-and-channel-conflict"]}
+      >
+        <SlideHeading>Channel Cooperation and Channel Conflict</SlideHeading>
+        <div className="grid w-full items-start gap-10 lg:grid-cols-[1.05fr_1.35fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              Ideally, because the success of individual channel members depends
+              on overall channel success, all channel firms should work together
+              smoothly and accept their <Term>specialized roles</Term>.
+            </Statement>
+            <Ruled>
+              <Lead>
+                However, individual channel members rarely take such a broad
+                view, and disagreements over goals, roles, and rewards generate{" "}
+                <Term>channel conflict</Term>.
+              </Lead>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
+              <P>
+                <Term>Horizontal conflict</Term> occurs among firms at the same
+                level of the channel, such as two franchised car dealers of the
+                same automaker in the same city complaining that the other
+                prices too aggressively or poaches territory customers.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                <Term>Vertical conflict</Term>, which is even more common,
+                occurs between different levels of the same channel, such as
+                when a footwear manufacturer opens a direct-to-consumer online
+                store that undercuts the retail shoe chains carrying its brand.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Conventional Versus Vertical Marketing Systems (VMS)
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="conventional-versus-vertical-marketing-systems-vms"
+        border
+        exercise={exercise["conventional-versus-vertical-marketing-systems-vms"]}
+      >
+        <SlideHeading>
+          Conventional Versus Vertical Marketing Systems (VMS)
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              A <Term>conventional distribution channel</Term> consists of one
+              or more independent producers, wholesalers, and retailers, each a
+              separate business seeking to maximize its own profits, even at the
+              expense of profits for the system as a whole.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              By contrast, a <Term>Vertical Marketing System</Term> (VMS)
+              consists of producers, wholesalers, and retailers acting as a
+              unified system in which one channel member owns the others, has
+              contracts with them, or wields so much power that they all
+              cooperate.
+            </P>
+          </Ruled>
+        </div>
+        <div className="my-6 w-full max-w-4xl">
+          <Plate wide>
+            <ConventionalVsVms />
+          </Plate>
+        </div>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              A <Term>corporate VMS</Term> combines successive stages of
+              production and distribution under single ownership (such as
+              eyewear giant EssilorLuxottica designing frames, manufacturing
+              lenses, and operating Sunglass Hut and LensCrafters stores).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              A <Term>contractual VMS</Term> consists of independent firms at
+              different levels of production and distribution who join together
+              through contracts (most notably franchise organizations), while an{" "}
+              <Term>administered VMS</Term> coordinates successive stages
+              through the size and power of one dominant party (such as Walmart
+              or Procter &amp; Gamble).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Horizontal Systems, Multichannel Distribution, and Disintermediation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="horizontal-systems-multichannel-distribution-and-disintermediation"
+        border
+        exercise={
+          exercise[
+            "horizontal-systems-multichannel-distribution-and-disintermediation"
+          ]
+        }
+      >
+        <SlideHeading>
+          Horizontal Systems, Multichannel Distribution, and Disintermediation
+        </SlideHeading>
+        <div className="grid w-full gap-8 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              A <Term>horizontal marketing system</Term> is a channel
+              arrangement in which two or more companies at one level join
+              together to follow a new marketing opportunity, such as a coffee
+              chain operating kiosks inside a national bookstore or grocery
+              chain.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              A <Term>multichannel distribution system</Term> (or{" "}
+              <Term>hybrid marketing channel</Term>) occurs when a single firm
+              sets up two or more marketing channels to reach one or more
+              customer segments, expanding market coverage while increasing the
+              risk of channel conflict.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Disintermediation</Term> occurs when product and service
+              producers cut out intermediaries and go directly to final buyers,
+              or when radically new types of channel intermediaries displace
+              traditional ones.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big>
+              Online streaming displaced physical video rental stores, and
+              digital travel portals displaced neighborhood ticket agencies,
+              forcing incumbent channel members to innovate or exit.
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Resolving Vertical Channel Conflict in a Direct-to-Consumer Launch
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-resolving-vertical-channel-conflict-in-a-direct-to-consumer-launch"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Resolving Vertical Channel Conflict in a Direct-to-Consumer Launch
+        </SlideHeading>
+        <Prompt>
+          A mid-sized kitchen appliance manufacturer currently sells 85 percent
+          of its blenders through three national department-store chains.
+          Management wants to launch a direct-to-consumer website offering
+          custom color options and a 10 percent starter discount to capture
+          first-party customer data. Using vertical channel conflict,
+          multichannel distribution systems, and pricing consistency, analyze
+          how the retail chains are likely to react and design a channel
+          strategy that avoids retail delisting.
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Part 3: Retailing and Wholesaling
+          ================================================================ */}
+      <Slide className={TIGHT} id="part-3-retailing-and-wholesaling" border>
+        <PartHead n={3} title="Retailing and Wholesaling" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            The two primary <Term>resellers</Term> in consumer and industrial
+            channels are <Term>retailers</Term> and <Term>wholesalers</Term>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Understanding how retailers classify their store formats and how
+              wholesalers create efficiency explains the downstream mechanics of
+              product placement.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Retailing Classifications and Omnichannel Shopper Marketing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="retailing-classifications-and-omnichannel-shopper-marketing"
+        border
+      >
+        <SlideHeading>
+          Retailing Classifications and Omnichannel Shopper Marketing
+        </SlideHeading>
+        <Statement>
+          <Term>Retailing</Term> includes all the activities involved in selling
+          goods or services directly to final consumers for their personal,
+          nonbusiness use.
+        </Statement>
+        <Ruled className="mt-6 w-full">
+          <P>
+            Retail stores are classified along four dimensions: the{" "}
+            <Term>amount of service</Term> they offer (self-service,
+            limited-service, or full-service), the breadth and depth of their{" "}
+            <Term>product lines</Term> (specialty stores, department stores,
+            supermarkets, convenience stores, and superstores), the{" "}
+            <Term>relative prices</Term> they charge (discount stores, off-price
+            retailers, and factory outlets), and how they are{" "}
+            <Term>organized</Term> (corporate chains, voluntary chains, and
+            franchises).
+          </P>
+        </Ruled>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Shopper marketing</Term> focuses the entire marketing
+              process, from product and brand development to logistics,
+              promotion, and merchandising, toward turning shoppers into buyers
+              as they approach the point of sale, whether in a physical aisle or
+              on a digital screen.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Because modern buyers move seamlessly across web, mobile, and
+              physical stores, <Term>omni-channel retailing</Term> integrates all
+              channels into a single unified shopping experience, such as buying
+              online and picking up in store.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Retailer Marketing Decisions
+          ================================================================ */}
+      <Slide className={TIGHT} id="retailer-marketing-decisions" border>
+        <SlideHeading>Retailer Marketing Decisions</SlideHeading>
+        <Lead>
+          Like manufacturers, retailers must make strategic decisions regarding{" "}
+          <Term>segmentation and targeting</Term>, store differentiation and
+          positioning, and the <Term>retail marketing mix</Term>.
+        </Lead>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              First, retailers must define their <Term>target markets</Term> and
+              decide how they will position themselves in these markets: a
+              retailer cannot make consistent decisions about product
+              assortment, services, pricing, advertising, or store decor until
+              it defines its target customers and position.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Second, retailers manage three major product variables:{" "}
+              <Term>product assortment</Term> (differentiating the retailer
+              while matching target shoppers&apos; expectations),{" "}
+              <Term>services mix</Term> (home delivery, alterations, or personal
+              shopping), and <Term>store atmosphere</Term> (the physical layout,
+              lighting, scent, and sound that shape the customer&apos;s
+              experience).
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Third, retailers align their <Term>price policy</Term>{" "}
+              (high-markup lower-volume versus low-markup higher-volume),
+              promotional tools, and <Term>location choices</Term> (central
+              business districts, shopping centers, or strip malls) with that
+              positioning.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          The Role and Types of Wholesalers
+          ================================================================ */}
+      <Slide className={TIGHT} id="the-role-and-types-of-wholesalers" border>
+        <SlideHeading>The Role and Types of Wholesalers</SlideHeading>
+        <div className="grid w-full items-start gap-10 lg:grid-cols-[1.05fr_1.35fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Wholesaling</Term> includes all the activities involved in
+              selling goods and services to those buying for resale or business
+              use.
+            </Statement>
+            <Ruled>
+              <P>
+                Wholesalers add value by performing channel functions more
+                efficiently than a manufacturer can alone: they sell and promote
+                to many small business customers, buy and build assortments,{" "}
+                <Term>break bulk</Term> (breaking large carload lots into small
+                crates), warehouse inventory, finance buyers and suppliers, bear
+                risk by taking title, and provide market information.
+              </P>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
+              <P>
+                <Term>Merchant wholesalers</Term> are independently owned
+                businesses that take title to the merchandise they handle,
+                operating as either <Term>full-service wholesalers</Term> or{" "}
+                <Term>limited-service wholesalers</Term>.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                <Term>Brokers and agents</Term> do not take title to goods and
+                earn a commission for bringing buyers and sellers together,
+                while manufacturers&apos; and retailers&apos; branches and
+                offices conduct wholesaling operations directly without
+                independent wholesalers.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 4: Marketing Logistics and Supply Chain Management
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-4-marketing-logistics-and-supply-chain-management"
+        border
+      >
+        <PartHead
+          n={4}
+          title="Marketing Logistics and Supply Chain Management"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Even the best channel strategy fails if physical products do not
+            arrive intact, on time, and at an acceptable cost.
+          </Statement>
+          <Ruled>
+            <Lead>
+              <Term>Marketing logistics</Term> and{" "}
+              <Term>supply chain management</Term> coordinate the physical flow
+              of materials, final goods, and information from point of origin to
+              point of consumption.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Objectives and Direction of Marketing Logistics
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="objectives-and-direction-of-marketing-logistics"
+        border
+      >
+        <SlideHeading>
+          Objectives and Direction of Marketing Logistics
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.1fr_1.4fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <P>
+              <Term>Marketing logistics</Term> (also called{" "}
+              <Term>physical distribution</Term>) involves planning,
+              implementing, and controlling the physical flow of materials,
+              final goods, and related information from points of origin to
+              points of consumption to meet customer requirements at a profit.
+            </P>
+            <Ruled>
+              <P>
+                <Term>Outbound logistics</Term> moves products from the factory
+                to resellers and ultimately to customers, while{" "}
+                <Term>inbound logistics</Term> moves products and materials from
+                suppliers to the factory.
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <LogisticsFlows />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Reverse logistics</Term> reuses, recycles, refurbishes, or
+              disposes of broken, unwanted, or excess products returned by
+              consumers or resellers.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big>
+              The goal of marketing logistics is to provide a{" "}
+              <Term>targeted level</Term> of customer service at the{" "}
+              <Term>least total system cost</Term>, rather than minimizing the
+              cost of any single logistics function in isolation.
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Major Logistics Functions: Warehousing, Inventory, and Transportation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="major-logistics-functions-warehousing-inventory-and-transportation"
+        border
+        exercise={
+          exercise[
+            "major-logistics-functions-warehousing-inventory-and-transportation"
+          ]
+        }
+      >
+        <SlideHeading>
+          Major Logistics Functions: Warehousing, Inventory, and Transportation
+        </SlideHeading>
+        <Lead>
+          Given a set of logistics objectives, the company designs a logistics
+          system that minimizes the cost of attaining these objectives across
+          four major functions: <Term>warehousing</Term>,{" "}
+          <Term>inventory management</Term>, <Term>transportation</Term>, and{" "}
+          <Term>logistics information management</Term>.
+        </Lead>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Warehousing</Term> bridges the gap between production cycles
+              and consumption cycles using either{" "}
+              <Term>storage warehouses</Term> (which store goods for moderate to
+              long periods) or <Term>automated distribution centers</Term>{" "}
+              (which are designed to move goods rapidly rather than just store
+              them).
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Inventory management</Term> balances the risk of
+              out-of-stock customer dissatisfaction against the high carrying
+              costs and obsolescence risks of holding excessive stock, often
+              using <Term>just-in-time</Term> (JIT) logistics systems.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Transportation choices</Term> across trucks, railroads,
+              water carriers, pipelines, air freight, and the internet (for
+              digital products) directly affect product pricing, delivery speed,
+              and the condition of goods on arrival, often combining modes
+              through <Term>intermodal transportation</Term>.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          Integrated Supply Chain Management and Third-Party Logistics (3PL)
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="integrated-supply-chain-management-and-third-party-logistics-3pl"
+        border
+      >
+        <SlideHeading>
+          Integrated Supply Chain Management and Third-Party Logistics (3PL)
+        </SlideHeading>
+        <div className="grid w-full gap-8 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Integrated logistics management</Term> recognizes that
+              providing better customer service and trimming distribution costs
+              require teamwork, both inside the company (through
+              cross-functional logistics committees) and among all the marketing
+              channel organizations.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Channel members link their logistics operations through shared{" "}
+              <Term>electronic data interchange</Term> (EDI),{" "}
+              <Term>vendor-managed inventory</Term> (VMI), and continuous
+              inventory replenishment systems.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Most companies also outsource some or all of their logistics
+              functions to <Term>third-party logistics</Term> (3PL) providers
+              (such as UPS Supply Chain Solutions, DHL, or Ryder).
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big>
+              Third-party logistics providers bring specialized distribution
+              expertise, multi-client <Term>scale economies</Term>, and global
+              customs knowledge, freeing the manufacturer to focus on its core
+              product and marketing strengths.
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: Agentic Commerce: The AI Agent as a Channel Intermediary
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-agentic-commerce-the-ai-agent-as-a-channel-intermediary"
+        border
+      >
+        <PartHead
+          n={5}
+          title="Agentic Commerce: The AI Agent as a Channel Intermediary"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Digital commerce is undergoing a new wave of{" "}
+            <Term>disintermediation</Term> and <Term>re-intermediation</Term> as
+            consumers delegate product search, comparison, and purchasing to{" "}
+            <Term>AI shopping agents</Term>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Viewing the AI agent through the lens of marketing channel theory
+              reveals which channel functions it performs and how it shifts{" "}
+              <Term>channel power</Term>.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          The AI Shopping Agent as a New Channel Intermediary
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="the-ai-shopping-agent-as-a-new-channel-intermediary"
+        border
+        exercise={
+          exercise["the-ai-shopping-agent-as-a-new-channel-intermediary"]
+        }
+      >
+        <SlideHeading>
+          The AI Shopping Agent as a New Channel Intermediary
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.05fr_1.45fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement>
+              <Term>Agentic commerce</Term> is buying and selling in which an
+              autonomous <Term>AI agent</Term> searches, compares, and purchases
+              goods or services on a buyer&apos;s behalf.
+            </Statement>
+            <Ruled>
+              <P>
+                Evaluated against the eight classic channel functions, the AI
+                shopping agent performs four core transaction-completing
+                functions directly: <Term>information</Term> (gathering product
+                specs, prices, and reviews across the market),{" "}
+                <Term>contact</Term> (interfacing with seller APIs and
+                catalogs), <Term>matching</Term> (filtering and ranking
+                assortments to fit the consumer&apos;s stated constraints), and{" "}
+                <Term>negotiation</Term> or checkout execution.
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <AgenticCommerceChannel />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Because the AI agent inserts a new{" "}
+              <Term>software intermediary layer</Term> that can bypass
+              traditional retail storefronts or comparison sites, agentic
+              commerce is a contemporary form of channel disintermediation and
+              re-intermediation.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              However, the AI agent does not take{" "}
+              <Term>physical possession</Term> or title, so physical
+              distribution, warehousing, and reverse logistics still depend on
+              underlying fulfillment networks.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Position Effects and Channel Strategy in Agentic Commerce
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="position-effects-and-channel-strategy-in-agentic-commerce"
+        border
+      >
+        <SlideHeading>
+          Position Effects and Channel Strategy in Agentic Commerce
+        </SlideHeading>
+        <Lead>
+          When an <Term>AI shopping agent</Term> acts as the intermediary
+          between the buyer and the market, the agent&apos;s ranking and
+          selection behavior determines which producers make the sale.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Empirical audits and experiments on AI shopping agents show that
+              agents exhibit strong <Term>position effects</Term>: an
+              option&apos;s physical rank position in a search results list
+              significantly influences whether the AI agent selects it, even
+              when objective product attributes are held constant (Wadi &amp;
+              Ma, 2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Furthermore, large technology platforms that host consumer AI
+              assistants can gain substantial channel power as{" "}
+              <Term>administered gatekeepers</Term> if their agents control
+              which sellers are queried first.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Producers and retailers must therefore decide whether to
+              distribute through platform-owned AI shopping ecosystems, deploy
+              their own brand-specific shopping assistants, or expose
+              standardized <Term>machine-readable catalog feeds</Term> and{" "}
+              <Term>checkout APIs</Term> so any independent AI agent can
+              transact with them directly.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Designing a Channel Strategy for Agentic Commerce
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-designing-a-channel-strategy-for-agentic-commerce"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Designing a Channel Strategy for Agentic Commerce
+        </SlideHeading>
+        <Prompt>
+          A specialty luggage brand currently sells 60 percent of its suitcases
+          through an online marketplace aggregator and 40 percent through its
+          own direct-to-consumer website. As consumers increasingly ask AI
+          shopping agents to &quot;buy a carry-on suitcase with a lifetime
+          warranty under 250 dollars,&quot; how does the AI agent alter the
+          channel power between the brand and the marketplace aggregator, how do
+          list position effects (Wadi &amp; Ma, 2026a) affect the brand&apos;s
+          visibility, and what technical and channel steps should the brand take
+          so AI agents can buy from its direct store?
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Marketing channels are sets of interdependent organizations within
+              a broader value delivery network that bridge time, place, and
+              possession gaps by reducing transaction complexity and matching
+              assortments to buyer needs.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Channel members perform eight functions (information, promotion,
+              contact, matching, negotiation, physical distribution, financing,
+              and risk taking) across direct (zero-level) and indirect (one- or
+              multi-level) channels using intensive, selective, or exclusive
+              distribution.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Channel conflict divides into horizontal conflict (at the same
+              level) and vertical conflict (across levels), while Vertical
+              Marketing Systems (corporate, contractual, and administered VMS),
+              horizontal systems, and multichannel networks coordinate channel
+              behavior.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              Retailers are classified by service level, product line breadth
+              and depth, relative price, and organizational form, while merchant
+              wholesalers, brokers, and agents create upstream efficiency
+              through bulk-breaking, assortment building, and inventory holding.
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              Marketing logistics coordinates inbound, outbound, and reverse
+              flows across warehousing, inventory management, transportation,
+              and logistics information, frequently leveraging third-party
+              logistics (3PL) partners.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              In agentic commerce, the AI shopping agent acts as a new digital
+              intermediary that performs information, contact, matching, and
+              checkout functions, exhibits list position effects when evaluating
+              ranked results (Wadi &amp; Ma, 2026a), and requires producers to
+              make their catalogs and checkout systems accessible to automated
+              agents.
+            </P>
+          </Numbered>
+        </ol>
       </Slide>
     </SlideDeck>
   );

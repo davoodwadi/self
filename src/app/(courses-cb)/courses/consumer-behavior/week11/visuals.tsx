@@ -1646,7 +1646,10 @@ export function ModelEthnocentrism() {
         TARGETS.map((t) => `${t.id.toLowerCase()} ${scoreOf(m, t.id).toFixed(1)}`).join(", ") +
         ` (Wadi, Ghodrat & Philp, 2026). The home-country bar is lit teal.`
       : `${model.label}: country-pairing shift in CETSCALE points, after removing the model's overall level and each country's overall level: ` +
-        TARGETS.map((t) => `${t.id.toLowerCase()} ${PAIRING[t.id][m] > 0 ? "+" : ""}${PAIRING[t.id][m].toFixed(1)}`).join(", ") +
+        TARGETS.map((t) => {
+          const pv = PAIRING[t.id][m];
+          return `${t.id.toLowerCase()} ${pv > 0 ? "+" : pv < 0 ? "−" : ""}${Math.abs(pv).toFixed(1)}`;
+        }).join(", ") +
         ` (Wadi, Ghodrat & Philp, 2026).`;
   return (
     <>
@@ -1699,7 +1702,7 @@ export function ModelEthnocentrism() {
           const a = view === "scores" ? xs0 : Math.min(zero, P(v));
           const b = view === "scores" ? S(v) : Math.max(zero, P(v));
           const bar = rp([[a, y - 15], [b, y - 15], [b, y + 15], [a, y + 15]]);
-          const txt = view === "scores" ? v.toFixed(1) : `${v > 0 ? "+" : ""}${v.toFixed(1)}`;
+          const txt = view === "scores" ? v.toFixed(1) : `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toFixed(1)}`;
           const tx = view === "scores" ? b + 8 : v >= 0 ? b + 8 : a - 8;
           return (
             <g key={t.id}>

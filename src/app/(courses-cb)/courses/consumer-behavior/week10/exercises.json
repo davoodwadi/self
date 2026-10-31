@@ -1,7 +1,44 @@
 [
   {
+    "type": "identify",
+    "slide_id": "public-vs-private-consumption",
+    "prompt": "Each product falls into one cell of Bourne's (1957) and Bearden and Etzel's (1982) public-private luxury-necessity matrix. Identify the category type.",
+    "options": [
+      { "id": "public-luxury", "label": "Public luxury" },
+      { "id": "public-necessity", "label": "Public necessity" },
+      { "id": "private-luxury", "label": "Private luxury" },
+      { "id": "private-necessity", "label": "Private necessity" }
+    ],
+    "cases": [
+      {
+        "id": "sailboats",
+        "text": "Touring kayaks used on club excursions are visible to others and owned by only a subset of households, so peers influence both whether to buy one and which brand to pick.",
+        "answer": "public-luxury",
+        "explanation": "Public luxuries are visible and exclusive, attracting strong social influence on both product ownership and brand choice."
+      },
+      {
+        "id": "winter-coat",
+        "text": "Almost everyone in a northern city owns a winter commuter coat and wears it in public, so reference-group influence focuses primarily on which brand logo is on the sleeve.",
+        "answer": "public-necessity",
+        "explanation": "Public necessities are owned by nearly everyone and used in public, so social influence focuses primarily on brand selection."
+      },
+      {
+        "id": "wine-fridge",
+        "text": "A dual-zone cellar wine refrigerator sits inside the kitchen out of public view. Friends who visit talk about owning one, while the specific brand is chosen mainly on temperature stability.",
+        "answer": "private-luxury",
+        "explanation": "Private luxuries are used out of public view, making ownership socially influenced among peers who discuss them while brand choice depends more on functional traits."
+      },
+      {
+        "id": "laundry-soap",
+        "text": "Unscented laundry detergent sits in the utility closet and is needed by every household, so neighbors exert almost no pressure on either buying detergent or picking a brand.",
+        "answer": "private-necessity",
+        "explanation": "Private necessities are neither visible nor exclusive, resulting in weak reference-group pressure on both product and brand selection."
+      }
+    ]
+  },
+  {
     "type": "sort",
-    "slide_id": "reference-groups-membership-aspirational-and-dissociative",
+    "slide_id": "membership-aspirational-dissociative",
     "prompt": "For each consumer, which kind of reference group is guiding the choice? Sort the cards.",
     "bins": [
       { "id": "membership", "label": "Membership group" },
@@ -13,291 +50,262 @@
         "id": "choir",
         "text": "Nadia orders the same black folder that everyone in her choir uses for sheet music.",
         "bin": "membership",
-        "explanation": "She already belongs to the choir, so it is a membership group."
+        "explanation": "She already belongs to the choir and interacts with its members regularly, so it is a membership group."
       },
       {
         "id": "chef",
         "text": "A culinary student buys the knife brand used by award-winning chefs he hopes to work beside one day.",
         "bin": "aspirational",
-        "explanation": "He wants to join that group of chefs: an aspirational group."
+        "explanation": "He admires and wishes to emulate that group of chefs, an aspirational group."
       },
       {
         "id": "tourist",
-        "text": "Lucas leaves his camera bag at home in Paris because he does not want to look like a tourist.",
+        "text": "Lucas leaves his tour-bus lanyard at home in Paris because he does not want observers to misclassify him as a package tourist.",
         "bin": "dissociative",
-        "explanation": "He avoids a product linked with a group he does not want to be associated with."
+        "explanation": "He avoids a product linked with a dissociative group whose image he rejects."
       },
       {
         "id": "cousins",
         "text": "At the family reunion, Amira's cousins all bring the same board game, so she buys it too.",
         "bin": "membership",
-        "explanation": "Her family is a group she already belongs to."
+        "explanation": "Her family is a membership group with frequent direct contact."
       },
       {
         "id": "founder",
-        "text": "A first-year business student copies the plain grey T-shirts worn by famous tech founders.",
+        "text": "A first-year business student copies the minimalist notebooks carried by senior venture partners she admires.",
         "bin": "aspirational",
-        "explanation": "She wants to be like successful founders, a group she does not yet belong to."
+        "explanation": "She wishes to emulate senior partners, a group she does not currently belong to."
       },
       {
         "id": "ringtone",
-        "text": "Theo changes his loud ringtone after hearing that it is popular with a crowd he dislikes.",
+        "text": "Theo stops wearing a jacket style after noticing it has become the signature look of a group whose values he actively rejects.",
         "bin": "dissociative",
-        "explanation": "He drops the product because it is linked with a group he rejects."
+        "explanation": "He drops the style because it is linked with a dissociative group."
       },
       {
         "id": "club",
         "text": "Members of a cycling club Jon joined last year all ride with the same helmet, and he buys one.",
         "bin": "membership",
-        "explanation": "He already belongs to the cycling club."
+        "explanation": "He already belongs to and rides with the cycling club."
       },
       {
         "id": "marathon",
-        "text": "A new jogger buys the watch that elite marathon runners wear in race photos.",
+        "text": "A weekend jogger buys the carbon-plated racing shoes that elite marathoners wear in championship photos.",
         "bin": "aspirational",
-        "explanation": "Elite marathon runners are a group the jogger wants to join."
+        "explanation": "Elite marathoners are an idealized aspirational group the jogger wishes to emulate."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "three-types-of-reference-group-influence",
-    "prompt": "Each consumer is influenced by a reference group. Name the type of influence.",
+    "slide_id": "informational-utilitarian-value-expressive",
+    "prompt": "Each consumer is influenced by a reference group. Identify which of Park and Lessig's (1977) three influence mechanisms is operating.",
     "options": [
-      { "id": "informational", "label": "Informational" },
-      { "id": "utilitarian", "label": "Utilitarian" },
-      { "id": "value-expressive", "label": "Value-expressive" }
+      { "id": "informational", "label": "Informational influence" },
+      { "id": "utilitarian", "label": "Utilitarian influence" },
+      { "id": "value-expressive", "label": "Value-expressive influence" }
     ],
     "cases": [
       {
         "id": "mechanic",
-        "text": "Before buying a used car, Priya asks her uncle, a mechanic, which model breaks down least.",
+        "text": "Before buying winter tires, Priya consults her uncle, an experienced auto mechanic, about which tread compound grips ice best.",
         "answer": "informational",
-        "explanation": "She seeks advice from someone with expertise."
+        "explanation": "She accepts information from a knowledgeable source as credible evidence about reality."
       },
       {
         "id": "wedding",
-        "text": "Sam buys a suit for a friend's wedding so that the other guests will not frown at his usual jeans.",
+        "text": "Sam wears a dark tailored suit to his law firm's client dinner so the senior partners will approve of his professional deportment.",
         "answer": "utilitarian",
-        "explanation": "He conforms to avoid the guests' disapproval."
+        "explanation": "He conforms to workplace expectations to gain social rewards and avoid sanction."
       },
       {
         "id": "surf",
-        "text": "Mia buys a surf-brand hoodie because she wants to be seen as a relaxed, outdoorsy person.",
+        "text": "Mia buys a certified zero-waste backpack because using it reinforces her own self-concept as an environmentally committed citizen, even when hiking alone.",
         "answer": "value-expressive",
-        "explanation": "The product expresses an identity she desires."
+        "explanation": "She adopts the group's consumption pattern to enhance her self-concept and express shared values internally."
       },
       {
         "id": "pharmacist",
-        "text": "Kenji asks a pharmacist friend which allergy tablet works best for hay fever.",
+        "text": "Kenji reads detailed testing threads written by audio engineers on a specialist forum before ordering studio monitors.",
         "answer": "informational",
-        "explanation": "He relies on the knowledge of an expert."
+        "explanation": "He relies on expert evidence to reduce uncertainty in a technical purchase."
       },
       {
         "id": "office-coffee",
-        "text": "In her new job, Rosa brings the same reusable cup as her team after a manager praised it in a meeting.",
+        "text": "In her new department, Rosa switches to the travel mug brand her teammates use after noticing they tease anyone who brings disposable cups.",
         "answer": "utilitarian",
-        "explanation": "She conforms to gain approval at work."
+        "explanation": "She conforms to the peer group's expectations to avoid social disapproval."
       },
       {
         "id": "bike",
-        "text": "Omar buys the bike brand ridden by professional racers to show that he is a serious cyclist.",
+        "text": "Omar buys a vintage-style film camera associated with independent art-house filmmakers to express his creative identity.",
         "answer": "value-expressive",
-        "explanation": "He buys the brand to express the identity he wants."
+        "explanation": "He chooses the product to express shared values and identity rather than to comply with external enforcement."
       }
     ]
   },
   {
     "type": "match",
     "slide_id": "five-bases-of-social-power",
-    "prompt": "Match each base of social power with the source that uses it.",
+    "prompt": "Match each of French and Raven's (1959) five bases of social power with the marketplace situation that illustrates it.",
     "term_label": "Base of power",
-    "match_label": "Source",
+    "match_label": "Marketplace situation",
     "pairs": [
       {
         "id": "referent",
-        "term": "Referent",
-        "match": "Fans copy the haircut of a singer they adore.",
-        "explanation": "Referent power comes from admiration and identification."
+        "term": "Referent power",
+        "match": "Fans copy the sunglasses worn by a musician they deeply admire and identify with.",
+        "explanation": "Referent power derives from emotional identification and admiration for the source."
       },
       {
         "id": "legitimate",
-        "term": "Legitimate",
-        "match": "A flight attendant tells passengers to turn off their laptops for landing, and they do.",
-        "explanation": "Legitimate power comes from a recognized role."
+        "term": "Legitimate power",
+        "match": "A university course syllabus requires students to purchase a specific statistical software license.",
+        "explanation": "Legitimate power derives from a socially recognized role, contract, or institutional mandate."
       },
       {
         "id": "expert",
-        "term": "Expert",
-        "match": "A dentist recommends a particular electric toothbrush to a patient.",
-        "explanation": "Expert power comes from knowledge or skill."
+        "term": "Expert power",
+        "match": "A licensed pharmacist recommends a specific non-drowsy antihistamine based on clinical pharmacology training.",
+        "explanation": "Expert power derives from perceived specialized knowledge, training, or access to facts."
       },
       {
         "id": "reward",
-        "term": "Reward",
-        "match": "A coffee shop gives a free drink after ten stamps on a card.",
-        "explanation": "Reward power comes from the ability to give something valued."
+        "term": "Reward power",
+        "match": "A hotel program grants complimentary suite upgrades and bonus points to members who book directly.",
+        "explanation": "Reward power derives from the capacity to provide tangible or social benefits."
       },
       {
         "id": "coercive",
-        "term": "Coercive",
-        "match": "A library charges a fine for every day a book is late.",
-        "explanation": "Coercive power comes from the ability to punish."
+        "term": "Coercive power",
+        "match": "A homeowners' association levies a monetary fine on residents who install non-approved exterior lighting.",
+        "explanation": "Coercive power derives from the capacity to inflict punishment, fines, or social ostracism."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "expert-power-and-ai-assistants",
-    "question_text": "Jade asks a shopping site's AI assistant which blender to buy. It answers quickly, in fluent detail, and recommends three models sold on that site. What should Jade check before she treats it as an expert?",
-    "hint": "Expert power rests on two things beyond how fluent the answer sounds.",
-    "correct_answer_citation": "Week 10: Expert Power and AI Assistants",
+    "slide_id": "attributed-expert-power-ai",
+    "question_text": "Jade asks a general-purpose conversational AI assistant which espresso grinder to buy. Within two seconds, it produces a fluent, authoritative comparison table and names a top pick. Why can relying on this response as expert advice be risky?",
+    "hint": "Compare how a general-purpose language model presents answers across domains with how human specialist credentials work.",
+    "correct_answer_citation": "Week 10: Attributed Expert Power in Conversational AI Assistants",
     "correct_answer_index": 2,
     "options": [
       {
-        "option_text": "Whether the answer was long and detailed enough",
-        "option_explanation": "Fluent, detailed answers are why consumers attribute expertise, but an assistant can state wrong facts with the same confidence."
+        "option_text": "Because conversational AI assistants never influence which brands enter a consumer's consideration set",
+        "option_explanation": "Attributed expert power grants the AI assistant substantial influence over both the consideration set and the final choice."
       },
       {
-        "option_text": "Whether the answer arrived within a few seconds",
-        "option_explanation": "Speed adds to the impression of expertise. It says nothing about knowledge or independence."
+        "option_text": "Because language models speak hesitantly whenever their underlying product evidence is weak",
+        "option_explanation": "General-purpose AI assistants present uniform linguistic fluency even across domains where their underlying evidence varies widely in quality."
       },
       {
-        "option_text": "Whether the facts are correct, and whether the site that runs the assistant profits from the models it recommends",
-        "option_explanation": "Correct. Expert power depends on actual knowledge and on independence."
+        "option_text": "Because the assistant presents uniform fluency across domains, which can cue attributed expert power even when the consumer has not verified the underlying product facts",
+        "option_explanation": "Correct. Instantaneous, fluent synthesis leads users to attribute high expert power and defer to the recommendation without verifying the underlying facts."
       },
       {
-        "option_text": "Whether the assistant recommended more than one model",
-        "option_explanation": "The number of options shapes the consideration set, but it does not show whether the advice is accurate or independent."
+        "option_text": "Because French and Raven's taxonomy of social power applies only to face-to-face human interactions",
+        "option_explanation": "Consumers attribute expert power to conversational AI assistants in the same way they attribute it to human specialists."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "word-of-mouth-and-opinion-leaders",
-    "prompt": "Each person passes on product information to others. Is the person an opinion leader or a market maven?",
+    "slide_id": "opinion-leaders-market-mavens-surrogates",
+    "prompt": "Each person guides another consumer's purchase. Identify whether the informer is an opinion leader, a market maven, or a surrogate consumer.",
     "options": [
       { "id": "leader", "label": "Opinion leader" },
-      { "id": "maven", "label": "Market maven" }
+      { "id": "maven", "label": "Market maven" },
+      { "id": "surrogate", "label": "Surrogate consumer" }
     ],
     "cases": [
       {
         "id": "camera",
-        "text": "Friends ask Leo which camera lens to buy. He follows photography closely but has little to say about other products.",
+        "text": "Friends ask Leo which mirrorless camera lens to buy. He follows optical engineering closely, but has little to say about groceries or apparel.",
         "answer": "leader",
-        "explanation": "His influence is limited to one category he is involved in."
+        "explanation": "Opinion leadership is monomorphic (domain-specific) and rooted in deep involvement in a single product category."
       },
       {
         "id": "deals",
-        "text": "Grace knows where to find the best prices on groceries, furniture, phones and flights, and loves telling people.",
+        "text": "Grace tracks store openings, coupon policies, and seasonal price drops across groceries, electronics, and travel, and loves initiating tips with neighbors.",
         "answer": "maven",
-        "explanation": "She has broad information about many products and places to shop, and likes to share it."
+        "explanation": "A market maven possesses broad general marketplace knowledge across many categories and actively shares it."
       },
       {
-        "id": "skincare",
-        "text": "In her group of friends, Ana is the one everyone asks about skincare, a topic she reads about every day.",
+        "id": "decorator",
+        "text": "Busy homeowners hire an interior designer to research, select, and purchase all the living-room furniture on their behalf.",
+        "answer": "surrogate",
+        "explanation": "A surrogate consumer is formally retained or delegated to execute search and purchase decisions on the buyer's behalf."
+      },
+      {
+        "id": "running",
+        "text": "In her marathon club, Ana is the runner everyone consults about gps watches and hydration vests, a category she tests every week.",
         "answer": "leader",
-        "explanation": "She frequently influences others in one product category."
+        "explanation": "She is highly involved and knowledgeable in a specific product domain and advises peers within it."
       },
       {
-        "id": "markets",
-        "text": "Ibrahim keeps a mental list of which stores have sales each week across town and passes it on to neighbours.",
-        "answer": "maven",
-        "explanation": "His knowledge spans many kinds of products and places to shop."
-      },
-      {
-        "id": "gaming",
-        "text": "Classmates follow Chen's advice on gaming headsets and consoles, but not on clothes or food.",
-        "answer": "leader",
-        "explanation": "His influence stays within one category, technology for gaming."
+        "id": "broker",
+        "text": "A buyer pays an independent auto-buying agent to evaluate inventory, negotiate dealer pricing, and finalize a vehicle lease for him.",
+        "answer": "surrogate",
+        "explanation": "The agent acts as a compensated surrogate consumer formally delegated to make the transaction."
       },
       {
         "id": "newsletter",
-        "text": "Fatima sends friends a weekly list of good buys, from shoes to kitchen gadgets to the cheapest gym memberships.",
+        "text": "Ibrahim keeps track of which supermarkets, hardware stores, and pharmacies across town run the best weekly promotions and tells coworkers every Monday.",
         "answer": "maven",
-        "explanation": "She shares broad information about many products."
+        "explanation": "His expertise spans general marketplace practices across many categories rather than one specialized domain."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "ai-generated-review-summaries-and-synthetic-reviews",
-    "question_text": "A seller offers buyers a free gift for every five-star review, and the site's AI summary now reads \"Customers love it.\" A shopper and her AI agent both rely on that summary. What follows?",
-    "hint": "Think about what a summary draws on, and who reads it.",
-    "correct_answer_citation": "Week 10: AI-Generated Review Summaries and Synthetic Reviews",
+    "slide_id": "synthetic-reviews-regulatory-bans",
+    "question_text": "A rogue seller uses a generative language model to post hundreds of varied, realistic five-star reviews attributed to fictional customers. How do these synthetic reviews affect the marketplace?",
+    "hint": "Consider the 'lemons market' problem, the 2024 FTC rule, and who reads online reviews today.",
+    "correct_answer_citation": "Week 10: Synthetic Reviews, Credibility Erosion, and Regulatory Bans",
     "correct_answer_index": 1,
     "options": [
       {
-        "option_text": "The summary removes the effect of the rewarded reviews, because AI weighs every review fairly",
-        "option_explanation": "A summary reflects the reviews it draws on, so rewarded reviews carry the same influence into it."
+        "option_text": "They are easy for human shoppers to spot immediately because generative AI can only repeat identical template sentences",
+        "option_explanation": "Unlike older template spam, generative language models vary sentence structure and mention specific product attributes, making inspection difficult."
       },
       {
-        "option_text": "The summary carries the influence of the rewarded reviews, so it can mislead both the shopper and her agent",
-        "option_explanation": "Correct. The summary inherits the rewarded reviews, and an AI agent that reads reviews can be misled at the same time as the consumer."
+        "option_text": "They erode the informational value of all eWOM, violate the 2024 FTC ban on fake reviews, and simultaneously mislead human shoppers and AI shopping agents",
+        "option_explanation": "Correct. Widespread synthetic reviews create a lemons-market collapse in trust, are prohibited under the 2024 FTC final rule, and corrupt both human and AI agent decisions."
       },
       {
-        "option_text": "Only the shopper can be misled, because AI agents do not read reviews",
-        "option_explanation": "AI agents that shop for consumers also read reviews."
+        "option_text": "They deceive human readers, but autonomous AI shopping agents automatically ignore all customer review text",
+        "option_explanation": "AI shopping agents also ingest customer reviews and review summaries to score candidate products, so synthetic reviews corrupt agent decisions too."
       },
       {
-        "option_text": "The summary is more credible than the reviews, because the AI has no financial interest in the sale",
-        "option_explanation": "The summary is only as credible as the reviews it draws on."
+        "option_text": "They are permitted under U.S. regulations as long as the text describes real product features accurately",
+        "option_explanation": "The 2024 FTC final rule explicitly prohibits fake consumer reviews, including AI-generated reviews attributed to non-existent individuals."
       }
     ]
   },
   {
-    "type": "identify",
-    "slide_id": "influencers-virtual-influencers-and-online-communities",
-    "prompt": "Name the idea each situation shows.",
+    "type": "quiz",
+    "slide_id": "virtual-influencers-authenticity",
+    "question_text": "A brand manager is considering hiring a computer-generated virtual influencer for an upcoming campaign. Based on consumer research (Lou et al., 2023), in which scenario is the virtual influencer most likely to trigger consumer skepticism?",
+    "hint": "Think about the authenticity deficit when a digital avatar lacks human sensory and lived experience.",
+    "correct_answer_citation": "Week 10: Virtual Influencers and Perceived Authenticity",
+    "correct_answer_index": 2,
     "options": [
-      { "id": "macro", "label": "Macro-influencer" },
-      { "id": "micro", "label": "Micro-influencer" },
-      { "id": "virtual", "label": "Virtual influencer" },
-      { "id": "parasocial", "label": "Parasocial relationship" },
-      { "id": "community", "label": "Online community" }
-    ],
-    "cases": [
       {
-        "id": "baker",
-        "text": "A home baker with 9,000 followers recommends a flour brand, and dozens of followers reply with their own loaves.",
-        "answer": "micro",
-        "explanation": "A smaller audience, but high engagement and trust."
+        "option_text": "Showcasing a futuristic streetwear silhouette in a clearly labeled digital fashion lookbook",
+        "option_explanation": "Virtual influencers can be effective for symbolic or fashion-oriented campaigns when their artificial nature is transparent."
       },
       {
-        "id": "star",
-        "text": "A pop star with 40 million followers posts once about a new energy drink.",
-        "answer": "macro",
-        "explanation": "A very large audience."
+        "option_text": "Announcing a new gaming peripheral in a stylized sci-fi animation",
+        "option_explanation": "Technology-oriented and symbolic campaigns fit a transparent digital character well."
       },
       {
-        "id": "avatar",
-        "text": "A digitally created character who has never existed posts photos wearing a new perfume brand.",
-        "answer": "virtual",
-        "explanation": "A computer-generated character that promotes products like a human influencer."
+        "option_text": "Claiming that a soothing facial moisturizer healed the avatar's dry winter skin over two weeks of daily use",
+        "option_explanation": "Correct. Virtual influencers lack skin and lived sensory experience, so experiential or health claims trigger skepticism and erode brand trust."
       },
       {
-        "id": "birthday",
-        "text": "Elena feels hurt when a fitness influencer she has watched daily for years does not answer her birthday message.",
-        "answer": "parasocial",
-        "explanation": "A one-sided feeling of friendship with someone she has never met."
-      },
-      {
-        "id": "owners",
-        "text": "On an owners' forum for one e-bike brand, new members read how others charge and store their bikes, and start doing the same.",
-        "answer": "community",
-        "explanation": "Members see how others use the product and adopt the group's norms: social proof."
-      },
-      {
-        "id": "gamer",
-        "text": "A streamer with a few thousand viewers suggests a keyboard, and many viewers say they trust him because he answers their questions.",
-        "answer": "micro",
-        "explanation": "A small audience with high engagement and trust."
-      },
-      {
-        "id": "fan-group",
-        "text": "Fans in a group chat for a sneaker brand share photos of their new pairs and copy each other's lacing styles.",
-        "answer": "community",
-        "explanation": "An online community acting as social proof."
+        "option_text": "Appearing in multiple international ad formats on the same day without travel delays",
+        "option_explanation": "Instant global scalability and creative control are operational advantages of virtual influencers, not sources of sensory skepticism."
       }
     ]
   }

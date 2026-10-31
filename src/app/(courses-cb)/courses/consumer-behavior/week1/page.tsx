@@ -73,7 +73,7 @@ export default function Week1() {
           ================================================================ */}
       <Slide className={TIGHT} id="defining-consumer-behavior" border>
         <SlideHeading>Defining Consumer Behavior</SlideHeading>
-        <Statement className="!max-w-[46ch] !text-[clamp(1.3rem,2.1vw,1.75rem)]">
+        <Statement className="">
           <Term>Consumer behavior</Term> is the study of the processes involved
           when individuals or groups select, purchase, use, or dispose of
           products, services, ideas, or experiences to satisfy needs and
@@ -97,7 +97,7 @@ export default function Week1() {
             </P>
           </Ruled>
           <Ruled>
-            <Big className="!text-[clamp(1.15rem,1.65vw,1.4rem)]">
+            <Big className="">
               Effective marketing strategy requires{" "}
               <Tint>analyzing the entire sequence</Tint> rather than only the
               point of sale.
@@ -119,7 +119,7 @@ export default function Week1() {
         </SlideHeading>
         <div className="grid w-full items-start gap-10 lg:grid-cols-[1.05fr_1.35fr] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-6">
-            <Statement className="!max-w-[34ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
+            <Statement className="">
               Every core marketing decision, including product design, pricing,
               distribution, and promotion, rests on{" "}
               <Tint>assumptions about how buyers respond</Tint>.
@@ -170,7 +170,7 @@ export default function Week1() {
           title="The Consumption Process and Market Segmentation"
         />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
-          <Statement className="!max-w-[34ch] !text-[clamp(1.25rem,2vw,1.65rem)]">
+          <Statement className="">
             Consumption unfolds across <Tint>three sequential stages</Tint>, and
             each stage raises distinct questions for both the buyer and the
             marketer.
@@ -197,7 +197,7 @@ export default function Week1() {
         <SlideHeading>The Three Stages of Consumption</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Statement className="!max-w-[28ch] !text-[clamp(1.25rem,1.9vw,1.6rem)]">
+            <Statement className="">
               Consumption is organized into three stages:{" "}
               <Term>prepurchase</Term>, <Term>purchase</Term>, and{" "}
               <Term>postpurchase</Term>.
@@ -272,7 +272,7 @@ export default function Week1() {
         </div>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
           <Ruled>
-            <Statement className="!max-w-[34ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
+            <Statement className="">
               <Term>Demand</Term> occurs when a want is backed by both the
               financial ability and the willingness to pay, and{" "}
               <Tint>marketing shapes wants</Tint> rather than creating basic
@@ -345,7 +345,7 @@ export default function Week1() {
       >
         <PartHead n={2} title="Buyers, Users, and Decision Roles" />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
-          <Statement className="!max-w-[34ch] !text-[clamp(1.25rem,2vw,1.65rem)]">
+          <Statement className="">
             Many market transactions involve more than one person, separating
             the <Tint>individual who pays</Tint> for a product from the{" "}
             <Tint>individual who uses</Tint> it.
@@ -473,7 +473,7 @@ export default function Week1() {
         <SlideHeading>
           Individual Consumers Versus Organizational Buyers
         </SlideHeading>
-        <Statement className="!max-w-[46ch] !text-[clamp(1.25rem,1.95vw,1.65rem)]">
+        <Statement className="">
           <Term>Individual consumers</Term> purchase goods and services for
           personal or household use, whereas <Term>organizational buyers</Term>{" "}
           purchase to run a business, institution, or government agency.
@@ -542,7 +542,7 @@ export default function Week1() {
       >
         <PartHead n={3} title="Beyond the Rational Consumer Model" />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
-          <Statement className="!max-w-[34ch] !text-[clamp(1.25rem,2vw,1.65rem)]">
+          <Statement className="">
             Classical economic theory modeled the buyer as a{" "}
             <Term>rational optimizer</Term> who inspects every available option,
             calculates expected utility, and selects the mathematically superior
@@ -598,7 +598,7 @@ export default function Week1() {
             </P>
           </Ruled>
           <Ruled>
-            <Big className="!text-[clamp(1.15rem,1.65vw,1.4rem)]">
+            <Big className="">
               In practice, <Tint>few consumer markets satisfy these conditions</Tint>,
               especially when assortments contain hundreds of competing items.
             </Big>
@@ -654,7 +654,7 @@ export default function Week1() {
               <FourPulls />
             </Plate>
             <Ruled>
-              <Big className="!text-[clamp(1.15rem,1.65vw,1.4rem)]">
+              <Big className="">
                 Marketing predictions fail when managers model consumers as
                 purely analytical calculators rather than{" "}
                 <Tint>adaptive psychological actors</Tint>.
@@ -722,7 +722,7 @@ export default function Week1() {
       >
         <PartHead n={4} title="The AI Agent as a Surrogate Consumer" />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
-          <Statement className="!max-w-[34ch] !text-[clamp(1.25rem,2vw,1.65rem)]">
+          <Statement className="">
             Consumers do not always conduct product search and comparison
             themselves. They frequently{" "}
             <Tint>delegate parts of the decision process</Tint> to external
@@ -749,7 +749,7 @@ export default function Week1() {
         <SlideHeading>
           Human Surrogate Consumers in the Marketplace
         </SlideHeading>
-        <Statement className="!max-w-[44ch] !text-[clamp(1.25rem,1.95vw,1.65rem)]">
+        <Statement className="">
           A <Term>surrogate consumer</Term> is an external agent retained by a
           buyer to guide, direct, or execute marketplace activities on the
           buyer&apos;s behalf (Solomon, 1986).
@@ -881,7 +881,7 @@ export default function Week1() {
             </P>
           </Ruled>
           <Ruled>
-            <Big className="!text-[clamp(1.15rem,1.65vw,1.4rem)]">
+            <Big className="">
               Marketers must therefore communicate with{" "}
               <Tint>two distinct audiences</Tint>: the human consumer who
               experiences the brand and the AI agent that parses structured
@@ -904,7 +904,7 @@ export default function Week1() {
           title="Marketing Ethics, Dark Patterns, and Consumer Well-Being"
         />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
-          <Statement className="!max-w-[34ch] !text-[clamp(1.25rem,2vw,1.65rem)]">
+          <Statement className="">
             Understanding the psychological and algorithmic mechanisms behind
             consumer choice confers{" "}
             <Tint>substantial influence over what people buy and pay</Tint>.
@@ -928,7 +928,7 @@ export default function Week1() {
         border
       >
         <SlideHeading>Consumer Well-Being and Ethical Marketing</SlideHeading>
-        <Statement className="!max-w-[44ch] !text-[clamp(1.25rem,1.95vw,1.65rem)]">
+        <Statement className="">
           <Term>Ethical marketing</Term> creates value by matching genuine
           consumer needs with transparent product information, fair pricing, and
           safe goods.

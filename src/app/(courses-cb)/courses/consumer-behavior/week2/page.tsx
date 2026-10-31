@@ -7,189 +7,55 @@ import {
   Title,
 } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { cn } from "@/lib/utils";
+import {
+  Big,
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  SelectOrganizeInterpret,
-  PerceptionFunnel,
-  ProportionBars,
-  Overload,
+  AbsoluteThreshold,
   Adaptation,
-  WholeFromParts,
-  SemioticTriangle,
+  CerealTwoWays,
   DataSheets,
+  Defense,
+  GestaltPanels,
+  Overload,
+  PerceptionFunnel,
+  PositionEffects,
+  SelectOrganizeInterpret,
+  SemioticTriangle,
+  SensoryModalities,
+  StayBelow,
+  WeberLab,
 } from "./visuals";
 
 // ============================================================================
 // CONSUMER BEHAVIOR | WEEK 2: PERCEPTION AND SENSORY MARKETING
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
-//
-// Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
-// one phrase, its key idea. Defined terms are bold ink and every rule is ink.
-//
-// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
-// so each [exercise]-tagged topic carries one exercise that tests that slide
-// and the ones before it. The three stages of perception are put in order,
-// the three look-alike Gestalt principles are named case by case (identify),
-// what an AI agent can and cannot perceive is a sort.
-// thresholds and Weber's law apply one idea to a case, so they are quizzes.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/** Content slides trim the section's 7rem padding so each topic reads as one screen. */
-const TIGHT = "md:!py-16";
-
-type Tone = "signal" | "counter" | "ink";
-
-const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--rule)]",
-  counter: "border-[var(--rule)]",
-  ink: "border-[var(--rule)]",
-};
-
-const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--ink)]",
-  counter: "text-[var(--ink)]",
-  ink: "text-[var(--ink)]",
-};
-
-/** One verbatim line at reading size. */
-function P({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+/** Weber's Law written out: ΔI / I = k. */
+function Weber() {
   return (
-    <p className={cn("type-body max-w-[var(--measure)]", className)}>{children}</p>
-  );
-}
-
-/** A line promoted to lead size. */
-function Lead({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("type-lead max-w-[48ch]", className)}>{children}</p>;
-}
-
-/** A line set as a serif statement: the line a slide lands on. */
-function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("type-quote max-w-[30ch]", className)}>{children}</p>;
-}
-
-/** A line at h2 size. */
-function Big({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("type-h2 !font-normal", className)}>{children}</p>;
-}
-
-/** Coloured term inside a line. */
-function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
-  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
-}
-
-/** Inline emphasis for a phrase inside a line. */
-function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
-}
-
-/** Hairline-topped block. */
-function Ruled({
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
-      {children}
-    </div>
-  );
-}
-
-/**
- * A plate in a figure well. A `wide` (800-unit) plate keeps a legible minimum
- * width on phones and scrolls inside its well there. From lg up it fits.
- */
-function Plate({
-  children,
-  wide = false,
-  className = "",
-}: {
-  children: React.ReactNode;
-  wide?: boolean;
-  className?: string;
-}) {
-  return (
-    <div className={cn("figure-well w-full min-w-0 p-3", wide && "overflow-x-auto", className)}>
-      {wide ? <div className="min-w-[480px] lg:min-w-0">{children}</div> : children}
-    </div>
-  );
-}
-
-/**
- * Slide heading. A "Label:" prefix from the content is set as a small tracked
- * kicker inside the same h2, so the heading text stays exactly as written.
- */
-function Heading({
-  kicker,
-  children,
-  tone = "signal",
-}: {
-  kicker?: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <div className="mb-8 w-full md:mb-10">
-      <h2 className="type-h1 max-w-[32ch]">
-        {kicker ? (
-          <>
-            <span
-              className={cn(
-                "type-label mb-4 block !text-[0.8rem]",
-                "!text-[var(--ink-3)]",
-              )}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
-      <div className="mt-5 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/**
- * A row of ruled cells, each a verbatim line with its plate beneath. Plates
- * sit at the foot of their cell so a row of them shares one baseline.
- */
-function Cells({
-  cols,
-  items,
-  className = "",
-}: {
-  cols: 3 | 4 | 5;
-  items: { key: string; tone: Tone; text: React.ReactNode; plate?: React.ReactNode }[];
-  className?: string;
-}) {
-  return (
-    <ol
-      className={cn(
-        "grid w-full gap-10 sm:grid-cols-2 sm:gap-x-8 lg:gap-6",
-        { 3: "lg:grid-cols-3", 4: "lg:grid-cols-4", 5: "lg:grid-cols-5" }[cols],
-        className,
-      )}
-    >
-      {items.map((s) => (
-        <li key={s.key} className="flex min-w-0 flex-col gap-4">
-          <div className={cn("border-t pt-4", BORDER[s.tone])}>
-            <p className="type-body">{s.text}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
+    <span className="whitespace-nowrap font-serif">
+      <i>ΔI</i> / <i>I</i> = <i>k</i>
+    </span>
   );
 }
 
@@ -208,587 +74,1121 @@ export default function Week2() {
           <Title className="mt-6">Perception and Sensory Marketing</Title>
           <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
             <p className="type-quote">
-              We do not see things as they are.{" "}
-              {"We see things through our "}
-              <Tint>senses</Tint>
-              {" and "}
-              <Tint>personal filters</Tint>
-              .
+              Perception is the process by which consumers{" "}
+              <Tint>select, organize, and interpret</Tint> sensory inputs to
+              construct meaning in the marketplace.
             </p>
           </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          What Is Perception?
+          Sensation Versus Perception
           ================================================================ */}
-      <Slide className={TIGHT} id="what-is-perception" border>
-        <Heading>What Is Perception?</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
-          <Statement className="!text-[clamp(1.35rem,2.2vw,1.9rem)]">
-            Perception is the process of <Tint>selecting</Tint>, <Tint>organizing</Tint>, and{" "}
-            <Tint>interpreting</Tint> sensations.
-          </Statement>
+      <Slide className={TIGHT} id="sensation-versus-perception" border>
+        <SlideHeading>Sensation Versus Perception</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled>
+            <P>
+              <Term>Sensation</Term> is the immediate response of sensory
+              receptors in the eyes, ears, nose, mouth, and skin to basic
+              stimuli such as light, sound, odor, and texture.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Perception</Term> is the psychological process by which
+              those raw sensations are selected, organized, and interpreted
+              into a coherent picture of the environment.
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-6 w-full">
           <Plate wide>
             <SelectOrganizeInterpret />
           </Plate>
         </div>
-        <div className="mt-10 grid w-full items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-4">
-              <P>Raw sensory inputs reach our sensory organs every second.</P>{" "}
-              <P className="mt-2">
-                <Term>Sights, sounds, smells, tastes, and textures</Term> flood our
-                environment.
-              </P>
-            </Ruled>
-          </div>
-          <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-4">
-              <P>
-                Perception creates <Term>meaning</Term> out of this <Term>chaos</Term>.
-              </P>{" "}
-              <P className="mt-2">
-                Two people exposed to the <Term>exact same advertisement</Term> often
-                walk away with <Term>completely different impressions</Term>.
-              </P>
-            </Ruled>
-          </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Consumers encounter thousands of commercial stimuli each day, far
+              exceeding human information-processing capacity.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Because interpretation depends on prior experience, expectations,
+              and current needs, two consumers exposed to the same advertisement
+              can construct different meanings from it.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketing decisions therefore depend on how consumers{" "}
+              <Tint>perceive</Tint> a product or price rather than on its
+              objective physical properties alone.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          The Three Stages of Perception
+          The Three Stages of the Perception Process
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="the-three-stages-of-perception"
+        id="the-three-stages-of-the-perception-process"
         border
-        exercise={exercise["the-three-stages-of-perception"]}
+        exercise={exercise["the-three-stages-of-the-perception-process"]}
       >
-        <Heading>The Three Stages of Perception</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_2.2fr] lg:gap-12">
-          <Statement>Perception occurs in three sequential stages.</Statement>
+        <SlideHeading>The Three Stages of the Perception Process</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement className="">
+              Human perception unfolds across three sequential stages:{" "}
+              <Term>exposure</Term>, <Term>attention</Term>, and{" "}
+              <Term>interpretation</Term>.
+            </Statement>
+            <Ruled>
+              <P>
+                Most marketing messages are <Tint>filtered out</Tint> at the
+                exposure or attention stage before any interpretation takes
+                place.
+              </P>
+            </Ruled>
+          </div>
           <Plate wide>
             <PerceptionFunnel />
           </Plate>
         </div>
-        <ol className="mt-10 grid w-full gap-8 md:grid-cols-3">
-          {[
-            {
-              stage: "Stage 1 is Exposure.",
-              def: "Sensory stimuli come within the range of a person's sensory receptors.",
-            },
-            {
-              stage: "Stage 2 is Attention.",
-              def: "The mind allocates mental processing capacity to a specific stimulus.",
-            },
-            {
-              stage: "Stage 3 is Interpretation.",
-              def: "The brain assigns meaning to the sensory stimulus based on past experiences and expectations.",
-            },
-          ].map((s, i) => (
-            <li
-              key={s.stage}
-              className={cn(
-                "min-w-0 border-t pt-4",
-                "border-[var(--rule)]",
-              )}
-            >
-              <p
-                className={cn(
-                  "type-h2 !font-normal !text-[clamp(1.25rem,1.9vw,1.6rem)]",
-                )}
-              >
-                {s.stage}
-              </p>{" "}
-              <p className="type-body mt-3">{s.def}</p>
-            </li>
-          ))}
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Exposure</Term> occurs when a stimulus comes within the
+              detection range of a consumer&apos;s sensory receptors.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Attention</Term> occurs when cognitive processing capacity
+              is allocated to a specific stimulus among competing inputs.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Interpretation</Term> occurs when the consumer assigns
+              meaning to the attended stimulus by relating it to schemas stored
+              in memory.
+            </P>
+          </Numbered>
         </ol>
-        <Ruled tone="ink" className="mt-10 w-full">
-          <Statement className="!max-w-[46ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
-            Most stimuli get <Tint tone="ink">filtered out</Tint> during exposure and attention
-            before reaching <Tint>interpretation</Tint>.
+      </Slide>
+
+      {/* ================================================================
+          Part 1: Sensory Systems and Sensory Marketing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-1-sensory-systems-and-sensory-marketing"
+        border
+      >
+        <PartHead n={1} title="Sensory Systems and Sensory Marketing" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Sensory marketing engages the consumer&apos;s{" "}
+            <Tint>five sensory systems</Tint> in a deliberate way to shape brand
+            associations, perceived quality, and purchase behavior.
           </Statement>
+          <Ruled>
+            <Lead>
+              Each sensory channel processes commercial cues differently and
+              contributes distinct information during shopping and product use.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Vision and Auditory Cues in Brand Identity
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="vision-and-auditory-cues-in-brand-identity"
+        border
+      >
+        <SlideHeading>Vision and Auditory Cues in Brand Identity</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Vision</Term> is the dominant sensory channel in most
+                retail categories, conveying brand identity through color,
+                typography, package silhouette, and shelf contrast.
+              </P>
+            </Ruled>
+            <P>
+              Color associations are learned within a culture and category,
+              allowing shoppers to identify product variants such as
+              decaffeinated coffee or low-fat dairy at a glance.
+            </P>
+          </div>
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Auditory cues</Term> include sonic logos, advertising
+                music, and the functional sounds a product makes during use,
+                such as the click of a luxury compact or the crunch of a snack.
+              </P>
+            </Ruled>
+            <P>
+              Background music tempo in retail stores and restaurants influences
+              how quickly consumers move through aisles and how much time they
+              spend browsing.
+            </P>
+          </div>
+        </div>
+        <div className="mt-6 w-full">
+          <Plate wide>
+            <SensoryModalities />
+          </Plate>
+        </div>
+        <Ruled className="mt-6 w-full">
+          <Big className="">
+            Consistent visual and auditory cues build{" "}
+            <Tint>distinctive brand assets</Tint> that aid rapid recognition
+            under low-involvement shopping conditions.
+          </Big>
         </Ruled>
       </Slide>
 
       {/* ================================================================
-          Sensory Marketing: Beyond Sight and Sound
-          ================================================================ */}
-      <Slide className={TIGHT} id="sensory-marketing-beyond-sight-and-sound" border>
-        <Heading kicker="Sensory Marketing:">Beyond Sight and Sound</Heading>
-        <Statement className="!max-w-[40ch]">
-          Sensory marketing engages the consumer&apos;s <Tint>senses</Tint> to influence their
-          feelings and choices.
-        </Statement>
-        <Cells
-          cols={5}
-          className="mt-10"
-          items={[
-            {
-              key: "sight",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  <Term>Sight</Term> creates visual identity, package recognition, and
-                  color associations.
-                </>
-              ),
-            },
-            {
-              key: "sound",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  <Term>Sound</Term> shapes shopping tempo and brand memory through
-                  musical jingles.
-                </>
-              ),
-            },
-            {
-              key: "smell",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  <Term>Smell</Term> connects directly to the limbic system, triggering emotional
-                  memories.
-                </>
-              ),
-            },
-            {
-              key: "touch",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  <Term>Touch</Term>, also called haptics, builds psychological ownership when
-                  consumers hold an item.
-                </>
-              ),
-            },
-            {
-              key: "taste",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  <Term>Taste</Term> drives loyalty in food and beverage markets through distinct
-                  flavor profiles.
-                </>
-              ),
-            },
-          ]}
-        />
-      </Slide>
-
-      {/* ================================================================
-          Sensory Thresholds: The Limits of Awareness
+          Olfaction, Haptics, and Gustation in the Store Environment
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="sensory-thresholds-the-limits-of-awareness"
+        id="olfaction-haptics-and-gustation-in-the-store-environment"
         border
-        exercise={exercise["sensory-thresholds-the-limits-of-awareness"]}
+        exercise={exercise["olfaction-haptics-and-gustation-in-the-store-environment"]}
       >
-        <Heading kicker="Sensory Thresholds:">The Limits of Awareness</Heading>
-        <Lead>Senses have physical and psychological limits.</Lead>
-        <Cells
-          cols={3}
-          className="mt-10"
-          items={[
-            {
-              key: "absolute",
-              tone: "ink",
-              text: (
-                <>
-                  The <Term>absolute threshold</Term> is the minimum amount of stimulation a person
-                  can detect on a sensory channel.
-                </>
-              ),
-            },
-            {
-              key: "billboard",
-              tone: "ink",
-              text: (
-                <>
-                  A billboard with tiny text placed far from a highway falls{" "}
-                  <Term>below the absolute threshold</Term> of drivers.
-                </>
-              ),
-            },
-            {
-              key: "differential",
-              tone: "ink",
-              text: (
-                <>
-                  The <Term>differential threshold</Term> is the ability of a
-                  sensory system to detect changes or differences between two stimuli.{" "}
-                  <span className="mt-2 block">
-                    The minimum difference between two stimuli needed for detection is called the{" "}
-                    <Term>Just Noticeable Difference, or JND</Term>.
-                  </span>
-                </>
-              ),
-            },
-          ]}
-        />
-      </Slide>
-
-      {/* ================================================================
-          Weber's Law: When Differences Matter
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="webers-law-when-differences-matter"
-        border
-        exercise={exercise["webers-law-when-differences-matter"]}
-      >
-        <Heading kicker="Weber's Law:">When Differences Matter</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
-          <div className="min-w-0">
-            <Statement className="!max-w-[36ch] !text-[clamp(1.3rem,2vw,1.75rem)]">
-              Weber&apos;s Law states that the <Tint tone="ink">stronger the initial stimulus</Tint>,
-              the <Tint>greater the change</Tint> must be for people to notice it.
-            </Statement>{" "}
-            <P className="mt-5">
-              The needed change is not a fixed amount. It is a{" "}
-              <Term>constant proportion</Term> of the initial intensity.
+        <SlideHeading>
+          Olfaction, Haptics, and Gustation in the Store Environment
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-3 md:gap-10">
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Olfactory cues</Term> are processed through the limbic
+                system, which links scent directly to{" "}
+                <Tint>emotion and episodic memory</Tint>.
+              </P>
+            </Ruled>
+            <P>
+              Hotels, apparel retailers, and bakeries use ambient scent to
+              increase lingering time and improve evaluations of store
+              merchandise.
             </P>
           </div>
-          <Plate className="max-w-[440px] lg:justify-self-end">
-            <ProportionBars />
-          </Plate>
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Haptics</Term> refers to the sense of touch, which
+                provides diagnostic information about material quality, weight,
+                softness, and temperature.
+              </P>
+            </Ruled>
+            <P>
+              Physically holding a product in a store increases psychological
+              ownership, making the shopper value the item more highly before
+              purchasing it.
+            </P>
+          </div>
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Gustation</Term> combines taste receptor inputs with smell
+                and texture to drive repeat purchase in food and beverage
+                categories.
+              </P>
+            </Ruled>
+          </div>
         </div>
-        <Cells
-          cols={4}
-          className="mt-10"
-          items={[
-            {
-              key: "candy",
-              tone: "ink",
-              text: (
-                <>
-                  A ten-cent price increase on a one-dollar candy bar is{" "}
-                  <Term>noticeable right away</Term> because it is a ten percent jump.
-                </>
-              ),
-            },
-            {
-              key: "laptop",
-              tone: "ink",
-              text: (
-                <>
-                  A ten-cent price increase on a thousand-dollar laptop will go{" "}
-                  <Term>completely unnoticed</Term>.
-                </>
-              ),
-            },
-            {
-              key: "below",
-              tone: "ink",
-              text: (
-                <>
-                  Marketers <Term>stay below the JND</Term> when shrinking package
-                  sizes or raising prices slightly.
-                </>
-              ),
-            },
-            {
-              key: "exceed",
-              tone: "ink",
-              text: (
-                <>
-                  Marketers <Term>exceed the JND</Term> when redesigning a package or announcing a
-                  major discount.
-                </>
-              ),
-            },
-          ]}
-        />
       </Slide>
 
       {/* ================================================================
-          Attention: The Battle for Mental Energy
+          Embodied Cognition and Cross-Modal Sensory Associations
           ================================================================ */}
-      <Slide className={TIGHT} id="attention-the-battle-for-mental-energy" border>
-        <Heading kicker="Attention:">The Battle for Mental Energy</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
-          <Big className="!text-[clamp(1.3rem,2vw,1.75rem)]">
-            Consumers face <Tint>sensory overload</Tint> from thousands of ads, notifications, and
-            store displays every day.
+      <Slide
+        className={TIGHT}
+        id="embodied-cognition-and-cross-modal-sensory-associations"
+        border
+      >
+        <SlideHeading>
+          Embodied Cognition and Cross-Modal Sensory Associations
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="grid min-w-0 content-start gap-4">
+            <Statement className="">
+              <Term>Embodied cognition</Term> holds that bodily sensations
+              influence abstract cognitive judgments even without conscious
+              awareness.
+            </Statement>
+            <Ruled>
+              <P>
+                Consumers holding a warm cup of coffee tend to judge an
+                unfamiliar person as more generous and trustworthy than
+                consumers holding an iced drink.
+              </P>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 content-start gap-4">
+            <Statement className="">
+              <Term>Cross-modal correspondence</Term> occurs when a cue in one
+              sensory modality alters perception in another modality.
+            </Statement>
+            <Ruled>
+              <P>
+                Beverage consumers judge a drink served in a heavier glass or a
+                textured bottle as richer and higher in quality than the
+                identical liquid served in a thin plastic cup.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+        <Ruled className="mt-10 w-full">
+          <Big className="">
+            Package designers coordinate visual color, surface texture, and
+            container weight so that{" "}
+            <Tint>all sensory channels reinforce the same quality positioning</Tint>.
           </Big>
+        </Ruled>
+      </Slide>
+
+      {/* ================================================================
+          Part 2: Sensory Thresholds and Psychophysics
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-2-sensory-thresholds-and-psychophysics"
+        border
+      >
+        <PartHead n={2} title="Sensory Thresholds and Psychophysics" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            <Term>Psychophysics</Term> studies the quantitative relationship
+            between the physical intensity of a stimulus and the sensory
+            response it produces in an observer.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Understanding sensory thresholds tells marketers{" "}
+              <Tint>how strong a signal must be to register</Tint> and how much
+              a stimulus must change before buyers notice the difference.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Absolute and Differential Thresholds
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="absolute-and-differential-thresholds"
+        border
+        exercise={exercise["absolute-and-differential-thresholds"]}
+      >
+        <SlideHeading>Absolute and Differential Thresholds</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              The <Term>absolute threshold</Term> is the minimum intensity of
+              stimulation that can be detected on a given sensory channel 50
+              percent of the time.
+            </Lead>
+            <Ruled>
+              <P>
+                Highway billboard lettering that is too small for the viewing
+                distance or an audio notification masked by street noise falls
+                below the absolute threshold and fails to achieve exposure.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <AbsoluteThreshold />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              The <Term>differential threshold</Term> is the ability of a
+              sensory system to detect a difference between two stimuli of
+              different intensities.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              The <Term>Just Noticeable Difference (JND)</Term> is the minimum
+              change in stimulus intensity required for a consumer to detect
+              that a change has occurred.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Whether a consumer detects a price adjustment, a package size
+              reduction, or a recipe reformulation depends on whether the change{" "}
+              <Tint>crosses the JND</Tint>.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Weber's Law and Proportional Change
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="webers-law-and-proportional-change"
+        border
+        exercise={exercise["webers-law-and-proportional-change"]}
+      >
+        <SlideHeading>Weber&apos;s Law and Proportional Change</SlideHeading>
+        <div className="grid w-full items-start gap-8 lg:grid-cols-[1fr_1.6fr] lg:gap-12">
+          <div className="grid min-w-0 gap-4">
+            <P>
+              Formulated by Ernst Weber, <Term>Weber&apos;s Law</Term> states
+              that the size of the Just Noticeable Difference is a{" "}
+              <Tint>constant proportion</Tint> of the original stimulus
+              intensity rather than a fixed absolute amount.
+            </P>
+            <P>
+              The relationship is expressed as <Weber />, where <i>I</i> is the
+              initial stimulus intensity, <i>ΔI</i> is the minimum noticeable
+              change, and <i>k</i> is a constant for that sensory dimension.
+            </P>
+          </div>
+          <Plate wide>
+            <WeberLab />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
+          <Ruled>
+            <P>
+              A 2-dollar reduction on a 10-dollar fast-food meal represents a 20
+              percent change and is immediately noticeable to buyers.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              The same 2-dollar reduction on a 1,000-dollar television
+              represents a 0.2 percent change and falls well below the
+              differential threshold.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Retailers therefore express promotions in percentage terms on
+              low-priced items and in dollar terms on high-priced items to make
+              the discount feel substantial.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Strategic Applications of the Just Noticeable Difference
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="strategic-applications-of-the-just-noticeable-difference"
+        border
+      >
+        <SlideHeading>
+          Strategic Applications of the Just Noticeable Difference
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Marketers deliberately calibrate stimulus changes either{" "}
+              <Term>below</Term> or <Term>above</Term> the JND depending on
+              whether the change is unfavorable or favorable to the consumer.
+            </Lead>
+            <Ruled>
+              <P>
+                When input costs rise and a manufacturer reduces net package
+                weight in a practice known as <Term>shrinkflation</Term>, the
+                reduction is kept below the JND so habitual buyers do not switch
+                brands.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <StayBelow />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              When a brand updates a classic logo to look more contemporary
+              without alienating loyal buyers, designers apply a series of
+              incremental changes that each stay below the JND.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Conversely, when a brand introduces a promotional discount,
+              increases package volume, or launches a product improvement, the
+              change is designed to exceed the JND clearly.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Failing to exceed the JND on a costly product improvement{" "}
+              <Tint>wastes engineering and promotional budget</Tint> on a
+              benefit consumers never register.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Redesigning a Package Without Losing Recognition
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-redesigning-a-package-without-losing-recognition"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Redesigning a Package Without Losing Recognition
+        </SlideHeading>
+        <Prompt>
+          A heritage oat-cereal brand with an aging customer base wants to
+          modernize its bright yellow box and reduce net package weight from 500
+          grams to 450 grams to offset grain cost inflation. How do the absolute
+          threshold, the Just Noticeable Difference, and Weber&apos;s Law guide
+          how the brand should execute the visual redesign versus the weight
+          reduction, and at what point does staying below the JND raise ethical
+          concerns?
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Part 3: Selective Exposure, Attention, and Adaptation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-3-selective-exposure-attention-and-adaptation"
+        border
+      >
+        <PartHead n={3} title="Selective Exposure, Attention, and Adaptation" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Passing the absolute threshold guarantees only that a stimulus{" "}
+            <Term>can be detected</Term>, not that a consumer{" "}
+            <Tint>will attend to it</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Consumers actively filter commercial environments through
+              selective exposure, perceptual vigilance, perceptual defense, and
+              adaptation.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Sensory Overload and Selective Exposure
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="sensory-overload-and-selective-exposure"
+        border
+      >
+        <SlideHeading>Sensory Overload and Selective Exposure</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement>
+              <Term>Sensory overload</Term> occurs when the volume of
+              environmental and digital stimuli exceeds a person&apos;s
+              cognitive capacity to process them.
+            </Statement>
+            <Ruled>
+              <P>
+                To cope with overload, consumers practice{" "}
+                <Term>selective exposure</Term> by actively choosing which media
+                channels, websites, and store aisles they encounter or avoid.
+              </P>
+            </Ruled>
+          </div>
           <Plate wide>
             <Overload />
           </Plate>
         </div>
-        <Cells
-          cols={4}
-          className="mt-10"
-          items={[
-            {
-              key: "selective",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Selective exposure</Term> means consumers choose what media and
-                  messages they see or avoid.
-                </>
-              ),
-            },
-            {
-              key: "vigilance",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Perceptual vigilance</Term> means consumers notice stimuli that relate to
-                  their current needs. A hungry person notices restaurant signs.
-                </>
-              ),
-            },
-            {
-              key: "defense",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Perceptual defense</Term> means consumers screen out threatening or
-                  contradictory messages. Heavy smokers often ignore warning labels on cigarette
-                  packs.
-                </>
-              ),
-            },
-            {
-              key: "adaptation",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Adaptation</Term> occurs when consumers no with time stop paying
-                  attention to familiar stimuli.
-                </>
-              ),
-            },
-          ]}
-        />
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Viewers skip pre-roll video advertisements, install browser ad
+              blockers, and fast-forward through broadcast commercial breaks.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Selective exposure means that reach figures based on media
+              placement <Tint>overstate actual consumer exposure</Tint> to the
+              brand message.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketers counter selective exposure by placing messages inside
+              relevant editorial content, search results, or opt-in
+              communications that match the consumer&apos;s current task.
+            </P>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Machine Perception: How AI Agents Perceive Products
+          Perceptual Vigilance and Perceptual Defense
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="machine-perception-how-ai-agents-perceive-products"
+        id="perceptual-vigilance-and-perceptual-defense"
         border
-        exercise={exercise["machine-perception-how-ai-agents-perceive-products"]}
+        exercise={exercise["perceptual-vigilance-and-perceptual-defense"]}
       >
-        <Heading kicker="Machine Perception:">How AI Agents Perceive Products</Heading>
-        <Big className="!max-w-none !text-[clamp(1.15rem,1.6vw,1.4rem)]">
-          An AI agent that shops for a consumer does not see, hear, smell, touch, or taste a
-          product.
-        </Big>
-        {/* What the agent perceives, and what exposure and attention mean for
-            it, lead the plate of two data sheets. */}
-        <div className="mt-5 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
-          <div className="grid min-w-0 gap-3">
+        <SlideHeading>Perceptual Vigilance and Perceptual Defense</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              <Term>Perceptual vigilance</Term> is the heightened tendency of
+              consumers to notice stimuli that relate to their current active
+              needs or goals.
+            </Lead>
+            <Ruled>
+              <P>
+                A commuter whose car lease expires next month suddenly notices
+                automobile dealerships and financing advertisements that were
+                previously ignored.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <Defense />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
             <P>
-              It perceives a product through <Term>data</Term>: the name, price, size, ingredients,
-              ratings, and reviews.
+              <Term>Perceptual defense</Term> is the opposite mechanism, in
+              which consumers screen out or distort stimuli that threaten their
+              existing beliefs, habits, or self-image.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Heavy smokers frequently look away from graphic health warnings on
+              cigarette packages or discount the personal relevance of the risk.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Because attention is selective, the same public-health or
+              commercial message achieves{" "}
+              <Tint>very different attention rates</Tint> across segments with
+              different baseline motives.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Sensory Adaptation and Stimulus Contrast
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="sensory-adaptation-and-stimulus-contrast"
+        border
+      >
+        <SlideHeading>Sensory Adaptation and Stimulus Contrast</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              <Term>Sensory adaptation</Term> is the gradual decline in sensory
+              responsiveness that occurs when a receptor is exposed to a
+              constant, unchanging stimulus over time.
+            </Lead>
+            <Ruled>
+              <P>
+                A shopper notices a bakery&apos;s cinnamon aroma immediately
+                upon entering the store, but stops perceiving the scent after
+                ten minutes in the aisle.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <Adaptation />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              In advertising, repeated exposure to an identical banner or
+              commercial leads to <Term>habituation</Term>, where consumers
+              cease allocating attention to the familiar layout.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketers restore attention by introducing{" "}
+              <Term>stimulus contrast</Term> through unexpected size, color
+              isolation, movement, novelty, or directional visual cues.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Effective campaign management{" "}
+              <Tint>refreshes creative execution</Tint> periodically while
+              preserving core brand retrieval cues.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 4: Perceptual Organization, Gestalt Principles, and Semiotics
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-4-perceptual-organization-gestalt-principles-and-semiotics"
+        border
+      >
+        <PartHead
+          n={4}
+          title="Perceptual Organization, Gestalt Principles, and Semiotics"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Once a stimulus captures attention, the brain does not process
+            individual lines, sounds, or words <Tint>in isolation</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Consumers organize sensory elements into recognizable wholes using
+              Gestalt principles and interpret their symbolic meaning through
+              cultural signs.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Gestalt Principles of Perceptual Organization
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="gestalt-principles-of-perceptual-organization"
+        border
+        exercise={exercise["gestalt-principles-of-perceptual-organization"]}
+      >
+        <SlideHeading>Gestalt Principles of Perceptual Organization</SlideHeading>
+        <Statement>
+          <Term>Gestalt psychology</Term> proposes that people perceive
+          organized patterns as unified wholes whose meaning{" "}
+          <Tint>exceeds the sum of their individual parts</Tint>.
+        </Statement>
+        <div className="mt-6 w-full">
+          <Plate wide>
+            <GestaltPanels />
+          </Plate>
+        </div>
+        <ol className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              The principle of <Term>closure</Term> states that perceivers
+              mentally fill in missing gaps in an incomplete image or melody,
+              which increases active cognitive engagement with a logo or
+              slogan.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              The principle of <Term>similarity</Term> states that consumers
+              group items that share visual attributes such as color, shape,
+              or typography as belonging to the same product line.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              The principle of <Term>figure-ground</Term> states that the
+              visual system separates a dominant focal object (the figure)
+              from its surrounding context (the ground).
+            </P>
+            <P className="mt-3">
+              Clear figure-ground separation ensures that the brand name and
+              key benefit stand out immediately rather than blending into
+              decorative background imagery.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          Expectation, Categorization, and Perceptual Inference
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="expectation-categorization-and-perceptual-inference"
+        border
+      >
+        <SlideHeading>
+          Expectation, Categorization, and Perceptual Inference
+        </SlideHeading>
+        <Statement className="">
+          Interpretation combines <Term>bottom-up processing</Term> driven by
+          raw stimulus features with <Term>top-down processing</Term> driven by
+          the consumer&apos;s prior knowledge and expectations.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Schema-based categorization</Term> occurs when a consumer
+                assigns a new product to an existing mental category, which
+                immediately transfers that category&apos;s expected attributes
+                to the item.
+              </P>
+            </Ruled>
+            <P>
+              A beverage sold in a slim matte-black aluminum can is categorized
+              as an energy drink, whereas a beverage in a green glass bottle is
+              categorized as a sparkling mixer or craft soda.
+            </P>
+          </div>
+          <div className="grid min-w-0 content-start gap-4">
+            <Ruled>
+              <P>
+                <Term>Perceptual inference</Term> occurs when consumers form
+                beliefs about unobserved product attributes, such as durability
+                or natural ingredients, based on visible packaging cues.
+              </P>
+            </Ruled>
+            <P>
+              When a product&apos;s packaging cues conflict with its actual
+              category, consumers experience <Tint>perceptual confusion</Tint>{" "}
+              and often pass over the item on the shelf.
+            </P>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Semiotics: Object, Sign, and Interpretant
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="semiotics-object-sign-and-interpretant"
+        border
+      >
+        <SlideHeading kicker="Semiotics:">Object, Sign, and Interpretant</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-x-12">
+          <div className="grid min-w-0 gap-4">
+            <P>
+              <Term>Semiotics</Term> is the study of how signs and symbols
+              create and transmit meaning within a culture (Peirce, 1931).
             </P>
             <P>
-              For an AI agent, <Term>exposure</Term> means the product information is
-              available for the agent to read.
+              In marketing semiotics, every persuasive message links{" "}
+              <Tint>three elements</Tint>: the object, the sign (or
+              representamen), and the interpretant.
             </P>
+          </div>
+          <Plate wide>
+            <SemioticTriangle />
+          </Plate>
+        </div>
+        <ol className="mt-6 grid w-full gap-6 md:grid-cols-3">
+          <Numbered n={1}>
             <P>
-              A product with <Term>missing or unclear details</Term> may never reach
-              the agent&apos;s attention.
+              The <Term>object</Term> is the actual product or brand being
+              promoted, such as a rugged four-wheel-drive vehicle.
             </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              The <Term>sign</Term> is the sensory image, word, or symbol used
+              to represent the product&apos;s qualities, such as a mountain peak
+              or a wild mustang.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              The <Term>interpretant</Term> is the mental meaning derived by the
+              consumer, such as independence and resilience, which depends on
+              the consumer&apos;s cultural background.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: Machine Perception in Agent-Mediated Shopping
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-machine-perception-in-agent-mediated-shopping"
+        border
+      >
+        <PartHead n={5} title="Machine Perception in Agent-Mediated Shopping" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            When a consumer delegates shopping to an AI agent, the initial
+            stages of exposure, attention, and interpretation are performed by{" "}
+            <Tint>software rather than human sensory organs</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Understanding how machine perception differs from human perception
+              explains why visual merchandising alone cannot secure choice in
+              agentic commerce.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          How AI Shopping Agents Perceive Products
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="how-ai-shopping-agents-perceive-products"
+        border
+      >
+        <SlideHeading>How AI Shopping Agents Perceive Products</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
+          <div className="grid min-w-0 gap-4">
+            <Big className="">
+              An AI shopping agent has no biological receptors for sight, sound,
+              smell, touch, or taste.
+            </Big>
+            <P>
+              Instead, the agent perceives a product through{" "}
+              <Term>digital tokens</Term>: product titles, structured
+              specification tables, price fields, ingredient lists, and
+              customer review text.
+            </P>
+          </div>
+          <Plate wide>
+            <CerealTwoWays />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
+          <Ruled>
+            <P>
+              While a human shopper in a grocery aisle perceives a cereal box
+              through its shelf color and front-of-pack graphics, an AI agent
+              reads its nutrition table, unit weight, and average star rating.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Sensory marketing remains essential during the postpurchase stage,
+              because the human consumer still eats, wears, or handles the
+              physical product after delivery.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              During prepurchase search and purchase selection, however, an AI
+              agent responds to <Tint>machine-readable data</Tint> rather than
+              sensory atmosphere.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Digital Exposure and Structured Product Data
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="digital-exposure-and-structured-product-data"
+        border
+      >
+        <SlideHeading>Digital Exposure and Structured Product Data</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.5fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement>
+              For an AI shopping agent, <Term>exposure</Term> occurs only when a
+              product&apos;s information is indexed, accessible via search or
+              API, and included in the results returned to the agent.
+            </Statement>
+            <Ruled>
+              <P>
+                Clear digital exposure is therefore the algorithmic counterpart
+                of <Tint>placing a package in clear view</Tint> on a well-lit
+                retail shelf.
+              </P>
+            </Ruled>
           </div>
           <Plate wide>
             <DataSheets />
           </Plate>
         </div>
-        <Statement className="mt-6 !max-w-[48ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
-          Attention depends on <Tint>position</Tint> for both people and AI agents.
-        </Statement>
-        <ol className="mt-4 grid w-full gap-8 md:grid-cols-2 md:gap-10">
-          {[
-            {
-              key: "shoppers",
-              tone: "ink" as Tone,
-              text: (
-                <>
-                  Shoppers notice products at <Term>eye level</Term> on a shelf and at
-                  the <Term>top of a search results page</Term> more often.
-                </>
-              ),
-            },
-            {
-              key: "agents",
-              tone: "ink" as Tone,
-              text: (
-                <>
-                  Research shows that <Term>AI agents</Term> can also favor options because of
-                  where they appear in a list.
-                </>
-              ),
-            },
-          ].map((c) => (
-            <li
-              key={c.key}
-              className={cn(
-                "min-w-0 border-t pt-4",
-                BORDER[c.tone],
-              )}
-            >
-              <p className="type-body">{c.text}</p>
-            </li>
-          ))}
+        <ol className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              If a brand places critical attributes such as allergen warnings,
+              garment measurements, or warranty length inside an unindexed
+              promotional graphic, those attributes fall below the agent&apos;s
+              threshold of exposure.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Ambiguous or inconsistent attribute labels across retail listings
+              act like sensory noise, preventing the agent from matching the
+              item to the consumer&apos;s stated constraints.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Providing complete, standardized schema markup ensures that the
+              agent can detect and verify every relevant product attribute
+              during screening.
+            </P>
+          </Numbered>
         </ol>
-        <Ruled tone="ink" className="mt-5 w-full !pt-3">
-          <P className="!max-w-none !text-[clamp(1.05rem,1.4vw,1.25rem)]">
-            <Term>Sensory marketing still matters</Term>, because the consumer uses the product
-            with all five senses after the sale.
-          </P>
-        </Ruled>
       </Slide>
 
       {/* ================================================================
-          Interpretation and Gestalt Principles
+          Position Effects in Human and Algorithmic Attention
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="interpretation-and-gestalt-principles"
+        id="position-effects-in-human-and-algorithmic-attention"
         border
-        exercise={exercise["interpretation-and-gestalt-principles"]}
+        exercise={exercise["position-effects-in-human-and-algorithmic-attention"]}
       >
-        <Heading>Interpretation and Gestalt Principles</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
-          <div className="min-w-0">
-            <Statement className="!max-w-[36ch] !text-[clamp(1.3rem,2vw,1.75rem)]">
-              People do not interpret stimuli in isolation.{" "}
-              <Tint>They organize them into patterns.</Tint>
-            </Statement>{" "}
-            <P className="mt-5">
-              <Term>Gestalt psychology</Term> explains how people construct whole
-              meanings from individual elements.
+        <SlideHeading>
+          Position Effects in Human and Algorithmic Attention
+        </SlideHeading>
+        <div className="grid w-full items-start gap-8 lg:grid-cols-[1fr_1.45fr] lg:gap-12">
+          <div className="grid min-w-0 gap-4">
+            <P>
+              Both human shoppers and AI shopping agents allocate{" "}
+              <Term>uneven attention</Term> across positions in a display or
+              list.
+            </P>
+            <P>
+              In physical stores, human shoppers attend disproportionately to
+              items placed at eye level and at the center of a shelf display,
+              and in digital search they click the top results most often.
+            </P>
+            <P>
+              Controlled experiments show that large language models acting as
+              shopping agents also exhibit strong position effects when
+              evaluating candidate lists (Wadi &amp; Ma, 2026a).
             </P>
           </div>
-          <Plate className="max-w-[440px] lg:justify-self-end">
-            <WholeFromParts />
+          <Plate wide>
+            <PositionEffects />
           </Plate>
         </div>
-        <Cells
-          cols={3}
-          className="mt-10"
-          items={[
-            {
-              key: "closure",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  The <Term>Closure</Term> principle means people fill in missing pieces to
-                  perceive a complete picture, such as an incomplete brand logo.
-                </>
-              ),
-            },
-            {
-              key: "similarity",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  The <Term>Similarity</Term> principle means consumers group objects with shared
-                  visual traits like color and shape together.
-                </>
-              ),
-            },
-            {
-              key: "figure-ground",
-              tone: "ink",
-              text: (
-                <>
-                  {" "}
-                  The <Term>Figure-Ground</Term> principle means people separate a main focal
-                  object from its background.
-                </>
-              ),
-            },
-          ]}
-        />
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled>
+            <P>
+              Depending on model architecture and list structure, AI agents
+              display <Term>primacy bias</Term> toward options listed first or{" "}
+              <Term>recency bias</Term> toward options listed last, even when
+              product attributes are identical (Wadi &amp; Ma, 2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Consequently, <Tint>search ranking order and display position</Tint>{" "}
+              shape which products receive attention in both human and
+              agent-mediated shopping.
+            </P>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Semiotics: The Meaning of Marketing Messages
+          Discussion: Auditing Sensory and Machine Perception for a Beverage Launch
           ================================================================ */}
-      <Slide className={TIGHT} id="semiotics-the-meaning-of-marketing-messages" border>
-        <Heading kicker="Semiotics:">The Meaning of Marketing Messages</Heading>
-        {/* The triangle sits beside the lines it draws. On phones it follows
-            the definition of semiotics, before the three parts. */}
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.45fr] lg:gap-x-12">
-          <div className="min-w-0 lg:col-start-1 lg:row-start-1 lg:self-end">
-            <Lead>Marketers design ads to send symbolic messages to buyers.</Lead>
-            <Big className="mt-5 !text-[clamp(1.3rem,2vw,1.75rem)]">
-              <Tint>Semiotics</Tint> is the study of signs, symbols, and their assigned meanings.
-            </Big>
-          </div>
-          <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <SemioticTriangle />
-          </Plate>
-          <div className="min-w-0 lg:col-start-1 lg:row-start-2 lg:self-start">
-            <ol className="grid w-full gap-4">
-              <li className="min-w-0 border-t border-[var(--rule)] pt-3">
-                <p className="type-body">
-                  {" "}
-                  An <Term>object</Term> is the actual product being promoted.
-                </p>
-              </li>
-              <li className="min-w-0 border-t border-[var(--rule)] pt-3">
-                <p className="type-body">
-                  {" "}
-                  A <Term>sign</Term> is the sensory image or symbol representing
-                  the intended meaning.
-                </p>
-              </li>
-              <li className="min-w-0 border-t border-[var(--rule)] pt-3">
-                <p className="type-body">
-                  {" "}
-                  An <Term>interpretant</Term> is the meaning or feeling derived by the consumer
-                  from the sign.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <Ruled tone="ink" className="mt-10 w-full">
-          <Statement className="!max-w-[46ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
-            A luxury watch ad uses an image of an eagle to signify{" "}
-            freedom and prestige.
-          </Statement>
-        </Ruled>
+      <Slide
+        className={TIGHT}
+        id="discussion-auditing-sensory-and-machine-perception-for-a-beverage-launch"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Auditing Sensory and Machine Perception for a Beverage Launch
+        </SlideHeading>
+        <Prompt>
+          A specialty coffee roaster is launching a line of canned cold-brew
+          coffee sold both in supermarket refrigerated cases and through online
+          grocery platforms where customers use AI shopping assistants. Which
+          sensory and Gestalt principles should guide the physical can design
+          for in-store shoppers, and which structured data fields and ranking
+          factors will determine whether an AI assistant attends to and selects
+          the product online?
+        </Prompt>
       </Slide>
 
       {/* ================================================================
-          Discussion
+          Key Takeaways
           ================================================================ */}
-      <Slide className={TIGHT} id="discussion-sensory-signatures" border>
-        <Heading kicker="Discussion:" tone="counter">
-          Sensory Signatures
-        </Heading>
-        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
-          <p className="type-quote !text-[clamp(1.3rem,2.2vw,1.9rem)] max-w-[52ch]">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--ink-3)]">
-              Discussion:
-            </span>{" "}
-            Name a brand that you recognize instantly{" "}
-            without seeing its name or logo. Does it use a signature
-            scent, a distinct jingle, a unique bottle shape, or a specific color?{" "}
-            How does that sensory cue build brand recall?
-          </p>
-        </div>
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Sensation is the physical detection of stimuli by sensory
+              receptors, whereas perception is the psychological process of
+              selecting, organizing, and interpreting those inputs into meaning.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Sensory marketing engages vision, hearing, smell, touch, and taste
+              to shape brand associations, store lingering time, and perceived
+              product quality.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Psychophysics distinguishes the absolute threshold from the
+              differential threshold (JND), and Weber&apos;s Law establishes
+              that a noticeable change is a constant proportion of the initial
+              stimulus intensity.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              Consumers manage sensory overload through selective exposure,
+              heightened perceptual vigilance toward need-relevant cues,
+              perceptual defense against threatening messages, and adaptation to
+              constant stimuli.
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              Gestalt principles (closure, similarity, figure-ground) and
+              semiotic relationships (object, sign, interpretant) explain how
+              consumers organize visual elements into coherent brand meanings.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              AI shopping agents perceive products through structured text and
+              metadata rather than biological senses, yet both human shoppers
+              and AI agents exhibit systematic position effects in attention and
+              choice.
+            </P>
+          </Numbered>
+        </ol>
       </Slide>
     </SlideDeck>
   );

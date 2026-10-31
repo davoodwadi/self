@@ -1,11 +1,11 @@
 [
   {
     "type": "identify",
-    "slide_id": "expectations-and-reality-the-disconfirmation-model",
-    "prompt": "Each consumer has used a product and compared it with what they expected. Name the outcome the disconfirmation model predicts.",
+    "slide_id": "expectancy-disconfirmation",
+    "prompt": "Each consumer has used a product and compared it with what they expected. Name the outcome the expectancy disconfirmation model predicts.",
     "options": [
       { "id": "positive", "label": "Positive disconfirmation" },
-      { "id": "confirmation", "label": "Confirmation" },
+      { "id": "confirmation", "label": "Simple confirmation" },
       { "id": "negative", "label": "Negative disconfirmation" }
     ],
     "cases": [
@@ -13,303 +13,312 @@
         "id": "hotel",
         "text": "From the booking photos, Lena expected an ordinary hotel room. She is given a room with a sea view and a free breakfast.",
         "answer": "positive",
-        "explanation": "Performance exceeded her expectations, so she is satisfied or even delighted."
+        "explanation": "Perceived performance exceeded her prepurchase expectations, producing high satisfaction or delight."
       },
       {
         "id": "shoes",
         "text": "Omar's new running shoes feel exactly as comfortable as the reviews said they would.",
         "answer": "confirmation",
-        "explanation": "Performance matched his expectations, so he is satisfied."
+        "explanation": "Perceived performance matched his expectations, producing baseline satisfaction."
       },
       {
         "id": "blender",
         "text": "An ad promised a blender that crushes ice in seconds. At home, it struggles with soft fruit.",
         "answer": "negative",
-        "explanation": "Performance fell below the expectations the ad created, so the consumer is dissatisfied."
+        "explanation": "Perceived performance fell short of the expectations created by advertising, producing dissatisfaction."
       },
       {
         "id": "phone",
         "text": "Mei bought a budget phone expecting a basic camera. Its photos turn out as sharp as her friend's far more expensive phone.",
         "answer": "positive",
-        "explanation": "Performance exceeded what she expected from a budget phone."
+        "explanation": "Perceived performance exceeded what she expected from a budget phone."
       },
       {
         "id": "cafe",
-        "text": "Ken orders his usual coffee at the café near work. It tastes the way it always does, which is what he expected.",
+        "text": "Ken orders his usual coffee at the cafe near work. It tastes the way it always does, which is what he expected.",
         "answer": "confirmation",
-        "explanation": "Performance matched his expectations: confirmation, and he is satisfied."
+        "explanation": "Perceived performance matched his expectations: simple confirmation."
       },
       {
         "id": "streaming",
         "text": "A streaming service advertised thousands of new films. After signing up, Ana finds only a handful she has not already seen.",
         "answer": "negative",
-        "explanation": "The advertising raised her expectations, and performance fell below them."
+        "explanation": "Advertising raised her prepurchase expectations, and perceived performance fell below them."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "attribution-theory",
+    "prompt": "Match each attribution dimension or outcome with the question or case that illustrates it after a service failure.",
+    "pairs": [
+      {
+        "id": "locus",
+        "term": "Locus of causality",
+        "match": "A shopper asks whether a cracked phone screen was caused by their own drop or by weak factory glass.",
+        "explanation": "Locus of causality asks whether responsibility lies internally with the consumer or externally with the firm or environment."
+      },
+      {
+        "id": "stability",
+        "term": "Stability",
+        "match": "A traveler checks whether an airline delay came from a rare blizzard or from chronic understaffing.",
+        "explanation": "Stability asks whether the cause is temporary and unusual or permanent and systemic."
+      },
+      {
+        "id": "controllability",
+        "term": "Controllability",
+        "match": "A diner asks whether a restaurant could have prevented a food shortage by ordering ingredients on time.",
+        "explanation": "Controllability asks whether the firm had the power to foresee and prevent the failure."
+      },
+      {
+        "id": "highest-anger",
+        "term": "Highest dissatisfaction and anger",
+        "match": "A subscriber learns that their internet outage resulted from the provider ignoring routine maintenance for months.",
+        "explanation": "Anger and desire for retaliation peak when a failure is attributed to an external, stable, and firm-controllable cause."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "cognitive-dissonance-and-buyers-regret",
-    "question_text": "Which of these purchases is most likely to leave the buyer with postpurchase dissonance?",
-    "hint": "Think about the price, the importance of the decision, whether it can be undone, and what the rejected options offered.",
+    "slide_id": "cognitive-dissonance",
+    "question_text": "Which of these purchases is most likely to leave the buyer with severe postpurchase cognitive dissonance?",
+    "hint": "Think about the price, irrevocability, social or psychological involvement, and whether rejected alternatives had distinct attractive features.",
     "correct_answer_citation": "Week 9: Cognitive Dissonance and Buyer's Regret",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "A $2 bottle of water bought at a kiosk on a hot day",
-        "option_explanation": "The purchase is cheap, unimportant and easy to repeat, so there is little to doubt."
+        "option_explanation": "The purchase is inexpensive, low involvement, and trivial, so there is little cause for postpurchase dissonance."
       },
       {
-        "option_text": "A $1,800 sofa sold as final sale, chosen over a cheaper model with washable covers that the chosen sofa lacks",
-        "option_explanation": "Correct. It is expensive, important and hard to reverse, and the rejected sofa had an attractive feature the chosen one lacks."
+        "option_text": "A $1,800 sofa sold as final sale, chosen over two attractive competing models with washable covers that the chosen sofa lacks",
+        "option_explanation": "Correct. It is expensive, irrevocable, and high involvement, and the rejected alternatives offered desirable features the chosen option lacks."
       },
       {
         "option_text": "The pack of gum the shopper buys every week at the checkout",
-        "option_explanation": "A cheap, routine purchase gives the buyer little reason to doubt the choice."
+        "option_explanation": "A low-cost habitual purchase gives the buyer little reason to experience postpurchase dissonance."
       },
       {
         "option_text": "A $40 sweater that can be returned within 30 days for a full refund",
-        "option_explanation": "The purchase is modest and easy to reverse, which keeps dissonance low."
+        "option_explanation": "The purchase is modest in price and easily reversible, which keeps postpurchase dissonance low."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "reducing-postpurchase-dissonance",
-    "prompt": "Each card describes something that reduces doubt after a purchase. Is the consumer reducing the dissonance on their own, or is the marketer helping?",
+    "slide_id": "dissatisfaction-responses",
+    "prompt": "Each card describes how a dissatisfied customer responds after a bad purchase. Sort the actions into Singh's (1988) three pathways.",
     "bins": [
-      { "id": "consumer", "label": "The consumer, on their own" },
-      { "id": "marketer", "label": "The marketer helps" }
+      { "id": "voice", "label": "Voice response" },
+      { "id": "private", "label": "Private response" },
+      { "id": "third-party", "label": "Third-party response" }
     ],
     "cards": [
       {
-        "id": "praise",
-        "text": "After buying a laptop, Ravi reads only articles that praise the model he chose.",
-        "bin": "consumer",
-        "explanation": "He seeks information that supports his choice."
+        "id": "counter-refund",
+        "text": "Maya brings a faulty toaster back to the store counter and asks the manager for a replacement.",
+        "bin": "voice",
+        "explanation": "Voice responses direct the complaint toward the seller itself to seek redress."
       },
       {
-        "id": "skip-ads",
-        "text": "Jo scrolls past every ad for the camera she decided not to buy.",
-        "bin": "consumer",
-        "explanation": "She avoids information that favors the rejected option."
+        "id": "support-email",
+        "text": "Devon emails the airline's customer-care team requesting a voucher after his luggage is delayed.",
+        "bin": "voice",
+        "explanation": "Contacting the seller directly for compensation is a voice response."
       },
       {
-        "id": "heated-seats",
-        "text": "Sam tells himself that the heated seats his new car lacks were never that important.",
-        "bin": "consumer",
-        "explanation": "He lowers the importance of the missing feature."
+        "id": "warn-coworkers",
+        "text": "Priya stops visiting a dry cleaner that ruined her coat and warns three coworkers never to use it.",
+        "bin": "private",
+        "explanation": "Quietly exiting the relationship and warning acquaintances is a private response."
       },
       {
-        "id": "thank-you",
-        "text": "A furniture store emails each buyer a thank-you note that lists what their new chair does well.",
-        "bin": "marketer",
-        "explanation": "A follow-up message thanks the customer and confirms the product's benefits."
+        "id": "silent-switch",
+        "text": "Carlos says nothing to the cafe that served him burnt espresso and simply buys coffee across the street from then on.",
+        "bin": "private",
+        "explanation": "Silent brand switching without notifying the seller is a private exit response."
       },
       {
-        "id": "free-changes",
-        "text": "An airline lets customers change or cancel a booking free of charge for 24 hours after buying.",
-        "bin": "marketer",
-        "explanation": "An easy return policy reduces the risk the consumer feels after buying."
+        "id": "agency-complaint",
+        "text": "Elena files a formal complaint with a government consumer-protection agency against a contractor.",
+        "bin": "third-party",
+        "explanation": "Escalating the dispute to an external regulatory institution is a third-party response."
       },
       {
-        "id": "owners-ad",
-        "text": "A phone brand runs ads of happy owners filming their holidays with the phone.",
-        "bin": "marketer",
-        "explanation": "Advertising that shows satisfied owners reassures recent buyers as well as future ones."
-      },
-      {
-        "id": "support",
-        "text": "A support team answers a complaint about a faulty kettle within ten minutes and ships a replacement.",
-        "bin": "marketer",
-        "explanation": "Quick customer service keeps doubt from turning into dissatisfaction."
+        "id": "public-review",
+        "text": "Tariq posts a detailed one-star warning on a public review platform so strangers will avoid the hotel.",
+        "bin": "third-party",
+        "explanation": "Publishing a complaint on an external public review platform is a third-party response."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "product-disposal-and-secondary-markets",
-    "prompt": "What is each consumer doing with a product? Sort the cards into the three disposal options.",
+    "slide_id": "disposition-taxonomy",
+    "prompt": "What is each consumer doing with a product? Sort the cards into Jacoby, Berning, and Dietvorst's (1977) three primary disposition branches.",
     "bins": [
-      { "id": "keep", "label": "Keep it" },
-      { "id": "temporary", "label": "Get rid of it temporarily" },
-      { "id": "permanent", "label": "Get rid of it permanently" }
+      { "id": "keep", "label": "Keep the product" },
+      { "id": "temporary", "label": "Temporarily dispose of it" },
+      { "id": "permanent", "label": "Permanently dispose of it" }
     ],
     "cards": [
       {
         "id": "bicycle",
-        "text": "Nadia still rides her ten-year-old bicycle to work every day.",
+        "text": "Nadia continues riding her ten-year-old bicycle to work every day.",
         "bin": "keep",
-        "explanation": "She keeps it and uses it for its original purpose."
+        "explanation": "She keeps the product and continues using it for its original function."
       },
       {
         "id": "rags",
-        "text": "Paul cuts his worn-out T-shirts into cleaning rags.",
+        "text": "Paul cuts his worn-out cotton T-shirts into cleaning rags for the garage.",
         "bin": "keep",
-        "explanation": "He keeps them and finds a new use for them."
+        "explanation": "He keeps the product and converts it to a new secondary function."
       },
       {
         "id": "tent",
-        "text": "Ali packs the family tent into the garage until next summer.",
+        "text": "Ali packs the family camping tent into the attic closet until next summer.",
         "bin": "keep",
-        "explanation": "He keeps it by storing it."
+        "explanation": "He keeps the product by storing it unused."
       },
       {
         "id": "drill",
-        "text": "Ruth lends her power drill to a neighbour for the weekend.",
+        "text": "Ruth lends her power drill to a neighbor for the weekend.",
         "bin": "temporary",
-        "explanation": "Lending gets rid of the drill only for a while. It comes back."
+        "explanation": "Lending the item to a peer is a temporary disposition."
       },
       {
         "id": "camera",
-        "text": "Theo rents out his camera for a week through a peer-to-peer rental site.",
+        "text": "Theo rents out his cinema lens for a week through a peer-to-peer gear sharing platform.",
         "bin": "temporary",
-        "explanation": "Renting it out is a temporary way to part with the product."
+        "explanation": "Renting an item out through a sharing platform is a temporary disposition."
       },
       {
         "id": "umbrella",
-        "text": "Ines throws her broken umbrella into the bin.",
+        "text": "Ines throws her broken umbrella into the municipal trash bin.",
         "bin": "permanent",
-        "explanation": "Throwing it away gets rid of it for good."
+        "explanation": "Throwing an item away is a permanent disposition."
       },
       {
         "id": "clothes",
-        "text": "Marco gives his son's outgrown clothes to a cousin.",
+        "text": "Marco donates his son's outgrown winter coats to a neighborhood charity.",
         "bin": "permanent",
-        "explanation": "Giving them away is a permanent disposal, and it is also lateral cycling."
+        "explanation": "Giving an item away is a permanent disposition."
       },
       {
         "id": "console",
-        "text": "Yuki trades her old games console at a store for credit toward a new one.",
+        "text": "Yuki trades in her old game console at an electronics retailer for credit toward a new model.",
         "bin": "permanent",
-        "explanation": "Trading it parts with the console for good."
-      },
-      {
-        "id": "phone",
-        "text": "Sara sells her old phone to a stranger through a resale app.",
-        "bin": "permanent",
-        "explanation": "Selling it is permanent, and the phone passes to another consumer through lateral cycling."
+        "explanation": "Trading an item in is a permanent disposition."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "online-reviews-as-postpurchase-behavior",
-    "question_text": "An online retailer wants more first-time reviewers to write a review, and it has a budget for rewards. Based on the studies on the slide, which review request fits that goal best?",
-    "hint": "Two findings matter here: who responds most to rewards paid only for helpful reviews, and what a message about helping the company does to the number of customers who write.",
-    "correct_answer_citation": "Week 9: Online Reviews as Postpurchase Behavior (Wadi et al., 2026b)",
+    "slide_id": "social-vs-reciprocal-exchange",
+    "question_text": "An online retailer offers a 10-dollar store credit in its postpurchase review solicitation email and wants to maximize the share of buyers who submit a review. Based on Wadi et al. (2026a, 2026b), which framing should the retailer pair with the reward?",
+    "hint": "Compare how a generalized social-exchange appeal ('help other shoppers') and a direct reciprocal-exchange appeal ('help our company') perform when paired with a financial incentive.",
+    "correct_answer_citation": "Week 9: Social Exchange Versus Reciprocal Exchange in Review Solicitation (Wadi et al., 2026a, 2026b)",
     "correct_answer_index": 2,
     "options": [
       {
-        "option_text": "Pay a reward for any review, and ask customers to help the company",
-        "option_explanation": "With a financial incentive, asking customers to help the company worked less well than asking them to help other shoppers."
+        "option_text": "Ask buyers to 'help our company improve,' because reciprocal exchange maximizes the number of people who submit a review",
+        "option_explanation": "Reciprocal exchange with the company caused the minority who responded to write longer reviews, but lowered overall participation."
       },
       {
-        "option_text": "Pay the reward only when the review is voted helpful, and ask customers to help the company",
-        "option_explanation": "A reciprocal message led to longer reviews, but fewer customers chose to write one."
+        "option_text": "Avoid mentioning other shoppers, because financial rewards crowd out social-exchange norms completely",
+        "option_explanation": "In the studies, pairing the financial reward with 'help other shoppers' outperformed pairing the same reward with 'help the company.'"
       },
       {
-        "option_text": "Pay the reward only when the review is voted helpful, and ask customers to help other shoppers",
-        "option_explanation": "Correct. Helpful-only rewards raised review writing most among first-time reviewers, and the social-exchange message avoids the drop in writers that a reciprocal message causes."
+        "option_text": "Ask buyers to 'help other shoppers make informed decisions,' pairing the financial reward with a social-exchange appeal",
+        "option_explanation": "Correct. Asking buyers to help other shoppers produced higher review submission rates than asking them to help the company, both alone and when paired with a 10-dollar credit."
       },
       {
-        "option_text": "Send the same request to everyone, because rewards affect first-time and experienced reviewers equally",
-        "option_explanation": "The rewards raised writing and length more among first-time reviewers than among experienced ones."
+        "option_text": "Use either phrasing interchangeably, because solicitation framing has no effect once a 10-dollar credit is offered",
+        "option_explanation": "Even with the same 10-dollar credit, the shopper-focused appeal significantly outperformed the company-focused appeal."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "from-satisfaction-to-loyalty",
-    "prompt": "Each consumer has a relationship with a brand. Name the type of loyalty, using repeat purchase and attitude.",
+    "slide_id": "four-loyalty-quadrants",
+    "prompt": "Each consumer has a distinct combination of relative attitude and repeat patronage. Identify the loyalty condition from Dick and Basu's (1994) matrix.",
     "options": [
       { "id": "true", "label": "True loyalty" },
       { "id": "spurious", "label": "Spurious loyalty" },
-      { "id": "latent", "label": "Latent loyalty" }
+      { "id": "latent", "label": "Latent loyalty" },
+      { "id": "none", "label": "No loyalty" }
     ],
     "cases": [
       {
         "id": "toothpaste",
-        "text": "Dana buys the same toothpaste every month because it is the brand the corner shop stocks. She has no strong feelings about it.",
+        "text": "Dana buys the same dish soap every month only because it sits at eye level in her nearest convenience store. She holds no preference for it over other brands.",
         "answer": "spurious",
-        "explanation": "Repeat purchase without a strong attitude, driven by convenience."
+        "explanation": "High repeat patronage combined with a weak relative attitude, driven by shelf habit and convenience."
       },
       {
         "id": "watch",
-        "text": "Luis loves a luxury watch brand and follows it online, but he has never been able to afford one of its watches.",
+        "text": "Luis admires an artisanal espresso machine brand and praises its engineering, but its high price prevents him from buying it.",
         "answer": "latent",
-        "explanation": "A strong positive attitude without repeat purchase, held back by price."
+        "explanation": "A strong favorable attitude combined with low repeat purchase due to price or distribution barriers."
       },
       {
         "id": "airline",
-        "text": "Grace has flown the same airline for years and recommends it to everyone because she trusts it.",
+        "text": "Grace flies the same airline consistently, prefers its service over rivals, and refuses competitor promotional discounts.",
         "answer": "true",
-        "explanation": "Frequent repeat purchase combined with a strong positive attitude."
+        "explanation": "A strong, favorable relative attitude combined with high repeat patronage."
       },
       {
-        "id": "ink",
-        "text": "Tom reorders the same brand of printer ink only because his printer accepts no other cartridge.",
-        "answer": "spurious",
-        "explanation": "Repeat purchase that comes from a lack of alternatives, not from attitude."
-      },
-      {
-        "id": "bakery",
-        "text": "Aiko adores a bakery across town but visits it only once a year because it is so far away.",
-        "answer": "latent",
-        "explanation": "A strong attitude without repeat purchase, held back by availability."
-      },
-      {
-        "id": "running",
-        "text": "Ben buys his favourite running brand every season and would not consider another.",
-        "answer": "true",
-        "explanation": "He buys it again and again and holds a strong positive attitude toward it."
+        "id": "batteries",
+        "text": "Noah sees all alkaline battery brands as interchangeable and grabs whichever multi-pack is on display at the hardware counter.",
+        "answer": "none",
+        "explanation": "Weak relative attitude combined with low repeat patronage toward any single brand."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "brand-loyalty-and-delegated-repurchase",
-    "prompt": "Each card is an instruction a consumer gives an AI agent to reorder a routine product. Does the instruction show loyalty to the brand, or reliance on the agent?",
+    "slide_id": "brand-loyalty-vs-agent-reliance",
+    "prompt": "Each card shows an instruction a consumer gives an AI shopping agent for routine replenishment. Sort the instructions into brand-directed delegation or agent-reliant delegation.",
     "bins": [
-      { "id": "brand", "label": "Loyalty to the brand" },
-      { "id": "agent", "label": "Reliance on the agent" }
+      { "id": "brand", "label": "Brand-directed delegation" },
+      { "id": "agent", "label": "Agent-reliant delegation" }
     ],
     "cards": [
       {
         "id": "dog-food",
-        "text": "\"Reorder the same dog food brand I bought last month.\"",
+        "text": "\"Reorder the same 15-pound bag of Blue Ridge dog food I bought last month.\"",
         "bin": "brand",
-        "explanation": "The consumer names the brand, so the agent keeps it."
+        "explanation": "The consumer holds attitudinal loyalty and explicitly names the brand in the prompt."
       },
       {
         "id": "litter",
-        "text": "\"Buy the cheapest unscented cat litter you can find.\"",
+        "text": "\"Buy unscented clumping cat litter at the lowest price per pound.\"",
         "bin": "agent",
-        "explanation": "Only a goal is stated, so the agent chooses the brand."
+        "explanation": "The consumer states only a category goal and delegates brand selection to the agent."
       },
       {
         "id": "tea",
-        "text": "\"Get me two more boxes of my usual green tea.\"",
+        "text": "\"Get me two more boxes of my usual 12-ounce Brand X green tea.\"",
         "bin": "brand",
-        "explanation": "\"My usual\" names the brand the consumer already buys."
+        "explanation": "Explicitly specifying the usual brand constrains the agent to repurchase that brand."
       },
       {
         "id": "tablets",
-        "text": "\"Find dishwasher tablets with the lowest price per wash.\"",
+        "text": "\"Order dishwasher tablets with the best value and at least a 4.5-star rating.\"",
         "bin": "agent",
-        "explanation": "The instruction states a criterion and leaves the brand to the agent."
+        "explanation": "Under agent-reliant delegation, the agent evaluates available listings from scratch based on the stated goal and storefront attributes."
       },
       {
         "id": "towels",
-        "text": "\"Order paper towels. Pick whichever has the best reviews.\"",
+        "text": "\"Replenish paper towels. Pick whichever listing gives the most sheets per dollar.\"",
         "bin": "agent",
-        "explanation": "The agent's choice depends on the goal it was given and the information it gathers."
+        "explanation": "Prior purchase habit does not constrain the agent when only an optimization goal is given."
       },
       {
         "id": "shampoo",
-        "text": "\"Order the shampoo I always buy, in the large bottle.\"",
+        "text": "\"Order the exact sulfate-free shampoo brand from my saved favorites list.\"",
         "bin": "brand",
-        "explanation": "The consumer names the brand in the instruction, so the brand is secure."
+        "explanation": "Naming the preferred brand in the instruction protects the brand during automated replenishment."
       }
     ]
   }

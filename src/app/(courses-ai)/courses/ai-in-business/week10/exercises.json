@@ -1,0 +1,232 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "dual-relationship",
+    "prompt": "Sort each initiative into the side of the relationship it belongs to.",
+    "bins": [
+      { "id": "of", "label": "Sustainability of AI (Green AI)" },
+      { "id": "for", "label": "AI for sustainability" }
+    ],
+    "cards": [
+      {
+        "id": "meter",
+        "text": "An insurer measures how many kilowatt-hours its claims chatbot uses each month.",
+        "bin": "of",
+        "explanation": "Measuring the electricity of running a model is the footprint side."
+      },
+      {
+        "id": "route",
+        "text": "A courier uses route optimization to cut diesel use across its van fleet.",
+        "bin": "for",
+        "explanation": "AI is applied to reduce emissions in transportation."
+      },
+      {
+        "id": "recycle",
+        "text": "A university tracks how many retired GPU boards it sends to certified recycling.",
+        "bin": "of",
+        "explanation": "Hardware waste from building and running models is part of the footprint side."
+      },
+      {
+        "id": "factory",
+        "text": "A steel mill uses computer vision to spot overheating furnaces and save energy.",
+        "bin": "for",
+        "explanation": "AI is applied to reduce emissions in manufacturing."
+      },
+      {
+        "id": "water",
+        "text": "A retailer asks its cloud vendor how much cooling water its model training used.",
+        "bin": "of",
+        "explanation": "Water used to run models belongs to the sustainability of AI."
+      },
+      {
+        "id": "office",
+        "text": "A property firm forecasts occupancy to heat only the office floors in use.",
+        "bin": "for",
+        "explanation": "AI is applied to cut energy use in buildings."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "training-inference",
+    "question_text": "A travel company spends 2 GWh to train a booking assistant. Once launched, the assistant uses 0.1 GWh of electricity every day. Over the assistant's first year, which phase uses more energy?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Training, because it is the most compute-intensive phase",
+        "option_explanation": "Training is intensive but happens once. Daily inference adds up: 20 days of use already equals the training run."
+      },
+      {
+        "option_text": "Inference, by roughly 36.5 GWh against 2 GWh",
+        "option_explanation": "Correct. 0.1 GWh × 365 days is 36.5 GWh, about 95 percent of the year's total."
+      },
+      {
+        "option_text": "They are about equal over one year",
+        "option_explanation": "They are equal after only 20 days. By the end of the year inference is more than eighteen times larger."
+      },
+      {
+        "option_text": "It cannot be known without the number of GPUs used in training",
+        "option_explanation": "The energy figures already account for the hardware. Comparing them only needs the number of days in service."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "type": "order",
+    "slide_id": "embodied-operational",
+    "prompt": "Put the life of an AI server in order, from the first emissions to the last.",
+    "steps": [
+      { "id": "extract", "text": "Raw materials are extracted from mines.", "explanation": "Embodied carbon begins with the extraction of raw materials." },
+      { "id": "fab", "text": "Chips and memory are manufactured from silicon wafers.", "explanation": "Semiconductor manufacturing follows extraction and is still part of embodied carbon." },
+      { "id": "assemble", "text": "The server is assembled.", "explanation": "Assembly turns the components into a working server, before use." },
+      { "id": "ship", "text": "The server is transported to the data center.", "explanation": "Transport is the last embodied step before the hardware is used." },
+      { "id": "run", "text": "Electricity powers and cools the server for its working life.", "explanation": "Operational carbon is emitted while the hardware is in use." },
+      { "id": "retire", "text": "The server is retired and disposed of.", "explanation": "End-of-life disposal closes the lifecycle." }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "right-sizing",
+    "prompt": "Match each task to the model class that right-sizes it.",
+    "term_label": "Task",
+    "match_label": "Right-sized model",
+    "pairs": [
+      {
+        "id": "default",
+        "term": "Score which gym members will cancel from a table of visits and payments",
+        "match": "Tabular gradient-boosted tree",
+        "explanation": "Structured scoring from a table suits a gradient-boosted tree."
+      },
+      {
+        "id": "extract",
+        "term": "Pull the invoice number and total from thousands of supplier emails",
+        "match": "Compact small language model",
+        "explanation": "Routine extraction from text suits a small language model."
+      },
+      {
+        "id": "synth",
+        "term": "Draft a brief that weighs three conflicting regulatory reports",
+        "match": "Frontier model",
+        "explanation": "Hard synthesis is the case that justifies a frontier model."
+      },
+      {
+        "id": "route",
+        "term": "Answer easy help-desk requests cheaply and pass hard ones upward",
+        "match": "Tiered routing with a lightweight classifier",
+        "explanation": "Routing lets a small classifier handle the easy share and escalate the rest."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "distillation-caching",
+    "prompt": "For each case, name the efficiency technique the team is using.",
+    "options": [
+      { "id": "distill", "label": "Knowledge distillation" },
+      { "id": "quant", "label": "Quantization" },
+      { "id": "cache", "label": "Semantic caching" }
+    ],
+    "cases": [
+      {
+        "id": "airline",
+        "text": "An airline stores its verified answer about baggage limits and returns it whenever a traveler asks a similar question.",
+        "answer": "cache",
+        "explanation": "Returning a stored answer for variations of the same question is semantic caching."
+      },
+      {
+        "id": "bits",
+        "text": "A hospital stores its triage model's weights as 4-bit integers instead of 16-bit numbers.",
+        "answer": "quant",
+        "explanation": "Lowering the numerical precision of the weights is quantization."
+      },
+      {
+        "id": "teacher",
+        "text": "A law firm has a large model label 50,000 contract clauses, then trains a small model on those labels.",
+        "answer": "distill",
+        "explanation": "A large teacher labels examples for a smaller student, which is distillation."
+      },
+      {
+        "id": "phone",
+        "text": "A bank shrinks its fraud model's memory by storing each weight with fewer bits, so it fits on a cheaper server.",
+        "answer": "quant",
+        "explanation": "Fewer bits per weight is quantization."
+      },
+      {
+        "id": "returns",
+        "text": "A store notices hundreds of daily questions about its return policy and answers them from fast memory.",
+        "answer": "cache",
+        "explanation": "Answering repeated questions from memory instead of running the model is semantic caching."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "jevons",
+    "question_text": "A software firm cuts the energy per AI request in half. Cheaper requests lead its product teams to add AI summaries everywhere, and request volume triples. What happens to the firm's total AI energy use?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "It halves, because each request now uses half the energy",
+        "option_explanation": "That holds only if volume stays the same. Here volume tripled."
+      },
+      {
+        "option_text": "It stays the same, because efficiency and growth cancel out",
+        "option_explanation": "They would cancel only if volume doubled. Tripling outruns a halving."
+      },
+      {
+        "option_text": "It rises to 1.5 times its original level",
+        "option_explanation": "Correct. Half the energy × three times the requests is 1.5 times the total, a rebound effect."
+      },
+      {
+        "option_text": "It cannot rise, since the firm is now more efficient",
+        "option_explanation": "Jevons paradox shows that total consumption often rises after efficiency gains."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "identify",
+    "slide_id": "architecture",
+    "prompt": "For each business problem, name the architecture it calls for.",
+    "options": [
+      { "id": "software", "label": "Standard software or optimization" },
+      { "id": "tabular", "label": "Calibrated tabular model with a threshold" },
+      { "id": "rag", "label": "Retrieval-augmented generation" },
+      { "id": "agent", "label": "Tool-using agent with human sign-off" }
+    ],
+    "cases": [
+      {
+        "id": "payroll",
+        "text": "Compute each employee's vacation pay from a fixed formula in the collective agreement.",
+        "answer": "software",
+        "explanation": "The rule is deterministic and known in advance, so plain software is faster and fully verifiable."
+      },
+      {
+        "id": "lease",
+        "text": "Estimate, in under a second, the chance a car-lease applicant misses payments, with reasons a regulator can review.",
+        "answer": "tabular",
+        "explanation": "A probability from structured records under tight latency and legal explainability calls for a calibrated tabular model."
+      },
+      {
+        "id": "policy",
+        "text": "Draft answers to staff questions about travel expenses, quoting the firm's own policy handbook.",
+        "answer": "rag",
+        "explanation": "Drafting text grounded in firm documents calls for retrieval with citation checks."
+      },
+      {
+        "id": "refund",
+        "text": "Look up an order, contact the courier and issue refunds in the payment system across several steps.",
+        "answer": "agent",
+        "explanation": "Multi-step work in external tools needs narrow permissions, sandboxing and sign-off on irreversible refunds."
+      },
+      {
+        "id": "shelf",
+        "text": "Assign store shelf space to maximize margin under known size and supplier constraints.",
+        "answer": "software",
+        "explanation": "Known constraints and an objective are a mathematical optimization problem."
+      }
+    ]
+  }
+]

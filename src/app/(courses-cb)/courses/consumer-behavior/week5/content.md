@@ -10,6 +10,7 @@ week: "week5"
 - Consumers select products and brands not only for functional performance, but also to express their self-concept, personality traits, and lifestyle patterns.
 
 ## Defining the Self-Concept and Self-Esteem [no-exercise]
+[figure: consumer evaluating their own appearance, intellect, skills, and character in a thought cloud]
 - The self-concept is the totality of an individual's beliefs, thoughts, and evaluations regarding their own personal attributes, roles, and capabilities.
 - It encompasses physical appearance, intellectual abilities, social roles, and moral character.
 - Self-esteem refers to the overall positivity or negativity of a person's self-concept.
@@ -17,6 +18,7 @@ week: "week5"
 - Consumers with low self-esteem are motivated to avoid social rejection and tend to prefer established, socially safe brands.
 
 ## Multiple Selves and Situational Self-Image [no-exercise]
+[figure: shopper holding a branded bag in front of a standing mirror reflecting their aspirational self-image]
 - Rather than holding a single monolithic identity, consumers maintain multiple role identities that become active in different social contexts (Markus & Nurius, 1986).
 - The same individual may act as a conservative financial analyst at work, an adventurous trail runner on weekends, and a nurturing parent at home.
 - Each active role activates a distinct situational self-image and a corresponding set of appropriate products, clothing, and brands.
@@ -36,6 +38,7 @@ week: "week5"
 - Realistic marketing appeals target the actual self with everyday relatability, whereas aspirational appeals depict how a brand moves the buyer toward the ideal self.
 
 ## Self-Image Congruence Theory [no-exercise]
+[figure: shopper comparing their actual self-image with a billboard depicting an ideal self holding the brand]
 - Self-image congruence theory states that consumers prefer brands whose perceived image matches their own self-concept (Sirgy, 1982).
 - For privately consumed utilitarian products, evaluation is guided primarily by functional congruence between product performance and practical requirements.
 - For publicly visible products such as automobiles, watches, and apparel, evaluation depends heavily on congruence with the social or ideal self.
@@ -70,6 +73,7 @@ week: "week5"
 - Resistance to automation is therefore driven by the desire to protect self-attribution rather than by general technophobia.
 
 ## Designing Automated Products and AI Delegation Around Identity [no-exercise]
+[figure: automated bread machine handling dough preparation while leaving the final hand-shaping step to the consumer]
 - The same identity mechanism governs how consumers adopt AI assistants and autonomous shopping agents.
 - A consumer who views fashion curation, vinyl record collecting, or gift selection as central to personal identity will resist delegating those choices to an AI agent.
 - Conversely, the same consumer will readily let an AI agent automate non-identity tasks such as comparing utility tariffs or reordering household cleaning supplies.
@@ -84,6 +88,7 @@ week: "week5"
 - Consumers also project human personality dimensions onto brands, forming relationships with corporate symbols.
 
 ## Trait Theory and Consumer-Specific Traits [no-exercise]
+[figure: consumer high in need for cognition closely reading a detailed multi-panel product leaflet beside the package]
 - Personality is a person's distinctive psychological makeup that consistently influences how the individual responds to their environment over time.
 - Trait theory focuses on the quantitative measurement of specific psychological dimensions across individuals.
 - Consumer innovativeness is the degree to which a person is receptive to new products, services, and experiences rather than remaining attached to familiar options.
@@ -111,6 +116,7 @@ week: "week5"
 - Psychographics combines psychology and demographics to measure how consumers express their identities through everyday lifestyles.
 
 ## Lifestyles Versus Demographics in Market Segmentation [no-exercise]
+[figure: comparison of objective demographic profile data and psychographic lifestyle interests for the same consumer]
 - A lifestyle is a pattern of consumption reflecting a person's choices about how to allocate time, money, and attention across products and activities.
 - Demographic variables describe who buys a product objectively, making them useful for buying media space and estimating census market size.
 - Psychographic variables explain why those buyers choose a specific brand, providing the insights needed to craft advertising tone, imagery, and product positioning.
@@ -138,6 +144,7 @@ week: "week5"
 - Evaluating synthetic consumers requires comparing where model outputs match human patterns and where they fail systematically.
 
 ## Large Language Models as Simulated Survey Respondents [no-exercise]
+[figure: real human respondents and persona-conditioned AI agents completing the same marketing survey]
 - A synthetic respondent (or silicon sample) is created by conditioning a large language model on a demographic and psychographic persona and asking it to answer marketing survey questions.
 - Early studies demonstrated that language models prompted with consumer profiles can reproduce certain aggregate directional patterns, such as downward-sloping demand curves and established brand preferences (Brand, Israeli, & Ngwe, 2023).
 - Synthetic surveys can be executed in minutes at a fraction of the cost of commercial online panels.
@@ -153,6 +160,7 @@ week: "week5"
 - Unlike a human respondent, a language model has no lived physiological or emotional experience of purchasing, owning, or consuming a product.
 
 ## Appropriate Boundaries for Synthetic Consumer Research [no-exercise]
+[figure: repeated sampling of an AI respondent across a five-point rating scale to estimate its full response distribution]
 - Because of response variance and training-corpus biases, synthetic respondents cannot replace human samples for final segmentation sizing, pricing validation, or new-product forecasting.
 - Synthetic distributions also tend to compress minority viewpoints and under-represent segments whose behaviors are less documented in online text.
 - Synthetic respondents are methodologically useful during the exploratory stage of research: pre-testing survey wording, checking for confusing scale items, and generating initial hypotheses.

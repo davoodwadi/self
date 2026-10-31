@@ -1,245 +1,229 @@
 [
   {
     "type": "match",
-    "slide_id": "classical-conditioning-pairing-stimuli",
-    "prompt": "All winter, a tea brand's ads show its logo beside a crackling fireplace. Match each part of classical conditioning to what happens in the campaign.",
-    "term_label": "Classical conditioning",
-    "match_label": "In the tea campaign",
+    "slide_id": "pairing-unconditioned-and-conditioned-stimuli",
+    "prompt": "Throughout the winter season, a specialty tea brand airs commercials showing its logo alongside a crackling fireplace. Match each classical conditioning concept with its role in the campaign.",
+    "term_label": "Classical conditioning element",
+    "match_label": "Role in the tea campaign",
     "pairs": [
       {
-        "id": "unconditioned-stimulus",
-        "term": "Unconditioned stimulus",
-        "match": "The sound of a crackling fire in every ad",
-        "explanation": "The crackling fire is the unconditioned stimulus: like upbeat music, it naturally triggers positive feelings."
+        "id": "ucs",
+        "term": "Unconditioned stimulus (UCS)",
+        "match": "The sight and sound of a warm, crackling fireplace in every commercial.",
+        "explanation": "An unconditioned stimulus naturally and automatically triggers a positive response without prior training."
       },
       {
-        "id": "natural-response",
-        "term": "Natural response",
-        "match": "Feeling warm and cozy whenever a fire crackles",
-        "explanation": "The cozy feeling is the natural response the fire brings, before any learning has happened."
+        "id": "ucr",
+        "term": "Unconditioned response (UCR)",
+        "match": "The immediate feeling of warmth and relaxation evoked by the fireplace itself.",
+        "explanation": "The unconditioned response is the automatic affective reaction elicited by the unconditioned stimulus."
       },
       {
-        "id": "neutral-stimulus",
-        "term": "Neutral stimulus",
-        "match": "The tea logo, before anyone has seen the ads",
-        "explanation": "At first the logo brings no feeling at all, so it is the neutral stimulus."
+        "id": "cs",
+        "term": "Conditioned stimulus (CS)",
+        "match": "The tea brand's previously neutral logo presented just before the fireplace scene.",
+        "explanation": "A previously neutral brand logo becomes a conditioned stimulus through repeated pairing with the unconditioned stimulus."
       },
       {
-        "id": "pairing",
-        "term": "Pairing",
-        "match": "Ad after ad showing the logo right beside the fire",
-        "explanation": "The brand pairs the fire with its logo repeatedly, so the two become linked."
-      },
-      {
-        "id": "conditioned-response",
-        "term": "Conditioned response",
-        "match": "Feeling cozy on seeing the logo alone on a shelf",
-        "explanation": "Seeing the brand alone now produces the positive feeling. This is a conditioned response."
+        "id": "cr",
+        "term": "Conditioned response (CR)",
+        "match": "Feeling relaxed and warm upon seeing the tea brand's logo alone in the supermarket aisle.",
+        "explanation": "Over time, the conditioned brand stimulus evokes the positive feeling on its own as a conditioned response."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "repetition-and-stimulus-generalization",
-    "prompt": "Each case below shows repetition at work, or a learned response spreading or narrowing. Name what is happening.",
+    "slide_id": "stimulus-generalization-and-stimulus-discrimination",
+    "prompt": "Classify each marketing scenario below according to whether it relies on stimulus generalization or stimulus discrimination.",
     "options": [
-      { "id": "repetition", "label": "Repetition" },
-      { "id": "wear-out", "label": "Advertising wear-out" },
       { "id": "generalization", "label": "Stimulus generalization" },
       { "id": "discrimination", "label": "Stimulus discrimination" }
     ],
     "cases": [
       {
-        "id": "gym-jingle",
-        "text": "A new gym plays the same short jingle on the radio every morning for a month. By the end, listeners hum it when they pass the gym.",
-        "answer": "repetition",
-        "explanation": "Repetition: repeated exposures strengthen the link between the jingle and the gym."
-      },
-      {
-        "id": "insurance-mute",
-        "text": "The same insurance ad plays in every video break for weeks. Viewers start muting it the moment it begins.",
-        "answer": "wear-out",
-        "explanation": "Advertising wear-out: too much repetition makes consumers tune out or get annoyed."
-      },
-      {
-        "id": "pharmacy-box",
-        "text": "A pharmacy sells its own pain relievers in the same blue-and-yellow box as the best-selling brand, and shoppers trust them straight away.",
+        "id": "pharmacy-analgesic",
+        "text": "A pharmacy chain packages its private-label pain reliever in the same burgundy-and-white color scheme used by the leading national brand.",
         "answer": "generalization",
-        "explanation": "Stimulus generalization: a similar-looking box triggers the trust shoppers learned for the leader."
+        "explanation": "Private-label store brands adopt package colors and typography resembling the category leader so consumers transfer their learned trust."
       },
       {
-        "id": "stitched-heel",
-        "text": "A sneaker brand's ads keep showing close-ups of its one-of-a-kind stitched heel, so buyers can tell its shoes from copies.",
+        "id": "patented-bottle",
+        "text": "A sparkling water leader uses a patented fluted glass bottle and runs ads emphasizing that imitations never carry the embossed crest.",
         "answer": "discrimination",
-        "explanation": "Stimulus discrimination: the brand teaches consumers to spot the unique difference between products."
+        "explanation": "Market leaders use distinctive packaging and comparative messaging to help buyers distinguish the original brand from look-alikes."
       },
       {
-        "id": "candy-all-year",
-        "text": "A candy brand keeps short ads running all year so shoppers do not lose the link between its logo and fun.",
-        "answer": "repetition",
-        "explanation": "Repetition: repeated exposures prevent memory decay and keep the link strong."
-      },
-      {
-        "id": "board-game",
-        "text": "A toy maker gives its new board game the same lettering and colours as a famous game. Children get as excited as they do for the famous one.",
+        "id": "family-extension",
+        "text": "An established Greek yogurt brand launches a new line of refrigerated oat bars using its existing logo, royal-blue background, and typography.",
         "answer": "generalization",
-        "explanation": "Stimulus generalization: similar stimuli trigger the same learned response."
+        "explanation": "Family branding and product line extensions rely on stimulus generalization to transfer goodwill from the parent brand to a new item."
       },
       {
-        "id": "fast-food-jingle",
-        "text": "A fast-food jingle plays in every radio break for months, until listeners roll their eyes and switch stations.",
-        "answer": "wear-out",
-        "explanation": "Advertising wear-out: too much repetition makes consumers tune out or get annoyed."
-      },
-      {
-        "id": "gold-seal",
-        "text": "A butter brand prints a gold seal on every pack and runs ads saying 'only the real one has the seal.' Shoppers now check for it.",
+        "id": "stitched-sole",
+        "text": "A work-boot manufacturer highlights its trademark yellow welt stitching in close-up commercials so buyers can spot authentic boots at a glance.",
         "answer": "discrimination",
-        "explanation": "Stimulus discrimination: the brand teaches consumers to spot what makes it different from look-alikes."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "observational-learning-watching-others",
-    "prompt": "Lena watches a fitness coach online. Sami watches a star striker. Sort each moment into the step of observational learning it belongs to.",
-    "bins": [
-      { "id": "attention", "label": "First: attention to the model" },
-      { "id": "memory", "label": "Second: remembering the model" },
-      { "id": "action", "label": "Third: turning memory into action" }
-    ],
-    "cards": [
-      {
-        "id": "lena-watches",
-        "text": "Lena stops scrolling to watch a trusted fitness coach's morning video.",
-        "bin": "attention",
-        "explanation": "First, the consumer directs attention to an attractive or credible model."
-      },
-      {
-        "id": "sami-stares",
-        "text": "Sami watches the star striker's boots for the whole match.",
-        "bin": "attention",
-        "explanation": "First, the consumer directs attention to an attractive model."
-      },
-      {
-        "id": "lena-recalls",
-        "text": "Days later, Lena can still describe the blender the coach used.",
-        "bin": "memory",
-        "explanation": "Second, the consumer remembers what the model says or does."
-      },
-      {
-        "id": "sami-recalls",
-        "text": "At the mall, Sami recalls the exact colour of the striker's boots.",
-        "bin": "memory",
-        "explanation": "Second, the consumer remembers what the model says or does."
-      },
-      {
-        "id": "lena-buys",
-        "text": "Lena orders the same blender online.",
-        "bin": "action",
-        "explanation": "Third, the consumer converts the memory into action by purchasing the same product."
-      },
-      {
-        "id": "sami-buys",
-        "text": "Sami saves his allowance and buys the same boots.",
-        "bin": "action",
-        "explanation": "Third, the consumer converts the memory into action by purchasing the same product."
+        "explanation": "Highlighting a unique visual signature teaches consumers to respond only to the authentic brand."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "the-memory-system-three-stores",
-    "prompt": "Each case below shows a brand message in one of the three memory stores. Name the store at work.",
+    "slide_id": "positive-reinforcement-negative-reinforcement-and-punishment",
+    "prompt": "Identify which operant conditioning mechanism is operating in each consumer scenario.",
+    "options": [
+      { "id": "positive", "label": "Positive reinforcement" },
+      { "id": "negative", "label": "Negative reinforcement" },
+      { "id": "punishment", "label": "Punishment" },
+      { "id": "extinction", "label": "Extinction" }
+    ],
+    "cases": [
+      {
+        "id": "airline-miles",
+        "text": "A traveler books all business flights on one airline because every completed trip credits bonus status miles and lounge passes to her account.",
+        "answer": "positive",
+        "explanation": "Positive reinforcement strengthens a behavior by delivering a rewarding consequence after the action."
+      },
+      {
+        "id": "aloe-sunburn",
+        "text": "A beachgoer buys and applies a cooling aloe gel because it immediately relieves the stinging discomfort of a sunburn.",
+        "answer": "negative",
+        "explanation": "Negative reinforcement strengthens a behavior by removing an unpleasant or aversive state."
+      },
+      {
+        "id": "overdraft-fee",
+        "text": "A bank customer stops letting his checking balance dip below zero after being charged a 35-dollar overdraft penalty.",
+        "answer": "punishment",
+        "explanation": "Punishment weakens a behavior by following an action with an aversive consequence."
+      },
+      {
+        "id": "ended-rebate",
+        "text": "Shoppers stop bringing reusable containers to a bulk food store six months after the store quietly eliminates its 50-cent container rebate.",
+        "answer": "extinction",
+        "explanation": "Extinction in operant conditioning occurs when a previously rewarded behavior ceases to receive reinforcement."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "cognitive-and-observational-learning",
+    "prompt": "Arrange the four stages of Bandura's observational learning process in the sequence in which a consumer acquires a new behavior from a social model.",
+    "steps": [
+      {
+        "id": "attention-step",
+        "text": "Attention: A recreational runner notices a marathon champion demonstrating a hydration vest in a training video.",
+        "explanation": "First, the consumer must direct attention to a model who is salient, attractive, competent, or similar to the observer."
+      },
+      {
+        "id": "retention-step",
+        "text": "Retention: The runner encodes and remembers the vest's chest-strap adjustment and flask placement.",
+        "explanation": "Second, the consumer must retain the observed behavior in memory as a symbolic representation."
+      },
+      {
+        "id": "production-step",
+        "text": "Production: The runner has the local running-store access and budget needed to try on and fit the vest properly.",
+        "explanation": "Third, the consumer must possess the ability and resources required to reproduce the behavior in practice."
+      },
+      {
+        "id": "motivation-step",
+        "text": "Motivation: Expecting the same comfort on long Sunday runs, the runner purchases and wears the vest.",
+        "explanation": "Fourth, motivation determines whether the consumer enacts the behavior when anticipating functional or social rewards."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "encoding-storage-and-retrieval-across-memory-stores",
+    "prompt": "Identify which memory store is primarily described in each consumer scenario.",
     "options": [
       { "id": "sensory", "label": "Sensory memory" },
-      { "id": "short-term", "label": "Short-term memory" },
+      { "id": "working", "label": "Working (short-term) memory" },
       { "id": "long-term", "label": "Long-term memory" }
     ],
     "cases": [
       {
-        "id": "bakery-poster",
-        "text": "Walking past a bakery, you glimpse a poster in the window. A few seconds later it is gone from your mind.",
+        "id": "highway-billboard",
+        "text": "A driver glances past a roadside poster. The visual impression of its bright orange background lasts for less than a second before fading.",
         "answer": "sensory",
-        "explanation": "Sensory memory holds brief sensory inputs for a few seconds. This poster never got your attention."
+        "explanation": "Sensory memory holds a high-capacity, literal record of incoming visual or auditory inputs for less than a couple of seconds."
       },
       {
-        "id": "promo-code",
-        "text": "A radio host reads out a promo code, and you repeat it to yourself while you look for a pen.",
-        "answer": "short-term",
-        "explanation": "Short-term memory holds a small amount of information in active consciousness for about twenty seconds."
+        "id": "compare-protein",
+        "text": "Standing in the grocery aisle, a shopper holds the protein-per-gram figures of two cereal boxes in mind for twenty seconds while comparing prices.",
+        "answer": "working",
+        "explanation": "Working (short-term) memory holds a limited amount of information in active consciousness for 15 to 30 seconds during comparisons."
       },
       {
-        "id": "childhood-jingle",
-        "text": "You can still sing the jingle from a cereal ad you loved as a child.",
+        "id": "childhood-slogan",
+        "text": "Decades after seeing a toy commercial as a child, an adult can still recite its exact slogan and melody.",
         "answer": "long-term",
-        "explanation": "Long-term memory retains information for days, months, or years."
+        "explanation": "Long-term memory retains rehearsed information over months, years, or a lifetime."
       },
       {
-        "id": "billboard-flash",
-        "text": "From a car window, a billboard flashes past. Only its red colour registers for a moment.",
-        "answer": "sensory",
-        "explanation": "Sensory memory holds brief sensory inputs for a few seconds before they fade."
-      },
-      {
-        "id": "pizza-number",
-        "text": "A pizza ad reads its number as \"514. 555 | 0199\", so you can hold it in mind while you dial.",
-        "answer": "short-term",
-        "explanation": "Chunking helps short-term memory: three chunks fit where ten separate digits would not."
-      },
-      {
-        "id": "running-app",
-        "text": "A runner thinks through how a new running app fits her training plan. Months later she still knows the brand well.",
-        "answer": "long-term",
-        "explanation": "Elaborative rehearsal moved the brand into long-term memory, which lasts for days, months, or years."
+        "id": "verification-code",
+        "text": "A shopper reads a six-digit checkout verification code on her phone and repeats it silently until she types it into her laptop.",
+        "answer": "working",
+        "explanation": "Working memory maintains a few chunks of information briefly until the immediate task is completed."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "brand-retrieval-in-conversational-search",
-    "prompt": "Each case shows a consumer searching with an AI assistant. Name the idea at work.",
+    "slide_id": "decay-proactive-interference-and-retroactive-interference",
+    "prompt": "Identify whether each failure to recall a brand message is caused by trace decay, proactive interference, or retroactive interference.",
     "options": [
-      { "id": "cue", "label": "Retrieval cue" },
-      { "id": "set", "label": "Consideration set" },
-      { "id": "links", "label": "Links between brands and attributes" }
+      { "id": "decay", "label": "Trace decay" },
+      { "id": "proactive", "label": "Proactive interference" },
+      { "id": "retroactive", "label": "Retroactive interference" }
     ],
     "cases": [
       {
-        "id": "quiet",
-        "text": "Ana asks for a quiet dishwasher. The word \"quiet\" decides which brands the assistant names.",
-        "answer": "cue",
-        "explanation": "Retrieval cue: the words in the question shape which brands the assistant retrieves."
+        "id": "old-telecom-name",
+        "text": "After a telecommunications provider rebrands under a new name, longtime subscribers keep typing the company's old ten-year-old name into search bars.",
+        "answer": "proactive",
+        "explanation": "Proactive interference occurs when prior learning about an older brand makes it harder to encode and remember a newer brand name."
       },
       {
-        "id": "three",
-        "text": "The assistant names three dishwashers, and Ana compares only those three.",
-        "answer": "set",
-        "explanation": "Consideration set: the assistant's short list becomes the small group of brands Ana seriously considers."
+        "id": "commercial-pod",
+        "text": "A viewer watches an ad for an electric SUV, followed immediately by four competing car commercials in the same broadcast break, and cannot recall the first SUV's range claim.",
+        "answer": "retroactive",
+        "explanation": "Retroactive interference occurs when new learning in the same category disrupts recall of an earlier brand message."
       },
       {
-        "id": "reviews",
-        "text": "Thousands of reviews describe one blender brand as \"powerful,\" so the assistant connects that brand with power.",
-        "answer": "links",
-        "explanation": "Links between brands and attributes: the assistant learns about brands from what is written about them."
+        "id": "unrepeated-campaign",
+        "text": "A seasonal beverage brand runs a single week of print ads in May and no further promotions, and by October shoppers have forgotten the brand's name.",
+        "answer": "decay",
+        "explanation": "Decay is the gradual weakening of a memory trace over time when it is not reactivated through repeat exposure or use."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "prompt-cues-and-brand-visibility-in-ai-recommendations",
+    "prompt": "Classify each element of a conversational AI shopping interaction according to the memory and retrieval concept it represents.",
+    "options": [
+      { "id": "prompt-cue", "label": "Prompt retrieval cue" },
+      { "id": "consideration-set", "label": "Generated consideration set" },
+      { "id": "corpus-association", "label": "Training-corpus brand association" }
+    ],
+    "cases": [
+      {
+        "id": "modifier-hypoallergenic",
+        "text": "Adding the words 'fragrance-free for sensitive skin' to a query causes the AI assistant to retrieve a completely different set of laundry detergents.",
+        "answer": "prompt-cue",
+        "explanation": "Modifiers in the user's natural-language prompt act as retrieval cues that shift which brand nodes receive the highest probability."
       },
       {
-        "id": "eco",
-        "text": "Tom types \"eco-friendly detergent\" instead of \"cheap detergent\" and gets different brands.",
-        "answer": "cue",
-        "explanation": "Retrieval cue: changing the word in the question changes the brands retrieved."
+        "id": "three-strollers",
+        "text": "The AI assistant replies with three compact travel strollers, and the parents evaluate only those three models before buying.",
+        "answer": "consideration-set",
+        "explanation": "The shortlist returned by the conversational assistant becomes the consumer's consideration set."
       },
       {
-        "id": "forgotten",
-        "text": "Tom never thinks about the detergent his family used for years, because the assistant did not mention it.",
-        "answer": "set",
-        "explanation": "Consideration set: a brand missing from the answer may never be considered, even if the consumer knows it."
-      },
-      {
-        "id": "sturdy",
-        "text": "Product pages and articles keep calling one suitcase brand \"sturdy,\" and the assistant now pairs the two.",
-        "answer": "links",
-        "explanation": "Links between brands and attributes: the assistant forms these links much like an associative network."
+        "id": "thousands-of-reviews",
+        "text": "Because hundreds of outdoor gear articles and customer reviews link one tent brand to high wind stability, the language model encodes a strong link between the two.",
+        "answer": "corpus-association",
+        "explanation": "Language models encode statistical associations between brands and attributes from reviews, articles, and product documentation."
       }
     ]
   }

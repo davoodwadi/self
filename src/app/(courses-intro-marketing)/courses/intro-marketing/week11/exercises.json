@@ -1,0 +1,236 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "owned-paid-and-earned-digital-media",
+    "prompt": "Sort each digital touchpoint below into Owned Media, Paid Media, or Earned Media.",
+    "bins": [
+      { "id": "owned", "label": "Owned media" },
+      { "id": "paid", "label": "Paid media" },
+      { "id": "earned", "label": "Earned media" }
+    ],
+    "cards": [
+      {
+        "id": "mobile-app",
+        "text": "A running-shoe brand updates its mobile training app and product catalog on its e-commerce storefront.",
+        "bin": "owned",
+        "explanation": "Owned media consist of digital properties that the brand controls directly, such as its corporate website, e-commerce storefront, and mobile application."
+      },
+      {
+        "id": "email-newsletter",
+        "text": "A coffee roaster sends a weekly brewing guide to its opted-in email subscriber list.",
+        "bin": "owned",
+        "explanation": "An opted-in email subscriber list and company blog are owned media assets controlled directly by the brand."
+      },
+      {
+        "id": "search-ad-bid",
+        "text": "A luggage company pays per click for a sponsored listing at the top of a search engine results page.",
+        "bin": "paid",
+        "explanation": "Paid media consist of external digital placements for which the brand pays to acquire reach and traffic, including paid search advertisements."
+      },
+      {
+        "id": "influencer-fee",
+        "text": "A skincare label pays a creator a sponsorship fee to feature its moisturizer in a promoted social video.",
+        "bin": "paid",
+        "explanation": "Paid influencer sponsorships and paid social-media promotions are external placements bought to acquire reach."
+      },
+      {
+        "id": "customer-review",
+        "text": "A verified buyer posts an unprompted five-star review and photo of a camping tent on an outdoor forum.",
+        "bin": "earned",
+        "explanation": "Earned media consist of organic exposure generated voluntarily by consumers through customer reviews and forum recommendations."
+      },
+      {
+        "id": "journalist-mention",
+        "text": "A technology journalist includes a brand's wireless keyboard in an independent roundup of home-office gear.",
+        "bin": "earned",
+        "explanation": "Unpaid press coverage and independent creator mentions are earned media that supply third-party credibility."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "search-engine-optimization-seo-versus-search-engine-marketing-sem",
+    "prompt": "For each search marketing action or outcome below, identify whether it describes Search Engine Optimization (SEO) or Search Engine Marketing (SEM).",
+    "options": [
+      { "id": "seo", "label": "Search Engine Optimization (SEO)" },
+      { "id": "sem", "label": "Search Engine Marketing (SEM)" }
+    ],
+    "cases": [
+      {
+        "id": "keyword-auction",
+        "text": "A meal-kit company bids on the phrase 'quick weeknight dinners' in a real-time auction so its sponsored link appears above organic results today.",
+        "answer": "sem",
+        "explanation": "SEM involves bidding on specific keywords in real-time ad auctions to place a sponsored listing above or beside organic search results."
+      },
+      {
+        "id": "backlinks-speed",
+        "text": "A financial-planning firm improves page loading speed, clarifies technical metadata, and publishes tax guides that university websites link to.",
+        "answer": "seo",
+        "explanation": "SEO structures web pages, technical metadata, site speed, and authoritative content with external backlinks to rank higher in unpaid organic results."
+      },
+      {
+        "id": "traffic-stops",
+        "text": "A retailer's top-of-page visibility begins the hour its campaign budget turns on and disappears the moment daily spending is paused.",
+        "answer": "sem",
+        "explanation": "SEM delivers immediate visibility when a budget is active and stops as soon as spending stops."
+      },
+      {
+        "id": "compounding-traffic",
+        "text": "After six months of publishing authoritative repair guides, a bicycle shop receives steady daily search visitors without paying a per-click ad fee.",
+        "answer": "seo",
+        "explanation": "SEO requires months of sustained investment but compounds into durable organic traffic without a per-click advertising fee."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "permission-based-email-marketing-and-lifecycle-automation",
+    "prompt": "Match each automated email lifecycle trigger with the customer action that initiates it.",
+    "term_label": "Lifecycle trigger",
+    "match_label": "Customer action and automated message",
+    "pairs": [
+      {
+        "id": "welcome",
+        "term": "Welcome sequence",
+        "match": "A new visitor creates an account and opts in to the mailing list, receiving an introduction to the brand's core products.",
+        "explanation": "A welcome sequence is triggered automatically right after account creation or newsletter opt-in."
+      },
+      {
+        "id": "abandoned-cart",
+        "term": "Abandoned-cart reminder",
+        "match": "A shopper adds a winter coat to her online bag and closes the browser tab before paying, receiving a helpful follow-up link.",
+        "explanation": "An abandoned-cart trigger sends a timely reminder after a shopper leaves items in a cart without completing checkout."
+      },
+      {
+        "id": "care-guide",
+        "term": "Post-delivery care guide",
+        "match": "Two days after a cast-iron skillet arrives at a buyer's home, the brand emails seasoning and cleaning instructions.",
+        "explanation": "A post-delivery trigger sends helpful onboarding or care instructions once a product is delivered."
+      },
+      {
+        "id": "replenishment",
+        "term": "Replenishment prompt",
+        "match": "Twenty-five days after a customer buys a thirty-day supply of contact lenses, the retailer sends a one-click reorder message.",
+        "explanation": "A replenishment prompt is timed to arrive when a consumable item is due to run out."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "social-media-platforms-demographics-and-use-cases",
+    "prompt": "Match each social media platform category with the marketing objective and usage norm it fits best.",
+    "term_label": "Platform category",
+    "match_label": "Primary marketing use case",
+    "pairs": [
+      {
+        "id": "visual-discovery",
+        "term": "Visual discovery and lifestyle platforms",
+        "match": "Showcasing interior-design aesthetics, fashion lookbooks, and recipe photography during early inspiration and consideration.",
+        "explanation": "Visual discovery platforms such as Instagram and Pinterest excel at showcasing aesthetics, fashion, food, and home design."
+      },
+      {
+        "id": "short-video",
+        "term": "Short-form video platforms",
+        "match": "Using algorithmic interest graphs to reach younger and mainstream audiences with rapid product demonstrations.",
+        "explanation": "Short-form video platforms such as TikTok and YouTube Shorts rely on algorithmic interest graphs for rapid organic reach and product demonstrations."
+      },
+      {
+        "id": "professional-networks",
+        "term": "Professional networks",
+        "match": "Publishing B2B thought leadership, connecting with enterprise executives, and running account-based marketing campaigns.",
+        "explanation": "Professional networks such as LinkedIn support B2B thought leadership, executive networking, and account-based marketing."
+      },
+      {
+        "id": "discussion-forums",
+        "term": "Discussion forums",
+        "match": "Reading candid, long-form peer product evaluations and troubleshooting threads written by hobbyists and owners.",
+        "explanation": "Discussion forums such as Reddit host detailed peer product evaluations and community discussions."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "digital-metrics-and-conversion-attribution",
+    "prompt": "Match each digital marketing metric or evaluation concept with its definition.",
+    "term_label": "Metric or concept",
+    "match_label": "Definition",
+    "pairs": [
+      {
+        "id": "ctr",
+        "term": "Click-through rate (CTR)",
+        "match": "The number of ad clicks divided by the total number of impressions.",
+        "explanation": "Click-through rate measures the share of impressions that result in a click."
+      },
+      {
+        "id": "conversion-rate",
+        "term": "Conversion rate",
+        "match": "The number of completed purchases divided by the number of clicks.",
+        "explanation": "Conversion rate measures the share of visitors who complete the target action such as a purchase."
+      },
+      {
+        "id": "vanity-metric",
+        "term": "Vanity metric",
+        "match": "A surface figure such as raw follower count or post likes that looks impressive on a slide but does not correlate with sales or retention.",
+        "explanation": "Vanity metrics look impressive in reports but fail to reflect incremental revenue or customer retention."
+      },
+      {
+        "id": "holdout-experiment",
+        "term": "Randomized holdout experiment",
+        "match": "A test comparing conversion rates between an exposed group and an unexposed control group to measure true causal incrementality.",
+        "explanation": "Randomized holdout experiments isolate the causal incremental lift of a digital campaign beyond organic baseline sales."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "list-position-effects-when-ai-agents-search",
+    "question_text": "An electronics brand assumes that because AI shopping agents are software programs, they will evaluate all fifty laptops on a marketplace page equally regardless of rank order. What do the controlled experiments of Wadi and Ma (2026a) show about this assumption?",
+    "hint": "Consider how rank order in a candidate list affects AI shopping agent selection even when attributes and prices are held constant.",
+    "correct_answer_citation": "Week 11: List Position Effects When AI Agents Search (Wadi & Ma, 2026a)",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "AI shopping agents evaluate every item on a page with equal probability regardless of rank position.",
+        "option_explanation": "Empirical studies show the opposite: software agents do not weigh every rank position equally."
+      },
+      {
+        "option_text": "AI shopping agents exhibit strong position effects, favoring options because of where they appear in a ranked list even when objective attributes and prices are held constant.",
+        "option_explanation": "Correct. Controlled experiments demonstrate that AI shopping agents exhibit strong position effects, making top rank placement in marketplace feeds critical (Wadi & Ma, 2026a)."
+      },
+      {
+        "option_text": "Rank order only affects human shoppers browsing physical store shelves and has no effect on software agents.",
+        "option_explanation": "AI shopping agents read ranked product lists and exhibit pronounced position effects of their own (Wadi & Ma, 2026a)."
+      },
+      {
+        "option_text": "AI shopping agents ignore structured marketplace feeds and only read video commercials.",
+        "option_explanation": "AI shopping agents directly parse ranked product lists and structured data indices when searching on a consumer's behalf."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "sponsored-labels-and-paid-placements-in-agent-mediated-search",
+    "question_text": "In experiments testing how AI shopping agents react to paid placement disclosure labels on ranked product lists, how did the wording of the label affect agent choice (Wadi & Ma, 2026c)?",
+    "hint": "Compare how often AI agents selected an identical paid listing when it was labeled 'Sponsored' versus 'Promoted'.",
+    "correct_answer_citation": "Week 11: Sponsored Labels and Paid Placements in Agent-Mediated Search (Wadi & Ma, 2026c)",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "AI agents selected listings labeled 'Sponsored' much more often than listings labeled 'Promoted'.",
+        "option_explanation": "The experimental effect ran in the opposite direction: the 'Sponsored' label triggered stronger avoidance than 'Promoted' (Wadi & Ma, 2026c)."
+      },
+      {
+        "option_text": "Disclosure label wording had zero effect on AI agent choices because agents strip out all badge text.",
+        "option_explanation": "AI agents read disclosure labels in ranked lists, and the exact wording significantly alters selection rates (Wadi & Ma, 2026c)."
+      },
+      {
+        "option_text": "AI agents chose a paid listing less often when it was labeled 'Sponsored' than when the identical paid listing was labeled 'Promoted'.",
+        "option_explanation": "Correct. The exact wording of the disclosure label significantly alters agent choice, with 'Sponsored' reducing selection more than 'Promoted' (Wadi & Ma, 2026c)."
+      },
+      {
+        "option_text": "Regulators prohibit paid listings from carrying any disclosure labels when shown to human or AI searchers.",
+        "option_explanation": "Regulators require clear disclosure labels so searchers can distinguish paid advertisements from organic rankings."
+      }
+    ]
+  }
+]

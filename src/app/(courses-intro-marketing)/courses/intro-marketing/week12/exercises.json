@@ -1,0 +1,223 @@
+[
+  {
+    "type": "match",
+    "slide_id": "the-international-trade-system-and-trade-barriers",
+    "prompt": "Match each international trade restriction or institution with the cross-border scenario that illustrates it.",
+    "term_label": "Trade concept",
+    "match_label": "Cross-border scenario",
+    "pairs": [
+      {
+        "id": "tariff",
+        "term": "Tariff",
+        "match": "A foreign customs authority collects a 15 percent tax on every imported shipment of Canadian cheddar cheese to protect local dairy farms.",
+        "explanation": "A tariff is a tax levied by a foreign government against certain imported products to raise revenue or protect domestic firms."
+      },
+      {
+        "id": "quota",
+        "term": "Quota",
+        "match": "A government caps foreign electric vehicle imports at 40,000 units per year to preserve local factory jobs.",
+        "explanation": "A quota sets a numerical limit on the amount of foreign imports that a country will accept in a product category."
+      },
+      {
+        "id": "exchange-controls",
+        "term": "Exchange controls",
+        "match": "A central bank restricts how much local currency an importer can convert into US dollars each month to pay foreign suppliers.",
+        "explanation": "Exchange controls limit the amount of foreign exchange available and regulate the exchange rate against other currencies."
+      },
+      {
+        "id": "nontariff",
+        "term": "Nontariff trade barrier",
+        "match": "A ministry of health requires imported cosmetics to undergo a separate 18-month domestic inspection that local brands are exempt from.",
+        "explanation": "Nontariff trade barriers use restrictive product standards, testing rules, or procurement biases to disadvantage foreign goods without a direct tax."
+      },
+      {
+        "id": "free-trade-zone",
+        "term": "Regional free trade zone",
+        "match": "Member countries under USMCA eliminate border duties on qualifying auto parts shipped between Canada, Mexico, and the United States.",
+        "explanation": "Regional free trade zones or economic communities reduce tariffs and harmonize standards among member nations."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "exporting-and-joint-venturing",
+    "prompt": "For each international expansion scenario below, identify which market entry mode the firm is using.",
+    "options": [
+      { "id": "indirect-exporting", "label": "Indirect exporting" },
+      { "id": "direct-exporting", "label": "Direct exporting" },
+      { "id": "licensing", "label": "Licensing (joint venturing)" },
+      { "id": "joint-ownership", "label": "Joint ownership (joint venturing)" }
+    ],
+    "cases": [
+      {
+        "id": "maple-broker",
+        "text": "A Quebec maple syrup producer sells its bottled syrup to an independent export merchant in Montreal, which handles all foreign buyers and shipping.",
+        "answer": "indirect-exporting",
+        "explanation": "Indirect exporting occurs when a firm produces goods in its home country and works through independent international marketing intermediaries."
+      },
+      {
+        "id": "own-export-dept",
+        "text": "An Ontario cycling-apparel maker manufactures jerseys in Toronto and uses its own internal export team to ship orders directly to retailers in Germany.",
+        "answer": "direct-exporting",
+        "explanation": "Direct exporting occurs when a company produces goods at home and manages its own exporting operations without domestic intermediaries."
+      },
+      {
+        "id": "beverage-royalty",
+        "text": "A Vancouver kombucha brand grants a brewer in South Korea the right to use its fermentation process and trademark in exchange for a 6 percent royalty.",
+        "answer": "licensing",
+        "explanation": "Licensing is a joint-venturing arrangement in which a foreign licensee pays a fee or royalty to use the firm's manufacturing process, trademark, or patent."
+      },
+      {
+        "id": "co-owned-chain",
+        "text": "A Canadian fitness studio operator and a Japanese retail conglomerate each invest 50 percent of the equity to form a new company that opens studios in Tokyo.",
+        "answer": "joint-ownership",
+        "explanation": "Joint ownership is a joint-venturing mode in which a firm joins with foreign investors to create a local business in which they share ownership and control."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "product-and-promotion-adaptation-strategies",
+    "prompt": "Match each international product and promotion strategy with the global marketing action that exemplifies it.",
+    "term_label": "Adaptation strategy",
+    "match_label": "Global marketing action",
+    "pairs": [
+      {
+        "id": "straight-extension",
+        "term": "Straight product extension",
+        "match": "An audio equipment maker sells the exact same studio headphones in thirty countries without altering the hardware or packaging.",
+        "explanation": "Straight product extension markets a product in a foreign market without making any changes to the product itself."
+      },
+      {
+        "id": "product-adaptation",
+        "term": "Product adaptation",
+        "match": "A global snack brand keeps its core wafer bar but reformulates the filling with red bean paste for East Asian supermarkets.",
+        "explanation": "Product adaptation changes the product's features, ingredients, or sizing to meet local conditions or consumer preferences."
+      },
+      {
+        "id": "product-invention",
+        "term": "Product invention",
+        "match": "An appliance manufacturer engineers a new hand-cranked water purifier specifically for off-grid rural villages.",
+        "explanation": "Product invention consists of creating an entirely new product from the ground up to meet the needs of consumers in a specific market."
+      },
+      {
+        "id": "communication-adaptation",
+        "term": "Communication adaptation",
+        "match": "A skincare company sells its standard moisturizer formula abroad but replaces its individualist home-market ad campaign with family-focused commercials.",
+        "explanation": "Communication adaptation keeps the product unchanged while altering the advertising message to fit local cultural norms."
+      },
+      {
+        "id": "dual-adaptation",
+        "term": "Dual adaptation",
+        "match": "A beverage company both lowers the sugar content of its bottled tea and redesigns its promotional campaign around local harvest festivals.",
+        "explanation": "Dual adaptation modifies both the physical product and the advertising communication to match local wants and media rules."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "global-pricing-and-international-distribution-channels",
+    "prompt": "Arrange the stages of the whole-channel view and price escalation in order, from the manufacturer's domestic origin to the final consumer abroad.",
+    "steps": [
+      {
+        "id": "hq-factory",
+        "text": "The seller's headquarters sets the domestic factory price and prepares the export shipment.",
+        "explanation": "The whole-channel view begins with the seller's headquarters organization, which oversees the channel and sets the base factory price."
+      },
+      {
+        "id": "between-nations",
+        "text": "Channels between nations transport the goods across oceans to the foreign border, adding international freight and insurance costs.",
+        "explanation": "Channels between nations move products from the home country to the borders of foreign markets, adding transportation costs."
+      },
+      {
+        "id": "customs-importer",
+        "text": "The shipment clears foreign customs, where import tariffs and the importer's margin are added to the landed cost.",
+        "explanation": "At the foreign entry point, government tariffs and importer margins compound the base cost of the shipment."
+      },
+      {
+        "id": "within-nations-wholesale",
+        "text": "Channels within nations move the goods from the port through regional wholesalers, adding domestic logistics and wholesale margins.",
+        "explanation": "Channels within nations move products from their foreign entry point through local intermediaries toward retail outlets."
+      },
+      {
+        "id": "local-retail-buyer",
+        "text": "A local retailer adds its retail margin and sells the product to the final consumer at the escalated foreign retail price.",
+        "explanation": "The channel within the nation concludes when the local retailer sells the product to the final buyer, reflecting cumulative price escalation."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "sustainability-purpose-driven-marketing-and-the-circular-economy",
+    "prompt": "Sort each company practice into the Linear take-make-dispose model, Greenwashing, or the Circular economy.",
+    "bins": [
+      { "id": "linear", "label": "Linear take-make-dispose model" },
+      { "id": "greenwashing", "label": "Greenwashing" },
+      { "id": "circular", "label": "Circular economy" }
+    ],
+    "cards": [
+      {
+        "id": "glued-battery",
+        "text": "An electronics maker glues batteries permanently into its earbuds so worn units must be discarded and replaced every two years.",
+        "bin": "linear",
+        "explanation": "Designing products that cannot be repaired or recycled exemplifies the linear take-make-dispose production model."
+      },
+      {
+        "id": "single-use-pod",
+        "text": "A beverage firm sells non-recyclable multi-layer plastic pouches designed to be thrown into household trash after a single use.",
+        "bin": "linear",
+        "explanation": "Single-use non-recyclable packaging moves virgin materials straight from factory production to landfill disposal."
+      },
+      {
+        "id": "leaf-label-lie",
+        "text": "A detergent brand prints Eco-Pure and a green leaf on its bottle while keeping the exact same petrochemical formula and virgin plastic container.",
+        "bin": "greenwashing",
+        "explanation": "Using environmental imagery and vague claims without verifiable product or operational improvements is greenwashing."
+      },
+      {
+        "id": "tiny-offset-ad",
+        "text": "A fast-fashion retailer runs a multimillion-dollar ad campaign touting a tiny recycled-fiber capsule line that represents 0.2 percent of its output.",
+        "bin": "greenwashing",
+        "explanation": "Exaggerating a token initiative to disguise an unsustainable core business model is a classic form of greenwashing."
+      },
+      {
+        "id": "jacket-repair",
+        "text": "An outdoor coat manufacturer operates free zipper-repair workshops and resells refurbished trade-in jackets through a second-hand storefront.",
+        "bin": "circular",
+        "explanation": "Designing durable products and operating repair, refurbishment, and resale programs keeps goods in use within a circular economy."
+      },
+      {
+        "id": "metal-recovery",
+        "text": "A smartphone manufacturer collects end-of-life phones from customers to extract cobalt and gold for use in new circuit boards.",
+        "bin": "circular",
+        "explanation": "Recovering rare-earth and precious metals from returned devices closes the material loop through reverse logistics and recycling."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "principal-agent-conflict-between-the-consumer-and-the-platform",
+    "question_text": "A traveler uses an AI assistant hosted by an online travel platform to book a hotel. Two hotels have identical ratings, amenities, and prices, but Hotel A paid the platform for a Sponsored listing. Based on the controlled experiments of Wadi and Ma (2026c), how does the AI agent's system prompt affect its choice?",
+    "hint": "Compare what happens when the prompt tells the agent it works for the traveler versus when it tells the agent it works for the booking platform.",
+    "correct_answer_citation": "Week 12: Principal-Agent Conflict Between the Consumer and the Platform",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The AI agent ignores system-prompt role instructions and selects Hotel A and Hotel B at identical rates in every condition.",
+        "option_explanation": "Incorrect. The experiments showed that the agent's selection of sponsored hotels shifted significantly depending on whom its system prompt said it worked for."
+      },
+      {
+        "option_text": "When told it works for the traveler, the agent chooses the sponsored hotel significantly less often than when told it works for the booking platform.",
+        "option_explanation": "Correct. Wadi and Ma (2026c) found that an AI agent told it worked on behalf of the traveler penalized sponsored listings significantly more than the same agent told it worked on behalf of the booking platform."
+      },
+      {
+        "option_text": "When told it works for the traveler, the agent exclusively selects sponsored hotels because sponsorship signals higher quality.",
+        "option_explanation": "Incorrect. Traveler-aligned agents chose the sponsored hotel significantly less often than an otherwise identical unsponsored hotel."
+      },
+      {
+        "option_text": "Only human shoppers respond to sponsored tags, whereas AI agents cannot detect whether a listing is sponsored.",
+        "option_explanation": "Incorrect. The AI agent read the sponsorship status and adjusted its choices based on whether it was prompted to represent the traveler or the platform."
+      }
+    ]
+  }
+]

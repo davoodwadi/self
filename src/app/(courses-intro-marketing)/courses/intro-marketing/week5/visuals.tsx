@@ -1,20 +1,19 @@
 /* ==========================================================================
    Week 5, figures
    --------------------------------------------------------------------------
-   Hand-drawn SVG plates, one grammar per idea: a bridge of information, an
-   aim that holds or drifts, a fork of objectives, a plan sheet, a balance, a
-   pipeline over two collaborators, a sales line that forks, a clipboard and
-   a shelf, a split lane of sources, paired bars, a field too wide for one
-   company, three pitfalls, a panel of dials, a fitted edge, an observer, a
-   form, matched groups, a shelf with a gap, a data field that forks, a CRM
-   loop, a lens dug into data, a foundation of insights, and a spectrum.
-
-   Conventions carried over from earlier weeks:
-     - viewBox width 800 (560, 400 or 360 for column plates), flat fills,
-       hairline rules, no shadows or gradients
-     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
-       contrast or outward-looking state
-     - every label reuses words from the slide the plate sits on
+   Hand-built SVG plates for the four [figure: ...] slides in week5/content.md:
+     1. FourStepProcess: four-step marketing research process progressing from
+        problem definition and research plan development to data implementation
+        and managerial reporting, with Step 1 branching into exploratory,
+        descriptive, and causal objectives.
+     2. SecondaryVsPrimary: comparison of internal and external secondary data
+        sources with primary data collection methods across speed, cost, and
+        specificity.
+     3. CrmCycle: customer relationship management cycle integrating sales,
+        service, and marketing touchpoints into a unified customer profile.
+     4. SyntheticVsHumanSurvey: comparison of synthetic AI survey responses
+        used for early questionnaire pretesting against primary survey data
+        from real human consumers.
    ========================================================================== */
 
 import React from "react";
@@ -23,8 +22,6 @@ import {
   COUNTER_TINT,
   Display,
   Frame,
-  glyphProps,
-  hash2,
   head2,
   headAlong1,
   INK,
@@ -33,42 +30,39 @@ import {
   Note,
   PAPER,
   PAPER2,
+  PAPER3,
   r2,
   RULE,
   RULE2,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
-import { Eye, Gift, Megaphone, PencilSimple, ShoppingCart } from "@phosphor-icons/react";
-import { Coins2, Company1, Person3 } from "../_visuals/objects";
-
-/** A clipboard with ticked rows, centred on x, top at y. */
-function Clipboard({ x, y, w = 80, h = 96, rows = 3, ticked = 2, tone = INK }: { x: number; y: number; w?: number; h?: number; rows?: number; ticked?: number; tone?: string }) {
-  const step = (h - 26) / rows;
-  return (
-    <g>
-      <rect x={x - w / 2} y={y} width={w} height={h} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      <rect x={x - 18} y={y - 6} width={36} height={12} fill={tone} />
-      {Array.from({ length: rows }, (_, i) => {
-        const ry = r2(y + 26 + i * step);
-        return (
-          <g key={i}>
-            <rect x={x - w / 2 + 12} y={r2(ry - 6)} width={12} height={12} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
-            {i < ticked ? <path d={`M${x - w / 2 + 14} ${ry} L${x - w / 2 + 17} ${r2(ry + 3)} L${x - w / 2 + 23} ${r2(ry - 4)}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} /> : null}
-            <line x1={x - w / 2 + 32} y1={ry} x2={x + w / 2 - 12} y2={ry} stroke={RULE2} strokeWidth={2.5} />
-          </g>
-        );
-      })}
-    </g>
-  );
-}
+import { Chip2, Coins2, Person3 } from "../_visuals/objects";
 
 /** Exploratory research: a lens over a question mark, centred on the lens. */
-function QuestionLens({ x, y, r = 19, tone = INK }: { x: number; y: number; r?: number; tone?: string }) {
+function QuestionLens({
+  x,
+  y,
+  r = 16,
+  tone = INK,
+}: {
+  x: number;
+  y: number;
+  r?: number;
+  tone?: string;
+}) {
   return (
     <g>
       <circle cx={x} cy={y} r={r} fill={PAPER} stroke={tone} strokeWidth={1.75} />
-      <line x1={r2(x + r * 0.74)} y1={r2(y + r * 0.74)} x2={r2(x + r * 1.47)} y2={r2(y + r * 1.47)} stroke={tone} strokeWidth={3} strokeLinecap="round" />
+      <line
+        x1={r2(x + r * 0.72)}
+        y1={r2(y + r * 0.72)}
+        x2={r2(x + r * 1.4)}
+        y2={r2(y + r * 1.4)}
+        stroke={tone}
+        strokeWidth={2.75}
+        strokeLinecap="round"
+      />
       <Display x={x} y={r2(y + r * 0.42)} anchor="middle" fill={tone} size={r2(r * 1.05)}>
         ?
       </Display>
@@ -77,1182 +71,695 @@ function QuestionLens({ x, y, r = 19, tone = INK }: { x: number; y: number; r?: 
 }
 
 /* ==========================================================================
-   1. BRIDGE: information connects people to the marketer
+   1. FOUR-STEP MARKETING RESEARCH PROCESS
    ========================================================================== */
 
-export function ResearchBridge() {
-  const groups = [
-    { y: 78, name: "CONSUMERS" },
-    { y: 148, name: "CUSTOMERS" },
-    { y: 218, name: "THE PUBLIC" },
+export function FourStepProcess() {
+  const steps = [
+    {
+      x: 20,
+      w: 176,
+      n: "Step 1",
+      a: "Define problem &",
+      b: "research objectives",
+      active: true,
+    },
+    {
+      x: 222,
+      w: 172,
+      n: "Step 2",
+      a: "Develop the",
+      b: "research plan",
+      active: false,
+    },
+    {
+      x: 420,
+      w: 172,
+      n: "Step 3",
+      a: "Implement the",
+      b: "research plan",
+      active: false,
+    },
+    {
+      x: 618,
+      w: 162,
+      n: "Step 4",
+      a: "Interpret & report",
+      b: "the findings",
+      active: false,
+    },
   ];
+
   return (
-    <Frame height={240} label="Consumers, customers, and the public are connected to the marketer through information. The information passes through design, collection, and analysis, and the marketer uses it to identify and define opportunities and problems.">
-      {groups.map((g) => (
-        <g key={g.name}>
-          <Person3 x={60} y={g.y} stroke={COUNTER} />
-          <Person3 x={82} y={g.y} stroke={COUNTER} />
-          <Key x={104} y={g.y - 10} fill={COUNTER} size={11}>
-            {g.name}
-          </Key>
-          <path d={`M196 ${g.y - 14} C232 ${g.y - 14} 226 132 256 132`} fill="none" stroke={COUNTER} strokeWidth={1.25} />
-        </g>
-      ))}
-
-      <Key x={410} y={100} anchor="middle" fill={SIGNAL} size={11.5}>
-        INFORMATION
-      </Key>
-      <rect x={260} y={112} width={300} height={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <line x1={360} y1={112} x2={360} y2={152} stroke={SIGNAL} strokeWidth={1} />
-      <line x1={460} y1={112} x2={460} y2={152} stroke={SIGNAL} strokeWidth={1} />
-      {[
-        [310, "DESIGN"],
-        [410, "COLLECTION"],
-        [510, "ANALYSIS"],
-      ].map(([x, t]) => (
-        <Key key={t} x={x as number} y={136} anchor="middle" fill={SIGNAL} size={10.5}>
-          {t}
-        </Key>
-      ))}
-      <line x1={560} y1={132} x2={586} y2={132} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(588, 132)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-
-      <Person3 x={616} y={160} k={1.4} />
-      <Key x={616} y={188} anchor="middle" fill={INK} size={11}>
-        MARKETER
-      </Key>
-
-      <line x1={644} y1={120} x2={662} y2={88} stroke={INK3} strokeWidth={1.25} />
-      <line x1={644} y1={144} x2={662} y2={172} stroke={INK3} strokeWidth={1.25} />
-      <rect x={666} y={64} width={126} height={32} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={729} y={84} anchor="middle" fill={COUNTER} size={10}>
-        OPPORTUNITIES
-      </Key>
-      <Note x={729} y={132} anchor="middle" size={12.5} italic>
-        identify and define
-      </Note>
-      <rect x={666} y={160} width={126} height={32} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Key x={729} y={180} anchor="middle" fill={INK} size={10}>
-        PROBLEMS
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   2. AIM: the first step sets the line the whole process follows
-   ========================================================================== */
-
-export function ProblemAim() {
-  return (
-    <Frame width={640} height={250} label="From the first step, defining the problem, a straight line reaches the research objectives. Two lines that leave at a slightly different angle drift further apart over the entire research process and miss.">
-      <Key x={126} y={106} anchor="end" fill={SIGNAL} size={12}>
-        DEFINE THE
-      </Key>
-      <Key x={126} y={122} anchor="end" fill={SIGNAL} size={12}>
-        PROBLEM
-      </Key>
-
-      {[30, 190].map((endY) => (
-        <g key={endY}>
-          <line x1={152} y1={114} x2={506} y2={endY} stroke={INK3} strokeWidth={1.25} strokeDasharray="5 5" />
-          <path d={`M499 ${endY - 7} L513 ${endY + 7} M513 ${endY - 7} L499 ${endY + 7}`} fill="none" stroke={INK3} strokeWidth={1.75} />
-        </g>
-      ))}
-
-      <line x1={152} y1={114} x2={546} y2={114} stroke={SIGNAL} strokeWidth={2.25} />
-      <circle cx={146} cy={114} r={9} fill={SIGNAL} />
-
-      <circle cx={580} cy={114} r={32} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-      <circle cx={580} cy={114} r={20} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
-      <circle cx={580} cy={114} r={8} fill={SIGNAL} />
-      <Key x={626} y={64} anchor="end" fill={SIGNAL} size={12}>
-        RESEARCH OBJECTIVES
-      </Key>
-
-      <path d="M160 208 V218 H486 V208" fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={323} y={240} anchor="middle" fill={INK} size={12}>
-        GUIDES THE ENTIRE RESEARCH PROCESS
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   3. FORK: three kinds of objective (560 wide)
-   ========================================================================== */
-
-export function ObjectiveFork() {
-  return (
-    <Frame width={560} height={200} label="Depending on the problem, research objectives branch three ways: exploratory, descriptive, or causal.">
-      <rect x={125} y={14} width={310} height={36} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <Key x={280} y={37} anchor="middle" fill={INK} size={13}>
-        DEPENDING ON THE PROBLEM
-      </Key>
-      <path d="M280 50 V68 M95 68 H465 M95 68 V88 M280 68 V88 M465 68 V88" fill="none" stroke={INK3} strokeWidth={1.25} />
-
-      {/* exploratory: a lens over a question */}
-      <QuestionLens x={90} y={122} />
-      <Key x={95} y={188} anchor="middle" fill={INK} size={14.5}>
-        EXPLORATORY
-      </Key>
-
-      {/* descriptive: measured bars */}
-      {[
-        [250, 22],
-        [268, 36],
-        [286, 28],
-        [304, 44],
-      ].map(([x, h]) => (
-        <rect key={x} x={x - 6} y={150 - h} width={12} height={h} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      ))}
-      <line x1={236} y1={150} x2={318} y2={150} stroke={COUNTER} strokeWidth={1.25} />
-      <Key x={280} y={188} anchor="middle" fill={COUNTER} size={14.5}>
-        DESCRIPTIVE
-      </Key>
-
-      {/* causal: one thing drives another */}
-      <circle cx={433} cy={124} r={12} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
-      <circle cx={497} cy={124} r={12} fill={SIGNAL} />
-      <line x1={447} y1={124} x2={481} y2={124} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head2.right(483, 124)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={465} y={188} anchor="middle" fill={SIGNAL} size={14.5}>
-        CAUSAL
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   4. PLAN SHEET: what the research plan spells out
-   ========================================================================== */
-
-export function PlanSheet() {
-  const cols = [
-    { cx: 173, n: "01", a: "EXACT INFORMATION", b: "NEEDED" },
-    { cx: 400, n: "02", a: "SOURCES OF", b: "EXISTING DATA" },
-    { cx: 627, n: "03", a: "SPECIFIC RESEARCH", b: "APPROACHES" },
-  ];
-  return (
-    <Frame width={700} height={230} label="A research plan sheet in three sections: the exact information needed, sources of existing data, and specific research approaches.">
-      <g transform="translate(-50 -12)">
-      <rect x={60} y={20} width={680} height={210} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <rect x={60.75} y={20.75} width={678.5} height={33} fill={SIGNAL_TINT} />
-      <line x1={60} y1={54} x2={740} y2={54} stroke={SIGNAL} strokeWidth={1} />
-      <Key x={400} y={42} anchor="middle" fill={SIGNAL} size={12}>
-        RESEARCH PLAN
-      </Key>
-      <line x1={287} y1={54} x2={287} y2={230} stroke={RULE} strokeWidth={1} />
-      <line x1={513} y1={54} x2={513} y2={230} stroke={RULE} strokeWidth={1} />
-
-      {cols.map((c) => (
-        <g key={c.n}>
-          <Display x={c.cx} y={92} anchor="middle" fill={INK3} size={20}>
-            {c.n}
-          </Display>
-          <Key x={c.cx} y={194} anchor="middle" fill={INK} size={11}>
-            {c.a}
-          </Key>
-          <Key x={c.cx} y={212} anchor="middle" fill={INK} size={11}>
-            {c.b}
-          </Key>
-        </g>
-      ))}
-
-      {/* exact: crosshair */}
-      <circle cx={173} cy={140} r={22} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <circle cx={173} cy={140} r={6} fill={SIGNAL} />
-      <path d="M173 110 V126 M173 154 V170 M143 140 H159 M187 140 H203" stroke={SIGNAL} strokeWidth={1.5} />
-
-      {/* existing data: database */}
-      <ellipse cx={400} cy={118} rx={24} ry={7} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <path d="M376 118 V160 A24 7 0 0 0 424 160 V118" fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <path d="M376 132 A24 7 0 0 0 424 132 M376 146 A24 7 0 0 0 424 146" fill="none" stroke={COUNTER} strokeWidth={1.25} />
-
-      {/* approaches: a fork of routes */}
-      <line x1={593} y1={140} x2={621} y2={140} stroke={INK} strokeWidth={1.5} />
-      {[
-        [655, 116],
-        [659, 140],
-        [655, 164],
-      ].map(([x, y]) => (
-        <g key={y}>
-          <line x1={621} y1={140} x2={x} y2={y} stroke={INK} strokeWidth={1.5} />
-          <path d={headAlong1(x, y, x - 621, y - 140)} fill="none" stroke={INK} strokeWidth={1.5} />
-        </g>
-      ))}
-      </g>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   5. BALANCE: cost of data against value of insights (400 wide)
-   ========================================================================== */
-
-export function CostValueBalance() {
-  return (
-    <Frame width={400} height={166} label="A level balance: the cost of obtaining data in one pan, the value of the insights in the other.">
-      <g transform="translate(0 -60)">
-      <line x1={150} y1={214} x2={250} y2={214} stroke={RULE} strokeWidth={1} />
-      <path d="M186 214 L200 196 L214 214 Z" fill={INK} />
-      <line x1={200} y1={100} x2={200} y2={196} stroke={INK} strokeWidth={2} />
-      <line x1={70} y1={100} x2={330} y2={100} stroke={INK} strokeWidth={2.5} strokeLinecap="round" />
-      <circle cx={200} cy={100} r={5} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-
-      {[80, 320].map((x) => (
-        <g key={x}>
-          <path d={`M${x} 100 L${x - 40} 150 M${x} 100 L${x + 40} 150`} fill="none" stroke={INK3} strokeWidth={1} />
-          <path d={`M${x - 46} 150 Q${x} 170 ${x + 46} 150`} fill="none" stroke={INK} strokeWidth={1.5} />
-        </g>
-      ))}
-
-      <Coins2 x={80} y={158} n={4} w={36} tone={INK} />
-      <path d="M320 122 L338 140 L320 158 L302 140 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-
-      <Key x={80} y={188} anchor="middle" fill={INK} size={11.5}>
-        COST OF
-      </Key>
-      <Key x={80} y={204} anchor="middle" fill={INK} size={11.5}>
-        OBTAINING DATA
-      </Key>
-      <Key x={320} y={188} anchor="middle" fill={SIGNAL} size={11.5}>
-        VALUE OF
-      </Key>
-      <Key x={320} y={204} anchor="middle" fill={SIGNAL} size={11.5}>
-        THE INSIGHTS
-      </Key>
-      </g>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   6. PIPELINE OVER TWO PEOPLE: implementing, interpreting, together
-   ========================================================================== */
-
-export function ImplementInterpret() {
-  const s3 = [
-    { x: 20, t: "COLLECTING" },
-    { x: 160, t: "PROCESSING" },
-    { x: 300, t: "ANALYZING" },
-  ];
-  const s4 = [
-    { x: 470, a: "DRAWING", b: "CONCLUSIONS" },
-    { x: 640, a: "REPORTING TO", b: "MANAGEMENT" },
-  ];
-  return (
-    <Frame height={104} label="Step 3, implementing: collecting, processing, analyzing. Step 4, interpreting: drawing conclusions, reporting to management.">
-      <path d="M20 36 V28 H410 V36" fill="none" stroke={COUNTER} strokeWidth={1.25} />
-      <Key x={215} y={18} anchor="middle" fill={COUNTER} size={11.5}>
-        03. IMPLEMENTING
-      </Key>
-      <path d="M470 36 V28 H780 V36" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={625} y={18} anchor="middle" fill={SIGNAL} size={11.5}>
-        04. INTERPRETING
-      </Key>
-
-      {s3.map((c, i) => (
-        <g key={c.t}>
-          <rect x={c.x} y={50} width={110} height={46} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-          <Key x={c.x + 55} y={77} anchor="middle" fill={COUNTER} size={10.5}>
-            {c.t}
-          </Key>
-          {i < 2 ? (
-            <>
-              <line x1={c.x + 112} y1={73} x2={c.x + 136} y2={73} stroke={COUNTER} strokeWidth={1.5} />
-              <path d={head2.right(c.x + 138, 73)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-            </>
-          ) : null}
-        </g>
-      ))}
-      <line x1={412} y1={73} x2={466} y2={73} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(468, 73)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      {s4.map((c, i) => (
-        <g key={c.a}>
-          <rect x={c.x} y={50} width={140} height={46} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-          <Key x={c.x + 70} y={70} anchor="middle" fill={SIGNAL} size={10.5}>
-            {c.a}
-          </Key>
-          <Key x={c.x + 70} y={86} anchor="middle" fill={SIGNAL} size={10.5}>
-            {c.b}
-          </Key>
-          {i === 0 ? (
-            <>
-              <line x1={612} y1={73} x2={636} y2={73} stroke={SIGNAL} strokeWidth={1.5} />
-              <path d={head2.right(638, 73)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-            </>
-          ) : null}
-        </g>
-      ))}
-    </Frame>
-  );
-}
-
-/** Researchers and managers meet at actionable insights (400 wide). */
-export function WorkTogether() {
-  return (
-    <Frame width={400} height={150} label="A researcher on the left and a manager on the right work together: arrows from both meet at actionable insights in the middle.">
-      <Person3 x={62} y={106} k={1.5} stroke={COUNTER} />
-      <Key x={62} y={134} anchor="middle" fill={COUNTER} size={11}>
-        RESEARCHERS
-      </Key>
-      <Person3 x={338} y={106} k={1.5} stroke={SIGNAL} />
-      <Key x={338} y={134} anchor="middle" fill={SIGNAL} size={11}>
-        MANAGERS
-      </Key>
-
-      <line x1={88} y1={84} x2={112} y2={84} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(114, 84)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <line x1={312} y1={84} x2={288} y2={84} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.left(286, 84)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Note x={200} y={46} anchor="middle" size={13} italic>
-        work together
-      </Note>
-      <rect x={118} y={64} width={164} height={40} fill={PAPER} stroke={INK} strokeWidth={1.75} />
-      <Key x={200} y={88} anchor="middle" fill={INK} size={10.5}>
-        ACTIONABLE INSIGHTS
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   7. SALES LINE THAT FORKS: research objectives before a campaign
-   ========================================================================== */
-
-export function SalesDropFork() {
-  return (
-    <Frame height={236} label="Sales for a flagship product run flat, then drop suddenly. From the drop, one dashed path rushes to launch a new advertising campaign. A solid path goes first to exploratory research objectives, shown by a lens over a question mark. The campaign is a megaphone.">
-      <path d="M40 44 V200 H330" fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={52} y={52} fill={INK3} size={10}>
-        SALES
-      </Key>
-      <path d="M60 86 L100 80 L140 88 L180 80 L220 86 L244 82" fill="none" stroke={INK} strokeWidth={1.75} strokeLinejoin="round" />
-      <path d="M244 82 L272 166 L300 178" fill="none" stroke={INK} strokeWidth={2.25} strokeLinejoin="round" />
-      <circle cx={300} cy={178} r={5} fill={INK} />
-      <Key x={40} y={224} fill={INK} size={10}>
-        FLAGSHIP PRODUCT
-      </Key>
-
-      <path d="M312 178 C400 178 420 80 514 80" fill="none" stroke={INK3} strokeWidth={1.5} strokeDasharray="5 5" />
-      <path d={head2.right(516, 80)} fill="none" stroke={INK3} strokeWidth={1.5} />
-      <Note x={647} y={48} anchor="middle" size={12} italic>
-        rushing to launch
-      </Note>
-      <rect x={522} y={60} width={250} height={40} fill={PAPER} stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
-      <Megaphone x={534} y={67} size={26} weight="duotone" color={INK3} />
-      <Key x={670} y={84} anchor="middle" fill={INK3} size={10.5}>
-        NEW ADVERTISING CAMPAIGN
-      </Key>
-
-      <line x1={312} y1={178} x2={514} y2={178} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head2.right(516, 178)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <rect x={522} y={150} width={250} height={56} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      <QuestionLens x={550} y={174} r={13} tone={SIGNAL} />
-      <Key x={672} y={174} anchor="middle" fill={SIGNAL} size={10.5}>
-        EXPLORATORY RESEARCH
-      </Key>
-      <Key x={672} y={190} anchor="middle" fill={SIGNAL} size={10.5}>
-        OBJECTIVES
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   8. CLIPBOARD AND SHELF: the two main types of data
-   ========================================================================== */
-
-/** The advantages and limitations pair under each data type. */
-function PlusMinus({ cx }: { cx: number }) {
-  return (
-    <g>
-      <circle cx={cx - 100} cy={178} r={8} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <path d={`M${cx - 104} 178 H${cx - 96} M${cx - 100} 174 V182`} stroke={INK3} strokeWidth={1.5} />
-      <Key x={cx - 86} y={182} fill={INK3} size={9.5}>
-        ADVANTAGES
-      </Key>
-      <circle cx={cx + 18} cy={178} r={8} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <path d={`M${cx + 14} 178 H${cx + 22}`} stroke={INK3} strokeWidth={1.5} />
-      <Key x={cx + 32} y={182} fill={INK3} size={9.5}>
-        LIMITATIONS
-      </Key>
-    </g>
-  );
-}
-
-export function TwoDataTypes() {
-  const heights = [84, 94, 78, 90, 86];
-  return (
-    <Frame width={616} height={204} label="Two types of data side by side. Primary: a clipboard being filled in with a pencil. Secondary: a shelf of files that already exist. Each has advantages and limitations.">
-      <g transform="translate(-92 0)">
-      <line x1={400} y1={20} x2={400} y2={196} stroke={RULE} strokeWidth={1} />
-
-      <Key x={200} y={32} anchor="middle" fill={SIGNAL} size={11}>
-        PRIMARY
-      </Key>
-      <Clipboard x={200} y={56} w={84} h={96} rows={3} ticked={2} />
-      <PencilSimple x={222} y={100} size={34} weight="duotone" color={SIGNAL} />
-      <PlusMinus cx={200} />
-
-      <Key x={600} y={32} anchor="middle" fill={COUNTER} size={11}>
-        SECONDARY
-      </Key>
-      <line x1={530} y1={152} x2={670} y2={152} stroke={INK} strokeWidth={1.5} />
-      {heights.map((h, i) => {
-        const x = 540 + i * 25;
+    <Frame
+      height={248}
+      label="Four-step marketing research process progressing from defining the problem and research objectives to developing the research plan, implementing the research plan, and interpreting and reporting the findings, with Step 1 setting exploratory, descriptive, or causal objectives."
+    >
+      {steps.map((s, i) => {
+        const cx = r2(s.x + s.w / 2);
+        const next = steps[i + 1];
         return (
-          <g key={i}>
-            <rect x={x} y={152 - h} width={20} height={h} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
-            <rect x={x + 5} y={152 - h + 12} width={10} height={16} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
+          <g key={s.n}>
+            <rect
+              x={s.x}
+              y={14}
+              width={s.w}
+              height={72}
+              fill={s.active ? SIGNAL_TINT : PAPER2}
+              stroke={s.active ? SIGNAL : INK}
+              strokeWidth={s.active ? 1.75 : 1.5}
+            />
+            <Key
+              x={cx}
+              y={33}
+              anchor="middle"
+              fill={s.active ? SIGNAL : INK3}
+              size={10.5}
+            >
+              {s.n}
+            </Key>
+            <Key
+              x={cx}
+              y={53}
+              anchor="middle"
+              fill={s.active ? SIGNAL : INK}
+              size={11}
+            >
+              {s.a}
+            </Key>
+            <Key
+              x={cx}
+              y={72}
+              anchor="middle"
+              fill={s.active ? SIGNAL : INK}
+              size={11}
+            >
+              {s.b}
+            </Key>
+            {next ? (
+              <g>
+                <line
+                  x1={s.x + s.w + 2}
+                  y1={50}
+                  x2={next.x - 4}
+                  y2={50}
+                  stroke={INK}
+                  strokeWidth={1.5}
+                />
+                <path
+                  d={head2.right(next.x - 2, 50)}
+                  fill="none"
+                  stroke={INK}
+                  strokeWidth={1.5}
+                />
+              </g>
+            ) : null}
           </g>
         );
       })}
-      <PlusMinus cx={600} />
-      </g>
-    </Frame>
-  );
-}
 
-/* ==========================================================================
-   9. SPLIT LANE: internal vs external secondary data
-   ========================================================================== */
+      {/* Branch from Step 1 into the three research objective types */}
+      <path
+        d="M108 86 V108 H660 M140 108 V126 M400 108 V126 M660 108 V126"
+        fill="none"
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <path d={head2.down(140, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(400, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(660, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
-export function SecondarySplitLane() {
-  return (
-    <Frame height={280} label="A split lane. Internal secondary data comes from internal databases. External secondary data comes from government reports and commercial data services. Both were collected for another purpose, and both can be relevant to the current problem.">
-      <Key x={140} y={34} fill={INK3} size={10}>
-        SOURCES
+      {/* 1. Exploratory research */}
+      <rect
+        x={20}
+        y={132}
+        width={240}
+        height={98}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <QuestionLens x={60} y={176} r={16} tone={INK} />
+      <Key x={166} y={162} anchor="middle" fill={INK} size={11.5}>
+        Exploratory research
       </Key>
-      <Key x={460} y={34} anchor="middle" fill={INK3} size={10}>
-        COLLECTED FOR
-      </Key>
-      <Key x={695} y={34} anchor="middle" fill={INK3} size={10}>
-        RELEVANT TO
-      </Key>
-      <line x1={20} y1={50} x2={780} y2={50} stroke={RULE2} strokeWidth={1} />
-      <rect x={20} y={162} width={580} height={110} fill={COUNTER_TINT} />
-      <line x1={20} y1={161} x2={600} y2={161} stroke={RULE} strokeWidth={1.5} />
+      <Note x={166} y={184} anchor="middle" size={11.5}>
+        Preliminary information
+      </Note>
+      <Note x={166} y={202} anchor="middle" size={11.5}>
+        &amp; hypotheses
+      </Note>
 
-      {/* internal lane */}
-      <Key x={24} y={110} fill={INK} size={11}>
-        INTERNAL
-      </Key>
-      <ellipse cx={150} cy={96} rx={12} ry={4} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d="M138 96 V116 A12 4 0 0 0 162 116 V96 M138 106 A12 4 0 0 0 162 106" fill="none" stroke={INK} strokeWidth={1.5} />
-      <Key x={176} y={110} fill={INK} size={10}>
-        INTERNAL DATABASES
-      </Key>
-      <line x1={320} y1={106} x2={396} y2={106} stroke={INK3} strokeWidth={1.25} />
-      <rect x={400} y={92} width={120} height={28} fill={PAPER} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
-      <Key x={460} y={110} anchor="middle" fill={INK3} size={9}>
-        ANOTHER PURPOSE
-      </Key>
-
-      {/* external lane */}
-      <Key x={24} y={226} fill={COUNTER} size={11}>
-        EXTERNAL
-      </Key>
-      <path d="M138 190 L150 182 L162 190 Z" fill={PAPER} stroke={COUNTER} strokeWidth={1.25} strokeLinejoin="round" />
-      <path d="M142 192 V206 M150 192 V206 M158 192 V206 M137 207 H163" stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={176} y={200} fill={INK} size={10}>
-        GOVERNMENT REPORTS
-      </Key>
-      <rect x={139} y={232} width={22} height={24} fill={PAPER} stroke={COUNTER} strokeWidth={1.25} />
+      {/* 2. Descriptive research */}
+      <rect
+        x={280}
+        y={132}
+        width={240}
+        height={98}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
       {[
-        [144, 8],
-        [150, 14],
-        [156, 11],
-      ].map(([x, h]) => (
-        <rect key={x} x={x - 2} y={252 - h} width={4} height={h} fill={COUNTER} />
+        [304, 18],
+        [318, 30],
+        [332, 24],
+        [346, 38],
+      ].map(([bx, bh]) => (
+        <rect
+          key={bx}
+          x={bx}
+          y={198 - bh}
+          width={10}
+          height={bh}
+          fill={PAPER}
+          stroke={COUNTER}
+          strokeWidth={1.4}
+        />
       ))}
-      <Key x={176} y={248} fill={INK} size={10}>
-        COMMERCIAL DATA SERVICES
+      <line x1={298} y1={198} x2={362} y2={198} stroke={COUNTER} strokeWidth={1.4} />
+      <Key x={434} y={162} anchor="middle" fill={COUNTER} size={11.5}>
+        Descriptive research
       </Key>
-      <line x1={332} y1={197} x2={396} y2={216} stroke={INK3} strokeWidth={1.25} />
-      <line x1={368} y1={244} x2={396} y2={230} stroke={INK3} strokeWidth={1.25} />
-      <rect x={400} y={208} width={120} height={28} fill={PAPER} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
-      <Key x={460} y={226} anchor="middle" fill={INK3} size={9}>
-        ANOTHER PURPOSE
-      </Key>
+      <Note x={434} y={184} anchor="middle" size={11.5}>
+        Market potential,
+      </Note>
+      <Note x={434} y={202} anchor="middle" size={11.5}>
+        demographics &amp; attitudes
+      </Note>
 
-      {/* converge on the current problem */}
-      <path d="M524 106 C580 106 584 152 614 156" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={headAlong1(616, 156.5, 1, 0.25)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d="M524 222 C580 222 584 170 614 166" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={headAlong1(616, 165.5, 1, -0.25)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <rect x={620} y={143} width={150} height={36} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={695} y={165} anchor="middle" fill={SIGNAL} size={10}>
-        CURRENT PROBLEM
+      {/* 3. Causal research */}
+      <rect
+        x={540}
+        y={132}
+        width={240}
+        height={98}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <circle cx={568} cy={180} r={10} fill={PAPER} stroke={SIGNAL} strokeWidth={1.6} />
+      <line x1={580} y1={180} x2={602} y2={180} stroke={SIGNAL} strokeWidth={1.6} />
+      <path d={head2.right(604, 180)} fill="none" stroke={SIGNAL} strokeWidth={1.6} />
+      <circle cx={616} cy={180} r={10} fill={SIGNAL} />
+      <Key x={698} y={162} anchor="middle" fill={SIGNAL} size={11.5}>
+        Causal research
       </Key>
+      <Note x={698} y={184} anchor="middle" size={11.5}>
+        Cause-and-effect
+      </Note>
+      <Note x={698} y={202} anchor="middle" size={11.5}>
+        relationships
+      </Note>
     </Frame>
   );
 }
 
+
 /* ==========================================================================
-   10. SECONDARY DATA: ADVANTAGES AND DISADVANTAGES (400 wide)
+   2. SECONDARY VS PRIMARY DATA
    ========================================================================== */
 
-/** A clock face with the share of an hour used filled in, centred on (x, y). */
-function Clock({ x, y, r = 26, frac, tone, tint }: { x: number; y: number; r?: number; frac: number; tone: string; tint: string }) {
+/** A small clock face showing elapsed share of time, centred on (x, y). */
+function MiniClock({
+  x,
+  y,
+  r = 16,
+  frac,
+  tone,
+}: {
+  x: number;
+  y: number;
+  r?: number;
+  frac: number;
+  tone: string;
+}) {
   const t = (frac * 360 - 90) * (Math.PI / 180);
-  const ex = r2(x + (r - 3) * Math.cos(t));
-  const ey = r2(y + (r - 3) * Math.sin(t));
+  const ex = r2(x + (r - 2.5) * Math.cos(t));
+  const ey = r2(y + (r - 2.5) * Math.sin(t));
   return (
     <g>
       <circle cx={x} cy={y} r={r} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      <path d={`M${x} ${y} V${y - r + 3} A${r - 3} ${r - 3} 0 ${frac > 0.5 ? 1 : 0} 1 ${ex} ${ey} Z`} fill={tint} opacity={0.22} />
-      <line x1={x} y1={y} x2={x} y2={y - r + 5} stroke={tone} strokeWidth={1.75} strokeLinecap="round" />
-      <line x1={x} y1={y} x2={ex} y2={ey} stroke={tone} strokeWidth={1.75} strokeLinecap="round" />
-      <circle cx={x} cy={y} r={2.5} fill={tone} />
+      <path
+        d={`M${x} ${y} V${r2(y - r + 2.5)} A${r2(r - 2.5)} ${r2(r - 2.5)} 0 ${frac > 0.5 ? 1 : 0} 1 ${ex} ${ey} Z`}
+        fill={tone}
+        opacity={0.18}
+      />
+      <line x1={x} y1={y} x2={x} y2={r2(y - r + 4)} stroke={tone} strokeWidth={1.5} strokeLinecap="round" />
+      <line x1={x} y1={y} x2={ex} y2={ey} stroke={tone} strokeWidth={1.5} strokeLinecap="round" />
+      <circle cx={x} cy={y} r={2} fill={tone} />
     </g>
   );
 }
 
-export function FastCheap() {
-  const cols = [
-    { cx: 110, name: "SECONDARY", tone: COUNTER, tint: COUNTER, frac: 0.12, coins: 2 },
-    { cx: 290, name: "PRIMARY", tone: INK, tint: INK, frac: 0.8, coins: 7 },
-  ];
+export function SecondaryVsPrimary() {
   return (
-    <Frame width={400} height={150} label="Secondary data beside primary data. Secondary uses a small slice of the clock and a short stack of two coins. Primary uses most of the clock and a tall stack of seven coins.">
-      <line x1={200} y1={14} x2={200} y2={140} stroke={RULE} strokeWidth={1} />
-      {cols.map((c) => (
-        <g key={c.name}>
-          <Key x={c.cx} y={26} anchor="middle" fill={c.tone} size={11.5}>
-            {c.name}
-          </Key>
-          <Clock x={c.cx - 38} y={108} frac={c.frac} tone={c.tone} tint={c.tint} />
-          <Coins2 x={c.cx + 38} y={134} n={c.coins} w={36} tone={c.tone} />
-        </g>
-      ))}
-    </Frame>
-  );
-}
-
-export function BeyondOneCompany() {
-  const cols = 14;
-  return (
-    <Frame width={400} height={176} label="Two rows of people. A long bracket over all of them is secondary data. A short bracket under the first three columns leads to a single company building: the few people it could reach on its own.">
-      <Key x={200} y={16} anchor="middle" fill={COUNTER} size={11.5}>
-        SECONDARY DATA
+    <Frame
+      height={272}
+      label="Comparison of internal and external secondary data sources with primary data collection methods across speed, cost, and specificity."
+    >
+      {/* Left column: Secondary data */}
+      <rect
+        x={20}
+        y={14}
+        width={368}
+        height={244}
+        fill={PAPER2}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={204} y={35} anchor="middle" fill={COUNTER} size={12}>
+        Secondary data (already exists)
       </Key>
-      <path d="M14 32 V24 H386 V32" fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      {Array.from({ length: cols }, (_, i) =>
-        [68, 106].map((feet) => (
-          <Person3 key={`${i}-${feet}`} x={r2(26 + i * 26.8)} y={feet} k={0.6} width={1.25} stroke={i < 3 ? INK : COUNTER} />
-        )),
-      )}
-      <path d="M14 114 V122 H94 V114" fill="none" stroke={INK} strokeWidth={1.5} />
-      <Company1 cx={54} base={168} w={40} h={30} tone={INK} />
-    </Frame>
-  );
-}
+      <line x1={36} y1={46} x2={372} y2={46} stroke={RULE2} strokeWidth={1} />
 
-export function SecondaryPitfalls() {
-  return (
-    <Frame width={400} height={170} label="Three pitfalls: an empty folder, the information might not exist. A square peg over a round hole, not very usable. A mark outside the target, not accurate.">
-      <line x1={135} y1={30} x2={135} y2={140} stroke={RULE} strokeWidth={1} />
-      <line x1={265} y1={30} x2={265} y2={140} stroke={RULE} strokeWidth={1} />
-
-      <path d="M40 56 H62 L70 64 H100 V110 H40 Z" fill="none" stroke={INK3} strokeWidth={1.5} strokeDasharray="4 4" strokeLinejoin="round" />
-      <Key x={70} y={150} anchor="middle" fill={SIGNAL} size={10.5}>
-        MIGHT NOT EXIST
+      {/* Internal database box */}
+      <rect
+        x={36}
+        y={56}
+        width={336}
+        height={52}
+        fill={PAPER}
+        stroke={INK}
+        strokeWidth={1.25}
+      />
+      <ellipse cx={64} cy={72} rx={13} ry={4.5} fill={PAPER2} stroke={INK} strokeWidth={1.4} />
+      <path
+        d="M51 72 V92 A13 4.5 0 0 0 77 92 V72 M51 82 A13 4.5 0 0 0 77 82"
+        fill="none"
+        stroke={INK}
+        strokeWidth={1.4}
+      />
+      <Key x={92} y={78} fill={INK} size={11}>
+        Internal database
       </Key>
-
-      <circle cx={200} cy={104} r={18} fill={PAPER2} stroke={INK3} strokeWidth={1.5} />
-      <rect x={184} y={42} width={32} height={32} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={200} y={150} anchor="middle" fill={SIGNAL} size={10.5}>
-        NOT VERY USABLE
-      </Key>
-
-      <circle cx={330} cy={88} r={26} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <circle cx={330} cy={88} r={16} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <circle cx={330} cy={88} r={5} fill={INK3} />
-      <path d="M352 54 L362 64 M362 54 L352 64" stroke={SIGNAL} strokeWidth={2.25} />
-      <Key x={330} y={150} anchor="middle" fill={SIGNAL} size={10.5}>
-        NOT ACCURATE
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   11. DIALS: the decisions primary data requires
-   ========================================================================== */
-
-export function PrimaryDecisions() {
-  const dials = [
-    { x: 300, a: "RESEARCH", b: "APPROACHES", deg: -60 },
-    { x: 440, a: "CONTACT", b: "METHODS", deg: -135 },
-    { x: 580, a: "SAMPLING", b: "PLANS", deg: -95 },
-  ];
-  return (
-    <Frame height={206} label="The specific purpose at hand feeds three decisions, set like dials: research approaches, contact methods, and sampling plans. Together they produce primary data.">
-      <rect x={30} y={88} width={160} height={52} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={110} y={110} anchor="middle" fill={SIGNAL} size={9.5}>
-        SPECIFIC PURPOSE
-      </Key>
-      <Key x={110} y={126} anchor="middle" fill={SIGNAL} size={9.5}>
-        AT HAND
-      </Key>
-      <line x1={194} y1={114} x2={256} y2={114} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(258, 114)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-
-      <path d="M266 48 V40 H614 V48" fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={440} y={30} anchor="middle" fill={INK3} size={10}>
-        DECISIONS
-      </Key>
-
-      {dials.map((d) => {
-        const cy = 114;
-        return (
-          <g key={d.a}>
-            <circle cx={d.x} cy={cy} r={30} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-            {[-180, -135, -90, -45, 0].map((t) => {
-              const r = (t * Math.PI) / 180;
-              return <line key={t} x1={r2(d.x + 24 * Math.cos(r))} y1={r2(cy + 24 * Math.sin(r))} x2={r2(d.x + 29 * Math.cos(r))} y2={r2(cy + 29 * Math.sin(r))} stroke={INK3} strokeWidth={1.25} />;
-            })}
-            <line
-              x1={d.x}
-              y1={cy}
-              x2={r2(d.x + 20 * Math.cos((d.deg * Math.PI) / 180))}
-              y2={r2(cy + 20 * Math.sin((d.deg * Math.PI) / 180))}
-              stroke={SIGNAL}
-              strokeWidth={2.5}
-              strokeLinecap="round"
-            />
-            <circle cx={d.x} cy={cy} r={4} fill={SIGNAL} />
-            <Key x={d.x} y={170} anchor="middle" fill={INK} size={9.5}>
-              {d.a}
-            </Key>
-            <Key x={d.x} y={185} anchor="middle" fill={INK} size={9.5}>
-              {d.b}
-            </Key>
-          </g>
-        );
-      })}
-
-      <line x1={614} y1={114} x2={658} y2={114} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(660, 114)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <rect x={664} y={96} width={116} height={36} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={722} y={118} anchor="middle" fill={SIGNAL} size={10}>
-        PRIMARY DATA
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   12. FITTED EDGE: highly relevant, but more time and resources (400)
-   ========================================================================== */
-
-export function RelevantCostly() {
-  return (
-    <Frame width={400} height={180} label="Left: data cut to fit the purpose exactly, highly relevant. Right: an hourglass and a stack of coins, more time and resources.">
-      <path d="M30 40 H116 L136 62 L116 85 L136 108 L116 130 H30 Z" fill={PAPER} stroke={INK3} strokeWidth={1.5} strokeLinejoin="round" />
-      <Key x={70} y={89} anchor="middle" fill={INK3} size={9}>
-        PURPOSE
-      </Key>
-      <path d="M124 40 H196 V130 H124 L144 108 L124 85 L144 62 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
-      <Key x={113} y={162} anchor="middle" fill={SIGNAL} size={9.5}>
-        HIGHLY RELEVANT
-      </Key>
-
-      <path d="M262 46 H298 M262 124 H298" stroke={INK} strokeWidth={2} strokeLinecap="round" />
-      <path d="M266 48 L294 48 L280 85 L294 122 L266 122 L280 85 Z" fill="none" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
-      <path d="M270 122 L290 122 L280 104 Z" fill={INK3} />
-      <path d="M272 58 L288 58 L280 76 Z" fill={INK3} opacity={0.5} />
-      <Coins2 x={346} y={124} n={6} w={36} tone={INK} />
-      <Key x={306} y={162} anchor="middle" fill={INK} size={9.5}>
-        MORE TIME AND RESOURCES
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   13. THREE APPROACHES: observational, survey, experimental (360 wide)
-   ========================================================================== */
-
-export function ObservePlate() {
-  const shelves = [96, 142, 188];
-  return (
-    <Frame width={360} height={236} label="An eye watches a shopper who has taken a pack from a store shelf, leaving a gap, and is putting it into a shopping cart.">
-      <g transform="translate(0 8)">
-      <rect x={200} y={40} width={144} height={148} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
-      {shelves.slice(0, 2).map((y) => (
-        <line key={y} x1={200} y1={y} x2={344} y2={y} stroke={INK3} strokeWidth={1.25} />
-      ))}
-      {shelves.map((base, row) =>
-        [0, 1, 2, 3].map((i) => {
-          if (row === 1 && i === 0) return null;
-          const h = 26 + Math.round(hash2(row * 4 + i) * 10);
-          return <rect key={`${row}-${i}`} x={210 + i * 33} y={base - h} width={22} height={h} fill="var(--paper-3)" stroke={INK3} strokeWidth={1.25} />;
-        }),
-      )}
-      <rect x={210} y={112} width={22} height={30} fill="none" stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
-
-      <line x1={20} y1={204} x2={344} y2={204} stroke={RULE} strokeWidth={1} />
-      <Person3 x={172} y={204} k={1.4} />
-      <ShoppingCart x={78} y={150} size={56} weight="duotone" color={INK} />
-      <rect x={103} y={140} width={18} height={24} fill="var(--paper-3)" stroke={INK} strokeWidth={1.25} />
-
-      <line x1={62} y1={70} x2={160} y2={156} stroke={INK} strokeWidth={1.25} strokeDasharray="4 4" />
-      <Eye x={18} y={30} size={48} weight="duotone" color={INK} />
-      </g>
-    </Frame>
-  );
-}
-
-export function SurveyPlate() {
-  return (
-    <Frame width={360} height={236} label="A questionnaire with a knowledge question answered by checkbox and an attitudes question answered on a five-point scale.">
-      <g transform="translate(0 8)">
-      <rect x={70} y={16} width={220} height={194} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Key x={90} y={48} fill={COUNTER} size={9.5}>
-        KNOWLEDGE
-      </Key>
-      {[70, 94].map((y, i) => (
-        <g key={y}>
-          <rect x={90} y={y - 7} width={14} height={14} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
-          {i === 0 ? <path d={`M93 ${y} L97 ${y + 4} L103 ${y - 5}`} fill="none" stroke={COUNTER} strokeWidth={2} /> : null}
-          <line x1={114} y1={y} x2={i === 0 ? 240 : 210} y2={y} stroke={RULE2} strokeWidth={3} />
-        </g>
-      ))}
-      <line x1={86} y1={118} x2={274} y2={118} stroke={RULE} strokeWidth={1} />
-      <Key x={90} y={144} fill={COUNTER} size={9.5}>
-        ATTITUDES
-      </Key>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <circle key={i} cx={104 + i * 38} cy={176} r={9} fill={i === 3 ? COUNTER : PAPER} stroke={i === 3 ? COUNTER : INK3} strokeWidth={1.5} />
-      ))}
-      </g>
-    </Frame>
-  );
-}
-
-export function ExperimentPlate() {
-  const groups = [
-    { c: 90, lit: false },
-    { c: 270, lit: true },
-  ];
-  return (
-    <Frame width={360} height={236} label="Two matched groups of people. Both groups are drawn alike. The factors above them are the same except one, changed for the second group. The second group's result bar is taller.">
-      {groups.map((g) => (
-        <g key={g.c}>
-          {[0, 1, 2].map((i) => {
-            const on = g.lit && i === 2;
-            return <rect key={i} x={g.c - 25 + i * 18} y={34} width={12} height={12} fill={on ? SIGNAL : PAPER} stroke={on ? SIGNAL : INK3} strokeWidth={1.25} />;
-          })}
-          {[
-            [-20, 94],
-            [20, 94],
-            [-20, 140],
-            [20, 140],
-          ].map(([dx, feet]) => (
-            <Person3 key={`${dx}-${feet}`} x={g.c + dx} y={feet} k={0.9} />
-          ))}
-          <rect x={g.c - 14} y={g.lit ? 186 : 206} width={28} height={g.lit ? 40 : 20} fill={g.lit ? SIGNAL : PAPER} stroke={g.lit ? SIGNAL : INK3} strokeWidth={1.5} />
-        </g>
-      ))}
-      <Key x={270} y={22} anchor="middle" fill={SIGNAL} size={9.5}>
-        ONE FACTOR CHANGED
-      </Key>
-      <Display x={180} y={112} anchor="middle" fill={INK3} size={28}>
-        =
-      </Display>
-      <line x1={40} y1={226} x2={320} y2={226} stroke={INK3} strokeWidth={1.25} />
-      <Key x={180} y={172} anchor="middle" fill={INK} size={9.5}>
-        MATCHED GROUPS
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   14. SHELF WITH A GAP: a category no one has studied yet
-   ========================================================================== */
-
-export function NovelShelf() {
-  return (
-    <Frame height={236} label="A shelf of secondary data files with a gap where a novel product category would go: it does not currently exist. An arrow leads from the gap to a clipboard of primary data.">
-      <Key x={40} y={50} fill={COUNTER} size={10.5}>
-        SECONDARY DATA
-      </Key>
-      {Array.from({ length: 10 }, (_, i) => {
-        const x = 50 + i * 42;
-        const h = 82 + Math.round(hash2(i + 7) * 22);
-        return (
-          <g key={i}>
-            <rect x={x} y={180 - h} width={34} height={h} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
-            <rect x={x + 8} y={180 - h + 14} width={18} height={24} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
-          </g>
-        );
-      })}
-      <rect x={474} y={80} width={36} height={100} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="5 4" />
-      <Display x={492} y={140} anchor="middle" fill={SIGNAL} size={24}>
-        ?
-      </Display>
-      <line x1={40} y1={180} x2={530} y2={180} stroke={INK} strokeWidth={1.75} />
-      <Key x={492} y={204} anchor="middle" fill={SIGNAL} size={10}>
-        NOVEL PRODUCT CATEGORY
-      </Key>
-      <Note x={492} y={224} anchor="middle" size={12} italic>
-        does not currently exist
+      <Note x={92} y={96} size={11}>
+        Accounting, sales, operations &amp; service records
       </Note>
 
-      <line x1={526} y1={128} x2={626} y2={128} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(628, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={690} y={50} anchor="middle" fill={SIGNAL} size={10.5}>
-        PRIMARY DATA
+      {/* External sources box */}
+      <rect
+        x={36}
+        y={116}
+        width={336}
+        height={52}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.25}
+      />
+      <path
+        d="M50 134 L64 125 L78 134 Z"
+        fill={PAPER}
+        stroke={COUNTER}
+        strokeWidth={1.3}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M54 136 V152 M64 136 V152 M74 136 V152 M49 153 H79"
+        stroke={COUNTER}
+        strokeWidth={1.4}
+      />
+      <Key x={92} y={138} fill={COUNTER} size={11}>
+        External secondary sources
       </Key>
-      <Clipboard x={690} y={76} w={96} h={110} rows={3} ticked={1} />
+      <Note x={92} y={156} size={11}>
+        Census agencies, trade groups &amp; syndicators
+      </Note>
+
+      {/* Secondary metrics row: Speed, Cost, Specificity */}
+      <line x1={36} y1={180} x2={372} y2={180} stroke={RULE2} strokeWidth={1} />
+      <MiniClock x={88} y={208} r={15} frac={0.15} tone={COUNTER} />
+      <Key x={88} y={244} anchor="middle" fill={COUNTER} size={10.5}>
+        Fast speed
+      </Key>
+
+      <Coins2 x={204} y={222} n={2} w={28} tone={COUNTER} />
+      <Key x={204} y={244} anchor="middle" fill={COUNTER} size={10.5}>
+        Low cost
+      </Key>
+
+      <circle cx={320} cy={208} r={14} fill={PAPER} stroke={INK3} strokeWidth={1.3} />
+      <circle cx={320} cy={208} r={7} fill="none" stroke={INK3} strokeWidth={1.2} />
+      <circle cx={330} cy={198} r={3.5} fill={COUNTER} />
+      <Key x={320} y={244} anchor="middle" fill={INK} size={10.5}>
+        Broad fit
+      </Key>
+
+      {/* Right column: Primary data */}
+      <rect
+        x={412}
+        y={14}
+        width={368}
+        height={244}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={596} y={35} anchor="middle" fill={SIGNAL} size={12}>
+        Primary data (collected for purpose)
+      </Key>
+      <line x1={428} y1={46} x2={764} y2={46} stroke={RULE2} strokeWidth={1} />
+
+      {/* Three primary methods feeding specific decision */}
+      {[
+        { x: 428, title: "Observation", sub: "Watch actions" },
+        { x: 542, title: "Surveys", sub: "Ask questions" },
+        { x: 656, title: "Experiments", sub: "Test causes" },
+      ].map((m) => (
+        <g key={m.title}>
+          <rect
+            x={m.x}
+            y={56}
+            width={108}
+            height={52}
+            fill={PAPER}
+            stroke={SIGNAL}
+            strokeWidth={1.25}
+          />
+          <Key x={r2(m.x + 54)} y={78} anchor="middle" fill={SIGNAL} size={11}>
+            {m.title}
+          </Key>
+          <Note x={r2(m.x + 54)} y={96} anchor="middle" size={11}>
+            {m.sub}
+          </Note>
+        </g>
+      ))}
+
+      <rect
+        x={428}
+        y={116}
+        width={336}
+        height={52}
+        fill={PAPER}
+        stroke={SIGNAL}
+        strokeWidth={1.4}
+      />
+      <Key x={596} y={138} anchor="middle" fill={SIGNAL} size={11}>
+        Tailored to novel decision at hand
+      </Key>
+      <Note x={596} y={156} anchor="middle" size={11}>
+        Custom sampling plan &amp; research instruments
+      </Note>
+
+      {/* Primary metrics row: Speed, Cost, Specificity */}
+      <line x1={428} y1={180} x2={764} y2={180} stroke={RULE2} strokeWidth={1} />
+      <MiniClock x={480} y={208} r={15} frac={0.82} tone={INK} />
+      <Key x={480} y={244} anchor="middle" fill={INK} size={10.5}>
+        Slower speed
+      </Key>
+
+      <Coins2 x={596} y={224} n={5} w={28} tone={INK} />
+      <Key x={596} y={244} anchor="middle" fill={INK} size={10.5}>
+        Higher cost
+      </Key>
+
+      <circle cx={712} cy={208} r={14} fill={PAPER} stroke={SIGNAL} strokeWidth={1.4} />
+      <circle cx={712} cy={208} r={7} fill="none" stroke={SIGNAL} strokeWidth={1.2} />
+      <circle cx={712} cy={208} r={3.5} fill={SIGNAL} />
+      <Key x={712} y={244} anchor="middle" fill={SIGNAL} size={10.5}>
+        Exact specificity
+      </Key>
     </Frame>
   );
 }
 
 /* ==========================================================================
-   15. DATA FIELD THAT FORKS: more data, or better data and insights
-   ========================================================================== */
-
-export function BigDataFork() {
-  const field = Array.from({ length: 420 }, (_, i) => [r2(40 + hash2(i) * 290), r2(48 + hash2(i + 900) * 164)] as const);
-  const more = Array.from({ length: 360 }, (_, i) => [r2(488 + hash2(i + 3000) * 264), r2(30 + hash2(i + 5000) * 64)] as const);
-  const pattern: [number, number][] = [
-    [512, 196],
-    [556, 186],
-    [604, 190],
-    [652, 176],
-    [700, 170],
-    [736, 160],
-  ];
-  return (
-    <Frame height={244} label="A huge, dense field of data points labelled big data. A dashed path leads to an even denser box, more data. A solid path leads to a few points joined into a clear pattern, better data and insights.">
-      <Key x={40} y={34} fill={INK} size={10.5}>
-        BIG DATA
-      </Key>
-      {field.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={1.6} fill={INK3} opacity={0.55} />
-      ))}
-
-      <path d="M340 128 C400 128 410 62 474 62" fill="none" stroke={INK3} strokeWidth={1.5} strokeDasharray="5 5" />
-      <path d={head2.right(476, 62)} fill="none" stroke={INK3} strokeWidth={1.5} />
-      <rect x={480} y={24} width={280} height={76} fill="none" stroke={RULE2} strokeWidth={1.25} strokeDasharray="4 4" />
-      {more.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={1.3} fill={INK3} opacity={0.4} />
-      ))}
-      <Key x={620} y={120} anchor="middle" fill={INK3} size={10}>
-        MORE DATA
-      </Key>
-
-      <path d="M340 128 C400 128 410 180 474 180" fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head2.right(476, 180)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <rect x={480} y={146} width={280} height={66} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={`M${pattern.map((p) => p.join(" ")).join("L")}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      {pattern.map(([x, y]) => (
-        <circle key={x} cx={x} cy={y} r={4} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
-      ))}
-      <Key x={620} y={234} anchor="middle" fill={SIGNAL} size={10}>
-        BETTER DATA AND INSIGHTS
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   16. CORE PROCESS: the CRM cycle
+   3. CRM CYCLE AND TOUCHPOINT INTEGRATION
    ========================================================================== */
 
 export function CrmCycle() {
   const cx = 400;
-  const cy = 165;
-  const rx = 250;
-  const ry = 118;
+  const cy = 150;
+  const rx = 256;
+  const ry = 108;
   const nodes = [
-    { t: -90, name: "SALES", tone: INK },
-    { t: 0, name: "SERVICE", tone: INK },
-    { t: 90, name: "LOYALTY", tone: SIGNAL },
-    { t: 180, name: "MARKETING", tone: INK },
+    { t: -90, name: "Sales", tone: INK },
+    { t: 0, name: "Customer support", tone: INK },
+    { t: 90, name: "Customer loyalty", tone: SIGNAL },
+    { t: 180, name: "Website & payment", tone: INK },
   ];
-  const pw = 150;
-  const ph = 32;
+  const pw = 164;
+  const ph = 36;
   const at = (deg: number) => {
     const t = (deg * Math.PI) / 180;
     return [r2(cx + rx * Math.cos(t)), r2(cy + ry * Math.sin(t))] as const;
   };
+  const [tx, ty] = at(-35);
   return (
-    <Frame width={700} height={290} label="The CRM cycle: sales, service, and marketing all feed detailed customer information at the core, while touchpoints around the loop are managed to maximize loyalty.">
-      <g transform="translate(-60 -20)">
+    <Frame
+      width={800}
+      height={300}
+      label="Customer relationship management cycle integrating sales, customer support, and website and payment touchpoints into a unified customer profile to maximize customer loyalty."
+    >
       <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none" stroke={INK3} strokeWidth={1.5} />
       {[-45, 45, 135, 225].map((deg) => {
         const t = (deg * Math.PI) / 180;
         const [x, y] = at(deg);
-        return <path key={deg} d={headAlong1(x, y, -rx * Math.sin(t), ry * Math.cos(t), 10)} fill="none" stroke={INK3} strokeWidth={1.75} />;
+        return (
+          <path
+            key={deg}
+            d={headAlong1(x, y, -rx * Math.sin(t), ry * Math.cos(t), 9)}
+            fill="none"
+            stroke={INK3}
+            strokeWidth={1.6}
+          />
+        );
       })}
-      {[-60, -30, 30, 60, 120, 150, 210, 240].map((deg) => {
+      {[-60, -35, 35, 60, 120, 145, 215, 240].map((deg) => {
         const [x, y] = at(deg);
-        return <circle key={deg} cx={x} cy={y} r={4.5} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />;
+        return (
+          <circle
+            key={deg}
+            cx={x}
+            cy={y}
+            r={5}
+            fill={PAPER}
+            stroke={COUNTER}
+            strokeWidth={1.6}
+          />
+        );
       })}
-      <line x1={646} y1={62} x2={624} y2={98} stroke={SIGNAL} strokeWidth={1} />
-      <Key x={640} y={56} fill={SIGNAL} size={11}>
-        TOUCHPOINTS
+
+      {/* Callout for Customer touchpoints */}
+      <line
+        x1={r2(tx + 5)}
+        y1={r2(ty - 4)}
+        x2={r2(tx + 36)}
+        y2={r2(ty - 26)}
+        stroke={COUNTER}
+        strokeWidth={1.25}
+      />
+      <Key x={r2(tx + 42)} y={r2(ty - 24)} fill={COUNTER} size={11}>
+        Customer touchpoints
       </Key>
 
-      {[
-        [cx, cy - 64, cx, cy - ry + ph / 2],
-        [cx + 64, cy, cx + rx - pw / 2, cy],
-        [cx - 64, cy, cx - rx + pw / 2, cy],
-      ].map(([x1, y1, x2, y2]) => (
-        <line key={`${x1}-${y1}`} x1={x2} y1={y2} x2={x1} y2={y1} stroke={INK} strokeWidth={1} strokeDasharray="3 4" />
-      ))}
-      <line x1={cx} y1={cy + 64} x2={cx} y2={cy + ry - ph / 2} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.down(cx, cy + ry - ph / 2 - 1)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      {/* Inward data integration from Sales, Website & payment, and Customer support */}
+      <line
+        x1={cx}
+        y1={r2(cy - ry + ph / 2)}
+        x2={cx}
+        y2={r2(cy - 66)}
+        stroke={INK3}
+        strokeWidth={1.4}
+        strokeDasharray="4 4"
+      />
+      <path d={head2.down(cx, cy - 64)} fill="none" stroke={INK3} strokeWidth={1.4} />
+
+      <line
+        x1={r2(cx - rx + pw / 2)}
+        y1={cy}
+        x2={r2(cx - 66)}
+        y2={cy}
+        stroke={INK3}
+        strokeWidth={1.4}
+        strokeDasharray="4 4"
+      />
+      <path d={head2.right(cx - 64, cy)} fill="none" stroke={INK3} strokeWidth={1.4} />
+
+      <line
+        x1={r2(cx + rx - pw / 2)}
+        y1={cy}
+        x2={r2(cx + 66)}
+        y2={cy}
+        stroke={INK3}
+        strokeWidth={1.4}
+        strokeDasharray="4 4"
+      />
+      <path d={head2.left(cx + 64, cy)} fill="none" stroke={INK3} strokeWidth={1.4} />
+
+      {/* Outward arrow from Unified customer profile to Customer loyalty */}
+      <line x1={cx} y1={r2(cy + 62)} x2={cx} y2={r2(cy + ry - ph / 2 - 2)} stroke={SIGNAL} strokeWidth={1.6} />
+      <path d={head2.down(cx, cy + ry - ph / 2)} fill="none" stroke={SIGNAL} strokeWidth={1.6} />
 
       <circle cx={cx} cy={cy} r={62} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      {["DETAILED", "CUSTOMER", "INFORMATION"].map((w, i) => (
-        <Key key={w} x={cx} y={cy - 12 + i * 17} anchor="middle" fill={SIGNAL} size={10.5}>
-          {w}
-        </Key>
-      ))}
+      <Key x={cx} y={cy - 14} anchor="middle" fill={SIGNAL} size={11.5}>
+        Unified
+      </Key>
+      <Key x={cx} y={cy + 4} anchor="middle" fill={SIGNAL} size={11.5}>
+        customer
+      </Key>
+      <Key x={cx} y={cy + 22} anchor="middle" fill={SIGNAL} size={11.5}>
+        profile
+      </Key>
 
       {nodes.map((n) => {
         const [x, y] = at(n.t);
         const lit = n.tone === SIGNAL;
         return (
           <g key={n.name}>
-            <rect x={x - pw / 2} y={y - ph / 2} width={pw} height={ph} rx={16} fill={lit ? SIGNAL : PAPER} stroke={n.tone} strokeWidth={1.5} />
-            <Key x={x} y={y + 4} anchor="middle" fill={lit ? PAPER : INK} size={11}>
+            <rect
+              x={r2(x - pw / 2)}
+              y={r2(y - ph / 2)}
+              width={pw}
+              height={ph}
+              rx={18}
+              fill={lit ? SIGNAL : PAPER2}
+              stroke={n.tone}
+              strokeWidth={1.5}
+            />
+            <Key x={x} y={r2(y + 4)} anchor="middle" fill={lit ? PAPER : INK} size={11}>
               {n.name}
             </Key>
           </g>
         );
       })}
-      </g>
     </Frame>
   );
 }
 
 /* ==========================================================================
-   17. LENS DUG INTO DATA: marketing analytics
+   4. SYNTHETIC VS HUMAN SURVEY RESPONDENTS
    ========================================================================== */
 
-export function AnalyticsDig() {
-  const lx = 260;
-  const ly = 170;
-  const dots = Array.from({ length: 380 }, (_, i) => [r2(40 + hash2(i + 11000) * 430), r2(88 + hash2(i + 13000) * 134)] as const).filter(
-    ([x, y]) => Math.hypot(x - lx, y - ly) > 40 && !(Math.abs(x - lx) < 5 && y < ly),
-  );
-  const pattern: [number, number][] = [
-    [238, 186],
-    [250, 178],
-    [262, 170],
-    [274, 160],
-    [284, 152],
-  ];
+/** A compact questionnaire sheet with checkbox rows and a 5-point scale. */
+function SurveyForm({
+  x,
+  y,
+  tone = INK,
+}: {
+  x: number;
+  y: number;
+  tone?: string;
+}) {
   return (
-    <Frame height={262} label="Marketing analytics drawn as a lens pushed down into a field of big data, bringing out a meaningful pattern. The results lead to customer insights and to a gauge of marketing performance.">
-      <Key x={36} y={64} fill={INK3} size={11}>
-        BIG DATA
-      </Key>
-      <line x1={30} y1={74} x2={480} y2={74} stroke={INK3} strokeWidth={1.25} />
-      {dots.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={1.7} fill={INK3} opacity={0.5} />
-      ))}
-
-      <Key x={274} y={30} fill={SIGNAL} size={11}>
-        MARKETING ANALYTICS
-      </Key>
-      <line x1={260} y1={20} x2={260} y2={136} stroke={SIGNAL} strokeWidth={3} strokeLinecap="round" />
-      <circle cx={lx} cy={ly} r={34} fill={PAPER} stroke={SIGNAL} strokeWidth={2.5} />
-      <path d={`M${pattern.map((p) => p.join(" ")).join("L")}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      {pattern.map(([x, y]) => (
-        <circle key={x} cx={x} cy={y} r={2.8} fill={SIGNAL} />
-      ))}
-      <Key x={260} y={248} anchor="middle" fill={SIGNAL} size={11}>
-        MEANINGFUL PATTERNS
-      </Key>
-
-      <line x1={488} y1={150} x2={538} y2={112} stroke={INK} strokeWidth={1.5} />
-      <path d={headAlong1(540, 110.5, 50, -38)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <line x1={488} y1={160} x2={536} y2={194} stroke={INK} strokeWidth={1.5} />
-      <path d={headAlong1(538, 195.5, 48, 34)} fill="none" stroke={INK} strokeWidth={1.5} />
-
-      <Person3 x={566} y={122} k={0.9} stroke={COUNTER} />
-      <Key x={590} y={110} fill={COUNTER} size={11}>
-        CUSTOMER INSIGHTS
-      </Key>
-      <path d="M548 206 A22 22 0 0 1 592 206" fill="none" stroke={INK} strokeWidth={1.75} />
-      <line x1={570} y1={206} x2={583} y2={190} stroke={INK} strokeWidth={2} strokeLinecap="round" />
-      <circle cx={570} cy={206} r={3} fill={INK} />
-      <Key x={600} y={204} fill={INK} size={11}>
-        MARKETING PERFORMANCE
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   18. FOUNDATION: interpretation turns data into insights, then value
-   ========================================================================== */
-
-export function InterpretationChain() {
-  const dots = Array.from({ length: 64 }, (_, i) => [r2(44 + hash2(i + 21000) * 150), r2(104 + hash2(i + 23000) * 96)] as const);
-  return (
-    <Frame height={250} label="Raw data on its own, sent straight across, is crossed out. Passed through a person, the human element of interpretation, it becomes customer insights: the foundation on which customer value and relationships are built.">
-      <Key x={40} y={90} fill={INK3} size={10}>
-        DATA
-      </Key>
-      {dots.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={2} fill={INK3} opacity={0.6} />
-      ))}
-
-      <path d="M200 92 Q340 12 466 80" fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="5 5" />
-      <path d="M462 72 L478 88 M478 72 L462 88" stroke={SIGNAL} strokeWidth={2.25} />
-      <Note x={336} y={32} anchor="middle" size={12} italic>
-        data alone
-      </Note>
-
-      <line x1={206} y1={172} x2={282} y2={172} stroke={INK3} strokeWidth={1.5} />
-      <path d={head2.right(284, 172)} fill="none" stroke={INK3} strokeWidth={1.5} />
-      <Person3 x={310} y={200} k={1.6} />
-      <Key x={310} y={222} anchor="middle" fill={INK} size={9.5}>
-        HUMAN ELEMENT
-      </Key>
-      <Key x={310} y={238} anchor="middle" fill={INK} size={9.5}>
-        OF INTERPRETATION
-      </Key>
-
-      <line x1={336} y1={206} x2={502} y2={206} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head2.right(504, 206)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <Note x={420} y={194} anchor="middle" size={12} italic>
-        fresh understandings
-      </Note>
-
-      <rect x={516} y={120} width={124} height={64} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={578} y={156} anchor="middle" fill={COUNTER} size={9.5}>
-        CUSTOMER VALUE
-      </Key>
-      <rect x={650} y={120} width={124} height={64} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={712} y={156} anchor="middle" fill={COUNTER} size={9.5}>
-        RELATIONSHIPS
-      </Key>
-      <rect x={510} y={190} width={270} height={32} fill={SIGNAL} />
-      <Key x={645} y={210} anchor="middle" fill={PAPER} size={10}>
-        CUSTOMER INSIGHTS
-      </Key>
-    </Frame>
-  );
-}
-
-/* ==========================================================================
-   19. SPECTRUM: personalized value to invading privacy
-   ========================================================================== */
-
-export function PrivacyLine() {
-  const mark = 384;
-  return (
-    <Frame height={196} label="A line from personalized value to invading consumer privacy. At the left a consumer receives a gift. At the right an eye watches a consumer. Between them, piles of personal data cards, each with a head and a line of details, grow taller at each stop. A dashed marker with a question mark stands in the middle.">
-      <line x1={40} y1={150} x2={760} y2={150} stroke={INK} strokeWidth={1.75} />
-      <line x1={40} y1={142} x2={40} y2={158} stroke={INK} strokeWidth={1.75} />
-      <line x1={760} y1={142} x2={760} y2={158} stroke={INK} strokeWidth={1.75} />
-
-      <Person3 x={70} y={140} k={1.3} stroke={COUNTER} />
-      <Gift x={88} y={96} size={30} weight="duotone" color={COUNTER} />
-
-      {Array.from({ length: 8 }, (_, i) => {
-        const x = 160 + i * 64;
-        const tone = x < mark ? COUNTER : SIGNAL;
+    <g>
+      <rect x={x} y={y} width={86} height={68} fill={PAPER} stroke={tone} strokeWidth={1.5} />
+      {[0, 1].map((i) => {
+        const ry = y + 16 + i * 16;
         return (
           <g key={i}>
-            {Array.from({ length: i + 1 }, (_, j) => {
-              const top = 130 - j * 12;
-              return (
-                <g key={j}>
-                  <rect x={x - 14} y={top} width={28} height={10} rx={1.5} fill={PAPER} stroke={tone} strokeWidth={1.1} />
-                  <circle cx={x - 8} cy={top + 5} r={2.4} fill={tone} />
-                  <line x1={x - 3} y1={top + 5} x2={x + 9} y2={top + 5} stroke={tone} strokeWidth={1.2} />
-                </g>
-              );
-            })}
+            <rect x={x + 10} y={ry - 5} width={10} height={10} fill={PAPER} stroke={tone} strokeWidth={1.2} />
+            {i === 0 ? (
+              <path
+                d={`M${x + 12} ${ry} L${x + 14.5} ${ry + 2.5} L${x + 19} ${ry - 3}`}
+                fill="none"
+                stroke={tone}
+                strokeWidth={1.6}
+              />
+            ) : null}
+            <line x1={x + 26} y1={ry} x2={x + 74} y2={ry} stroke={RULE2} strokeWidth={2.2} />
           </g>
         );
       })}
+      <line x1={x + 10} y1={y + 44} x2={x + 76} y2={y + 44} stroke={RULE} strokeWidth={1} />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <circle
+          key={i}
+          cx={x + 15 + i * 14}
+          cy={y + 56}
+          r={4}
+          fill={i === 3 ? tone : PAPER}
+          stroke={tone}
+          strokeWidth={1.25}
+        />
+      ))}
+    </g>
+  );
+}
 
-      <Eye x={652} y={62} size={40} weight="duotone" color={SIGNAL} />
-      <Person3 x={722} y={140} k={1.3} stroke={SIGNAL} />
-
-      <line x1={mark} y1={66} x2={mark} y2={164} stroke={INK} strokeWidth={1.5} strokeDasharray="5 4" />
-      <circle cx={mark} cy={46} r={18} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Display x={mark} y={55} anchor="middle" fill={INK} size={24}>
-        ?
-      </Display>
-
-      <Key x={40} y={182} fill={COUNTER} size={11}>
-        PERSONALIZED VALUE
+export function SyntheticVsHumanSurvey() {
+  return (
+    <Frame
+      height={268}
+      label="Comparison of synthetic AI survey responses used for early questionnaire pretesting against primary survey data collected from real human consumers."
+    >
+      {/* Left panel: Synthetic AI survey pretesting */}
+      <rect
+        x={20}
+        y={14}
+        width={350}
+        height={240}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={195} y={36} anchor="middle" fill={COUNTER} size={12}>
+        Early stage: Synthetic AI responses
       </Key>
-      <Key x={760} y={182} anchor="end" fill={SIGNAL} size={11}>
-        INVADING CONSUMER PRIVACY
+      <line x1={36} y1={48} x2={354} y2={48} stroke={RULE2} strokeWidth={1} />
+
+      <Chip2 x={96} y={96} s={42} tone={COUNTER} fill={PAPER} />
+      <line x1={132} y1={96} x2={208} y2={96} stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.right(210, 96)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <SurveyForm x={218} y={62} tone={COUNTER} />
+
+      <rect x={36} y={144} width={318} height={94} fill={PAPER} stroke={COUNTER} strokeWidth={1.25} />
+      <Key x={52} y={166} fill={COUNTER} size={11}>
+        Pretesting &amp; hypothesis generation
       </Key>
+      <Note x={52} y={188} size={11}>
+        Generated in minutes at minimal cost
+      </Note>
+      <Note x={52} y={206} size={11}>
+        Reproduces directional price &amp; demand patterns
+      </Note>
+      <Note x={52} y={224} size={11}>
+        Refines question wording &amp; scale variation
+      </Note>
+
+      {/* Connector between early pretesting and primary human survey */}
+      <Key x={400} y={118} anchor="middle" fill={INK3} size={10}>
+        Then
+      </Key>
+      <line x1={374} y1={134} x2={422} y2={134} stroke={INK} strokeWidth={1.6} />
+      <path d={head2.right(424, 134)} fill="none" stroke={INK} strokeWidth={1.6} />
+
+      {/* Right panel: Primary survey data from real human consumers */}
+      <rect
+        x={430}
+        y={14}
+        width={350}
+        height={240}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={605} y={36} anchor="middle" fill={SIGNAL} size={12}>
+        Final stage: Primary human survey
+      </Key>
+      <line x1={446} y1={48} x2={764} y2={48} stroke={RULE2} strokeWidth={1} />
+
+      <Person3 x={482} y={118} k={1.05} stroke={SIGNAL} />
+      <Person3 x={512} y={118} k={1.05} stroke={SIGNAL} />
+      <Person3 x={542} y={118} k={1.05} stroke={SIGNAL} />
+      <line x1={564} y1={96} x2={620} y2={96} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(622, 96)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <SurveyForm x={630} y={62} tone={SIGNAL} />
+
+      <rect x={446} y={144} width={318} height={94} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={462} y={166} fill={SIGNAL} size={11}>
+        Empirical validation on real buyers
+      </Key>
+      <Note x={462} y={188} size={11}>
+        Grounded in lived physical &amp; sensory experience
+      </Note>
+      <Note x={462} y={206} size={11}>
+        Represents emerging &amp; minority segments
+      </Note>
+      <Note x={462} y={224} size={11}>
+        Required for consequential launch decisions
+      </Note>
     </Frame>
   );
 }
 
-/* ==========================================================================
-   Conclusion glyphs: each echoes a plate already seen
-   ========================================================================== */
-
-export function GlyphAim() {
-  return (
-    <svg {...glyphProps}>
-      <line x1="6" y1="20" x2="46" y2="20" stroke="var(--signal)" strokeWidth="1.5" />
-      <line x1="6" y1="20" x2="44" y2="6" stroke="var(--ink-3)" strokeWidth="1" strokeDasharray="2 3" />
-      <line x1="6" y1="20" x2="44" y2="34" stroke="var(--ink-3)" strokeWidth="1" strokeDasharray="2 3" />
-      <circle cx="52" cy="20" r="8" stroke="var(--signal)" strokeWidth="1.5" />
-      <circle cx="52" cy="20" r="3" fill="var(--signal)" />
-      <circle cx="6" cy="20" r="3" fill="var(--signal)" />
-    </svg>
-  );
-}
-
-export function GlyphTwoData() {
-  return (
-    <svg {...glyphProps}>
-      <rect x="6" y="6" width="20" height="28" stroke="var(--signal)" strokeWidth="1.5" />
-      <path d="M10 14 H22 M10 20 H22 M10 26 H18" stroke="var(--signal)" strokeWidth="1.25" />
-      <line x1="32" y1="4" x2="32" y2="36" stroke="var(--rule)" strokeWidth="1" />
-      {[38, 46, 54].map((x, i) => (
-        <rect key={x} x={x} y={10 - (i % 2) * 3} width="6" height={24 + (i % 2) * 3} stroke="var(--counter)" strokeWidth="1.25" />
-      ))}
-    </svg>
-  );
-}
-
-export function GlyphPattern() {
-  const pts = [
-    [8, 32],
-    [20, 26],
-    [32, 28],
-    [44, 16],
-    [56, 8],
-  ];
-  return (
-    <svg {...glyphProps}>
-      {[
-        [12, 10],
-        [26, 12],
-        [50, 30],
-        [38, 34],
-        [16, 20],
-        [58, 22],
-      ].map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r="1.5" fill="var(--ink-3)" />
-      ))}
-      <path d={`M${pts.map((p) => p.join(" ")).join("L")}`} stroke="var(--signal)" strokeWidth="1.5" />
-      {pts.map(([x, y]) => (
-        <circle key={x} cx={x} cy={y} r="2.5" fill="var(--paper)" stroke="var(--signal)" strokeWidth="1.25" />
-      ))}
-    </svg>
-  );
-}

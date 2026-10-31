@@ -53,6 +53,7 @@ import {
   Heart,
   type Look,
   Magnifier,
+  Notes,
   Pack,
   Perfume1,
   Person,
@@ -1474,6 +1475,421 @@ export function AuditAd() {
           <Tick2 x={340} y={y as number} s={0.9} seed={3730 + i} />
         </g>
       ))}
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   Central and Peripheral Routes to Persuasion
+   ========================================================================== */
+
+const READER: Look = { hair: "curly", hairTone: SK.brown, skin: SK.camel, skinOpacity: 0.5, wear: SK.camel, legs: SK.charcoal, outfit: "jacket" };
+const PASSER: Look = { hair: "bob", hairTone: SK.leather, wear: SK.earth, legs: SK.charcoal, outfit: "coat" };
+
+/**
+ * The same product reaches two shoppers by two routes. CENTRAL: a shopper
+ * reads the spec sheet line by line under a magnifier, each argument ticked.
+ * PERIPHERAL: a shopper walks past the pack, caught by its music and stars.
+ */
+export function TwoRoutes() {
+  const g = 196;
+  const sheet = sharp(rp([[42, 34], [118, 34], [118, 138], [42, 138]]), true, 2);
+  return (
+    <SketchFrame
+      id="sk-two-routes"
+      width={420}
+      height={226}
+      label="Two scenes. CENTRAL ROUTE: a shopper studies a product's spec sheet under a magnifying glass, each line of argument ticked. PERIPHERAL ROUTE: a shopper walks past the same product's pack, surrounded by music notes and five stars."
+    >
+      <Backwash cx={104} cy={118} rx={100} ry={100} seed={1900} />
+      <Backwash cx={316} cy={118} rx={100} ry={100} seed={1901} />
+
+      <Paper pts={sheet} seed={1910} />
+      <InkLine pts={sheet} seed={1911} closed />
+      {[52, 70, 88, 106, 124].map((y, i) => (
+        <g key={y}>
+          <InkLine pts={rp([[52, y], [i % 2 ? 92 : 100, y]])} seed={1920 + i} width={0.8} amp={0.3} />
+          {i < 4 ? <Tick1 x={108} y={y - 1} s={0.6} seed={1930 + i} /> : null}
+        </g>
+      ))}
+      <Magnifier x={76} y={78} r={20} seed={1940} />
+      <Ground x0={24} x1={186} y={g} seed={1950} />
+      <Person x={156} y={g} h={120} look={READER} arms={["chin", "reach"]} flip seed={1960} />
+
+      <Pack x={262} bottom={150} w={38} h={70} seed={1970} badge />
+      <Notes x={232} y={66} s={0.8} seed={1975} />
+      <Stars x={240} y={44} n={5} r={6} gap={14} seed={1980} />
+      <Ground x0={234} x1={396} y={g} seed={1990} />
+      <Person x={352} y={g} h={120} look={PASSER} arms={["down", "down"]} flip seed={2000} />
+
+      <SketchText x={104} y={218} anchor="middle" size={10.5}>
+        CENTRAL ROUTE
+      </SketchText>
+      <SketchText x={316} y={218} anchor="middle" size={10.5}>
+        PERIPHERAL ROUTE
+      </SketchText>
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   Combined 800w single-frame plates for multi-part concepts
+   ========================================================================== */
+
+function UtilitarianBody() {
+  const g = 196;
+  const h = 150;
+  const x = 120;
+  const hand = handAt(x, g, h, "hold", 1);
+  return (
+    <g>
+      <Backwash cx={120} cy={112} rx={112} ry={98} seed={900} />
+      <Rain x0={12} x1={228} y0={14} y1={176} seed={910} n={24} clear={[46, 196]} />
+      <Ground x0={30} x1={210} y={g} seed={901} />
+      <Person x={x} y={g} h={h} look={SHOPPER} arms={["down", "hold"]} seed={920} />
+      <Umbrella x={hand[0]} y={46} r={58} l={r2(hand[1] - 46)} seed={930} />
+    </g>
+  );
+}
+
+function ValueExpressiveBody() {
+  const lid = sharp(rp([[22, 30], [218, 30], [218, 172], [22, 172]]), true, 8);
+  const disc = (x: number, y: number, r: number, seed: number, fill: string) => {
+    const pts = rp(blobPts(x, y, r, r, seed, 14, 0.04));
+    return (
+      <g>
+        <Paper pts={pts} seed={seed} />
+        <Wash pts={pts} seed={seed + 1} fill={fill} opacity={0.35} dx={0.5} dy={0.4} />
+        <InkLine pts={pts} seed={seed + 2} width={1} closed />
+      </g>
+    );
+  };
+  const wheel = (x: number, y: number, seed: number) => <InkLine pts={rp(blobPts(x, y, 8, 8, seed, 12, 0.03))} seed={seed} width={1} closed />;
+  const sun = rp(blobPts(176, 136, 8, 8, 1060, 12, 0.04));
+  const base = sharp(rp([[14, 172], [226, 172], [232, 184], [8, 184]]), true, 2);
+  const card = sharp(rp([[104, 136], [148, 136], [148, 164], [104, 164]]), true, 2);
+  const peak = rp([[108, 160], [122, 142], [130, 152], [136, 146], [145, 160]]);
+  return (
+    <g>
+      <Backwash cx={120} cy={104} rx={112} ry={94} seed={1000} />
+      <Wash pts={lid} seed={1001} fill={SK.charcoal} opacity={0.55} />
+      <InkLine pts={lid} seed={1002} closed />
+      <Wash pts={base} seed={1003} fill={SK.stone} opacity={0.9} dx={0} dy={0} />
+      <InkLine pts={base} seed={1004} width={1.1} closed />
+      {disc(76, 92, 38, 1010, SK.teal)}
+      <Leaf x={70} y={118} s={2.2} seed={1015} />
+      {disc(170, 66, 28, 1020, SK.sky)}
+      {wheel(156, 72, 1025)}
+      {wheel(184, 72, 1026)}
+      <InkLine pts={rp([[156, 72], [166, 56], [178, 56], [184, 72]])} seed={1027} width={1} />
+      <InkLine pts={rp([[166, 56], [170, 72], [178, 56]])} seed={1028} width={0.9} />
+      <Paper pts={card} seed={1040} />
+      <Wash pts={peak} seed={1041} fill={SK.earth} opacity={0.8} dx={0} dy={0} />
+      <InkLine pts={card} seed={1042} width={1} closed />
+      <InkLine pts={peak} seed={1043} width={1} />
+      {disc(176, 136, 25, 1050, SK.blush)}
+      <Wash pts={sun} seed={1061} fill={SK.ochre} opacity={0.8} dx={0.5} dy={0.4} />
+      <InkLine pts={sun} seed={1062} width={1} closed />
+      {Array.from({ length: 8 }, (_, i) => {
+        const a = (i / 8) * Math.PI * 2;
+        return <InkLine key={i} pts={rp([[176 + Math.cos(a) * 11, 136 + Math.sin(a) * 11], [176 + Math.cos(a) * 16, 136 + Math.sin(a) * 16]])} seed={1063 + i} width={0.9} amp={0.1} />;
+      })}
+    </g>
+  );
+}
+
+function EgoDefensiveBody() {
+  const g = 196;
+  const h = 176;
+  const x = 92;
+  const s = h / 200;
+  const pit: Pt = [r2(x - 13 * s), r2(g - 156 * s)];
+  const hand = handAt(x, g, h, "across", 1);
+  const cx = hand[0] - 2;
+  const top = hand[1] - 20;
+  const can = sharp(rp([[cx - 4.5, top], [cx + 4.5, top], [cx + 4.5, hand[1] + 6], [cx - 4.5, hand[1] + 6]]), true, 1.2);
+  const cap = sharp(rp([[cx - 3, top - 6], [cx + 3, top - 6], [cx + 3, top], [cx - 3, top]]), true, 0.8);
+  const nozzle: Pt = [cx + 3, top - 4];
+  const ang = Math.atan2(pit[1] - nozzle[1], pit[0] - nozzle[0]);
+  const ray = (da: number, l: number): Pt[] => rp([[nozzle[0] + Math.cos(ang + da) * 4, nozzle[1] + Math.sin(ang + da) * 4], [nozzle[0] + Math.cos(ang + da) * l, nozzle[1] + Math.sin(ang + da) * l]]);
+  const others: Look[] = [
+    { hair: "short", hairTone: SK.charcoal, wear: SK.earth, legs: SK.tan, outfit: "jacket" },
+    { hair: "long", hairTone: SK.tan, skin: SK.camel, skinOpacity: 0.6, wear: SK.charcoal, legs: SK.charcoal },
+  ];
+  return (
+    <g>
+      <Backwash cx={120} cy={112} rx={112} ry={98} seed={1100} />
+      <Ground x0={10} x1={226} y={g} seed={1101} />
+      {others.map((look, i) => (
+        <Person key={i} x={170 + i * 36} y={g} h={128} look={look} arms={["down", "down"]} flip seed={1110 + i * 40} />
+      ))}
+      <SpeechBubble x={190} y={34} w={30} h={20} tx={178} ty={52} seed={1190} />
+      {[184, 190, 196].map((dx, k) => (
+        <InkLine key={k} pts={rp(blobPts(dx, 34, 1.1, 1.1, 1195 + k, 6, 0.2))} seed={1195 + k} width={0.9} closed />
+      ))}
+      <Person x={x} y={g} h={h} look={SHOPPER} arms={["up", "across"]} seed={1200} />
+      <Wash pts={can} seed={1210} fill={SK.charcoal} opacity={0.55} />
+      <InkLine pts={can} seed={1211} width={1} closed />
+      <InkLine pts={cap} seed={1212} width={0.9} closed />
+      {[-0.35, 0, 0.35].map((da, k) => (
+        <InkLine key={k} pts={ray(da, 13)} seed={1220 + k} width={0.7} amp={0.2} />
+      ))}
+    </g>
+  );
+}
+
+function KnowledgeBody() {
+  const g = 186;
+  const jumble: [number, number, number, string | undefined][] = [
+    [22, g, -14, SK.camel],
+    [42, g, 8, undefined],
+    [62, g, -4, SK.sky],
+    [32, g - 30, 20, SK.earth],
+    [54, g - 31, -16, SK.camel],
+    [82, g, 12, SK.earth],
+  ];
+  const row = (y: number, fills: (string | undefined)[], mark: "tick" | "cross", seed: number) =>
+    fills.map((f, i) => (
+      <g key={i}>
+        <Pack x={144 + i * 32} bottom={y} w={20} h={28} seed={seed + i * 4} fill={f} />
+        {mark === "tick" ? (
+          <Tick2 x={144 + i * 32} y={y + 10} s={0.5} seed={seed + 50 + i} />
+        ) : (
+          <Cross x={144 + i * 32} y={y + 10} r={3.5} seed={seed + 50 + i * 2} />
+        )}
+      </g>
+    ));
+  return (
+    <g>
+      <Backwash cx={120} cy={112} rx={112} ry={98} seed={1300} />
+      <Ground x0={10} x1={100} y={g} seed={1301} />
+      {jumble.map(([x, b, t, f], i) => (
+        <TiltPack key={i} x={x} bottom={b} tilt={t} fill={f} seed={1310 + i * 4} />
+      ))}
+      <SketchArrow pts={[[98, 126], [122, 126]]} seed={1335} head={6} />
+      <InkLine pts={rp([[128, 92], [224, 92]])} seed={1340} width={1.2} />
+      <InkLine pts={rp([[128, 162], [224, 162]])} seed={1341} width={1.2} />
+      {row(91, [SK.camel, SK.sky, undefined], "tick", 1350)}
+      {row(161, [SK.earth, SK.camel, SK.sky], "cross", 1420)}
+    </g>
+  );
+}
+
+/** Single 800w plate combining Katz's four attitude functions. */
+export function KatzFunctions() {
+  const panels: { k: string; C: () => React.ReactElement }[] = [
+    { k: "UTILITARIAN", C: UtilitarianBody },
+    { k: "VALUE-EXPRESSIVE", C: ValueExpressiveBody },
+    { k: "EGO-DEFENSIVE", C: EgoDefensiveBody },
+    { k: "KNOWLEDGE", C: KnowledgeBody },
+  ];
+  return (
+    <SketchFrame
+      id="sk-katz-functions"
+      width={800}
+      height={204}
+      label="Four scenes side by side for Katz's four attitude functions: utilitarian with a shopper staying dry under a teal umbrella in the rain, value-expressive with a laptop lid covered in personal stickers, ego-defensive with a shopper applying deodorant while peers look on, and knowledge with a jumbled heap of packages sorted onto two neat shelves."
+    >
+      {panels.map(({ k, C }, i) => {
+        const x0 = r2(8 + i * 200);
+        const cx = r2(x0 + 93.6);
+        return (
+          <g key={k}>
+            <g transform={`translate(${x0} 4) scale(0.78)`}>
+              <C />
+            </g>
+            <SketchText x={cx} y={194} anchor="middle" size={10.5}>
+              {k}
+            </SketchText>
+          </g>
+        );
+      })}
+    </SketchFrame>
+  );
+}
+
+/** Single 800w plate combining Affect, Behavior, and Cognition (the ABC model). */
+export function ABCModelPlate() {
+  const body = sharp(rp([[104, 12], [196, 12], [196, 204], [104, 204]]), true, 10);
+  const glass = rp([[112, 26], [188, 26], [188, 190], [112, 190]]);
+  const photo = sharp(rp([[118, 36], [182, 36], [182, 112], [118, 112]]), true, 2);
+  const g = 178;
+  const h = 128;
+  const buyer = handAt(56, g, h, "down", 1);
+  const pack = sharp(rp([[30, 56], [110, 56], [110, 196], [30, 196]]), true, 3);
+  return (
+    <SketchFrame
+      id="sk-abc-model"
+      width={800}
+      height={222}
+      label="Three scenes side by side for the ABC model of attitudes. Left, labelled affect: a smartphone showing the brand's product box with a heart tapped beneath it. Middle, labelled behavior: a shopper carrying a teal bag with the brand badge, recommending the brand to a friend, and walking past a rejected box. Right, labelled cognition: the brand's package with a thought cloud holding three ticked attribute beliefs."
+    >
+      {/* 1. Affect */}
+      <g transform="translate(8 4) scale(0.84)">
+        <Backwash cx={150} cy={108} rx={140} ry={98} seed={500} />
+        <Wash pts={body} seed={501} fill={SK.charcoal} opacity={0.6} />
+        <InkLine pts={body} seed={502} closed />
+        <Paper pts={glass} seed={503} />
+        <InkLine pts={sharp(glass)} seed={504} width={0.8} closed />
+        <Wash pts={photo} seed={505} fill={SK.sky} opacity={0.55} dx={0.5} dy={0.4} />
+        <InkLine pts={photo} seed={506} width={0.9} closed />
+        <Box x={150} bottom={104} w={34} h={42} seed={507} />
+        <Heart x={150} y={140} s={1.6} seed={510} />
+        {[166, 178].map((y, i) => (
+          <InkLine key={y} pts={rp([[120, y], [i ? 160 : 178, y]])} seed={520 + i} width={0.8} amp={0.25} />
+        ))}
+        <InkLine pts={rp([[140, 18], [160, 18]])} seed={525} width={1.1} />
+      </g>
+      <SketchText x={134} y={210} anchor="middle" size={11}>
+        AFFECT
+      </SketchText>
+
+      {/* 2. Behavior */}
+      <g transform="translate(274 4) scale(0.84)">
+        <Backwash cx={150} cy={108} rx={144} ry={98} seed={540} />
+        <Ground x0={8} x1={292} y={g} seed={541} />
+        <Person x={56} y={g} h={h} look={SHOPPER} arms={["hip", "down"]} seed={550} />
+        <Bag x={buyer[0]} y={buyer[1]} w={26} fill={SK.teal} seed={560} />
+        <Person x={128} y={g} h={h} look={{ hair: "curly", hairTone: SK.brown, skin: SK.brown, skinOpacity: 0.5, wear: SK.sky, legs: SK.charcoal }} arms={["down", "carry"]} seed={570} />
+        <Person x={176} y={g} h={h - 8} look={{ hair: "short", hairTone: SK.tan, wear: SK.earth, legs: SK.charcoal, outfit: "jacket" }} arms={["down", "down"]} flip seed={580} />
+        <SpeechBubble x={150} y={30} w={44} h={32} tx={134} ty={50} seed={590} />
+        <BrandBadge x={150} y={30} r={9} seed={592} />
+        <Box x={210} bottom={g} w={26} h={32} seed={600} />
+        <Person x={246} y={g} h={h} look={{ hair: "bun", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.6, wear: SK.charcoal, legs: SK.charcoal }} arms={["down", "down"]} seed={610} />
+        <SketchArrow pts={rp([[262, 162], [292, 162]])} seed={620} width={1} head={5} />
+      </g>
+      <SketchText x={400} y={210} anchor="middle" size={11}>
+        BEHAVIOR
+      </SketchText>
+
+      {/* 3. Cognition */}
+      <g transform="translate(540 4) scale(0.84)">
+        <Backwash cx={150} cy={110} rx={140} ry={98} seed={640} />
+        <Wash pts={pack} seed={650} fill={SK.camel} opacity={0.6} />
+        <InkLine pts={pack} seed={651} closed />
+        <BrandBadge x={70} y={96} r={18} seed={652} />
+        {[134, 148, 162].map((y, i) => (
+          <InkLine key={y} pts={rp([[44, y], [i === 1 ? 84 : 96, y]])} seed={655 + i} width={0.8} amp={0.25} />
+        ))}
+        <Thought x={208} y={98} rx={70} ry={52} tx={112} ty={178} seed={660} />
+        {[74, 98, 122].map((y, i) => (
+          <g key={y}>
+            <Tick2 x={172} y={y} s={0.6} seed={670 + i * 4} />
+            <InkLine pts={rp([[186, y], [i === 1 ? 226 : 242, y]])} seed={690 + i} width={0.9} amp={0.3} />
+          </g>
+        ))}
+      </g>
+      <SketchText x={666} y={210} anchor="middle" size={11}>
+        COGNITION
+      </SketchText>
+    </SketchFrame>
+  );
+}
+
+/** Single 800w plate combining all three hierarchies of attitude formation. */
+export function ThreeHierarchies() {
+  const rows: { title: string; steps: [Step, Step, Step]; seed: number; product: (cy: number) => React.ReactNode }[] = [
+    {
+      title: "STANDARD LEARNING",
+      steps: ["think", "feel", "act"],
+      seed: 1600,
+      product: (cy) => <Car2 x={236} y={cy + 20} s={0.46} seed={1690} />,
+    },
+    {
+      title: "LOW INVOLVEMENT",
+      steps: ["brief", "act", "feel"],
+      seed: 1700,
+      product: (cy) => <Can4 x={236} y={cy + 22} w={28} h={42} seed={1790} />,
+    },
+    {
+      title: "EXPERIENTIAL",
+      steps: ["feel", "act", "explain"],
+      seed: 1800,
+      product: (cy) => <Perfume1 x={236} bottom={cy + 28} s={0.74} seed={1890} />,
+    },
+  ];
+  const xs = [378, 540, 702];
+  return (
+    <SketchFrame
+      id="sk-three-hierarchies"
+      width={800}
+      height={286}
+      label="Three sequential attitude formation hierarchies stacked from top to bottom. Top, standard learning: a car followed by think, feel, and act. Middle, low involvement: a soda can followed by think briefly, act, and feel. Bottom, experiential: a perfume bottle followed by feel, act, and explain."
+    >
+      {rows.map((r, ri) => {
+        const cy = 38 + ri * 92;
+        return (
+          <g key={r.title}>
+            <Backwash cx={470} cy={cy + 8} rx={312} ry={40} seed={r.seed} />
+            <SketchText x={24} y={cy + 8} size={11}>
+              {r.title}
+            </SketchText>
+            {r.product(cy)}
+            <SketchArrow pts={rp([[284, cy], [326, cy]])} seed={r.seed + 1} width={1.1} head={7} />
+            {r.steps.map((st, i) => {
+              const x = xs[i];
+              return (
+                <g key={i}>
+                  {st === "think" || st === "explain" ? <MiniThought x={x} y={cy} r={22} seed={r.seed + 10 + i * 10} /> : null}
+                  {st === "brief" ? <MiniThought x={x} y={cy + 5} r={12} seed={r.seed + 10 + i * 10} /> : null}
+                  {st === "feel" ? <Heart x={x} y={cy + 2} s={1.45} seed={r.seed + 10 + i * 10} /> : null}
+                  {st === "act" ? <Bag x={x} y={cy - 22} w={30} fill={SK.teal} seed={r.seed + 10 + i * 10} /> : null}
+                  <SketchText x={x} y={cy + 44} anchor="middle" size={10}>
+                    {STEP_WORD[st]}
+                  </SketchText>
+                  {i < 2 ? <SketchArrow pts={rp([[x + 38, cy], [xs[i + 1] - 38, cy]])} seed={r.seed + 40 + i} width={1.1} head={7} /> : null}
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+    </SketchFrame>
+  );
+}
+
+/** Single 800w plate comparing gain-framed and loss-framed persuasive posters side by side. */
+export function MessageFraming() {
+  const poster = (dx: number, gain: boolean, seed: number) => {
+    const sheet = sharp(rp([[dx + 44, 14], [dx + 356, 14], [dx + 356, 206], [dx + 44, 206]]), true, 3);
+    const badge = sharp(rp([[dx + 208, 96], [dx + 308, 96], [dx + 308, 148], [dx + 208, 148]]), true, 2);
+    const g = 186;
+    return (
+      <g key={seed}>
+        <Backwash cx={dx + 200} cy={112} rx={192} ry={102} seed={seed} />
+        <Paper pts={sheet} seed={seed + 1} />
+        <InkLine pts={sheet} seed={seed + 2} closed />
+        <SketchText x={dx + 200} y={46} anchor="middle" size={18} serif>
+          {gain ? "Save $200 a year with it" : "Lose $200 a year without it"}
+        </SketchText>
+        <InkLine pts={rp([[dx + 76, 60], [dx + 324, 60]])} seed={seed + 3} width={0.8} amp={0.3} />
+        <InkLine pts={rp([[dx + 72, g], [dx + 328, g]])} seed={seed + 4} width={0.9} />
+        <Box x={dx + 138} bottom={g} w={54} h={68} pencil={!gain} seed={seed + 60} />
+        <Paper pts={badge} seed={seed + 64} />
+        <Wash
+          pts={badge}
+          seed={seed + 65}
+          fill={gain ? SK.teal : SK.blush}
+          opacity={0.75}
+          dx={1}
+          dy={1}
+        />
+        <InkLine pts={badge} seed={seed + 66} closed width={1.1} />
+        <SketchText x={dx + 258} y={129} anchor="middle" size={20} serif>
+          {gain ? "+$200" : "−$200"}
+        </SketchText>
+      </g>
+    );
+  };
+  return (
+    <SketchFrame
+      id="sk-message-framing"
+      width={800}
+      height={220}
+      label="Two persuasive posters side by side. Left, gain frame: Save $200 a year with it, showing the brand's product box beside a teal +$200 tag. Right, loss frame: Lose $200 a year without it, showing the product box in faint pencil beside a blush -$200 tag."
+    >
+      {poster(0, true, 2900)}
+      {poster(400, false, 3000)}
     </SketchFrame>
   );
 }

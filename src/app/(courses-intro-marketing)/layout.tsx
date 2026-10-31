@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { DynamicFooter } from "@/components/slide-components/DynamicFooter";
+import { DynamicFooter } from "./DynamicFooter";
 import { FitSlides } from "@/components/slide-components/FitSlides";
 import { IM_DIR, readCurriculum } from "@/lib/curriculum";
 
 const IM = readCurriculum(IM_DIR);
 
-// Fraunces carries the display voice: an editorial serif with enough
-// eccentricity (the WONK axis) to not read as a default pairing.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
-  display: "swap",
-});
-
-// Body copy is set in a grotesque rather than a serif: at projection
-// distance it holds up far better than Lora did.
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
-  subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -40,11 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${instrumentSans.variable}`}
-    >
-      <body className="antialiased">
+    <html lang="en" className={sourceSans.variable}>
+      <body className={`${sourceSans.variable} antialiased`}>
         {children}
         <FitSlides />
         <DynamicFooter />

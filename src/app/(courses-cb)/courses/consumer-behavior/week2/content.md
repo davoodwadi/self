@@ -10,6 +10,7 @@ week: "week2"
 - Perception is the process by which consumers select, organize, and interpret sensory inputs to construct meaning in the marketplace.
 
 ## Sensation Versus Perception [no-exercise]
+[figure: progression from raw sensory inputs to selecting, organizing, and interpreting a coherent image]
 - Sensation is the immediate response of sensory receptors in the eyes, ears, nose, mouth, and skin to basic stimuli such as light, sound, odor, and texture.
 - Perception is the psychological process by which those raw sensations are selected, organized, and interpreted into a coherent picture of the environment.
 - Consumers encounter thousands of commercial stimuli each day, far exceeding human information-processing capacity.
@@ -55,6 +56,7 @@ week: "week2"
 - Understanding sensory thresholds tells marketers how strong a signal must be to register and how much a stimulus must change before buyers notice the difference.
 
 ## Absolute and Differential Thresholds [exercise]
+[figure: stimuli of rising intensity crossing the absolute threshold from undetected to detected]
 - The absolute threshold is the minimum intensity of stimulation that can be detected on a given sensory channel 50 percent of the time.
 - Highway billboard lettering that is too small for the viewing distance or an audio notification masked by street noise falls below the absolute threshold and fails to achieve exposure.
 - The differential threshold is the ability of a sensory system to detect a difference between two stimuli of different intensities.
@@ -70,6 +72,7 @@ week: "week2"
 - Retailers therefore express promotions in percentage terms on low-priced items and in dollar terms on high-priced items to make the discount feel substantial.
 
 ## Strategic Applications of the Just Noticeable Difference [no-exercise]
+[figure: package weight reduction and minor price increase kept below the Just Noticeable Difference threshold]
 - Marketers deliberately calibrate stimulus changes either below or above the JND depending on whether the change is unfavorable or favorable to the consumer.
 - When input costs rise and a manufacturer reduces net package weight in a practice known as shrinkflation, the reduction is kept below the JND so habitual buyers do not switch brands.
 - When a brand updates a classic logo to look more contemporary without alienating loyal buyers, designers apply a series of incremental changes that each stay below the JND.
@@ -84,6 +87,7 @@ week: "week2"
 - Consumers actively filter commercial environments through selective exposure, perceptual vigilance, perceptual defense, and adaptation.
 
 ## Sensory Overload and Selective Exposure [no-exercise]
+[figure: shopper surrounded by competing advertisements, promotional signs, and digital notifications illustrating sensory overload]
 - Sensory overload occurs when the volume of environmental and digital stimuli exceeds a person's cognitive capacity to process them.
 - To cope with overload, consumers practice selective exposure by actively choosing which media channels, websites, and store aisles they encounter or avoid.
 - Viewers skip pre-roll video advertisements, install browser ad blockers, and fast-forward through broadcast commercial breaks.
@@ -91,6 +95,7 @@ week: "week2"
 - Marketers counter selective exposure by placing messages inside relevant editorial content, search results, or opt-in communications that match the consumer's current task.
 
 ## Perceptual Vigilance and Perceptual Defense [exercise]
+[figure: perceptual defense illustrated by a smoker turning away from the warning label on a cigarette package]
 - Perceptual vigilance is the heightened tendency of consumers to notice stimuli that relate to their current active needs or goals.
 - A commuter whose car lease expires next month suddenly notices automobile dealerships and financing advertisements that were previously ignored.
 - Perceptual defense is the opposite mechanism, in which consumers screen out or distort stimuli that threaten their existing beliefs, habits, or self-image.
@@ -98,6 +103,7 @@ week: "week2"
 - Because attention is selective, the same public-health or commercial message achieves very different attention rates across segments with different baseline motives.
 
 ## Sensory Adaptation and Stimulus Contrast [no-exercise]
+[figure: sensory adaptation over repeated exposures as a consumer notices a new billboard, grows familiar with it, and eventually ignores it]
 - Sensory adaptation is the gradual decline in sensory responsiveness that occurs when a receptor is exposed to a constant, unchanging stimulus over time.
 - A shopper notices a bakery's cinnamon aroma immediately upon entering the store, but stops perceiving the scent after ten minutes in the aisle.
 - In advertising, repeated exposure to an identical banner or commercial leads to habituation, where consumers cease allocating attention to the familiar layout.
@@ -144,6 +150,7 @@ week: "week2"
 - During prepurchase search and purchase selection, however, an AI agent responds to machine-readable data rather than sensory atmosphere.
 
 ## Digital Exposure and Structured Product Data [no-exercise]
+[figure: AI shopping agent receiving a product with complete structured metadata while an unindexed product with missing attribute fields fails to achieve exposure]
 - For an AI shopping agent, exposure occurs only when a product's information is indexed, accessible via search or API, and included in the results returned to the agent.
 - If a brand places critical attributes such as allergen warnings, garment measurements, or warranty length inside an unindexed promotional graphic, those attributes fall below the agent's threshold of exposure.
 - Ambiguous or inconsistent attribute labels across retail listings act like sensory noise, preventing the agent from matching the item to the consumer's stated constraints.

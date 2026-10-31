@@ -27,21 +27,356 @@ import {
   head2,
   headAlong1,
   INK,
+  INK2,
   INK3,
   Key,
   Note,
   PAPER,
+  PAPER2,
   r2,
   RULE,
   RULE2,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
-import { Person2 } from "../_visuals/objects";
+import { Chip2, Person2 } from "../_visuals/objects";
 import { ChatCircleText, HandGrabbing, Newspaper, Storefront } from "@phosphor-icons/react";
 
 /* ==========================================================================
-   1. CENSUS: the consumer market is individuals and households
+   0. STIMULUS-RESPONSE MODEL: marketing and environmental stimuli enter the
+      buyer's black box to produce observable buyer responses
+   ========================================================================== */
+
+export function StimulusResponseModel() {
+  const responses = [
+    "Brand choice",
+    "Dealer selection",
+    "Purchase timing",
+    "Purchase amount",
+    "Postpurchase loyalty",
+  ];
+  return (
+    <Frame
+      height={268}
+      label="Stimulus-response model of buyer behavior: marketing stimuli and environmental stimuli enter the buyer's black box, containing buyer characteristics and the buyer's decision process, which produces observable buyer responses."
+    >
+      {/* Column 1: The Environment */}
+      <Key x={134} y={26} anchor="middle" fill={INK3} size={11}>
+        EXTERNAL STIMULI
+      </Key>
+
+      <rect
+        x={24}
+        y={40}
+        width={220}
+        height={96}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <Key x={40} y={64} fill={INK} size={11} weight={600}>
+        MARKETING STIMULI
+      </Key>
+      <Note x={40} y={88} fill={INK2} size={12}>
+        Product and price
+      </Note>
+      <Note x={40} y={110} fill={INK2} size={12}>
+        Place and promotion
+      </Note>
+
+      <rect
+        x={24}
+        y={152}
+        width={220}
+        height={96}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={40} y={176} fill={COUNTER} size={11} weight={600}>
+        ENVIRONMENTAL STIMULI
+      </Key>
+      <Note x={40} y={200} fill={INK2} size={12}>
+        Economic and technological
+      </Note>
+      <Note x={40} y={222} fill={INK2} size={12}>
+        Social and cultural
+      </Note>
+
+      {/* Arrows into Black Box */}
+      <line x1={244} y1={88} x2={292} y2={88} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(294, 88)} fill="none" stroke={INK} strokeWidth={1.5} />
+
+      <line
+        x1={244}
+        y1={200}
+        x2={292}
+        y2={200}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <path
+        d={head2.right(294, 200)}
+        fill="none"
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+
+      {/* Column 2: Buyer's Black Box */}
+      <Key x={400} y={26} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        BUYER&apos;S BLACK BOX
+      </Key>
+      <rect
+        x={298}
+        y={40}
+        width={204}
+        height={208}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={2}
+      />
+
+      <rect
+        x={316}
+        y={56}
+        width={168}
+        height={68}
+        fill={PAPER}
+        stroke={SIGNAL}
+        strokeWidth={1.25}
+      />
+      <Person2 x={344} y={108} k={0.85} stroke={SIGNAL} />
+      <Key x={414} y={84} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        Buyer&apos;s
+      </Key>
+      <Key x={414} y={102} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        characteristics
+      </Key>
+
+      <line
+        x1={400}
+        y1={124}
+        x2={400}
+        y2={156}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <path
+        d={head2.down(400, 158)}
+        fill="none"
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+
+      <rect
+        x={316}
+        y={162}
+        width={168}
+        height={68}
+        fill={PAPER}
+        stroke={SIGNAL}
+        strokeWidth={1.25}
+      />
+      <Key x={400} y={190} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        Buyer&apos;s
+      </Key>
+      <Key x={400} y={208} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        decision process
+      </Key>
+
+      {/* Arrow to Buyer Responses */}
+      <line
+        x1={502}
+        y1={144}
+        x2={550}
+        y2={144}
+        stroke={SIGNAL}
+        strokeWidth={1.75}
+      />
+      <path
+        d={head2.right(552, 144)}
+        fill="none"
+        stroke={SIGNAL}
+        strokeWidth={1.75}
+      />
+
+      {/* Column 3: Buyer Responses */}
+      <Key x={666} y={26} anchor="middle" fill={INK3} size={11}>
+        OBSERVABLE OUTPUTS
+      </Key>
+      <rect
+        x={556}
+        y={40}
+        width={220}
+        height={208}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <Key x={574} y={64} fill={INK} size={11} weight={600}>
+        BUYER RESPONSES
+      </Key>
+      {responses.map((item, i) => {
+        const y = 94 + i * 32;
+        return (
+          <g key={item}>
+            <circle cx={580} cy={y - 4} r={3} fill={INK} />
+            <Note x={594} y={y} fill={INK2} size={12}>
+              {item}
+            </Note>
+          </g>
+        );
+      })}
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   1. FIVE-STAGE CONSUMER DECISION PROCESS: from need recognition through
+      postpurchase behavior, detailing Step 1 triggers and Step 2 sources
+   ========================================================================== */
+
+export function DecisionProcessStages() {
+  const stages = [
+    { n: "1", line1: "Need", line2: "recognition", active: true },
+    { n: "2", line1: "Information", line2: "search", active: true },
+    { n: "3", line1: "Evaluation of", line2: "alternatives", active: false },
+    { n: "4", line1: "Purchase", line2: "decision", active: false },
+    { n: "5", line1: "Postpurchase", line2: "behavior", active: false },
+  ];
+  const sources = [
+    { name: "Personal", role: "Evaluates", hot: true },
+    { name: "Public", role: "Legitimizes", hot: true },
+    { name: "Commercial", role: "Informs", hot: false },
+    { name: "Experiential", role: "Tests", hot: false },
+  ];
+  return (
+    <Frame
+      height={252}
+      label="Five-stage consumer buyer decision process from need recognition through postpurchase behavior, highlighting internal and external triggers in Step 1 and the four information sources in Step 2."
+    >
+      {stages.map((s, i) => {
+        const x = 24 + i * 154;
+        const w = 136;
+        const cx = x + w / 2;
+        const tone = s.active ? SIGNAL : INK;
+        const fill = s.active ? SIGNAL_TINT : PAPER2;
+        return (
+          <g key={s.n}>
+            <rect
+              x={x}
+              y={22}
+              width={w}
+              height={68}
+              fill={fill}
+              stroke={tone}
+              strokeWidth={s.active ? 1.75 : 1.25}
+            />
+            <Key x={x + 12} y={42} fill={s.active ? SIGNAL : INK3} size={10.5} weight={600}>
+              {`Step ${s.n}`}
+            </Key>
+            <Key x={cx} y={60} anchor="middle" fill={tone} size={11} weight={600}>
+              {s.line1}
+            </Key>
+            <Key x={cx} y={76} anchor="middle" fill={tone} size={11} weight={600}>
+              {s.line2}
+            </Key>
+            {i < stages.length - 1 ? (
+              <g>
+                <line
+                  x1={x + w}
+                  y1={56}
+                  x2={x + 152}
+                  y2={56}
+                  stroke={INK3}
+                  strokeWidth={1.5}
+                />
+                <path
+                  d={head2.right(x + 154, 56)}
+                  fill="none"
+                  stroke={INK3}
+                  strokeWidth={1.5}
+                />
+              </g>
+            ) : null}
+          </g>
+        );
+      })}
+
+      {/* Connectors down from Step 1 and Step 2 */}
+      <line x1={92} y1={90} x2={92} y2={122} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(92, 124)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      <line x1={246} y1={90} x2={246} y2={122} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(246, 124)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Step 1 Triggers box */}
+      <rect
+        x={24}
+        y={126}
+        width={190}
+        height={108}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.25}
+      />
+      <Key x={38} y={148} fill={SIGNAL} size={10.5} weight={600}>
+        Step 1 triggers
+      </Key>
+      <Note x={38} y={174} fill={INK2} size={11.5}>
+        Internal: hunger, thirst
+      </Note>
+      <Note x={38} y={196} fill={INK2} size={11.5}>
+        External: bakery aroma,
+      </Note>
+      <Note x={38} y={214} fill={INK2} size={11.5}>
+        neighbor&apos;s e-bike
+      </Note>
+
+      {/* Step 2 Information Sources box */}
+      <rect
+        x={230}
+        y={126}
+        width={546}
+        height={108}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.25}
+      />
+      <Key x={246} y={148} fill={SIGNAL} size={10.5} weight={600}>
+        Step 2 information sources
+      </Key>
+      {sources.map((src, idx) => {
+        const sx = 246 + idx * 130;
+        const sw = 120;
+        const scx = sx + sw / 2;
+        const stone = src.hot ? SIGNAL : INK;
+        return (
+          <g key={src.name}>
+            <rect
+              x={sx}
+              y={160}
+              width={sw}
+              height={60}
+              fill={src.hot ? SIGNAL_TINT : PAPER}
+              stroke={stone}
+              strokeWidth={src.hot ? 1.5 : 1.25}
+            />
+            <Key x={scx} y={184} anchor="middle" fill={stone} size={11} weight={600}>
+              {src.name}
+            </Key>
+            <Note x={scx} y={204} anchor="middle" fill={INK2} size={11}>
+              {src.role}
+            </Note>
+          </g>
+        );
+      })}
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   1b. CENSUS: the consumer market is individuals and households
    ========================================================================== */
 
 export function ConsumerMarket() {
@@ -653,7 +988,250 @@ export function SocialWeb() {
 }
 
 /* ==========================================================================
-   12. PERCEPTION SEQUENCE: select, organize, interpret
+   12. SELECTIVE PERCEPTION FILTERS: selective attention, selective
+       distortion, and selective retention filtering marketplace stimuli
+   ========================================================================== */
+
+export function SelectivePerceptionFilters() {
+  const incomingY = [66, 86, 106, 126, 146, 166, 186];
+  const passIdx = new Set([1, 4]);
+  return (
+    <Frame
+      height={252}
+      label="Three perceptual processes filtering marketplace stimuli: selective attention screens out most stimuli, selective distortion reshapes information to fit prior beliefs, and selective retention stores good points about a favored brand in memory."
+    >
+      {/* Panel 1 background placed first so passing stimulus arrows sit on top */}
+      <rect
+        x={172}
+        y={44}
+        width={186}
+        height={188}
+        fill={PAPER2}
+        stroke="none"
+      />
+
+      {/* Left: Marketplace stimuli */}
+      <Key x={86} y={32} anchor="middle" fill={INK3} size={10.5} weight={600}>
+        Marketplace stimuli
+      </Key>
+      {incomingY.map((y, i) => {
+        const passes = passIdx.has(i);
+        const tone = i === 1 ? SIGNAL : i === 4 ? COUNTER : INK3;
+        return (
+          <g key={y}>
+            <rect
+              x={28}
+              y={y - 5}
+              width={56}
+              height={10}
+              fill={passes ? (i === 1 ? SIGNAL_TINT : COUNTER_TINT) : PAPER2}
+              stroke={tone}
+              strokeWidth={passes ? 1.5 : 1}
+            />
+            <line
+              x1={88}
+              y1={y}
+              x2={passes ? 210 : 162}
+              y2={y}
+              stroke={tone}
+              strokeWidth={passes ? 1.5 : 1}
+              strokeDasharray={passes ? undefined : "3 3"}
+            />
+            {passes ? (
+              <path
+                d={head2.right(212, y)}
+                fill="none"
+                stroke={tone}
+                strokeWidth={1.5}
+              />
+            ) : (
+              <line
+                x1={164}
+                y1={y - 4}
+                x2={164}
+                y2={y + 4}
+                stroke={INK3}
+                strokeWidth={1.25}
+              />
+            )}
+          </g>
+        );
+      })}
+
+      {/* Panel 1: Selective Attention (left wall has two sieve openings at y=76..96 and y=136..156) */}
+      <path
+        d="M172 76 V44 H358 V232 H172 V156 M172 136 V96"
+        fill="none"
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <Key x={265} y={32} anchor="middle" fill={INK} size={11} weight={600}>
+        1. Selective attention
+      </Key>
+      {/* Sieve gate bars on the left wall */}
+      <line x1={172} y1={44} x2={172} y2={76} stroke={INK} strokeWidth={3} />
+      <line x1={172} y1={96} x2={172} y2={136} stroke={INK} strokeWidth={3} />
+      <line x1={172} y1={156} x2={172} y2={232} stroke={INK} strokeWidth={3} />
+
+      <rect
+        x={216}
+        y={74}
+        width={124}
+        height={26}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={278} y={91} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Noticed stimulus A
+      </Key>
+
+      <rect
+        x={216}
+        y={134}
+        width={124}
+        height={26}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={278} y={151} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        Noticed stimulus B
+      </Key>
+
+      <Note x={265} y={214} anchor="middle" fill={INK2} size={11.5}>
+        Screens out most clutter
+      </Note>
+
+      {/* Connector 1 -> 2 */}
+      <line x1={358} y1={126} x2={384} y2={126} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(386, 126)} fill="none" stroke={INK} strokeWidth={1.5} />
+
+      {/* Panel 2: Selective Distortion */}
+      <rect
+        x={390}
+        y={44}
+        width={186}
+        height={188}
+        fill={PAPER2}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={483} y={32} anchor="middle" fill={COUNTER} size={11} weight={600}>
+        2. Selective distortion
+      </Key>
+
+      <rect
+        x={408}
+        y={66}
+        width={150}
+        height={44}
+        fill={PAPER}
+        stroke={COUNTER}
+        strokeWidth={1.25}
+      />
+      <Key x={483} y={85} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        Prior beliefs lens
+      </Key>
+      <Note x={483} y={101} anchor="middle" fill={INK2} size={11}>
+        Expectations shape meaning
+      </Note>
+
+      <line
+        x1={483}
+        y1={110}
+        x2={483}
+        y2={136}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <path
+        d={head2.down(483, 138)}
+        fill="none"
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+
+      <rect
+        x={408}
+        y={142}
+        width={150}
+        height={44}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={483} y={161} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        Aligned interpretation
+      </Key>
+      <Note x={483} y={177} anchor="middle" fill={INK2} size={11}>
+        Supports existing belief
+      </Note>
+
+      <Note x={483} y={214} anchor="middle" fill={INK2} size={11.5}>
+        Interprets to fit beliefs
+      </Note>
+
+      {/* Connector 2 -> 3 */}
+      <line x1={576} y1={126} x2={602} y2={126} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(604, 126)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Panel 3: Selective Retention */}
+      <rect
+        x={608}
+        y={44}
+        width={172}
+        height={188}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.75}
+      />
+      <Key x={694} y={32} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        3. Selective retention
+      </Key>
+
+      <rect
+        x={624}
+        y={68}
+        width={140}
+        height={52}
+        fill={PAPER}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={694} y={90} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Favored brand
+      </Key>
+      <Note x={694} y={108} anchor="middle" fill={INK2} size={11}>
+        Good points remembered
+      </Note>
+
+      <rect
+        x={624}
+        y={134}
+        width={140}
+        height={52}
+        fill={PAPER}
+        stroke={INK3}
+        strokeWidth={1.25}
+        strokeDasharray="4 4"
+      />
+      <Key x={694} y={156} anchor="middle" fill={INK3} size={10.5}>
+        Competing brand
+      </Key>
+      <Note x={694} y={174} anchor="middle" fill={INK3} size={11}>
+        Good points forgotten
+      </Note>
+
+      <Note x={694} y={214} anchor="middle" fill={INK2} size={11.5}>
+        Stored in buyer memory
+      </Note>
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   12b. PERCEPTION SEQUENCE: select, organize, interpret
    ========================================================================== */
 
 export function PerceptionSequence() {
@@ -1129,6 +1707,200 @@ export function TwoBrochures({ column = false }: { column?: boolean } = {}) {
       <Key x={600} y={274} anchor="middle" fill={COUNTER} size={11}>
         CFO
       </Key>
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   19. DELEGATED DECISION STEPS: need recognition and postpurchase behavior
+       kept by the human consumer while search, evaluation, and optional
+       checkout are delegated to the AI agent
+   ========================================================================== */
+
+export function DelegatedDecisionSteps() {
+  const w = 104;
+  const xs = [148, 276, 404, 532, 660];
+  return (
+    <Frame
+      height={264}
+      label="Five-stage consumer decision process across two lanes: the human consumer keeps Step 1 (Need recognition) and Step 5 (Postpurchase behavior), delegates Step 2 (Information search) and Step 3 (Evaluation of alternatives) to the AI shopping agent, and shares Step 4 (Purchase decision) through shortlist approval or autonomous checkout."
+    >
+      {/* Lane background bands separated by a clean 16px gap */}
+      <rect x={20} y={20} width={760} height={108} fill={PAPER2} stroke="none" />
+      <rect x={20} y={144} width={760} height={108} fill={PAPER2} stroke="none" />
+
+      {/* Left actor column */}
+      <Person2 x={76} y={84} k={1.15} stroke={COUNTER} />
+      <Key x={76} y={108} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        Human consumer
+      </Key>
+
+      <Chip2 x={76} y={182} s={36} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Key x={76} y={224} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        AI shopping agent
+      </Key>
+
+      <line x1={132} y1={20} x2={132} y2={128} stroke={RULE2} strokeWidth={1.25} />
+      <line x1={132} y1={144} x2={132} y2={252} stroke={RULE2} strokeWidth={1.25} />
+
+      {/* Step 1: Human lane */}
+      <rect
+        x={xs[0]}
+        y={34}
+        width={w}
+        height={80}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={xs[0] + w / 2} y={54} anchor="middle" fill={COUNTER} size={10} weight={600}>
+        Step 1 (kept)
+      </Key>
+      <Key x={xs[0] + w / 2} y={72} anchor="middle" fill={COUNTER} size={10} weight={600}>
+        Need recognition
+      </Key>
+      <Note x={xs[0] + w / 2} y={94} anchor="middle" fill={INK2} size={11}>
+        States goal
+      </Note>
+
+      {/* Handoff Step 1 -> Step 2 */}
+      <path
+        d={`M${xs[0] + w / 2} 114 V198 H${xs[1] - 4}`}
+        fill="none"
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <path d={head2.right(xs[1] - 2, 198)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Step 2: AI Agent lane */}
+      <rect
+        x={xs[1]}
+        y={158}
+        width={w}
+        height={80}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={xs[1] + w / 2} y={178} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        Step 2 (delegated)
+      </Key>
+      <Key x={xs[1] + w / 2} y={196} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        Info search
+      </Key>
+      <Note x={xs[1] + w / 2} y={218} anchor="middle" fill={INK2} size={11}>
+        Queries catalogs
+      </Note>
+
+      {/* Connector Step 2 -> Step 3 */}
+      <line x1={xs[1] + w} y1={198} x2={xs[2] - 4} y2={198} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(xs[2] - 2, 198)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Step 3: AI Agent lane */}
+      <rect
+        x={xs[2]}
+        y={158}
+        width={w}
+        height={80}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={xs[2] + w / 2} y={178} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        Step 3 (delegated)
+      </Key>
+      <Key x={xs[2] + w / 2} y={196} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        Evaluation
+      </Key>
+      <Note x={xs[2] + w / 2} y={218} anchor="middle" fill={INK2} size={11}>
+        Compares options
+      </Note>
+
+      {/* Connector Step 3 -> Step 4 */}
+      <line x1={xs[2] + w} y1={198} x2={xs[3] - 4} y2={198} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(xs[3] - 2, 198)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Step 4: Shared across both lanes */}
+      <rect
+        x={xs[3]}
+        y={34}
+        width={w}
+        height={80}
+        fill={PAPER}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={xs[3] + w / 2} y={54} anchor="middle" fill={COUNTER} size={10} weight={600}>
+        Step 4 (approval)
+      </Key>
+      <Key x={xs[3] + w / 2} y={72} anchor="middle" fill={COUNTER} size={10} weight={600}>
+        Purchase decision
+      </Key>
+      <Note x={xs[3] + w / 2} y={94} anchor="middle" fill={INK2} size={11}>
+        Picks shortlist
+      </Note>
+
+      <line
+        x1={xs[3] + w / 2}
+        y1={158}
+        x2={xs[3] + w / 2}
+        y2={118}
+        stroke={INK3}
+        strokeWidth={1.5}
+        strokeDasharray="4 4"
+      />
+      <path d={head2.up(xs[3] + w / 2, 116)} fill="none" stroke={INK3} strokeWidth={1.5} />
+
+      <rect
+        x={xs[3]}
+        y={158}
+        width={w}
+        height={80}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={xs[3] + w / 2} y={178} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        Step 4 (auto)
+      </Key>
+      <Key x={xs[3] + w / 2} y={196} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        Purchase decision
+      </Key>
+      <Note x={xs[3] + w / 2} y={218} anchor="middle" fill={INK2} size={11}>
+        Routine checkout
+      </Note>
+
+      {/* Connectors Step 4 -> Step 5 */}
+      <line x1={xs[3] + w} y1={74} x2={xs[4] - 4} y2={74} stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.right(xs[4] - 2, 74)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+
+      <path
+        d={`M${xs[3] + w} 198 H${xs[4] + w / 2} V118`}
+        fill="none"
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <path d={head2.up(xs[4] + w / 2, 116)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+
+      {/* Step 5: Human lane */}
+      <rect
+        x={xs[4]}
+        y={34}
+        width={w}
+        height={80}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={xs[4] + w / 2} y={54} anchor="middle" fill={COUNTER} size={10} weight={600}>
+        Step 5 (kept)
+      </Key>
+      <Key x={xs[4] + w / 2} y={72} anchor="middle" fill={COUNTER} size={10} weight={600}>
+        Postpurchase
+      </Key>
+      <Note x={xs[4] + w / 2} y={94} anchor="middle" fill={INK2} size={11}>
+        Uses product
+      </Note>
     </Frame>
   );
 }

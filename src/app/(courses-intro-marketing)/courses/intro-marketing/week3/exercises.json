@@ -1,61 +1,8 @@
 [
   {
-    "type": "sort",
-    "slide_id": "need-recognition",
-    "prompt": "Each moment starts a buying process. Sort it by where the trigger comes from.",
-    "bins": [
-      {
-        "id": "internal",
-        "label": "Internal stimulus"
-      },
-      {
-        "id": "external",
-        "label": "External stimulus"
-      }
-    ],
-    "cards": [
-      {
-        "id": "thirst",
-        "text": "Halfway through a long run, Amir feels thirsty and wants a sports drink.",
-        "bin": "internal",
-        "explanation": "The trigger comes from inside Amir, so it is an internal stimulus."
-      },
-      {
-        "id": "window",
-        "text": "Nora walks past a bakery window and sees fresh croissants.",
-        "bin": "external",
-        "explanation": "The trigger comes from the world around her, so it is an external stimulus."
-      },
-      {
-        "id": "tired",
-        "text": "After weeks of back pain, Ben decides his mattress has to go.",
-        "bin": "internal",
-        "explanation": "The discomfort comes from Ben himself, so it is an internal stimulus."
-      },
-      {
-        "id": "coworker",
-        "text": "A coworker's new noise-cancelling headphones make Ines want a pair.",
-        "bin": "external",
-        "explanation": "Seeing someone else's product is an outside trigger, so it is an external stimulus."
-      },
-      {
-        "id": "radio",
-        "text": "A radio ad reminds Paul that his car needs new tires.",
-        "bin": "external",
-        "explanation": "The ad is outside Paul, so it is an external stimulus."
-      },
-      {
-        "id": "hunger",
-        "text": "Late at night, Mia's stomach growls and she orders a pizza.",
-        "bin": "internal",
-        "explanation": "Hunger comes from inside Mia, so it is an internal stimulus."
-      }
-    ]
-  },
-  {
     "type": "match",
-    "slide_id": "information-search",
-    "prompt": "Sam is buying a stroller and gathers information from four places. Match each source type to what Sam uses.",
+    "slide_id": "step-1-need-recognition-and-step-2-information-search",
+    "prompt": "Sam is buying a stroller after recognizing a need and gathers information from four categories of sources. Match each source type to what Sam uses.",
     "term_label": "Source type",
     "match_label": "What Sam uses",
     "pairs": [
@@ -63,34 +10,34 @@
         "id": "personal",
         "term": "Personal sources",
         "match": "Two friends who already own a stroller",
-        "explanation": "Friends and family are personal sources, and they tend to be the most effective."
+        "explanation": "Friends and family are personal sources, and they carry major weight in legitimizing and evaluating brands."
       },
       {
         "id": "commercial",
         "term": "Commercial sources",
         "match": "The brand's own website and a store salesperson",
-        "explanation": "Advertising, websites and salespeople come from the company selling the product."
+        "explanation": "Advertising, websites, and salespeople come from the company selling the product and typically inform the buyer about available options."
       },
       {
         "id": "public",
         "term": "Public sources",
-        "match": "A consumer-rating organization's published ranking",
-        "explanation": "Mass media and rating organizations are public sources."
+        "match": "An independent consumer-rating organization's published ranking",
+        "explanation": "Independent media and consumer rating organizations are public sources."
       },
       {
         "id": "experiential",
         "term": "Experiential sources",
         "match": "Pushing the display model around the store",
-        "explanation": "Handling and trying the product yourself is experiential."
+        "explanation": "Handling or testing the product yourself is an experiential source."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "postpurchase-behavior",
-    "question_text": "Right after paying for an expensive laptop, Karim keeps wondering if he should have bought the other brand. What is he experiencing?",
-    "hint": "The purchase is already made. Think about the stage that comes after it.",
-    "correct_answer_citation": "Week 3: Step 5: Postpurchase Behavior",
+    "slide_id": "step-5-postpurchase-behavior-and-cognitive-dissonance",
+    "question_text": "Right after paying for an expensive laptop, Karim keeps wondering if he should have bought the competing brand instead. What is he experiencing?",
+    "hint": "The purchase is already made. Think about the stage that comes after the transaction.",
+    "correct_answer_citation": "Week 3: Step 5: Postpurchase Behavior and Cognitive Dissonance",
     "correct_answer_index": 2,
     "options": [
       {
@@ -98,138 +45,199 @@
         "option_explanation": "Need recognition starts the buying process. Karim has already bought the laptop, so he is past that stage."
       },
       {
-        "option_text": "Evaluation of alternatives within his choice set.",
+        "option_text": "Evaluation of alternatives within his consideration set.",
         "option_explanation": "Evaluating alternatives happens before the purchase decision. Karim's doubts come after he has bought."
       },
       {
         "option_text": "Cognitive dissonance from postpurchase conflict.",
-        "option_explanation": "Correct. Cognitive dissonance, or buyer discomfort caused by postpurchase conflict, is a common occurrence."
+        "option_explanation": "Correct. Cognitive dissonance is buyer discomfort caused by postpurchase conflict after accepting the chosen brand's drawbacks and giving up the benefits of rejected alternatives."
       },
       {
         "option_text": "Situational factors blocking his purchase decision.",
-        "option_explanation": "Situational factors come between intention and decision. Karim did make the purchase, and his discomfort came afterwards."
-      }
-    ]
-  },
-  {
-    "type": "identify",
-    "slide_id": "psychological-factors",
-    "prompt": "Perception is the process by which people select, organize, and interpret information. Which part of perception is each shopper doing?",
-    "options": [
-      {
-        "id": "select",
-        "label": "Select"
-      },
-      {
-        "id": "organize",
-        "label": "Organize"
-      },
-      {
-        "id": "interpret",
-        "label": "Interpret"
-      }
-    ],
-    "cases": [
-      {
-        "id": "mall",
-        "text": "Walking through a busy mall, Lina notices only the shoe ads and tunes out everything else.",
-        "answer": "select",
-        "explanation": "Lina picks out a few pieces of information and ignores the rest, so she is selecting."
-      },
-      {
-        "id": "shelf",
-        "text": "In the cereal aisle, Omar mentally sorts the boxes into healthy brands and sugary brands.",
-        "answer": "organize",
-        "explanation": "Omar arranges what he sees into groups, so he is organizing."
-      },
-      {
-        "id": "price",
-        "text": "Julie sees the highest price on the wine list and decides it must be the best wine.",
-        "answer": "interpret",
-        "explanation": "Julie gives the price a meaning, so she is interpreting."
-      },
-      {
-        "id": "feed",
-        "text": "Scrolling past dozens of posts, Theo stops only at the one showing the headphones he has been wanting.",
-        "answer": "select",
-        "explanation": "Theo lets one post through and skips the others, so he is selecting."
-      },
-      {
-        "id": "reviews",
-        "text": "Before buying a tent, Aisha lines up the reviews she has read into pros in one column and cons in another.",
-        "answer": "organize",
-        "explanation": "Aisha puts the information into a structure, so she is organizing."
-      },
-      {
-        "id": "pack",
-        "text": "Marc sees a plain, recycled-paper package and concludes the brand cares about the environment.",
-        "answer": "interpret",
-        "explanation": "Marc reads a meaning into the package, so he is interpreting."
-      }
-    ]
-  },
-  {
-    "type": "quiz",
-    "slide_id": "market-structure-and-demand",
-    "question_text": "A maker of aluminum cans sees its orders drop after people start buying fewer soft drinks. Which idea explains this?",
-    "hint": "Where does the can maker's demand ultimately come from?",
-    "correct_answer_citation": "Week 3: Market Structure and Demand",
-    "correct_answer_index": 3,
-    "options": [
-      {
-        "option_text": "Elastic demand, since can buyers react strongly to price.",
-        "option_explanation": "Nothing about price changed here. B2B demand is also more inelastic than B2C demand, not more elastic."
-      },
-      {
-        "option_text": "Postpurchase dissonance among soft drink buyers.",
-        "option_explanation": "Dissonance is discomfort after a purchase. The drop here comes from consumers buying fewer drinks in the first place."
-      },
-      {
-        "option_text": "Market structure, since can makers serve many small buyers.",
-        "option_explanation": "A business marketer normally deals with far fewer but far larger buyers, and buyer count does not explain this drop."
-      },
-      {
-        "option_text": "Derived demand, which comes from consumer demand.",
-        "option_explanation": "Correct. Business demand is derived demand. It ultimately derives from the demand for consumer goods, here soft drinks."
+        "option_explanation": "Situational factors intervene between purchase intention and purchase decision. Karim completed the purchase, and his discomfort came afterward."
       }
     ]
   },
   {
     "type": "match",
-    "slide_id": "the-buying-center",
-    "prompt": "A hospital is buying new patient monitors. Match each buying-center role to the person who plays it.",
-    "term_label": "Role",
-    "match_label": "Who plays it",
+    "slide_id": "social-factors-groups-family-and-roles",
+    "prompt": "Match each social influence on buying behavior to the everyday consumer scenario that illustrates it.",
+    "term_label": "Social factor",
+    "match_label": "Scenario",
     "pairs": [
       {
-        "id": "users",
-        "term": "User",
-        "match": "The nurses who will work with the monitors every shift",
-        "explanation": "Users are the people who will actually use the product."
+        "id": "membership",
+        "term": "Membership group",
+        "match": "A runner buys the same hydration vest worn by teammates in her weekly local running club",
+        "explanation": "A membership group is a group to which the person belongs and interacts with directly."
       },
       {
-        "id": "influencers",
-        "term": "Influencer",
-        "match": "The biomedical engineer whose test report shapes the shortlist",
-        "explanation": "Influencers affect the decision without making it."
+        "id": "aspirational",
+        "term": "Aspirational group",
+        "match": "An amateur tennis player buys the racket model used by touring professionals he hopes to emulate",
+        "explanation": "An aspirational group is a reference group to which an individual does not belong but wishes to belong."
       },
       {
-        "id": "buyers",
-        "term": "Buyer",
-        "match": "The purchasing agent who negotiates terms and places the order",
-        "explanation": "Buyers have formal authority to select suppliers and arrange the purchase."
+        "id": "opinion-leader",
+        "term": "Opinion leader",
+        "match": "Shoppers wait for a trusted audio reviewer's benchmark video before choosing a studio microphone",
+        "explanation": "Opinion leaders and online creators exert word-of-mouth influence, especially when products are visible, expensive, or socially risky."
       },
       {
-        "id": "deciders",
-        "term": "Decider",
-        "match": "The hospital director who approves the supplier",
-        "explanation": "Deciders have the power to make the final choice."
+        "id": "family",
+        "term": "Family",
+        "match": "Spouses and children each shape different parts of a household's summer vacation booking",
+        "explanation": "Family members constitute the most influential primary reference group, with buying roles shifting across household members by category."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selective-perception-in-marketplace-processing",
+    "prompt": "People form different perceptions of the same stimulus through three perceptual processes. Which process is each consumer showing?",
+    "options": [
+      {
+        "id": "attention",
+        "label": "Selective attention"
       },
       {
-        "id": "gatekeepers",
-        "term": "Gatekeeper",
-        "match": "The assistant who controls which sales reps get a meeting with the director",
-        "explanation": "Gatekeepers control the flow of information to the others."
+        "id": "distortion",
+        "label": "Selective distortion"
+      },
+      {
+        "id": "retention",
+        "label": "Selective retention"
+      }
+    ],
+    "cases": [
+      {
+        "id": "commute",
+        "text": "Commuting past dozens of digital billboards, Lina notices only the ad for laptops because her old computer just broke.",
+        "answer": "attention",
+        "explanation": "Lina screens out most of the information to which she is exposed and notices only what relates to her current need, which is selective attention."
+      },
+      {
+        "id": "taste-test",
+        "text": "A loyal fan of Brand X reads a balanced review mentioning a minor battery flaw and concludes the reviewer must have tested a defective unit.",
+        "answer": "distortion",
+        "explanation": "Interpreting information in a way that supports what one already believes is selective distortion."
+      },
+      {
+        "id": "showroom",
+        "text": "A week after visiting two car dealerships, Omar clearly recalls the safety awards of his favorite automaker but forgets the warranty advantages of the rival.",
+        "answer": "retention",
+        "explanation": "Remembering good points made about a favored brand while forgetting good points made about competing brands is selective retention."
+      },
+      {
+        "id": "podcast",
+        "text": "While listening to a podcast, Theo tunes out three sponsor reads in a row without registering which brands were mentioned.",
+        "answer": "attention",
+        "explanation": "Screening out most marketing stimuli in a cluttered environment is selective attention."
+      },
+      {
+        "id": "price-cut",
+        "text": "Believing that a discount store sells low-quality goods, Julie views its holiday sale announcement as proof that the merchandise is defective.",
+        "answer": "distortion",
+        "explanation": "Julie twists neutral or positive information to fit her prior belief, which is selective distortion."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "market-structure-and-derived-demand",
+    "question_text": "A maker of aluminum cans sees its orders drop after households start buying fewer canned soft drinks. Which B2B demand concept explains this drop?",
+    "hint": "Where does the can maker's demand ultimately come from?",
+    "correct_answer_citation": "Week 3: Market Structure and Derived Demand",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Short-run price elasticity among industrial can buyers.",
+        "option_explanation": "Nothing about aluminum can prices changed here, and short-run B2B demand is typically more price-inelastic than B2C demand."
+      },
+      {
+        "option_text": "Postpurchase cognitive dissonance among soft drink buyers.",
+        "option_explanation": "Dissonance is buyer discomfort after a major purchase. The drop here comes from lower household demand for the finished consumer good."
+      },
+      {
+        "option_text": "A fragmented B2B buyer structure with millions of small accounts.",
+        "option_explanation": "Business marketers typically interact with far fewer and much larger buyers than consumer marketers do."
+      },
+      {
+        "option_text": "Derived demand, which traces business demand back to consumer demand for finished goods.",
+        "option_explanation": "Correct. Business demand is derived demand: it ultimately derives from consumer demand for finished goods, here canned soft drinks."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "which-decision-steps-are-delegated-and-which-are-kept",
+    "prompt": "Sort each moment in the five-stage buying process by whether it stays with the human consumer or is commonly delegated to an AI shopping agent.",
+    "bins": [
+      {
+        "id": "human",
+        "label": "Kept by the human consumer"
+      },
+      {
+        "id": "agent",
+        "label": "Delegated to the AI shopping agent"
+      }
+    ],
+    "cards": [
+      {
+        "id": "need",
+        "text": "Feeling knee pain after a morning jog and deciding it is time for new running shoes.",
+        "bin": "human",
+        "explanation": "Step 1 (Need Recognition) remains with the human consumer, who experiences the physical or psychological need."
+      },
+      {
+        "id": "search",
+        "text": "Querying dozens of online retail catalogs to gather technical specifications and customer review scores.",
+        "bin": "agent",
+        "explanation": "Step 2 (Information Search) is heavily delegated to the AI agent."
+      },
+      {
+        "id": "evaluate",
+        "text": "Comparing competing models across cushioning ratings, weight, and price to build a ranked shortlist.",
+        "bin": "agent",
+        "explanation": "Step 3 (Evaluation of Alternatives) is heavily delegated to the AI agent."
+      },
+      {
+        "id": "routine-checkout",
+        "text": "Executing an autonomous reorder checkout for a routine household supply.",
+        "bin": "agent",
+        "explanation": "Step 4 (Purchase Decision) can be executed autonomously by the AI agent for routine items."
+      },
+      {
+        "id": "postpurchase",
+        "text": "Wearing the shoes on a trail run and feeling either satisfaction or postpurchase regret.",
+        "bin": "human",
+        "explanation": "Step 5 (Postpurchase Behavior) stays entirely with the human consumer, who consumes the physical product."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "goal-specificity-and-lookup-costs-in-delegated-search",
+    "question_text": "On an online marketplace, search results show only product titles and total prices, while bag weight is hidden on each item's detail page. Based on controlled experiments on delegated search (Wadi & Ma, 2026b), when is an AI shopping agent most likely to select the coffee with the lowest price per ounce?",
+    "hint": "Consider how the specificity of the shopper's prompt interacts with the cost of looking up hidden details.",
+    "correct_answer_citation": "Week 3: Goal Specificity and Lookup Costs in Delegated Search",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "When the shopper gives a vague prompt such as 'buy me a bag of coffee' so the agent has freedom to explore.",
+        "option_explanation": "When the prompt was vague and inspecting detail pages carried a lookup cost, AI agents frequently skipped inspecting package weight and picked listings that cost more per ounce."
+      },
+      {
+        "option_text": "When the shopper's prompt states a specific cost-minimization goal that motivates checking hidden package weights.",
+        "option_explanation": "Correct. When the consumer's prompt stated a specific cost-minimization goal, AI agents checked the hidden package details and selected the lower unit-price option significantly more often (Wadi & Ma, 2026b)."
+      },
+      {
+        "option_text": "Only when the human shopper manually clicks into every product page before invoking the AI agent.",
+        "option_explanation": "The AI agent can inspect the product pages itself, and does so much more reliably when given a specific cost-minimization goal."
+      },
+      {
+        "option_text": "Regardless of prompt wording, because AI agents always open every product page before making a choice.",
+        "option_explanation": "Under lookup costs and vague instructions, AI agents frequently skip secondary page lookups."
       }
     ]
   }

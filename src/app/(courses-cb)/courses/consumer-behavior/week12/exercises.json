@@ -1,206 +1,183 @@
 [
   {
     "type": "identify",
-    "slide_id": "mobile-shopping-and-social-commerce",
-    "prompt": "Each purchase happens in a different way. Name the kind of shopping it shows.",
+    "slide_id": "social-commerce-and-live-stream-shopping",
+    "prompt": "Each purchase happens in a different digital channel. Name the kind of commerce it illustrates.",
     "options": [
-      { "id": "mobile", "label": "Mobile shopping" },
+      { "id": "mobile", "label": "Mobile commerce" },
       { "id": "social", "label": "Social commerce" },
       { "id": "live", "label": "Live-stream shopping" }
     ],
     "cases": [
       {
-        "id": "bus",
-        "text": "Waiting for a bus, a student opens a grocery app on their phone and orders tonight's dinner ingredients.",
+        "id": "geofence",
+        "text": "As a commuter walks within two hundred meters of a bakery, a time-sensitive coupon pops up on their smartphone and they buy a pastry with a one-click digital wallet.",
         "answer": "mobile",
-        "explanation": "Buying through a smartphone app, at any moment."
+        "explanation": "Mobile commerce combines handheld devices, geofenced notifications, and low-friction digital wallets."
       },
       {
         "id": "tap-video",
-        "text": "A skincare serum appears in a short video in a social media feed. The viewer taps it and pays without leaving the app.",
+        "text": "A skincare serum appears in a short lifestyle video inside a social media feed. The viewer taps the embedded product tag and completes checkout without leaving the application.",
         "answer": "social",
-        "explanation": "Buying directly inside a social media platform, in the same feed."
+        "explanation": "Social commerce integrates discovery, social proof, and checkout directly inside a social platform."
       },
       {
         "id": "host",
-        "text": "A host demonstrates a blender on camera for an hour, viewers send comments, and a discount ends when a timer reaches zero.",
+        "text": "A host demonstrates a kitchen blender on camera in real time while viewers post questions in an interactive chat and a flash discount counts down toward zero.",
         "answer": "live",
-        "explanation": "Entertainment, a host's demonstration and a limited-time offer together."
+        "explanation": "Live-stream shopping combines real-time video demonstration, audience chat, and expiring countdown discounts."
       },
       {
         "id": "midnight",
-        "text": "Unable to sleep, a shopper buys a lamp on a store's mobile website at 1 a.m.",
+        "text": "Unable to sleep at 1 a.m., a shopper unlocks their phone with biometric authentication and buys a desk lamp in seconds.",
         "answer": "mobile",
-        "explanation": "A mobile website makes a purchase possible at any moment, which invites impulse buying."
+        "explanation": "Continuous smartphone availability and biometric payment reduce System 2 deliberation and invite unplanned mobile impulse purchases."
       },
       {
         "id": "friend-post",
-        "text": "A friend's post shows a pair of sunglasses with a shop button. A few seconds later the sunglasses are in the viewer's cart inside the same app.",
+        "text": "A peer's video clip showcases a pair of running sunglasses with an embedded checkout tag, collapsing awareness, evaluation, and payment into a single sixty-second interaction.",
         "answer": "social",
-        "explanation": "Social influence and the purchase meet in a single moment inside the platform."
+        "explanation": "Social commerce collapses problem recognition, search, evaluation, and checkout inside the same social feed."
       },
       {
         "id": "countdown",
-        "text": "During an evening broadcast, a presenter tries on three jackets and announces that the price will rise in ten minutes.",
+        "text": "During an evening broadcast, a presenter tries on three winter jackets as a visible purchase counter climbs and announces that the promotional price expires in ten minutes.",
         "answer": "live",
-        "explanation": "A live demonstration with a limited-time offer."
+        "explanation": "A live host demonstration paired with visible purchase counters and an expiring countdown timer."
       }
     ]
   },
   {
-    "slide_id": "algorithm-driven-discovery",
+    "slide_id": "recommender-systems-filter-bubbles-and-algorithmic-discovery",
     "type": "quiz",
-    "question_text": "Over a year, a streaming app's home page fills with crime documentaries after a viewer finishes several of them. The viewer never sees the app's comedies or nature series, although the app has thousands of them. What does this show?",
-    "hint": "Think about what happens when the algorithm keeps showing more of what the viewer already likes.",
-    "correct_answer_citation": "A filter bubble forms when the algorithm keeps showing more of what the consumer already likes.",
+    "question_text": "Over a year, a streaming app's home page fills with crime documentaries after a viewer finishes several of them. The viewer never sees the app's comedies or nature series, even though the catalog holds thousands of them. What concept does this illustrate?",
+    "hint": "Think about what happens when a recommender optimizes strictly for immediate click probability based on past choices.",
+    "correct_answer_citation": "However, optimizing strictly for immediate click probability can trap consumers in a filter bubble (or echo chamber) that repeatedly serves narrow variations of past purchases (Pariser, 2011).",
     "options": [
       {
-        "option_text": "A filter bubble: the recommender keeps showing more of what the viewer already likes, so other titles never reach the viewer's attention.",
-        "option_explanation": "Correct. Recommendations narrow what the viewer sees to the algorithm's predictions."
+        "option_text": "A filter bubble: optimizing strictly for immediate clicks traps the viewer in narrow variations of past choices and reduces serendipitous discovery.",
+        "option_explanation": "Correct. Excessive algorithmic narrowing repeatedly serves variations of past behavior and hides the rest of the catalog."
       },
       {
-        "option_text": "Social commerce: the viewer is buying inside a social media platform.",
-        "option_explanation": "Nothing is bought inside a social media feed here. The issue is what the recommender shows."
+        "option_text": "Showrooming: the viewer inspects titles in one channel before purchasing them in another.",
+        "option_explanation": "Showrooming involves inspecting a physical product in a brick-and-mortar store and buying it online."
       },
       {
-        "option_text": "The assortment is too small: the app does not offer other kinds of titles.",
-        "option_explanation": "The app has thousands of other titles. The viewer simply never sees them."
+        "option_text": "Deliberate exploration: the recommender sacrifices short-term clicks to broaden the viewer's tastes.",
+        "option_explanation": "Deliberate exploration introduces novel categories, which is the opposite of what happened here."
       },
       {
-        "option_text": "Impulse buying: the viewer chooses quickly because the app is always available.",
-        "option_explanation": "Impulse buying concerns spur-of-the-moment purchases, not which products the algorithm shows."
+        "option_text": "Live-stream shopping: the viewer is purchasing items during a real-time video broadcast.",
+        "option_explanation": "No live broadcast or checkout is taking place. The issue is algorithmic narrowing of the feed."
       }
     ],
     "correct_answer_index": 0
   },
   {
     "type": "identify",
-    "slide_id": "agentic-commerce-from-recommendation-to-autonomous-purchase",
-    "prompt": "Each case shows how much of the purchase a consumer hands to an AI agent. Name the level.",
+    "slide_id": "four-levels-of-autonomy-in-consumer-ai-delegation",
+    "prompt": "Each scenario shows a different degree of consumer delegation to an AI shopping system. Identify its level on the four-level autonomy ladder.",
     "options": [
-      { "id": "l1", "label": "Level 1: the AI recommends" },
-      { "id": "l2", "label": "Level 2: the AI searches and compares" },
-      { "id": "l3", "label": "Level 3: the AI selects and prepares, the consumer approves" },
-      { "id": "l4", "label": "Level 4: the AI buys within set limits" }
+      { "id": "l1", "label": "Level 1: AI Recommendation" },
+      { "id": "l2", "label": "Level 2: Delegated Search and Comparison" },
+      { "id": "l3", "label": "Level 3: User-Approved Execution" },
+      { "id": "l4", "label": "Level 4: Autonomous Purchasing" }
     ],
     "cases": [
       {
         "id": "printer-ink",
-        "text": "An agent reorders printer ink whenever the cartridge runs low, as long as each order stays under $40. The consumer only sees the delivery.",
+        "text": "An AI agent monitors household supplies and independently reorders printer ink whenever the cartridge runs low, staying within a pre-authorized 40-dollar budget cap.",
         "answer": "l4",
-        "explanation": "The agent completes the purchase on its own, within a budget the consumer set."
+        "explanation": "At Level 4, the AI agent monitors needs and executes complete purchases independently within pre-authorized guardrails."
       },
       {
         "id": "hiking-boots",
-        "text": "An assistant lists five hiking boots worth considering. The consumer then searches the shops and buys a pair.",
+        "text": "In response to a browsing query, an AI system suggests five candidate hiking boots, and the human shopper visits retail pages, compares details, and buys a pair.",
         "answer": "l1",
-        "explanation": "The AI only recommends. The consumer searches and buys."
+        "explanation": "At Level 1, the AI suggests candidate items while the human conducts further search, compares details, and buys."
       },
       {
         "id": "flights",
-        "text": "An agent checks twenty airlines and returns a table of the three best flights. The consumer picks one and pays.",
+        "text": "An AI agent queries twenty airlines, extracts hidden baggage fees, compares trade-offs, and presents a structured shortlist of three flights for the traveler to choose and pay for.",
         "answer": "l2",
-        "explanation": "The AI searches and compares. The consumer chooses and buys."
+        "explanation": "At Level 2, the AI agent searches across retailers and presents a structured comparison, while the human selects the winner and checks out."
       },
       {
         "id": "groceries",
-        "text": "An agent fills a grocery cart for the week and sends a message: tap to confirm the order.",
+        "text": "An AI agent selects the single best grocery bundle, fills the cart, and prepares shipping and payment details, waiting only for a final confirmation click from the shopper.",
         "answer": "l3",
-        "explanation": "The AI selects and prepares the purchase. The consumer approves it."
+        "explanation": "At Level 3, the AI agent selects the best option and prepares checkout, requiring only a final approval click from the consumer."
       },
       {
         "id": "gift",
-        "text": "An agent chooses a birthday gift, adds it to the cart with gift wrapping, and waits for the consumer's yes.",
+        "text": "An AI agent chooses a birthday gift, adds it to the cart with gift wrapping and delivery details filled in, and sends a prompt asking the consumer to confirm the order.",
         "answer": "l3",
-        "explanation": "The consumer still approves before the purchase goes through."
+        "explanation": "The agent selects the item and prepares the transaction, leaving only final confirmation to the consumer."
       },
       {
         "id": "laptops",
-        "text": "An assistant reads hundreds of laptop specifications and reviews and shows a side-by-side comparison of four models.",
+        "text": "An AI agent reads technical specifications across four electronics retailers and returns a side-by-side trade-off table so the buyer can pick a model and complete checkout.",
         "answer": "l2",
-        "explanation": "Searching and comparing are handed over. Choosing and buying are not."
+        "explanation": "Search and multi-attribute comparison are delegated to the agent, while final selection and payment remain with the human."
       }
     ]
   },
   {
-    "slide_id": "conflicts-of-duty-whom-does-the-ai-agent-serve",
+    "slide_id": "conflicts-of-duty-serving-the-traveler-versus-serving-the-platform",
     "type": "quiz",
-    "question_text": "A booking platform deploys an AI assistant whose instructions say only that it works for the platform. Travelers complain that it recommends sponsored hotels too often. Based on the hotel-booking experiments, which change is most likely to reduce this?",
-    "hint": "Recall what one added sentence did in the experiments (Wadi & Ma, 2026c).",
-    "correct_answer_citation": "Adding one sentence stating that its recommendations should serve the traveler removed this difference (Wadi & Ma, 2026c).",
+    "question_text": "A travel platform deploys an AI booking assistant whose system prompt states that it works on behalf of the platform. Travelers notice that it frequently recommends sponsored hotels over identical unsponsored alternatives. Based on the hotel-booking experiments of Wadi and Ma (2026c), which change eliminates this sponsorship gap?",
+    "hint": "Recall the effect of adding a single explicit fiduciary sentence to the platform-aligned system prompt (Wadi & Ma, 2026c).",
+    "correct_answer_citation": "Crucially, adding a single explicit sentence to the platform-aligned prompt stating that the agent's recommendations must serve the traveler's best interest eliminated this gap (Wadi & Ma, 2026c).",
     "options": [
       {
-        "option_text": "Add a sentence to the instructions stating that its recommendations should serve the traveler.",
-        "option_explanation": "Correct. In the experiments, this one sentence removed the difference between the platform-employed and traveler-employed agent."
+        "option_text": "Add an explicit sentence to the system prompt stating that the agent's recommendations must serve the traveler's best interest.",
+        "option_explanation": "Correct. In Wadi and Ma (2026c), adding a single sentence instructing the platform-employed agent to serve the traveler's best interest eliminated the sponsorship bias."
       },
       {
-        "option_text": "Tell the agent more clearly that it works for the booking platform.",
-        "option_explanation": "When the agent was told it worked for the platform, it penalized sponsored hotels less, not more."
+        "option_text": "Emphasize more strongly in the system prompt that the assistant is employed by the booking platform.",
+        "option_explanation": "Instructing the agent that it works for the platform caused it to penalize sponsored listings less and recommend paid placements more often."
       },
       {
-        "option_text": "Raise the prices of the sponsored hotels.",
-        "option_explanation": "Prices were held equal in the experiments. The difference came from whom the agent was told it served."
+        "option_text": "Replace the word 'Sponsored' with 'Promoted' on all paid hotel listings.",
+        "option_explanation": "Labeling a paid listing 'Promoted' rather than 'Sponsored' actually increased the probability that the agent selected the paid listing."
       },
       {
-        "option_text": "Remove all reviews from the listings.",
-        "option_explanation": "Reviews were not what produced the difference. The agent's principal was."
+        "option_text": "Remove customer star ratings from the candidate hotel listings.",
+        "option_explanation": "Removing diagnostic quality information hurts consumer welfare and does not resolve the principal-agent conflict of duty."
       }
     ],
     "correct_answer_index": 0
   },
   {
-    "type": "identify",
-    "slide_id": "data-collection-and-surveillance",
-    "prompt": "Each situation shows one idea from the slide. Name it.",
+    "slide_id": "sponsorship-disclosure-labels-and-beneficiary-prompts",
+    "type": "quiz",
+    "question_text": "In agent-mediated shopping, sponsorship disclosure labels such as 'Sponsored' or 'Promoted' are read by the AI agent rather than seen directly by the human consumer. What did the experiments of Wadi and Ma (2026c) reveal about these disclosure labels?",
+    "hint": "Consider both whether label wording changed agent choice and whether clearer labels alone solved the conflict between platform-aligned and traveler-aligned agents.",
+    "correct_answer_citation": "Experimental tests show that the exact wording of the disclosure label changes agent behavior: labeling a paid hotel listing \"Sponsored\" reduced the agent's probability of selecting it more than labeling the identical listing \"Promoted\" (Wadi & Ma, 2026c). However, a clearer disclosure label alone did not eliminate the divergence between an agent instructed to serve the platform and an agent instructed to serve the traveler (Wadi & Ma, 2026c).",
     "options": [
-      { "id": "personalization", "label": "Personalization" },
-      { "id": "paradox", "label": "Privacy paradox" },
-      { "id": "surveillance", "label": "Surveillance capitalism" },
-      { "id": "ethical", "label": "Ethical data practice" }
-    ],
-    "cases": [
       {
-        "id": "survey-coupon",
-        "text": "A shopper ticks 'very concerned' about privacy in a survey, then gives a café their birthday, email and phone number for a free muffin.",
-        "answer": "paradox",
-        "explanation": "What the consumer says about privacy differs from what they do for a small benefit."
+        "option_text": "Labeling a listing 'Sponsored' reduced paid selection more than 'Promoted', but clearer labels alone did not eliminate the gap between platform-serving and traveler-serving agents.",
+        "option_explanation": "Correct. Label wording significantly shifted agent behavior, yet a platform-aligned agent still chose paid listings more often than a traveler-aligned agent unless given a beneficiary duty."
       },
       {
-        "id": "sell-predictions",
-        "text": "An app's main income comes from predicting which of its users will soon move house and selling those predictions to furniture and insurance firms.",
-        "answer": "surveillance",
-        "explanation": "Data on behavior are turned into predictions that are sold to others (Zuboff, 2019)."
+        "option_text": "AI agents ignore disclosure text completely and treat 'Sponsored' and 'Promoted' listings identically to organic listings.",
+        "option_explanation": "False. Both traveler-aligned and platform-aligned agents responded to disclosure labels, and 'Sponsored' triggered stronger skepticism than 'Promoted'."
       },
       {
-        "id": "running-offer",
-        "text": "After weeks of morning runs logged in a fitness app, a user sees an offer for running socks in their size.",
-        "answer": "personalization",
-        "explanation": "A relevant offer built from the consumer's own data saves them time."
+        "option_text": "Switching the label from 'Promoted' to 'Sponsored' completely eliminated all differences between platform-aligned and traveler-aligned agents.",
+        "option_explanation": "Even under the clearer 'Sponsored' label, an agent instructed to work for the platform selected the paid listing substantially more often than an agent instructed to work for the traveler."
       },
       {
-        "id": "minimal-form",
-        "text": "A delivery service asks only for an address, explains in two sentences what it will do with it, and asks the customer to agree before collecting anything.",
-        "answer": "ethical",
-        "explanation": "Informed consent, only the data needed, and an explanation of its use."
-      },
-      {
-        "id": "location-quiz",
-        "text": "A shopper who says they never share their location switches it on to unlock a 5% discount.",
-        "answer": "paradox",
-        "explanation": "Stated privacy concern, then personal data shared for a small benefit."
-      },
-      {
-        "id": "music-home",
-        "text": "A music app's home page greets each listener with a playlist built from their own recent listening.",
-        "answer": "personalization",
-        "explanation": "The firm uses the record of the consumer's behavior to make the offer relevant."
+        "option_text": "Visual banner font size is the only variable that affects an API-based AI shopping agent.",
+        "option_explanation": "Agents reading structured data or text parse the semantic wording of machine-readable fields rather than human visual banner styling."
       }
-    ]
+    ],
+    "correct_answer_index": 0
   },
   {
     "type": "sort",
-    "slide_id": "algorithmic-pricing",
-    "prompt": "Sort each price change: does it follow demand and supply, or the data about one consumer?",
+    "slide_id": "dynamic-pricing-personalized-pricing-and-perceived-fairness",
+    "prompt": "Sort each pricing practice into Dynamic pricing (aggregate market supply and demand over time) or Personalized pricing (individual buyer characteristics at the same moment).",
     "bins": [
       { "id": "dynamic", "label": "Dynamic pricing" },
       { "id": "personalized", "label": "Personalized pricing" }
@@ -208,88 +185,83 @@
     "cards": [
       {
         "id": "concert",
-        "text": "Concert tickets cost more as the remaining seats sell out.",
+        "text": "Airline seat fares rise for all travelers alike as the remaining cabin inventory sells out before departure.",
         "bin": "dynamic",
-        "explanation": "The price moves with demand and supply."
+        "explanation": "The price varies over time for all buyers simultaneously based on aggregate supply and demand."
       },
       {
         "id": "rain-ride",
-        "text": "Ride prices jump when it starts to rain and many people want a car at once.",
+        "text": "Ride-hailing fares surge across a city district when a sudden rainstorm increases aggregate rider demand.",
         "bin": "dynamic",
-        "explanation": "Surge pricing follows demand."
+        "explanation": "Surge pricing adjusts the market price in real time in response to aggregate supply and demand."
       },
       {
         "id": "loyal-customer",
-        "text": "A shopper who buys from a site every week is shown a higher price for the same blender than a first-time visitor.",
+        "text": "A frequent buyer whose browsing history shows low price sensitivity is quoted a higher price for the same blender than a first-time visitor at the same moment.",
         "bin": "personalized",
-        "explanation": "Different consumers, different prices for the same product, based on data about each."
+        "explanation": "Personalized pricing charges different individuals different prices for the identical item based on estimated willingness to pay."
       },
       {
         "id": "device",
-        "text": "Two friends search for the same hotel room at the same moment and see different prices on their own phones.",
+        "text": "Two friends search for the same hotel room simultaneously and see different room rates based on the smartphone models they use.",
         "bin": "personalized",
-        "explanation": "The price is set for each consumer, not by the room's demand."
+        "explanation": "Setting different prices at the same moment based on browsing device is first-degree personalized pricing."
       },
       {
         "id": "holiday-flights",
-        "text": "Flights for the holiday weekend cost more than the same flights a week later.",
+        "text": "Electric utility rates per kilowatt-hour increase for all households during peak late-afternoon air-conditioning hours.",
         "bin": "dynamic",
-        "explanation": "Prices rise with demand on busy dates."
+        "explanation": "Time-of-use pricing shifts for all consumers together based on aggregate grid demand."
       },
       {
         "id": "neighbourhood",
-        "text": "An online shop charges customers from wealthier postal codes more for the same headphones.",
+        "text": "An online retailer quotes higher prices for the same headphones to shoppers whose IP addresses map to high-income postal codes.",
         "bin": "personalized",
-        "explanation": "Data about each consumer set the price they see."
+        "explanation": "Charging different prices for the same product based on individual location data is personalized pricing."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "sustainable-consumption-and-the-conscious-consumer",
-    "prompt": "Each case shows one idea from the slide. Name it.",
+    "slide_id": "sustainable-consumption-and-the-attitude-behavior-gap",
+    "prompt": "Each intervention uses one of the five psychological levers of the SHIFT framework (White, Habib, & Hardisty, 2019) to close the green attitude-behavior gap. Identify the lever.",
     "options": [
-      { "id": "conscious", "label": "Conscious consumer" },
-      { "id": "gap", "label": "Attitude-behavior gap" },
-      { "id": "greenwashing", "label": "Greenwashing" },
-      { "id": "life", "label": "Extending product life" }
+      { "id": "social", "label": "Social influence" },
+      { "id": "habit", "label": "Habit formation" },
+      { "id": "individual", "label": "Individual self" },
+      { "id": "feelings", "label": "Feelings and cognition" },
+      { "id": "tangibility", "label": "Tangibility" }
     ],
     "cases": [
       {
-        "id": "eco-cap",
-        "text": "A bottle is covered in leaves and says 'eco-friendly', but only its cap is made from recycled plastic.",
-        "answer": "greenwashing",
-        "explanation": "A misleading claim about the product's environmental benefits."
+        "id": "norm-bill",
+        "text": "A utility bill displays how a household's monthly electricity use compares with that of efficient neighbors on the same street.",
+        "answer": "social",
+        "explanation": "Signaling peer norms uses Social influence to encourage sustainable conservation."
       },
       {
-        "id": "fast-fashion",
-        "text": "A student says fast fashion is harmful, then buys five cheap T-shirts during a flash sale.",
-        "answer": "gap",
-        "explanation": "A positive attitude toward sustainability, but the purchase follows price."
+        "id": "default-green",
+        "text": "A food-delivery app makes 'no disposable plastic cutlery' the pre-selected default option at checkout so repeat orders stay waste-free automatically.",
+        "answer": "habit",
+        "explanation": "Making the sustainable choice the default breaks old routines and supports Habit formation."
       },
       {
-        "id": "phone-repair",
-        "text": "Instead of buying a new phone, a consumer has the battery replaced and keeps the old one for two more years.",
-        "answer": "life",
-        "explanation": "Repair extends the product's life and reduces waste."
+        "id": "self-efficacy",
+        "text": "A refillable cleaning brand affirms the buyer's identity as a capable steward and shows how each refill directly cuts household plastic waste.",
+        "answer": "individual",
+        "explanation": "Appealing to personal self-concept and self-efficacy activates the Individual self lever."
       },
       {
-        "id": "coffee-origin",
-        "text": "Before buying coffee, a shopper checks how the farmers were paid and how the beans were transported, not only the price and taste.",
-        "answer": "conscious",
-        "explanation": "The consumer weighs the environmental and social effects of the purchase."
+        "id": "warm-glow",
+        "text": "Rather than using bleak guilt appeals, an electric-vehicle campaign emphasizes the pride and immediate driving enjoyment of clean mobility alongside clear carbon-saving facts.",
+        "answer": "feelings",
+        "explanation": "Pairing positive emotional pride with clear diagnostic information engages Feelings and cognition."
       },
       {
-        "id": "rent-suit",
-        "text": "For a single wedding, a guest rents a suit rather than buying one.",
-        "answer": "life",
-        "explanation": "Rental lets many people use one product."
-      },
-      {
-        "id": "natural-claim",
-        "text": "A detergent's ad shows forests and rivers, while the product itself has no environmental advantage over its rivals.",
-        "answer": "greenwashing",
-        "explanation": "The firm implies environmental benefits the product does not have."
+        "id": "local-today",
+        "text": "Instead of citing abstract global climate projections for the year 2100, a city transit pass translates each commuter trip into local air-quality gains and immediate monthly dollar savings.",
+        "answer": "tangibility",
+        "explanation": "Making abstract, distant environmental outcomes concrete, local, and immediate uses Tangibility."
       }
     ]
   }

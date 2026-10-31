@@ -1,12 +1,54 @@
 [
   {
+    "type": "match",
+    "slide_id": "the-functional-theory-of-attitudes",
+    "prompt": "Match each function of attitudes with the consumer whose attitude serves it.",
+    "term_label": "Function",
+    "match_label": "Consumer",
+    "pairs": [
+      {
+        "id": "utilitarian",
+        "term": "Utilitarian",
+        "match": "Lena likes her bank because it charges no monthly fees.",
+        "explanation": "Utilitarian: the attitude rests on gaining a benefit and avoiding a cost."
+      },
+      {
+        "id": "value-expressive",
+        "term": "Value-expressive",
+        "match": "Malik wears only second-hand clothes to show that he cares about the planet.",
+        "explanation": "Value-expressive: the attitude communicates his values and self-image."
+      },
+      {
+        "id": "ego-defensive",
+        "term": "Ego-defensive",
+        "match": "Before her first presentation at a new job, Jo buys an anti-frizz hair serum so she will not feel self-conscious in front of colleagues.",
+        "explanation": "Ego-defensive: the attitude protects her from an internal insecurity and possible social embarrassment."
+      },
+      {
+        "id": "knowledge",
+        "term": "Knowledge",
+        "match": "In a country he has never visited, Chen picks the one supermarket chain he recognizes, because he knows what to expect inside.",
+        "explanation": "Knowledge: the attitude organizes information and makes an unfamiliar situation easier to understand."
+      }
+    ]
+  },
+  {
     "type": "sort",
-    "slide_id": "the-abc-model-feeling-doing-and-thinking",
+    "slide_id": "the-abc-model-affect-behavior-and-cognition",
     "prompt": "Each card is one thing a consumer says or does about a brand. Is it affect, behavior, or cognition?",
     "bins": [
-      { "id": "affect", "label": "Affect" },
-      { "id": "behavior", "label": "Behavior" },
-      { "id": "cognition", "label": "Cognition" }
+      {
+        "id": "affect",
+        "label": "Affect"
+      },
+      {
+        "id": "behavior",
+        "label": "Behavior"
+      },
+      {
+        "id": "cognition",
+        "label": "Cognition"
+      }
     ],
     "cards": [
       {
@@ -47,7 +89,7 @@
       },
       {
         "id": "battery-lasts",
-        "text": "\"I believe this phone's battery lasts two full days.\"",
+        "text": "\"I believe this phone charges fully in thirty minutes.\"",
         "bin": "cognition",
         "explanation": "Cognition: a belief about the product."
       },
@@ -66,46 +108,22 @@
     ]
   },
   {
-    "type": "match",
-    "slide_id": "four-functions-of-attitudes",
-    "prompt": "Match each function of attitudes with the consumer whose attitude serves it.",
-    "term_label": "Function",
-    "match_label": "Consumer",
-    "pairs": [
-      {
-        "id": "utilitarian",
-        "term": "Utilitarian",
-        "match": "Lena likes her bank because it charges no monthly fees.",
-        "explanation": "Utilitarian: the attitude rests on gaining a benefit and avoiding a cost."
-      },
-      {
-        "id": "value-expressive",
-        "term": "Value-expressive",
-        "match": "Malik wears only second-hand clothes to show that he cares about the planet.",
-        "explanation": "Value-expressive: the attitude communicates his values and self-image."
-      },
-      {
-        "id": "ego-defensive",
-        "term": "Ego-defensive",
-        "match": "Before a first date, Jo buys a strong mouthwash so she won't feel embarrassed.",
-        "explanation": "Ego-defensive: the attitude protects her self-esteem from an uncomfortable threat."
-      },
-      {
-        "id": "knowledge",
-        "term": "Knowledge",
-        "match": "In a country he has never visited, Chen picks the one supermarket chain he recognizes, because he knows what to expect inside.",
-        "explanation": "Knowledge: the attitude organizes information and makes an unfamiliar situation easier to understand."
-      }
-    ]
-  },
-  {
     "type": "identify",
-    "slide_id": "how-attitudes-form-three-hierarchies",
+    "slide_id": "three-hierarchies-of-attitude-formation",
     "prompt": "Each case describes how an attitude formed. Which hierarchy is it?",
     "options": [
-      { "id": "standard", "label": "Standard learning" },
-      { "id": "low", "label": "Low involvement" },
-      { "id": "experiential", "label": "Experiential" }
+      {
+        "id": "standard",
+        "label": "Standard learning"
+      },
+      {
+        "id": "low",
+        "label": "Low involvement"
+      },
+      {
+        "id": "experiential",
+        "label": "Experiential"
+      }
     ],
     "cases": [
       {
@@ -147,189 +165,160 @@
     ]
   },
   {
-    "type": "sort",
-    "slide_id": "who-delivers-the-message-changes-its-impact",
-    "prompt": "Each card describes the source of a message. Does its impact come from expertise, trustworthiness, or attractiveness?",
-    "bins": [
-      { "id": "expertise", "label": "Expertise" },
-      { "id": "trustworthiness", "label": "Trustworthiness" },
-      { "id": "attractiveness", "label": "Attractiveness" }
-    ],
-    "cards": [
-      {
-        "id": "dentist",
-        "text": "A dentist explains how a toothpaste protects enamel.",
-        "bin": "expertise",
-        "explanation": "Expertise: the source seems knowledgeable."
-      },
-      {
-        "id": "mechanic",
-        "text": "A race-car mechanic recommends a brand of motor oil.",
-        "bin": "expertise",
-        "explanation": "Expertise: the source knows the subject."
-      },
-      {
-        "id": "pros-cons",
-        "text": "A reviewer admits the headphones feel tight but still recommends them.",
-        "bin": "trustworthiness",
-        "explanation": "Trustworthiness: naming a downside makes the source seem honest."
-      },
-      {
-        "id": "not-paid",
-        "text": "A blogger says she paid for the stroller herself and was not sponsored.",
-        "bin": "trustworthiness",
-        "explanation": "Trustworthiness: the source seems honest and dependable."
-      },
-      {
-        "id": "same-student",
-        "text": "A campus ad shows a student who looks and talks like the students watching it.",
-        "bin": "attractiveness",
-        "explanation": "Attractiveness: similarity between the source and the audience."
-      },
-      {
-        "id": "seen-everywhere",
-        "text": "An actor viewers have seen in many commercials appears in a new one.",
-        "bin": "attractiveness",
-        "explanation": "Attractiveness: familiarity with the source."
-      },
-      {
-        "id": "warm-host",
-        "text": "A cheerful, friendly TV host presents a cooking brand.",
-        "bin": "attractiveness",
-        "explanation": "Attractiveness: likability of the source."
-      }
-    ]
-  },
-  {
     "type": "identify",
-    "slide_id": "ai-as-a-message-source-aversion-and-appreciation",
-    "prompt": "Each case shows a consumer taking advice from an AI system. Is it algorithm aversion, algorithm appreciation, or an AI that seems expert but not trustworthy?",
+    "slide_id": "central-and-peripheral-routes-to-persuasion",
+    "prompt": "Each case describes how a shopper responds to a persuasive message. Which route to persuasion is the shopper following?",
     "options": [
-      { "id": "aversion", "label": "Algorithm aversion" },
-      { "id": "appreciation", "label": "Algorithm appreciation" },
-      { "id": "untrusted", "label": "Expert but not trustworthy" }
+      {
+        "id": "central",
+        "label": "Central route"
+      },
+      {
+        "id": "peripheral",
+        "label": "Peripheral route"
+      }
     ],
     "cases": [
       {
-        "id": "weather-app",
-        "text": "After a weather app wrongly predicts sun once, Priya stops checking it. Her neighbor's forecasts are wrong just as often, but she still asks him.",
-        "answer": "aversion",
-        "explanation": "Algorithm aversion: after one mistake, she loses confidence in the algorithm faster than in the person."
+        "id": "insurance-compare",
+        "text": "Before renewing her car insurance, Hana spends an evening comparing the deductibles, coverage limits, and claim terms that each insurer's ad describes.",
+        "answer": "central",
+        "explanation": "Central route: she is motivated and able, so she scrutinizes the quality of the arguments."
       },
       {
-        "id": "calorie-estimate",
-        "text": "Asked to guess the calories in a meal, Ben changes his answer more when the suggested number is labelled as coming from an algorithm than when it is labelled as coming from another diner.",
-        "answer": "appreciation",
-        "explanation": "Algorithm appreciation: for a numerical estimate, he follows advice more when it comes from an algorithm."
+        "id": "gum-checkout",
+        "text": "Waiting at the checkout, Dev grabs a pack of gum whose ad he remembers for its upbeat jingle.",
+        "answer": "peripheral",
+        "explanation": "Peripheral route: with low involvement, a surface cue (the music) drives the choice."
       },
       {
-        "id": "travel-assistant",
-        "text": "A travel assistant knows every flight and fare, but Kim cannot tell whether it is paid to push one airline, so she double-checks every suggestion.",
-        "answer": "untrusted",
-        "explanation": "The AI seems expert but not trustworthy, because Kim does not know whose interests it serves."
+        "id": "stroller-specs",
+        "text": "Expecting their first child, Lu and Sam read safety-test results and weight limits for every stroller the store recommends.",
+        "answer": "central",
+        "explanation": "Central route: high motivation and ability lead them to evaluate the arguments carefully."
       },
       {
-        "id": "route-mistake",
-        "text": "Carlos's navigation app sends him into one traffic jam, and he switches it off for good, though he keeps following a friend who gave him a bad route last week.",
-        "answer": "aversion",
-        "explanation": "Algorithm aversion: the same mistake costs the algorithm more trust than the person."
+        "id": "many-claims",
+        "text": "Scrolling quickly between classes, Ines is impressed by a shampoo ad because it lists twelve benefits, though she reads none of them.",
+        "answer": "peripheral",
+        "explanation": "Peripheral route: the sheer number of arguments acts as a cue, not their quality."
       },
       {
-        "id": "room-size",
-        "text": "Estimating how much paint a room needs, Nadia takes the algorithm's number over the store clerk's.",
-        "answer": "appreciation",
-        "explanation": "Algorithm appreciation: in a numerical estimate, she follows the algorithm's advice."
+        "id": "smiling-face",
+        "text": "While distracted by a phone call, Marco likes a juice ad mainly because the person holding the bottle looks friendly and attractive.",
+        "answer": "peripheral",
+        "explanation": "Peripheral route: distraction lowers ability, so source attractiveness carries the message."
       },
       {
-        "id": "shopping-agent",
-        "text": "A shopping agent gives detailed, accurate product comparisons, but Aisha does not know whether the store that runs it ranks its own products first.",
-        "answer": "untrusted",
-        "explanation": "Expert but not trustworthy: credibility needs trustworthiness, and she does not know whose interests the agent serves."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "framing-changes-what-the-audience-notices",
-    "prompt": "Each card is a line from a message. Is it a positive frame or a negative frame?",
-    "bins": [
-      { "id": "positive", "label": "Positive frame" },
-      { "id": "negative", "label": "Negative frame" }
-    ],
-    "cards": [
-      {
-        "id": "brighter-smile",
-        "text": "\"Get a brighter smile in two weeks.\"",
-        "bin": "positive",
-        "explanation": "Positive frame: it emphasizes a desirable result."
-      },
-      {
-        "id": "dont-lose-data",
-        "text": "\"Don't lose your photos when your phone breaks.\"",
-        "bin": "negative",
-        "explanation": "Negative frame: it emphasizes a loss that may follow inaction."
-      },
-      {
-        "id": "earn-points",
-        "text": "\"Earn double points on every purchase this month.\"",
-        "bin": "positive",
-        "explanation": "Positive frame: it emphasizes a gain."
-      },
-      {
-        "id": "skin-damage",
-        "text": "\"Without sunscreen, one afternoon can damage your skin for years.\"",
-        "bin": "negative",
-        "explanation": "Negative frame: it emphasizes a risk."
-      },
-      {
-        "id": "fat-free",
-        "text": "\"95% fat-free.\"",
-        "bin": "positive",
-        "explanation": "Positive frame: it presents the fact as a benefit."
-      },
-      {
-        "id": "missing-out",
-        "text": "\"Every day without insulation, heat leaks out of your home.\"",
-        "bin": "negative",
-        "explanation": "Negative frame: it emphasizes the problem that follows inaction."
-      },
-      {
-        "id": "more-energy",
-        "text": "\"Wake up with more energy every morning.\"",
-        "bin": "positive",
-        "explanation": "Positive frame: it emphasizes a benefit."
-      },
-      {
-        "id": "late-fees",
-        "text": "\"Stop paying late fees you could have avoided.\"",
-        "bin": "negative",
-        "explanation": "Negative frame: it emphasizes a cost."
+        "id": "laptop-benchmarks",
+        "text": "A graphic designer checks the color accuracy figures and processor benchmarks in a laptop ad before deciding the claims hold up.",
+        "answer": "central",
+        "explanation": "Central route: with knowledge and motivation, she judges the logic of the claims."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "measuring-the-attitudes-of-ai-models",
-    "question_text": "A brand team wants to know how a shopping assistant's AI model feels about its products. They ask the model once to rate \"This brand is trustworthy\" on a 1 to 7 scale, and it answers 6. Which conclusion fits the slide?",
-    "hint": "Think about how a model answers the same question more than once, and what an attitude in a model is.",
-    "correct_answer_citation": "Week 6: Measuring the Attitudes of AI Models",
+    "slide_id": "source-attractiveness-and-the-match-up-hypothesis",
+    "question_text": "A company is launching professional-grade climbing ropes. Which endorser choice best fits the match-up hypothesis?",
+    "hint": "Ask whether the endorser's image and expertise fit the nature of the product.",
+    "correct_answer_citation": "Week 6: Source Attractiveness and the Match-Up Hypothesis",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "A popular pop singer with no outdoor experience, because her fame will capture attention",
+        "option_explanation": "Fame captures attention, but with no logical connection to climbing, viewers may remember the singer and forget the brand (the vampire effect)."
+      },
+      {
+        "option_text": "A well-known mountaineer who has led expeditions on difficult peaks",
+        "option_explanation": "Correct. The mountaineer's image and expertise fit a technical climbing product, so the endorsement matches."
+      },
+      {
+        "option_text": "A fashion model photographed in a studio, because attractive sources always increase persuasion",
+        "option_explanation": "Physical attractiveness fits cosmetics and luxury apparel, but not technical equipment such as climbing ropes."
+      },
+      {
+        "option_text": "A comedian who appears in many commercials, because familiarity makes any source persuasive",
+        "option_explanation": "Familiarity adds to attractiveness, but the match-up hypothesis requires the source to fit the product."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "algorithm-appreciation-and-task-objectivity",
+    "prompt": "For each task below, would consumers more likely rely on an algorithm or prefer a human advisor?",
+    "bins": [
+      {
+        "id": "algorithm",
+        "label": "Rely on an algorithm"
+      },
+      {
+        "id": "human",
+        "label": "Prefer a human"
+      }
+    ],
+    "cards": [
+      {
+        "id": "tax-refund",
+        "text": "Estimating the size of next year's tax refund",
+        "bin": "algorithm",
+        "explanation": "An objective, quantifiable task, so consumers tend to trust the algorithm."
+      },
+      {
+        "id": "flight-delay",
+        "text": "Predicting whether a flight will arrive late",
+        "bin": "algorithm",
+        "explanation": "A forecast based on data, which consumers see as objective."
+      },
+      {
+        "id": "wedding-song",
+        "text": "Choosing a song for a first dance at a wedding",
+        "bin": "human",
+        "explanation": "A subjective, emotional choice, so consumers prefer a human source."
+      },
+      {
+        "id": "paint-amount",
+        "text": "Calculating how many liters of paint a room needs",
+        "bin": "algorithm",
+        "explanation": "A calculation with a correct answer, so the task feels objective."
+      },
+      {
+        "id": "poem-card",
+        "text": "Picking a poem to write in a birthday card for a close friend",
+        "bin": "human",
+        "explanation": "A task that relies on taste and intuition, so consumers prefer a person."
+      },
+      {
+        "id": "restaurant-date",
+        "text": "Recommending a romantic restaurant for an anniversary dinner",
+        "bin": "human",
+        "explanation": "A task that feels personal and taste-based, so consumers prefer a human advisor."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "administering-attitude-scales-to-large-language-models",
+    "question_text": "A brand team wants to audit how a shopping assistant's language model evaluates its products. They ask the model once to rate \"This brand is trustworthy\" on a seven-point Likert scale, and it answers 6. Which conclusion is best supported?",
+    "hint": "Think about how a language model produces each answer, and what one answer can tell you.",
+    "correct_answer_citation": "Week 6: Administering Attitude Scales to Large Language Models",
     "correct_answer_index": 2,
     "options": [
       {
-        "option_text": "The model's attitude toward the brand is 6, so the team can report it",
-        "option_explanation": "A model does not give one fixed answer. A single answer can mislead."
+        "option_text": "The model's rating of the brand is 6, so the team can report it",
+        "option_explanation": "A language model samples its answer, so the same question can produce a different rating on another run. One completion is not a stable measure."
       },
       {
-        "option_text": "The model feels warmly toward the brand",
-        "option_explanation": "An attitude in a model is a pattern in its answers. It is not a feeling that the model experiences."
+        "option_text": "The model works like a database, so asking again would return 6 every time",
+        "option_explanation": "Unlike a deterministic database lookup, a language model samples tokens probabilistically and does not return a single fixed rating."
       },
       {
-        "option_text": "The team should ask the same question many times, or read the probability the model assigns to each point, before drawing a conclusion",
-        "option_explanation": "Correct. Reliable measurement asks the question many times, or reads the probability the model assigns to each point on the scale."
+        "option_text": "The team should ask the item across many independent runs, or read the probability the model assigns to each scale point, before drawing a conclusion",
+        "option_explanation": "Correct. Reliable measurement needs repeated runs or the model's probability distribution across the scale options."
       },
       {
-        "option_text": "Any other developer's model would give the same rating, so one model is enough",
-        "option_explanation": "Measured reliably, models from different developers held different attitudes on the same consumer attitude scale."
+        "option_text": "A Likert scale cannot be given to a language model, so the answer means nothing",
+        "option_explanation": "Researchers do administer validated attitude scales to language models. The problem is relying on a single completion."
       }
     ]
   }

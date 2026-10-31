@@ -1,103 +1,93 @@
 [
   {
     "type": "identify",
-    "slide_id": "market-structure-and-demand",
-    "prompt": "Each case shows one way B2B markets differ from B2C markets. Which one is it?",
+    "slide_id": "market-structure-and-derived-demand",
+    "prompt": "Each case illustrates a characteristic of B2B market structure or demand behavior. Identify which concept applies.",
     "options": [
-      { "id": "buyers", "label": "Fewer, but much larger, buyers" },
+      { "id": "concentrated", "label": "Fewer, larger, concentrated buyers" },
       { "id": "derived", "label": "Derived demand" },
-      { "id": "fluctuates", "label": "Fluctuates more rapidly" }
+      { "id": "pull", "label": "Pulling derived demand via end consumers" }
     ],
     "cases": [
       {
-        "id": "engines",
-        "text": "A jet engine maker sells to only a handful of aircraft makers, and each order is worth hundreds of millions of dollars.",
-        "answer": "buyers",
-        "explanation": "A few customers, each buying a lot: B2B markets typically have fewer, but much larger, buyers than B2C markets."
+        "id": "jet-engines",
+        "text": "A jet engine manufacturer sells to only a handful of commercial aircraft builders clustered around Seattle and Toulouse, with each contract worth hundreds of millions of dollars.",
+        "answer": "concentrated",
+        "explanation": "B2B marketers typically deal with far fewer and much larger buyers than consumer marketers do, often concentrated in industrial clusters."
       },
       {
-        "id": "tannery",
-        "text": "A leather tannery gets fewer orders because shoppers are buying fewer handbags this year.",
+        "id": "auto-leather",
+        "text": "Orders for automotive leather upholstery fall by fifteen percent after higher interest rates reduce household purchases of new SUVs at dealerships.",
         "answer": "derived",
-        "explanation": "The tannery's orders follow what shoppers buy. Its demand is derived demand, meaning it comes from consumer demand."
+        "explanation": "Business demand for upholstery is derived demand because it ultimately comes from downstream consumer demand for vehicles."
       },
       {
-        "id": "steel",
-        "text": "A steel mill's orders jump by 40% one quarter and drop by 35% the next.",
-        "answer": "fluctuates",
-        "explanation": "Big swings from one quarter to the next show B2B demand fluctuating more rapidly than consumer demand."
+        "id": "waterproof-fabric",
+        "text": "A chemical firm advertises its breathable waterproof membrane directly to hikers on television so shoppers look for its hangtag when buying outdoor jackets.",
+        "answer": "pull",
+        "explanation": "Because derived demand originates with end consumers, B2B suppliers sometimes advertise directly to final consumers to pull demand through the supply chain."
       },
       {
-        "id": "chains",
-        "text": "When more Montrealers take up cycling, a maker of bike chains gets more orders from bike makers.",
+        "id": "housing-lumber",
+        "text": "When residential home buying slows down, a structural timber mill and an insulation manufacturer both see immediate drops in orders from builders.",
         "answer": "derived",
-        "explanation": "The chain maker sells to bike makers, but its orders rise because consumers want more bikes. That is derived demand."
+        "explanation": "Commercial demand for construction materials derives directly from household demand for finished homes."
       },
       {
-        "id": "tires",
-        "text": "A tire maker sells to five car companies, while a sneaker brand sells to millions of runners.",
-        "answer": "buyers",
-        "explanation": "Five car companies against millions of runners: the B2B seller has fewer, but much larger, buyers."
-      },
-      {
-        "id": "boxes",
-        "text": "People buy about the same amount of cereal every week, yet the box maker's orders swing up and down from month to month.",
-        "answer": "fluctuates",
-        "explanation": "Steady consumer buying next to swinging orders for boxes: B2B demand fluctuates more rapidly than consumer demand."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "types-of-decisions-and-the-decision-process",
-    "prompt": "Sort each purchase: does it show the traits of a B2B purchase or of a B2C purchase?",
-    "bins": [
-      { "id": "b2b", "label": "B2B purchase" },
-      { "id": "b2c", "label": "B2C purchase" }
-    ],
-    "cards": [
-      {
-        "id": "robot",
-        "text": "Engineers, finance staff and a plant manager all sign off before a factory buys a new robot.",
-        "bin": "b2b",
-        "explanation": "Many people take part, so it has more decision participants, a trait of B2B purchases."
-      },
-      {
-        "id": "sandwich",
-        "text": "A student grabs a sandwich between classes.",
-        "bin": "b2c",
-        "explanation": "One person decides in a moment, with no formal process: a consumer purchase."
-      },
-      {
-        "id": "mri",
-        "text": "A hospital follows a written approval process with set steps before it buys an MRI machine.",
-        "bin": "b2b",
-        "explanation": "The B2B buying process is highly formalized, with written steps and approvals."
-      },
-      {
-        "id": "sofa",
-        "text": "A couple picks a sofa after a weekend of browsing stores.",
-        "bin": "b2c",
-        "explanation": "Two people shop for their own home. That is a consumer purchase, not an organization's formal buying effort."
-      },
-      {
-        "id": "airline",
-        "text": "An airline and its engine supplier work together for decades, and neither could easily replace the other.",
-        "bin": "b2b",
-        "explanation": "Buyers and sellers are highly dependent on each other in B2B markets and build long term relationships."
-      },
-      {
-        "id": "coffee",
-        "text": "A shopper switches coffee brands because another one is on sale this week.",
-        "bin": "b2c",
-        "explanation": "No close tie to the seller and no formal process: a quick consumer choice."
+        "id": "lithography",
+        "text": "A maker of extreme-ultraviolet lithography systems serves five semiconductor foundries worldwide rather than millions of individual shoppers.",
+        "answer": "concentrated",
+        "explanation": "A small number of very large organizational buyers accounts for the entire market volume."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "roles-in-the-buying-center",
-    "prompt": "A restaurant chain is buying new kitchen ovens. Which buying center role does each person play?",
+    "slide_id": "three-types-of-business-buying-situations",
+    "prompt": "Identify which business buying concept best describes each organizational purchase.",
+    "options": [
+      { "id": "straight", "label": "Straight rebuy" },
+      { "id": "modified", "label": "Modified rebuy" },
+      { "id": "new-task", "label": "New task" },
+      { "id": "systems", "label": "Systems selling" }
+    ],
+    "cases": [
+      {
+        "id": "pallet-wrap",
+        "text": "A distribution warehouse routinely reorders the same stretch wrap and shipping labels from an approved vendor list without changing any terms.",
+        "answer": "straight",
+        "explanation": "In a straight rebuy, the buyer routinely reorders an item without any modifications."
+      },
+      {
+        "id": "cafe-lids",
+        "text": "A coffee chain asks its existing packaging vendor to switch to compostable fiber lids and revise the unit price and delivery schedule.",
+        "answer": "modified",
+        "explanation": "In a modified rebuy, the buyer modifies product specifications, prices, delivery terms, or suppliers."
+      },
+      {
+        "id": "bakery-robotics",
+        "text": "A regional bakery purchases its first automated robotic bread-slicing line and forms a cross-departmental team to research vendors from scratch.",
+        "answer": "new-task",
+        "explanation": "In a new-task situation, a company buys a product or service for the first time, requiring more participants and extensive search."
+      },
+      {
+        "id": "turnkey-datacenter",
+        "text": "Rather than buying servers, cooling units, power backups, and monitoring software separately, a bank contracts one prime vendor to deliver a complete turnkey data center.",
+        "answer": "systems",
+        "explanation": "Systems selling (solutions selling) provides a complete turnkey package of interlocked products and services from a single prime contractor."
+      },
+      {
+        "id": "out-supplier",
+        "text": "A competing industrial adhesive maker pitches a faster-curing formula to a furniture factory that is reviewing its annual supply agreement.",
+        "answer": "modified",
+        "explanation": "A modified rebuy gives out suppliers an opening to pitch a better offer while in suppliers work to protect the account."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "roles-within-the-organizational-buying-center",
+    "prompt": "A commercial airline is purchasing new cabin seating. Identify which buying center role each participant plays.",
     "options": [
       { "id": "user", "label": "User" },
       { "id": "influencer", "label": "Influencer" },
@@ -105,114 +95,161 @@
     ],
     "cases": [
       {
-        "id": "cook",
-        "text": "Lina is a line cook who will bake with the new ovens every shift.",
+        "id": "flight-attendants",
+        "text": "Flight attendants and cabin maintenance crews report that current seat latches jam during turnaround cleaning and request a durable replacement.",
         "answer": "user",
-        "explanation": "Users are members of the organization who will actually use the product."
+        "explanation": "Users are the members of the organization who actually use the product, often initiating the proposal and helping define functional needs."
       },
       {
-        "id": "engineer",
-        "text": "An engineer writes down the size, power and heat the ovens must have.",
+        "id": "avionics-engineer",
+        "text": "An aerospace materials engineer specifies the flame-retardant foam density and maximum weight limits that candidate seats must meet.",
         "answer": "influencer",
-        "explanation": "Influencers affect the buying decision by providing information or specifications."
+        "explanation": "Influencers affect the buying decision by helping define technical specifications and providing criteria for evaluating alternatives."
       },
       {
-        "id": "purchasing",
-        "text": "The purchasing manager picks the oven supplier and negotiates the price and delivery dates.",
+        "id": "procurement-director",
+        "text": "The vice president of procurement negotiates volume discounts, warranty terms, and delivery penalties with the seat manufacturer.",
         "answer": "buyer",
-        "explanation": "Buyers have formal authority to select the supplier and arrange terms."
+        "explanation": "Buyers hold formal organizational authority to select the supplier and arrange terms of purchase."
       },
       {
-        "id": "consultant",
-        "text": "An outside energy consultant sends a report comparing how much power each oven uses.",
+        "id": "ergonomics-consultant",
+        "text": "An external ergonomics consultant submits test data comparing lumbar support and passenger legroom across three seat designs.",
         "answer": "influencer",
-        "explanation": "The consultant provides information that shapes the decision, which is what influencers do."
+        "explanation": "External specialists who supply evaluation data and technical recommendations act as influencers."
       },
       {
-        "id": "baker",
-        "text": "The pastry team will run the ovens every morning to bake bread.",
-        "answer": "user",
-        "explanation": "They will actually use the product, so they are users."
-      },
-      {
-        "id": "contract",
-        "text": "Marc from procurement signs the purchase contract with the chosen supplier.",
+        "id": "contract-officer",
+        "text": "A senior contracting officer drafts the purchase agreement and payment schedule once the supplier specifications are set.",
         "answer": "buyer",
-        "explanation": "Arranging the terms with the supplier is the buyer's formal authority."
+        "explanation": "Arranging purchase terms and executing the procurement contract is the responsibility of the buyer."
       }
     ]
   },
   {
-    "type": "identify",
-    "slide_id": "types-of-buying-situations",
-    "prompt": "Each case is a business purchase. Which buying situation is it?",
-    "options": [
-      { "id": "straight", "label": "Straight rebuy" },
-      { "id": "modified", "label": "Modified rebuy" },
-      { "id": "new", "label": "New task" }
-    ],
-    "cases": [
+    "type": "match",
+    "slide_id": "problem-recognition-to-product-specification",
+    "prompt": "Match each early stage or method in the business buying decision process with the factory action that illustrates it.",
+    "term_label": "Stage or method",
+    "match_label": "Procurement action",
+    "pairs": [
       {
-        "id": "paper",
-        "text": "An office reorders the same printer paper from the same supplier, as it does every month.",
-        "answer": "straight",
-        "explanation": "A routine reorder without modifications is a straight rebuy."
+        "id": "problem-recognition",
+        "term": "Stage 1: Problem recognition",
+        "match": "A packaging line supervisor notices that a sealing machine is jamming twice per hour and slowing daily shipments.",
+        "explanation": "Problem recognition occurs when someone in the company recognizes a problem or need triggered internally or externally."
       },
       {
-        "id": "cups",
-        "text": "A café chain keeps its cup supplier but now wants compostable cups at a new price.",
-        "answer": "modified",
-        "explanation": "The buyer wants to modify product specifications and prices, so it is a modified rebuy."
+        "id": "general-need",
+        "term": "Stage 2: General need description",
+        "match": "The plant manager writes a summary stating that the facility needs two high-speed thermal sealers capable of running 120 cartons per minute.",
+        "explanation": "General need description summarizes the general characteristics, reliability, and output capacity of the needed item."
       },
       {
-        "id": "drone",
-        "text": "A farm buys crop-spraying drones for the first time.",
-        "answer": "new",
-        "explanation": "The buyer purchases the product for the first time, so it is a new task."
+        "id": "product-spec",
+        "term": "Stage 3: Product specification",
+        "match": "Mechanical engineers draft detailed blueprint tolerances, voltage requirements, and stainless-steel grade standards for the new sealers.",
+        "explanation": "Product specification defines the exact technical characteristics required for the item."
       },
       {
-        "id": "switch",
-        "text": "A school board keeps buying the same laptops but moves the order to a cheaper supplier.",
-        "answer": "modified",
-        "explanation": "Changing the supplier is a modification, so this is a modified rebuy."
-      },
-      {
-        "id": "gloves",
-        "text": "A clinic's system automatically reorders the same box of gloves whenever stock runs low.",
-        "answer": "straight",
-        "explanation": "Nothing changes in the order, so it is a straight rebuy."
-      },
-      {
-        "id": "software",
-        "text": "A small firm buys accounting software for the first time after years of spreadsheets.",
-        "answer": "new",
-        "explanation": "It has never bought this kind of product before, so it is a new task."
+        "id": "value-analysis",
+        "term": "Value analysis",
+        "match": "The engineering team studies whether a custom milled bracket on the sealer can be replaced with a standard stamped part at forty percent lower cost.",
+        "explanation": "Value analysis examines components to determine whether they can be redesigned, standardized, or made by less costly methods."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "key-account-management",
-    "question_text": "A packaging firm earns most of its profit from three large retailers, so it gives each one a dedicated team and custom solutions. What is the firm practicing?",
-    "hint": "Look for the most valuable customers, dedicated teams, and customized solutions.",
+    "slide_id": "key-account-management-kam",
+    "question_text": "An industrial robotics manufacturer discovers that 18 percent of its corporate clients generate 82 percent of its annual revenue. Rather than sending standard product catalogs, the firm assigns dedicated teams of engineers, logistics planners, and account directors to co-design assembly cells and coordinate service across each client's global plants. What strategy is the manufacturer executing?",
+    "hint": "Consider how B2B firms structure cross-functional teams around the Pareto concentration of their highest-value accounts.",
     "correct_answer_citation": "Week 4: Key Account Management (KAM)",
-    "correct_answer_index": 3,
+    "correct_answer_index": 2,
     "options": [
       {
-        "option_text": "A straight rebuy, since the retailers reorder the same packaging.",
-        "option_explanation": "A straight rebuy describes a buyer's routine reorder, not how a supplier manages its most valuable customers."
+        "option_text": "Transactional marketing aimed at maximizing immediate surplus on each isolated equipment order.",
+        "option_explanation": "Transactional marketing treats each order as a one-off negotiation rather than embedding cross-functional teams for long-term co-design."
       },
       {
-        "option_text": "Derived demand, since retailers set the firm's prices.",
-        "option_explanation": "Derived demand is about demand coming from consumer demand. This case is about dedicated teams for the top customers."
+        "option_text": "A straight rebuy automation program for routine maintenance supplies.",
+        "option_explanation": "Straight rebuys involve routine reordering of standard items without modifications, not custom engineering partnerships."
       },
       {
-        "option_text": "Gatekeeping, since the dedicated teams control information.",
-        "option_explanation": "Gatekeepers control the flow of information inside a buying organization, not a supplier's service to its best customers."
+        "option_text": "Key Account Management (KAM) focused on deep, long-term partnerships with its most valuable organizational customers.",
+        "option_explanation": "Correct. KAM assigns dedicated cross-functional teams to co-design customized solutions, align supply schedules, and coordinate global service for top accounts."
       },
       {
-        "option_text": "Key Account Management with its most valuable customers.",
-        "option_explanation": "Correct. KAM builds long term relationships with the most valuable customers, who contribute disproportionately to revenue and profit, through dedicated teams and customized solutions."
+        "option_text": "Government open-tender bidding under public regulatory compliance.",
+        "option_explanation": "The scenario describes dedicated cross-functional account teams serving commercial manufacturers, not public-sector open tenders."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "automated-sourcing-and-ai-roles-in-the-buying-center",
+    "prompt": "Match each buying center role in an AI-enabled enterprise with the participant and action that perform it.",
+    "term_label": "Buying center role",
+    "match_label": "Procurement activity",
+    "pairs": [
+      {
+        "id": "ai-buyer",
+        "term": "Buyer in a straight rebuy",
+        "match": "An automated procurement agent detects that safety gloves are below reorder threshold and issues a purchase order under pre-approved contract terms.",
+        "explanation": "In a straight rebuy, an automated procurement agent monitors stock and reorders standard supplies within contract rules, acting directly as the buyer."
+      },
+      {
+        "id": "ai-gatekeeper",
+        "term": "Gatekeeper in supplier search",
+        "match": "An AI sourcing agent parses 400 vendor catalogs and forwards only the three suppliers with valid ISO certifications to the human procurement team.",
+        "explanation": "By filtering hundreds of catalogs and passing only a compliant shortlist to human officers, the AI agent acts as a gatekeeper."
+      },
+      {
+        "id": "ai-influencer",
+        "term": "Influencer in bid evaluation",
+        "match": "An AI agent compares technical specification sheets, calculates five-year total cost of ownership across bids, and scores vendor delivery reliability.",
+        "explanation": "When an AI agent analyzes specifications, lifecycle costs, and reliability metrics to shape evaluation, it acts as an influencer."
+      },
+      {
+        "id": "human-decider",
+        "term": "Decider in a high-risk new task",
+        "match": "A committee of senior hospital executives signs off on the final vendor for a multi-million-dollar surgical robotics platform.",
+        "explanation": "In high-risk modified rebuys and new-task purchases, human executives remain the final deciders because strategic, legal, and operational accountability rests with people."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "marketing-to-both-procurement-agents-and-human-decision-makers",
+    "prompt": "Sort each B2B marketing action by whether it is designed to pass automated AI agent screening or to win over human decision makers after making the shortlist.",
+    "bins": [
+      { "id": "ai-screening", "label": "Pass AI agent screening" },
+      { "id": "human-committee", "label": "Win human decision makers" }
+    ],
+    "cards": [
+      {
+        "id": "machine-specs",
+        "text": "Publishing structured, machine-readable technical tolerances and compatibility tables instead of unindexed PDF brochures.",
+        "bin": "ai-screening",
+        "explanation": "AI sourcing agents require machine-readable technical specifications and skip unindexed catalogs under lookup constraints."
+      },
+      {
+        "id": "pricing-certs",
+        "text": "Exposing transparent volume pricing tiers, verified ISO and SOC 2 compliance certificates, and historical on-time delivery metrics.",
+        "bin": "ai-screening",
+        "explanation": "Automated gatekeepers filter vendors by transparent volume pricing, verified compliance certifications, and delivery records."
+      },
+      {
+        "id": "custom-terms",
+        "text": "Negotiating custom warranty terms and phased payment milestones with the client's chief financial officer.",
+        "bin": "human-committee",
+        "explanation": "Once on the shortlist, human account managers negotiate custom contract terms with human executives."
+      },
+      {
+        "id": "change-management",
+        "text": "Building interpersonal trust with plant managers and guiding their teams through complex operational change during installation.",
+        "bin": "human-committee",
+        "explanation": "Human salespeople and key account managers remain indispensable for interpersonal trust and organizational change management."
       }
     ]
   }

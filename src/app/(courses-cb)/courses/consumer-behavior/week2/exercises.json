@@ -1,32 +1,82 @@
 [
   {
     "type": "order",
-    "slide_id": "the-three-stages-of-perception",
+    "slide_id": "the-three-stages-of-the-perception-process",
     "prompt": "Follow one ad through the three stages of perception. Put Maya's moments in the order they happen.",
     "steps": [
       {
         "id": "exposure",
         "text": "A new sparkling-water ad plays on a screen in the subway station as Maya walks past.",
-        "explanation": "Stage 1 is Exposure: the ad comes within the range of her sensory receptors."
+        "explanation": "Exposure: the ad comes within the detection range of her eyes and ears."
       },
       {
         "id": "attention",
-        "text": "The fizzing sound and the bright lime colour make her stop and look at the screen.",
-        "explanation": "Stage 2 is Attention: her mind gives processing capacity to this one stimulus."
+        "text": "The fizzing sound and the bright lime colour make her stop and look at the screen instead of her phone.",
+        "explanation": "Attention: she allocates processing capacity to this one stimulus among competing inputs."
       },
       {
         "id": "interpretation",
         "text": "Because the can looks like the craft drinks she likes, she decides it must be a premium brand.",
-        "explanation": "Stage 3 is Interpretation: she assigns meaning based on past experiences and expectations."
+        "explanation": "Interpretation: she assigns meaning by relating the ad to what she already knows about craft drinks."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "olfaction-haptics-and-gustation-in-the-store-environment",
+    "prompt": "Each store below uses one sensory channel to shape what shoppers do. Name the channel at work in each case.",
+    "options": [
+      { "id": "vision", "label": "Vision" },
+      { "id": "audition", "label": "Audition" },
+      { "id": "olfaction", "label": "Olfaction" },
+      { "id": "haptics", "label": "Haptics" },
+      { "id": "gustation", "label": "Gustation" }
+    ],
+    "cases": [
+      {
+        "id": "linen",
+        "text": "A bedding shop invites customers to run their hands over three sheets of different thread counts before choosing one.",
+        "answer": "haptics",
+        "explanation": "Haptics: touch gives diagnostic information about softness and material quality."
+      },
+      {
+        "id": "cedar",
+        "text": "An outdoor-clothing chain diffuses a faint cedar aroma in every branch, and shoppers say the stores remind them of family camping trips.",
+        "answer": "olfaction",
+        "explanation": "Olfaction: scent is processed through the limbic system and links directly to emotion and episodic memory."
+      },
+      {
+        "id": "samples",
+        "text": "A cheese counter hands out small cubes of a new aged cheddar, and many shoppers who try one put a block in their cart.",
+        "answer": "gustation",
+        "explanation": "Gustation: taste, together with smell and texture, drives purchase in food categories."
+      },
+      {
+        "id": "tempo",
+        "text": "A supermarket switches its background music to a slower tempo, and shoppers spend more time in each aisle.",
+        "answer": "audition",
+        "explanation": "Audition: background music tempo influences how quickly consumers move through aisles."
+      },
+      {
+        "id": "purple",
+        "text": "A chocolate brand keeps the same deep purple wrapper in every country so shoppers find it on the shelf at a glance.",
+        "answer": "vision",
+        "explanation": "Vision: colour conveys brand identity and aids rapid recognition on the shelf."
+      },
+      {
+        "id": "pen",
+        "text": "A stationery shop lets customers hold a heavy metal fountain pen, and those who do are willing to pay more for it.",
+        "answer": "haptics",
+        "explanation": "Haptics: physically holding a product increases psychological ownership, so the shopper values it more."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "sensory-thresholds-the-limits-of-awareness",
+    "slide_id": "absolute-and-differential-thresholds",
     "question_text": "A juice brand changes the orange on its label to a very slightly darker shade. Shoppers compare the old and new bottles side by side and cannot tell them apart. What does this tell the brand?",
     "hint": "Shoppers can see both bottles perfectly well. The question is whether they can tell the two apart.",
-    "correct_answer_citation": "Week 2: Sensory Thresholds: The Limits of Awareness",
+    "correct_answer_citation": "Week 2: Absolute and Differential Thresholds",
     "correct_answer_index": 2,
     "options": [
       {
@@ -39,7 +89,7 @@
       },
       {
         "option_text": "The change is smaller than the JND",
-        "option_explanation": "Correct. The Just Noticeable Difference is the minimum difference needed for detection. This change fell short of it, so nobody noticed."
+        "option_explanation": "Correct. The Just Noticeable Difference is the minimum change needed for detection. This change fell short of it, so nobody noticed."
       },
       {
         "option_text": "The change is larger than the JND",
@@ -49,131 +99,149 @@
   },
   {
     "type": "quiz",
-    "slide_id": "webers-law-when-differences-matter",
-    "question_text": "Four stores each raise one price by exactly one dollar. According to Weber's Law, which increase are shoppers most likely to notice?",
-    "hint": "The needed change is a proportion of the starting price, not a fixed amount.",
-    "correct_answer_citation": "Week 2: Weber's Law: When Differences Matter",
+    "slide_id": "webers-law-and-proportional-change",
+    "question_text": "Four stores each cut one price by exactly one dollar. According to Weber's Law, which reduction are shoppers most likely to notice?",
+    "hint": "The noticeable change is a proportion of the starting price, not a fixed amount.",
+    "correct_answer_citation": "Week 2: Weber's Law and Proportional Change",
     "correct_answer_index": 1,
     "options": [
       {
-        "option_text": "$1 more on a $500 phone",
-        "option_explanation": "One dollar is only 0.2 percent of $500. Like the ten cents on the laptop, it will likely go unnoticed."
+        "option_text": "$1 off a $500 phone",
+        "option_explanation": "One dollar is only 0.2 percent of $500. Like the 2 dollars on the television, it falls well below the differential threshold."
       },
       {
-        "option_text": "$1 more on a $5 sandwich",
-        "option_explanation": "Correct. One dollar is a 20 percent jump on a $5 sandwich. The weaker the initial stimulus, the smaller the change needed to notice it."
+        "option_text": "$1 off a $5 sandwich",
+        "option_explanation": "Correct. One dollar is a 20 percent change on a $5 sandwich, a large proportion of the initial price."
       },
       {
-        "option_text": "$1 more on a $50 jacket",
+        "option_text": "$1 off a $50 jacket",
         "option_explanation": "One dollar is 2 percent of $50. That is a much smaller proportion than the same dollar on a $5 item."
       },
       {
-        "option_text": "Each one, since all rose by $1",
-        "option_explanation": "Weber's Law says the needed change is not a fixed amount. The same dollar is a very different proportion of each price."
+        "option_text": "Each one, since all fell by $1",
+        "option_explanation": "Weber's Law says the noticeable change is a constant proportion of the initial intensity, not a fixed amount."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "machine-perception-how-ai-agents-perceive-products",
-    "prompt": "An AI agent is choosing a scented candle for a consumer. Which of these can the agent perceive, and which can only the consumer perceive? Sort them into the two groups.",
+    "slide_id": "perceptual-vigilance-and-perceptual-defense",
+    "prompt": "Each shopper below filters what they see. Sort the cases by the mechanism at work.",
     "bins": [
-      { "id": "agent", "label": "The AI agent can perceive it" },
-      { "id": "person", "label": "Only the consumer can perceive it" }
+      { "id": "exposure", "label": "Selective exposure" },
+      { "id": "vigilance", "label": "Perceptual vigilance" },
+      { "id": "defense", "label": "Perceptual defense" }
     ],
     "cards": [
       {
-        "id": "price",
-        "text": "The candle costs $18.",
-        "bin": "agent",
-        "explanation": "An AI agent perceives a product through data such as the price."
+        "id": "wedding",
+        "text": "Newly engaged, Priya suddenly notices bridal shop windows on a street she has walked down for years.",
+        "bin": "vigilance",
+        "explanation": "Perceptual vigilance: a current goal makes related stimuli stand out."
       },
       {
-        "id": "scent",
-        "text": "The warm vanilla smell when the candle burns.",
-        "bin": "person",
-        "explanation": "An AI agent does not smell a product. The consumer does."
+        "id": "podcast",
+        "text": "Tom pays for the premium tier of a podcast app so he never hears the ad breaks.",
+        "bin": "exposure",
+        "explanation": "Selective exposure: he chooses not to encounter the ads at all."
       },
       {
-        "id": "rating",
-        "text": "An average rating of 4.6 stars from 800 reviews.",
-        "bin": "agent",
-        "explanation": "Ratings and reviews are data the agent can read."
+        "id": "statement",
+        "text": "After a costly holiday, Lena leaves her credit-card statement unopened and skims past the bank's overspending warnings.",
+        "bin": "defense",
+        "explanation": "Perceptual defense: she screens out a message that threatens her habits and self-image."
       },
       {
-        "id": "glass",
-        "text": "The smooth, heavy feel of the glass jar in the hand.",
-        "bin": "person",
-        "explanation": "An AI agent does not touch a product. The consumer feels it after the sale."
+        "id": "running",
+        "text": "Training for her first marathon, Ana starts to notice running-shoe ads in every magazine she reads.",
+        "bin": "vigilance",
+        "explanation": "Perceptual vigilance: an active need makes related ads noticeable."
       },
       {
-        "id": "burn",
-        "text": "A listed burn time of 50 hours.",
-        "bin": "agent",
-        "explanation": "Size and product details are data the agent can read."
+        "id": "aisle",
+        "text": "Sam avoids the sweets aisle entirely and walks straight to the produce section.",
+        "bin": "exposure",
+        "explanation": "Selective exposure: he chooses which store aisles he encounters."
       },
       {
-        "id": "flicker",
-        "text": "The soft flicker of the flame in a dark room.",
-        "bin": "person",
-        "explanation": "An AI agent does not see a product. The consumer uses it with the senses."
+        "id": "sugar",
+        "text": "A heavy soda drinker reads a sugar-tax campaign poster and decides it is meant for other people, not for him.",
+        "bin": "defense",
+        "explanation": "Perceptual defense: he discounts the personal relevance of a threatening message."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "interpretation-and-gestalt-principles",
+    "slide_id": "gestalt-principles-of-perceptual-organization",
     "prompt": "Each shopper below makes sense of what they see. Name the Gestalt principle at work in each case.",
     "options": [
-      {
-        "id": "closure",
-        "label": "Closure"
-      },
-      {
-        "id": "similarity",
-        "label": "Similarity"
-      },
-      {
-        "id": "figure-ground",
-        "label": "Figure-Ground"
-      }
+      { "id": "closure", "label": "Closure" },
+      { "id": "similarity", "label": "Similarity" },
+      { "id": "figure-ground", "label": "Figure-ground" }
     ],
     "cases": [
       {
         "id": "cup-logo",
         "text": "A café's logo is a coffee cup drawn with gaps in its rim and handle. Customers still see a whole cup.",
         "answer": "closure",
-        "explanation": "Closure: people fill in missing pieces to perceive a complete picture."
+        "explanation": "Closure: perceivers mentally fill in the missing gaps in an incomplete image."
       },
       {
         "id": "store-brand",
         "text": "A supermarket sells all its store-brand goods in the same green, square packs. Shoppers see them as one family of products.",
         "answer": "similarity",
-        "explanation": "Similarity: consumers group objects with shared visual traits like color and shape together."
+        "explanation": "Similarity: items that share colour and shape are grouped as one product line."
       },
       {
         "id": "perfume-ad",
         "text": "A perfume ad shows a single gold bottle on a plain black page. The eye goes straight to the bottle.",
         "answer": "figure-ground",
-        "explanation": "Figure-Ground: people separate a main focal object from its background."
+        "explanation": "Figure-ground: the visual system separates the focal bottle from its surrounding context."
       },
       {
-        "id": "cut-letters",
-        "text": "A billboard spells the brand name in letters with their tops cut away. Drivers still read the full name.",
+        "id": "jingle",
+        "text": "A radio ad plays the brand's jingle but stops one note short. Listeners hum the last note in their heads.",
         "answer": "closure",
-        "explanation": "Closure: people fill in missing pieces to perceive a complete picture."
+        "explanation": "Closure: perceivers fill in the missing part of an incomplete melody."
       },
       {
         "id": "sneaker-page",
         "text": "An online shop shows one white sneaker on a pale grey page with nothing else around it.",
         "answer": "figure-ground",
-        "explanation": "Figure-Ground: people separate a main focal object from its background."
+        "explanation": "Figure-ground: the sneaker stands out as the figure against a plain ground."
       },
       {
         "id": "yogurt-cups",
-        "text": "On a crowded yogurt shelf, one brand's round red cups sit side by side, and shoppers read them as one block.",
+        "text": "On a crowded yogurt shelf, one brand's round red cups with the same typeface sit side by side, and shoppers read them as one range.",
         "answer": "similarity",
-        "explanation": "Similarity: consumers group objects with shared visual traits like color and shape together."
+        "explanation": "Similarity: shared colour, shape and typography make the cups read as one product line."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "position-effects-in-human-and-algorithmic-attention",
+    "question_text": "A travel site shows an AI shopping agent ten identical hotel rooms in a different random order on each request. Across thousands of requests, the agent books whichever room is listed first far more often than any other. What explains this pattern?",
+    "hint": "The rooms are identical, and only their place in the list changes.",
+    "correct_answer_citation": "Week 2: Position Effects in Human and Algorithmic Attention",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Primacy bias",
+        "option_explanation": "Correct. The agent favours options listed first even though their attributes are identical."
+      },
+      {
+        "option_text": "Recency bias",
+        "option_explanation": "Recency bias would favour the room listed last. Here the first listing wins."
+      },
+      {
+        "option_text": "Sensory adaptation",
+        "option_explanation": "Sensory adaptation is a decline in response to a constant stimulus. The order changes on every request."
+      },
+      {
+        "option_text": "Perceptual defense",
+        "option_explanation": "Perceptual defense screens out threatening messages. Nothing here threatens the agent's beliefs."
       }
     ]
   }

@@ -10,6 +10,7 @@ week: "week6"
 - Consumer attitudes integrate feelings, beliefs, and behavioral intentions toward marketplace objects, and persuasive communications change those attitudes through source, message, and processing pathways.
 
 ## Defining Consumer Attitudes [no-exercise]
+[figure: attitude object evaluated on a continuum from unfavorable to favorable]
 - An attitude is a lasting, general evaluation of people, objects, advertisements, or issues (Solomon, 2020).
 - Anything toward which a consumer holds an attitude, whether a specific brand, a product category, or a retail channel, is called an attitude object ($A_o$).
 - Attitudes are characterized by valence (positive, negative, or neutral), extremity (how strongly the evaluation is held), and persistence over time.
@@ -45,6 +46,7 @@ week: "week6"
 - Identifying which hierarchy governs a category tells marketers whether advertising should emphasize detailed attribute facts, simple repetition, or emotional sensory appeal.
 
 ## Multi-Attribute Attitude Models and the Theory of Planned Behavior [no-exercise]
+[figure: comparison of aligned attitude components leading to purchase versus conflicting beliefs preventing purchase]
 - Multi-attribute attitude models, such as the Fishbein model, represent a consumer's overall attitude toward a brand as the sum of beliefs about its attributes weighted by the importance evaluation of each attribute (Fishbein, 1963).
 - A favorable attitude toward a brand does not always translate into an actual purchase on the next shopping trip.
 - The Theory of Reasoned Action and the Theory of Planned Behavior explain this gap by predicting behavioral intention from three factors: attitude toward the specific act of buying, subjective social norms, and perceived behavioral control (Ajzen, 1991).
@@ -56,6 +58,7 @@ week: "week6"
 - Dual-process models of persuasion explain why detailed factual arguments succeed in some situations while celebrity endorsements or catchy music succeed in others.
 
 ## The Communications Model of Persuasion [no-exercise]
+[figure: print advertisement in a magazine eliciting cognitive beliefs, affective response, and behavioral coupon redemption from the reader]
 - The classic communications model analyzes persuasion across five components: the source, the message, the medium, the receiver, and feedback.
 - The source (who delivers the communication) determines initial credibility and likability.
 - The message (what is said and how it is structured) supplies the arguments, emotional appeals, and visual cues.
@@ -71,6 +74,7 @@ week: "week6"
 - Attitudes formed via the peripheral route are temporary and vulnerable to competitor promotions unless reinforced by repeated exposure.
 
 ## Message Structure: One-Sided Versus Two-Sided Appeals [no-exercise]
+[figure: two-sided appeal card acknowledging a minor drawback alongside a primary ticked strength]
 - A one-sided message presents only arguments in favor of the brand and omits any mention of limitations or drawbacks.
 - A two-sided (or refutational) message acknowledges a minor limitation on a secondary attribute and then demonstrates superiority on the primary attribute that matters most to buyers.
 - One-sided messages are most effective when the audience already holds a favorable attitude toward the brand or has low involvement and limited education on the topic.
@@ -85,6 +89,7 @@ week: "week6"
 - Source credibility, source attractiveness, and gain-loss framing systematically alter persuasive impact.
 
 ## Source Credibility and the Sleeper Effect [no-exercise]
+[figure: product package endorsed with an expert credential seal]
 - Source credibility is the extent to which a communicator is perceived as possessing relevant expertise, objectivity, and trustworthiness (Hovland & Weiss, 1951).
 - Expertise refers to the source's technical competence, qualifications, or experience within the product category, such as an orthopedic surgeon evaluating athletic footwear.
 - Trustworthiness refers to the audience's belief that the source is honest and impartial rather than motivated purely by financial compensation.
@@ -92,6 +97,7 @@ week: "week6"
 - The sleeper effect occurs when a persuasive message delivered by a low-credibility source gains attitude acceptance over time because the audience forgets the discounting source faster than the message content itself.
 
 ## Source Attractiveness and the Match-Up Hypothesis [exercise]
+[figure: three dimensions of source attractiveness: familiarity across media, likability, and similarity to the buyer]
 - Source attractiveness derives from the communicator's physical appeal, social status, familiarity, likability, and perceived similarity to the target audience.
 - Attractive or celebrity sources capture attention in cluttered media environments and transfer cultural meaning from the celebrity's persona to the brand (McCracken, 1989).
 - According to the match-up hypothesis, an endorser is persuasive only when the source's image and expertise fit the nature of the endorsed product (Kahle & Homer, 1985).
@@ -111,6 +117,7 @@ week: "week6"
 - Research on human-algorithm interaction reveals that consumers evaluate AI message sources through distinct patterns of algorithm aversion and algorithm appreciation.
 
 ## Algorithm Aversion After Observing Error [no-exercise]
+[figure: consumer rejecting an AI advisor after observing an error while forgiving a human advisor who makes the same mistake]
 - Algorithm aversion is the tendency of decision makers to distrust and reject algorithmic forecasters or advisors in favor of human judgment, even when the algorithm is statistically more accurate on average (Dietvorst, Simmons, & Massey, 2015).
 - Before observing any performance history, consumers are often neutral or open toward algorithmic advice.
 - However, once people observe an algorithm make an error, they lose confidence in the algorithm much more rapidly than they lose confidence in a human advisor who makes the exact same error (Dietvorst, Simmons, & Massey, 2015).
@@ -126,6 +133,7 @@ week: "week6"
 - Framing a subjective recommendation task around quantifiable behavioral steps increases consumer willingness to rely on an algorithmic source (Castelo, Bos, & Lehmann, 2019).
 
 ## Credibility and Perceived Independence of AI Advisors [no-exercise]
+[figure: expert AI shopping assistant positioned between the consumer and the retail storefront raising the question of perceived independence]
 - Like human communicators, AI recommendation sources are evaluated on the two classic pillars of credibility: expertise and trustworthiness.
 - Conversational AI assistants project high apparent expertise because they generate fluent, structured, and immediate comparisons across dozens of technical attributes.
 - Perceived trustworthiness, however, depends on whether the consumer believes the AI system acts as an independent advisor or as a commissioned sales channel for the platform operating it.
@@ -152,6 +160,7 @@ week: "week6"
 - Reliable measurement requires either administering each scale item across many independent runs or extracting the probability distribution the model assigns to each scale option (Wadi, Ghodrat, & Philp, 2026).
 
 ## Cross-Developer Attitude Differences in AI Models [no-exercise]
+[figure: AI model outputting a statistical distribution across a seven-point attitude scale without an underlying affective state]
 - When consumer attitude scales are measured across full response distributions, systematic differences emerge across models built by different organizations (Wadi, Ghodrat, & Philp, 2026).
 - Models trained on different text mixtures and post-training alignment procedures hold measurably different baseline evaluations on identical consumer attitude constructs (Wadi, Ghodrat, & Philp, 2026).
 - An attitude measured in a language model is a statistical regularity in its conditional output distribution rather than a conscious affective state experienced by a machine.

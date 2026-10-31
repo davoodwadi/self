@@ -1,0 +1,277 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "advertising-and-public-relations",
+    "prompt": "Sort each communication activity into Advertising or Public Relations.",
+    "bins": [
+      { "id": "advertising", "label": "Advertising" },
+      { "id": "pr", "label": "Public relations" }
+    ],
+    "cards": [
+      {
+        "id": "transit-posters",
+        "text": "A luggage brand buys paid posters across airport terminals and commuter rail stations for six weeks.",
+        "bin": "advertising",
+        "explanation": "Paid, nonpersonal presentation and promotion of goods by an identified sponsor in outdoor media is advertising."
+      },
+      {
+        "id": "repeatable-spot",
+        "text": "A beverage company airs the same thirty-second video spot during live sports broadcasts to signal brand scale.",
+        "bin": "advertising",
+        "explanation": "Advertising lets the seller repeat a message many times to geographically dispersed buyers while signaling brand scale and legitimacy."
+      },
+      {
+        "id": "feature-story",
+        "text": "A culinary magazine publishes an independent feature article profiling how a cookware maker tests its pans.",
+        "bin": "pr",
+        "explanation": "Public relations obtains favorable publicity through news stories and features that seem more authentic and credible to readers than paid ads."
+      },
+      {
+        "id": "crisis-response",
+        "text": "A food company issues a transparent press briefing and safety update to head off an inaccurate rumor circulating online.",
+        "bin": "pr",
+        "explanation": "Handling or heading off unfavorable rumors, stories, and events to protect corporate image is a core public relations function."
+      },
+      {
+        "id": "community-race",
+        "text": "A running-shoe brand sponsors a city charity marathon so local runners encounter the brand through a civic event rather than a commercial.",
+        "bin": "pr",
+        "explanation": "Sponsorships and events are public relations tools that build goodwill and reach prospects who avoid salespeople and paid ads."
+      },
+      {
+        "id": "mobile-banner",
+        "text": "An insurance provider pays a weather app to display a branded banner to users across twenty states.",
+        "bin": "advertising",
+        "explanation": "A paid, nonpersonal banner placement in mobile media by an identified sponsor is advertising."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "personal-selling-and-sales-promotion",
+    "prompt": "Identify whether each promotional action is Personal Selling, a Consumer Sales Promotion, or a Trade Sales Promotion.",
+    "options": [
+      { "id": "personal-selling", "label": "Personal selling" },
+      { "id": "consumer-promo", "label": "Consumer sales promotion" },
+      { "id": "trade-promo", "label": "Trade sales promotion" }
+    ],
+    "cases": [
+      {
+        "id": "surgical-demo",
+        "text": "A medical equipment representative meets with a hospital surgical team to demonstrate a new imaging system and answer technical questions.",
+        "answer": "personal-selling",
+        "explanation": "Personal selling is a personal presentation by the firm's sales force to build preferences, convictions, and actions in complex purchases."
+      },
+      {
+        "id": "cash-rebate",
+        "text": "A kitchen appliance brand offers shoppers a 40-dollar mail-in cash rebate if they purchase a stand mixer before Sunday.",
+        "answer": "consumer-promo",
+        "explanation": "Cash rebates, coupons, cents-off deals, and contests offered to end buyers are consumer sales promotions."
+      },
+      {
+        "id": "shelf-allowance",
+        "text": "A condiment manufacturer gives grocery chains a case discount in exchange for placing its sauces on end-aisle displays.",
+        "answer": "trade-promo",
+        "explanation": "Discounts and allowances offered to retailers to encourage them to carry and display the product are trade promotions."
+      },
+      {
+        "id": "fleet-account",
+        "text": "An account executive conducts a three-month consultation with a logistics firm to tailor a commercial truck lease.",
+        "answer": "personal-selling",
+        "explanation": "A salesperson engaging a B2B customer over time to close a sale and build a relationship is personal selling."
+      },
+      {
+        "id": "checkout-coupon",
+        "text": "A cereal brand prints a weekend cents-off coupon at the supermarket register to trigger an immediate purchase.",
+        "answer": "consumer-promo",
+        "explanation": "A short-term cents-off incentive aimed at final shoppers is a consumer sales promotion that says buy it now."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "direct-and-digital-marketing-and-push-versus-pull-strategies",
+    "prompt": "Does each channel decision illustrate a Push promotion strategy or a Pull promotion strategy?",
+    "bins": [
+      { "id": "push", "label": "Push strategy" },
+      { "id": "pull", "label": "Pull strategy" }
+    ],
+    "cards": [
+      {
+        "id": "wholesaler-incentive",
+        "text": "A power-tool producer sends its sales force to hardware wholesalers with volume discounts so they stock and recommend the new drill line.",
+        "bin": "push",
+        "explanation": "A push strategy uses the sales force and trade promotions to induce channel members to carry and promote the product to final consumers."
+      },
+      {
+        "id": "national-video-campaign",
+        "text": "A snack brand runs a viral social video campaign and consumer coupon drop so shoppers ask their local grocers to stock the new flavor.",
+        "bin": "pull",
+        "explanation": "A pull strategy spends on consumer advertising and promotion so final consumers ask retailers for the product, pulling it through the channel."
+      },
+      {
+        "id": "dealer-spiff",
+        "text": "A mattress manufacturer pays a promotional allowance to furniture store floor staff for demonstrating its adjustable base to walk-in shoppers.",
+        "bin": "push",
+        "explanation": "Incentivizing resellers and their staff to push the product to shoppers is a push strategy."
+      },
+      {
+        "id": "patient-awareness",
+        "text": "An allergy-relief brand advertises directly to seasonal allergy sufferers on mobile apps so they request the brand at neighborhood pharmacies.",
+        "bin": "pull",
+        "explanation": "Creating end-consumer demand that leads retailers to order the brand from wholesalers is a pull strategy."
+      },
+      {
+        "id": "trade-show-booth",
+        "text": "A specialty beverage maker books a booth at a supermarket buyers' convention to sign regional distributors.",
+        "bin": "push",
+        "explanation": "Using B2B sales presentations and trade terms to move products into distributor warehouses is a push strategy."
+      },
+      {
+        "id": "creator-launch",
+        "text": "A cosmetics startup partners with online creators and sends direct app alerts to fans, prompting beauty retailers to place bulk orders to meet shopper requests.",
+        "bin": "pull",
+        "explanation": "Building direct consumer demand that pulls the product into retail stores is a pull strategy."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "identifying-the-target-audience-and-buyer-readiness-stages",
+    "prompt": "Arrange the six buyer-readiness stages in order from a target buyer's first exposure to a commuter e-bike brand through to the final purchase.",
+    "steps": [
+      {
+        "id": "awareness",
+        "text": "Awareness: Commuters recognize the e-bike brand's name when they see it on city transit shelters.",
+        "explanation": "Awareness is the first buyer-readiness stage, where the audience first learns that the brand or product exists."
+      },
+      {
+        "id": "knowledge",
+        "text": "Knowledge: Commuters learn that the e-bike has a 60-kilometer battery range and a removable frame battery.",
+        "explanation": "Once aware, the target audience moves to knowledge by learning what the product offers and how it works."
+      },
+      {
+        "id": "liking",
+        "text": "Liking: Commuters form a favorable feeling toward the e-bike's clean frame design and quiet motor.",
+        "explanation": "After knowing about the product, the communicator moves the audience to liking, or feeling favorable toward it."
+      },
+      {
+        "id": "preference",
+        "text": "Preference: Commuters rate this e-bike higher than competing models after comparing weight and warranty terms.",
+        "explanation": "An audience may like several brands, so the marketer builds preference by distinguishing the product's quality and value."
+      },
+      {
+        "id": "conviction",
+        "text": "Conviction: After a weekend test ride, commuters become convinced that buying this e-bike is the right choice for their daily trip.",
+        "explanation": "Conviction develops the belief that the buyer should act on that preference and acquire the product."
+      },
+      {
+        "id": "purchase",
+        "text": "Purchase: Commuters place their order online using a financing plan and schedule home delivery.",
+        "explanation": "Purchase is the final stage, where the communicator helps convinced buyers take the last step and complete the transaction."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "designing-the-message-content-structure-format-and-source",
+    "prompt": "Match each message design concept with the campaign decision that illustrates it.",
+    "term_label": "Message design concept",
+    "match_label": "Campaign decision",
+    "pairs": [
+      {
+        "id": "rational-appeal",
+        "term": "Rational appeal",
+        "match": "A commercial dishwasher ad highlights a 28 percent reduction in water and electricity costs per wash cycle.",
+        "explanation": "Rational appeals relate to the audience's self-interest by showing that the product will produce desired quality, economy, value, or performance."
+      },
+      {
+        "id": "emotional-appeal",
+        "term": "Emotional appeal",
+        "match": "A family resort video shows grandparents and grandchildren laughing around a campfire at sunset.",
+        "explanation": "Emotional appeals attempt to stir up positive or negative emotions that can motivate a purchase."
+      },
+      {
+        "id": "moral-appeal",
+        "term": "Moral appeal",
+        "match": "A community blood bank campaign urges neighbors to donate blood to save lives after local storms.",
+        "explanation": "Moral appeals are directed to the audience's sense of what is right and proper, often supporting social causes."
+      },
+      {
+        "id": "two-sided-argument",
+        "term": "Two-sided structure",
+        "match": "A concentrated laundry detergent ad admits its bottle is smaller than rivals' while proving each cap cleans twice as many loads.",
+        "explanation": "A two-sided argument touts the product's strengths while also admitting a minor shortcoming."
+      },
+      {
+        "id": "source-credibility",
+        "term": "Message source",
+        "match": "A toothpaste brand selects practicing board-certified dentists to explain enamel protection in its video spots.",
+        "explanation": "The message source's impact depends on the communicator's expertise and trustworthiness."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "four-methods-for-setting-the-total-promotion-budget",
+    "prompt": "Which of the four promotional budget-setting methods is each company using?",
+    "options": [
+      { "id": "affordable", "label": "Affordable method" },
+      { "id": "percentage-of-sales", "label": "Percentage-of-sales method" },
+      { "id": "competitive-parity", "label": "Competitive-parity method" },
+      { "id": "objective-and-task", "label": "Objective-and-task method" }
+    ],
+    "cases": [
+      {
+        "id": "leftover-funds",
+        "text": "After covering factory rent, payroll, and raw materials, a family bakery puts whatever cash remains at the end of the quarter into local ads.",
+        "answer": "affordable",
+        "explanation": "The affordable method sets the promotion budget at the level management thinks the company can afford."
+      },
+      {
+        "id": "fixed-ratio",
+        "text": "A luggage manufacturer automatically allocates 6 percent of its forecasted annual revenue to promotion, cutting ad spending whenever sales forecasts dip.",
+        "answer": "percentage-of-sales",
+        "explanation": "The percentage-of-sales method sets the budget at a fixed percentage of current or forecasted sales."
+      },
+      {
+        "id": "match-rivals",
+        "text": "A regional telecom carrier tracks industry ad-spend reports and sets its quarterly media outlay to match its two closest rivals.",
+        "answer": "competitive-parity",
+        "explanation": "The competitive-parity method sets the promotion budget to match competitors' outlays."
+      },
+      {
+        "id": "goal-driven",
+        "text": "A software firm sets a goal of signing 4,000 trial users, determines the search ads and webinars required to reach that goal, and sums their costs to set the budget.",
+        "answer": "objective-and-task",
+        "explanation": "The objective-and-task method defines specific promotion objectives, determines the tasks needed to achieve them, and estimates the costs of performing those tasks."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "scaling-creative-production-and-the-risk-of-brand-fragmentation",
+    "question_text": "An outdoor gear brand gives twelve regional marketing teams unrestricted access to generative AI image and copy tools to produce local social ads. Within a month, some regions promote luxury fashion styling while others push extreme-discount clearance claims. Which core IMC challenge does this illustrate?",
+    "hint": "Consider what happens when message variations multiply across channels without central guardrails.",
+    "correct_answer_citation": "Week 10: Scaling Creative Production and the Risk of Brand Fragmentation",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "High marginal production costs preventing local teams from tailoring ads to demographic segments",
+        "option_explanation": "Generative AI reduces marginal production cost and time by orders of magnitude. The problem here is uncoordinated output, not high production cost."
+      },
+      {
+        "option_text": "Brand fragmentation and contradictory messaging caused by prompting generative models without a unified creative brief",
+        "option_explanation": "Correct. Multiplying message variations without a unified creative brief and brand style guardrails leads to disjointed brand voices and conflicting value claims across touchpoints."
+      },
+      {
+        "option_text": "Over-reliance on personal selling at the expense of nonpersonal digital channels",
+        "option_explanation": "The regional teams are running digital social ads rather than relying on personal selling."
+      },
+      {
+        "option_text": "Using the competitive-parity method to match rival firms' promotional spending",
+        "option_explanation": "The scenario describes uncoordinated creative generation across regional teams, not a budgeting method based on competitor outlays."
+      }
+    ]
+  }
+]

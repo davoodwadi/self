@@ -17,12 +17,13 @@
    details missing from a product's data sheet).
    ========================================================================== */
 
-import React from "react";
+import React, { useState } from "react";
 import {
   blobPts,
   InkLine,
   Paper,
   PencilLine,
+  PlateToggle,
   type Pt,
   r2,
   seeded,
@@ -59,7 +60,6 @@ import {
   Stars,
   Tag1,
   Thought,
-  Watch1,
 } from "../_visuals/objects";
 
 /* -- the five senses -------------------------------------------------------- */
@@ -491,10 +491,7 @@ export function PerceptionFunnel() {
       <Wash seed={1000} fill={SK.stone} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 186, 396, 162, 1000, 18, 0.08)} />
       {xs.map((x, i) => (
         <g key={x}>
-          <SketchText x={x} y={22} anchor="middle" size={10}>
-            {`STAGE ${i + 1}`}
-          </SketchText>
-          <SketchText x={x} y={50} anchor="middle" size={22} serif>
+          <SketchText x={x} y={44} anchor="middle" size={22} serif>
             {STAGES[i]}
           </SketchText>
         </g>
@@ -523,11 +520,11 @@ export function PerceptionFunnel() {
       {heap2.map((p, i) => (
         <Mark key={i} x={p.x} y={p.y} k={0} r={4.5} seed={1180 + i * 2} />
       ))}
-      <SketchText x={170} y={342} anchor="middle" size={10}>
-        FILTERED OUT
+      <SketchText x={170} y={342} anchor="middle" size={13}>
+        filtered out
       </SketchText>
-      <SketchText x={422} y={342} anchor="middle" size={10}>
-        FILTERED OUT
+      <SketchText x={422} y={342} anchor="middle" size={13}>
+        filtered out
       </SketchText>
     </SketchFrame>
   );
@@ -545,7 +542,7 @@ export function SightVignette() {
   const xs = [118, 156, 194, 232, 270];
   const lit = 3;
   return (
-    <SketchFrame id="sk-sight" width={300} height={220} label="An eye on the left looks along a shelf of five packs. Four are plain cream. The eye's line of sight lands on the one teal pack with the brand badge.">
+    <SketchFrame id="sk-sight" width={300} height={244} label="Vision: an eye on the left looks along a shelf of five packs. Four are plain cream. The eye's line of sight lands on the one teal pack with the brand badge.">
       <Backwash cx={156} cy={122} rx={136} ry={90} seed={1200} />
       <SenseGlyph kind="sight" x={42} y={82} s={1.3} seed={1205} />
       {xs.map((x, i) => (
@@ -553,6 +550,9 @@ export function SightVignette() {
       ))}
       <InkLine pts={[[94, VG - 3], [292, VG - 5]]} seed={1240} width={1.8} />
       <SketchArrow pts={curvePts([66, 74], [150, 16], [xs[lit] - 4, VG - 86], 12)} seed={1242} width={1} head={7} />
+      <SketchText x={150} y={232} anchor="middle" size={13}>
+        VISION
+      </SketchText>
     </SketchFrame>
   );
 }
@@ -577,7 +577,7 @@ function Speaker({ x, y, seed }: { x: number; y: number; seed: number }) {
 export function SoundVignette() {
   const h = 138;
   return (
-    <SketchFrame id="sk-sound" width={300} height={220} label="A loudspeaker plays music notes into a store. A shopper pushing a cart hums along: the same notes sit in a thought cloud above the shopper's head.">
+    <SketchFrame id="sk-sound" width={300} height={244} label="Audition: a loudspeaker plays music notes into a store. A shopper pushing a cart hums along: the same notes sit in a thought cloud above the shopper's head.">
       <Backwash cx={150} cy={118} rx={140} ry={90} seed={1300} />
       <Ground x0={100} x1={292} y={VG} seed={1305} />
       <Speaker x={24} y={112} seed={1310} />
@@ -586,6 +586,9 @@ export function SoundVignette() {
       <Cart x={234} y={170} s={2.4} seed={1370} />
       <Thought x={206} y={40} rx={38} ry={24} tx={132} ty={58} seed={1380} />
       <Notes x={202} y={38} s={0.8} seed={1390} />
+      <SketchText x={150} y={232} anchor="middle" size={13}>
+        AUDITION
+      </SketchText>
     </SketchFrame>
   );
 }
@@ -601,7 +604,7 @@ export function SmellVignette() {
   const head: Pt[] = [...face, ...[...skull].reverse()];
   const hair: Pt[] = rp([[196, 40], [230, 30], [264, 46], [280, 82], [279, 118], [268, 142], [258, 112], [246, 76], [222, 56], [200, 50]]);
   return (
-    <SketchFrame id="sk-smell" width={300} height={220} label="A perfume bottle gives off a scent that drifts into the nose of a head in profile. An arrow runs from the nose straight to a heart inside the head, marked limbic system.">
+    <SketchFrame id="sk-smell" width={300} height={244} label="Olfaction: a perfume bottle gives off a scent that drifts into the nose of a head in profile. An arrow runs from the nose straight to a heart inside the head, marked limbic system.">
       <Backwash cx={150} cy={116} rx={140} ry={92} seed={1400} />
       <Ground x0={14} x1={100} y={VG} seed={1405} />
       <Perfume1 x={52} bottom={VG - 2} seed={1410} />
@@ -617,8 +620,11 @@ export function SmellVignette() {
 
       <SketchArrow pts={rp([[164, 110], [190, 104], [210, 98]])} seed={1440} width={1.2} head={6} />
       <Heart x={226} y={96} s={1.05} seed={1445} />
-      <SketchText x={228} y={128} anchor="middle" size={7.5}>
-        LIMBIC SYSTEM
+      <SketchText x={228} y={128} anchor="middle" size={11}>
+        limbic system
+      </SketchText>
+      <SketchText x={150} y={232} anchor="middle" size={13}>
+        OLFACTION
       </SketchText>
     </SketchFrame>
   );
@@ -629,15 +635,18 @@ export function TouchVignette() {
   const h = 176;
   const hand = handAt(106, VG, h, "carry");
   return (
-    <SketchFrame id="sk-touch" width={300} height={220} label="A shopper holds a teal product box close against the chest. A tag hanging from the box reads mine.">
+    <SketchFrame id="sk-touch" width={300} height={244} label="Haptics: a shopper holds a teal product box close against the chest. A tag hanging from the box reads mine.">
       <Backwash cx={150} cy={118} rx={140} ry={90} seed={1500} />
       <Ground x0={50} x1={170} y={VG} seed={1505} />
       <Person x={106} y={VG} h={h} seed={1510} look={{ hair: "long", wear: SK.camel, hairTone: SK.tan }} arms={["hug", "carry"]} />
       <Box x={r2(hand[0] - 8)} bottom={r2(hand[1] + 20)} w={44} h={40} fill={SK.teal} seed={1560} />
       <InkLine pts={curvePts([hand[0] + 14, hand[1] - 10], [hand[0] + 40, hand[1] - 22], [hand[0] + 62, hand[1] - 8], 8)} seed={1570} width={0.9} />
       <Tag1 x={r2(hand[0] + 70)} y={r2(hand[1] - 8)} seed={1575} w={64}>
-        MINE
+        mine
       </Tag1>
+      <SketchText x={150} y={232} anchor="middle" size={13}>
+        HAPTICS
+      </SketchText>
     </SketchFrame>
   );
 }
@@ -647,7 +656,7 @@ export function TasteVignette() {
   const h = 176;
   const hand = handAt(100, VG, h, "reach");
   return (
-    <SketchFrame id="sk-taste" width={300} height={220} label="A shopper puts another teal drinks can into a shopping cart that already holds four of the same teal can.">
+    <SketchFrame id="sk-taste" width={300} height={244} label="Gustation: a shopper puts another teal drinks can into a shopping cart that already holds four of the same teal can.">
       <Backwash cx={150} cy={118} rx={140} ry={90} seed={1600} />
       <Ground x0={40} x1={290} y={VG} seed={1605} />
       <Person x={100} y={VG} h={h} seed={1610} look={{ hair: "short", wear: SK.charcoal, legs: SK.tan, skin: SK.brown, skinOpacity: 0.45 }} arms={["down", "reach"]} />
@@ -656,7 +665,22 @@ export function TasteVignette() {
         <Can2 key={i} x={r2(186 + i * 19)} bottom={146 - (i % 2) * 3} w={16} seed={1670 + i * 4} />
       ))}
       <Cart x={206} y={170} s={2.4} seed={1700} />
+      <SketchText x={150} y={232} anchor="middle" size={13}>
+        GUSTATION
+      </SketchText>
     </SketchFrame>
+  );
+}
+
+export function SensoryModalities() {
+  return (
+    <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <SightVignette />
+      <SoundVignette />
+      <SmellVignette />
+      <TouchVignette />
+      <TasteVignette />
+    </div>
   );
 }
 
@@ -1298,7 +1322,7 @@ export function Closure() {
   ];
   const card = sharp([[104, 14], [296, 14], [296, 222], [104, 222]], true, 10);
   return (
-    <SketchFrame id="sk-closure" width={400} height={234} label="A brand logo on a cream card: three ochre discs, each with a wedge cut out, placed so the cut-outs line up into a triangle that is never drawn. Two short lines beneath stand for the brand name.">
+    <SketchFrame id="sk-closure" width={400} height={264} label="Closure: a brand logo on a cream card made of three ochre discs, each with a wedge cut out so the cut-outs line up into a triangle that is never drawn.">
       <Backwash cx={200} cy={118} rx={180} ry={110} seed={3400} />
       <Paper pts={card} seed={3401} />
       <InkLine pts={card} seed={3402} closed />
@@ -1318,6 +1342,9 @@ export function Closure() {
       })}
       <InkLine pts={[[146, 194], [254, 194]]} seed={3430} width={3} amp={0.4} />
       <InkLine pts={[[166, 207], [234, 207]]} seed={3431} width={1.6} amp={0.4} />
+      <SketchText x={200} y={252} anchor="middle" size={14}>
+        CLOSURE
+      </SketchText>
     </SketchFrame>
   );
 }
@@ -1330,7 +1357,7 @@ export function Similarity() {
   const tone = [SK.camel, SK.charcoal, SK.sky];
   const shelf = (r: number) => 78 + r * 70;
   return (
-    <SketchFrame id="sk-similarity" width={400} height={234} label="A shelf of twenty-four evenly spaced packs in three rows. The three left columns are camel boxes, the middle two are dark round tins, the right three are pale blue tall bottles, so the eye sees three blocks.">
+    <SketchFrame id="sk-similarity" width={400} height={264} label="Similarity: a shelf of twenty-four evenly spaced packs in three rows grouped into camel boxes, dark round tins, and pale blue tall bottles.">
       <Backwash cx={200} cy={118} rx={196} ry={112} seed={3500} />
       {Array.from({ length: rows }, (_, r) => (
         <g key={r}>
@@ -1355,6 +1382,9 @@ export function Similarity() {
           <InkLine pts={[[22, shelf(r)], [378, shelf(r)]]} seed={3500 + r * 3} width={1.8} />
         </g>
       ))}
+      <SketchText x={200} y={252} anchor="middle" size={14}>
+        SIMILARITY
+      </SketchText>
     </SketchFrame>
   );
 }
@@ -1372,7 +1402,7 @@ export function FigureGround() {
   const vase = rp([...right, ...left]);
   const panel = sharp([[84, 20], [316, 20], [316, 230], [84, 230]], true, 2);
   return (
-    <SketchFrame id="sk-figure-ground" width={400} height={234} label="The classic vase-and-faces picture: a dark vase in the middle of a cream panel, whose two edges are also the profiles of two pale faces looking at each other.">
+    <SketchFrame id="sk-figure-ground" width={400} height={264} label="Figure-ground: a dark vase in the middle of a cream panel whose two edges are also the profiles of two pale faces looking at each other.">
       <Backwash cx={200} cy={117} rx={180} ry={110} seed={3600} />
       <g transform="translate(12.8 0) scale(0.936)">
         <Paper pts={panel} seed={3601} />
@@ -1381,7 +1411,20 @@ export function FigureGround() {
         <InkLine pts={[...left].reverse()} seed={3604} width={1.3} amp={0.5} />
         <InkLine pts={panel} seed={3605} closed />
       </g>
+      <SketchText x={200} y={252} anchor="middle" size={14}>
+        FIGURE-GROUND
+      </SketchText>
     </SketchFrame>
+  );
+}
+
+export function GestaltPanels() {
+  return (
+    <div className="grid w-full gap-4 sm:grid-cols-3">
+      <Closure />
+      <Similarity />
+      <FigureGround />
+    </div>
   );
 }
 
@@ -1389,71 +1432,101 @@ export function FigureGround() {
    SEMIOTICS
    ========================================================================== */
 
-/** A bald eagle, wings spread wide, head turned in profile. (x, y) is its body centre. */
-function Eagle({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const wingR: Pt[] = [[6, -10], [30, -22], [56, -28], [78, -26], [90, -18], [82, -14], [90, -9], [80, -6], [86, -1], [74, 0], [78, 5], [62, 4], [40, 6], [12, 10]];
-  const wingL: Pt[] = wingR.map(([px, py]) => [-px, py] as Pt).reverse();
-  const body = rp(blobPts(x, y + 6 * s, 13 * s, 24 * s, seed, 12, 0.05));
-  const head = at(x, y, [[-8, -14], [-7, -28], [0, -35], [9, -31], [10, -20], [7, -12]], s);
-  const beak = at(x, y, [[-6, -30], [-16, -28], [-18, -22], [-12, -23], [-6, -22]], s);
-  const tail = at(x, y, [[-9, 26], [9, 26], [15, 46], [0, 50], [-15, 46]], s);
+/** A rugged four-wheel-drive vehicle, side on: tall boxy body, roof rack, big tyres, spare wheel. (x, y) is the middle of its wheelbase on the ground. */
+function Rugged4x4({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const body = sharp(at(x, y, [[-92, -30], [-92, -78], [-84, -84], [-58, -86], [-44, -126], [48, -126], [56, -86], [84, -82], [94, -70], [94, -30]], s), true, 3 * s);
+  const w1 = sharp(at(x, y, [[-50, -88], [-38, -118], [-6, -118], [-6, -88]], s), true, 2);
+  const w2 = sharp(at(x, y, [[2, -88], [2, -118], [38, -118], [44, -88]], s), true, 2);
+  const rack = at(x, y, [[-40, -134], [46, -134]], s);
+  const spare = rp(blobPts(x - 100 * s, y - 62 * s, 10 * s, 22 * s, seed + 30, 12, 0.05));
   return (
     <g>
-      {[wingL, wingR].map((w, i) => (
+      <Wash pts={spare} seed={seed + 31} fill={SK.charcoal} opacity={0.8} dx={0.4} dy={0.3} />
+      <InkLine pts={spare} seed={seed + 32} closed />
+      <Wash pts={body} seed={seed} fill={SK.camel} opacity={0.75} />
+      <InkLine pts={body} seed={seed + 1} closed />
+      {[w1, w2].map((w, i) => (
         <g key={i}>
-          <Wash pts={at(x, y, w, s)} seed={seed + 1 + i} fill={SK.brown} opacity={0.72} />
-          <InkLine pts={at(x, y, w, s)} seed={seed + 3 + i} width={1.1} closed />
+          <Wash pts={w} seed={seed + 2 + i} fill={SK.sky} opacity={0.85} dx={1} dy={1} />
+          <InkLine pts={w} seed={seed + 4 + i} width={1.1} closed />
         </g>
       ))}
-      <Paper pts={tail} seed={seed + 5} />
-      <InkLine pts={tail} seed={seed + 6} width={1.1} closed />
-      <Wash pts={body} seed={seed + 7} fill={SK.brown} opacity={0.8} />
-      <InkLine pts={body} seed={seed + 8} closed />
-      <Paper pts={head} seed={seed + 9} />
-      <InkLine pts={head} seed={seed + 10} width={1.1} closed />
-      <Wash pts={beak} seed={seed + 11} fill={SK.ochre} opacity={0.95} dx={0.4} dy={0.3} />
-      <InkLine pts={beak} seed={seed + 12} width={1} closed />
-      <path d={wobble(rp(blobPts(x - 2 * s, y - 27 * s, 1.5 * s, 1.5 * s, seed + 13, 6, 0.1)), seed + 13, 0.1, 4, true)} fill={SK.ink} />
-      <InkLine pts={at(x, y, [[-5, 28], [-7, 36]], s)} seed={seed + 14} width={1.4} color={SK.tan} />
-      <InkLine pts={at(x, y, [[5, 28], [7, 36]], s)} seed={seed + 15} width={1.4} color={SK.tan} />
+      <InkLine pts={rack} seed={seed + 6} width={1.4} />
+      {[-34, 6, 40].map((dx, i) => (
+        <InkLine key={dx} pts={at(x, y, [[dx, -134], [dx, -126]], s)} seed={seed + 7 + i} width={1} />
+      ))}
+      <InkLine pts={at(x, y, [[-92, -54], [94, -54]], s)} seed={seed + 10} width={0.8} />
+      <InkLine pts={at(x, y, [[-12, -76], [-2, -76]], s)} seed={seed + 11} width={1.2} amp={0.2} />
+      {[-56, 58].map((dx, i) => {
+        const tyre = rp(blobPts(x + dx * s, y - 26 * s, 26 * s, 26 * s, seed + 12 + i, 14, 0.04));
+        const hub = rp(blobPts(x + dx * s, y - 26 * s, 9 * s, 9 * s, seed + 14 + i, 8, 0.05));
+        return (
+          <g key={dx}>
+            <Paper pts={tyre} seed={seed + 16 + i} />
+            <Wash pts={tyre} seed={seed + 18 + i} fill={SK.charcoal} opacity={0.85} dx={0.5} dy={0.5} />
+            <InkLine pts={tyre} seed={seed + 20 + i} closed />
+            <Paper pts={hub} seed={seed + 22 + i} />
+            <InkLine pts={hub} seed={seed + 24 + i} width={0.9} closed />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** A mountain peak with a snowy cap, as drawn on an ad card. (x, y) is the foot of the peak. */
+function MountainPeak({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const peak: Pt[] = rp([[x - 82, y], [x - 30, y - 64], [x - 14, y - 52], [x + 6, y - 104], [x + 46, y - 46], [x + 58, y - 56], [x + 86, y]]);
+  const snow: Pt[] = rp([[x - 10, y - 74], [x + 6, y - 104], [x + 24, y - 78], [x + 14, y - 84], [x + 6, y - 72], [x - 2, y - 82]]);
+  const back: Pt[] = rp([[x - 92, y], [x - 64, y - 40], [x - 44, y - 28], [x - 30, y]]);
+  return (
+    <g>
+      <Wash pts={back} seed={seed} fill={SK.stone} opacity={0.9} />
+      <InkLine pts={back} seed={seed + 1} width={1} />
+      <Wash pts={peak} seed={seed + 2} fill={SK.charcoal} opacity={0.55} />
+      <InkLine pts={sharp(peak, false, 1)} seed={seed + 3} />
+      <Paper pts={snow} seed={seed + 4} />
+      <InkLine pts={sharp(snow, true, 1)} seed={seed + 5} width={1} />
+      <InkLine pts={rp([[x - 96, y], [x + 96, y]])} seed={seed + 6} width={1} />
     </g>
   );
 }
 
 export function SemioticTriangle() {
-  const card = sharp([[304, 30], [496, 30], [496, 186], [304, 186]], true, 3);
+  const card = sharp([[300, 26], [500, 26], [500, 182], [300, 182]], true, 3);
   return (
     <SketchFrame
       id="sk-semiotic"
       width={800}
       height={448}
-      label="A triangle of three parts. Bottom left, the object: a luxury watch with a gold bezel. Top, the sign: an ad card showing a bald eagle soaring. Bottom right, the interpretant: a person standing tall and confident on a pale sky wash, with freedom and prestige written beneath. Arrows run from the watch up to the eagle ad and from the ad down to the person."
+      label="A triangle of three parts. Bottom left, the object: a rugged four-wheel-drive vehicle with big tyres, a roof rack and a spare wheel. Top, the sign: an ad card showing a snow-capped mountain peak. Bottom right, the interpretant: a person standing tall on a pale sky wash, with independence and resilience written beneath. Arrows run from the vehicle up to the mountain ad and from the ad down to the person."
     >
       <Backwash cx={400} cy={224} rx={396} ry={212} seed={3700} opacity={0.35} />
 
-      <Watch1 x={170} y={292} s={1.1} seed={3710} />
-      <SketchText x={170} y={406} anchor="middle" size={17}>
-        OBJECT
+      <Rugged4x4 x={176} y={366} s={0.95} seed={3710} />
+      <Ground x0={70} x1={290} y={366} seed={3735} />
+      <SketchText x={176} y={404} anchor="middle" size={18}>
+        Object
       </SketchText>
 
       <Paper pts={card} seed={3740} />
       <InkLine pts={card} seed={3741} width={1.3} closed />
-      <Eagle x={400} y={98} s={0.94} seed={3750} />
-      <SketchText x={510} y={114} size={17}>
-        SIGN
+      <MountainPeak x={400} y={160} seed={3750} />
+      <SketchText x={514} y={110} size={18}>
+        Sign
       </SketchText>
 
       <Backwash cx={630} cy={296} rx={78} ry={96} seed={3770} fill={SK.sky} opacity={0.6} />
       <Person x={630} y={372} h={176} seed={3780} look={{ hair: "long", wear: SK.charcoal, hairTone: SK.brown, legs: SK.charcoal, outfit: "coat" }} arms={["hip", "hip"]} />
       <Ground x0={570} x1={690} y={372} seed={3830} />
-      <SketchText x={630} y={404} anchor="middle" size={17}>
-        INTERPRETANT
+      <SketchText x={630} y={402} anchor="middle" size={18}>
+        Interpretant
       </SketchText>
-      <SketchText x={630} y={430} anchor="middle" size={20} serif>
-        freedom and prestige
+      <SketchText x={630} y={434} anchor="middle" size={20} serif>
+        independence and resilience
       </SketchText>
 
-      <SketchArrow pts={curvePts([214, 236], [240, 170], [292, 150], 10)} seed={3840} />
+      <SketchArrow pts={curvePts([214, 210], [236, 150], [290, 128], 10)} seed={3840} />
       <SketchArrow pts={curvePts([508, 150], [566, 170], [596, 200], 10)} seed={3843} />
     </SketchFrame>
   );
@@ -1678,5 +1751,285 @@ export function AgentTopResult() {
       <SketchArrow pts={curvePts([108, 116], [150, 64], [203, 72], 10)} seed={4420} />
       <ResultsList x={196} y={28} w={176} seed={4430} />
     </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   WEBER'S LAW (interactive)
+   The same 2-dollar reduction on a starting price the student sets. The
+   price is one bar at full width, so the reduction is drawn as its share of
+   the price. The pencil mark is the smallest noticeable reduction, a fixed
+   share of the price (k = 0.1 here), so it never moves while the 2-dollar
+   sliver shrinks as the price grows. Teal: the cut that gets noticed.
+   ========================================================================== */
+
+const WEBER_K = 0.1;
+const WEBER_CUT = 2;
+const WEBER_PRICES = [5, 8, 10, 15, 20, 30, 50, 80, 100, 150, 200, 300, 500, 800, 1000, 1500, 2000];
+const usd = (v: number) => `$${v.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+const pct = (v: number) => `${v >= 1 ? Math.round(v * 10) / 10 : Math.round(v * 100) / 100}%`;
+
+export function WeberLab() {
+  const [t, setT] = useState(2);
+  const price = WEBER_PRICES[t];
+  const share = WEBER_CUT / price;
+  const noticed = share >= WEBER_K;
+  const need = WEBER_K * price;
+  const x0 = 60;
+  const W = 640;
+  const xe = x0 + W;
+  const cutW = r2(Math.max(1.2, W * share));
+  const jx = r2(xe - W * WEBER_K);
+  const bar = sharp([[x0, 120], [xe, 120], [xe, 170], [x0, 170]], true, 2);
+  const cut = sharp(rp([[xe - cutW, 120], [xe, 120], [xe, 170], [xe - cutW, 170]]), true, 0.5);
+  const tag = sharp([[x0, 26], [x0 + 150, 26], [x0 + 172, 50], [x0 + 150, 74], [x0, 74]], true, 2);
+  const presets = [
+    { id: "meal", label: "$10 meal", t: WEBER_PRICES.indexOf(10) },
+    { id: "tv", label: "$1,000 television", t: WEBER_PRICES.indexOf(1000) },
+  ];
+  return (
+    <div>
+      <SketchFrame
+        id="sk-weber"
+        width={760}
+        height={272}
+        label={`A price tag reads ${usd(price)}, reduced by $2 to ${usd(price - WEBER_CUT)}. Below, the price is drawn as one long bar. The $2 reduction is the sliver at its right end, ${pct(share * 100)} of the price. A pencil mark one tenth of the way in from the end shows the smallest reduction shoppers notice. ${noticed ? "The $2 sliver reaches past the mark and is teal: buyers notice it." : `The $2 sliver falls short of the mark: buyers do not notice it. A reduction would need to be about ${usd(need)} to be noticed.`}`}
+      >
+        <Backwash cx={380} cy={134} rx={376} ry={124} seed={4600} opacity={0.35} />
+        <Paper pts={tag} seed={4601} />
+        <InkLine pts={tag} seed={4602} closed />
+        <SketchText x={x0 + 16} y={58} size={26} serif>
+          {usd(price)}
+        </SketchText>
+        <InkLine pts={rp([[x0 + 12, 48], [x0 + 26 + usd(price).length * 13, 46]])} seed={4603} width={1.6} />
+        <SketchArrow pts={[[x0 + 186, 50], [x0 + 222, 50]]} seed={4604} />
+        <SketchText x={x0 + 236} y={58} size={26} serif fill={noticed ? SK.teal : SK.ink}>
+          {usd(price - WEBER_CUT)}
+        </SketchText>
+
+        <Paper pts={bar} seed={4610} />
+        <Wash pts={cut} seed={4611} fill={noticed ? SK.teal : SK.charcoal} opacity={noticed ? 0.85 : 0.7} dx={0} dy={0} />
+        <InkLine pts={bar} seed={4612} closed />
+        <PencilLine pts={[[jx, 104], [jx, 186]]} seed={4613} />
+        <InkLine pts={rp([[xe - cutW / 2, 174], [xe - cutW / 2, 184]])} seed={4614} width={1} />
+        <SketchText x={r2(xe - cutW / 2)} y={202} anchor="middle" size={17}>
+          $2
+        </SketchText>
+        <SketchText x={jx} y={96} anchor="middle" size={17} fill={SK.pencil}>
+          just noticeable
+        </SketchText>
+
+        <SketchText x={x0} y={230} size={21}>
+          {`$2 is ${pct(share * 100)} of ${usd(price)}`}
+        </SketchText>
+        <SketchText x={xe} y={230} anchor="end" size={21} fill={noticed ? SK.teal : SK.ink}>
+          {noticed ? "noticed" : "not noticed"}
+        </SketchText>
+        <SketchText x={xe} y={258} anchor="end" size={17}>
+          {`smallest noticeable cut: ${usd(Math.round(need * 100) / 100)}`}
+        </SketchText>
+      </SketchFrame>
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 px-1">
+        <label className="flex min-w-[220px] flex-1 items-center gap-3 whitespace-nowrap text-xs font-medium text-[var(--ink-2)]" style={{ fontFamily: "var(--font-label)" }}>
+          starting price
+          <input
+            type="range"
+            min={0}
+            max={WEBER_PRICES.length - 1}
+            value={t}
+            onChange={(e) => setT(Number(e.target.value))}
+            className="w-full accent-[var(--ink)]"
+            aria-label="Starting price"
+          />
+        </label>
+        <PlateToggle
+          options={presets.map((p) => ({ id: p.id, label: p.label }))}
+          value={presets.find((p) => p.t === t)?.id ?? ""}
+          onChange={(id) => setT(presets.find((p) => p.id === id)!.t)}
+        />
+      </div>
+    </div>
+  );
+}
+
+/* ==========================================================================
+   HOW AI SHOPPING AGENTS PERCEIVE PRODUCTS
+   One cereal box, perceived twice: a shopper sees its colour and front of
+   pack on the shelf. The agent reads its nutrition table, unit weight and
+   star rating. Teal is the box, the same product in both halves.
+   ========================================================================== */
+
+export function CerealTwoWays() {
+  const g = 268;
+  const sheet = sharp([[468, 40], [700, 40], [700, 236], [468, 236]], true, 3);
+  const rows: [string, string][] = [
+    ["Calories", "150"],
+    ["Sugar", "6 g"],
+    ["Fibre", "4 g"],
+    ["Unit weight", "500 g"],
+  ];
+  return (
+    <SketchFrame
+      id="sk-cereal-two-ways"
+      width={800}
+      height={292}
+      label="Left: a shopper looks at a supermarket shelf, where one cereal box stands out by its teal colour and a large badge on its front. Right: the AI agent phone reads the same cereal as a data sheet: a nutrition table with calories 150, sugar 6 g and fibre 4 g, a unit weight of 500 g, and a rating of four stars, with a small teal box in its corner marking it as the same cereal. A thin line divides the two halves."
+    >
+      <Backwash cx={200} cy={156} rx={192} ry={128} seed={4700} opacity={0.38} />
+      <Backwash cx={590} cy={156} rx={196} ry={128} seed={4701} opacity={0.38} />
+      <Ground x0={24} x1={364} y={g} seed={4702} />
+      <Ground x0={414} x1={776} y={g} seed={4703} />
+
+      <Person x={70} y={g} h={196} seed={4710} look={{ hair: "curly", wear: SK.camel, legs: SK.charcoal, skin: SK.tan }} arms={["down", "hip"]} />
+      {[150, 230].map((py, i) => (
+        <g key={py}>
+          <Wash pts={rp([[170, py], [356, py], [356, py + 7], [170, py + 7]])} seed={4720 + i} fill={SK.leather} opacity={0.55} />
+          <InkLine pts={[[170, py], [356, py]]} seed={4723 + i} />
+        </g>
+      ))}
+      <InkLine pts={[[170, 60], [170, g]]} seed={4726} width={1.1} />
+      {[196, 244, 292, 336].map((px, j) => (
+        <Pack key={px} x={px} bottom={150} w={36} h={66} seed={4730 + j * 4} fill={j === 1 ? SK.teal : undefined} badge={j === 1} />
+      ))}
+      {[196, 244, 292, 336].map((px, j) => (
+        <Pack key={px} x={px} bottom={230} w={36} h={66} seed={4760 + j * 4} />
+      ))}
+      <SketchArrow pts={curvePts([86, 96], [160, 64], [226, 88], 10)} seed={4790} width={1} head={7} />
+
+      <InkLine pts={[[392, 30], [392, 274]]} seed={4795} width={0.6} color={SK.pencil} />
+
+      <Agent x={436} y={g} s={1.25} seed={4800} />
+      <Paper pts={sheet} seed={4810} />
+      <InkLine pts={sheet} seed={4811} closed />
+      <SketchText x={484} y={72} size={19} serif>
+        Nutrition
+      </SketchText>
+      {rows.map(([k, v], i) => {
+        const ry = 100 + i * 30;
+        return (
+          <g key={k}>
+            <SketchText x={484} y={ry} size={16}>
+              {k}
+            </SketchText>
+            <SketchText x={686} y={ry} anchor="end" size={16}>
+              {v}
+            </SketchText>
+            <InkLine pts={[[480, ry + 9], [688, ry + 9]]} seed={4820 + i} width={0.5} amp={0.2} />
+          </g>
+        );
+      })}
+      <Stars x={500} y={214} n={4} of={5} r={8} gap={22} seed={4840} />
+      <Pack x={672} bottom={80} w={22} h={36} seed={4850} fill={SK.teal} badge />
+      <SketchArrow pts={curvePts([464, 104], [436, 108], [436, 156], 8)} seed={4860} width={1} head={7} />
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   POSITION EFFECTS (interactive, real data)
+   Left: a shopper's eyes land on the eye-level shelf. Right: Wadi and Ma
+   (2026a), the share of an AI agent's choices going to each tenth of a
+   100-listing list shown in random order, at each model's lowest reasoning
+   effort. Shares come from the quadratic linear probability model of choice
+   (position and position² on rank / 100), intercept set so the 100 ranks
+   average 1 in 100, clipped at 0 and summed by tenths.
+   ========================================================================== */
+
+const POS_MODELS = {
+  sonnet: { label: "Sonnet", b1: -0.1565, b2: 0.1217 },
+  luna: { label: "Luna", b1: -0.0729, b2: 0.0544 },
+  pro: { label: "Pro", b1: -0.076, b2: 0.0638 },
+  flashlite: { label: "Flash Lite", b1: -0.0503, b2: 0.0418 },
+} as const;
+type PosModel = keyof typeof POS_MODELS;
+
+function tenths(m: PosModel) {
+  const { b1, b2 } = POS_MODELS[m];
+  const a = 0.01 - b1 / 2 - b2 / 3;
+  const raw = Array.from({ length: 100 }, (_, i) => Math.max(0, a + b1 * ((i + 1) / 100) + b2 * ((i + 1) / 100) ** 2));
+  const z = raw.reduce((s, v) => s + v, 0);
+  return Array.from({ length: 10 }, (_, d) => raw.slice(d * 10, d * 10 + 10).reduce((s, v) => s + v, 0) / z);
+}
+
+export function PositionEffects() {
+  const [m, setM] = useState<PosModel>("sonnet");
+  const sh = tenths(m);
+  const g = 262;
+  const x0 = 430;
+  const bw = 30;
+  const gap = 4.5;
+  const yb = 226;
+  const ymax = 0.4;
+  const Y = (v: number) => r2(yb - (v / ymax) * 170);
+  const X = (d: number) => r2(x0 + d * (bw + gap));
+  const xEnd = X(10) - gap;
+  return (
+    <div>
+      <SketchFrame
+        id="sk-position"
+        width={800}
+        height={300}
+        label={`Left: a shopper looks straight at the middle shelf of three, where the teal box sits at eye level. Right: bars give the share of an AI agent's choices (${POS_MODELS[m].label}) going to each tenth of a 100-listing hotel page in random order. The first ten positions take ${Math.round(sh[0] * 100)} percent, the last ten ${Math.round(sh[9] * 100)} percent, and the middle tenths far less, against 10 percent each if position did not matter.`}
+      >
+        <Backwash cx={170} cy={150} rx={160} ry={138} seed={4900} opacity={0.38} />
+        <Backwash cx={580} cy={150} rx={210} ry={138} seed={4901} opacity={0.38} />
+        <Ground x0={24} x1={320} y={g} seed={4902} />
+
+        <Person x={66} y={g} h={196} seed={4910} look={{ hair: "short", wear: SK.sky, legs: SK.charcoal }} arms={["down", "down"]} />
+        {[106, 180, 254].map((py, i) => (
+          <g key={py}>
+            <Wash pts={rp([[150, py], [314, py], [314, py + 7], [150, py + 7]])} seed={4920 + i} fill={SK.leather} opacity={0.55} />
+            <InkLine pts={[[150, py], [314, py]]} seed={4925 + i} />
+            {[176, 218, 260, 296].map((px, j) => (
+              <Pack key={px} x={px} bottom={py} w={28} h={50} seed={4930 + i * 20 + j * 4} fill={i === 0 && j === 1 ? SK.teal : SK.camel} />
+            ))}
+          </g>
+        ))}
+        <InkLine pts={[[150, 40], [314, 40]]} seed={4980} width={0.8} />
+        <InkLine pts={[[150, 40], [150, g]]} seed={4981} width={1.1} />
+        <SketchArrow pts={curvePts([82, 90], [140, 70], [206, 76], 10)} seed={4985} width={1} head={7} />
+
+        <SketchText x={x0 - 30} y={30} size={18}>
+          {"share of the agent's choices"}
+        </SketchText>
+        <InkLine pts={[[x0 - 8, 44], [x0 - 8, yb]]} seed={4990} width={1} />
+        {[0, 0.1, 0.2, 0.3, 0.4].map((v) => (
+          <SketchText key={v} x={x0 - 14} y={Y(v) + 5} anchor="end" size={14}>
+            {`${Math.round(v * 100)}%`}
+          </SketchText>
+        ))}
+        {sh.map((v, d) => {
+          const top = Math.max(Y(v), yb - 170);
+          const pts = sharp(rp([[X(d), top], [X(d) + bw, top], [X(d) + bw, yb], [X(d), yb]]), true, 0.8);
+          return (
+            <g key={d}>
+              <Wash pts={pts} seed={5000 + d} fill={d === 0 ? SK.teal : SK.camel} opacity={d === 0 ? 0.85 : 0.6} dx={0.6} dy={0.4} />
+              <InkLine pts={pts} seed={5020 + d} width={1} closed />
+            </g>
+          );
+        })}
+        <PencilLine pts={[[x0 - 8, Y(0.1)], [xEnd + 6, Y(0.1)]]} seed={5040} />
+        <SketchText x={X(6) + bw / 2} y={Y(0.1) - 7} anchor="middle" size={15} fill={SK.pencil}>
+          if position did not matter
+        </SketchText>
+        <InkLine pts={[[x0 - 8, yb], [xEnd + 6, yb]]} seed={5041} width={1} />
+        {[0, 9].map((d) => (
+          <SketchText key={d} x={X(d) + bw / 2} y={yb + 20} anchor="middle" size={14}>
+            {d === 0 ? "1 to 10" : "91 to 100"}
+          </SketchText>
+        ))}
+        <SketchText x={(x0 + xEnd) / 2} y={yb + 44} anchor="middle" size={16}>
+          position in the list
+        </SketchText>
+      </SketchFrame>
+      <PlateToggle
+        options={(Object.keys(POS_MODELS) as PosModel[]).map((k) => ({ id: k, label: POS_MODELS[k].label }))}
+        value={m}
+        onChange={setM}
+      />
+      <p className="mt-2 px-1 text-xs text-[var(--ink-3)]" style={{ fontFamily: "var(--font-label)" }}>
+        Wadi and Ma (2026a), 100-listing hotel pages in random order
+      </p>
+    </div>
   );
 }

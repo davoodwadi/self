@@ -18,6 +18,7 @@ week: "week4"
 - Identical purchasing behavior across two buyers can reflect entirely different underlying motives, such as buying a bicycle for commuting savings, cardiovascular health, or environmental values.
 
 ## Motivational Strength and Motivational Direction [no-exercise]
+[figure: tension gauge of motivational strength branching through cultural and personal pathways into distinct product choices]
 - Every motivational state has two distinct properties: strength and direction.
 - Motivational strength is the degree of energy a person is willing to expend to reach a goal, which depends on the size and importance of the unmet need.
 - Motivational direction is the specific pathway or product choice the consumer selects to satisfy that need.
@@ -29,6 +30,7 @@ week: "week4"
 - Comparing drive theory and expectancy theory explains why some purchases are triggered by immediate bodily discomfort while others are guided by anticipated future outcomes.
 
 ## Drive Theory and Homeostasis [exercise]
+[figure: drive-theory tension curve rising from a balanced homeostatic state when a need arises and subsiding back to equilibrium after consumption]
 - Formulated in behavioral psychology by Clark Hull, drive theory states that biological needs produce unpleasant internal states of arousal called drives.
 - Behavior is motivated by the organism's effort to reduce this internal tension and return to homeostasis, a balanced physiological equilibrium.
 - When body temperature drops or blood sugar falls, homeostasis is disrupted, generating a drive to purchase warm clothing or food.
@@ -70,6 +72,7 @@ week: "week4"
 - Although originally proposed as a strict progression, cross-cultural consumer research treats the hierarchy as a taxonomy of motives that can operate simultaneously within a single purchase.
 
 ## Core Cultural and Personal Values [no-exercise]
+[figure: consumer selecting a product whose brand emblem aligns with personal values over an alternative listing only functional features]
 - A value is an enduring belief that a specific mode of conduct or end-state of existence is personally or socially preferable to an opposite mode or end-state (Rokeach, 1973).
 - Terminal values are desired end-states of existence, such as family security, freedom, social recognition, or a comfortable life.
 - Instrumental values are preferred modes of behavior used to achieve terminal values, such as ambition, honesty, frugality, or self-reliance.
@@ -84,6 +87,7 @@ week: "week4"
 - Kurt Lewin classified motivational conflicts into three structural types according to whether the competing forces attract or repel the buyer.
 
 ## Approach-Approach Conflict and Cognitive Dissonance [no-exercise]
+[figure: approach-approach conflict in which a single budget forces a choice between two desirable alternatives]
 - An approach-approach conflict occurs when a consumer must choose between two desirable alternatives that cannot both be acquired within the same budget or time constraint.
 - A graduate student with one week of vacation and a fixed budget may be torn between attending a music festival in Montreal and taking a hiking trip in Banff.
 - Because both options carry positive valence, the consumer hesitates before deciding and often experiences post-decision regret over the foregone benefits of the rejected option.
@@ -99,6 +103,7 @@ week: "week4"
 - Each conflict structure requires a distinct marketing intervention to reduce the negative vector holding back purchase.
 
 ## Resolving Motivational Conflicts Through Product and Pricing Design [no-exercise]
+[figure: comparison of an ambiguous offer that leaves conflict high versus a transparent offer with clear terms that reduces conflict]
 - In approach-avoidance conflicts, marketers reduce the avoidance force by reformulating the product or restructuring the terms of purchase.
 - Zero-sugar beverages, plant-based meats, and energy-efficient appliances are designed specifically to preserve the approach benefit while minimizing health or environmental guilt.
 - Money-back guarantees, free return shipping, and certified pre-owned warranties reduce the financial and performance avoidance forces associated with high-ticket purchases.
@@ -118,6 +123,7 @@ week: "week4"
 - Consequently, the wording of the review request determines whether a financial incentive complements or undermines the consumer's intrinsic motive.
 
 ## Altruistic Versus Company-Focused Review Appeals [no-exercise]
+[figure: experimental results comparing review intention gains from a 10-dollar store credit under a help-other-shoppers appeal versus a help-the-company appeal]
 - Retailers typically solicit reviews with one of two message frames: an altruistic appeal ("help other shoppers decide") or a company-focused appeal ("help our company improve").
 - In a large-scale field study with a North American online retailer, asking customers to help other shoppers significantly increased the likelihood of submitting a review compared with asking them to help the company (Wadi et al., 2026a).
 - In a controlled follow-up experiment, offering a 10-dollar store credit increased review intentions substantially more when paired with the "help other shoppers" appeal than with the "help the company" appeal (Wadi et al., 2026a).
@@ -144,6 +150,7 @@ week: "week4"
 - The interaction of these three dimensions determines the depth of information search and the decision rule the buyer applies.
 
 ## Measuring Involvement and Overcoming Low Involvement [no-exercise]
+[figure: side-by-side comparison of high-involvement attribute comparison across competing brands and low-involvement habitual reaching for a familiar package]
 - Researchers measure involvement using validated multi-item scales such as Zaichkowsky's Personal Involvement Inventory, which rates a category on pairs such as important-unimportant and relevant-irrelevant.
 - Under high involvement, consumers actively search for technical specifications, compare competing brands, and process strong message arguments carefully.
 - Under low involvement, consumers experience inertia: they buy the same brand out of habit without strong commitment and switch easily if a competitor is on sale or at eye level.
@@ -151,6 +158,7 @@ week: "week4"
 - Alternatively, brands design point-of-sale displays and automatic subscription refills that accommodate low-involvement inertia rather than trying to force deep deliberation.
 
 ## Consumer Involvement and Purchase Delegation to AI Agents [no-exercise]
+[figure: comparison of low-involvement automated detergent reordering by an AI agent and high-involvement personal evaluation of a high-stakes purchase]
 - Consumer involvement directly governs which purchasing tasks buyers are willing to delegate to autonomous AI shopping agents.
 - In low-involvement, utilitarian categories such as paper towels, laundry detergent, or printer ink, consumers derive little psychological satisfaction from comparing prices manually.
 - In these categories, buyers readily delegate search, comparison, and automated reordering to an AI agent to save time and cognitive effort.

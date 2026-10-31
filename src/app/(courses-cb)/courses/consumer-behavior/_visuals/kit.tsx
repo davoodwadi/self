@@ -260,6 +260,41 @@ export function Paper({ pts, seed }: { pts: Pt[]; seed: number }) {
 }
 
 /** Crisp small ink text, so the sketchy wobble never costs legibility. */
+const ACRONYMS = new Set([
+  "AI", "B2B", "B2C", "CRM", "CSR", "STP", "SEO", "SEM", "ROI", "PR",
+  "IMC", "PLC", "NPD", "PESTLE", "SWOT", "CLV", "R&D", "4PS", "FMCG",
+  "KPI", "API", "GPS", "RFID", "ERP", "VMS", "TV", "US", "EU", "UK",
+  "UN", "WTO", "NAFTA", "USMCA", "GDP", "VALS", "ELM", "EKB", "WOM",
+  "CPG", "SKU", "UX", "UI", "A", "B", "C", "D", "X", "Y", "I", "II",
+  "III", "IV", "V", "PPC", "CTR", "CPA", "CPM", "LTV", "CAC", "NPS",
+]);
+
+function normalizeSvgLabel(node: React.ReactNode): React.ReactNode {
+  if (typeof node !== "string") return node;
+  const trimmed = node.trim();
+  const letters = trimmed.replace(/[^A-Za-z]/g, "");
+  if (letters.length < 2 || letters !== letters.toUpperCase()) return node;
+  if (ACRONYMS.has(trimmed)) return node;
+  const words = trimmed.split(/(\s+|-|\/|:)/);
+  let firstWordDone = false;
+  return words
+    .map((part) => {
+      if (!/[A-Za-z]/.test(part)) return part;
+      const upper = part.toUpperCase();
+      if (ACRONYMS.has(upper)) {
+        firstWordDone = true;
+        return upper === "4PS" ? "4Ps" : upper;
+      }
+      const lower = part.toLowerCase();
+      if (!firstWordDone) {
+        firstWordDone = true;
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+      }
+      return lower;
+    })
+    .join("");
+}
+
 export function SketchText({
   x,
   y,
@@ -287,7 +322,7 @@ export function SketchText({
       fontWeight={500}
       fill={fill}
     >
-      {children}
+      {normalizeSvgLabel(children)}
     </text>
   );
 }
@@ -377,27 +412,27 @@ export function P({ children, className = "" }: { children: React.ReactNode; cla
 
 /** A sentence promoted to lead size. */
 export function Lead({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={`type-lead max-w-[54ch] ${className}`.trim()}>{children}</p>;
+  return <p className={`type-lead max-w-3xl ${className}`.trim()}>{children}</p>;
 }
 
 /** A sentence set at quote/statement size. */
 export function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={`type-quote max-w-[36ch] ${className}`.trim()}>{children}</p>;
+  return <p className={`type-quote max-w-3xl ${className}`.trim()}>{children}</p>;
 }
 
-/** A sentence set at h2 size. */
+/** A sentence set at body size. */
 export function Big({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={`type-h2 !font-normal ${className}`.trim()}>{children}</p>;
+  return <p className={`type-body max-w-[var(--measure)] ${className}`.trim()}>{children}</p>;
 }
 
 /** Defined term inside a sentence in bold ink. */
-export function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
-  return <strong className={`font-semibold ${TEXT[tone]}`}>{children}</strong>;
+export function Term({ children }: { children: React.ReactNode; tone?: Tone }) {
+  return <strong className="font-semibold text-[var(--ink)]">{children}</strong>;
 }
 
-/** Inline emphasis for a key phrase inside a sentence. */
-export function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  return <strong className={`font-semibold ${TEXT[tone]}`}>{children}</strong>;
+/** Inline phrase inside a sentence in normal weight. */
+export function Tint({ children }: { children: React.ReactNode; tone?: Tone }) {
+  return <>{children}</>;
 }
 
 /** Hairline-topped block. */
@@ -429,14 +464,14 @@ export function Plate({
 }) {
   return (
     <div
-      className={`figure-well w-full min-w-0 p-2 ${wide ? "overflow-x-auto" : ""} ${className}`.trim()}
+      className={`figure-well w-full min-w-0 p-2 ${!wide ? "lg:max-w-[460px] lg:justify-self-end" : ""} ${className}`.trim()}
     >
-      {wide ? <div className="min-w-[480px] lg:min-w-0">{children}</div> : children}
+      {children}
     </div>
   );
 }
 
-/** Slide heading with an optional kicker prefix and a hairline rule beneath. */
+/** Slide heading with an optional kicker prefix. */
 export function SlideHeading({
   kicker,
   children,
@@ -447,23 +482,16 @@ export function SlideHeading({
   className?: string;
 }) {
   return (
-    <div className={`mb-7 w-full md:mb-8 ${className}`.trim()}>
-      <h2 className="type-h1 max-w-[34ch]">
-        {kicker ? (
-          <>
-            <span className="type-label mb-3 block !text-[0.8rem] !text-[var(--ink-3)]">
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
+    <div className={`mb-7 w-full min-w-0 md:mb-8 ${className}`.trim()}>
+      <h2 className="type-h1 max-w-4xl break-words">
+        {kicker ? `${kicker} ` : null}
         {children}
       </h2>
-      <div className="mt-4 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
 
-/** Part opener heading with a non-zero-padded numeral and hairline rule. */
+/** Part opener heading with a non-zero-padded label and hairline rule. */
 export function PartHead({
   n,
   title,
@@ -474,21 +502,13 @@ export function PartHead({
   className?: string;
 }) {
   return (
-    <div className={`mb-8 w-full ${className}`.trim()}>
-      <div className="flex items-baseline gap-5 sm:gap-7">
-        <span
-          aria-hidden
-          className="select-none font-sans text-[3rem] font-bold leading-none text-[var(--ink-3)]/45 sm:text-[4rem]"
-        >
-          {n}
-        </span>
-        <h2 className="type-display max-w-[26ch]">
-          <span className="type-label mb-2 block !text-[0.8rem] !text-[var(--ink-3)]">
-            {`Part ${n}:`}
-          </span>{" "}
-          {title}
-        </h2>
+    <div className={`mb-8 w-full min-w-0 ${className}`.trim()}>
+      <div className="type-label mb-3 block text-[var(--ink-3)]">
+        {`Part ${n}`}
       </div>
+      <h2 className="type-display min-w-0 max-w-4xl break-words">
+        {title}
+      </h2>
       <div className="mt-5 h-px w-full bg-[var(--rule)]" />
     </div>
   );
@@ -526,15 +546,12 @@ export function Prompt({
   className?: string;
 }) {
   return (
-    <div
-      className={`w-full max-w-4xl border-l-2 border-[var(--rule-2)] py-2 pl-6 ${className}`.trim()}
+    <aside
+      className={`w-full max-w-3xl border border-[var(--rule-2)] p-6 md:p-8 ${className}`.trim()}
     >
-      <p className="type-quote max-w-[48ch] !text-[clamp(1.2rem,2vw,1.6rem)]">
-        <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--ink-3)]">
-          Discussion:
-        </span>{" "}
+      <p className="type-body max-w-none">
         {children}
       </p>
-    </div>
+    </aside>
   );
 }

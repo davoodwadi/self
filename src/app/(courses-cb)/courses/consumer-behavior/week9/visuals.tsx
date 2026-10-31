@@ -834,8 +834,8 @@ function RivalPair({ x, y, s = 1, seed }: { x: number; y: number; s?: number; se
 export function SupportingInfo() {
   const g = 238;
   const ph = handAt(214, g, 184, "carry", 1);
-  const px = r2(ph[0] + 6);
-  const py = r2(ph[1] - 22);
+  const px = r2(ph[0] + 15);
+  const py = r2(ph[1] - 24);
   const poster = sharp(rp([[30, 46], [140, 46], [140, 176], [30, 176]]), true, 2);
   const body = sharp(rp([[px - 17, py - 28], [px + 17, py - 28], [px + 17, py + 28], [px - 17, py + 28]]), true, 4);
   const glass = rp([[px - 13, py - 22], [px + 13, py - 22], [px + 13, py + 21], [px - 13, py + 21]]);
@@ -851,10 +851,11 @@ export function SupportingInfo() {
       {/* the rival's poster on the wall behind */}
       <Paper pts={poster} seed={2110} />
       <InkLine pts={poster} seed={2111} closed />
-      <RivalPair x={85} y={110} s={1.25} seed={2120} />
-      <InkLine pts={rp([[54, 158], [116, 158]])} seed={2150} width={0.9} />
+      <RivalPair x={85} y={100} s={1.2} seed={2120} />
+      <InkLine pts={rp([[54, 160], [116, 160]])} seed={2150} width={0.9} />
       {/* the owner, turned toward the phone */}
       <Person x={214} y={g} h={184} look={OWNER} arms={["hip", "carry"]} seed={2160} />
+      <Paper pts={body} seed={2199} />
       <Wash pts={body} seed={2200} fill={SK.charcoal} opacity={0.75} dx={0.5} dy={0.4} />
       <Paper pts={glass} seed={2201} />
       <InkLine pts={body} seed={2202} width={1.1} closed />
@@ -1240,8 +1241,8 @@ export function DisposalPaths() {
 export function LateralCycling() {
   const g = 238;
   const ph = handAt(80, g, 176, "carry", 1);
-  const px = r2(ph[0] + 8);
-  const py = r2(ph[1] - 20);
+  const px = r2(ph[0] + 15);
+  const py = r2(ph[1] - 24);
   const body = sharp(rp([[px - 17, py - 28], [px + 17, py - 28], [px + 17, py + 28], [px - 17, py + 28]]), true, 4);
   const glass = rp([[px - 13, py - 22], [px + 13, py - 22], [px + 13, py + 21], [px - 13, py + 21]]);
   const hold = handAt(318, g, 170, "reach", 1, true);
@@ -1255,6 +1256,7 @@ export function LateralCycling() {
       <Backwash cx={200} cy={146} rx={194} ry={112} seed={3500} />
       <Ground x0={24} x1={376} y={g} seed={3501} />
       <Person x={80} y={g} h={176} look={OWNER} arms={["hip", "carry"]} seed={3510} />
+      <Paper pts={body} seed={3539} />
       <Wash pts={body} seed={3540} fill={SK.charcoal} opacity={0.75} dx={0.5} dy={0.4} />
       <Paper pts={glass} seed={3541} />
       <InkLine pts={body} seed={3542} width={1.1} closed />

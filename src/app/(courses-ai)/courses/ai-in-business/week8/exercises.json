@@ -1,0 +1,255 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "operational-effectiveness",
+    "prompt": "A national grocery chain is planning its AI investments. Sort each move into operational effectiveness or strategic differentiation.",
+    "bins": [
+      { "id": "oe", "label": "Operational effectiveness" },
+      { "id": "sd", "label": "Strategic differentiation" }
+    ],
+    "cards": [
+      {
+        "id": "copilot",
+        "text": "Licensing the same office copilot that every rival grocer uses to draft store memos",
+        "bin": "oe",
+        "explanation": "Rivals can buy the identical tool tomorrow, so the whole industry's baseline rises together."
+      },
+      {
+        "id": "loyalty",
+        "text": "Training a markdown model on fifteen years of its own loyalty-card baskets and the waste each markdown actually prevented",
+        "bin": "sd",
+        "explanation": "The data and outcomes exist only inside this chain, so competitors cannot replicate them from a public API."
+      },
+      {
+        "id": "chatbot",
+        "text": "Adding a vendor's standard customer-service chatbot to its website",
+        "bin": "oe",
+        "explanation": "Any competitor can install the same vendor product, which keeps parity but confers no lasting advantage."
+      },
+      {
+        "id": "suppliers",
+        "text": "Embedding demand forecasts directly into its exclusive contracts with local farms so orders adjust automatically",
+        "bin": "sd",
+        "explanation": "The model sits inside proprietary supplier relationships and workflows that rivals do not have."
+      },
+      {
+        "id": "scheduling",
+        "text": "Buying an off-the-shelf shift-scheduling tool that cuts overtime by 4 percent",
+        "bin": "oe",
+        "explanation": "Doing the same activity cheaper is operational effectiveness, and every rival can buy the same tool."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "ai-stack",
+    "prompt": "For each company, name the layer of the enterprise AI stack where it mainly sells.",
+    "options": [
+      { "id": "hardware", "label": "Hardware and compute" },
+      { "id": "models", "label": "Foundation models" },
+      { "id": "data", "label": "Data and orchestration" },
+      { "id": "apps", "label": "Application workflows" }
+    ],
+    "cases": [
+      {
+        "id": "power",
+        "text": "A utility signs a twenty-year contract to supply electricity to a new data center campus.",
+        "answer": "hardware",
+        "explanation": "Energy generation for data centers belongs to the hardware and compute layer at the base of the stack."
+      },
+      {
+        "id": "vector",
+        "text": "A startup sells a managed vector database that banks use to search their internal policy documents.",
+        "answer": "data",
+        "explanation": "Vector databases and retrieval pipelines are enterprise data and orchestration infrastructure."
+      },
+      {
+        "id": "dental",
+        "text": "A software firm sells dental clinics a tool that drafts insurance claims inside their booking system.",
+        "answer": "apps",
+        "explanation": "The model is embedded inside a specific business process, which is the application workflow layer."
+      },
+      {
+        "id": "openweights",
+        "text": "A research group releases a new open-weight multimodal model trained on images and text.",
+        "answer": "models",
+        "explanation": "Training large language, vision and multimodal models is the foundation model layer."
+      },
+      {
+        "id": "monitor",
+        "text": "A vendor sells dashboards that log every model call and alert engineers when answers start drifting.",
+        "answer": "data",
+        "explanation": "Observability tools sit in the data and orchestration layer, between the models and the applications."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "data-moat",
+    "question_text": "A commercial property insurer is deciding which of its data holdings could become a durable competitive moat. Which one comes closest?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Two terabytes of public satellite images of the buildings it insures",
+        "option_explanation": "Public imagery can be bought by any competitor, so it is not rare or costly to imitate."
+      },
+      {
+        "option_text": "A purchased national table of building ages and construction types",
+        "option_explanation": "Third-party tables are available to every rival on the open market."
+      },
+      {
+        "option_text": "Its own inspection notes paired with each building's later claims",
+        "option_explanation": "Correct. The records are an exclusive byproduct of its operations and link each assessment to a verified real-world outcome."
+      },
+      {
+        "option_text": "Millions of saved website chat transcripts with prospective customers",
+        "option_explanation": "Generic chat logs record inputs but not whether any action succeeded, and similar data can be generated synthetically."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "match",
+    "slide_id": "procurement-archetypes",
+    "prompt": "Match each AI need at a national airline to the procurement archetype that fits it best.",
+    "term_label": "Airline need",
+    "match_label": "Archetype",
+    "pairs": [
+      {
+        "id": "expenses",
+        "term": "Scanning staff expense receipts, a routine task every company has",
+        "match": "Buy turnkey SaaS",
+        "explanation": "Routine administrative work with no differentiation is best bought ready-made."
+      },
+      {
+        "id": "manuals",
+        "term": "Answering mechanics' questions from the airline's own maintenance manuals",
+        "match": "Compose a commercial API with RAG",
+        "explanation": "A rented frontier model combined with a private document index handles this domain workflow."
+      },
+      {
+        "id": "tagging",
+        "term": "Classifying millions of baggage-tracking messages a day with data that must stay in the country",
+        "match": "Fine-tune and host an open-weight model",
+        "explanation": "Strict data residency and high-volume, low-latency work favor a compact model on the airline's own infrastructure."
+      },
+      {
+        "id": "pricing",
+        "term": "Setting seat prices, where the pricing algorithm is the airline's main edge over rivals",
+        "match": "Train a proprietary model from scratch",
+        "explanation": "Training from scratch is reserved for problems where the algorithm itself is the primary source of differentiation."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "model-metrics",
+    "prompt": "A bank has deployed a model that suggests answers to call-center staff. Sort each measure into an offline technical metric or an online business outcome.",
+    "bins": [
+      { "id": "offline", "label": "Offline technical metric" },
+      { "id": "online", "label": "Online business outcome" }
+    ],
+    "cards": [
+      {
+        "id": "f1",
+        "text": "Share of suggested answers that match the correct policy on a held-out test set",
+        "bin": "offline",
+        "explanation": "Accuracy on a test set is measured before deployment, by the data science team."
+      },
+      {
+        "id": "cost",
+        "text": "Average handling cost per customer call",
+        "bin": "online",
+        "explanation": "Cost per call is an operating result that leadership tracks."
+      },
+      {
+        "id": "faith",
+        "text": "Share of answers whose citations actually support the claim",
+        "bin": "offline",
+        "explanation": "Citation faithfulness is a technical quality check on the model's output."
+      },
+      {
+        "id": "churn",
+        "text": "Share of callers who close their accounts within ninety days",
+        "bin": "online",
+        "explanation": "Customer retention is a business outcome, which the model may or may not move."
+      },
+      {
+        "id": "rmse",
+        "text": "Error of the call-volume forecast on last year's data",
+        "bin": "offline",
+        "explanation": "Forecast error on historical data is an offline metric."
+      },
+      {
+        "id": "revenue",
+        "text": "Revenue from products sold during calls",
+        "bin": "online",
+        "explanation": "Revenue per call is a financial outcome measured in live operation."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "controlled-experiments",
+    "prompt": "A retailer is testing an AI product-recommendation system. Name the problem each study design runs into.",
+    "options": [
+      { "id": "confound", "label": "No concurrent control group" },
+      { "id": "novelty", "label": "Novelty effect" },
+      { "id": "interference", "label": "Interference" },
+      { "id": "guardrail", "label": "Missing guardrail metric" }
+    ],
+    "cases": [
+      {
+        "id": "december",
+        "text": "Sales are compared for November without the system and December with it.",
+        "answer": "confound",
+        "explanation": "Holiday demand rises in December regardless, so a before-and-after comparison confounds the result."
+      },
+      {
+        "id": "firstweek",
+        "text": "Clicks on recommendations jump in the first week, and the team declares success after seven days.",
+        "answer": "novelty",
+        "explanation": "Users engage more at first out of curiosity, so a one-week test overstates the lasting effect."
+      },
+      {
+        "id": "stock",
+        "text": "Both groups shop from the same limited stock of a popular jacket, and the treatment group buys it up first.",
+        "answer": "interference",
+        "explanation": "The groups compete for the same inventory, so the control group's sales fall because of the treatment."
+      },
+      {
+        "id": "returns",
+        "text": "The test tracks only items sold per visit and ignores how many of those items come back as returns.",
+        "answer": "guardrail",
+        "explanation": "Without a guardrail metric, higher sales could hide more returns and complaints downstream."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "operating-models",
+    "question_text": "A hotel group's three brands each bought their own AI tools last year. They now hold four separate contracts for similar chatbots, guest data sits in three incompatible systems, and security rules differ by brand. Which change addresses this while keeping each brand close to its guests?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Move every analyst into one corporate AI lab that builds all models for the brands",
+        "option_explanation": "A central lab removes duplication but tends to produce models disconnected from each brand's daily operations."
+      },
+      {
+        "option_text": "One shared data, model and security platform, with brand teams choosing problems",
+        "option_explanation": "Correct. A hub-and-spoke model shares pipelines, gateways and guardrails while embedded teams keep domain proximity."
+      },
+      {
+        "option_text": "Let each brand keep buying tools but require a yearly security report",
+        "option_explanation": "This stays fully decentralized, so data silos and duplicated contracts remain."
+      },
+      {
+        "option_text": "Pause all AI work until a single vendor can serve every brand",
+        "option_explanation": "Pausing gives up local speed and does not build the shared standards the group needs."
+      }
+    ],
+    "correct_answer_index": 1
+  }
+]

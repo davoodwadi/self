@@ -1,0 +1,272 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "eight-key-functions-performed-by-channel-members",
+    "prompt": "Channel members perform eight key functions. Does each activity help to complete a transaction or to fulfill a completed transaction?",
+    "bins": [
+      { "id": "complete", "label": "Completing transactions" },
+      { "id": "fulfill", "label": "Fulfilling completed transactions" }
+    ],
+    "cards": [
+      {
+        "id": "survey-data",
+        "text": "A regional distributor shares monthly shopper survey results with a cereal manufacturer.",
+        "bin": "complete",
+        "explanation": "Gathering and distributing market intelligence is the information function, which helps complete transactions."
+      },
+      {
+        "id": "grade-apples",
+        "text": "A produce cooperative grades apples by size and packs them into two-kilogram family bags.",
+        "bin": "complete",
+        "explanation": "Grading, assembling, and packaging shape the offer to buyer needs, which is the matching function."
+      },
+      {
+        "id": "price-terms",
+        "text": "A hardware chain and a power-tool maker agree on wholesale unit prices and delivery dates.",
+        "bin": "complete",
+        "explanation": "Reaching an agreement on price and terms so ownership can transfer is the negotiation function."
+      },
+      {
+        "id": "cold-storage",
+        "text": "A grocery wholesaler keeps frozen vegetables in temperature-controlled depots and trucks them to stores.",
+        "bin": "fulfill",
+        "explanation": "Transporting and storing goods is physical distribution, which fulfills completed transactions."
+      },
+      {
+        "id": "extend-credit",
+        "text": "A building-supply distributor pays the factory upon shipment and gives contractors 60 days to pay.",
+        "bin": "fulfill",
+        "explanation": "Acquiring and using funds to cover the costs of channel work is the financing function."
+      },
+      {
+        "id": "unsold-stock",
+        "text": "A fashion boutique buys winter coats outright in August and absorbs the loss if a mild winter leaves stock unsold.",
+        "bin": "fulfill",
+        "explanation": "Assuming the financial hazard of holding inventory in the channel is the risk-taking function."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "direct-and-indirect-marketing-channel-levels",
+    "prompt": "Count the intermediary levels between the producer and the final buyer. Which channel structure does each case describe?",
+    "options": [
+      { "id": "zero", "label": "Zero-level (direct) channel" },
+      { "id": "one", "label": "One-level indirect channel" },
+      { "id": "two", "label": "Two-level indirect channel" }
+    ],
+    "cases": [
+      {
+        "id": "roaster-web",
+        "text": "A specialty coffee roaster bags beans at its roastery and ships online orders directly to home subscribers.",
+        "answer": "zero",
+        "explanation": "No intermediary sits between the roaster and the consumer, so this is a direct (zero-level) marketing channel."
+      },
+      {
+        "id": "mattress-retailer",
+        "text": "A mattress factory sells its beds to a regional furniture store chain, which sells them to households.",
+        "answer": "one",
+        "explanation": "Only one intermediary level (the retailer) stands between the manufacturer and the consumer."
+      },
+      {
+        "id": "candy-wholesaler",
+        "text": "A confectionery maker sells bulk cases to a regional candy wholesaler, which supplies independent corner stores that sell to shoppers.",
+        "answer": "two",
+        "explanation": "Both a wholesaler and a retailer sit between the producer and the final consumer, creating a two-level channel."
+      },
+      {
+        "id": "farm-stand",
+        "text": "An orchard sells crates of peaches to families from a stand at the edge of its own farm.",
+        "answer": "zero",
+        "explanation": "The grower sells straight to the final buyer with zero intermediary levels."
+      },
+      {
+        "id": "auto-dealer",
+        "text": "An automaker builds electric sedans at its assembly plant and sells them through authorized retail dealerships to drivers.",
+        "answer": "one",
+        "explanation": "The retail dealer is a single intermediary layer between the manufacturer and the buyer."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "channel-cooperation-and-channel-conflict",
+    "prompt": "Disagreements over goals, roles, and rewards create channel conflict. Is each dispute an example of horizontal conflict or vertical conflict?",
+    "bins": [
+      { "id": "horizontal", "label": "Horizontal conflict" },
+      { "id": "vertical", "label": "Vertical conflict" }
+    ],
+    "cards": [
+      {
+        "id": "pizza-territories",
+        "text": "Two franchisees of the same pizza chain in adjacent neighborhoods accuse each other of delivering into the other's territory.",
+        "bin": "horizontal",
+        "explanation": "Both pizza shops operate at the same retail level of the channel."
+      },
+      {
+        "id": "watch-dtc",
+        "text": "A Swiss watchmaker opens a flagship online store that sells directly to collectors at prices lower than its authorized jewelers.",
+        "bin": "vertical",
+        "explanation": "The conflict is between the manufacturer and its retail jewelers at different levels of the channel."
+      },
+      {
+        "id": "dealer-rebates",
+        "text": "Three farm-equipment dealers in the same province complain that a fourth dealer is advertising below-cost clearance prices.",
+        "bin": "horizontal",
+        "explanation": "All four dealers sit at the same level of the distribution channel."
+      },
+      {
+        "id": "beverage-shelf",
+        "text": "A soft-drink manufacturer and a national supermarket chain clash over promotional allowances and eye-level shelf space.",
+        "bin": "vertical",
+        "explanation": "A producer and a retailer occupy different levels of the same channel."
+      },
+      {
+        "id": "hotel-owners",
+        "text": "Two hotel owners operating under the same hotel brand near an airport argue over how loyalty members are routed between them.",
+        "bin": "horizontal",
+        "explanation": "The dispute is between two peers at the same level of the franchise system."
+      },
+      {
+        "id": "wholesaler-minimums",
+        "text": "An electronics manufacturer raises minimum order quantities, angering the regional wholesalers that stock its cables.",
+        "bin": "vertical",
+        "explanation": "The disagreement occurs between the producer level and the wholesale level."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "conventional-versus-vertical-marketing-systems-vms",
+    "prompt": "Match each channel organization structure with the business arrangement that exemplifies it.",
+    "term_label": "Channel structure",
+    "match_label": "Business arrangement",
+    "pairs": [
+      {
+        "id": "conventional",
+        "term": "Conventional distribution channel",
+        "match": "An independent soap maker, an independent regional distributor, and an independent pharmacy each negotiate every order separately to maximize their own margins.",
+        "explanation": "In a conventional channel, separate businesses operate independently with little formal coordination."
+      },
+      {
+        "id": "corporate",
+        "term": "Corporate VMS",
+        "match": "An apparel company owns the textile mills, the garment factories, the distribution warehouses, and the retail stores that sell its clothing.",
+        "explanation": "A corporate VMS combines successive stages of production and distribution under single ownership."
+      },
+      {
+        "id": "contractual",
+        "term": "Contractual VMS",
+        "match": "An automotive service brand licenses its trademark and operating system to 800 independently owned repair shops through binding franchise agreements.",
+        "explanation": "A contractual VMS links independent firms at different channel levels through formal contracts such as franchising."
+      },
+      {
+        "id": "administered",
+        "term": "Administered VMS",
+        "match": "A dominant big-box retailer uses its massive purchasing volume to dictate packaging standards, delivery windows, and shelf replenishment rules to independent suppliers.",
+        "explanation": "An administered VMS coordinates successive stages through the size and market power of one dominant member."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "horizontal-systems-multichannel-distribution-and-disintermediation",
+    "prompt": "Which channel development does each scenario illustrate: a horizontal marketing system, a multichannel distribution system, or disintermediation?",
+    "options": [
+      { "id": "horizontal", "label": "Horizontal marketing system" },
+      { "id": "multichannel", "label": "Multichannel distribution system" },
+      { "id": "disintermediation", "label": "Disintermediation" }
+    ],
+    "cases": [
+      {
+        "id": "bank-grocery",
+        "text": "A retail bank and a national supermarket chain partner to place staffed banking booths inside grocery stores.",
+        "answer": "horizontal",
+        "explanation": "Two companies at the same level combine resources to pursue a joint marketing opportunity."
+      },
+      {
+        "id": "paint-channels",
+        "text": "A paint manufacturer sells its coatings through its own brand stores, through hardware wholesalers, and through an online contractor portal.",
+        "answer": "multichannel",
+        "explanation": "A single firm sets up two or more marketing channels to reach different customer segments."
+      },
+      {
+        "id": "airline-direct",
+        "text": "An airline stops paying commissions to brick-and-mortar travel agencies and sells tickets directly to passengers on its mobile app.",
+        "answer": "disintermediation",
+        "explanation": "The service producer cuts out traditional intermediaries to transact directly with final buyers."
+      },
+      {
+        "id": "bakery-cafe",
+        "text": "A local artisan bakery and a specialty tea brand open co-branded airport kiosks to serve travelers together.",
+        "answer": "horizontal",
+        "explanation": "Two peer firms at the same channel level join forces to capture an opportunity neither could easily serve alone."
+      },
+      {
+        "id": "software-download",
+        "text": "A video-game studio replaces boxed discs sold at electronics stores with direct digital downloads from its own server.",
+        "answer": "disintermediation",
+        "explanation": "Replacing physical retail resellers with direct digital delivery is classic disintermediation."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "major-logistics-functions-warehousing-inventory-and-transportation",
+    "prompt": "Match each logistics mechanism with the operational problem it is designed to solve.",
+    "term_label": "Logistics mechanism",
+    "match_label": "Operational role",
+    "pairs": [
+      {
+        "id": "storage-warehouse",
+        "term": "Storage warehouse",
+        "match": "Holding harvested grain or seasonal patio furniture for several months until consumer demand peaks.",
+        "explanation": "Storage warehouses hold goods for moderate to long periods to bridge production and consumption cycles."
+      },
+      {
+        "id": "distribution-center",
+        "term": "Automated distribution center",
+        "match": "Receiving daily shipments from 200 suppliers, sorting cartons on high-speed conveyors, and loading outbound store trucks the same evening.",
+        "explanation": "Distribution centers are designed to move goods rapidly through the channel rather than store them long term."
+      },
+      {
+        "id": "jit",
+        "term": "Just-in-time (JIT) inventory",
+        "match": "Delivering car seats to an assembly line only hours before installation so the factory holds minimal buffer stock.",
+        "explanation": "JIT systems minimize inventory carrying and obsolescence costs by timing deliveries precisely to production need."
+      },
+      {
+        "id": "intermodal",
+        "term": "Intermodal transportation",
+        "match": "Shipping sealed containers by ocean vessel to a port, transferring them onto rail flatcars for the cross-country leg, and finishing delivery by truck.",
+        "explanation": "Intermodal transportation combines two or more transport modes to balance cost, speed, and door-to-door reach."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "the-ai-shopping-agent-as-a-new-channel-intermediary",
+    "question_text": "A consumer instructs an autonomous AI shopping agent to find and buy a 27-inch 4K monitor under 350 dollars with at least a three-year warranty. Which set of classic channel functions does the AI agent perform directly, and which set must still be handled by underlying fulfillment networks?",
+    "hint": "Distinguish transaction-completing software tasks from physical possession and logistics.",
+    "correct_answer_citation": "Week 9: The AI Shopping Agent as a New Channel Intermediary",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The AI agent performs physical distribution and warehousing directly, while retail storefronts perform matching and negotiation.",
+        "option_explanation": "A software agent cannot physically store or transport a monitor. It performs the information and matching work instead."
+      },
+      {
+        "option_text": "The AI agent takes legal title and bears inventory obsolescence risk, while the manufacturer handles consumer search.",
+        "option_explanation": "The AI shopping agent does not take physical possession or title to merchandise."
+      },
+      {
+        "option_text": "The AI agent performs information, contact, matching, and checkout execution directly, while physical distribution, warehousing, and reverse logistics remain with fulfillment networks.",
+        "option_explanation": "Correct. The AI agent acts as a digital intermediary for the transaction-completing functions, while physical fulfillment still moves through warehouses and carriers."
+      },
+      {
+        "option_text": "The AI agent eliminates all eight channel functions so that neither software intermediaries nor logistics networks are needed.",
+        "option_explanation": "Eliminating or replacing a traditional intermediary never eliminates the underlying channel functions that must be performed."
+      }
+    ]
+  }
+]

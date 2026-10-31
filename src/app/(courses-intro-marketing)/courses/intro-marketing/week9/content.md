@@ -1,139 +1,145 @@
 ---
-topic: "Supply Chain and Distribution Channels"
-backgroundShape: "network"
+topic: "Supply Chain and Distribution Channels (The Third P)"
 lecturer: "Davood Wadi, PhD"
 course: "Introduction to Marketing"
 week: "week9"
 ---
 
-# Topic
-Supply Chain and Distribution Channels (The Third P)
-
-# Slide contents
-
 ## Title Slide
-- Welcome to Week 9.
-- Today we explore the Third P: Place.
-- We will unpack how products move from production to consumption.
-- We will also examine the AI agent as a new member of the distribution channel.
+- Week 9
+- Marketing channels and supply chain networks bridge the gap between producers and final buyers, and autonomous AI shopping agents now act as a new digital intermediary that reshapes channel power and disintermediation.
 
-## Module 1: The Nature of Marketing Channels
-- A marketing channel is a set of interdependent organizations.
-- These organizations help make a product available for use or consumption.
-- They bridge the gap between producers and users in terms of time, place, and possession.
+## The Value Delivery Network and Marketing Channels [no-exercise]
+- Few producers sell their goods directly to final users: instead, most work with a network of partners to bring their offerings to market.
+- A value delivery network is composed of the company, suppliers, distributors, and, ultimately, customers who partner with each other to improve the performance of the entire system in delivering customer value.
+- Within that network, a marketing channel (or distribution channel) is a set of interdependent organizations that help make a product or service available for use or consumption by the consumer or business user.
+- A company's channel decisions directly affect every other marketing decision, from pricing and sales force structure to brand positioning, and often involve long-term contractual commitments.
 
-## The Value Delivery Network [exercise]
-- Marketing channels are part of a larger value delivery network.
-- This network includes the company, suppliers, distributors, and customers.
-- Everyone partners to improve the performance of the entire system.
+## How Channel Intermediaries Add Value [no-exercise]
+[figure: comparison of nine producer-to-customer transactions without an intermediary against six transactions routed through a shared distributor]
+- Producers give up some control over how and to whom their products are sold when they use intermediaries, yet they rely on intermediaries because channel partners add efficiency and assortment value that a producer cannot easily match alone.
+- Through their contacts, experience, specialization, and scale of operation, intermediaries usually offer the firm more than it can achieve on its own by reducing the number of channel transactions required between producers and consumers.
+- Producers make narrow assortments of products in large quantities, whereas consumers want broad assortments of products in small quantities.
+- Marketing channel members buy large quantities from many producers and break them down into the smaller quantities and broader assortments wanted by consumers, bridging the major time, place, and possession gaps that separate goods from those who use them.
 
-## How Channels Add Value
-[diagram: hub-and-spoke - Information flowing between producers, channel members, and consumers]
-- Intermediaries offer the firm more than it can achieve on its own.
-- They provide contacts, experience, specialization, and scale of operation.
-- They transform the assortments of products made by producers into the assortments wanted by consumers.
+## Part 1: Functions and Structure of Marketing Channels [no-exercise]
+- Members of the marketing channel perform key functions that move goods from producers to consumers and determine the length and breadth of the channel structure.
+- Analyzing these functions clarifies that eliminating an intermediary does not eliminate the work that the intermediary performs.
 
-## Key Functions of Intermediaries
-- Information gathering about consumers and competitors.
-- Promotion development and dissemination about an offer.
-- Contacting prospective buyers and matching offers to meet buyer needs.
+## Eight Key Functions Performed by Channel Members [exercise]
+- Members of the marketing channel perform eight key functions: the first five help to complete transactions, and the last three help to fulfill the completed transactions.
+- The transaction-completing functions are information (gathering and distributing information about consumers, producers, and channel actors), promotion (developing and spreading persuasive communications about an offer), contact (finding and engaging prospective buyers), matching (shaping and fitting the offer to the buyer's needs, including grading, assembling, and packaging), and negotiation (reaching an agreement on price and other terms of the offer so that ownership or possession can be transferred).
+- The transaction-fulfilling functions are physical distribution (transporting and storing goods), financing (acquiring and using funds to cover the costs of the channel work), and risk taking (assuming the risks of carrying out the channel work).
+- In dividing up the work of the channel, the various functions should be assigned to the channel members who can add the most value for the cost.
 
-## Additional Functions
-- Negotiating price and other terms so that ownership can be transferred.
-- Physical distribution of goods.
-- Financing the channel work and taking risks of carrying out the channel work.
+## Direct and Indirect Marketing Channel Levels [exercise]
+[figure: direct and indirect marketing channel structures showing zero-level, one-level, and two-level consumer and business channels]
+- Each layer of marketing intermediaries that performs some work in bringing the product and its ownership closer to the final buyer is a channel level.
+- Because both the producer and the final consumer perform some work, they are part of every channel, and the number of intermediary levels indicates the length of a channel.
+- A direct marketing channel has no intermediary levels: the company sells directly to consumers, as when a bakery sells bread in its own shop or an apparel brand sells exclusively through its own website.
+- An indirect marketing channel contains one or more intermediary levels, such as a manufacturer selling to a wholesaler who sells to a retailer who sells to the consumer, where more levels expand geographic reach but reduce the producer's direct control.
 
-## Channel Levels
-- A channel level is a layer of intermediaries that performs some work in bringing the product closer to the final buyer.
-- The number of intermediary levels indicates the length of a channel.
-- Direct marketing channels have no intermediary levels.
+## Channel Intensity: Intensive, Selective, and Exclusive Distribution [no-exercise]
+- Companies must also decide on the number of channel members to use at each level across three distribution strategies: intensive, exclusive, and selective distribution.
+- Intensive distribution stocks the product in as many outlets as possible so that convenience goods (such as toothpaste, soft drinks, and snacks) are available wherever and whenever consumers want them.
+- Exclusive distribution gives a limited number of dealers the exclusive right to distribute the company's products in their territories, often used for luxury automobiles or prestige apparel to enhance brand image and secure strong dealer support.
+- Selective distribution lies between intensive and exclusive distribution, using more than one, but fewer than all, of the intermediaries willing to carry the company's products (common for appliances, televisions, and fine furniture).
 
-## Indirect Marketing Channels [exercise]
-- Indirect marketing channels contain one or more intermediary levels.
-- Common levels include wholesalers, jobbers, and retailers.
-- More levels mean less control and greater channel complexity for the producer.
+## Part 2: Channel Behavior, Organization, and Conflict [no-exercise]
+- Marketing channels are not merely economic pipelines, but complex behavioral systems in which people and companies interact to accomplish individual, company, and channel goals.
+- Managing channel conflict and designing vertical, horizontal, or multichannel systems allow channel partners to operate as a coordinated unit.
 
-## Discussion: Direct vs. Indirect Channels
-- Discussion: If you were launching a new organic snack brand, would you sell directly through your website or pitch to a major grocery chain?
+## Channel Cooperation and Channel Conflict [exercise]
+- Ideally, because the success of individual channel members depends on overall channel success, all channel firms should work together smoothly and accept their specialized roles.
+- However, individual channel members rarely take such a broad view, and disagreements over goals, roles, and rewards generate channel conflict.
+- Horizontal conflict occurs among firms at the same level of the channel, such as two franchised car dealers of the same automaker in the same city complaining that the other prices too aggressively or poaches territory customers.
+- Vertical conflict, which is even more common, occurs between different levels of the same channel, such as when a footwear manufacturer opens a direct-to-consumer online store that undercuts the retail shoe chains carrying its brand.
 
-## Module 2: Channel Behavior and Organization
-- Distribution channels are complex behavioral systems.
-- People and companies interact to accomplish individual, company, and channel goals.
-- Success depends on how well the channel members work together.
+## Conventional Versus Vertical Marketing Systems (VMS) [exercise]
+[figure: comparison of a fragmented conventional marketing channel with a unified Vertical Marketing System (corporate, contractual, or administered)]
+- A conventional distribution channel consists of one or more independent producers, wholesalers, and retailers, each a separate business seeking to maximize its own profits, even at the expense of profits for the system as a whole.
+- By contrast, a Vertical Marketing System (VMS) consists of producers, wholesalers, and retailers acting as a unified system in which one channel member owns the others, has contracts with them, or wields so much power that they all cooperate.
+- A corporate VMS combines successive stages of production and distribution under single ownership (such as eyewear giant EssilorLuxottica designing frames, manufacturing lenses, and operating Sunglass Hut and LensCrafters stores).
+- A contractual VMS consists of independent firms at different levels of production and distribution who join together through contracts (most notably franchise organizations), while an administered VMS coordinates successive stages through the size and power of one dominant party (such as Walmart or Procter & Gamble).
 
-## Channel Conflict [exercise]
-- Channel conflict occurs when members disagree over goals, roles, and rewards.
-- Horizontal conflict occurs among firms at the same level of the channel.
-- Vertical conflict occurs between different levels of the same channel.
+## Horizontal Systems, Multichannel Distribution, and Disintermediation [exercise]
+- A horizontal marketing system is a channel arrangement in which two or more companies at one level join together to follow a new marketing opportunity, such as a coffee chain operating kiosks inside a national bookstore or grocery chain.
+- A multichannel distribution system (or hybrid marketing channel) occurs when a single firm sets up two or more marketing channels to reach one or more customer segments, expanding market coverage while increasing the risk of channel conflict.
+- Disintermediation occurs when product and service producers cut out intermediaries and go directly to final buyers, or when radically new types of channel intermediaries displace traditional ones.
+- Online streaming displaced physical video rental stores, and digital travel portals displaced neighborhood ticket agencies, forcing incumbent channel members to innovate or exit.
 
-## Conventional Distribution Systems
-- Consist of one or more independent producers, wholesalers, and retailers.
-- Each is a separate business seeking to maximize its own profits.
-- No channel member has much control over the other members.
+## Discussion: Resolving Vertical Channel Conflict in a Direct-to-Consumer Launch
+- Discussion: A mid-sized kitchen appliance manufacturer currently sells 85 percent of its blenders through three national department-store chains. Management wants to launch a direct-to-consumer website offering custom color options and a 10 percent starter discount to capture first-party customer data. Using vertical channel conflict, multichannel distribution systems, and pricing consistency, analyze how the retail chains are likely to react and design a channel strategy that avoids retail delisting.
 
-## Vertical Marketing Systems (VMS)
-[diagram: cascading flow - Producer to Wholesaler to Retailer acting as a unified system]
-- A VMS consists of producers, wholesalers, and retailers acting as a unified system.
-- One channel member owns the others, has contracts with them, or wields so much power they all cooperate.
-- Designed to achieve channel economies and maximum impact.
+## Part 3: Retailing and Wholesaling [no-exercise]
+- The two primary resellers in consumer and industrial channels are retailers and wholesalers.
+- Understanding how retailers classify their store formats and how wholesalers create efficiency explains the downstream mechanics of product placement.
 
-## Types of Vertical Marketing Systems
-- Corporate VMS integrates successive stages of production and distribution under single ownership.
-- Contractual VMS consists of independent firms at different levels joining together through contracts.
-- Administered VMS coordinates successive stages through the size and power of one of the parties.
+## Retailing Classifications and Omnichannel Shopper Marketing [no-exercise]
+- Retailing includes all the activities involved in selling goods or services directly to final consumers for their personal, nonbusiness use.
+- Retail stores are classified along four dimensions: the amount of service they offer (self-service, limited-service, or full-service), the breadth and depth of their product lines (specialty stores, department stores, supermarkets, convenience stores, and superstores), the relative prices they charge (discount stores, off-price retailers, and factory outlets), and how they are organized (corporate chains, voluntary chains, and franchises).
+- Shopper marketing focuses the entire marketing process, from product and brand development to logistics, promotion, and merchandising, toward turning shoppers into buyers as they approach the point of sale, whether in a physical aisle or on a digital screen.
+- Because modern buyers move seamlessly across web, mobile, and physical stores, omni-channel retailing integrates all channels into a single unified shopping experience, such as buying online and picking up in store.
 
-## Multichannel Distribution Systems
-- A single firm sets up two or more marketing channels to reach one or more customer segments.
-- Offers advantages for companies facing large and complex markets.
-- Expands sales and market coverage but can be harder to control and generate conflict.
+## Retailer Marketing Decisions [no-exercise]
+- Like manufacturers, retailers must make strategic decisions regarding segmentation and targeting, store differentiation and positioning, and the retail marketing mix.
+- First, retailers must define their target markets and decide how they will position themselves in these markets: a retailer cannot make consistent decisions about product assortment, services, pricing, advertising, or store decor until it defines its target customers and position.
+- Second, retailers manage three major product variables: product assortment (differentiating the retailer while matching target shoppers' expectations), services mix (home delivery, alterations, or personal shopping), and store atmosphere (the physical layout, lighting, scent, and sound that shape the customer's experience).
+- Third, retailers align their price policy (high-markup lower-volume versus low-markup higher-volume), promotional tools, and location choices (central business districts, shopping centers, or strip malls) with that positioning.
 
-## The Trend of Disintermediation [exercise]
-- Disintermediation occurs when product and service producers cut out intermediaries.
-- This includes going directly to final buyers or displacing traditional resellers with new types of intermediaries.
-- Presents both opportunities and strategic threats to established firms.
+## The Role and Types of Wholesalers [no-exercise]
+- Wholesaling includes all the activities involved in selling goods and services to those buying for resale or business use.
+- Wholesalers add value by performing channel functions more efficiently than a manufacturer can alone: they sell and promote to many small business customers, buy and build assortments, break bulk (breaking large carload lots into small crates), warehouse inventory, finance buyers and suppliers, bear risk by taking title, and provide market information.
+- Merchant wholesalers are independently owned businesses that take title to the merchandise they handle, operating as either full-service wholesalers or limited-service wholesalers.
+- Brokers and agents do not take title to goods and earn a commission for bringing buyers and sellers together, while manufacturers' and retailers' branches and offices conduct wholesaling operations directly without independent wholesalers.
 
-## Agentic Commerce: The AI Agent as an Intermediary [exercise]
-- Agentic commerce is buying and selling in which an AI agent searches, compares, and purchases on a buyer's behalf.
-- The AI agent performs several functions of an intermediary: it gathers information, matches offers to the buyer's needs, and can negotiate and complete the purchase.
-- It is a new type of intermediary that can displace traditional resellers, so it is a current example of disintermediation.
-- The AI agent may also decide which sellers the buyer ever sees, and AI agents can favor options simply because of where they appear in a list (Wadi & Ma, 2026a).
-- Producers must decide whether to sell through the AI agents of large platforms, build their own, or make their offers easy for any AI agent to read and buy.
+## Part 4: Marketing Logistics and Supply Chain Management [no-exercise]
+- Even the best channel strategy fails if physical products do not arrive intact, on time, and at an acceptable cost.
+- Marketing logistics and supply chain management coordinate the physical flow of materials, final goods, and information from point of origin to point of consumption.
 
-## Discussion: Surviving Disintermediation
-- Discussion: As streaming services bypass traditional cable providers, how can cable companies adapt to remain relevant in the distribution channel?
+## Objectives and Direction of Marketing Logistics [no-exercise]
+[figure: supply chain logistics flows showing upstream inbound distribution from suppliers, outbound distribution through resellers to customers, and reverse distribution for returns and recycling]
+- Marketing logistics (also called physical distribution) involves planning, implementing, and controlling the physical flow of materials, final goods, and related information from points of origin to points of consumption to meet customer requirements at a profit.
+- Outbound logistics moves products from the factory to resellers and ultimately to customers, while inbound logistics moves products and materials from suppliers to the factory.
+- Reverse logistics reuses, recycles, refurbishes, or disposes of broken, unwanted, or excess products returned by consumers or resellers.
+- The goal of marketing logistics is to provide a targeted level of customer service at the least total system cost, rather than minimizing the cost of any single logistics function in isolation.
 
-## Module 3: Retailing, Wholesaling, and Logistics
-- Retailing includes all activities involved in selling goods directly to final consumers.
-- Wholesaling includes all activities involved in selling goods to those buying for resale or business use.
-- Logistics management ensures the efficient flow of materials and final goods.
+## Major Logistics Functions: Warehousing, Inventory, and Transportation [exercise]
+- Given a set of logistics objectives, the company designs a logistics system that minimizes the cost of attaining these objectives across four major functions: warehousing, inventory management, transportation, and logistics information management.
+- Warehousing bridges the gap between production cycles and consumption cycles using either storage warehouses (which store goods for moderate to long periods) or automated distribution centers (which are designed to move goods rapidly rather than just store them).
+- Inventory management balances the risk of out-of-stock customer dissatisfaction against the high carrying costs and obsolescence risks of holding excessive stock, often using just-in-time (JIT) logistics systems.
+- Transportation choices across trucks, railroads, water carriers, pipelines, air freight, and the internet (for digital products) directly affect product pricing, delivery speed, and the condition of goods on arrival, often combining modes through intermodal transportation.
 
-## The Role of Retailing
-- Retailers connect brands with consumers in the final steps of the distribution process.
-- Shopper marketing focuses the entire marketing process on turning shoppers into buyers at the point of sale.
-- Retailers must carefully define their target markets and positioning.
+## Integrated Supply Chain Management and Third-Party Logistics (3PL) [no-exercise]
+- Integrated logistics management recognizes that providing better customer service and trimming distribution costs require teamwork, both inside the company (through cross-functional logistics committees) and among all the marketing channel organizations.
+- Channel members link their logistics operations through shared electronic data interchange (EDI), vendor-managed inventory (VMI), and continuous inventory replenishment systems.
+- Most companies also outsource some or all of their logistics functions to third-party logistics (3PL) providers (such as UPS Supply Chain Solutions, DHL, or Ryder).
+- Third-party logistics providers bring specialized distribution expertise, multi-client scale economies, and global customs knowledge, freeing the manufacturer to focus on its core product and marketing strengths.
 
-## The Value of Wholesaling
-- Wholesalers add value by performing channel functions better or more cost effectively than producers.
-- They help manufacturers reach many small customers at a low cost.
-- They hold inventories, reducing inventory costs and risks to suppliers and customers.
+## Part 5: Agentic Commerce: The AI Agent as a Channel Intermediary [no-exercise]
+- Digital commerce is undergoing a new wave of disintermediation and re-intermediation as consumers delegate product search, comparison, and purchasing to AI shopping agents.
+- Viewing the AI agent through the lens of marketing channel theory reveals which channel functions it performs and how it shifts channel power.
 
-## Marketing Logistics
-- Marketing logistics involves planning, implementing, and controlling the physical flow of goods.
-- Focuses on getting the right product to the right customer in the right place at the right time.
-- Involves inbound distribution, outbound distribution, and reverse distribution.
+## The AI Shopping Agent as a New Channel Intermediary [exercise]
+[figure: agentic commerce channel placing the consumer's AI shopping agent as an intermediary layer between the consumer and producers or retail platforms]
+- Agentic commerce is buying and selling in which an autonomous AI agent searches, compares, and purchases goods or services on a buyer's behalf.
+- Evaluated against the eight classic channel functions, the AI shopping agent performs four core transaction-completing functions directly: information (gathering product specs, prices, and reviews across the market), contact (interfacing with seller APIs and catalogs), matching (filtering and ranking assortments to fit the consumer's stated constraints), and negotiation or checkout execution.
+- Because the AI agent inserts a new software intermediary layer that can bypass traditional retail storefronts or comparison sites, agentic commerce is a contemporary form of channel disintermediation and re-intermediation.
+- However, the AI agent does not take physical possession or title, so physical distribution, warehousing, and reverse logistics still depend on underlying fulfillment networks.
 
-## Supply Chain Management
-- Managing upstream and downstream value-added flows of materials, final goods, and related information.
-- Aims to maximize customer service while minimizing distribution costs.
-- Major functions include warehousing, inventory management, transportation, and logistics information management.
+## Position Effects and Channel Strategy in Agentic Commerce [no-exercise]
+- When an AI shopping agent acts as the intermediary between the buyer and the market, the agent's ranking and selection behavior determines which producers make the sale.
+- Empirical audits and experiments on AI shopping agents show that agents exhibit strong position effects: an option's physical rank position in a search results list significantly influences whether the AI agent selects it, even when objective product attributes are held constant (Wadi & Ma, 2026a).
+- Furthermore, large technology platforms that host consumer AI assistants can gain substantial channel power as administered gatekeepers if their agents control which sellers are queried first.
+- Producers and retailers must therefore decide whether to distribute through platform-owned AI shopping ecosystems, deploy their own brand-specific shopping assistants, or expose standardized machine-readable catalog feeds and checkout APIs so any independent AI agent can transact with them directly.
 
-## Third-Party Logistics (3PL)
-- Outsourcing logistics functions to third-party providers.
-- 3PL providers can help companies save money, improve service, and focus on core competencies.
-- They understand increasingly complex logistics environments.
+## Discussion: Designing a Channel Strategy for Agentic Commerce
+- Discussion: A specialty luggage brand currently sells 60 percent of its suitcases through an online marketplace aggregator and 40 percent through its own direct-to-consumer website. As consumers increasingly ask AI shopping agents to "buy a carry-on suitcase with a lifetime warranty under 250 dollars," how does the AI agent alter the channel power between the brand and the marketplace aggregator, how do list position effects (Wadi & Ma, 2026a) affect the brand's visibility, and what technical and channel steps should the brand take so AI agents can buy from its direct store?
 
-## Conclusion: Supply Chain and Distribution Channels
-- Distribution channels are the critical link between producers and final consumers.
-- Choosing the right channel structure balances control, coverage, and cost.
-- Effective channel management and logistics create sustainable competitive advantages.
-- As AI agents begin to search and buy for customers, they join the channel as a new intermediary that producers must plan for.
+## Key Takeaways
+- Marketing channels are sets of interdependent organizations within a broader value delivery network that bridge time, place, and possession gaps by reducing transaction complexity and matching assortments to buyer needs.
+- Channel members perform eight functions (information, promotion, contact, matching, negotiation, physical distribution, financing, and risk taking) across direct (zero-level) and indirect (one- or multi-level) channels using intensive, selective, or exclusive distribution.
+- Channel conflict divides into horizontal conflict (at the same level) and vertical conflict (across levels), while Vertical Marketing Systems (corporate, contractual, and administered VMS), horizontal systems, and multichannel networks coordinate channel behavior.
+- Retailers are classified by service level, product line breadth and depth, relative price, and organizational form, while merchant wholesalers, brokers, and agents create upstream efficiency through bulk-breaking, assortment building, and inventory holding.
+- Marketing logistics coordinates inbound, outbound, and reverse flows across warehousing, inventory management, transportation, and logistics information, frequently leveraging third-party logistics (3PL) partners.
+- In agentic commerce, the AI shopping agent acts as a new digital intermediary that performs information, contact, matching, and checkout functions, exhibits list position effects when evaluating ranked results (Wadi & Ma, 2026a), and requires producers to make their catalogs and checkout systems accessible to automated agents.

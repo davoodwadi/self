@@ -43,6 +43,7 @@ import {
 import {
   Arrow1,
   Bottle1,
+  Bottle2,
   Bulb2,
   Coins2,
   Company1,
@@ -452,7 +453,7 @@ export function PlcCascade() {
           <g key={s}>
             <rect x={x} y={y} width={196} height={40} fill={PAPER} stroke={INK} strokeWidth={1.5} />
             <Display x={x + 14} y={y + 28} fill={SIGNAL} size={20}>
-              {`0${i + 1}`}
+              {i + 1}
             </Display>
             <Key x={x + 50} y={y + 25} fill={INK} size={12}>
               {s}
@@ -484,11 +485,23 @@ export function PlcCurve() {
       {PLC_BOUNDS.slice(1, -1).map((x) => (
         <line key={x} x1={x} y1={42} x2={x} y2={290} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
       ))}
-      {PLC_STAGES.map((s, i) => (
-        <Key key={s} x={(PLC_BOUNDS[i] + PLC_BOUNDS[i + 1]) / 2} y={36} anchor="middle" fill={INK} size={9}>
-          {s}
-        </Key>
-      ))}
+      {PLC_STAGES.map((s, i) => {
+        const cx = (PLC_BOUNDS[i] + PLC_BOUNDS[i + 1]) / 2;
+        return i === 0 ? (
+          <g key={s}>
+            <Key x={cx} y={23} anchor="middle" fill={INK} size={9}>
+              Product
+            </Key>
+            <Key x={cx} y={36} anchor="middle" fill={INK} size={9}>
+              development
+            </Key>
+          </g>
+        ) : (
+          <Key key={s} x={cx} y={36} anchor="middle" fill={INK} size={9}>
+            {s}
+          </Key>
+        );
+      })}
       <line x1={80} y1={220} x2={764} y2={220} stroke={INK3} strokeWidth={1} />
       <Key x={72} y={224} anchor="end" fill={INK3} size={9}>
         0
@@ -950,44 +963,84 @@ export function LaunchRisk() {
    ========================================================================== */
 
 export const NPD_STEPS = [
-  ["Idea", "generation"],
-  ["Idea", "screening"],
-  ["Concept", "development", "and testing"],
-  ["Marketing", "strategy", "development"],
-  ["Business", "analysis"],
-  ["Product", "development"],
-  ["Test", "marketing"],
+  ["Idea generation"],
+  ["Idea screening"],
+  ["Concept development", "and testing"],
+  ["Marketing strategy", "development"],
+  ["Business analysis"],
+  ["Product development"],
+  ["Test marketing"],
   ["Commercialization"],
 ];
 
-export function NpdStaircase({ active }: { active: number[] }) {
+export function NpdStaircase({ active = [0, 1, 2, 3] }: { active?: number[] }) {
   const names = NPD_STEPS.map((l) => l.join(" ").toLowerCase());
+  const bw = 172;
+  const bh = 74;
+  const gap = 24;
+  const x0 = 20;
   return (
-    <Frame height={150} label={`A cascading flow of eight steps, each a little lower than the one before: ${names.join(", ")}. Steps ${active.map((a) => a + 1).join(", ")} are lit.`}>
+    <Frame
+      height={208}
+      label={`An eight-step new product development pipeline arranged in two connected rows of four steps: ${names.join(", ")}. Steps ${active.map((a) => a + 1).join(", ")} are highlighted.`}
+    >
       {NPD_STEPS.map((lines, i) => {
-        const x = 6 + i * 99;
-        const y = 8 + i * 9;
+        const col = i % 4;
+        const row = Math.floor(i / 4);
+        const x = x0 + col * (bw + gap);
+        const y = row === 0 ? 12 : 122;
         const on = active.includes(i);
         return (
           <g key={i}>
-            <rect x={x} y={y} width={92} height={70} fill={on ? SIGNAL_TINT : PAPER} stroke={on ? SIGNAL : INK3} strokeWidth={on ? 1.75 : 1.25} />
-            <Display x={x + 7} y={y + 20} fill={on ? SIGNAL : INK3} size={14}>
-              {`0${i + 1}`}
-            </Display>
+            <rect
+              x={x}
+              y={y}
+              width={bw}
+              height={bh}
+              fill={on ? SIGNAL_TINT : PAPER2}
+              stroke={on ? SIGNAL : INK}
+              strokeWidth={on ? 1.75 : 1.25}
+            />
+            <Key
+              x={x + 14}
+              y={y + 24}
+              fill={on ? SIGNAL : COUNTER}
+              size={10.5}
+              weight={600}
+            >
+              {`STEP ${i + 1}`}
+            </Key>
             {lines.map((l, j) => (
-              <Note key={l} x={x + 6} y={y + 38 + j * 12} fill={on ? INK : INK3} size={9.5}>
+              <Note
+                key={l}
+                x={x + 14}
+                y={y + 44 + j * 15}
+                fill={INK}
+                size={11.5}
+              >
                 {l}
               </Note>
             ))}
-            {i < NPD_STEPS.length - 1 ? (
-              <g>
-                <line x1={x + 92} y1={y + 44} x2={x + 98} y2={y + 44} stroke={INK3} strokeWidth={1.25} />
-                <path d={headAlong1(x + 99, y + 44, 1, 0, 5)} fill="none" stroke={INK3} strokeWidth={1.25} />
-              </g>
+            {col < 3 ? (
+              <Arrow1
+                x1={x + bw + 3}
+                y1={y + bh / 2}
+                x2={x + bw + gap - 3}
+                y2={y + bh / 2}
+                tone={on && active.includes(i + 1) ? SIGNAL : INK3}
+                width={1.5}
+              />
             ) : null}
           </g>
         );
       })}
+      <path
+        d="M694 86 V104 H106 V119"
+        fill="none"
+        stroke={INK3}
+        strokeWidth={1.5}
+      />
+      <path d={head2.down(106, 120)} fill="none" stroke={INK3} strokeWidth={1.5} />
     </Frame>
   );
 }
@@ -1983,5 +2036,344 @@ export function GlyphServiceHub() {
       ))}
       <circle cx="32" cy="20" r="7" fill="var(--signal)" />
     </svg>
+  );
+}
+
+/* ==========================================================================
+   47. THREE CONCENTRIC LEVELS OF A PRODUCT: core customer value, actual
+   product, and augmented product
+   ========================================================================== */
+
+export function ThreeProductLevels() {
+  return (
+    <Frame
+      height={296}
+      label="Three concentric levels of a product. At the center is core customer value: what the buyer is really buying. The middle ring is the actual product: product features, styling, quality level, brand name, and packaging. The outer ring is the augmented product: warranty coverage, free tech support, financing, and repair services."
+    >
+      <rect
+        x={24}
+        y={14}
+        width={752}
+        height={268}
+        rx={134}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <Key x={400} y={40} anchor="middle" fill={INK} size={11} weight={600}>
+        AUGMENTED PRODUCT
+      </Key>
+      <Note x={108} y={118} anchor="middle" fill={INK} size={11.5}>
+        Warranty coverage
+      </Note>
+      <Note x={108} y={188} anchor="middle" fill={INK} size={11.5}>
+        Free tech support
+      </Note>
+      <Note x={692} y={118} anchor="middle" fill={INK} size={11.5}>
+        Financing
+      </Note>
+      <Note x={692} y={188} anchor="middle" fill={INK} size={11.5}>
+        Repair services
+      </Note>
+
+      <rect
+        x={182}
+        y={56}
+        width={436}
+        height={196}
+        rx={98}
+        fill={PAPER}
+        stroke={COUNTER}
+        strokeWidth={1.75}
+      />
+      <Key x={400} y={82} anchor="middle" fill={COUNTER} size={11} weight={600}>
+        ACTUAL PRODUCT
+      </Key>
+      <Note x={244} y={132} anchor="middle" fill={COUNTER} size={11.5}>
+        Features
+      </Note>
+      <Note x={244} y={184} anchor="middle" fill={COUNTER} size={11.5}>
+        Styling
+      </Note>
+      <Note x={556} y={132} anchor="middle" fill={COUNTER} size={11.5}>
+        Quality level
+      </Note>
+      <Note x={556} y={184} anchor="middle" fill={COUNTER} size={11.5}>
+        Packaging
+      </Note>
+      <Note x={400} y={234} anchor="middle" fill={COUNTER} size={11.5}>
+        Brand name
+      </Note>
+
+      <rect
+        x={300}
+        y={104}
+        width={200}
+        height={98}
+        rx={49}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={2}
+      />
+      <Key x={400} y={146} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        CORE CUSTOMER VALUE
+      </Key>
+      <Note x={400} y={168} anchor="middle" fill={INK} size={11.5}>
+        Core benefit
+      </Note>
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   48. FOUR BRAND DEVELOPMENT STRATEGIES: 2x2 matrix across brand name and
+   product category
+   ========================================================================== */
+
+export function BrandDevelopmentMatrix() {
+  return (
+    <Frame
+      height={292}
+      label="Four brand development strategies in a two-by-two matrix across existing or new brand names and existing or new product categories: line extensions, brand extensions, multibrands, and new brands."
+    >
+      <Key x={468} y={20} anchor="middle" fill={INK} size={11} weight={600}>
+        PRODUCT CATEGORY
+      </Key>
+      <Key x={310} y={42} anchor="middle" fill={INK3} size={10.5}>
+        EXISTING
+      </Key>
+      <Key x={626} y={42} anchor="middle" fill={INK3} size={10.5}>
+        NEW
+      </Key>
+
+      <Key x={20} y={76} fill={INK} size={11} weight={600}>
+        BRAND NAME
+      </Key>
+      <Key x={20} y={114} fill={INK3} size={10.5}>
+        EXISTING
+      </Key>
+      <Key x={20} y={234} fill={INK3} size={10.5}>
+        NEW
+      </Key>
+
+      {/* Top-left: Line extensions */}
+      <rect
+        x={160}
+        y={54}
+        width={300}
+        height={108}
+        fill={PAPER2}
+        stroke={INK}
+        strokeWidth={1.25}
+      />
+      <Key x={176} y={80} fill={INK} size={11} weight={600}>
+        LINE EXTENSIONS
+      </Key>
+      <Note x={176} y={104} fill={INK} size={11}>
+        New forms, sizes,
+      </Note>
+      <Note x={176} y={120} fill={INK} size={11}>
+        colors, or flavors
+      </Note>
+      <Pack2 x={356} y={142} w={22} h={26} tone={INK} fill={PAPER} />
+      <Star1 x={356} y={129} k={0.34} fill={INK} />
+      <Pack2 x={390} y={142} w={26} h={34} tone={INK} fill={PAPER} />
+      <Star1 x={390} y={125} k={0.38} fill={INK} />
+      <Pack2 x={428} y={142} w={30} h={42} tone={INK} fill={PAPER} />
+      <Star1 x={428} y={121} k={0.42} fill={INK} />
+
+      {/* Top-right: Brand extensions */}
+      <rect
+        x={476}
+        y={54}
+        width={300}
+        height={108}
+        fill={PAPER2}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={492} y={80} fill={COUNTER} size={11} weight={600}>
+        BRAND EXTENSIONS
+      </Key>
+      <Note x={492} y={104} fill={INK} size={11}>
+        Existing brand name
+      </Note>
+      <Note x={492} y={120} fill={INK} size={11}>
+        in a new category
+      </Note>
+      <Pack2 x={674} y={142} w={28} h={36} tone={INK} fill={PAPER} />
+      <Star1 x={674} y={124} k={0.4} fill={COUNTER} />
+      <Arrow1 x1={696} y1={124} x2={718} y2={124} tone={COUNTER} width={1.5} />
+      <Bottle2 x={742} y={142} tone={COUNTER} fill={PAPER} />
+      <Star1 x={742} y={122} k={0.4} fill={COUNTER} />
+
+      {/* Bottom-left: Multibrands */}
+      <rect
+        x={160}
+        y={174}
+        width={300}
+        height={108}
+        fill={PAPER2}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={176} y={200} fill={COUNTER} size={11} weight={600}>
+        MULTIBRANDS
+      </Key>
+      <Note x={176} y={224} fill={INK} size={11}>
+        Multiple brand names
+      </Note>
+      <Note x={176} y={240} fill={INK} size={11}>
+        in one category
+      </Note>
+      <Pack2 x={356} y={262} w={26} h={36} tone={INK} fill={PAPER} />
+      <Star1 x={356} y={244} k={0.38} fill={INK} />
+      <Pack2 x={392} y={262} w={26} h={36} tone={COUNTER} fill={PAPER} />
+      <circle cx={392} cy={244} r={5.5} fill={COUNTER} />
+      <Pack2 x={428} y={262} w={26} h={36} tone={SIGNAL} fill={PAPER} />
+      <path d="M428 237 L434 244 L428 251 L422 244 Z" fill={SIGNAL} />
+
+      {/* Bottom-right: New brands */}
+      <rect
+        x={476}
+        y={174}
+        width={300}
+        height={108}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.75}
+      />
+      <Key x={492} y={200} fill={SIGNAL} size={11} weight={600}>
+        NEW BRANDS
+      </Key>
+      <Note x={492} y={224} fill={INK} size={11}>
+        New brand name
+      </Note>
+      <Note x={492} y={240} fill={INK} size={11}>
+        for a new category
+      </Note>
+      <Bottle2 x={718} y={262} tone={SIGNAL} fill={PAPER} />
+      <path d="M718 235 L724 242 L718 249 L712 242 Z" fill={SIGNAL} />
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   49. HUMAN-DELIVERED VS AI-DELIVERED SERVICES ACROSS FOUR CHARACTERISTICS
+   ========================================================================== */
+
+export function AiServiceComparison() {
+  const rows = [
+    {
+      name: "INSEPARABILITY",
+      human: "Tied to human labor shifts",
+      ai: "Available instantly at any hour",
+    },
+    {
+      name: "PERISHABILITY",
+      human: "Rigid call-center capacity limits",
+      ai: "Scales to concurrent demand spikes",
+    },
+    {
+      name: "VARIABILITY",
+      human: "Varies by person, time, and place",
+      ai: "Probabilistic outputs across runs",
+    },
+    {
+      name: "INTANGIBILITY",
+      human: "Physical facilities and staff signals",
+      ai: "Transparent AI disclosure for trust",
+    },
+  ];
+  return (
+    <Frame
+      height={304}
+      label="Comparison of human-delivered services and AI-delivered services across intangibility, inseparability, variability, and perishability."
+    >
+      <Key x={20} y={30} fill={INK} size={10.5} weight={600}>
+        CHARACTERISTIC
+      </Key>
+      <Key x={338} y={30} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        HUMAN-DELIVERED SERVICES
+      </Key>
+      <Key x={638} y={30} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        AI-DELIVERED SERVICES
+      </Key>
+
+      {rows.map((r, i) => {
+        const y = 46 + i * 62;
+        const cy = y + 27;
+        return (
+          <g key={r.name}>
+            <Key x={20} y={cy + 4} fill={INK} size={10.5} weight={600}>
+              {r.name}
+            </Key>
+
+            <rect
+              x={196}
+              y={y}
+              width={284}
+              height={54}
+              fill={PAPER2}
+              stroke={COUNTER}
+              strokeWidth={1.25}
+            />
+            <Note x={256} y={cy + 4} fill={INK} size={11.5}>
+              {r.human}
+            </Note>
+
+            <rect
+              x={496}
+              y={y}
+              width={284}
+              height={54}
+              fill={SIGNAL_TINT}
+              stroke={SIGNAL}
+              strokeWidth={1.5}
+            />
+            <Note x={560} y={cy + 4} fill={INK} size={11.5}>
+              {r.ai}
+            </Note>
+          </g>
+        );
+      })}
+
+      {/* Row 0 glyphs: clock vs 24/7 */}
+      <circle cx={226} cy={73} r={13} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <path d="M226 65 V73 L232 77" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinecap="round" />
+      <rect x={510} y={61} width={38} height={24} rx={4} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={529} y={77} anchor="middle" fill={SIGNAL} size={9.5} weight={600}>
+        24/7
+      </Key>
+
+      {/* Row 1 glyphs: fixed ceiling bars vs elastic scaling bars */}
+      <line x1={210} y1={122} x2={242} y2={122} stroke={COUNTER} strokeWidth={1.75} />
+      {[214, 224, 234].map((x) => (
+        <rect key={x} x={x} y={126} width={6} height={22} fill={COUNTER} />
+      ))}
+      {[
+        [512, 138, 10],
+        [521, 130, 18],
+        [530, 120, 28],
+        [539, 134, 14],
+      ].map(([x, y, h]) => (
+        <rect key={x} x={x} y={y} width={6} height={h} fill={SIGNAL} />
+      ))}
+
+      {/* Row 2 glyphs: two people vs branching probabilistic paths */}
+      <Person3 x={218} y={214} k={0.9} stroke={COUNTER} />
+      <Person3 x={235} y={214} k={0.9} stroke={COUNTER} />
+      <circle cx={514} cy={199} r={4} fill={SIGNAL} />
+      <path d="M518 199 L536 190 M518 199 L536 208" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <circle cx={540} cy={190} r={4} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <circle cx={540} cy={208} r={4} fill={SIGNAL} />
+
+      {/* Row 3 glyphs: facility vs AI disclosure badge */}
+      <Company1 cx={226} base={276} w={26} h={24} tone={COUNTER} />
+      <rect x={510} y={249} width={38} height={24} rx={4} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={529} y={265} anchor="middle" fill={SIGNAL} size={10} weight={600}>
+        AI
+      </Key>
+    </Frame>
   );
 }

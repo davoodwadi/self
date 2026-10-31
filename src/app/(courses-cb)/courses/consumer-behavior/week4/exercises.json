@@ -1,342 +1,306 @@
 [
   {
     "type": "order",
-    "slide_id": "drive-theory-tension-and-reduction",
-    "prompt": "Leo has just finished a long run on a hot afternoon. Put his moments in the order drive theory describes.",
+    "slide_id": "drive-theory-and-homeostasis",
+    "prompt": "A cyclist finishes a long summer ride without a water bottle. Put the moments of drive theory in order, from the first to the last.",
     "steps": [
       {
-        "id": "need",
-        "text": "After the run, Leo's body is short of water.",
-        "explanation": "It starts with an unmet need."
+        "id": "equilibrium",
+        "text": "Before the ride, the cyclist's body is in a balanced physiological equilibrium.",
+        "explanation": "Drive theory starts from homeostasis, the balanced state the organism tries to keep."
+      },
+      {
+        "id": "disrupted",
+        "text": "Hours of heat and effort leave the cyclist dehydrated, so homeostasis is disrupted.",
+        "explanation": "A biological need appears when the body moves away from equilibrium."
       },
       {
         "id": "drive",
-        "text": "A dry mouth and a pounding head leave him feeling uncomfortable.",
-        "explanation": "The unmet need creates an uncomfortable internal state called a drive."
+        "text": "An unpleasant feeling of thirst builds and pushes the cyclist toward a drink.",
+        "explanation": "The need produces a drive, an unpleasant internal state of arousal."
       },
       {
-        "id": "action",
-        "text": "He heads straight into the corner shop and grabs a cold bottle of water.",
-        "explanation": "The drive pushes the consumer toward an action that reduces the discomfort."
+        "id": "purchase",
+        "text": "The cyclist stops at a corner store and buys a bottle of water.",
+        "explanation": "Behavior is the effort to reduce the internal tension."
       },
       {
-        "id": "satisfied",
-        "text": "He drinks the whole bottle on the bench outside.",
-        "explanation": "The need is satisfied."
-      },
-      {
-        "id": "balance",
-        "text": "The discomfort fades, and Leo feels like himself again.",
-        "explanation": "After the need is satisfied, tension falls and the consumer returns to a more balanced state."
+        "id": "subsides",
+        "text": "After drinking, the thirst fades until the next long ride.",
+        "explanation": "Once consumption restores equilibrium, the drive subsides until the need recurs."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "expectancy-theory-effort-performance-and-outcome",
-    "prompt": "Each case turns on one belief from expectancy theory. Which belief is it about?",
+    "slide_id": "expectancy-theory-expectancy-instrumentality-and-valence",
+    "prompt": "Each consumer below has stopped using a product. Which expectancy theory component has failed?",
     "options": [
-      {
-        "id": "expectancy",
-        "label": "Expectancy"
-      },
-      {
-        "id": "instrumentality",
-        "label": "Instrumentality"
-      },
-      {
-        "id": "valence",
-        "label": "Valence"
-      }
+      { "id": "expectancy", "label": "Expectancy" },
+      { "id": "instrumentality", "label": "Instrumentality" },
+      { "id": "valence", "label": "Valence" }
     ],
     "cases": [
       {
-        "id": "meal-kit",
-        "text": "Nadia doubts she could follow the meal-kit recipes well enough to cook a good dinner.",
+        "id": "language-app",
+        "text": "A traveller quits a language app because he doubts that daily practice will ever make him fluent.",
         "answer": "expectancy",
-        "explanation": "Expectancy is the belief that effort will lead to good performance. Nadia doubts her effort would lead to a good dinner."
+        "explanation": "He doubts that effort will lead to successful performance, so expectancy has failed."
       },
       {
-        "id": "coding",
-        "text": "Tom is sure he can finish the online coding course, but he doubts the certificate will get him hired.",
+        "id": "certificate",
+        "text": "An accountant passes an online data course with top marks but sees that employers in her field ignore the certificate.",
         "answer": "instrumentality",
-        "explanation": "Instrumentality is the belief that good performance will lead to a desired outcome. Tom doubts that finishing (performance) leads to a job (outcome)."
+        "explanation": "Performance was achieved, but she no longer believes it leads to the outcome, so instrumentality has failed."
       },
       {
-        "id": "5k",
-        "text": "Aisha knows the training plan would make her 5K faster, but she doesn't much care about her time.",
+        "id": "marathon",
+        "text": "A runner is sure the training plan would get him to a marathon finish line, and that finishing would earn a medal, but he does not care about medals.",
         "answer": "valence",
-        "explanation": "Valence is the value the consumer places on the outcome. A faster time is worth little to Aisha."
+        "explanation": "Effort and performance both look effective, but the outcome holds little value for him, so valence has failed."
       },
       {
-        "id": "ten-minutes",
-        "text": "A language app's ad shows that ten minutes a day is enough to pass the exam.",
+        "id": "piano",
+        "text": "A retiree buys a keyboard to learn piano but cancels the lessons after deciding her stiff hands could never play a full song.",
         "answer": "expectancy",
-        "explanation": "The ad makes the goal seem possible: a small effort leads to good performance. That is expectancy."
+        "explanation": "She believes effort will not produce performance, which is a failure of expectancy."
       },
       {
-        "id": "camera",
-        "text": "A camera brand shows customers' sharp photos winning contests and getting published.",
+        "id": "loyalty-tier",
+        "text": "A shopper reaches the gold tier of a store program, then learns gold members receive no better prices than anyone else.",
         "answer": "instrumentality",
-        "explanation": "Good photos (performance) lead to prizes and publication (a desired outcome). That link is instrumentality."
-      },
-      {
-        "id": "skincare",
-        "text": "A skincare ad reminds buyers how good it feels when friends compliment their skin.",
-        "answer": "valence",
-        "explanation": "The ad raises the value placed on the outcome, so the result feels valuable. That is valence."
+        "explanation": "Reaching the tier does not lead to the expected outcome, so the instrumentality link is broken."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "intrinsic-and-extrinsic-motivation-why-consumers-write-reviews",
-    "prompt": "Each case shows why a consumer writes, or stops writing, online reviews. Name the motive at work.",
+    "slide_id": "biogenic-psychogenic-utilitarian-and-hedonic-needs",
+    "prompt": "Which kind of need is each purchase mainly meant to satisfy?",
     "options": [
-      { "id": "intrinsic", "label": "Intrinsic motivation" },
-      { "id": "extrinsic", "label": "Extrinsic motivation" },
-      { "id": "crowding", "label": "Crowding out" }
+      { "id": "biogenic", "label": "Biogenic" },
+      { "id": "psychogenic", "label": "Psychogenic" },
+      { "id": "utilitarian", "label": "Utilitarian" },
+      { "id": "hedonic", "label": "Hedonic" }
     ],
     "cases": [
       {
-        "id": "trail",
-        "text": "Sam reviews a hiking app to warn other hikers that its maps skip a closed trail.",
-        "answer": "intrinsic",
-        "explanation": "Intrinsic motivation: Sam writes to help other people, not for a reward."
+        "id": "water",
+        "text": "After a power outage, a family buys bottled water and blankets to get through the night.",
+        "answer": "biogenic",
+        "explanation": "Water and warmth are innate physiological requirements for sustaining life."
       },
       {
-        "id": "points",
-        "text": "Priya reviews a blender because the store adds 200 loyalty points for every review.",
-        "answer": "extrinsic",
-        "explanation": "Extrinsic motivation: the review is written for an outside reward."
+        "id": "membership",
+        "text": "A new manager joins an exclusive golf club mainly so colleagues see her as successful.",
+        "answer": "psychogenic",
+        "explanation": "Status and achievement are psychogenic needs, acquired by becoming a member of a culture."
       },
       {
-        "id": "paid",
-        "text": "Leo used to review cafés for fun. After an app started paying $1 per review, he now writes only when he is paid.",
-        "answer": "crowding",
-        "explanation": "Crowding out: the reward replaced the enjoyment that used to drive Leo's reviews."
+        "id": "freezer",
+        "text": "A shopper chooses a chest freezer by comparing storage capacity and yearly energy use.",
+        "answer": "utilitarian",
+        "explanation": "Storage capacity and energy use are objective, tangible attributes."
       },
       {
-        "id": "fun",
-        "text": "Mia rates every recipe she cooks because writing about food is something she enjoys.",
-        "answer": "intrinsic",
-        "explanation": "Intrinsic motivation: the activity itself is rewarding."
+        "id": "spa",
+        "text": "A couple books a candlelit spa evening for the scents, warmth, and sense of escape.",
+        "answer": "hedonic",
+        "explanation": "Sensory pleasure and fantasy are subjective, experiential benefits."
       },
       {
-        "id": "draw",
-        "text": "Omar posts a review of his headphones to enter a draw for a $500 gift card.",
-        "answer": "extrinsic",
-        "explanation": "Extrinsic motivation: the draw is an outside reward."
+        "id": "sleep",
+        "text": "A night-shift nurse buys blackout curtains so she can sleep during the day.",
+        "answer": "biogenic",
+        "explanation": "Sleep is a physiological requirement."
       },
       {
-        "id": "job",
-        "text": "Once a hotel paid Ana for reviews, writing one began to feel like a chore, and she stopped writing them to help other travelers.",
-        "answer": "crowding",
-        "explanation": "Crowding out: when a kind act is paid, it can start to feel like a transaction."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "needs-wants-and-demand",
-    "prompt": "Sort each case: is it a need, a want, or demand?",
-    "bins": [
-      {
-        "id": "need",
-        "label": "Need"
-      },
-      {
-        "id": "want",
-        "label": "Want"
-      },
-      {
-        "id": "demand",
-        "label": "Demand"
-      }
-    ],
-    "cards": [
-      {
-        "id": "warm",
-        "text": "Staying warm on a freezing winter morning",
-        "bin": "need",
-        "explanation": "A basic biological requirement, like hunger or safety."
-      },
-      {
-        "id": "accepted",
-        "text": "Feeling accepted by a new group of classmates",
-        "bin": "need",
-        "explanation": "Belonging is a basic psychological requirement."
-      },
-      {
-        "id": "sushi",
-        "text": "Picking sushi as the way to deal with lunchtime hunger",
-        "bin": "want",
-        "explanation": "Sushi is the specific product chosen to satisfy the need (hunger)."
-      },
-      {
-        "id": "sports-car",
-        "text": "Dreaming of a particular sports car with no way to pay for it",
-        "bin": "want",
-        "explanation": "A specific product, but without the ability to pay it is a want, not demand."
-      },
-      {
-        "id": "headphones",
-        "text": "Having the money, and being ready to pay it, for one pair of noise-cancelling headphones",
-        "bin": "demand",
-        "explanation": "A want supported by both the ability and willingness to pay."
-      },
-      {
-        "id": "hotel",
-        "text": "A traveller with savings who books one particular hotel for tonight",
-        "bin": "demand",
-        "explanation": "The want is backed by the ability to pay and the willingness to do it."
+        "id": "concert",
+        "text": "A student buys front-row concert tickets for the thrill of the live show.",
+        "answer": "hedonic",
+        "explanation": "Excitement and sensory pleasure are hedonic needs."
       }
     ]
   },
   {
     "type": "match",
-    "slide_id": "maslows-hierarchy-in-consumer-markets",
-    "prompt": "Match each level of Maslow's hierarchy with the purchase that serves it.",
+    "slide_id": "maslows-hierarchy-of-needs-in-consumer-markets",
+    "prompt": "Match each level of Maslow's hierarchy with the purchase that most directly serves it.",
     "term_label": "Level of need",
     "match_label": "Purchase",
     "pairs": [
       {
         "id": "physiological",
         "term": "Physiological",
-        "match": "A blackout eye mask so a night-shift nurse can sleep during the day.",
-        "explanation": "Physiological needs include food, water, and sleep."
+        "match": "A hiker buys trail mix and an electrolyte drink before a long climb.",
+        "explanation": "Food and water serve the physiological needs at the base of the hierarchy."
       },
       {
         "id": "safety",
         "term": "Safety",
-        "match": "A smoke alarm and a stronger door lock for a first apartment.",
-        "explanation": "Safety needs include protection, stability, and health."
+        "match": "A new parent installs a smoke detector and buys home insurance.",
+        "explanation": "Physical security and insurance serve safety needs."
       },
       {
-        "id": "belonging-esteem",
-        "term": "Belonging and esteem",
-        "match": "A club jersey so a new member fits in with the rest of the team.",
-        "explanation": "Belonging and esteem needs include friendship, acceptance, achievement, and status."
+        "id": "belonging",
+        "term": "Belongingness and love",
+        "match": "A newcomer to the city joins a weekly running club to make friends.",
+        "explanation": "Friendship and community clubs serve belongingness and love needs."
+      },
+      {
+        "id": "esteem",
+        "term": "Esteem",
+        "match": "A chef pays for a prestigious culinary award entry to gain recognition from peers.",
+        "explanation": "Prestige, mastery, and recognition serve esteem needs."
       },
       {
         "id": "self-actualization",
         "term": "Self-actualization",
-        "match": "Pottery lessons for someone who has always wanted to become a potter.",
-        "explanation": "Self-actualization involves growth and becoming the person one wants to be."
+        "match": "A retired engineer enrols in a pottery course to express himself creatively.",
+        "explanation": "Creative expression and personal growth sit at the apex as self-actualization."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "motivational-conflicts-three-difficult-choices",
-    "prompt": "Each shopper below faces a difficult choice. Name the motivational conflict in each case.",
+    "slide_id": "approach-avoidance-and-avoidance-avoidance-conflicts",
+    "prompt": "Which motivational conflict does each consumer face?",
     "options": [
-      {
-        "id": "aa",
-        "label": "Approach-approach"
-      },
-      {
-        "id": "av",
-        "label": "Approach-avoidance"
-      },
-      {
-        "id": "vv",
-        "label": "Avoidance-avoidance"
-      }
+      { "id": "aa", "label": "Approach-approach" },
+      { "id": "av", "label": "Approach-avoidance" },
+      { "id": "vv", "label": "Avoidance-avoidance" }
     ],
     "cases": [
       {
-        "id": "concert",
-        "text": "Mia has saved enough for either a concert ticket or new running shoes. She wants both, but she can only buy one.",
+        "id": "laptop-or-bike",
+        "text": "With one bonus cheque, an employee would love both a new laptop and a road bike but can afford only one.",
         "answer": "aa",
-        "explanation": "Approach-approach conflict: two attractive options, but only one can be chosen."
+        "explanation": "Two desirable alternatives compete under one budget."
       },
       {
-        "id": "car-repair",
-        "text": "Lena's car has broken down. She can pay for an expensive repair, or take a long, crowded bus to work every day.",
-        "answer": "vv",
-        "explanation": "Avoidance-avoidance conflict: every available option has an unwanted consequence."
-      },
-      {
-        "id": "cake",
-        "text": "Omar wants the rich chocolate cake for the weekend, but he dreads all the calories that come with it.",
+        "id": "sports-car",
+        "text": "A buyer loves a sports car's speed and looks but dreads its insurance premiums.",
         "answer": "av",
-        "explanation": "Approach-avoidance conflict: the same option has an attractive benefit and an unpleasant cost."
-      },
-      {
-        "id": "apartments",
-        "text": "Jonah has been offered two sunny apartments near campus. He loves both, but he can rent only one.",
-        "answer": "aa",
-        "explanation": "Approach-approach conflict: two attractive options, but only one can be chosen."
-      },
-      {
-        "id": "console",
-        "text": "A new game console would be great fun for Sam, but buying it would use up most of his savings.",
-        "answer": "av",
-        "explanation": "Approach-avoidance conflict: the same option has an attractive benefit and an unpleasant cost."
+        "explanation": "One option carries both an attractive outcome and an undesirable outcome."
       },
       {
         "id": "dentist",
-        "text": "Priya can sit through an unpleasant dentist visit now, or risk a painful toothache later.",
+        "text": "A patient with a cracked tooth must choose between a costly crown and living with ongoing pain.",
         "answer": "vv",
-        "explanation": "Avoidance-avoidance conflict: every available option has an unwanted consequence."
+        "explanation": "Both alternatives carry a negative consequence."
+      },
+      {
+        "id": "cake",
+        "text": "A shopper wants a slice of chocolate cake but feels guilty about the sugar.",
+        "answer": "av",
+        "explanation": "The same product attracts through taste and repels through health guilt."
+      },
+      {
+        "id": "phone-repair",
+        "text": "A student with a shattered phone screen must either pay for an expensive repair or keep using a phone that cuts her fingers.",
+        "answer": "vv",
+        "explanation": "Each available option is undesirable."
+      },
+      {
+        "id": "two-restaurants",
+        "text": "A couple with one free evening is torn between a new sushi bar and their favourite Italian bistro.",
+        "answer": "aa",
+        "explanation": "Both options are attractive, and time allows only one."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "values-guide-consumer-choices",
-    "prompt": "Each shopper explains a choice. Sort the reasons by the value behind them.",
+    "slide_id": "intrinsic-versus-extrinsic-motivation-and-crowding-out",
+    "prompt": "Each person below is acting for a reason. Sort each case by whether the motive is intrinsic or extrinsic.",
     "bins": [
-      {
-        "id": "functional",
-        "label": "Functional"
-      },
-      {
-        "id": "social",
-        "label": "Social"
-      },
-      {
-        "id": "experiential",
-        "label": "Experiential"
-      }
+      { "id": "intrinsic", "label": "Intrinsic motivation" },
+      { "id": "extrinsic", "label": "Extrinsic motivation" }
     ],
     "cards": [
       {
-        "id": "battery",
-        "text": "“I bought this laptop because the battery lasts all day and it never crashes.”",
-        "bin": "functional",
-        "explanation": "Performance and reliability: functional values."
+        "id": "forum-help",
+        "text": "A hobbyist answers beginners' questions on a camera forum because she enjoys helping them take better photos.",
+        "bin": "intrinsic",
+        "explanation": "She acts for the prosocial meaning and enjoyment of the activity itself."
       },
       {
-        "id": "one-tap",
-        "text": "“I switched banks because paying with one tap on my phone is easier.”",
-        "bin": "functional",
-        "explanation": "Convenience: a functional value."
+        "id": "survey-points",
+        "text": "A shopper completes a store survey only to collect 500 loyalty points.",
+        "bin": "extrinsic",
+        "explanation": "The motive is an external contingency separated from the activity."
       },
       {
-        "id": "team-scarf",
-        "text": "“I wear the club scarf so everyone at the match knows I'm one of them.”",
-        "bin": "social",
-        "explanation": "Belonging and how others see the consumer: social values."
+        "id": "recipe-blog",
+        "text": "A home cook posts recipes online for the pleasure of sharing what he makes.",
+        "bin": "intrinsic",
+        "explanation": "The activity itself is satisfying."
+      },
+      {
+        "id": "sweepstakes",
+        "text": "A diner rates a restaurant app because every rating enters him in a prize draw.",
+        "bin": "extrinsic",
+        "explanation": "A sweepstakes entry is an external reward for the behavior."
+      },
+      {
+        "id": "rebate",
+        "text": "A buyer registers her new blender online to claim a 20-dollar cash rebate.",
+        "bin": "extrinsic",
+        "explanation": "A cash rebate is an outside reward, not part of the activity."
+      },
+      {
+        "id": "trail-report",
+        "text": "A hiker posts a trail condition report so the next hikers know the bridge is out.",
+        "bin": "intrinsic",
+        "explanation": "Helping fellow hikers make informed choices is a prosocial, intrinsic motive."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "product-message-and-situational-involvement",
+    "prompt": "Which source of involvement explains why each consumer is paying close attention?",
+    "options": [
+      { "id": "product", "label": "Product involvement" },
+      { "id": "message", "label": "Message-response involvement" },
+      { "id": "situation", "label": "Purchase situation involvement" }
+    ],
+    "cases": [
+      {
+        "id": "gift-wine",
+        "text": "A shopper who normally grabs any bottle of wine spends twenty minutes choosing one to bring to his new manager's dinner.",
+        "answer": "situation",
+        "explanation": "The gift occasion is a temporary contextual factor that raises involvement."
+      },
+      {
+        "id": "guitar",
+        "text": "A musician who sees herself as a serious guitarist always researches strings and amplifiers in depth.",
+        "answer": "product",
+        "explanation": "The category is central to her self-identity, which is enduring product involvement."
+      },
+      {
+        "id": "podcast-ad",
+        "text": "A listener who skips most ads stays to hear a story-driven podcast ad for a bank all the way through.",
+        "answer": "message",
+        "explanation": "The narrative style raises his motivation to process the communication."
+      },
+      {
+        "id": "flight-closing",
+        "text": "A traveller compares airline seats carefully because the gate closes in ten minutes and the last flight is nearly full.",
+        "answer": "situation",
+        "explanation": "Acute time pressure in this purchase situation raises involvement."
       },
       {
         "id": "watch",
-        "text": "“People at work notice this watch. It says I've made it.”",
-        "bin": "social",
-        "explanation": "Recognition: a social value."
+        "text": "A collector follows every review of luxury watches because the items are expensive and socially visible.",
+        "answer": "product",
+        "explanation": "Expensive, socially visible categories carry high enduring product involvement."
       },
       {
-        "id": "rollercoaster",
-        "text": "“We bought the theme-park passes just for the thrill of the rides.”",
-        "bin": "experiential",
-        "explanation": "Excitement: an experiential value."
-      },
-      {
-        "id": "blanket",
-        "text": "“I chose the soft wool blanket because curling up in it feels so cosy.”",
-        "bin": "experiential",
-        "explanation": "Comfort and pleasure: experiential values."
+        "id": "interactive-ad",
+        "text": "A shopper scrolls through every panel of an interactive online ad for running shoes, reading each one.",
+        "answer": "message",
+        "explanation": "The media format draws the consumer into processing the message."
       }
     ]
   }

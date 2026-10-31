@@ -1,147 +1,89 @@
 [
   {
     "type": "identify",
-    "slide_id": "defining-a-product",
-    "prompt": "Each of these is offered to a market, so each is a product. Which kind of product is it?",
+    "slide_id": "consumer-product-classifications",
+    "prompt": "Which consumer product classification fits each purchase?",
     "options": [
-      { "id": "object", "label": "Physical object" },
-      { "id": "service", "label": "Service" },
-      { "id": "event", "label": "Event" },
-      { "id": "person", "label": "Person" },
-      { "id": "place", "label": "Place" },
-      { "id": "organization", "label": "Organization" },
-      { "id": "idea", "label": "Idea" }
-    ],
-    "cases": [
-      {
-        "id": "tourism-montreal",
-        "text": "Tourism Montréal runs ads inviting Americans to spend a weekend in the city.",
-        "answer": "place",
-        "explanation": "The city itself is being offered for attention and a visit, so the product is a place."
-      },
-      {
-        "id": "osheaga",
-        "text": "Osheaga sells passes for its three-day music festival in Parc Jean-Drapeau.",
-        "answer": "event",
-        "explanation": "A festival happens on set dates, so the product is an event."
-      },
-      {
-        "id": "seatbelt",
-        "text": "A government campaign urges drivers to put their phone away at the wheel.",
-        "answer": "idea",
-        "explanation": "Nothing is sold here. The campaign offers a way of thinking and acting, so the product is an idea."
-      },
-      {
-        "id": "centraide",
-        "text": "Centraide asks people to support its work across the community with a monthly gift.",
-        "answer": "organization",
-        "explanation": "People are asked to back the charity as a whole, so the product is an organization."
-      },
-      {
-        "id": "athlete",
-        "text": "An agent pitches a star hockey player to brands looking for a new face.",
-        "answer": "person",
-        "explanation": "The player is the one being offered to the brands, so the product is a person."
-      },
-      {
-        "id": "haircut",
-        "text": "A salon on Saint-Denis offers a cut and style for $45.",
-        "answer": "service",
-        "explanation": "The customer pays for work done for them, so the product is a service."
-      },
-      {
-        "id": "bike",
-        "text": "A shop sells a city bike that buyers can ride home the same day.",
-        "answer": "object",
-        "explanation": "The bike is a thing the buyer takes away, so the product is a physical object."
-      }
-    ]
-  },
-  {
-    "type": "identify",
-    "slide_id": "specialty-and-unsought-goods",
-    "prompt": "Which kind of consumer good is each purchase?",
-    "options": [
-      { "id": "convenience", "label": "Convenience good" },
-      { "id": "shopping", "label": "Shopping good" },
-      { "id": "specialty", "label": "Specialty good" },
-      { "id": "unsought", "label": "Unsought good" }
+      { "id": "convenience", "label": "Convenience product" },
+      { "id": "shopping", "label": "Shopping product" },
+      { "id": "specialty", "label": "Specialty product" },
+      { "id": "unsought", "label": "Unsought product" }
     ],
     "cases": [
       {
         "id": "gum",
         "text": "A student grabs a pack of gum at the checkout without looking at other brands.",
         "answer": "convenience",
-        "explanation": "It is bought often and with minimal comparison, like toothpaste."
+        "explanation": "It is bought frequently, immediately, and with minimal comparison and buying effort."
       },
       {
         "id": "coat",
-        "text": "A shopper visits three stores to compare winter coats on warmth, price, and look.",
+        "text": "A shopper visits three stores to compare winter coats on warmth, price, and style.",
         "answer": "shopping",
-        "explanation": "The buyer plans and compares on quality, price, and style, like furniture."
+        "explanation": "The buyer compares alternatives carefully on suitability, quality, price, and style."
       },
       {
         "id": "watch",
-        "text": "A buyer waits eight months for one particular watch brand and will not take any other.",
+        "text": "A buyer waits eight months for one particular luxury watch brand and will not accept a substitute.",
         "answer": "specialty",
-        "explanation": "Strong brand identification leads to special purchase effort, like a luxury car."
+        "explanation": "Strong brand identification leads the buyer to make a special purchase effort."
       },
       {
         "id": "funeral",
-        "text": "A salesperson calls about a pre-paid funeral plan that the family had never considered.",
+        "text": "A salesperson calls about a pre-paid funeral plan that the family had never thought of buying.",
         "answer": "unsought",
-        "explanation": "It is a product consumers do not normally think of buying, like life insurance."
+        "explanation": "Unsought products are items the consumer either does not know about or does not normally think of buying."
       },
       {
-        "id": "milk",
-        "text": "A parent picks up milk at the dépanneur on the way home, as they do every few days.",
+        "id": "detergent",
+        "text": "A parent picks up laundry detergent at a corner grocery store on the way home.",
         "answer": "convenience",
-        "explanation": "It is bought frequently with little thought about alternatives."
+        "explanation": "Laundry detergent is a low-priced item placed in widespread locations and bought frequently with minimal effort."
       },
       {
         "id": "sofa",
-        "text": "A couple spends two weekends testing sofas before choosing one.",
+        "text": "A couple spends two weekends comparing sofas at furniture showrooms before choosing one.",
         "answer": "shopping",
-        "explanation": "This takes more planning and comparison on quality, price, and style."
+        "explanation": "Furniture is purchased less frequently and compared carefully across fewer outlets with deeper sales support."
       }
     ]
   },
   {
     "type": "order",
-    "slide_id": "the-product-life-cycle",
-    "prompt": "Put the five stages of the product life cycle in order, from first to last.",
+    "slide_id": "stages-of-the-product-life-cycle-development-to-growth",
+    "prompt": "Put the five stages of the Product Life Cycle (PLC) in order, from first to last.",
     "steps": [
       {
-        "id": "development",
-        "text": "Development",
-        "explanation": "The product is developed before it can reach the market."
+        "id": "product-development",
+        "text": "Product development",
+        "explanation": "The company first finds and develops a new product idea while sales are zero and investment costs mount."
       },
       {
         "id": "introduction",
         "text": "Introduction",
-        "explanation": "Next, the product is introduced to the market."
+        "explanation": "Next, the product is introduced in the market, with slow sales growth and heavy launch expenses."
       },
       {
         "id": "growth",
         "text": "Growth",
-        "explanation": "After introduction, the product grows."
+        "explanation": "After introduction, rapid market acceptance and increasing profits follow as early and later buyers adopt the product."
       },
       {
         "id": "maturity",
         "text": "Maturity",
-        "explanation": "Growth gives way to maturity."
+        "explanation": "Growth gives way to maturity once most potential buyers have accepted the product."
       },
       {
         "id": "decline",
         "text": "Decline",
-        "explanation": "Decline is the last of the five stages."
+        "explanation": "Decline is the final stage, when sales fall off and profits drop."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "new-product-development-process",
-    "prompt": "A snack company is working on a new protein bar. Which step of the process is each moment?",
+    "slide_id": "idea-generation-to-marketing-strategy-development",
+    "prompt": "A snack company is developing a new protein bar. Which of the first four new product development steps is each moment?",
     "options": [
       { "id": "generation", "label": "Idea generation" },
       { "id": "screening", "label": "Idea screening" },
@@ -151,42 +93,83 @@
     "cases": [
       {
         "id": "contest",
-        "text": "Staff, suppliers, and customers send in 300 suggestions for new snacks.",
+        "text": "Engineers, salespeople, suppliers, and customers submit 300 suggestions for new snack products.",
         "answer": "generation",
-        "explanation": "The company is sourcing new concepts."
+        "explanation": "Step 1 is the systematic search for new product ideas from internal and external sources."
       },
       {
         "id": "cut",
-        "text": "The team drops every idea that would need a new factory, leaving five.",
+        "text": "The product committee drops every idea that is not real, winnable, and worth doing, leaving five candidates.",
         "answer": "screening",
-        "explanation": "The team is filtering the concepts it has."
+        "explanation": "Step 2 spots good ideas and drops poor ones early using structured criteria."
       },
       {
         "id": "panel",
-        "text": "A written description of the bar is shown to twenty gym-goers, who say what they think.",
+        "text": "A detailed description of the bar stated in meaningful consumer terms is shown to twenty target gym-goers to gauge their reactions.",
         "answer": "concept",
-        "explanation": "The idea is being tested with a group of target consumers."
+        "explanation": "Step 3 turns the idea into a product concept and presents it to target consumers."
       },
       {
         "id": "plan",
-        "text": "The team writes down who the bar is for, how it will be positioned, and a first-year budget.",
+        "text": "The team writes a statement specifying the target market, planned value proposition, first-year sales goals, and long-run marketing mix.",
         "answer": "strategy",
-        "explanation": "This outlines the initial marketing strategy for the new product."
+        "explanation": "Step 4 designs an initial marketing strategy for introducing the product to the market."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "artificial-intelligence-in-new-product-development",
+    "prompt": "Sort each new product development activity by whether AI can accelerate it directly or whether it still requires real-world suppliers and paying customers.",
+    "bins": [
+      { "id": "ai", "label": "Accelerated by AI in early or design steps" },
+      { "id": "real", "label": "Requires real suppliers and real paying customers" }
+    ],
+    "cards": [
+      {
+        "id": "reviews",
+        "text": "Mining thousands of online customer complaints and patent filings to propose candidate product ideas",
+        "bin": "ai",
+        "explanation": "In Step 1 (idea generation), generative AI can synthesize reviews, complaints, and patents in minutes."
       },
       {
-        "id": "survey",
-        "text": "Students in the target market react to two versions of the bar's description.",
-        "answer": "concept",
-        "explanation": "Trying the idea on target consumers is concept testing."
+        "id": "renderings",
+        "text": "Creating rapid visual concept renderings and pretesting wording on synthetic AI personas",
+        "bin": "ai",
+        "explanation": "In Step 3 (concept development and testing), AI accelerates visual mockups and preliminary wording checks."
+      },
+      {
+        "id": "cad",
+        "text": "Using generative design and coding assistants to iterate prototype geometry and software interfaces",
+        "bin": "ai",
+        "explanation": "In Step 6 (product development), computer-aided generative design and coding tools speed up prototype iteration."
+      },
+      {
+        "id": "costs",
+        "text": "Verifying actual unit manufacturing costs and supplier quotes for business analysis",
+        "bin": "real",
+        "explanation": "Step 5 (business analysis) depends on real supplier cost data that cannot be simulated away."
+      },
+      {
+        "id": "shelf",
+        "text": "Measuring actual retail shelf acceptance and repeat purchase rates in a test market",
+        "bin": "real",
+        "explanation": "Step 7 (test marketing) requires real retail settings and real paying customers."
+      },
+      {
+        "id": "rollout",
+        "text": "Executing regional or international commercialization with retail distribution partners",
+        "bin": "real",
+        "explanation": "Step 8 (commercialization) introduces the actual product into real markets."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "branding-strategy",
-    "question_text": "In a blind taste test, shoppers rate two colas the same. When the labels are shown, they rate one far higher and say they would pay more for it. What does that difference show?",
-    "hint": "The drink did not change. Only knowing the name did.",
-    "correct_answer_citation": "Week 7: The Concept: Branding Strategy",
+    "slide_id": "brand-equity-and-brand-sponsorship",
+    "question_text": "In a blind taste test, shoppers rate two colas equally. When the brand labels are revealed, they rate one cola much higher and say they are willing to pay a premium for it. What concept explains this difference?",
+    "hint": "The physical drink did not change. Only knowing the brand name changed the response.",
+    "correct_answer_citation": "Week 7: Brand Equity and Brand Sponsorship",
     "correct_answer_index": 0,
     "options": [
       {
@@ -194,69 +177,75 @@
         "option_explanation": "Correct. Brand equity is the differential effect that knowing the brand name has on customer response to the product or its marketing."
       },
       {
-        "option_text": "Product life cycle",
-        "option_explanation": "The product life cycle describes sales and profits over a product's lifetime. It does not explain a change caused by seeing a name."
+        "option_text": "Private brand sponsorship",
+        "option_explanation": "A private (or store) brand is created and owned by a reseller. It does not explain the differential response to knowing a brand name."
+      },
+      {
+        "option_text": "Conformance quality",
+        "option_explanation": "Conformance quality measures how consistently a product delivers its targeted level of performance, which was identical in the blind test."
       },
       {
         "option_text": "Concept testing",
-        "option_explanation": "Concept testing tries a new idea on target consumers. These colas are existing brands."
-      },
-      {
-        "option_text": "Test marketing",
-        "option_explanation": "Test marketing introduces a new product into realistic market settings. The difference here comes from knowing the brand name."
+        "option_explanation": "Concept testing evaluates a new product concept before development, whereas these colas are existing products."
       }
     ]
   },
   {
-    "type": "sort",
-    "slide_id": "the-nature-of-services",
-    "prompt": "After paying, does the buyer own something, or have they bought a service?",
-    "bins": [
-      { "id": "service", "label": "A service: no ownership" },
-      { "id": "good", "label": "A physical good: the buyer owns it" }
-    ],
-    "cards": [
+    "type": "match",
+    "slide_id": "the-four-characteristics-of-services",
+    "prompt": "Match each service characteristic with the situation and marketing response that illustrates it.",
+    "term_label": "Service characteristic",
+    "match_label": "Situation and response",
+    "pairs": [
       {
-        "id": "tour",
-        "text": "A guided walking tour of Old Québec",
-        "bin": "service",
-        "explanation": "The visitor pays for an activity. When it ends, they own nothing from it."
+        "id": "intangibility",
+        "term": "Service intangibility",
+        "match": "A dental clinic displays staff credentials and spotless treatment rooms so patients can see signals of quality before treatment.",
+        "explanation": "Because services cannot be seen or felt before purchase, marketers manage the evidence with concrete signals of quality."
       },
       {
-        "id": "hotel",
-        "text": "A night in a hotel room",
-        "bin": "service",
-        "explanation": "The guest uses the room but does not own it."
+        "id": "inseparability",
+        "term": "Service inseparability",
+        "match": "A haircut is produced and consumed at the same moment, making the stylist-client interaction part of the service itself.",
+        "explanation": "Services cannot be separated from their providers and are produced and consumed simultaneously."
       },
       {
-        "id": "tax",
-        "text": "An accountant preparing a tax return",
-        "bin": "service",
-        "explanation": "The client buys the accountant's work, a benefit, not an object."
+        "id": "variability",
+        "term": "Service variability",
+        "match": "Two baristas at the same cafe prepare lattes of different quality depending on the morning rush.",
+        "explanation": "Service quality depends on who provides the service and when, where, and how it is provided."
       },
       {
-        "id": "massage",
-        "text": "A one-hour massage",
-        "bin": "service",
-        "explanation": "It is a satisfaction offered for sale. Nothing is taken home."
+        "id": "perishability",
+        "term": "Service perishability",
+        "match": "A hotel charges lower room rates on Tuesday nights because an unsold room tonight cannot be stored for Saturday.",
+        "explanation": "Services cannot be stored for later sale or use, so firms use differential pricing or reservations to match supply and demand."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "how-artificial-intelligence-reshapes-the-four-service-characteristics",
+    "question_text": "An airline deploys an LLM-based customer-service agent that handles 5,000 concurrent rebooking chats during a snowstorm at 3:00 a.m. However, two passengers asking the exact same baggage-fee question receive slightly different explanations. Which pair of service characteristics does this scenario highlight?",
+    "hint": "Consider how cloud software changes capacity limits and how probabilistic language models behave across runs.",
+    "correct_answer_citation": "Week 7: How Artificial Intelligence Reshapes the Four Service Characteristics",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Flexible capacity under perishability, paired with probabilistic output variability across runs",
+        "option_explanation": "Correct. Cloud-hosted AI scales concurrent capacity during demand spikes and operates at any hour, while large language models remain probabilistic and can return different answers to the identical question across runs."
       },
       {
-        "id": "boots",
-        "text": "A pair of winter boots",
-        "bin": "good",
-        "explanation": "The buyer takes the boots home and owns them."
+        "option_text": "Complete elimination of service intangibility and service inseparability",
+        "option_explanation": "AI services remain intangible before use and are still produced and consumed simultaneously during the customer's conversation."
       },
       {
-        "id": "coffee",
-        "text": "A bag of coffee beans",
-        "bin": "good",
-        "explanation": "The beans are a physical object the buyer now owns."
+        "option_text": "Rigid shift-based capacity limits and identical deterministic outputs on every run",
+        "option_explanation": "AI delivery is separated from human labor shifts, and large language models are probabilistic rather than strictly identical across runs."
       },
       {
-        "id": "phone",
-        "text": "A new phone",
-        "bin": "good",
-        "explanation": "The phone is tangible and belongs to the buyer."
+        "option_text": "Physical inventory storage of services for later resale",
+        "option_explanation": "Even with elastic cloud capacity, a service interaction is still produced and consumed live rather than stored in physical inventory."
       }
     ]
   }

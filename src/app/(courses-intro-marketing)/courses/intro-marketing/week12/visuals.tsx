@@ -30,10 +30,13 @@ import {
   hash2,
   headAlong1,
   INK,
+  INK2,
   INK3,
   Key,
+  Note,
   PAPER,
   PAPER2,
+  PAPER3,
   r2,
   RULE,
   RULE2,
@@ -836,7 +839,7 @@ export function ScaleCurve() {
         ECONOMIES OF SCALE
       </Key>
       <path d="M50 30V222H374" fill="none" stroke={INK} strokeWidth={1.5} />
-      <text x={36} y={126} textAnchor="middle" transform="rotate(-90 36 126)" fontFamily="var(--font-label)" fontSize={9} fontWeight={600} letterSpacing="0.14em" fill={INK3}>
+      <text x={36} y={126} textAnchor="middle" transform="rotate(-90 36 126)" fontFamily="var(--font-label)" fontSize={9} fontWeight={600} fill={INK3}>
         COST PER UNIT
       </text>
       <Key x={374} y={244} anchor="end" size={9}>
@@ -948,7 +951,7 @@ export function EntryCascade() {
       <Key x={40} y={404} anchor="middle" size={8.5}>
         HIGH
       </Key>
-      <text x={26} y={224} textAnchor="middle" transform="rotate(-90 26 224)" fontFamily="var(--font-label)" fontSize={9} fontWeight={600} letterSpacing="0.14em" fill={INK3}>
+      <text x={26} y={224} textAnchor="middle" transform="rotate(-90 26 224)" fontFamily="var(--font-label)" fontSize={9} fontWeight={600} fill={INK3}>
         RISK TOLERANCE
       </text>
       {MODES.map((m, i) => {
@@ -1862,7 +1865,7 @@ export function PriceEscalation() {
         fontFamily="var(--font-label)"
         fontSize={9.5}
         fontWeight={600}
-        letterSpacing="0.14em"
+       
         fill={COUNTER}
       >
         PRICE ESCALATION
@@ -3112,5 +3115,685 @@ export function GlyphBalance() {
       <rect x={5} y={24} width={10} height={8} fill={SIGNAL} />
       <circle cx={62} cy={28} r={4} fill={COUNTER} />
     </GlyphFrame>
+  );
+}
+
+/* ==========================================================================
+   SYNCED FIGURES FOR WEEK 12 CONTENT.MD
+   ========================================================================== */
+
+/**
+ * [figure: six-step sequence of international marketing decisions from
+ * assessing the global environment and deciding whether to go global to
+ * market selection, entry mode, marketing mix adaptation, and global
+ * organization]
+ */
+export function SixMajorDecisions() {
+  const cards = [
+    {
+      n: 1,
+      x: 24,
+      y: 18,
+      title: "Global environment",
+      sub: "Trade, economy, law, culture",
+      tone: INK,
+    },
+    {
+      n: 2,
+      x: 284,
+      y: 18,
+      title: "Whether to go global",
+      sub: "Weigh growth against risk",
+      tone: INK,
+    },
+    {
+      n: 3,
+      x: 544,
+      y: 18,
+      title: "Which markets to enter",
+      sub: "Rank size, growth, and ROI",
+      tone: SIGNAL,
+    },
+    {
+      n: 4,
+      x: 24,
+      y: 210,
+      title: "How to enter the market",
+      sub: "Export, partner, or invest",
+      tone: COUNTER,
+    },
+    {
+      n: 5,
+      x: 284,
+      y: 210,
+      title: "Global marketing program",
+      sub: "Standardize or adapt 4Ps",
+      tone: SIGNAL,
+    },
+    {
+      n: 6,
+      x: 544,
+      y: 210,
+      title: "Global organization",
+      sub: "Export dept to global units",
+      tone: INK,
+    },
+  ];
+  const w = 232;
+  const h = 152;
+  return (
+    <Frame
+      height={380}
+      label="Six-step sequence of international marketing decisions: 1. Global environment, 2. Whether to go global, 3. Which markets to enter, 4. How to enter the market, 5. Global marketing program, and 6. Global organization."
+    >
+      {/* Row 1 connectors */}
+      <Arrow2 x1={256} y1={94} x2={282} y2={94} tone={INK} width={1.75} size={7} />
+      <Arrow2 x1={516} y1={94} x2={542} y2={94} tone={INK} width={1.75} size={7} />
+
+      {/* Row 1 to Row 2 step connector */}
+      <path
+        d="M660 170V190H140V208"
+        fill="none"
+        stroke={INK3}
+        strokeWidth={1.5}
+        strokeDasharray="5 4"
+      />
+      <path d={headAlong1(140, 210, 0, 1, 7)} fill="none" stroke={INK3} strokeWidth={1.5} />
+
+      {/* Row 2 connectors */}
+      <Arrow2 x1={256} y1={286} x2={282} y2={286} tone={INK} width={1.75} size={7} />
+      <Arrow2 x1={516} y1={286} x2={542} y2={286} tone={INK} width={1.75} size={7} />
+
+      {cards.map((c) => (
+        <g key={c.n}>
+          <rect
+            x={c.x}
+            y={c.y}
+            width={w}
+            height={h}
+            fill={PAPER}
+            stroke={c.tone === SIGNAL ? SIGNAL : c.tone === COUNTER ? COUNTER : RULE2}
+            strokeWidth={1.5}
+          />
+          <rect
+            x={c.x}
+            y={c.y}
+            width={w}
+            height={32}
+            fill={c.tone === SIGNAL ? SIGNAL_TINT : c.tone === COUNTER ? COUNTER_TINT : PAPER2}
+          />
+          <line
+            x1={c.x}
+            y1={c.y + 32}
+            x2={c.x + w}
+            y2={c.y + 32}
+            stroke={RULE}
+            strokeWidth={1}
+          />
+          <circle cx={c.x + 20} cy={c.y + 16} r={10} fill={c.tone} />
+          <Key x={c.x + 20} y={c.y + 20} anchor="middle" fill={PAPER} size={10} weight={700}>
+            {String(c.n)}
+          </Key>
+          <Key x={c.x + 36} y={c.y + 20} fill={INK} size={11} weight={600}>
+            {c.title}
+          </Key>
+          <Note x={c.x + w / 2} y={c.y + h - 12} anchor="middle" fill={INK2} size={11.5}>
+            {c.sub}
+          </Note>
+        </g>
+      ))}
+
+      {/* Scene 1: Global environment */}
+      <Globe x={78} y={102} r={26} width={1.4} />
+      <Government x={148} y={126} k={0.72} />
+      <Coins2 x={208} y={126} n={4} w={24} />
+
+      {/* Scene 2: Whether to go global */}
+      <Factory3 x={334} y={124} k={0.78} />
+      <Border x={396} y1={60} y2={132} />
+      <Arrow2 x1={362} y1={98} x2={428} y2={98} tone={SIGNAL} width={1.75} size={7} />
+      <Globe x={464} y={98} r={25} tone={SIGNAL} fill={SIGNAL_TINT} width={1.4} />
+
+      {/* Scene 3: Which markets to enter */}
+      <Flag2 x={584} y={132} pattern="tri" h={26} />
+      <Flag2 x={648} y={132} pattern="disc" tone={SIGNAL} h={26} />
+      <Target x={660} y={76} r={14} tone={SIGNAL} />
+      <Flag2 x={712} y={132} pattern="cross" h={26} />
+
+      {/* Scene 4: How to enter the market */}
+      <EntryMode kind="export" x={82} y={316} k={0.55} />
+      <EntryMode kind="di" x={194} y={316} k={0.55} />
+      <Arrow2 x1={122} y1={298} x2={156} y2={298} tone={COUNTER} width={1.5} size={6} />
+
+      {/* Scene 5: Global marketing program */}
+      <MixCard x={346} y={294} cells={["square", "square", "square", "square"]} tone={COUNTER} />
+      <Arrow2 x1={378} y1={294} x2={418} y2={294} tone={SIGNAL} width={1.5} size={6} />
+      <MixCard x={452} y={294} cells={["circle", "triangle", "diamond", "square"]} tone={SIGNAL} />
+
+      {/* Scene 6: Global organization */}
+      <rect x={612} y={252} width={96} height={22} fill={PAPER2} stroke={INK} strokeWidth={1.4} />
+      <Key x={660} y={267} anchor="middle" fill={INK} size={9.5}>
+        Headquarters
+      </Key>
+      <path d="M660 274V290M596 290H724M596 290V304M660 290V304M724 290V304" fill="none" stroke={INK} strokeWidth={1.3} />
+      <Flag2 x={584} y={334} pattern="tri" h={24} />
+      <Flag2 x={648} y={334} pattern="disc" h={24} />
+      <Flag2 x={712} y={334} pattern="band" h={24} />
+    </Frame>
+  );
+}
+
+/**
+ * [figure: global market entry modes progressing from exporting (indirect and
+ * direct) through joint venturing (licensing, contract manufacturing,
+ * management contracting, and joint ownership) to direct investment across
+ * increasing risk, commitment, control, and profit potential]
+ */
+export function MarketEntryModes() {
+  const jvItems = [
+    { name: "Licensing", desc: "Fee or royalty for IP or brand" },
+    { name: "Contract manufacturing", desc: "Foreign plant makes the product" },
+    { name: "Management contracting", desc: "Supply management know-how" },
+    { name: "Joint ownership", desc: "Shared equity with local partner" },
+  ];
+  return (
+    <Frame
+      height={420}
+      label="Global market entry modes progressing from exporting (indirect and direct) through joint venturing (licensing, contract manufacturing, management contracting, and joint ownership) to direct investment across increasing commitment, risk, control, and profit potential."
+    >
+      {/* Column 1: Exporting */}
+      <rect x={24} y={18} width={232} height={314} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <rect x={24} y={18} width={232} height={34} fill={PAPER2} />
+      <line x1={24} y1={52} x2={256} y2={52} stroke={RULE} strokeWidth={1} />
+      <Key x={40} y={40} fill={INK} size={12} weight={700}>
+        1. Exporting
+      </Key>
+
+      <Border x={140} y1={60} y2={132} />
+      <Factory3 x={72} y={124} k={0.78} />
+      <Arrow2 x1={102} y1={98} x2={176} y2={98} tone={INK} width={1.75} size={7} />
+      <Store2 x={206} y={124} k={0.72} />
+
+      <rect x={40} y={146} width={200} height={78} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Key x={54} y={168} fill={INK} size={11} weight={600}>
+        Indirect exporting
+      </Key>
+      <Note x={54} y={189} fill={INK2} size={11}>
+        Independent intermediaries
+      </Note>
+      <Note x={54} y={209} fill={INK3} size={10.5}>
+        Least change and investment
+      </Note>
+
+      <rect x={40} y={236} width={200} height={78} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Key x={54} y={258} fill={INK} size={11} weight={600}>
+        Direct exporting
+      </Key>
+      <Note x={54} y={279} fill={INK2} size={11}>
+        Firm handles its own exports
+      </Note>
+      <Note x={54} y={299} fill={INK3} size={10.5}>
+        Domestic dept or foreign branch
+      </Note>
+
+      <Arrow2 x1={258} y1={96} x2={282} y2={96} tone={COUNTER} width={1.75} size={7} />
+
+      {/* Column 2: Joint Venturing */}
+      <rect x={284} y={18} width={232} height={314} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <rect x={284} y={18} width={232} height={34} fill={COUNTER_TINT} />
+      <line x1={284} y1={52} x2={516} y2={52} stroke={RULE} strokeWidth={1} />
+      <Key x={300} y={40} fill={COUNTER} size={12} weight={700}>
+        2. Joint venturing
+      </Key>
+
+      <Border x={400} y1={58} y2={122} />
+      <Factory3 x={342} y={116} k={0.72} />
+      <Factory3 x={458} y={116} k={0.72} tone={COUNTER} fill={COUNTER_TINT} />
+      <path d="M342 120V127H458V120" fill="none" stroke={COUNTER} strokeWidth={1.75} />
+
+      {jvItems.map((item, i) => {
+        const y = 136 + i * 46;
+        return (
+          <g key={item.name}>
+            <rect
+              x={298}
+              y={y}
+              width={204}
+              height={40}
+              fill={PAPER2}
+              stroke={COUNTER}
+              strokeWidth={1}
+            />
+            <Key x={308} y={y + 15} fill={COUNTER} size={10.5} weight={600}>
+              {item.name}
+            </Key>
+            <Note x={308} y={y + 33} fill={INK2} size={10.5}>
+              {item.desc}
+            </Note>
+          </g>
+        );
+      })}
+
+      <Arrow2 x1={518} y1={96} x2={542} y2={96} tone={SIGNAL} width={1.75} size={7} />
+
+      {/* Column 3: Direct Investment */}
+      <rect x={544} y={18} width={232} height={314} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={544} y={18} width={232} height={34} fill={SIGNAL_TINT} />
+      <line x1={544} y1={52} x2={776} y2={52} stroke={RULE} strokeWidth={1} />
+      <Key x={560} y={40} fill={SIGNAL} size={12} weight={700}>
+        3. Direct investment
+      </Key>
+
+      <Border x={584} y1={58} y2={126} />
+      <Factory3 x={632} y={122} k={0.85} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Flag2 x={664} y={122} h={34} tone={SIGNAL} />
+      <Arrow2 x1={698} y1={102} x2={724} y2={102} tone={SIGNAL} width={1.5} size={6} />
+      <Store2 x={748} y={122} k={0.62} />
+
+      <rect x={560} y={146} width={200} height={168} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={574} y={170} fill={SIGNAL} size={11} weight={600}>
+        Foreign assembly or plants
+      </Key>
+      <Note x={574} y={194} fill={INK2} size={11}>
+        Lower labor or freight costs
+      </Note>
+      <Note x={574} y={216} fill={INK2} size={11}>
+        Host-country job creation
+      </Note>
+      <Note x={574} y={238} fill={INK2} size={11}>
+        Full control over operations
+      </Note>
+      <Note x={574} y={260} fill={COUNTER} size={11}>
+        Currency and political exposure
+      </Note>
+      <Note x={574} y={282} fill={INK3} size={10.5}>
+        Highest commitment and profit
+      </Note>
+
+      {/* Bottom continuum bar */}
+      <rect x={24} y={348} width={752} height={54} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Level x={48} y={388} level={1} tone={INK} />
+      <Key x={92} y={369} fill={INK} size={10.5} weight={600}>
+        Low commitment and risk
+      </Key>
+      <Note x={92} y={389} fill={INK3} size={10.5}>
+        Least control and profit potential
+      </Note>
+
+      <Arrow2 x1={264} y1={375} x2={322} y2={375} tone={COUNTER} width={1.75} size={7} />
+      <Level x={336} y={388} level={2} tone={COUNTER} />
+      <Key x={380} y={369} fill={COUNTER} size={10.5} weight={600}>
+        Shared risk and control
+      </Key>
+      <Note x={380} y={389} fill={INK3} size={10.5}>
+        Partnered foreign operations
+      </Note>
+
+      <Arrow2 x1={520} y1={375} x2={568} y2={375} tone={SIGNAL} width={1.75} size={7} />
+      <Level x={582} y={388} level={3} tone={SIGNAL} />
+      <Key x={624} y={369} fill={SIGNAL} size={10.5} weight={600}>
+        Highest control
+      </Key>
+      <Note x={624} y={389} fill={INK3} size={10.5}>
+        Highest commitment and profit
+      </Note>
+    </Frame>
+  );
+}
+
+/**
+ * [figure: five international product and promotion strategies combining
+ * straight product extension, product adaptation, or product invention with
+ * straight communication extension or communication adaptation]
+ */
+export function FiveAdaptationStrategies() {
+  return (
+    <Frame
+      height={384}
+      label="Matrix of five international product and promotion strategies combining product decisions (do not change product, adapt product, develop new product) with promotion decisions (do not change promotion, adapt promotion)."
+    >
+      {/* Top column headers: Product */}
+      <rect x={184} y={16} width={192} height={40} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Key x={280} y={40} anchor="middle" fill={INK} size={11} weight={600}>
+        Do not change product
+      </Key>
+
+      <rect x={388} y={16} width={192} height={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={484} y={40} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        Adapt product
+      </Key>
+
+      <rect x={592} y={16} width={192} height={40} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
+      <Key x={688} y={40} anchor="middle" fill={COUNTER} size={11} weight={600}>
+        Develop new product
+      </Key>
+
+      {/* Left row headers: Promotion */}
+      <rect x={16} y={68} width={156} height={142} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Key x={94} y={90} anchor="middle" fill={INK} size={11} weight={600}>
+        Do not change
+      </Key>
+      <Key x={94} y={108} anchor="middle" fill={INK} size={11} weight={600}>
+        promotion
+      </Key>
+      <AdCard x={56} y={124} w={76} h={46} layout={0} tone={INK} />
+      <Note x={94} y={194} anchor="middle" fill={INK3} size={10.5}>
+        Same message
+      </Note>
+
+      <rect x={16} y={222} width={156} height={142} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={94} y={244} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        Adapt
+      </Key>
+      <Key x={94} y={262} anchor="middle" fill={SIGNAL} size={11} weight={600}>
+        promotion
+      </Key>
+      <AdCard x={56} y={278} w={76} h={46} layout={1} tone={SIGNAL} />
+      <Note x={94} y={348} anchor="middle" fill={INK2} size={10.5}>
+        Local message
+      </Note>
+
+      {/* Cell 1: Straight product extension */}
+      <rect x={184} y={68} width={192} height={142} fill={PAPER} stroke={RULE2} strokeWidth={1.5} />
+      <Key x={200} y={92} fill={INK} size={11.5} weight={700}>
+        1. Straight extension
+      </Key>
+      <Pack4 x={238} y={168} w={38} h={48} tone={INK} />
+      <AdCard x={278} y={124} w={72} h={44} layout={0} tone={INK} />
+      <Note x={280} y={194} anchor="middle" fill={INK2} size={11}>
+        Same product, same ad
+      </Note>
+
+      {/* Cell 2: Product adaptation */}
+      <rect x={388} y={68} width={192} height={142} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={404} y={92} fill={SIGNAL} size={11.5} weight={700}>
+        2. Product adaptation
+      </Key>
+      <Pack4 x={440} y={168} w={48} h={36} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <AdCard x={484} y={124} w={72} h={44} layout={0} tone={INK} />
+      <Note x={484} y={194} anchor="middle" fill={INK2} size={11}>
+        Local flavor, same ad
+      </Note>
+
+      {/* Cell 3: Communication adaptation */}
+      <rect x={184} y={222} width={192} height={142} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={200} y={246} fill={SIGNAL} size={11.5} weight={700}>
+        3. Communication adaptation
+      </Key>
+      <Pack4 x={238} y={322} w={38} h={48} tone={INK} />
+      <AdCard x={278} y={278} w={72} h={44} layout={1} tone={SIGNAL} />
+      <Note x={280} y={348} anchor="middle" fill={INK2} size={11}>
+        Same product, adapted ad
+      </Note>
+
+      {/* Cell 4: Dual adaptation */}
+      <rect x={388} y={222} width={192} height={142} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
+      <Key x={404} y={246} fill={SIGNAL} size={11.5} weight={700}>
+        4. Dual adaptation
+      </Key>
+      <Pack4 x={440} y={322} w={48} h={36} tone={SIGNAL} fill={PAPER} />
+      <AdCard x={484} y={278} w={72} h={44} layout={2} tone={SIGNAL} />
+      <Note x={484} y={348} anchor="middle" fill={INK} size={11}>
+        Adapt both product and ad
+      </Note>
+
+      {/* Cell 5: Product invention */}
+      <rect x={592} y={68} width={192} height={296} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <rect x={592} y={68} width={192} height={36} fill={COUNTER_TINT} />
+      <Key x={608} y={91} fill={COUNTER} size={11.5} weight={700}>
+        5. Product invention
+      </Key>
+      <Bottle2 x={654} y={214} tone={COUNTER} fill={COUNTER_TINT} />
+      <circle cx={716} cy={164} r={14} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
+      <path
+        d="M716 142V146M716 182V186M694 164H698M734 164H738"
+        stroke={COUNTER}
+        strokeWidth={1.5}
+        strokeLinecap="round"
+      />
+      <AdCard x={652} y={240} w={72} h={44} layout={3} tone={COUNTER} />
+      <Note x={688} y={316} anchor="middle" fill={INK2} size={11}>
+        Create new product for
+      </Note>
+      <Note x={688} y={336} anchor="middle" fill={INK2} size={11}>
+        local needs (off-grid solar)
+      </Note>
+    </Frame>
+  );
+}
+
+/**
+ * [figure: comparison of the traditional linear take-make-dispose production
+ * model with the circular economy loop of repair, refurbishment, reuse, and
+ * recycling]
+ */
+export function LinearVsCircularEconomy() {
+  const cx = 596;
+  const cy = 192;
+  return (
+    <Frame
+      height={370}
+      label="Comparison of the traditional linear take-make-dispose production model on the left with the circular economy loop of durable design, reuse, repair, refurbishment, and material recycling on the right."
+    >
+      {/* Left panel: Linear model */}
+      <rect x={16} y={18} width={368} height={334} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <rect x={16} y={18} width={368} height={36} fill={COUNTER_TINT} />
+      <line x1={16} y1={54} x2={384} y2={54} stroke={RULE} strokeWidth={1} />
+      <Key x={32} y={41} fill={COUNTER} size={12} weight={700}>
+        Linear take-make-dispose model
+      </Key>
+
+      {/* Take -> Make -> Use -> Dispose */}
+      <rect x={58} y={150} width={10} height={26} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <circle cx={63} cy={132} r={22} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <Key x={63} y={196} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Take
+      </Key>
+
+      <Arrow2 x1={92} y1={152} x2={122} y2={152} tone={COUNTER} width={1.5} dash="4 3" size={6} />
+
+      <Factory3 x={156} y={176} k={0.82} />
+      <Key x={156} y={196} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Make
+      </Key>
+
+      <Arrow2 x1={188} y1={152} x2={218} y2={152} tone={COUNTER} width={1.5} dash="4 3" size={6} />
+
+      <Person3 x={244} y={176} k={1.05} />
+      <Key x={244} y={196} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Use
+      </Key>
+
+      <Arrow2 x1={266} y1={152} x2={298} y2={152} tone={COUNTER} width={1.5} dash="4 3" size={6} />
+
+      <Bin x={334} y={176} fillLevel={36} overflow tone={COUNTER} />
+      <Key x={334} y={196} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        Dispose
+      </Key>
+
+      <rect x={36} y={232} width={328} height={96} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Key x={52} y={258} fill={COUNTER} size={11} weight={600}>
+        One-way resource depletion
+      </Key>
+      <Note x={52} y={280} fill={INK2} size={11.5}>
+        Raw materials are extracted, manufactured into
+      </Note>
+      <Note x={52} y={300} fill={INK2} size={11.5}>
+        single-life products, and discarded as landfill waste.
+      </Note>
+
+      {/* Right panel: Circular economy loop */}
+      <rect x={408} y={18} width={376} height={334} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={408} y={18} width={376} height={36} fill={SIGNAL_TINT} />
+      <line x1={408} y1={54} x2={784} y2={54} stroke={RULE} strokeWidth={1} />
+      <Key x={424} y={41} fill={SIGNAL} size={12} weight={700}>
+        Circular economy loop
+      </Key>
+
+      {/* Center leaf */}
+      <Leaf x={cx} y={cy + 18} s={36} tone={SIGNAL} fill={SIGNAL_TINT} />
+
+      {/* Four loop nodes: Top (Durable design), Right (Reuse & resale), Bottom (Repair & refurbish), Left (Recycle materials) */}
+      {/* Top node */}
+      <rect x={532} y={70} width={128} height={48} rx={6} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={596} y={89} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Durable design
+      </Key>
+      <Note x={596} y={108} anchor="middle" fill={INK2} size={10}>
+        Built to last
+      </Note>
+
+      {/* Right node */}
+      <rect x={656} y={166} width={114} height={50} rx={6} fill={PAPER2} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={713} y={186} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Use and reuse
+      </Key>
+      <Note x={713} y={205} anchor="middle" fill={INK2} size={10}>
+        Trade-in and resale
+      </Note>
+
+      {/* Bottom node */}
+      <rect x={520} y={270} width={152} height={50} rx={6} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={596} y={290} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Repair and refurbish
+      </Key>
+      <Note x={596} y={309} anchor="middle" fill={INK2} size={10}>
+        Extend product life
+      </Note>
+
+      {/* Left node */}
+      <rect x={422} y={166} width={114} height={50} rx={6} fill={PAPER2} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={479} y={186} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Recycle metals
+      </Key>
+      <Note x={479} y={205} anchor="middle" fill={INK2} size={10}>
+        Recover materials
+      </Note>
+
+      {/* Clockwise curved arrows connecting the 4 nodes */}
+      <CurveArrow2 x1={660} y1={94} cx={713} cy={98} x2={713} y2={162} tone={SIGNAL} width={1.75} size={7} />
+      <CurveArrow2 x1={713} y1={216} cx={713} cy={292} x2={676} y2={296} tone={SIGNAL} width={1.75} size={7} />
+      <CurveArrow2 x1={520} y1={296} cx={479} cy={292} x2={479} y2={220} tone={SIGNAL} width={1.75} size={7} />
+      <CurveArrow2 x1={479} y1={166} cx={479} cy={98} x2={528} y2={94} tone={SIGNAL} width={1.75} size={7} />
+    </Frame>
+  );
+}
+
+/**
+ * [figure: principal-agent triangle showing the AI shopping agent positioned
+ * between the consumer (seeking the best product value) and the platform
+ * operator (earning revenue from seller sponsorships)]
+ */
+export function PrincipalAgentTriangle() {
+  return (
+    <Frame
+      height={386}
+      label="Principal-agent triangle showing the AI shopping agent at the top positioned between the consumer seeking the best product fit and value on the bottom left and the platform operator earning seller sponsorship revenue on the bottom right, with hotel-booking experimental results in the center."
+    >
+      {/* Top Apex: AI Shopping Agent */}
+      <rect x={276} y={16} width={248} height={92} fill={PAPER2} stroke={INK} strokeWidth={1.75} />
+      <Chip2 x={324} y={62} s={40} tone={INK} fill={PAPER} />
+      <Key x={364} y={44} fill={INK} size={12} weight={700}>
+        AI shopping agent
+      </Key>
+      <Note x={364} y={66} fill={INK2} size={11}>
+        Searches catalog and selects
+      </Note>
+      <Note x={364} y={86} fill={INK3} size={10.5}>
+        Sensitive to duty-of-loyalty prompt
+      </Note>
+
+      {/* Left Edge: Consumer -> Agent */}
+      <Arrow2 x1={154} y1={206} x2={292} y2={110} tone={SIGNAL} width={2} size={8} />
+      <Key x={202} y={148} anchor="end" fill={SIGNAL} size={10.5} weight={600}>
+        Delegates purchase
+      </Key>
+
+      {/* Right Edge: Platform -> Agent */}
+      <Arrow2 x1={646} y1={206} x2={508} y2={110} tone={COUNTER} width={2} size={8} />
+      <Key x={598} y={148} anchor="start" fill={COUNTER} size={10.5} weight={600}>
+        Builds and configures
+      </Key>
+
+      {/* Bottom-left: Consumer (Traveler) */}
+      <rect x={20} y={210} width={236} height={156} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={20} y={210} width={236} height={32} fill={SIGNAL_TINT} />
+      <Key x={36} y={231} fill={SIGNAL} size={11.5} weight={700}>
+        Consumer (traveler)
+      </Key>
+      <Person3 x={58} y={306} k={1.15} stroke={SIGNAL} fill={SIGNAL_TINT} />
+      <Note x={92} y={268} fill={INK} size={11}>
+        Seeks best fit and budget
+      </Note>
+      <Note x={92} y={288} fill={INK2} size={10.5}>
+        Traveler-aligned prompt:
+      </Note>
+      <Key x={92} y={308} fill={SIGNAL} size={10.5} weight={600}>
+        Penalizes sponsored hotel
+      </Key>
+      <Note x={36} y={346} fill={INK3} size={10.5}>
+        Wants option matching needs and budget
+      </Note>
+
+      {/* Bottom-right: Platform Operator */}
+      <rect x={544} y={210} width={236} height={156} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <rect x={544} y={210} width={236} height={32} fill={COUNTER_TINT} />
+      <Key x={560} y={231} fill={COUNTER} size={11.5} weight={700}>
+        Platform operator
+      </Key>
+      <Coins2 x={582} y={310} n={5} w={28} tone={COUNTER} fill={COUNTER_TINT} />
+      <Note x={614} y={268} fill={INK} size={11}>
+        Earns seller ad revenue
+      </Note>
+      <Note x={614} y={288} fill={INK2} size={10.5}>
+        Platform-aligned prompt:
+      </Note>
+      <Key x={614} y={308} fill={COUNTER} size={10.5} weight={600}>
+        Chooses sponsored more
+      </Key>
+      <Note x={560} y={346} fill={INK3} size={10.5}>
+        Benefits from higher-margin or promoted picks
+      </Note>
+
+      {/* Center: Hotel Booking Experiment Comparison (Wadi & Ma, 2026c) */}
+      <rect x={276} y={182} width={248} height={184} fill={PAPER2} stroke={RULE2} strokeWidth={1.25} />
+      <Key x={400} y={204} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Hotel experiment (Wadi & Ma, 2026c)
+      </Key>
+
+      {/* Unsponsored hotel card */}
+      <rect x={290} y={218} width={104} height={132} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={290} y={218} width={104} height={24} fill={SIGNAL_TINT} />
+      <Key x={342} y={234} anchor="middle" fill={SIGNAL} size={9.5} weight={600}>
+        Unsponsored
+      </Key>
+      <Note x={342} y={260} anchor="middle" fill={INK} size={10.5}>
+        Identical quality
+      </Note>
+      <Note x={342} y={280} anchor="middle" fill={INK2} size={10}>
+        Organic listing
+      </Note>
+      <Tick x={342} y={308} s={9} tone={SIGNAL} width={2.2} />
+      <Note x={342} y={336} anchor="middle" fill={SIGNAL} size={9.5}>
+        Traveler agent pick
+      </Note>
+
+      {/* Sponsored hotel card */}
+      <rect x={406} y={218} width={104} height={132} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <rect x={406} y={218} width={104} height={24} fill={COUNTER_TINT} />
+      <Key x={458} y={234} anchor="middle" fill={COUNTER} size={9.5} weight={600}>
+        Sponsored ad
+      </Key>
+      <Note x={458} y={260} anchor="middle" fill={INK} size={10.5}>
+        Identical quality
+      </Note>
+      <Note x={458} y={280} anchor="middle" fill={COUNTER} size={10}>
+        Paid placement
+      </Note>
+      <Tag2 x={432} y={308} w={52} h={22} tone={COUNTER} fill={COUNTER_TINT} />
+      <Note x={458} y={336} anchor="middle" fill={COUNTER} size={9.5}>
+        Platform agent shift
+      </Note>
+    </Frame>
   );
 }

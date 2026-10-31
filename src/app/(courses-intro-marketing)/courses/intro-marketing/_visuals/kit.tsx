@@ -35,9 +35,44 @@ export const LABEL = "var(--font-label)";
 
 export const BODY = "var(--font-body)";
 
-export const SERIF = "var(--font-heading)";
+export const SERIF = "var(--font-sans)";
 
 export type Anchor = "start" | "middle" | "end";
+
+const ACRONYMS = new Set([
+  "AI", "B2B", "B2C", "CRM", "CSR", "STP", "SEO", "SEM", "ROI", "PR",
+  "IMC", "PLC", "NPD", "PESTLE", "SWOT", "CLV", "R&D", "4PS", "FMCG",
+  "KPI", "API", "GPS", "RFID", "ERP", "VMS", "TV", "US", "EU", "UK",
+  "UN", "WTO", "NAFTA", "USMCA", "GDP", "VALS", "ELM", "EKB", "WOM",
+  "CPG", "SKU", "UX", "UI", "A", "B", "C", "D", "X", "Y", "I", "II",
+  "III", "IV", "V", "PPC", "CTR", "CPA", "CPM", "LTV", "CAC", "NPS",
+]);
+
+function normalizeSvgLabel(node: React.ReactNode): React.ReactNode {
+  if (typeof node !== "string") return node;
+  const trimmed = node.trim();
+  const letters = trimmed.replace(/[^A-Za-z]/g, "");
+  if (letters.length < 2 || letters !== letters.toUpperCase()) return node;
+  if (ACRONYMS.has(trimmed)) return node;
+  const words = trimmed.split(/(\s+|-|\/|:)/);
+  let firstWordDone = false;
+  return words
+    .map((part) => {
+      if (!/[A-Za-z]/.test(part)) return part;
+      const upper = part.toUpperCase();
+      if (ACRONYMS.has(upper)) {
+        firstWordDone = true;
+        return upper === "4PS" ? "4Ps" : upper;
+      }
+      const lower = part.toLowerCase();
+      if (!firstWordDone) {
+        firstWordDone = true;
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+      }
+      return lower;
+    })
+    .join("");
+}
 
 export function Key({
   x,
@@ -45,8 +80,8 @@ export function Key({
   children,
   anchor = "start",
   fill = INK3,
-  size = 10.5,
-  weight = 600,
+  size = 11,
+  weight = 500,
 }: {
   x: number;
   y: number;
@@ -64,10 +99,9 @@ export function Key({
       fontFamily={LABEL}
       fontSize={size}
       fontWeight={weight}
-      letterSpacing="0.14em"
       fill={fill}
     >
-      {children}
+      {normalizeSvgLabel(children)}
     </text>
   );
 }
@@ -78,8 +112,7 @@ export function Note({
   children,
   anchor = "start",
   fill = INK2,
-  size = 13,
-  italic = false,
+  size = 12.5,
 }: {
   x: number;
   y: number;
@@ -96,7 +129,6 @@ export function Note({
       textAnchor={anchor}
       fontFamily={BODY}
       fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
       fill={fill}
     >
       {children}
@@ -104,7 +136,7 @@ export function Note({
   );
 }
 
-/** Display numeral or word in Fraunces, for the few places a plate shouts. */
+/** Display numeral or word inside a plate. */
 export function Display({
   x,
   y,
@@ -330,7 +362,7 @@ export function Segmented<T extends string>({
 }) {
   return (
     <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
-      <span className="type-label shrink-0 !text-[0.66rem] !text-[var(--ink-3)]">{label}</span>
+      <span className="shrink-0 font-sans text-xs font-medium text-[var(--ink-3)]">{label}</span>
       <div className="flex flex-wrap border border-[var(--rule-2)]">
         {options.map((o) => {
           const on = o.id === value;
@@ -341,11 +373,11 @@ export function Segmented<T extends string>({
               aria-pressed={on}
               onClick={() => onChange(o.id)}
               className={cn(
-                "type-label border-l border-[var(--rule-2)] px-3 py-1.5 !text-[0.68rem] first:border-l-0 transition-colors",
+                "border-l border-[var(--rule-2)] px-3 py-1.5 font-sans text-xs font-medium first:border-l-0 transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--rule-2)]",
                 on
-                  ? "bg-[var(--ink)] !text-[var(--paper)]"
-                  : "bg-[var(--paper)] !text-[var(--ink-2)] hover:bg-[var(--paper-3)]",
+                  ? "bg-[var(--ink)] text-[var(--paper)]"
+                  : "bg-[var(--paper)] text-[var(--ink-2)] hover:bg-[var(--paper-3)]",
               )}
             >
               {o.label}
@@ -374,7 +406,7 @@ export function Toggles<T extends string>({
 }) {
   return (
     <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
-      <span className="type-label shrink-0 !text-[0.66rem] !text-[var(--ink-3)]">{label}</span>
+      <span className="shrink-0 font-sans text-xs font-medium text-[var(--ink-3)]">{label}</span>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => {
           const on = value.includes(o.id);
@@ -387,11 +419,11 @@ export function Toggles<T extends string>({
                 onChange(on ? value.filter((v) => v !== o.id) : options.map((x) => x.id).filter((id) => id === o.id || value.includes(id)))
               }
               className={cn(
-                "type-label inline-flex items-center gap-1.5 border px-3 py-1.5 !text-[0.68rem] transition-colors",
+                "inline-flex items-center gap-1.5 border px-3 py-1.5 font-sans text-xs font-medium transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]",
                 on
-                  ? "border-[var(--ink)] bg-[var(--ink)] !text-[var(--paper)]"
-                  : "border-dashed border-[var(--ink-3)] bg-[var(--paper)] !text-[var(--ink-2)] hover:border-solid hover:bg-[var(--paper-3)]",
+                  ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
+                  : "border-dashed border-[var(--ink-3)] bg-[var(--paper)] text-[var(--ink-2)] hover:border-solid hover:bg-[var(--paper-3)]",
               )}
             >
               <span aria-hidden>{on ? "\u2713" : "+"}</span>
@@ -408,8 +440,163 @@ export function Toggles<T extends string>({
    Slide layout blocks
    -------------------------------------------------------------------------- */
 
-/** A plate that lives in a column: a figure well without the 680px floor. */
+/** Content slides trim the section's 7rem padding so each topic fits one screen. */
+export const TIGHT = "md:!py-14";
+
+export type Tone = "signal" | "counter" | "ink";
+
+const BORDER: Record<Tone, string> = {
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
+};
+
+const TEXT: Record<Tone, string> = {
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
+  ink: "text-[var(--ink)]",
+};
+
+/** One verbatim sentence at reading size. */
+export function P({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <p className={`type-body max-w-[var(--measure)] ${className}`.trim()}>{children}</p>
+  );
+}
+
+/** A sentence promoted to lead size. */
+export function Lead({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <p className={`type-lead max-w-3xl ${className}`.trim()}>{children}</p>;
+}
+
+/** A sentence set at quote/statement size. */
+export function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <p className={`type-quote max-w-3xl ${className}`.trim()}>{children}</p>;
+}
+
+/** A sentence set at body size. */
+export function Big({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <p className={`type-body max-w-[var(--measure)] ${className}`.trim()}>{children}</p>;
+}
+
+/** Defined term inside a sentence in bold ink. */
+export function Term({ children }: { children: React.ReactNode; tone?: Tone }) {
+  return <strong className="font-semibold text-[var(--ink)]">{children}</strong>;
+}
+
+/** Inline phrase inside a sentence in normal weight. */
+export function Tint({ children }: { children: React.ReactNode; tone?: Tone }) {
+  return <>{children}</>;
+}
+
+/** Hairline-topped block. */
+export function Ruled({
+  tone = "ink",
+  children,
+  className = "",
+}: {
+  tone?: Tone;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`min-w-0 border-t pt-4 ${BORDER[tone]} ${className}`.trim()}>
+      {children}
+    </div>
+  );
+}
+
+/** A plate container that sits directly on the clean white slide surface. */
 export function Plate({
+  children,
+  wide = false,
+  className = "",
+}: {
+  children: React.ReactNode;
+  wide?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "figure-well w-full min-w-0 p-2",
+        wide && "overflow-x-auto",
+        className,
+      )}
+    >
+      {wide ? <div className="min-w-[480px] lg:min-w-0">{children}</div> : children}
+    </div>
+  );
+}
+
+/** Slide heading with an optional kicker prefix. */
+export function SlideHeading({
+  kicker,
+  children,
+  className = "",
+}: {
+  kicker?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mb-7 w-full md:mb-8 ${className}`.trim()}>
+      <h2 className="type-h1 max-w-4xl">
+        {kicker ? `${kicker} ` : null}
+        {children}
+      </h2>
+    </div>
+  );
+}
+
+/** Part opener heading with a non-zero-padded label and hairline rule. */
+export function PartHead({
+  n,
+  title,
+  className = "",
+}: {
+  n: number;
+  title: string;
+  className?: string;
+}) {
+  return (
+    <div className={`mb-8 w-full ${className}`.trim()}>
+      <div className="type-label mb-3 block text-[var(--ink-3)]">
+        {`Part ${n}`}
+      </div>
+      <h2 className="type-display max-w-4xl">
+        {title}
+      </h2>
+      <div className="mt-5 h-px w-full bg-[var(--rule)]" />
+    </div>
+  );
+}
+
+/** Numbered item with a non-zero-padded tabular numeral above its content. */
+export function Numbered({
+  n,
+  children,
+  className = "",
+}: {
+  n: number;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`min-w-0 border-t border-[var(--rule)] pt-4 ${className}`.trim()}>
+      <span
+        aria-hidden
+        className="type-label mb-2 block tabular-nums !text-[var(--ink-3)]"
+      >
+        {n}
+      </span>
+      {children}
+    </div>
+  );
+}
+
+/** Discussion prompt block in upright sans-serif. */
+export function Prompt({
   children,
   className = "",
 }: {
@@ -417,8 +604,12 @@ export function Plate({
   className?: string;
 }) {
   return (
-    <div className={cn("figure-well w-full min-w-0 p-3 sm:p-5", className)}>
-      {children}
-    </div>
+    <aside
+      className={`w-full max-w-3xl border border-[var(--rule-2)] p-6 md:p-8 ${className}`.trim()}
+    >
+      <p className="type-body max-w-none">
+        {children}
+      </p>
+    </aside>
   );
 }

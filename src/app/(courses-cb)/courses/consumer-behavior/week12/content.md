@@ -10,6 +10,7 @@ week: "week12"
 - Digital platforms, algorithmic recommenders, and autonomous AI shopping agents reshape the consumer journey, raising fundamental questions of agency, fiduciary duty, data privacy, and sustainability.
 
 ## The Evolution of Digital and Intermediary-Driven Consumption [no-exercise]
+[figure: consumer and manufacturer separated by three sequential digital intermediaries: an online platform catalog, a recommendation algorithm shortlist, and an AI shopping agent]
 - Over the past three decades, retail markets have evolved from physical store aisles to web catalogs, mobile applications, and now algorithmic and agentic intermediaries.
 - Each technological layer reduces physical search friction while inserting a new software intermediary between the consumer and the manufacturer.
 - Digital interactions generate granular behavioral traces, including search queries, dwell times, location histories, and conversational transcripts.
@@ -17,6 +18,7 @@ week: "week12"
 - Analyzing modern consumer behavior requires examining how platform architecture and algorithmic incentives steer what buyers see and choose.
 
 ## Omnichannel Behavior, Showrooming, and Webrooming [no-exercise]
+[figure: showrooming in a physical store aisle where a shopper inspects a 24-dollar boxed product on the shelf while holding a smartphone displaying the same item online for 19 dollars]
 - Contemporary consumers rarely restrict a purchase journey to a single physical or digital channel. Instead, they engage in omnichannel shopping that blends both environments.
 - Showrooming occurs when a shopper inspects and touches a physical product in a brick-and-mortar store to resolve sensory uncertainty and then buys the item online at a lower price.
 - Webrooming (or reverse showrooming) occurs when a shopper researches specifications, reviews, and AI comparisons online before visiting a physical store to complete the purchase immediately and avoid shipping delays.
@@ -28,6 +30,7 @@ week: "week12"
 - Mobile convenience, social commerce feeds, and collaborative recommender systems compress the traditional stages of the decision process.
 
 ## Mobile Commerce, Location Targeting, and Impulse Purchasing [no-exercise]
+[figure: late-night mobile impulse purchase on a bedside nightstand at 1:12 a.m. showing a smartphone screen with a completed one-tap shopping bag checkout]
 - Mobile commerce (m-commerce) conducts product discovery, comparison, and payment through handheld smartphones and wearable devices.
 - Because a smartphone accompanies the consumer continuously, coupled with one-click digital wallets and biometric authentication, the friction of executing a transaction drops to seconds.
 - Lower payment friction and smaller screen sizes reduce System 2 deliberation and increase the incidence of unplanned impulse purchases.
@@ -43,6 +46,7 @@ week: "week12"
 - Because postpurchase cooling-off periods are bypassed during live-stream impulse buying, categories sold heavily via social commerce often experience elevated product return rates.
 
 ## Recommender Systems, Filter Bubbles, and Algorithmic Discovery [exercise]
+[figure: interactive recommendation feed of eight product tiles across four categories showing how repeated likes narrow the feed into a filter bubble and drop unchosen categories]
 - In traditional search, the consumer initiates a query after recognizing a need. In algorithm-driven discovery, a recommender system proactively predicts and surfaces products before the user searches.
 - Collaborative filtering and deep sequence models analyze a user's past clicks, watch durations, and purchases alongside millions of other users to curate a personalized storefront feed.
 - Algorithmic curation reduces choice overload in massive catalogs, helping consumers discover niche music, books, and apparel suited to their tastes.
@@ -54,6 +58,7 @@ week: "week12"
 - Consumer delegation to AI agents spans a four-level continuum from advisory support to fully autonomous purchasing.
 
 ## Defining Agentic Commerce [no-exercise]
+[figure: open laptop displaying three product search listings, including a sponsored placement, alongside an AI shopping agent acting on the consumer's behalf]
 - Agentic commerce refers to market transactions in which an artificial intelligence agent acts as an active intermediary that searches, evaluates, negotiates, or purchases goods and services on behalf of a human consumer.
 - Unlike static rule-based auto-ship subscriptions that simply repeat an identical SKU on a fixed calendar schedule, an AI agent can interpret natural-language goals, compare live catalog changes, and switch brands when prices or ratings shift.
 - An agentic workflow combines a large language model for reasoning with external tool calls that read product pages, check inventory APIs, and submit checkout credentials.
@@ -69,6 +74,7 @@ week: "week12"
 - At Level 4 (Autonomous Purchasing), the AI agent monitors household needs and executes complete purchases independently within pre-authorized guardrails such as budget caps and preferred delivery windows.
 
 ## Dual-Audience Marketing: Persuading the Principal and the Agent [no-exercise]
+[figure: dual-audience marketing strategy showing a brand product communicating emotional appeal to the human consumer on the left and a structured specification sheet to the AI agent on the right]
 - As transactions move up the autonomy ladder from Level 1 to Level 4, the human consumer inspects fewer raw marketplace pages directly.
 - Brands operating in agentic markets must therefore manage a dual-audience marketing strategy addressing both the human principal and the AI agent.
 - Marketing to the human principal focuses on brand equity, emotional storytelling, postpurchase sensory satisfaction, and values so the consumer names the brand in delegation prompts.
@@ -83,6 +89,7 @@ week: "week12"
 - Principal-agent theory and experimental evidence show how conflicts of duty and sponsorship labels shape AI recommendations.
 
 ## Principal-Agent Theory in AI Shopping Assistants [no-exercise]
+[figure: AI shopping agent positioned between two competing principals: the traveler with a suitcase on the left and the booking platform displaying a sponsored listing and ad revenue coins on the right]
 - In economics and law, a principal-agent relationship arises whenever one party (the principal) delegates decision-making authority to another party (the agent) to act on the principal's behalf (Jensen & Meckling, 1976).
 - An agency problem (or conflict of interest) occurs when the agent's incentives diverge from the principal's welfare and the principal cannot perfectly monitor the agent's actions.
 - A consumer who asks an AI shopping assistant for the best hotel or flight naturally assumes the role of principal and expects the assistant to maximize the consumer's utility.
@@ -98,6 +105,7 @@ week: "week12"
 - Thus, the fiduciary orientation specified in an AI assistant's system instructions directly alters whether the consumer receives buyer-aligned or platform-aligned recommendations (Wadi & Ma, 2026c).
 
 ## Sponsorship Disclosure Labels and Beneficiary Prompts [exercise]
+[figure: experimental comparison of paid hotel selection rates under Promoted versus Sponsored disclosure labels for traveler-aligned and platform-aligned AI agents]
 - Consumer protection law requires online platforms to attach disclosure labels (such as "Sponsored" or "Ad") to paid placements so human shoppers can recognize commercial intent.
 - When an AI agent screens listings on the consumer's behalf, the sponsorship disclosure label is read by the agent rather than seen directly by the human buyer.
 - Experimental tests show that the exact wording of the disclosure label changes agent behavior: labeling a paid hotel listing "Sponsored" reduced the agent's probability of selecting it more than labeling the identical listing "Promoted" (Wadi & Ma, 2026c).
@@ -109,6 +117,7 @@ week: "week12"
 - These capabilities create acute ethical tensions around surveillance, price discrimination, and algorithmic collusion.
 
 ## Personalization, the Privacy Paradox, and Conversational Data [no-exercise]
+[figure: the privacy paradox in which a shopper expresses concern for data privacy while entering personal details at a kiosk in exchange for a free coffee]
 - Behavioral personalization creates genuine convenience for consumers by filtering irrelevant noise and surfacing timely reminders.
 - At the same time, consumers exhibit the privacy paradox: in surveys, buyers express strong concern about corporate data tracking, yet in practice they readily trade personal information for small discounts or convenience (Norberg, Horne, & Horne, 2007).
 - Shoshana Zuboff (2019) termed the large-scale extraction of behavioral data to predict and modify human action surveillance capitalism.
@@ -116,6 +125,7 @@ week: "week12"
 - Ethical data stewardship requires data minimization, clear purpose limitation, opt-in consent before training models on user conversations, and local or anonymized processing where feasible.
 
 ## Dynamic Pricing, Personalized Pricing, and Perceived Fairness [exercise]
+[figure: personalized pricing in which two consumers holding smartphones view the identical four-star sneaker at the same moment but receive different price quotes of 89 dollars and 119 dollars]
 - Algorithmic pricing uses software models to update retail prices continuously in response to market conditions or individual buyer characteristics.
 - Dynamic pricing varies the price of a good over time for all buyers simultaneously based on aggregate supply and demand, as in airline yield management or ride-hailing surge pricing.
 - Personalized pricing (first-degree price discrimination) charges different individual consumers different prices for the exact same item at the same moment based on their estimated willingness to pay, browsing device, or location.
@@ -135,7 +145,7 @@ week: "week12"
 - Closing the gap between pro-environmental attitudes and actual marketplace choices connects behavioral theory to sustainable consumption and agentic delegation.
 
 ## Sustainable Consumption and the Attitude-Behavior Gap [exercise]
-[figure: five psychological levers of the SHIFT framework for sustainable behavior: social influence, habit formation, individual self, feelings and cognition, and tangibility]
+[figure: the green attitude-behavior gap in which a shopper thinks of an eco-friendly leaf while carrying away a cheaper 4.99-dollar conventional detergent instead of an 8.99-dollar eco-labeled detergent]
 - Sustainable consumption is the acquisition, use, and disposition of products in ways that minimize environmental degradation and preserve resources for future generations.
 - A persistent finding in sustainability research is the green attitude-behavior gap: a large majority of consumers express positive attitudes toward eco-friendly products in surveys, yet sustainable options often capture a much smaller share at the checkout register.
 - This gap arises because environmental benefits are abstract, collective, and delayed in the future, whereas price premiums, convenience sacrifices, and habitual inertia are immediate and personal.
@@ -143,6 +153,7 @@ week: "week12"
 - Making sustainable options the default choice, signaling peer norms, and connecting eco-efficiency to immediate personal benefits prove far more effective than abstract guilt appeals.
 
 ## Greenwashing, Eco-Labels, and Delegated Sustainability Filters [no-exercise]
+[figure: delegated sustainability filter in which an AI shopping agent instructed to pick the lowest carbon footprint selects the verified 0.8-kilogram CO2 detergent over higher-emission and unlabeled alternatives]
 - Greenwashing occurs when an organization uses vague, unsubstantiated, or misleading environmental claims (such as "all-natural" or "eco-conscious" packaging) to appear sustainable without reducing its actual environmental footprint.
 - Greenwashing erodes consumer trust and induces green skepticism, causing buyers to discount even legitimate environmental innovations.
 - Credible third-party eco-labels (such as Energy Star, Fairtrade, or certified carbon-footprint disclosures) reduce information asymmetry by providing standardized, audited metrics.
@@ -150,6 +161,7 @@ week: "week12"
 - A consumer who sets a persistent rule in their AI shopping agent (such as requiring verified repairability scores or excluding uncertified palm oil) ensures that System 2 ethical values are applied consistently across every routine transaction.
 
 ## Course Synthesis: The Human Consumer and the AI Surrogate [no-exercise]
+[figure: comparison of the two marketplace actors: the AI agent evaluating structured specification sheets and review cards on the left, and the human consumer holding a warm mug and values on the right]
 - Across twelve weeks, this course has traced consumer behavior from sensory perception, learning, memory, motivation, self-concept, and attitudes through decision rules, behavioral heuristics, postpurchase loyalty, social influence, and culture.
 - Throughout each stage, the marketplace now includes two interacting decision makers: the human consumer and the AI agent acting as a surrogate consumer.
 - The AI agent perceives products through structured data, retrieves brands from learned text associations, curtailed search under lookup costs, and reflects training-corpus cultural patterns and system-prompt duties.

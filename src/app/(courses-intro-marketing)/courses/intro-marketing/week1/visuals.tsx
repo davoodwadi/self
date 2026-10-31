@@ -386,32 +386,32 @@ function DirectionGlyph({
 
 export function SellingVersusMarketing() {
   const heads = ["STARTING POINT", "FOCUS", "MEANS", "ENDS"];
-  const rowTop = (i: number) => 144 + i * 74;
+  const rowTop = (i: number) => 144 + i * 72;
   const lanes = [
     {
-      cx: 188,
+      cx: 184,
       name: "SELLING",
       dir: "INSIDE-OUT",
-      tone: SIGNAL,
+      tone: COUNTER,
       outward: true,
       stages: [
         ["Factory"],
         ["Existing", "products"],
-        ["Heavy selling"],
-        ["Sales volume"],
+        ["Heavy", "promotion"],
+        ["Profit via", "sales volume"],
       ],
     },
     {
-      cx: 328,
+      cx: 326,
       name: "MARKETING",
       dir: "OUTSIDE-IN",
-      tone: COUNTER,
+      tone: SIGNAL,
       outward: false,
       stages: [
         ["Well-defined", "market"],
         ["Customer needs"],
-        ["Integrating all", "marketing", "activities"],
-        ["Profits through", "customer", "satisfaction"],
+        ["Coordinated", "marketing"],
+        ["Profit via", "satisfaction"],
       ],
     },
   ];
@@ -419,8 +419,8 @@ export function SellingVersusMarketing() {
   return (
     <Frame
       width={400}
-      height={432}
-      label="Two columns. Selling runs inside-out, down from factory to existing products, heavy selling and sales volume. Marketing runs outside-in, down from well-defined market to customer needs, integrating all marketing activities and profits through customer satisfaction."
+      height={426}
+      label="Two columns comparing the selling and marketing orientations. The selling concept runs inside-out from the factory to existing products, heavy promotion, and short-term profit through sales volume. The marketing concept runs outside-in from a well-defined market to underlying customer needs, coordinated marketing activities, and profit through long-term customer satisfaction."
     >
       {heads.map((h, i) => (
         <Key key={h} x={8} y={rowTop(i) + 20} fill={INK3} size={9}>
@@ -428,11 +428,11 @@ export function SellingVersusMarketing() {
         </Key>
       ))}
       <line x1={8} y1={128} x2={392} y2={128} stroke={RULE2} strokeWidth={1} />
-      <line x1={258} y1={10} x2={258} y2={422} stroke={RULE} strokeWidth={1} />
+      <line x1={255} y1={10} x2={255} y2={418} stroke={RULE} strokeWidth={1} />
 
       {lanes.map((lane) => (
         <g key={lane.name}>
-          <Key x={lane.cx} y={16} anchor="middle" fill={INK} size={11}>
+          <Key x={lane.cx} y={18} anchor="middle" fill={INK} size={11}>
             {lane.name}
           </Key>
           <DirectionGlyph
@@ -450,12 +450,22 @@ export function SellingVersusMarketing() {
             return (
               <g key={i}>
                 {i > 0 ? (
-                  <path
-                    d={head1.down(lane.cx, top - 2)}
-                    fill="none"
-                    stroke={lane.tone}
-                    strokeWidth={1.5}
-                  />
+                  <>
+                    <line
+                      x1={lane.cx}
+                      y1={top - 22}
+                      x2={lane.cx}
+                      y2={top - 5}
+                      stroke={lane.tone}
+                      strokeWidth={1.5}
+                    />
+                    <path
+                      d={head1.down(lane.cx, top - 4)}
+                      fill="none"
+                      stroke={lane.tone}
+                      strokeWidth={1.5}
+                    />
+                  </>
                 ) : null}
                 <line
                   x1={lane.cx - 50}
@@ -469,7 +479,7 @@ export function SellingVersusMarketing() {
                   <Note
                     key={j}
                     x={lane.cx}
-                    y={top + 20 + j * 17}
+                    y={top + 20 + j * 20}
                     size={13.5}
                     fill={INK}
                     anchor="middle"
@@ -491,15 +501,15 @@ export function SellingVersusMarketing() {
    ========================================================================== */
 
 export function SocietalTriangle() {
-  const T = { x: 200, y: 42 };
-  const L = { x: 72, y: 248 };
-  const R = { x: 328, y: 248 };
+  const T = { x: 200, y: 46 };
+  const L = { x: 84, y: 242 };
+  const R = { x: 316, y: 242 };
 
   return (
     <Frame
       width={400}
-      height={290}
-      label="A triangle with company profits, consumer wants and public interest at its corners, and sustainable marketing balanced at the centre."
+      height={292}
+      label="A triad with long-run public interest at the top, consumer wants at the bottom left, and company profits at the bottom right, balanced around the societal marketing concept."
     >
       <path
         d={`M${T.x} ${T.y} L${R.x} ${R.y} L${L.x} ${L.y} Z`}
@@ -512,8 +522,8 @@ export function SocietalTriangle() {
         <circle key={`${p.x}`} cx={p.x} cy={p.y} r={6} fill={INK} />
       ))}
 
-      <Key x={T.x} y={T.y - 18} anchor="middle" fill={INK} size={11.5}>
-        PUBLIC INTEREST
+      <Key x={T.x} y={T.y - 18} anchor="middle" fill={INK} size={11}>
+        LONG-RUN PUBLIC INTEREST
       </Key>
       <Key x={L.x} y={L.y + 30} anchor="middle" fill={INK} size={11}>
         CONSUMER WANTS
@@ -522,11 +532,14 @@ export function SocietalTriangle() {
         COMPANY PROFITS
       </Key>
 
-      <Key x={200} y={176} anchor="middle" fill={SIGNAL} size={11.5}>
-        SUSTAINABLE
+      <Key x={200} y={168} anchor="middle" fill={SIGNAL} size={11.5}>
+        SOCIETAL
       </Key>
-      <Key x={200} y={194} anchor="middle" fill={SIGNAL} size={11.5}>
+      <Key x={200} y={186} anchor="middle" fill={SIGNAL} size={11.5}>
         MARKETING
+      </Key>
+      <Key x={200} y={204} anchor="middle" fill={SIGNAL} size={11.5}>
+        CONCEPT
       </Key>
     </Frame>
   );
@@ -592,11 +605,11 @@ export function NeedsWantsDemandsLanes() {
   return (
     <Frame
       height={392}
-      label="Comparing needs, wants, and demands. Needs are physical, social and individual. Shaped by culture and individual personality, a hungry person wants a hamburger in one culture and rice and fish in another. A want backed by buying power becomes a demand."
+      label="Progression from an underlying human need to a culturally shaped want and a purchasing-power-backed market demand. Needs are physical, social, and individual. Shaped by culture and personality, a hungry commuter in Toronto wants a bagel and coffee whereas a hungry commuter in Tokyo wants rice, grilled fish, and miso soup. A want backed by buying power becomes a market demand."
     >
       {/* lane rules */}
-      <line x1={20} y1={122} x2={780} y2={122} stroke={RULE} strokeWidth={1} />
-      <line x1={20} y1={258} x2={780} y2={258} stroke={RULE} strokeWidth={1} />
+      <line x1={226} y1={122} x2={780} y2={122} stroke={RULE} strokeWidth={1} />
+      <line x1={226} y1={258} x2={780} y2={258} stroke={RULE} strokeWidth={1} />
       <line x1={226} y1={24} x2={226} y2={372} stroke={RULE} strokeWidth={1} />
 
       {/* ---- spine ---- */}
@@ -615,11 +628,11 @@ export function NeedsWantsDemandsLanes() {
         {
           y0: 76,
           y1: 170,
-          a: "SHAPED BY CULTURE",
-          b: "AND PERSONALITY",
+          a: "Shaped by culture",
+          b: "and personality",
           tone: COUNTER,
         },
-        { y0: 210, y1: 304, a: "BACKED BY", b: "BUYING POWER", tone: SIGNAL },
+        { y0: 210, y1: 304, a: "Backed by", b: "buying power", tone: SIGNAL },
       ].map((t) => (
         <g key={t.a}>
           <line
@@ -647,9 +660,9 @@ export function NeedsWantsDemandsLanes() {
 
       {/* ---- lane 1: the three kinds of need ---- */}
       {[
-        { x: lane, k: "PHYSICAL", n: "food, clothing, warmth" },
-        { x: lane + 180, k: "SOCIAL", n: "belonging, affection" },
-        { x: lane + 360, k: "INDIVIDUAL", n: "knowledge, self-expression" },
+        { x: lane, k: "PHYSICAL", n: "food, clothing, shelter, safety" },
+        { x: lane + 196, k: "SOCIAL", n: "belonging, affection" },
+        { x: lane + 362, k: "INDIVIDUAL", n: "knowledge, self-expression" },
       ].map((c) => (
         <g key={c.k}>
           <line
@@ -663,22 +676,22 @@ export function NeedsWantsDemandsLanes() {
           <Key x={c.x} y={62} fill={INK} size={10.5}>
             {c.k}
           </Key>
-          <Note x={c.x} y={84} size={13.5} fill={INK2}>
+          <Note x={c.x} y={84} size={13} fill={INK2}>
             {c.n}
           </Note>
         </g>
       ))}
 
       {/* ---- lane 2: one need, two cultures ---- */}
-      <Chip1 x={lane} y={196} w={150} label="A HUNGRY PERSON" tone={INK} />
+      <Chip1 x={lane} y={196} w={156} label="HUNGRY COMMUTER" tone={INK} />
       <path
-        d={`M${lane + 150} 190 C${lane + 200} 190 ${lane + 200} 160 ${lane + 262} 160`}
+        d={`M${lane + 156} 190 C${lane + 202} 190 ${lane + 202} 160 ${lane + 262} 160`}
         fill="none"
         stroke={COUNTER}
         strokeWidth={1.5}
       />
       <path
-        d={`M${lane + 150} 190 C${lane + 200} 190 ${lane + 200} 220 ${lane + 262} 220`}
+        d={`M${lane + 156} 190 C${lane + 202} 190 ${lane + 202} 220 ${lane + 262} 220`}
         fill="none"
         stroke={COUNTER}
         strokeWidth={1.5}
@@ -695,17 +708,17 @@ export function NeedsWantsDemandsLanes() {
         stroke={COUNTER}
         strokeWidth={1.5}
       />
-      <Key x={lane + 280} y={152} fill={INK3} size={9.5}>
-        IN ONE CULTURE
+      <Key x={lane + 280} y={150} fill={INK3} size={9.5}>
+        In Toronto
       </Key>
-      <Note x={lane + 280} y={170} size={15} fill={COUNTER}>
-        a hamburger
+      <Note x={lane + 280} y={172} size={14.5} fill={COUNTER}>
+        a bagel and coffee
       </Note>
-      <Key x={lane + 280} y={212} fill={INK3} size={9.5}>
-        IN ANOTHER
+      <Key x={lane + 280} y={210} fill={INK3} size={9.5}>
+        In Tokyo
       </Key>
-      <Note x={lane + 280} y={230} size={15} fill={COUNTER}>
-        rice and fish
+      <Note x={lane + 280} y={232} size={14.5} fill={COUNTER}>
+        rice, grilled fish, and miso soup
       </Note>
 
       {/* ---- lane 3: the word equation ---- */}
@@ -850,8 +863,8 @@ export function PerceivedValueBars() {
   return (
     <Frame
       width={400}
-      height={224}
-      label={`Three offers, each drawn as a benefits bar above a costs bar. The stretch of benefits beyond the costs is perceived value. The benefits and costs of this offer can be dragged. ${best === 0 ? "This offer" : best === 1 ? "The competing offer with the most benefits" : "The cheaper competing offer"} now has the highest perceived value.`}
+      height={272}
+      label={`Three offers, each drawn as a total benefits bar above a total costs bar. The difference between benefits and costs is customer perceived value. The benefits and costs of this offer can be dragged. ${best === 0 ? "This offer" : best === 1 ? "The competing offer with the most benefits" : "The cheaper competing offer"} now has the highest perceived value.`}
     >
       {offers.map((o, i) => {
         const by = o.top + 16;
@@ -889,10 +902,10 @@ export function PerceivedValueBars() {
             {o.mine ? (
               <>
                 <Key x={x0 + 8} y={by + 12.5} fill={PAPER} size={9}>
-                  ALL THE BENEFITS
+                  TOTAL BENEFITS
                 </Key>
                 <Key x={x0 + 8} y={cy + 12.5} fill={PAPER} size={9}>
-                  ALL THE COSTS
+                  TOTAL COSTS
                 </Key>
               </>
             ) : null}
@@ -925,7 +938,7 @@ export function PerceivedValueBars() {
                     setB(v - x0);
                     setC((cc) => Math.min(cc, v - x0));
                   }}
-                  label="All the benefits of this offer"
+                  label="Total benefits of this offer"
                 />
                 <DragKnob
                   y={cy + h / 2}
@@ -933,13 +946,20 @@ export function PerceivedValueBars() {
                   min={x0 + 40}
                   max={bEnd}
                   onChange={(v) => setC(v - x0)}
-                  label="All the costs of this offer"
+                  label="Total costs of this offer"
                 />
               </>
             ) : null}
           </g>
         );
       })}
+      <line x1={10} y1={222} x2={390} y2={222} stroke={RULE} strokeWidth={1} />
+      <Key x={10} y={240} fill={COUNTER} size={9.5}>
+        BENEFITS: FUNCTIONAL, SERVICE, PRESTIGE
+      </Key>
+      <Key x={10} y={258} fill={INK3} size={9.5}>
+        COSTS: PRICE, TIME, EFFORT, RISK
+      </Key>
     </Frame>
   );
 }
@@ -1229,79 +1249,109 @@ export function AgentReads() {
    ========================================================================== */
 
 export function FourPlusOne() {
-  const x0 = 12;
-  const pitch = 76;
-  const w = 68;
+  const x0 = 16;
+  const pitch = 158;
+  const w = 136;
+  const h = 84;
+  const top = 36;
   const end = x0 + 4 * pitch + w;
+  const steps = [
+    ["Understand", "marketplace"],
+    ["Design value", "strategy"],
+    ["Construct", "program"],
+    ["Build customer", "relationships"],
+    ["Capture value", "in return"],
+  ];
 
   return (
     <Frame
-      width={400}
-      height={176}
-      label="Five numbered steps along an arrow from research to value capture. A bracket under steps one to four reads create value for customers. A bracket under step five reads capture value in return."
+      width={800}
+      height={186}
+      label="Five-step marketing process from understanding the marketplace to capturing value in return. A bracket under steps one to four reads create value for customers, and a bracket under step five reads capture value in return."
     >
-      <Key x={x0} y={24} fill={INK3} size={9}>
-        RESEARCH
+      <Key x={x0} y={20} fill={INK3} size={10}>
+        RESEARCH AND STRATEGY
       </Key>
-      <line x1={x0 + 72} y1={20} x2={end - 6} y2={20} stroke={RULE2} strokeWidth={1} />
-      <path d={head1.right(end, 20)} fill="none" stroke={RULE2} strokeWidth={1} />
-      <Key x={end} y={40} anchor="end" fill={INK3} size={9}>
-        VALUE CAPTURE
+      <line x1={x0 + 150} y1={16} x2={end - 110} y2={16} stroke={RULE2} strokeWidth={1} />
+      <path d={head1.right(end - 108, 16)} fill="none" stroke={RULE2} strokeWidth={1} />
+      <Key x={end} y={20} anchor="end" fill={SIGNAL} size={10}>
+        EQUITY AND PROFITS
       </Key>
 
-      {[0, 1, 2, 3, 4].map((i) => {
+      {steps.map((lines, i) => {
         const last = i === 4;
+        const bx = x0 + i * pitch;
         return (
           <g key={i}>
             <rect
-              x={x0 + i * pitch}
-              y={52}
+              x={bx}
+              y={top}
               width={w}
-              height={60}
+              height={h}
               fill={last ? SIGNAL_TINT : COUNTER_TINT}
               stroke={last ? SIGNAL : COUNTER}
               strokeWidth={1.25}
             />
-            <Display
-              x={x0 + i * pitch + w / 2}
-              y={94}
-              anchor="middle"
-              size={30}
+            <Key
+              x={bx + 12}
+              y={top + 22}
               fill={last ? SIGNAL : COUNTER}
+              size={10}
             >
-              {i + 1}
-            </Display>
+              {`STEP ${i + 1}`}
+            </Key>
+            <Note x={bx + 12} y={top + 46} size={13.5} fill={INK}>
+              {lines[0]}
+            </Note>
+            <Note x={bx + 12} y={top + 66} size={13.5} fill={INK}>
+              {lines[1]}
+            </Note>
+            {!last ? (
+              <>
+                <line
+                  x1={bx + w + 4}
+                  y1={top + h / 2}
+                  x2={bx + pitch - 6}
+                  y2={top + h / 2}
+                  stroke={i === 3 ? SIGNAL : COUNTER}
+                  strokeWidth={1.5}
+                />
+                <path
+                  d={head1.right(bx + pitch - 4, top + h / 2)}
+                  fill="none"
+                  stroke={i === 3 ? SIGNAL : COUNTER}
+                  strokeWidth={1.5}
+                />
+              </>
+            ) : null}
           </g>
         );
       })}
 
       {/* brackets */}
       <path
-        d={`M${x0} 122 L${x0} 130 L${x0 + 3 * pitch + w} 130 L${x0 + 3 * pitch + w} 122`}
+        d={`M${x0} 132 L${x0} 142 L${x0 + 3 * pitch + w} 142 L${x0 + 3 * pitch + w} 132`}
         fill="none"
         stroke={COUNTER}
         strokeWidth={1.5}
       />
       <Key
         x={x0 + (3 * pitch + w) / 2}
-        y={152}
+        y={166}
         anchor="middle"
         fill={COUNTER}
-        size={10}
+        size={11}
       >
-        CREATE VALUE FOR CUSTOMERS
+        CREATE VALUE FOR CUSTOMERS (STEPS 1 TO 4)
       </Key>
       <path
-        d={`M${x0 + 4 * pitch} 122 L${x0 + 4 * pitch} 130 L${end} 130 L${end} 122`}
+        d={`M${x0 + 4 * pitch} 132 L${x0 + 4 * pitch} 142 L${end} 142 L${end} 132`}
         fill="none"
         stroke={SIGNAL}
         strokeWidth={1.5}
       />
-      <Key x={x0 + 4 * pitch + w / 2} y={152} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Key x={x0 + 4 * pitch + w / 2} y={166} anchor="middle" fill={SIGNAL} size={10.5}>
         CAPTURE VALUE
-      </Key>
-      <Key x={x0 + 4 * pitch + w / 2} y={166} anchor="middle" fill={SIGNAL} size={9.5}>
-        IN RETURN
       </Key>
     </Frame>
   );
@@ -1610,20 +1660,24 @@ export function RelationshipCycle() {
    ========================================================================== */
 
 export function LifetimeStream() {
-  const base = 178;
-  const cut = 6;
+  const base = 138;
+  const cut = 5;
   const bars = Array.from({ length: 24 }, (_, i) => ({
-    x: 74 + i * 28,
-    h: Math.round(30 + hash1(i + 11) * 36),
+    x: 68 + i * 28,
+    h: Math.round(26 + hash1(i + 11) * 32),
   }));
   const last = bars[bars.length - 1];
   const w = 16;
+  const barY = 216;
+  const barH = 34;
 
   return (
     <Frame
-      height={214}
-      label="One customer's purchases as a row of bars over a lifetime of patronage. At the point the customer is lost, one bar is a single sale. Every bar after it is the entire future income stream."
+      width={800}
+      height={292}
+      label="Top: comparison of a single-transaction margin against cumulative customer lifetime value across a lifetime of patronage. Bottom: share of customer across product categories captured by the firm versus competing firms."
     >
+      {/* ---- Top panel: Single-transaction margin vs. cumulative CLV ---- */}
       <line x1={50} y1={base} x2={762} y2={base} stroke={INK} strokeWidth={1} />
       <path
         d={head1.right(770, base)}
@@ -1631,7 +1685,7 @@ export function LifetimeStream() {
         stroke={INK}
         strokeWidth={1}
       />
-      <Key x={770} y={base + 24} anchor="end" fill={INK3} size={9.5}>
+      <Key x={770} y={base + 22} anchor="end" fill={INK3} size={9.5}>
         A LIFETIME OF PATRONAGE
       </Key>
 
@@ -1643,7 +1697,7 @@ export function LifetimeStream() {
           );
         if (i === cut)
           return (
-            <rect key={i} x={b.x} y={y} width={w} height={b.h} fill={SIGNAL} />
+            <rect key={i} x={b.x} y={y} width={w} height={b.h} fill={COUNTER} />
           );
         return (
           <rect
@@ -1663,43 +1717,107 @@ export function LifetimeStream() {
       {/* the cut */}
       <line
         x1={bars[cut].x - 6}
-        y1={48}
+        y1={28}
         x2={bars[cut].x - 6}
-        y2={base + 10}
+        y2={base + 8}
         stroke={INK}
         strokeWidth={1.25}
         strokeDasharray="4 3"
       />
-      <Key x={bars[cut].x - 14} y={60} anchor="end" fill={INK} size={10.5}>
-        CUSTOMER LOST
+      <Key x={bars[cut].x - 14} y={40} anchor="end" fill={INK} size={10}>
+        DEFECTS OVER DISPUTE
       </Key>
 
-      {/* single sale */}
+      {/* single transaction */}
       <Key
         x={bars[cut].x + w / 2}
-        y={base + 24}
+        y={base + 22}
         anchor="middle"
-        fill={SIGNAL}
-        size={10}
+        fill={COUNTER}
+        size={9.5}
       >
-        A SINGLE SALE
+        SINGLE TRANSACTION
       </Key>
 
-      {/* future stream */}
+      {/* cumulative CLV stream */}
       <path
-        d={`M${bars[cut + 1].x} 92 L${bars[cut + 1].x} 82 L${last.x + w} 82 L${last.x + w} 92`}
+        d={`M${bars[cut + 1].x} 66 L${bars[cut + 1].x} 56 L${last.x + w} 56 L${last.x + w} 66`}
         fill="none"
         stroke={SIGNAL}
         strokeWidth={1.5}
       />
       <Key
         x={(bars[cut + 1].x + last.x + w) / 2}
-        y={70}
+        y={42}
         anchor="middle"
         fill={SIGNAL}
         size={11}
       >
-        THE ENTIRE FUTURE INCOME STREAM
+        Cumulative customer lifetime value (CLV)
+      </Key>
+
+      <line x1={50} y1={178} x2={770} y2={178} stroke={RULE} strokeWidth={1} />
+
+      {/* ---- Bottom panel: Share of customer across product categories ---- */}
+      <Key x={50} y={204} fill={INK} size={10}>
+        SHARE OF CUSTOMER ACROSS PRODUCT CATEGORIES
+      </Key>
+      <Key x={750} y={204} anchor="end" fill={INK3} size={9.5}>
+        TOTAL CATEGORY SPENDING
+      </Key>
+
+      <rect x={50} y={barY} width={160} height={barH} fill={SIGNAL} />
+      <Key x={130} y={barY + 21} anchor="middle" fill={PAPER} size={10}>
+        CHECKING
+      </Key>
+
+      <rect
+        x={212}
+        y={barY}
+        width={170}
+        height={barH}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.25}
+      />
+      <Key x={297} y={barY + 21} anchor="middle" fill={SIGNAL} size={10}>
+        + MORTGAGE
+      </Key>
+
+      <rect
+        x={384}
+        y={barY}
+        width={166}
+        height={barH}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.25}
+      />
+      <Key x={467} y={barY + 21} anchor="middle" fill={SIGNAL} size={10}>
+        + WEALTH MANAGEMENT
+      </Key>
+
+      <rect
+        x={552}
+        y={barY}
+        width={198}
+        height={barH}
+        fill={PAPER3}
+        stroke={RULE2}
+        strokeWidth={1}
+      />
+      <Key x={651} y={barY + 21} anchor="middle" fill={INK3} size={10}>
+        COMPETING FIRMS
+      </Key>
+
+      <path
+        d="M50 258 L50 266 L550 266 L550 258"
+        fill="none"
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={300} y={284} anchor="middle" fill={SIGNAL} size={10.5}>
+        SHARE OF CUSTOMER (SHARE OF WALLET) CAPTURED BY FIRM
       </Key>
     </Frame>
   );
@@ -2127,5 +2245,127 @@ export function AcquireRetain() {
         onChange={setFirm}
       />
     </div>
+  );
+}
+
+/* ==========================================================================
+   20. DELEGATED SHOPPING SEQUENCE: consumer -> AI agent -> postpurchase use
+   ========================================================================== */
+
+export function DelegatedShoppingSequence() {
+  const top = 28;
+  const h = 186;
+
+  return (
+    <Frame
+      width={800}
+      height={244}
+      label="Three-stage delegated shopping sequence. First, the human consumer states a want and budget constraint: a waterproof hiking jacket under 150 dollars. Second, the AI shopping agent acts as an operational surrogate that searches catalogs, compares specifications, and executes the purchase. Third, the human consumer wears the jacket in the rain and forms the postpurchase satisfaction judgment that drives customer lifetime value."
+    >
+      {/* Stage 1: Human Consumer */}
+      <rect
+        x={16}
+        y={top}
+        width={232}
+        height={h}
+        fill={PAPER}
+        stroke={INK}
+        strokeWidth={1.25}
+      />
+      <Key x={32} y={top + 24} fill={INK} size={10.5}>
+        1. HUMAN CONSUMER
+      </Key>
+      <Person1 x={50} y={top + 96} s={1.1} />
+      <rect
+        x={80}
+        y={top + 52}
+        width={152}
+        height={56}
+        rx={10}
+        fill={PAPER3}
+        stroke={RULE2}
+        strokeWidth={1}
+      />
+      <Note x={92} y={top + 76} size={13} fill={INK}>
+        Waterproof jacket
+      </Note>
+      <Note x={92} y={top + 95} size={13} fill={INK}>
+        under $150
+      </Note>
+      <line x1={32} y1={top + 132} x2={232} y2={top + 132} stroke={RULE} strokeWidth={1} />
+      <Key x={32} y={top + 152} fill={INK3} size={9.5}>
+        STATES WANT AND BUDGET
+      </Key>
+      <Key x={32} y={top + 168} fill={INK3} size={9.5}>
+        HOLDS BUYING POWER
+      </Key>
+
+      {/* Connector 1 -> 2 */}
+      <line x1={252} y1={top + h / 2} x2={278} y2={top + h / 2} stroke={INK} strokeWidth={1.5} />
+      <path d={head1.right(280, top + h / 2)} fill="none" stroke={INK} strokeWidth={1.5} />
+
+      {/* Stage 2: AI Shopping Agent */}
+      <rect
+        x={284}
+        y={top}
+        width={232}
+        height={h}
+        fill={COUNTER_TINT}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+      />
+      <Key x={300} y={top + 24} fill={COUNTER} size={10.5}>
+        2. AI SHOPPING AGENT
+      </Key>
+      <Chip2 x={324} y={top + 80} s={38} tone={COUNTER} fill={PAPER} />
+      <Note x={360} y={top + 64} size={13} fill={INK}>
+        Searches catalogs
+      </Note>
+      <Note x={360} y={top + 84} size={13} fill={INK}>
+        Compares specs
+      </Note>
+      <Note x={360} y={top + 104} size={13} fill={INK}>
+        Executes purchase
+      </Note>
+      <line x1={300} y1={top + 132} x2={500} y2={top + 132} stroke={COUNTER} strokeWidth={1} />
+      <Key x={300} y={top + 152} fill={COUNTER} size={9.5}>
+        OPERATIONAL SURROGATE
+      </Key>
+      <Key x={300} y={top + 168} fill={COUNTER} size={9.5}>
+        READS STRUCTURED DATA
+      </Key>
+
+      {/* Connector 2 -> 3 */}
+      <line x1={520} y1={top + h / 2} x2={546} y2={top + h / 2} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head1.right(548, top + h / 2)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Stage 3: Postpurchase Experience */}
+      <rect
+        x={552}
+        y={top}
+        width={232}
+        height={h}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.5}
+      />
+      <Key x={568} y={top + 24} fill={SIGNAL} size={10.5}>
+        3. POSTPURCHASE USE
+      </Key>
+      <Hoodie x={568} y={top + 52} size={52} weight="duotone" color={SIGNAL} />
+      <Note x={630} y={top + 70} size={13} fill={INK}>
+        Wears in the rain
+      </Note>
+      <Note x={630} y={top + 92} size={13} fill={INK}>
+        Judges performance
+      </Note>
+      <line x1={568} y1={top + 132} x2={768} y2={top + 132} stroke={SIGNAL} strokeWidth={1} />
+      <Key x={568} y={top + 152} fill={SIGNAL} size={9.5}>
+        SATISFACTION JUDGMENT
+      </Key>
+      <Key x={568} y={top + 168} fill={SIGNAL} size={9.5}>
+        Drives lifetime value (CLV)
+      </Key>
+    </Frame>
   );
 }

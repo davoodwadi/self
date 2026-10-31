@@ -10,6 +10,7 @@ week: "week9"
 - Postpurchase evaluation, dissonance reduction, product disposition, review writing, and repeat patronage determine whether a single transaction develops into durable brand loyalty.
 
 ## The Strategic Value of the Postpurchase Stage [no-exercise]
+[figure: four postpurchase scenes of an owner using headphones, judging their performance against expectations, talking about them with a peer, and placing them into a box for disposition]
 - Postpurchase behavior encompasses all psychological evaluations and overt actions a consumer undertakes after acquiring a product or service.
 - These activities include assembling and using the item, judging its performance against expectations, communicating word of mouth, requesting service, and eventually disposing of the good.
 - Postpurchase evaluation closes the feedback loop of the consumption process by updating the brand attitudes stored in long-term memory.
@@ -17,6 +18,7 @@ week: "week9"
 - Conversely, unresolved postpurchase disappointment triggers brand switching and negative online reviews.
 
 ## Postpurchase Evaluation and Customer Retention Economics [no-exercise]
+[figure: comparison of customer retention cost (an existing customer beside a short stack of coins) and customer acquisition cost (a new customer beside a tall stack of coins)]
 - Acquiring a new customer through advertising and promotional discounting typically costs several times more than retaining an existing buyer.
 - Retained customers purchase more frequently, are less sensitive to small competitor price cuts, and cost less to serve over time.
 - Customer lifetime value rises sharply when small improvements in postpurchase satisfaction reduce annual defection rates (Reichheld & Sasser, 1990).
@@ -36,6 +38,7 @@ week: "week9"
 - Negative disconfirmation occurs when perceived performance falls short of expectations, producing dissatisfaction, regret, and potential complaint behavior.
 
 ## Equity Theory and Perceived Exchange Fairness [no-exercise]
+[figure: balance scale comparing consumer inputs (money paid and time spent) on the left pan against consumer outcomes (the product received) on the right pan]
 - Equity theory proposes that consumers evaluate satisfaction by comparing the ratio of their own outcomes to inputs against the perceived ratio of the seller or another customer (Adams, 1965, and Oliver & Swan, 1989).
 - Consumer inputs include the price paid, shopping time, waiting effort, and courtesy extended during the transaction.
 - Consumer outcomes include product quality, service responsiveness, status, and warranty support.
@@ -43,7 +46,7 @@ week: "week9"
 - Even when functional product performance meets expectations, perceived procedural or distributive unfairness produces strong dissatisfaction.
 
 ## Attribution Theory in Product and Service Failures [exercise]
-[figure: three causal attribution dimensions following a service failure: locus of causality, stability, and controllability]
+[figure: external, firm-controllable attribution in which a buyer points at the manufacturer's box beside headphones snapped at the hinge while holding a strongly dissatisfied expression]
 - When a product fails or a service is delayed, consumers engage in causal attribution to explain why the failure occurred (Folkes, 1984, and Weiner, 2000).
 - Locus of causality asks who is responsible: an internal attribution blames the consumer's own misuse, whereas an external attribution blames the manufacturer, retailer, or environment.
 - Stability asks whether the cause is temporary and unusual (an isolated shipping storm) or permanent and systemic (chronic understaffing at a call center).
@@ -55,6 +58,7 @@ week: "week9"
 - Understanding postpurchase cognitive dissonance and complaint pathways allows firms to reassure anxious buyers and recover dissatisfied customers.
 
 ## Cognitive Dissonance and Buyer's Regret [exercise]
+[figure: buyer wearing newly purchased headphones while picturing the unchosen alternative in a thought cloud]
 - Derived from Leon Festinger's (1957) theory of cognitive dissonance, postpurchase dissonance is the state of psychological discomfort a buyer feels when holding inconsistent cognitions after a decision.
 - Choosing Brand A requires giving up the attractive, unique features offered by rejected Brands B and C, creating doubt about whether the choice was optimal.
 - Postpurchase dissonance is magnified when the purchase is expensive, irrevocable, and high in social or psychological involvement.
@@ -62,6 +66,7 @@ week: "week9"
 - Left unresolved, severe postpurchase dissonance leads to product returns, order cancellations, or durable dissatisfaction.
 
 ## Consumer and Marketer Strategies for Reducing Dissonance [no-exercise]
+[figure: recent buyer reading a five-star review of the chosen headphones on a phone with their back turned to a poster advertising the rejected alternative]
 - To restore cognitive consistency after a purchase, consumers actively seek information that confirms the wisdom of their choice and avoid advertisements for rejected brands.
 - Recent automobile buyers, for example, read advertisements for the car they just purchased more attentively than prospective buyers who have not yet decided (Ehrlich et al., 1957).
 - Consumers also re-evaluate alternatives defensively by inflating the importance of the chosen brand's strengths and discounting the features of rejected options.
@@ -69,7 +74,7 @@ week: "week9"
 - Liberal return policies and comprehensive warranties also reduce the perceived irrevocability of the commitment before and after checkout.
 
 ## Voice, Private, and Third-Party Responses to Dissatisfaction [exercise]
-[figure: taxonomy of consumer dissatisfaction responses: voice responses to the seller, private word-of-mouth and exit, and third-party complaints]
+[figure: twelve dissatisfied buyers in a row where eleven remain silent toward the seller and only one voices a complaint directly to the storefront]
 - Jagdip Singh (1988) classified consumer behavioral responses to dissatisfaction into three distinct pathways: voice, private, and third-party actions.
 - Voice responses direct complaint behavior toward the seller itself, seeking redress through a refund, replacement, repair, or apology.
 - Private responses involve quietly exiting the relationship (switching brands) and warning friends, family, and colleagues through negative interpersonal word of mouth.
@@ -77,6 +82,7 @@ week: "week9"
 - Because the majority of dissatisfied buyers simply defect privately without contacting the firm, accessible complaint channels and empowered front-line recovery turn voice responses into retention opportunities.
 
 ## Discussion: Turning a Service Failure into Customer Recovery
+[figure: customer service chat on a phone where a buyer's report of a broken product receives a verified resolution reply within two minutes]
 - Discussion: A direct-to-consumer meal delivery service ships a holiday dinner box that arrives 36 hours late with spoiled ingredients because the firm's warehouse software misrouted the courier batch. Using expectancy disconfirmation, equity theory, attribution theory (locus, stability, controllability), and Singh's (1988) dissatisfaction taxonomy, explain how customers will interpret this failure and design a service-recovery protocol that prevents private exit and third-party escalation.
 
 ## Part 3: Product Disposal and Secondary Markets [no-exercise]
@@ -92,6 +98,7 @@ week: "week9"
 - The chosen path depends on the item's residual economic value, physical condition, storage cost, and emotional attachment.
 
 ## Lateral Cycling, Resale Platforms, and Circular Business Models [no-exercise]
+[figure: lateral cycling of a used product from an original owner listing headphones on a resale app to a second consumer acquiring them]
 - Lateral cycling occurs when an already-purchased object is exchanged from one consumer to another so that its useful consumption life continues without new manufacturing (Sherry, 1990).
 - Digital peer-to-peer marketplaces, consignment apps, and brand-operated trade-in programs have sharply lowered the transaction costs of lateral cycling for apparel, electronics, and furniture.
 - A liquid secondary market can increase consumers' willingness to pay for a new primary product because buyers anticipate recovering part of the purchase price at resale.
@@ -110,6 +117,7 @@ week: "week9"
 - How firms solicit and incentivize reviews alters both who participates and what they write.
 
 ## Motives for Writing Online Product Reviews [no-exercise]
+[figure: postpurchase review solicitation on a smartphone with unfilled rating stars and text box alongside an attached incentive tag]
 - Consumers expend time and effort writing online reviews for several distinct psychological motives (Hennig-Thurau et al., 2004).
 - Altruistic concern for other consumers motivates reviewers to warn peers against defective goods or highlight exceptional value.
 - Helping the company motivates satisfied buyers to reciprocate a positive purchase experience by supporting a favored seller.
@@ -125,6 +133,7 @@ week: "week9"
 - Framing a review request as a reciprocal exchange with the company caused the minority who did respond to write longer reviews, but lowered overall participation (Wadi et al., 2026b).
 
 ## Conditional Helpfulness Incentives and Dual Review Audiences [no-exercise]
+[figure: interactive field-experiment results comparing review submission rate out of 100 buyers and average review length in characters across first-time and experienced reviewers, unconditional and helpfulness-conditional rewards, and shopper-focused versus company-focused appeals]
 - To encourage informative reviews rather than brief one-line comments, platforms sometimes offer conditional incentives paid only if a review receives a "helpful" vote from subsequent readers.
 - Research demonstrates that conditional helpfulness rewards interact with the consumer's prior reviewing experience (Wadi et al., 2026b).
 - For first-time reviewers who have not yet established an intrinsic reviewing habit, a conditional helpfulness reward significantly increased both review incidence and review length (Wadi et al., 2026b).
@@ -136,7 +145,7 @@ week: "week9"
 - As consumers delegate routine reordering to AI shopping agents, the distinction between attitudinal loyalty and habitual convenience determines which brands survive.
 
 ## Attitude and Repeat Purchase: The Four Loyalty Quadrants [exercise]
-[figure: two-by-two loyalty matrix crossing relative attitude strength with repeat patronage to define true loyalty, latent loyalty, spurious loyalty, and no loyalty]
+[figure: true brand loyalty illustrated by a repeat-purchase stamp card with nine of ten purchases completed alongside a heart representing strong positive attitude]
 - Alan Dick and Kunal Basu (1994) demonstrated that defining loyalty solely by repeat purchase frequency confounds commitment with convenience.
 - Crossing relative attitude strength (high versus low) with repeat patronage (high versus low) yields four distinct loyalty conditions.
 - True loyalty combines a strong, favorable relative attitude with high repeat patronage, insulating the brand against competitor promotions.
@@ -152,6 +161,7 @@ week: "week9"
 - Instead, the agent evaluates available listings from scratch based on the stated goal and the product attributes it acquires in the storefront (Wadi & Ma, 2026b).
 
 ## Vulnerability of Spurious Loyalty Under AI Replenishment [no-exercise]
+[figure: spurious loyalty illustrated by a repeat-purchase stamp card with nine of ten purchases completed but no attitudinal attachment to the brand]
 - Delegated repurchase poses a severe strategic threat to incumbent brands whose market share rests on spurious loyalty and human System 1 inertia.
 - A human shopper walking down an aisle often grabs the familiar box to save five seconds of mental effort, even when a competing package offers a better unit price.
 - An AI agent instructed to optimize price per unit or rating has no visual attachment to familiar shelf colors and will immediately switch away from an overpriced incumbent (Wadi & Ma, 2026b).

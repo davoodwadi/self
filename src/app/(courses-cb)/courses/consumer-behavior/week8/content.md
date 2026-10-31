@@ -10,6 +10,7 @@ week: "week8"
 - Behavioral economics explains how cognitive shortcuts, reference points, and choice architecture systematically shape decisions made by human consumers and by AI shopping agents.
 
 ## From Classical Utility to Behavioral Economics [no-exercise]
+[figure: exhaustive evaluation of every product option on a shelf under the classical utility-maximization model]
 - Neoclassical economic theory assumes that consumers hold stable preferences, evaluate outcomes in terms of absolute wealth, and maximize expected utility without cognitive error.
 - Behavioral economics integrates experimental psychology into economic analysis to study how real people make financial and consumption choices.
 - Rather than treating departures from utility maximization as random noise, behavioral economics shows that human deviations are systematic, directional, and predictable.
@@ -17,6 +18,7 @@ week: "week8"
 - Understanding these regularities helps marketers design persuasive offers and helps regulators protect consumers from predictable traps.
 
 ## Bounded Rationality and Satisficing [no-exercise]
+[figure: satisficing search stopping at the first alternative on a shelf that meets the buyer's aspiration threshold]
 - Herbert Simon introduced bounded rationality to describe decision making under realistic constraints of limited time, incomplete market information, and finite working memory (Simon, 1955).
 - Because exhaustive optimization across hundreds of products is computationally intractable for a human shopper, consumers replace optimization with satisficing.
 - Satisficing means setting an aspiration level (a threshold of what counts as good enough) and terminating search as soon as an alternative meets that threshold.
@@ -36,6 +38,7 @@ week: "week8"
 - System 2 overrides System 1 only when the consumer detects a clear anomaly, faces high stakes, and has sufficient time and cognitive capacity available.
 
 ## Availability and Representativeness Heuristics [exercise]
+[figure: vivid product-recall headline in the news increasing perceived brand risk through the availability heuristic]
 - A heuristic is a mental rule of thumb that simplifies judgment by substituting an easier question for a harder statistical question (Tversky & Kahneman, 1974).
 - The availability heuristic estimates the frequency or probability of an event by the ease with which instances can be retrieved from memory.
 - Vivid media coverage of a single product recall or aircraft incident makes the event highly accessible in memory, causing consumers to overestimate the objective risk of that brand.
@@ -43,6 +46,7 @@ week: "week8"
 - Private-label packages that mimic the typography and color palette of a national brand leader leverage representativeness to imply comparable manufacturing quality.
 
 ## Market Beliefs and Price-Quality Inferences [no-exercise]
+[figure: price-quality inference comparing a low-priced and a high-priced bottle of wine]
 - Over repeated marketplace experiences, consumers develop generalized market beliefs that serve as domain-specific heuristics.
 - The price-quality heuristic is the belief that higher monetary price reliably indicates superior materials, craftsmanship, or performance (Rao & Monroe, 1989).
 - Consumers rely on the price-quality heuristic most heavily when objective quality is difficult to judge prior to purchase, as with wine, cosmetics, or medical services.
@@ -70,6 +74,7 @@ week: "week8"
 - The endowment effect is a direct corollary of loss aversion: once a consumer owns or possesses an item (such as through a 30-day free home trial), giving it up is coded as a loss, raising the value assigned to the item (Thaler, 1980).
 
 ## Status Quo Bias and Attribute Framing [no-exercise]
+[figure: attribute framing comparing ground beef labeled 75 percent lean against identical beef labeled 25 percent fat]
 - Status quo bias is the strong preference for maintaining one's current state or existing service provider because any change requires trading potential gains against more heavily weighted potential losses (Samuelson & Zeckhauser, 1988).
 - Consumers frequently remain on suboptimal telecommunications plans, insurance policies, or software subscriptions because switching feels risky and effortful.
 - Attribute framing occurs when describing the exact same objective statistic in positive versus negative terms alters evaluation.
@@ -84,6 +89,7 @@ week: "week8"
 - Mental accounting and choice architecture provide a framework for analyzing retail pricing and public policy nudges.
 
 ## Mental Accounting, Sunk Costs, and Transaction Utility [no-exercise]
+[figure: promotional discount tag generating positive transaction utility alongside acquisition utility]
 - Formulated by Richard Thaler (1985), mental accounting describes how individuals code, categorize, and evaluate financial outcomes into separate mental budgets rather than treating money as perfectly fungible.
 - Consumers spend a 100-dollar tax refund or casino windfall more freely on hedonic luxuries than 100 dollars of regular wage income.
 - Total utility from a purchase is the sum of acquisition utility (the value of the good received relative to its price) and transaction utility (the perceived psychological merit of the deal relative to the consumer's internal reference price) (Thaler, 1985).
@@ -91,6 +97,7 @@ week: "week8"
 - Subscription pricing and prepaid vacation packages decouple the moment of payment from the moment of consumption, reducing the pain of paying during usage (Prelec & Loewenstein, 1998).
 
 ## Just-Below Pricing and the Left-Digit Effect [exercise]
+[figure: left-digit effect on a 4.99-dollar price tag read from left to right]
 - Just-below pricing (or charm pricing) sets a retail price one cent or one unit below a round number, such as 4.99 dollars instead of 5.00 dollars or 199 dollars instead of 200 dollars.
 - Because consumers read numerical prices from left to right under System 1, they anchor disproportionately on the leftmost digit before finishing encoding the remaining digits, a phenomenon known as the left-digit effect (Thomas & Morwitz, 2005).
 - Consequently, a one-cent reduction from 5.00 dollars to 4.99 dollars lowers perceived price magnitude much more than a one-cent reduction from 4.99 dollars to 4.98 dollars.
@@ -110,6 +117,7 @@ week: "week8"
 - Controlled experiments reveal that whether an AI agent exhibits a behavioral bias depends critically on the task structure and information environment.
 
 ## Anchoring and Position Effects in Language Models [no-exercise]
+[figure: correlation between numerical anchors and stated willingness to pay across older and newer AI model generations compared with human participants]
 - In judgment tasks lacking an objective calculation formula, large language models can display classic human-like biases.
 - When asked to state willingness to pay for consumer products after exposure to an arbitrary numerical anchor in the prompt, language models shifted their valuations toward the anchor (Wadi & Fredette, 2025).
 - Notably, newer and more capable model generations exhibited stronger susceptibility to numerical anchoring than earlier generations, demonstrating that scaling model size does not automatically eliminate judgment biases (Wadi & Fredette, 2025).
@@ -125,6 +133,7 @@ week: "week8"
 - When relevant numbers are directly visible, most frontier AI agents evaluate prices arithmetically rather than relying on human System 1 perceptual shortcuts.
 
 ## Distinguishing Reasoning Errors from Information Deficits [no-exercise]
+[figure: AI agent selecting a 4.99-dollar product over a 5.00-dollar product when package weight is hidden]
 - Why do AI shopping agents sometimes make choices that resemble human heuristic errors in realistic digital storefronts?
 - Research by Wadi and Ma (2026b) demonstrates that apparent heuristic behavior in AI agents usually stems from incomplete information acquisition rather than flawed arithmetic reasoning.
 - When agents were explicitly given all package weights and prices and instructed to compute unit prices, zero agents made a calculation error (Wadi & Ma, 2026b).
@@ -144,6 +153,7 @@ week: "week8"
 - Storefront friction therefore converts an analytically capable AI agent into a surface-cue chooser.
 
 ## Full-Information Recovery and Unit-Price Calculation [no-exercise]
+[figure: online product page combining reference-price anchors, just-below pricing, discount badges, and pre-selected add-on defaults]
 - Two interventions restore rational unit-value choice in AI shopping agents: lowering storefront lookup friction or increasing prompt specificity (Wadi & Ma, 2026b).
 - First, when diagnostic attributes such as net weight, volume, or unit price are surfaced directly on the initial search results feed, agents incorporate them immediately and select the lower cost per ounce (Wadi & Ma, 2026b).
 - Second, even when attributes remain hidden behind costly lookups, instructing the agent with a specific criterion ("find the lowest price per ounce") compels the agent to pay the lookup cost and verify weight before choosing (Wadi & Ma, 2026b).

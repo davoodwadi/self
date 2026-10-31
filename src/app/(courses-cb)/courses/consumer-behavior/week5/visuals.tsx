@@ -31,6 +31,7 @@ import {
   Paper,
   PencilLine,
   PlateButton,
+  PlateToggle,
   type Pt,
   r2,
   seeded,
@@ -2016,7 +2017,7 @@ export function RealAndSynthetic() {
       {tags.map((t, i) => (
         <g key={t}>
           <Agent x={290 + i * 42} y={g} s={0.8} seed={6670 + i * 10} />
-          <SketchText x={290 + i * 42} y={g - 86} anchor="middle" size={9.5}>
+          <SketchText x={290 + i * 42} y={g - 90} anchor="middle" size={9.5}>
             AGE
           </SketchText>
           <SketchText x={290 + i * 42} y={g - 71} anchor="middle" size={12}>
@@ -2117,6 +2118,554 @@ export function AskAgain() {
         </PlateButton>
         <PlateButton onClick={() => setAsked((a) => a + 10)}>Ask 10 more</PlateButton>
         <PlateButton onClick={() => setAsked(FIRST_ASKS.length)}>Start over</PlateButton>
+      </div>
+    </>
+  );
+}
+
+/** A ball with two curved seams. */
+function Ball({ x, y, r, seed }: { x: number; y: number; r: number; seed: number }) {
+  const o = rp(blobPts(x, y, r, r, seed, 14, 0.04));
+  return (
+    <g>
+      <Wash pts={o} seed={seed + 1} fill={SK.ochre} opacity={0.6} />
+      <InkLine pts={o} seed={seed + 2} closed />
+      <InkLine pts={curvePts([x - r * 0.7, y - r * 0.7], [x + r * 0.15, y], [x - r * 0.7, y + r * 0.7], 8)} seed={seed + 3} width={0.9} />
+      <InkLine pts={curvePts([x + r * 0.7, y - r * 0.7], [x - r * 0.15, y], [x + r * 0.7, y + r * 0.7], 8)} seed={seed + 4} width={0.9} />
+    </g>
+  );
+}
+
+/** A dumbbell lying flat: a bar with a pair of weight plates at each end. */
+function Dumbbell({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const plate = (cx: number) => sharp(at(x, y, [[cx - 5, -16], [cx + 5, -16], [cx + 5, 16], [cx - 5, 16]], s), true, 2);
+  return (
+    <g>
+      <InkLine pts={at(x, y, [[-30, 0], [30, 0]], s)} seed={seed} width={2.2} />
+      {[-24, -14, 14, 24].map((cx, i) => (
+        <g key={cx}>
+          <Wash pts={plate(cx)} seed={seed + 1 + i * 2} fill={SK.charcoal} opacity={0.6} />
+          <InkLine pts={plate(cx)} seed={seed + 2 + i * 2} closed width={1.1} />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+function OpennessBody() {
+  const { gy, ph } = BIG;
+  const px = 134;
+  const [hx, hy] = handAt(px, gy, ph, "reach");
+  const canvas: Pt[] = [[196, 22], [320, 22], [320, 118], [196, 118]];
+  return (
+    <g>
+      <Backwash cx={206} cy={112} rx={190} ry={98} seed={1801} />
+      <Ground x0={20} x1={384} y={gy} seed={1804} />
+      <InkLine pts={[[258, 14], [214, gy - 2]]} seed={1806} width={1.4} />
+      <InkLine pts={[[258, 14], [302, gy - 2]]} seed={1807} width={1.4} />
+      <InkLine pts={[[258, 118], [262, gy - 2]]} seed={1808} width={1.2} />
+      <InkLine pts={[[190, 120], [326, 120]]} seed={1809} width={1.4} />
+      <Paper pts={canvas} seed={1810} />
+      <Wash pts={[[204, 30], [312, 30], [312, 76], [204, 80]]} seed={1811} fill={SK.sky} opacity={0.7} dx={0} dy={0} />
+      <Wash pts={blobPts(286, 52, 13, 13, 1812, 10)} seed={1812} fill={SK.ochre} opacity={0.85} dx={0} dy={0} />
+      <Wash pts={[[200, 110], [236, 74], [268, 92], [314, 70], [316, 112]]} seed={1813} fill={SK.camel} opacity={0.75} dx={0} dy={0} />
+      <InkLine pts={canvas} seed={1814} closed />
+      <Person x={px} y={gy} h={ph} look={{ hair: "curly", hairTone: SK.brown, skin: SK.skin, wear: SK.charcoal, legs: SK.tan }} arms={["hip", "reach"]} seed={1820} />
+      <InkLine pts={rp([[hx - 2, hy + 2], [hx + 30, hy - 22]])} seed={1860} width={1.8} amp={0.3} />
+      <Wash pts={rp(blobPts(hx + 33, hy - 24, 4, 3, 1861, 8))} seed={1861} fill={SK.ochre} opacity={0.9} dx={0} dy={0} />
+      <path
+        d={wobble(rp([[hx + 35, hy - 25], [hx + 48, hy - 34], [hx + 62, hy - 30], [hx + 76, hy - 40]]), 1862, 0.8, 8)}
+        fill="none"
+        stroke={SK.ochre}
+        strokeWidth={4.5}
+        strokeLinecap="round"
+        opacity={0.85}
+      />
+    </g>
+  );
+}
+
+function ConscientiousnessBody() {
+  const { gy, ph } = BIG;
+  const px = 124;
+  const [hx, hy] = handAt(px, gy, ph, "reach");
+  const bx = r2(hx - 2);
+  const by = r2(hy - 62);
+  const board: Pt[] = [[bx, by], [bx + 96, by], [bx + 96, by + 124], [bx, by + 124]];
+  const clip: Pt[] = [[bx + 32, by - 6], [bx + 64, by - 6], [bx + 64, by + 8], [bx + 32, by + 8]];
+  return (
+    <g>
+      <Backwash cx={206} cy={112} rx={190} ry={98} seed={1901} />
+      <Ground x0={20} x1={384} y={gy} seed={1904} />
+      <Person x={px} y={gy} h={ph} look={{ hair: "bob", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.55, wear: SK.sky, legs: SK.charcoal, outfit: "jacket" }} arms={["hip", "reach"]} seed={1910} />
+      <Wash pts={board} seed={1950} fill={SK.leather} opacity={0.55} dx={2} dy={2} />
+      <Paper pts={at(0, 0, [[bx + 8, by + 12], [bx + 88, by + 12], [bx + 88, by + 116], [bx + 8, by + 116]])} seed={1951} />
+      <InkLine pts={sharp(board)} seed={1952} closed />
+      <Wash pts={clip} seed={1953} fill={SK.charcoal} opacity={0.6} dx={0.5} dy={0.5} />
+      <InkLine pts={sharp(clip)} seed={1954} closed width={1} />
+      {[0, 1, 2, 3].map((i) => {
+        const y = r2(by + 32 + i * 23);
+        const box = at(0, 0, [[bx + 16, y - 7], [bx + 28, y - 7], [bx + 28, y + 5], [bx + 16, y + 5]]);
+        return (
+          <g key={i}>
+            <InkLine pts={sharp(box)} seed={1960 + i * 4} closed width={0.9} />
+            <InkLine pts={rp([[bx + 36, y], [bx + (i % 2 ? 70 : 80), y]])} seed={1961 + i * 4} width={0.8} amp={0.4} />
+            <Tick2 x={bx + 23} y={y - 2} s={0.9} seed={1962 + i * 4} />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+function ExtraversionBody() {
+  const { gy, ph } = BIG;
+  const sh = ph * 0.86;
+  const cx = 200;
+  const listeners: { x: number; flip: boolean; look: Look }[] = [
+    { x: 52, flip: false, look: { hair: "short", hairTone: SK.charcoal, wear: SK.charcoal, outfit: "jacket", legs: SK.tan } },
+    { x: 116, flip: false, look: { hair: "bun", hairTone: SK.brown, skin: SK.tan, skinOpacity: 0.5, wear: SK.leather, outfit: "dress" } },
+    { x: 284, flip: true, look: { hair: "long", hairTone: SK.camel, wear: SK.charcoal, legs: SK.tan } },
+    { x: 348, flip: true, look: { hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.sky } },
+  ];
+  return (
+    <g>
+      <Backwash cx={206} cy={112} rx={192} ry={98} seed={2001} />
+      <Ground x0={16} x1={386} y={gy} seed={2004} />
+      {listeners.map((l, i) => (
+        <Person key={l.x} x={l.x} y={gy} h={sh} look={l.look} arms={["down", "down"]} flip={l.flip} seed={2010 + i * 80} />
+      ))}
+      <Person x={cx} y={gy} h={ph} look={{ hair: "bob", hairTone: SK.tan, skin: SK.skin, wear: SK.camel, legs: SK.charcoal }} arms={["hip", "up"]} seed={2400} />
+      <Speech x={r2(cx - 58)} y={26} w={74} h={30} tx={r2(cx - 12)} ty={50} seed={2450} />
+    </g>
+  );
+}
+
+function AgreeablenessBody() {
+  const { gy, ph } = BIG;
+  const ax = 108;
+  const bx = 292;
+  const [lx, ly] = handAt(ax, gy, ph, "carry");
+  const [rx] = handAt(bx, gy, ph, "carry", 1, true);
+  const box: Pt[] = [[lx - 2, ly - 30], [rx + 2, ly - 30], [rx + 2, ly + 6], [lx - 2, ly + 6]];
+  return (
+    <g>
+      <Backwash cx={204} cy={112} rx={190} ry={98} seed={2101} />
+      <Ground x0={20} x1={384} y={gy} seed={2104} />
+      <Person x={ax} y={gy} h={ph} look={{ hair: "short", hairTone: SK.brown, skin: SK.camel, skinOpacity: 0.5, wear: SK.sky, legs: SK.charcoal, outfit: "jacket" }} arms={["across", "carry"]} seed={2110} />
+      <Person x={bx} y={gy} h={ph} look={{ hair: "bun", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.5, wear: SK.charcoal, legs: SK.tan }} arms={["across", "carry"]} flip seed={2200} />
+      <Wash pts={box} seed={2250} fill={SK.tan} opacity={0.55} />
+      <InkLine pts={sharp(box)} seed={2251} closed />
+      <InkLine pts={rp([[lx + 6, ly - 18], [rx - 6, ly - 18]])} seed={2252} width={0.8} />
+      <Heart x={200} y={r2(ly - 62)} s={1.5} seed={2260} />
+    </g>
+  );
+}
+
+function NeuroticismBody() {
+  const { gy, ph } = BIG;
+  const px = 200;
+  const cloud = cloudPts(200, 40, 66, 14, 10);
+  const bolt = at(236, 60, [[6, 0], [-6, 18], [3, 18], [-5, 38], [16, 12], [7, 12], [14, 0]]);
+  return (
+    <g>
+      <Backwash cx={204} cy={116} rx={186} ry={96} seed={2301} />
+      <Ground x0={40} x1={364} y={gy} seed={2304} />
+      <Person x={px} y={gy} h={ph * 0.74} look={{ hair: "long", hairTone: SK.brown, skin: SK.skin, wear: SK.sky, legs: SK.charcoal }} arms={["hug", "hug"]} seed={2310} />
+      <Wash pts={cloud} seed={2350} fill={SK.charcoal} opacity={0.55} />
+      <InkLine pts={cloud} seed={2351} closed width={1.1} amp={0.5} />
+      <Wash pts={bolt} seed={2352} fill={SK.ochre} opacity={0.9} dx={1} dy={1} />
+      <InkLine pts={sharp(bolt)} seed={2353} closed width={1} />
+      {[146, 162, 178, 264].map((x, i) => (
+        <InkLine key={x} pts={rp([[x, 70 + (i % 2) * 8], [x - 4, 82 + (i % 2) * 8]])} seed={2360 + i} width={0.9} />
+      ))}
+    </g>
+  );
+}
+
+/** Single 800w plate combining all five Big Five dimensions. */
+export function BigFiveStrip() {
+  const panels: { k: string; C: () => React.ReactElement }[] = [
+    { k: "OPENNESS", C: OpennessBody },
+    { k: "CONSCIENTIOUSNESS", C: ConscientiousnessBody },
+    { k: "EXTRAVERSION", C: ExtraversionBody },
+    { k: "AGREEABLENESS", C: AgreeablenessBody },
+    { k: "NEUROTICISM", C: NeuroticismBody },
+  ];
+  return (
+    <SketchFrame
+      id="sk-big-five-strip"
+      width={800}
+      height={126}
+      label="Five scenes side by side for the Big Five personality dimensions: openness painting at an easel, conscientiousness holding a ticked checklist, extraversion speaking in a group, agreeableness carrying a box together under a heart, and neuroticism hugging themselves under a storm cloud."
+    >
+      {panels.map(({ k, C }, i) => {
+        const x0 = r2(4 + i * 160);
+        const cx = r2(x0 + 76);
+        return (
+          <g key={k}>
+            <g transform={`translate(${x0} 4) scale(0.38)`}>
+              <C />
+            </g>
+            <SketchText x={cx} y={114} anchor="middle" size={10.5}>
+              {k}
+            </SketchText>
+          </g>
+        );
+      })}
+    </SketchFrame>
+  );
+}
+
+function SincerityBody() {
+  const { gy } = DIM;
+  return (
+    <g>
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={2801} />
+      <Ground x0={42} x1={360} y={gy} seed={2804} />
+      <GreetingCard x={148} y={gy} s={1.65} seed={2850} />
+      <Can4 x={274} y={gy} w={58} h={88} label={SK.blush} seed={2860} />
+    </g>
+  );
+}
+
+function ExcitementBody() {
+  const { gy } = DIM;
+  return (
+    <g>
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={2901} />
+      <Ground x0={42} x1={360} y={gy} seed={2904} />
+      <Phone3 x={144} y={gy} s={1.15} seed={2950} />
+      <Can4 x={268} y={gy} w={46} h={96} label={SK.sky} bolt seed={2960} />
+    </g>
+  );
+}
+
+function CompetenceBody() {
+  const { gy } = DIM;
+  return (
+    <g>
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={3001} />
+      <Ground x0={42} x1={360} y={gy} seed={3004} />
+      <Laptop2 x={136} y={gy} s={1.12} seed={3060} />
+      <Car3 x={278} y={gy} s={1.18} fill={SK.sky} seed={3070} />
+    </g>
+  );
+}
+
+function SophisticationBody() {
+  const { gy } = DIM;
+  return (
+    <g>
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={3101} />
+      <Ground x0={42} x1={360} y={gy} seed={3104} />
+      <Perfume2 x={144} y={gy} s={1.35} seed={3150} />
+      <Watch2 x={274} y={gy} s={1.45} seed={3160} />
+    </g>
+  );
+}
+
+function RuggednessBody() {
+  const { gy } = DIM;
+  return (
+    <g>
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={3201} />
+      <Ground x0={42} x1={360} y={gy} seed={3204} />
+      <Tent x={132} y={gy} s={1.18} seed={3250} />
+      <Jeep x={278} y={gy} s={1.02} seed={3260} />
+    </g>
+  );
+}
+
+/** Single 800w plate combining Aaker's five brand personality dimensions. */
+export function BrandPersonalityStrip() {
+  const panels: { k: string; C: () => React.ReactElement }[] = [
+    { k: "SINCERITY", C: SincerityBody },
+    { k: "EXCITEMENT", C: ExcitementBody },
+    { k: "COMPETENCE", C: CompetenceBody },
+    { k: "SOPHISTICATION", C: SophisticationBody },
+    { k: "RUGGEDNESS", C: RuggednessBody },
+  ];
+  return (
+    <SketchFrame
+      id="sk-brand-personality-strip"
+      width={800}
+      height={114}
+      label="Five scenes side by side for Aaker's brand personality dimensions: sincerity with a greeting card and soup can, excitement with a smartphone and energy drink, competence with a laptop and family car, sophistication with perfume and a fine watch, and ruggedness with a tent and four-by-four."
+    >
+      {panels.map(({ k, C }, i) => {
+        const x0 = r2(4 + i * 160);
+        const cx = r2(x0 + 76);
+        return (
+          <g key={k}>
+            <g transform={`translate(${x0} 4) scale(0.38)`}>
+              <C />
+            </g>
+            <SketchText x={cx} y={102} anchor="middle" size={10.5}>
+              {k}
+            </SketchText>
+          </g>
+        );
+      })}
+    </SketchFrame>
+  );
+}
+
+/** Single 800w plate combining Activities, Interests, and Opinions (AIO). */
+export function AIOStrip() {
+  const page: Pt[] = [[48, 16], [224, 16], [224, 198], [48, 198]];
+  const actRows = [0, 1, 2, 3].map((i) => r2(56 + i * 38));
+  const covers: { t: string; fill: string; x0: number; y0: number; art: (cx: number, cy: number, sd: number) => React.ReactNode }[] = [
+    { t: "FOOD", fill: SK.earth, x0: 294, y0: 16, art: (cx, cy, sd) => <Can4 x={cx} y={cy + 16} w={24} h={34} label={SK.blush} seed={sd} /> },
+    { t: "FASHION", fill: SK.blush, x0: 402, y0: 16, art: (cx, cy, sd) => <Shirt x={cx} y={cy} s={0.75} seed={sd} /> },
+    { t: "TECH", fill: SK.sky, x0: 294, y0: 112, art: (cx, cy, sd) => <Laptop2 x={cx} y={cy + 10} s={0.68} seed={sd} /> },
+    { t: "FITNESS", fill: SK.earth, x0: 402, y0: 112, art: (cx, cy, sd) => <Dumbbell x={cx} y={cy} s={0.72} seed={sd} /> },
+  ];
+  const mw = 94;
+  const mh = 86;
+  const card: Pt[] = [[546, 16], [776, 16], [776, 198], [546, 198]];
+  const opRows = [
+    { t: "Oneself", pick: 3 },
+    { t: "Social issues", pick: 4 },
+    { t: "Politics", pick: 1 },
+    { t: "Business", pick: 2 },
+    { t: "Economy", pick: 4 },
+  ];
+  const col = (k: number) => 676 + k * 20;
+  return (
+    <SketchFrame
+      id="sk-aio-strip"
+      width={800}
+      height={232}
+      label="Three psychographic survey instruments side by side. Left, labelled activities: a week planner with drawings of a ball, a guitar, a shopping bag, and popcorn. Middle, labelled interests: four magazine covers titled food, fashion, tech, and fitness. Right, labelled opinions: a Likert survey card rating oneself, social issues, politics, business, and economy from disagree to agree, with one circle marked teal in each row."
+    >
+      <Backwash cx={136} cy={108} rx={118} ry={98} seed={8101} />
+      <Backwash cx={395} cy={108} rx={124} ry={98} seed={8102} />
+      <Backwash cx={661} cy={108} rx={126} ry={98} seed={8103} />
+
+      {/* 1. Activities */}
+      <Paper pts={page} seed={8110} />
+      <Wash pts={[[48, 16], [224, 16], [224, 32], [48, 32]]} seed={8111} fill={SK.tan} opacity={0.5} dx={0} dy={0} />
+      <InkLine pts={sharp(page)} seed={8112} closed />
+      <InkLine pts={[[48, 32], [224, 32]]} seed={8113} width={0.9} />
+      {actRows.slice(1).map((y, i) => (
+        <PencilLine key={y} pts={[[58, y - 19], [214, y - 19]]} seed={8115 + i} dash="2 4" />
+      ))}
+      <Ball x={82} y={actRows[0]} r={11} seed={8120} />
+      <Guitar x={82} y={actRows[1] + 2} s={0.72} seed={8130} />
+      <Bag x={82} y={actRows[2] - 14} w={20} seed={8140} />
+      <Popcorn x={82} y={actRows[3] + 14} s={0.62} seed={8150} />
+      {actRows.map((y, i) => (
+        <g key={y}>
+          <InkLine pts={rp([[114, y - 4], [i % 2 ? 192 : 206, y - 4]])} seed={8160 + i * 2} width={0.8} amp={0.3} />
+          <InkLine pts={rp([[114, y + 5], [i % 2 ? 172 : 162, y + 5]])} seed={8161 + i * 2} width={0.8} amp={0.3} />
+        </g>
+      ))}
+      <SketchText x={136} y={220} anchor="middle" size={11}>
+        ACTIVITIES
+      </SketchText>
+
+      {/* 2. Interests */}
+      {covers.map((c, i) => {
+        const cover: Pt[] = [[c.x0, c.y0], [c.x0 + mw, c.y0], [c.x0 + mw, c.y0 + mh], [c.x0, c.y0 + mh]];
+        const art: Pt[] = [[c.x0 + 6, c.y0 + 24], [c.x0 + mw - 6, c.y0 + 24], [c.x0 + mw - 6, c.y0 + mh - 6], [c.x0 + 6, c.y0 + mh - 6]];
+        const cx = r2(c.x0 + mw / 2);
+        const cy = r2(c.y0 + 24 + (mh - 30) / 2);
+        return (
+          <g key={c.t}>
+            <Paper pts={cover} seed={8210 + i * 10} />
+            <Wash pts={art} seed={8211 + i * 10} fill={c.fill} opacity={0.45} dx={0} dy={0} />
+            <InkLine pts={sharp(cover)} seed={8212 + i * 10} closed />
+            <SketchText x={cx} y={r2(c.y0 + 17)} anchor="middle" size={11} serif>
+              {c.t}
+            </SketchText>
+            {c.art(cx, cy, 8260 + i * 20)}
+          </g>
+        );
+      })}
+      <SketchText x={395} y={220} anchor="middle" size={11}>
+        INTERESTS
+      </SketchText>
+
+      {/* 3. Opinions */}
+      <Paper pts={card} seed={8301} />
+      <InkLine pts={sharp(card)} seed={8302} closed />
+      <SketchText x={col(0) - 6} y={38} size={9.5}>
+        disagree
+      </SketchText>
+      <SketchText x={col(4) + 6} y={38} anchor="end" size={9.5}>
+        agree
+      </SketchText>
+      <InkLine pts={[[558, 46], [764, 46]]} seed={8304} width={0.8} />
+      {opRows.map((r, i) => {
+        const y = 68 + i * 28;
+        return (
+          <g key={r.t}>
+            <SketchText x={560} y={y + 4} size={10.5}>
+              {r.t}
+            </SketchText>
+            {[0, 1, 2, 3, 4].map((k) => {
+              const pts = rp(blobPts(col(k), y, 5.5, 5.5, 8310 + i * 10 + k, 10, 0.08));
+              return (
+                <g key={k}>
+                  {k === r.pick ? <Wash pts={pts} seed={8360 + i * 5 + k} fill={SK.teal} opacity={0.9} dx={0.3} dy={0.2} /> : null}
+                  <InkLine pts={pts} seed={8390 + i * 5 + k} closed width={0.85} />
+                </g>
+              );
+            })}
+            {i < opRows.length - 1 ? <PencilLine pts={[[558, y + 14], [764, y + 14]]} seed={8420 + i} dash="2 4" /> : null}
+          </g>
+        );
+      })}
+      <SketchText x={661} y={220} anchor="middle" size={11}>
+        OPINIONS
+      </SketchText>
+    </SketchFrame>
+  );
+}
+
+/* Wadi & Fredette (2025), Table 1: mean willingness to pay across six
+   products (list prices near $55) with no anchor and after a low ($15) or
+   high ($95) Social Security number anchor. Single answers spread like the
+   paper's per-product SDs (about $32 to $35), drawn from a lognormal so the
+   mean stays at the reported value and no answer falls below $0. */
+type Anchor = "none" | "low" | "high";
+const ANCHOR_MEAN: Record<Anchor, number> = { none: 46.33, low: 30.64, high: 77.95 };
+const ANSWER_SD = 33;
+const LIST_PRICE = 55;
+const MAX_PRICE = 150;
+const ANCHOR_FIRST_ASKS = 5;
+const MAX_ASKS = 105;
+
+/** The k-th answer (whole dollars) under one anchor: seeded, so server and client agree. */
+function wtpAnswer(anchor: Anchor, k: number): number {
+  const m = ANCHOR_MEAN[anchor];
+  const s2 = Math.log(1 + (ANSWER_SD * ANSWER_SD) / (m * m));
+  const mu = Math.log(m) - s2 / 2;
+  const base = { none: 9100, low: 9400, high: 9700 }[anchor] + k * 2;
+  const u1 = Math.max(seeded(base)(), 1e-6);
+  const u2 = seeded(base + 1)();
+  const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  return Math.min(MAX_PRICE, Math.max(1, Math.round(Math.exp(mu + Math.sqrt(s2) * z))));
+}
+
+const ANCHOR_CARD: Record<Anchor, string[]> = {
+  none: [],
+  low: ["Your SSN is 987-65-4315.", "Would you buy it for $15?"],
+  high: ["Your SSN is 987-65-4395.", "Would you buy it for $95?"],
+};
+
+/**
+ * Ask one synthetic respondent, under one fixed persona and prompt, the same
+ * willingness-to-pay question again and again. Every answer lands as a dot on
+ * a price line, the latest in teal. A number placed in the prompt moves the
+ * whole cloud of answers.
+ */
+export function AnchoredAsk() {
+  const [anchor, setAnchor] = React.useState<Anchor>("none");
+  const [asked, setAsked] = React.useState(ANCHOR_FIRST_ASKS);
+  const answers = Array.from({ length: asked }, (_, k) => wtpAnswer(anchor, k));
+  const mean = Math.round(answers.reduce((a, b) => a + b, 0) / asked);
+  const latest = answers[asked - 1];
+  const x0 = 290;
+  const x1 = 776;
+  const axisY = 246;
+  const px = (v: number) => r2(x0 + ((x1 - x0) * v) / MAX_PRICE);
+  const bin = 5;
+  const binW = ((x1 - x0) * bin) / MAX_PRICE;
+  const bins = answers.map((v) => Math.min(Math.floor(v / bin), MAX_PRICE / bin - 1));
+  const peak = Math.max(...bins.map((b) => bins.filter((c) => c === b).length));
+  /* Stacks compress once the tallest one would rise past the price label. */
+  const step = r2(Math.min(11.5, 174 / Math.max(peak, 1)));
+  const dotR = r2(Math.min(5.6, step * 0.55));
+  const stacks = new Map<number, number>();
+  const dots = bins.map((b, k) => {
+    const n = stacks.get(b) ?? 0;
+    stacks.set(b, n + 1);
+    return { k, x: r2(x0 + (b + 0.5) * binW), y: r2(axisY - 10 - n * step) };
+  });
+  const latestDot = dots[asked - 1];
+  const q = sharp(rp([[20, 20], [250, 20], [250, 74], [20, 74]]), true, 3);
+  const a = sharp(rp([[20, 84], [250, 84], [250, 138], [20, 138]]), true, 3);
+  const card = ANCHOR_CARD[anchor];
+  const label = `One AI respondent with the same persona is asked the same question, what is the most you would pay for this product, ${asked} times. ${anchor === "none" ? "The prompt holds no other number." : `The prompt first says: ${card.join(" ")}`} Its answers spread from $${Math.min(...answers)} to $${Math.max(...answers)}, with an average of $${mean}. The list price is $${LIST_PRICE}. The latest answer is $${latest}.`;
+  return (
+    <>
+      <SketchFrame id="sk-anchored-ask" width={800} height={304} label={label}>
+        <Backwash cx={400} cy={152} rx={392} ry={142} seed={6900} opacity={0.4} />
+        <Paper pts={q} seed={6901} />
+        <InkLine pts={q} seed={6902} width={1} closed />
+        <SketchText x={34} y={41} size={13}>
+          What is the most you would
+        </SketchText>
+        <SketchText x={34} y={62} size={13}>
+          pay for this product?
+        </SketchText>
+        {card.length ? (
+          <g>
+            <Paper pts={a} seed={6903} />
+            <Wash pts={a} seed={6904} fill={SK.ochre} opacity={0.35} />
+            <InkLine pts={a} seed={6905} width={1} closed />
+            <SketchText x={34} y={105} size={13}>
+              {card[0]}
+            </SketchText>
+            <SketchText x={34} y={126} size={13}>
+              {card[1]}
+            </SketchText>
+          </g>
+        ) : null}
+        <Ground x0={70} x1={200} y={axisY} seed={6906} />
+        <Agent x={135} y={axisY} s={1.15} seed={6910} />
+        <SketchText x={135} y={axisY + 24} anchor="middle" size={13}>
+          {`asked ${asked} ${asked === 1 ? "time" : "times"}`}
+        </SketchText>
+
+        <InkLine pts={rp([[x0 - 4, axisY], [x1 + 4, axisY]])} seed={6960} width={1.1} />
+        {[0, 25, 50, 75, 100, 125, 150].map((v, i) => (
+          <g key={v}>
+            <InkLine pts={rp([[px(v), axisY], [px(v), axisY + 6]])} seed={6961 + i} width={0.9} amp={0.1} />
+            <SketchText x={px(v)} y={axisY + 21} anchor="middle" size={13}>
+              {`$${v}`}
+            </SketchText>
+          </g>
+        ))}
+        <InkLine pts={rp([[px(LIST_PRICE), 44], [px(LIST_PRICE), axisY]])} seed={6970} width={0.9} amp={0.3} />
+        <SketchText x={r2(px(LIST_PRICE) + 6)} y={40} size={13}>
+          {`list price $${LIST_PRICE}`}
+        </SketchText>
+        {dots.map((d) =>
+          d.k === asked - 1 ? null : (
+            <g key={d.k}>
+              <Wash pts={rp(blobPts(d.x, d.y, dotR, dotR, 7000 + d.k * 3, 9, 0.08))} seed={7001 + d.k * 3} fill={SK.camel} opacity={0.75} dx={0.4} dy={0.3} />
+              <InkLine pts={rp(blobPts(d.x, d.y, dotR, dotR, 7002 + d.k * 3, 9, 0.08))} seed={7003 + d.k * 3} closed width={0.8} />
+            </g>
+          ),
+        )}
+        <Wash pts={rp(blobPts(latestDot.x, latestDot.y, dotR + 1, dotR + 1, 7900, 9, 0.08))} seed={7901} fill={SK.teal} opacity={0.95} dx={0.4} dy={0.3} />
+        <InkLine pts={rp(blobPts(latestDot.x, latestDot.y, dotR + 1, dotR + 1, 7902, 9, 0.08))} seed={7903} closed width={1} />
+        <SketchText x={latestDot.x} y={r2(latestDot.y - 14)} anchor="middle" size={13}>
+          {`$${latest}`}
+        </SketchText>
+        <InkLine pts={rp([[px(mean) - 6, axisY + 38], [px(mean), axisY + 30], [px(mean) + 6, axisY + 38]])} seed={7950} width={1.2} amp={0.2} />
+        <SketchText x={r2(px(mean) + 11)} y={axisY + 44} size={13}>
+          {`average $${mean}`}
+        </SketchText>
+      </SketchFrame>
+      <PlateToggle
+        options={[
+          { id: "none", label: "No number in the prompt" },
+          { id: "low", label: "SSN ends in 15" },
+          { id: "high", label: "SSN ends in 95" },
+        ]}
+        value={anchor}
+        onChange={setAnchor}
+      />
+      <div className="mt-2 flex flex-wrap items-center gap-2 px-1" aria-live="polite">
+        <PlateButton onClick={() => setAsked((n) => Math.min(MAX_ASKS, n + 1))} icon={<RotateCw className="size-3.5" aria-hidden />}>
+          Ask again
+        </PlateButton>
+        <PlateButton onClick={() => setAsked((n) => Math.min(MAX_ASKS, n + 20))}>Ask 20 more</PlateButton>
+        <PlateButton onClick={() => setAsked(ANCHOR_FIRST_ASKS)}>Start over</PlateButton>
       </div>
     </>
   );

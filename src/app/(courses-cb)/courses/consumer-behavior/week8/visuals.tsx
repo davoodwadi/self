@@ -827,8 +827,8 @@ export function LossBalance() {
     const dish = rp(curvePtsLocal([c[0] - 50, y], [c[0], y + 26], [c[0] + 50, y], 10));
     return (
       <g>
-        <InkLine pts={rp([[c[0], c[1] + 4], [c[0] - 46, y]])} seed={seed} width={0.8} />
-        <InkLine pts={rp([[c[0], c[1] + 4], [c[0] + 46, y]])} seed={seed + 1} width={0.8} />
+        <InkLine pts={rp([[c[0], c[1] + 4], [c[0] - 50, y]])} seed={seed} width={0.8} />
+        <InkLine pts={rp([[c[0], c[1] + 4], [c[0] + 50, y]])} seed={seed + 1} width={0.8} />
         <InkLine pts={[...dish, dish[0]]} seed={seed + 3} width={1.2} />
       </g>
     );
@@ -851,9 +851,9 @@ export function LossBalance() {
         <InkLine pts={[left, right]} seed={9206} width={2} amp={0.4} />
         {pan(left, 9210)}
         {pan(right, 9220)}
-        <Bill x={left[0]} y={r2(left[1] + drop + 3)} value="$20" seed={9230} lost />
+        <Bill x={left[0]} y={r2(left[1] + drop - 9)} value="$20" seed={9230} lost />
         {Array.from({ length: bills }, (_, i) => (
-          <Bill key={i} x={r2(right[0] + (i % 2 ? 2 : -2))} y={r2(right[1] + drop + 3 - i * 10)} value="$10" seed={9240 + i * 6} />
+          <Bill key={i} x={r2(right[0] + (i % 2 ? 2 : -2))} y={r2(right[1] + drop - 9 - i * 15)} value="$10" seed={9240 + i * 6} />
         ))}
         <SketchText x={72} y={262} anchor="middle" size={11}>
           LOST $20
@@ -1157,12 +1157,13 @@ export function DealTag() {
           $20
         </SketchText>
       </SwingTag>
+      <Paper pts={sticker} seed={9910} />
       <Wash pts={sticker} seed={9911} fill={SK.ochre} opacity={0.9} dx={0.6} dy={0.5} />
       <InkLine pts={sticker} seed={9912} width={1.1} closed />
-      <SketchText x={306} y={81} anchor="middle" size={13} serif>
+      <SketchText x={306} y={79} anchor="middle" size={13} serif>
         20%
       </SketchText>
-      <SketchText x={306} y={96} anchor="middle" size={10}>
+      <SketchText x={306} y={97} anchor="middle" size={10}>
         OFF
       </SketchText>
       <Heart x={354} y={36} s={1.4} seed={9940} />
@@ -1351,7 +1352,7 @@ export function AnchorByGeneration() {
   const Y = (v: number) => r2(bot - v * (bot - top));
   const spread = (ys: number[]) => {
     const order = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
-    for (let k = 1; k < order.length; k++) if (order[k].y - order[k - 1].y < 17) order[k].y = order[k - 1].y + 17;
+    for (let k = 1; k < order.length; k++) if (order[k].y - order[k - 1].y < 20) order[k].y = order[k - 1].y + 20;
     const out = [...ys];
     order.forEach((o) => (out[o.i] = o.y));
     return out;
@@ -1639,6 +1640,7 @@ export function ProductPage() {
         <InkLine key={i} pts={rp(blobPts(x, 37, 3.5, 3.5, 10805 + i, 8, 0.05))} seed={10808 + i} width={0.8} closed />
       ))}
       <Jar x={108} bottom={232} w={92} h={120} level={0.8} seed={10820} />
+      <Paper pts={sticker} seed={10810} />
       <Wash pts={sticker} seed={10811} fill={SK.ochre} opacity={0.9} dx={0.5} dy={0.4} />
       <InkLine pts={sticker} seed={10812} width={1.1} closed />
       <SketchText x={150} y={96} anchor="middle" size={12} serif>

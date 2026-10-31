@@ -261,7 +261,7 @@ export function SecondDecision() {
       id="sk-second-decision"
       width={400}
       height={230}
-      label="A decision that takes under a second: a close-up of a fridge door shelf holding a row of milk cartons. A hand lifts the usual carton, washed teal, out of the row without pausing. A stopwatch beside it reads UNDER 1 SECOND."
+      label="A decision that takes under two seconds: a close-up of a fridge door shelf holding a row of milk cartons. A hand lifts the usual carton, washed teal, out of the row without pausing. A stopwatch beside it reads UNDER 2 SECONDS."
     >
       <Backwash cx={200} cy={124} rx={192} ry={100} seed={7201} />
       <Wash pts={door} seed={7202} fill={SK.sky} opacity={0.3} dx={0} dy={0} />
@@ -283,7 +283,7 @@ export function SecondDecision() {
       <Clock x={332} y={182} r={20} seed={7280} />
       <InkLine pts={rp([[332, 156], [332, 162]])} seed={7284} width={2} amp={0.1} />
       <SketchText x={332} y={220} anchor="middle" size={10.5}>
-        UNDER 1 SECOND
+        UNDER 2 SECONDS
       </SketchText>
     </SketchFrame>
   );
@@ -1552,16 +1552,16 @@ export function InformationBoard() {
         {/* the AI agents in the study, under the same cost */}
         <InkLine pts={rp([[488, 40], [488, 300]])} seed={9890} width={0.8} amp={0.4} />
         <Agent x={548} y={118} s={0.95} seed={9900} />
-        <SketchText x={592} y={62} size={10.5}>
+        <SketchText x={592} y={56} size={10.5}>
           AI AGENTS
         </SketchText>
-        <SketchText x={592} y={78} size={10.5}>
+        <SketchText x={592} y={72} size={10.5}>
           IN THE STUDY
         </SketchText>
-        <SketchText x={592} y={110} size={30} serif>
+        <SketchText x={592} y={114} size={30} serif>
           {study.details.toFixed(1)}
         </SketchText>
-        <SketchText x={650} y={110} size={10.5}>
+        <SketchText x={650} y={114} size={10.5}>
           OF 6 LOOKED UP
         </SketchText>
         {Array.from({ length: 10 }, (_, k) => (
@@ -1763,10 +1763,10 @@ export function ConsiderationSets() {
   const cons = agent ? fromAgent : memory;
   const blob = (cx: number, cy: number, rx: number, ry: number, seed: number) => rp(blobPts(cx, cy, rx, ry, seed, 16, 0.06));
   const aware = blob(310, 180, 292, 160, 10301);
-  const evoked = blob(300, 186, 208, 116, 10302);
-  const considerBlob = blob(232, 188, 86, 66, 10303);
-  const inept = blob(388, 150, 48, 40, 10304);
-  const inert = blob(388, 242, 48, 34, 10305);
+  const evoked = blob(300, 186, 212, 124, 10302);
+  const considerBlob = blob(232, 190, 84, 62, 10303);
+  const inept = blob(388, 146, 48, 38, 10304);
+  const inert = blob(388, 232, 48, 32, 10305);
   const label = `Nested sets of brands, each a blob of product packs. The awareness set holds all brands known. Inside it the evoked set holds the brands recalled. Inside that, the consideration set (teal) holds three brands, the inept set two crossed-out brands and the inert set two plain brands. ${
     agent ? "The three brands in the consideration set come from the list an AI agent returned, next to the consumer." : "The three brands in the consideration set were recalled by the consumer from memory."
   }`;
@@ -1785,37 +1785,37 @@ export function ConsiderationSets() {
         <Wash pts={inert} seed={10319} fill={SK.stone} opacity={0.7} dx={0} dy={0} />
         <InkLine pts={inert} seed={10320} width={1} closed />
 
-        <SketchText x={310} y={326} anchor="middle" size={11}>
+        <SketchText x={310} y={328} anchor="middle" size={11}>
           AWARENESS SET
         </SketchText>
-        <SketchText x={220} y={98} anchor="middle" size={11}>
+        <SketchText x={184} y={114} anchor="middle" size={11}>
           EVOKED SET
         </SketchText>
-        <SketchText x={232} y={278} anchor="middle" size={11}>
+        <SketchText x={232} y={272} anchor="middle" size={11}>
           CONSIDERATION SET
         </SketchText>
-        <SketchText x={388} y={101} anchor="middle" size={11}>
+        <SketchText x={388} y={98} anchor="middle" size={11}>
           INEPT SET
         </SketchText>
-        <SketchText x={388} y={294} anchor="middle" size={11}>
+        <SketchText x={388} y={280} anchor="middle" size={11}>
           INERT SET
         </SketchText>
 
         {[0, 1, 2, 3].map((k) => (
-          <Pack key={k} x={242 + k * 46} bottom={70} w={22} h={34} seed={10330 + k * 3} fill={[SK.stone, SK.earth, SK.blush, SK.sky][k]} badge />
+          <Pack key={k} x={242 + k * 46} bottom={62} w={22} h={34} seed={10330 + k * 3} fill={[SK.stone, SK.earth, SK.blush, SK.sky][k]} badge />
         ))}
         {cons.map((f, k) => (
           <Pack key={k} x={198 + k * 34} bottom={216} w={24} h={40} seed={agent ? 10360 + k * 3 : 10340 + k * 3} fill={f} badge />
         ))}
         {[0, 1].map((k) => (
           <g key={k}>
-            <Pack x={372 + k * 32} bottom={170} w={22} h={34} seed={10380 + k * 3} fill={[SK.earth, SK.blush][k]} badge />
-            <InkLine pts={rp([[364 + k * 32, 144], [380 + k * 32, 168]])} seed={10390 + k} width={1.8} amp={0.3} />
-            <InkLine pts={rp([[380 + k * 32, 144], [364 + k * 32, 168]])} seed={10392 + k} width={1.8} amp={0.3} />
+            <Pack x={372 + k * 32} bottom={166} w={22} h={34} seed={10380 + k * 3} fill={[SK.earth, SK.blush][k]} badge />
+            <InkLine pts={rp([[364 + k * 32, 140], [380 + k * 32, 164]])} seed={10390 + k} width={1.8} amp={0.3} />
+            <InkLine pts={rp([[380 + k * 32, 140], [364 + k * 32, 164]])} seed={10392 + k} width={1.8} amp={0.3} />
           </g>
         ))}
         {[0, 1].map((k) => (
-          <Pack key={k} x={372 + k * 32} bottom={262} w={22} h={34} seed={10400 + k * 3} fill={[SK.sky, SK.camel][k]} badge />
+          <Pack key={k} x={372 + k * 32} bottom={252} w={22} h={34} seed={10400 + k * 3} fill={[SK.sky, SK.camel][k]} badge />
         ))}
 
         {/* where the consideration set came from */}

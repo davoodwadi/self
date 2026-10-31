@@ -10,6 +10,7 @@ week: "week10"
 - Consumer choices are shaped by reference groups, social power, interpersonal word of mouth, social media influencers, and the perceived expertise of AI assistants.
 
 ## The Social Context of Consumer Choice [no-exercise]
+[figure: shopper wearing new sneakers while two peers on either side express approval with hearts in speech bubbles]
 - Humans are social actors who look to other people for diagnostic product information, normative approval, and validation of their social identity.
 - Even when a shopper completes an online checkout alone in a private room, anticipated reactions from peers, family members, and colleagues influence which brand is selected.
 - Social influence operates through both direct face-to-face interactions and mediated digital signals such as star ratings, review summaries, and influencer endorsements.
@@ -17,7 +18,7 @@ week: "week10"
 - Effective marketing strategy identifies which reference groups and opinion leaders govern a target segment and how social proof is transmitted in that market.
 
 ## Public Versus Private Consumption and Conspicuousness [exercise]
-[figure: two-by-two product matrix crossing public versus private usage with luxury versus necessity to predict reference-group influence on category and brand choice]
+[figure: comparison of publicly visible consumption on the street (outerwear, smartphone, and automobile observed by passers-by) and private consumption behind a closed door (toothpaste at a basin and a mattress on a bed)]
 - Reference group influence is not uniform across all goods. It depends on whether the item is a luxury or a necessity and whether it is consumed in public or in private (Bourne, 1957, and Bearden & Etzel, 1982).
 - Public luxuries (such as golf clubs, designer watches, or ski equipment) are visible to others and exclusive, attracting strong social influence on both product ownership and brand choice.
 - Public necessities (such as wristwatches, everyday outerwear, or automobiles) are owned by almost everyone in the group, so social influence focuses primarily on which brand is chosen.
@@ -29,7 +30,7 @@ week: "week10"
 - Reference groups shape consumption according to whether the consumer belongs to them, aspires to join them, or seeks to avoid them.
 
 ## Membership, Aspirational, and Dissociative Reference Groups [exercise]
-[figure: three reference group orientations showing approach toward membership and aspirational groups and avoidance of dissociative groups]
+[figure: aspirational reference group showing a shopper looking up at three medal-winning athletes on a podium]
 - Membership (or associative) reference groups consist of people the consumer actually knows and interacts with regularly, such as family members, close friends, coworkers, and local clubs.
 - Because membership groups hold frequent, direct contact with the consumer, their normative expectations exert strong day-to-day influence over consumption habits.
 - Aspirational reference groups consist of idealized figures or social strata the consumer does not currently belong to but admires and wishes to emulate, such as professional athletes, executives, or creative pioneers.
@@ -37,6 +38,7 @@ week: "week10"
 - Consumers systematically avoid purchasing brands, styles, or venues that have become associated with a dissociative group, lest observers misclassify them as members (White & Dahl, 2006).
 
 ## Informational, Utilitarian, and Value-Expressive Influence [exercise]
+[figure: utilitarian reference-group influence at the office where a consumer wears a dark blazer matching coworkers' attire to gain approval while leaving a casual hoodie on the coat stand]
 - Park and Lessig (1977) identified three distinct psychological mechanisms through which reference groups alter consumer behavior.
 - Informational influence occurs when a consumer accepts information from others as credible evidence about reality, such as consulting an experienced mechanic friend or reading expert forum threads before buying tires.
 - Utilitarian (or normative) influence occurs when a consumer conforms to the expectations of a group to obtain social rewards or avoid social sanction, such as wearing formal business attire to satisfy workplace supervisors.
@@ -44,6 +46,7 @@ week: "week10"
 - High-risk technical purchases heighten informational influence, whereas socially visible purchases in cohesive peer groups heighten utilitarian and value-expressive influence.
 
 ## Group Norms, Social Proof, and Conformity [no-exercise]
+[figure: interactive Asch (1956) line-judgment experiment comparing conformity rates when judging alone, answering aloud after a unanimous group consensus, and writing the answer privately]
 - Conformity is a change in beliefs or actions as a reaction to real or imagined group pressure (Asch, 1956).
 - Every cohesive social group establishes norms, which are informal, shared rules specifying what behaviors, dress codes, and gifts are appropriate or inappropriate.
 - In Solomon Asch's (1956) line-judgment experiments, a substantial share of participants publicly agreed with an unambiguously wrong group consensus rather than risk standing out as a lone dissenter.
@@ -55,7 +58,7 @@ week: "week10"
 - French and Raven's taxonomy of social power explains both interpersonal influence and the authority consumers attribute to conversational AI assistants.
 
 ## French and Raven's Five Bases of Social Power [exercise]
-[figure: five bases of social power in consumer influence: referent, legitimate, expert, reward, and coercive power]
+[figure: referent power illustrated by an admirer wearing the same jersey and copying the pose of a medal-winning athlete on a poster]
 - Social power is the potential ability of one agent to influence the attitudes or behavior of another person (French & Raven, 1959).
 - Referent power derives from emotional identification and admiration for the source, motivating consumers to copy the clothing or lifestyle of admired peers and cultural icons.
 - Information and expert power derive from the source's perceived possession of specialized knowledge, training, or access to facts, as when a pharmacist recommends an allergy medication.
@@ -63,6 +66,7 @@ week: "week10"
 - Reward power derives from the capacity to provide tangible or social benefits (such as loyalty rebates or group praise), whereas coercive power derives from the capacity to inflict punishment, fines, or social ostracism.
 
 ## Attributed Expert Power in Conversational AI Assistants [exercise]
+[figure: smartphone chat with an AI assistant where a shopper's laptop query receives a detailed reply and a shortlisted recommendation highlighted for purchase]
 - Consumers increasingly consult conversational AI assistants for product recommendations in the same way they previously consulted knowledgeable friends or specialist sales staff.
 - Many users attribute high expert power to these assistants because language models respond instantaneously, cover technical specifications fluently, and synthesize comparisons in an authoritative register.
 - Attributed expert power grants the AI assistant substantial influence over which brands enter the buyer's consideration set and which option is ultimately chosen.
@@ -70,6 +74,7 @@ week: "week10"
 - Consumers who rely on fluency as a cue for expertise may therefore defer to an AI recommendation without verifying the underlying product facts.
 
 ## Epistemic Limits and Independence of AI Expert Sources [no-exercise]
+[figure: comparison of advisor independence showing a human specialist recommending sunscreen while accepting coins behind their back alongside a storefront AI assistant recommending a laptop with a question mark over a coin]
 - Genuine expert power in a marketplace advisor rests on two conditions: accurate domain knowledge and independence from undisclosed commercial bias.
 - First, language models can generate plausible-sounding but factually incorrect product specifications, discontinued model names, or fabricated compatibility claims when not grounded in verified catalog databases.
 - Second, in interpersonal influence, consumers discount an expert's advice immediately when they learn the expert receives a hidden commission from the manufacturer.
@@ -84,6 +89,7 @@ week: "week10"
 - Because interpersonal sources are generally perceived as having no financial stake in selling the item, word of mouth is far more persuasive than paid advertising.
 
 ## Interpersonal Word of Mouth and Negativity Bias [no-exercise]
+[figure: negativity bias in word of mouth shown as a balance scale where a single one-star complaint outweighs three five-star reviews]
 - Word-of-mouth communication encompasses face-to-face conversations, personal recommendations, and informal warnings shared among consumers (Arndt, 1967).
 - According to the two-step flow of communication model, mass media messages often reach influential individuals first, who then interpret and pass them along to their broader social circles (Katz & Lazarsfeld, 1955).
 - Word of mouth exhibits a strong negativity bias: dissatisfied consumers tell more people about a negative product experience than satisfied consumers tell about a positive one.
@@ -91,7 +97,7 @@ week: "week10"
 - Trying to suppress legitimate negative feedback rarely succeeds, whereas resolving the underlying product defect and encouraging organic advocacy builds durable credibility.
 
 ## Opinion Leaders, Market Mavens, and Surrogate Buyers [exercise]
-[figure: comparison of category-specific opinion leaders, broad-market mavens, and compensated surrogate consumers]
+[figure: interactive social network of twelve acquaintances comparing category-specific opinion leaders in fashion and technology with a market maven who advises peers across all categories]
 - Interpersonal influence is concentrated among three distinct types of marketplace informers: opinion leaders, market mavens, and surrogate consumers.
 - An opinion leader is an individual who is highly involved and knowledgeable in a specific product category (such as photography or running footwear) and frequently advises peers within that domain (Rogers, 1962).
 - Opinion leadership is typically monomorphic (domain-specific): an opinion leader in audio equipment is rarely an opinion leader in skincare.
@@ -99,6 +105,7 @@ week: "week10"
 - A surrogate consumer, unlike both opinion leaders and market mavens, is formally retained or delegated to execute search and purchase decisions on the buyer's behalf.
 
 ## Electronic Word of Mouth and Network Tie Strength [no-exercise]
+[figure: four forms of electronic word of mouth: a written product review card, an aggregate star rating, an online forum thread, and a social media post with comment bubbles]
 - Electronic word of mouth (eWOM) extends interpersonal communication to digital product reviews, discussion forums, unboxing videos, and social media threads.
 - Unlike ephemeral spoken conversations, eWOM is persistent, searchable across time, and visible to millions of strangers as well as to AI web crawlers.
 - Social network analysis distinguishes strong ties (close family and friends within a tight-knit cluster) from weak ties (acquaintances and distant forum participants bridging separate social groups) (Granovetter, 1973).
@@ -110,7 +117,7 @@ week: "week10"
 - At the same time, generative AI has lowered the cost of producing fake synthetic reviews, creating new challenges for trust and regulation.
 
 ## AI-Generated Review Summaries as Mediated Word of Mouth [no-exercise]
-[figure: pipeline from individual customer reviews (organic and incentivized) through an LLM summarization module to the compressed summary read by shoppers]
+[figure: interactive review-summarization pipeline showing how individual customer reviews and added five-star reviews shift the AI summary rating and the product chosen by a shopper and an AI agent]
 - Major e-commerce platforms now display a single paragraph at the top of the review section synthesized by a large language model from hundreds of individual customer posts.
 - Many time-pressed shoppers read only this AI-generated summary and the aggregate star rating rather than scrolling through individual reviews.
 - The summarization model therefore acts as an algorithmic gatekeeper of electronic word of mouth, deciding which product strengths and complaints are highlighted.
@@ -125,6 +132,7 @@ week: "week10"
 - Preserving transparency in AI review summaries requires weighting verified organic feedback appropriately and disclosing when underlying reviews were incentivized.
 
 ## Synthetic Reviews, Credibility Erosion, and Regulatory Bans [exercise]
+[figure: 2024 regulatory rule with an official seal prohibiting a synthetic five-star review marked with an AI sparkle]
 - Generative language models make it trivial for bad actors to produce thousands of fluent, varied fake reviews that mimic authentic customer experiences, known as synthetic reviews.
 - Unlike older template-based spam, synthetic reviews vary sentence structure and mention specific product attributes, making them difficult for human readers to detect by inspection.
 - Widespread synthetic reviews create a "lemons market" problem in eWOM: if buyers cannot distinguish genuine customer feedback from fabricated praise or competitor sabotage, the informational value of all reviews collapses.
@@ -136,6 +144,7 @@ week: "week10"
 - Evaluating influencer campaigns requires distinguishing audience scale from parasocial trust and examining the rise of computer-generated virtual influencers.
 
 ## Macro-Influencers, Micro-Influencers, and Parasocial Relationships [no-exercise]
+[figure: comparison of a macro-influencer addressing a large crowd with sparse heart reactions and a micro-influencer addressing a smaller audience with high heart engagement]
 - Social media influencers are content creators who have cultivated a dedicated following in a niche or lifestyle domain and monetize that audience through brand partnerships.
 - Macro-influencers and celebrity creators command hundreds of thousands or millions of followers, providing broad awareness reach at the top of the marketing funnel.
 - Micro-influencers and nano-influencers have smaller, specialized audiences (often 5,000 to 50,000 followers) but typically achieve higher engagement rates and stronger perceived category authenticity.
@@ -143,7 +152,7 @@ week: "week10"
 - Parasocial trust makes an influencer recommendation feel like referent and expert peer advice rather than traditional advertising.
 
 ## Virtual Influencers and Perceived Authenticity [exercise]
-[figure: comparison of human influencers and computer-generated virtual influencers across controllability, lived experience, and perceived authenticity]
+[figure: social media post featuring a faceless computer-generated virtual influencer marked with an AI sparkle holding up a sneaker above like counts]
 - A virtual influencer is a computer-generated, often AI-driven fictional character that maintains social media accounts, posts lifestyle imagery, and endorses commercial brands (such as Lil Miquela or Imma).
 - For brand managers, virtual influencers offer complete creative control, freedom from human personal scandals, and the ability to appear in any global market instantaneously.
 - However, virtual influencers suffer from a fundamental authenticity deficit in experiential categories: a digital avatar has no skin to test a moisturizer and no taste buds to experience a beverage.
@@ -151,6 +160,7 @@ week: "week10"
 - Blurring the boundary between human lived experience and synthetic endorsement without clear disclosure erodes brand trust.
 
 ## Brand Communities and Sponsorship Disclosure Mandates [no-exercise]
+[figure: online brand community forum page under a brand badge where three members share photos of the brand's sneakers in use across different conditions with discussion replies]
 - A brand community is a specialized, non-geographically bound community based on a structured set of social relationships among admirers of a brand (Muniz & O'Guinn, 2001).
 - Classic brand communities, such as Harley Owners Group, Lego user forums, or running club communities, share three markers: consciousness of kind (a shared "we-ness"), shared rituals and traditions, and a sense of moral responsibility to assist fellow members.
 - Brand communities generate high-value social proof and peer troubleshooting while strengthening barriers to brand switching.

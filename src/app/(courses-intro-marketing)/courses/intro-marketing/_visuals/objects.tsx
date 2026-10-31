@@ -312,7 +312,7 @@ export function Chip2({
         x={x}
         y={r2(y + s * 0.15)}
         textAnchor="middle"
-        fontFamily="var(--font-heading)"
+        fontFamily="var(--font-sans)"
         fontWeight={600}
         fontSize={r2(s * 0.42)}
         fill={tone}
@@ -1392,7 +1392,7 @@ export function Tool({
           x={X(6)}
           y={Y(6)}
           textAnchor="middle"
-          fontFamily="var(--font-heading)"
+          fontFamily="var(--font-sans)"
           fontWeight={600}
           fontSize={r2(17 * k)}
           fill={tone}

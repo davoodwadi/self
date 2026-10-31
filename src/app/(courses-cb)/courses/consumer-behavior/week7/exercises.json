@@ -1,7 +1,7 @@
 [
   {
     "type": "order",
-    "slide_id": "the-five-stages-of-the-decision-process",
+    "slide_id": "the-five-stage-model-of-the-decision-process",
     "prompt": "Follow Ines's laptop purchase through the five stages of the decision process. Put her moments in the order they happen.",
     "steps": [
       {
@@ -33,7 +33,7 @@
   },
   {
     "type": "sort",
-    "slide_id": "problem-recognition-the-actual-state-and-the-ideal-state",
+    "slide_id": "need-recognition-versus-opportunity-recognition",
     "prompt": "Each card describes a consumer who has noticed a gap between the actual state and the ideal state. Did the actual state fall (need recognition) or did the ideal state rise (opportunity recognition)?",
     "bins": [
       {
@@ -86,7 +86,7 @@
   },
   {
     "type": "identify",
-    "slide_id": "three-levels-of-decision-making",
+    "slide_id": "continuum-of-decision-effort-routine-limited-and-extended",
     "prompt": "Each case describes one purchase. Which level of decision making is it?",
     "options": [
       {
@@ -143,7 +143,7 @@
   },
   {
     "type": "sort",
-    "slide_id": "information-search-internal-and-external",
+    "slide_id": "internal-search-versus-external-information-sources",
     "prompt": "Each card describes how a consumer looks for information. Is it internal search or external search?",
     "bins": [
       {
@@ -196,10 +196,10 @@
   },
   {
     "type": "quiz",
-    "slide_id": "delegated-search-when-an-ai-agent-gathers-the-information",
+    "slide_id": "information-acquisition-costs-in-delegated-search",
     "question_text": "Dana asks an AI agent to find her running shoes. Each time the agent opens a product page, it is charged a small fee. Which outcome fits what the slide describes?",
     "hint": "Think about what happens to the amount of searching when each look-up has a cost, and what the quality of the final choice depends on.",
-    "correct_answer_citation": "Week 7: Delegated Search: When an AI Agent Gathers the Information",
+    "correct_answer_citation": "Week 7: Information Acquisition Costs in Delegated Search",
     "correct_answer_index": 1,
     "options": [
       {
@@ -222,7 +222,7 @@
   },
   {
     "type": "sort",
-    "slide_id": "the-delegation-instruction-how-specific-is-the-goal",
+    "slide_id": "goal-specificity-in-the-delegation-instruction",
     "prompt": "Each card is an instruction a consumer gives to an AI agent. Does it leave the criterion open (vague goal) or state it (specific goal)?",
     "bins": [
       {
@@ -275,7 +275,7 @@
   },
   {
     "type": "match",
-    "slide_id": "evaluating-alternatives-from-awareness-to-consideration",
+    "slide_id": "from-the-awareness-set-to-the-consideration-set",
     "prompt": "Chen is about to buy coffee. Match each set of brands with the part of her thinking it describes.",
     "term_label": "Set",
     "match_label": "Chen's coffee brands",
@@ -314,7 +314,7 @@
   },
   {
     "type": "identify",
-    "slide_id": "decision-rules-how-consumers-choose",
+    "slide_id": "noncompensatory-rules-lexicographic-elimination-by-aspects-and-conjunctive",
     "prompt": "Each case describes how a consumer chooses. Which decision rule is it?",
     "options": [
       {

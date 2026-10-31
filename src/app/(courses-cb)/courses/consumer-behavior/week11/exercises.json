@@ -1,13 +1,13 @@
 [
   {
     "type": "identify",
-    "slide_id": "cultural-values-hofstedes-dimensions",
-    "prompt": "Each situation reflects one of Hofstede's dimensions. Name the dimension it shows most clearly.",
+    "slide_id": "hofstedes-dimensions-of-national-culture",
+    "prompt": "Each situation reflects one of Hofstede's dimensions of national culture. Name the dimension it shows most clearly.",
     "options": [
-      { "id": "idv", "label": "Individualism vs collectivism" },
+      { "id": "idv", "label": "Individualism versus collectivism" },
       { "id": "pdi", "label": "Power distance" },
       { "id": "uai", "label": "Uncertainty avoidance" },
-      { "id": "mas", "label": "Masculinity vs femininity" },
+      { "id": "mas", "label": "Masculinity versus femininity" },
       { "id": "lto", "label": "Long-term orientation" }
     ],
     "cases": [
@@ -15,295 +15,283 @@
         "id": "manager",
         "text": "In one country, employees rarely question a manager's decision, and shoppers trust a brand more when a senior executive endorses it.",
         "answer": "pdi",
-        "explanation": "People accept an unequal distribution of power and status."
+        "explanation": "Power distance measures the extent to which less powerful members of a society accept and expect unequal distributions of authority and status hierarchy."
       },
       {
         "id": "guarantee",
-        "text": "Shoppers stick to familiar brands, read every guarantee and avoid products that have just come on the market.",
+        "text": "Shoppers stick to familiar brands, read every formal guarantee, and avoid ambiguous products that have just come on the market.",
         "answer": "uai",
-        "explanation": "They feel uncomfortable with ambiguity and risk."
+        "explanation": "Uncertainty avoidance measures how strongly members of a culture feel threatened by ambiguous situations and seek formal rules, guarantees, and familiar brands."
       },
       {
         "id": "winner",
-        "text": "Car ads in one market show the driver beating rivals and finishing first. In another they show a calm family enjoying a weekend away.",
+        "text": "Automobile ads in one market show the driver beating rivals and finishing first. In another market, ads show a calm family enjoying quality of life on a weekend trip.",
         "answer": "mas",
-        "explanation": "Achievement and competition versus care and quality of life."
+        "explanation": "Masculinity versus femininity contrasts societies emphasizing competition and material achievement against those emphasizing care and quality of life."
       },
       {
         "id": "savings",
-        "text": "Parents put a large share of their income into a savings plan for their children's education, even if it means fewer treats today.",
+        "text": "Parents put a large share of their income into a long-term savings plan for their children's future education, even if it means fewer treats today.",
         "answer": "lto",
-        "explanation": "A focus on future rewards, such as saving."
+        "explanation": "Long-term orientation measures emphasis on thrift, perseverance, and future rewards."
       },
       {
         "id": "family-decision",
-        "text": "A young buyer will not choose a new phone until parents and siblings have agreed on the brand.",
+        "text": "A young buyer will not choose a new phone until parents and siblings have agreed on the brand that best preserves family harmony.",
         "answer": "idv",
-        "explanation": "The buyer acts mainly as a member of a group: collectivism."
+        "explanation": "Individualism versus collectivism contrasts personal autonomy and self-expression against harmony, duty, and in-group loyalty."
       },
       {
         "id": "be-yourself",
-        "text": "A clothing brand's slogan invites customers to create a look that no one else has.",
+        "text": "A clothing brand's slogan invites customers to express personal autonomy and create a look that no one else has.",
         "answer": "idv",
-        "explanation": "Standing out from the crowd suits an individualist culture."
-      },
-      {
-        "id": "new-gadget",
-        "text": "In one market, consumers wait for a gadget's second version and plenty of reviews before buying, while in another they queue on launch day.",
-        "answer": "uai",
-        "explanation": "The waiting consumers avoid the ambiguity and risk of an untested product."
+        "explanation": "Standing out through personal autonomy and self-expression reflects an individualist value system."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "rituals-myths-and-symbols",
-    "prompt": "Name the kind of ritual or symbol each situation shows.",
+    "slide_id": "consumer-rituals-and-rites-of-passage",
+    "prompt": "Identify which ritual type or gift-giving stage from Rook (1985), Sherry (1983), and van Gennep (1960) each consumer situation illustrates.",
     "options": [
       { "id": "grooming", "label": "Grooming ritual" },
-      { "id": "gift", "label": "Gift-giving ritual" },
-      { "id": "holiday", "label": "Holiday ritual" },
-      { "id": "rite", "label": "Rite of passage" },
-      { "id": "myth", "label": "Myth" }
+      { "id": "gestation", "label": "Gift-giving: gestation stage" },
+      { "id": "presentation", "label": "Gift-giving: presentation stage" },
+      { "id": "reformulation", "label": "Gift-giving: reformulation stage" },
+      { "id": "rite", "label": "Rite of passage" }
     ],
     "cases": [
       {
         "id": "shave",
-        "text": "Every morning before work, Tom shaves, applies aftershave and chooses a watch, always in the same order.",
+        "text": "Every morning before a client meeting, Tom applies cleanser, serum, and moisturizer in the exact same sequence before putting on his watch.",
         "answer": "grooming",
-        "explanation": "A routine that moves him from his private self to his public self."
+        "explanation": "Grooming rituals transition the individual from the private self to the public social self through a fixed sequence of behaviors."
       },
       {
-        "id": "thank-you",
-        "text": "Nadia brings a box of chocolates to thank a neighbour who watered her plants.",
-        "answer": "gift",
-        "explanation": "The gift expresses a relationship and an obligation."
+        "id": "search-gift",
+        "text": "Two weeks before her sister's birthday, Nadia researches artisanal bookstores and buys a first-edition novel to have it gift-wrapped.",
+        "answer": "gestation",
+        "explanation": "In Sherry's (1983) model, gestation is the stage of selecting and purchasing the gift prior to the exchange."
       },
       {
-        "id": "diwali",
-        "text": "Stores stock lamps, sweets and new clothes weeks before Diwali, when sales rise sharply.",
-        "answer": "holiday",
-        "explanation": "A holiday ritual creates a large seasonal market."
+        "id": "exchange",
+        "text": "At the dinner table, Nadia hands the wrapped package to her sister while the family watches her open the ribbon and read the card.",
+        "answer": "presentation",
+        "explanation": "Presentation is the ceremonial exchange moment in which the gift is handed over and opened in front of the ritual audience."
       },
       {
-        "id": "license",
-        "text": "After passing her driving test, Lea's family gives her a key ring and takes her out to celebrate.",
+        "id": "bond",
+        "text": "After exchanging thoughtful anniversary gifts, a couple feels a renewed sense of closeness and mutual appreciation.",
+        "answer": "reformulation",
+        "explanation": "Reformulation is the final stage of gift-giving in which the relationship bond between giver and recipient is adjusted afterward."
+      },
+      {
+        "id": "graduation",
+        "text": "Upon completing university and starting her first professional job, Lea buys a tailored suit and celebrates with a graduation dinner.",
         "answer": "rite",
-        "explanation": "The occasion marks a change in social status and comes with its own products."
-      },
-      {
-        "id": "underdog",
-        "text": "A sportswear ad tells the story of a runner from a small village who trains alone and wins the national title.",
-        "answer": "myth",
-        "explanation": "The brand borrows the myth of the hero who overcomes a challenge."
+        "explanation": "Rites of passage mark transitions between social statuses, such as graduation, marriage, parenthood, or retirement."
       },
       {
         "id": "retirement",
-        "text": "Colleagues buy a farewell cake and an engraved pen when Maria retires after thirty years.",
+        "text": "Colleagues purchase a commemorative watch and host a farewell banquet when Maria retires after thirty years at the firm.",
         "answer": "rite",
-        "explanation": "Retirement marks a change in social status."
+        "explanation": "Retirement is a rite of passage marking a major transition in social status accompanied by symbolic ritual artifacts."
       }
     ]
   },
   {
     "type": "identify",
     "slide_id": "sacred-and-profane-consumption",
-    "prompt": "Is each object sacred or profane, or is it gaining or losing sacred status?",
+    "prompt": "Using Belk, Wallendorf, and Sherry's (1989) framework, identify whether each case represents profane consumption, sacred consumption, sacralization, or desacralization.",
     "options": [
-      { "id": "sacred", "label": "Sacred" },
-      { "id": "profane", "label": "Profane" },
+      { "id": "sacred", "label": "Sacred consumption" },
+      { "id": "profane", "label": "Profane consumption" },
       { "id": "sacralization", "label": "Sacralization" },
       { "id": "desacralization", "label": "Desacralization" }
     ],
     "cases": [
       {
         "id": "dish-soap",
-        "text": "The bottle of dish soap Ahmed buys every two weeks.",
+        "text": "Ahmed buys a standard bottle of unscented dish soap every two weeks for routine kitchen cleaning.",
         "answer": "profane",
-        "explanation": "An ordinary, everyday object with no special status."
+        "explanation": "Profane consumption involves ordinary, everyday utilitarian objects and routines that carry no special reverence."
       },
       {
         "id": "ticket",
-        "text": "Lina frames the ticket from the concert where her partner proposed and hangs it above her desk.",
+        "text": "Lina frames the paper concert ticket from the night her partner proposed and hangs it in a protected display case.",
         "answer": "sacralization",
-        "explanation": "An ordinary ticket becomes sacred through a special event."
+        "explanation": "Sacralization occurs when an ordinary item becomes sacred through association with a deeply meaningful event, person, or collection."
       },
       {
-        "id": "anthem",
-        "text": "A country's national anthem is used as the jingle in a cheap fast-food ad.",
+        "id": "monument",
+        "text": "A revered religious symbol is mass-produced on $1.99 plastic party cups and disposable flip-flops in a bargain bin.",
         "answer": "desacralization",
-        "explanation": "A national symbol loses sacred status on cheap commercial use."
+        "explanation": "Desacralization occurs when a formerly sacred symbol or holiday is mass-produced and commercialized into an ordinary commodity."
       },
       {
         "id": "ring",
-        "text": "Carlos keeps his late grandfather's wedding ring in a locked box and would not sell it at any price.",
+        "text": "Carlos keeps his late grandfather's pocket watch on a velvet stand in a locked cabinet and refuses to sell it at any price.",
         "answer": "sacred",
-        "explanation": "He sets it apart, treats it with respect and refuses to sell it."
+        "explanation": "Sacred consumption involves possessions set apart from the ordinary world and treated with awe, respect, and emotional protection."
       },
       {
         "id": "stapler",
-        "text": "The office stapler that everyone borrows and nobody returns.",
+        "text": "An office stapler sits in a shared supply drawer where coworkers use it without giving it a second thought.",
         "answer": "profane",
-        "explanation": "An everyday object with no special status."
+        "explanation": "An everyday utilitarian tool with no emotional reverence belongs to the profane domain."
       },
       {
-        "id": "shell",
-        "text": "After a honeymoon in Greece, a shell picked up on the beach takes a place of honour on the shelf.",
+        "id": "jersey",
+        "text": "An ordinary basketball jersey becomes a fan's most treasured possession after the team captain wears and signs it at a championship game.",
         "answer": "sacralization",
-        "explanation": "A souvenir from a special trip becomes sacred."
+        "explanation": "Sacralization through contamination occurs when an ordinary item becomes sacred by touching a revered person."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "subcultures-shared-identity-within-a-culture",
-    "prompt": "Which kind of subculture is each marketer reaching? Sort the cards.",
+    "slide_id": "age-and-generational-cohorts-in-consumer-markets",
+    "prompt": "Sort each consumer behavior observation into a generational cohort effect, a life-stage effect, or bidirectional intergenerational household influence.",
     "bins": [
-      { "id": "age", "label": "Age subculture" },
-      { "id": "geographic", "label": "Geographic subculture" },
-      { "id": "ethnic", "label": "Ethnic or religious subculture" }
+      { "id": "cohort", "label": "Generational cohort effect" },
+      { "id": "lifestage", "label": "Life-stage effect" },
+      { "id": "intergenerational", "label": "Intergenerational household influence" }
     ],
     "cards": [
       {
-        "id": "nostalgia",
-        "text": "A streaming service promotes 1980s cartoons to people born in the 1970s.",
-        "bin": "age",
-        "explanation": "It targets a generation through the media it grew up with."
+        "id": "recession-thrift",
+        "text": "Consumers who entered the job market during a severe macroeconomic downturn maintain a lifelong preference for low-debt living decades later.",
+        "bin": "cohort",
+        "explanation": "Lasting values formed by macroeconomic events experienced during youth represent a generational cohort effect."
       },
       {
-        "id": "ramadan",
-        "text": "A grocer extends opening hours after sunset during Ramadan.",
-        "bin": "ethnic",
-        "explanation": "It respects a religious tradition and its holiday."
+        "id": "first-baby",
+        "text": "A couple in their early thirties shifts spending from late-night concerts to infant car seats and organic baby food after their first child is born.",
+        "bin": "lifestage",
+        "explanation": "Changes in consumption caused by marriage, parenthood, or aging reflect a life-stage effect rather than a permanent generational trait."
       },
       {
-        "id": "snow-tires",
-        "text": "A tire maker advertises winter tires only in the snowy northern provinces.",
-        "bin": "geographic",
-        "explanation": "It reflects regional differences in climate."
+        "id": "grocery-staples",
+        "text": "A university student moving into a first apartment buys the exact peanut butter and laundry detergent brands her parents always stocked at home.",
+        "bin": "intergenerational",
+        "explanation": "Parents socializing children into staple household grocery brands is an example of upward-to-downward intergenerational influence."
       },
       {
-        "id": "tiktok",
-        "text": "A snack brand launches on short-video apps with creators popular among Generation Z.",
-        "bin": "age",
-        "explanation": "It reaches a generation through its media habits."
+        "id": "parent-phone",
+        "text": "A twenty-year-old college student teaches her parents which mobile banking app and noise-canceling headphones to adopt.",
+        "bin": "intergenerational",
+        "explanation": "Young adults guiding parents' adoption of digital apps and electronics illustrates reverse intergenerational influence within the household."
       },
       {
-        "id": "local-dish",
-        "text": "A fast-food chain adds a regional dish to its menu in one part of the country.",
-        "bin": "geographic",
-        "explanation": "It reflects regional differences in food."
+        "id": "mobile-first",
+        "text": "Shoppers who grew up with smartphones in school continue to expect short-form video product discovery as they enter middle age.",
+        "bin": "cohort",
+        "explanation": "Formative technological habits acquired in youth that persist across the lifespan reflect a generational cohort effect."
       },
       {
-        "id": "kosher-line",
-        "text": "A food company certifies a product line as kosher for Passover.",
-        "bin": "ethnic",
-        "explanation": "It follows dietary rules of a religious subculture."
-      },
-      {
-        "id": "dialect",
-        "text": "A bank runs radio ads in the local dialect of one region.",
-        "bin": "geographic",
-        "explanation": "It reflects regional differences in language."
+        "id": "downsize",
+        "text": "Upon retiring at age sixty-five, a homeowner sells a four-bedroom suburban house and purchases travel packages and health supplements.",
+        "bin": "lifestage",
+        "explanation": "Adjusting spending patterns in response to retirement and aging is a life-stage effect."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "social-class-and-status-symbols",
-    "question_text": "Two shoppers buy expensive coats from the same luxury label. One chooses a plain coat whose only mark is a small stitched label inside. The other chooses a coat with the brand's name printed across the back. Which description fits the slide?",
-    "hint": "Think about how old money and new money tend to signal status.",
-    "correct_answer_citation": "Week 11: Social Class and Status Symbols",
-    "correct_answer_index": 3,
+    "slide_id": "conspicuous-consumption-quiet-luxury-and-status-signaling",
+    "question_text": "Two wealthy shoppers purchase cashmere coats from the same luxury fashion house. Shopper A selects a coat with the brand's oversized monogram printed across the chest so anyone on the street recognizes its price. Shopper B pays a higher price for an unbranded coat whose hand-stitched lapel is recognized only by fellow connoisseurs. In Han, Nunes, and Drèze's (2010) taxonomy, how are Shopper A and Shopper B classified?",
+    "hint": "Compare high-wealth consumers with a high need for status (loud logos) against high-wealth consumers with a low need for status (quiet luxury).",
+    "correct_answer_citation": "Week 11: Conspicuous Consumption, Quiet Luxury, and Status Signaling (Han, Nunes, & Drèze, 2010)",
+    "correct_answer_index": 2,
     "options": [
       {
-        "option_text": "Both shoppers signal status in the same way, because they paid the same price",
-        "option_explanation": "Price alone does not decide how status is signalled. The visibility of the brand differs."
+        "option_text": "Both shoppers are patricians, because both have high financial wealth",
+        "option_explanation": "Han, Nunes, and Drèze (2010) separate wealthy consumers by their need for status and preference for brand prominence."
       },
       {
-        "option_text": "The plain coat is not a status symbol, because no one can see the brand",
-        "option_explanation": "Old money often signals status quietly, through heritage and understated quality."
+        "option_text": "Shopper A is a patrician seeking quiet luxury, and Shopper B is a parvenu seeking loud conspicuous display",
+        "option_explanation": "This reverses the two groups: parvenus prefer loud, visible logos whereas patricians prefer inconspicuous quiet luxury."
       },
       {
-        "option_text": "The printed coat signals old money, because the brand has a long history",
-        "option_explanation": "Visible brands and logos are the typical signal of new money."
+        "option_text": "Shopper A is a parvenu using loud brand prominence to signal wealth broadly, and Shopper B is a patrician using quiet luxury recognized by fellow insiders",
+        "option_explanation": "Correct. Parvenus (high wealth, high need for status) prefer prominent logos, whereas patricians (high wealth, low need for status) pay a premium for quiet luxury recognized by insiders with high cultural capital."
       },
       {
-        "option_text": "The plain coat fits how old money often signals status. The printed coat fits how new money often does",
-        "option_explanation": "Correct. Old money tends to signal quietly through understated quality, new money through visible brands and logos."
+        "option_text": "Shopper B is avoiding status signaling entirely because unbranded goods carry zero cultural capital",
+        "option_explanation": "Patricians still signal status, but horizontally to fellow insiders possessing the cultural capital to recognize subtle craftsmanship."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "consumer-ethnocentrism-and-country-of-origin",
-    "prompt": "Is each consumer showing a country-of-origin effect or consumer ethnocentrism?",
+    "slide_id": "country-of-origin-effects-and-consumer-ethnocentrism",
+    "prompt": "Does each case illustrate a cognitive country-of-origin (COO) quality inference (Bilkey & Nes, 1982) or normative consumer ethnocentrism (Shimp & Sharma, 1987)?",
     "bins": [
       { "id": "coo", "label": "Country-of-origin effect" },
       { "id": "ethno", "label": "Consumer ethnocentrism" }
     ],
     "cards": [
       {
-        "id": "italian-espresso",
-        "text": "Ana trusts an espresso machine more because it was made in Italy.",
+        "id": "italian-leather",
+        "text": "Ana infers that an unfamiliar handbag brand uses superior leather craftsmanship because the label states it was made in Italy.",
         "bin": "coo",
-        "explanation": "She judges the product by the country where it was made."
+        "explanation": "She uses a favorable country-category stereotype as an extrinsic cue to infer product quality."
       },
       {
         "id": "domestic-tv",
-        "text": "Ben buys a domestic television even though an imported one is cheaper and better rated, because he thinks buying imports hurts local jobs.",
+        "text": "Ben buys a domestically manufactured appliance even though an imported model is rated higher, because he believes buying imports costs local workers their jobs.",
         "bin": "ethno",
-        "explanation": "He believes buying from his own country is right and buying imports is wrong."
+        "explanation": "Consumer ethnocentrism is a normative moral belief that purchasing foreign-made goods harms the domestic economy."
       },
       {
-        "id": "japanese-camera",
-        "text": "A photographer assumes a camera is high quality because it is Japanese.",
+        "id": "swiss-watch",
+        "text": "A buyer expects a new mechanical timepiece to keep accurate time because it carries a Swiss Made movement certification.",
         "bin": "coo",
-        "explanation": "A country is linked with quality in a category."
+        "explanation": "The country of manufacture serves as a cognitive quality signal in a category linked with that nation."
       },
       {
-        "id": "local-only",
-        "text": "Chloe feels guilty whenever she buys imported fruit and always looks for the home-grown label first.",
+        "id": "guilt-import",
+        "text": "Chloe feels unpatriotic whenever she puts imported produce into her grocery cart and actively checks labels for domestic origin.",
         "bin": "ethno",
-        "explanation": "She prefers domestic products as a matter of principle."
+        "explanation": "Viewing foreign purchases as unpatriotic reflects high consumer ethnocentrism."
       },
       {
-        "id": "scotch",
-        "text": "A shopper pays more for whisky made in Scotland than for a similar whisky made elsewhere.",
+        "id": "japanese-electronics",
+        "text": "A studio engineer assumes an unfamiliar audio interface will be reliable because it was engineered in Japan.",
         "bin": "coo",
-        "explanation": "The country is associated with quality in that category."
+        "explanation": "Favorable country-category associations transfer positive quality expectations to unfamiliar brands from that nation."
       },
       {
-        "id": "keep-working",
-        "text": "Dev agrees strongly with the statement that people should buy national products to keep the country working.",
+        "id": "cetscale-item",
+        "text": "Dev strongly endorses the CETSCALE statement that citizens should always buy domestic products instead of imports.",
         "bin": "ethno",
-        "explanation": "This is the kind of CETSCALE statement that measures consumer ethnocentrism."
+        "explanation": "Shimp and Sharma's (1987) CETSCALE measures normative consumer ethnocentrism tendencies."
       }
     ]
   },
   {
     "type": "quiz",
-    "slide_id": "cultural-bias-in-ai-models",
-    "question_text": "A global coffee brand from China asks an AI assistant to describe Chinese coffee brands to shoppers in Canada. Based on the study of AI models and the CETSCALE, what should the brand do?",
-    "hint": "Recall what the study found about statements concerning China, and what the slide says global brands need to do.",
-    "correct_answer_citation": "Week 11: Cultural Bias in AI Models",
-    "correct_answer_index": 2,
+    "slide_id": "measuring-consumer-ethnocentrism-across-frontier-ai-models",
+    "question_text": "When Wadi, Ghodrat, and Philp (2026) administered the 17-item CETSCALE to frontier AI models developed in the United States, China, Canada, and France across prompts framed for consumers in each of those four countries, what pattern emerged across all tested models?",
+    "hint": "Recall both the developer baseline finding and how CETSCALE scores shifted depending on which target country was named in the statements.",
+    "correct_answer_citation": "Week 11: Measuring Consumer Ethnocentrism Across Frontier AI Models (Wadi, Ghodrat, & Philp, 2026)",
+    "correct_answer_index": 1,
     "options": [
       {
-        "option_text": "Nothing: AI models answer the same way whatever country a question is about",
-        "option_explanation": "The study found that answers shifted with the country in the question."
+        "option_text": "All AI models produced identical CETSCALE scores regardless of developer origin or the target country named in the prompt",
+        "option_explanation": "Models differed significantly in baseline ethnocentrism across developers and shifted systematically with the target country."
       },
       {
-        "option_text": "Rely on one model, because all models were equally ethnocentric",
-        "option_explanation": "The models differed in how ethnocentric their answers were overall."
+        "option_text": "Models differed significantly in baseline ethnocentrism across developers, and across all models responses were consistently least ethnocentric when statements referred to China and significantly more ethnocentric when statements referred to the United States or Canada",
+        "option_explanation": "Correct. Both developer baseline differences and the target-country shift (lowest for China, higher for the United States and Canada) emerged systematically."
       },
       {
-        "option_text": "Check how assistants represent its country of origin in each market, because models' answers varied by model and by the country asked about",
-        "option_explanation": "Correct. Models carried cultural preferences, so global brands need to check how assistants represent their origin in each market."
+        "option_text": "Responses were most ethnocentric when statements referred to China and least ethnocentric when statements referred to Canada",
+        "option_explanation": "The study found the opposite target-country pattern: responses were least ethnocentric when statements referred to China and significantly more ethnocentric for the United States or Canada."
       },
       {
-        "option_text": "Hide its country of origin from every AI assistant",
-        "option_explanation": "The slide says brands need to check how assistants represent their origin, not hide it."
+        "option_text": "Only models developed in the United States showed any variation across target countries",
+        "option_explanation": "The target-country shift appeared across all tested models regardless of developer origin."
       }
     ]
   }

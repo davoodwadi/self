@@ -5,1474 +5,1126 @@ import {
   SlideDeck,
   Slide,
   Title,
-  Subtitle,
 } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { cn } from "@/lib/utils";
-import { Plate } from "../_visuals/kit";
+import {
+  Big,
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  BottomLinePerception,
-  RevenueAndCosts,
-  ChangeSpeed,
-  ChoiceShare,
-  InsideOutside,
-  AlignGoals,
-  Objectives,
-  ObjectiveRange,
-  CostFloor,
-  CostLine,
-  TotalCosts,
-  FloorCeiling,
-  DemandCurve,
-  MarketStructures,
-  Elasticity,
-  RevenueForecast,
-  ApproachLanes,
-  ValueKey,
-  MixTogether,
+  AgentCoffeeComparison,
+  PriceElasticityComparison,
+  PricingCorridor,
   ReverseChains,
-  GoodValueBalance,
-  LessExpensiveVersion,
-  ValueAddedFeatures,
-  HigherNotCut,
-  CostBuildUp,
-  CostTypes,
-  Blinkers,
-  CompetitorReadings,
-  ValueJudged,
-  ValueJustifies,
-  StreamingMarket,
-  SkimToPenetrate,
-  MarketLayers,
-  FewerProfitable,
-  QualityImagePillars,
-  NoUndercut,
-  ManyBuyersShare,
-  CostsFall,
-  AloneVsMix,
-  TotalMixProfit,
-  RelatedDemand,
-  PriceSteps,
-  StepInputs,
-  OptionalProducts,
-  BaseOrOptions,
-  CaptiveFit,
-  CaptiveExamples,
-  CaptiveMarkups,
-  OngoingStream,
-  BundleReduced,
-  BundleRideAlong,
-  BundleThreshold,
-  ClearInventory,
-  PodDilemma,
-  GlyphRevenue,
-  GlyphWall,
-  GlyphLanes,
-  GlyphLayers,
 } from "./visuals";
 
 // ============================================================================
-// WEEK 8: PRICING STRATEGIES (THE SECOND P)
+// INTRODUCTION TO MARKETING | WEEK 8: PRICING STRATEGIES (THE SECOND P)
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
-//
-// Colour carries meaning across Part 2: customer value-based pricing is
-// SIGNAL, cost-based pricing is INK, competition-based pricing is COUNTER.
-// In Part 3, skimming is SIGNAL and penetration is COUNTER.
-//
-// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
-// so each [exercise]-tagged topic carries one exercise that tests that slide
-// and the ones before it. They live in ./exercises.json.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
-
-type Tone = "signal" | "counter" | "ink";
-
-const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
-};
-
-/** One verbatim sentence at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
-/** A sentence promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-lead max-w-[46ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A sentence set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "type-quote max-w-[30ch] !text-[clamp(1.4rem,2.1vw,1.85rem)]",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
-/** Coloured term inside a sentence, without the Highlight underline. */
-function Term({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
-}
-
-/** Inline colour for a phrase inside a serif sentence. */
-function Tint({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <span
-      className={
-        tone === "signal" ? "text-[var(--signal)]" : "text-[var(--counter)]"
-      }
-    >
-      {children}
-    </span>
-  );
-}
-
-/** Hairline-topped block with a verbatim sentence. */
-function Ruled({
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "min-w-0 border-t-2 pt-4",
-        BORDER[tone],
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-/**
- * A slide heading. When the content gives a "Label:" prefix ("Internal
- * Factors:", "Discussion:") it is set as a small tracked kicker inside the
- * same h2, so the heading text stays exactly as written.
- */
-function Heading({
-  kicker,
-  children,
-  tone = "signal",
-}: {
-  kicker?: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <div className="mb-6 w-full">
-      <h2
-        className={cn(
-          "type-h1",
-          typeof children === "string" &&
-            children.length > 36 &&
-            "!text-[clamp(2rem,3.4vw,3rem)]",
-        )}
-      >
-        {kicker ? (
-          <>
-            <span
-              className={cn(
-                "type-label mb-2 block !text-[0.8rem]",
-                tone === "counter" && "!text-[var(--counter)]",
-              )}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
-      <div className="mt-4 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
-function Prompt({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "relative w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-7 md:px-10 md:py-8",
-        className,
-      )}
-    >
-      <p className="type-quote !text-[clamp(1.35rem,2.1vw,1.8rem)] max-w-[44ch]">
-        {children}
-      </p>
-    </div>
-  );
-}
-
-function PromptKicker() {
-  return (
-    <span className="type-label !text-[var(--counter)] block mb-4 !text-[0.8rem] !leading-none">
-      Discussion:
-    </span>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   Wayfinding: the four movements of the week
-   -------------------------------------------------------------------------- */
-
-const SECTIONS = [
-  "Factors Affecting Pricing",
-  "Core Pricing Approaches",
-  "New Products",
-  "Product Mixes",
-];
-
-/**
- * The four movements as a strip. On each topic slide the current one is lit
- * and those behind it are inked, so students always know where they are.
- */
-function SectionStrip({
-  active,
-  className = "",
-}: {
-  active: number;
-  className?: string;
-}) {
-  return (
-    <ol
-      aria-hidden
-      className={cn(
-        "grid w-full grid-cols-4 gap-2 sm:gap-3",
-        className,
-      )}
-    >
-      {SECTIONS.map((name, i) => {
-        const on = i === active;
-        const done = i < active;
-        return (
-          <li
-            key={name}
-            className={cn(
-              "flex min-w-0 items-baseline gap-2 border-t-2 pt-2",
-              on
-                ? "border-[var(--signal)]"
-                : done
-                  ? "border-[var(--ink)]"
-                  : "border-[var(--rule)]",
-            )}
-          >
-            <span
-              className={cn(
-                "type-label block !text-[0.68rem]",
-                on ? "!text-[var(--signal)]" : "!text-[var(--ink-3)]",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span
-              className={cn(
-                "hidden sm:block text-[0.8rem] leading-snug",
-                on ? "font-semibold text-[var(--ink)]" : "text-[var(--ink-3)]",
-              )}
-            >
-              {name}
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-/** A topic slide: section strip, heading, then the slide's content. */
-function TopicSlide({
-  id,
-  section,
-  kicker,
-  title,
-  children,
-}: {
-  id: string;
-  section: number;
-  kicker?: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border className="!py-8" exercise={exercise[id]}>
-      <SectionStrip active={section} className="mb-6" />
-      <Heading kicker={kicker}>{title}</Heading>
-      {children}
-    </Slide>
-  );
-}
-
-/**
- * A part opener: the strip lit, an outlined numeral beside the "Part N:"
- * heading, then the part's sentences and plate.
- */
-function PartPlate({
-  id,
-  n,
-  title,
-  children,
-}: {
-  id: string;
-  n: number;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border className="!py-8" exercise={exercise[id]}>
-      <SectionStrip active={n - 1} className="mb-8" />
-      <div className="mb-8 flex w-full items-end gap-8 md:gap-12">
-        <div
-          aria-hidden
-          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[5.5rem] xl:text-[8rem]"
-          style={{
-            ...SERIF,
-            fontVariationSettings: '"opsz" 144, "WONK" 1',
-          }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <h2 className="type-display min-w-0 !text-[clamp(2.2rem,4.4vw,3.8rem)]">
-          <span className="type-label block mb-3 !text-[0.8rem]">
-            {`Part ${n}:`}
-          </span>{" "}
-          {title}
-        </h2>
-      </div>
-      <div className="mb-8 h-px w-full bg-[var(--rule)]" />
-      {children}
-    </Slide>
-  );
-}
-
-/** A ruled sentence with its plate beneath. */
-function Col({
-  tone = "ink",
-  text,
-  plate,
-  plateClass = "",
-  className = "",
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-  plateClass?: string;
-  className?: string;
-}) {
-  return (
-    <Ruled tone={tone} className={cn("flex flex-col gap-4", className)}>
-      {React.isValidElement(text) && text.type === "div" ? (
-        text
-      ) : (
-        <P>{text}</P>
-      )}
-      <Plate className={cn("!p-2", plateClass)}>{plate}</Plate>
-    </Ruled>
-  );
-}
-
-/** A ruled row: the sentence on the left, its plate on the right. */
-function Row({
-  tone = "ink",
-  text,
-  plate,
-  cols = "md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]",
-  lead = false,
-  className = "",
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-  cols?: string;
-  /** Set the sentence at lead size, for rows with room to spare. */
-  lead?: boolean;
-  className?: string;
-}) {
-  return (
-    <Ruled
-      tone={tone}
-      className={cn("grid items-center gap-5 !pt-3", cols, className)}
-    >
-      {lead ? (
-        <Lead className="!max-w-[34ch] [&_strong]:font-semibold">{text}</Lead>
-      ) : (
-        <P className="!max-w-none">{text}</P>
-      )}
-      <Plate className="!p-2">{plate}</Plate>
-    </Ruled>
-  );
-}
-
-/** Text on one side, a plate on the other, unruled. */
-function Beside({
-  text,
-  plate,
-  cols = "lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]",
-  className = "",
-}: {
-  text: React.ReactNode;
-  plate: React.ReactNode;
-  cols?: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid w-full items-center gap-8 lg:gap-10",
-        cols,
-        className,
-      )}
-    >
-      <div className="flex min-w-0 flex-col gap-5">{text}</div>
-      <Plate className="!p-2">{plate}</Plate>
-    </div>
-  );
-}
-
-/** The four Ps, with Price lit: where this week sits in the mix. */
-function MixStrip() {
-  return (
-    <ol
-      aria-hidden
-      className="mx-auto mt-8 grid w-full max-w-2xl grid-cols-4 gap-3"
-    >
-      {["Product", "Price", "Place", "Promotion"].map((p, i) => (
-        <li
-          key={p}
-          className={cn(
-            "border-t-2 pt-3 text-center text-[clamp(1rem,1.6vw,1.35rem)]",
-            i === 1
-              ? "border-[var(--signal)] text-[var(--signal)]"
-              : i === 0
-                ? "border-[var(--ink)] text-[var(--ink-3)]"
-                : "border-[var(--rule)] text-[var(--ink-3)]",
-          )}
-          style={SERIF}
-        >
-          {p}
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 export default function Week8() {
   return (
-    <SlideDeck
-      label="Week 8"
-    >
+    <SlideDeck label="Week 8">
       {/* ================================================================
           Title Slide
           ================================================================ */}
-      <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 8: Introduction to Marketing</Subtitle>
-        <Title className="mt-6 !max-w-[20ch]">
-          Pricing Strategies{" "}
-          <span className="text-[var(--signal)]">(The Second P)</span>
-        </Title>
-        <p className="type-caption mt-2">Davood Wadi, PhD</p>
-
-        <div className="mt-10 w-full max-w-3xl space-y-4 text-center">
-          <p className="type-lead !text-[var(--ink)]">
-            Welcome to Week 8 of Introduction to Marketing.
+      <Slide id="title-slide" align="left">
+        <div className="w-full max-w-4xl">
+          <p className="type-label text-[var(--ink-3)]">
+            Week 8
           </p>
-          <p className="type-lead">
-            Today we explore the second P of the marketing mix,{" "}
-            <span className="text-[var(--signal)]">Price</span>.
+          <p className="type-caption mt-2">
+            Introduction to Marketing | Davood Wadi, PhD
           </p>
-        </div>
-        <MixStrip />
-
-        <div className="mt-10 w-full max-w-3xl border-t border-[var(--rule)] pt-6">
-          <p className="type-body mx-auto text-center">
-            We will examine how price affects the{" "}
-            <strong className="font-semibold text-[var(--ink)]">
-              bottom line
-            </strong>{" "}
-            and{" "}
-            <strong className="font-semibold text-[var(--counter)]">
-              customer perception
-            </strong>
-            .
-          </p>
-          <div className="mx-auto mt-5 w-full max-w-xl">
-            <BottomLinePerception />
+          <Title className="mt-6">Pricing Strategies (The Second P)</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              Pricing is the only element of the marketing mix that{" "}
+              <Tint>captures revenue directly</Tint>, requiring managers to
+              balance customer value perceptions, internal cost structures, and
+              competitor actions while navigating algorithmic pricing and
+              unit-price comparison by AI shopping agents.
+            </p>
           </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          The Paradigm of Price
+          The Strategic Role of Price in the Marketing Mix
           ================================================================ */}
       <Slide
-        id="the-paradigm-of-price"
+        className={TIGHT}
+        id="the-strategic-role-of-price-in-the-marketing-mix"
         border
-        className="!py-8"
-        exercise={exercise["the-paradigm-of-price"]}
       >
-        <Heading>The Paradigm of Price</Heading>
-        {/* The claim and its counterpart beside the zero line. Flexibility
-            and choice in two columns underneath. */}
-        <Beside
-          text={
-            <>
-              <Statement className="!max-w-[22ch]">
-                Price is the <Tint>only element</Tint> in the marketing mix that
-                produces revenue.
-              </Statement>
-              <Ruled>
-                <P>
-                  All other elements represent{" "}
-                  <Term tone="ink">costs to the organization</Term>.
-                </P>
-              </Ruled>
-            </>
-          }
-          plate={<RevenueAndCosts />}
-        />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-10">
-          <Col
-            tone="signal"
-            text={
-              <>
-                Price is <Term>highly flexible</Term> and can be changed quickly
-                compared to product features or channel commitments.
-              </>
-            }
-            plate={<ChangeSpeed />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                It is a <Term>critical determinant</Term> of buyer choice and
-                market share.
-              </>
-            }
-            plate={<ChoiceShare />}
-          />
+        <SlideHeading>
+          The Strategic Role of Price in the Marketing Mix
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              In the narrowest sense, <Term>price</Term> is the amount of money
+              charged for a product or a service.
+            </Statement>
+            <Ruled>
+              <Lead>
+                More broadly, price is the sum of all the values that customers
+                give up to gain the benefits of having or using a product or
+                service.
+              </Lead>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
+              <P>
+                Price is the only element in the marketing mix that{" "}
+                <Term>produces revenue</Term>: all other elements (product
+                development, distribution channels, and promotional campaigns)
+                represent costs.
+              </P>
+            </Ruled>
+            <Ruled>
+              <Big>
+                Price is also one of the{" "}
+                <Tint>most flexible marketing mix elements</Tint>: unlike
+                product features or channel commitments that take months or
+                years to alter, prices can be changed rapidly.
+              </Big>
+            </Ruled>
+          </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          Part 1: Factors Affecting Pricing Decisions
+          The Pricing Ceiling and the Pricing Floor
           ================================================================ */}
-      <PartPlate id="part-1" n={1} title="Factors Affecting Pricing Decisions">
-        <Beside
-          cols="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
-          text={
-            <>
-              <Lead className="!max-w-none">
-                Setting the right price requires balancing{" "}
-                <Term tone="ink">internal capabilities</Term> and{" "}
-                <Term tone="counter">external realities</Term>.
-              </Lead>
-              <Ruled>
-                <P>
-                  <Term tone="ink">Internal factors</Term> include marketing
-                  objectives and costs.
-                </P>
-              </Ruled>
-              <Ruled tone="counter">
-                <P>
-                  <Term tone="counter">External factors</Term> encompass market
-                  demand and competitor behavior.
-                </P>
-              </Ruled>
-            </>
-          }
-          plate={<InsideOutside />}
-        />
-      </PartPlate>
-
-      <TopicSlide
-        id="internal-factors-marketing-objectives"
-        section={0}
-        kicker="Internal Factors:"
-        title="Marketing Objectives"
+      <Slide
+        className={TIGHT}
+        id="the-pricing-ceiling-and-the-pricing-floor"
+        border
       >
-        {/* Alignment and the four objectives in three columns. The pricing
-            range across the foot. */}
-        <div className="grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
-          <Col
-            text={
-              <>
-                Pricing strategies must <Term>align</Term> with broader company
-                goals.
-              </>
-            }
-            plate={<AlignGoals />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                Objectives may include <Term>survival</Term> or{" "}
-                <Term>current profit maximization</Term>.
-              </>
-            }
-            plate={<Objectives pair="first" />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                Other goals focus on <Term>market share leadership</Term> or{" "}
-                <Term>product quality leadership</Term>.
-              </>
-            }
-            plate={<Objectives pair="second" />}
-          />
+        <SlideHeading>The Pricing Ceiling and the Pricing Floor</SlideHeading>
+        <Statement>
+          Every pricing decision operates within a{" "}
+          <Tint>corridor bounded by a floor and a ceiling</Tint>.
+        </Statement>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Customer perceptions</Term> of the product&apos;s value set
+              the ceiling for prices: if customers perceive that a
+              product&apos;s price is greater than its value, they will not buy
+              the product.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Product costs</Term> set the floor for a product&apos;s
+              price: if the company prices the product below its costs of
+              production and distribution, the company&apos;s profits will
+              suffer.
+            </P>
+          </Ruled>
         </div>
-        <Beside
-          className="mt-6 border-t-2 border-[var(--signal)] pt-4"
-          text={
-            <Statement>
-              A <Tint>clear objective</Tint> guides the initial pricing range.
-            </Statement>
-          }
-          plate={<ObjectiveRange />}
-        />
-      </TopicSlide>
-
-      <TopicSlide
-        id="internal-factors-costs"
-        section={0}
-        kicker="Internal Factors:"
-        title="Costs"
-      >
-        <div className="grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
-          <Col
-            text={
-              <>
-                Costs set the <Term>absolute floor</Term> for the price that the
-                company can charge.
-              </>
-            }
-            plate={<CostFloor />}
-          />
-          <Col
-            text={
-              <>
-                <Term tone="ink">Fixed costs</Term> do not vary with production
-                or sales level.
-              </>
-            }
-            plate={<CostLine kind="fixed" />}
-          />
-          <Col
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Variable costs</Term> vary directly with the
-                level of production.
-              </>
-            }
-            plate={<CostLine kind="variable" />}
-          />
+        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.45fr] lg:gap-12">
+          <Ruled>
+            <P>
+              In setting its price between these two extremes, the company must
+              consider several internal and external factors, including
+              competitors&apos; strategies and prices, the overall marketing
+              strategy and mix, and the nature of the market and demand.
+            </P>
+          </Ruled>
+          <Plate wide>
+            <PricingCorridor />
+          </Plate>
         </div>
-        <Beside
-          className="mt-6 border-t-2 border-[var(--signal)] pt-4"
-          text={
-            <Statement>
-              <Tint>Total costs must be covered</Tint> to achieve long-term
-              viability.
-            </Statement>
-          }
-          plate={<TotalCosts />}
-        />
-      </TopicSlide>
+      </Slide>
 
-      <TopicSlide
-        id="external-factors-the-market-and-demand"
-        section={0}
-        kicker="External Factors:"
-        title="The Market and Demand"
+      {/* ================================================================
+          Part 1: Internal and External Factors Affecting Pricing Decisions
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-1-internal-and-external-factors-affecting-pricing-decisions"
+        border
       >
-        <Beside
-          text={
-            <Statement>
-              While <strong className="font-semibold">costs</strong> set the
-              lower limit, the <Tint tone="counter">market</Tint> sets the upper
-              limit.
-            </Statement>
-          }
-          plate={<FloorCeiling />}
+        <PartHead
+          n={1}
+          title="Internal and External Factors Affecting Pricing Decisions"
         />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-10">
-          <Col
-            tone="counter"
-            text={
-              <>
-                Understanding the relationship between <Term>price</Term> and{" "}
-                <Term tone="counter">demand</Term> is crucial.
-              </>
-            }
-            plate={<DemandCurve />}
-          />
-          <Col
-            text={
-              <div className="flex flex-col gap-2">
-                <P className="!max-w-none">
-                  Different markets exhibit different competitive conditions.
-                </P>
-                <P className="!max-w-none">
-                  <Term>Pricing freedom</Term> varies across pure competition,
-                  monopolistic competition, oligopoly, and pure monopoly.
-                </P>
-              </div>
-            }
-            plate={<MarketStructures />}
-          />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Effective pricing requires aligning{" "}
+            <Tint>internal company capabilities and cost structures</Tint> with
+            external market conditions and demand sensitivity.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Understanding fixed versus variable costs, competitive market
+              structures, and price elasticity of demand prevents costly pricing
+              errors.
+            </Lead>
+          </Ruled>
         </div>
-      </TopicSlide>
+      </Slide>
 
-      <TopicSlide
-        id="external-factors-price-elasticity"
-        section={0}
-        kicker="External Factors:"
-        title="Price Elasticity"
+      {/* ================================================================
+          Internal Factors: Marketing Objectives and Mix Strategy
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="internal-factors-marketing-objectives-and-mix-strategy"
+        border
       >
-        <Lead className="!max-w-[62ch]">
-          <Term>Price elasticity</Term> measures how responsive demand will be
-          to a change in price.
+        <SlideHeading>
+          Internal Factors: Marketing Objectives and Mix Strategy
+        </SlideHeading>
+        <Lead>
+          Before setting price, the company must decide on its{" "}
+          <Tint>overall marketing strategy</Tint> for the product or service.
         </Lead>
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
-          <Col
-            text={
-              <>
-                <Term tone="ink">Inelastic demand</Term> means demand hardly
-                changes with a small change in price.
-              </>
-            }
-            plate={<Elasticity kind="inelastic" />}
-          />
-          <Col
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Elastic demand</Term> means demand changes
-                greatly in response to price changes.
-              </>
-            }
-            plate={<Elasticity kind="elastic" />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                Companies must understand elasticity to{" "}
-                <Term>forecast revenues</Term> accurately.
-              </>
-            }
-            plate={<RevenueForecast />}
-          />
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Pricing objectives</Term> may focus on survival (setting low
+              prices to cover variable costs and some fixed costs during
+              overcapacity), current profit maximization, market-share
+              leadership (building low unit costs through high volume), or
+              product-quality leadership (charging a high price to fund
+              continuous R&amp;D).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Price decisions must be closely coordinated with product design,
+              distribution, and promotion decisions to form a consistent{" "}
+              <Term>integrated marketing program</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Many firms support price-positioning strategies with{" "}
+              <Term>target costing</Term>, which reverses the usual sequence by
+              starting with an ideal selling price based on customer value
+              considerations and then targeting product design and manufacturing
+              costs that ensure that price is met.
+            </P>
+          </Ruled>
         </div>
-      </TopicSlide>
+      </Slide>
+
+      {/* ================================================================
+          Internal Factors: Fixed, Variable, and Total Costs
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="internal-factors-fixed-variable-and-total-costs"
+        border
+      >
+        <SlideHeading>
+          Internal Factors: Fixed, Variable, and Total Costs
+        </SlideHeading>
+        <Statement>
+          Costs set the floor for the price that the company can charge: a firm
+          must charge a price that covers all its costs for producing,
+          distributing, and selling the product and delivers a{" "}
+          <Tint>fair rate of return</Tint> for its effort and risk.
+        </Statement>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Fixed costs</Term> (also known as overhead) are costs that
+              do not vary with production or sales level, such as monthly rent,
+              heat, interest, and executive salaries.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Variable costs</Term> vary directly with the level of
+              production: each tablet or pair of shoes produced incurs a set
+              cost of microchips, fabric, packaging, and assembly labor, called
+              variable because the total variable cost varies with the number of
+              units produced.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Total costs</Term> are the sum of the fixed and variable
+              costs for any given level of production, and as production scale
+              rises and workers gain experience (the{" "}
+              <Term>experience or learning curve</Term>), average cost per unit
+              typically falls.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          External Factors: Market Structure and Price Elasticity of Demand
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="external-factors-market-structure-and-price-elasticity-of-demand"
+        border
+        exercise={
+          exercise[
+            "external-factors-market-structure-and-price-elasticity-of-demand"
+          ]
+        }
+      >
+        <SlideHeading>
+          External Factors: Market Structure and Price Elasticity of Demand
+        </SlideHeading>
+        <div className="grid w-full gap-6 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Whereas costs set the lower limit of prices, the market and demand
+              set the upper limit, and the seller&apos;s pricing freedom varies
+              across four types of markets: <Term>pure competition</Term>,{" "}
+              <Term>monopolistic competition</Term>,{" "}
+              <Term>oligopolistic competition</Term>, and{" "}
+              <Term>pure monopoly</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              A <Term>demand curve</Term> shows the number of units the market
+              will buy in a given time period at different prices that might be
+              charged: in normal cases, demand and price are inversely related.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Price elasticity of demand</Term> measures how responsive
+              demand will be to a change in price, calculated as the percentage
+              change in quantity demanded divided by the percentage change in
+              price.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              If demand hardly changes with a small change in price, demand is{" "}
+              <Term>inelastic</Term> (common when there are few substitutes or
+              when the item is a necessity), whereas if demand changes greatly,
+              demand is <Term>elastic</Term>, guiding whether a price cut will
+              increase or decrease total revenue.
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-6 w-full">
+          <Plate wide>
+            <PriceElasticityComparison />
+          </Plate>
+        </div>
+      </Slide>
 
       {/* ================================================================
           Part 2: Core Pricing Approaches
           ================================================================ */}
-      <PartPlate id="part-2" n={2} title="Core Pricing Approaches">
-        <Beside
-          text={
-            <>
-              <Lead className="!max-w-none">
-                Once factors are understood, marketers must select a pricing
-                approach.
-              </Lead>
-              <Statement>
-                Three major pricing strategies dominate the market.
-              </Statement>
-              <Ruled>
-                <P>
-                  They are <Term>customer value-based pricing</Term>,{" "}
-                  <Term tone="ink">cost-based pricing</Term>, and{" "}
-                  <Term tone="counter">competition-based pricing</Term>.
-                </P>
-              </Ruled>
-            </>
-          }
-          plate={<ApproachLanes />}
-        />
-      </PartPlate>
-
-      <TopicSlide
-        id="customer-value-based-pricing"
-        section={1}
-        title="Customer Value-Based Pricing"
-      >
-        <Beside
-          cols="lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]"
-          text={
-            <Lead className="!max-w-[40ch]">
-              This approach uses <Term>buyers&apos; perceptions of value</Term>{" "}
-              as the key to pricing.
+      <Slide className={TIGHT} id="part-2-core-pricing-approaches" border>
+        <PartHead n={2} title="Core Pricing Approaches" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Companies set prices by selecting one of three general pricing
+            approaches that emphasize one or more of the three major
+            considerations: <Term>customer value-based pricing</Term>,{" "}
+            <Term>cost-based pricing</Term>, and{" "}
+            <Term>competition-based pricing</Term>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Comparing the sequences of cost-based and value-based pricing
+              highlights why successful pricing{" "}
+              <Tint>starts with the buyer rather than the factory ledger</Tint>.
             </Lead>
-          }
-          plate={<ValueKey />}
-        />
-        <div className="mt-6 flex w-full flex-col gap-5">
-          <Row
-            cols="md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]"
-            text={
-              <>
-                Price is considered along with{" "}
-                <Term tone="ink">all other marketing mix variables</Term> before
-                the marketing program is set.
-              </>
-            }
-            plate={<MixTogether />}
-          />
-          <Ruled
-            tone="signal"
-            className="grid items-center gap-5 !pt-3 md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]"
-          >
-            <div className="flex min-w-0 flex-col gap-2">
-              <P className="!max-w-none">
-                The company assesses{" "}
-                <Term>customer needs and value perceptions first</Term>.
-              </P>
-              <P className="!max-w-none">
-                It is the <Term>reverse</Term> of the cost-based approach.
-              </P>
-            </div>
-            <Plate className="!p-2">
-              <ReverseChains />
-            </Plate>
           </Ruled>
         </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="good-value-pricing-vs-value-added-pricing"
-        section={1}
-        title="Good-Value Pricing vs. Value-Added Pricing"
-      >
-        {/* Good value on the left, value added on the right. Each sentence
-            beside its plate. */}
-        <div className="grid w-full gap-x-10 gap-y-5 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-2">
-          <Row
-            cols="md:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]"
-            tone="signal"
-            text={
-              <>
-                <Term>Good-value pricing</Term> offers the right combination of
-                quality and good service at a fair price.
-              </>
-            }
-            plate={<GoodValueBalance />}
-          />
-          <Row
-            cols="md:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]"
-            tone="signal"
-            text={
-              <>
-                It often involves introducing{" "}
-                <Term>less expensive versions</Term> of established brand-name
-                products.
-              </>
-            }
-            plate={<LessExpensiveVersion />}
-          />
-          <Row
-            cols="md:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]"
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Value-added pricing</Term> attaches
-                value-added features to differentiate offers.
-              </>
-            }
-            plate={<ValueAddedFeatures />}
-          />
-          <Row
-            cols="md:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]"
-            tone="counter"
-            text={
-              <>
-                This allows companies to{" "}
-                <Term tone="counter">charge higher prices</Term> rather than
-                cutting prices to match competitors.
-              </>
-            }
-            plate={<HigherNotCut />}
-          />
-        </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="cost-based-pricing"
-        section={1}
-        title="Cost-Based Pricing"
-      >
-        <Beside
-          cols="lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
-          text={
-            <>
-              <Lead className="!max-w-none">
-                Involves setting prices based on the{" "}
-                <Term tone="ink">
-                  costs of producing, distributing, and selling
-                </Term>{" "}
-                the product.
-              </Lead>
-              <P>
-                It includes a <Term>fair rate of return</Term> for effort and
-                risk.
-              </P>
-            </>
-          }
-          plate={<CostBuildUp />}
-        />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-2 lg:gap-10">
-          <Col
-            text={
-              <>
-                Types include <Term tone="ink">cost-plus pricing</Term> and{" "}
-                <Term tone="ink">break-even pricing</Term>.
-              </>
-            }
-            plate={<CostTypes />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                While simple, it <Term>ignores demand</Term> and{" "}
-                <Term>competitors&apos; prices</Term>.
-              </>
-            }
-            plate={<Blinkers />}
-          />
-        </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="competition-based-pricing"
-        section={1}
-        title="Competition-Based Pricing"
-      >
-        <Beside
-          text={
-            <Lead className="!max-w-none">
-              Prices are set based on{" "}
-              <Term tone="counter">
-                competitors&apos; strategies, prices, costs, and market
-                offerings
-              </Term>
-              .
-            </Lead>
-          }
-          plate={<CompetitorReadings />}
-        />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10">
-          <Col
-            tone="counter"
-            text={
-              <>
-                Consumers will base their judgments of a product&apos;s value on{" "}
-                <Term tone="counter">the prices that competitors charge</Term>.
-              </>
-            }
-            plate={<ValueJudged />}
-          />
-          <Col
-            tone="counter"
-            text={
-              <div className="flex flex-col gap-2">
-                <P className="!max-w-none">
-                  The company must assess how its offer compares to competitors
-                  in terms of <Term tone="counter">customer value</Term>.
-                </P>
-                <P className="!max-w-none">
-                  If the offer provides{" "}
-                  <Term tone="counter">greater value</Term>, a higher price can
-                  be justified.
-                </P>
-              </div>
-            }
-            plate={<ValueJustifies />}
-          />
-        </div>
-      </TopicSlide>
-
-      <Slide id="discussion-pricing-approaches" border className="!py-8">
-        <Heading kicker="Discussion:" tone="counter">
-          Pricing Approaches
-        </Heading>
-        <Beside
-          text={
-            <Lead className="!max-w-none">
-              A new streaming platform enters a crowded market dominated by{" "}
-              <Term tone="ink">established giants</Term> with a{" "}
-              <Term>unique recommendation algorithm</Term> but a{" "}
-              <Term tone="ink">smaller content library</Term>.
-            </Lead>
-          }
-          plate={<StreamingMarket />}
-        />
-        <Prompt className="mt-6">
-          <PromptKicker /> Should the company use{" "}
-          <strong className="font-semibold">cost-based</strong>,{" "}
-          <Tint>value-based</Tint>, or{" "}
-          <Tint tone="counter">competition-based</Tint> pricing?
-        </Prompt>
       </Slide>
 
       {/* ================================================================
-          Part 3: Pricing Strategies for New Products
+          Customer Value-Based Pricing: Good-Value and Value-Added Strategies
           ================================================================ */}
-      <PartPlate id="part-3" n={3} title="Pricing Strategies for New Products">
-        <Beside
-          text={
-            <>
-              <Lead className="!max-w-none">
-                Introducing a new product brings unique pricing challenges.
-              </Lead>
-              <Statement>
-                Pricing must be <Tint>dynamic</Tint> and adapt as the product
-                passes through its life cycle.
-              </Statement>
-              <Ruled>
-                <P>
-                  The two primary strategies are{" "}
-                  <Term>market-skimming pricing</Term> and{" "}
-                  <Term tone="counter">market-penetration pricing</Term>.
-                </P>
-              </Ruled>
-            </>
-          }
-          plate={<SkimToPenetrate />}
-        />
-      </PartPlate>
-
-      <TopicSlide
-        id="market-skimming-pricing"
-        section={2}
-        title="Market-Skimming Pricing"
+      <Slide
+        className={TIGHT}
+        id="customer-value-based-pricing-good-value-and-value-added-strategies"
+        border
+        exercise={
+          exercise[
+            "customer-value-based-pricing-good-value-and-value-added-strategies"
+          ]
+        }
       >
-        <Beside
-          text={
-            <Lead className="!max-w-none">
-              Setting a <Term>high price</Term> for a new product to skim
-              maximum revenues layer by layer.
-            </Lead>
-          }
-          plate={<MarketLayers mode="skim" />}
-        />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
-          <Col
-            tone="signal"
-            text={
-              <>
-                The company makes <Term>fewer but more profitable sales</Term>.
-              </>
-            }
-            plate={<FewerProfitable />}
-          />
-          <Col
-            text={
-              <>
-                <Term>Product quality and image</Term> must support the high
-                price.
-              </>
-            }
-            plate={<QualityImagePillars />}
-          />
-          <Col
-            text={
-              <>
-                Competitors should not be able to <Term>easily enter</Term> the
-                market and undercut the high price.
-              </>
-            }
-            plate={<NoUndercut />}
-          />
+        <SlideHeading>
+          Customer Value-Based Pricing: Good-Value and Value-Added Strategies
+        </SlideHeading>
+        <Statement>
+          <Term>Customer value-based pricing</Term> uses buyers&apos;
+          perceptions of value, not the seller&apos;s cost, as the key to
+          pricing: the marketer cannot design a product and marketing program
+          and then set the price afterwards.
+        </Statement>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Good-value pricing</Term> offers the right combination of
+              quality and good service at a fair price, either by introducing
+              less-expensive versions of established brand-name products or by
+              adopting <Term>everyday low pricing (EDLP)</Term> rather than
+              frequent high-low sales promotions.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Value-added pricing</Term> attaches value-added features and
+              services to differentiate a company&apos;s offers and support
+              charging higher prices rather than cutting prices to match
+              competitors.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              For example, luxury cinema chains add reclined seating, reserved
+              booking, and gourmet dining to justify charging twice the ticket
+              price of a standard theater.
+            </P>
+          </Ruled>
         </div>
-      </TopicSlide>
-
-      <TopicSlide
-        id="market-penetration-pricing"
-        section={2}
-        title="Market-Penetration Pricing"
-      >
-        <Beside
-          text={
-            <Lead className="!max-w-none">
-              Setting a <Term tone="counter">low initial price</Term> in order
-              to penetrate the market quickly and deeply.
-            </Lead>
-          }
-          plate={<MarketLayers mode="penetrate" />}
-        />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
-          <Col
-            tone="counter"
-            text={
-              <>
-                The goal is to attract a{" "}
-                <Term tone="counter">large number of buyers</Term> quickly and
-                win a large market share.
-              </>
-            }
-            plate={<ManyBuyersShare />}
-          />
-          <Col
-            text={
-              <>
-                The market must be{" "}
-                <Term tone="counter">highly price-sensitive</Term>.
-              </>
-            }
-            plate={<Elasticity kind="elastic" title="HIGHLY PRICE-SENSITIVE" />}
-          />
-          <Col
-            text={
-              <>
-                Production and distribution costs must{" "}
-                <Term tone="counter">decrease</Term> as sales volume increases.
-              </>
-            }
-            plate={<CostsFall />}
-          />
+        <div className="mt-6 w-full">
+          <Plate wide>
+            <ReverseChains />
+          </Plate>
         </div>
-      </TopicSlide>
+      </Slide>
 
       {/* ================================================================
-          Pricing Strategies for Product Mixes
+          Cost-Based Pricing: Cost-Plus and Break-Even Analysis
           ================================================================ */}
-      <TopicSlide
-        id="pricing-strategies-for-product-mixes"
-        section={3}
-        title="Pricing Strategies for Product Mixes"
+      <Slide
+        className={TIGHT}
+        id="cost-based-pricing-cost-plus-and-break-even-analysis"
+        border
+        exercise={
+          exercise["cost-based-pricing-cost-plus-and-break-even-analysis"]
+        }
       >
-        <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
-          <Col
-            text={
-              <>
-                The strategy changes when the product is part of a{" "}
-                <Term>product mix</Term>.
-              </>
-            }
-            plate={<AloneVsMix />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                The firm looks for a <Term>set of prices</Term> that maximizes
-                its profits on the total mix.
-              </>
-            }
-            plate={<TotalMixProfit />}
-          />
+        <SlideHeading>
+          Cost-Based Pricing: Cost-Plus and Break-Even Analysis
+        </SlideHeading>
+        <Lead>
+          <Term>Cost-based pricing</Term> involves setting prices based on the
+          costs of producing, distributing, and selling the product plus a fair
+          rate of return for the company&apos;s effort and risk.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              The simplest method is <Term>cost-plus pricing</Term> (or{" "}
+              <Term>markup pricing</Term>), which adds a standard markup to the
+              cost of the product, though markup pricing generally ignores
+              current demand and competitor prices.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Another cost-oriented approach is <Term>break-even pricing</Term>{" "}
+              (or <Term>target return pricing</Term>), in which the firm tries
+              to determine the price at which it will break even or make the
+              target return it is seeking on its investment.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Break-even volume</Term> is calculated as Fixed Costs
+              divided by (Price minus Variable Cost per unit), allowing managers
+              to test how many units must be sold at different candidate prices
+              to cover total costs.
+            </P>
+          </Ruled>
         </div>
-        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10">
-          <Row
-            text={
-              <>
-                Pricing is difficult because the various products have{" "}
-                <Term>related demand and costs</Term>.
-              </>
-            }
-            plate={<RelatedDemand />}
-          />
-          <Ruled tone="signal">
-            <Statement className="!max-w-none">
-              Common strategies include <Tint>product line pricing</Tint> and{" "}
-              <Tint>captive-product pricing</Tint>.
+      </Slide>
+
+      {/* ================================================================
+          Competition-Based Pricing
+          ================================================================ */}
+      <Slide className={TIGHT} id="competition-based-pricing" border>
+        <SlideHeading>Competition-Based Pricing</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Competition-based pricing</Term> involves setting prices
+              based on competitors&apos; strategies, costs, prices, and market
+              offerings.
             </Statement>
+            <Ruled>
+              <Lead>
+                Consumers base their judgments of a product&apos;s value on the
+                prices that competitors charge for similar products.
+              </Lead>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
+              <P>
+                In assessing competitors&apos; pricing strategies, a company
+                asks two questions: first, how does the company&apos;s market
+                offering compare with competitors&apos; offerings in terms of
+                customer value, and second, how strong are current competitors
+                and what are their current pricing strategies?
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                Even when a small firm cannot match a giant rival&apos;s low
+                unit costs, it can avoid head-on price wars by targeting a{" "}
+                <Tint>distinct niche with value-added service</Tint>.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 3: New-Product and Product Mix Pricing Strategies
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-3-new-product-and-product-mix-pricing-strategies"
+        border
+      >
+        <PartHead
+          n={3}
+          title="New-Product and Product Mix Pricing Strategies"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Pricing strategies usually change as a product passes through its{" "}
+            <Tint>life cycle</Tint>, with the introductory stage posing the
+            greatest challenge.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Furthermore, when a product is part of a broader product mix, the
+              firm searches for a set of prices that maximizes profits on the
+              total mix rather than on a single item in isolation.
+            </Lead>
           </Ruled>
         </div>
-      </TopicSlide>
+      </Slide>
 
-      <TopicSlide
-        id="product-line-and-optional-product-pricing"
-        section={3}
-        title="Product Line and Optional-Product Pricing"
+      {/* ================================================================
+          New-Product Pricing: Market-Skimming Versus Market-Penetration
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="new-product-pricing-market-skimming-versus-market-penetration"
+        border
+        exercise={
+          exercise[
+            "new-product-pricing-market-skimming-versus-market-penetration"
+          ]
+        }
       >
-        <div className="grid w-full items-start gap-8 lg:grid-cols-2 lg:gap-10">
-          <Col
-            tone="signal"
-            text={
-              <>
-                <Term>Product line pricing</Term> determines the price steps
-                between various products in a line.
-              </>
-            }
-            plate={<PriceSteps />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                It is based on <Term tone="ink">cost differences</Term>,{" "}
-                <Term tone="ink">customer evaluations of features</Term>, and{" "}
-                <Term tone="ink">competitors&apos; prices</Term>.
-              </>
-            }
-            plate={<StepInputs />}
-          />
+        <SlideHeading>
+          New-Product Pricing: Market-Skimming Versus Market-Penetration
+        </SlideHeading>
+        <Lead>
+          Companies bringing out a new product face the challenge of setting
+          prices for the first time and can choose between two broad strategies:{" "}
+          <Term>market-skimming pricing</Term> and{" "}
+          <Term>market-penetration pricing</Term>.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Market-skimming pricing</Term> sets a high initial price for
+              a new product to skim maximum revenues layer by layer from the
+              segments willing to pay the high price, making fewer but more
+              profitable sales (as Apple and Sony often do with flagship
+              electronics).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Market skimming makes sense only when the product&apos;s quality
+              and image support its higher price, the costs of producing a
+              smaller volume are not so high that they cancel the advantage of
+              charging more, and competitors cannot enter the market easily and
+              undercut the high price.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Market-penetration pricing</Term> sets a low initial price
+              to penetrate the market quickly and deeply, attracting a large
+              number of buyers and winning a large market share, which works
+              best when the market is highly price-sensitive and production and
+              distribution costs fall as sales volume increases.
+            </P>
+          </Ruled>
         </div>
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-2 lg:gap-10">
-          <Row
-            text={
-              <>
-                <Term>Optional-product pricing</Term> is the pricing of optional
-                or accessory products along with a main product.
-              </>
-            }
-            plate={<OptionalProducts />}
-          />
-          <Row
-            tone="counter"
-            text={
-              <>
-                Companies must decide which items to include in the{" "}
-                <Term tone="ink">base price</Term> and which to offer as{" "}
-                <Term tone="counter">options</Term>.
-              </>
-            }
-            plate={<BaseOrOptions />}
-          />
-        </div>
-      </TopicSlide>
+      </Slide>
 
-      <TopicSlide
-        id="captive-product-pricing"
-        section={3}
-        title="Captive-Product Pricing"
+      {/* ================================================================
+          Product Line, Optional-Product, and Captive-Product Pricing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="product-line-optional-product-and-captive-product-pricing"
+        border
+        exercise={
+          exercise["product-line-optional-product-and-captive-product-pricing"]
+        }
       >
-        <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-10">
-          <Col
-            text={
-              <>
-                Setting a price for products that{" "}
-                <Term>must be used along with</Term> a main product.
-              </>
-            }
-            plate={<CaptiveFit />}
-          />
-          <Col
-            text={
-              <>
-                Examples include <Term>blades</Term> for a razor and{" "}
-                <Term>games</Term> for a video game console.
-              </>
-            }
-            plate={<CaptiveExamples />}
-          />
-        </div>
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-2 lg:gap-10">
-          <Col
-            tone="signal"
-            text={
-              <>
-                The main product is often{" "}
-                <strong className="font-semibold">priced low</strong>, with{" "}
-                <Term>high markups</Term> on the captive supplies.
-              </>
-            }
-            plate={<CaptiveMarkups />}
-          />
-          <Col
-            tone="signal"
-            text={
-              <>
-                This strategy ensures <Term>ongoing revenue streams</Term> from
-                the initial purchase.
-              </>
-            }
-            plate={<OngoingStream />}
-          />
-        </div>
-      </TopicSlide>
+        <SlideHeading>
+          Product Line, Optional-Product, and Captive-Product Pricing
+        </SlideHeading>
+        <Lead>
+          When a product is part of a <Term>product mix</Term>, marketers must
+          coordinate prices across related items that share demand or production
+          costs.
+        </Lead>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Product line pricing</Term> sets the price steps between
+              various products in a product line based on cost differences
+              between the products, customer evaluations of different features,
+              and competitors&apos; prices.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Optional-product pricing</Term> prices optional or accessory
+              products sold along with a main product, such as upgraded storage,
+              extended warranties, or accessories sold with a laptop.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Captive-product pricing</Term> sets prices for products that
+              must be used along with a main product, such as razor blades for a
+              razor, ink cartridges for a printer, or coffee pods for a brewing
+              machine (or <Term>two-part pricing</Term> in services, combining a
+              fixed membership fee plus a variable usage fee).
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
 
-      <TopicSlide
-        id="product-bundle-pricing"
-        section={3}
-        title="Product Bundle Pricing"
+      {/* ================================================================
+          By-Product and Product Bundle Pricing
+          ================================================================ */}
+      <Slide className={TIGHT} id="by-product-and-product-bundle-pricing" border>
+        <SlideHeading>By-Product and Product Bundle Pricing</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Producing products and services often generates{" "}
+              <Term>by-products</Term>: if the by-products have no value and
+              getting rid of them is costly, this will affect the pricing of the
+              main product.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Using <Term>by-product pricing</Term>, the company seeks a market
+              for these by-products to offset disposal costs and make the main
+              product&apos;s price more competitive (such as sawmills selling
+              bark and sawdust as garden mulch or fuel pellets).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Using <Term>product bundle pricing</Term>, sellers often combine
+              several products and offer the bundle at a reduced price, such as
+              fast-food combo meals, season theatre tickets, or software office
+              suites.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Price bundling can promote the sales of products consumers might
+              not otherwise buy, provided the combined price is low enough to
+              induce buyers to purchase the bundle.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Selecting a Pricing Strategy for a Connected Fitness Device
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-selecting-a-pricing-strategy-for-a-connected-fitness-device"
+        border
       >
-        <Beside
-          text={
-            <Lead className="!max-w-none">
-              Combining several products and offering the bundle at a{" "}
-              <Term>reduced price</Term>.
-            </Lead>
-          }
-          plate={<BundleReduced />}
-        />
-        <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
-          <Col
-            tone="signal"
-            text={
-              <>
-                This can promote the sales of products consumers{" "}
-                <Term>might not otherwise buy</Term>.
-              </>
-            }
-            plate={<BundleRideAlong />}
-          />
-          <Col
-            tone="counter"
-            text={
-              <>
-                The combined price must be{" "}
-                <Term tone="counter">low enough</Term> to get them to buy the
-                bundle.
-              </>
-            }
-            plate={<BundleThreshold />}
-          />
-          <Col
-            text={
-              <>
-                It helps <Term>clear out excess inventory</Term> while providing
-                value.
-              </>
-            }
-            plate={<ClearInventory />}
-          />
-        </div>
-      </TopicSlide>
-
-      <Slide id="discussion-product-mix-pricing" border className="!py-8">
-        <Heading kicker="Discussion:" tone="counter">
-          Product Mix Pricing
-        </Heading>
-        <Beside
-          text={
-            <Lead className="!max-w-none">
-              A premium coffee machine manufacturer introduces a new model that
-              requires <Term>proprietary coffee pods</Term> that only fit this
-              specific machine.
-            </Lead>
-          }
-          plate={<PodDilemma />}
-        />
-        <Prompt className="mt-6">
-          <PromptKicker /> Should they price the machine{" "}
-          <Tint>low to sell more pods</Tint> or price the machine{" "}
-          <Tint tone="counter">high to maintain a premium brand image</Tint>?
+        <SlideHeading kicker="Discussion:">
+          Selecting a Pricing Strategy for a Connected Fitness Device
+        </SlideHeading>
+        <Prompt>
+          A hardware startup has
+          developed an indoor rowing machine that pairs with a live-streamed
+          coaching app. Manufacturing each rower costs 450 dollars in variable
+          costs, fixed R&amp;D and tooling costs total 3 million dollars, and
+          delivering the streaming app costs 4 dollars per active user per
+          month. Using break-even analysis, market-skimming versus
+          market-penetration pricing, and captive-product (two-part tariff)
+          pricing, evaluate whether the startup should price the rower at 1,200
+          dollars with a 15-dollar monthly subscription or at 550 dollars with a
+          39-dollar monthly subscription.
         </Prompt>
       </Slide>
 
       {/* ================================================================
-          Conclusion
+          Part 4: Price Adjustment Strategies and Public Policy
           ================================================================ */}
-      <Slide id="conclusion" border className="!py-8">
-        <Heading kicker="Conclusion:">Pricing Strategies</Heading>
-        <ol className="grid w-full gap-x-12 gap-y-10 md:grid-cols-2">
-          {[
-            {
-              glyph: <GlyphRevenue />,
-              text: "Pricing is the only revenue-generating element of the marketing mix.",
-            },
-            {
-              glyph: <GlyphWall />,
-              text: "Decisions must align internal costs and objectives with external market realities.",
-            },
-            {
-              glyph: <GlyphLanes />,
-              text: "Whether cost-based, value-based, or competition-based, the strategy must reflect customer perceptions.",
-            },
-            {
-              glyph: <GlyphLayers />,
-              text: "Effective product mix and new product pricing ensures long-term profitability and market positioning.",
-            },
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="flex flex-col gap-5 border-t-2 border-[var(--ink)] pt-5"
-            >
-              <div aria-hidden className="flex items-center justify-between">
-                <span
-                  data-n={String(i + 1).padStart(2, "0")}
-                  className="step-n text-[2.2rem] leading-none text-[var(--signal)]"
-                  style={SERIF}
-                />
-                {item.glyph}
-              </div>
-              <p className="type-h2 !font-normal">{item.text}</p>
-            </li>
-          ))}
+      <Slide
+        className={TIGHT}
+        id="part-4-price-adjustment-strategies-and-public-policy"
+        border
+      >
+        <PartHead
+          n={4}
+          title="Price Adjustment Strategies and Public Policy"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Companies usually adjust their basic prices to account for{" "}
+            <Tint>
+              various customer differences, changing situations, and
+              psychological perceptions</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              At the same time, pricing decisions are bounded by competition
+              laws and public policy rules that protect consumers and channel
+              partners.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discount, Segmented, and Promotional Pricing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discount-segmented-and-promotional-pricing"
+        border
+      >
+        <SlideHeading>Discount, Segmented, and Promotional Pricing</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Discount and allowance pricing</Term> reduces prices to
+              reward customer responses such as paying bills early (<Term>cash discount</Term>),
+              buying in large volume (<Term>quantity discount</Term>), buying
+              off-season (<Term>seasonal discount</Term>), or trading in an old
+              item (<Term>trade-in allowance</Term>).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Segmented pricing</Term> sells a product or service at two
+              or more prices, where the difference in prices is based on
+              differences in customer segments (student or senior rates),
+              product form, location (theater seat tiers), or time (matinee or
+              off-peak pricing) rather than differences in cost.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Promotional pricing</Term> temporarily prices products below
+              list price, and sometimes even below cost as{" "}
+              <Term>loss leaders</Term>, to create buying excitement and urgency
+              through special-event pricing, limited-time flash sales, or cash
+              rebates.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Used excessively, however, promotional pricing can erode a
+              brand&apos;s perceived quality in the eyes of consumers and train
+              buyers to wait for price deals.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Psychological Pricing and Reference Prices
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="psychological-pricing-and-reference-prices"
+        border
+        exercise={exercise["psychological-pricing-and-reference-prices"]}
+      >
+        <SlideHeading>Psychological Pricing and Reference Prices</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Psychological pricing</Term> considers the psychology of
+              prices and not simply the economics: the price is used to say
+              something about the product.
+            </Statement>
+            <Ruled>
+              <Lead>
+                When consumers cannot judge quality directly because they lack
+                the information or skill, price becomes an important{" "}
+                <Tint>signal of quality</Tint>.
+              </Lead>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
+              <P>
+                Another aspect of psychological pricing is{" "}
+                <Term>reference prices</Term>, which are prices that buyers
+                carry in their minds and refer to when looking at a given
+                product.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                A reference price might be formed by noting current prices,
+                remembering past prices, or assessing the buying situation, and
+                sellers influence reference prices by placing a standard model
+                next to a luxury model or displaying a legitimate
+                manufacturer&apos;s suggested retail price alongside the sale
+                price.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Initiating Price Changes and Legal Considerations in Pricing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="initiating-price-changes-and-legal-considerations-in-pricing"
+        border
+      >
+        <SlideHeading>
+          Initiating Price Changes and Legal Considerations in Pricing
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              After developing their pricing structures and strategies,
+              companies often face situations in which they must initiate{" "}
+              <Term>price cuts</Term> (due to excess capacity or falling share)
+              or <Term>price increases</Term> (due to cost inflation or excess
+              demand), while anticipating how buyers and competitors will react.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Federal and provincial or state laws also govern pricing across
+              two levels: pricing within a channel level and pricing across
+              channel levels.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Within a channel level, <Term>price-fixing</Term> (talking with
+              competitors to set prices) is illegal, as is{" "}
+              <Term>predatory pricing</Term> (selling below cost with the
+              intention of punishing a competitor or gaining higher long-run
+              profits by putting competitors out of business).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Across channel levels, laws prohibit unfair{" "}
+              <Term>price discrimination</Term> among trade buyers,{" "}
+              <Term>retail price maintenance</Term> (requiring dealers to charge
+              a specified retail price), and <Term>deceptive pricing</Term>{" "}
+              (such as scanner fraud or phony reference price markdowns).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: Algorithmic Pricing and Price Comparison by AI Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-algorithmic-pricing-and-price-comparison-by-ai-agents"
+        border
+      >
+        <PartHead
+          n={5}
+          title="Algorithmic Pricing and Price Comparison by AI Agents"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Pricing has moved from static printed catalogs to{" "}
+            <Tint>real-time algorithmic pricing</Tint> on the seller side and
+            automated price comparison by <Term>AI shopping agents</Term> on the
+            buyer side.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Examining how seller algorithms set prices and how buyer agents
+              compare unit prices reveals new strategic and ethical dynamics in
+              digital markets.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Dynamic Pricing, Personalized Pricing, and Perceived Fairness
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="dynamic-pricing-personalized-pricing-and-perceived-fairness"
+        border
+      >
+        <SlideHeading>
+          Dynamic Pricing, Personalized Pricing, and Perceived Fairness
+        </SlideHeading>
+        <Lead>
+          <Term>Dynamic pricing</Term> is the practice of continually adjusting
+          prices to meet the characteristics and needs of individual customers
+          and situations, driven by real-time algorithms that monitor inventory,
+          demand surges, and competitor prices.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Aggregate dynamic pricing</Term> changes the price of a good
+              or service over time for all buyers simultaneously based on market
+              supply and demand, such as airline seat pricing or ride-hailing
+              surge multipliers during a rainstorm.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Personalized pricing</Term> uses individual browsing
+              histories, location, or device data to charge different customers
+              different prices for the exact same item at the same time
+              according to their estimated willingness to pay.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              While dynamic pricing tied to transparent supply-and-demand shifts
+              is widely tolerated in travel and ticketing, covert personalized
+              pricing triggers severe consumer outrage and trust loss when
+              buyers discover they were charged more than peers.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          How AI Shopping Agents Compare Prices and Unit Costs
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="how-ai-shopping-agents-compare-prices-and-unit-costs"
+        border
+        exercise={
+          exercise["how-ai-shopping-agents-compare-prices-and-unit-costs"]
+        }
+      >
+        <SlideHeading>
+          How AI Shopping Agents Compare Prices and Unit Costs
+        </SlideHeading>
+        <div className="grid w-full gap-6 md:grid-cols-2">
+          <Ruled>
+            <P>
+              On the demand side, consumers increasingly deploy{" "}
+              <Term>AI shopping agents</Term> to compare prices across competing
+              brands and retailers on their behalf.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Unlike a human shopper who may be swayed by{" "}
+              <Term>odd-even psychological pricing</Term> ($4.99 versus $5.00),
+              an AI agent can calculate exact <Term>unit prices</Term> when it
+              inspects all product attributes.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              However, whether an AI agent actually computes the best unit value
+              depends on <Term>lookup costs</Term> and the specificity of the
+              consumer&apos;s prompt: in a controlled study, one coffee option
+              cost $4.99 for 10 ounces ($0.499 per ounce) while a competing
+              option cost $5.00 for 11 ounces ($0.455 per ounce), making the
+              $5.00 bag cheaper per ounce (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              When inspecting the detailed product page to see the package
+              weight carried a small lookup cost and the consumer&apos;s goal
+              was vague, AI agents frequently skipped checking the weight and
+              picked the $4.99 bag, whereas when given a specific
+              cost-minimization goal, they checked the package size and chose
+              the better-value $5.00 bag (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-6 w-full">
+          <Plate wide>
+            <AgentCoffeeComparison />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Pricing Transparency for Human Shoppers and AI Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="pricing-transparency-for-human-shoppers-and-ai-agents"
+        border
+      >
+        <SlideHeading>
+          Pricing Transparency for Human Shoppers and AI Agents
+        </SlideHeading>
+        <Statement>
+          The interaction between seller pricing strategies and buyer AI agents
+          changes how firms <Tint>compete on price and value</Tint>.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Sellers that rely on <Term>shrinkflation</Term> (reducing package
+              weight while keeping the package price just below a
+              competitor&apos;s sticker price) and hide the net weight on
+              secondary tabs exploit both hurried human shoppers and AI agents
+              operating under vague instructions (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Conversely, a brand that offers superior <Term>unit value</Term>{" "}
+              (such as a larger package or concentrated formula at a lower cost
+              per ounce) only wins the comparison if the AI agent actually sees
+              the unit price.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Stating package size, unit count, and price per ounce or unit
+              directly in the primary product title and structured catalog
+              fields ensures that both human shoppers and delegated AI agents
+              recognize the offer&apos;s true value.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Competing on Unit Value in an Agent-Mediated Grocery Category
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-competing-on-unit-value-in-an-agent-mediated-grocery-category"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Competing on Unit Value in an Agent-Mediated Grocery Category
+        </SlideHeading>
+        <Prompt>
+          A national brand of
+          liquid laundry detergent sells a concentrated 50-load bottle for
+          $11.50 ($0.23 per load), while its main competitor sells a diluted
+          40-load bottle in a physically larger jug for $10.99 ($0.275 per
+          load). Human shoppers in store aisles often buy the $10.99 jug because
+          it looks larger and has a lower sticker price, and online AI shopping
+          agents given vague prompts also pick the $10.99 listing when load
+          counts are buried on secondary tabs. Drawing on psychological
+          reference pricing and Wadi and Ma (2026b), how should the national
+          brand redesign its packaging, online title attributes, and pricing
+          communication to win both human and AI comparisons?
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Price is the only revenue-generating element of the marketing mix
+              and operates within a corridor bounded by product costs at the
+              floor and customer perceptions of value at the ceiling.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Internal pricing factors include marketing objectives, target
+              costing, and fixed versus variable cost structures, while external
+              factors include market competitive structure and the price
+              elasticity of demand.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Customer value-based pricing (good-value and value-added pricing)
+              reverses cost-based pricing by starting with buyer needs and value
+              perceptions rather than factory costs, while competition-based
+              pricing benchmarks against rivals&apos; offerings.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              For new products, marketers choose between market-skimming pricing
+              (high initial price to capture high-margin segments) and
+              market-penetration pricing (low initial price to build rapid
+              volume and share).
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              Product mix pricing coordinates prices across product lines,
+              optional products, captive products, by-products, and product
+              bundles, while price adjustments incorporate discounts, segmented
+              pricing, psychological reference prices, and promotional pricing.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              Sellers now use algorithms for dynamic and personalized pricing,
+              while buyers use AI shopping agents whose ability to identify the
+              lowest unit price (such as a $5.00 11-ounce coffee over a $4.99
+              10-ounce coffee) depends on prompt specificity and accessible
+              package-size disclosures (Wadi &amp; Ma, 2026b).
+            </P>
+          </Numbered>
         </ol>
-        <style>{`.step-n::before { content: attr(data-n); }`}</style>
       </Slide>
     </SlideDeck>
   );

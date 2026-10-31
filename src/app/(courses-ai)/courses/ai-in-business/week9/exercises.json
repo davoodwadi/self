@@ -1,0 +1,273 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "harms",
+    "prompt": "Sort each incident into allocative harm or representational harm.",
+    "bins": [
+      { "id": "allocative", "label": "Allocative harm" },
+      { "id": "representational", "label": "Representational harm" }
+    ],
+    "cards": [
+      {
+        "id": "rent",
+        "text": "A tenant-screening tool rejects rental applications from one neighbourhood far more often than others",
+        "bin": "allocative",
+        "explanation": "Housing is withheld, a resource with immediate material consequences."
+      },
+      {
+        "id": "stock",
+        "text": "An image generator asked for 'a pilot' never shows a woman in uniform",
+        "bin": "representational",
+        "explanation": "No resource is denied, but a group's visibility in a profession is erased."
+      },
+      {
+        "id": "triage",
+        "text": "A clinic's scheduling model gives one group later appointments for the same symptoms",
+        "bin": "allocative",
+        "explanation": "Medical care is the resource being unequally distributed."
+      },
+      {
+        "id": "autocomplete",
+        "text": "A search engine completes a nationality with a demeaning phrase",
+        "bin": "representational",
+        "explanation": "The system reinforces a stereotype through language, not through a denied transaction."
+      },
+      {
+        "id": "shifts",
+        "text": "A staffing app offers fewer paid shifts to workers over 55 with the same ratings",
+        "bin": "allocative",
+        "explanation": "Employment income is withheld from a group."
+      },
+      {
+        "id": "translate",
+        "text": "A translation tool turns a gender-neutral 'they are a nurse' into 'she' and 'they are an engineer' into 'he'",
+        "bin": "representational",
+        "explanation": "Occupational stereotypes are reinforced in language, which later shapes who is seen as suited to a job."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "data-bias",
+    "prompt": "Each training dataset has a flaw. Name the kind of bias it introduces.",
+    "options": [
+      { "id": "historical", "label": "Historical bias" },
+      { "id": "representation", "label": "Representation bias" },
+      { "id": "measurement", "label": "Measurement bias" }
+    ],
+    "cases": [
+      {
+        "id": "promotions",
+        "text": "A promotion model learns from twenty years of records in a firm where women were rarely promoted, and every record is accurate.",
+        "answer": "historical",
+        "explanation": "The data correctly record a world shaped by unequal opportunity."
+      },
+      {
+        "id": "voice",
+        "text": "A voice assistant for a national bank was trained almost entirely on recordings from one large city.",
+        "answer": "representation",
+        "explanation": "Rural accents are under-sampled, so the model makes more errors on them."
+      },
+      {
+        "id": "arrests",
+        "text": "A city uses recorded arrests as its label for where crime happens, though some areas are patrolled far more than others.",
+        "answer": "measurement",
+        "explanation": "Arrests are a proxy that distorts the true construct, crime, for heavily patrolled areas."
+      },
+      {
+        "id": "skin",
+        "text": "A skin-condition app was trained on photos in which fewer than 5 percent show dark skin.",
+        "answer": "representation",
+        "explanation": "One group is under-sampled, so error rates are higher for that group."
+      },
+      {
+        "id": "performance",
+        "text": "A hiring model treats manager ratings as its measure of job performance, though those ratings are known to be harsher for some groups.",
+        "answer": "measurement",
+        "explanation": "The observable proxy, ratings, systematically misstates the construct, performance, for specific groups."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "fairness-definitions",
+    "question_text": "A scholarship committee scores applicants with a model. In its data, 60 percent of applicants from one region later graduate, against 35 percent from another, and the model is not perfect. The board asks the data team to guarantee equal award rates, equal true positive rates and equal calibration across both regions at once. What should the team tell the board?",
+    "hint": null,
+    "correct_answer_index": 2,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "That retraining the model on more recent applicants will satisfy all three",
+        "option_explanation": "More data does not help. While base rates differ and the model makes errors, no version can meet all three criteria."
+      },
+      {
+        "option_text": "That dropping the region field from the inputs will satisfy all three",
+        "option_explanation": "Removing the field does not change the different graduation rates, so the conflict between the criteria remains."
+      },
+      {
+        "option_text": "That the three cannot all hold here, so the board must choose which to prioritize",
+        "option_explanation": "Correct. With different base rates and an imperfect model the criteria conflict, so choosing one is a value judgment for leaders."
+      },
+      {
+        "option_text": "That equal award rates alone will make the other two hold as well",
+        "option_explanation": "Equal award rates (demographic parity) with different base rates will pull true positive rates and calibration apart."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "ocap",
+    "prompt": "A health research team is planning a diabetes prediction model with a First Nation. Match each OCAP principle to the commitment that honours it.",
+    "term_label": "Principle",
+    "match_label": "Commitment",
+    "pairs": [
+      {
+        "id": "ownership",
+        "term": "Ownership",
+        "match": "The community's health records belong to the Nation as a whole, as a person's records belong to that person",
+        "explanation": "Ownership is collective, held by the community in the same way an individual owns personal information."
+      },
+      {
+        "id": "control",
+        "term": "Control",
+        "match": "The Nation's health board approves the research question, reviews results and decides when the model is retired",
+        "explanation": "Control covers every stage, from formulating the project to retiring the system."
+      },
+      {
+        "id": "access",
+        "term": "Access",
+        "match": "Community members can obtain their data from the provincial registry and the Nation decides which outside researchers may see it",
+        "explanation": "Access means reaching data about themselves wherever it is held, and deciding who else may."
+      },
+      {
+        "id": "possession",
+        "term": "Possession",
+        "match": "The data are stored on servers under the Nation's jurisdiction rather than the research firm's cloud account",
+        "explanation": "Possession is about the physical and technical jurisdiction where the data sit."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "counterfactual-audits",
+    "prompt": "A retailer wants to check whether its language-model returns assistant treats customers differently by name. Put the steps of the counterfactual audit in order.",
+    "steps": [
+      {
+        "id": "prompts",
+        "text": "Write 300 realistic refund requests with identical order details, amounts and reasons",
+        "explanation": "The audit starts from realistic prompts in which every objective fact is held constant."
+      },
+      {
+        "id": "permute",
+        "text": "Create versions of each request that differ only in the customer's name",
+        "explanation": "Only the demographic indicator is permuted, so any difference in outcome traces back to it."
+      },
+      {
+        "id": "runs",
+        "text": "Send every version to the model many times through the API",
+        "explanation": "Repeated runs across thousands of calls give stable rates rather than single anecdotes."
+      },
+      {
+        "id": "compare",
+        "text": "Compare refund approval rates and tone across the name versions",
+        "explanation": "Comparing outcomes across permutations quantifies the disparity."
+      },
+      {
+        "id": "judge",
+        "text": "Decide whether the gap violates invariance",
+        "explanation": "If an irrelevant attribute changes the decision, the model fails the invariance rule."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "risk-regulation",
+    "prompt": "Under the European Union AI Act, which risk tier does each system fall into?",
+    "options": [
+      { "id": "unacceptable", "label": "Unacceptable risk" },
+      { "id": "high", "label": "High risk" },
+      { "id": "limited", "label": "Limited transparency risk" },
+      { "id": "minimal", "label": "Minimal risk" }
+    ],
+    "cases": [
+      {
+        "id": "citizen-score",
+        "text": "A city ranks residents by their online behaviour and limits services for low scorers.",
+        "answer": "unacceptable",
+        "explanation": "This is social scoring, which is prohibited outright."
+      },
+      {
+        "id": "cv",
+        "text": "A tool ranks job applicants' CVs for a retail chain's store manager roles.",
+        "answer": "high",
+        "explanation": "Employment and recruitment uses are high risk and need conformity assessment, bias testing and human oversight."
+      },
+      {
+        "id": "chat",
+        "text": "A furniture store's website chatbot answers questions about delivery times.",
+        "answer": "limited",
+        "explanation": "The main obligation is transparency, so users know they are talking to an AI system."
+      },
+      {
+        "id": "inventory",
+        "text": "A warehouse model predicts how many boxes of printer paper to reorder each week.",
+        "answer": "minimal",
+        "explanation": "No one's rights or access to services depend on it, so it carries minimal risk."
+      },
+      {
+        "id": "loan",
+        "text": "A lender's model scores the creditworthiness of personal loan applicants.",
+        "answer": "high",
+        "explanation": "Creditworthiness scoring is listed as high risk."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "documentation",
+    "prompt": "An auditor asks these questions about a tenant-screening system. Sort each into the document that should answer it.",
+    "bins": [
+      { "id": "datasheet", "label": "Datasheet for Datasets" },
+      { "id": "card", "label": "Model Card" },
+      { "id": "aia", "label": "Algorithmic Impact Assessment" }
+    ],
+    "cards": [
+      {
+        "id": "collected",
+        "text": "Which rental agencies supplied the past applications, and with what consent?",
+        "bin": "datasheet",
+        "explanation": "Who collected the data and how consent was obtained is dataset provenance."
+      },
+      {
+        "id": "missing",
+        "text": "Are applicants without a credit history included in the training records?",
+        "bin": "datasheet",
+        "explanation": "Which populations are included or missing is recorded in the datasheet."
+      },
+      {
+        "id": "errors",
+        "text": "How often is the model wrong for applicants under 25 compared with older applicants?",
+        "bin": "card",
+        "explanation": "Disaggregated error rates by subgroup belong in the model card."
+      },
+      {
+        "id": "scope",
+        "text": "May the same model also be used to set rent prices?",
+        "bin": "card",
+        "explanation": "Intended and prohibited out-of-scope uses are listed in the model card."
+      },
+      {
+        "id": "appeal",
+        "text": "Who reviews a rejection before it is sent, and how will outcomes be monitored after launch?",
+        "bin": "aia",
+        "explanation": "Human-in-the-loop safeguards and monitoring plans for the whole deployment are in the impact assessment."
+      },
+      {
+        "id": "harm",
+        "text": "Could the system make it harder for some communities to find housing at all?",
+        "bin": "aia",
+        "explanation": "Potential allocative harms of the deployment as a whole are analyzed in the impact assessment."
+      }
+    ]
+  }
+]

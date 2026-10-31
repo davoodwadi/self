@@ -10,278 +10,31 @@ import {
   createExerciseLookup,
   type ExerciseInput,
 } from "@/lib/course-exercise";
-import { cn } from "@/lib/utils";
+import {
+  TIGHT,
+  P,
+  Lead,
+  Statement,
+  Big,
+  Term,
+  Tint,
+  Ruled,
+  Plate,
+  SlideHeading,
+  PartHead,
+  Numbered,
+  Prompt,
+} from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
-// ============================================================================
-// CONSUMER BEHAVIOR | WEEK 9: POST-PURCHASE BEHAVIOR, SATISFACTION, AND LOYALTY
-// ============================================================================
-// Every line on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
-// ../CLAUDE.md). The week's fixed cast: the owner (one Person look), the
-// headphones she bought, the Face that marks satisfaction, the review card,
-// the coffee bag an agent reorders, and the AI agent.
-//
-// In the slide text, colour is rare: each slide gives SIGNAL to at most one
-// phrase, its key idea. Defined terms are bold ink, and every rule is ink.
-//
-// Interactive plates (students act on the drawing itself):
-//   - Disconfirmation: drag the ad's promise and the product's performance.
-//     the face reports the verdict. Overpromising flips it.
-//   - Review requests: switch reviewer, incentive and message on the
-//     retailer's field data (Wadi et al., 2026b, Table II).
-//   - Delegated repurchase: drag a rival coffee along the price scale and
-//     watch which bag each instruction's agent reorders.
-//
-// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
-// so each [exercise]-tagged topic carries one exercise, of the type that fits
-// it, testing that slide and the ones before it.
-// ============================================================================
-
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
-
-/** Content slides trim the deck's outer padding so each topic fits one screen. */
-const TIGHT = "md:!py-16";
-
-type Tone = "signal" | "counter" | "ink";
-
-const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--rule)]",
-  counter: "border-[var(--rule)]",
-  ink: "border-[var(--rule)]",
-};
-
-const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--ink)]",
-  counter: "text-[var(--ink)]",
-  ink: "text-[var(--ink)]",
-};
-
-/** One verbatim line at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-body max-w-[var(--measure)]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A line promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <p className={cn("type-lead max-w-[48ch]", className)}>{children}</p>;
-}
-
-/** A line set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <p className={cn("type-quote max-w-[30ch]", className)}>{children}</p>;
-}
-
-/** A line at h2 size. */
-function Big({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <p className={cn("type-h2 !font-normal", className)}>{children}</p>;
-}
-
-/** Coloured term inside a line. */
-function Term({
-  children,
-  tone = "ink",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  return (
-    <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>
-  );
-}
-
-/** Inline emphasis for a phrase inside a line. */
-function Tint({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
-}
-
-/** Hairline-topped block. */
-function Ruled({
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
-      {children}
-    </div>
-  );
-}
-
-/**
- * A plate that lives in a column: a figure well without the 680px floor. A
- * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`. From lg up the column is wide enough.
- */
-function Plate({
-  children,
-  wide = false,
-  className = "",
-}: {
-  children: React.ReactNode;
-  wide?: boolean;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "figure-well w-full min-w-0 p-3",
-        wide && "overflow-x-auto",
-        className,
-      )}
-    >
-      {wide ? (
-        <div className="min-w-[480px] lg:min-w-0">{children}</div>
-      ) : (
-        children
-      )}
-    </div>
-  );
-}
-
-/**
- * Slide heading. A "Label:" prefix from the content is set as a small tracked
- * kicker inside the same h2, so the heading text stays exactly as written.
- */
-function Heading({
-  kicker,
-  children,
-  tone = "signal",
-  className = "",
-}: {
-  kicker?: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-  className?: string;
-}) {
-  return (
-    <div className="mb-6 w-full">
-      <h2 className={cn("type-h1 max-w-[32ch]", className)}>
-        {kicker ? (
-          <>
-            <span
-              className={cn(
-                "type-label mb-4 block !text-[0.8rem]",
-                "!text-[var(--ink-3)]",
-              )}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
-      <div className="mt-3 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Ruled lines in a grid, each followed by its own plate. */
-function Cells({
-  cols = 2,
-  items,
-  className = "",
-}: {
-  cols?: 2 | 3 | 4 | 5;
-  items: {
-    key: string;
-    tone: Tone;
-    plate?: React.ReactNode;
-    text: React.ReactNode;
-  }[];
-  className?: string;
-}) {
-  return (
-    <ol
-      className={cn(
-        "grid w-full gap-10 md:grid-cols-2 md:gap-x-8 lg:gap-x-6 lg:gap-y-6",
-        {
-          2: "md:gap-x-10",
-          3: "lg:grid-cols-3",
-          4: "lg:grid-cols-4",
-          5: "lg:grid-cols-5",
-        }[cols],
-        className,
-      )}
-    >
-      {items.map((s) => (
-        <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t pt-3", BORDER[s.tone])}>
-            <p className="type-body">{s.text}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-/** A ruled line for rows of text. */
-function SideCell({
-  children,
-  className = "",
-}: {
-  plate?: React.ReactNode;
-  children: React.ReactNode;
-  plateClass?: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "min-w-0 border-t border-[var(--rule)] pt-3",
-        className,
-      )}
-    >
-      <p className="type-body min-w-0">{children}</p>
-    </div>
-  );
-}
 
 export default function Week9() {
   return (
     <SlideDeck label="Week 9">
       {/* ================================================================
-          Title Slide
+          1. Title Slide
           ================================================================ */}
       <Slide id="title-slide">
         <div className="w-full max-w-4xl">
@@ -295,188 +48,370 @@ export default function Week9() {
             Post-Purchase Behavior, Satisfaction, and Loyalty
           </Title>
           <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
-            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-              The sale is not the end of the relationship. What happens after
-              the purchase decides{" "}
-              <Tint>whether the consumer returns</Tint>.
+            <p className="type-quote">
+              Postpurchase evaluation, dissonance reduction, product
+              disposition, review writing, and repeat patronage determine{" "}
+              <Tint>
+                whether a single transaction develops into durable brand loyalty
+              </Tint>
+              .
             </p>
           </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          After the Purchase
+          2. The Strategic Value of the Postpurchase Stage
           ================================================================ */}
-      <Slide className={TIGHT} id="after-the-purchase" border>
-        <Heading>After the Purchase</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.8fr_2fr] lg:gap-10">
-          <Statement className="!max-w-[26ch] !text-[clamp(1.3rem,2vw,1.75rem)]">
-            <Term>Postpurchase behavior</Term> includes{" "}
-            <Tint>everything the consumer does after buying</Tint>: using the
-            product, judging it, talking about it, and eventually getting rid
-            of it.
-          </Statement>
+      <Slide className={TIGHT} id="strategic-value-postpurchase" border>
+        <SlideHeading>
+          The Strategic Value of the Postpurchase Stage
+        </SlideHeading>
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[0.88fr_1.95fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              <Term>Postpurchase behavior</Term> encompasses all{" "}
+              <Tint>psychological evaluations and overt actions</Tint> a
+              consumer undertakes after acquiring a product or service.
+            </Statement>
+            <Ruled>
+              <P>
+                These activities include assembling and using the item, judging
+                its performance against expectations, communicating word of
+                mouth, requesting service, and eventually disposing of the good.
+              </P>
+            </Ruled>
+          </div>
           <Plate wide>
             <V.ProductLife />
           </Plate>
         </div>
-        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.25fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                In this stage, the consumer decides whether the purchase was a
-                good one.
-              </P>
-            </Ruled>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                That judgment shapes repeat purchases, reviews,
-                recommendations, and complaints.
-              </P>
-            </Ruled>
-          </div>
-          <SideCell className="sm:grid-cols-[1fr_1fr]">
-            Keeping an existing customer usually costs less than winning a new
-            one.{" "}
-            For this reason, marketers study the postpurchase stage as closely
-            as the purchase itself.
-          </SideCell>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              Postpurchase evaluation closes the feedback loop of the
+              consumption process by updating the brand attitudes stored in
+              long-term memory.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              A positive postpurchase experience strengthens the probability
+              that the brand enters the consideration set automatically on the
+              next purchase occasion.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Conversely, unresolved postpurchase disappointment triggers brand
+              switching and negative online reviews.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Expectations and Reality: The Disconfirmation Model
+          3. Postpurchase Evaluation and Customer Retention Economics
+          ================================================================ */}
+      <Slide className={TIGHT} id="retention-economics" border>
+        <SlideHeading>
+          Postpurchase Evaluation and Customer Retention Economics
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              Acquiring a new customer through advertising and promotional
+              discounting typically{" "}
+              <Tint>
+                costs several times more than retaining an existing buyer
+              </Tint>
+              .
+            </Statement>
+            <Ruled>
+              <P>
+                Retained customers purchase more frequently, are less sensitive
+                to small competitor price cuts, and cost less to serve over
+                time.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                <Term>Customer lifetime value</Term> rises sharply when small
+                improvements in postpurchase satisfaction reduce annual
+                defection rates (Reichheld &amp; Sasser, 1990).
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <V.KeepVsWin />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              Marketing managers therefore monitor postpurchase metrics,
+              including Net Promoter Scores, repeat purchase rates, return
+              reasons, and warranty claims, alongside initial sales volume.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big className="">
+              Treating the checkout receipt as the end of the marketing funnel
+              sacrifices the most profitable phase of the customer relationship.
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          4. Part 1: Customer Satisfaction, Equity, and Attribution
+          ================================================================ */}
+      <Slide id="part-1-satisfaction" border>
+        <PartHead n={1} title="Customer Satisfaction, Equity, and Attribution" />
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Customer satisfaction is not determined by{" "}
+            <Tint>objective product performance in isolation</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Instead, consumers evaluate postpurchase outcomes through three
+              complementary psychological frameworks: expectancy
+              disconfirmation, equity theory, and causal attribution.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          5. The Expectancy Disconfirmation Model of Satisfaction
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="expectations-and-reality-the-disconfirmation-model"
+        id="expectancy-disconfirmation"
         border
-        exercise={exercise["expectations-and-reality-the-disconfirmation-model"]}
+        exercise={exercise["expectancy-disconfirmation"]}
       >
-        <Heading kicker="Expectations and Reality:">
-          The Disconfirmation Model
-        </Heading>
-        <div className="grid w-full gap-8 lg:grid-cols-[0.85fr_2fr] lg:gap-10">
+        <SlideHeading>
+          The Expectancy Disconfirmation Model of Satisfaction
+        </SlideHeading>
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[0.88fr_1.95fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-4">
-            <P>
-              <Term>Customer satisfaction</Term> is the consumer&apos;s overall
-              feeling about a product after purchase and use.
-            </P>
-            <Ruled tone="ink" className="!pt-3">
-              <Statement className="!max-w-none !text-[clamp(1.15rem,1.6vw,1.4rem)]">
-                The <Term>expectancy disconfirmation model</Term> states that
-                satisfaction depends on{" "}
-                <Tint>the gap between expectations and perceived performance</Tint>{" "}
-                (Oliver, 1980).
-              </Statement>
+            <Statement className="">
+              Formulated by Richard Oliver (1980), the{" "}
+              <Term>expectancy disconfirmation model</Term> states that customer
+              satisfaction results from{" "}
+              <Tint>
+                comparing perceived product performance against prepurchase
+                expectations
+              </Tint>
+              .
+            </Statement>
+            <Ruled>
+              <P>
+                Prepurchase expectations are formed from prior brand experience,
+                word of mouth, price level, and advertising claims.
+              </P>
             </Ruled>
           </div>
-          <Plate wide className="self-center">
+          <Plate wide>
             <V.Disconfirmation />
           </Plate>
         </div>
-        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
-          <Ruled tone="ink" className="!pt-3">
+        <div className="mt-5 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
             <P>
-              <Term>Positive disconfirmation</Term> occurs when performance
-              exceeds expectations. The consumer is satisfied or delighted.
+              <Term>Positive disconfirmation</Term> occurs when perceived
+              performance exceeds prepurchase expectations, producing high
+              satisfaction or customer delight.
             </P>
           </Ruled>
-          <Ruled tone="ink" className="!pt-3">
+          <Ruled>
             <P>
-              <Term>Confirmation</Term> occurs when performance matches
-              expectations. The consumer is satisfied.
+              <Term>Simple confirmation</Term> occurs when perceived performance
+              matches expectations, producing baseline satisfaction and neutral
+              stability.
             </P>
           </Ruled>
-          <Ruled tone="ink" className="!pt-3">
+          <Ruled>
             <P>
-              <Term>Negative disconfirmation</Term> occurs when performance
-              falls below expectations. The consumer is dissatisfied.
+              <Term>Negative disconfirmation</Term> occurs when perceived
+              performance falls short of expectations, producing
+              dissatisfaction, regret, and potential complaint behavior.
             </P>
           </Ruled>
         </div>
-        <Big className="mt-6 !max-w-[64ch] !text-[clamp(1.15rem,1.6vw,1.4rem)]">
-          Marketers who promise too much in advertising raise expectations and
-          make negative disconfirmation more likely.
-        </Big>
       </Slide>
 
       {/* ================================================================
-          Other Influences on Satisfaction
+          6. Equity Theory and Perceived Exchange Fairness
           ================================================================ */}
-      <Slide className={TIGHT} id="other-influences-on-satisfaction" border>
-        <Heading>Other Influences on Satisfaction</Heading>
-        <div className="grid w-full gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-10">
+      <Slide className={TIGHT} id="equity-theory" border>
+        <SlideHeading>
+          Equity Theory and Perceived Exchange Fairness
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-3">
+            <Statement className="">
+              <Term>Equity theory</Term> proposes that consumers evaluate
+              satisfaction by{" "}
+              <Tint>comparing the ratio of their own outcomes to inputs</Tint>{" "}
+              against the perceived ratio of the seller or another customer
+              (Adams, 1965, and Oliver &amp; Swan, 1989).
+            </Statement>
+            <Ruled>
               <P>
-                <Term>Perceived quality</Term> is the consumer&apos;s judgment
-                of how well the product performs its function.
+                <Term>Consumer inputs</Term> include the price paid, shopping
+                time, waiting effort, and courtesy extended during the
+                transaction.
               </P>
             </Ruled>
-            <Ruled tone="ink" className="!pt-3">
+            <Ruled>
               <P>
-                <Term>Equity theory</Term> states that consumers judge whether
-                an exchange was fair. They compare what they gave, such as
-                money and effort, with what they received.
+                <Term>Consumer outcomes</Term> include product quality, service
+                responsiveness, status, and warranty support.
               </P>
             </Ruled>
-            <Plate>
-              <V.EquityScale />
-            </Plate>
           </div>
-          <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-3">
-              <P className="!max-w-none">
-                <Term>Attribution theory</Term> explains how consumers assign
-                the cause of a product failure.
-              </P>
-            </Ruled>
-            <div className="grid w-full gap-6 md:grid-cols-2">
-              <div className="flex min-w-0 flex-col gap-3">
-                <P>
-                  If a consumer blames the company for a failure that the
-                  company could have prevented,{" "}
-                  <Tint>dissatisfaction is stronger</Tint>.
-                </P>
-              </div>
-              <div className="flex min-w-0 flex-col gap-3">
-                <P>
-                  If a consumer blames chance or their own misuse,
-                  dissatisfaction is weaker.
-                </P>
-              </div>
-            </div>
-          </div>
+          <Plate>
+            <V.EquityScale />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              Perceived inequity arises when a buyer discovers that another
+              passenger in the same airline row paid half the fare or received a
+              complimentary upgrade without clear justification.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big className="">
+              Even when functional product performance meets expectations,
+              perceived procedural or distributive unfairness produces strong
+              dissatisfaction.
+            </Big>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Cognitive Dissonance and Buyer's Regret
+          7. Attribution Theory in Product and Service Failures
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="cognitive-dissonance-and-buyers-regret"
+        id="attribution-theory"
         border
-        exercise={exercise["cognitive-dissonance-and-buyers-regret"]}
+        exercise={exercise["attribution-theory"]}
       >
-        <Heading>Cognitive Dissonance and Buyer&apos;s Regret</Heading>
+        <SlideHeading>
+          Attribution Theory in Product and Service Failures
+        </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-4">
-            <Statement className="!max-w-[34ch] !text-[clamp(1.3rem,2vw,1.75rem)]">
-              <Term>Cognitive dissonance</Term> is the discomfort a person
-              feels when holding two conflicting beliefs (Festinger, 1957).
-            </Statement>
-            <Ruled tone="ink" className="!pt-3">
+            <Lead>
+              When a product fails or a service is delayed, consumers engage in{" "}
+              <Term>causal attribution</Term> to explain why the failure
+              occurred (Folkes, 1984, and Weiner, 2000).
+            </Lead>
+            <Ruled>
               <P>
-                <Term>Postpurchase dissonance</Term> occurs when a consumer{" "}
-                <Tint>doubts a purchase decision after making it</Tint>.
+                <Term>Locus of causality</Term> asks who is responsible: an
+                internal attribution blames the consumer&apos;s own misuse,
+                whereas an external attribution blames the manufacturer,
+                retailer, or environment.
               </P>
             </Ruled>
-            <Ruled tone="ink" className="!pt-3">
+            <Ruled>
               <P>
-                <Term>Buyer&apos;s regret</Term> is the feeling that another
-                option would have been better.
+                <Term>Stability</Term> asks whether the cause is temporary and
+                unusual (an isolated shipping storm) or permanent and systemic
+                (chronic understaffing at a call center).
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <V.BlameCompany />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              <Term>Controllability</Term> asks whether the firm had the power
+              to foresee and prevent the failure or whether the event was
+              genuinely beyond human control.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big className="">
+              Dissatisfaction, anger, and desire for retaliation are highest
+              when the consumer attributes a failure to an{" "}
+              <Tint>external, stable, and firm-controllable cause</Tint>.
+            </Big>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          8. Part 2: Postpurchase Cognitive Dissonance and Dissatisfaction Responses
+          ================================================================ */}
+      <Slide id="part-2-dissonance" border>
+        <PartHead
+          n={2}
+          title="Postpurchase Cognitive Dissonance and Dissatisfaction Responses"
+        />
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Even when a product functions properly, buyers frequently experience{" "}
+            <Tint>
+              psychological tension immediately after making a high-stakes
+              commitment
+            </Tint>
+            .
+          </Statement>
+          <Ruled>
+            <Lead>
+              Understanding postpurchase cognitive dissonance and complaint
+              pathways allows firms to reassure anxious buyers and recover
+              dissatisfied customers.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          9. Cognitive Dissonance and Buyer's Regret
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="cognitive-dissonance"
+        border
+        exercise={exercise["cognitive-dissonance"]}
+      >
+        <SlideHeading>Cognitive Dissonance and Buyer&apos;s Regret</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              Derived from Leon Festinger&apos;s (1957) theory of cognitive
+              dissonance, <Term>postpurchase dissonance</Term> is the state of{" "}
+              <Tint>
+                psychological discomfort a buyer feels when holding inconsistent
+                cognitions after a decision
+              </Tint>
+              .
+            </Statement>
+            <Ruled>
+              <P>
+                Choosing Brand A requires giving up the attractive, unique
+                features offered by rejected Brands B and C, creating doubt
+                about whether the choice was optimal.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                Postpurchase dissonance is magnified when the purchase is
+                expensive, irrevocable, and high in social or psychological
+                involvement.
               </P>
             </Ruled>
           </div>
@@ -484,140 +419,128 @@ export default function Week9() {
             <V.SecondThoughts />
           </Plate>
         </div>
-        <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
-            Dissonance is most likely when the purchase is expensive,
-            important, and hard to reverse.
-          </SideCell>
-          <SideCell
-            className="sm:grid-cols-[1fr_1.1fr]"
-          >
-            Dissonance is also more likely when the rejected alternatives had
-            attractive features that the chosen product lacks.
-          </SideCell>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              Dissonance also increases as the number of attractive rejected
+              alternatives grows and when those alternatives differed on
+              qualitatively distinct attributes.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Left unresolved, severe postpurchase dissonance leads to product
+              returns, order cancellations, or durable dissatisfaction.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Reducing Postpurchase Dissonance
+          10. Consumer and Marketer Strategies for Reducing Dissonance
           ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="reducing-postpurchase-dissonance"
-        border
-        exercise={exercise["reducing-postpurchase-dissonance"]}
-      >
-        <Heading>Reducing Postpurchase Dissonance</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
-          <Lead className="!max-w-[52ch]">
-            Consumers reduce dissonance on their own. They{" "}
-            <Tint>seek information that supports their choice</Tint>, avoid
-            information that favors the rejected options, or lower the
-            importance of the missing features.
-          </Lead>
+      <Slide className={TIGHT} id="reducing-dissonance" border>
+        <SlideHeading>
+          Consumer and Marketer Strategies for Reducing Dissonance
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              To restore cognitive consistency after a purchase, consumers{" "}
+              <Tint>
+                actively seek information that confirms the wisdom of their
+                choice
+              </Tint>{" "}
+              and avoid advertisements for rejected brands.
+            </Lead>
+            <Ruled>
+              <P>
+                Recent automobile buyers, for example, read advertisements for
+                the car they just purchased more attentively than prospective
+                buyers who have not yet decided (Ehrlich et al., 1957).
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                Consumers also re-evaluate alternatives defensively by inflating
+                the importance of the chosen brand&apos;s strengths and
+                discounting the features of rejected options.
+              </P>
+            </Ruled>
+          </div>
           <Plate>
             <V.SupportingInfo />
           </Plate>
         </div>
-        <Cells
-          cols={4}
-          className="mt-6"
-          items={[
-            {
-              key: "follow-up",
-              tone: "ink",
-              text: (
-                <>
-                  Marketers can help. A follow-up message thanks
-                  the customer and confirms the benefits of the product.
-                </>
-              ),
-            },
-            {
-              key: "guarantees",
-              tone: "ink",
-              text: (
-                <>
-                  Guarantees, warranties, and easy return policies reduce the
-                  risk that the consumer feels after buying.
-                </>
-              ),
-            },
-            {
-              key: "owners",
-              tone: "ink",
-              text: (
-                <>
-                  Advertising that shows satisfied owners reassures recent
-                  buyers as well as future ones.
-                </>
-              ),
-            },
-            {
-              key: "service",
-              tone: "ink",
-              text: (
-                <>
-                  Customer service that responds quickly to problems prevents
-                  doubt from turning into dissatisfaction.
-                </>
-              ),
-            },
-          ]}
-        />
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              Marketers assist dissonance reduction through postpurchase
+              onboarding emails, congratulatory owner communications, clear
+              instructional guides, and visible community testimonials.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Liberal return policies and comprehensive warranties also reduce
+              the perceived irrevocability of the commitment before and after
+              checkout.
+            </P>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Responses to Dissatisfaction
+          11. Voice, Private, and Third-Party Responses to Dissatisfaction
           ================================================================ */}
-      <Slide className={TIGHT} id="responses-to-dissatisfaction" border>
-        <Heading>Responses to Dissatisfaction</Heading>
-        <Lead className="!max-w-none !mb-5">
-          A dissatisfied consumer can respond in three ways (Singh, 1988).
+      <Slide
+        className={TIGHT}
+        id="dissatisfaction-responses"
+        border
+        exercise={exercise["dissatisfaction-responses"]}
+      >
+        <SlideHeading>
+          Voice, Private, and Third-Party Responses to Dissatisfaction
+        </SlideHeading>
+        <Lead className="!mb-4 !max-w-none">
+          Jagdip Singh (1988) classified consumer behavioral responses to
+          dissatisfaction into three distinct pathways: voice, private, and
+          third-party actions.
         </Lead>
-        <Cells
-          cols={3}
-          items={[
-            {
-              key: "voice",
-              tone: "ink",
-              text: (
-                <>
-                  A <Term>voice response</Term> means complaining directly to
-                  the seller and asking for a refund or repair.
-                </>
-              ),
-            },
-            {
-              key: "private",
-              tone: "ink",
-              text: (
-                <>
-                  A <Term>private response</Term> means switching brands and
-                  warning friends and family.
-                </>
-              ),
-            },
-            {
-              key: "third-party",
-              tone: "ink",
-              text: (
-                <>
-                  A <Term>third-party response</Term> means taking action
-                  through an outside party, such as a consumer agency, a court,
-                  or a public online review.
-                </>
-              ),
-            },
-          ]}
-        />
-        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1fr_2.1fr] lg:gap-10">
-          <Ruled tone="ink">
-            <Big className="!text-[clamp(1.15rem,1.6vw,1.4rem)]">
-              Most dissatisfied customers never complain to the firm. A
-              complaint is therefore{" "}
-              <Tint>an opportunity to recover the customer</Tint>.
-            </Big>
+        <div className="grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              <Term>Voice responses</Term> direct complaint behavior toward the
+              seller itself, seeking redress through a refund, replacement,
+              repair, or apology.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Private responses</Term> involve quietly exiting the
+              relationship (switching brands) and warning friends, family, and
+              colleagues through negative interpersonal word of mouth.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Third-party responses</Term> escalate the dispute to
+              external institutions, including consumer protection agencies,
+              legal action, or public review platforms and social media.
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-5 grid w-full items-center gap-6 lg:grid-cols-[0.9fr_1.9fr] lg:gap-10">
+          <Ruled>
+            <P>
+              Because the majority of dissatisfied buyers simply defect
+              privately without contacting the firm,{" "}
+              <Tint>
+                accessible complaint channels and empowered front-line recovery
+                turn voice responses into retention opportunities
+              </Tint>
+              .
+            </P>
           </Ruled>
           <Plate wide>
             <V.SilentMajority />
@@ -626,270 +549,636 @@ export default function Week9() {
       </Slide>
 
       {/* ================================================================
-          Product Disposal and Secondary Markets
+          12. Discussion: Turning a Service Failure into Customer Recovery
+          ================================================================ */}
+      <Slide className={TIGHT} id="discussion-service-recovery" border>
+        <SlideHeading kicker="Discussion:">
+          Turning a Service Failure into Customer Recovery
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.25fr_0.9fr] lg:gap-10">
+          <Prompt>
+            A direct-to-consumer meal delivery service ships a holiday dinner
+            box that arrives 36 hours late with spoiled ingredients because the
+            firm&apos;s warehouse software misrouted the courier batch. Using
+            expectancy disconfirmation, equity theory, attribution theory
+            (locus, stability, controllability), and Singh&apos;s (1988)
+            dissatisfaction taxonomy, explain how customers will interpret this
+            failure and design a service-recovery protocol that prevents private
+            exit and third-party escalation.
+          </Prompt>
+          <Plate>
+            <V.QuickReply />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          13. Part 3: Product Disposal and Secondary Markets
+          ================================================================ */}
+      <Slide id="part-3-disposal" border>
+        <PartHead n={3} title="Product Disposal and Secondary Markets" />
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Consumption does not end with product use. Every physical good
+            eventually reaches a{" "}
+            <Tint>
+              disposition stage in which the owner decides whether to retain,
+              repurpose, or part with the item
+            </Tint>
+            .
+          </Statement>
+          <Ruled>
+            <Lead>
+              Disposition behavior shapes environmental waste streams,
+              peer-to-peer resale platforms, and primary brand demand.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          14. The Taxonomy of Product Disposition Options
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="product-disposal-and-secondary-markets"
+        id="disposition-taxonomy"
         border
-        exercise={exercise["product-disposal-and-secondary-markets"]}
+        exercise={exercise["disposition-taxonomy"]}
       >
-        <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
-          Product Disposal and Secondary Markets
-        </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.8fr_2fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3">
-            <Lead className="!max-w-none">
-              Disposal is the final stage of consumption.
-            </Lead>
-            <Ruled tone="ink" className="!pt-3">
+        <SlideHeading>The Taxonomy of Product Disposition Options</SlideHeading>
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[0.88fr_1.95fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              Jacoby, Berning, and Dietvorst (1977) organized consumer product
+              disposition into three primary branches:{" "}
+              <Tint>
+                keep the product, temporarily dispose of it, or permanently
+                dispose of it
+              </Tint>
+              .
+            </Statement>
+            <Ruled>
               <P>
-                A consumer can <Term>keep</Term> a product, using it for its
-                original purpose, finding a new use for it, or storing it.
-              </P>
-            </Ruled>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                A consumer can get rid of a product{" "}
-                <Term>temporarily</Term>, by renting it out or lending it.
-              </P>
-            </Ruled>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                A consumer can get rid of a product <Term>permanently</Term>,
-                by throwing it away, giving it away, trading it, or selling it.
+                The chosen path depends on the item&apos;s residual economic
+                value, physical condition, storage cost, and emotional
+                attachment.
               </P>
             </Ruled>
           </div>
-          {/* Left to right, the plate's three paths follow the three lines. */}
           <Plate wide>
             <V.DisposalPaths />
           </Plate>
         </div>
-        <div className="mt-5 grid w-full items-center gap-x-10 gap-y-5 lg:grid-cols-[1.35fr_1fr]">
-          <SideCell
-            className="sm:grid-cols-[1fr_0.9fr]"
-          >
-            <Term>Lateral cycling</Term> occurs when one consumer&apos;s used
-            product passes to another consumer, through a garage sale, a thrift
-            store, or a resale app.
-          </SideCell>
-          <Ruled tone="ink" className="!pt-3">
-            <Big className="!text-[clamp(1.1rem,1.5vw,1.3rem)]">
-              Secondary markets for clothing, electronics, and furniture{" "}
-              <Tint>give products a second life</Tint> and create new business
-              models for brands.
-            </Big>
-          </Ruled>
-        </div>
-      </Slide>
-
-      {/* ================================================================
-          Online Reviews as Postpurchase Behavior
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="online-reviews-as-postpurchase-behavior"
-        border
-        exercise={exercise["online-reviews-as-postpurchase-behavior"]}
-      >
-        <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
-          Online Reviews as Postpurchase Behavior
-        </Heading>
-        <div className="grid w-full gap-x-8 gap-y-4 md:grid-cols-3">
-          <Lead className="!max-w-none !text-[clamp(1.1rem,1.5vw,1.3rem)]">
-            Writing an online review is one of the most visible postpurchase
-            behaviors.
-          </Lead>
-          <P>
-            Consumers write reviews to help other shoppers, to express
-            satisfaction or anger, to gain recognition, or to return a favor to
-            the firm.
-          </P>
-          <P>
-            <Term>Social exchange theory</Term> helps explain the request to
-            write a review. A request to help other shoppers reinforces a
-            social exchange. A request to help the company reinforces a
-            reciprocal exchange.
-          </P>
-        </div>
-        <div className="mt-5 grid w-full gap-8 lg:grid-cols-[1fr_2.25fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
+        <div className="mt-5 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
             <P>
-              When a review request offered a financial incentive, asking
-              customers to help the company worked less well than asking them
-              to help other shoppers (Wadi et al., 2026a).
+              <Term>Keeping the product</Term> includes continuing to use it for
+              its original function, converting it to a new secondary function,
+              or storing it unused in closets and garages.
             </P>
-          </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
-            <div className="grid w-full gap-x-8 gap-y-3 md:grid-cols-2">
-              <P>
-                Incentives paid only for helpful reviews raised review writing
-                and review length more among first-time reviewers than among
-                experienced reviewers (Wadi et al., 2026b).
-              </P>
-              <P>
-                A message framed as a reciprocal exchange with the company led
-                reviewers to write longer reviews, but fewer customers chose to
-                write one (Wadi et al., 2026b).
-              </P>
-            </div>
-            <Plate wide>
-              <V.ReviewRequests />
-            </Plate>
-          </div>
-        </div>
-        <div className="mt-5 w-full border-t border-[var(--rule)] pt-3">
-          <Big className="!text-[clamp(1.1rem,1.5vw,1.3rem)]">
-            Reviews now have two audiences. They inform human shoppers and{" "}
-            <Tint>the AI agents that read reviews on shoppers&apos; behalf</Tint>.
-          </Big>
-        </div>
-      </Slide>
-
-      {/* ================================================================
-          From Satisfaction to Loyalty
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="from-satisfaction-to-loyalty"
-        border
-        exercise={exercise["from-satisfaction-to-loyalty"]}
-      >
-        <Heading>From Satisfaction to Loyalty</Heading>
-        <Statement className="!max-w-[52ch] !text-[clamp(1.35rem,2.1vw,1.85rem)]">
-          <Term>Brand loyalty</Term> is a pattern of repeat purchase supported
-          by a positive attitude toward the brand (Dick &amp; Basu, 1994).
-        </Statement>
-        <Cells
-          cols={3}
-          className="mt-5"
-          items={[
-            {
-              key: "true",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>True loyalty</Term> combines frequent repeat purchase
-                  with a strong positive attitude.
-                </>
-              ),
-            },
-            {
-              key: "spurious",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Spurious loyalty</Term> is repeat purchase without a
-                  strong attitude. The consumer buys out of habit, convenience,
-                  or lack of alternatives.
-                </>
-              ),
-            },
-            {
-              key: "latent",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Latent loyalty</Term> is a strong positive attitude
-                  without repeat purchase. The consumer likes the brand but
-                  rarely buys it, perhaps because of price or availability.
-                </>
-              ),
-            },
-          ]}
-        />
-        <div className="mt-6 grid w-full items-center gap-x-10 gap-y-5 lg:grid-cols-[1.3fr_1fr]">
-          <SideCell className="sm:grid-cols-[1fr_0.95fr]">
-            <Tint>Satisfaction does not guarantee loyalty.</Tint> Satisfied
-            customers still switch when a competitor offers a better deal.
-          </SideCell>
-          <Ruled tone="ink" className="!pt-3">
-            <Big className="!text-[clamp(1.1rem,1.5vw,1.3rem)]">
-              Loyalty programs reward repeat purchase, but they build true
-              loyalty only when customers also value the brand.
-            </Big>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Temporary disposition</Term> includes lending the item to
+              peers or renting it out through sharing platforms.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Permanent disposition</Term> includes throwing the item away
+              (trashing or recycling), giving it away to charity or family,
+              trading it in, or selling it directly to another buyer.
+            </P>
           </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Brand Loyalty and Delegated Repurchase
+          15. Lateral Cycling, Resale Platforms, and Circular Business Models
           ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="brand-loyalty-and-delegated-repurchase"
-        border
-        exercise={exercise["brand-loyalty-and-delegated-repurchase"]}
-      >
-        <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
-          Brand Loyalty and Delegated Repurchase
-        </Heading>
-        <div className="grid w-full gap-8 lg:grid-cols-[0.85fr_2fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3">
-            <Lead className="!max-w-none">
-              AI agents can now reorder routine products for the consumer, such
-              as detergent, coffee, or pet food.
-            </Lead>
-            <P>When an agent handles the repurchase, loyalty can take two forms.</P>
-            <Ruled tone="ink" className="!pt-3">
+      <Slide className={TIGHT} id="lateral-cycling" border>
+        <SlideHeading>
+          Lateral Cycling, Resale Platforms, and Circular Business Models
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              <Term>Lateral cycling</Term> occurs when an already-purchased
+              object is{" "}
+              <Tint>
+                exchanged from one consumer to another so that its useful
+                consumption life continues without new manufacturing
+              </Tint>{" "}
+              (Sherry, 1990).
+            </Statement>
+            <Ruled>
               <P>
-                <Term>Loyalty to the brand</Term> appears when the consumer
-                names the brand in the instruction, for example &quot;reorder
-                my usual coffee.&quot;
-              </P>
-            </Ruled>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Reliance on the agent</Term> appears when the consumer
-                states only a goal, for example &quot;buy coffee at the best
-                price,&quot; and lets the agent choose the brand.
+                Digital peer-to-peer marketplaces, consignment apps, and
+                brand-operated trade-in programs have sharply lowered the
+                transaction costs of lateral cycling for apparel, electronics,
+                and furniture.
               </P>
             </Ruled>
           </div>
-          <div className="min-w-0">
-            <P className="mb-3 !max-w-none">
-              In the second case, the agent&apos;s choice depends on the goal it
-              was given and the information it gathers (Wadi &amp; Ma, 2026b).
-              The consumer&apos;s past attachment to a brand may count for
-              little unless the instruction mentions it.
-            </P>
-            <Plate wide>
-              <V.UsualOrBest />
-            </Plate>
-          </div>
+          <Plate>
+            <V.LateralCycling />
+          </Plate>
         </div>
-        <div className="mt-6 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-2 md:gap-10">
-          <P>
-            Spurious loyalty based on habit is therefore at risk when
-            repurchase is delegated. A brand is more secure when{" "}
-            <Tint>the consumer names it in the instruction</Tint> or when it
-            remains the best option under the consumer&apos;s criteria.
-          </P>
-          <P>
-            Brands that depend on delegated repurchase compete to be named in
-            the consumer&apos;s instruction and to present clear product
-            information to the agent.
-          </P>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              A liquid secondary market can increase consumers&apos; willingness
+              to pay for a new primary product because buyers anticipate
+              recovering part of the purchase price at resale.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              At the same time, high-quality pre-owned inventory competes
+              directly with a brand&apos;s entry-level new merchandise.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Many manufacturers now operate certified refurbished programs to
+              capture secondary-market margin and control brand presentation.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Discussion: The Review You Did Not Write
+          16. Psychological Barriers to Disposing of Possessions
           ================================================================ */}
-      <Slide className={TIGHT} id="discussion-the-review-you-did-not-write" border>
-        <Heading kicker="Discussion:" tone="counter">
-          The Review You Did Not Write
-        </Heading>
-        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
-          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
-            Discussion:
-          </span>{" "}
-          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
-            Think of a product you were very satisfied or dissatisfied with.
-            Did you write a review? What would have made you write one, and
-            would the answer change if the firm had offered you a reward?
-          </p>
+      <Slide className={TIGHT} id="barriers-to-disposal" border>
+        <SlideHeading>
+          Psychological Barriers to Disposing of Possessions
+        </SlideHeading>
+        <Statement className="">
+          Consumers frequently retain possessions long after their functional
+          utility has ended because{" "}
+          <Tint>the objects remain incorporated into the extended self</Tint>.
+        </Statement>
+        <div className="mt-8 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              Disposing of an object linked to a past life stage, a deceased
+              relative, or a hard-won achievement feels like erasing the memory
+              or identity attached to the item.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In a study of cherished possessions, consumers were much more
+              willing to part with meaningful items when they first took a
+              photograph of the object to preserve its memory trace (Winterich,
+              Reczek, &amp; Irwin, 2017).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Consumers also resist throwing away functional items out of
+              perceived wastefulness or creative reuse intentions (&quot;unused
+              utility&quot;), even when the item sits untouched for years (Haws
+              et al., 2012).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Trade-in and donation programs overcome disposition guilt by
+              assuring the owner that the item will be valued and used by
+              another person.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          17. Part 4: Online Review Writing as Postpurchase Behavior
+          ================================================================ */}
+      <Slide id="part-4-reviews" border>
+        <PartHead
+          n={4}
+          title="Online Review Writing as Postpurchase Behavior"
+        />
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Writing an online product review is a consequential postpurchase
+            action that{" "}
+            <Tint>
+              converts private consumption experience into public market
+              information
+            </Tint>
+            .
+          </Statement>
+          <Ruled>
+            <Lead>
+              How firms solicit and incentivize reviews alters both who
+              participates and what they write.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          18. Motives for Writing Online Product Reviews
+          ================================================================ */}
+      <Slide className={TIGHT} id="motives-for-reviews" border>
+        <SlideHeading>Motives for Writing Online Product Reviews</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              Consumers expend time and effort writing online reviews for
+              several{" "}
+              <Tint>distinct psychological motives</Tint> (Hennig-Thurau et al.,
+              2004).
+            </Lead>
+            <Ruled>
+              <P>
+                <Term>Altruistic concern for other consumers</Term> motivates
+                reviewers to warn peers against defective goods or highlight
+                exceptional value.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                <Term>Helping the company</Term> motivates satisfied buyers to
+                reciprocate a positive purchase experience by supporting a
+                favored seller.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <V.UnwrittenReview />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              <Term>Self-enhancement and social status</Term> motivate
+              contributors to earn &quot;top reviewer&quot; badges and community
+              recognition, while venting negative feelings provides emotional
+              release after dissatisfaction.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Because unprompted reviews often over-represent extreme
+              satisfaction or extreme anger, retailers send postpurchase
+              solicitation emails to gather a broader sample of feedback.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          19. Social Exchange Versus Reciprocal Exchange in Review Solicitation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="social-vs-reciprocal-exchange"
+        border
+        exercise={exercise["social-vs-reciprocal-exchange"]}
+      >
+        <SlideHeading>
+          Social Exchange Versus Reciprocal Exchange in Review Solicitation
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              <Term>Social exchange theory</Term> distinguishes generalized
+              social exchanges directed toward the broader community from direct
+              reciprocal exchanges between the customer and the firm.
+            </Lead>
+            <Ruled>
+              <P>
+                A solicitation message asking buyers to &quot;help other
+                shoppers make informed decisions&quot; activates a{" "}
+                <Term>generalized social-exchange norm</Term>, whereas asking
+                buyers to &quot;help our company improve&quot; activates a{" "}
+                <Term>firm-directed reciprocal norm</Term>.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <V.HelpWhom />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              In a field experiment and follow-up studies with online retail
+              buyers, asking customers to help other shoppers produced{" "}
+              <Tint>
+                higher review submission rates than asking them to help the
+                company
+              </Tint>{" "}
+              (Wadi et al., 2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              When the firm added a financial incentive (such as a 10-dollar
+              credit), pairing the reward with &quot;help other shoppers&quot;
+              outperformed pairing the same reward with &quot;help the
+              company&quot; (Wadi et al., 2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Framing a review request as a reciprocal exchange with the company
+              caused the minority who did respond to write longer reviews, but
+              lowered overall participation (Wadi et al., 2026b).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          20. Conditional Helpfulness Incentives and Dual Review Audiences
+          ================================================================ */}
+      <Slide className={TIGHT} id="conditional-incentives-dual-audiences" border>
+        <SlideHeading>
+          Conditional Helpfulness Incentives and Dual Review Audiences
+        </SlideHeading>
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[0.88fr_1.95fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <P>
+              To encourage informative reviews rather than brief one-line
+              comments, platforms sometimes offer{" "}
+              <Term>conditional incentives</Term> paid only if a review receives
+              a &quot;helpful&quot; vote from subsequent readers.
+            </P>
+            <Ruled>
+              <P>
+                Research demonstrates that conditional helpfulness rewards
+                interact with the consumer&apos;s prior reviewing experience
+                (Wadi et al., 2026b).
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <V.ReviewRequests />
+          </Plate>
+        </div>
+        <div className="mt-5 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              For <Term>first-time reviewers</Term> who have not yet established
+              an intrinsic reviewing habit, a conditional helpfulness reward{" "}
+              <Tint>
+                significantly increased both review incidence and review length
+              </Tint>{" "}
+              (Wadi et al., 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              For <Term>experienced reviewers</Term>, the same conditional
+              incentive yielded much smaller gains over their existing baseline
+              behavior (Wadi et al., 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Today, the resulting corpus of online reviews serves two audiences
+              simultaneously: human shoppers reading product pages and AI
+              shopping agents parsing review text to evaluate candidate brands.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          21. Part 5: Brand Loyalty and Delegated Repurchase
+          ================================================================ */}
+      <Slide id="part-5-loyalty" border>
+        <PartHead n={5} title="Brand Loyalty and Delegated Repurchase" />
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            True brand loyalty requires{" "}
+            <Tint>
+              more than observing a customer buy the same package twice in a row
+            </Tint>
+            .
+          </Statement>
+          <Ruled>
+            <Lead>
+              As consumers delegate routine reordering to AI shopping agents,
+              the distinction between attitudinal loyalty and habitual
+              convenience determines which brands survive.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          22. Attitude and Repeat Purchase: The Four Loyalty Quadrants
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="four-loyalty-quadrants"
+        border
+        exercise={exercise["four-loyalty-quadrants"]}
+      >
+        <SlideHeading kicker="Attitude and Repeat Purchase:">
+          The Four Loyalty Quadrants
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              Alan Dick and Kunal Basu (1994) demonstrated that defining loyalty
+              solely by repeat purchase frequency{" "}
+              <Tint>confounds commitment with convenience</Tint>.
+            </Statement>
+            <Ruled>
+              <P>
+                Crossing relative attitude strength (high versus low) with
+                repeat patronage (high versus low) yields four distinct loyalty
+                conditions.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <V.TrueLoyalty />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              <Term>True loyalty</Term> combines a strong, favorable relative
+              attitude with high repeat patronage, insulating the brand against
+              competitor promotions.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Spurious loyalty</Term> combines high repeat patronage with
+              a weak relative attitude: the buyer repurchases out of shelf
+              habit, low involvement, or lack of alternatives.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Latent loyalty</Term> combines a strong favorable attitude
+              with low repeat purchase (often due to high price or limited
+              distribution), while <Term>no loyalty</Term> combines weak
+              attitude and low repeat buying.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          23. Loyalty to the Brand Versus Reliance on the AI Agent
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="brand-loyalty-vs-agent-reliance"
+        border
+        exercise={exercise["brand-loyalty-vs-agent-reliance"]}
+      >
+        <SlideHeading>
+          Loyalty to the Brand Versus Reliance on the AI Agent
+        </SlideHeading>
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[0.88fr_1.95fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              When a consumer delegates routine replenishment (such as
+              detergent, coffee, or pet food) to an AI shopping agent, repeat
+              buying splits into{" "}
+              <Tint>two distinct behavioral pathways</Tint>.
+            </Lead>
+            <Ruled>
+              <P>
+                The first pathway is <Term>brand-directed delegation</Term>: the
+                consumer holds true attitudinal loyalty and explicitly names the
+                brand in the prompt, such as &quot;reorder my usual 12-ounce bag
+                of Brand X coffee.&quot;
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <V.UsualOrBest />
+          </Plate>
+        </div>
+        <div className="mt-5 grid w-full gap-6 md:grid-cols-3 md:gap-8">
+          <Ruled>
+            <P>
+              The second pathway is <Term>agent-reliant delegation</Term>: the
+              consumer delegates brand selection to the agent by stating only a
+              category goal, such as &quot;order instant coffee at the best
+              value.&quot;
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Under agent-reliant delegation, the consumer&apos;s prior purchase
+              habit does not constrain the agent unless past preference is
+              explicitly provided as a rule.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Instead, the agent evaluates available listings from scratch based
+              on the stated goal and the product attributes it acquires in the
+              storefront (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          24. Vulnerability of Spurious Loyalty Under AI Replenishment
+          ================================================================ */}
+      <Slide className={TIGHT} id="spurious-loyalty-ai-vulnerability" border>
+        <SlideHeading>
+          Vulnerability of Spurious Loyalty Under AI Replenishment
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Statement className="">
+              Delegated repurchase poses a severe strategic threat to incumbent
+              brands whose market share rests on{" "}
+              <Tint>spurious loyalty and human System 1 inertia</Tint>.
+            </Statement>
+            <Ruled>
+              <P>
+                A human shopper walking down an aisle often grabs the familiar
+                box to save five seconds of mental effort, even when a competing
+                package offers a better unit price.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                An AI agent instructed to optimize price per unit or rating has
+                no visual attachment to familiar shelf colors and will
+                immediately switch away from an overpriced incumbent (Wadi &amp;
+                Ma, 2026b).
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <V.SpuriousLoyalty />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled>
+            <P>
+              Conversely, a brand that has cultivated true attitudinal loyalty
+              is protected when the consumer specifies the brand by name in the
+              delegation instruction.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Competing in automated replenishment therefore requires either
+              building strong enough brand equity to be named in the user&apos;s
+              prompt or offering demonstrably superior objective value in
+              machine-readable catalog data.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          25. Discussion: Defending a Consumer Packaged Goods Brand in Automated Replenishment
+          ================================================================ */}
+      <Slide className={TIGHT} id="discussion-cpg-replenishment" border>
+        <SlideHeading kicker="Discussion:">
+          Defending a Consumer Packaged Goods Brand in Automated Replenishment
+        </SlideHeading>
+        <Prompt>
+          A leading national dish-detergent brand commands a 35 percent
+          supermarket share largely through prominent eye-level shelf placement
+          and habitual repeat buying, while charging a 15 percent unit-price
+          premium over comparable store brands. As households shift toward
+          smart-home replenishment and AI shopping assistants, use Dick and
+          Basu&apos;s (1994) loyalty matrix and the findings of Wadi and Ma
+          (2026b) to diagnose the brand&apos;s vulnerability and recommend how
+          management should adapt its brand-building, packaging data, and
+          loyalty program strategy.
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          26. Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
+          {[
+            "Postpurchase evaluation updates brand attitudes in memory and drives customer retention, which is substantially more profitable than continuous customer acquisition.",
+            "Customer satisfaction is explained by the expectancy disconfirmation model (performance relative to expectations), equity theory (perceived input-outcome fairness), and causal attribution (locus, stability, and controllability of failures).",
+            "High-stakes decisions generate postpurchase cognitive dissonance, and dissatisfied consumers respond through voice complaints to the seller, private exit and word of mouth, or third-party escalation.",
+            "Product disposition branches into keeping, temporary disposal, and permanent disposal, with lateral cycling and resale platforms creating circular secondary markets.",
+            "In postpurchase online review solicitation, community-focused appeals (\"help other shoppers\") outperform company-focused appeals, especially when paired with financial incentives, and conditional helpfulness rewards are most effective among first-time reviewers.",
+            "Dick and Basu's matrix separates true loyalty from spurious, latent, and no loyalty, showing why brands dependent on habitual spurious loyalty risk losing share when consumers delegate replenishment to AI agents without naming a specific brand.",
+          ].map((item, i) => (
+            <Numbered key={i} n={i + 1}>
+              <P>{item}</P>
+            </Numbered>
+          ))}
         </div>
       </Slide>
     </SlideDeck>

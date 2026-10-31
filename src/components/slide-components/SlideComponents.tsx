@@ -371,9 +371,8 @@ export function Heading({
   className?: string;
 }) {
   return (
-    <div className={cn("w-full mb-8 md:mb-12", className)}>
-      <h2 className="type-h1 max-w-[22ch]">{children}</h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+    <div className={cn("w-full mb-8", className)}>
+      <h2 className="type-h1 max-w-4xl">{children}</h2>
     </div>
   );
 }
@@ -477,18 +476,11 @@ export function ContentText({
  * Sits in the flow of the slide rather than floating absolutely, so it stays
  * attached to the heading it labels at every viewport height.
  */
-export function Tag({
-  children,
-  className = "",
-}: {
+export function Tag(_props: {
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <div className={cn("mb-5", className)}>
-      <span className="type-label">{children}</span>
-    </div>
-  );
+  return null;
 }
 
 /** Citation - Superscript source reference. */

@@ -764,7 +764,7 @@ export function TwoRecommenders() {
   );
 }
 
-/* -- the filter bubble (interactive, SIMULATED) ---------------------------- */
+/* -- the filter bubble (interactive) --------------------------------------- */
 
 type Kind = 0 | 1 | 2 | 3;
 const KIND_NAMES = ["sneakers", "mugs", "books", "plants"];
@@ -797,7 +797,7 @@ function KindItem({ kind, v, cx, cy, s = 1, seed, pencil = false }: { kind: Kind
 const FEED_SLOTS = 8;
 
 /**
- * The feed the recommender builds after `likes` (SIMULATED). Each kind gets
+ * The feed the recommender builds after `likes`. Each kind gets
  * a weight of 1 plus 2 for every product of that kind the consumer has
  * liked, and the eight slots are shared out in proportion to the weights
  * (largest remainder), then dealt in a seeded order. With no likes, two of
@@ -827,7 +827,7 @@ function buildFeed(likes: Kind[]): { kind: Kind; v: number }[] {
 }
 
 /**
- * The filter bubble as an instrument (SIMULATED): a feed of eight products of
+ * The filter bubble as an instrument: a feed of eight products of
  * four kinds. The student taps any product to like it. The feed rebuilds,
  * favouring the kinds already liked. To the right, the four kinds the store
  * sells: a kind still in the feed is inked, a kind that has dropped out is
@@ -1017,6 +1017,30 @@ export const AgentLevel1 = () => <AgentLevel level={1} />;
 export const AgentLevel2 = () => <AgentLevel level={2} />;
 export const AgentLevel3 = () => <AgentLevel level={3} />;
 export const AgentLevel4 = () => <AgentLevel level={4} />;
+
+/**
+ * Interactive four-level autonomy ladder: toggle across Levels 1 to 4 to see
+ * how marketplace search, comparison, cart preparation, and payment move from
+ * the human consumer lane (top) to the AI agent lane (bottom).
+ */
+export function AgentLevels() {
+  const [level, setLevel] = React.useState<"1" | "2" | "3" | "4">("1");
+  return (
+    <>
+      <AgentLevel level={Number(level) as 1 | 2 | 3 | 4} />
+      <PlateToggle<"1" | "2" | "3" | "4">
+        options={[
+          { id: "1", label: "Level 1" },
+          { id: "2", label: "Level 2" },
+          { id: "3", label: "Level 3" },
+          { id: "4", label: "Level 4" },
+        ]}
+        value={level}
+        onChange={setLevel}
+      />
+    </>
+  );
+}
 
 /** A product data sheet: a paper page of attribute rows (a name stroke and a value), top-left at (x, y). */
 function DataSheet({ x, y, w = 92, rows = 5, seed }: { x: number; y: number; w?: number; rows?: number; seed: number }) {

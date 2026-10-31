@@ -10,6 +10,7 @@ week: "week3"
 - Consumer learning and memory determine how marketplace experiences are encoded into brand associations and retrieved when a purchase decision is made.
 
 ## Defining Consumer Learning [no-exercise]
+[figure: sequence of shopping trips before and after a positive product experience showing how learning produces consistent brand choice]
 - Learning is a relatively permanent change in behavior or knowledge that results from direct or indirect experience.
 - Direct learning occurs when a consumer samples a product, uses a service, and evaluates the outcome firsthand.
 - Indirect or vicarious learning occurs when a consumer observes advertisements, reviews, or the behavior of other people without trying the product personally.
@@ -36,6 +37,7 @@ week: "week3"
 - Conditioning is most effective when the conditioned brand stimulus precedes the unconditioned stimulus consistently and when the pairing is not overshadowed by competing brands.
 
 ## Repetition, Extinction, and Advertising Wear-Out [no-exercise]
+[figure: associative link strength across repeated advertising exposures showing memory decay after a single exposure, link strengthening across moderate repetition, and decline during advertising wear-out]
 - Conditioning a durable association between a brand and a feeling requires repeated pairings across multiple exposures.
 - The two-factor theory of repetition states that initial exposures increase familiarity and reduce uncertainty, whereas excessive exposures induce boredom and counterarguing (Berlyne, 1970).
 - Advertising wear-out occurs when consumers have seen an identical execution so many times that attention drops and brand evaluations begin to decline.
@@ -63,6 +65,7 @@ week: "week3"
 - Extinction in operant conditioning occurs when a previously rewarded behavior ceases to receive reinforcement, such as when a retailer discontinues loyalty rebates and repeat visits fall.
 
 ## Reinforcement Schedules in Loyalty Programs [no-exercise]
+[figure: fixed-ratio loyalty punch card accumulating stamps toward a reward alongside a promotional discount tag]
 - The rate at which consumers learn and maintain a purchase habit depends on the schedule by which reinforcement is delivered.
 - Under continuous reinforcement, every single purchase receives a reward, which accelerates initial learning but leads to rapid extinction if the reward stops.
 - A fixed-interval schedule delivers reinforcement after a set time period has elapsed, such as an annual member dividend or a weekly Tuesday matinee discount.
@@ -93,6 +96,7 @@ week: "week3"
 - Long-term memory holds vast quantities of information over months, years, or a lifetime, serving as the repository of brand knowledge.
 
 ## Working Memory Capacity and Chunking [no-exercise]
+[figure: ten individual telephone digits grouped into three familiar chunks to fit within working memory capacity]
 - Working memory is the mental workspace where consumers hold and combine information while making an active comparison, such as comparing two nutrition labels in an aisle.
 - Working memory has a strictly limited capacity, holding roughly four to seven meaningful units of information at one time for about 15 to 30 seconds without rehearsal (Miller, 1956).
 - Chunking is the process of grouping individual pieces of data into larger, familiar units so they occupy fewer slots in working memory.
@@ -119,6 +123,7 @@ week: "week3"
 - Building brand equity requires forging strong links between the brand node and the category entry points that trigger consumer need recognition.
 
 ## Retrieval Cues at the Point of Purchase [no-exercise]
+[figure: retrieval of an encoded brand memory from long-term storage triggered by package cues at the point of purchase]
 - Brand awareness takes two forms: brand recognition (identifying the brand when prompted with a visual or verbal cue) and brand recall (retrieving the brand from memory without a prompt).
 - In a physical store aisle, package color, distinctive shapes, and logos serve as external retrieval cues that trigger recognition and activate advertising memories stored earlier.
 - In out-of-store decisions such as deciding where to eat dinner, the consumer must rely on unaided brand recall triggered by internal need cues.
@@ -126,6 +131,7 @@ week: "week3"
 - Maintaining visual consistency between advertising campaigns and shelf packaging ensures that point-of-purchase cues connect directly to encoded brand claims.
 
 ## Decay, Proactive Interference, and Retroactive Interference [exercise]
+[figure: forgetting curve showing the gradual decay of a brand memory trace over time without reactivation]
 - Stored brand memories become inaccessible over time through two primary mechanisms: trace decay and interference.
 - Decay is the gradual weakening of a memory link when it is not reactivated through repeat exposure or product use.
 - Interference occurs when competing information stored in memory blocks the accurate retrieval of a target brand claim.
@@ -145,6 +151,7 @@ week: "week3"
 - Conversational search therefore shifts brand competition from shelf recognition toward unprompted category retrieval inside the model.
 
 ## How Language Models Encode Brand Associations [no-exercise]
+[figure: customer reviews, articles, and product pages feeding an AI assistant to form associative links between brands and attributes]
 - Large language models do not possess human episodic memory, but they encode statistical associations among brands, product categories, attributes, and use cases from their training text.
 - Reviews, news articles, comparison guides, forum discussions, and product documentation in the training corpus shape which attributes are associated with each brand name.
 - When an assistant uses retrieval-augmented generation (RAG) or live web search, it combines these pre-trained associations with current retail pages and review summaries.
@@ -152,6 +159,7 @@ week: "week3"
 - If a brand is rarely mentioned alongside a specific use case in public text and structured catalogs, the model is unlikely to retrieve it for that prompt.
 
 ## Prompt Cues and Brand Visibility in AI Recommendations [exercise]
+[figure: natural-language prompt modifier activating matching attribute and brand nodes in an AI assistant's associative network]
 - In conversational search, retrieval cues move from visual shelf packaging into the exact words of the consumer's natural-language prompt.
 - Modifiers in the prompt, such as "budget-friendly," "durable," "hypoallergenic," or "for small apartments," alter which brand nodes receive the highest probability during generation.
 - Brands that have built clear, verifiable associations with specific category entry points and consumer problems are retrieved across a wider range of user prompts.

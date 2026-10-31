@@ -1104,39 +1104,52 @@ export function EcosystemHub() {
   );
 }
 
-/** Owned, paid and earned media as three overlapping circles. */
+/** Owned, paid and earned media as three overlapping circles converging around customer analytics. */
 export function OwnedPaidEarned() {
   return (
     <Frame
-      height={340}
-      label="Three overlapping circles. Owned media holds a browser window, paid media an ad, earned media a share arrow and a review star. Where all three overlap, in the middle, the brand seal: the strategy that integrates them."
+      height={350}
+      label="Venn diagram of the digital marketing ecosystem showing owned media (brand websites and apps), paid media (search and display ads), and earned media (customer reviews, shares, and organic mentions) converging around customer analytics."
     >
-      <circle cx={330} cy={130} r={100} fill="none" stroke={INK} strokeWidth={1.75} />
-      <circle cx={470} cy={130} r={100} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <circle cx={400} cy={226} r={100} fill="none" stroke={COUNTER} strokeWidth={1.75} />
-      <Browser x={250} y={78} w={64} h={44} tone={INK} />
-      <AdUnit x={488} y={78} w={70} h={42} />
-      <ShareGlyph x={372} y={276} />
-      <Star2 x={426} y={278} r={10} />
-      <circle cx={400} cy={166} r={20} fill={PAPER} stroke="none" />
-      <Mark2 x={400} y={166} r={15} />
-      <Key x={200} y={60} anchor="end" fill={INK} size={10.5}>
+      <circle cx={330} cy={136} r={102} fill="none" stroke={INK} strokeWidth={1.75} />
+      <circle cx={470} cy={136} r={102} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <circle cx={400} cy={232} r={102} fill="none" stroke={COUNTER} strokeWidth={1.75} />
+      {/* Owned media: website and mobile app */}
+      <Browser x={246} y={84} w={58} h={42} tone={INK} />
+      <Phone2 x={322} y={105} k={0.72} tone={INK} />
+      {/* Paid media: search and display ads */}
+      <AdUnit x={486} y={84} w={68} h={42} />
+      {/* Earned media: customer reviews, shares, and organic mentions */}
+      <ShareGlyph x={364} y={278} />
+      <Star2 x={400} y={280} r={10} />
+      <Bubble2 x={422} y={268} w={28} h={20} tone={COUNTER} />
+      {/* Convergence: customer analytics */}
+      <circle cx={400} cy={170} r={26} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <rect x={388} y={168} width={5} height={10} fill={INK} />
+      <rect x={396} y={162} width={5} height={16} fill={SIGNAL} />
+      <rect x={404} y={156} width={5} height={22} fill={COUNTER} />
+      <line x1={385} y1={178} x2={413} y2={178} stroke={INK} strokeWidth={1} />
+      <line x1={400} y1={28} x2={400} y2={140} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
+      <Key x={400} y={20} anchor="middle" fill={INK} size={10.5}>
+        CUSTOMER ANALYTICS
+      </Key>
+      <Key x={208} y={64} anchor="end" fill={INK} size={10.5}>
         OWNED MEDIA
       </Key>
-      <Key x={200} y={76} anchor="end" fill={INK3} size={9}>
-        WEBSITES
+      <Key x={208} y={80} anchor="end" fill={INK3} size={9.5}>
+        BRAND WEBSITES AND APPS
       </Key>
-      <Key x={600} y={60} fill={SIGNAL} size={10.5}>
+      <Key x={592} y={64} fill={SIGNAL} size={10.5}>
         PAID MEDIA
       </Key>
-      <Key x={600} y={76} fill={INK3} size={9}>
-        ADS
+      <Key x={592} y={80} fill={INK3} size={9.5}>
+        SEARCH AND DISPLAY ADS
       </Key>
-      <Key x={520} y={306} fill={COUNTER} size={10.5}>
+      <Key x={522} y={310} fill={COUNTER} size={10.5}>
         EARNED MEDIA
       </Key>
-      <Key x={520} y={322} fill={INK3} size={9}>
-        SHARES AND REVIEWS
+      <Key x={522} y={326} fill={INK3} size={9.5}>
+        REVIEWS, SHARES, AND MENTIONS
       </Key>
     </Frame>
   );
@@ -1908,7 +1921,7 @@ export function ValueOrFlood() {
       {flood.map((f, i) => (
         <g key={i}>
           <Envelope x={f.x} y={f.y} k={0.95} tone={COUNTER} fill={PAPER} width={1.25} />
-          <text x={f.x} y={f.y + 9} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={600} fontSize={11} fill={COUNTER}>
+          <text x={f.x} y={f.y + 9} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={11} fill={COUNTER}>
             %
           </text>
         </g>
@@ -3202,5 +3215,333 @@ export function GlyphEthics() {
       <Lock x={24} y={27} k={0.6} tone={COUNTER} />
       <path d="M44 40L52 30L58 34L68 16" fill="none" stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
     </GlyphFrame>
+  );
+}
+
+/* ==========================================================================
+   SEO VS SEM SERP AND AI AGENT SEARCH PLATES
+   ========================================================================== */
+
+/** Search engine results page contrasting paid SEM auction placements at the top with organic SEO rankings below. */
+export function SeoVsSemSerp() {
+  const organicY = [174, 214, 254];
+  return (
+    <Frame
+      width={800}
+      height={310}
+      label="Search engine results page contrasting paid Search Engine Marketing (SEM) auction placements at the top with organic Search Engine Optimization (SEO) rankings below."
+    >
+      {/* Left callout: Paid SEM */}
+      <Key x={24} y={84} fill={SIGNAL} size={10.5}>
+        PAID SEARCH (SEM / PPC)
+      </Key>
+      <Key x={24} y={102} fill={INK3} size={9.5}>
+        REAL-TIME KEYWORD AUCTION
+      </Key>
+      <Key x={24} y={118} fill={INK3} size={9.5}>
+        IMMEDIATE VISIBILITY PER CLICK
+      </Key>
+      <Arrow3 x1={196} y1={98} x2={228} y2={98} tone={SIGNAL} width={1.5} size={6} />
+
+      {/* Central SERP container */}
+      <rect x={236} y={14} width={328} height={282} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <SearchBar x={254} y={26} w={292} h={24} tone={INK} />
+
+      {/* Top Paid Zone */}
+      <rect x={248} y={60} width={304} height={74} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      {[0, 1].map((i) => {
+        const y = 70 + i * 32;
+        return (
+          <g key={i}>
+            <rect x={258} y={y} width={26} height={14} fill={SIGNAL} />
+            <text
+              x={271}
+              y={y + 10}
+              textAnchor="middle"
+              fontFamily="var(--font-label)"
+              fontWeight={700}
+              fontSize={8.5}
+              fill={PAPER}
+            >
+              AD
+            </text>
+            <path
+              d={`M292 ${y + 4}H470M292 ${y + 12}H420`}
+              stroke={SIGNAL}
+              strokeWidth={2}
+              strokeLinecap="round"
+            />
+          </g>
+        );
+      })}
+
+      <line x1={248} y1={148} x2={552} y2={148} stroke={RULE2} strokeWidth={1} />
+
+      {/* Bottom Organic Zone */}
+      <rect x={248} y={160} width={304} height={124} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
+      {organicY.map((y, i) => {
+        const top = i === 0;
+        return (
+          <g key={y}>
+            <Display x={260} y={y + 14} size={14} fill={top ? COUNTER : INK3}>
+              {String(i + 1)}
+            </Display>
+            <path
+              d={`M282 ${y + 4}H${top ? 480 : 440}M282 ${y + 13}H${top ? 510 : 470}`}
+              stroke={top ? COUNTER : INK3}
+              strokeWidth={top ? 2 : 1.35}
+              strokeLinecap="round"
+            />
+          </g>
+        );
+      })}
+
+      {/* Right callout: Organic SEO */}
+      <Arrow3 x1={604} y1={214} x2={560} y2={214} tone={COUNTER} width={1.5} size={6} />
+      <Key x={612} y={198} fill={COUNTER} size={10.5}>
+        ORGANIC SEARCH (SEO)
+      </Key>
+      <Key x={612} y={216} fill={INK3} size={9.5}>
+        RELEVANCE AND AUTHORITY
+      </Key>
+      <Key x={612} y={232} fill={INK3} size={9.5}>
+        COMPOUNDING TRAFFIC
+      </Key>
+    </Frame>
+  );
+}
+
+/** Comparison of traditional keyword search returning ten web links against conversational AI search returning a synthesized answer and product shortlist. */
+export function TenLinksToAiAnswers() {
+  return (
+    <Frame
+      width={800}
+      height={296}
+      label="Comparison of traditional keyword search returning ten web links for the human user to click against conversational AI search reading sources and returning a synthesized answer and product shortlist."
+    >
+      {/* Left panel: Traditional keyword search */}
+      <Key x={28} y={24} fill={INK} size={10.5}>
+        TRADITIONAL KEYWORD SEARCH
+      </Key>
+      <SearchBar x={28} y={38} w={210} h={24} tone={INK} text="running shoes flat feet" />
+      <rect x={28} y={72} width={210} height={186} rx={4} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Key x={40} y={90} fill={INK3} size={9}>
+        TEN WEB LINKS
+      </Key>
+      {Array.from({ length: 5 }, (_, i) => {
+        const y = 104 + i * 28;
+        return (
+          <g key={i}>
+            <Key x={40} y={y + 8} fill={INK3} size={9}>
+              {`${i + 1}.`}
+            </Key>
+            <line x1={56} y1={y + 2} x2={122} y2={y + 2} stroke={INK} strokeWidth={1.75} strokeLinecap="round" />
+            <line x1={56} y1={y + 9} x2={108} y2={y + 9} stroke={INK3} strokeWidth={1} strokeLinecap="round" />
+            <Key x={136} y={y + 8} fill={INK3} size={9}>
+              {`${i + 6}.`}
+            </Key>
+            <line x1={154} y1={y + 2} x2={220} y2={y + 2} stroke={INK} strokeWidth={1.75} strokeLinecap="round" />
+            <line x1={154} y1={y + 9} x2={206} y2={y + 9} stroke={INK3} strokeWidth={1} strokeLinecap="round" />
+          </g>
+        );
+      })}
+      {/* Outbound clicks to external websites */}
+      {[96, 152, 208].map((y, i) => (
+        <g key={y}>
+          <Arrow3 x1={242} y1={y + 12} x2={278} y2={y + 12} tone={SIGNAL} width={1.35} size={5} />
+          <Browser x={284} y={y - 6} w={76} h={42} tone={INK} body={i === 0} />
+        </g>
+      ))}
+      <Key x={194} y={280} anchor="middle" fill={INK3} size={9.5}>
+        USER CLICKS OUT TO INDIVIDUAL WEBSITES
+      </Key>
+
+      {/* Divider */}
+      <line x1={396} y1={16} x2={396} y2={282} stroke={RULE2} strokeWidth={1} />
+
+      {/* Right panel: Conversational AI search */}
+      <Key x={424} y={24} fill={COUNTER} size={10.5}>
+        CONVERSATIONAL AI SEARCH (GEO)
+      </Key>
+      <rect x={424} y={38} width={236} height={24} rx={12} fill={PAPER2} stroke={COUNTER} strokeWidth={1.5} />
+      <Key x={438} y={54} fill={INK} size={9}>
+        QUESTION IN CHAT INTERFACE
+      </Key>
+
+      {/* Chat synthesis container */}
+      <rect x={424} y={72} width={236} height={186} rx={4} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <Key x={438} y={92} fill={COUNTER} size={9.5}>
+        SYNTHESIZED AI ANSWER
+      </Key>
+      <Lines x={438} y={104} w={204} n={3} gap={8} tone={INK} width={1.35} />
+
+      <Key x={438} y={150} fill={COUNTER} size={9.5}>
+        PRODUCT SHORTLIST
+      </Key>
+      {[0, 1].map((i) => {
+        const y = 160 + i * 42;
+        return (
+          <g key={i}>
+            <rect x={438} y={y} width={208} height={34} rx={3} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
+            <Key x={448} y={y + 15} fill={COUNTER} size={9.5}>
+              {`#${i + 1}`}
+            </Key>
+            <line x1={468} y1={y + 12} x2={580} y2={y + 12} stroke={INK} strokeWidth={1.75} strokeLinecap="round" />
+            <line x1={468} y1={y + 22} x2={544} y2={y + 22} stroke={INK3} strokeWidth={1.1} strokeLinecap="round" />
+          </g>
+        );
+      })}
+
+      {/* Cited sources read by AI */}
+      {[86, 146, 206].map((y) => (
+        <g key={y}>
+          <rect x={706} y={y} width={66} height={36} rx={3} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
+          <Lines x={714} y={y + 11} w={48} n={2} gap={8} tone={INK3} width={1} />
+          <Arrow3 x1={700} y1={y + 18} x2={666} y2={y + 18} tone={COUNTER} width={1.35} size={5} />
+        </g>
+      ))}
+      <Key x={739} y={74} anchor="middle" fill={INK3} size={8.5}>
+        CITED SOURCES
+      </Key>
+      <Key x={598} y={280} anchor="middle" fill={COUNTER} size={9.5}>
+        ZERO-CLICK ANSWER INSIDE CHAT
+      </Key>
+    </Frame>
+  );
+}
+
+/** Experimental comparison showing AI shopping agents favoring top-ranked list positions (Wadi & Ma, 2026a) and selecting a paid listing less often when labeled "Sponsored" than "Promoted" (Wadi & Ma, 2026c). */
+export function AgentRankAndLabels() {
+  // Wadi & Ma (2026a) decile choice shares (Sonnet quadratic LPM across 100-item randomized list)
+  const deciles = [0.39, 0.21, 0.08, 0.01, 0.0, 0.0, 0.0, 0.02, 0.11, 0.18];
+  const baseL = 232;
+  const maxH = 152;
+
+  // Wadi & Ma (2026c) Study 2 Table 14 paid hotel selection rates (%)
+  const labels = [
+    { name: "LABELED PROMOTED", traveler: 34.6, platform: 74.2, tone: SIGNAL },
+    { name: "LABELED SPONSORED", traveler: 3.6, platform: 21.2, tone: COUNTER },
+  ];
+  const baseR = 232;
+  const scaleR = 1.65;
+
+  return (
+    <Frame
+      width={800}
+      height={296}
+      label="Experimental comparison showing AI shopping agents favoring top-ranked list positions (Wadi & Ma, 2026a) and selecting a paid listing less often when labeled Sponsored than when labeled Promoted (Wadi & Ma, 2026c)."
+    >
+      {/* Left panel: List position effects (Wadi & Ma, 2026a) */}
+      <Key x={28} y={24} fill={INK} size={10.5}>
+        AI AGENT CHOICE SHARE BY LIST POSITION
+      </Key>
+      <Key x={28} y={40} fill={INK3} size={9}>
+        WADI AND MA (2026A) | 100 IDENTICAL ITEMS IN RANDOM ORDER
+      </Key>
+
+      <line x1={48} y1={68} x2={48} y2={baseL} stroke={INK} strokeWidth={1.25} />
+      <line x1={48} y1={baseL} x2={372} y2={baseL} stroke={INK} strokeWidth={1.25} />
+
+      {/* 10% uniform benchmark */}
+      <line
+        x1={48}
+        y1={r2(baseL - 0.1 * (maxH / 0.4))}
+        x2={372}
+        y2={r2(baseL - 0.1 * (maxH / 0.4))}
+        stroke={INK3}
+        strokeWidth={1}
+        strokeDasharray="4 4"
+      />
+      <Key x={370} y={r2(baseL - 0.1 * (maxH / 0.4) - 6)} anchor="end" fill={INK3} size={8.5}>
+        10% IF POSITION DID NOT MATTER
+      </Key>
+
+      {deciles.map((v, i) => {
+        const bw = 24;
+        const x = 58 + i * 31;
+        const h = r2(Math.max(2, (v / 0.4) * maxH));
+        const top = i === 0;
+        return (
+          <g key={i}>
+            <rect
+              x={x}
+              y={r2(baseL - h)}
+              width={bw}
+              height={h}
+              fill={top ? SIGNAL : PAPER2}
+              stroke={top ? SIGNAL : INK}
+              strokeWidth={1.25}
+            />
+            {top ? (
+              <Key x={x + bw / 2} y={r2(baseL - h - 6)} anchor="middle" fill={SIGNAL} size={9.5}>
+                39%
+              </Key>
+            ) : null}
+          </g>
+        );
+      })}
+      <Key x={70} y={baseL + 16} anchor="middle" fill={SIGNAL} size={9}>
+        RANKS 1 TO 10
+      </Key>
+      <Key x={349} y={baseL + 16} anchor="middle" fill={INK3} size={9}>
+        91 TO 100
+      </Key>
+      <Key x={210} y={276} anchor="middle" fill={INK3} size={9.5}>
+        TOP LIST POSITIONS CAPTURE DISPROPORTIONATE AGENT SELECTION
+      </Key>
+
+      {/* Center divider */}
+      <line x1={400} y1={16} x2={400} y2={282} stroke={RULE2} strokeWidth={1} />
+
+      {/* Right panel: Disclosure label wording (Wadi & Ma, 2026c) */}
+      <Key x={428} y={24} fill={INK} size={10.5}>
+        PAID LISTING SELECTION BY DISCLOSURE LABEL
+      </Key>
+      <Key x={428} y={40} fill={INK3} size={9}>
+        WADI AND MA (2026C) | IDENTICAL PAID LISTING
+      </Key>
+
+      <line x1={436} y1={baseR} x2={772} y2={baseR} stroke={INK} strokeWidth={1.25} />
+
+      {labels.map((g, i) => {
+        const cx = 520 + i * 172;
+        const bars = [
+          { who: "TRAVELER AGENT", v: g.traveler, fill: g.tone, x: cx - 34 },
+          { who: "PLATFORM AGENT", v: g.platform, fill: PAPER2, x: cx + 34 },
+        ];
+        return (
+          <g key={g.name}>
+            <Key x={cx} y={68} anchor="middle" fill={g.tone} size={9.5}>
+              {g.name}
+            </Key>
+            {bars.map((b) => {
+              const h = r2(b.v * scaleR);
+              return (
+                <g key={b.who}>
+                  <rect
+                    x={b.x - 22}
+                    y={r2(baseR - h)}
+                    width={44}
+                    height={h}
+                    fill={b.fill}
+                    stroke={g.tone}
+                    strokeWidth={1.5}
+                  />
+                  <Key x={b.x} y={r2(baseR - h - 6)} anchor="middle" fill={INK} size={9.5}>
+                    {`${b.v}%`}
+                  </Key>
+                  <Key x={b.x} y={baseR + 16} anchor="middle" fill={INK3} size={8}>
+                    {b.who}
+                  </Key>
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+      <Key x={604} y={276} anchor="middle" fill={COUNTER} size={9.5}>
+        AGENTS SELECT PAID LISTINGS LESS OFTEN WHEN LABELED SPONSORED
+      </Key>
+    </Frame>
   );
 }

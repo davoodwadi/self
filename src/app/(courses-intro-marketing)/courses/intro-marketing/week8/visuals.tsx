@@ -30,6 +30,7 @@ import {
   INK,
   INK3,
   Key,
+  Note,
   PAPER,
   PAPER3,
   r2,
@@ -40,6 +41,7 @@ import {
 } from "../_visuals/kit";
 import {
   Arrow1,
+  Chip2,
   Coins2,
   Company1,
   Eye1,
@@ -67,6 +69,73 @@ function Bell({ x, y, tone = INK }: { x: number; y: number; tone?: string }) {
       <rect x={x - 24} y={y - 6} width={48} height={6} fill={tone} />
       <path d={`M${x} ${y - 24} V${y - 30} M${x - 5} ${y - 30} H${x + 5}`} stroke={tone} strokeWidth={1.75} />
     </g>
+  );
+}
+
+/* ==========================================================================
+   0a. PRICING CORRIDOR: floor, ceiling, and internal/external factors
+   ========================================================================== */
+
+export function PricingCorridor() {
+  const factors = [
+    { y: 90, label: "COMPETITORS' STRATEGIES AND PRICES" },
+    { y: 134, label: "OVERALL MARKETING STRATEGY AND MIX" },
+    { y: 178, label: "NATURE OF THE MARKET AND DEMAND" },
+  ];
+  return (
+    <Frame
+      height={268}
+      label="Pricing corridor bounded at the top by customer perceptions of value as the price ceiling, bounded at the bottom by product costs as the price floor, and shaped in between by competitors' strategies and prices, the overall marketing strategy and mix, and the nature of the market and demand."
+    >
+      {/* Price ceiling band */}
+      <rect x={24} y={18} width={752} height={38} fill={COUNTER} />
+      <Key x={44} y={41} fill={PAPER} size={11}>
+        PRICE CEILING: CUSTOMER PERCEPTIONS OF VALUE
+      </Key>
+      <Key x={756} y={41} anchor="end" fill={PAPER} size={10}>
+        NO DEMAND ABOVE THIS PRICE
+      </Key>
+
+      {/* Corridor zone */}
+      <rect x={24} y={56} width={752} height={156} fill={PAPER3} stroke={RULE2} strokeWidth={1} />
+
+      {/* Internal and external factors inside the corridor */}
+      {factors.map((f) => (
+        <g key={f.label}>
+          <rect x={48} y={f.y - 16} width={356} height={32} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+          <Key x={64} y={f.y + 4} fill={INK} size={10.5}>
+            {f.label}
+          </Key>
+          <line x1={404} y1={f.y} x2={476} y2={f.y} stroke={INK} strokeWidth={1.25} />
+        </g>
+      ))}
+      <line x1={476} y1={90} x2={476} y2={178} stroke={INK} strokeWidth={1.25} />
+      <Arrow1 x1={476} y1={134} x2={534} y2={134} tone={INK} width={1.5} />
+
+      {/* Vertical corridor span above and below the price tag */}
+      <line x1={612} y1={66} x2={612} y2={102} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="4 3" />
+      <path d={headAlong1(612, 62, 0, -1, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <line x1={612} y1={166} x2={612} y2={202} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="4 3" />
+      <path d={headAlong1(612, 206, 0, 1, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* Selected price in the corridor */}
+      <Tag1 x={612} y={134} w={136} h={52} tone={SIGNAL} fill={PAPER} label="$$" size={14} width={2} />
+      <Key x={696} y={96} fill={SIGNAL} size={11}>
+        Pricing
+      </Key>
+      <Key x={696} y={112} fill={SIGNAL} size={11}>
+        corridor
+      </Key>
+
+      {/* Price floor band */}
+      <rect x={24} y={212} width={752} height={38} fill={INK} />
+      <Key x={44} y={235} fill={PAPER} size={11}>
+        PRICE FLOOR: PRODUCT COSTS
+      </Key>
+      <Key x={756} y={235} anchor="end" fill={PAPER} size={10}>
+        NO PROFITS BELOW THIS PRICE
+      </Key>
+    </Frame>
   );
 }
 
@@ -601,6 +670,119 @@ export function MarketStructures() {
    14. ELASTICITY: the same price change, two demand responses (400)
    ========================================================================== */
 
+export function PriceElasticityComparison() {
+  return (
+    <Frame
+      height={260}
+      label="Comparison of price-inelastic demand on the left, where a price rise from P1 to P2 causes only a small quantity change from Q1 to Q2, and price-elastic demand on the right, where the same price rise from P1 to P2 causes a large quantity drop from Q1 to Q2."
+    >
+      {/* Left panel: Price-inelastic demand */}
+      <Key x={92} y={28} fill={COUNTER} size={11}>
+        PRICE-INELASTIC DEMAND
+      </Key>
+      <rect x={92} y={96} width={276} height={50} fill={SIGNAL_TINT} />
+      <line x1={92} y1={48} x2={92} y2={200} stroke={INK3} strokeWidth={1.25} />
+      <line x1={92} y1={200} x2={372} y2={200} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(92, 46, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(374, 200, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <Key x={102} y={56} fill={INK3} size={9.5}>
+        PRICE
+      </Key>
+      <Key x={368} y={190} anchor="end" fill={INK3} size={9.5}>
+        QUANTITY
+      </Key>
+
+      {/* Price rise annotation (left) */}
+      <Key x={82} y={150} anchor="end" fill={INK3} size={9.5}>
+        P1
+      </Key>
+      <Key x={82} y={100} anchor="end" fill={SIGNAL} size={9.5}>
+        P2
+      </Key>
+      <Arrow1 x1={54} y1={146} x2={54} y2={96} tone={SIGNAL} width={1.75} />
+      <Key x={46} y={118} anchor="end" fill={SIGNAL} size={9}>
+        Price
+      </Key>
+      <Key x={46} y={131} anchor="end" fill={SIGNAL} size={9}>
+        rise
+      </Key>
+
+      {/* Steep inelastic curve and projections */}
+      <line x1={92} y1={96} x2={195} y2={96} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={92} y1={146} x2={210} y2={146} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={195} y1={96} x2={195} y2={200} stroke={COUNTER} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={210} y1={146} x2={210} y2={200} stroke={COUNTER} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={186} y1={66} x2={222} y2={186} stroke={COUNTER} strokeWidth={2.75} />
+      <circle cx={195} cy={96} r={4.5} fill={SIGNAL} />
+      <circle cx={210} cy={146} r={4.5} fill={COUNTER} />
+      <line x1={195} y1={200} x2={210} y2={200} stroke={COUNTER} strokeWidth={6} />
+      <Key x={191} y={218} anchor="end" fill={COUNTER} size={9.5}>
+        Q2
+      </Key>
+      <Key x={214} y={218} fill={INK3} size={9.5}>
+        Q1
+      </Key>
+      <Key x={230} y={244} anchor="middle" fill={COUNTER} size={10}>
+        SMALL QUANTITY CHANGE (HARDLY CHANGES)
+      </Key>
+
+      {/* Center divider */}
+      <line x1={400} y1={20} x2={400} y2={248} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
+
+      {/* Right panel: Price-elastic demand */}
+      <Key x={492} y={28} fill={SIGNAL} size={11}>
+        PRICE-ELASTIC DEMAND
+      </Key>
+      <rect x={492} y={96} width={276} height={50} fill={SIGNAL_TINT} />
+      <line x1={492} y1={48} x2={492} y2={200} stroke={INK3} strokeWidth={1.25} />
+      <line x1={492} y1={200} x2={772} y2={200} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(492, 46, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(774, 200, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <Key x={502} y={56} fill={INK3} size={9.5}>
+        PRICE
+      </Key>
+      <Key x={768} y={190} anchor="end" fill={INK3} size={9.5}>
+        QUANTITY
+      </Key>
+
+      {/* Price rise annotation (right) */}
+      <Key x={482} y={150} anchor="end" fill={INK3} size={9.5}>
+        P1
+      </Key>
+      <Key x={482} y={100} anchor="end" fill={SIGNAL} size={9.5}>
+        P2
+      </Key>
+      <Arrow1 x1={454} y1={146} x2={454} y2={96} tone={SIGNAL} width={1.75} />
+      <Key x={446} y={118} anchor="end" fill={SIGNAL} size={9}>
+        Price
+      </Key>
+      <Key x={446} y={131} anchor="end" fill={SIGNAL} size={9}>
+        rise
+      </Key>
+
+      {/* Flatter elastic curve and projections */}
+      <line x1={492} y1={96} x2={560} y2={96} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={492} y1={146} x2={700} y2={146} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={560} y1={96} x2={560} y2={200} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={700} y1={146} x2={700} y2={200} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={518} y1={81} x2={742} y2={161} stroke={SIGNAL} strokeWidth={2.75} />
+      <circle cx={560} cy={96} r={4.5} fill={SIGNAL} />
+      <circle cx={700} cy={146} r={4.5} fill={INK} />
+      <line x1={560} y1={200} x2={700} y2={200} stroke={SIGNAL} strokeWidth={6} />
+      <Arrow1 x1={682} y1={216} x2={578} y2={216} tone={SIGNAL} width={1.5} />
+      <Key x={560} y={220} anchor="middle" fill={SIGNAL} size={9.5}>
+        Q2
+      </Key>
+      <Key x={700} y={220} anchor="middle" fill={INK3} size={9.5}>
+        Q1
+      </Key>
+      <Key x={630} y={244} anchor="middle" fill={SIGNAL} size={10}>
+        LARGE QUANTITY DROP (CHANGES GREATLY)
+      </Key>
+    </Frame>
+  );
+}
+
 export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; title?: string }) {
   const inelastic = kind === "inelastic";
   // Price moves from 90 to 120. Inelastic: steep line (232,58)→(268,202),
@@ -797,40 +979,87 @@ export function MixTogether() {
    ========================================================================== */
 
 export function ReverseChains() {
-  const valueRow = ["CUSTOMERS", "VALUE", "PRICE", "COSTS", "PRODUCT"];
-  const costRow = [...valueRow].reverse();
-  const box = (i: number) => 40 + i * 154;
-  return (
-    <Frame height={226} label="Two chains of five boxes. Customer value-based pricing: customers, value, price, costs, product, with customers and value lit as the first step. Cost-based pricing runs the same chain in reverse: product, costs, price, value, customers.">
-      <Key x={40} y={26} fill={SIGNAL} size={10.5}>
-        CUSTOMER VALUE-BASED PRICING
-      </Key>
-      {valueRow.map((t, i) => (
-        <g key={`v-${t}`}>
-          <rect x={box(i)} y={40} width={118} height={48} fill={i < 2 ? SIGNAL : PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-          <Key x={box(i) + 59} y={68} anchor="middle" fill={i < 2 ? PAPER : INK} size={9.5}>
-            {t}
-          </Key>
-          {i < 4 ? <Arrow1 x1={box(i) + 122} y1={64} x2={box(i + 1) - 4} y2={64} tone={SIGNAL} /> : null}
-        </g>
-      ))}
-      <path d="M40 96 V102 H312 V96" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={176} y={118} anchor="middle" fill={SIGNAL} size={9}>
-        FIRST
-      </Key>
+  const costRow = ["Product", "Cost", "Price", "Value", "Customers"] as const;
+  const valueRow = ["Customers", "Value", "Price", "Cost", "Product"] as const;
+  const box = (i: number) => 32 + i * 154;
 
-      <Key x={40} y={150} fill={INK3} size={10.5}>
-        COST-BASED PRICING
+  const renderGlyph = (step: (typeof costRow)[number], cx: number, top: number, tone: string) => {
+    switch (step) {
+      case "Product":
+        return <Pack3 x={cx} y={top + 40} w={26} h={26} tone={tone} fill={PAPER} />;
+      case "Cost":
+        return <Coins2 x={cx} y={top + 40} n={3} tone={tone} fill={PAPER} w={24} />;
+      case "Price":
+        return <Tag1 x={cx} y={top + 27} w={44} h={20} tone={tone} fill={PAPER} label="$$" size={9} />;
+      case "Value":
+        return <Star1 x={cx} y={top + 27} k={0.65} fill={tone} />;
+      case "Customers":
+        return <Person3 x={cx} y={top + 40} k={0.78} stroke={tone} fill={PAPER} />;
+    }
+  };
+
+  return (
+    <Frame
+      height={248}
+      label="Contrasting sequences of cost-based pricing (Product to Cost to Price to Value to Customers) and customer value-based pricing (Customers to Value to Price to Cost to Product)."
+    >
+      {/* Row 1: Cost-based pricing */}
+      <Key x={32} y={24} fill={COUNTER} size={11}>
+        COST-BASED PRICING (STARTS WITH THE PRODUCT AND FACTORY COST)
       </Key>
-      {costRow.map((t, i) => (
-        <g key={`c-${t}`}>
-          <rect x={box(i)} y={164} width={118} height={48} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
-          <Key x={box(i) + 59} y={192} anchor="middle" fill={INK3} size={9.5}>
-            {t}
-          </Key>
-          {i < 4 ? <Arrow1 x1={box(i) + 122} y1={188} x2={box(i + 1) - 4} y2={188} tone={INK3} /> : null}
-        </g>
-      ))}
+      {costRow.map((t, i) => {
+        const x = box(i);
+        const cx = x + 60;
+        const first = i < 2;
+        const tone = first ? COUNTER : INK3;
+        return (
+          <g key={`c-${t}`}>
+            <rect
+              x={x}
+              y={36}
+              width={120}
+              height={72}
+              fill={first ? COUNTER_TINT : PAPER3}
+              stroke={tone}
+              strokeWidth={first ? 1.75 : 1.25}
+            />
+            {renderGlyph(t, cx, 36, tone)}
+            <Key x={cx} y={96} anchor="middle" fill={ first ? COUNTER : INK } size={10.5}>
+              {t}
+            </Key>
+            {i < 4 ? <Arrow1 x1={x + 124} y1={72} x2={box(i + 1) - 4} y2={72} tone={COUNTER} /> : null}
+          </g>
+        );
+      })}
+
+      {/* Row 2: Customer value-based pricing */}
+      <Key x={32} y={146} fill={SIGNAL} size={11}>
+        CUSTOMER VALUE-BASED PRICING (STARTS WITH BUYERS&apos; PERCEPTIONS OF VALUE)
+      </Key>
+      {valueRow.map((t, i) => {
+        const x = box(i);
+        const cx = x + 60;
+        const first = i < 2;
+        const tone = first ? SIGNAL : INK;
+        return (
+          <g key={`v-${t}`}>
+            <rect
+              x={x}
+              y={158}
+              width={120}
+              height={72}
+              fill={first ? SIGNAL_TINT : PAPER}
+              stroke={tone}
+              strokeWidth={first ? 1.75 : 1.25}
+            />
+            {renderGlyph(t, cx, 158, tone)}
+            <Key x={cx} y={218} anchor="middle" fill={tone} size={10.5}>
+              {t}
+            </Key>
+            {i < 4 ? <Arrow1 x1={x + 124} y1={194} x2={box(i + 1) - 4} y2={194} tone={SIGNAL} /> : null}
+          </g>
+        );
+      })}
     </Frame>
   );
 }
@@ -2109,6 +2338,115 @@ export function PodDilemma() {
       </Key>
       <Key x={470} y={262} fill={COUNTER} size={9.5}>
         PREMIUM BRAND IMAGE
+      </Key>
+    </Frame>
+  );
+}
+
+export function AgentCoffeeComparison() {
+  return (
+    <Frame
+      height={264}
+      label="Coffee purchase experiment (Wadi and Ma, 2026b) comparing an AI shopping agent under a vague goal and lookup cost, which skips the detail page and picks the $4.99 10-ounce bag ($0.499 per ounce), against an AI shopping agent under a specific cost-minimization goal, which inspects the package weight and chooses the $5.00 11-ounce bag ($0.455 per ounce)."
+    >
+      {/* Left panel: Vague goal + lookup cost */}
+      <rect x={20} y={20} width={224} height={224} fill={PAPER3} stroke={COUNTER} strokeWidth={1.5} />
+      <Key x={36} y={44} fill={COUNTER} size={10.5}>
+        Vague goal + lookup cost
+      </Key>
+      <Chip2 x={56} y={88} s={34} tone={COUNTER} fill={PAPER} />
+      <rect x={86} y={64} width={142} height={46} rx={6} fill={PAPER} stroke={RULE2} strokeWidth={1} />
+      <Note x={98} y={84} size={11.5} fill={INK}>
+        &ldquo;Buy me a bag
+      </Note>
+      <Note x={98} y={100} size={11.5} fill={INK}>
+        of coffee&rdquo;
+      </Note>
+      <line x1={36} y1={128} x2={228} y2={128} stroke={RULE2} strokeWidth={1} />
+      <Key x={36} y={150} fill={COUNTER} size={9.5}>
+        Skips detail page (lookup cost)
+      </Key>
+      <Key x={36} y={168} fill={INK3} size={9.5}>
+        Compares sticker price only
+      </Key>
+      <rect x={36} y={186} width={192} height={42} fill={COUNTER} />
+      <Key x={132} y={204} anchor="middle" fill={PAPER} size={9.5}>
+        Picks $4.99 bag (10 oz)
+      </Key>
+      <Key x={132} y={219} anchor="middle" fill={PAPER} size={9}>
+        Higher unit cost: $0.499/oz
+      </Key>
+
+      {/* Arrow from Left Agent to Option A */}
+      <Arrow1 x1={244} y1={72} x2={276} y2={72} tone={COUNTER} width={1.75} />
+
+      {/* Center top: Option A ($4.99, 10 oz) */}
+      <rect x={280} y={20} width={240} height={104} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+      <Pack3 x={316} y={96} w={40} h={50} tone={COUNTER} fill={COUNTER_TINT} />
+      <Key x={316} y={80} anchor="middle" fill={COUNTER} size={8.5}>
+        10 oz
+      </Key>
+      <Key x={352} y={44} fill={COUNTER} size={10.5}>
+        Option A: $4.99 sticker
+      </Key>
+      <Note x={352} y={66} size={11.5} fill={INK}>
+        Detail page: 10 ounces
+      </Note>
+      <Key x={352} y={88} fill={COUNTER} size={10}>
+        $0.499 per ounce
+      </Key>
+      <Key x={352} y={106} fill={INK3} size={9}>
+        Higher cost per ounce
+      </Key>
+
+      {/* Center bottom: Option B ($5.00, 11 oz) */}
+      <rect x={280} y={140} width={240} height={104} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
+      <Pack3 x={316} y={220} w={46} h={58} tone={SIGNAL} fill={PAPER} />
+      <Key x={316} y={200} anchor="middle" fill={SIGNAL} size={9}>
+        11 oz
+      </Key>
+      <Key x={352} y={164} fill={SIGNAL} size={10.5}>
+        Option B: $5.00 sticker
+      </Key>
+      <Note x={352} y={186} size={11.5} fill={INK}>
+        Detail page: 11 ounces
+      </Note>
+      <Key x={352} y={208} fill={SIGNAL} size={10}>
+        $0.455 per ounce
+      </Key>
+      <Key x={352} y={226} fill={SIGNAL} size={9}>
+        Lower cost per ounce (best value)
+      </Key>
+
+      {/* Arrow from Right Agent to Option B */}
+      <Arrow1 x1={556} y1={192} x2={524} y2={192} tone={SIGNAL} width={1.75} />
+
+      {/* Right panel: Specific cost-minimization goal */}
+      <rect x={556} y={20} width={224} height={224} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
+      <Key x={572} y={44} fill={SIGNAL} size={10.5}>
+        Specific cost goal
+      </Key>
+      <Chip2 x={592} y={88} s={34} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <rect x={622} y={64} width={142} height={46} rx={6} fill={PAPER3} stroke={SIGNAL} strokeWidth={1} />
+      <Note x={634} y={84} size={11.5} fill={INK}>
+        &ldquo;Minimize cost
+      </Note>
+      <Note x={634} y={100} size={11.5} fill={INK}>
+        per ounce&rdquo;
+      </Note>
+      <line x1={572} y1={128} x2={764} y2={128} stroke={RULE2} strokeWidth={1} />
+      <Key x={572} y={150} fill={SIGNAL} size={9.5}>
+        Inspects detail page weight
+      </Key>
+      <Key x={572} y={168} fill={INK} size={9.5}>
+        Calculates unit price ($/oz)
+      </Key>
+      <rect x={572} y={186} width={192} height={42} fill={SIGNAL} />
+      <Key x={668} y={204} anchor="middle" fill={PAPER} size={9.5}>
+        Picks $5.00 bag (11 oz)
+      </Key>
+      <Key x={668} y={219} anchor="middle" fill={PAPER} size={9}>
+        Lower unit cost: $0.455/oz
       </Key>
     </Frame>
   );

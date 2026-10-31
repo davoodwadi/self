@@ -1,207 +1,163 @@
 [
   {
     "type": "sort",
-    "slide_id": "the-paradigm-of-price",
-    "prompt": "A café owner is planning next month. Does each decision set a price, which produces revenue, or is it another element of the mix, which represents a cost?",
+    "slide_id": "external-factors-market-structure-and-price-elasticity-of-demand",
+    "prompt": "Sort each product scenario into price-inelastic demand or price-elastic demand based on how buyers respond to a price change.",
     "bins": [
-      { "id": "price", "label": "Price: produces revenue" },
-      { "id": "cost", "label": "Another element: a cost" }
+      { "id": "inelastic", "label": "Price-inelastic demand" },
+      { "id": "elastic", "label": "Price-elastic demand" }
     ],
     "cards": [
       {
-        "id": "latte",
-        "text": "Setting the price of a large latte at $5.25",
-        "bin": "price",
-        "explanation": "This is a price. Price is the only element in the marketing mix that produces revenue."
+        "id": "insulin",
+        "text": "A pharmacy raises the price of a prescription inhaler by 8 percent, and monthly unit sales barely change.",
+        "bin": "inelastic",
+        "explanation": "Necessities with few substitutes exhibit inelastic demand because buyers continue purchasing almost the same quantity."
       },
       {
-        "id": "oat",
-        "text": "Adding an oat-milk option to the menu",
-        "bin": "cost",
-        "explanation": "A new menu option is part of the product, and it represents a cost to the café."
+        "id": "soda",
+        "text": "One brand of sparkling water raises its six-pack price by 15 percent while three rival brands on the same shelf keep their prices unchanged, causing unit sales to drop sharply.",
+        "bin": "elastic",
+        "explanation": "When close substitutes sit right beside the product, a small price increase causes a large drop in quantity demanded."
       },
       {
-        "id": "delivery",
-        "text": "Signing up with a delivery app",
-        "bin": "cost",
-        "explanation": "Delivery is a channel decision. It represents a cost, not revenue."
+        "id": "bridge-toll",
+        "text": "A commuter bridge increases its morning rush-hour toll by 50 cents, and weekday traffic volume stays at 98 percent of its previous level.",
+        "bin": "inelastic",
+        "explanation": "Commuters have few immediate alternatives during rush hour, so quantity demanded hardly changes."
       },
       {
-        "id": "croissant",
-        "text": "Raising the price of croissants from $3.50 to $3.75",
-        "bin": "price",
-        "explanation": "A price change produces revenue, and it can be made quickly, by the next morning."
+        "id": "streaming-tier",
+        "text": "A casual mobile game raises the price of decorative cosmetic skins by 25 percent, and unit purchases fall by 45 percent.",
+        "bin": "elastic",
+        "explanation": "Percentage change in quantity demanded exceeds the percentage change in price, indicating elastic demand."
       },
       {
-        "id": "instagram",
-        "text": "Paying for sponsored Instagram posts",
-        "bin": "cost",
-        "explanation": "This is promotion. All other elements represent costs to the organization."
+        "id": "salt",
+        "text": "A grocery store raises the price of table salt from $1.20 to $1.35 a box, and households buy the same number of boxes.",
+        "bin": "inelastic",
+        "explanation": "Household staples that represent a tiny share of the budget and have no close substitutes show inelastic demand."
       },
       {
-        "id": "shot",
-        "text": "Charging $1 for an extra espresso shot",
-        "bin": "price",
-        "explanation": "It sets what customers pay, so it is price, the element that produces revenue."
+        "id": "airline-leisure",
+        "text": "An airline cuts weekend leisure fares to a beach destination by 20 percent, and bookings more than double.",
+        "bin": "elastic",
+        "explanation": "Discretionary leisure travel responds strongly to price cuts, so demand is elastic."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "customer-value-based-pricing-good-value-and-value-added-strategies",
+    "prompt": "Identify whether each business is using good-value pricing, value-added pricing, or a cost-based pricing sequence.",
+    "options": [
+      { "id": "good-value", "label": "Good-value pricing" },
+      { "id": "value-added", "label": "Value-added pricing" },
+      { "id": "cost-based", "label": "Cost-based sequence" }
+    ],
+    "cases": [
+      {
+        "id": "edlp-grocer",
+        "text": "A neighborhood supermarket replaces weekly coupon flyers and flash markdowns with consistent everyday low prices across its staple aisles.",
+        "answer": "good-value",
+        "explanation": "Everyday low pricing (EDLP) is a form of good-value pricing that offers quality and service at a fair everyday price."
       },
       {
-        "id": "cups",
-        "text": "Printing new cups with the café's logo",
-        "bin": "cost",
-        "explanation": "New cups are part of the product the café offers. They cost money to make."
+        "id": "boutique-hotel",
+        "text": "An independent hotel adds complimentary evening tastings, pillow-menu customization, and late checkout to support a room rate 35 percent above nearby chain hotels.",
+        "answer": "value-added",
+        "explanation": "Attaching differentiating features and services to support a higher price rather than cutting prices is value-added pricing."
+      },
+      {
+        "id": "factory-lamp",
+        "text": "An appliance maker engineers a desk lamp, totals the factory and freight expenses, sets a price from that ledger, and then asks sales reps to convince buyers the lamp is worth it.",
+        "answer": "cost-based",
+        "explanation": "Starting with the product and its costs before trying to convince buyers of its value follows the cost-based sequence."
+      },
+      {
+        "id": "cafe-express",
+        "text": "A well-known sit-down restaurant launches a counter-service express menu with smaller portions at a lower price point.",
+        "answer": "good-value",
+        "explanation": "Introducing a less-expensive version of an established brand-name offering is a classic good-value pricing strategy."
+      },
+      {
+        "id": "car-wash",
+        "text": "An auto detailing studio bundles ceramic paint protection, interior steam sanitization, and mobile pickup so it can charge premium rates instead of matching local drive-through wash prices.",
+        "answer": "value-added",
+        "explanation": "The studio differentiates its offer with added services to justify charging higher prices."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "cost-based-pricing-cost-plus-and-break-even-analysis",
+    "question_text": "A kitchenware firm has fixed costs of $180,000, a variable cost of $20 per blender, and a candidate selling price of $50 per blender. What is the break-even volume?",
+    "hint": "Break-even volume equals Fixed Costs divided by (Price minus Variable Cost per unit).",
+    "correct_answer_citation": "Week 8: Cost-Based Pricing: Cost-Plus and Break-Even Analysis",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "3,600 blenders",
+        "option_explanation": "3,600 divides fixed costs ($180,000) by the full $50 price, forgetting to subtract the $20 variable cost per unit."
+      },
+      {
+        "option_text": "2,571 blenders",
+        "option_explanation": "2,571 adds price and variable cost instead of subtracting variable cost from price."
+      },
+      {
+        "option_text": "6,000 blenders",
+        "option_explanation": "Correct. Each blender contributes $50 minus $20, or $30, toward fixed costs, and $180,000 divided by $30 equals 6,000 units."
+      },
+      {
+        "option_text": "9,000 blenders",
+        "option_explanation": "9,000 divides fixed costs by the $20 variable cost rather than by the $30 unit contribution margin."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "external-factors-the-market-and-demand",
-    "prompt": "A small roaster in Verdun is pricing a bag of coffee. Does each fact help set the lower limit on price, or the upper limit?",
+    "slide_id": "new-product-pricing-market-skimming-versus-market-penetration",
+    "prompt": "Sort each launch condition or action into market-skimming pricing or market-penetration pricing.",
     "bins": [
-      { "id": "floor", "label": "Lower limit: costs" },
-      { "id": "ceiling", "label": "Upper limit: the market" }
+      { "id": "skimming", "label": "Market-skimming pricing" },
+      { "id": "penetration", "label": "Market-penetration pricing" }
     ],
     "cards": [
       {
-        "id": "beans",
-        "text": "Green beans cost $9 for each bag roasted",
-        "bin": "floor",
-        "explanation": "This is a variable cost. Costs set the lower limit for price."
+        "id": "camera-flagship",
+        "text": "Launching a patented mirrorless camera at a high initial price aimed at professional photographers before lowering the price a year later.",
+        "bin": "skimming",
+        "explanation": "Setting a high initial price to skim revenue layer by layer from less price-sensitive segments is market-skimming pricing."
       },
       {
-        "id": "pay",
-        "text": "Shoppers say they would not pay more than $24 a bag",
-        "bin": "ceiling",
-        "explanation": "What buyers will pay is the market. The market sets the upper limit."
+        "id": "cloud-storage",
+        "text": "Entering a price-sensitive consumer cloud-backup market with a $1.99 monthly plan to win a large user base quickly.",
+        "bin": "penetration",
+        "explanation": "Setting a low initial price to attract a large number of buyers and capture market share quickly is market-penetration pricing."
       },
       {
-        "id": "rent",
-        "text": "Rent on the roastery is $3,000 a month",
-        "bin": "floor",
-        "explanation": "Rent is a fixed cost. Total costs must be covered, so costs set the floor."
+        "id": "barriers-high",
+        "text": "Relying on strong brand prestige and proprietary technology so competitors cannot easily enter and undercut the high initial price.",
+        "bin": "skimming",
+        "explanation": "Market skimming works only when quality and image support the high price and rivals cannot easily undercut it."
       },
       {
-        "id": "demand",
-        "text": "At $22 a bag, far fewer shoppers buy than at $18",
-        "bin": "ceiling",
-        "explanation": "This is the relationship between price and demand, which comes from the market."
+        "id": "scale-economies",
+        "text": "Pricing low at launch because unit manufacturing and distribution costs drop steeply once factory volume doubles.",
+        "bin": "penetration",
+        "explanation": "Falling production and distribution costs at higher volume are a key condition for market-penetration pricing."
       },
       {
-        "id": "roaster",
-        "text": "Paying the roaster for each hour of roasting",
-        "bin": "floor",
-        "explanation": "Labour that grows with production is a variable cost, part of the lower limit."
-      },
-      {
-        "id": "rivals",
-        "text": "Many other roasters sell similar bags nearby",
-        "bin": "ceiling",
-        "explanation": "Competitive conditions are part of the market, which limits how high the price can go."
-      }
-    ]
-  },
-  {
-    "type": "quiz",
-    "slide_id": "customer-value-based-pricing",
-    "question_text": "Before designing a new e-bike, a Montréal company asks riders what they value and what that is worth to them. It then sets a target price and designs the bike to meet it. Which approach is this?",
-    "hint": "The company started with the buyers, not with its costs.",
-    "correct_answer_citation": "Week 8: Customer Value-Based Pricing",
-    "correct_answer_index": 1,
-    "options": [
-      {
-        "option_text": "Cost-based pricing, starting from costs",
-        "option_explanation": "Cost-based pricing starts from the product and its costs. This company started with what riders value."
-      },
-      {
-        "option_text": "Customer value-based pricing",
-        "option_explanation": "Correct. The company assesses customer needs and value perceptions first, and uses them as the key to pricing."
-      },
-      {
-        "option_text": "Competition-based pricing",
-        "option_explanation": "Competition-based pricing looks at competitors' strategies, prices, costs, and offerings. This company asked riders."
-      },
-      {
-        "option_text": "Pricing for current profit maximization",
-        "option_explanation": "Current profit maximization is a marketing objective. The question asks which pricing approach the company used."
+        "id": "fewer-profitable",
+        "text": "Accepting a smaller number of early unit sales in exchange for high profit margins on every unit sold.",
+        "bin": "skimming",
+        "explanation": "Market-skimming pricing makes fewer but more profitable sales from buyers willing to pay the high initial price."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "competition-based-pricing",
-    "prompt": "Which pricing approach is each business using?",
-    "options": [
-      { "id": "value", "label": "Customer value-based" },
-      { "id": "cost", "label": "Cost-based" },
-      { "id": "competition", "label": "Competition-based" }
-    ],
-    "cases": [
-      {
-        "id": "bakery",
-        "text": "A bakery adds up flour, labour, and delivery for each cake, then adds 20% on top.",
-        "answer": "cost",
-        "explanation": "The price starts from the costs of producing, distributing, and selling, plus a return."
-      },
-      {
-        "id": "gas",
-        "text": "A gas station checks the price at the station across the street every morning and sets its own to match.",
-        "answer": "competition",
-        "explanation": "The price is set from what competitors charge."
-      },
-      {
-        "id": "theatre",
-        "text": "A theatre company asks its audience what an evening out is worth to them before it sets ticket prices.",
-        "answer": "value",
-        "explanation": "It assesses customer needs and value perceptions first, then sets the price."
-      },
-      {
-        "id": "gym",
-        "text": "A new gym in Laval compares its hours and equipment with nearby gyms, finds it offers more, and prices above them.",
-        "answer": "competition",
-        "explanation": "It compared its offer with competitors. Greater value justified a higher price."
-      },
-      {
-        "id": "chairs",
-        "text": "A furniture maker prices each chair to cover what it costs to make, ship, and sell, plus a fair return.",
-        "answer": "cost",
-        "explanation": "Costs plus a fair rate of return for effort and risk: cost-based pricing."
-      },
-      {
-        "id": "app",
-        "text": "Before building a budgeting app, a start-up asks students what features they need and what those are worth to them.",
-        "answer": "value",
-        "explanation": "Buyers' perceptions of value are the key to the price, set before the product is built."
-      }
-    ]
-  },
-  {
-    "type": "quiz",
-    "slide_id": "market-skimming-pricing",
-    "question_text": "A company plans to launch a new product with market-skimming pricing. Which situation would make that plan a poor choice?",
-    "hint": "Look at what must be true for a high price to hold.",
-    "correct_answer_citation": "Week 8: Market-Skimming Pricing",
-    "correct_answer_index": 1,
-    "options": [
-      {
-        "option_text": "Its quality and image support a high price",
-        "option_explanation": "Product quality and image must support the high price, so this helps skimming."
-      },
-      {
-        "option_text": "Rivals could easily enter and undercut it",
-        "option_explanation": "Correct. Competitors should not be able to easily enter the market and undercut the high price."
-      },
-      {
-        "option_text": "It expects fewer but more profitable sales",
-        "option_explanation": "That is what skimming is meant to produce: fewer but more profitable sales."
-      },
-      {
-        "option_text": "It will skim revenues layer by layer",
-        "option_explanation": "Skimming maximum revenues layer by layer is the definition of the strategy, not a problem with it."
-      }
-    ]
-  },
-  {
-    "type": "identify",
-    "slide_id": "captive-product-pricing",
+    "slide_id": "product-line-optional-product-and-captive-product-pricing",
     "prompt": "Which product mix pricing strategy is each company using?",
     "options": [
       { "id": "line", "label": "Product line pricing" },
@@ -211,39 +167,92 @@
     "cases": [
       {
         "id": "printer",
-        "text": "A printer maker sells its printers cheaply and earns most of its profit on ink cartridges that only fit them.",
+        "text": "A printer maker sells its inkjet printer at a low price and earns most of its margin on proprietary replacement ink cartridges.",
         "answer": "captive",
-        "explanation": "The cartridges must be used with the printer, and they carry the high markups."
+        "explanation": "Replacement cartridges must be used with the main printer, making this captive-product pricing."
       },
       {
         "id": "car",
-        "text": "A car dealer sells the base model and lets buyers add heated seats and a sunroof for extra.",
+        "text": "A laptop brand sells a base notebook and lets buyers add a protective sleeve, docking station, or extended warranty at checkout.",
         "answer": "optional",
-        "explanation": "The extras are optional products priced along with the main product."
+        "explanation": "Accessories and extended warranties sold alongside a main item are priced using optional-product pricing."
       },
       {
         "id": "hotel",
-        "text": "A hotel sells standard rooms at $150, deluxe rooms at $210, and suites at $340.",
+        "text": "A cookware maker prices its three saucepan tiers at $45, $75, and $120 based on clad-metal thickness and customer evaluations of heat control.",
         "answer": "line",
-        "explanation": "It sets the price steps between the products in one line."
+        "explanation": "Setting price steps across items in a line based on cost differences and customer feature evaluations is product line pricing."
       },
       {
         "id": "toothbrush",
-        "text": "An electric toothbrush sells for $30, and its replacement brush heads only fit that brush.",
+        "text": "A water-pitcher company prices the pitcher at $19 and sells required replacement filter cartridges in packs of three.",
         "answer": "captive",
-        "explanation": "The heads must be used with the main product, so they are captive products."
+        "explanation": "The filter cartridges are required to keep using the pitcher, so they are captive products."
       },
       {
-        "id": "pizza",
-        "text": "A pizzeria charges extra for each topping a customer adds to a cheese pizza.",
-        "answer": "optional",
-        "explanation": "It decides what is in the base price and what is offered as an option."
+        "id": "membership",
+        "text": "A climbing gym charges a fixed $25 monthly membership fee plus a $6 usage fee each time a member books a bouldering session.",
+        "answer": "captive",
+        "explanation": "Two-part pricing in services (a fixed membership fee plus a variable usage fee) is the service form of captive-product pricing."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "psychological-pricing-and-reference-prices",
+    "prompt": "Match each psychological pricing mechanism with the retail scenario that illustrates it.",
+    "term_label": "Pricing mechanism",
+    "match_label": "Retail scenario",
+    "pairs": [
+      {
+        "id": "quality-signal",
+        "term": "Price as a signal of quality",
+        "match": "A first-time wine buyer who cannot judge vintage quality picks a $38 bottle over a $12 bottle for an important dinner.",
+        "explanation": "When buyers lack the information or skill to judge quality directly, they use a higher price as a signal of higher quality."
       },
       {
-        "id": "phones",
-        "text": "A phone maker prices its three models $200 apart, based on their features and rivals' prices.",
-        "answer": "line",
-        "explanation": "Price steps based on feature evaluations and competitors' prices: product line pricing."
+        "id": "shelf-anchor",
+        "term": "Placing a standard model beside a luxury model",
+        "match": "An espresso-machine brand displays a $1,400 prosumer machine right next to its $450 home model so the $450 price feels reasonable.",
+        "explanation": "Placing a standard model next to a luxury model raises the buyer's reference price in the store."
+      },
+      {
+        "id": "past-price",
+        "term": "Reference price from remembered past prices",
+        "match": "A commuter hesitates to pay $4.50 for a cup of drip coffee because they remember paying $2.75 at the same station last year.",
+        "explanation": "Buyers carry remembered past prices in their minds and compare current prices against that internal benchmark."
+      },
+      {
+        "id": "msrp-display",
+        "term": "Manufacturer's suggested retail price comparison",
+        "match": "A luggage tag displays a legitimate manufacturer's suggested price of $240 beside the retailer's selling price of $179.",
+        "explanation": "Displaying a legitimate suggested retail price alongside the selling price provides an external reference point."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "how-ai-shopping-agents-compare-prices-and-unit-costs",
+    "question_text": "In the coffee shopping experiment by Wadi and Ma (2026b), Option A cost $4.99 for 10 ounces ($0.499 per ounce) and Option B cost $5.00 for 11 ounces ($0.455 per ounce), with package weight shown on the detailed product page. When did AI shopping agents reliably choose the better-value $5.00 bag?",
+    "hint": "Consider how lookup costs and the specificity of the consumer's prompt affected whether the agent inspected the detailed page.",
+    "correct_answer_citation": "Week 8: How AI Shopping Agents Compare Prices and Unit Costs (Wadi & Ma, 2026b)",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Whenever the consumer gave a vague prompt and inspecting the product page carried a lookup cost",
+        "option_explanation": "Under a vague goal and a lookup cost, AI agents frequently skipped checking the package weight and picked the $4.99 bag."
+      },
+      {
+        "option_text": "When given a specific cost-minimization goal that prompted them to check the package size and unit price",
+        "option_explanation": "Correct. With a specific cost-minimization goal, AI agents inspected the package weight and selected the $5.00 11-ounce bag with the lower cost per ounce."
+      },
+      {
+        "option_text": "Only when Option B lowered its sticker price below $4.99",
+        "option_explanation": "AI agents are not bound by odd-even psychological pricing once they inspect the package size and compute the unit price."
+      },
+      {
+        "option_text": "Never, because AI agents cannot divide package price by package weight",
+        "option_explanation": "AI agents can calculate exact unit prices when they inspect all product attributes."
       }
     ]
   }

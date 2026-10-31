@@ -32,6 +32,7 @@ import {
   Key,
   PAPER,
   PAPER2,
+  PAPER3,
   r2,
   RULE,
   RULE2,
@@ -41,12 +42,16 @@ import {
 import {
   Arrow2,
   Bubble1,
+  Chip2,
   Coins2,
+  CurveArrow2,
+  Factory1,
   Gift2,
   GlyphFrame,
   Mark2,
   Pack4,
   Person3,
+  Sheet,
   Store2,
   Tool,
   ToolKind,
@@ -272,20 +277,20 @@ export function MessageHub() {
       <circle cx={cx} cy={cy} r={76} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
       <Mark2 x={cx} y={cy - 16} r={16} />
       <Key x={cx} y={cy + 20} anchor="middle" fill={SIGNAL} size={10}>
-        CONSISTENT
+        Consistent
       </Key>
       <Key x={cx} y={cy + 34} anchor="middle" fill={SIGNAL} size={10}>
-        BRAND MESSAGE
+        brand message
       </Key>
       {nodes.map((n, i) => {
         const side = i === 0 ? "top" : i === 1 ? "right" : i === 4 ? "left" : "bottom";
-        const lx = side === "right" ? n.x + 40 : side === "left" ? n.x - 40 : n.x;
+        const lx = side === "right" ? n.x + 42 : side === "left" ? n.x - 40 : n.x;
         const ly = side === "top" ? n.y - 30 : side === "bottom" ? n.y + 42 : n.y + 4;
         const anchor = side === "right" ? "start" : side === "left" ? "end" : "middle";
         return (
           <g key={n.kind}>
             <Tool kind={n.kind} x={n.x} y={n.y} k={1.05} />
-            <Mark2 x={n.x + 22} y={n.y - 18} r={6} />
+            <Mark2 x={n.x + 30} y={n.y - 20} r={6} />
             <Key x={lx} y={ly} anchor={anchor} fill={INK} size={10.5}>
               {n.name}
             </Key>
@@ -2173,3 +2178,344 @@ export function GlyphBudget() {
     </GlyphFrame>
   );
 }
+
+/* ==========================================================================
+   PUSH VERSUS PULL PROMOTION STRATEGIES
+   ========================================================================== */
+
+export function PushVersusPull() {
+  return (
+    <Frame
+      height={328}
+      label="Comparison of a push promotion strategy and a pull promotion strategy across two rows. In the top row (push strategy), the producer uses its sales force and trade promotions to promote to resellers, who then promote to final consumers. In the bottom row (pull strategy), the producer promotes directly to final consumers through advertising and consumer promotion, inducing consumers to demand the product from resellers, who in turn demand it from the producer."
+    >
+      {/* Top lane: Push strategy */}
+      <Key x={36} y={28} fill={SIGNAL} size={11} weight={600}>
+        Push strategy
+      </Key>
+
+      {/* Top lane actors */}
+      <Factory1 x={112} y={114} w={60} h={38} stroke={INK} fill={PAPER2} />
+      <Mark2 x={112} y={96} r={6} />
+      <Key x={112} y={134} anchor="middle" fill={INK} size={10}>
+        Producer
+      </Key>
+
+      <Store2 x={400} y={114} k={1.05} tone={INK} fill={PAPER2} />
+      <Key x={400} y={134} anchor="middle" fill={INK} size={10}>
+        Resellers
+      </Key>
+
+      <Person3 x={674} y={114} k={1.05} stroke={INK} fill={PAPER} />
+      <Person3 x={702} y={114} k={1.05} stroke={INK} fill={PAPER} />
+      <Key x={688} y={134} anchor="middle" fill={INK} size={10}>
+        Consumers
+      </Key>
+
+      {/* Push promotional arrows */}
+      <Tool kind="ps" x={256} y={50} k={0.78} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Key x={256} y={76} anchor="middle" fill={SIGNAL} size={9.5}>
+        Sales force and trade promotions
+      </Key>
+      <Arrow2 x1={154} y1={92} x2={356} y2={92} tone={SIGNAL} width={2} />
+
+      <Tool kind="sp" x={544} y={50} k={0.78} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Key x={544} y={76} anchor="middle" fill={SIGNAL} size={9.5}>
+        Reseller promotion
+      </Key>
+      <Arrow2 x1={444} y1={92} x2={644} y2={92} tone={SIGNAL} width={2} />
+
+      {/* Divider */}
+      <line x1={36} y1={156} x2={764} y2={156} stroke={RULE} strokeWidth={1} />
+
+      {/* Bottom lane: Pull strategy */}
+      <Key x={36} y={182} fill={COUNTER} size={11} weight={600}>
+        Pull strategy
+      </Key>
+
+      {/* Direct producer-to-consumer advertising & promotion arc */}
+      <Tool kind="ad" x={400} y={182} k={0.82} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Key x={400} y={210} anchor="middle" fill={SIGNAL} size={9.5}>
+        Consumer advertising and promotion
+      </Key>
+      <CurveArrow2
+        x1={150}
+        y1={246}
+        cx={400}
+        cy={194}
+        x2={662}
+        y2={246}
+        tone={SIGNAL}
+        width={2}
+      />
+
+      {/* Bottom lane actors */}
+      <Factory1 x={112} y={294} w={60} h={38} stroke={INK} fill={PAPER2} />
+      <Mark2 x={112} y={276} r={6} />
+      <Key x={112} y={314} anchor="middle" fill={INK} size={10}>
+        Producer
+      </Key>
+
+      <Store2 x={400} y={294} k={1.05} tone={INK} fill={PAPER2} />
+      <Key x={400} y={314} anchor="middle" fill={INK} size={10}>
+        Resellers
+      </Key>
+
+      <Person3 x={674} y={294} k={1.05} stroke={INK} fill={PAPER} />
+      <Person3 x={702} y={294} k={1.05} stroke={INK} fill={PAPER} />
+      <Key x={688} y={314} anchor="middle" fill={INK} size={10}>
+        Consumers
+      </Key>
+
+      {/* Pull demand arrows (right to left) */}
+      <Key x={544} y={266} anchor="middle" fill={COUNTER} size={9.5}>
+        Consumer demand
+      </Key>
+      <Arrow2 x1={644} y1={278} x2={444} y2={278} tone={COUNTER} width={2} />
+
+      <Key x={256} y={266} anchor="middle" fill={COUNTER} size={9.5}>
+        Reseller demand
+      </Key>
+      <Arrow2 x1={356} y1={278} x2={154} y2={278} tone={COUNTER} width={2} />
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   THE COMMUNICATION PROCESS MODEL (NINE ELEMENTS)
+   ========================================================================== */
+
+export function CommunicationProcessModel() {
+  return (
+    <Frame
+      height={320}
+      label="The nine-element communication process model. Across the top, overlapping fields of experience surround the sender and encoding on the left, message and media in the middle, and decoding and the receiver on the right. Below the channel, noise sends unplanned distortion arrows upward into the transmission. Along the bottom, an arrow runs from the receiver through response and feedback back to the sender."
+    >
+      {/* Overlapping fields of experience */}
+      <rect
+        x={24}
+        y={42}
+        width={468}
+        height={132}
+        rx={66}
+        fill={PAPER2}
+        stroke={RULE2}
+        strokeWidth={1.25}
+        strokeDasharray="5 4"
+      />
+      <rect
+        x={308}
+        y={42}
+        width={468}
+        height={132}
+        rx={66}
+        fill={PAPER2}
+        stroke={RULE2}
+        strokeWidth={1.25}
+        strokeDasharray="5 4"
+      />
+      <Key x={176} y={28} anchor="middle" fill={INK3} size={9.5}>
+        {"Sender's field of experience"}
+      </Key>
+      <Key x={624} y={28} anchor="middle" fill={INK3} size={9.5}>
+        {"Receiver's field of experience"}
+      </Key>
+
+      {/* Forward connectors */}
+      <Arrow2 x1={136} y1={108} x2={174} y2={108} tone={INK} width={1.75} size={7} />
+      <Arrow2 x1={280} y1={108} x2={320} y2={108} tone={SIGNAL} width={1.75} size={7} />
+      <Arrow2 x1={480} y1={108} x2={520} y2={108} tone={SIGNAL} width={1.75} size={7} />
+      <Arrow2 x1={624} y1={108} x2={662} y2={108} tone={INK} width={1.75} size={7} />
+
+      {/* 1. Sender */}
+      <rect x={40} y={68} width={96} height={80} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Mark2 x={88} y={96} r={11} tone={SIGNAL} />
+      <Key x={88} y={132} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Sender
+      </Key>
+
+      {/* 2. Encoding */}
+      <rect x={176} y={76} width={104} height={64} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Key x={228} y={102} anchor="middle" fill={INK3} size={9}>
+        Symbols
+      </Key>
+      <Key x={228} y={122} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Encoding
+      </Key>
+
+      {/* 3 & 4. Message and Media */}
+      <rect x={322} y={62} width={156} height={92} fill={PAPER} />
+      <rect x={322} y={62} width={156} height={92} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
+      <Mark2 x={352} y={86} r={8} tone={SIGNAL} />
+      <Key x={412} y={90} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Message
+      </Key>
+      <line x1={334} y1={108} x2={466} y2={108} stroke={SIGNAL} strokeWidth={1} />
+      <Tool kind="ad" x={352} y={131} k={0.5} tone={SIGNAL} />
+      <Key x={412} y={135} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Media
+      </Key>
+
+      {/* 5. Decoding */}
+      <rect x={520} y={76} width={104} height={64} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Key x={572} y={102} anchor="middle" fill={INK3} size={9}>
+        Meaning
+      </Key>
+      <Key x={572} y={122} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Decoding
+      </Key>
+
+      {/* 6. Receiver */}
+      <rect x={664} y={68} width={96} height={80} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Person3 x={712} y={107} k={0.82} stroke={INK} />
+      <Key x={712} y={132} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Receiver
+      </Key>
+
+      {/* 9. Noise */}
+      <rect x={284} y={194} width={232} height={36} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
+      <Key x={400} y={216} anchor="middle" fill={COUNTER} size={10.5} weight={600}>
+        Noise (unplanned static or distortion)
+      </Key>
+      <Arrow2 x1={300} y1={194} x2={300} y2={118} tone={COUNTER} width={1.5} dash="3 3" size={6} />
+      <Arrow2 x1={400} y1={194} x2={400} y2={160} tone={COUNTER} width={1.5} dash="3 3" size={6} />
+      <Arrow2 x1={500} y1={194} x2={500} y2={118} tone={COUNTER} width={1.5} dash="3 3" size={6} />
+
+      {/* 7 & 8. Response and Feedback loop */}
+      <path
+        d="M712 148V274H636"
+        fill="none"
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <path d={headAlong1(634, 274, -1, 0, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
+
+      <rect x={516} y={252} width={116} height={44} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Key x={574} y={278} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Response
+      </Key>
+
+      <Arrow2 x1={516} y1={274} x2={288} y2={274} tone={SIGNAL} width={1.75} size={7} />
+
+      <rect x={168} y={252} width={116} height={44} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={226} y={278} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Feedback
+      </Key>
+
+      <path
+        d="M168 274H88V152"
+        fill="none"
+        stroke={SIGNAL}
+        strokeWidth={1.75}
+      />
+      <path d={headAlong1(88, 150, 0, -1, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   GENERATIVE AI CONTENT PIPELINE AND IMC REVIEW GATE
+   ========================================================================== */
+
+export function GenerativeAiPipeline() {
+  const gates = [
+    { y: 78, label: "IMC consistency" },
+    { y: 138, label: "Factual accuracy" },
+    { y: 198, label: "Legal disclosure" },
+  ];
+  const variants = [
+    { y: 76, label: "Segment A: video" },
+    { y: 136, label: "Segment B: social" },
+    { y: 196, label: "Segment C: local" },
+  ];
+  return (
+    <Frame
+      height={276}
+      label="A generative AI content pipeline flowing from left to right. On the left, a unified brand brief with the brand seal feeds a generative AI model. The model fans out into personalized ad variations that pass through a central review gate checking IMC consistency, factual accuracy, and legal disclosure before reaching target segments with a consistent brand seal."
+    >
+      {/* 1. Unified brand brief */}
+      <rect x={28} y={82} width={156} height={156} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <Sheet x={82} y={140} w={42} h={52} tone={INK} fill={PAPER} lines={4} />
+      <Mark2 x={134} y={140} r={13} tone={SIGNAL} />
+      <Key x={106} y={196} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Unified brand brief
+      </Key>
+      <Key x={106} y={214} anchor="middle" fill={INK3} size={9.5}>
+        Style guardrails
+      </Key>
+
+      {/* Connector 1 -> 2 */}
+      <Arrow2 x1={186} y1={160} x2={220} y2={160} tone={INK} width={1.75} size={7} />
+
+      {/* 2. Generative AI model */}
+      <rect x={222} y={92} width={132} height={136} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Chip2 x={288} y={140} s={44} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Key x={288} y={192} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Generative AI
+      </Key>
+      <Key x={288} y={210} anchor="middle" fill={INK3} size={9.5}>
+        Copy, visual, video
+      </Key>
+
+      {/* Fan-out connectors 2 -> 3 */}
+      <path d="M354 136L396 101" fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={headAlong1(398, 100, 42, -35, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Arrow2 x1={354} y1={160} x2={398} y2={160} tone={INK} width={1.5} size={7} />
+      <path d="M354 184L396 219" fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={headAlong1(398, 220, 42, 35, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
+
+      {/* 3. Review gate */}
+      <rect x={400} y={34} width={172} height={224} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
+      <Key x={486} y={58} anchor="middle" fill={SIGNAL} size={10.5} weight={600}>
+        Review gate
+      </Key>
+      {gates.map((g) => (
+        <g key={g.label}>
+          <rect x={414} y={g.y} width={144} height={44} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
+          <circle cx={434} cy={g.y + 22} r={9} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
+          <path
+            d={`M${430} ${g.y + 22}L${433} ${g.y + 25}L${439} ${g.y + 18}`}
+            fill="none"
+            stroke={SIGNAL}
+            strokeWidth={1.75}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <Key x={450} y={g.y + 26} fill={INK} size={9.5} weight={600}>
+            {g.label}
+          </Key>
+        </g>
+      ))}
+
+      {/* Connectors 3 -> 4 */}
+      {gates.map((g, i) => (
+        <Arrow2
+          key={i}
+          x1={574}
+          y1={g.y + 22}
+          x2={608}
+          y2={variants[i].y + 24}
+          tone={SIGNAL}
+          width={1.75}
+          size={7}
+        />
+      ))}
+
+      {/* 4. Personalized ad variations */}
+      <Key x={691} y={56} anchor="middle" fill={INK} size={10.5} weight={600}>
+        Personalized ad variations
+      </Key>
+      {variants.map((v) => (
+        <g key={v.label}>
+          <rect x={610} y={v.y} width={162} height={48} fill={PAPER2} stroke={INK} strokeWidth={1.25} />
+          <Mark2 x={630} y={v.y + 24} r={7} tone={SIGNAL} />
+          <Key x={646} y={v.y + 28} fill={INK} size={9.5}>
+            {v.label}
+          </Key>
+          <Person3 x={754} y={v.y + 35} k={0.62} stroke={INK} fill={PAPER} />
+        </g>
+      ))}
+    </Frame>
+  );
+}
+

@@ -1,157 +1,83 @@
 [
   {
-    "type": "quiz",
-    "slide_id": "defining-the-problem",
-    "question_text": "A research team skips agreeing on objectives and starts collecting data right away. Why is this risky?",
-    "hint": "Think about what the first step does for every step that comes after it.",
-    "correct_answer_citation": "Week 5: Step 1: Defining the Problem",
-    "correct_answer_index": 2,
-    "options": [
-      {
-        "option_text": "Research objectives are only set after data is analyzed.",
-        "option_explanation": "The first step is to define the problem and agree on research objectives, before any data is collected."
-      },
-      {
-        "option_text": "Defining the problem is the easiest step to redo later.",
-        "option_explanation": "Defining the problem is often the hardest step, not the easiest."
-      },
-      {
-        "option_text": "The first step guides the entire research process.",
-        "option_explanation": "Correct. Defining the problem is often the hardest step, as it guides the entire research process."
-      },
-      {
-        "option_text": "Objectives only matter when the research is causal.",
-        "option_explanation": "Objectives can be exploratory, descriptive, or causal. Every kind of research needs them."
-      }
-    ]
-  },
-  {
     "type": "identify",
-    "slide_id": "developing-the-research-plan",
-    "prompt": "A Montréal bakery chain is writing its research plan. Which part of the plan is each decision?",
+    "slide_id": "step-1-defining-the-problem-and-research-objectives",
+    "prompt": "Each marketing team below has defined its problem and is now setting a research objective. Identify whether each objective calls for exploratory, descriptive, or causal research.",
     "options": [
-      { "id": "info", "label": "The exact information needed" },
-      { "id": "sources", "label": "Sources of existing data" },
-      { "id": "approach", "label": "A specific research approach" },
-      { "id": "balance", "label": "Cost against the value of insights" }
+      { "id": "exploratory", "label": "Exploratory research" },
+      { "id": "descriptive", "label": "Descriptive research" },
+      { "id": "causal", "label": "Causal research" }
     ],
     "cases": [
       {
-        "id": "which-hours",
-        "text": "The plan states that the team must learn which hours of the day bring the fewest customers into each shop.",
-        "answer": "info",
-        "explanation": "Pinning down exactly what the team needs to learn is the plan determining the exact information needed."
+        "id": "drop-traffic",
+        "text": "A bookstore chain conducts informal interviews with ten former shoppers to uncover possible reasons why weekend store visits fell.",
+        "answer": "exploratory",
+        "explanation": "Exploratory research gathers preliminary information that helps define an ambiguous problem and suggest hypotheses."
       },
       {
-        "id": "till-records",
-        "text": "The plan lists the chain's own till records and a city report on foot traffic as places to look first.",
-        "answer": "sources",
-        "explanation": "Till records and a city report already exist. Listing them is outlining sources of existing data."
+        "id": "demographics-share",
+        "text": "A cereal brand measures what percentage of suburban households with children purchase oat cereal at least once a month.",
+        "answer": "descriptive",
+        "explanation": "Descriptive research describes market potential, purchase frequency, or the demographics and attitudes of consumers."
       },
       {
-        "id": "questionnaire",
-        "text": "The plan says the team will hand a short questionnaire to 300 customers at the counter.",
-        "answer": "approach",
-        "explanation": "Saying how new information will be gathered spells out a specific research approach."
+        "id": "price-cut-test",
+        "text": "A software company randomly assigns visitors to see either a 12-dollar or 15-dollar monthly plan to test whether the lower price increases sign-ups.",
+        "answer": "causal",
+        "explanation": "Causal research tests hypotheses about cause-and-effect relationships by manipulating a variable such as price."
       },
       {
-        "id": "cheaper-study",
-        "text": "A $40,000 study is dropped for a $3,000 one, because the answer will only change the opening hours of two shops.",
-        "answer": "balance",
-        "explanation": "The plan weighs what the data costs against what the insights are worth to the decision."
+        "id": "commuter-attitudes",
+        "text": "A transit authority surveys 1,500 residents to profile their daily commute distance and satisfaction with bus schedules.",
+        "answer": "descriptive",
+        "explanation": "Profiling commuter demographics and attitudes toward existing service is descriptive research."
       },
       {
-        "id": "price-point",
-        "text": "The plan states that the team must find the highest price customers would pay for a dozen croissants.",
-        "answer": "info",
-        "explanation": "A precise statement of what must be found out is the exact information needed."
-      },
-      {
-        "id": "watch-line",
-        "text": "The plan says a researcher will stand in two shops and count how long people wait in line.",
-        "answer": "approach",
-        "explanation": "This spells out how the data will be gathered: a specific research approach."
+        "id": "packaging-effect",
+        "text": "A snack maker places resealable pouches in ten matched grocery stores and standard bags in ten others to see if resealable packaging causes higher unit sales.",
+        "answer": "causal",
+        "explanation": "Testing whether a package change causes a change in unit sales across matched stores is causal research."
       }
     ]
   },
   {
     "type": "match",
-    "slide_id": "secondary-data",
-    "prompt": "A sporting-goods retailer wants to know why winter-boot sales fell. Match each source of secondary data to what the retailer finds there.",
-    "term_label": "Source",
-    "match_label": "What the retailer finds",
+    "slide_id": "secondary-data-sources-advantages-and-limitations",
+    "prompt": "Before relying on secondary data, researchers evaluate four quality criteria. Match each criterion with the question the analyst asks to check it.",
+    "term_label": "Evaluation criterion",
+    "match_label": "Analyst verification question",
     "pairs": [
       {
-        "id": "internal",
-        "term": "Internal databases",
-        "match": "Its own sales records from the last five winters",
-        "explanation": "The records were kept for accounting, inside the company. They already exist, so they are internal secondary data."
+        "id": "relevance",
+        "term": "Relevance",
+        "match": "Do the study's geographic boundaries and product definitions fit our specific marketing problem?",
+        "explanation": "Relevance checks whether existing data actually fit the units, population, and decision problem at hand."
       },
       {
-        "id": "government",
-        "term": "Government reports",
-        "match": "Statistics Canada figures on household spending",
-        "explanation": "A government agency published these figures for its own purposes. They already exist and can be relevant to the retailer's problem."
+        "id": "accuracy",
+        "term": "Accuracy",
+        "match": "Were the original sample design, questionnaire wording, and data tabulation conducted reliably?",
+        "explanation": "Accuracy evaluates whether the secondary data were collected and processed with sound methodology."
       },
       {
-        "id": "commercial",
-        "term": "Commercial data services",
-        "match": "A market-research firm's report on footwear sales, sold to any buyer",
-        "explanation": "A firm collects and sells this data to many clients. It is a commercial data service."
-      }
-    ]
-  },
-  {
-    "type": "sort",
-    "slide_id": "primary-data",
-    "prompt": "A coffee chain is gathering data. Sort each piece: is it primary data or secondary data?",
-    "bins": [
-      { "id": "primary", "label": "Primary data" },
-      { "id": "secondary", "label": "Secondary data" }
-    ],
-    "cards": [
-      {
-        "id": "taste-test",
-        "text": "Answers from a taste test the chain runs this week on its new oat latte.",
-        "bin": "primary",
-        "explanation": "The taste test is collected for the specific purpose at hand, so it is primary data."
+        "id": "currency",
+        "term": "Currency",
+        "match": "Were these figures gathered recently enough to reflect today's market conditions?",
+        "explanation": "Currency checks whether the information is up to date rather than outdated."
       },
       {
-        "id": "census",
-        "text": "Census figures on how many people live near each café.",
-        "bin": "secondary",
-        "explanation": "The census already exists and was collected for another purpose. That makes it secondary data."
-      },
-      {
-        "id": "receipts",
-        "text": "Last year's sales receipts, kept for the accountants.",
-        "bin": "secondary",
-        "explanation": "The receipts already exist in an internal database, collected for another purpose."
-      },
-      {
-        "id": "interviews",
-        "text": "Interviews with 20 regulars about why they stopped buying muffins.",
-        "bin": "primary",
-        "explanation": "The interviews are collected for this specific problem. That is primary data."
-      },
-      {
-        "id": "industry-report",
-        "text": "A research firm's report on coffee trends that it sells to many companies.",
-        "bin": "secondary",
-        "explanation": "A commercial data service collected it for many buyers. It already exists, so it is secondary data."
-      },
-      {
-        "id": "count",
-        "text": "A count, taken by staff this morning, of how many customers order to go.",
-        "bin": "primary",
-        "explanation": "Staff gathered it for the question at hand, so it is primary data."
+        "id": "impartiality",
+        "term": "Impartiality",
+        "match": "Was the report published objectively, or did the sponsor have an incentive to slant the findings?",
+        "explanation": "Impartiality evaluates whether the organization that collected and funded the data was objective."
       }
     ]
   },
   {
     "type": "identify",
-    "slide_id": "primary-research-approaches",
-    "prompt": "Each case gathers primary data. Which research approach is it?",
+    "slide_id": "primary-data-collection-observational-survey-and-experimental-approaches",
+    "prompt": "Each study below collects primary data for a specific decision. Identify which primary research approach is being used.",
     "options": [
       { "id": "observational", "label": "Observational research" },
       { "id": "survey", "label": "Survey research" },
@@ -159,114 +85,172 @@
     ],
     "cases": [
       {
-        "id": "aisle",
-        "text": "A grocer films how shoppers move through the cereal aisle and where they stop.",
+        "id": "aisle-watch",
+        "text": "Researchers watch parents in a toy store to record how many packages they pick up and inspect before choosing one.",
         "answer": "observational",
-        "explanation": "The grocer gathers data by observing relevant people and actions."
+        "explanation": "Observational research gathers primary data by watching relevant people, actions, and situations directly."
       },
       {
-        "id": "brand-aware",
-        "text": "A bank asks 1,000 students which credit cards they have heard of and how they feel about each one.",
-        "answer": "survey",
-        "explanation": "Asking about knowledge and attitudes gathers descriptive information. That is survey research."
-      },
-      {
-        "id": "two-prices",
-        "text": "A café sells a muffin at $3 in one shop and $4 in a matched shop, keeping everything else the same.",
-        "answer": "experimental",
-        "explanation": "Matched groups and controlled factors show whether the price causes a change in sales. That is causal information."
-      },
-      {
-        "id": "gym",
-        "text": "A gym counts which machines members use most at each hour of the day.",
+        "id": "meal-prep",
+        "text": "An appliance maker visits twelve households during dinner preparation to see how families actually use their kitchen counter space.",
         "answer": "observational",
-        "explanation": "The gym watches what members do instead of asking them. That is observational research."
+        "explanation": "Ethnographic home visits that watch how families prepare meals are a form of observational research."
       },
       {
-        "id": "two-emails",
-        "text": "An online store sends two matched groups the same email with different subject lines to see which one causes more clicks.",
-        "answer": "experimental",
-        "explanation": "Two matched groups, one factor changed: experimental research gathers causal information."
-      },
-      {
-        "id": "rating",
-        "text": "A hotel emails guests a form asking them to rate their stay from 1 to 5.",
+        "id": "brand-awareness",
+        "text": "A credit union questionnaires 800 local residents about their awareness of competing mortgage rates and their intention to refinance.",
         "answer": "survey",
-        "explanation": "A rating form gathers descriptive information about attitudes. That is survey research."
+        "explanation": "Survey research gathers primary data by asking people questions about their knowledge, attitudes, preferences, and buying behavior."
+      },
+      {
+        "id": "ad-layout-ab",
+        "text": "An outdoor gear retailer shows two matched groups of online shoppers different product page layouts while holding price and shipping constant.",
+        "answer": "experimental",
+        "explanation": "Experimental research selects matched groups, applies different treatments, and controls unrelated factors to establish cause and effect."
       }
     ]
   },
   {
-    "type": "quiz",
-    "slide_id": "customer-relationship-management",
-    "question_text": "A bank's sales, service, and marketing teams each keep separate notes on the same client and never share them. Which idea is the bank failing to apply?",
-    "hint": "Which idea brings together everything the teams know about individual customers?",
-    "correct_answer_citation": "Week 5: Customer Relationship Management (CRM)",
-    "correct_answer_index": 1,
-    "options": [
+    "type": "match",
+    "slide_id": "sampling-plans-and-research-instruments",
+    "prompt": "Match each element of a primary research design with the decision or tool that illustrates it.",
+    "term_label": "Design element",
+    "match_label": "Research decision or tool",
+    "pairs": [
       {
-        "option_text": "Experimental research, which matches groups and controls factors.",
-        "option_explanation": "Experimental research gathers causal information. It does not combine what teams know about customers."
+        "id": "sampling-unit",
+        "term": "Sampling unit",
+        "match": "Deciding to interview hospital purchasing directors rather than staff nurses for a medical equipment study.",
+        "explanation": "The sampling unit specifies who is to be surveyed."
       },
       {
-        "option_text": "CRM, which integrates what those teams know about customers.",
-        "option_explanation": "Correct. CRM manages detailed information about individual customers and integrates what sales, service, and marketing teams know."
+        "id": "probability-sample",
+        "term": "Probability sample",
+        "match": "Drawing a stratified random sample from a complete customer registry so every member has a known chance of selection.",
+        "explanation": "A probability sample gives every population member a known chance of selection and allows calculation of sampling error."
       },
       {
-        "option_text": "Survey research, which gathers knowledge and attitudes.",
-        "option_explanation": "Survey research gathers descriptive information. The bank's problem is unshared customer information."
+        "id": "non-probability-sample",
+        "term": "Non-probability sample",
+        "match": "Interviewing the first fifty commuters exiting a subway station on Tuesday morning because a full population list is unavailable.",
+        "explanation": "A convenience sample is a non-probability sample whose margin of sampling error cannot be measured exactly."
       },
       {
-        "option_text": "Big Data, which refers to huge and complex data sets.",
-        "option_explanation": "Big Data describes huge, complex data sets. The bank needs to integrate its teams' customer knowledge."
+        "id": "mechanical-device",
+        "term": "Mechanical or physiological device",
+        "match": "Using an eye-tracking camera to record which nutrition label panel shoppers look at first.",
+        "explanation": "Eye-tracking cameras and checkout scanners are mechanical or physiological research instruments."
       }
     ]
   },
   {
     "type": "sort",
-    "slide_id": "role-of-marketing-analytics",
-    "prompt": "An online clothing store runs analytics on its data. Sort each finding: does it give a customer insight, or gauge marketing performance?",
+    "slide_id": "big-data-and-the-role-of-marketing-analytics",
+    "prompt": "Sort each analytics project into Descriptive analytics, Predictive analytics, or Prescriptive analytics.",
     "bins": [
-      { "id": "insight", "label": "Customer insight" },
-      { "id": "performance", "label": "Marketing performance" }
+      { "id": "descriptive", "label": "Descriptive analytics" },
+      { "id": "predictive", "label": "Predictive analytics" },
+      { "id": "prescriptive", "label": "Prescriptive analytics" }
     ],
     "cards": [
       {
-        "id": "rain",
-        "text": "Shoppers in Montréal buy rain jackets two days before a rainy forecast.",
-        "bin": "insight",
-        "explanation": "A pattern in how customers behave is a customer insight."
+        "id": "past-quarter-summary",
+        "text": "A dashboard summarizes last quarter's total revenue, return rate, and average order value across regions.",
+        "bin": "descriptive",
+        "explanation": "Descriptive analytics summarizes past performance from historical records."
       },
       {
-        "id": "email",
-        "text": "The spring email campaign brought 12% more visits than last spring's.",
-        "bin": "performance",
-        "explanation": "Measuring what a campaign achieved gauges marketing performance."
+        "id": "campaign-reach-report",
+        "text": "A monthly report tabulates how many existing subscribers opened the winter promotional newsletter.",
+        "bin": "descriptive",
+        "explanation": "Tabulating what happened in a completed campaign is descriptive analytics."
       },
       {
-        "id": "sizes",
-        "text": "Customers who return one size usually reorder the next size up.",
-        "bin": "insight",
-        "explanation": "This shows how customers act, so it is a customer insight."
+        "id": "churn-score",
+        "text": "A machine-learning model estimates the probability that each mobile subscriber will cancel service next month.",
+        "bin": "predictive",
+        "explanation": "Predictive analytics forecasts future customer behavior, such as churn probability."
       },
       {
-        "id": "ad-cost",
-        "text": "Each sale from video ads cost $9, against $4 from search ads.",
-        "bin": "performance",
-        "explanation": "Comparing what each ad channel returns gauges marketing performance."
+        "id": "demand-forecast",
+        "text": "A weather-linked model forecasts next week's iced-beverage demand across three hundred cafe locations.",
+        "bin": "predictive",
+        "explanation": "Forecasting future demand before it occurs is predictive analytics."
       },
       {
-        "id": "late-night",
-        "text": "Parents of young children mostly shop after 10 p.m. on their phones.",
-        "bin": "insight",
-        "explanation": "A pattern in when and how a group of customers shops is a customer insight."
+        "id": "price-optimization",
+        "text": "An optimization engine recommends the exact markdown schedule for seasonal apparel to maximize gross margin.",
+        "bin": "prescriptive",
+        "explanation": "Prescriptive analytics recommends optimal actions such as pricing and media allocation."
       },
       {
-        "id": "banner",
-        "text": "The new homepage banner raised sales of the featured jacket by 20%.",
-        "bin": "performance",
-        "explanation": "Checking the result of a marketing action gauges marketing performance."
+        "id": "media-reallocation",
+        "text": "A budget algorithm shifts ad spend across search, social, and display channels to maximize incremental conversions.",
+        "bin": "prescriptive",
+        "explanation": "Prescriptive analytics determines the best allocation of marketing resources."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "synthetic-survey-respondents-in-early-stage-research",
+    "question_text": "A beverage company wants to use a large language model to generate synthetic survey responses before launching a new sparkling tea. Based on empirical research (Brand, Israeli, & Ngwe, 2023), what is the most appropriate role for these synthetic responses?",
+    "hint": "Think about what synthetic respondents can do well in early stages versus what requires real human consumers.",
+    "correct_answer_citation": "Week 5: Synthetic Survey Respondents in Early-Stage Research",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Replacing the human taste test so the company can launch immediately without primary research.",
+        "option_explanation": "Language models have no physical sensory experience and cannot taste a new beverage formulation."
+      },
+      {
+        "option_text": "Pretesting questionnaire wording, checking scale variation, and generating initial hypotheses before surveying real buyers.",
+        "option_explanation": "Correct. Synthetic responses are fast and low-cost for refining survey questions, spotting ambiguous options, and generating initial hypotheses."
+      },
+      {
+        "option_text": "Calculating exact population confidence intervals for emerging minority segments.",
+        "option_explanation": "Synthetic responses are not probability samples of real consumers and can under-represent minority or emerging segments."
+      },
+      {
+        "option_text": "Producing deterministic responses that never vary across repeated runs.",
+        "option_explanation": "Language models generate answers probabilistically and can vary across repeated independent runs."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "descriptive-audits-and-controlled-experiments-on-ai-agents",
+    "prompt": "A cookware brand is researching how AI shopping assistants evaluate its products. Sort each research action into a Descriptive audit or a Controlled experiment.",
+    "bins": [
+      { "id": "audit", "label": "Descriptive audit" },
+      { "id": "experiment", "label": "Controlled experiment" }
+    ],
+    "cards": [
+      {
+        "id": "prompt-frequency",
+        "text": "Submitting 500 standardized frying-pan prompts to major AI assistants and recording how often the brand appears in the top three recommendations.",
+        "bin": "audit",
+        "explanation": "A descriptive audit submits standardized shopping prompts and records recommendation frequency and rank position."
+      },
+      {
+        "id": "rank-monitoring",
+        "text": "Tracking which competing cookware brands an AI assistant cites most frequently across budget and premium queries.",
+        "bin": "audit",
+        "explanation": "Measuring existing recommendation patterns across queries without manipulating the catalog is a descriptive audit."
+      },
+      {
+        "id": "unit-price-click",
+        "text": "Holding the mock store catalog constant while testing whether hiding pan weight behind an extra click changes the AI agent's top pick.",
+        "bin": "experiment",
+        "explanation": "A controlled experiment holds the catalog constant and manipulates one variable at a time to test cause and effect (Wadi & Ma, 2026b)."
+      },
+      {
+        "id": "sponsorship-tag",
+        "text": "Comparing AI agent selections across two identical product pages that differ only in whether a sponsored badge is displayed.",
+        "bin": "experiment",
+        "explanation": "Isolating a single page variable across identical catalogs tests causal influence on agent recommendations."
       }
     ]
   }
 ]
+

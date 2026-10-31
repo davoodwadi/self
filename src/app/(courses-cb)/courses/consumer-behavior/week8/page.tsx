@@ -10,271 +10,49 @@ import {
   createExerciseLookup,
   type ExerciseInput,
 } from "@/lib/course-exercise";
-import { cn } from "@/lib/utils";
+import {
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import * as V from "./visuals";
+import {
+  AnchorByGeneration,
+  AnchorDigits,
+  CompareEvery,
+  DealTag,
+  EightAgents,
+  GoodEnough,
+  LeanFat,
+  LeftDigit,
+  LossBalance,
+  OrganDefaults,
+  ProductPage,
+  RecallPaper,
+  ShortcutShelf,
+  SlowCompare,
+  StorefrontLab,
+  WinePrice,
+} from "./visuals";
 
 // ============================================================================
 // CONSUMER BEHAVIOR | WEEK 8: BEHAVIORAL ECONOMICS, HEURISTICS, AND BIASES
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
-// ../CLAUDE.md). The week's fixed cast: the shopper (one Person look), the AI
-// agent (a phone with the sparkle), the coffee jar and the paper price tag.
-//
-// In the slide text, colour is rare: each slide gives SIGNAL to at most one
-// phrase, its key idea. Defined terms are bold ink, and every rule is ink.
-//
-// Interactive plates (students act on the drawing itself, all on real data):
-//   - Anchoring: drag the last two digits of a social security number and
-//     watch what the class would pay for a keyboard (Ariely et al., 2003).
-//   - Loss aversion: add found money until it balances a lost $20.
-//   - Storefront design: switch the agent's goal and the cost of a look-up
-//     and see how often agents chose the better coffee (Wadi & Ma, 2026b).
-//
-// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
-// so each [exercise]-tagged topic carries one exercise, of the type that fits
-// it, testing that slide and the ones before it.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
-
-/** Content slides trim the deck's outer padding so each topic fits one screen. */
-const TIGHT = "md:!py-16";
-
-type Tone = "signal" | "counter" | "ink";
-
-const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--rule)]",
-  counter: "border-[var(--rule)]",
-  ink: "border-[var(--rule)]",
-};
-
-const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--ink)]",
-  counter: "text-[var(--ink)]",
-  ink: "text-[var(--ink)]",
-};
-
-/** One verbatim line at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-body max-w-[var(--measure)]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A line promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <p className={cn("type-lead max-w-[48ch]", className)}>{children}</p>;
-}
-
-/** A line set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <p className={cn("type-quote max-w-[30ch]", className)}>{children}</p>;
-}
-
-/** A line at h2 size. */
-function Big({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <p className={cn("type-h2 !font-normal", className)}>{children}</p>;
-}
-
-/** Coloured term inside a line. */
-function Term({
-  children,
-  tone = "ink",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  return (
-    <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>
-  );
-}
-
-/** Inline emphasis for a phrase inside a line. */
-function Tint({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: Tone;
-}) {
-  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
-}
-
-/** Hairline-topped block. */
-function Ruled({
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
-      {children}
-    </div>
-  );
-}
-
-/**
- * A plate that lives in a column: a figure well without the 680px floor. A
- * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`. From lg up the column is wide enough.
- */
-function Plate({
-  children,
-  wide = false,
-  className = "",
-}: {
-  children: React.ReactNode;
-  wide?: boolean;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "figure-well w-full min-w-0 p-3",
-        wide && "overflow-x-auto",
-        className,
-      )}
-    >
-      {wide ? (
-        <div className="min-w-[480px] lg:min-w-0">{children}</div>
-      ) : (
-        children
-      )}
-    </div>
-  );
-}
-
-/**
- * Slide heading. A "Label:" prefix from the content is set as a small tracked
- * kicker inside the same h2, so the heading text stays exactly as written.
- */
-function Heading({
-  kicker,
-  children,
-  tone = "signal",
-  className = "",
-}: {
-  kicker?: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-  className?: string;
-}) {
-  return (
-    <div className="mb-6 w-full">
-      <h2 className={cn("type-h1 max-w-[32ch]", className)}>
-        {kicker ? (
-          <>
-            <span
-              className={cn(
-                "type-label mb-4 block !text-[0.8rem]",
-                "!text-[var(--ink-3)]",
-              )}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
-      <div className="mt-3 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Ruled lines in a grid, each followed by its own plate. */
-function Cells({
-  cols = 2,
-  items,
-  className = "",
-}: {
-  cols?: 2 | 3 | 4 | 5;
-  items: {
-    key: string;
-    tone: Tone;
-    plate?: React.ReactNode;
-    text: React.ReactNode;
-  }[];
-  className?: string;
-}) {
-  return (
-    <ol
-      className={cn(
-        "grid w-full gap-10 md:grid-cols-2 md:gap-x-8 lg:gap-x-6 lg:gap-y-6",
-        {
-          2: "md:gap-x-10",
-          3: "lg:grid-cols-3",
-          4: "lg:grid-cols-4",
-          5: "lg:grid-cols-5",
-        }[cols],
-        className,
-      )}
-    >
-      {items.map((s) => (
-        <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t pt-3", BORDER[s.tone])}>
-            <p className="type-body">{s.text}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-/** A ruled line for rows of text. */
-function SideCell({
-  children,
-  className = "",
-}: {
-  plate?: React.ReactNode;
-  children: React.ReactNode;
-  plateClass?: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "min-w-0 border-t border-[var(--rule)] pt-3",
-        className,
-      )}
-    >
-      <p className="type-body min-w-0">{children}</p>
-    </div>
-  );
-}
-
 
 export default function Week8() {
   return (
@@ -294,371 +72,680 @@ export default function Week8() {
             Behavioral Economics, Heuristics, and Biases
           </Title>
           <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
-            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-              Consumers follow predictable mental shortcuts. In some
-              conditions, <Tint>so do the AI agents that shop for them</Tint>.
+            <p className="type-quote">
+              Behavioral economics explains how{" "}
+              <Tint>
+                cognitive shortcuts, reference points, and choice architecture
+              </Tint>{" "}
+              systematically shape decisions made by human consumers and by AI
+              shopping agents.
             </p>
           </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          Beyond the Rational Consumer
-          ================================================================ */}
-      <Slide className={TIGHT} id="beyond-the-rational-consumer" border>
-        <Heading>Beyond the Rational Consumer</Heading>
-        {/* The same shelf twice: the rational model looks at every jar and
-            buys the best. The satisficer stops at the first good enough. */}
-        <div className="grid w-full gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                Classical economics assumes that consumers compare every option
-                and choose the one with the highest value.
-              </P>
-            </Ruled>
-          </div>
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Behavioral economics</Term> studies how people actually
-                make economic decisions.
-              </P>
-            </Ruled>
-            <P>
-              Herbert Simon proposed that people have{" "}
-              <Term>bounded rationality</Term>. They have limited time,
-              information, and attention.
-            </P>
-            <P>
-              Because of these limits, people often choose an option that is
-              good enough instead of the best possible option. Simon called this{" "}
-              <Term>satisficing</Term>.
-            </P>
-            <Plate className="mt-auto">
-              <V.GoodEnough />
-            </Plate>
-          </div>
-        </div>
-        <Statement className="mt-6 !max-w-[60ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
-          The departures from the rational model are not random. They follow
-          patterns that <Tint>researchers can predict and marketers can use</Tint>.
-        </Statement>
-      </Slide>
-
-      {/* ================================================================
-          System 1 and System 2
+          From Classical Utility to Behavioral Economics
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="system-1-and-system-2"
+        id="from-classical-utility-to-behavioral-economics"
         border
-        exercise={exercise["system-1-and-system-2"]}
       >
-        <Heading>System 1 and System 2</Heading>
-        <Lead className="!max-w-none !mb-4">
-          Psychologists describe two modes of thinking (Kahneman, 2011).
-        </Lead>
-        {/* Each mode as a row: its line beside its scene. The two lines on
-            when each mode works sit to the right. */}
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.7fr_1fr] lg:gap-10">
+        <SlideHeading>
+          From Classical Utility to Behavioral Economics
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <SideCell className="sm:grid-cols-[1fr_1.1fr]">
-              <Term>System 1</Term> is fast, automatic, and effortless. It
-              recognizes a familiar logo or reacts to a red &quot;SALE&quot; sign
-              in an instant.
-            </SideCell>
-            <SideCell className="sm:grid-cols-[1fr_1.1fr]">
-              <Term>System 2</Term> is slow, deliberate, and effortful. It
-              compares the price per unit of two packages or reads the terms of
-              a phone contract.
-            </SideCell>
-          </div>
-          <div className="flex min-w-0 flex-col gap-6">
-            <Statement className="!max-w-[22ch] !text-[clamp(1.5rem,2.4vw,2rem)]">
-              Most everyday purchases <Tint>rely on System 1</Tint>.
-            </Statement>
-            <Ruled tone="ink" className="!pt-3">
+            <Lead>
+              <Term>Neoclassical economic theory</Term> assumes that consumers
+              hold stable preferences, evaluate outcomes in terms of absolute
+              wealth, and maximize expected utility without cognitive error.
+            </Lead>
+            <Ruled>
               <P>
-                System 2 takes over when the decision is important, unfamiliar,
-                or clearly wrong at first sight, and when the consumer has the
-                time and energy to think.
+                <Term>Behavioral economics</Term> integrates experimental
+                psychology into economic analysis to study how real people make
+                financial and consumption choices.
               </P>
             </Ruled>
           </div>
+          <Plate>
+            <CompareEvery />
+          </Plate>
         </div>
-      </Slide>
-
-      {/* ================================================================
-          Heuristics: Mental Shortcuts
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="heuristics-mental-shortcuts"
-        border
-        exercise={exercise["heuristics-mental-shortcuts"]}
-      >
-        <Heading kicker="Heuristics:">Mental Shortcuts</Heading>
-        <Statement className="!max-w-[44ch] !text-[clamp(1.4rem,2.2vw,1.9rem)] !mb-5">
-          A <Term>heuristic</Term> is a mental shortcut that simplifies a
-          decision.
-        </Statement>
-        <Cells
-          cols={3}
-          items={[
-            {
-              key: "availability",
-              tone: "ink",
-              text: (
-                <>
-                  The <Term>availability heuristic</Term> judges how likely
-                  something is by how easily examples come to mind. A consumer
-                  who recently heard about a car recall may overestimate the
-                  risk of that brand.
-                </>
-              ),
-            },
-            {
-              key: "representativeness",
-              tone: "ink",
-              text: (
-                <>
-                  The <Term>representativeness heuristic</Term> judges an item
-                  by how closely it resembles a familiar category. A store
-                  brand in packaging like the market leader seems to share its
-                  quality.
-                </>
-              ),
-            },
-            {
-              key: "price-quality",
-              tone: "ink",
-              text: (
-                <>
-                  The <Term>price-quality inference</Term> assumes that a higher
-                  price signals higher quality. Consumers rely on it most when
-                  they cannot judge quality directly, as with wine or perfume.
-                </>
-              ),
-            },
-          ]}
-        />
-        <Ruled tone="ink" className="mt-6 w-full">
-          <Big className="!text-[clamp(1.2rem,1.7vw,1.5rem)]">
-            Heuristics save time and often work well. They lead to errors{" "}
-            <Tint>when the shortcut does not fit the situation</Tint>.
-          </Big>
-        </Ruled>
-      </Slide>
-
-      {/* ================================================================
-          Anchoring: The First Number Counts
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="anchoring-the-first-number-counts"
-        border
-        exercise={exercise["anchoring-the-first-number-counts"]}
-      >
-        <Heading kicker="Anchoring:">The First Number Counts</Heading>
-        <div className="grid w-full gap-8 lg:grid-cols-[0.85fr_1.7fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3">
-            <Statement className="!max-w-[26ch] !text-[clamp(1.25rem,1.9vw,1.65rem)]">
-              <Term>Anchoring</Term> occurs when an initial number influences a
-              later judgment, <Tint>even when the number is irrelevant</Tint>.
-            </Statement>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                A &quot;compare at $120&quot; label makes a $79 price seem lower
-                than it would appear on its own.
-              </P>
-            </Ruled>
-          </div>
-          {/* The instrument: drag the digits, read the price the class gave. */}
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P className="!max-w-none">
-                In one classic study, people who first wrote down the last two
-                digits of their social security number were then willing to pay
-                more for products when those digits were high (Ariely,
-                Loewenstein, &amp; Prelec, 2003).
-              </P>
-            </Ruled>
-            <Plate wide>
-              <V.AnchorDigits />
-            </Plate>
-          </div>
-        </div>
-        <SideCell
-          className="mt-6 w-full sm:grid-cols-[1fr_2fr]"
-        >
-          Marketers use anchors in reference prices, suggested quantities such
-          as &quot;limit 12 per customer,&quot; and high-priced options placed
-          first on a menu.
-        </SideCell>
-      </Slide>
-
-      {/* ================================================================
-          Loss Aversion and the Endowment Effect
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="loss-aversion-and-the-endowment-effect"
-        border
-        exercise={exercise["loss-aversion-and-the-endowment-effect"]}
-      >
-        <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
-          Loss Aversion and the Endowment Effect
-        </Heading>
-        {/* Prospect theory and its balance on the left two thirds. The
-            endowment effect and the free trial on the right. */}
-        <div className="grid w-full gap-8 lg:grid-cols-[0.9fr_1fr_1fr] lg:gap-8">
-          <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Prospect theory</Term> states that people judge outcomes
-                as gains or losses relative to a reference point (Kahneman
-                &amp; Tversky, 1979).
-              </P>
-            </Ruled>
-            <Statement className="!text-[clamp(1.25rem,1.9vw,1.6rem)]">
-              <Term>Loss aversion</Term> means that a loss feels{" "}
-              <Tint>about twice as strong</Tint> as a gain of the same size.
-            </Statement>
-            <P>Losing $20 hurts more than finding $20 pleases.</P>
-          </div>
-          <div className="min-w-0 self-center">
-            <Plate>
-              <V.LossBalance />
-            </Plate>
-          </div>
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                The <Term>endowment effect</Term> means that people value an
-                item more once they own it.
-              </P>
-            </Ruled>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
             <P>
-              Free trials and money-back guarantees use this effect. After a
-              consumer has used a product for a month, giving it up feels like a
-              loss.
+              Rather than treating departures from utility maximization as
+              random noise, behavioral economics shows that human deviations are{" "}
+              <Tint>systematic, directional, and predictable</Tint>.
             </P>
-          </div>
+          </Ruled>
+          <Ruled>
+            <P>
+              A price tag, a default checkbox, or the order in which menu items
+              appear can alter choice share even when underlying product utility
+              is unchanged.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Understanding these regularities helps marketers design persuasive
+              offers and helps regulators protect consumers from predictable
+              traps.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Status Quo Bias and Framing Effects
+          Bounded Rationality and Satisficing
           ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="status-quo-bias-and-framing-effects"
-        border
-        exercise={exercise["status-quo-bias-and-framing-effects"]}
-      >
-        <Heading>Status Quo Bias and Framing Effects</Heading>
-        <Cells
-          cols={3}
-          items={[
-            {
-              key: "status-quo",
-              tone: "ink",
-              text: (
-                <>
-                  <Term>Status quo bias</Term> is the preference for keeping
-                  things as they are. Consumers stay with the same bank, phone
-                  plan, or streaming service even when a better offer exists.
-                </>
-              ),
-            },
-            {
-              key: "framing",
-              tone: "ink",
-              text: (
-                <>
-                  A <Term>framing effect</Term> occurs when the way information
-                  is presented changes the choice, even though the facts are the
-                  same. Consumers rate ground beef more favorably when it is
-                  described as &quot;75% lean&quot; than as &quot;25% fat&quot;
-                  (Levin &amp; Gaeth, 1988).
-                </>
-              ),
-            },
-            {
-              key: "surcharge",
-              tone: "ink",
-              text: (
-                <>
-                  A surcharge for paying by card and a discount for paying in
-                  cash can describe the same price gap, but consumers react more
-                  strongly to the surcharge{" "}
-                  <Tint>because it is framed as a loss</Tint>.
-                </>
-              ),
-            },
-          ]}
-        />
+      <Slide className={TIGHT} id="bounded-rationality-and-satisficing" border>
+        <SlideHeading>Bounded Rationality and Satisficing</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Herbert Simon introduced <Term>bounded rationality</Term> to
+              describe decision making under realistic constraints of limited
+              time, incomplete market information, and finite working memory
+              (Simon, 1955).
+            </Lead>
+            <Ruled>
+              <P>
+                Because exhaustive optimization across hundreds of products is
+                computationally intractable for a human shopper, consumers
+                replace optimization with <Term>satisficing</Term>.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <GoodEnough />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Satisficing</Term> means setting an{" "}
+              <Term>aspiration level</Term> (a threshold of what counts as good
+              enough) and terminating search as soon as an alternative meets
+              that threshold.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Satisficing is an adaptive response to search costs rather than a
+              sign of irrationality.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              However, because satisficers stop searching once they find an
+              acceptable option, the{" "}
+              <Tint>sequence in which alternatives are encountered</Tint>{" "}
+              strongly influences which product is chosen.
+            </P>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Pricing Cues: Just-Below Prices and Discount Frames
+          Part 1: Dual-Process Thinking and Judgment Heuristics
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="pricing-cues-just-below-prices-and-discount-frames"
+        id="part-1-dual-process-thinking-and-judgment-heuristics"
         border
       >
-        <Heading kicker="Pricing Cues:">
-          Just-Below Prices and Discount Frames
-        </Heading>
-        <div className="grid w-full gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
-          {/* The text runs around the tag's outline, magazine style. On
-              phones the tag follows the first sentence. */}
-          <div className="min-w-0">
-            <Ruled tone="ink" className="!pt-3">
-              <P className="!max-w-none">
-                <Term>Just-below pricing</Term> ends a price just under a round
-                number, such as $4.99 instead of $5.00.
+        <PartHead n={1} title="Dual-Process Thinking and Judgment Heuristics" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Dual-process theories of cognition distinguish between{" "}
+            <Tint>rapid intuitive impressions and deliberate analytical reasoning</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Under everyday shopping constraints, consumers rely on judgment
+              heuristics that trade exhaustive accuracy for speed.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          System 1 and System 2 Modes of Thought
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="system-1-and-system-2-modes-of-thought"
+        border
+        exercise={exercise["system-1-and-system-2-modes-of-thought"]}
+      >
+        <SlideHeading>System 1 and System 2 Modes of Thought</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Daniel Kahneman popularized the distinction between two modes of
+              cognitive processing: <Term>System 1</Term> and{" "}
+              <Term>System 2</Term> (Kahneman, 2011).
+            </Lead>
+            <Ruled>
+              <P>
+                <Term>System 1</Term> operates automatically, rapidly, and
+                effortlessly, generating immediate affective impressions and
+                recognizing familiar brand colors or red clearance tags at a
+                glance.
               </P>
-              <div
-                className="my-4 w-full md:float-right md:my-0 md:ml-2 md:w-[48%]"
-                style={{
-                  shapeOutside:
-                    "polygon(0% 26%, 34% 14%, 66% 14%, 100% 26%, 100% 100%, 0% 100%)",
-                  shapeMargin: "18px",
-                }}
-              >
-                <V.LeftDigit />
-              </div>
-              <P className="mt-4 !max-w-none">
-                Consumers read prices from left to right and give extra weight
-                to the leftmost digit. This is called the{" "}
+            </Ruled>
+          </div>
+          <Plate>
+            <SlowCompare />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>System 2</Term> allocates slow, effortful, and conscious
+              mental computation to complex tasks, such as calculating unit
+              prices across different package sizes or reading mortgage contract
+              terms.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Because System 2 requires scarce cognitive energy, consumers{" "}
+              <Tint>default to System 1 judgments</Tint> for most routine
+              grocery and online retail purchases.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              System 2 overrides System 1 only when the consumer detects a clear
+              anomaly, faces high stakes, and has sufficient time and cognitive
+              capacity available.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Availability and Representativeness Heuristics
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="availability-and-representativeness-heuristics"
+        border
+        exercise={exercise["availability-and-representativeness-heuristics"]}
+      >
+        <SlideHeading>
+          Availability and Representativeness Heuristics
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              A <Term>heuristic</Term> is a mental rule of thumb that simplifies
+              judgment by substituting an easier question for a harder
+              statistical question (Tversky &amp; Kahneman, 1974).
+            </Lead>
+            <Ruled>
+              <P>
+                The <Term>availability heuristic</Term> estimates the frequency
+                or probability of an event by the ease with which instances can
+                be retrieved from memory.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <RecallPaper />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Vivid media coverage of a single product recall or aircraft
+              incident makes the event highly accessible in memory, causing
+              consumers to <Tint>overestimate the objective risk</Tint> of that
+              brand.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              The <Term>representativeness heuristic</Term> judges the
+              probability that an object belongs to a category by how closely
+              its surface features resemble the category prototype.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Private-label packages that mimic the typography and color palette
+              of a national brand leader leverage representativeness to imply
+              comparable manufacturing quality.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Market Beliefs and Price-Quality Inferences
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="market-beliefs-and-price-quality-inferences"
+        border
+      >
+        <SlideHeading>Market Beliefs and Price-Quality Inferences</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Over repeated marketplace experiences, consumers develop{" "}
+              <Term>generalized market beliefs</Term> that serve as
+              domain-specific heuristics.
+            </Lead>
+            <Ruled>
+              <P>
+                The <Term>price-quality heuristic</Term> is the belief that
+                higher monetary price reliably indicates superior materials,
+                craftsmanship, or performance (Rao &amp; Monroe, 1989).
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <WinePrice />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Consumers rely on the price-quality heuristic most heavily when{" "}
+              <Tint>objective quality is difficult to judge</Tint> prior to
+              purchase, as with wine, cosmetics, or medical services.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Placebos and blind taste tests show that labeling the identical
+              wine with a higher price tag increases not only self-reported
+              taste ratings but also activity in brain regions associated with
+              experienced pleasantness (Plassmann et al., 2008).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Other common market beliefs include assuming that larger package
+              sizes always offer a lower unit price or that stores with
+              warehouse decor charge lower margins.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 2: Reference Points, Prospect Theory, and Framing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-2-reference-points-prospect-theory-and-framing"
+        border
+      >
+        <PartHead
+          n={2}
+          title="Reference Points, Prospect Theory, and Framing"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Human consumers do not evaluate prices, gains, and losses in
+            absolute terms. Instead, they judge every outcome{" "}
+            <Tint>relative to a psychological reference point</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Anchoring, prospect theory, and framing effects explain how
+              shifting the reference point reverses consumer preferences.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Anchoring and Arbitrary Reference Numbers
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="anchoring-and-arbitrary-reference-numbers"
+        border
+        exercise={exercise["anchoring-and-arbitrary-reference-numbers"]}
+      >
+        <SlideHeading>Anchoring and Arbitrary Reference Numbers</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.95fr_1.6fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              <Term>Anchoring and adjustment</Term> occurs when an initial
+              numerical value serves as a starting reference point that pulls
+              subsequent numerical estimates toward it (Tversky &amp; Kahneman,
+              1974).
+            </Lead>
+            <Ruled>
+              <P>
+                Adjustments away from an initial anchor are typically
+                insufficient, leaving final judgments{" "}
+                <Tint>biased toward the starting number</Tint>.
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <AnchorDigits />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              In a classic experiment by Ariely, Loewenstein, and Prelec (2003),
+              participants who first wrote down the last two digits of their
+              social security number stated significantly higher maximum
+              willingness to pay for wine, chocolates, and computer accessories
+              when those random digits were high.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Retailers establish commercial anchors through manufacturer
+              suggested retail prices (&ldquo;Compare at 120 dollars&rdquo;),
+              high-priced decoy items at the top of a menu, and purchase
+              quantity limits (&ldquo;Limit 12 cans per customer&rdquo;).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Even when buyers know a reference price is inflated, the anchor
+              still elevates the price they consider acceptable.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Prospect Theory, Loss Aversion, and the Endowment Effect
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="prospect-theory-loss-aversion-and-the-endowment-effect"
+        border
+        exercise={
+          exercise["prospect-theory-loss-aversion-and-the-endowment-effect"]
+        }
+      >
+        <SlideHeading>
+          Prospect Theory, Loss Aversion, and the Endowment Effect
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              Developed by Daniel Kahneman and Amos Tversky (1979),{" "}
+              <Term>prospect theory</Term> replaces classical expected utility
+              with a value function defined over gains and losses relative to a
+              reference point.
+            </Lead>
+            <Ruled>
+              <P>
+                First, the value function exhibits{" "}
+                <Term>diminishing sensitivity</Term>: the psychological
+                difference between a 10-dollar and 20-dollar gain feels much
+                larger than the difference between a 1,010-dollar and
+                1,020-dollar gain.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <LossBalance />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Second, the value function is steeper in the domain of losses than
+              in the domain of gains, a property known as{" "}
+              <Term>loss aversion</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Loss aversion implies that losing 50 dollars inflicts{" "}
+              <Tint>roughly twice as much psychological pain</Tint> as gaining
+              50 dollars provides pleasure.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              The <Term>endowment effect</Term> is a direct corollary of loss
+              aversion: once a consumer owns or possesses an item (such as
+              through a 30-day free home trial), giving it up is coded as a
+              loss, raising the value assigned to the item (Thaler, 1980).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Status Quo Bias and Attribute Framing
+          ================================================================ */}
+      <Slide className={TIGHT} id="status-quo-bias-and-attribute-framing" border>
+        <SlideHeading>Status Quo Bias and Attribute Framing</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              <Term>Status quo bias</Term> is the strong preference for
+              maintaining one&apos;s current state or existing service provider
+              because any change requires trading potential gains against more
+              heavily weighted potential losses (Samuelson &amp; Zeckhauser,
+              1988).
+            </Lead>
+            <Ruled>
+              <P>
+                Consumers frequently remain on suboptimal telecommunications
+                plans, insurance policies, or software subscriptions because
+                switching feels risky and effortful.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <LeanFat />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Attribute framing</Term> occurs when describing the exact
+              same objective statistic in{" "}
+              <Tint>positive versus negative terms</Tint> alters evaluation.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In a classic study by Levin and Gaeth (1988), consumers evaluated
+              ground beef as leaner and higher in quality when labeled &ldquo;75
+              percent lean&rdquo; than when labeled &ldquo;25 percent fat.&rdquo;
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Similarly, framing a price difference between payment methods as a
+              &ldquo;cash discount&rdquo; triggers less resistance than framing
+              the identical gap as a &ldquo;credit card surcharge.&rdquo;
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Auditing Behavioral Pricing on an E-Commerce Page
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-auditing-behavioral-pricing-on-an-e-commerce-page"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Auditing Behavioral Pricing on an E-Commerce Page
+        </SlideHeading>
+        <Prompt>
+          An online travel booking platform displays a hotel room with the
+          crossed-out label &ldquo;Was 340 dollars, Now 219 dollars,&rdquo;
+          pre-selects a 28-dollar trip-protection insurance add-on labeled
+          &ldquo;Recommended: Don&apos;t risk losing your non-refundable
+          booking,&rdquo; and shows a banner reading &ldquo;Only 1 room left at
+          this price.&rdquo; Identify the exact behavioral economics mechanisms
+          operating in each element, explain how System 1 and prospect theory
+          predict the traveler&apos;s response, and distinguish which elements
+          are informative versus manipulative.
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Part 3: Mental Accounting, Pricing Cues, and Choice Architecture
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-3-mental-accounting-pricing-cues-and-choice-architecture"
+        border
+      >
+        <PartHead
+          n={3}
+          title="Mental Accounting, Pricing Cues, and Choice Architecture"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Consumers organize financial decisions into{" "}
+            <Tint>separate mental budgets</Tint> and respond systematically to
+            how digits, discounts, and default options are structured.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Mental accounting and choice architecture provide a framework for
+              analyzing retail pricing and public policy nudges.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Mental Accounting, Sunk Costs, and Transaction Utility
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="mental-accounting-sunk-costs-and-transaction-utility"
+        border
+      >
+        <SlideHeading>
+          Mental Accounting, Sunk Costs, and Transaction Utility
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Formulated by Richard Thaler (1985), <Term>mental accounting</Term>{" "}
+              describes how individuals code, categorize, and evaluate financial
+              outcomes into separate mental budgets rather than treating money
+              as perfectly fungible.
+            </Lead>
+            <Ruled>
+              <P>
+                Consumers spend a 100-dollar tax refund or casino windfall more
+                freely on hedonic luxuries than 100 dollars of regular wage
+                income.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <DealTag />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Total utility from a purchase is the sum of{" "}
+              <Term>acquisition utility</Term> (the value of the good received
+              relative to its price) and <Term>transaction utility</Term> (the{" "}
+              <Tint>perceived psychological merit of the deal</Tint> relative to
+              the consumer&apos;s internal reference price) (Thaler, 1985).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              The <Term>sunk cost effect</Term> occurs when consumers continue
+              using or investing in a poor option solely because they have
+              already paid a non-recoverable fee, such as attending an outdoor
+              event in a rainstorm because tickets were prepaid (Arkes &amp;
+              Blumer, 1985).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Subscription pricing and prepaid vacation packages decouple the
+              moment of payment from the moment of consumption, reducing the
+              pain of paying during usage (Prelec &amp; Loewenstein, 1998).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Just-Below Pricing and the Left-Digit Effect
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="just-below-pricing-and-the-left-digit-effect"
+        border
+        exercise={exercise["just-below-pricing-and-the-left-digit-effect"]}
+      >
+        <SlideHeading>
+          Just-Below Pricing and the Left-Digit Effect
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              <Term>Just-below pricing</Term> (or charm pricing) sets a retail
+              price one cent or one unit below a round number, such as 4.99
+              dollars instead of 5.00 dollars or 199 dollars instead of 200
+              dollars.
+            </Lead>
+            <Ruled>
+              <P>
+                Because consumers read numerical prices from left to right under
+                System 1, they anchor disproportionately on the{" "}
+                <Tint>leftmost digit</Tint> before finishing encoding the
+                remaining digits, a phenomenon known as the{" "}
                 <Term>left-digit effect</Term> (Thomas &amp; Morwitz, 2005).
               </P>
-              <P className="mt-4 !max-w-none">
-                A price of $4.99 therefore feels closer to $4 than to $5.
-              </P>
             </Ruled>
           </div>
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Promotional framing</Term> presents a price as a discount
-                from a higher list price, such as &quot;20% off.&quot;
-              </P>
-            </Ruled>
-            <P>
-              The discount adds a feeling of a good deal, called{" "}
-              <Term>transaction utility</Term>, on top of the value of the
-              product itself (Thaler, 1985).
-            </P>
-          </div>
+          <Plate>
+            <LeftDigit />
+          </Plate>
         </div>
-        <Statement className="clear-both mt-6 !max-w-[64ch] !text-[clamp(1.25rem,1.9vw,1.6rem)]">
-          <Tint>Both cues work through System 1.</Tint> A consumer who
-          calculates the price per unit is less affected by them.
-        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Consequently, a one-cent reduction from 5.00 dollars to 4.99
+              dollars lowers perceived price magnitude much more than a one-cent
+              reduction from 4.99 dollars to 4.98 dollars.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Just-below pricing is particularly effective when the left digit
+              changes and when the buyer is not performing explicit arithmetic
+              comparisons.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Conversely, luxury and prestige brands often use{" "}
+              <Term>round-number pricing</Term> (such as 500 dollars rather than
+              499.99 dollars) because round numbers are processed fluently and
+              signal high quality rather than discount positioning.
+            </P>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
@@ -670,187 +757,532 @@ export default function Week8() {
         border
         exercise={exercise["choice-architecture-defaults-and-nudges"]}
       >
-        <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
-          Choice Architecture, Defaults, and Nudges
-        </Heading>
-        <Lead className="!max-w-none !mb-4">
-          <Term>Choice architecture</Term> is the way options are arranged and
-          presented to the decision maker (Thaler &amp; Sunstein, 2008).
-        </Lead>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.8fr_2fr] lg:gap-10">
+        <SlideHeading>Choice Architecture, Defaults, and Nudges</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.6fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="ink" className="!pt-3">
+            <Lead>
+              <Term>Choice architecture</Term> refers to the design of the
+              environment in which people make decisions, including option
+              ordering, attribute grouping, and default settings (Thaler &amp;
+              Sunstein, 2008).
+            </Lead>
+            <Ruled>
               <P>
-                A <Term>default</Term> is the option a person receives if they
-                do nothing. Many people keep the default because changing it
-                takes effort.
+                A <Term>default option</Term> is the outcome that takes effect
+                automatically if the decision maker takes no active step to
+                change it.
               </P>
             </Ruled>
-            <P>
-              In countries where organ donation is the default, far more people
-              are registered donors than in countries where people must opt in
-              (Johnson &amp; Goldstein, 2003).
-            </P>
           </div>
           <Plate wide>
-            <V.OrganDefaults />
+            <OrganDefaults />
           </Plate>
         </div>
-        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-10">
-          <SideCell className="sm:grid-cols-[1fr_1fr]">
-            A <Term>nudge</Term> is a change in choice architecture that steers
-            behavior without removing any option or changing its price. Placing
-            fruit at eye level in a cafeteria is a nudge.
-          </SideCell>
-          <Statement className="!max-w-[30ch] !text-[clamp(1.2rem,1.8vw,1.55rem)]">
-            A nudge is transparent and serves the person&apos;s own interest. A{" "}
-            <Term>dark pattern</Term> uses the same tools{" "}
-            <Tint>against the person&apos;s interest</Tint>.
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Because of status quo bias, effort minimization, and the
+              perception that the default represents an implicit endorsement by
+              the designer, defaults exert powerful effects on behavior.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In a cross-national study by Johnson and Goldstein (2003),
+              countries where organ donation was the default (opt-out) achieved{" "}
+              <Tint>consent rates above 85 percent</Tint>, whereas comparable
+              countries requiring active registration (opt-in) achieved rates
+              below 30 percent.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              A <Term>nudge</Term> alters choice architecture to steer behavior
+              in a predictable way that benefits the chooser without forbidding
+              any alternatives or significantly changing economic incentives
+              (Thaler &amp; Sunstein, 2008).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 4: Heuristic-Like Choice in AI Shopping Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-4-heuristic-like-choice-in-ai-shopping-agents"
+        border
+      >
+        <PartHead n={4} title="Heuristic-Like Choice in AI Shopping Agents" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Because large language models are trained on human-generated text,
+            researchers investigate whether AI shopping agents{" "}
+            <Tint>replicate human cognitive biases or behave like rational economic calculators</Tint>.
           </Statement>
+          <Ruled>
+            <Lead>
+              Controlled experiments reveal that whether an AI agent exhibits a
+              behavioral bias depends critically on the task structure and
+              information environment.
+            </Lead>
+          </Ruled>
         </div>
       </Slide>
 
       {/* ================================================================
-          Do AI Agents Use Heuristics?
+          Anchoring and Position Effects in Language Models
           ================================================================ */}
       <Slide
         className={TIGHT}
-        id="do-ai-agents-use-heuristics"
+        id="anchoring-and-position-effects-in-language-models"
         border
-        exercise={exercise["do-ai-agents-use-heuristics"]}
       >
-        <Heading>Do AI Agents Use Heuristics?</Heading>
-        <Lead className="!max-w-none !mb-4">
-          AI agents learn from text written by people, so researchers ask
-          whether agents also show human biases.
-        </Lead>
-        {/* Two kinds of evidence, side by side: heuristic-like and rational. */}
-        <div className="grid w-full gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P className="!max-w-none">
-                Some studies find heuristic-like choices. AI models stated a
-                higher willingness to pay for a product after seeing a high
-                number in the question, which is an anchoring effect (Wadi &amp;
-                Fredette, 2025).
-              </P>
-            </Ruled>
-            <P className="!max-w-none">
-              In that study, newer models were more susceptible to anchoring
-              than older models. A newer model is not always a less biased one
-              (Wadi &amp; Fredette, 2025).
-            </P>
-            <Plate wide>
-              <V.AnchorByGeneration />
-            </Plate>
-            <P className="!max-w-none">
-              AI agents can also favor options because of where they appear in a
-              list, which is a position effect (Wadi &amp; Ma, 2026a).
-            </P>
-          </div>
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
+        <SlideHeading>
+          Anchoring and Position Effects in Language Models
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.2fr_1.35fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              In judgment tasks lacking an objective calculation formula, large
+              language models can display classic human-like biases.
+            </Lead>
+            <Ruled>
               <P>
-                Other studies find rational choices. When all product details
-                were visible, seven of eight AI agents gave the cents in a price
-                the same weight as whole dollars, so a $4.99 price did not
-                mislead them (Wadi &amp; Ma, 2026b).
-              </P>
-            </Ruled>
-            <P>
-              Likewise, six of eight agents gave a dollar saved through a
-              discount the same weight as a dollar of list price (Wadi &amp; Ma,
-              2026b).
-            </P>
-          </div>
-        </div>
-        <Statement className="mt-5 !max-w-[60ch] !text-[clamp(1.25rem,1.9vw,1.6rem)]">
-          Whether an agent shows a bias therefore depends on{" "}
-          <Tint>the conditions in which it chooses</Tint>.
-        </Statement>
-      </Slide>
-
-      {/* ================================================================
-          Information Costs and Storefront Design
-          ================================================================ */}
-      <Slide
-        className={TIGHT}
-        id="information-costs-and-storefront-design"
-        border
-        exercise={exercise["information-costs-and-storefront-design"]}
-      >
-        <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
-          Information Costs and Storefront Design
-        </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.8fr_2fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Storefront information architecture</Term> is the way a
-                store organizes product information and how easy it is to reach.
-              </P>
-            </Ruled>
-            <P>
-              A human shopper who must click into each product page to find its
-              weight faces a search cost. An AI agent faces the same kind of
-              cost in time, computing, or money.
-            </P>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                When the details were hidden behind costly look-ups and the goal
-                was vague, AI agents often skipped the details needed to compare
-                value (Wadi &amp; Ma, 2026b).
+                When asked to state willingness to pay for consumer products
+                after exposure to an arbitrary numerical anchor in the prompt,
+                language models shifted their valuations toward the anchor (Wadi
+                &amp; Fredette, 2025).
               </P>
             </Ruled>
           </div>
-          {/* The instrument: switch the goal and the cost of a look-up. */}
           <Plate wide>
-            <V.StorefrontLab />
+            <AnchorByGeneration />
           </Plate>
         </div>
-        <div className="mt-4 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-3 md:gap-8">
-          <P>
-            Their choices then looked like human heuristics. They chose the
-            lower whole-dollar price or the lower list price, even when it was
-            the worse deal (Wadi &amp; Ma, 2026b).
-          </P>
-          <P>
-            When the agents were given the missing details, most chose the
-            better product, and none made an error when asked to calculate the
-            price per unit (Wadi &amp; Ma, 2026b).
-          </P>
-          <P>
-            In most cases, the heuristic-like choice came from{" "}
-            <Term>the information the agent held</Term>, not from an error in
-            its reasoning.
-          </P>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Notably, newer and more capable model generations exhibited{" "}
+              <Tint>stronger susceptibility to numerical anchoring</Tint> than
+              earlier generations, demonstrating that scaling model size does
+              not automatically eliminate judgment biases (Wadi &amp; Fredette,
+              2025).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In multi-option choice tasks, AI shopping agents also exhibit
+              pronounced <Term>position effects</Term>, favoring options placed
+              at the beginning or end of a candidate list (Wadi &amp; Ma,
+              2026a).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Thus, in open-ended valuation and list scanning, language models
+              inherit contextual sensitivities from their architecture and
+              training data.
+            </P>
+          </Ruled>
         </div>
-        <Statement className="mt-4 !max-w-none !text-[clamp(1.1rem,1.45vw,1.3rem)]">
-          Retailers who make diagnostic details, such as weight and unit price,
-          easy for agents to reach <Tint>help agents choose well</Tint>. Rules
-          that require unit prices on shelf labels were written for human
-          shoppers and do not yet cover what an agent can reach.
-        </Statement>
       </Slide>
 
       {/* ================================================================
-          Discussion: Spot the Shortcut
+          How AI Agents Respond to Just-Below Pricing and Promotional Framing
           ================================================================ */}
-      <Slide className={TIGHT} id="discussion-spot-the-shortcut" border>
-        <Heading kicker="Discussion:" tone="counter">
-          Spot the Shortcut
-        </Heading>
-        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
-          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
-            Discussion:
-          </span>
-          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
-            Find an online product page or a store shelf. Which heuristics,
-            anchors, or frames does it use? Would an AI agent shopping for you
-            be affected by the same cues, and which details would it need to
-            see to avoid them?
-          </p>
+      <Slide
+        className={TIGHT}
+        id="how-ai-agents-respond-to-just-below-pricing-and-promotional-framing"
+        border
+        exercise={
+          exercise[
+            "how-ai-agents-respond-to-just-below-pricing-and-promotional-framing"
+          ]
+        }
+      >
+        <SlideHeading>
+          How AI Agents Respond to Just-Below Pricing and Promotional Framing
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.2fr_1.3fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              A central question for retail pricing is whether AI shopping
+              agents are fooled by System 1 pricing cues such as 4.99-dollar
+              just-below prices and &ldquo;Save 20 percent&rdquo; promotional
+              discount frames.
+            </Lead>
+            <Ruled>
+              <P>
+                In controlled experiments where all product attributes and
+                prices were simultaneously visible on the screen,{" "}
+                <Term>seven out of eight</Term> tested AI shopping agents
+                weighted the cents component of a price equally with the
+                whole-dollar component (Wadi &amp; Ma, 2026b).
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <EightAgents />
+          </Plate>
         </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Under full information, a 4.99-dollar price tag did not induce a
+              left-digit illusion in those agents compared with a 5.00-dollar
+              price tag (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Similarly, <Term>six out of eight</Term> tested agents weighted a
+              dollar saved through a promotional discount identically to a
+              dollar reduction in regular list price, showing no
+              transaction-utility distortion (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              When relevant numbers are directly visible, most frontier AI
+              agents <Tint>evaluate prices arithmetically</Tint> rather than
+              relying on human System 1 perceptual shortcuts.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Distinguishing Reasoning Errors from Information Deficits
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="distinguishing-reasoning-errors-from-information-deficits"
+        border
+      >
+        <SlideHeading>
+          Distinguishing Reasoning Errors from Information Deficits
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Why do AI shopping agents sometimes make choices that resemble
+              human heuristic errors in realistic digital storefronts?
+            </Lead>
+            <Ruled>
+              <P>
+                Research by Wadi and Ma (2026b) demonstrates that apparent
+                heuristic behavior in AI agents usually stems from{" "}
+                <Tint>incomplete information acquisition</Tint> rather than
+                flawed arithmetic reasoning.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ShortcutShelf />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              When agents were explicitly given all package weights and prices
+              and instructed to compute unit prices, <Term>zero agents</Term>{" "}
+              made a calculation error (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              However, when package weights were hidden behind costly secondary
+              lookups and the user&apos;s goal was stated vaguely, agents
+              frequently skipped the weight lookup and selected the option with
+              the lower headline dollar price or larger promotional badge (Wadi
+              &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Treating an agent&apos;s choice error as an internal cognitive
+              bias when it is actually a rational response to lookup costs and
+              vague instructions leads to the wrong managerial diagnosis.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: Information Acquisition Costs and Storefront Architecture
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-information-acquisition-costs-and-storefront-architecture"
+        border
+      >
+        <PartHead
+          n={5}
+          title="Information Acquisition Costs and Storefront Architecture"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement className="">
+            Storefront information architecture determines how product
+            attributes are organized across{" "}
+            <Tint>search summary pages, detail pages, and API endpoints</Tint>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              How a retailer structures attribute visibility directly governs
+              whether AI shopping agents make value-maximizing or heuristic-like
+              choices.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Hidden Attributes and Search Costs in Agent-Mediated Shopping
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="hidden-attributes-and-search-costs-in-agent-mediated-shopping"
+        border
+      >
+        <SlideHeading>
+          Hidden Attributes and Search Costs in Agent-Mediated Shopping
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.95fr_1.6fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Lead>
+              In many online stores, the search results page displays only the
+              product title, thumbnail image, headline price, and promotional
+              badge, while net weight or unit count requires opening the
+              individual product page.
+            </Lead>
+            <Ruled>
+              <P>
+                For both a time-pressed human shopper and an AI agent facing
+                token or latency costs, this two-tier layout imposes an{" "}
+                <Term>information acquisition cost</Term> on calculating true
+                unit value.
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <StorefrontLab />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              When lookup costs are positive and the buyer&apos;s prompt is
+              vague (&ldquo;buy the best deal&rdquo;), AI agents often rely on
+              the visible headline price alone and select smaller packages with
+              higher unit costs (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              The resulting choice mimics human left-digit or promotional
+              framing biases even though the underlying mechanism is costly
+              information search (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Storefront friction therefore{" "}
+              <Tint>converts an analytically capable AI agent into a surface-cue chooser</Tint>.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Full-Information Recovery and Unit-Price Calculation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="full-information-recovery-and-unit-price-calculation"
+        border
+      >
+        <SlideHeading>
+          Full-Information Recovery and Unit-Price Calculation
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              Two interventions restore rational unit-value choice in AI
+              shopping agents:{" "}
+              <Term>lowering storefront lookup friction</Term> or{" "}
+              <Term>increasing prompt specificity</Term> (Wadi &amp; Ma, 2026b).
+            </Lead>
+            <Ruled>
+              <P>
+                First, when diagnostic attributes such as net weight, volume, or
+                unit price are surfaced directly on the initial search results
+                feed, agents incorporate them immediately and select the lower
+                cost per ounce (Wadi &amp; Ma, 2026b).
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ProductPage />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Second, even when attributes remain hidden behind costly lookups,
+              instructing the agent with a <Term>specific criterion</Term>{" "}
+              (&ldquo;find the lowest price per ounce&rdquo;) compels the agent
+              to pay the lookup cost and verify weight before choosing (Wadi
+              &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Retailers offering genuine unit-price value benefit from{" "}
+              <Tint>surfacing complete package specifications</Tint> in
+              machine-readable search summaries.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Conversely, sellers offering poor unit value behind low headline
+              prices benefit when diagnostic attributes are buried deeper in the
+              interface.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Regulatory and Merchandising Implications for Storefront Design
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="regulatory-and-merchandising-implications-for-storefront-design"
+        border
+      >
+        <SlideHeading>
+          Regulatory and Merchandising Implications for Storefront Design
+        </SlideHeading>
+        <Lead>
+          Consumer protection regulations in many jurisdictions require
+          supermarkets to print <Term>standardized unit prices</Term> (price per
+          100 grams or per ounce) on physical shelf tags.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              These disclosure mandates were written for human shoppers walking
+              down physical aisles and often do not specify how unit prices must
+              be exposed in digital HTML or API feeds consulted by AI agents.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              If unit prices are rendered only as visual graphics or buried
+              behind secondary clicks, an AI agent shopping for a consumer does
+              not receive the regulatory protection intended for the buyer.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Updating choice-architecture regulation for agentic commerce
+              requires mandating that unit prices, mandatory fees, and package
+              quantities be exposed in{" "}
+              <Tint>standardized, low-friction machine-readable fields</Tint>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Brands that provide transparent, easily accessible unit
+              specifications build preference among both analytical human buyers
+              and autonomous shopping agents.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Designing Storefront Architecture for Human and AI Shoppers
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-designing-storefront-architecture-for-human-and-ai-shoppers"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Designing Storefront Architecture for Human and AI Shoppers
+        </SlideHeading>
+        <Prompt>
+          A consumer advocacy agency is reviewing an online grocery marketplace
+          where national brands sell 14-ounce cereal boxes for 4.99 dollars
+          (&ldquo;Special Deal!&rdquo;) alongside 18-ounce boxes for 5.29
+          dollars, with package weights visible only after clicking a secondary
+          &ldquo;Specifications&rdquo; tab on each product page. Based on
+          Kahneman (2011), Thomas and Morwitz (2005), and Wadi and Ma (2026b),
+          compare how a rushed human shopper versus an AI shopping agent
+          responds to this storefront under vague versus specific instructions,
+          and propose a regulatory standard for digital unit-price disclosure.
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Behavioral economics shows that consumers operate under bounded
+              rationality and satisfice rather than optimize exhaustively across
+              all market options.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              System 1 thinking is fast, automatic, and effortless, whereas
+              System 2 thinking is slow, analytical, and effortful, leading
+              everyday shoppers to rely on availability, representativeness, and
+              price-quality heuristics.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Judgments are reference-dependent: arbitrary numerical anchors
+              shift willingness to pay, prospect theory&apos;s loss aversion
+              makes losses loom roughly twice as large as gains (driving the
+              endowment effect and status quo bias), and positive attribute
+              frames outperform negative frames.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              Mental accounting, transaction utility, and the left-digit effect
+              in just-below pricing (4.99 dollars vs. 5.00 dollars) shape price
+              perception, while choice architecture uses defaults and nudges to
+              guide behavior.
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              AI models exhibit anchoring in open-ended valuation and position
+              effects in list choice, but under full information most AI
+              shopping agents weight cents and promotional discounts rationally
+              without left-digit or transaction-utility illusions.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              When storefront architecture hides diagnostic attributes such as
+              package weight behind costly lookups and the user&apos;s goal is
+              vague, AI agents skip lookups and make heuristic-like choices,
+              which can be corrected by specific delegation prompts or
+              transparent machine-readable unit pricing.
+            </P>
+          </Numbered>
+        </ol>
       </Slide>
     </SlideDeck>
   );

@@ -540,19 +540,19 @@ export function RepetitionCurve() {
       id="sk-repetition"
       width={800}
       height={290}
-      label="A line of link strength over repeated ad exposures, drawn as small ads along the bottom. Each exposure lifts the teal line and it sags between them, building higher: it strengthens the link. After a single exposure, a thin line sinks back to nothing: memory decay. Past the seventh exposure, in a zone marked wear-out, the exposures barely register and the line falls."
+      label="A line of link strength over repeated ad exposures, drawn as small ads along the bottom. Each exposure lifts the teal line and it sags between them, building higher through repeated pairings. After a single exposure, a thin line sinks back to nothing through extinction. Past the seventh exposure, in a zone marked wear-out, the exposures barely register and the line falls."
     >
       <Wash pts={zone} seed={1200} fill={SK.earth} opacity={0.45} dx={0} dy={0} />
       <SketchText x={wear + 18} y={62} size={13}>
         WEAR-OUT
       </SketchText>
       <SketchText x={110} y={62} size={13}>
-        STRENGTHEN THE LINK
+        REPEATED PAIRINGS
       </SketchText>
       <InkLine pts={rp([[80, 237], [776, 236]])} seed={1205} width={1.2} />
       <InkLine pts={decay} seed={1210} width={1} amp={0.3} />
       <SketchText x={346} y={230} size={11}>
-        MEMORY DECAY
+        EXTINCTION
       </SketchText>
       <InkLine pts={pts} seed={1220} width={2.2} color={SK.teal} amp={0.25} />
       {Array.from({ length: 12 }, (_, i) => (
@@ -734,7 +734,7 @@ export function InstrumentalMatrix() {
       id="sk-instrumental"
       width={540}
       height={264}
-      label="Two rows. In each, the same shopper carries a shopping bag. Top: the behaviour leads to a whole heart, a positive outcome, and the shopper learns to perform it. Bottom: it leads to a broken heart, a negative outcome, and the shopper learns to avoid it."
+      label="Two rows. In each, the same shopper carries a shopping bag. Top: the behaviour leads to a whole heart, a positive outcome, and the shopper learns to repeat it. Bottom: it leads to a broken heart, a negative outcome, and the shopper learns to avoid it."
     >
       <Backwash cx={270} cy={132} rx={262} ry={126} seed={1600} opacity={0.4} />
       {rows.map((r, i) => {
@@ -748,7 +748,7 @@ export function InstrumentalMatrix() {
             <Heart x={262} y={r.g - 52} s={2.2} seed={1670 + i * 40} broken={!r.good} />
             <SketchArrow pts={rp([[312, r.g - 52], [382, r.g - 52]])} seed={1680 + i * 40} color={r.good ? SK.teal : SK.ink} width={r.good ? 2 : 1.3} />
             <SketchText x={398} y={r.g - 42} size={30} serif fill={r.good ? SK.teal : SK.ink}>
-              {r.good ? "Perform" : "Avoid"}
+              {r.good ? "Repeat" : "Avoid"}
             </SketchText>
           </g>
         );
@@ -925,16 +925,16 @@ export function LearnByWatching() {
       id="sk-learn-by-watching"
       width={560}
       height={262}
-      label="Left, personal rewards: a person holds up a star they have earned. Right, watching other people: a person stands to one side and watches someone else hold up the star."
+      label="Left, direct reward: a person holds up a star they have earned. Right, observational learning: a person stands to one side and watches someone else hold up the star."
     >
       <Backwash cx={116} cy={152} rx={104} ry={100} seed={2000} />
       <Backwash cx={400} cy={152} rx={150} ry={100} seed={2002} />
       <InkLine pts={rp([[236, 30], [236, 250]])} seed={2004} width={0.7} />
       <SketchText x={116} y={22} anchor="middle" size={11}>
-        PERSONAL REWARDS
+        DIRECT REWARD
       </SketchText>
       <SketchText x={400} y={22} anchor="middle" size={11}>
-        WATCHING OTHER PEOPLE
+        OBSERVATIONAL LEARNING
       </SketchText>
 
       <Ground x0={36} x1={200} y={g} seed={2006} />

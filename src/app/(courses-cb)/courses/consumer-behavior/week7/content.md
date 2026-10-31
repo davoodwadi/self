@@ -10,6 +10,7 @@ week: "week7"
 - Consumer decision making spans problem recognition, information search, alternative evaluation, product choice, and postpurchase review across both human and AI-delegated workflows.
 
 ## Defining Consumer Decision Making [no-exercise]
+[figure: decision path from recognizing a household need at home through product search and comparison to final purchase]
 - Consumer decision making is the cognitive and behavioral process by which buyers identify a need, gather information, evaluate competing options, and select a course of action.
 - Some purchases require weeks of deliberation across dozens of technical attributes, such as selecting a university, an automobile, or a residential mortgage.
 - Other purchases occur in less than two seconds at the shelf, such as replenishing a household staple.
@@ -45,6 +46,7 @@ week: "week7"
 - Managerial strategy differs sharply across the continuum: market leaders reinforce routine response through consistent shelf availability, whereas challengers disrupt routine habits to trigger limited problem solving.
 
 ## Habitual Purchasing, Inertia, and Brand Switching [no-exercise]
+[figure: habitual shopper reaching automatically for a familiar brand in under a second]
 - Repeat purchasing of the same brand over time can reflect two distinct psychological states: inertia or brand loyalty.
 - Inertia is habitual repeat buying driven by convenience and the desire to avoid the cognitive cost of comparing alternatives.
 - A shopper acting under inertia lacks deep commitment to the brand and will switch readily if the habitual item is out of stock or a competitor displays a prominent point-of-sale discount.
@@ -56,6 +58,7 @@ week: "week7"
 - The breadth and depth of search depend on prior category knowledge, search costs, and the level of perceived risk.
 
 ## Internal Search Versus External Information Sources [exercise]
+[figure: external information search across advertising, product reviews, interpersonal advice, and retail staff]
 - Information search divides into two modes that typically operate in sequence: internal search and external search.
 - Internal search is the process of scanning long-term memory to retrieve prior brand experiences, advertising claims, and category schemas.
 - When internal search provides insufficient confidence, the consumer supplements it with external search by acquiring information from the environment.
@@ -63,7 +66,7 @@ week: "week7"
 - Deliberate prepurchase search is directed at an immediate buying task, whereas ongoing search is conducted regularly by category enthusiasts to stay informed and enjoy browsing (Bloch, Sherrell, & Ridgway, 1986).
 
 ## Economics of Information Search and Prior Expertise [no-exercise]
-[figure: inverted-U relationship between prior product knowledge and external search effort]
+[figure: interactive comparison of cumulative price savings against rising search costs across sequential store visits]
 - From an information-economics perspective, consumers continue searching only as long as the expected marginal benefit of discovering a better price or attribute exceeds the marginal cost of search in time and mental effort (Stigler, 1961).
 - Empirical research reveals an inverted-U relationship between a consumer's prior category knowledge and the amount of external search conducted (Bettman & Park, 1980).
 - Complete novices often search less than moderately knowledgeable buyers because novices do not know which technical attributes to compare or how to interpret specification tables.
@@ -94,6 +97,7 @@ week: "week7"
 - Observing which attributes an agent inspects before choosing separates mistakes caused by incomplete search from mistakes caused by flawed reasoning (Wadi & Ma, 2026b).
 
 ## Information Acquisition Costs in Delegated Search [exercise]
+[figure: consumer delegating product search and attribute comparison to an AI shopping agent]
 - Every information lookup performed by an AI shopping agent incurs a cost in latency, token consumption, or explicit API fees.
 - In controlled experiments where looking up hidden product attributes was free, AI shopping agents inspected the necessary fields and rarely selected dominated products (Wadi & Ma, 2026b).
 - When each attribute lookup carried a cost, however, agents curtailed their search early and frequently made a final selection without opening diagnostic attributes such as package weight (Wadi & Ma, 2026b).
@@ -139,7 +143,7 @@ week: "week7"
 - Decision rules divide into two fundamental families: compensatory rules and noncompensatory rules.
 
 ## Compensatory Decision Rules: Simple and Weighted Additive [no-exercise]
-[figure: multi-attribute product comparison table contrasting weighted compensatory scoring with noncompensatory cutoff rules]
+[figure: comparing competing product options across weighted attributes]
 - Compensatory decision rules allow a perceived weakness on one product attribute to be offset by a strong performance on another attribute.
 - Under the simple additive rule, the consumer counts the number of attributes on which each brand performs well and selects the option with the largest number of positive features.
 - Under the weighted additive rule, the consumer assigns an importance weight to each attribute, multiplies each brand's attribute rating by that weight, and sums the weighted scores.
@@ -147,6 +151,7 @@ week: "week7"
 - Because compensatory rules require inspecting and combining multiple attributes across all candidates, they are used primarily when involvement is high or the candidate set is small.
 
 ## Noncompensatory Rules: Lexicographic, Elimination-by-Aspects, and Conjunctive [exercise]
+[figure: multi-attribute product comparison table contrasting weighted compensatory scoring with noncompensatory cutoff rules]
 - Noncompensatory decision rules do not permit trade-offs across attributes: a failure to meet a threshold on one attribute eliminates the brand regardless of its strengths elsewhere.
 - Under the lexicographic rule, the consumer ranks attributes by importance, compares all brands on the single most important attribute, and selects the winner (moving to the second attribute only to break a tie).
 - Under the elimination-by-aspects (EBA) rule, the consumer evaluates attributes sequentially in order of importance and eliminates any option that falls below a minimum cutoff on each attribute (Tversky, 1972).

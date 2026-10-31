@@ -29,6 +29,7 @@ import {
   head2,
   headAlong1,
   INK,
+  INK2,
   INK3,
   Key,
   Note,
@@ -41,6 +42,7 @@ import {
   SIGNAL_TINT,
 } from "../_visuals/kit";
 import {
+  Chip2,
   Coins2,
   Company1,
   HEAD_PATH,
@@ -97,6 +99,125 @@ function Tub({ x, y, s = 1, tone = INK, fill = PAPER }: { x: number; y: number; 
       <rect x={r2(x - 22 * s)} y={r2(y - 48 * s)} width={r2(44 * s)} height={r2(8 * s)} fill={tone} />
       <rect x={r2(x - 19.5 * s)} y={r2(y - 30 * s)} width={r2(39 * s)} height={r2(13 * s)} fill={fill !== PAPER ? PAPER : tone === SIGNAL ? SIGNAL_TINT : "var(--paper-3)"} stroke={tone} strokeWidth={1} />
     </g>
+  );
+}
+
+/* ==========================================================================
+   0. FOUR-STEP STP FRAMEWORK: selecting customers & deciding value proposition
+   ========================================================================== */
+
+export function FourStepStpFramework() {
+  const panels = [
+    { x: 20, cx: 106, step: "1. Market segmentation", note: "Divide into buyer groups", lit: false },
+    { x: 212, cx: 298, step: "2. Market targeting", note: "Select segments to enter", lit: true },
+    { x: 416, cx: 502, step: "3. Differentiation", note: "Create superior value", lit: false },
+    { x: 608, cx: 694, step: "4. Positioning", note: "Place in consumer minds", lit: true },
+  ];
+
+  return (
+    <Frame
+      height={296}
+      label="Four-step STP framework. Left pair under Selecting customers to serve: 1. Market segmentation divides a market into four buyer groups, and 2. Market targeting selects the upper-right segment. Right pair under Deciding on a value proposition: 3. Differentiation sets one market offering apart with superior value, and 4. Positioning places that offering in a clear spot inside a target consumer's mind."
+    >
+      {/* Top stage brackets */}
+      <Key x={202} y={22} anchor="middle" fill={INK} size={11}>
+        Selecting customers to serve
+      </Key>
+      <path d="M20 38 V30 H384 V38" fill="none" stroke={INK} strokeWidth={1.25} />
+
+      <Key x={598} y={22} anchor="middle" fill={SIGNAL} size={11}>
+        Deciding on a value proposition
+      </Key>
+      <path d="M416 38 V30 H780 V38" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
+
+      {/* Four step cards */}
+      {panels.map((p) => (
+        <g key={p.step}>
+          <rect
+            x={p.x}
+            y={50}
+            width={172}
+            height={196}
+            rx={4}
+            fill={p.lit ? PAPER2 : PAPER}
+            stroke={p.lit ? SIGNAL : INK}
+            strokeWidth={p.lit ? 1.5 : 1.25}
+          />
+          <Key x={p.cx} y={72} anchor="middle" fill={p.lit ? SIGNAL : INK} size={10.5}>
+            {p.step}
+          </Key>
+          <line x1={p.x + 14} y1={82} x2={p.x + 158} y2={82} stroke={RULE} strokeWidth={1} />
+          <Note x={p.cx} y={232} anchor="middle" fill={p.lit ? SIGNAL : INK3} size={11.5}>
+            {p.note}
+          </Note>
+        </g>
+      ))}
+
+      {/* Step 1 drawing: 2x2 divided market */}
+      <rect x={44} y={96} width={124} height={110} fill={PAPER} stroke={INK3} strokeWidth={1} />
+      <line x1={106} y1={96} x2={106} y2={206} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={44} y1={151} x2={168} y2={151} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
+      <Buyer kind={0} x={66} y={142} k={0.62} />
+      <Buyer kind={0} x={86} y={142} k={0.62} />
+      <Buyer kind={1} x={126} y={142} k={0.62} />
+      <Buyer kind={1} x={146} y={142} k={0.62} />
+      <Buyer kind={2} x={66} y={196} k={0.62} />
+      <Buyer kind={2} x={86} y={196} k={0.62} />
+      <Buyer kind={3} x={126} y={196} k={0.62} />
+      <Buyer kind={3} x={146} y={196} k={0.62} />
+
+      {/* Step 2 drawing: selected segment highlighted */}
+      <rect x={236} y={96} width={124} height={110} fill={PAPER} stroke={INK3} strokeWidth={1} />
+      <rect x={298} y={96} width={62} height={55} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <line x1={298} y1={151} x2={298} y2={206} stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={236} y1={151} x2={298} y2={151} stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
+      <Buyer kind={0} x={258} y={142} k={0.62} tone={RULE2} />
+      <Buyer kind={0} x={278} y={142} k={0.62} tone={RULE2} />
+      <Buyer kind={1} x={318} y={142} k={0.62} tone={SIGNAL} />
+      <Buyer kind={1} x={338} y={142} k={0.62} tone={SIGNAL} />
+      <Buyer kind={2} x={258} y={196} k={0.62} tone={RULE2} />
+      <Buyer kind={2} x={278} y={196} k={0.62} tone={RULE2} />
+      <Buyer kind={3} x={318} y={196} k={0.62} tone={RULE2} />
+      <Buyer kind={3} x={338} y={196} k={0.62} tone={RULE2} />
+
+      {/* Step 3 drawing: differentiated market offering */}
+      <Pack1 x={456} y={198} w={34} h={46} tone={INK3} />
+      <Pack1 x={496} y={198} w={34} h={46} tone={INK3} />
+      <Pack1 x={544} y={198} w={40} h={60} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <path
+        d="M544 110 L547.5 117.5 L556 118.5 L549.8 124 L551.5 132 L544 127.8 L536.5 132 L538.2 124 L532 118.5 L540.5 117.5 Z"
+        fill={SIGNAL}
+      />
+      <line x1={432} y1={198} x2={572} y2={198} stroke={INK} strokeWidth={1.25} />
+
+      {/* Step 4 drawing: clear place in consumer minds (head profile + perceptual map) */}
+      <Head1 x={626} y={88} k={0.56} tone={INK} fill={PAPER} />
+      <line x1={662} y1={143} x2={716} y2={143} stroke={RULE2} strokeWidth={1} />
+      <line x1={689} y1={116} x2={689} y2={170} stroke={RULE2} strokeWidth={1} />
+      <circle cx={674} cy={153} r={4} fill={INK3} />
+      <circle cx={682} cy={160} r={3.5} fill={INK3} />
+      <circle cx={669} cy={161} r={3.2} fill={INK3} />
+      <circle cx={703} cy={129} r={7.5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <circle cx={703} cy={129} r={3} fill={SIGNAL} />
+
+      {/* Arrows between steps */}
+      {[
+        [192, 212, INK],
+        [384, 416, SIGNAL],
+        [588, 608, INK],
+      ].map(([x1, x2, tone]) => (
+        <g key={x1}>
+          <line x1={x1} y1={148} x2={Number(x2) - 2} y2={148} stroke={String(tone)} strokeWidth={1.5} />
+          <path d={head2.right(Number(x2), 148)} fill="none" stroke={String(tone)} strokeWidth={1.5} />
+        </g>
+      ))}
+
+      {/* Bottom unifying rule */}
+      <line x1={20} y1={264} x2={780} y2={264} stroke={INK} strokeWidth={1.25} />
+      <Key x={400} y={284} anchor="middle" fill={INK} size={10.5}>
+        Customer-driven marketing strategy (STP)
+      </Key>
+    </Frame>
   );
 }
 
@@ -230,8 +351,192 @@ export function GlyphActionable() {
 }
 
 /* ==========================================================================
-   3. NESTED ZOOM: geographic units, nations down to neighborhoods (400)
+   3. FOUR PRIMARY BASES FOR SEGMENTING CONSUMER MARKETS
    ========================================================================== */
+
+export function ConsumerSegmentationBases() {
+  const cols = [
+    { x: 20, cx: 108, title: "Geographic", note: "Nations, regions, climate, cities", tone: COUNTER, fill: PAPER },
+    { x: 212, cx: 300, title: "Demographic", note: "Most popular, easier to measure", tone: SIGNAL, fill: PAPER2 },
+    { x: 404, cx: 492, title: "Psychographic", note: "Social class, lifestyle, personality", tone: INK, fill: PAPER },
+    { x: 596, cx: 684, title: "Behavioral", note: "Occasions, benefits, usage, loyalty", tone: INK, fill: PAPER },
+  ];
+
+  return (
+    <Frame
+      height={284}
+      label="Four primary bases for segmenting consumer markets. 1. Geographic: northern cold region with snow and boot versus southern warm region with sun and patio chair. 2. Demographic (highlighted as most popular and easier to measure): buyer profile card with age, life-cycle, income, and generation plus a measuring ruler. 3. Psychographic: two buyers with outdoor mountain versus home reading lifestyles. 4. Behavioral: calendar occasion, benefit star, usage rate bars, and loyalty return loop."
+    >
+      <Key x={400} y={20} anchor="middle" fill={INK} size={11}>
+        Four primary bases for segmenting consumer markets
+      </Key>
+
+      {cols.map((c) => (
+        <g key={c.title}>
+          <rect
+            x={c.x}
+            y={34}
+            width={176}
+            height={232}
+            rx={4}
+            fill={c.fill}
+            stroke={c.tone}
+            strokeWidth={c.tone === SIGNAL ? 1.5 : 1.25}
+          />
+          <Key x={c.cx} y={56} anchor="middle" fill={c.tone} size={11}>
+            {c.title}
+          </Key>
+          <line x1={c.x + 14} y1={66} x2={c.x + 162} y2={66} stroke={RULE} strokeWidth={1} />
+          <Note x={c.cx} y={250} anchor="middle" fill={c.tone === SIGNAL ? SIGNAL : INK3} size={11}>
+            {c.note}
+          </Note>
+        </g>
+      ))}
+
+      {/* 1. Geographic: North (snow + boot) vs South (sun + patio lounge) */}
+      <rect x={36} y={78} width={144} height={68} rx={3} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
+      <Key x={46} y={95} fill={COUNTER} size={9.5}>
+        North
+      </Key>
+      {/* Snowflake */}
+      <g stroke={COUNTER} strokeWidth={1.25} strokeLinecap="round">
+        <line x1={62} y1={110} x2={62} y2={130} />
+        <line x1={52} y1={120} x2={72} y2={120} />
+        <line x1={55} y1={113} x2={69} y2={127} />
+        <line x1={69} y1={113} x2={55} y2={127} />
+      </g>
+      {/* Insulated boot silhouette */}
+      <path
+        d="M118 96 H138 V122 H154 A6 6 0 0 1 160 128 V134 H114 V96 Z"
+        fill={PAPER}
+        stroke={COUNTER}
+        strokeWidth={1.5}
+        strokeLinejoin="round"
+      />
+      <line x1={114} y1={130} x2={160} y2={130} stroke={COUNTER} strokeWidth={1.25} />
+
+      <rect x={36} y={156} width={144} height={68} rx={3} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+      <Key x={46} y={173} fill={INK} size={9.5}>
+        South
+      </Key>
+      {/* Sun */}
+      <circle cx={62} cy={198} r={7} fill="none" stroke={INK} strokeWidth={1.3} />
+      {[0, 60, 120, 180, 240, 300].map((deg) => {
+        const rad = (deg * Math.PI) / 180;
+        return (
+          <line
+            key={deg}
+            x1={r2(62 + Math.cos(rad) * 10)}
+            y1={r2(198 + Math.sin(rad) * 10)}
+            x2={r2(62 + Math.cos(rad) * 13)}
+            y2={r2(198 + Math.sin(rad) * 13)}
+            stroke={INK}
+            strokeWidth={1.2}
+          />
+        );
+      })}
+      {/* Patio umbrella + table */}
+      <path d="M112 192 Q136 172 160 192 Z" fill={PAPER2} stroke={INK} strokeWidth={1.4} strokeLinejoin="round" />
+      <line x1={136} y1={192} x2={136} y2={214} stroke={INK} strokeWidth={1.4} />
+      <line x1={118} y1={204} x2={154} y2={204} stroke={INK} strokeWidth={1.4} />
+      <line x1={124} y1={204} x2={120} y2={214} stroke={INK} strokeWidth={1.3} />
+      <line x1={148} y1={204} x2={152} y2={214} stroke={INK} strokeWidth={1.3} />
+
+      {/* 2. Demographic: Profile card + ticked traits + ruler */}
+      <rect x={228} y={80} width={52} height={68} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
+      <Person3 x={254} y={142} k={1.3} stroke={SIGNAL} />
+      {[
+        ["Age", 92],
+        ["Life-cycle", 118],
+        ["Income", 144],
+        ["Generation", 170],
+      ].map(([label, y]) => (
+        <g key={label}>
+          <Key x={290} y={Number(y)} fill={INK} size={9.5}>
+            {label}
+          </Key>
+          <line x1={290} y1={Number(y) + 6} x2={372} y2={Number(y) + 6} stroke={RULE2} strokeWidth={1} />
+          <path
+            d={`M360 ${Number(y) - 3} L364 ${Number(y) + 1} L371 ${Number(y) - 6}`}
+            fill="none"
+            stroke={SIGNAL}
+            strokeWidth={1.5}
+          />
+        </g>
+      ))}
+      {/* Measuring ruler at bottom of demographic card */}
+      <rect x={228} y={196} width={144} height={20} fill={PAPER} stroke={SIGNAL} strokeWidth={1.4} />
+      {Array.from({ length: 13 }, (_, i) => (
+        <line
+          key={i}
+          x1={238 + i * 10.3}
+          y1={196}
+          x2={238 + i * 10.3}
+          y2={i % 2 === 0 ? 206 : 202}
+          stroke={SIGNAL}
+          strokeWidth={1.2}
+        />
+      ))}
+
+      {/* 3. Psychographic: Two buyers with contrasting lifestyles */}
+      <rect x={418} y={78} width={68} height={62} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+      <path d="M426 128 L444 98 L456 115 L466 104 L478 128 Z" fill={PAPER2} stroke={INK} strokeWidth={1.3} strokeLinejoin="round" />
+      <circle cx={468} cy={91} r={4.5} fill="none" stroke={INK} strokeWidth={1.2} />
+      <circle cx={452} cy={147} r={3} fill={PAPER} stroke={INK} strokeWidth={1.2} />
+      <circle cx={452} cy={155} r={1.8} fill={PAPER} stroke={INK} strokeWidth={1.1} />
+
+      <rect x={498} y={78} width={68} height={62} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+      <Armchair x={532} y={110} k={0.42} tone={INK} />
+      <circle cx={532} cy={147} r={3} fill={PAPER} stroke={INK} strokeWidth={1.2} />
+      <circle cx={532} cy={155} r={1.8} fill={PAPER} stroke={INK} strokeWidth={1.1} />
+
+      <Person3 x={452} y={210} k={1.3} stroke={INK} />
+      <Person3 x={532} y={210} k={1.3} stroke={INK} />
+      <path d="M430 218 V224 H554 V218" fill="none" stroke={INK3} strokeWidth={1.1} />
+
+      {/* 4. Behavioral: 2x2 grid of occasions, benefits, usage rate, loyalty */}
+      <line x1={684} y1={78} x2={684} y2={224} stroke={RULE} strokeWidth={1} />
+      <line x1={610} y1={151} x2={758} y2={151} stroke={RULE} strokeWidth={1} />
+
+      {/* Top-left: Occasion calendar */}
+      <rect x={624} y={88} width={38} height={36} fill={PAPER} stroke={INK} strokeWidth={1.3} />
+      <rect x={624} y={88} width={38} height={8} fill={INK} />
+      <circle cx={648} cy={111} r={5} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={643} y={140} anchor="middle" fill={INK3} size={8.5}>
+        Occasions
+      </Key>
+
+      {/* Top-right: Benefits sought star */}
+      <path
+        d="M725 90 L728.5 98 L737 99 L730.8 104.5 L732.5 113 L725 108.5 L717.5 113 L719.2 104.5 L713 99 L721.5 98 Z"
+        fill={SIGNAL}
+      />
+      <Key x={725} y={140} anchor="middle" fill={INK3} size={8.5}>
+        Benefits
+      </Key>
+
+      {/* Bottom-left: Usage rate bars */}
+      <rect x={626} y={188} width={8} height={12} fill={PAPER} stroke={INK} strokeWidth={1.2} />
+      <rect x={639} y={176} width={8} height={24} fill={PAPER} stroke={INK} strokeWidth={1.2} />
+      <rect x={652} y={162} width={8} height={38} fill={SIGNAL} stroke={SIGNAL} strokeWidth={1.2} />
+      <line x1={622} y1={200} x2={664} y2={200} stroke={INK} strokeWidth={1.2} />
+      <Key x={643} y={216} anchor="middle" fill={INK3} size={8.5}>
+        Usage rate
+      </Key>
+
+      {/* Bottom-right: Loyalty status heart + return arc */}
+      <path
+        d="M725 190 C716 184 713 177 716 173 C719 169 723 170 725 174 C727 170 731 169 734 173 C737 177 734 184 725 190 Z"
+        fill={SIGNAL}
+      />
+      <path d="M741 174 A17 17 0 1 1 733 164" fill="none" stroke={INK} strokeWidth={1.4} />
+      <path d={headAlong1(733, 164, 0.866, 0.5, 5.5)} fill="none" stroke={INK} strokeWidth={1.4} />
+      <Key x={725} y={216} anchor="middle" fill={INK3} size={8.5}>
+        Loyalty
+      </Key>
+    </Frame>
+  );
+}
 
 export function GeographicZoom() {
   const levels = ["NATIONS", "STATES", "REGIONS", "COUNTIES", "CITIES", "NEIGHBORHOODS"];
@@ -499,9 +804,9 @@ export function BenefitMapping() {
   return (
     <Frame height={250} label="A three-column map. Each major benefit, drawn as a shape, links to the kinds of people who look for it, each person wearing that shape, and to the major brands that deliver it, carrying the same shape.">
       {[
-        { x: 120, n: "01", a: "MAJOR BENEFITS" },
-        { x: 400, n: "02", a: "PEOPLE WHO LOOK FOR EACH" },
-        { x: 680, n: "03", a: "BRANDS THAT DELIVER EACH" },
+        { x: 120, n: "1", a: "MAJOR BENEFITS" },
+        { x: 400, n: "2", a: "PEOPLE WHO LOOK FOR EACH" },
+        { x: 680, n: "3", a: "BRANDS THAT DELIVER EACH" },
       ].map((h) => (
         <g key={h.n}>
           <Display x={h.x} y={30} anchor="middle" fill={INK3} size={18}>
@@ -822,7 +1127,141 @@ export function SkillsFit() {
 }
 
 /* ==========================================================================
-   15. FOUR TARGETING PANELS: the same market, targeted four ways (360)
+   15. TARGETING CONTINUUM: mass to micromarketing (800)
+   ========================================================================== */
+
+export function TargetingContinuum() {
+  const cols = [
+    { x: 20, cx: 108, title: "Undifferentiated (mass)", note: "Whole market, one offer", tone: INK, fill: PAPER },
+    { x: 212, cx: 300, title: "Differentiated", note: "Separate offers per segment", tone: COUNTER, fill: PAPER },
+    { x: 404, cx: 492, title: "Concentrated (niche)", note: "Large share of one niche", tone: SIGNAL, fill: PAPER2 },
+    { x: 596, cx: 684, title: "Micromarketing", note: "Local or individual tailoring", tone: SIGNAL, fill: PAPER },
+  ];
+
+  return (
+    <Frame
+      height={292}
+      label="Four-stage continuum of market targeting strategies from broad to narrow. 1. Undifferentiated (mass) marketing sends one offer to the whole market. 2. Differentiated marketing sends three separate offers to three distinct segments. 3. Concentrated (niche) marketing sends one specialized offer to a single niche segment while leaving other segments unserved. 4. Micromarketing tailors offers to specific local areas and individual buyers."
+    >
+      {/* Top continuum bar */}
+      <Key x={20} y={22} fill={INK} size={10.5}>
+        Broad coverage (whole market)
+      </Key>
+      <line x1={210} y1={18} x2={586} y2={18} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(588, 18)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Key x={772} y={22} anchor="end" fill={SIGNAL} size={10.5}>
+        Narrow coverage (local or individual)
+      </Key>
+
+      {/* Four stage panels */}
+      {cols.map((c) => (
+        <g key={c.title}>
+          <rect
+            x={c.x}
+            y={36}
+            width={176}
+            height={238}
+            rx={4}
+            fill={c.fill}
+            stroke={c.tone}
+            strokeWidth={c.tone === SIGNAL ? 1.5 : 1.25}
+          />
+          <Key x={c.cx} y={58} anchor="middle" fill={c.tone} size={10.5}>
+            {c.title}
+          </Key>
+          <line x1={c.x + 12} y1={68} x2={c.x + 164} y2={68} stroke={RULE} strokeWidth={1} />
+          <Note x={c.cx} y={258} anchor="middle" fill={c.tone === SIGNAL ? SIGNAL : INK3} size={11}>
+            {c.note}
+          </Note>
+        </g>
+      ))}
+
+      {/* Stage 1: Undifferentiated (1 offer -> whole market box) */}
+      <Pack1 x={108} y={110} w={30} h={28} tone={INK} />
+      <line x1={108} y1={110} x2={108} y2={132} stroke={INK} strokeWidth={1.3} />
+      <path d={head2.down(108, 134)} fill="none" stroke={INK} strokeWidth={1.3} />
+      <rect x={38} y={138} width={140} height={94} rx={4} fill={PAPER2} stroke={INK} strokeWidth={1.25} />
+      {[58, 92, 124, 158].map((bx, i) => (
+        <g key={bx}>
+          <Buyer kind={i} x={bx} y={178} k={0.58} tone={INK3} />
+          <Buyer kind={(i + 1) % 4} x={bx} y={218} k={0.58} tone={INK3} />
+        </g>
+      ))}
+
+      {/* Stage 2: Differentiated (3 separate offers -> 3 segments) */}
+      {[0, 1, 2].map((g) => {
+        const sx = 248 + g * 52;
+        const tone = KIND_TONE[g];
+        return (
+          <g key={g}>
+            <Pack1 x={sx} y={110} w={26} h={26} tone={tone} kind={g} markFill={KIND_FILL[g]} />
+            <line x1={sx} y1={110} x2={sx} y2={132} stroke={tone} strokeWidth={1.25} />
+            <path d={head2.down(sx, 134)} fill="none" stroke={tone} strokeWidth={1.25} />
+            <rect x={sx - 21} y={138} width={42} height={94} rx={3} fill={PAPER} stroke={tone} strokeWidth={1.25} />
+            <Buyer kind={g} x={sx} y={178} k={0.58} />
+            <Buyer kind={g} x={sx} y={218} k={0.58} />
+          </g>
+        );
+      })}
+
+      {/* Stage 3: Concentrated (1 niche offer -> 1 lit niche, 2 unserved segments) */}
+      {[0, 1].map((g) => {
+        const sx = 440 + g * 52;
+        return (
+          <g key={g}>
+            <rect
+              x={sx - 21}
+              y={138}
+              width={42}
+              height={94}
+              rx={3}
+              fill={PAPER}
+              stroke={RULE2}
+              strokeWidth={1}
+              strokeDasharray="3 3"
+            />
+            <Buyer kind={g} x={sx} y={178} k={0.58} tone={RULE2} />
+            <Buyer kind={g} x={sx} y={218} k={0.58} tone={RULE2} />
+          </g>
+        );
+      })}
+      <Pack1 x={544} y={110} w={28} h={26} tone={SIGNAL} fill={SIGNAL_TINT} kind={3} />
+      <line x1={544} y1={110} x2={544} y2={132} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(544, 134)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={523} y={138} width={42} height={94} rx={3} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <Buyer kind={3} x={544} y={178} k={0.58} tone={SIGNAL} />
+      <Buyer kind={3} x={544} y={218} k={0.58} tone={SIGNAL} />
+
+      {/* Stage 4: Micromarketing (local pin + individual offers -> individual rings) */}
+      {/* Local pin */}
+      <path
+        d="M642 112 C635 103 633 99 633 95 A9 9 0 0 1 651 95 C651 99 649 103 642 112 Z"
+        fill={SIGNAL}
+      />
+      <circle cx={642} cy={95} r={3.2} fill={PAPER} />
+      <line x1={642} y1={114} x2={642} y2={132} stroke={SIGNAL} strokeWidth={1.25} />
+      <path d={head2.down(642, 134)} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
+      <rect x={616} y={138} width={52} height={94} rx={3} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
+      <Buyer kind={0} x={642} y={178} k={0.58} tone={SIGNAL} />
+      <Buyer kind={2} x={642} y={218} k={0.58} tone={SIGNAL} />
+
+      {/* Individual tailored offers */}
+      {[700, 738].map((ix, idx) => (
+        <g key={ix}>
+          <Pack1 x={ix} y={110} w={22} h={22} tone={SIGNAL} fill={SIGNAL_TINT} kind={idx + 1} />
+          <line x1={ix} y1={110} x2={ix} y2={148} stroke={SIGNAL} strokeWidth={1.2} strokeDasharray="2 2" />
+          <circle cx={ix} cy={169} r={16} fill={PAPER} stroke={SIGNAL} strokeWidth={1.3} />
+          <Buyer kind={idx + 1} x={ix} y={179} k={0.56} tone={SIGNAL} />
+          <circle cx={ix} cy={210} r={16} fill={PAPER} stroke={SIGNAL} strokeWidth={1.3} />
+          <Buyer kind={(idx + 2) % 4} x={ix} y={220} k={0.56} tone={SIGNAL} />
+        </g>
+      ))}
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   15b. FOUR TARGETING PANELS: the same market, targeted four ways (360)
    ========================================================================== */
 
 /* Buyers' feet, relative to their cluster's centre: two rows of three. */
@@ -1079,39 +1518,92 @@ export function OfferingAndMind() {
    ========================================================================== */
 
 export function PerceptualMap() {
-  // Competing products: [x, y, r]. Radius stands for relative market share.
-  const rivals: [number, number, number][] = [
-    [104, 96, 36],
-    [118, 262, 24],
-    [296, 268, 15],
-    [336, 144, 10],
+  const rivals: { id: string; x: number; y: number; r: number }[] = [
+    { id: "A", x: 112, y: 252, r: 26 },
+    { id: "B", x: 170, y: 274, r: 19 },
+    { id: "C", x: 136, y: 306, r: 14 },
+    { id: "D", x: 134, y: 106, r: 22 },
+    { id: "E", x: 382, y: 270, r: 20 },
   ];
-  const bx = 282;
-  const by = 84;
+  const bx = 386;
+  const by = 104;
   return (
-    <Frame width={400} height={352} label="A perceptual positioning map. Two buying dimensions cross at the centre. The brand, a lit circle, sits in the upper right, with dashed lines to both axes marking its position. Competing products are grey circles of different sizes around it.">
-      <line x1={24} y1={176} x2={376} y2={176} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(378, 176)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head2.left(22, 176)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <line x1={200} y1={22} x2={200} y2={330} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.up(200, 20)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head2.down(200, 332)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Key x={212} y={28} fill={INK} size={9.5}>
-        BUYING DIMENSION 2
+    <Frame
+      width={520}
+      height={376}
+      label="Two-dimensional perceptual positioning map for sport-utility vehicles. The horizontal axis plots Price from Economy on the left to Luxury on the right. The vertical axis plots Orientation from Fuel efficiency at the bottom to Rugged off-road performance at the top. Competing SUV brands A, B, and C cluster in a crowded zone in the lower-left quadrant, where circle size shows relative market share. In the upper-right quadrant sits an unserved market gap where the target brand position is plotted."
+    >
+      {/* Horizontal axis: Price (Economy to Luxury) */}
+      <line x1={36} y1={190} x2={484} y2={190} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(486, 190)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.left(34, 190)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Key x={40} y={178} anchor="start" fill={INK} size={10}>
+        Price: Economy
       </Key>
-      <Key x={376} y={198} anchor="end" fill={INK} size={9.5}>
-        BUYING DIMENSION 1
+      <Key x={480} y={178} anchor="end" fill={INK} size={10}>
+        Price: Luxury
       </Key>
 
-      {rivals.map(([x, y, r]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={r} fill="var(--paper-3)" stroke={INK3} strokeWidth={1.5} />
+      {/* Vertical axis: Orientation (Fuel efficiency to Rugged off-road performance) */}
+      <line x1={260} y1={42} x2={260} y2={338} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.up(260, 40)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.down(260, 340)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Key x={260} y={24} anchor="middle" fill={INK} size={10.5}>
+        Orientation: Rugged off-road performance
+      </Key>
+      <Key x={260} y={362} anchor="middle" fill={INK} size={10.5}>
+        Orientation: Fuel efficiency
+      </Key>
+
+      {/* Crowded zone enclosure in lower-left quadrant */}
+      <rect
+        x={70}
+        y={214}
+        width={134}
+        height={118}
+        rx={12}
+        fill={PAPER2}
+        stroke={INK3}
+        strokeWidth={1.2}
+        strokeDasharray="4 3"
+      />
+      <Note x={137} y={348} anchor="middle" fill={INK3} size={11}>
+        Crowded zone
+      </Note>
+
+      {/* Competing SUV brand circles (radius = relative market share) */}
+      {rivals.map((rv) => (
+        <g key={rv.id}>
+          <circle cx={rv.x} cy={rv.y} r={rv.r} fill="var(--paper-3)" stroke={INK} strokeWidth={1.4} />
+          <Key x={rv.x} y={rv.y + 4} anchor="middle" fill={INK} size={9.5}>
+            {rv.id}
+          </Key>
+        </g>
       ))}
 
-      <line x1={bx} y1={by + 26} x2={bx} y2={174} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
-      <line x1={bx - 26} y1={by} x2={202} y2={by} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
-      <circle cx={bx} cy={by} r={26} fill={SIGNAL} />
-      <Key x={bx} y={by + 4} anchor="middle" fill={PAPER} size={9}>
-        BRAND
+      {/* Note for circle size = market share */}
+      <Note x={134} y={68} anchor="middle" fill={INK3} size={11}>
+        Size = market share
+      </Note>
+
+      {/* Unserved market gap & target brand position in upper-right quadrant */}
+      <circle
+        cx={bx}
+        cy={by}
+        r={44}
+        fill={SIGNAL_TINT}
+        stroke={SIGNAL}
+        strokeWidth={1.25}
+        strokeDasharray="5 4"
+      />
+      <line x1={bx} y1={by + 46} x2={bx} y2={187} stroke={SIGNAL} strokeWidth={1.1} strokeDasharray="3 3" />
+      <line x1={bx - 46} y1={by} x2={263} y2={by} stroke={SIGNAL} strokeWidth={1.1} strokeDasharray="3 3" />
+      <circle cx={bx} cy={by} r={24} fill={SIGNAL} />
+      <Key x={bx} y={by + 4} anchor="middle" fill={PAPER} size={9.5}>
+        Brand
+      </Key>
+      <Key x={bx} y={50} anchor="middle" fill={SIGNAL} size={10}>
+        Unserved market gap
       </Key>
     </Frame>
   );
@@ -1166,57 +1658,74 @@ export function DifferenceSieve() {
    ========================================================================== */
 
 export function ValueGrid() {
-  const levels = ["MORE", "THE SAME", "LESS"];
-  const cells: Record<string, string> = {
-    "0-0": "More for More",
-    "0-1": "More for the Same",
-    "0-2": "More for Less",
-    "1-2": "The Same for Less",
-    "2-2": "Less for much Less",
+  const levels = ["More", "The same", "Less"];
+  const cells: Record<string, { name: string; sub: string }> = {
+    "0-0": { name: "More for More", sub: "Luxury benefits, high price" },
+    "0-1": { name: "More for the Same", sub: "Luxury quality, lower price" },
+    "0-2": { name: "More for Less", sub: "Hard to sustain long-run" },
+    "1-2": { name: "The Same for Less", sub: "Standard brands, deep discount" },
+    "2-2": { name: "Less for Much Less", sub: "Fewer frills, rock-bottom price" },
   };
-  const x0 = 210;
-  const y0 = 70;
-  const cw = 186;
+  const x0 = 156;
+  const y0 = 68;
+  const cw = 204;
   const ch = 88;
   return (
-    <Frame height={350} label="A three-by-three grid of benefits against price, each More, The Same, or Less. Five cells are named: More for More, More for the Same, More for Less, The Same for Less, and Less for much Less. The other four are left blank.">
-      <Key x={x0 + (cw * 3) / 2} y={22} anchor="middle" fill={INK} size={10.5}>
-        PRICE
+    <Frame
+      height={348}
+      label="Three-by-three value proposition grid comparing Benefits offered (More, The same, Less) against Price charged (More, The same, Less). Five winning value proposition cells are highlighted: More for More, More for the Same, More for Less, The Same for Less, and Less for Much Less."
+    >
+      <Key x={x0 + (cw * 3) / 2} y={24} anchor="middle" fill={INK} size={11}>
+        Price charged
       </Key>
-      <Key x={40} y={y0 + (ch * 3) / 2 + 4} fill={INK} size={10.5}>
-        BENEFITS
+      <Key x={28} y={y0 + (ch * 3) / 2 - 4} fill={INK} size={11}>
+        Benefits
+      </Key>
+      <Key x={28} y={y0 + (ch * 3) / 2 + 12} fill={INK} size={11}>
+        offered
       </Key>
       {levels.map((l, i) => (
         <g key={l}>
-          <Key x={x0 + cw * i + cw / 2} y={54} anchor="middle" fill={INK3} size={9.5}>
+          <Key x={x0 + cw * i + cw / 2} y={52} anchor="middle" fill={INK3} size={10.5}>
             {l}
           </Key>
-          <Key x={x0 - 14} y={y0 + ch * i + ch / 2 + 4} anchor="end" fill={INK3} size={9.5}>
+          <Key x={x0 - 14} y={y0 + ch * i + ch / 2 + 4} anchor="end" fill={INK3} size={10.5}>
             {l}
           </Key>
         </g>
       ))}
       {[0, 1, 2].map((r) =>
         [0, 1, 2].map((c) => {
-          const name = cells[`${r}-${c}`];
+          const cell = cells[`${r}-${c}`];
+          const isMiddle = r === 1 && c === 1;
           const x = x0 + c * cw;
           const y = y0 + r * ch;
           return (
             <g key={`${r}-${c}`}>
               <rect
-                x={x + 3}
-                y={y + 3}
-                width={cw - 6}
-                height={ch - 6}
-                fill={name ? SIGNAL_TINT : PAPER2}
-                stroke={name ? SIGNAL : RULE}
-                strokeWidth={name ? 1.5 : 1}
+                x={x + 4}
+                y={y + 4}
+                width={cw - 8}
+                height={ch - 8}
+                rx={4}
+                fill={cell ? SIGNAL_TINT : PAPER2}
+                stroke={cell ? SIGNAL : RULE2}
+                strokeWidth={cell ? 1.5 : 1}
               />
-              {name ? (
-                <Display x={x + cw / 2} y={y + ch / 2 + 6} anchor="middle" fill={SIGNAL} size={17}>
-                  {name}
-                </Display>
-              ) : null}
+              {cell ? (
+                <>
+                  <Display x={x + cw / 2} y={y + 40} anchor="middle" fill={SIGNAL} size={16.5}>
+                    {cell.name}
+                  </Display>
+                  <Note x={x + cw / 2} y={y + 62} anchor="middle" fill={INK2} size={11}>
+                    {cell.sub}
+                  </Note>
+                </>
+              ) : (
+                <Note x={x + cw / 2} y={y + ch / 2 + 4} anchor="middle" fill={INK3} size={11}>
+                  {isMiddle ? "Average parity" : "Losing proposition"}
+                </Note>
+              )}
             </g>
           );
         }),
@@ -1301,7 +1810,157 @@ export function EstablishMaintain() {
 }
 
 /* ==========================================================================
-   23. TWO PHONES, ONE MIND: value proposition and differentiation
+   23. AI CONSIDERATION SHORTLIST: prompt -> structured sources -> 3-brand list
+   ========================================================================== */
+
+export function AiConsiderationShortlist() {
+  const sources = [
+    { y: 46, title: "Product specifications", sub: "Concrete cushioning spec" },
+    { y: 112, title: "Independent reviews", sub: "800 km durability test" },
+    { y: 178, title: "Comparison articles", sub: "Marathon road ranking" },
+  ];
+
+  return (
+    <Frame
+      height={298}
+      label="Conversational AI assistant translating a consumer's need-based prompt into a three-brand shortlist. Left: a consumer asks which running shoes are best for marathon training on concrete. Center: the AI assistant synthesizes structured product specifications, independent reviews, and comparison articles. Right: the AI-generated shortlist recommends three verified brands (A, B, and C) as the consumer's consideration set, while Brand D, relying only on television ads without public spec data, is absent from the shortlist."
+    >
+      {/* Column headings */}
+      <Key x={116} y={22} anchor="middle" fill={INK} size={10.5}>
+        1. Need-based prompt
+      </Key>
+      <Key x={378} y={22} anchor="middle" fill={INK} size={10.5}>
+        2. Public sources synthesized
+      </Key>
+      <Key x={664} y={22} anchor="middle" fill={SIGNAL} size={10.5}>
+        3. AI-generated shortlist
+      </Key>
+
+      {/* 1. Consumer and prompt bubble */}
+      <rect x={20} y={42} width={192} height={96} rx={6} fill={PAPER2} stroke={INK} strokeWidth={1.3} />
+      <path d="M58 138 L50 152 L72 138" fill={PAPER2} stroke={INK} strokeWidth={1.3} strokeLinejoin="round" />
+      <line x1={59} y1={138} x2={71} y2={138} stroke={PAPER2} strokeWidth={2} />
+      <Key x={34} y={62} fill={INK3} size={9.5}>
+        Consumer query
+      </Key>
+      <Note x={34} y={84} fill={INK} size={11.5}>
+        &quot;Best running shoes for
+      </Note>
+      <Note x={34} y={102} fill={INK} size={11.5}>
+        marathon training
+      </Note>
+      <Note x={34} y={120} fill={SIGNAL} size={11.5}>
+        on concrete?&quot;
+      </Note>
+
+      <Person3 x={56} y={214} k={1.45} stroke={INK} />
+
+      {/* Prompt arrow into synthesis */}
+      <line x1={212} y1={90} x2={244} y2={90} stroke={INK} strokeWidth={1.4} />
+      <path d={head2.right(246, 90)} fill="none" stroke={INK} strokeWidth={1.4} />
+
+      {/* 2. Three structured public sources */}
+      {sources.map((s) => (
+        <g key={s.title}>
+          <rect x={250} y={s.y} width={166} height={52} rx={4} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+          <Key x={262} y={s.y + 21} fill={INK} size={10}>
+            {s.title}
+          </Key>
+          <Note x={262} y={s.y + 39} fill={INK3} size={10.5}>
+            {s.sub}
+          </Note>
+        </g>
+      ))}
+
+      {/* Converging connectors to AI assistant chip */}
+      <path d="M416 72 H433 V138 H448" fill="none" stroke={INK} strokeWidth={1.25} />
+      <line x1={416} y1={138} x2={448} y2={138} stroke={INK} strokeWidth={1.25} />
+      <path d="M416 204 H433 V138" fill="none" stroke={INK} strokeWidth={1.25} />
+      <path d={head2.right(450, 138)} fill="none" stroke={INK} strokeWidth={1.25} />
+
+      <Chip2 x={485} y={138} s={42} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Key x={485} y={186} anchor="middle" fill={SIGNAL} size={9.5}>
+        AI assistant
+      </Key>
+
+      {/* Arrow from AI assistant to shortlist */}
+      <line x1={518} y1={138} x2={542} y2={138} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(544, 138)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+
+      {/* 3. Three-brand shortlist (Consideration set) */}
+      <rect x={548} y={38} width={232} height={192} rx={6} fill={PAPER2} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={664} y={58} anchor="middle" fill={SIGNAL} size={10}>
+        Consideration set (3 brands)
+      </Key>
+
+      <rect x={562} y={68} width={204} height={46} rx={4} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.4} />
+      <Key x={574} y={87} fill={SIGNAL} size={10}>
+        1. Brand A (Concrete Road)
+      </Key>
+      <Note x={574} y={104} fill={INK2} size={10.5}>
+        Verified cushioning + 800 km spec
+      </Note>
+
+      <rect x={562} y={122} width={204} height={46} rx={4} fill={PAPER} stroke={INK} strokeWidth={1.2} />
+      <Key x={574} y={141} fill={INK} size={10}>
+        2. Brand B (Marathon Pro)
+      </Key>
+      <Note x={574} y={158} fill={INK3} size={10.5}>
+        Verified concrete impact rating
+      </Note>
+
+      <rect x={562} y={176} width={204} height={44} rx={4} fill={PAPER} stroke={INK} strokeWidth={1.2} />
+      <Key x={574} y={194} fill={INK} size={10}>
+        3. Brand C (Distance Plus)
+      </Key>
+      <Note x={574} y={210} fill={INK3} size={10.5}>
+        Verified long-run stability review
+      </Note>
+
+      {/* Bottom row: Unverified TV-ad-only brand omitted */}
+      <rect
+        x={250}
+        y={242}
+        width={166}
+        height={44}
+        rx={4}
+        fill={PAPER}
+        stroke={RULE2}
+        strokeWidth={1.2}
+        strokeDasharray="4 3"
+      />
+      <Key x={262} y={260} fill={INK3} size={9.5}>
+        TV commercial only
+      </Key>
+      <Note x={262} y={276} fill={INK3} size={10.5}>
+        Vague slogan, no spec facts
+      </Note>
+
+      <line x1={416} y1={264} x2={542} y2={264} stroke={RULE2} strokeWidth={1.2} strokeDasharray="3 3" />
+
+      <rect
+        x={548}
+        y={242}
+        width={232}
+        height={44}
+        rx={4}
+        fill={PAPER}
+        stroke={RULE2}
+        strokeWidth={1.2}
+        strokeDasharray="4 3"
+      />
+      <Key x={664} y={260} anchor="middle" fill={INK3} size={9.5}>
+        Brand D: absent from shortlist
+      </Key>
+      <Note x={664} y={276} anchor="middle" fill={INK3} size={10.5}>
+        Fails to enter consideration set
+      </Note>
+    </Frame>
+  );
+}
+
+/* ==========================================================================
+   23b. TWO PHONES, ONE MIND: value proposition and differentiation
    ========================================================================== */
 
 export function PhonesInMind() {

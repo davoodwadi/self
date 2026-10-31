@@ -10,7 +10,7 @@ week: "week11"
 - Culture, subcultures, and social class provide the shared meanings, rituals, and status hierarchies that govern consumption and shape the cultural representations embedded in AI models.
 
 ## Defining Culture and Cultural Meaning Transfer [no-exercise]
-[figure: McCracken's cultural meaning transfer model moving meaning from the culturally constituted world through advertising and fashion into consumer goods and individual rituals]
+[figure: two gift-giving scenes in which offering the same desk clock is welcomed with affection in one culture and refused as taboo in another]
 - Culture is the accumulation of shared meanings, rituals, norms, and traditions among the members of an organization or society (Solomon, 2020).
 - Culture acts as an interpretive lens that determines which products are considered edible, wearable, appropriate for gift-giving, or taboo.
 - Grant McCracken (1986) showed that cultural meaning is constantly in transit across three locations: the culturally constituted world, the consumer good, and the individual consumer.
@@ -18,6 +18,7 @@ week: "week11"
 - Consumers then extract that meaning from the good into their own lives through possession, grooming, exchange, and divestment rituals.
 
 ## Enculturation, Acculturation, and Cultural Norms [no-exercise]
+[figure: two contrasting table settings seen from above showing a rice bowl with chopsticks and a teacup alongside a dinner plate with a fork, knife, and water glass]
 - Cultural beliefs are not innate. They are learned continuously through social interaction, family upbringing, education, religious institutions, and media.
 - Enculturation is the process of learning the values and behavioral standards of one's own native culture during childhood and adolescence.
 - Acculturation is the process of learning and adapting to the values and consumption norms of a new host culture after migration or international relocation (Peñaloza, 1994).
@@ -29,7 +30,7 @@ week: "week11"
 - Cross-cultural frameworks allow global marketers to diagnose when a successful domestic campaign will fail abroad.
 
 ## Hofstede's Dimensions of National Culture [exercise]
-[figure: five dimensions of national culture: individualism-collectivism, power distance, uncertainty avoidance, masculinity-femininity, and long-term orientation]
+[figure: interactive comparison of national scores across Hofstede's five dimensions of culture: individualism-collectivism, power distance, uncertainty avoidance, masculinity-femininity, and long-term orientation]
 - Geert Hofstede (2001) identified core dimensions along which national value systems vary systematically across countries.
 - Individualism versus collectivism measures the degree to which people prioritize personal autonomy and self-expression versus harmony, duty, and in-group loyalty.
 - Power distance measures the extent to which less powerful members of a society accept and expect unequal distributions of authority and status hierarchy.
@@ -44,6 +45,7 @@ week: "week11"
 - Global brand communications must calibrate both verbal directness and visual symbolism to the communication context of the target market.
 
 ## Standardization Versus Adaptation in Global Campaigns [no-exercise]
+[figure: two adapted promotional posters for the same automobile showing a lone buyer standing out from the crowd for an individualist market and a family choosing together for a collectivist market]
 - Multinational firms face a strategic trade-off between global standardization and local cultural adaptation (glocalization).
 - Standardization uses a unified brand identity, product formula, and advertising campaign worldwide, capturing economies of scale and serving globally mobile segments.
 - Adaptation modifies product ingredients, package sizes, pricing tiers, or promotional appeals to match local cultural values, dietary laws, and retail infrastructure.
@@ -55,7 +57,7 @@ week: "week11"
 - Consumers also partition the material world into ordinary profane commodities and revered sacred possessions.
 
 ## Consumer Rituals and Rites of Passage [exercise]
-[figure: four components of a consumer ritual: ritual artifacts, ritual script, performance roles, and ritual audience]
+[figure: ritual artifacts from two rites of passage showing a graduation cap resting on a rolled diploma and two wedding rings in an open box]
 - Dennis Rook (1985) defined a ritual as a type of expressive, symbolic activity constructed of multiple behaviors that occur in a fixed, episodic sequence and tend to be repeated over time.
 - Every consumer ritual rests on four tangible elements: ritual artifacts (special goods, foods, clothing, or gifts required for the event), a ritual script (the prescribed sequence of use), performance roles, and an audience.
 - Grooming rituals (such as morning skincare or pre-interview preparation) transition the individual from the private self to the public social self.
@@ -63,6 +65,7 @@ week: "week11"
 - Rites of passage mark transitions between social statuses (graduation, marriage, parenthood, retirement) and trigger predictable surges in category spending (van Gennep, 1960).
 
 ## Cultural Myths and Archetypes in Brand Storytelling [no-exercise]
+[figure: brand advertisement casting the consumer as a hero breaking the finish tape at the top of a steep hill alongside the brand badge]
 - A myth is a story containing symbolic elements that expresses the shared emotions and ideals of a culture, often resolving an underlying tension between opposing forces (such as nature versus technology).
 - Monomyths (such as the hero's journey) recur across cultures and provide a familiar narrative structure that audiences process effortlessly.
 - Brands embed cultural myths into advertising by casting the consumer as the hero and the brand as the enabling mentor or talisman that helps overcome an obstacle (Holt, 2004).
@@ -70,6 +73,7 @@ week: "week11"
 - Iconic brands maintain cultural relevance by updating how their myth addresses contemporary social anxieties.
 
 ## Sacred and Profane Consumption [exercise]
+[figure: contrast between sacred consumption (a cherished watch displayed on velvet under a glass case) and profane consumption (everyday utensils jumbled in an open kitchen drawer)]
 - Belk, Wallendorf, and Sherry (1989) demonstrated that secular consumer behavior frequently exhibits the structure of sacred versus profane domains.
 - Profane consumption involves ordinary, everyday utilitarian objects and routines that carry no special reverence.
 - Sacred consumption involves objects, places, people, or events that are set apart from the ordinary world and treated with awe, respect, and emotional protection.
@@ -77,6 +81,7 @@ week: "week11"
 - Desacralization occurs when a formerly sacred symbol or religious holiday is mass-produced and commercialized into an ordinary commodity.
 
 ## Discussion: Adapting a Ritual Product Across Cultural Contexts
+[figure: two contrasting holiday ritual scenes showing a North American holiday roast on a platter alongside East Asian Lunar New Year envelopes beneath a hanging paper lantern]
 - Discussion: A premium confectionery brand known in North America for Valentine's Day romantic gift boxes wants to expand into East Asian markets where gift-giving rituals center on Lunar New Year family visits and reciprocal workplace gifting. Using McCracken's (1986) meaning transfer model, Rook's (1985) ritual components (artifacts, script, roles, audience), and Hofstede's cultural dimensions, how should the brand redesign its packaging, assortment structure, and advertising narrative?
 
 ## Part 3: Subcultures and Generational Cohorts [no-exercise]
@@ -91,6 +96,7 @@ week: "week11"
 - Subcultural marketing succeeds when it demonstrates authentic understanding of the group's norms rather than relying on superficial stereotypes.
 
 ## Age and Generational Cohorts in Consumer Markets [exercise]
+[figure: four generational cohorts (Baby Boomers, Generation X, Millennials, and Generation Z) paired with their birth years and the formative screen technology each generation grew up with]
 - An age cohort (or generation) consists of individuals born within a similar time span who experienced the same formative macroeconomic, technological, and historical events during youth.
 - Because formative events occur at a critical developmental stage, generational cohorts carry distinct attitudes toward debt, digital technology, and brand authority across their lifespan (Schewe & Meredith, 2004).
 - Marketers commonly segment adult populations across Baby Boomers, Generation X, Millennials (Generation Y), and Generation Z, while tracking emerging Generation Alpha habits.
@@ -98,6 +104,7 @@ week: "week11"
 - Effective cohort marketing separates true generational cohort effects (lasting values formed in youth) from life-stage effects (changes caused by aging, marriage, or retirement).
 
 ## Geographic, Ethnic, and Religious Subcultures [no-exercise]
+[figure: two food packages on a retail shelf carrying halal and kosher religious dietary certification seals]
 - Geographic subcultures arise from persistent regional differences in climate, topography, historical settlement patterns, and urban-rural lifestyles.
 - Even within a single country, regional subcultures exhibit pronounced differences in culinary tastes, outdoor recreation, vehicle choice, and linguistic idioms.
 - Ethnic subcultures maintain distinct heritage traditions, family structures, language preferences, and holiday calendars alongside participation in the mainstream market.
@@ -109,6 +116,7 @@ week: "week11"
 - Social class and national origin operate as powerful symbolic signals in product evaluation.
 
 ## Social Stratification, Cultural Capital, and Taste [no-exercise]
+[figure: cultural capital expressed through specialized gastronomic taste, shown as a gooseneck kettle pouring into a cone dripper on a glass carafe over a precision digital scale]
 - Social class is the relatively permanent and homogeneous division of a society into hierarchical groups sharing similar occupation, education, income, values, and lifestyles.
 - Income alone does not define social class: a skilled tradesperson and a university professor may earn identical salaries while exhibiting very different consumption patterns and media habits.
 - Sociologist Pierre Bourdieu (1984) showed that class position rests on three forms of capital: economic capital (financial wealth), social capital (networks and connections), and cultural capital (education, aesthetic knowledge, and refined taste).
@@ -116,7 +124,7 @@ week: "week11"
 - Taste hierarchies therefore serve to reproduce social boundaries even in markets where mass manufacturing makes physical goods widely affordable.
 
 ## Conspicuous Consumption, Quiet Luxury, and Status Signaling [exercise]
-[figure: two-by-two taxonomy of status signaling crossing consumer wealth with need for status: patricians, parvenus, poseurs, and proletarians]
+[figure: comparison of brand prominence on two luxury sweaters showing a loud, oversized logo across the chest for parvenus versus a tiny, inconspicuous mark near the hem for patricians]
 - Thorstein Veblen (1899) introduced conspicuous consumption to describe the acquisition and public display of costly goods primarily to signal wealth and social dominance.
 - Modern luxury research shows that not all wealthy consumers prefer loud, visible brand logos.
 - Han, Nunes, and Drèze (2010) classified consumers by wealth and need for status into four groups that respond differently to brand prominence (how visible a logo is).
@@ -124,6 +132,7 @@ week: "week11"
 - Patricians (high wealth, low need for status) pay a premium for "quiet luxury": inconspicuously branded items whose subtle craftsmanship is recognized only by fellow insiders possessing high cultural capital (Han, Nunes, & Drèze, 2010).
 
 ## Country-of-Origin Effects and Consumer Ethnocentrism [exercise]
+[figure: three consumer products paired with favorable country-of-origin stereotypes: an automobile labeled Made in Germany, a perfume bottle labeled Made in France, and a wristwatch labeled Swiss Made]
 - The country-of-origin (COO) effect occurs when consumers use the country where a product is designed or manufactured as an extrinsic cue to infer product quality (Bilkey & Nes, 1982).
 - Favorable country-category stereotypes (such as Swiss wristwatches, German engineering, Italian leather, or Japanese electronics) transfer positive quality expectations to unfamiliar brands from those nations.
 - Distinct from cognitive quality inference, consumer ethnocentrism is the normative belief held by consumers about the appropriateness and morality of purchasing foreign-made products (Shimp & Sharma, 1987).
@@ -135,6 +144,7 @@ week: "week11"
 - Empirical research administering cross-cultural scales to frontier AI models reveals systematic differences across developers and target countries.
 
 ## Training Corpus Imbalance and Cultural Representation in LLMs [no-exercise]
+[figure: cultural artifacts including a teapot and cups, a wrapped gift, a birthday cake, and a hanging lantern alongside an AI assistant and the stack of books representing its training text corpus]
 - Large language models learn cultural norms, values, and brand associations from the statistical patterns of their pre-training text corpora and post-training alignment datasets.
 - Because global internet text is disproportionately written in English and a few other major languages, models do not sample all human cultures equally.
 - When a user asks an AI assistant for advice on gift-giving etiquette, dietary norms, or product quality, the model defaults toward the cultural norms most prevalent in the language and corpus of the query.
@@ -142,7 +152,7 @@ week: "week11"
 - Consequently, AI assistants cannot be treated as culturally neutral arbiters of global consumer markets.
 
 ## Measuring Consumer Ethnocentrism Across Frontier AI Models [exercise]
-[figure: CETSCALE ethnocentrism scores across AI models from the United States, China, Canada, and France when evaluated across target countries]
+[figure: interactive comparison of CETSCALE ethnocentrism scores and country-pairing shifts across frontier AI models from the United States, China, Canada, and France when evaluated across target countries]
 - To test whether AI models exhibit country-of-origin and ethnocentric biases, Wadi, Ghodrat, and Philp (2026) administered the validated CETSCALE to frontier AI models developed in the United States, China, Canada, and France.
 - Each model was evaluated across items framed for consumers in each of those four countries, using repeated probability-weighted scale measurement (Wadi, Ghodrat, & Philp, 2026).
 - First, models differed significantly in their overall baseline level of consumer ethnocentrism across developers (Wadi, Ghodrat, & Philp, 2026).
@@ -150,6 +160,7 @@ week: "week11"
 - Thus, the target country named in the prompt systematically shifts how strongly an AI model endorses domestic-product preference (Wadi, Ghodrat, & Philp, 2026).
 
 ## Home-Country Interactions and Global Brand Strategy in AI Channels [no-exercise]
+[figure: shopping basket holding a teapot and a wrapped gift beside an AI assistant questioning how to evaluate the product in its recommendation bubble]
 - Beyond main effects of developer and target country, several AI models exhibited specific interaction biases linking the model developer's home country to the country evaluated in the prompt (Wadi, Ghodrat, & Philp, 2026).
 - These interaction patterns indicate that an AI assistant developed in one region may evaluate domestic versus imported brands differently from an assistant developed in another region (Wadi, Ghodrat, & Philp, 2026).
 - When consumers rely on AI shopping assistants to recommend automobiles, electronics, or food products, embedded country-of-origin preferences in the model can tilt the consideration set toward or away from foreign brands.

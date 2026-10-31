@@ -5,1405 +5,1074 @@ import {
   SlideDeck,
   Slide,
   Title,
-  Subtitle,
-  Heading,
-  Tag,
 } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { cn } from "@/lib/utils";
-import { glyphProps, Plate } from "../_visuals/kit";
-import { Gear1, Person1 } from "../_visuals/objects";
+import {
+  Big,
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  EnvironmentRings,
-  MicroActors,
+  CsrPyramid,
+  DarkPatternsComparison,
   PestleHub,
-  PoliticalCorridor,
-  PurchasingPower,
-  AiTouchesForces,
-  AgentScale,
-  SocialStrata,
-  TechnologyBranches,
-  LegislationCanopy,
-  ResourceExchange,
-  CsrWeave,
-  GreenwashingGap,
-  AbsorbOrPass,
-  PhonyPriceTag,
-  MisrepresentedChecklist,
-  PressureOverTime,
-  ObsolescenceLifespans,
-  SustainableCatch,
+  ValueDeliveryNetwork,
 } from "./visuals";
 
 // ============================================================================
-// WEEK 2: THE MARKETING ENVIRONMENT AND ETHICS
+// INTRODUCTION TO MARKETING | WEEK 2: THE MARKETING ENVIRONMENT AND ETHICS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
-//
-// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
-// so each [exercise]-tagged topic carries one exercise that tests that slide
-// and the ones before it.
-//
-// Sentences split across list items (the policy areas, the obsolescence
-// strategies) keep a leading space inside each item and print their numerals
-// from CSS, so the sentence survives intact in the page text.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
-
-/** Slide headings run one line where they can, leaving the screen to content. */
-const HEAD = "md:!mb-8 [&_h2]:!max-w-[34ch]";
-
-/** Text beside a 400-wide column plate. */
-const BESIDE = "grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-12";
-
-/** One verbatim sentence at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
-/** A sentence promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-lead max-w-[46ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A sentence set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-quote max-w-[30ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** Coloured term inside a sentence, without the Highlight underline. */
-function Term({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: "signal" | "counter" | "ink";
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
-}
-
-/** Hairline-topped block with a small key and a verbatim sentence. */
-function Ruled({
-  keyLabel,
-  tone = "ink",
-  weight = "thin",
-  children,
-  className = "",
-}: {
-  keyLabel?: string;
-  tone?: "signal" | "counter" | "ink";
-  weight?: "thin" | "thick";
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const border = {
-    signal: "border-[var(--signal)]",
-    counter: "border-[var(--counter)]",
-    ink: "border-[var(--ink)]",
-  }[tone];
-  const text = {
-    signal: "!text-[var(--signal)]",
-    counter: "!text-[var(--counter)]",
-    ink: "!text-[var(--ink-3)]",
-  }[tone];
-  return (
-    <div
-      className={cn(
-        "pt-5",
-        weight === "thick" ? "border-t-2" : "border-t",
-        border,
-        className,
-      )}
-    >
-      {keyLabel ? (
-        <div aria-hidden className={cn("type-label mb-3", text)}>
-          {keyLabel}
-        </div>
-      ) : null}
-      {children}
-    </div>
-  );
-}
-
-/**
- * A heading with a "Label:" prefix ("Part 1:", "Discussion:", "PESTLE
- * Analysis:"). The prefix is set as a small tracked kicker inside the same
- * h2, so the heading text stays exactly as written.
- */
-function KickerHeading({
-  kicker,
-  children,
-  tone = "signal",
-}: {
-  kicker: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-}) {
-  return (
-    <div className="w-full mb-8">
-      <h2 className="type-h1 max-w-[34ch]">
-        <span
-          className={cn(
-            "type-label block mb-4 !text-[0.8rem]",
-            tone === "counter" && "!text-[var(--counter)]",
-          )}
-        >
-          {kicker}
-        </span>{" "}
-        {children}
-      </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Part plate: an oversized numeral beside the part heading. */
-function PartPlate({
-  id,
-  n,
-  title,
-  children,
-}: {
-  id: string;
-  n: number;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border>
-      <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
-        <div
-          aria-hidden
-          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
-          style={{
-            ...SERIF,
-            fontVariationSettings: '"opsz" 144, "WONK" 1',
-          }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[22ch]">
-            <span className="type-label block mb-6 !text-[0.8rem]">
-              {`Part ${n}:`}
-            </span>{" "}
-            {title}
-          </h2>
-          <div className="mt-8 h-px w-full bg-[var(--rule)]" />
-          {children}
-        </div>
-      </div>
-    </Slide>
-  );
-}
-
-/** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
-function Prompt({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
-      <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]">
-        {children}
-      </p>
-    </div>
-  );
-}
-
-function PromptKicker() {
-  return (
-    <span className="type-label !text-[var(--counter)] block mb-6 !text-[0.8rem] !leading-none">
-      Discussion:
-    </span>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   PESTLE wayfinding
-   -------------------------------------------------------------------------- */
-
-const FORCES = [
-  "Political",
-  "Economic",
-  "Social",
-  "Technological",
-  "Legal",
-  "Environmental",
-];
-
-/** The six letters as a strip. The pair on this slide is lit. */
-function PestleStrip({ active }: { active: number[] }) {
-  return (
-    <div aria-hidden className="w-full mb-8">
-      <ol className="grid grid-cols-6 border-t border-[var(--rule-2)]">
-        {FORCES.map((name, i) => {
-          const on = active.includes(i);
-          return (
-            <li
-              key={name}
-              className={cn(
-                "-mt-px flex items-baseline gap-2.5 border-t-2 pt-2.5 pr-1.5",
-                on ? "border-[var(--signal)]" : "border-transparent",
-              )}
-            >
-              <span
-                className={cn(
-                  "block leading-none text-[1.75rem] md:text-[2.1rem]",
-                  on ? "text-[var(--signal)]" : "text-[var(--ink-3)]/30",
-                )}
-                style={SERIF}
-              >
-                {name[0]}
-              </span>
-              <span
-                className={cn(
-                  "hidden lg:block text-[0.85rem] leading-tight [overflow-wrap:anywhere]",
-                  on
-                    ? "font-semibold text-[var(--ink)]"
-                    : "text-[var(--ink-3)]/55",
-                )}
-              >
-                {name}
-              </span>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
-/**
- * One force of a PESTLE pair: its definition, then its plate. The strip
- * above already names the letter, so the column does not repeat it.
- * `beside` sets the plate to the right of the sentence instead of under it.
- */
-function Force({
-  tone,
-  plate,
-  beside = false,
-  wide = false,
-  children,
-}: {
-  tone: "signal" | "counter";
-  plate: React.ReactNode;
-  beside?: boolean;
-  wide?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Ruled
-      tone={tone}
-      weight="thick"
-      className={cn(
-        "min-w-0",
-        beside
-          ? "grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-8"
-          : "flex flex-col",
-      )}
-    >
-      <P className={beside ? "" : "mb-5"}>{children}</P>
-      <Plate className={beside || wide ? "" : "mt-auto max-w-[24rem]"}>{plate}</Plate>
-    </Ruled>
-  );
-}
-
-/**
- * The three PESTLE pairs share a heading and the letter strip, and each
- * sets its two forces and closing line in its own arrangement:
- *  - "columns": the forces side by side, the closing line underneath.
- *  - "rows": the forces stacked, each with its plate beside it, the closing
- *    line in a column at the right.
- *  - "triple": the two forces and the closing line as three columns.
- *  - "wide": as "columns", with the wider column for an interactive plate.
- */
-function PestlePair({
-  id,
-  title,
-  active,
-  layout,
-  children,
-  closing,
-}: {
-  id: string;
-  title: string;
-  active: number[];
-  layout: "columns" | "rows" | "triple" | "wide";
-  children: React.ReactNode;
-  closing: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border>
-      <KickerHeading kicker="PESTLE Analysis:">{title}</KickerHeading>
-      <PestleStrip active={active} />
-      {layout === "wide" ? (
-        <>
-          <div className="grid w-full items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-14">
-            {children}
-          </div>
-          <Statement className="mt-8 !max-w-[60ch] !text-[clamp(1.4rem,2vw,1.8rem)]">{closing}</Statement>
-        </>
-      ) : layout === "columns" ? (
-        <>
-          <div className="grid w-full gap-10 lg:grid-cols-2 lg:gap-14">
-            {children}
-          </div>
-          <Statement className="mt-10 !max-w-[44ch]">{closing}</Statement>
-        </>
-      ) : layout === "rows" ? (
-        <div className="grid w-full items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] xl:gap-14">
-          <div className="space-y-6">{children}</div>
-          <Statement className="!text-[clamp(1.6rem,2.3vw,2.1rem)]">{closing}</Statement>
-        </div>
-      ) : (
-        <div className="grid w-full gap-10 lg:grid-cols-3 lg:gap-10">
-          {children}
-          <Statement className="self-center !text-[clamp(1.6rem,2.4vw,2.2rem)]">{closing}</Statement>
-        </div>
-      )}
-    </Slide>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   CSR
-   -------------------------------------------------------------------------- */
-
-/** The four responsibilities as a temple: pediment, four shafts, a base. */
-function CsrTemple() {
-  const pillars = [
-    { name: "Economic", rest: "To be profitable and economically viable." },
-    { name: "Legal", rest: "To obey the law and play by the rules." },
-    { name: "Ethical", rest: "To do what is right, just, and fair." },
-    {
-      name: "Philanthropic",
-      rest: "To contribute resources to the community and improve quality of life.",
-    },
-  ];
-  return (
-    // The side padding is room for the base steps, which widen past the
-    // shafts. Without it they poke out of the slide on a phone.
-    <div className="w-full px-6">
-      <div aria-hidden className="relative">
-        <svg
-          viewBox="0 0 1000 110"
-          preserveAspectRatio="none"
-          className="block h-16 w-full md:h-24"
-        >
-          <path
-            d="M6 108 L500 6 L994 108 Z"
-            fill="var(--signal-tint)"
-            stroke="var(--signal)"
-            strokeWidth={2}
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
-        <span className="type-label absolute inset-x-0 bottom-3 text-center md:bottom-5">
-          CSR
-        </span>
-      </div>
-      <div aria-hidden className="h-2.5 bg-[var(--ink)]" />
-      <ol className="grid gap-y-6 px-3 py-6 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:px-6">
-        {pillars.map((p, i) => (
-          <li
-            key={p.name}
-            className="flex min-w-0 flex-col border-x-2 border-[var(--ink)] bg-[var(--paper)]"
-          >
-            <div aria-hidden className="-mx-[6px] h-2 bg-[var(--ink)]" />
-            <p className="type-body flex-1 px-4 pb-8 pt-6 text-[var(--ink-2)] md:px-5">
-              <span className="mb-4 block">
-                <span
-                  aria-hidden
-                  className="type-caption mb-2 block !text-[var(--signal)] tabular-nums"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span
-                  className="block text-[1.7rem] leading-none text-[var(--ink)] [overflow-wrap:anywhere] md:text-[1.9rem]"
-                  style={SERIF}
-                >
-                  {p.name}
-                </span>{" "}
-                <span className="type-label mt-2 block !text-[var(--ink-3)]">
-                  responsibility:
-                </span>
-              </span>{" "}
-              {p.rest}
-            </p>
-            <div aria-hidden className="-mx-[6px] h-2 bg-[var(--ink)]" />
-          </li>
-        ))}
-      </ol>
-      <div aria-hidden>
-        <div className="h-2.5 bg-[var(--ink)]" />
-        <div className="mx-[-0.75rem] mt-1.5 h-px bg-[var(--ink)]" />
-        <div className="mx-[-1.5rem] mt-1.5 h-px bg-[var(--rule-2)]" />
-      </div>
-    </div>
-  );
-}
-
-function Arrow({ dir }: { dir: "up" | "down" }) {
-  return (
-    <svg
-      aria-hidden
-      width="14"
-      height="16"
-      viewBox="0 0 14 16"
-      className="shrink-0 text-[var(--counter)]"
-    >
-      {dir === "up" ? (
-        <path d="M7 15 V2 M2 7 L7 2 L12 7" fill="none" stroke="currentColor" strokeWidth="2" />
-      ) : (
-        <path d="M7 1 V14 M2 9 L7 14 L12 9" fill="none" stroke="currentColor" strokeWidth="2" />
-      )}
-    </svg>
-  );
-}
-
-/** Three rows: who is affected, the verbatim sentence, which way it moves. */
-function BusinessCase() {
-  const rows = [
-    {
-      key: "Consumers",
-      glyph: (
-        <>
-          <path d="M10 18 H38 L35 44 H13 Z" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
-          <path d="M17 18 V13 A7 7 0 0 1 31 13 V18" fill="none" stroke="currentColor" strokeWidth="1.75" />
-        </>
-      ),
-      text: "Consumers increasingly prefer to buy from companies that share their values.",
-      moves: [["Preference", "up"]],
-    },
-    {
-      key: "Employees",
-      glyph: (
-        <>
-          <Person1 x={15} y={44} s={1.2} tone="var(--ink)" />
-          <Person1 x={34} y={44} s={1} tone="var(--ink)" />
-        </>
-      ),
-      text: "CSR programs can improve employee morale, recruitment, and retention.",
-      moves: [
-        ["Morale", "up"],
-        ["Recruitment", "up"],
-        ["Retention", "up"],
-      ],
-    },
-    {
-      key: "Operations",
-      glyph: <Gear1 x={24} y={26} r={14} stroke="var(--ink)" width={1.75} />,
-      text: "It also helps mitigate risks and can even reduce operational costs through sustainable practices.",
-      moves: [
-        ["Risks", "down"],
-        ["Operational costs", "down"],
-      ],
-    },
-  ] as const;
-
-  return (
-    <ol className="w-full">
-      {rows.map((r) => (
-        <li
-          key={r.key}
-          className="grid gap-5 border-t-2 border-[var(--ink)] py-7 md:grid-cols-[9rem_1fr] lg:grid-cols-[9rem_1fr_15rem] lg:gap-10"
-        >
-          <div aria-hidden className="flex items-center gap-3 text-[var(--ink)] md:flex-col md:items-start">
-            <svg width="48" height="48" viewBox="0 0 48 48">
-              {r.glyph}
-            </svg>
-            <span className="type-label !text-[var(--ink-3)]">{r.key}</span>
-          </div>
-          <p className="type-h2 !font-normal max-w-[34ch]">{r.text}</p>
-          <ul aria-hidden className="flex flex-wrap content-start gap-x-5 gap-y-2 md:col-start-2 lg:col-start-auto lg:flex-col">
-            {r.moves.map(([label, dir]) => (
-              <li key={label} className="flex items-center gap-2.5">
-                <Arrow dir={dir} />
-                <span className="type-label !text-[var(--counter)]">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   Ethics
-   -------------------------------------------------------------------------- */
-
-/** Glyphs for the three obsolescence strategies. */
-function StrategyGlyph({ kind }: { kind: "break" | "styles" | "delay" }) {
-  return (
-    <svg aria-hidden width="76" height="44" viewBox="0 0 76 44" className="block shrink-0">
-      {kind === "break" ? (
-        <>
-          <path d="M4 12 H34 L30 20 L36 26 L32 34 H4 Z" fill="var(--signal-tint)" stroke="var(--signal)" strokeWidth="1.5" strokeLinejoin="round" />
-          <path d="M42 10 H72 V32 H40 L44 24 L38 18 Z" fill="var(--signal-tint)" stroke="var(--signal)" strokeWidth="1.5" strokeLinejoin="round" transform="rotate(8 56 22)" />
-        </>
-      ) : kind === "styles" ? (
-        <>
-          <circle cx="12" cy="22" r="9" fill="none" stroke="var(--ink-3)" strokeWidth="1.5" />
-          <rect x="29" y="13" width="18" height="18" rx="4" fill="none" stroke="var(--ink-3)" strokeWidth="1.5" />
-          <path d="M64 12 L74 32 H54 Z" fill="var(--signal-tint)" stroke="var(--signal)" strokeWidth="1.5" strokeLinejoin="round" />
-          <path d="M8 40 H66 M60 36 L66 40 L60 44" fill="none" stroke="var(--ink-3)" strokeWidth="1.25" />
-        </>
-      ) : (
-        <>
-          <rect x="3" y="6" width="30" height="30" fill="none" stroke="var(--ink-3)" strokeWidth="1.5" />
-          <circle cx="12" cy="21" r="3" fill="var(--ink-3)" />
-          <circle cx="24" cy="21" r="3" fill="var(--ink-3)" />
-          <path d="M37 21 H41 M38 18 L41 21 L38 24" fill="none" stroke="var(--ink-3)" strokeWidth="1.25" />
-          <rect x="44" y="6" width="30" height="30" fill="none" stroke="var(--ink)" strokeWidth="1.5" />
-          <circle cx="51" cy="21" r="3" fill="var(--ink)" />
-          <circle cx="59" cy="21" r="3" fill="var(--ink)" />
-          <circle cx="67" cy="21" r="3" fill="var(--signal)" />
-        </>
-      )}
-    </svg>
-  );
-}
-
-/** The five philosophies from Week 1, reduced to the step this slide names. */
-function ConceptStep() {
-  return (
-    <div aria-hidden className="grid w-full grid-cols-[1fr_auto_1fr] items-stretch gap-4 md:gap-6">
-      <div className="border-t-2 border-[var(--rule-2)] pt-4">
-        <span className="type-caption block tabular-nums !text-[var(--ink-3)]/70">04</span>
-        <span className="mt-1 block text-[1.15rem] leading-tight text-[var(--ink-3)] md:text-[1.45rem]" style={SERIF}>
-          The Marketing Concept
-        </span>
-      </div>
-      <svg width="48" height="20" viewBox="0 0 48 20" className="self-center text-[var(--signal)]">
-        <line x1="0" y1="10" x2="44" y2="10" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M36 4 L45 10 L36 16" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-      <div className="border-t-2 border-[var(--signal)] pt-4">
-        <span className="type-caption block tabular-nums !text-[var(--signal)]">05</span>
-        <span className="mt-1 block text-[1.15rem] leading-tight text-[var(--ink)] md:text-[1.45rem]" style={SERIF}>
-          The Societal Marketing Concept
-        </span>
-      </div>
-    </div>
-  );
-}
-
-/* Tiny callback glyphs for the conclusion: each echoes a plate already seen. */
-function GlyphRings() {
-  return (
-    <svg {...glyphProps}>
-      <ellipse cx="32" cy="20" rx="30" ry="18" stroke="var(--counter)" strokeWidth="1.25" />
-      <ellipse cx="32" cy="20" rx="19" ry="11" stroke="var(--ink)" strokeWidth="1.25" />
-      <rect x="26" y="16" width="12" height="8" fill="var(--signal)" />
-    </svg>
-  );
-}
-
-function GlyphHub() {
-  const pts = [-150, -90, -30, 30, 90, 150].map((d) => {
-    const t = (d * Math.PI) / 180;
-    return [+(32 + 26 * Math.cos(t)).toFixed(2), +(20 + 16 * Math.sin(t)).toFixed(2)];
-  });
-  return (
-    <svg {...glyphProps}>
-      {pts.map(([x, y], i) => (
-        <g key={i}>
-          <line x1={x} y1={y} x2="32" y2="20" stroke="var(--counter)" strokeWidth="1.25" />
-          <circle cx={x} cy={y} r="3.5" fill="var(--paper)" stroke="var(--signal)" strokeWidth="1.5" />
-        </g>
-      ))}
-      <circle cx="32" cy="20" r="6" fill="var(--ink)" />
-    </svg>
-  );
-}
-
-function GlyphTemple() {
-  return (
-    <svg {...glyphProps}>
-      <path d="M4 12 L32 2 L60 12 Z" fill="var(--signal-tint)" stroke="var(--signal)" strokeWidth="1.25" strokeLinejoin="round" />
-      <rect x="4" y="13" width="56" height="3" fill="var(--ink)" />
-      {[10, 23, 36, 49].map((x) => (
-        <rect key={x} x={x} y="17" width="5" height="17" stroke="var(--ink)" strokeWidth="1.25" />
-      ))}
-      <rect x="2" y="35" width="60" height="3" fill="var(--ink)" />
-    </svg>
-  );
-}
-
-function GlyphAgent() {
-  return (
-    <svg {...glyphProps}>
-      <circle cx="9" cy="11" r="4" fill="var(--ink)" />
-      <path d="M3 32 V24 Q3 18 9 18 Q15 18 15 24 V32 Z" fill="var(--ink)" />
-      <path d="M20 21 H37 M33 18 L37 21 L33 24" stroke="var(--ink-3)" strokeWidth="1.5" />
-      <rect x="44" y="10" width="18" height="18" rx="2" stroke="var(--signal)" strokeWidth="1.5" />
-      <path d="M49 6 V10 M57 6 V10 M49 28 V32 M57 28 V32" stroke="var(--signal)" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
 export default function Week2() {
   return (
-    <SlideDeck
-      label="Week 2"
-    >
+    <SlideDeck label="Week 2">
       {/* ================================================================
           Title Slide
           ================================================================ */}
-      <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 2: Introduction to Marketing</Subtitle>
-        <Title className="mt-6 !max-w-[15ch]">
-          The Marketing Environment{" "}
-          <span className="text-[var(--signal)]">and</span> Ethics
-        </Title>
-        <p className="type-caption mt-2">Davood Wadi, PhD</p>
-
-        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
-          <p className="type-lead !text-[var(--ink)]">
-            Welcome to Week 2 of Introduction to Marketing.
+      <Slide id="title-slide" align="left">
+        <div className="w-full max-w-4xl">
+          <p className="type-label text-[var(--ink-3)]">Week 2</p>
+          <p className="type-caption mt-2">
+            Introduction to Marketing | Davood Wadi, PhD
           </p>
-          <p className="type-lead">
-            Today we will explore the forces that shape a company&apos;s
-            marketing environment.
-          </p>
+          <Title className="mt-6">The Marketing Environment and Ethics</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              Marketing strategy operates within a dynamic{" "}
+              <Tint>microenvironment and macroenvironment</Tint>, requiring
+              organizations to adapt to external forces, uphold corporate social
+              responsibility, and maintain ethical standards toward both
+              consumers and their AI agents.
+            </p>
+          </div>
         </div>
+      </Slide>
 
-        <p className="type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
-          We will cover{" "}
-          <a href="#part-1" data-n="01" className="toc-link">
-            micro and macro-environmental factors
-          </a>
-          ,{" "}
-          <a href="#part-2" data-n="02" className="toc-link">
-            CSR
-          </a>
-          , and{" "}
-          <a href="#part-3" data-n="03" className="toc-link">
-            marketing ethics
-          </a>
-          .
-        </p>
-        <p className="type-body mt-5 max-w-3xl text-center">
-          We will also examine{" "}
-          <a href="#ai-in-the-marketing-environment" className="toc-link">
-            artificial intelligence
-          </a>{" "}
-          as a force in the marketing environment and as a new subject for
-          marketing ethics.
-        </p>
-        <style>{`
-          .toc-link {
-            color: var(--ink);
-            font-weight: 550;
-            text-decoration: underline;
-            text-decoration-color: var(--signal-line);
-            text-decoration-thickness: 0.08em;
-            text-underline-offset: 0.2em;
-            transition: color 200ms;
-          }
-          .toc-link::before,
-          .num-item::before {
-            content: attr(data-n);
-            font-family: var(--font-label);
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            color: var(--signal);
-            font-variant-numeric: tabular-nums;
-          }
-          .toc-link::before {
-            font-size: 0.62em;
-            vertical-align: 0.55em;
-            margin-right: 0.3em;
-          }
-          .num-item::before {
-            display: block;
-            font-size: 0.75rem;
-            margin-bottom: 0.6rem;
-          }
-          .toc-link:hover { color: var(--signal); }
-        `}</style>
+      {/* ================================================================
+          Defining the Marketing Environment
+          ================================================================ */}
+      <Slide className={TIGHT} id="defining-the-marketing-environment" border>
+        <SlideHeading>Defining the Marketing Environment</SlideHeading>
+        <Statement>
+          A company&apos;s <Term>marketing environment</Term> consists of the
+          actors and forces outside marketing that affect marketing
+          management&apos;s ability to build and maintain successful
+          relationships with target customers.
+        </Statement>
+        <Lead className="mt-6">
+          The environment is divided into two concentric layers: the{" "}
+          <Term>microenvironment</Term> close to the firm and the broader
+          societal <Term>macroenvironment</Term>.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              Environmental forces continuously create new market opportunities
+              while rendering established products, channels, and business
+              models obsolete.
+            </P>
+          </Ruled>
+          <Ruled>
+            <Big>
+              Rather than treating external change as uncontrollable fate,
+              marketers use <Term>marketing research</Term> and{" "}
+              <Term>marketing intelligence</Term> to monitor trends early and
+              adapt strategy proactively.
+            </Big>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* ================================================================
-          Part 1
+          Environmental Scanning: Reactive Versus Proactive Adaptation
           ================================================================ */}
-      <PartPlate id="part-1" n={1} title="The Marketing Environment">
-        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-12">
-          <div className="space-y-7">
-            <Lead className="!max-w-[52ch]">
-              A company&apos;s marketing environment consists of the{" "}
-              <Term tone="ink">actors and forces outside marketing</Term>{" "}
-              that affect marketing management&apos;s ability to build and
-              maintain successful relationships with{" "}
-              <Term>target customers</Term>.
-            </Lead>
-            <Ruled weight="thick">
+      <Slide
+        className={TIGHT}
+        id="environmental-scanning-reactive-versus-proactive-adaptation"
+        border
+      >
+        <SlideHeading>
+          Environmental Scanning: Reactive Versus Proactive Adaptation
+        </SlideHeading>
+        <div className="grid w-full items-start gap-10 lg:grid-cols-[1.05fr_1.35fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              Firms differ in how they respond to shifts in their external
+              marketing environment.
+            </Statement>
+            <Ruled>
               <P>
-                It is made up of a <Term tone="ink">microenvironment</Term> and
-                a <Term tone="ink">macroenvironment</Term>.
+                Organizations can also shape parts of their environment through{" "}
+                <Term>public relations</Term>,{" "}
+                <Term>industry standard-setting</Term>, and{" "}
+                <Term>sustainable innovation</Term>.
               </P>
-            </Ruled>
-            <Ruled tone="signal" weight="thick">
-              <p className="type-h2 !font-normal">
-                Marketers must be environmental trend trackers and opportunity
-                seekers.
-              </p>
             </Ruled>
           </div>
-          <Plate>
-            <EnvironmentRings />
-          </Plate>
-        </div>
-      </PartPlate>
-
-      <Slide id="microenvironment" border exercise={exercise["microenvironment"]}>
-        <Tag>Six actors</Tag>
-        <Heading className={HEAD}>The Microenvironment</Heading>
-        <Statement className="!max-w-[46ch] !text-[clamp(1.5rem,2.4vw,2.1rem)]">
-          The microenvironment consists of the{" "}
-          <span className="text-[var(--signal)]">
-            actors close to the company
-          </span>{" "}
-          that affect its ability to serve its customers.
-        </Statement>
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:gap-12">
-          <Plate>
-            <MicroActors />
-          </Plate>
-          <div className="space-y-8">
-            <Ruled weight="thick">
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
               <P>
-                These actors include the company itself, suppliers, marketing
-                intermediaries, customer markets, competitors, and publics.
+                <Term>Passive or reactive firms</Term> wait until a regulatory
+                change, demographic shift, or new technology erodes sales before
+                adjusting their offerings.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thick">
+            <Ruled>
               <P>
-                Success depends on building relationships with{" "}
-                <Term>other company departments</Term> and these{" "}
-                <Term tone="ink">external partners</Term>.
+                <Term>Proactive firms</Term> conduct systematic{" "}
+                <Term>environmental scanning</Term> to detect early signals of
+                change and redesign their product portfolios ahead of
+                competitors.
               </P>
             </Ruled>
           </div>
         </div>
       </Slide>
 
-      <Slide id="macroenvironment" border exercise={exercise["macroenvironment"]}>
-        <Tag>Larger societal forces</Tag>
-        <Heading className={HEAD}>The Macroenvironment</Heading>
-        <div className="grid w-full items-center gap-8 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
-          <div className="space-y-8">
+      {/* ================================================================
+          Part 1: Actors in the Microenvironment
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-1-actors-in-the-microenvironment"
+        border
+      >
+        <PartHead n={1} title="Actors in the Microenvironment" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            The <Term>microenvironment</Term> consists of the actors close to
+            the company that directly affect its ability to serve its customers
+            and deliver value.
+          </Statement>
+          <Ruled>
             <Lead>
-              The macroenvironment consists of the larger societal forces that
-              affect the microenvironment.
+              Delivering customer value requires coordinating internal company
+              departments with external partners, while monitoring competitors
+              and publics.
             </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Internal Departments and the Value Delivery Network
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="internal-departments-and-the-value-delivery-network"
+        border
+      >
+        <SlideHeading>
+          Internal Departments and the Value Delivery Network
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-[1.35fr_1fr] md:gap-12">
+          <Lead>
+            In designing marketing plans, <Term>marketing management</Term>{" "}
+            takes other company groups into account, including top management,
+            finance, research and development, purchasing, operations, and
+            accounting.
+          </Lead>
+          <Ruled>
+            <Statement>
+              All of these interrelated internal groups form the{" "}
+              <Term>internal environment</Term>.
+            </Statement>
+          </Ruled>
+        </div>
+        <div className="mt-6 w-full">
+          <Plate wide>
+            <ValueDeliveryNetwork />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
             <P>
-              It shapes <Term tone="ink">opportunities</Term> and poses{" "}
-              <Term>threats</Term> to the company.
+              Under the <Term>marketing concept</Term>, every department from
+              engineering to billing must &quot;think consumer&quot; and work in
+              harmony to deliver promised customer value.
             </P>
-            <Ruled tone="signal" weight="thick">
+          </Ruled>
+          <Ruled>
+            <P>
+              If manufacturing cuts material quality to lower unit costs or
+              accounting delays customer refunds, the marketing promise fails
+              regardless of advertising quality.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Suppliers and Marketing Intermediaries
+          ================================================================ */}
+      <Slide className={TIGHT} id="suppliers-and-marketing-intermediaries" border>
+        <SlideHeading>Suppliers and Marketing Intermediaries</SlideHeading>
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Suppliers</Term> form an essential link in the
+              company&apos;s overall customer{" "}
+              <Term>value delivery network</Term> by providing the resources
+              needed by the company to produce its goods and services.
+            </Statement>
+            <Ruled>
               <P>
-                We often use the <Term tone="ink">PESTLE framework</Term> to
-                analyze these broad forces.
+                Marketing managers must watch supply availability and costs
+                closely: supply shortages, labor strikes, or shipping delays can
+                cost sales in the short run and damage customer goodwill in the
+                long run.
               </P>
             </Ruled>
           </div>
-          <Plate>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Marketing intermediaries</Term> are firms that help the
+              company to promote, sell, and distribute its goods to final
+              buyers.
+            </Statement>
+            <Ruled>
+              <P>
+                Intermediaries include <Term>resellers</Term> (wholesalers and
+                retailers), <Term>physical distribution firms</Term>{" "}
+                (warehousing and freight operators),{" "}
+                <Term>marketing services agencies</Term> (research and
+                advertising firms), and <Term>financial intermediaries</Term>{" "}
+                (banks, credit companies, and insurers).
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Competitors, Publics, and Customer Markets
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="competitors-publics-and-customer-markets"
+        border
+        exercise={exercise["competitors-publics-and-customer-markets"]}
+      >
+        <SlideHeading>Competitors, Publics, and Customer Markets</SlideHeading>
+        <ol className="grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              The marketing concept states that, to be successful, a company
+              must provide greater customer value and satisfaction than its{" "}
+              <Term>competitors</Term> do, adapting its strategy to the size and
+              industry position of rival firms.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              A <Term>public</Term> is any group that has an actual or potential
+              interest in or impact on an organization&apos;s ability to achieve
+              its objectives, including financial, media, government,
+              citizen-action, local, general, and internal publics.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              The company may target any of five types of{" "}
+              <Term>customer markets</Term>: <Term>consumer markets</Term>{" "}
+              (individuals and households), <Term>business markets</Term> (firms
+              buying for further processing), <Term>reseller markets</Term>,{" "}
+              <Term>government markets</Term>, and{" "}
+              <Term>international markets</Term>.
+            </P>
+          </Numbered>
+        </ol>
+        <Ruled className="mt-8 w-full">
+          <Statement>
+            Each actor in the microenvironment can either strengthen or
+            bottleneck the firm&apos;s <Term>value proposition</Term> before it
+            reaches the end buyer.
+          </Statement>
+        </Ruled>
+      </Slide>
+
+      {/* ================================================================
+          Part 2: The Macroenvironment and the PESTLE Framework
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-2-the-macroenvironment-and-the-pestle-framework"
+        border
+      >
+        <PartHead
+          n={2}
+          title="The Macroenvironment and the PESTLE Framework"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            The company and all actors in its microenvironment operate within a
+            larger <Term>macroenvironment</Term> of broad societal forces that
+            shape opportunities and pose threats.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Marketers analyze these macro-level forces systematically using
+              the <Term>PESTLE framework</Term>: Political, Economic, Social,
+              Technological, Legal, and Environmental factors.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Political and Economic Forces
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="political-and-economic-forces"
+        border
+        exercise={exercise["political-and-economic-forces"]}
+      >
+        <SlideHeading>Political and Economic Forces</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Ruled>
+              <P>
+                <Term>Political forces</Term> encompass government stability,
+                trade policy, taxation, public infrastructure spending, and
+                advocacy groups that influence or restrict business operations.
+              </P>
+              <P className="mt-3">
+                A sudden change in <Term>import tariffs</Term> or domestic
+                industrial subsidies can alter the cost structure of an entire
+                supply chain overnight.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                <Term>Economic forces</Term> consist of macroeconomic factors
+                that affect consumer <Term>purchasing power</Term> and spending
+                patterns, including inflation, interest rates, unemployment, and
+                income distribution.
+              </P>
+              <P className="mt-3">
+                During periods of high inflation and rising interest rates,
+                consumers postpone discretionary durable purchases and shift
+                toward value-oriented store brands.
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
             <PestleHub />
           </Plate>
         </div>
       </Slide>
 
-      <PestlePair
-        id="pestle-political-economic"
-        title="Political and Economic"
-        active={[0, 1]}
-        layout="wide"
-        closing={
-          <>
-            These forces dictate{" "}
-            <span className="text-[var(--signal)]">
-              how a business can operate
-            </span>{" "}
-            and{" "}
-            <span className="text-[var(--counter)]">
-              whether consumers can afford their products
-            </span>
-            .
-          </>
-        }
-      >
-        <Force tone="signal" plate={<PoliticalCorridor />}>
-          <Term tone="ink">Political:</Term> Laws, government agencies, and
-          pressure groups that influence or limit organizations and individuals.
-        </Force>
-        <Force tone="counter" plate={<PurchasingPower />} wide>
-          <Term tone="ink">Economic:</Term> Factors that affect consumer
-          purchasing power and spending patterns, such as inflation and interest
-          rates.
-        </Force>
-      </PestlePair>
-
-      <PestlePair
-        id="pestle-social-technological"
-        title="Social and Technological"
-        active={[2, 3]}
-        layout="rows"
-        closing={
-          <>
-            Marketers must{" "}
-            <span className="text-[var(--signal)]">track cultural trends</span>{" "}
-            and{" "}
-            <span className="text-[var(--counter)]">
-              adopt relevant technologies
-            </span>{" "}
-            to stay competitive.
-          </>
-        }
-      >
-        <Force tone="signal" plate={<SocialStrata />} beside>
-          <Term tone="ink">Social:</Term> Institutions and other forces that
-          affect a society&apos;s basic values, perceptions, preferences, and
-          behaviors.
-        </Force>
-        <Force tone="counter" plate={<TechnologyBranches />} beside>
-          <Term tone="ink">Technological:</Term> Forces that create new
-          technologies, creating new product and market opportunities.
-        </Force>
-      </PestlePair>
-
-      <PestlePair
-        id="pestle-legal-environmental"
-        title="Legal and Environmental"
-        active={[4, 5]}
-        layout="triple"
-        closing={
-          <>
-            <span className="text-[var(--signal)]">Compliance</span> and{" "}
-            <span className="text-[var(--counter)]">
-              environmental sustainability
-            </span>{" "}
-            are now baseline expectations for modern businesses.
-          </>
-        }
-      >
-        <Force tone="signal" plate={<LegislationCanopy />}>
-          <Term tone="ink">Legal:</Term> Specific legislation protecting
-          companies from each other, protecting consumers, and protecting the
-          interests of society.
-        </Force>
-        <Force tone="counter" plate={<ResourceExchange />}>
-          <Term tone="ink">Environmental:</Term> Natural resources that are
-          needed as inputs by marketers or that are affected by marketing
-          activities.
-        </Force>
-      </PestlePair>
-
-      <Slide
-        id="ai-in-the-marketing-environment"
-        border
-        exercise={exercise["ai-in-the-marketing-environment"]}
-      >
-        <Tag>One development, several forces</Tag>
-        <Heading className={cn(HEAD, "[&_h2]:!max-w-none [&_h2]:!text-[clamp(2rem,3.3vw,3rem)]")}>
-          Artificial Intelligence in the Marketing Environment
-        </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-12">
-          <Statement className="!max-w-[26ch]">
-            Artificial intelligence shows how one development can touch{" "}
-            <span className="text-[var(--signal)]">
-              several PESTLE forces at once
-            </span>
-            .
-          </Statement>
-          <Plate>
-            <AiTouchesForces />
-          </Plate>
-        </div>
-        <div className="mt-8 grid w-full gap-8 lg:grid-cols-[1fr_1.45fr_1fr] lg:gap-10">
-          <Ruled weight="thick">
-            <P>
-              <Term tone="ink">Technological:</Term> AI agents can now search,
-              compare, and buy on a consumer&apos;s behalf, creating new ways to
-              reach customers.
-            </P>
-          </Ruled>
-          <Ruled weight="thick">
-            <P>
-              <Term tone="ink">Legal:</Term> New laws set rules for how
-              companies use AI. The European Union&apos;s AI Act, for example,
-              requires that people be told when they are talking to a chatbot
-              and that AI-generated images, audio, and video imitating real
-              people or events be labeled.
-            </P>
-          </Ruled>
-          <Ruled weight="thick">
-            <P>
-              <Term tone="ink">Social:</Term> Consumers differ in how much they
-              trust AI to make choices for them, and this trust shapes how much
-              buying they delegate.
-            </P>
-          </Ruled>
-        </div>
-        <p className="type-lead !text-[var(--ink)] mt-8 max-w-[64ch]">
-          Marketers who track these forces early can adapt their offerings and
-          practices before competitors do.
-        </p>
-      </Slide>
-
-      <Slide id="discussion-environmental-forces" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
-          Environmental Forces
-        </KickerHeading>
-        <Prompt>
-          <PromptKicker /> If a global coffee chain wants to enter a new
-          emerging market,{" "}
-          <span className="text-[var(--signal)]">which PESTLE factor</span>{" "}
-          might pose the most immediate and unpredictable challenge to their
-          launch strategy, and why?
-        </Prompt>
-        <ol
-          aria-hidden
-          className="mt-8 grid w-full max-w-5xl grid-cols-3 border-l border-t border-[var(--counter-line)] md:grid-cols-6"
-        >
-          {FORCES.map((name) => (
-            <li
-              key={name}
-              className="border-b border-r border-[var(--counter-line)] px-3 py-4 md:px-4"
-            >
-              <span
-                className="block text-[2.25rem] leading-none text-[var(--counter)]"
-                style={SERIF}
-              >
-                {name[0]}
-              </span>
-              <span className="mt-2 block text-[0.72rem] leading-tight text-[var(--ink-2)] sm:text-[0.8rem] [overflow-wrap:anywhere]">
-                {name}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </Slide>
-
       {/* ================================================================
-          Part 2
+          Social and Technological Forces
           ================================================================ */}
-      <PartPlate id="part-2" n={2} title="Corporate Social Responsibility (CSR)">
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-12">
-          <Lead>
-            Beyond analyzing the environment, companies must respond to
-            societal expectations.
-          </Lead>
-          <P>
-            Corporate Social Responsibility involves{" "}
-            <Term tone="ink">self-regulating business models</Term> that
-            help a company be socially accountable.
-          </P>
-        </div>
-        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,15rem)_1fr] lg:gap-10">
-          <Statement className="!text-[clamp(1.5rem,2.3vw,2rem)]">
-            CSR is not just philanthropy, it is{" "}
-            <span className="text-[var(--signal)]">
-              deeply integrated into the business strategy
-            </span>
-            .
-          </Statement>
-          <Plate>
-            <CsrWeave />
-          </Plate>
-        </div>
-      </PartPlate>
-
-      <Slide id="pillars-of-csr" border exercise={exercise["pillars-of-csr"]}>
-        <Tag>Four responsibilities</Tag>
-        <Heading className={HEAD}>The Pillars of CSR</Heading>
-        <CsrTemple />
-      </Slide>
-
-      <Slide id="business-case-for-csr" border>
-        <Tag>Why it pays</Tag>
-        <Heading className={HEAD}>The Business Case for CSR</Heading>
-        <BusinessCase />
-      </Slide>
-
-      <Slide id="greenwashing" border>
-        <Tag>Claims against action</Tag>
-        <Heading className={HEAD}>Greenwashing: A Marketing Trap</Heading>
-        <div className={BESIDE}>
-          <Lead className="!max-w-[40ch]">
-            Greenwashing occurs when a company spends more time and money{" "}
-            <Term tone="ink">claiming to be &quot;green&quot;</Term> than{" "}
-            <Term tone="ink">actually implementing</Term> business practices
-            that minimize environmental impact.
-          </Lead>
-          <Plate>
-            <GreenwashingGap />
-          </Plate>
-        </div>
-        <div className="mt-10 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="signal" weight="thick">
-            <P>
-              It damages <Term>brand trust</Term> and can lead to{" "}
-              <Term>legal penalties</Term>.
-            </P>
-          </Ruled>
-          <Ruled tone="counter" weight="thick">
-            <p className="type-h2 !font-normal">
-              Transparency and authentic action are the only cures for
-              greenwashing.
-            </p>
-          </Ruled>
-        </div>
-      </Slide>
-
-      <Slide id="discussion-cost-of-csr" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
-          The Cost of CSR
-        </KickerHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] lg:gap-12">
-          <Prompt>
-            <PromptKicker /> When a retail brand publicly commits to sourcing
-            100% fair-trade materials, prices inevitably rise. Should the brand{" "}
-            <span className="text-[var(--signal)]">absorb the cost</span>, or{" "}
-            <span className="text-[var(--counter)]">
-              pass it on to consumers
-            </span>
-            , and how does this affect their competitive positioning?
-          </Prompt>
-          <Plate>
-            <AbsorbOrPass />
-          </Plate>
-        </div>
-      </Slide>
-
-      {/* ================================================================
-          Part 3
-          ================================================================ */}
-      <PartPlate id="part-3" n={3} title="Ethical Considerations in Marketing">
-        <Lead className="mt-8 !max-w-[52ch]">
-          Marketing ethics are the broad guidelines that{" "}
-          <Term tone="ink">everyone in the organization</Term> must follow.
-        </Lead>
-        <div className="mt-8">
-          <p className="type-label !text-[var(--ink-3)]">
-            These policies cover
-          </p>
-          <ol className="mt-4 grid w-full gap-x-10 border-t-2 border-[var(--ink)] sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              ["01", "distributor relations,"],
-              ["02", "advertising standards,"],
-              ["03", "customer service,"],
-              ["04", "pricing,"],
-              ["05", "product development,"],
-              ["06", "and general ethical standards."],
-            ].map(([n, item]) => (
-              <li
-                key={n}
-                data-n={n}
-                className="num-item border-b border-[var(--rule)] py-4 type-h2 !font-normal"
-              >
-                {" "}
-                {item}
-              </li>
-            ))}
-          </ol>
-        </div>
-        <Statement className="mt-8 !text-[clamp(1.8rem,3.2vw,2.8rem)]">
-          Good <span className="text-[var(--counter)]">ethics</span> is good{" "}
-          <span className="text-[var(--signal)]">business</span>.
-        </Statement>
-      </PartPlate>
-
-      <Slide id="deceptive-practices" border exercise={exercise["deceptive-practices"]}>
-        <Tag>Pricing and promotion</Tag>
-        <Heading className={HEAD}>Deceptive Practices</Heading>
-        <div className="grid w-full gap-12 lg:grid-cols-2">
-          {(
-            [
-              [
-                "Deceptive pricing",
-                <P key="p">
-                  Deceptive pricing includes falsely advertising
-                  &quot;factory&quot; or &quot;wholesale&quot; prices or a large
-                  price reduction from a <Term>phony high retail price</Term>.
-                </P>,
-                <PhonyPriceTag key="v" />,
-              ],
-              [
-                "Deceptive promotion",
-                <P key="p">
-                  Deceptive promotion includes{" "}
-                  <Term>
-                    misrepresenting the product&apos;s features or performance
-                  </Term>
-                  .
-                </P>,
-                <MisrepresentedChecklist key="v" />,
-              ],
-            ] as const
-          ).map(([key, text, plate]) => (
-            <div key={key} className="flex min-w-0 flex-col">
-              <div aria-hidden className="type-label mb-4 border-t-2 border-[var(--signal)] pt-4">
-                {key}
-              </div>
-              <div className="mb-5 min-h-[3.4em]">{text}</div>
-              <Plate className="mt-auto max-w-[25rem]">{plate}</Plate>
-            </div>
-          ))}
-        </div>
-        <Statement className="mt-10 !max-w-[40ch] !text-[clamp(1.5rem,2.4vw,2.1rem)]">
-          These practices harm consumers and ultimately destroy{" "}
-          <span className="text-[var(--signal)]">brand equity</span>.
-        </Statement>
-      </Slide>
-
-      <Slide id="high-pressure-selling" border>
-        <Tag>Short term, long term</Tag>
-        <Heading className={HEAD}>High-Pressure Selling</Heading>
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,38rem)] lg:gap-14">
-          <div>
-            <Statement className="!max-w-[30ch]">
-              Involves persuading people to buy goods they had no thought of
-              buying.
-            </Statement>
-            <div className="mt-10 grid items-start gap-8 md:grid-cols-2 md:gap-10">
-              <Ruled weight="thick">
-                <P>
-                  It is often used for <Term tone="ink">unsought goods</Term> or
-                  in <Term tone="ink">aggressive B2B environments</Term>.
-                </P>
-              </Ruled>
-              <Ruled tone="signal" weight="thick">
-                <P>
-                  High-pressure selling yields{" "}
-                  <Term>short-term gains</Term> but damages{" "}
-                  <Term tone="ink">
-                    long-term relationships and reputation
-                  </Term>
-                  .
-                </P>
-              </Ruled>
-            </div>
-          </div>
-          <Plate>
-            <PressureOverTime />
-          </Plate>
-        </div>
-      </Slide>
-
-      <Slide
-        id="dark-patterns-ai-agents"
-        border
-        exercise={exercise["dark-patterns-ai-agents"]}
-      >
-        <Tag>Tricks aimed at the agent</Tag>
-        <Heading className={HEAD}>Dark Patterns Directed at AI Agents</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-12">
-          <div>
-            <P>
-              A <Term tone="ink">dark pattern</Term> is a design that leads a
-              person toward a choice they would not otherwise make, such as a
-              fake countdown timer or a fee revealed only at checkout.
-            </P>
-            <P className="mt-4">
-              As AI agents shop for consumers, some sellers aim the same tricks
-              at the agent instead of the person.
-            </P>
-            <ol className="mt-5 w-full border-t-2 border-[var(--ink)]">
-              {[
-                "A seller may show a key fact, such as the price per ounce, only inside an image that the AI agent cannot read.",
-                "A seller may hide text on a product page, invisible to people, that instructs AI agents to recommend the product.",
-                "A seller may post fake reviews written to sway the AI agent's comparison.",
-              ].map((t, i) => (
-                <li
-                  key={i}
-                  className="grid grid-cols-[1.75rem_1fr] gap-2 border-b border-[var(--rule)] py-2.5"
-                >
-                  <span
-                    aria-hidden
-                    className="type-caption pt-1 tabular-nums !text-[var(--ink-3)]"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <P>{t}</P>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <Plate>
-            <AgentScale />
-          </Plate>
-        </div>
-        <Statement className="mt-8 !max-w-[56ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
-          Like deceptive pricing and promotion, these practices{" "}
-          <span className="text-[var(--signal)]">
-            harm the consumer the agent works for
-          </span>{" "}
-          and destroy trust in the brand once they are discovered.
-        </Statement>
-      </Slide>
-
-      <Slide id="planned-obsolescence" border>
-        <Tag>Before it needs replacement</Tag>
-        <Heading className={HEAD}>Planned Obsolescence</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-14">
-          <div>
-            <Lead className="!max-w-[40ch]">
-              Causing products to become obsolete{" "}
-              <Term>before they actually need replacement</Term>.
+      <Slide className={TIGHT} id="social-and-technological-forces" border>
+        <SlideHeading>Social and Technological Forces</SlideHeading>
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Lead>
+              <Term>Social (and demographic) forces</Term> include population
+              age structure, household composition, geographic migration,
+              educational attainment, and cultural values.
             </Lead>
-            <p className="type-label mt-8 !text-[var(--ink-3)]">
-              Strategies include
-            </p>
-            <ol className="mt-3 w-full border-t-2 border-[var(--ink)]">
-              {(
-                [
-                  ["break", "using materials that break easily,"],
-                  ["styles", "continuous changing of styles,"],
-                  ["delay", "or delaying functional features until later models."],
-                ] as const
-              ).map(([kind, item]) => (
-                <li
-                  key={kind}
-                  className="flex items-center gap-5 border-b border-[var(--rule)] py-3.5 type-h2 !font-normal"
-                >
-                  {" "}
-                  <StrategyGlyph kind={kind} />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <div>
-            <Plate>
-              <ObsolescenceLifespans />
-            </Plate>
-            <Ruled tone="signal" weight="thick" className="mt-6">
+            <Ruled>
               <P>
-                While it drives{" "}
-                <Term tone="ink">frequent replacement sales</Term>, it raises
-                significant <Term>environmental and ethical concerns</Term>.
+                <Term>Core cultural values</Term> persist across generations,
+                whereas <Term>secondary cultural beliefs</Term>, such as
+                attitudes toward remote work, wellness, or convenience foods,
+                shift more rapidly.
+              </P>
+            </Ruled>
+          </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Lead>
+              <Term>Technological forces</Term> are the most dramatic shapers of
+              business destiny, creating entirely new product categories while
+              making older technologies obsolete.
+            </Lead>
+            <Ruled>
+              <P>
+                Advances in cloud computing, mobile payment networks,
+                biotechnology, and artificial intelligence open new ways to
+                create and deliver customer value.
               </P>
             </Ruled>
           </div>
         </div>
       </Slide>
 
-      <Slide id="sustainable-marketing" border>
-        <Tag>Now and later</Tag>
-        <Heading className={HEAD}>Sustainable Marketing</Heading>
-        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-14">
-          <Lead>
-            Socially and environmentally responsible marketing that meets the{" "}
-            <Term tone="ink">present needs</Term> of consumers and businesses.
-          </Lead>
-          <Lead>
-            It also preserves or enhances the ability of{" "}
-            <Term tone="ink">future generations</Term> to meet their needs.
-          </Lead>
+      {/* ================================================================
+          Legal and Environmental Forces
+          ================================================================ */}
+      <Slide className={TIGHT} id="legal-and-environmental-forces" border>
+        <SlideHeading>Legal and Environmental Forces</SlideHeading>
+        <div className="grid w-full gap-8 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Legal forces</Term> consist of specific statutes and
+              regulatory agencies that protect companies from unfair
+              competition, protect consumers from deception or harm, and
+              safeguard society&apos;s broader interests.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketers must comply with laws governing{" "}
+              <Term>product safety</Term>, <Term>truth in advertising</Term>,
+              packaging labels, <Term>antitrust competition</Term>, and{" "}
+              <Term>data privacy</Term> across every jurisdiction they serve.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Environmental forces</Term> involve the natural resources
+              required as inputs by marketers or affected by marketing and
+              manufacturing activities.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Growing shortages of raw materials, rising energy costs, pollution
+              limits, and climate policy make{" "}
+              <Term>environmental stewardship</Term> a core operational
+              requirement.
+            </P>
+          </Ruled>
         </div>
-        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,32rem)_1fr] lg:gap-14">
-          <Plate>
-            <SustainableCatch />
+      </Slide>
+
+      {/* ================================================================
+          Part 3: Corporate Social Responsibility and Sustainability
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-3-corporate-social-responsibility-and-sustainability"
+        border
+      >
+        <PartHead
+          n={3}
+          title="Corporate Social Responsibility and Sustainability"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Lead>
+            Beyond obeying statutory laws, organizations face strong
+            expectations from consumers, employees, and investors to act as
+            accountable stewards of society.
+          </Lead>
+          <Ruled>
+            <Statement>
+              <Term>Corporate Social Responsibility (CSR)</Term> integrates
+              social and environmental accountability directly into the
+              firm&apos;s business model.
+            </Statement>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          The Four Pillars of Corporate Social Responsibility
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="the-four-pillars-of-corporate-social-responsibility"
+        border
+        exercise={
+          exercise["the-four-pillars-of-corporate-social-responsibility"]
+        }
+      >
+        <SlideHeading>
+          The Four Pillars of Corporate Social Responsibility
+        </SlideHeading>
+        <Lead>
+          Archie Carroll&apos;s framework organizes{" "}
+          <Term>Corporate Social Responsibility</Term> into four distinct layers
+          of obligation (Carroll, 1991).
+        </Lead>
+        <div className="mt-6 w-full max-w-4xl">
+          <Plate wide>
+            <CsrPyramid />
           </Plate>
-          <div className="space-y-8">
-            <p className="type-h2 !font-normal max-w-[30ch]">
-              It goes beyond the marketing concept to adopt a{" "}
-              <span className="text-[var(--signal)]">
-                societal marketing concept
-              </span>
-              .
-            </p>
-            <ConceptStep />
+        </div>
+        <ol className="mt-6 grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <Numbered n={1}>
+            <P>
+              <Term>Economic responsibility</Term> is the foundational
+              obligation to produce goods and services that society wants and to
+              sell them at a profit that sustains the enterprise.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Legal responsibility</Term> is the obligation to obey
+              codified laws and regulations, which represent society&apos;s
+              baseline rules of fair operations.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Ethical responsibility</Term> is the obligation to do what
+              is right, just, and fair, and to avoid harm even when a
+              questionable practice is not explicitly prohibited by law.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              <Term>Philanthropic responsibility</Term> involves voluntary
+              corporate contributions of financial, technical, or human
+              resources to improve community well-being and quality of life.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          Sustainable Marketing and the Trap of Greenwashing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="sustainable-marketing-and-the-trap-of-greenwashing"
+        border
+        exercise={exercise["sustainable-marketing-and-the-trap-of-greenwashing"]}
+      >
+        <SlideHeading>
+          Sustainable Marketing and the Trap of Greenwashing
+        </SlideHeading>
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Sustainable marketing</Term> calls for socially and
+              environmentally responsible actions that meet the current needs of
+              consumers and businesses while preserving or enhancing the ability
+              of future generations to meet their own needs.
+            </Statement>
+            <Ruled>
+              <P>
+                Firms practicing genuine sustainability redesign products to use
+                recycled inputs, reduce packaging waste, lower carbon emissions
+                in logistics, and support fair labor standards.
+              </P>
+            </Ruled>
+          </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Greenwashing</Term> occurs when an organization spends more
+              time and money claiming to be environmentally friendly through
+              marketing communications than actually reducing its environmental
+              impact.
+            </Statement>
+            <Ruled>
+              <P>
+                Vague, unverified labels such as &quot;eco-friendly&quot; or
+                &quot;all-natural&quot; on unchanged products mislead buyers,
+                trigger regulatory enforcement, and permanently erode{" "}
+                <Term>brand trust</Term> when exposed.
+              </P>
+            </Ruled>
           </div>
         </div>
       </Slide>
 
       {/* ================================================================
-          Conclusion
+          The Strategic Business Case for Authentic CSR
           ================================================================ */}
-      <Slide id="conclusion" border>
-        <KickerHeading kicker="Conclusion:">Adapting Responsibly</KickerHeading>
-        <ol className="grid w-full gap-x-14 gap-y-9 md:grid-cols-2">
-          {[
-            {
-              glyph: <GlyphRings />,
-              text: "The marketing environment is dynamic and constantly evolving.",
-            },
-            {
-              glyph: <GlyphHub />,
-              text: "Companies must actively monitor micro and macro forces to seize opportunities and mitigate threats.",
-            },
-            {
-              glyph: <GlyphTemple />,
-              text: "Ultimately, long-term success requires a commitment to ethical practices and genuine corporate social responsibility.",
-            },
-            {
-              glyph: <GlyphAgent />,
-              text: "These commitments now extend to AI agents: a company that would not deceive a consumer should not deceive the AI agent that shops for one.",
-            },
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="grid grid-cols-[4.5rem_1fr] gap-6 border-t-2 border-[var(--ink)] pt-6"
-            >
-              <div aria-hidden className="flex flex-col gap-4">
-                <span
-                  className="text-[2.6rem] leading-none text-[var(--signal)]"
-                  style={SERIF}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {item.glyph}
-              </div>
-              <p className="type-h2 !font-normal">{item.text}</p>
-            </li>
-          ))}
+      <Slide
+        className={TIGHT}
+        id="the-strategic-business-case-for-authentic-csr"
+        border
+      >
+        <SlideHeading>The Strategic Business Case for Authentic CSR</SlideHeading>
+        <Statement>
+          Authentic <Term>Corporate Social Responsibility</Term> is not merely a
+          compliance cost or charitable expense, but a source of durable{" "}
+          <Term>competitive advantage</Term>.
+        </Statement>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Consumers increasingly evaluate a company&apos;s labor,
+              environmental, and governance record when choosing between
+              competing brands of comparable price and quality.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Strong CSR commitments improve employee recruitment, morale, and
+              retention, reducing costly workforce turnover across retail and
+              corporate operations.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Proactive resource efficiency</Term>, such as designing
+              lighter packaging, reducing warehouse energy consumption, and
+              eliminating toxic inputs, simultaneously lowers operating costs
+              and mitigates regulatory and reputational risk.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Navigating PESTLE Shocks and CSR Commitments
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-navigating-pestle-shocks-and-csr-commitments"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Navigating PESTLE Shocks and CSR Commitments
+        </SlideHeading>
+        <Prompt>
+          A specialty chocolate manufacturer sources cocoa from West Africa and
+          markets its bars in North America on a pledge of 100 percent
+          living-income farmer pay and deforestation-free supply chains. When
+          extreme weather reduces the regional cocoa harvest and triples raw
+          bean prices, which PESTLE forces are interacting, and how should the
+          brand adjust its pricing, product sizing, and communications without
+          abandoning its CSR commitments or crossing into deceptive practices?
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Part 4: Ethical Considerations in Marketing Practice
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-4-ethical-considerations-in-marketing-practice"
+        border
+      >
+        <PartHead
+          n={4}
+          title="Ethical Considerations in Marketing Practice"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Conscientious marketers face moral dilemmas across every element of
+            the <Term>marketing mix</Term>, because actions that boost
+            short-term sales can harm consumers and competitors.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Establishing explicit{" "}
+              <Term>corporate marketing ethics policies</Term> guides managers
+              on product safety, pricing transparency, distribution fairness,
+              and truthful promotion.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Deceptive Pricing, Promotion, and Packaging
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="deceptive-pricing-promotion-and-packaging"
+        border
+        exercise={exercise["deceptive-pricing-promotion-and-packaging"]}
+      >
+        <SlideHeading>Deceptive Pricing, Promotion, and Packaging</SlideHeading>
+        <ol className="grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              <Term>Deceptive pricing</Term> includes falsely advertising
+              &quot;factory&quot; or &quot;wholesale&quot; prices, claiming a
+              large discount from a fabricated reference price, or concealing
+              mandatory fees until checkout.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              <Term>Deceptive promotion</Term> misrepresents a product&apos;s
+              features, ingredients, or performance, or uses{" "}
+              <Term>bait-and-switch tactics</Term> that lure shoppers with an
+              unavailable bargain to upsell a costlier item.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              <Term>Deceptive packaging</Term> exaggerates package contents
+              through oversized non-functional containers (
+              <Term>slack fill</Term>), misleading imagery, or subtle reductions
+              in net weight without disclosing the unit price change.
+            </P>
+          </Numbered>
+        </ol>
+        <Ruled className="mt-8 w-full">
+          <Lead>
+            Regulatory bodies such as the{" "}
+            <Term>Federal Trade Commission</Term> in the United States and the{" "}
+            <Term>Competition Bureau</Term> in Canada prosecute deceptive
+            practices because they distort fair market exchange and injure
+            consumers.
+          </Lead>
+        </Ruled>
+      </Slide>
+
+      {/* ================================================================
+          High-Pressure Selling and Planned Obsolescence
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="high-pressure-selling-and-planned-obsolescence"
+        border
+      >
+        <SlideHeading>
+          High-Pressure Selling and Planned Obsolescence
+        </SlideHeading>
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>High-pressure selling</Term> uses psychological
+              manipulation, artificial urgency, or scripted intimidation to
+              persuade people to buy goods they had no intention or need of
+              buying.
+            </Statement>
+            <Ruled>
+              <P>
+                Although aggressive tactics may close an immediate transaction,
+                they generate severe <Term>buyer&apos;s remorse</Term>, product
+                returns, and negative word of mouth that destroy long-term
+                customer relationships.
+              </P>
+            </Ruled>
+          </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Planned obsolescence</Term> is the deliberate practice of
+              causing products to become out of date or non-functional before
+              they genuinely need replacement.
+            </Statement>
+            <Ruled>
+              <P>
+                It takes three forms: <Term>physical obsolescence</Term> (using
+                fragile components or non-replaceable batteries),{" "}
+                <Term>style obsolescence</Term> (continually altering
+                superficial appearance), and{" "}
+                <Term>functional obsolescence</Term> (withholding ready features
+                for future models).
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Competing Philosophies of Marketing Ethics
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="competing-philosophies-of-marketing-ethics"
+        border
+      >
+        <SlideHeading>Competing Philosophies of Marketing Ethics</SlideHeading>
+        <Lead>
+          Organizations resolve grey-area ethical decisions under one of two
+          contrasting management philosophies.
+        </Lead>
+        <ol className="mt-8 grid w-full gap-8 md:grid-cols-2">
+          <Numbered n={1}>
+            <P>
+              The first philosophy holds that ethics should be determined by the{" "}
+              <Term>free market</Term> and the <Term>legal system</Term>: under
+              this view, if a practice is legal and profitable, a company can
+              pursue it in good conscience.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              The second philosophy places <Term>moral responsibility</Term>{" "}
+              directly on individual companies and managers to uphold consumer
+              welfare and fairness, independent of what the law or competitors
+              permit.
+            </P>
+          </Numbered>
+        </ol>
+        <Ruled className="mt-8 w-full">
+          <Statement>
+            Under this enlightened view, companies adopt written{" "}
+            <Term>codes of marketing ethics</Term>, appoint{" "}
+            <Term>ethics officers</Term>, and audit their campaigns against
+            long-run consumer well-being.
+          </Statement>
+        </Ruled>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: Artificial Intelligence in the Marketing Environment
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-artificial-intelligence-in-the-marketing-environment"
+        border
+      >
+        <PartHead
+          n={5}
+          title="Artificial Intelligence in the Marketing Environment"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            <Term>Artificial intelligence</Term> illustrates how a single
+            breakthrough simultaneously reshapes technological, legal, and
+            social forces in the macroenvironment while raising new ethical
+            questions.
+          </Statement>
+          <Ruled>
+            <Lead>
+              As consumers delegate search and purchasing to{" "}
+              <Term>AI agents</Term>, deceptive practices once aimed at human
+              eyes are now adapted to manipulate software agents.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          AI as a Technological, Legal, and Social Force
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="ai-as-a-technological-legal-and-social-force"
+        border
+        exercise={exercise["ai-as-a-technological-legal-and-social-force"]}
+      >
+        <SlideHeading>
+          AI as a Technological, Legal, and Social Force
+        </SlideHeading>
+        <div className="grid w-full gap-8 lg:grid-cols-3">
+          <Ruled>
+            <P>
+              As a <Term>technological force</Term>, large language models and{" "}
+              <Term>autonomous AI agents</Term> create new channels for product
+              discovery, customer service, and automated purchasing.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              As a <Term>legal force</Term>, governments are enacting specific
+              regulations governing AI transparency, data use, and consumer
+              protection.
+            </P>
+            <P className="mt-4">
+              The <Term>European Union&apos;s AI Act</Term>, for example,
+              requires that individuals be informed when they are interacting
+              with an AI system such as a chatbot, and mandates clear labeling
+              of synthetic audio, images, or video that imitate real people or
+              events.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              As a <Term>social force</Term>, consumers vary widely in how much
+              they trust AI systems to make choices on their behalf, and this
+              trust determines which product categories they are willing to
+              delegate.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Dark Patterns Directed at Human Shoppers and AI Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="dark-patterns-directed-at-human-shoppers-and-ai-agents"
+        border
+        exercise={
+          exercise["dark-patterns-directed-at-human-shoppers-and-ai-agents"]
+        }
+      >
+        <SlideHeading>
+          Dark Patterns Directed at Human Shoppers and AI Agents
+        </SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[0.9fr_1.4fr] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Lead>
+              A <Term>dark pattern</Term> is a user-interface design crafted to
+              trick or steer a buyer into a choice that serves the seller at the
+              buyer&apos;s expense, such as a fake countdown timer or hidden
+              checkout fee.
+            </Lead>
+            <Ruled>
+              <P>
+                As consumers delegate shopping to <Term>AI agents</Term>,
+                unethical sellers aim equivalent manipulative tactics at the
+                software agent rather than the human shopper.
+              </P>
+            </Ruled>
+          </div>
+          <Plate wide>
+            <DarkPatternsComparison />
+          </Plate>
+        </div>
+        <ol className="mt-6 grid w-full gap-6 md:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              First, a seller may bury an unfavorable attribute, such as a high
+              price per ounce, inside an <Term>unindexed image</Term> so an AI
+              agent reading page text overlooks it.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Second, a seller may embed <Term>hidden text</Term> on a product
+              page (such as white text on a white background, invisible to human
+              shoppers) instructing an AI agent to ignore competitors and
+              recommend the product.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Third, sellers may flood platforms with{" "}
+              <Term>synthetic reviews</Term> written specifically to elevate how
+              an AI agent scores the product&apos;s quality.
+            </P>
+          </Numbered>
+        </ol>
+      </Slide>
+
+      {/* ================================================================
+          Ethical Responsibility in Agent-Mediated Markets
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="ethical-responsibility-in-agent-mediated-markets"
+        border
+      >
+        <SlideHeading>
+          Ethical Responsibility in Agent-Mediated Markets
+        </SlideHeading>
+        <div className="grid w-full items-start gap-10 lg:grid-cols-[1.05fr_1.35fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              Deceiving a consumer&apos;s <Term>delegated AI agent</Term> harms
+              the human consumer who pays for the order and uses the product
+              just as directly as deceiving the consumer in person.
+            </Statement>
+            <Ruled>
+              <P>
+                When an AI agent is tricked by hidden prompt instructions or
+                concealed unit pricing, the human buyer pays more or receives an
+                inferior product.
+              </P>
+            </Ruled>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <Ruled>
+              <P>
+                Once consumers or platform auditors uncover manipulative
+                storefront tactics, both human buyers and AI platform operators
+                penalize or delist the offending brand.
+              </P>
+            </Ruled>
+            <Ruled>
+              <Big>
+                Ethical marketing in an agentic environment therefore requires
+                providing accurate, complete, and{" "}
+                <Term>machine-readable product disclosures</Term> so both human
+                shoppers and their AI agents can evaluate offers fairly.
+              </Big>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Auditing Storefront Practices for Humans and AI Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-auditing-storefront-practices-for-humans-and-ai-agents"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Auditing Storefront Practices for Humans and AI Agents
+        </SlideHeading>
+        <Prompt>
+          An online supplement retailer discovers that a third-party agency
+          hired to boost its marketplace conversion rate added two elements to
+          its product pages: a flashing &quot;Only 2 left in stock!&quot; banner
+          that resets every hour for human visitors, and hidden metadata
+          instructing AI shopping assistants to rank the supplement first for
+          immunity queries. Using marketing ethics and the PESTLE legal and
+          technological framework, evaluate both tactics and specify the
+          governance controls the retailer should implement.
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              A firm&apos;s marketing environment comprises the
+              microenvironment (the company, suppliers, intermediaries,
+              competitors, publics, and customer markets) and the
+              macroenvironment, requiring proactive environmental scanning.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              The PESTLE framework organizes macroenvironmental analysis across
+              Political, Economic, Social, Technological, Legal, and
+              Environmental forces that jointly create market opportunities and
+              threats.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Corporate Social Responsibility encompasses economic, legal,
+              ethical, and philanthropic obligations, while sustainable
+              marketing requires authentic operational improvements rather than
+              greenwashing.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              Ethical marketing prohibits deceptive pricing, promotion, and
+              packaging, rejects high-pressure selling and abusive planned
+              obsolescence, and holds managers accountable beyond the bare
+              minimum of the law.
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              Artificial intelligence acts simultaneously as a technological,
+              legal, and social force in the macroenvironment, bringing new
+              statutory rules such as mandatory chatbot and synthetic-media
+              disclosure under the EU AI Act.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              Dark patterns aimed at AI shopping agents, including hiding unit
+              prices inside images, embedding invisible prompt instructions, and
+              posting synthetic reviews, violate marketing ethics and harm the
+              human consumer the agent serves.
+            </P>
+          </Numbered>
         </ol>
       </Slide>
     </SlideDeck>

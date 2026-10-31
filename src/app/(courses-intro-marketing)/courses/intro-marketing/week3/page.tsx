@@ -5,1133 +5,1100 @@ import {
   SlideDeck,
   Slide,
   Title,
-  Subtitle,
-  Heading,
-  Tag,
-  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { cn } from "@/lib/utils";
-import { Plate } from "../_visuals/kit";
+import {
+  Big,
+  Lead,
+  Numbered,
+  P,
+  PartHead,
+  Plate,
+  Prompt,
+  Ruled,
+  SlideHeading,
+  Statement,
+  Term,
+  TIGHT,
+  Tint,
+} from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  ConsumerMarket,
-  NeedStimuli,
-  SearchFork,
-  ChoiceSetSlope,
-  IntentionToDecision,
-  PostpurchaseTimeline,
-  DissonanceCalm,
-  InfluenceRings,
-  LearnedFromSociety,
-  SubcultureField,
-  SocialWeb,
-  PerceptionSequence,
-  ExpertiseLifestyle,
-  ConsumerAndBusinessLanes,
-  MarketStructureTriptych,
-  BuyingCenterTable,
-  MatchedExperts,
-  TwoBrochures,
-  GlyphRoute,
-  GlyphRings,
-  GlyphTable,
+  DecisionProcessStages,
+  DelegatedDecisionSteps,
+  SelectivePerceptionFilters,
+  StimulusResponseModel,
 } from "./visuals";
 
 // ============================================================================
-// WEEK 3: CONSUMER BEHAVIOR
+// INTRODUCTION TO MARKETING | WEEK 3: CONSUMER BEHAVIOR
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md. The
-// design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
-//
-// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
-// so each [exercise]-tagged topic carries one exercise that tests that
-// slide and the ones before it.
+// Every sentence on these slides is transcribed verbatim from content.md.
+// Only slides carrying a [figure: ...] tag in content.md render a plate from
+// ./visuals.tsx. Exercises live in ./exercises.json.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
-
-/** One verbatim sentence at reading size. */
-function P({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
-/** A sentence promoted to lead size. */
-function Lead({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-lead max-w-[46ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** A sentence set as a serif statement: the line a slide lands on. */
-function Statement({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p className={cn("type-quote max-w-[30ch]", className)}>
-      {children}
-    </p>
-  );
-}
-
-/** Coloured term inside a sentence, without the Highlight underline. */
-function Term({
-  children,
-  tone = "signal",
-}: {
-  children: React.ReactNode;
-  tone?: "signal" | "counter" | "ink";
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
-}
-
-/** Hairline-topped block with a verbatim sentence. */
-function Ruled({
-  tone = "ink",
-  weight = "thick",
-  children,
-  className = "",
-}: {
-  tone?: "signal" | "counter" | "ink";
-  weight?: "thin" | "thick";
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const border = {
-    signal: "border-[var(--signal)]",
-    counter: "border-[var(--counter)]",
-    ink: "border-[var(--ink)]",
-  }[tone];
-  return (
-    <div
-      className={cn(
-        "min-w-0 pt-5",
-        weight === "thick" ? "border-t-2" : "border-t",
-        border,
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-/**
- * A heading with a "Label:" prefix ("Step 1:", "Discussion:"). The prefix is
- * set as a small tracked kicker inside the same h2, so the heading text
- * stays exactly as written.
- */
-function KickerHeading({
-  kicker,
-  children,
-  tone = "signal",
-  className = "",
-}: {
-  kicker: string;
-  children: React.ReactNode;
-  tone?: "signal" | "counter";
-  className?: string;
-}) {
-  return (
-    <div className={cn("w-full mb-8 md:mb-12", className)}>
-      <h2 className="type-h1 max-w-[24ch]">
-        <span
-          className={cn(
-            "type-label block mb-4 !text-[0.8rem]",
-            tone === "counter" && "!text-[var(--counter)]",
-          )}
-        >
-          {kicker}
-        </span>{" "}
-        {children}
-      </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-    </div>
-  );
-}
-
-/** Part plate: an oversized numeral beside the part heading. */
-function PartPlate({
-  id,
-  n,
-  title,
-  className,
-  children,
-  layout = "column",
-}: {
-  id: string;
-  n: number;
-  title: string;
-  className?: string;
-  children: React.ReactNode;
-  /** "stacked": numeral and heading share one row and the content runs the full width below. */
-  layout?: "column" | "stacked";
-}) {
-  if (layout === "stacked") {
-    return (
-      <Slide id={id} border className={className}>
-        <div className="flex w-full items-end gap-8 xl:gap-12">
-          <div
-            aria-hidden
-            className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[5rem] xl:text-[6.5rem]"
-            style={{ ...SERIF, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
-          >
-            {String(n).padStart(2, "0")}
-          </div>
-          <h2 className="type-display !text-[clamp(2.2rem,4.2vw,3.5rem)] max-w-[24ch]">
-            <span className="type-label block mb-3 !text-[0.8rem]">
-              {`Part ${n}:`}
-            </span>{" "}
-            {title}
-          </h2>
-        </div>
-        <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-        {children}
-      </Slide>
-    );
-  }
-  return (
-    <Slide id={id} border className={className}>
-      <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
-        <div
-          aria-hidden
-          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[6rem] xl:text-[8rem]"
-          style={{
-            ...SERIF,
-            fontVariationSettings: '"opsz" 144, "WONK" 1',
-          }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.2rem,4.2vw,3.5rem)] max-w-[24ch]">
-            <span className="type-label block mb-3 !text-[0.8rem]">
-              {`Part ${n}:`}
-            </span>{" "}
-            {title}
-          </h2>
-          <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-          {children}
-        </div>
-      </div>
-    </Slide>
-  );
-}
-
-/** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
-function Prompt({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-7 md:px-12 md:py-9">
-      <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
-        {children}
-      </p>
-    </div>
-  );
-}
-
-function PromptKicker() {
-  return (
-    <span className="type-label !text-[var(--counter)] block mb-6 !text-[0.8rem] !leading-none">
-      Discussion:
-    </span>
-  );
-}
-
-/**
- * Text rail beside a plate. The rail comes first in the DOM (text leads its
- * plate, on phones too). `side` decides which side the plate sits on.
- */
-function Split({
-  rail,
-  side = "right",
-  children,
-}: {
-  rail: React.ReactNode;
-  /** Where the rail sits. */
-  side?: "left" | "right";
-  children: React.ReactNode;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid w-full items-center gap-4 lg:gap-10",
-        side === "right"
-          ? "lg:grid-cols-[minmax(0,1fr)_17rem]"
-          : "lg:grid-cols-[17rem_minmax(0,1fr)]",
-      )}
-    >
-      <div
-        className={cn(
-          "flex min-w-0 flex-col gap-6",
-          side === "right" && "lg:order-2",
-        )}
-      >
-        {rail}
-      </div>
-      <div className={cn("min-w-0", side === "right" && "lg:order-1")}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-/** A sentence set large inside a rail. */
-const RAIL_BIG = "type-h2 !font-normal !text-[1.3rem] !leading-snug";
-
-/* --------------------------------------------------------------------------
-   Decision-process wayfinding
-   -------------------------------------------------------------------------- */
-
-const STAGES = [
-  "Need Recognition",
-  "Information Search",
-  "Evaluation of Alternatives",
-  "Purchase Decision",
-  "Postpurchase Behavior",
-];
-
-/**
- * The five steps as a strip. On the Part 1 plate it is the whole route. On
- * each step slide the current step is lit and the ones behind it are inked.
- */
-function StageStrip({
-  active,
-  large = false,
-  vertical = false,
-  className = "",
-}: {
-  active?: number;
-  large?: boolean;
-  /** The whole route as a column of numbered rungs joined by one rule. */
-  vertical?: boolean;
-  className?: string;
-}) {
-  if (vertical) {
-    return (
-      <ol aria-hidden className={cn("relative w-full", className)}>
-        <span className="absolute bottom-6 left-[1.35rem] top-6 w-0.5 bg-[var(--ink)]" />
-        {STAGES.map((s, i) => (
-          <li key={s} className="relative flex items-center gap-6 py-2.5">
-            <span
-              className="relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border-2 border-[var(--ink)] bg-[var(--paper)] text-[1rem] text-[var(--signal)]"
-              style={SERIF}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span
-              className="text-[clamp(1.15rem,1.7vw,1.5rem)] leading-tight text-[var(--ink)]"
-              style={SERIF}
-            >
-              {s}
-            </span>
-          </li>
-        ))}
-      </ol>
-    );
-  }
-  return (
-    <ol
-      aria-hidden
-      className={cn(
-        "grid w-full grid-cols-5",
-        large ? "gap-3 sm:gap-5" : "gap-2 sm:gap-3",
-        className,
-      )}
-    >
-      {STAGES.map((s, i) => {
-        const on = i === active;
-        const done = active !== undefined && i < active;
-        return (
-          <li
-            key={s}
-            className={cn(
-              "min-w-0 border-t-2",
-              large ? "pt-4" : "pt-3",
-              on
-                ? "border-[var(--signal)]"
-                : done || large
-                  ? "border-[var(--ink)]"
-                  : "border-[var(--rule)]",
-            )}
-          >
-            <span
-              className={cn(
-                "type-label block",
-                large ? "!text-[0.8rem]" : "!text-[0.68rem]",
-                on ? "!text-[var(--signal)]" : "!text-[var(--ink-3)]",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span
-              className={cn(
-                "mt-1.5 hidden sm:block leading-snug",
-                large
-                  ? "text-[clamp(0.95rem,1.4vw,1.25rem)] text-[var(--ink)]"
-                  : "text-[0.8rem]",
-                on && "font-semibold text-[var(--ink)]",
-                !on && !large && "text-[var(--ink-3)]",
-              )}
-              style={large ? SERIF : undefined}
-            >
-              {s}
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-/** A step slide: strip, kicker heading, then the slide's own content. */
-function StepSlide({
-  id,
-  step,
-  title,
-  className,
-  children,
-}: {
-  id: string;
-  step: number;
-  title: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Slide id={id} border exercise={exercise[id]} className={className}>
-      <StageStrip active={step - 1} className="mb-8 md:mb-10" />
-      <KickerHeading kicker={`Step ${step}:`} className="!mb-2 md:!mb-4">{title}</KickerHeading>
-      {children}
-    </Slide>
-  );
-}
-
 export default function Week3() {
   return (
-    <SlideDeck
-      label="Week 3"
-    >
+    <SlideDeck label="Week 3">
       {/* ================================================================
           Title Slide
           ================================================================ */}
-      <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 3: Introduction to Marketing</Subtitle>
-        <Title className="mt-6 !max-w-[18ch]">
-          Consumer <span className="text-[var(--signal)]">Behavior</span>
-        </Title>
-        <p className="type-caption mt-2">Davood Wadi, PhD</p>
-
-        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
-          <p className="type-lead !text-[var(--ink)]">
-            Welcome to Week 3 of Introduction to Marketing.
+      <Slide id="title-slide" align="left">
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 3
           </p>
-          <p className="type-lead">Today we will explore Consumer Behavior.</p>
+          <p className="type-caption mt-2">
+            Introduction to Marketing | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">Consumer Behavior</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              Consumer buyer behavior is shaped by{" "}
+              <Tint>cultural, social, personal, and psychological forces</Tint>{" "}
+              across a five-stage decision process that consumers increasingly
+              share with delegated AI shopping agents.
+            </p>
+          </div>
         </div>
-
-        <p className="type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
-          We will cover the{" "}
-          <a href="#part-1" data-n="01" className="toc-link">
-            consumer decision-making process
-          </a>
-          ,{" "}
-          <a href="#part-2" data-n="02" className="toc-link">
-            influences on buying behavior
-          </a>
-          , and{" "}
-          <a href="#part-3" data-n="03" className="toc-link">
-            B2B vs B2C purchasing
-          </a>
-          .
-        </p>
-        <style>{`
-          .toc-link {
-            color: var(--ink);
-            font-weight: 550;
-            text-decoration: underline;
-            text-decoration-color: var(--signal-line);
-            text-decoration-thickness: 0.08em;
-            text-underline-offset: 0.2em;
-            transition: color 200ms;
-          }
-          .toc-link::before,
-          .num-item::before {
-            content: attr(data-n);
-            font-family: var(--font-label);
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            color: var(--signal);
-            font-variant-numeric: tabular-nums;
-          }
-          .toc-link::before {
-            font-size: 0.62em;
-            vertical-align: 0.55em;
-            margin-right: 0.3em;
-          }
-          .num-item::before {
-            display: block;
-            font-size: 0.75rem;
-            margin-bottom: 0.6rem;
-          }
-          .toc-link:hover { color: var(--signal); }
-        `}</style>
       </Slide>
 
       {/* ================================================================
-          Part 1: The Consumer Decision-Making Process
+          Defining Consumer Buyer Behavior
           ================================================================ */}
-      <Slide id="part-1" border className="!py-8">
-        {/* Split screen: the definitions and the market on the left, the
-            whole five-step route standing tall on the right. */}
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-          <div className="min-w-0">
-            <div className="flex items-end gap-6">
-              <div
-                aria-hidden
-                className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[5rem] xl:text-[6rem]"
-                style={{ ...SERIF, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
-              >
-                01
-              </div>
-              <h2 className="type-display !text-[clamp(2rem,3.4vw,3rem)]">
-                <span className="type-label block mb-3 !text-[0.8rem]">
-                  Part 1:
-                </span>{" "}
-                The Consumer Decision-Making Process
-              </h2>
-            </div>
-            <div className="mt-6 h-px w-full bg-[var(--rule)]" />
-            <Lead className="mt-6 !max-w-none">
-              Consumer buyer behavior refers to the buying behavior of{" "}
-              <Term>final consumers</Term>.
-            </Lead>
-            <P className="mt-4 !max-w-none">
-              The consumer market consists of all the{" "}
-              <Term tone="ink">individuals</Term> and{" "}
-              <Term tone="counter">households</Term> that buy or acquire goods
-              and services for personal consumption.
-            </P>
-            <Plate className="mt-5">
-              <ConsumerMarket />
-            </Plate>
-          </div>
-          <div className="min-w-0 border-t-2 border-[var(--signal)] pt-6 lg:border-l lg:border-t-0 lg:border-l-[var(--rule)] lg:pl-12 lg:pt-0">
-            <Statement className="!max-w-none !text-[clamp(1.3rem,2vw,1.75rem)]">
-              Understanding this process is key to{" "}
-              <span className="text-[var(--signal)]">predicting</span> how
-              consumers will respond to marketing strategies.
-            </Statement>
-            <StageStrip vertical className="mt-8" />
-          </div>
-        </div>
-      </Slide>
-
-      <StepSlide id="need-recognition" step={1} title="Need Recognition" className="!py-8">
-        <Statement className="!max-w-none !text-[clamp(1.8rem,3vw,2.6rem)]">
-          The buying process starts with{" "}
-          <span className="text-[var(--signal)]">need recognition</span>.
+      <Slide className={TIGHT} id="defining-consumer-buyer-behavior" border>
+        <SlideHeading>Defining Consumer Buyer Behavior</SlideHeading>
+        <Statement>
+          <Term>Consumer buyer behavior</Term> refers to the purchasing and
+          consumption behavior of final consumers, namely individuals and
+          households that buy goods and services for personal use.
         </Statement>
-        <div className="mt-2 grid w-full items-center gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-12">
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
           <Ruled>
-            <p className="type-lead">
-              The buyer recognizes a problem or need triggered by{" "}
-              <Term tone="ink">internal</Term> or{" "}
-              <Term tone="counter">external</Term> stimuli.
-            </p>
-          </Ruled>
-          <Plate>
-            <NeedStimuli />
-          </Plate>
-        </div>
-        <div className="w-full">
-          <p className="type-label !text-[var(--ink-3)]">
-            Marketers must research to find out
-          </p>
-          <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] md:grid-cols-3">
-            {[
-              ["01", "what kinds of needs or problems arise,"],
-              ["02", "what brought them about,"],
-              ["03", "and how they led the consumer to a particular product."],
-            ].map(([n, item]) => (
-              <li
-                key={n}
-                data-n={n}
-                className="num-item border-b border-[var(--rule)] py-4 type-h2 !font-normal"
-              >
-                {" "}
-                {item}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </StepSlide>
-
-      <StepSlide id="information-search" step={2} title="Information Search" className="!py-8">
-        <div className="grid w-full items-start gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled>
-            <p className={RAIL_BIG}>
-              Once a need is triggered, consumers{" "}
-              <span className="text-[var(--signal)]">may or may not</span>{" "}
-              search for more information.
-            </p>
+            <P>
+              All of these final consumers combined make up the{" "}
+              <Term>consumer market</Term>, which accounts for trillions of
+              dollars in annual spending across goods, services, and
+              experiences.
+            </P>
           </Ruled>
           <Ruled>
             <P>
-              Information sources include personal sources, commercial
-              sources, public sources, and experiential sources.
+              Although marketers can observe what consumers buy, where they buy,
+              and how much they pay, the underlying reasons why they buy are
+              formed inside the buyer&apos;s mind.
             </P>
           </Ruled>
-          <Ruled tone="signal">
-            <p className={RAIL_BIG}>
-              The most effective sources tend to be{" "}
-              <span className="text-[var(--signal)]">personal</span>, as they
-              legitimize or evaluate products for the buyer.
-            </p>
+          <Ruled>
+            <Big>
+              Understanding how consumers respond to different product features,
+              prices, and advertising appeals is essential for designing{" "}
+              <Tint>effective marketing strategy</Tint>.
+            </Big>
           </Ruled>
         </div>
-        <Figure height="auto" dense>
-          <SearchFork />
-        </Figure>
-      </StepSlide>
+      </Slide>
 
-      <StepSlide
-        id="evaluation-of-alternatives"
-        className="!py-8"
-        step={3}
-        title="Evaluation of Alternatives"
+      {/* ================================================================
+          The Stimulus-Response Model of Buyer Behavior
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="the-stimulus-response-model-of-buyer-behavior"
+        border
       >
-        <Lead className="!max-w-[56ch]">
-          Consumers use information to evaluate alternative brands in the{" "}
-          <Term>choice set</Term>.
+        <SlideHeading>
+          The Stimulus-Response Model of Buyer Behavior
+        </SlideHeading>
+        <Lead>
+          Consumer research organizes buyer behavior around a three-part{" "}
+          <Term>stimulus-response model</Term> (often called the{" "}
+          <Term>buyer&apos;s black box</Term> model).
         </Lead>
-        {/* Triptych: the cause on the left, the evidence in the middle, what
-            marketers do about it on the right. */}
-        <div className="grid w-full items-center gap-6 lg:grid-cols-[14rem_minmax(0,1fr)_14rem] lg:gap-10">
-          <Ruled>
-            <P>
-              The process varies significantly depending on the{" "}
-              <Term tone="ink">individual consumer</Term> and the{" "}
-              <Term tone="ink">specific buying situation</Term>.
-            </P>
-          </Ruled>
-          <Plate>
-            <ChoiceSetSlope />
+        <div className="mt-6 w-full max-w-4xl">
+          <Plate wide>
+            <StimulusResponseModel />
           </Plate>
-          <Ruled tone="signal">
-            <p className={RAIL_BIG}>
-              Marketers should study buyers to find out how they{" "}
-              <span className="text-[var(--signal)]">actually</span> evaluate
-              brand alternatives.
-            </p>
-          </Ruled>
         </div>
-      </StepSlide>
-
-      <StepSlide id="purchase-decision" step={4} title="Purchase Decision" className="!py-8">
-        <Lead className="!max-w-[58ch]">
-          In the evaluation stage, the consumer <Term>ranks brands</Term> and
-          forms <Term tone="ink">purchase intentions</Term>.
-        </Lead>
-        <div className="mt-6 grid w-full gap-8 md:grid-cols-[1fr_1.4fr] md:gap-14">
-          <Ruled>
+        <ol className="mt-6 grid w-full gap-8 md:grid-cols-3">
+          <Numbered n={1}>
             <P>
-              Generally, the consumer&apos;s purchase decision will be to buy
-              the most preferred brand.
+              First, <Term>marketing stimuli</Term> (the Four Ps: product,
+              price, place, and promotion) and broader{" "}
+              <Term>environmental stimuli</Term> (economic, technological,
+              social, and cultural forces) enter the buyer&apos;s consciousness.
             </P>
-          </Ruled>
-          <Ruled tone="counter">
-            <p className="type-h2 !font-normal">
-              However,{" "}
-              <span className="text-[var(--counter)]">attitudes of others</span>{" "}
-              and{" "}
-              <span className="text-[var(--counter)]">
-                unexpected situational factors
-              </span>{" "}
-              can come between the purchase intention and the purchase
-              decision.
-            </p>
-          </Ruled>
-        </div>
-        <Figure height="auto" dense>
-          <IntentionToDecision />
-        </Figure>
-      </StepSlide>
-
-      <StepSlide id="postpurchase-behavior" step={5} title="Postpurchase Behavior" className="!py-8">
-        <Split
-          side="left"
-          rail={
-            <>
-              <Statement className="!max-w-[30ch] !text-[1.5rem]">
-                The marketer&apos;s job does{" "}
-                <span className="text-[var(--signal)]">not end</span> when the
-                product is bought.
-              </Statement>
-              <Ruled tone="counter">
-                <P>
-                  Postpurchase behavior focuses on whether the consumer is{" "}
-                  <Term tone="counter">satisfied</Term> or{" "}
-                  <Term tone="ink">dissatisfied</Term> with the purchase.
-                </P>
-              </Ruled>
-              <Ruled tone="signal">
-                <p className={RAIL_BIG}>
-                  <span className="text-[var(--signal)]">
-                    Cognitive dissonance
-                  </span>
-                  , or buyer discomfort caused by postpurchase conflict, is a
-                  common occurrence.
-                </p>
-              </Ruled>
-            </>
-          }
-        >
-          <Figure height="auto" dense>
-            <PostpurchaseTimeline />
-          </Figure>
-        </Split>
-      </StepSlide>
-
-      <Slide id="discussion-postpurchase-dissonance" border className="!py-8">
-        <KickerHeading kicker="Discussion:" tone="counter">
-          Postpurchase Dissonance
-        </KickerHeading>
-        <div className="w-full lg:w-[70%]">
-          <Prompt>
-            <PromptKicker /> Think about a time you experienced{" "}
-            <span className="text-[var(--signal)]">&quot;buyer&apos;s remorse&quot;</span>{" "}
-            after a major purchase. How could the brand have{" "}
-            <span className="text-[var(--counter)]">communicated with you</span>{" "}
-            to reduce that cognitive dissonance?
-          </Prompt>
-        </div>
-        {/* The waveform runs the full width of the slide, like a line
-            printed under the question: remorse, a message, then calm. */}
-        <div className="mt-10 w-full min-w-0 overflow-x-auto border-y border-[var(--rule)] py-4">
-          <div className="min-w-[640px]">
-            <DissonanceCalm />
-          </div>
-        </div>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Second, the buyer&apos;s internal &ldquo;black box&rdquo;
+              transforms those stimuli through two components: the{" "}
+              <Term>buyer&apos;s characteristics</Term> and the{" "}
+              <Term>buyer&apos;s decision-making process</Term>.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Third, this internal processing produces observable{" "}
+              <Term>buyer responses</Term>, including brand choice, dealer
+              selection, purchase timing, purchase amount, and postpurchase
+              loyalty.
+            </P>
+          </Numbered>
+        </ol>
       </Slide>
 
       {/* ================================================================
-          Part 2: Influences on Buying Behavior
+          Part 1: The Five-Step Consumer Decision Process
           ================================================================ */}
-      <PartPlate id="part-2" n={2} title="Influences on Buying Behavior" className="!py-8">
-        <div className="mt-8 w-full flow-root">
-          {/* On wide screens the rings float right and the lines curve
-              around them. Phones get the plate after the first sentence. */}
-          <div
-            className="hidden lg:block lg:float-right lg:ml-6 lg:w-[27rem]"
-            style={{ shapeOutside: "circle(48%)", shapeMargin: "32px" }}
-          >
-            <InfluenceRings compact />
-          </div>
-          <p className="type-h2 !max-w-none !font-normal !text-[clamp(1.6rem,2.5vw,2.25rem)] !leading-snug">
-            Consumer purchases are influenced strongly by{" "}
-            <Term tone="counter">cultural</Term>,{" "}
-            <Term tone="counter">social</Term>,{" "}
-            <Term tone="counter">personal</Term>, and{" "}
-            <Term tone="counter">psychological</Term> characteristics.
-          </p>
-          <div className="mx-auto mt-6 max-w-[22rem] lg:hidden">
-            <InfluenceRings compact />
-          </div>
-          <p className="type-lead mt-8 !max-w-none !text-[var(--ink)]">
-            Marketers cannot control such factors, but they must take them
-            into account.
-          </p>
-          <p className="type-lead mt-6 !max-w-none">
-            These factors help us understand{" "}
-            <Term>why consumers act the way they do</Term>.
-          </p>
-        </div>
-      </PartPlate>
-
-      <Slide id="cultural-factors" border className="!py-8">
-        <Tag>The most basic cause</Tag>
-        <Heading>Cultural Factors</Heading>
-        <Statement className="!max-w-[34ch]">
-          Culture is the{" "}
-          <span className="text-[var(--signal)]">most basic cause</span> of a
-          person&apos;s wants and behavior.
-        </Statement>
-        <div className="mt-8 grid w-full gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="flex min-w-0 flex-col">
-            <Ruled className="mb-5 !pt-3">
-              <P>
-                It includes basic values, perceptions, wants, and behaviors{" "}
-                <Term tone="counter">learned from society</Term>.
-              </P>
-            </Ruled>
-            <Plate className="flex-1">
-              <LearnedFromSociety />
-            </Plate>
-          </div>
-          <div className="flex min-w-0 flex-col">
-            <Ruled tone="signal" className="mb-5 !pt-3">
-              <P>
-                <Term>Subcultures</Term> are groups of people with shared
-                value systems based on common life experiences and situations.
-              </P>
-            </Ruled>
-            <Plate className="flex-1">
-              <SubcultureField />
-            </Plate>
-          </div>
-        </div>
-      </Slide>
-
-      <Slide id="social-factors" border className="!py-8">
-        <Tag>Groups, networks, family, roles</Tag>
-        <Heading>Social Factors</Heading>
-        <p className="type-h2 !max-w-[48ch] !font-normal !text-[clamp(1.45rem,2.2vw,1.9rem)] !leading-snug">
-          A consumer&apos;s behavior is influenced by social factors such as
-          the consumer&apos;s small groups, social networks, family, and social
-          roles.
-        </p>
-        <Split
-          side="left"
-          rail={
-            <>
-              <Ruled>
-                <P>
-                  <Term tone="ink">Reference groups</Term> serve as direct or
-                  indirect points of comparison or reference in forming a
-                  person&apos;s attitudes or behavior.
-                </P>
-              </Ruled>
-              <Ruled tone="signal">
-                <p className={RAIL_BIG}>
-                  <span className="text-[var(--counter)]">
-                    Word-of-mouth influence
-                  </span>{" "}
-                  and{" "}
-                  <span className="text-[var(--signal)]">
-                    influencer marketing
-                  </span>{" "}
-                  play a massive role here.
-                </p>
-              </Ruled>
-            </>
-          }
-        >
-          <Figure height="auto" dense>
-            <SocialWeb />
-          </Figure>
-        </Split>
-      </Slide>
-
       <Slide
-        id="psychological-factors"
+        className={TIGHT}
+        id="part-1-the-five-step-consumer-decision-process"
         border
-        className="!py-8"
-        exercise={exercise["psychological-factors"]}
       >
-        <Tag>Four factors</Tag>
-        <Heading>Psychological Factors</Heading>
-        {/* Stacked bands: the four factors as a row of tiles, the one this
-            slide defines lit. Then its definition. Then the drawing. */}
-        <div className="grid w-full items-end gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-10">
-          <Lead className="!max-w-none">
-            A person&apos;s buying choices are further influenced by four major
-            psychological factors.
-          </Lead>
-          <div className="min-w-0">
-            <p className="type-label !text-[var(--ink-3)]">These are</p>
-            <ol className="mt-3 grid w-full grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
-              {[
-                ["01", "motivation,", false],
-                ["02", "perception,", true],
-                ["03", "learning,", false],
-                ["04", "and beliefs and attitudes.", false],
-              ].map(([n, item, lit]) => (
-                <li
-                  key={n as string}
-                  data-n={n as string}
-                  className={cn(
-                    "num-item border-t-2 px-4 py-3 text-[1.15rem] leading-snug",
-                    lit
-                      ? "border-[var(--signal)] bg-[var(--signal-tint)] text-[var(--signal)]"
-                      : "border-[var(--ink)] bg-[var(--paper-2)] text-[var(--ink)]",
-                  )}
-                  style={SERIF}
-                >
-                  {" "}
-                  {item}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-        <Statement className="mt-8 !max-w-none !text-[clamp(1.35rem,2.1vw,1.85rem)]">
-          <span className="text-[var(--signal)]">Perception</span> is the
-          process by which people select, organize, and interpret information
-          to form a meaningful picture of the world.
-        </Statement>
-        <Figure height="auto" dense className="mx-auto max-w-[960px]">
-          <PerceptionSequence />
-        </Figure>
-      </Slide>
-
-      <Slide id="discussion-social-influence" border className="!py-8">
-        {/* Centred and symmetric: the question sits between two hairlines and
-            the spectrum below it reaches out to both sides, like a slider. */}
-        <div className="flex w-full flex-col items-center text-center">
-          <h2 className="type-h1">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            Social Influence
-          </h2>
-          <div className="mt-8 w-full max-w-5xl border-y-2 border-[var(--counter)] px-4 py-8 md:px-12">
-            <p className="type-quote mx-auto !max-w-[40ch] !text-[clamp(1.45rem,2.6vw,2.2rem)]">
-              <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">
-                Discussion:
-              </span>{" "}
-              How has a specific social media influencer affected your
-              perception of a brand, and do you think their influence was based
-              more on their{" "}
-              <span className="text-[var(--counter)]">expertise</span> or their{" "}
-              <span className="text-[var(--signal)]">lifestyle</span>?
-            </p>
-          </div>
-        </div>
-        <Figure height="auto" dense className="mx-auto !mt-8 max-w-[1000px]">
-          <ExpertiseLifestyle />
-        </Figure>
-      </Slide>
-
-      {/* ================================================================
-          Part 3: B2C vs B2B Purchasing
-          ================================================================ */}
-      <PartPlate id="part-3" n={3} title="B2C vs B2B Purchasing" layout="stacked" className="!py-8">
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="flex min-w-0 flex-col gap-6">
-            <Lead className="!max-w-none">
-              While <Term tone="counter">B2C (Business-to-Consumer)</Term>{" "}
-              marketing focuses on the final consumer,{" "}
-              <Term>B2B (Business-to-Business)</Term> focuses on organizations.
-            </Lead>
-            <Ruled weight="thin">
-              <P>
-                Business buyer behavior refers to the buying behavior of
-                organizations that buy goods and services for use in the
-                production of other products.
-              </P>
-            </Ruled>
-          </div>
-          <Plate>
-            <ConsumerAndBusinessLanes />
-          </Plate>
-        </div>
-        {/* A closing band across the full width. */}
-        <p className="type-display mt-10 w-full border-y-2 border-[var(--ink)] py-6 !text-[clamp(1.6rem,2.8vw,2.5rem)] !leading-tight">
-          The business market is{" "}
-          <span className="text-[var(--signal)]">huge</span> and differs from
-          the consumer market in several key ways.
-        </p>
-      </PartPlate>
-
-      <Slide
-        id="market-structure-and-demand"
-        border
-        className="!py-8"
-        exercise={exercise["market-structure-and-demand"]}
-      >
-        <Tag>Buyers and demand</Tag>
-        <Heading>Market Structure and Demand</Heading>
-        <div className="grid w-full gap-10 md:grid-cols-3">
-          <Ruled tone="signal">
-            <P>
-              The business marketer normally deals with{" "}
-              <Term>far fewer but far larger</Term> buyers than the consumer
-              marketer does.
-            </P>
-          </Ruled>
-          <Ruled tone="counter">
-            <P>
-              Business demand is <Term tone="counter">derived demand</Term>. It
-              ultimately derives from the demand for consumer goods.
-            </P>
-          </Ruled>
-          <Ruled>
-            <P>
-              B2B demand is also more inelastic and{" "}
-              <Term>fluctuating</Term> compared to B2C.
-            </P>
-          </Ruled>
-        </div>
-        <Figure height="auto" dense className="!mt-4">
-          <MarketStructureTriptych />
-        </Figure>
-      </Slide>
-
-      <Slide
-        id="the-buying-center"
-        border
-        className="!py-8"
-        exercise={exercise["the-buying-center"]}
-      >
-        <Tag>Many roles, one decision</Tag>
-        <Heading>The Buying Center</Heading>
-        <div className="w-full flow-root">
-          {/* On wide screens the table floats right and the lines follow its
-              oval of people. Phones get the plate after the first sentence. */}
-          <div
-            className="hidden lg:block lg:float-right lg:ml-6 lg:w-[28rem]"
-            style={{
-              shapeOutside:
-                "polygon(38% 0%, 100% 0%, 100% 100%, 20% 100%, 20% 64%, 0% 60%, 0% 30%, 38% 22%)",
-              shapeMargin: "28px",
-            }}
-          >
-            <BuyingCenterTable round />
-          </div>
-          <Statement className="!max-w-none !text-[clamp(2rem,3.3vw,3rem)] !leading-[1.12]">
-            B2B purchases are{" "}
-            <span className="text-[var(--signal)]">rarely</span> made by a
-            single individual.
+        <PartHead n={1} title="The Five-Step Consumer Decision Process" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            For a new or complex purchase, consumers move through a{" "}
+            <Term>five-stage decision process</Term>: need recognition,
+            information search, evaluation of alternatives, purchase decision,
+            and postpurchase behavior.
           </Statement>
-          <div className="mx-auto mt-6 max-w-[24rem] lg:hidden">
-            <BuyingCenterTable round />
-          </div>
-          <p className="type-lead mt-8 !max-w-none !text-[1.45rem] !leading-relaxed !text-[var(--ink)]">
-            The buying center consists of all the individuals and units that
-            play a role in the purchase decision-making process.
-          </p>
-          <p className="type-h2 mt-8 !max-w-none !font-normal !text-[clamp(1.6rem,2.4vw,2.1rem)] !leading-snug">
-            It includes <Term>users</Term>, <Term>influencers</Term>,{" "}
-            <Term>buyers</Term>, <Term>deciders</Term>, and{" "}
-            <Term>gatekeepers</Term>.
-          </p>
+          <Ruled>
+            <Lead>
+              In routine <Term>low-involvement purchases</Term>, shoppers may
+              skip or compress several stages, whereas{" "}
+              <Term>high-involvement purchases</Term> engage all five stages
+              deliberately.
+            </Lead>
+          </Ruled>
         </div>
       </Slide>
 
-      <Slide id="the-nature-of-the-buying-unit" border className="!py-8">
-        <Tag>Trained buyers, trained sellers</Tag>
-        <Heading>The Nature of the Buying Unit</Heading>
-        <Lead className="!max-w-[64ch]">
-          Compared with consumer purchases, a business purchase usually
-          involves <Term tone="ink">more decision participants</Term> and a{" "}
-          <Term>more professional purchasing effort</Term>.
-        </Lead>
-        {/* Versus: each sentence stands over the side of the match it names,
-            the buyer's side on the left, the marketer's on the right. */}
-        <div className="mt-4 grid w-full md:grid-cols-2">
-          <div className="min-w-0 border-t-2 border-[var(--ink)] pt-5 md:pr-12">
-            <p className="type-lead !max-w-none !text-[var(--ink-2)]">
-              Business buying is done by{" "}
-              <Term tone="ink">trained purchasing agents</Term> who spend
-              their professional lives learning how to buy better.
-            </p>
-          </div>
-          <div className="min-w-0 border-t-2 border-[var(--signal)] pt-5 md:border-l md:border-l-[var(--rule)] md:pl-12">
-            <p className="type-h2 !max-w-none !font-normal">
-              Therefore, B2B marketers must have{" "}
-              <span className="text-[var(--signal)]">
-                well-trained salespeople
-              </span>{" "}
-              to deal with well-trained buyers.
-            </p>
-          </div>
+      {/* ================================================================
+          Step 1: Need Recognition and Step 2: Information Search
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="step-1-need-recognition-and-step-2-information-search"
+        border
+        exercise={
+          exercise["step-1-need-recognition-and-step-2-information-search"]
+        }
+      >
+        <SlideHeading>
+          Step 1: Need Recognition and Step 2: Information Search
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2">
+          <Ruled>
+            <P>
+              The buying process begins with <Term>need recognition</Term>, when
+              the buyer perceives a difference between their actual state and a
+              desired state.
+            </P>
+            <P className="mt-4">
+              Needs can be triggered by <Term>internal stimuli</Term>, such as
+              hunger or thirst, or by <Term>external stimuli</Term>, such as
+              smelling fresh bread from a bakery or seeing a neighbor&apos;s new
+              electric bicycle.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Once a need is recognized, an aroused consumer may undertake an{" "}
+              <Term>information search</Term> across four categories of sources:{" "}
+              <Term>personal</Term> (family and friends),{" "}
+              <Term>commercial</Term> (advertising, websites, and salespeople),{" "}
+              <Term>public</Term> (independent media and consumer rating
+              organizations), and <Term>experiential</Term> (handling or testing
+              the product).
+            </P>
+            <P className="mt-4">
+              Commercial sources typically inform the buyer about available
+              options, whereas personal and independent public sources carry the
+              greatest weight in legitimizing and evaluating brands.
+            </P>
+          </Ruled>
         </div>
-        <Figure height="auto" dense className="mx-auto !mt-6 max-w-[780px]">
-          <MatchedExperts />
-        </Figure>
-      </Slide>
-
-      <Slide id="discussion-b2b-complexity" border className="!py-8">
-        <KickerHeading kicker="Discussion:" tone="counter">
-          B2B Complexity
-        </KickerHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Prompt>
-            <PromptKicker /> Why might a B2B software company need to create{" "}
-            <span className="text-[var(--signal)]">
-              entirely different marketing materials
-            </span>{" "}
-            for the <span className="text-[var(--ink)]">&quot;user&quot;</span>{" "}
-            (e.g., an IT employee) versus the{" "}
-            <span className="text-[var(--counter)]">&quot;decider&quot;</span>{" "}
-            (e.g., the CFO) within the same buying center?
-          </Prompt>
-          <Plate className="mx-auto max-w-[27rem]">
-            <TwoBrochures column />
+        <div className="mt-6 w-full max-w-4xl">
+          <Plate wide>
+            <DecisionProcessStages />
           </Plate>
         </div>
       </Slide>
 
       {/* ================================================================
-          Conclusion
+          Step 3: Evaluation of Alternatives and Step 4: Purchase Decision
           ================================================================ */}
-      <Slide id="conclusion" border>
-        <KickerHeading kicker="Conclusion:">Consumer Behavior</KickerHeading>
-        <ol className="grid w-full gap-x-12 gap-y-12 md:grid-cols-3">
-          {[
-            {
-              glyph: <GlyphRoute />,
-              text: "Understanding the consumer decision-making process is foundational to effective marketing.",
-            },
-            {
-              glyph: <GlyphRings />,
-              text: "Cultural, social, and psychological factors continuously shape consumer preferences.",
-            },
-            {
-              glyph: <GlyphTable />,
-              text: "While B2B and B2C markets share some similarities, B2B purchasing is generally more complex, professional, and relationship-driven.",
-            },
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
-            >
-              <div aria-hidden className="flex items-center justify-between">
-                <span
-                  className="text-[2.6rem] leading-none text-[var(--signal)]"
-                  style={SERIF}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {item.glyph}
-              </div>
-              <p className="type-h2 !font-normal">{item.text}</p>
-            </li>
-          ))}
+      <Slide
+        className={TIGHT}
+        id="step-3-evaluation-of-alternatives-and-step-4-purchase-decision"
+        border
+      >
+        <SlideHeading>
+          Step 3: Evaluation of Alternatives and Step 4: Purchase Decision
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              During <Term>evaluation of alternatives</Term>, the consumer
+              processes information to arrive at brand attitudes and rank the
+              options in their <Term>consideration set</Term>.
+            </Statement>
+            <Ruled>
+              <P>
+                Depending on the buyer and the category, evaluation may involve
+                careful calculation across multiple attributes (such as fuel
+                economy, safety ratings, and price) or rely on a single{" "}
+                <Term>heuristic rule</Term> or gut impression.
+              </P>
+            </Ruled>
+          </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Ruled>
+              <Lead>
+                In the <Term>purchase decision</Term> stage, the consumer forms
+                an <Term>intention to buy</Term> the most preferred brand.
+              </Lead>
+            </Ruled>
+            <Ruled>
+              <P>
+                Two factors can intervene between purchase intention and the
+                actual purchase decision: the{" "}
+                <Term>attitudes of other people</Term> (such as a spouse&apos;s
+                objection) and <Term>unexpected situational factors</Term> (such
+                as a job loss or a competitor&apos;s sudden promotion).
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Step 5: Postpurchase Behavior and Cognitive Dissonance
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="step-5-postpurchase-behavior-and-cognitive-dissonance"
+        border
+        exercise={
+          exercise["step-5-postpurchase-behavior-and-cognitive-dissonance"]
+        }
+      >
+        <SlideHeading>
+          Step 5: Postpurchase Behavior and Cognitive Dissonance
+        </SlideHeading>
+        <Lead>
+          The marketer&apos;s job continues after the transaction during{" "}
+          <Term>postpurchase behavior</Term>, when the consumer uses the product
+          and compares its perceived performance against prior expectations.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Almost all major purchases result in{" "}
+              <Term>cognitive dissonance</Term>, which is buyer discomfort
+              caused by postpurchase conflict after accepting the chosen
+              brand&apos;s drawbacks and giving up the benefits of rejected
+              alternatives.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Dissatisfied consumers may return the product, abandon the brand,
+              and warn peers through negative online reviews, whereas satisfied
+              consumers repurchase and become <Term>brand advocates</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Marketers reduce postpurchase dissonance through clear onboarding
+              instructions, responsive customer support, warranties, and
+              follow-up communications that reinforce the wisdom of the
+              buyer&apos;s choice.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 2: Cultural, Social, and Personal Influences on Buying
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-2-cultural-social-and-personal-influences-on-buying"
+        border
+      >
+        <PartHead
+          n={2}
+          title="Cultural, Social, and Personal Influences on Buying"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            A consumer&apos;s progression through the decision process is shaped
+            by <Term>cultural</Term>, <Term>social</Term>, and{" "}
+            <Term>personal characteristics</Term>.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Although marketers cannot control these background characteristics
+              directly, they must understand them to design relevant offerings
+              and communications.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Cultural and Subcultural Factors
+          ================================================================ */}
+      <Slide className={TIGHT} id="cultural-and-subcultural-factors" border>
+        <SlideHeading>Cultural and Subcultural Factors</SlideHeading>
+        <Statement>
+          <Term>Culture</Term> is the most fundamental determinant of a
+          person&apos;s wants and behavior, encompassing the basic values,
+          perceptions, preferences, and behaviors learned from family and
+          societal institutions.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Marketers continuously monitor <Term>cultural shifts</Term>, such
+              as growing emphasis on health, fitness, and informal dress, in
+              order to spot demand for new product categories.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Each culture contains smaller <Term>subcultures</Term>, which are
+              groups of people with shared value systems based on common life
+              experiences, nationalities, religions, racial groups, or
+              geographic regions.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Social classes</Term> are society&apos;s relatively
+              permanent and ordered divisions whose members share similar
+              values, interests, and behaviors, measured as a combination of
+              occupation, income, education, and wealth.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Social Factors: Groups, Family, and Roles
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="social-factors-groups-family-and-roles"
+        border
+        exercise={exercise["social-factors-groups-family-and-roles"]}
+      >
+        <SlideHeading>Social Factors: Groups, Family, and Roles</SlideHeading>
+        <Lead>
+          A consumer&apos;s behavior is strongly influenced by{" "}
+          <Term>social factors</Term>, including membership groups, reference
+          groups, family, and social roles and status.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              <Term>Reference groups</Term> serve as direct (face-to-face) or
+              indirect points of comparison or reference in forming a
+              person&apos;s attitudes or behavior, including{" "}
+              <Term>aspirational groups</Term> to which an individual wishes to
+              belong.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Opinion leaders</Term> and online creators within reference
+              groups exert powerful word-of-mouth influence, particularly when
+              products are visible, expensive, or socially risky.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Family members</Term> constitute the most influential
+              primary reference group, with buying roles shifting across spouses
+              and children depending on the product category, while each
+              person&apos;s <Term>role and status</Term> in organizations guide
+              what they buy.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Personal Factors in Consumer Choice
+          ================================================================ */}
+      <Slide className={TIGHT} id="personal-factors-in-consumer-choice" border>
+        <SlideHeading>Personal Factors in Consumer Choice</SlideHeading>
+        <Lead>
+          A buyer&apos;s decisions are also shaped by{" "}
+          <Term>personal characteristics</Term> that change across life stages
+          and economic circumstances.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              <Term>Age</Term> and <Term>family life-cycle stage</Term> alter
+              consumption priorities as households form, raise children, change
+              residences, and enter retirement.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Occupation</Term> and <Term>economic situation</Term>{" "}
+              (spendable income, savings, and borrowing power) directly govern
+              which product categories and price tiers a consumer considers.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Lifestyle</Term> is a person&apos;s pattern of living as
+              expressed in their activities, interests, and opinions, capturing
+              how they interact with the world beyond their demographic class.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Personality</Term> and <Term>self-concept</Term> lead
+              consumers to favor brands whose perceived traits match their own
+              actual or ideal self-image.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 3: Psychological Influences on Consumer Behavior
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-3-psychological-influences-on-consumer-behavior"
+        border
+      >
+        <PartHead
+          n={3}
+          title="Psychological Influences on Consumer Behavior"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Within the buyer&apos;s cultural and social context, four major{" "}
+            <Term>psychological processes</Term> govern how an individual
+            responds to marketing stimuli: motivation, perception, learning, and
+            beliefs and attitudes.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Each psychological process filters which marketing messages reach
+              awareness and how they are stored in memory.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Motivation and Maslow's Hierarchy of Needs
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="motivation-and-maslows-hierarchy-of-needs"
+        border
+      >
+        <SlideHeading>
+          Motivation and Maslow&apos;s Hierarchy of Needs
+        </SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              A <Term>motive</Term> (or <Term>drive</Term>) is a need that is
+              sufficiently pressing to direct the person to seek satisfaction of
+              that need.
+            </Statement>
+            <Ruled>
+              <P>
+                Psychologists have developed several theories of human
+                motivation, most notably Sigmund Freud&apos;s theory of{" "}
+                <Term>unconscious motives</Term> and Abraham Maslow&apos;s{" "}
+                <Term>hierarchy of needs</Term>.
+              </P>
+            </Ruled>
+          </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Ruled>
+              <P>
+                Maslow&apos;s hierarchy arranges human needs in a pyramid from
+                the most pressing at the bottom to the least pressing at the
+                top: <Term>physiological needs</Term>,{" "}
+                <Term>safety needs</Term>, <Term>social needs</Term>,{" "}
+                <Term>esteem needs</Term>, and{" "}
+                <Term>self-actualization needs</Term>.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                According to Maslow, a person tries to satisfy the most
+                important need first: when that need is satisfied, it stops
+                being a current motivator and the person turns attention to the
+                next most important need.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Selective Perception in Marketplace Processing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="selective-perception-in-marketplace-processing"
+        border
+        exercise={exercise["selective-perception-in-marketplace-processing"]}
+      >
+        <SlideHeading>
+          Selective Perception in Marketplace Processing
+        </SlideHeading>
+        <div className="grid w-full gap-6 md:grid-cols-2">
+          <Ruled>
+            <P>
+              A motivated person is ready to act, and how the person acts is
+              influenced by <Term>perception</Term>, the process by which people
+              select, organize, and interpret information to form a meaningful
+              picture of the world.
+            </P>
+            <P className="mt-4">
+              People can form different perceptions of the exact same stimulus
+              because of three perceptual processes:{" "}
+              <Term>selective attention</Term>,{" "}
+              <Term>selective distortion</Term>, and{" "}
+              <Term>selective retention</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Selective attention</Term> is the tendency for people to
+              screen out most of the information to which they are exposed,
+              requiring marketers to work hard to attract notice in cluttered
+              environments.
+            </P>
+            <P className="mt-4">
+              <Term>Selective distortion</Term> describes the tendency of people
+              to interpret information in a way that will support what they
+              already believe, and <Term>selective retention</Term> means that
+              consumers are likely to remember good points made about a brand
+              they favor and forget good points made about competing brands.
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-6 w-full max-w-4xl">
+          <Plate wide>
+            <SelectivePerceptionFilters />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Learning, Beliefs, and Attitudes
+          ================================================================ */}
+      <Slide className={TIGHT} id="learning-beliefs-and-attitudes" border>
+        <SlideHeading>Learning, Beliefs, and Attitudes</SlideHeading>
+        <div className="grid w-full gap-8 lg:grid-cols-[1.05fr_1.35fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement>
+              <Term>Learning</Term> describes changes in an individual&apos;s
+              behavior arising from experience, driven by the interplay of
+              drives, stimuli, cues, responses, and reinforcement.
+            </Statement>
+            <Ruled>
+              <P>
+                When a consumer tries a new coffee shop and enjoys the drink (
+                <Term>positive reinforcement</Term>), the likelihood of
+                repurchasing on the next morning commute increases.
+              </P>
+            </Ruled>
+          </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Ruled>
+              <P>
+                Through doing and learning, people acquire <Term>beliefs</Term>{" "}
+                and <Term>attitudes</Term> that subsequently influence their
+                buying behavior.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                A <Term>belief</Term> is a descriptive thought that a person
+                holds about something (which may be based on knowledge, opinion,
+                or faith), and an <Term>attitude</Term> is a person&apos;s
+                consistently favorable or unfavorable evaluations, feelings, and
+                tendencies toward an object or idea.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                Because attitudes are costly and difficult to change, marketers
+                generally design offerings to fit existing attitudes rather than
+                attempting to overturn them.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Diagnosing Perceptual Filters and Postpurchase Dissonance
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-diagnosing-perceptual-filters-and-postpurchase-dissonance"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Diagnosing Perceptual Filters and Postpurchase Dissonance
+        </SlideHeading>
+        <Prompt>
+          A consumer spends three weeks researching high-end noise-canceling
+          headphones, buys a 400-dollar model, and immediately notices
+          advertisements for a competing brand that offers longer battery life
+          for 50 dollars less. Using selective perception and cognitive
+          dissonance, explain how the buyer is likely to process competitor ads
+          after the purchase and what postpurchase actions the chosen brand
+          should take during the first 14 days of ownership.
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Part 4: Comparing B2C and B2B Purchasing
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-4-comparing-b2c-and-b2b-purchasing"
+        border
+      >
+        <PartHead n={4} title="Comparing B2C and B2B Purchasing" />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            While consumer marketing addresses individuals and households buying
+            for personal consumption,{" "}
+            <Term>business-to-business (B2B) marketing</Term> addresses
+            organizations buying goods and services to produce other products or
+            to run their operations.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Introducing the core contrasts between B2C and B2B purchasing
+              prepares the ground for Week 4&apos;s deep examination of
+              organizational markets.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Market Structure and Derived Demand
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="market-structure-and-derived-demand"
+        border
+        exercise={exercise["market-structure-and-derived-demand"]}
+      >
+        <SlideHeading>Market Structure and Derived Demand</SlideHeading>
+        <div className="grid w-full gap-8 sm:grid-cols-2">
+          <Numbered n={1}>
+            <P>
+              Business marketers typically interact with far fewer but much
+              larger buyers than consumer marketers do: a tire manufacturer may
+              sell millions of replacement tires to individual drivers, but
+              sells original-equipment tires to only a handful of global
+              automakers.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              Business demand is <Term>derived demand</Term>, meaning it
+              ultimately derives from consumer demand for finished goods: if
+              household purchases of new automobiles fall, automaker demand for
+              sheet steel and tires falls in turn.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              In the short run, B2B demand is also more{" "}
+              <Term>price-inelastic</Term> than B2C demand: a shoe manufacturer
+              will not buy substantially more leather merely because leather
+              prices drop slightly, nor can it easily substitute leather
+              overnight if prices rise.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              B2B demand also exhibits greater volatility (the{" "}
+              <Term>acceleration effect</Term>), whereby a small percentage
+              change in consumer retail demand triggers a much larger percentage
+              swing in business orders for factory equipment.
+            </P>
+          </Numbered>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          The Organizational Buying Unit and Decision Roles
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="the-organizational-buying-unit-and-decision-roles"
+        border
+      >
+        <SlideHeading>
+          The Organizational Buying Unit and Decision Roles
+        </SlideHeading>
+        <Statement>
+          Compared with consumer purchases made by an individual or household, a
+          business purchase typically involves more decision participants and a
+          formal <Term>buying center</Term>.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              The organizational buying center brings together{" "}
+              <Term>users</Term>, <Term>influencers</Term>,{" "}
+              <Term>buyers</Term>, <Term>deciders</Term>, and{" "}
+              <Term>gatekeepers</Term> who evaluate the purchase from technical,
+              financial, and operational angles.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              <Term>Users</Term> are the employees who operate the purchased
+              item, <Term>influencers</Term> specify technical requirements,{" "}
+              <Term>buyers</Term> handle vendor negotiations,{" "}
+              <Term>deciders</Term> hold final approval authority, and{" "}
+              <Term>gatekeepers</Term> control information flow.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Because multiple stakeholders participate in a single purchase,
+              B2B marketers must address each participant&apos;s distinct
+              evaluation criteria.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Professional Purchasing and Relationship Orientation
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="professional-purchasing-and-relationship-orientation"
+        border
+      >
+        <SlideHeading>
+          Professional Purchasing and Relationship Orientation
+        </SlideHeading>
+        <div className="grid w-full gap-8 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              Business purchasing is carried out by{" "}
+              <Term>trained procurement agents</Term> who spend their
+              professional careers learning how to evaluate supplier bids and
+              negotiate contracts.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Whereas many consumer purchases are completed in minutes at a
+              shelf or checkout screen, major B2B purchases follow formal{" "}
+              <Term>requests for proposals</Term>, engineering audits, and
+              multi-month approval cycles.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In B2B markets, buyers and sellers work closely together over
+              years, often customizing products and logistics to fit a specific
+              client&apos;s operations.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Consequently, B2B marketing relies primarily on{" "}
+              <Term>consultative personal selling</Term>, technical
+              documentation, and <Term>key account management</Term> rather than
+              mass broadcast advertising.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Part 5: Delegating the Consumer Decision to AI Agents
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="part-5-delegating-the-consumer-decision-to-ai-agents"
+        border
+      >
+        <PartHead
+          n={5}
+          title="Delegating the Consumer Decision to AI Agents"
+        />
+        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
+          <Statement>
+            Consumers can now delegate portions of the five-stage decision
+            process to <Term>AI shopping agents</Term> that search, compare, and
+            purchase on their behalf.
+          </Statement>
+          <Ruled>
+            <Lead>
+              Analyzing which stages consumers hand over and which stages they
+              keep reveals how human psychology and agent design interact.
+            </Lead>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Which Decision Steps Are Delegated and Which Are Kept
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="which-decision-steps-are-delegated-and-which-are-kept"
+        border
+        exercise={
+          exercise["which-decision-steps-are-delegated-and-which-are-kept"]
+        }
+      >
+        <SlideHeading>
+          Which Decision Steps Are Delegated and Which Are Kept
+        </SlideHeading>
+        <Lead>
+          Across the five-stage decision process, delegation to an AI agent does
+          not replace the consumer uniformly at every step.
+        </Lead>
+        <div className="mt-6 w-full max-w-4xl">
+          <Plate wide>
+            <DelegatedDecisionSteps />
+          </Plate>
+        </div>
+        <div className="mt-6 grid w-full gap-6 sm:grid-cols-2">
+          <Ruled>
+            <P>
+              Step 1 (<Term>Need Recognition</Term>) remains with the human
+              consumer, who experiences the underlying physical or psychological
+              need and states the goal to the AI agent.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Step 2 (<Term>Information Search</Term>) and Step 3 (
+              <Term>Evaluation of Alternatives</Term>) are the stages most
+              heavily delegated: the AI agent queries retail catalogs, reads
+              specifications and reviews, and compares competing brands.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Step 4 (<Term>Purchase Decision</Term>) may be executed
+              autonomously by the AI agent for routine items or returned as a
+              shortlist for the human consumer&apos;s final approval.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Step 5 (<Term>Postpurchase Behavior</Term>) stays entirely with
+              the human consumer, who consumes the physical product and
+              experiences satisfaction or cognitive dissonance.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Goal Specificity and Lookup Costs in Delegated Search
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="goal-specificity-and-lookup-costs-in-delegated-search"
+        border
+        exercise={
+          exercise["goal-specificity-and-lookup-costs-in-delegated-search"]
+        }
+      >
+        <SlideHeading>
+          Goal Specificity and Lookup Costs in Delegated Search
+        </SlideHeading>
+        <Statement>
+          When consumers delegate search and evaluation to an AI agent, the
+          quality of the agent&apos;s choice depends critically on how specific
+          the consumer&apos;s instruction is and how costly information is to
+          look up.
+        </Statement>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              On many retail platforms, an initial search page shows only
+              product titles and total prices, requiring an additional click or
+              page lookup to inspect <Term>package weight</Term> or{" "}
+              <Term>unit price</Term>.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In controlled experiments where inspecting detailed product pages
+              carried a <Term>lookup cost</Term> and the shopper&apos;s prompt
+              was vague, AI agents frequently skipped inspecting package weight
+              and selected a coffee listing that cost more per ounce (Wadi &amp;
+              Ma, 2026b).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              When the consumer&apos;s prompt stated a specific{" "}
+              <Term>cost-minimization goal</Term>, the AI agents checked the
+              hidden package details and selected the lower unit-price option
+              significantly more often (Wadi &amp; Ma, 2026b).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Identity-Based Resistance to Delegating Consumption
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="identity-based-resistance-to-delegating-consumption"
+        border
+      >
+        <SlideHeading>
+          Identity-Based Resistance to Delegating Consumption
+        </SlideHeading>
+        <Lead>
+          Even when an automated tool or AI agent can perform a task
+          efficiently, consumers deliberately keep certain consumption
+          activities and choices for themselves.
+        </Lead>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-3">
+          <Ruled>
+            <P>
+              Research on automation and identity demonstrates that people who
+              view an activity, such as cooking, gardening, or curating music,
+              as central to their <Term>self-identity</Term> resist products and
+              tools that automate the core skill of that activity (Leung,
+              Paolacci, &amp; Puntoni, 2018).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              For routine, <Term>utilitarian chores</Term> that carry no
+              identity value (such as restocking paper towels or basic printer
+              ink), consumers welcome full delegation to an automated agent.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              For <Term>self-expressive categories</Term>, however, consumers
+              prefer AI assistants that augment their own discovery and skill
+              rather than replacing their personal judgment (Leung, Paolacci,
+              &amp; Puntoni, 2018).
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Discussion: Designing for Human and Delegated Decision Stages
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="discussion-designing-for-human-and-delegated-decision-stages"
+        border
+      >
+        <SlideHeading kicker="Discussion:">
+          Designing for Human and Delegated Decision Stages
+        </SlideHeading>
+        <Prompt>
+          A specialty coffee roaster sells whole-bean coffee online in 12-ounce
+          and 16-ounce bags. Some customers are passionate home baristas who
+          enjoy reading tasting notes and farm origins, while others tell an AI
+          shopping assistant to reorder everyday morning coffee automatically.
+          Drawing on identity-based resistance to automation (Leung, Paolacci,
+          &amp; Puntoni, 2018) and AI agent search behavior under lookup costs
+          (Wadi &amp; Ma, 2026b), how should the roaster design its product
+          pages and unit-price disclosures to serve both buyer segments?
+        </Prompt>
+      </Slide>
+
+      {/* ================================================================
+          Key Takeaways
+          ================================================================ */}
+      <Slide className={TIGHT} id="key-takeaways" border>
+        <SlideHeading>Key Takeaways</SlideHeading>
+        <ol className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Numbered n={1}>
+            <P>
+              Consumer buyer behavior follows a{" "}
+              <Term>stimulus-response model</Term> in which marketing and
+              environmental stimuli enter the buyer&apos;s black box (buyer
+              characteristics and decision processes) to produce observable
+              purchase choices.
+            </P>
+          </Numbered>
+          <Numbered n={2}>
+            <P>
+              The consumer decision-making process unfolds across{" "}
+              <Term>five stages</Term>: need recognition, information search
+              (across personal, commercial, public, and experiential sources),
+              evaluation of alternatives, purchase decision, and postpurchase
+              behavior.
+            </P>
+          </Numbered>
+          <Numbered n={3}>
+            <P>
+              Postpurchase satisfaction depends on performance relative to
+              expectations, and marketers actively manage postpurchase{" "}
+              <Term>cognitive dissonance</Term> to build repeat patronage.
+            </P>
+          </Numbered>
+          <Numbered n={4}>
+            <P>
+              <Term>Cultural</Term> (culture and subculture),{" "}
+              <Term>social</Term> (reference groups, family, and roles),{" "}
+              <Term>personal</Term> (life-cycle stage, occupation, lifestyle,
+              and personality), and <Term>psychological factors</Term>{" "}
+              (motivation, selective perception, learning, and attitudes)
+              jointly shape consumer preferences.
+            </P>
+          </Numbered>
+          <Numbered n={5}>
+            <P>
+              Compared with B2C markets, <Term>B2B markets</Term> involve fewer
+              and larger buyers, derived and relatively inelastic demand, formal
+              multi-person buying centers, and professional procurement
+              processes.
+            </P>
+          </Numbered>
+          <Numbered n={6}>
+            <P>
+              In <Term>delegated shopping</Term>, human consumers retain need
+              recognition and postpurchase experience while handing information
+              search and alternative evaluation to AI agents, whose performance
+              depends on prompt specificity and accessible unit-level product
+              data (Wadi &amp; Ma, 2026b), while consumers keep identity-central
+              choices for themselves (Leung, Paolacci, &amp; Puntoni, 2018).
+            </P>
+          </Numbered>
         </ol>
       </Slide>
     </SlideDeck>
