@@ -24,7 +24,6 @@ import {
   EffectInstrument,
   EntropyVsConsensus,
   EstimatorConverges,
-  FourControls,
   HoeffdingStack,
   OneDraw,
   PinnedVsLatest,
@@ -890,62 +889,50 @@ export default function Week4Page() {
           <li className="min-w-0">
             <Numbered n={1} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Prompt template counterbalancing</Term> tests
                   each experimental condition across multiple semantically
                   equivalent phrasings and instruction templates to verify that
                   findings are not artifacts of a single wording.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourControls kind="template" />
-              </Plate>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Scale direction and polarity counterbalancing</Term>{" "}
                   includes both positively worded and reverse-coded scale items,
                   or reverses option presentation order, to separate substantive
                   attitude from acquiescence or first-option bias.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourControls kind="polarity" />
-              </Plate>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Position randomization</Term> shuffles the
                   order of product listings and attribute rows across
                   experimental sessions so that list-position bias does not
                   confound attribute weight estimates.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourControls kind="position" />
-              </Plate>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={4} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Attribute matching</Term> holds all
                   non-manipulated product attributes, such as price, warranty,
                   and star rating, constant across conditions so that any change
                   in choice probability is attributable solely to the
                   manipulated factor.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourControls kind="matching" />
-              </Plate>
             </Numbered>
           </li>
         </ol>

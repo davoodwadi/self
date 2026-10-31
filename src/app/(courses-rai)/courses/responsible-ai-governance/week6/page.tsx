@@ -10,23 +10,16 @@ import {
   ClipAndNoise,
   ConsentBanner,
   ContextFlows,
-  DataOrigin,
   DisguisedSurvey,
-  DisclosedReport,
   EpsilonNoise,
   ExtractionPrefix,
-  FederatedPlan,
   FlowParameters,
-  HiddenFuture,
-  JusticeBurden,
   KAnonymity,
   MembershipGap,
   PersonaPrompt,
   PersonVsDistribution,
-  PilotNotReplace,
   PolicyHours,
   PolicyScroll,
-  ProxyVsActor,
   PurposeGate,
   QuasiIdentifiers,
   RedactedRecord,
@@ -39,8 +32,6 @@ import {
   TracePoints,
   TranscriptStrip,
   VarianceCollapse,
-  WelfareBalance,
-  OngoingConsent,
 } from "./visuals";
 
 // ============================================================================
@@ -237,11 +228,8 @@ export default function Week6Page() {
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">
-                  <DataOrigin kind={kind} />
-                </Plate>
               </Numbered>
             </li>
           ))}
@@ -457,7 +445,7 @@ export default function Week6Page() {
                   firm can foresee which sensitive traits a future machine learning
                   model will infer from raw behavioral logs.
                 </>,
-                <HiddenFuture key="p" />,
+                null,
               ],
               [
                 "bystanders",
@@ -487,7 +475,7 @@ export default function Week6Page() {
                 <Ruled className="mb-2 !pt-3">
                   <P>{text}</P>
                 </Ruled>
-                <Plate className="mt-auto !p-2">{plate}</Plate>
+                {plate ? <Plate className="mt-auto !p-2">{plate}</Plate> : null}
               </div>
             </li>
           ))}
@@ -748,7 +736,7 @@ export default function Week6Page() {
                   aggregation or differential privacy to prevent gradient inversion
                   attacks.
                 </>,
-                <FederatedPlan key="p" />,
+                null,
               ],
               [
                 "unlearning",
@@ -769,7 +757,7 @@ export default function Week6Page() {
                 <Ruled className="mb-2 !pt-3">
                   <P>{text}</P>
                 </Ruled>
-                <Plate className="mt-auto !p-2">{plate}</Plate>
+                {plate ? <Plate className="mt-auto !p-2">{plate}</Plate> : null}
               </div>
             </li>
           ))}
@@ -824,7 +812,6 @@ export default function Week6Page() {
                   autonomy through free, informed, and ongoing consent, and provides
                   heightened safeguards for participants with diminished autonomy.
                 </>,
-                <OngoingConsent key="p" />,
               ],
               [
                 "welfare",
@@ -835,7 +822,6 @@ export default function Week6Page() {
                   <Term>foreseeable risks are proportionate to the expected benefits</Term>{" "}
                   of the research.
                 </>,
-                <WelfareBalance key="p" />,
               ],
               [
                 "justice",
@@ -846,16 +832,14 @@ export default function Week6Page() {
                   convenient sampling nor excluding groups from beneficial
                   research.
                 </>,
-                <JusticeBurden key="p" />,
               ],
             ] as const
-          ).map(([kind, text, plate], i) => (
+          ).map(([kind, text], i) => (
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">{plate}</Plate>
               </Numbered>
             </li>
           ))}
@@ -1121,7 +1105,6 @@ export default function Week6Page() {
                   substantive conclusions about human consumers require empirical
                   validation on human samples.
                 </>,
-                <PilotNotReplace key="p" />,
               ],
               [
                 "disclosure",
@@ -1132,7 +1115,6 @@ export default function Week6Page() {
                   human participants and which came from simulated models,
                   alongside the exact model version and sampling protocol.
                 </>,
-                <DisclosedReport key="p" />,
               ],
               [
                 "proxy",
@@ -1144,16 +1126,14 @@ export default function Week6Page() {
                   2026a, 2026b, 2026c) is direct empirical measurement of the
                   actual market actor.
                 </>,
-                <ProxyVsActor key="p" />,
               ],
             ] as const
-          ).map(([kind, text, plate], i) => (
+          ).map(([kind, text], i) => (
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">{plate}</Plate>
               </Numbered>
             </li>
           ))}

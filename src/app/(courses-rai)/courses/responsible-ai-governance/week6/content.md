@@ -59,6 +59,7 @@ week: week6
 - For example, scraping public patients' support-group posts to train a commercial insurance risk model violates contextual integrity because it changes both the recipient (from peers to an insurer) and the transmission principle (from mutual support to commercial underwriting).
 
 ## Why Notice-and-Choice Fails in AI Ecosystems [no-exercise]
+[figure: interactive count of privacy policies a consumer encounters in a year and the hours needed to read them, beside one user uploading a group photo that exposes non-consenting bystanders and a take-it-or-leave-it screen where declining locks the service]
 - Cognitive and temporal impossibility: reading the privacy policies of every digital service a consumer encounters in a year would require hundreds of hours, reducing consent banners to habitual clicks.
 - Opacity of downstream inferences: at the moment of consent, neither the consumer nor often the collecting firm can foresee which sensitive traits a future machine learning model will infer from raw behavioral logs.
 - Network externalities and relational data: one individual's consent often exposes data about non-consenting bystanders, as when a consumer uploads an address book, a group photograph, or an email thread to an AI assistant.
@@ -94,6 +95,7 @@ week: week6
 - In a membership inference attack, an adversary inspects a model's output probabilities on a target record to determine whether that specific individual's record was included in the model's training set, which is itself a severe privacy breach when the training set comes from a sensitive cohort such as a disease registry or a high-risk credit list.
 
 ## Differential Privacy, Federated Learning, and Machine Unlearning [exercise]
+[figure: interactive privacy budget epsilon controlling how far a query's output distribution can shift when one record is added, beside per-example gradients clipped and noised in private training and a trained model retrained only on the shard that held an erased record]
 - Differential privacy (Dwork et al., 2006) provides a mathematical guarantee that the probability distribution of an algorithm's output changes by at most a bounded factor epsilon whether any single individual's record is included in or excluded from the dataset.
 - In differentially private model training (such as DP-SGD), per-example gradients are clipped to bound sensitivity and calibrated random noise is added before weight updates, preventing the model from memorizing any single individual's data at the cost of a governed privacy-utility trade-off.
 - Federated learning keeps raw personal data on the user's local device, training local model updates on-device and transmitting only aggregated weight updates to a central server, though it must still be combined with secure aggregation or differential privacy to prevent gradient inversion attacks.

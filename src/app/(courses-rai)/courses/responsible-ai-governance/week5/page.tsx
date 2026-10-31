@@ -10,8 +10,6 @@ import {
   CodedProtocols,
   CounterfactualPlane,
   CoveredCue,
-  FourAudiences,
-  FourLimits,
   GlobalLocal,
   IceCurves,
   LevelBalance,
@@ -528,64 +526,52 @@ export default function Week5Page() {
           <li className="min-w-0">
             <div className="flex h-full flex-col">
               <Ruled className="mb-2 !pt-3">
-                <P>
+                <p className={BIG}>
                   Feature attributions describe how the model uses its inputs,
                   not the causal effect of those variables in the real world. A
                   high SHAP value for a proxy variable reflects predictive
                   association inside the model rather than a causal mechanism.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourLimits kind="causal" />
-              </Plate>
             </div>
           </li>
           <li className="min-w-0">
             <div className="flex h-full flex-col">
               <Ruled className="mb-2 !pt-3">
-                <P>
+                <p className={BIG}>
                   <Term>Instability under perturbation</Term> occurs
                   when small changes in the background reference distribution,
                   neighborhood kernel width, or random seed cause LIME or
                   empirical SHAP estimates to rank different features as the top
                   driver for the same customer.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourLimits kind="instability" />
-              </Plate>
             </div>
           </li>
           <li className="min-w-0">
             <div className="flex h-full flex-col">
               <Ruled className="mb-2 !pt-3">
-                <P>
+                <p className={BIG}>
                   <Term>Correlated-feature distortion</Term> occurs
                   when marginal attribution procedures evaluate off-manifold
                   combinations of correlated variables, such as pairing a
                   twenty-year credit history with an age of nineteen.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourLimits kind="correlated" />
-              </Plate>
             </div>
           </li>
           <li className="min-w-0">
             <div className="flex h-full flex-col">
               <Ruled className="mb-2 !pt-3">
-                <P>
+                <p className={BIG}>
                   <Term>Adversarial scaffolding</Term>, demonstrated by
                   Slack and colleagues (2020), shows that a malicious or
                   non-compliant developer can wrap a discriminatory model in an
                   out-of-distribution detector that returns fair behavior on
                   synthetic LIME/SHAP perturbations while continuing to
                   discriminate on real customer profiles.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <FourLimits kind="scaffolding" />
-              </Plate>
             </div>
           </li>
         </ol>
@@ -993,11 +979,8 @@ export default function Week5Page() {
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">
-                  <FourAudiences kind={kind} />
-                </Plate>
               </Numbered>
             </li>
           ))}

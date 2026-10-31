@@ -25,7 +25,6 @@ import {
   ExactDistribution,
   OriginAndScale,
   OriginCues,
-  PortrayalDisparities,
   RepresentationFeedback,
   ShortlistByAssistant,
   StereotypeErasureMarkedness,
@@ -518,61 +517,49 @@ export default function Week3Page() {
           <li className="min-w-0">
             <Numbered n={1} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Occupational and status association disparity</Term>{" "}
                   occurs when prompts naming different demographic groups yield
                   systematically different socioeconomic settings, product
                   tiers, or authority roles.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <PortrayalDisparities kind="status" />
-              </Plate>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Sentiment and tone disparity</Term> occurs
                   when descriptions generated for minority dialects, accents, or
                   cultural groups carry more negative sentiment or lower warmth
                   and competence ratings than descriptions for majority groups.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <PortrayalDisparities kind="tone" />
-              </Plate>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Exoticization and caricature</Term> occur
                   when adding a cultural or national qualifier to a prompt
                   causes the model to replace modern everyday settings with
                   stereotypical historical or folkloric tropes.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <PortrayalDisparities kind="exotic" />
-              </Plate>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={4} className="flex h-full flex-col">
               <Ruled className="mb-3">
-                <P>
+                <p className={BIG}>
                   <Term>Brand-persona mismatch</Term> occurs when an
                   AI copywriting tool flattens distinct subcultural voices into
                   a uniform corporate register that alienates the community the
                   campaign intends to reach.
-                </P>
+                </p>
               </Ruled>
-              <Plate className="mt-auto !p-2">
-                <PortrayalDisparities kind="persona" />
-              </Plate>
             </Numbered>
           </li>
         </ol>

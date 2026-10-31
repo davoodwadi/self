@@ -175,18 +175,6 @@ export function Coins({ id, cx, y, n, rx = 15, ry = 5, h = 5, red = false }: { i
   );
 }
 
-/** A hanging scale pan: three cords from (cx, hookY) to a shallow dish at y. */
-export function Pan({ id, cx, hookY, y, w = 50 }: { id: string; cx: number; hookY: number; y: number; w?: number }) {
-  return (
-    <g>
-      <line x1={cx} y1={hookY} x2={cx - w / 2} y2={y} {...hair} />
-      <line x1={cx} y1={hookY} x2={cx + w / 2} y2={y} {...hair} />
-      <path d={`M${cx - w / 2} ${y}Q${cx} ${y + 16} ${cx + w / 2} ${y}`} fill={stip(id, "dense")} {...ink} />
-      <ellipse cx={cx} cy={y} rx={w / 2} ry={4} fill={PAT.paper} {...ink} />
-    </g>
-  );
-}
-
 /**
  * A house in oblique projection: white front with a gable, stippled side,
  * a pitched roof running back. (x, y) is the front face's bottom-left.
@@ -287,21 +275,6 @@ export function Detail({ cx, cy, r }: { cx: number; cy: number; r: number }) {
   return <circle cx={cx} cy={cy} r={r} fill="none" stroke={PAT.ink} strokeWidth={LINE.hair} strokeDasharray="6 3" />;
 }
 
-/** A patent reference numeral with its curved leader line to the part. */
-export function Numeral({ n, x, y, tx, ty, bold = false }: { n: number | string; x: number; y: number; tx: number; ty: number; bold?: boolean }) {
-  const sy = ty < y - 6 ? y - 15 : y + 4;
-  const mx = r2((x + tx) / 2 + 8);
-  const my = r2((sy + ty) / 2 - 4);
-  return (
-    <g>
-      <path d={`M${x} ${sy}Q${mx} ${my} ${tx} ${ty}`} fill="none" {...hair} />
-      <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-body)" fontStyle="italic" fontSize={bold ? 18 : 14} fill={PAT.ink}>
-        {n}
-      </text>
-    </g>
-  );
-}
-
 /** An open arrowhead at (x, y) pointing along (dx, dy). */
 export function headAlongPath(x: number, y: number, dx: number, dy: number, s = 9) {
   const len = Math.hypot(dx, dy) || 1;
@@ -334,23 +307,6 @@ export function Dial({ cx, cy, r, deg }: { cx: number; cy: number; r: number; de
       })}
       <line x1={cx} y1={cy} x2={r2(cx + Math.cos(a) * (r - 5))} y2={r2(cy + Math.sin(a) * (r - 5))} {...ink} strokeWidth={LINE.bold} />
       <circle cx={cx} cy={cy} r={2} fill={PAT.ink} />
-    </g>
-  );
-}
-
-/** A pennant flag on a short pole, pole foot at (x, y). */
-export function Flag({ id, x, y, red = false }: { id: string; x: number; y: number; red?: boolean }) {
-  const c = red ? PAT.signal : PAT.ink;
-  return (
-    <g>
-      <line x1={x} y1={y} x2={x} y2={y - 34} stroke={c} strokeWidth={LINE.outline} strokeLinecap="round" />
-      <path
-        d={`M${x} ${y - 34}L${x + 22} ${y - 27}L${x} ${y - 20}Z`}
-        fill={red ? stip(id, "signal") : PAT.paper}
-        stroke={c}
-        strokeWidth={red ? LINE.bold : LINE.outline}
-        strokeLinejoin="round"
-      />
     </g>
   );
 }

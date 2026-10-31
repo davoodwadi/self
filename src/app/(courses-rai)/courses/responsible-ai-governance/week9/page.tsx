@@ -6,7 +6,6 @@ import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise"
 import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  AuditBench,
   BotMeetsBot,
   BuyBox,
   CouponDispersion,
@@ -16,7 +15,6 @@ import {
   FacingMachines,
   ForcedCut,
   Frames,
-  Guardrail,
   OutputExpansion,
   Pathway,
   PricingThenNow,
@@ -948,14 +946,11 @@ export default function Week9Page() {
           ].map((step) => (
             <li key={step} className="min-w-0">
               <Ruled>
-                <P>{step}</P>
+                <p className={BIG}>{step}</p>
               </Ruled>
             </li>
           ))}
         </ol>
-        <Plate className="mb-4 mt-3 !py-1">
-          <AuditBench part="first" />
-        </Plate>
         <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           {[
             "Step 4 is conducting counterfactual impulse-response tests on reinforcement-learning pricing models in a sandbox environment: forcing a simulated competitor price cut and inspecting whether the firm's algorithm responds with a retaliatory punishment-and-return cycle (Calvano et al., 2020).",
@@ -964,14 +959,11 @@ export default function Week9Page() {
           ].map((step) => (
             <li key={step} className="min-w-0">
               <Ruled>
-                <P>{step}</P>
+                <p className={BIG}>{step}</p>
               </Ruled>
             </li>
           ))}
         </ol>
-        <Plate className="mt-3 !py-1">
-          <AuditBench part="second" />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1027,11 +1019,8 @@ export default function Week9Page() {
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">
-                  <Guardrail kind={kind} />
-                </Plate>
               </Numbered>
             </li>
           ))}

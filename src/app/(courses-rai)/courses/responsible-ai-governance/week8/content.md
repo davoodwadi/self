@@ -52,6 +52,7 @@ week: week8
 - This business model places the AI agent in a structural conflict of duty between two principals: the consumer who relies on its advice and the platform that wrote its system prompt.
 
 ## The Structural Conflict of Dual Agency on Ad-Funded Platforms [no-exercise]
+[figure: a sponsored listing paying the platform per click, beside a system prompt that names the platform as the assistant's employer]
 - When a seller pays a platform for a sponsored or promoted listing, the platform typically earns a pay-per-click or pay-per-conversion fee only when that listing is inspected or chosen.
 - A consumer who asks the platform's AI assistant for the best product expects an unbiased comparison based on price, quality, and reviews.
 - Unlike a blatant hard-coded rule that forces the assistant to pick ads, a subtle conflict of duty arises from how foundation models interpret organizational role assignments in their system instructions.

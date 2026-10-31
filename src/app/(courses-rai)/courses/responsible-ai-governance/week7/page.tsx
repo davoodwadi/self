@@ -7,9 +7,7 @@ import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Dis
 import exercisesData from "./exercises.json";
 import {
   AgentParse,
-  AgentReady,
   AnthropomorphicCues,
-  AuditSteps,
   BaselineComparison,
   CancelByLetter,
   ConversionOptimizer,
@@ -21,13 +19,10 @@ import {
   SignalSelector,
   StanceAudit,
   StaticVsAdaptive,
-  SycophancyForm,
   TiltedFloor,
   ToolLabBoard,
   ToolLabResults,
   TurnByTurnProbe,
-  VulnerabilityTarget,
-  WelfareMetrics,
 } from "./visuals";
 
 // ============================================================================
@@ -463,11 +458,8 @@ export default function Week7Page() {
               <Numbered n={i + 1}>
                 <div className="grid items-center gap-4 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
                   <Ruled>
-                    <P>{text}</P>
+                    <p className={BIG}>{text}</p>
                   </Ruled>
-                  <Plate className="!p-2">
-                    <VulnerabilityTarget kind={kind} />
-                  </Plate>
                 </div>
               </Numbered>
             </li>
@@ -658,11 +650,8 @@ export default function Week7Page() {
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">
-                  <SycophancyForm kind={kind} />
-                </Plate>
               </Numbered>
             </li>
           ))}
@@ -970,11 +959,8 @@ export default function Week7Page() {
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">
-                  <WelfareMetrics kind={kind} />
-                </Plate>
               </Numbered>
             </li>
           ))}
@@ -999,14 +985,11 @@ export default function Week7Page() {
           ].map((step) => (
             <li key={step} className="min-w-0">
               <Ruled>
-                <P>{step}</P>
+                <p className={BIG}>{step}</p>
               </Ruled>
             </li>
           ))}
         </ol>
-        <Plate className="mb-5 mt-3 !py-1">
-          <AuditSteps part="first" />
-        </Plate>
         <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           {[
             "Step 4 is testing conversational assistants with paired user-stance prompts to measure belief echoing, flawed-premise validation, and sycophantic risk downplaying.",
@@ -1015,14 +998,11 @@ export default function Week7Page() {
           ].map((step) => (
             <li key={step} className="min-w-0">
               <Ruled>
-                <P>{step}</P>
+                <p className={BIG}>{step}</p>
               </Ruled>
             </li>
           ))}
         </ol>
-        <Plate className="mt-3 !py-1">
-          <AuditSteps part="second" />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1082,11 +1062,8 @@ export default function Week7Page() {
               <Numbered n={i + 1}>
                 <div className="grid items-center gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                   <Ruled>
-                    <P>{text}</P>
+                    <p className={BIG}>{text}</p>
                   </Ruled>
-                  <Plate className="!p-2">
-                    <AgentReady kind={kind} />
-                  </Plate>
                 </div>
               </Numbered>
             </li>

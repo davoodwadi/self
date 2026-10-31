@@ -136,6 +136,7 @@ week: week4
 - Organizations distinguish exploratory red-teaming from systematic behavioral auditing and maintain continuous monitoring after launch.
 
 ## Pre-Deployment Red-Teaming Versus Behavioral Auditing [exercise]
+[figure: adversarial probes searching a system for a single breaking point, beside a systematic factorial grid of routine trials producing a distribution of outcomes for each condition]
 - Adversarial red-teaming is an exploratory stress test in which human specialists or automated attacker models probe a system with extreme, jailbreak, or edge-case inputs to discover worst-case safety failures.
 - Behavioral auditing is a systematic, statistically powered evaluation across a representative factorial grid that measures average bias, variance, task adherence, and effect sizes under normal commercial operating conditions.
 - Red-teaming establishes whether a system can be broken by a determined adversary (existence of a vulnerability), whereas behavioral auditing establishes how the system treats customer segments across thousands of routine interactions (distribution of market behavior).

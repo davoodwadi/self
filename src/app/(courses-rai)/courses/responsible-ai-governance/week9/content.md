@@ -96,6 +96,7 @@ week: week9
 - The algorithms had autonomously discovered the classic reward-and-punishment enforcement mechanism of an economic cartel purely through trial-and-error reinforcement learning.
 
 ## Four Pathways to Algorithmic Price Coordination [exercise]
+[figure: the four coordination pathways: humans agreeing prices and using software to execute them, competitors sharing one pricing hub, firms each deploying a predictable price-matching rule, and self-learning agents arriving at collusive prices on their own (Ezrachi & Stucke, 2016)]
 - Legal scholars Ariel Ezrachi and Maurice Stucke (2016) classify algorithmic collusion into four distinct governance scenarios based on how humans and algorithms interact.
 - Messenger occurs when human executives explicitly agree to fix prices and merely use software algorithms as the operational tool to monitor compliance and update prices. This is a traditional illegal cartel.
 - Hub-and-Spoke occurs when multiple competing firms (the spokes) all adopt the same third-party pricing algorithm or vendor (the hub), pooling confidential data or delegating pricing to a single shared optimization engine that coordinates prices across competitors instead of letting them compete.

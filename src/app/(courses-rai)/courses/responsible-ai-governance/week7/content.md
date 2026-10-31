@@ -35,6 +35,7 @@ week: week7
 - When nudging and sludging techniques are deployed systematically to benefit the firm at the expense of the consumer, they constitute dark patterns.
 
 ## A Taxonomy of Storefront Dark Patterns [exercise]
+[figure: interactive storefront examples of drip pricing that adds fees at each checkout step, a countdown timer that resets on reload, a subscription that is easy to start and hard to cancel, and a guilt-inducing decline button]
 - Drip pricing and hidden costs conceal mandatory fees, service charges, or shipping costs until the final step of a multi-page checkout flow, after the shopper has already committed time and psychological investment to the purchase.
 - False urgency and fabricated scarcity display countdown timers or "only 2 rooms left at this price" warnings that reset on page reload or do not reflect real inventory constraints.
 - Obstruction and roach motels make subscribing to a service or sharing data effortless while burying cancellation behind multiple retention screens, phone-only queues, or confusing double-negative buttons.

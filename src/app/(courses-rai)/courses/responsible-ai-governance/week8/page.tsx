@@ -6,7 +6,6 @@ import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise"
 import { Plate, P, Statement, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  AuditBench,
   CareAndLoyalty,
   DelegationLevels,
   DyadTriad,
@@ -18,7 +17,6 @@ import {
   LabelProminence,
   PassedOver,
   PayPerClick,
-  Remedy,
   RoleAssignment,
   StrippedBadge,
   TwoPrincipals,
@@ -887,14 +885,11 @@ export default function Week8Page() {
           ].map((step) => (
             <li key={step} className="min-w-0">
               <Ruled>
-                <P>{step}</P>
+                <p className={BIG}>{step}</p>
               </Ruled>
             </li>
           ))}
         </ol>
-        <Plate className="mb-5 mt-3 !py-1">
-          <AuditBench part="first" />
-        </Plate>
         <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           {[
             "Step 4 is randomizing listing order across 100-item catalog pages to measure the agent's inspection curve, quantifying any top-rank bias or rank 62-to-81 lost-in-the-middle trough.",
@@ -903,14 +898,11 @@ export default function Week8Page() {
           ].map((step) => (
             <li key={step} className="min-w-0">
               <Ruled>
-                <P>{step}</P>
+                <p className={BIG}>{step}</p>
               </Ruled>
             </li>
           ))}
         </ol>
-        <Plate className="mt-3 !py-1">
-          <AuditBench part="second" />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -970,11 +962,8 @@ export default function Week8Page() {
             <li key={kind} className="min-w-0">
               <Numbered n={i + 1} className="flex h-full flex-col">
                 <Ruled className="mb-3">
-                  <P>{text}</P>
+                  <p className={BIG}>{text}</p>
                 </Ruled>
-                <Plate className="mt-auto !p-2">
-                  <Remedy kind={kind} />
-                </Plate>
               </Numbered>
             </li>
           ))}
