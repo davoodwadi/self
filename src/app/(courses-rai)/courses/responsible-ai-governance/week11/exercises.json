@@ -1,0 +1,294 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "horizontal-versus-sectoral-ai-regulation",
+    "prompt": "Each card describes how a jurisdiction governs AI. Sort each card by the regulatory model it follows.",
+    "bins": [
+      { "id": "horizontal", "label": "Horizontal" },
+      { "id": "sectoral", "label": "Sectoral" },
+      { "id": "hybrid", "label": "Hybrid" }
+    ],
+    "cards": [
+      {
+        "id": "one-act",
+        "text": "A country passes one AI statute that sorts every AI system, in any industry, into risk classes with matching duties.",
+        "bin": "horizontal",
+        "explanation": "A single cross-cutting framework governs all industries by risk level."
+      },
+      {
+        "id": "banking-regulator",
+        "text": "A country has no AI statute. Its banking regulator applies existing lending law to credit models, and its labour regulator applies employment law to hiring tools.",
+        "bin": "sectoral",
+        "explanation": "Existing domain-specific statutes and regulators govern algorithms industry by industry."
+      },
+      {
+        "id": "privacy-plus-guidance",
+        "text": "A country relies on a general privacy law with automated-decision rights, plus separate AI guidance issued by its health and finance ministries.",
+        "bin": "hybrid",
+        "explanation": "Horizontal data protection and automated decision-making law combined with sectoral guidelines."
+      },
+      {
+        "id": "housing-agency",
+        "text": "A tenant-screening algorithm is policed by the housing agency under fair-housing law, and a medical triage tool by the health regulator under medical device rules.",
+        "bin": "sectoral",
+        "explanation": "Each domain's own regulator applies its own statute."
+      },
+      {
+        "id": "standards-plus-privacy",
+        "text": "A country's privacy statute covers automated decisions for all firms, while industry bodies adopt a technical AI management standard for their members.",
+        "bin": "hybrid",
+        "explanation": "A horizontal privacy law paired with technical management standards is the hybrid model."
+      },
+      {
+        "id": "single-office",
+        "text": "One national AI office supervises chatbots, credit scoring and factory robots under the same risk-based law.",
+        "bin": "horizontal",
+        "explanation": "One statute and one supervisory structure span every sector."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "the-four-risk-tiers-of-the-eu-ai-act",
+    "prompt": "Each case describes an AI system offered in the European Union. Identify its risk tier under the EU AI Act.",
+    "options": [
+      { "id": "unacceptable", "label": "Unacceptable risk" },
+      { "id": "high", "label": "High risk" },
+      { "id": "limited", "label": "Limited risk" },
+      { "id": "minimal", "label": "Minimal risk" }
+    ],
+    "cases": [
+      {
+        "id": "citizen-score",
+        "text": "A city scores residents on their everyday behaviour and uses the score to rank access to public services.",
+        "answer": "unacceptable",
+        "explanation": "Social scoring is a prohibited practice."
+      },
+      {
+        "id": "cv-ranker",
+        "text": "A staffing firm uses a model to rank job applicants' résumés before any recruiter reads them.",
+        "answer": "high",
+        "explanation": "Recruitment systems are high risk and need a conformity assessment."
+      },
+      {
+        "id": "support-bot",
+        "text": "An online clothing store adds a chatbot that answers questions about returns.",
+        "answer": "limited",
+        "explanation": "Customers must be told they are interacting with an AI system."
+      },
+      {
+        "id": "warehouse",
+        "text": "A grocery chain uses a model to forecast how many crates of apples each warehouse will need next week.",
+        "answer": "minimal",
+        "explanation": "Inventory forecasting carries no mandatory obligations beyond general law."
+      },
+      {
+        "id": "loan",
+        "text": "A bank uses a model to decide whether to grant consumer loans.",
+        "answer": "high",
+        "explanation": "Creditworthiness evaluation and credit scoring are high risk."
+      },
+      {
+        "id": "ad-voice",
+        "text": "A brand publishes an AI-generated video of a spokesperson who does not exist.",
+        "answer": "limited",
+        "explanation": "Synthetic media carries a disclosure obligation."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "quebec-law-25-and-automated-decision-making-rights",
+    "prompt": "A Montréal resident is refused car insurance by a fully automated system. Identify which Law 25 right each step in the case relies on.",
+    "options": [
+      { "id": "notice", "label": "Mandatory automated-decision notice" },
+      { "id": "explanation", "label": "Right to explanation and provenance" },
+      { "id": "review", "label": "Right to human review and contestation" }
+    ],
+    "cases": [
+      {
+        "id": "told",
+        "text": "The refusal email says, at the moment it is sent, that no person was involved in the decision.",
+        "answer": "notice",
+        "explanation": "The individual must be informed of the automated decision no later than when it is communicated."
+      },
+      {
+        "id": "factors",
+        "text": "The resident asks which factors weighed most and learns that the postal code and the number of past claims drove the result.",
+        "answer": "explanation",
+        "explanation": "On request, the enterprise must give the reasons and the principal factors and parameters."
+      },
+      {
+        "id": "wrong-data",
+        "text": "The resident finds that the insurer's file lists two past claims instead of one and asks for the record to be corrected.",
+        "answer": "explanation",
+        "explanation": "The same right covers the personal information used and its rectification."
+      },
+      {
+        "id": "adjuster",
+        "text": "The resident sends a letter explaining the circumstances, and an underwriter reviews the file and reverses the refusal.",
+        "answer": "review",
+        "explanation": "The individual can submit observations to a staff member able to overturn the decision."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "ftc-enforcement-under-section-5-unfair-and-deceptive-ai-practices",
+    "prompt": "Each case describes a firm's conduct or an FTC response. Identify which part of Section 5 enforcement it shows.",
+    "options": [
+      { "id": "claims", "label": "Unsubstantiated AI capability claims" },
+      { "id": "deceptive", "label": "Deceptive synthetic media and dark patterns" },
+      { "id": "unfair", "label": "Unfair discriminatory or privacy-invading models" },
+      { "id": "disgorgement", "label": "Algorithmic disgorgement" }
+    ],
+    "cases": [
+      {
+        "id": "lie-detector",
+        "text": "A start-up advertises that its software spots lying job candidates from a ten-second video, with no independent study behind the claim.",
+        "answer": "claims",
+        "explanation": "Marketing a predictive capability without rigorous, independent evidence."
+      },
+      {
+        "id": "fake-reviews",
+        "text": "A kitchenware seller posts hundreds of AI-written five-star reviews under invented customer names.",
+        "answer": "deceptive",
+        "explanation": "Undisclosed AI-generated customer reviews are deceptive."
+      },
+      {
+        "id": "rent",
+        "text": "A tenant-screening model rejects applicants with housing vouchers at high rates, the applicants cannot avoid it, and no benefit to competition outweighs the harm.",
+        "answer": "unfair",
+        "explanation": "Substantial injury not reasonably avoidable and not outweighed by benefits."
+      },
+      {
+        "id": "delete-model",
+        "text": "After finding that a photo app trained its face model on images collected without consent, the FTC orders the app to destroy both the images and the model.",
+        "answer": "disgorgement",
+        "explanation": "The remedy reaches the trained model and weights, not only the raw data."
+      },
+      {
+        "id": "human-bot",
+        "text": "A subscription service's chat agent introduces itself as 'Megan from billing' and never discloses that it is software.",
+        "answer": "deceptive",
+        "explanation": "An anthropomorphic bot impersonating a human is a deceptive practice."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "the-nist-ai-risk-management-framework-ai-rmf",
+    "prompt": "A pharmacy chain is rolling out an AI refill-reminder assistant. Identify the NIST AI RMF function each activity belongs to.",
+    "options": [
+      { "id": "govern", "label": "Govern" },
+      { "id": "map", "label": "Map" },
+      { "id": "measure", "label": "Measure" },
+      { "id": "manage", "label": "Manage" }
+    ],
+    "cases": [
+      {
+        "id": "board-policy",
+        "text": "The board names a vice-president accountable for all AI systems and sets the company's tolerance for patient-safety risk.",
+        "answer": "govern",
+        "explanation": "Culture, risk tolerance and executive accountability across the lifecycle."
+      },
+      {
+        "id": "stakeholders",
+        "text": "Before launch, the team lists who the assistant will message, where its prescription data come from, and which harms are foreseeable.",
+        "answer": "map",
+        "explanation": "Establishing the deployment's context, stakeholders, provenance and risks."
+      },
+      {
+        "id": "audit",
+        "text": "Analysts test whether reminder accuracy differs between patients who read English and patients who read French.",
+        "answer": "measure",
+        "explanation": "Quantitative auditing of trustworthiness metrics such as fairness."
+      },
+      {
+        "id": "rollback",
+        "text": "When a reminder bug sends wrong dosages, the team follows its incident playbook and switches the assistant off.",
+        "answer": "manage",
+        "explanation": "Responding to measured risks through incident playbooks and decommissioning."
+      },
+      {
+        "id": "training",
+        "text": "Every pharmacist who supervises the assistant must complete an AI oversight course each year.",
+        "answer": "govern",
+        "explanation": "Workforce competencies are part of Govern."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "six-steps-of-a-cross-jurisdictional-ai-compliance-workflow",
+    "prompt": "A travel company is preparing an AI booking agent for customers in Canada, the United States and the European Union. Put its compliance work in the order of the six-step workflow.",
+    "steps": [
+      {
+        "id": "inventory",
+        "text": "List every AI system the company runs and every country whose customers will use the booking agent.",
+        "explanation": "Inventory and jurisdictional mapping come first."
+      },
+      {
+        "id": "classify",
+        "text": "Check the agent against prohibited-practice lists and decide whether it counts as high-risk or fully automated decision-making in each market.",
+        "explanation": "Risk-tier classification follows once the systems and markets are known."
+      },
+      {
+        "id": "provenance",
+        "text": "Confirm that every dataset used to fine-tune the agent has a valid legal basis and respects opt-outs.",
+        "explanation": "Provenance and consent verification."
+      },
+      {
+        "id": "audit",
+        "text": "Run fairness, sycophancy and evaluative-invariance tests on the agent's recommendations.",
+        "explanation": "The NIST Measure and behavioral audit suite."
+      },
+      {
+        "id": "interfaces",
+        "text": "Add plain-language decision notices and a button that sends disputed bookings to a human agent.",
+        "explanation": "Transparency, oversight and contestability interfaces."
+      },
+      {
+        "id": "dossier",
+        "text": "Assemble the conformity dossier, get sign-off, and switch on post-market monitoring logs.",
+        "explanation": "The conformity dossier and continuous monitoring close the workflow."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "regulating-agentic-commerce-where-current-statutes-fall-short",
+    "prompt": "Each case shows a shopping agent at work. Identify the regulatory gap it exposes.",
+    "options": [
+      { "id": "disclosure", "label": "Disclosure interception gap" },
+      { "id": "fiduciary", "label": "System-prompt fiduciary gap" },
+      { "id": "unit", "label": "Machine-readable unit-price and ranking gap" }
+    ],
+    "cases": [
+      {
+        "id": "sponsored-label",
+        "text": "A marketplace labels a paid listing 'Sponsored' exactly as the law requires, yet the platform's own shopping agent still picks it far more often than an equal unpaid listing.",
+        "answer": "disclosure",
+        "explanation": "A human-visible label does not remove sponsorship bias once an agent reads the page."
+      },
+      {
+        "id": "principal",
+        "text": "A user is told 'You are chatting with an AI', but nothing reveals that the agent's instructions name the retailer, not the user, as the party it serves.",
+        "answer": "fiduciary",
+        "explanation": "Current rules do not require disclosing whom the system prompt names as principal."
+      },
+      {
+        "id": "hidden-weight",
+        "text": "A grocery site prints the price per kilogram on product photos for shoppers but returns package weights to agents only through a slow, paid lookup.",
+        "answer": "unit",
+        "explanation": "Unit-price rules cover shelf labels for human eyes, not machine-readable data."
+      },
+      {
+        "id": "middle",
+        "text": "A hotel site places its best-value rooms in the middle of a 100-item list, where agents are least likely to choose them.",
+        "answer": "unit",
+        "explanation": "Exploiting lost-in-the-middle rank positions falls under the ranking gap."
+      }
+    ]
+  }
+]
