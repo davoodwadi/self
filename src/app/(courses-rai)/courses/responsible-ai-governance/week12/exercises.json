@@ -1,0 +1,226 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "the-three-lines-of-defense-in-enterprise-ai-governance",
+    "prompt": "An insurer is launching an AI claims assistant. Sort each activity by the line of defense that performs it.",
+    "bins": [
+      { "id": "first", "label": "First line" },
+      { "id": "second", "label": "Second line" },
+      { "id": "third", "label": "Third line" }
+    ],
+    "cards": [
+      {
+        "id": "prompts",
+        "text": "The claims product team writes the assistant's prompts and runs its baseline tests every day.",
+        "bin": "first",
+        "explanation": "The teams that build, prompt and operate the system own day-to-day quality control."
+      },
+      {
+        "id": "dataset-notes",
+        "text": "The data scientists who fine-tuned the assistant write the first documentation of its training data.",
+        "bin": "first",
+        "explanation": "Initial dataset documentation sits with the builders."
+      },
+      {
+        "id": "veto",
+        "text": "An independent AI ethics and compliance group sets the risk tier and refuses to sign off until a bias audit passes.",
+        "bin": "second",
+        "explanation": "The second line sets standards, audits before launch, and holds binding sign-off."
+      },
+      {
+        "id": "standards",
+        "text": "Privacy and legal specialists outside the product team define which behavioral audits every claims model must pass.",
+        "bin": "second",
+        "explanation": "Setting governance standards is the second line's role."
+      },
+      {
+        "id": "internal-audit",
+        "text": "Internal audit checks whether both the product team and the ethics group followed the governance charter last year.",
+        "bin": "third",
+        "explanation": "The third line evaluates both other lines."
+      },
+      {
+        "id": "assessor",
+        "text": "An external conformity assessor with no stake in the launch reviews the whole governance process.",
+        "bin": "third",
+        "explanation": "Independent external assessors belong to the third line."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "cross-functional-accountability-the-raci-matrix-for-ai-launches",
+    "prompt": "A bank is launching an AI mortgage pre-approval tool. Identify the RACI role each person or team holds at the launch gate.",
+    "options": [
+      { "id": "r", "label": "Responsible (R)" },
+      { "id": "a", "label": "Accountable (A)" },
+      { "id": "c", "label": "Consulted (C)" },
+      { "id": "i", "label": "Informed (I)" }
+    ],
+    "cases": [
+      {
+        "id": "engineers",
+        "text": "The data science team runs the fairness audit and writes up the results.",
+        "answer": "r",
+        "explanation": "Practitioners who execute the task are Responsible."
+      },
+      {
+        "id": "cro",
+        "text": "The chief risk officer alone gives final approval and answers to the regulator if the tool discriminates.",
+        "answer": "a",
+        "explanation": "The single owner of final approval and liability is Accountable."
+      },
+      {
+        "id": "advocates",
+        "text": "A housing-rights group's representatives give feedback that must be recorded before the gate closes.",
+        "answer": "c",
+        "explanation": "Stakeholder representatives whose input must be solicited are Consulted."
+      },
+      {
+        "id": "call-centre",
+        "text": "The branch call centre receives a briefing once the launch decision is logged.",
+        "answer": "i",
+        "explanation": "Downstream teams who get updates after the decision are Informed."
+      },
+      {
+        "id": "lawyer",
+        "text": "Outside counsel reviews the adverse-action notice wording before approval is given.",
+        "answer": "c",
+        "explanation": "Legal counsel whose input is sought before the gate closes is Consulted."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "auditing-third-party-vendors-and-foundation-model-supply-chains",
+    "question_text": "A city transit agency wants to buy an AI fare-assistance chatbot. The vendor offers a low price but will not pin model versions, gives no log-probability access, keeps customer chats to train future models, and declines any independent bias test on the agency's own riders. What should procurement governance conclude?",
+    "hint": "Compare the vendor's terms with what procurement governance requires of every vendor.",
+    "correct_answer_citation": "Week 12: Auditing Third-Party Vendors and Foundation Model Supply Chains",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Buy it: once the chatbot is outsourced, responsibility for its errors passes to the vendor.",
+        "option_explanation": "Outsourcing model development never outsources legal or ethical accountability."
+      },
+      {
+        "option_text": "Buy it, provided the vendor's marketing states that the model was tested for bias.",
+        "option_explanation": "A vendor's own claim does not replace independent audits on the buyer's actual tasks."
+      },
+      {
+        "option_text": "Buy it, and run a bias audit after a year of service to see whether complaints arrive.",
+        "option_explanation": "Audit access, version pinning and zero retention are conditions for qualification, not later extras."
+      },
+      {
+        "option_text": "Reject it: blocking independent auditing and retaining customer data fail procurement qualification for a customer-facing deployment.",
+        "option_explanation": "Correct. Vendors must allow version pinning, log-probability access, zero retention and independent audits on the buyer's domain tasks."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "six-steps-of-an-ai-incident-response-playbook",
+    "prompt": "A food-delivery app's AI refund agent starts approving refunds for anyone who mentions a competitor's name. Put the team's response in the order of the incident response playbook.",
+    "steps": [
+      {
+        "id": "detect",
+        "text": "A spike in refund volume triggers an alert, and the on-call lead rates it a severe incident.",
+        "explanation": "Detection and triage come first."
+      },
+      {
+        "id": "contain",
+        "text": "The kill switch sends all refund requests back to the old rule-based system within minutes.",
+        "explanation": "Containment and rollback stop further harm."
+      },
+      {
+        "id": "preserve",
+        "text": "Engineers freeze the agent's weights, system prompt and conversation logs and trace the trigger phrase.",
+        "explanation": "Forensic preservation and root-cause analysis."
+      },
+      {
+        "id": "notify",
+        "text": "Leadership, affected restaurants and the privacy regulator are told what happened.",
+        "explanation": "Stakeholder and statutory notification."
+      },
+      {
+        "id": "fix",
+        "text": "The team patches the prompt guardrail and reruns the red-team suite and the full behavioral audit.",
+        "explanation": "Remediation and verification."
+      },
+      {
+        "id": "review",
+        "text": "Restaurants are reimbursed for wrongful refunds, and the governance charter gains a new pre-launch test for this failure class.",
+        "explanation": "Post-incident review and restitution close the playbook."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "resource-rationality-in-agentic-inference-and-tool-use",
+    "question_text": "A travel company's agent ranks hotels for 2 million routine searches a day. It currently runs the largest frontier model at default settings. Which change best fits resource-rational governance?",
+    "hint": "Think about matching model size and deliberation effort to the stakes of the decision.",
+    "correct_answer_citation": "Week 12: Resource Rationality in Agentic Inference and Tool Use",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Keep the frontier model and add more tool calls to every search, since more deliberation always helps.",
+        "option_explanation": "Unconstrained reasoning and exhaustive tool calls on routine queries waste energy and money."
+      },
+      {
+        "option_text": "Switch to the cheapest model and cap every search at one tool call, with no further testing.",
+        "option_explanation": "Blind resource cuts on an uncalibrated agent cause premature search truncation and heuristic errors."
+      },
+      {
+        "option_text": "Move routine searches to a lightweight model with targeted reasoning effort, and verify that its choices stay position-neutral.",
+        "option_explanation": "Correct. Configured effort on a lightweight model removed position bias at about 4 percent of frontier cost."
+      },
+      {
+        "option_text": "Judge the agent only on whether each final booking is valid, ignoring how many tools it called.",
+        "option_explanation": "Tool-Lab evaluates the planning policy, net of token, API and latency costs, not only the final answer."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "core-pillars-of-an-enterprise-ai-governance-charter",
+    "prompt": "Each clause comes from a draft governance charter. Identify the pillar it belongs to.",
+    "options": [
+      { "id": "p1", "label": "Pillar 1: Scope, Risk Tiering, and RACI Authority" },
+      { "id": "p2", "label": "Pillar 2: Provenance, Privacy, and Research Ethics" },
+      { "id": "p3", "label": "Pillar 3: Rigorous Behavioral and Fairness Auditing" },
+      { "id": "p4", "label": "Pillar 4: Human-Centered Transparency, Recourse, and Accessibility" },
+      { "id": "p5", "label": "Pillar 5: Agentic Fiduciary Integrity and Resource Rationality" }
+    ],
+    "cases": [
+      {
+        "id": "single-owner",
+        "text": "Every AI system is placed in a risk tier and has one named executive who signs its launch.",
+        "answer": "p1",
+        "explanation": "Risk tiering and a single Accountable executive."
+      },
+      {
+        "id": "zero-retention",
+        "text": "Customer chats are never kept for training, and every study with human participants passes ethics board review.",
+        "answer": "p2",
+        "explanation": "Zero-retention guardrails and REB standards."
+      },
+      {
+        "id": "pmf",
+        "text": "Before launch, every model's approval rates are compared across groups, and its answers are tested for agreeing with whatever the user says.",
+        "answer": "p3",
+        "explanation": "Disaggregated fairness analysis and sycophancy testing."
+      },
+      {
+        "id": "recourse",
+        "text": "Every declined applicant is told what change would reverse the decision, and the screen works with a keyboard and screen reader.",
+        "answer": "p4",
+        "explanation": "Actionable counterfactual recourse and WCAG accessibility."
+      },
+      {
+        "id": "beneficiary",
+        "text": "The shopping assistant's system prompt names the consumer as its beneficiary, and its tool calls are budgeted for efficiency.",
+        "answer": "p5",
+        "explanation": "Consumer-beneficiary prompt clauses and Tool-Lab resource efficiency."
+      }
+    ]
+  }
+]
