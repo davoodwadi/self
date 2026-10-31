@@ -10,6 +10,7 @@ week: week1
 - Algorithmic governance translates ethical principles into verifiable rules, audits, and accountability across human and agent-mediated markets.
 
 ## Why Market Algorithms Require Governance [no-exercise]
+[figure: a human employee applying a decision to one case at a time contrasted with a deployed model applying one decision rule to many cases at once, so that a single flaw in the rule repeats across the whole segment]
 - Algorithms now determine which products consumers see, what prices they are quoted, whether their credit application is approved, and how their service complaints are resolved.
 - Unlike a human employee who makes one decision at a time, a deployed model executes thousands of decisions per second using the same decision rule.
 - An error, bias, or perverse incentive in that rule therefore scales immediately across an entire market segment.
@@ -23,11 +24,13 @@ week: week1
 - Ethics without governance produces aspirational statements that do not alter engineering or marketing decisions, a failure known as ethics washing.
 
 ## Part 1: Ethical Frameworks for Automated Decisions [no-exercise]
+[figure: the same deployment examined through consequentialist, deontological, and virtue-ethical lenses, with one framework approving it and two rejecting it]
 - Managers and regulators evaluate algorithmic decisions through three foundational traditions in normative ethics: consequentialism, deontology, and virtue ethics.
 - Each framework asks a different question about an automated system and identifies different failure modes.
 - Because the three frameworks can reach conflicting conclusions about the same deployment, responsible governance requires examining a system through all three lenses.
 
 ## Consequentialism and Market Welfare [no-exercise]
+[figure: interactive credit offers across customer segments showing that excluding a minority segment raises the aggregate outcome while that segment loses access to credit]
 - Consequentialism judges an action or decision rule by the aggregate outcomes it produces across all affected parties.
 - In commercial settings, consequentialist reasoning appears as cost-benefit analysis, welfare maximization, and the optimization of objective functions.
 - A consequentialist defense of personalized recommendations argues that matching products to preferences reduces search costs and increases total consumer surplus.
@@ -46,6 +49,7 @@ week: week1
 - Virtue ethics explains why organizational culture, incentives, and engineering norms determine how teams handle ambiguous risks that regulations have not yet addressed.
 
 ## Applying Ethical Frameworks to Algorithmic Decisions [exercise]
+[figure: interest rates quoted to comparable loan applicants in two postal codes, with applicants in one postal code charged higher rates]
 - Consequentialist evaluation asks whether the net benefits of the system outweigh its harms across affected groups and over time.
 - Deontological evaluation asks whether the system violates a consumer right, breaches a fiduciary or contractual duty, or treats individuals merely as instruments for revenue.
 - Virtue-ethical evaluation asks whether deploying the system reflects the habits of a trustworthy, honest, and responsible institution.
@@ -63,6 +67,7 @@ week: week1
 - Regulators, auditors, and civil society organizations monitor market outcomes and enforce statutory and industry standards.
 
 ## The Problem of Many Hands [exercise]
+[figure: interactive comparison of a model developer and a deploying retailer each attributing a biased outcome to the other, and accountable governance assigning the outcome to the deploying firm]
 - The problem of many hands arises when a harmful outcome is produced by the combined actions of several contributors, so that no single actor feels or accepts full responsibility.
 - A model developer may attribute a biased recommendation to the deploying retailer's system prompt and product catalog.
 - The deploying retailer may attribute the same outcome to the pre-trained weights of the foundation model or to historical consumer behavior in the market.
@@ -83,6 +88,7 @@ week: week1
 - A core premise of this course is that technical benchmark performance does not establish that a model is safe, fair, or reliable in a real market setting.
 
 ## Technical Benchmarks Versus Market Behavior [no-exercise]
+[figure: interactive repeated runs of one prompt distributing a model's product choices across three brands, with a change in framing shifting which brand is chosen most often]
 - Standard machine learning benchmarks evaluate accuracy on static collections of general tasks, such as reading comprehension, mathematical problem solving, or code generation.
 - Market decisions occur in strategic, stochastic, and socially sensitive environments where there is often no single factual answer.
 - A model that scores highly on general reasoning benchmarks can still exhibit strong position bias in search rankings, favor domestic brands over foreign brands, or penalize protected demographic groups in customer service interactions.
@@ -107,6 +113,7 @@ week: week1
 - Adding a human to a workflow does not automatically make a system safe. Oversight must be designed around the cognitive limits of human reviewers.
 
 ## Human-in-the-Loop, Human-on-the-Loop, and Autonomous Regimes [exercise]
+[figure: three oversight regimes: a human approving each case before action, a human monitoring a dashboard while decisions execute automatically, and an automated process bounded only by pre-programmed constraints and periodic audits]
 - In a human-in-the-loop regime, the algorithm generates a recommendation or score, but a human must actively review and approve each individual case before any action is taken, as in high-value commercial lending or medical triage.
 - In a human-on-the-loop regime, the algorithm executes decisions automatically in real time, while a human operator monitors system-level dashboards and retains the authority to intervene, override, or shut down the system, as in dynamic retail pricing or fraud blocking.
 - In a fully autonomous regime, the algorithm initiates and completes actions without contemporaneous human review, bounded only by pre-programmed constraints and periodic post-hoc audits, as in programmatic ad bidding or automated shopping agents.
@@ -128,6 +135,7 @@ week: week1
 - This shift from human-mediated to agent-mediated exchange introduces a new class of governance problems that spans every week of this course.
 
 ## The AI Agent as a Surrogate Consumer [no-exercise]
+[figure: an AI shopping agent reading a search results page with prices and a sponsored listing on behalf of the consumer who delegated the task]
 - An AI shopping agent is a system built on a large language model that accepts a consumer's goal, inspects product listings, compares attributes, and recommends or executes a purchase.
 - When a consumer delegates search and evaluation to an AI agent, the agent acts as a surrogate consumer in the marketplace.
 - In agent-mediated commerce, the AI agent rather than the human shopper reads the search results page, processes the price framing, and interprets sponsorship disclosures.
