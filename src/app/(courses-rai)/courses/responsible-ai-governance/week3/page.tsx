@@ -17,28 +17,21 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  AuditChecks,
   CorpusVsSpeakers,
-  DeepBias,
   DefaultProjector,
   DelegatedAdaptation,
   EffectDecomposition,
   EthnocentrismRuler,
   ExactDistribution,
-  LatentAttitude,
-  LifecycleExploded,
-  MitigationStack,
   OriginAndScale,
   OriginCues,
   PortrayalDisparities,
   RepresentationFeedback,
-  ShoppingRoles,
   ShortlistByAssistant,
   StereotypeErasureMarkedness,
   SurfacePrompt,
   TokenStick,
   TranslatedPrompt,
-  TwoHarms,
   ValueNarrowing,
 } from "./visuals";
 
@@ -343,60 +336,57 @@ export default function Week3Page() {
         exercise={exercise["tracing-cultural-bias-to-the-model-lifecycle"]}
       >
         <SlideHeading>Tracing Cultural Bias to the Model Lifecycle</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
+        <div className="w-full">
           <ol className="grid w-full gap-x-6 gap-y-5 md:grid-cols-2">
             <li className="min-w-0">
               <Numbered n={1}>
                 <Ruled>
-                  <P>
+                  <p className={BIG}>
                     <Term>Pre-training corpus skew</Term> arises when
                     web scrapes over-represent dominant languages and digitally
                     affluent populations, starving the model of authentic local
                     knowledge and idioms.
-                  </P>
+                  </p>
                 </Ruled>
               </Numbered>
             </li>
             <li className="min-w-0">
               <Numbered n={2}>
                 <Ruled>
-                  <P>
+                  <p className={BIG}>
                     <Term>Tokenization disparity</Term> arises when
                     the subword vocabulary fragments non-dominant scripts into
                     excessive token counts, increasing latency and inference
                     cost per customer interaction.
-                  </P>
+                  </p>
                 </Ruled>
               </Numbered>
             </li>
             <li className="min-w-0">
               <Numbered n={3}>
                 <Ruled>
-                  <P>
+                  <p className={BIG}>
                     <Term>Post-training alignment bias</Term> arises
                     when safety and helpfulness raters apply a single
                     culture&apos;s politeness, directness, or moral norms as the
                     universal standard for model responses.
-                  </P>
+                  </p>
                 </Ruled>
               </Numbered>
             </li>
             <li className="min-w-0">
               <Numbered n={4}>
                 <Ruled>
-                  <P>
+                  <p className={BIG}>
                     <Term>Deployment localization bias</Term> arises
                     when a firm translates an English system prompt
                     word-for-word without adapting the cultural framing or
                     validating model behavior in the target market.
-                  </P>
+                  </p>
                 </Ruled>
               </Numbered>
             </li>
           </ol>
-          <Plate>
-            <LifecycleExploded />
-          </Plate>
         </div>
       </Slide>
 
@@ -422,9 +412,6 @@ export default function Week3Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <TwoHarms />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -607,11 +594,8 @@ export default function Week3Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Consumer Ethnocentrism and In-Group Bias in Large Language Models" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <LatentAttitude />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12">
             <Ruled>
               <p className={BIG}>
                 Beyond visual and linguistic stereotypes, foundation models
@@ -804,9 +788,6 @@ export default function Week3Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <ShoppingRoles />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -954,8 +935,8 @@ export default function Week3Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Auditing and Mitigating Cultural Bias in Global Deployments" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 w-full">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12">
             <Statement className="!max-w-none !text-[clamp(1.3rem,2.1vw,1.8rem)]">
               Because cultural and country-of-origin biases are embedded in
               pre-training weights and post-training alignment,{" "}
@@ -970,9 +951,6 @@ export default function Week3Page() {
               </p>
             </Ruled>
           </div>
-          <Plate>
-            <DeepBias />
-          </Plate>
         </div>
       </Slide>
 
@@ -1022,60 +1000,57 @@ export default function Week3Page() {
         exercise={exercise["mitigation-strategies-across-the-deployment-stack"]}
       >
         <SlideHeading>Mitigation Strategies Across the Deployment Stack</SlideHeading>
-        <ol className="grid w-full gap-x-6 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
+        <ol className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Corpus and multilingual curation</Term>{" "}
                   balances pre-training and fine-tuning data with authentic,
                   locally authored texts across target languages and cultural
                   regions rather than relying on machine-translated English
                   text.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Cross-cultural alignment and pluralistic RLHF</Term>{" "}
                   recruit diverse annotator pools and replace a single cultural
                   rubric with pluralistic alignment that adapts to the norms of
                   the user&apos;s jurisdiction.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Attribute blinding and counterfactual prompt normalization</Term>{" "}
                   strip non-essential national or demographic cues from
                   structured comparison tables when an enterprise procurement
                   agent evaluates supplier bids.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={4}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Post-deployment distributional calibration</Term>{" "}
                   measures the model&apos;s baseline target-country main effects
                   and interaction shifts on validated scales so downstream
                   ranking pipelines can correct for known origin penalties.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
         </ol>
-        <Plate className="mt-5">
-          <MitigationStack />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1088,8 +1063,8 @@ export default function Week3Page() {
         exercise={exercise["auditing-global-brand-visibility-across-multilingual-models"]}
       >
         <SlideHeading>Auditing Global Brand Visibility Across Multilingual Models</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <ol className="grid w-full gap-4">
+        <div className="w-full">
+          <ol className="grid w-full gap-x-10 gap-y-5 md:grid-cols-2">
             {[
               "Step 1 is constructing a fully crossed factorial grid that pairs the foundation models used in the target markets with the relevant target countries, languages, and product categories.",
               "Step 2 is administering validated cross-cultural instruments, such as adapted CETSCALE items and controlled product-comparison vignettes with randomized origin labels.",
@@ -1099,14 +1074,11 @@ export default function Week3Page() {
             ].map((step, i) => (
               <li key={i} className="min-w-0">
                 <Ruled className="!pt-2.5">
-                  <P className="!max-w-none">{step}</P>
+                  <p className={BIG}>{step}</p>
                 </Ruled>
               </li>
             ))}
           </ol>
-          <Plate>
-            <AuditChecks />
-          </Plate>
         </div>
       </Slide>
 
