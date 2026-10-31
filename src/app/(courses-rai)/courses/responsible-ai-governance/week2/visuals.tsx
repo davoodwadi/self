@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, FigureName, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
-import { Chip, Coins, Figure, Gear, House, Lens, Numeral, Pan, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
+import { Chip, Coins, Figure, Gear, House, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 2 PLATES: PATENT DRAWING
@@ -100,67 +100,6 @@ export function StatisticalToMarket() {
   );
 }
 
-/**
- * Disparate treatment and disparate impact at the same gate. The first figure: the
- * gate's sign bars the protected group by name (its figure struck through).
- * The two protected-group customers are stopped. The second figure: the sign is a plain
- * written policy that names no group, and the same two are still stopped.
- */
-export function TreatmentVsImpact() {
-  const id = "w2-treat";
-  const g = 150;
-  const fig = (x0: number, explicit: boolean) => (
-    <g>
-      <line x1={x0} y1={g + 1} x2={x0 + 178} y2={g + 1} {...hair} />
-      {/* stopped before the gate */}
-      <Figure id={id} x={x0 + 16} y={g} s={0.68} coat="signal" stroke={PAT.signal} />
-      <Figure id={id} x={x0 + 44} y={g} s={0.68} coat="signal" stroke={PAT.signal} />
-      {/* boom gate: a post and its lowered boom across the path */}
-      <ObliqueBox id={id} x={x0 + 70} y={g - 66} w={12} h={66} dx={8} dy={5} />
-      <path d={`M${x0 + 82} ${g - 44}L${x0 + 124} ${g - 69}V${g - 61}L${x0 + 82} ${g - 36}Z`} fill={stip(id, "light")} {...ink} />
-      <path d={`M${x0 + 82} ${g - 44}L${x0 + 90} ${g - 49}V${g - 41}L${x0 + 82} ${g - 36}Z`} fill={PAT.paper} {...ink} />
-      {/* through the gate */}
-      <Figure id={id} x={x0 + 140} y={g} s={0.68} coat="paper" />
-      <Figure id={id} x={x0 + 166} y={g} s={0.68} coat="paper" />
-      {/* the gate's sign */}
-      <line x1={x0 + 80} y1={60} x2={x0 + 80} y2={g - 71} {...ink} />
-      <ObliqueBox id={id} x={x0 + 48} y={10} w={64} h={50} dx={6} dy={4} />
-      {explicit ? (
-        <g>
-          <Figure id={id} x={x0 + 80} y={53} s={0.46} coat="dense" />
-          <circle cx={x0 + 80} cy={35} r={21} fill="none" {...ink} strokeWidth={LINE.bold} />
-          <line x1={r2(x0 + 80 - 14.85)} y1={r2(35 - 14.85)} x2={r2(x0 + 80 + 14.85)} y2={r2(35 + 14.85)} {...ink} strokeWidth={LINE.bold} />
-        </g>
-      ) : (
-        <g>
-          <line x1={x0 + 56} y1={21} x2={x0 + 96} y2={21} {...ink} />
-          {[30, 38, 46].map((y) => (
-            <line key={y} x1={x0 + 56} y1={y} x2={x0 + (y === 46 ? 90 : 104)} y2={y} {...hair} />
-          ))}
-        </g>
-      )}
-    </g>
-  );
-  return (
-    <Frame
-      width={400}
-      height={176}
-      label="Patent drawing in two figures of the same boom gate, its boom lowered across the path. Two customers of the protected group, in red, are stopped before the gate. Two other customers have passed through. The first figure, disparate treatment: the gate's sign shows the protected group's figure struck through. The second figure, disparate impact: the sign is a plain written policy that names no group, and the same two protected-group customers are still stopped."
-    >
-      <PatentDefs id={id} />
-      {fig(8, true)}
-      <line x1={200} y1={10} x2={200} y2={156} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-      {fig(212, false)}
-      <FigureName x={100} y={172} size={12.5}>
-        disparate treatment
-      </FigureName>
-      <FigureName x={304} y={172} size={12.5}>
-        disparate impact
-      </FigureName>
-    </Frame>
-  );
-}
-
 /** A graduated cylinder seen from the front, filled to `level` (0..1 of its height). */
 function Cylinder({ id, cx, top, bottom, rx = 30, ry = 7, level, red = false, tone = "light" }: { id: string; cx: number; top: number; bottom: number; rx?: number; ry?: number; level: number; red?: boolean; tone?: "light" | "dense" }) {
   const yl = r2(bottom - (bottom - top) * level);
@@ -240,95 +179,6 @@ export function FourFifthsRule() {
       <Slider label="Protected group selection rate" value={rateB} min={10} max={60} step={2} onChange={setRateB} formatValue={(v) => `${v}%`} />
     </div>
   );
-}
-
-/**
- * Part 1: the pipeline pulled apart along its centre line into the four
- * stages bias can enter (data generation, measurement, model specification,
- * market deployment). Each stage is its own mechanism and lets bias in its
- * own way (red): a skewed record in the hopper, a gauge reading off, a
- * mis-cut gear, and a short allocation to one group's tray.
- */
-export function PipelineStages() {
-  const id = "w2-stages";
-  const y = 62;
-  const h = 84;
-  const w = 172;
-  const xs = [18, 214, 410, 606];
-  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  const keys = ["Data generation", "Measurement", "Model specification", "Market deployment"];
-  return (
-    <Frame
-      width={800}
-      height={204}
-      label="Patent drawing, exploded view: the modeling pipeline pulled apart along a centre line into four housings, data generation, measurement, model specification and market deployment. Bias enters each in its own way, drawn in red: one skewed record among the records falling into the data hopper, a gauge whose needle reads off its mark, a mis-cut gear in the model's gear train, and, at deployment, a short stack of allocations in one group's tray beside a full stack in the other's."
-    >
-      <PatentDefs id={id} />
-      <line x1={12} y1={y + 30} x2={792} y2={y + 30} {...hair} strokeDasharray={CENTRE_DASH} />
-      {xs.map((x, i) => (
-        <g key={x}>
-          <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={12} dy={8} />
-          {/* flanges where the housings were pulled apart */}
-          <rect x={x - 5} y={y + 14} width={5} height={32} fill={PAT.paper} {...ink} />
-          <rect x={x + w} y={y + 14} width={5} height={32} fill={stip(id, "dense")} {...ink} />
-          <line x1={x} y1={y + 58} x2={x + w} y2={y + 58} {...hair} />
-          <PatentKey x={x + w / 2} y={y + 75} size={9.5}>
-            {keys[i]}
-          </PatentKey>
-        </g>
-      ))}
-
-      {/* 1: data generation: records falling into a hopper */}
-      <path d="M58 8H148L114 54H92Z" fill={PAT.paper} {...ink} />
-      <path d="M148 8L156 3L120 50L114 54Z" fill={stip(id, "dense")} {...ink} />
-      <path d={`M92 54V${y}M114 54V${y - 6}`} fill="none" {...ink} />
-      <Chip id={id} x={78} y={30} w={22} d={7} sk={8} />
-      <Chip id={id} x={102} y={22} w={22} d={7} sk={8} red />
-      <Chip id={id} x={92} y={44} w={16} d={6} sk={6} />
-
-      {/* 2: measurement: a gauge reading off its mark */}
-      <circle cx={300} cy={y + 29} r={24} fill={stip(id, "light")} {...ink} />
-      <circle cx={300} cy={y + 29} r={20} fill={PAT.paper} {...ink} />
-      {[-60, -30, 30, 60].map((t) => (
-        <line
-          key={t}
-          x1={r2(300 + Math.sin((t * Math.PI) / 180) * 18)}
-          y1={r2(y + 29 - Math.cos((t * Math.PI) / 180) * 18)}
-          x2={r2(300 + Math.sin((t * Math.PI) / 180) * 13)}
-          y2={r2(y + 29 - Math.cos((t * Math.PI) / 180) * 13)}
-          {...hair}
-        />
-      ))}
-      <path d={`M300 ${y + 14}L297 ${y + 8}H303Z`} fill={PAT.ink} />
-      <line x1={300} y1={y + 29} x2={r2(300 + Math.sin(0.8) * 16)} y2={r2(y + 29 - Math.cos(0.8) * 16)} {...red} />
-      <circle cx={300} cy={y + 29} r={2} fill={PAT.signal} />
-
-      {/* 3: model specification: the gear train, one gear mis-cut */}
-      <circle cx={496} cy={y + 29} r={26} fill={stip(id, "light")} {...ink} />
-      <Gear cx={487} cy={y + 23} r={11} n={10} />
-      <path d={gearPathRed(505, y + 37, 7, 7)} fill={PAT.paper} {...red} strokeWidth={LINE.outline} />
-      <circle cx={505} cy={y + 37} r={1.8} fill={PAT.signal} />
-
-      {/* 4: market deployment: a nozzle filling two groups' trays */}
-      <path d={`M689 ${y + h}V${y + h + 10}H681V${y + h + 18}H703V${y + h + 10}H695V${y + h}Z`} fill={PAT.paper} {...ink} />
-      <ObliqueBox id={id} x={658} y={194} w={56} h={7} dx={10} dy={6} />
-      <ObliqueBox id={id} x={726} y={194} w={50} h={7} dx={10} dy={6} />
-      <Coins id={id} cx={692} y={193} n={4} rx={13} ry={4} h={5} />
-      <Coins id={id} cx={753} y={193} n={1} rx={13} ry={4} h={5} red />
-    </Frame>
-  );
-}
-
-/** A gear outline for the mis-cut gear: one tooth missing. */
-function gearPathRed(cx: number, cy: number, r: number, n: number) {
-  const pts: string[] = [];
-  for (let i = 0; i < n; i++) {
-    const a = (i / n) * Math.PI * 2;
-    const st = (Math.PI * 2) / n;
-    const ring = i === 2 ? [[r, a], [r, a + st * 0.54]] : [[r, a], [r + 3, a + st * 0.12], [r + 3, a + st * 0.42], [r, a + st * 0.54]];
-    for (const [rr, aa] of ring) pts.push(`${r2(cx + rr * Math.cos(aa))} ${r2(cy + rr * Math.sin(aa))}`);
-  }
-  return `M${pts.join("L")}Z`;
 }
 
 /**
@@ -466,32 +316,6 @@ export function RepresentationBias() {
   );
 }
 
-/** A thermometer standing with its bulb at (cx, bulbY), filled to `level` (y of the column's top). */
-function Thermometer({ id, cx, top, bulbY, level }: { id: string; cx: number; top: number; bulbY: number; level: number }) {
-  return (
-    <g>
-      <path d={`M${cx - 4} ${bulbY - 6}V${top + 4}A4 4 0 0 1 ${cx + 4} ${top + 4}V${bulbY - 6}`} fill={PAT.paper} {...ink} />
-      <rect x={cx - 1.6} y={level} width={3.2} height={r2(bulbY - level)} fill={stip(id, "dense")} />
-      <circle cx={cx} cy={bulbY} r={7} fill={stip(id, "dense")} {...ink} />
-      {[0.25, 0.5, 0.75].map((f) => {
-        const ty = r2(top + 8 + (bulbY - 14 - top) * f);
-        return <line key={f} x1={cx + 4} y1={ty} x2={cx + 8} y2={ty} {...hair} />;
-      })}
-    </g>
-  );
-}
-
-/** A patrol light: a domed beacon on its base, base centre at (cx, base). */
-function Siren({ id, cx, base }: { id: string; cx: number; base: number }) {
-  return (
-    <g>
-      <ObliqueBox id={id} x={cx - 9} y={base - 6} w={18} h={6} dx={4} dy={2.5} />
-      <path d={`M${cx - 7} ${base - 6}V${base - 14}A7 8 0 0 1 ${cx + 7} ${base - 14}V${base - 6}Z`} fill={PAT.paper} {...ink} />
-      <line x1={cx - 7} y1={base - 12} x2={cx + 7} y2={base - 12} {...hair} />
-    </g>
-  );
-}
-
 /** A pile of `n` record sheets lying flat, front-left corner at (x, y). */
 function Pile({ id, x, y, n, w = 40, red = false }: { id: string; x: number; y: number; n: number; w?: number; red?: boolean }) {
   const c = red ? PAT.signal : PAT.ink;
@@ -505,66 +329,6 @@ function Pile({ id, x, y, n, w = 40, red = false }: { id: string; x: number; y: 
       ))}
       <path d={`M${x} ${y - n * t}L${x + 10} ${r2(y - 7 - n * t)}H${x + w + 10}L${x + w} ${y - n * t}Z`} fill={PAT.paper} stroke={c} strokeWidth={LINE.outline} strokeLinejoin="round" />
     </g>
-  );
-}
-
-/**
- * Measurement bias, two proxies. The first figure: two patients equally sick (same
- * thermometer reading), but the lower-income patient (dense coat) has spent
- * far less on care (short coin stack, red). The second figure: two identical
- * neighborhoods. The one under three patrol lights piles up far more
- * arrest records (red) than the one with a single light.
- */
-export function MeasurementBias() {
-  const id = "w2-meas";
-  const g = 170;
-  return (
-    <Frame
-      width={400}
-      height={204}
-      label="Patent drawing in two figures. The first figure, healthcare expenditures: two patients' records, a higher-income patient and a lower-income patient in a dense coat, each stand by a thermometer at the same reading, equally sick. The higher-income patient's stack of spent coins is tall, the lower-income patient's is short and drawn in red. The second figure, arrest records: two identical houses. Three patrol lights stand before the first and one before the second. The first neighborhood's pile of arrest records is tall and drawn in red, the second's is short."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: same sickness, unequal spending */}
-      <line x1={8} y1={g + 1} x2={190} y2={g + 1} {...hair} />
-      {[
-        { x: 22, coat: "paper" as const, coins: 9 },
-        { x: 112, coat: "dense" as const, coins: 2 },
-      ].map((p) => (
-        <g key={p.x}>
-          <Portrait id={id} x={p.x} y={g - 44} w={26} h={44} coat={p.coat} />
-          <Thermometer id={id} cx={p.x + 38} top={86} bulbY={g - 8} level={102} />
-          <Coins id={id} cx={p.x + 64} y={g} n={p.coins} rx={11} ry={3.5} h={6} red={p.coins < 4} />
-        </g>
-      ))}
-      <line x1={48} y1={102} x2={162} y2={102} {...hair} strokeDasharray="4 2.5" />
-
-      <line x1={200} y1={14} x2={200} y2={178} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: same neighborhoods, unequal policing */}
-      <line x1={210} y1={g + 1} x2={394} y2={g + 1} {...hair} />
-      {[
-        { x: 216, patrols: 3, records: 12 },
-        { x: 308, patrols: 1, records: 3 },
-      ].map((n) => (
-        <g key={n.x}>
-          <House id={id} x={n.x + 10} y={100} w={46} h={30} dx={10} dy={6} roof={18} />
-          <line x1={n.x} y1={123} x2={n.x + 80} y2={123} {...hair} />
-          {Array.from({ length: n.patrols }, (_, k) => (
-            <Siren key={k} id={id} cx={r2(n.x + 33 + (k - (n.patrols - 1) / 2) * 22)} base={122} />
-          ))}
-          <Pile id={id} x={n.x + 6} y={g} n={n.records} w={46} red={n.records > 6} />
-        </g>
-      ))}
-
-      <FigureName x={100} y={196} size={12}>
-        healthcare expenditures
-      </FigureName>
-      <FigureName x={302} y={196} size={12}>
-        arrest records
-      </FigureName>
-    </Frame>
   );
 }
 
@@ -763,103 +527,6 @@ export function FeedbackLoop() {
       <PatentKey x={208} y={182} fill={PAT.signal} size={10}>
         Never observed
       </PatentKey>
-    </Frame>
-  );
-}
-
-/**
- * Identifying the four sources, one figure each, in the week's cast.
- * The first figure historical bias: a large, cleanly kept pile of records whose label
- * tabs are red. The second figure representation bias: the population's faces above a
- * sample tray whose protected-group seats are empty (red). The third figure
- * measurement bias: equal thermometers, unequal coin stacks (the short one
- * red). The fourth figure aggregation bias: one straightedge through two groups, the
- * minority's residuals red.
- */
-export function FourSources() {
-  const id = "w2-four";
-  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, strokeLinecap: "round" as const };
-  const g = 152;
-  const people = ["paper", "dense", "paper", "paper", "dense", "paper", "dense", "paper"] as const;
-  const X = (v: number) => r2(626 + v * 14);
-  const Y = (v: number) => r2(146 - v * 10);
-  const major: [number, number][] = [[0.5, 1.3], [1.5, 1.6], [2.4, 2.4], [3.3, 2.5], [4.2, 3.2], [5.1, 3.3], [6, 4], [6.9, 4.1], [7.8, 4.8]];
-  const minor: [number, number][] = [[4.6, 4.6], [5.6, 6.1], [6.6, 7.6], [7.6, 9.1]];
-  const pooled = (x: number) => 1.15 + 0.47 * x;
-  return (
-    <Frame
-      width={800}
-      height={196}
-      label="Patent drawing in four figures. The first figure, historical bias: a large, neat pile of records whose label tabs are all red. The second figure, representation bias: a row of eight faces from the population, three of the protected group, above a sample tray whose three protected-group seats are empty and outlined in red. The third figure, measurement bias: two thermometers at the same reading beside two coin stacks, one tall and one short in red. The fourth figure, aggregation bias: one straightedge laid through white majority points and dense minority points, the minority points' residuals drawn in red."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: historical bias: the labels themselves */}
-      <line x1={20} y1={g + 1} x2={182} y2={g + 1} {...hair} />
-      <Pile id={id} x={60} y={g} n={30} w={86} />
-      {Array.from({ length: 10 }, (_, i) => (
-        <path key={i} d={`M60 ${g - 5 - i * 9}h-12v-5h12`} fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} strokeLinejoin="round" />
-      ))}
-
-      <line x1={200} y1={16} x2={200} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: representation bias: seats left empty in the sample */}
-      {people.map((c, i) => (
-        <Portrait key={i} id={id} x={224 + i * 19} y={30} w={16} h={26} coat={c} />
-      ))}
-      <line x1={300} y1={64} x2={300} y2={88} {...hair} strokeDasharray={CENTRE_DASH} />
-      <path d={headAlongPath(300, 92, 0, 1, 6)} fill="none" {...hair} />
-      <ObliqueBox id={id} x={220} y={100} w={160} h={44} dx={10} dy={6} />
-      {people.map((c, i) =>
-        c === "dense" ? (
-          <rect key={i} x={226 + i * 19} y={108} width={16} height={26} fill="none" stroke={PAT.signal} strokeWidth={LINE.outline} strokeDasharray="3 2" />
-        ) : (
-          <Portrait key={i} id={id} x={226 + i * 19} y={108} w={16} h={26} />
-        ),
-      )}
-
-      <line x1={400} y1={16} x2={400} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The third figure: measurement bias: same need, unequal spending */}
-      <line x1={420} y1={g + 1} x2={582} y2={g + 1} {...hair} />
-      {[
-        { x: 440, coins: 9 },
-        { x: 516, coins: 2 },
-      ].map((p) => (
-        <g key={p.x}>
-          <Thermometer id={id} cx={p.x} top={52} bulbY={g - 8} level={70} />
-          <Coins id={id} cx={p.x + 36} y={g} n={p.coins} rx={12} ry={4} h={7} red={p.coins < 4} />
-        </g>
-      ))}
-      <line x1={448} y1={70} x2={524} y2={70} {...hair} strokeDasharray="4 2.5" />
-
-      <line x1={600} y1={16} x2={600} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The fourth figure: aggregation bias: one straightedge for two groups */}
-      <path d="M622 30V150H780" fill="none" {...ink} />
-      {minor.map(([x, y]) => (
-        <line key={x} x1={X(x)} y1={Y(y)} x2={X(x)} y2={Y(pooled(x))} {...red} />
-      ))}
-      <line x1={X(0)} y1={Y(pooled(0))} x2={X(10.5)} y2={Y(pooled(10.5))} {...ink} strokeWidth={LINE.bold} />
-      {major.map(([x, y]) => (
-        <circle key={x} cx={X(x)} cy={Y(y)} r={3.4} fill={PAT.paper} {...ink} />
-      ))}
-      {minor.map(([x, y]) => (
-        <circle key={x} cx={X(x)} cy={Y(y)} r={4.4} fill={stip(id, "dense")} {...ink} />
-      ))}
-
-      <FigureName x={100} y={186} size={12}>
-        historical bias
-      </FigureName>
-      <FigureName x={300} y={186} size={12}>
-        representation bias
-      </FigureName>
-      <FigureName x={500} y={186} size={12}>
-        measurement bias
-      </FigureName>
-      <FigureName x={700} y={186} size={12}>
-        aggregation bias
-      </FigureName>
     </Frame>
   );
 }
@@ -1257,253 +924,6 @@ export function CalibrationTubes() {
   );
 }
 
-/**
- * Selecting a criterion, one context per figure. The first figure, demographic parity:
- * an outreach billboard reaches the same number from each group. The second figure,
- * equal opportunity: a qualified applicant's sealed file at a screening
- * gate. The third figure, equalized odds: a level balance weighs each
- * group's fraud flags. The fourth figure, predictive parity and calibration: one risk
- * score dial with a single cutoff mark.
- */
-export function CriterionContexts() {
-  const id = "w2-select";
-  const g = 156;
-  const at = (deg: number, r: number) => {
-    const a = ((deg - 90) * Math.PI) / 180;
-    return [r2(700 + Math.cos(a) * r), r2(104 + Math.sin(a) * r)] as const;
-  };
-  const [n1, n2] = at(28, 30);
-  const [c1, c2] = at(6, 51);
-  const [c3, c4] = at(14, 51);
-  const [c5, c6] = at(10, 43);
-  return (
-    <Frame
-      width={800}
-      height={192}
-      label="Patent drawing in four figures. The first figure, demographic parity: an outreach billboard on two posts faces three portraits from each group. The second figure, equal opportunity: a qualified applicant's file, sealed with a certificate, waits at a lowered screening gate. The third figure, equalized odds: a balance hangs level with one fraud flag in each pan, one pan per group. The fourth figure, predictive parity and calibration: a risk score dial with a single cutoff mark on its rim and its needle just past it."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: outreach billboard, equal reach */}
-      <line x1={18} y1={g + 1} x2={186} y2={g + 1} {...hair} />
-      <line x1={86} y1={74} x2={86} y2={g} {...ink} />
-      <line x1={112} y1={74} x2={112} y2={g} {...ink} />
-      <ObliqueBox id={id} x={40} y={26} w={120} h={48} dx={8} dy={5} />
-      {[40, 50, 60].map((y) => (
-        <line key={y} x1={52} x2={y === 60 ? 120 : 148} y1={y} y2={y} {...hair} />
-      ))}
-      {[16, 38, 60].map((x) => (
-        <Portrait key={x} id={id} x={x} y={g - 32} w={18} h={32} />
-      ))}
-      {[122, 144, 166].map((x) => (
-        <Portrait key={x} id={id} x={x} y={g - 32} w={18} h={32} coat="dense" />
-      ))}
-
-      <line x1={200} y1={16} x2={200} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: a qualified applicant at the screening gate */}
-      <line x1={218} y1={g + 1} x2={386} y2={g + 1} {...hair} />
-      {/* the qualified applicant's file, its certificate seal on the cover */}
-      <ObliqueBox id={id} x={236} y={g - 76} w={56} h={76} dx={8} dy={5} />
-      <Portrait id={id} x={244} y={g - 68} w={18} h={26} />
-      {[g - 64, g - 56, g - 48].map((y) => (
-        <line key={y} x1={268} y1={y} x2={284} y2={y} {...hair} />
-      ))}
-      <circle cx={264} cy={g - 20} r={11} fill={stip(id, "light")} {...ink} />
-      <circle cx={264} cy={g - 20} r={6.5} fill={PAT.paper} {...hair} />
-      <ObliqueBox id={id} x={312} y={g - 70} w={12} h={70} dx={8} dy={5} />
-      <path d={`M324 ${g - 46}L370 ${g - 74}V${g - 66}L324 ${g - 38}Z`} fill={stip(id, "light")} {...ink} />
-
-      <line x1={400} y1={16} x2={400} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The third figure: a level balance, one fraud flag in each group's pan */}
-      <ObliqueBox id={id} x={466} y={g - 10} w={68} h={10} dx={10} dy={6} />
-      <path d={`M496 ${g - 10}V40H504V${g - 10}`} fill={PAT.paper} {...ink} />
-      <path d="M430 34H570V40H430Z" fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
-      <circle cx={500} cy={36} r={4} fill={PAT.paper} {...ink} />
-      <Pan id={id} cx={442} hookY={40} y={108} w={48} />
-      <Pan id={id} cx={558} hookY={40} y={108} w={48} />
-      {[438, 554].map((x) => (
-        <g key={x}>
-          <line x1={x} y1={106} x2={x} y2={84} {...ink} />
-          <path d={`M${x} 84L${x + 14} 89L${x} 94Z`} fill={PAT.paper} {...ink} />
-        </g>
-      ))}
-      <PatentKey x={442} y={134} size={10}>
-        Group A
-      </PatentKey>
-      <PatentKey x={558} y={134} size={10}>
-        Group B
-      </PatentKey>
-
-      <line x1={600} y1={16} x2={600} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The fourth figure: one risk score, one cutoff */}
-      <circle cx={700} cy={104} r={50} fill={stip(id, "light")} {...ink} />
-      <circle cx={700} cy={104} r={44} fill={PAT.paper} {...ink} />
-      {[-120, -90, -60, -30, 0, 30, 60, 90, 120].map((t) => {
-        const [x1, y1] = at(t, 42);
-        const [x2, y2] = at(t, 36);
-        return <line key={t} x1={x1} y1={y1} x2={x2} y2={y2} {...hair} />;
-      })}
-      <path d={`M${c1} ${c2}L${c3} ${c4}L${c5} ${c6}Z`} fill={PAT.ink} />
-      <line x1={700} y1={104} x2={n1} y2={n2} {...ink} strokeWidth={LINE.bold} />
-      <circle cx={700} cy={104} r={3} fill={PAT.ink} />
-
-      <FigureName x={100} y={184} size={12}>
-        demographic parity
-      </FigureName>
-      <FigureName x={300} y={184} size={12}>
-        equal opportunity
-      </FigureName>
-      <FigureName x={500} y={184} size={12}>
-        equalized odds
-      </FigureName>
-      <FigureName x={700} y={184} size={12}>
-        calibration
-      </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * Part 3. The first figure, the group average: eight members of one group, a tick or
- * a cross over each, average to 50 percent. Yet two equally qualified
- * members side by side get opposite outcomes, the rejected one red. The second figure,
- * the single consumer: one person under a hand lens.
- */
-export function GroupAverageVsIndividual() {
-  const id = "w2-indiv";
-  const g = 168;
-  const members = [
-    { ok: true, q: false },
-    { ok: false, q: false },
-    { ok: true, q: true },
-    { ok: false, q: true, red: true },
-    { ok: true, q: false },
-    { ok: false, q: false },
-    { ok: true, q: false },
-    { ok: false, q: false },
-  ];
-  return (
-    <Frame
-      width={800}
-      height={206}
-      label="Patent drawing in two figures. The first figure, the group average: eight members of one group stand in a row under a bar reading a 50% group average. A tick or a cross hangs over each. Two members side by side, both holding up the same certificate, are equally qualified, yet one has a tick and the other a cross, drawn in red. The second figure, the single consumer: one person stands under a large hand lens."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: the group average */}
-      <line x1={20} y1={g + 1} x2={480} y2={g + 1} {...hair} />
-      <ObliqueBox id={id} x={40} y={18} w={420} h={22} dx={10} dy={6} />
-      <PatentKey x={250} y={34} size={11}>
-        Group average 50%
-      </PatentKey>
-      {members.map((m, i) => {
-        const x = 62 + i * 54;
-        const c = m.red ? PAT.signal : PAT.ink;
-        return (
-          <g key={i}>
-            {m.ok ? (
-              <path d={tick(x + 4, 58, 7)} fill="none" stroke={c} strokeWidth={LINE.bold} strokeLinecap="round" strokeLinejoin="round" />
-            ) : (
-              <path d={cross(x + 4, 58, 6)} fill="none" stroke={c} strokeWidth={LINE.bold} strokeLinecap="round" />
-            )}
-            {m.q ? (
-              <Qualified id={id} x={x} y={g} s={0.86} coat={m.red ? "signal" : "paper"} stroke={c} />
-            ) : (
-              <Figure id={id} x={x} y={g} s={0.86} coat="paper" />
-            )}
-          </g>
-        );
-      })}
-
-      <line x1={500} y1={14} x2={500} y2={184} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: the single consumer under the lens */}
-      <line x1={540} y1={g + 1} x2={780} y2={g + 1} {...hair} />
-      <Figure id={id} x={640} y={g} s={1.2} coat="paper" />
-      {/* a hand lens held over the consumer: rim and handle, the glass clear */}
-      <path d="M640 52a52 52 0 1 0 0.01 0ZM640 58a46 46 0 1 1 -0.01 0Z" fill={stip(id, "dense")} fillRule="evenodd" {...ink} />
-      <path d="M676.2 67.4L704.5 39.1L711.6 46.2L683.3 74.5" fill={stip(id, "dense")} {...ink} />
-
-      <FigureName x={250} y={198} size={12}>
-        the group average
-      </FigureName>
-      <FigureName x={640} y={198} size={12}>
-        the single consumer
-      </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * Individual fairness. The first figure: two consumers' profiles stand close on the
- * profile rail. The same span, carried down by dashed lines, bounds how far
- * apart their predictions may fall. The second figure, tokenism: five members of the
- * protected group (portraits) stand on steps by qualification. The model selects two
- * arbitrary members (ticks) and passes over the most qualified (red).
- */
-export function IndividualFairness() {
-  const id = "w2-lip";
-  const steps = [0, 1, 2, 3, 4];
-  const picked = [0, 2];
-  return (
-    <Frame
-      width={800}
-      height={200}
-      label="Patent drawing in two figures. The first figure, distance between predictions: two consumer profiles stand close together on a profile rail. Dashed lines carry the same span down to a prediction rail, where both consumers' predictions fall inside it. The second figure, tokenism: five portraits of protected-group members stand on five rising steps ordered by qualification. Ticks mark the two the model selects, on the lowest and the middle step, while the most qualified member on the top step is passed over with a red cross."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: the profile span bounds the prediction span */}
-      <ObliqueBox id={id} x={50} y={92} w={290} h={8} dx={10} dy={6} />
-      <PatentKey x={50} y={78} anchor="start" size={10}>
-        Profiles
-      </PatentKey>
-      <Portrait id={id} x={152} y={48} w={26} h={40} />
-      <Portrait id={id} x={190} y={48} w={26} h={40} />
-      <ObliqueBox id={id} x={50} y={160} w={290} h={8} dx={10} dy={6} />
-      <PatentKey x={50} y={146} anchor="start" size={10}>
-        Predictions
-      </PatentKey>
-      <line x1={165} y1={102} x2={165} y2={152} {...hair} strokeDasharray="4 3" />
-      <line x1={203} y1={102} x2={203} y2={152} {...hair} strokeDasharray="4 3" />
-      <path d="M165 38V30H203V38" fill="none" {...ink} />
-      {[172, 194].map((x) => (
-        <path key={x} d={`M${x} 156L${x - 5} 146H${x + 5}Z`} fill={PAT.ink} />
-      ))}
-
-      <line x1={400} y1={14} x2={400} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: tokenism */}
-      {steps.map((i) => {
-        const x = 438 + i * 66;
-        const h = 14 + i * 14;
-        const top = 168 - h;
-        const chosen = picked.includes(i);
-        const passed = i === 4;
-        const c = passed ? PAT.signal : PAT.ink;
-        return (
-          <g key={i}>
-            <ObliqueBox id={id} x={x} y={top} w={56} h={h} dx={10} dy={6} />
-            <Portrait id={id} x={x + 16} y={top - 44} w={26} h={40} coat={passed ? "signal" : "dense"} stroke={c} />
-            {chosen ? <path d={tick(x + 30, top - 58, 7)} fill="none" {...ink} strokeWidth={LINE.bold} /> : null}
-            {passed ? <path d={cross(x + 30, top - 58, 6)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" /> : null}
-          </g>
-        );
-      })}
-
-      <FigureName x={200} y={196} size={12}>
-        distance between predictions
-      </FigureName>
-      <FigureName x={600} y={196} size={12}>
-        tokenism
-      </FigureName>
-    </Frame>
-  );
-}
-
 /** A straight pipe run from (x1, y1) to (x2, y2), horizontal or vertical, `red` when it carries the discrimination. */
 function Pipe({ id, x1, y1, x2, y2, red = false }: { id: string; x1: number; y1: number; x2: number; y2: number; red?: boolean }) {
   const t = 3.5;
@@ -1596,56 +1016,6 @@ export function CausalPipework() {
       <FigureName x={600} y={168} size={12}>
         counterfactual fairness
       </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * Part 4: the three criteria as three pins on one rigid plate, over a base
- * with three holes. Two pins line up with their holes. The third, held by
- * the same plate, misses its hole (red): the three cannot all be seated.
- */
-export function IncompatibleTriad() {
-  const id = "w2-triad";
-  const pins = [
-    { x: 250, top: 78, tip: 120, hole: [250, 166], key: "Independence", kx: 236, ky: 104, anchor: "end" as const },
-    { x: 550, top: 78, tip: 120, hole: [550, 166], key: "Separation", kx: 564, ky: 104, anchor: "start" as const },
-    { x: 430, top: 40, tip: 108, hole: [398, 134], key: "Sufficiency", kx: 436, ky: 22, anchor: "middle" as const, red: true },
-  ];
-  return (
-    <Frame
-      width={800}
-      height={200}
-      label="Patent drawing: a rigid triangular plate carries three pins, independence, separation and sufficiency, held over a base with three holes. Centre lines show the independence and separation pins lining up with their holes. The sufficiency pin, fixed by the same plate, lands beside its hole, and the pin and its miss are drawn in red."
-    >
-      <PatentDefs id={id} />
-      {/* base with three holes */}
-      <path d="M150 184L222 124H692L620 184Z" fill={stip(id, "light")} {...ink} />
-      <path d="M150 184V194H620L692 134V124L620 184Z" fill={stip(id, "dense")} {...ink} />
-      <line x1={150} y1={184} x2={620} y2={184} {...ink} />
-      {pins.map((p) => (
-        <ellipse key={p.key} cx={p.hole[0]} cy={p.hole[1]} rx={14} ry={5} fill={PAT.paper} {...ink} />
-      ))}
-      {/* pins, the back one first */}
-      {[...pins].reverse().map((p) => {
-        const c = p.red ? PAT.signal : PAT.ink;
-        return (
-          <g key={p.key}>
-            <line x1={p.x} y1={p.tip + 4} x2={p.x} y2={p.hole[1] + (p.red ? 6 : -7)} stroke={c} strokeWidth={LINE.hair} strokeDasharray={CENTRE_DASH} />
-            <path d={`M${p.x - 5} ${p.top}V${p.tip - 7}L${p.x} ${p.tip}L${p.x + 5} ${p.tip - 7}V${p.top}`} fill={PAT.paper} stroke={c} strokeWidth={p.red ? LINE.bold : LINE.outline} strokeLinejoin="round" />
-            <PatentKey x={p.kx} y={p.ky} anchor={p.anchor} size={11} fill={c}>
-              {p.key}
-            </PatentKey>
-          </g>
-        );
-      })}
-      {/* the rigid plate: a triangle with thickness */}
-      <path d="M244 70L556 70V78L244 78Z" fill={PAT.paper} {...ink} />
-      <path d="M556 70L436 32V40L556 78Z" fill={stip(id, "dense")} {...ink} />
-      <path d="M244 70L436 32L556 70Z" fill={PAT.paper} />
-      <path d="M244 70L436 32L556 70Z" fill={stip(id, "light")} {...ink} />
-      {/* the miss */}
-      <path d="M398 146V154M430 146V154M398 150H430" fill="none" stroke={PAT.signal} strokeWidth={LINE.hair} />
     </Frame>
   );
 }
@@ -1760,193 +1130,6 @@ export function ImpossibilityLevels() {
   );
 }
 
-/** A level balance with one pan per group. `load` draws what each pan holds. */
-function Balance({ id, cx, base, load }: { id: string; cx: number; base: number; load: (x: number, y: number) => React.ReactNode }) {
-  return (
-    <g>
-      <ObliqueBox id={id} x={cx - 34} y={base - 10} w={68} h={10} dx={10} dy={6} />
-      <path d={`M${cx - 4} ${base - 10}V40H${cx + 4}V${base - 10}`} fill={PAT.paper} {...ink} />
-      <path d={`M${cx - 70} 34H${cx + 70}V40H${cx - 70}Z`} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
-      <circle cx={cx} cy={36} r={4} fill={PAT.paper} {...ink} />
-      <Pan id={id} cx={cx - 58} hookY={40} y={108} w={48} />
-      <Pan id={id} cx={cx + 58} hookY={40} y={108} w={48} />
-      {load(cx - 58, 106)}
-      {load(cx + 58, 106)}
-    </g>
-  );
-}
-
-/**
- * Managerial trade-offs, one domain per figure. The first figure, consumer credit: the
- * same score of 700 hangs over both groups' creditworthy borrowers, but more
- * of the disadvantaged group's are rejected (red). The second figure, automated resume
- * screening: the top of the funnel lets qualified candidates from both
- * groups through to a human interviewer. The third figure, medical triage or fraud
- * intervention: a level balance carries the same errors for each group.
- */
-export function DomainTradeoffs() {
-  const id = "w2-domain";
-  const g = 158;
-  const credit = (x0: number, rejected: number, coat: "paper" | "dense") =>
-    Array.from({ length: 5 }, (_, i) => {
-      const red = i < rejected;
-      return <Portrait key={i} id={id} x={x0 + i * 21 - 9} y={g - 34} w={18} h={34} coat={red ? "signal" : coat} stroke={red ? PAT.signal : PAT.ink} />;
-    });
-  return (
-    <Frame
-      width={800}
-      height={196}
-      label="Patent drawing in three figures. The first figure, consumer credit: a tag reading 700 hangs over two rows of five creditworthy borrowers, one row from each group. One borrower of the advantaged group and three of the disadvantaged group are rejected, drawn in red. The second figure, automated resume screening: résumés enter the top of a funnel, and the files of qualified candidates from both groups lie on a human interviewer's desk. The third figure, medical triage or fraud intervention: a balance hangs level, each group's pan holding one false flag and one missed case."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: consumer credit */}
-      <line x1={14} y1={g + 1} x2={244} y2={g + 1} {...hair} />
-      <line x1={128} y1={34} x2={128} y2={58} {...hair} />
-      <Tag cx={134} cy={26} text="700" w={58} size={15} />
-      <path d="M40 76H220" fill="none" {...hair} />
-      <path d="M40 76V86M220 76V86M128 58V76" fill="none" {...hair} />
-      {credit(24, 1, "paper")}
-      {credit(140, 3, "dense")}
-
-      <line x1={264} y1={14} x2={264} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: the top of the screening funnel, onto the interviewer's desk */}
-      {[0, 1, 2, 3].map((i) => (
-        <Chip key={i} id={id} x={300 + i * 30} y={24 - (i % 2) * 6} w={22} d={7} sk={8} />
-      ))}
-      <ellipse cx={360} cy={40} rx={58} ry={10} fill={stip(id, "dense")} {...ink} />
-      <path d="M302 40L350 72H370L418 40A58 10 0 0 1 302 40Z" fill={PAT.paper} {...ink} />
-      <path d="M350 72V80H370V72" fill={PAT.paper} {...ink} />
-      <line x1={360} y1={83} x2={360} y2={90} {...hair} strokeDasharray="3 2" />
-      <line x1={286} y1={g + 1} x2={510} y2={g + 1} {...hair} />
-      <ObliqueBox id={id} x={318} y={122} w={84} h={6} dx={12} dy={7} />
-      <line x1={324} y1={128} x2={324} y2={g} {...ink} />
-      <line x1={396} y1={128} x2={396} y2={g} {...ink} />
-      <Portrait id={id} x={338} y={92} w={18} h={28} />
-      <Portrait id={id} x={362} y={92} w={18} h={28} coat="dense" />
-      <Figure id={id} x={440} y={g} s={0.66} arm="reach" flip />
-
-      <line x1={530} y1={14} x2={530} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The third figure: equal errors in each group's pan */}
-      <Balance
-        id={id}
-        cx={664}
-        base={g}
-        load={(x, y) => (
-          <g>
-            <line x1={x - 8} y1={y} x2={x - 8} y2={y - 22} {...ink} />
-            <path d={`M${x - 8} ${y - 22}L${x + 4} ${y - 18}L${x - 8} ${y - 14}Z`} fill={PAT.paper} {...ink} />
-            <path d={cross(x + 10, y - 7, 4)} fill="none" {...ink} strokeWidth={LINE.bold} />
-          </g>
-        )}
-      />
-
-      <FigureName x={130} y={188} size={12}>
-        consumer credit
-      </FigureName>
-      <FigureName x={398} y={188} size={12}>
-        resume screening
-      </FigureName>
-      <FigureName x={664} y={188} size={12}>
-        triage or fraud
-      </FigureName>
-    </Frame>
-  );
-}
-
-/**
- * Part 5. The first figure: the human marketer's brief, its exclusions box left empty.
- * The second figure: the platform's automated systems, each serving a customer from each
- * group: ad delivery fills one screen and leaves the other blank, dynamic
- * pricing quotes a higher price, personalization sends fewer offers. The
- * protected group's side of each is red.
- */
-export function MarketingPipelines() {
-  const id = "w2-mkt";
-  const red = { stroke: PAT.signal, strokeWidth: LINE.outline, strokeLinejoin: "round" as const };
-  const rows = [
-    { y: 26, key: "Ad delivery" },
-    { y: 84, key: "Dynamic pricing" },
-    { y: 142, key: "Personalization" },
-  ];
-  const screen = (x: number, y: number, on: boolean) => (
-    <g>
-      <rect x={x} y={y} width={40} height={28} fill={PAT.paper} {...(on ? ink : red)} strokeDasharray={on ? undefined : "3 2"} />
-      {on ? [8, 14, 20].map((d) => <line key={d} x1={x + 6} y1={y + d} x2={x + (d === 20 ? 24 : 34)} y2={y + d} {...hair} />) : null}
-    </g>
-  );
-  const offers = (x: number, y: number, n: number, warn: boolean) =>
-    Array.from({ length: n }, (_, i) => (
-      <rect key={i} x={x + i * 8} y={y + i * 4} width={26} height={18} fill={warn ? stip(id, "signal") : PAT.paper} {...(warn ? red : ink)} />
-    ));
-  return (
-    <Frame
-      width={800}
-      height={196}
-      label="Patent drawing in two figures. The first figure, explicit exclusions by a human marketer: a marketer's campaign brief, its exclusions box left empty. The second figure, automated ad delivery, dynamic pricing and personalization: a platform's housing serves two customers in each system, one from each group. Ad delivery shows the ad on one customer's screen and leaves the protected-group customer's screen blank, in red. Dynamic pricing quotes $40 to one and $52, in red, to the other. Personalization sends three offers to one and a single offer, in red, to the other."
-    >
-      <PatentDefs id={id} />
-
-      {/* The first figure: the marketer's brief, no exclusions */}
-      <line x1={20} y1={170} x2={230} y2={170} {...hair} />
-      <ObliqueBox id={id} x={64} y={40} w={118} h={130} dx={8} dy={5} />
-      <line x1={76} y1={58} x2={150} y2={58} {...ink} />
-      {[72, 84, 96, 108].map((y) => (
-        <line key={y} x1={76} y1={y} x2={y === 108 ? 140 : 170} y2={y} {...hair} />
-      ))}
-      <PatentKey x={123} y={134} size={10}>
-        Exclusions
-      </PatentKey>
-      <rect x={78} y={141} width={90} height={18} fill="none" {...ink} />
-
-      <line x1={250} y1={14} x2={250} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-      {/* The second figure: the platform's automated systems */}
-      <ObliqueBox id={id} x={272} y={58} w={72} h={72} dx={10} dy={6} />
-      <circle cx={308} cy={94} r={22} fill={stip(id, "light")} {...ink} />
-      <Gear cx={302} cy={88} r={10} n={9} />
-      <Gear cx={318} cy={104} r={7} n={7} phase={0.3} />
-      {rows.map((r) => (
-        <path key={r.key} d={`M354 94C380 94 380 ${r.y + 14} 404 ${r.y + 14}`} fill="none" {...hair} />
-      ))}
-      {rows.map((r, i) => (
-        <g key={r.key}>
-          <PatentKey x={410} y={r.y + 18} anchor="start" size={9.5}>
-            {r.key}
-          </PatentKey>
-          <Portrait id={id} x={560} y={r.y} w={22} h={30} />
-          <Portrait id={id} x={676} y={r.y} w={22} h={30} coat="signal" stroke={PAT.signal} />
-          {i === 0 ? (
-            <g>
-              {screen(590, r.y + 1, true)}
-              {screen(706, r.y + 1, false)}
-            </g>
-          ) : i === 1 ? (
-            <g>
-              <Tag cx={622} cy={r.y + 15} text="$40" w={48} size={14} />
-              <Tag cx={738} cy={r.y + 15} text="$52" w={48} size={14} red />
-            </g>
-          ) : (
-            <g>
-              {offers(590, r.y + 2, 3, false)}
-              {offers(706, r.y + 2, 1, true)}
-            </g>
-          )}
-        </g>
-      ))}
-
-      <FigureName x={125} y={190} size={12}>
-        explicit exclusions
-      </FigureName>
-      <FigureName x={520} y={190} size={12}>
-        automated systems
-      </FigureName>
-    </Frame>
-  );
-}
-
 /**
  * Delivery skew. The first figure, the ad auction: one budget buys twenty impressions
  * for a STEM careers ad, split between young women and men. The slider sets
@@ -2041,20 +1224,17 @@ export function AdAuctionSkew() {
 }
 
 /**
- * Mitigation. The first figure: the three points of intervention along the pipeline:
- * a weight set on the training data (pre-processing), a penalty weight hung
- * on the learning gear (in-processing), and group-specific thresholds on the
- * output scores (post-processing). The second figure: the accuracy-fairness frontier.
- * The slider tightens the fairness constraint and moves the operating point,
- * and the accuracy given up is dimensioned in red.
+ * The accuracy-fairness frontier. The slider tightens the fairness
+ * constraint and moves the operating point along the curve, and the
+ * accuracy given up is dimensioned in red.
  */
 export function MitigationFrontier() {
   const [k, setK] = useState(50);
   const id = "w2-frontier";
   const lam = k / 100;
   const acc = (x: number) => 0.9 - 0.08 * Math.pow(x, 2.5);
-  const X = (x: number) => r2(470 + x * 290);
-  const Y = (a: number) => r2(150 - ((a - 0.8) / 0.12) * 120);
+  const X = (x: number) => r2(110 + x * 640);
+  const Y = (a: number) => r2(160 - ((a - 0.8) / 0.12) * 130);
   const curve = Array.from({ length: 41 }, (_, i) => {
     const x = i / 40;
     return `${i === 0 ? "M" : "L"}${X(x)} ${Y(acc(x))}`;
@@ -2066,154 +1246,40 @@ export function MitigationFrontier() {
     <div>
       <Frame
         width={800}
-        height={196}
-        label={`Patent drawing in two figures. The first figure, three points of intervention: a weight set on the pile of training data, pre-processing. A penalty weight hung from the learning gear, in-processing. And two group-specific threshold blades on the output scores, post-processing. The second figure, the accuracy-fairness frontier: a curve falls slowly and then steeply as fairness rises. With the fairness constraint at ${k}%, the operating point sits at ${(a * 100).toFixed(1)}% accuracy with a disparity of ${disparity.toFixed(2)}${lost > 0.5 ? ", and the accuracy given up is dimensioned in red" : ""}.`}
+        height={190}
+        label={`Patent drawing of the accuracy-fairness frontier: a curve of accuracy against fairness falls slowly and then steeply as fairness rises. With the fairness constraint at ${k}%, the operating point sits at ${(a * 100).toFixed(1)}% accuracy with a disparity of ${disparity.toFixed(2)}${lost > 0.5 ? ", and the accuracy given up is dimensioned in red" : ""}.`}
       >
         <PatentDefs id={id} />
-
-        {/* The first figure: three points of intervention */}
-        <line x1={20} y1={140} x2={394} y2={140} {...hair} />
-        <Pile id={id} x={36} y={140} n={9} w={56} />
-        <ObliqueBox id={id} x={50} y={98} w={22} h={14} dx={5} dy={3} />
-        <path d="M56 98V92H66V98" fill="none" {...ink} />
-        <line x1={112} y1={114} x2={156} y2={114} {...hair} strokeDasharray={CENTRE_DASH} />
-        <ObliqueBox id={id} x={160} y={70} w={74} h={70} dx={10} dy={6} />
-        <circle cx={197} cy={100} r={22} fill={stip(id, "light")} {...ink} />
-        <Gear cx={197} cy={100} r={12} n={10} />
-        <line x1={197} y1={100} x2={197} y2={126} {...ink} />
-        <ObliqueBox id={id} x={189} y={126} w={16} h={10} dx={4} dy={2.5} />
-        <line x1={248} y1={114} x2={280} y2={114} {...hair} strokeDasharray={CENTRE_DASH} />
-        {[86, 122].map((y, j) => (
-          <g key={y}>
-            <ObliqueBox id={id} x={284} y={y} w={110} h={6} dx={8} dy={5} />
-            <ObliqueBox id={id} x={j === 0 ? 344 : 324} y={y - 24} w={4} h={24} dx={4} dy={2.5} />
-          </g>
-        ))}
-        {[
-          [64, "Pre-processing"],
-          [197, "In-processing"],
-          [340, "Post-processing"],
-        ].map(([x, t]) => (
-          <PatentKey key={t as string} x={x as number} y={162} size={9.5}>
-            {t}
-          </PatentKey>
-        ))}
-
-        <line x1={414} y1={14} x2={414} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-        {/* The second figure: the accuracy-fairness frontier */}
-        <path d="M470 22V150H772" fill="none" {...ink} />
-        <PatentKey x={772} y={166} anchor="end" size={10}>
+        <path d="M110 18V160H772" fill="none" {...ink} />
+        <PatentKey x={772} y={178} anchor="end" size={12}>
           Fairness
         </PatentKey>
-        <text x={456} y={86} textAnchor="middle" fontFamily="var(--font-body)" fontSize={10} fill={PAT.ink} transform="rotate(-90 456 86)">
+        <text x={92} y={89} textAnchor="middle" fontFamily="var(--font-body)" fontSize={12} fill={PAT.ink} transform="rotate(-90 92 89)">
           Accuracy
         </text>
         <path d={curve} fill="none" {...ink} strokeWidth={LINE.bold} />
         <line x1={X(0)} y1={Y(0.9)} x2={X(lam)} y2={Y(0.9)} {...hair} strokeDasharray="4 3" />
         {lost > 0.5 ? (
           <g>
-            <line x1={r2(X(lam) + 12)} y1={Y(0.9)} x2={r2(X(lam) + 12)} y2={Y(a)} stroke={PAT.signal} strokeWidth={LINE.outline} />
-            <path d={`M${r2(X(lam) + 8)} ${Y(0.9)}H${r2(X(lam) + 16)}M${r2(X(lam) + 8)} ${Y(a)}H${r2(X(lam) + 16)}`} fill="none" stroke={PAT.signal} strokeWidth={LINE.outline} />
+            <line x1={r2(X(lam) + 14)} y1={Y(0.9)} x2={r2(X(lam) + 14)} y2={Y(a)} stroke={PAT.signal} strokeWidth={LINE.outline} />
+            <path d={`M${r2(X(lam) + 9)} ${Y(0.9)}H${r2(X(lam) + 19)}M${r2(X(lam) + 9)} ${Y(a)}H${r2(X(lam) + 19)}`} fill="none" stroke={PAT.signal} strokeWidth={LINE.outline} />
           </g>
         ) : null}
-        <circle cx={X(lam)} cy={Y(a)} r={5} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
-        <Num x={486} y={118} size={14} anchor="start">
+        <circle cx={X(lam)} cy={Y(a)} r={6} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
+        <Num x={134} y={120} size={17} anchor="start">
           {`${(a * 100).toFixed(1)}%`}
         </Num>
-        <PatentKey x={548} y={118} anchor="start" size={9.5}>
+        <PatentKey x={204} y={120} anchor="start" size={12}>
           Accuracy
         </PatentKey>
-        <Num x={486} y={140} size={14} anchor="start">
+        <Num x={134} y={146} size={17} anchor="start">
           {disparity.toFixed(2)}
         </Num>
-        <PatentKey x={548} y={140} anchor="start" size={9.5}>
+        <PatentKey x={204} y={146} anchor="start" size={12}>
           Disparity
         </PatentKey>
-
-        <FigureName x={208} y={190} size={12}>
-          mitigation
-        </FigureName>
-        <FigureName x={620} y={190} size={12}>
-          accuracy-fairness frontier
-        </FigureName>
       </Frame>
       <Slider label="Fairness constraint" value={k} min={0} max={100} step={10} onChange={setK} formatValue={(v) => `${v}%`} />
     </div>
-  );
-}
-
-/**
- * The six steps of a disparate impact audit as six instruments on one bench,
- * numbered as in the slide: (1) the scope charter with its boxes ticked,
- * (2) the holdout drawer of labelled records, (3) the baseline cylinders,
- * (4) a lens over the pulled-apart pipeline, (5) the frontier with its
- * chosen operating point, (6) the audit report beside a monitor whose trace
- * drifts past its alert line (red).
- */
-export function AuditSteps() {
-  const id = "w2-audit";
-  const g = 140;
-  const xs = [70, 196, 322, 450, 578, 712];
-  return (
-    <Frame
-      width={800}
-      height={182}
-      label="Patent drawing of the six steps of a disparate impact audit with reference numerals: 1, a scope charter with three ticked boxes. 2, a drawer of holdout records, each card a portrait of a group member. 3, two graduated cylinders of baseline selection rates with a four-fifths line. 4, a hand lens over a pipeline pulled apart into stages. 5, an accuracy-fairness frontier with its chosen operating point. 6, a bound audit report beside a monitor whose trace drifts past its dashed alert line in red."
-    >
-      <PatentDefs id={id} />
-      <line x1={14} y1={g + 1} x2={786} y2={g + 1} {...hair} />
-
-      {/* 1: scope charter */}
-      <ObliqueBox id={id} x={44} y={48} w={56} h={g - 48} dx={8} dy={5} />
-      <line x1={52} y1={60} x2={88} y2={60} {...ink} />
-      {[76, 96, 116].map((y) => (
-        <g key={y}>
-          <rect x={52} y={y - 6} width={9} height={9} fill={PAT.paper} {...hair} />
-          <path d={tick(56.5, y - 1.5, 3.5)} fill="none" {...ink} />
-          <line x1={66} y1={y} x2={92} y2={y} {...hair} />
-        </g>
-      ))}
-
-      {/* 2: holdout drawer of records */}
-      <ObliqueBox id={id} x={150} y={88} w={92} h={g - 88} dx={14} dy={9} top={PAT.paper} />
-      {[0, 1, 2, 3].map((i) => (
-        <Portrait key={i} id={id} x={156 + i * 21} y={66 + (i % 2) * 4} w={18} h={26} coat={i === 1 || i === 3 ? "dense" : "paper"} />
-      ))}
-      <rect x={180} y={104} width={32} height={10} fill="none" {...hair} />
-
-      {/* 3: baseline metrics */}
-      <Cylinder id={id} cx={304} top={56} bottom={g - 6} rx={14} ry={4} level={0.62} />
-      <Cylinder id={id} cx={340} top={56} bottom={g - 6} rx={14} ry={4} level={0.4} tone="dense" />
-      <line x1={284} y1={r2(g - 6 - (g - 62) * 0.5)} x2={360} y2={r2(g - 6 - (g - 62) * 0.5)} {...ink} strokeDasharray="4 2.5" />
-
-      {/* 4: diagnosing the stage */}
-      {[408, 436, 464, 492].map((x) => (
-        <ObliqueBox key={x} id={id} x={x} y={112} w={20} h={g - 112} dx={6} dy={4} />
-      ))}
-      <Lens id={id} cx={446} cy={68} r={22} a={-0.6} handle={20} />
-
-      {/* 5: the frontier and its operating point */}
-      <path d="M534 50V136H624" fill="none" {...ink} />
-      <path d="M540 62Q586 62 616 118" fill="none" {...ink} strokeWidth={LINE.bold} />
-      <circle cx={590} cy={78} r={4.5} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
-
-      {/* 6: audit report and the drift alert */}
-      <ObliqueBox id={id} x={650} y={70} w={44} h={g - 70} dx={8} dy={5} />
-      <line x1={658} y1={82} x2={684} y2={82} {...ink} />
-      {[94, 102, 110].map((y) => (
-        <line key={y} x1={658} y1={y} x2={686} y2={y} {...hair} />
-      ))}
-      <circle cx={680} cy={124} r={7} fill={stip(id, "light")} {...ink} />
-      <ObliqueBox id={id} x={712} y={58} w={62} h={44} dx={8} dy={5} />
-      <line x1={743} y1={102} x2={743} y2={g} {...ink} />
-      <line x1={718} y1={72} x2={768} y2={72} {...hair} strokeDasharray="4 2.5" />
-      <path d="M718 94L728 92L738 90L748 84" fill="none" {...ink} />
-      <path d="M748 84L758 74L766 66" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
-
-      {xs.map((x, i) => (
-        <Numeral key={x} n={i + 1} x={x - 16} y={174} tx={x - 4} ty={g + 4} />
-      ))}
-    </Frame>
   );
 }

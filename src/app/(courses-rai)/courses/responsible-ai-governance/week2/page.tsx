@@ -19,31 +19,20 @@ import exercisesData from "./exercises.json";
 import {
   AdAuctionSkew,
   AggregationBias,
-  AuditSteps,
   CalibrationTubes,
   CausalPipework,
   ConfusionCutoff,
-  CriterionContexts,
   DemographicParity,
-  DomainTradeoffs,
   FeedbackLoop,
   FourFifthsRule,
-  FourSources,
-  GroupAverageVsIndividual,
   HistoricalBias,
   ImpossibilityLevels,
-  IncompatibleTriad,
-  IndividualFairness,
-  MarketingPipelines,
-  MeasurementBias,
   MitigationFrontier,
-  PipelineStages,
   ProxyReconstruction,
   RepresentationBias,
   SeparationTrays,
   StatisticalToMarket,
   ThreeFamilies,
-  TreatmentVsImpact,
 } from "./visuals";
 
 // ============================================================================
@@ -142,8 +131,7 @@ export default function Week2Page() {
           </Term>
           .
         </Lead>
-        <div className="mt-4 grid w-full items-center gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10">
-          <div className="grid gap-4">
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
             <Ruled>
               <P>
                 <Term>Disparate treatment</Term> occurs when a
@@ -166,10 +154,6 @@ export default function Week2Page() {
                 prevents disparate impact in practice.
               </P>
             </Ruled>
-          </div>
-          <Plate>
-            <TreatmentVsImpact />
-          </Plate>
         </div>
         <div className="mt-4 grid w-full items-center gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10">
           <Ruled>
@@ -194,34 +178,31 @@ export default function Week2Page() {
         <PartHead n={1} title="Sources of Algorithmic Bias Across the Pipeline" />
         <div className="mt-7 grid w-full gap-8 md:grid-cols-3">
           <Ruled>
-            <P>
+            <p className={BIG}>
               <Term>Algorithmic bias</Term> is a systematic
               difference in a model&apos;s predictions, errors, or resource
               allocations across groups that is not justified by the legitimate
               purpose of the decision.
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               Bias does not originate in a single line of code. It enters at
               distinct stages of{" "}
               <Term>
                 data generation, measurement, model specification, and market deployment
               </Term>
               .
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               Diagnosing the exact stage at which bias enters is necessary
               because each source requires a{" "}
               <Term>different technical and managerial remedy</Term>.
-            </P>
+            </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <PipelineStages />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -308,9 +289,6 @@ export default function Week2Page() {
                 </P>
               </Ruled>
             </div>
-            <Plate>
-              <MeasurementBias />
-            </Plate>
           </div>
           <div className="flex flex-col justify-between gap-4">
             <Ruled>
@@ -397,52 +375,49 @@ export default function Week2Page() {
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Historical bias</Term> is present when the
                   labels themselves reflect past unequal treatment, even if the
                   sample is large and the variables are measured without error.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Representation bias</Term> is present when
                   the training sample omits or under-represents a target customer
                   segment, raising error rates for that segment even if
                   historical labels were fair.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Measurement bias</Term> is present when the
                   target label or feature is a flawed proxy whose relationship to
                   the true construct differs across groups.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={4}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Aggregation bias</Term> is present when a
                   uniform model pools groups that require separate functional
                   relationships or group-specific interactions.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
         </ol>
-        <Plate className="mt-5">
-          <FourSources />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -682,55 +657,52 @@ export default function Week2Page() {
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Demographic parity</Term> is selected when the
                   firm cannot trust historical outcome labels or seeks
                   proportional representation across groups, as in broad
                   awareness advertising or scholarship outreach.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Equal opportunity</Term> is selected when
                   the primary ethical harm is falsely rejecting qualified
                   individuals, as in screening job applicants or approving
                   small-business loans.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Equalized odds</Term> is selected when both
                   false rejections of the qualified and false selections of the
                   unqualified carry severe group-level harms, as in fraud
                   flagging or risk assessment.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={4}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Predictive parity and calibration</Term> are
                   selected when decision makers must trust that a numeric risk
                   score carries identical predictive meaning across groups under
                   a uniform cutoff rule.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
         </ol>
-        <Plate className="mt-5">
-          <CriterionContexts />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -757,9 +729,6 @@ export default function Week2Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <GroupAverageVsIndividual />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -775,32 +744,29 @@ export default function Week2Page() {
         </Lead>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
           <Ruled>
-            <P>
+            <p className={BIG}>
               Formally, the <Term>distance between the model&apos;s predictions</Term>{" "}
               for two consumers cannot exceed the task-relevant distance between
               their profiles.
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               Individual fairness prevents <Term>tokenism</Term>,
               in which a model satisfies group demographic parity by selecting
               arbitrary members of a protected group rather than the most
               qualified individuals within that group.
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               The practical challenge of individual fairness is defining a{" "}
               <Term>similarity metric</Term> that captures genuine
               task qualification without quietly reintroducing socioeconomic
               proxies.
-            </P>
+            </p>
           </Ruled>
         </div>
-        <Plate className="mt-5">
-          <IndividualFairness />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -883,9 +849,6 @@ export default function Week2Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <IncompatibleTriad />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -956,7 +919,7 @@ export default function Week2Page() {
         </Lead>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
           <Ruled>
-            <P>
+            <p className={BIG}>
               In <Term>consumer credit</Term>, lenders historically
               prioritized calibration so that a credit score of 700 implied the
               same default risk for every borrower, but doing so under unequal
@@ -965,28 +928,25 @@ export default function Week2Page() {
                 higher false rejection rates for creditworthy borrowers
               </Term>{" "}
               in disadvantaged groups.
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               In <Term>automated resume screening</Term>,
               regulators and human-resources leaders prioritize demographic
               parity or equal opportunity at the top of the funnel so qualified
               candidates from underrepresented groups reach human interviews.
-            </P>
+            </p>
           </Ruled>
           <Ruled>
-            <P>
+            <p className={BIG}>
               In <Term>medical triage or fraud intervention</Term>,
               equalized odds is prioritized so that neither missed diagnoses nor
               burdensome false investigations fall disproportionately on one
               demographic segment.
-            </P>
+            </p>
           </Ruled>
         </div>
-        <Plate className="mt-5">
-          <DomainTradeoffs />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1024,9 +984,6 @@ export default function Week2Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <MarketingPipelines />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1148,81 +1105,78 @@ export default function Week2Page() {
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>
                     Step 1 is defining the decision scope, the protected groups of concern, and the legal and ethical fairness criteria
                   </Term>{" "}
                   appropriate to the domain.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={2}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Step 2 is assembling an audit dataset</Term>{" "}
                   with verified or ethically inferred group membership labels on
                   a representative holdout sample.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={3}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>Step 3 is computing baseline group metrics</Term>,
                   including selection rates, the four-fifths ratio, true positive
                   rates, false positive rates, and calibration curves across
                   groups.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={4}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>
                     Step 4 is diagnosing the pipeline stage responsible for any observed disparity
                   </Term>
                   , testing whether the gap stems from representation gaps, proxy
                   features, label measurement bias, or auction delivery dynamics.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={5}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>
                     Step 5 is evaluating pre-processing, in-processing, or post-processing mitigations
                   </Term>{" "}
                   along the accuracy-fairness frontier and selecting the
                   operating point.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
           <li className="min-w-0">
             <Numbered n={6}>
               <Ruled>
-                <P>
+                <p className={BIG}>
                   <Term>
                     Step 6 is recording the decision in a formal audit report
                   </Term>{" "}
                   and configuring continuous production alerts to detect fairness
                   drift after launch.
-                </P>
+                </p>
               </Ruled>
             </Numbered>
           </li>
         </ol>
-        <Plate className="mt-5">
-          <AuditSteps />
-        </Plate>
       </Slide>
 
       {/* ================================================================

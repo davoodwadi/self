@@ -10,12 +10,14 @@ week: week2
 - Because predictive models learn from unequal histories and optimize narrow objectives, governing fairness requires explicit choices among competing mathematical and legal standards.
 
 ## From Statistical Patterns to Market Discrimination [no-exercise]
+[figure: customers ranked on a predicted-probability scale with a cutoff, first separated by score alone and then with members of a protected group systematically pushed below the cutoff]
 - Predictive models operate by discriminating in the statistical sense: they separate customers with high predicted probabilities of an outcome from customers with low predicted probabilities.
 - Statistical discrimination becomes unlawful or unethical market discrimination when those predictions systematically disadvantage individuals on the basis of protected characteristics.
 - A model does not need malicious intent, or even direct access to a customer's race, gender, or age, to produce discriminatory outcomes across groups.
 - Whenever historical inequities, uneven sampling, or proxy variables enter the modeling pipeline, optimizing for predictive accuracy alone will reproduce or amplify existing disparities.
 
 ## Protected Characteristics and Legal Standards of Discrimination [no-exercise]
+[figure: interactive four-fifths test comparing the selection rate of a protected group with that of the highest-selected group, with the ratio falling below 0.8 signalling adverse impact]
 - Anti-discrimination statutes in employment, credit, housing, and public accommodations protect specific attributes, including race, sex, age, religion, national origin, disability, and marital status.
 - Disparate treatment occurs when a decision rule intentionally or explicitly treats individuals differently because of a protected characteristic.
 - Disparate impact occurs when a facially neutral policy or algorithm disproportionately harms a protected group without a demonstrable business necessity.
@@ -28,18 +30,21 @@ week: week2
 - Diagnosing the exact stage at which bias enters is necessary because each source requires a different technical and managerial remedy.
 
 ## Bias in the Data: Historical and Representation Bias [no-exercise]
+[figure: ten years of male-dominated promotion records training a hiring model that rejects a female applicant, beside an interactive face-recognition training set where shrinking a group's share raises that group's error rate]
 - Historical bias arises when the data accurately record a world shaped by past structural inequality or human prejudice, so that a model trained on those records treats past discrimination as the target to replicate.
 - For example, a hiring model trained on ten years of past executive promotions in a male-dominated industry learns to penalize career patterns common among female applicants.
 - Representation bias arises when certain segments of the population are undersampled or missing from the training dataset relative to the population on which the model will be deployed.
 - A facial analysis system or voice assistant trained primarily on one demographic group exhibits substantially higher error rates when deployed to underrepresented groups.
 
 ## Bias in Modeling: Measurement and Aggregation Bias [no-exercise]
+[figure: interactive scatter of outcomes against a predictor for two groups, where a single pooled regression line fits the majority and misses the minority, compared with group-specific lines]
 - Measurement bias arises when the observable proxy chosen to represent an unobservable construct is measured with different accuracy or meaning across groups.
 - Using past healthcare expenditures as a proxy for medical need systematically underestimates the severity of illness among lower-income patients who historically had less access to care for the same level of sickness.
 - Using arrest records as a proxy for criminal offense rates confounds underlying behavior with differences in policing intensity across neighborhoods.
 - Aggregation bias arises when a single model is fit across distinct populations whose conditional relationships between predictors and outcomes differ, producing a model that fits the majority group well and minority groups poorly.
 
 ## Bias in Deployment: Proxy Variables and Feedback Loops [no-exercise]
+[figure: interactive reconstruction of a deleted protected attribute from combined behavioral features such as postal code and device brand, beside a lending feedback loop in which denied neighborhoods never generate repayment data]
 - Proxy variables are seemingly neutral features, such as postal code, mobile device brand, browser language, or shopping schedule, that correlate strongly with protected characteristics.
 - In high-dimensional marketing datasets, combinations of behavioral features allow a flexible machine learning model to reconstruct protected attributes with high precision even when demographic columns are deleted.
 - Runaway feedback loops arise when a model's predictions determine which data are observed in the next period and used to retrain the model.
@@ -52,29 +57,34 @@ week: week2
 - Aggregation bias is present when a uniform model pools groups that require separate functional relationships or group-specific interactions.
 
 ## Part 2: Group Fairness Criteria [no-exercise]
+[figure: the confusion-matrix cells that independence, separation, and sufficiency each require to be equal across Group A and Group B]
 - Group fairness criteria formalize what it means for a model to treat demographic groups equitably in terms of its predictions and error rates.
 - Most group fairness definitions are constructed from the cells of the confusion matrix evaluated separately for each demographic group.
 - Three families of group fairness dominate regulatory and technical practice: independence, separation, and sufficiency.
 
 ## Confusion Matrices Across Demographic Groups [no-exercise]
+[figure: interactive cutoff on credit scores for two groups of applicants, showing how moving the cutoff changes each group's selection rate, true positive rate, false positive rate, and positive predictive value]
 - Consider a binary decision, such as approving a credit card application, where Y equals 1 if the applicant would repay the loan and Y equals 0 if the applicant would default.
 - The model produces a binary decision D, where D equals 1 for approval and D equals 0 for denial, based on whether the applicant's predicted probability score S exceeds a cutoff threshold.
 - For each demographic group A, the confusion matrix records the selection rate P(D = 1), the true positive rate P(D = 1 | Y = 1), the false positive rate P(D = 1 | Y = 0), and the positive predictive value P(Y = 1 | D = 1).
 - Different stakeholders care about different cells of this matrix: applicants care whether qualified members of their group are rejected, whereas lenders care whether approved applicants from each group repay at the predicted rate.
 
 ## Independence: Demographic Parity [no-exercise]
+[figure: interactive approval of two groups with different qualification rates, where matching Group B's approval rate to Group A's forces the approval of unqualified applicants]
 - Independence, also called demographic parity or statistical parity, requires that the probability of receiving a favorable decision is equal across groups: P(D = 1 | A = a) equals P(D = 1 | A = b).
 - Under demographic parity, if 30 percent of applicants from Group A are approved for a premium offer, then 30 percent of applicants from Group B must also be approved, regardless of differences in historical qualification rates.
 - Demographic parity is appropriate when historical labels are deeply contaminated by past exclusion or when the organization's policy goal is equal representation in access to an opportunity.
 - Its limitation is that if underlying qualification rates differ between groups, enforcing demographic parity requires approving less-qualified candidates in one group or rejecting qualified candidates in the other.
 
 ## Separation: Equal Opportunity and Equalized Odds [no-exercise]
+[figure: selected and unselected applicants arranged by true outcome and group, comparing unequal true positive rates, equal opportunity, and equalized odds]
 - Separation conditions fairness on the true outcome Y, requiring that the model's error rates do not depend on group membership.
 - Equalized odds requires that both the true positive rate P(D = 1 | Y = 1) and the false positive rate P(D = 1 | Y = 0) are equal across groups.
 - Equal opportunity relaxes equalized odds to require only equal true positive rates across groups: among individuals who would genuinely succeed or repay (Y = 1), the probability of being selected by the model is identical regardless of group membership.
 - Equal opportunity directly protects qualified individuals in disadvantaged groups from being overlooked at higher rates than equally qualified individuals in advantaged groups.
 
 ## Sufficiency: Predictive Parity and Calibration [no-exercise]
+[figure: the share of applicants who repay at each score level for two groups, equal when calibrated within groups and unequal when one group is held to a stricter standard]
 - Sufficiency conditions on the model's prediction rather than the true outcome, requiring that a given prediction or risk score means the same thing across all groups.
 - Predictive parity requires that the positive predictive value P(Y = 1 | D = 1) is equal across groups: among applicants who are approved, the actual repayment rate is the same in Group A and Group B.
 - Calibration within groups requires that for every score level s, the proportion of individuals with score s who achieve the outcome Y = 1 is equal across groups: P(Y = 1 | S = s, A = a) equals P(Y = 1 | S = s, A = b).
@@ -97,6 +107,7 @@ week: week2
 - The practical challenge of individual fairness is defining a similarity metric that captures genuine task qualification without quietly reintroducing socioeconomic proxies.
 
 ## Counterfactual Fairness and Causal Pathways [exercise]
+[figure: causal pathway from a protected attribute through school quality and test scores to a decision, with fairness through unawareness leaving the mediated path open and counterfactual fairness closing it]
 - Counterfactual fairness defines fairness through a causal graph: a decision is counterfactually fair toward an individual if the prediction would remain identical in a counterfactual world where the individual belonged to a different demographic group.
 - Evaluating counterfactual fairness requires distinguishing causal pathways that are legitimate for the decision from pathways that transmit discrimination through mediating variables.
 - If a protected attribute influences a mediator, such as neighborhood school quality, which in turn influences test scores, a counterfactually fair model adjusts for the downstream effect of the protected attribute on the mediator.
@@ -107,6 +118,7 @@ week: week2
 - Managers cannot instruct an engineering team to make a model "completely fair" on all metrics at once. They must decide which type of error disparity is most harmful in the specific market context.
 
 ## The Fairness Impossibility Theorem [no-exercise]
+[figure: interactive base rates for two groups showing that an imperfect predictor cannot satisfy calibration, equalized odds, and predictive parity at once unless base rates are equal or prediction is perfect]
 - Proven independently by Chouldechova (2017) and Kleinberg, Mullainathan, and Raghavan (2017), the impossibility theorem states that whenever two groups have different base rates of the underlying outcome P(Y = 1), no imperfect predictor can simultaneously satisfy independence, separation, and sufficiency.
 - Specifically, if base rates differ across groups and a model is calibrated within groups (sufficiency), the group with the lower base rate will mathematically have a lower true positive rate or a lower false positive rate, violating equalized odds (separation).
 - Conversely, if a firm enforces equalized odds across groups with unequal base rates, the resulting predictions cannot have equal positive predictive value across groups.
@@ -127,12 +139,14 @@ week: week2
 - Governing these pipelines requires understanding how platform optimization algorithms allocate exposure and applying structured mitigation and auditing protocols.
 
 ## Bias in Ad Delivery and Algorithmic Targeting [no-exercise]
+[figure: interactive ad auction in which a higher cost per click for young women shifts a budget-constrained campaign's impressions toward men, beside click-probability targeting that steers luxury rentals and subprime credit ads to different neighborhoods]
 - Even when an advertiser selects broad, demographically neutral targeting parameters for a housing, credit, or employment advertisement, the platform's delivery algorithm can produce severely skewed audiences (Ali et al., 2019).
 - Delivery skew occurs for two reasons: market-driven cost differences across demographic segments in ad auctions, and relevance models that optimize predicted click-through rates based on historical stereotypes.
 - If young women are more expensive to reach in an ad auction because retail brands bid heavily for their attention, a budget-constrained algorithm advertising STEM careers will automatically shift impressions toward men to minimize cost per click.
 - Similarly, an algorithm optimizing click probability on housing ads may steer luxury rental listings toward higher-income demographic profiles and subprime credit ads toward vulnerable neighborhoods.
 
 ## Pre-Processing, In-Processing, and Post-Processing Mitigation [exercise]
+[figure: interactive accuracy-fairness frontier on which tightening the fairness constraint lowers disparity and gives up predictive accuracy]
 - Pre-processing interventions modify the training data before a model is fit, using techniques such as reweighting underrepresented observations, resampling, or transforming features to remove correlation with protected attributes.
 - In-processing interventions modify the learning algorithm itself during training, by adding a fairness penalty to the loss function or imposing adversarial debiasing constraints so the model cannot predict group membership from its internal representations.
 - Post-processing interventions leave the trained model unchanged and adjust its output scores or apply group-specific decision thresholds to satisfy a target criterion such as equal opportunity or demographic parity.
