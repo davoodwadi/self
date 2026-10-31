@@ -70,7 +70,8 @@ week: week2
 - When a known shopper still abandons a cart, automated cart-recovery emails or messages sent within hours can recapture lost sales, though routinely attaching discount codes to recovery emails trains repeat buyers to abandon carts strategically.
 
 ## Discussion: Diagnosing a Leaky Mobile Funnel
-- Discussion: A home-goods retailer analyzes its quarterly analytics and discovers that mobile devices account for 72 percent of storefront sessions and 68 percent of add-to-cart events, but only 34 percent of completed orders. Desktop visitors convert at more than twice the mobile rate once items are in the cart. Walk through the checkout funnel to identify the most likely interface, form, and payment bottlenecks on mobile, and propose an experimentation plan to fix them.
+- A home-goods retailer analyzes its quarterly analytics and discovers that mobile devices account for 72 percent of storefront sessions and 68 percent of add-to-cart events, but only 34 percent of completed orders. Desktop visitors convert at more than twice the mobile rate once items are in the cart.
+- Walk through the checkout funnel to identify the most likely interface, form, and payment bottlenecks on mobile, and propose an experimentation plan to fix them.
 
 ## Part 3: Digital Choice Architecture and Dark Patterns [no-exercise]
 - Every storefront layout is a choice architecture because the order of options, the default selections, and the visual framing inevitably influence what shoppers notice and choose.
@@ -122,7 +123,8 @@ week: week2
 - Designing for dual audiences therefore requires pairing clean visual hierarchy for humans with low-friction, upfront structured attribute tables and JSON-LD markup for AI agents.
 
 ## Discussion: When a Redesign Hurts Agentic Sales
-- Discussion: A specialty coffee equipment brand redesigns its Product Detail Pages with a minimalist aesthetic. To make the page look clean, the designer removes the visible specification table, puts boiler material and wattage inside a downloadable PDF manual, and requires three sequential clicks through a custom modal to reveal shipping costs. Human conversion rates remain flat, but orders originating from AI shopping assistants drop by 45 percent. Explain why this drop occurred using the concepts of machine readability and information acquisition costs, and specify how to redesign the page so both humans and AI agents convert.
+- A specialty coffee equipment brand redesigns its Product Detail Pages with a minimalist aesthetic. To make the page look clean, the designer removes the visible specification table, puts boiler material and wattage inside a downloadable PDF manual, and requires three sequential clicks through a custom modal to reveal shipping costs. Human conversion rates remain flat, but orders originating from AI shopping assistants drop by 45 percent.
+- Explain why this drop occurred using the concepts of machine readability and information acquisition costs, and specify how to redesign the page so both humans and AI agents convert.
 
 ## Key Takeaways
 - Storefront information architecture reduces search friction and product uncertainty through logical hierarchies, faceted attribute navigation, semantic on-site search, and risk-reversing Product Detail Pages.

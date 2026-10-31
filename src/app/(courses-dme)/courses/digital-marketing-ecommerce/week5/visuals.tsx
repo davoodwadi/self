@@ -26,13 +26,11 @@ import {
   Envelope,
   Mug,
   OrderForm,
-  Parcel,
   Person,
   Receipt,
   Shop,
   Sneaker,
   Stopwatch,
-  Warehouse,
 } from "../_visuals/objects";
 
 const ink = { stroke: CAT.ink, strokeWidth: LINE.outline, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
@@ -53,7 +51,7 @@ function BidSlip({ x, y, price, winner = false }: { x: number; y: number; price:
     <g>
       <rect x={x} y={y} width={116} height={55} fill={winner ? CAT.amber : CAT.tile} {...ink} />
       <rect x={x + 3} y={y + 3} width={110} height={49} fill="none" {...hair} />
-      <CatKey x={x + 11} y={y + 18} size={8}>BID</CatKey>
+      <CatKey x={x + 11} y={y + 18} size={8}>Bid</CatKey>
       <Price x={x + 104} y={y + 41} size={22} anchor="end">{price}</Price>
     </g>
   );
@@ -92,11 +90,11 @@ export function TitleAuction() {
       <path d={head.right(530, 108, 8)} fill="none" {...ink} />
       <Tile x={548} y={20} w={230} h={165} />
       <Numeral x={565} y={43}>1</Numeral>
-      <CatKey x={760} y={41} size={8} anchor="end">ONE IMPRESSION</CatKey>
+      <CatKey x={760} y={41} size={8} anchor="end">One impression</CatKey>
       <Sneaker id={id} cx={663} cy={96} s={1.35} />
       <NameLines x={580} y={139} w={166} />
       <Price x={580} y={169} size={17}>$24.00</Price>
-      <Price x={750} y={169} size={15} anchor="end" fill={CAT.amberText}>SOLD</Price>
+      <Price x={750} y={169} size={15} anchor="end" fill={CAT.amberText}>Sold</Price>
     </Frame>
   );
 }
@@ -114,29 +112,29 @@ export function ManualToMoment() {
       <HalftoneDefs id={id} />
       <g transform="rotate(-3 164 132)">
         <OrderForm x={30} y={26} w={268} h={208} />
-        <CatKey x={48} y={42} size={12} fill={CAT.tile}>INSERTION ORDER</CatKey>
-        <CatKey x={48} y={76} size={9}>ONE MONTH</CatKey>
-        <Price x={280} y={205} size={16} anchor="end">SIGNED</Price>
+        <CatKey x={48} y={42} size={12} fill={CAT.tile}>Insertion order</CatKey>
+        <CatKey x={48} y={76} size={9}>One month</CatKey>
+        <Price x={280} y={205} size={16} anchor="end">Signed</Price>
       </g>
       <rect x={312} y={48} width={104} height={154} fill={CAT.tile} {...ink} />
       <rect x={320} y={58} width={88} height={16} fill={ht(id, "light")} {...hair} />
       <rect x={320} y={85} width={88} height={72} fill={CAT.tile} {...ink} />
       <NameLines x={325} y={169} w={77} />
       <NameLines x={325} y={184} w={65} />
-      <CatKey x={364} y={115} size={10} anchor="middle">FIXED</CatKey>
-      <CatKey x={364} y={135} size={10} anchor="middle">BANNER</CatKey>
+      <CatKey x={364} y={115} size={10} anchor="middle">Fixed</CatKey>
+      <CatKey x={364} y={135} size={10} anchor="middle">banner</CatKey>
       <g transform="rotate(-9 481 130)">
         <circle cx={481} cy={130} r={48} fill={CAT.tile} stroke={CAT.amber} strokeWidth={4} />
         <circle cx={481} cy={130} r={42} fill="none" {...ink} />
-        <CatKey x={481} y={125} size={11} anchor="middle" fill={CAT.amberText}>ONE</CatKey>
-        <CatKey x={481} y={145} size={9} anchor="middle">IMPRESSION</CatKey>
+        <CatKey x={481} y={125} size={11} anchor="middle" fill={CAT.amberText}>One</CatKey>
+        <CatKey x={481} y={145} size={9} anchor="middle">impression</CatKey>
       </g>
       <path d="M536 130H576" fill="none" {...ink} />
       <path d={head.right(576, 130, 7)} fill="none" {...ink} />
       <Person id={id} cx={646} cy={117} s={1.55} />
       <Tile x={596} y={183} w={172} h={52} />
-      <CatKey x={609} y={202} size={8}>SPECIFIC USER</CatKey>
-      <Price x={609} y={222} size={12}>SPECIFIC MOMENT</Price>
+      <CatKey x={609} y={202} size={8}>Specific user</CatKey>
+      <Price x={609} y={222} size={12}>Specific moment</Price>
     </Frame>
   );
 }
@@ -154,18 +152,18 @@ export function BuySellDeadline() {
       <HalftoneDefs id={id} />
       <Tile x={30} y={58} w={214} h={134} />
       <Numeral x={44} y={80}>1</Numeral>
-      <CatKey x={225} y={79} size={10} anchor="end">BUY SIDE</CatKey>
+      <CatKey x={225} y={79} size={10} anchor="end">Buy side</CatKey>
       <g>
         <rect x={49} y={97} width={175} height={34} fill={CAT.tile} {...ink} />
-        <CatKey x={60} y={119} size={9}>BID</CatKey>
+        <CatKey x={60} y={119} size={9}>Bid</CatKey>
         <Price x={211} y={120} size={20} anchor="end">$2.80</Price>
         <rect x={49} y={143} width={175} height={34} fill={CAT.tile} {...ink} />
-        <CatKey x={60} y={165} size={9}>BID</CatKey>
+        <CatKey x={60} y={165} size={9}>Bid</CatKey>
         <Price x={211} y={166} size={20} anchor="end">$3.10</Price>
       </g>
       <Tile x={556} y={58} w={214} h={134} />
       <Numeral x={570} y={80}>2</Numeral>
-      <CatKey x={751} y={79} size={10} anchor="end">SELL SIDE</CatKey>
+      <CatKey x={751} y={79} size={10} anchor="end">Sell side</CatKey>
       <rect x={578} y={98} width={72} height={72} fill={CAT.tile} {...ink} />
       <Sneaker id={id} cx={614} cy={126} s={0.62} />
       <NameLines x={587} y={151} w={54} />
@@ -177,8 +175,8 @@ export function BuySellDeadline() {
       <path d={head.left(473, 124, 7)} fill="none" {...ink} />
       <rect x={327} y={91} width={146} height={66} fill={CAT.tile} {...ink} />
       <rect x={330} y={94} width={140} height={60} fill="none" {...hair} />
-      <CatKey x={400} y={118} size={10} anchor="middle">AD</CatKey>
-      <CatKey x={400} y={139} size={10} anchor="middle">EXCHANGE</CatKey>
+      <CatKey x={400} y={118} size={10} anchor="middle">Ad</CatKey>
+      <CatKey x={400} y={139} size={10} anchor="middle">exchange</CatKey>
       <Stopwatch cx={400} cy={52} r={30} t={0.1} />
       <rect x={365} y={7} width={70} height={22} fill={CAT.tile} />
       <Price x={400} y={23} size={17} anchor="middle" fill={CAT.amberText}>100 ms</Price>
@@ -211,7 +209,7 @@ export function AuctionClock() {
         {RTB_STAGES.map((s, k) => (
           <g key={s.name}>
             <Price x={35 + k * 197} y={28} size={14} fill={k === stage ? CAT.amberText : CAT.ink}>{`0${k + 1}`}</Price>
-            <CatKey x={61 + k * 197} y={27} size={10} fill={k === stage ? CAT.amberText : CAT.ink}>{s.name.toUpperCase()}</CatKey>
+            <CatKey x={61 + k * 197} y={27} size={10} fill={k === stage ? CAT.amberText : CAT.ink}>{s.name}</CatKey>
             <line x1={35 + k * 197} y1={38} x2={212 + k * 197} y2={38} stroke={k === stage ? CAT.amber : CAT.ink} strokeWidth={k === stage ? 2.5 : 0.5} />
           </g>
         ))}
@@ -221,8 +219,8 @@ export function AuctionClock() {
         <CatKey x={180} y={153} size={17} anchor="middle">SSP</CatKey>
         <rect x={320} y={112} width={145} height={70} fill={CAT.tile} {...ink} />
         <rect x={323} y={115} width={139} height={64} fill="none" {...hair} />
-        <CatKey x={392.5} y={143} size={10} anchor="middle">AD</CatKey>
-        <CatKey x={392.5} y={162} size={10} anchor="middle">EXCHANGE</CatKey>
+        <CatKey x={392.5} y={143} size={10} anchor="middle">Ad</CatKey>
+        <CatKey x={392.5} y={162} size={10} anchor="middle">exchange</CatKey>
         <Tile x={570} y={63} w={160} h={57} />
         <CatKey x={586} y={88} size={13}>DSP</CatKey>
         {stage >= 2 ? <Price x={714} y={105} size={18} anchor="end">$3.40</Price> : null}
@@ -244,7 +242,7 @@ export function AuctionClock() {
             <path d="M285 260H325" fill="none" {...ink} />
             <Tile x={325} y={213} w={102} h={84} />
             <Sneaker id={id} cx={376} cy={247} s={0.7} />
-            <CatKey x={376} y={281} size={8} anchor="middle" fill={CAT.amberText}>WINNER</CatKey>
+            <CatKey x={376} y={281} size={8} anchor="middle" fill={CAT.amberText}>Winner</CatKey>
           </g>
         ) : null}
         <line x1={30} y1={296} x2={770} y2={296} {...hair} />
@@ -258,10 +256,10 @@ export function AuctionClock() {
 
 type Deal = "open" | "pmp" | "preferred" | "guaranteed";
 const DEALS: Record<Deal, { access: number; action: string; price: string }> = {
-  open: { access: 5, action: "OPEN AUCTION", price: "$2.40" },
-  pmp: { access: 2, action: "DEAL ID | CLOSED AUCTION", price: "$4.80" },
-  preferred: { access: 1, action: "FIRST LOOK | NO AUCTION", price: "$5.00 FIXED" },
-  guaranteed: { access: 1, action: "FIXED VOLUME | NO AUCTION", price: "$6.00 FIXED" },
+  open: { access: 5, action: "Open auction", price: "$2.40" },
+  pmp: { access: 2, action: "Deal ID | Closed auction", price: "$4.80" },
+  preferred: { access: 1, action: "First look | No auction", price: "$5.00 fixed" },
+  guaranteed: { access: 1, action: "Fixed volume | No auction", price: "$6.00 fixed" },
 };
 
 /** Four buying arrangements drawn as access to one publisher's catalogue slot. */
@@ -284,8 +282,8 @@ export function DealAccess() {
           return (
             <g key={k}>
               <rect x={34} y={y} width={164} height={29} fill={on && k === 0 ? CAT.amber : CAT.tile} {...ink} />
-              <CatKey x={46} y={y + 19} size={8}>ADVERTISER {k + 1}</CatKey>
-              {on ? <Price x={187} y={y + 20} size={13} anchor="end">{deal === "guaranteed" ? "10,000 IMP." : k === 0 ? d.price.replace(" FIXED", "") : `$${(Number(d.price.slice(1, 4)) - k * 0.3).toFixed(2)}`}</Price> : null}
+              <CatKey x={46} y={y + 19} size={8}>Advertiser {k + 1}</CatKey>
+              {on ? <Price x={187} y={y + 20} size={13} anchor="end">{deal === "guaranteed" ? "10,000 imp." : k === 0 ? d.price.replace(" fixed", "") : `$${(Number(d.price.slice(1, 4)) - k * 0.3).toFixed(2)}`}</Price> : null}
               <path d={`M198 ${y + 14.5}H${on ? 292 : 235}`} fill="none" stroke={CAT.ink} strokeWidth={on ? 1.1 : 0.5} strokeDasharray={on ? undefined : "2 3"} />
               {on ? <path d={head.right(292, y + 14.5, 5)} fill="none" {...ink} /> : null}
             </g>
@@ -296,17 +294,17 @@ export function DealAccess() {
         {deal === "pmp" ? (
           <g>
             <rect x={312} y={41} width={132} height={35} fill={CAT.tile} {...ink} />
-            <CatKey x={378} y={63} size={11} anchor="middle">DEAL ID 024</CatKey>
+            <CatKey x={378} y={63} size={11} anchor="middle">Deal ID 024</CatKey>
           </g>
         ) : null}
-        <CatKey x={378} y={deal === "pmp" ? 105 : 78} size={11} anchor="middle">{deal === "guaranteed" ? "AUTOMATED" : deal === "preferred" ? "FIRST LOOK" : "AUCTION"}</CatKey>
-        <CatKey x={378} y={deal === "pmp" ? 125 : 98} size={11} anchor="middle">{deal === "guaranteed" ? "DIRECT" : deal === "preferred" ? "DECISION" : deal === "pmp" ? "INVITED" : "OPEN"}</CatKey>
+        <CatKey x={378} y={deal === "pmp" ? 105 : 78} size={11} anchor="middle">{deal === "guaranteed" ? "Automated" : deal === "preferred" ? "First look" : "Auction"}</CatKey>
+        <CatKey x={378} y={deal === "pmp" ? 125 : 98} size={11} anchor="middle">{deal === "guaranteed" ? "Direct" : deal === "preferred" ? "Decision" : deal === "pmp" ? "Invited" : "Open"}</CatKey>
         <Price x={378} y={167} size={22} anchor="middle" fill={CAT.amberText}>{d.access} / 5</Price>
         <path d="M464 114H552" fill="none" {...ink} />
         <path d={head.right(552, 114, 7)} fill="none" {...ink} />
         <Tile x={552} y={38} w={216} h={152} />
         <Numeral x={568} y={61}>1</Numeral>
-        <CatKey x={750} y={59} size={9} anchor="end">PUBLISHER</CatKey>
+        <CatKey x={750} y={59} size={9} anchor="end">Publisher</CatKey>
         <Sneaker id={id} cx={660} cy={104} s={1.2} />
         <NameLines x={584} y={142} w={152} />
         <Price x={584} y={173} size={16}>{d.price}</Price>
@@ -340,8 +338,8 @@ export function SameSlotDifferentValue() {
       <HalftoneDefs id={id} />
       <Person id={id} cx={118} cy={104} s={1.8} />
       <Tile x={54} y={178} w={128} h={54} />
-      <CatKey x={118} y={199} size={9} anchor="middle">ONE VIEWER</CatKey>
-      <Price x={118} y={221} size={13} anchor="middle">ONE IMPRESSION</Price>
+      <CatKey x={118} y={199} size={9} anchor="middle">One viewer</CatKey>
+      <Price x={118} y={221} size={13} anchor="middle">One impression</Price>
       {[0, 1, 2].map((k) => {
         const y = 27 + k * 88;
         return (
@@ -360,9 +358,9 @@ export function SameSlotDifferentValue() {
 
 type Provenance = "first" | "second" | "third";
 const DATA_TRAILS: Record<Provenance, { name: string; path: string; detail: string }> = {
-  first: { name: "Own customers → marketer", path: "DIRECT + CONSENTED", detail: "DETERMINISTIC" },
-  second: { name: "Partner's customers → partner → marketer", path: "TRUSTED HANDOFF", detail: "PARTNER'S 1P" },
-  third: { name: "Many sources → broker → marketer", path: "AGGREGATED FOR SALE", detail: "OPAQUE SOURCES" },
+  first: { name: "Own customers → marketer", path: "Direct + consented", detail: "Deterministic" },
+  second: { name: "Partner's customers → partner → marketer", path: "Trusted handoff", detail: "Partner's 1P" },
+  third: { name: "Many sources → broker → marketer", path: "Aggregated for sale", detail: "Opaque sources" },
 };
 
 /** Provenance as a document trail, rather than an abstract quality score. */
@@ -384,19 +382,19 @@ export function DataProvenance() {
             {[0, 1, 2].map((k) => <Person key={k} id={id} cx={67 + k * 60} cy={100} s={0.95} />)}
             <Arrow x1={207} y1={105} x2={325} y2={105} color={CAT.amber} w={3} />
             <Receipt x={355} y={46} w={92} h={118} />
-            <CatKey x={401} y={85} size={9} anchor="middle">OWN CRM</CatKey>
+            <CatKey x={401} y={85} size={9} anchor="middle">Own CRM</CatKey>
             <NameLines x={369} y={105} w={64} />
-            <Price x={401} y={144} size={12} anchor="middle">CONSENTED</Price>
+            <Price x={401} y={144} size={12} anchor="middle">Consented</Price>
             <Arrow x1={463} y1={105} x2={570} y2={105} color={CAT.amber} w={3} />
             <Shop id={id} x={592} y={55} w={146} h={105} />
           </g>
         ) : kind === "second" ? (
           <g>
             <Shop id={id} x={45} y={65} w={122} h={91} />
-            <CatKey x={106} y={185} size={10} anchor="middle">PARTNER</CatKey>
+            <CatKey x={106} y={185} size={10} anchor="middle">Partner</CatKey>
             <Arrow x1={184} y1={105} x2={326} y2={105} color={CAT.amber} w={3} />
             <Envelope id={id} x={342} y={62} w={134} h={86} />
-            <CatKey x={409} y={177} size={10} anchor="middle">SHARED DIRECTLY</CatKey>
+            <CatKey x={409} y={177} size={10} anchor="middle">Shared directly</CatKey>
             <Arrow x1={492} y1={105} x2={586} y2={105} color={CAT.amber} w={3} />
             <Shop id={id} x={608} y={65} w={122} h={91} />
           </g>
@@ -411,9 +409,9 @@ export function DataProvenance() {
             <path d={head.right(335, 119, 6)} fill="none" {...ink} />
             <rect x={335} y={57} width={144} height={117} fill={CAT.amber} {...ink} />
             <rect x={338} y={60} width={138} height={111} fill="none" {...hair} />
-            <CatKey x={407} y={92} size={11} anchor="middle">DATA</CatKey>
-            <CatKey x={407} y={112} size={11} anchor="middle">BROKER</CatKey>
-            <Price x={407} y={146} size={16} anchor="middle">SEGMENTS</Price>
+            <CatKey x={407} y={92} size={11} anchor="middle">Data</CatKey>
+            <CatKey x={407} y={112} size={11} anchor="middle">broker</CatKey>
+            <Price x={407} y={146} size={16} anchor="middle">Segments</Price>
             <Arrow x1={494} y1={115} x2={587} y2={115} color={CAT.amber} w={3} />
             <Shop id={id} x={608} y={65} w={122} h={91} />
           </g>
@@ -455,11 +453,11 @@ export function TargetingScenes() {
           <g>
             <rect x={42} y={26} width={326} height={190} fill={CAT.tile} {...ink} />
             <rect x={47} y={31} width={316} height={180} fill="none" {...hair} />
-            <CatKey x={66} y={57} size={12}>MARATHON TRAINING</CatKey>
+            <CatKey x={66} y={57} size={12}>Marathon training</CatKey>
             <path d="M70 174C95 153 107 176 130 147S174 151 190 125S235 140 260 102S310 119 335 79" fill="none" {...ink} />
             {[0, 1, 2].map((k) => <line key={k} x1={70} y1={83 + k * 15} x2={180 + k * 35} y2={83 + k * 15} {...hair} />)}
             <Tile x={424} y={26} w={334} h={190} />
-            <CatKey x={448} y={55} size={10}>CURRENT PAGE TOPIC</CatKey>
+            <CatKey x={448} y={55} size={10}>Current page topic</CatKey>
             <Sneaker id={id} cx={590} cy={127} s={2.2} />
             <NameLines x={479} y={177} w={221} />
             <Price x={479} y={201} size={15}>$84.00</Price>
@@ -472,19 +470,19 @@ export function TargetingScenes() {
             <path d="M72 154L62 134H48" fill="none" {...ink} />
             <circle cx={97} cy={198} r={5} fill={CAT.tile} {...ink} />
             <circle cx={165} cy={198} r={5} fill={CAT.tile} {...ink} />
-            <CatKey x={137} y={51} size={9} anchor="middle">LEFT BEHIND</CatKey>
+            <CatKey x={137} y={51} size={9} anchor="middle">Left behind</CatKey>
             <path d="M253 126C300 50 425 49 481 110" fill="none" {...ink} />
             <path d={headAlong(481, 110, 1, 1, 7)} fill="none" {...ink} />
             <Tile x={494} y={35} w={270} h={177} />
             <rect x={497} y={38} width={264} height={171} fill={CAT.amber} stroke="none" opacity={0.16} />
             <Sneaker id={id} cx={629} cy={118} s={2.05} />
             <NameLines x={539} y={174} w={180} />
-            <Price x={539} y={198} size={14}>EXACT SKU</Price>
+            <Price x={539} y={198} size={14}>Exact SKU</Price>
           </g>
         ) : (
           <g>
             <Tile x={34} y={39} w={220} h={169} />
-            <CatKey x={144} y={64} size={10} anchor="middle">SEED CUSTOMERS</CatKey>
+            <CatKey x={144} y={64} size={10} anchor="middle">Seed customers</CatKey>
             {[0, 1, 2, 3].map((k) => <Person key={k} id={id} cx={72 + (k % 2) * 107} cy={104 + Math.floor(k / 2) * 65} s={0.72} />)}
             <path d="M254 123H350" fill="none" {...ink} />
             <path d={head.right(350, 123, 7)} fill="none" {...ink} />
@@ -539,9 +537,9 @@ export function PaidWithoutViewer() {
       <path d={head.right(529, 112, 7)} fill="none" {...ink} />
       <Receipt x={546} y={26} w={118} h={168} />
       <CatKey x={605} y={63} size={9} anchor="middle">1,000,000</CatKey>
-      <Price x={605} y={88} size={12} anchor="middle">IMPRESSIONS</Price>
+      <Price x={605} y={88} size={12} anchor="middle">impressions</Price>
       <NameLines x={562} y={108} w={86} />
-      <Price x={605} y={158} size={24} anchor="middle" fill={CAT.amberText}>PAID</Price>
+      <Price x={605} y={158} size={24} anchor="middle" fill={CAT.amberText}>Paid</Price>
       {[0, 1, 2].map((k) => <Coin key={k} id={id} cx={730} cy={129 - k * 10} rx={30} ry={7} t={7} />)}
     </Frame>
   );
@@ -578,18 +576,18 @@ export function VerificationLab() {
             <Sneaker id={id} cx={140} cy={112} s={1.5} />
             <NameLines x={66} y={169} w={148} />
             <line x1={55} y1={113} x2={235} y2={113} stroke={CAT.ink} strokeWidth={1} strokeDasharray="3 3" />
-            <CatKey x={140} y={224} size={10} anchor="middle">50% PIXELS</CatKey>
+            <CatKey x={140} y={224} size={10} anchor="middle">50% pixels</CatKey>
             <Price x={140} y={247} size={16} anchor="middle" fill={pixels >= 50 ? CAT.amberText : CAT.ink}>{pixels}%</Price>
             <Stopwatch cx={369} cy={105} r={60} t={Math.min(7.99, seconds)} />
             <Price x={369} y={198} size={26} anchor="middle">{seconds.toFixed(1)} s</Price>
-            <CatKey x={369} y={222} size={10} anchor="middle">CONTINUOUS</CatKey>
-            <Price x={369} y={244} size={14} anchor="middle">{required} s REQUIRED</Price>
+            <CatKey x={369} y={222} size={10} anchor="middle">Continuous</CatKey>
+            <Price x={369} y={244} size={14} anchor="middle">{required} s required</Price>
             <rect x={522} y={65} width={240} height={108} fill={pass ? CAT.amber : CAT.tile} {...ink} />
             <rect x={525} y={68} width={234} height={102} fill="none" {...hair} />
-            <CatKey x={642} y={100} size={12} anchor="middle">{video ? "MRC VIDEO TEST" : "MRC DISPLAY TEST"}</CatKey>
-            <Price x={642} y={143} size={28} anchor="middle">{pass ? "VIEWABLE" : "NOT YET"}</Price>
-            <CatKey x={642} y={206} size={10} anchor="middle">50% OR MORE</CatKey>
-            <CatKey x={642} y={227} size={10} anchor="middle">{video ? "FOR 2 SECONDS" : "FOR 1 SECOND"}</CatKey>
+            <CatKey x={642} y={100} size={12} anchor="middle">{video ? "MRC video test" : "MRC display test"}</CatKey>
+            <Price x={642} y={143} size={28} anchor="middle">{pass ? "Viewable" : "Not yet"}</Price>
+            <CatKey x={642} y={206} size={10} anchor="middle">50% or more</CatKey>
+            <CatKey x={642} y={227} size={10} anchor="middle">{video ? "for 2 seconds" : "for 1 second"}</CatKey>
           </g>
         ) : mode === "fraud" ? (
           <g>
@@ -599,27 +597,27 @@ export function VerificationLab() {
             <path d={head.right(309, 126, 7)} fill="none" {...ink} />
             {[0, 1, 2].map((k) => <rect key={k} x={326 + k * 17} y={38 + k * 17} width={168} height={123} fill={CAT.tile} {...ink} />)}
             <rect x={377} y={87} width={11} height={11} fill={CAT.ink} />
-            <Price x={410} y={229} size={14} anchor="middle">1 × 1 PIXEL</Price>
+            <Price x={410} y={229} size={14} anchor="middle">1 × 1 pixel</Price>
             <Arrow x1={528} y1={126} x2={594} y2={126} color={CAT.amber} w={3} />
-            <Price x={688} y={120} size={33} anchor="middle" fill={CAT.amberText}>FAKE</Price>
-            <CatKey x={688} y={146} size={9} anchor="middle">FAKE CLICKS</CatKey>
+            <Price x={688} y={120} size={33} anchor="middle" fill={CAT.amberText}>Fake</Price>
+            <CatKey x={688} y={146} size={9} anchor="middle">Fake clicks</CatKey>
           </g>
         ) : mode === "safety" ? (
           <g>
             <rect x={35} y={31} width={328} height={218} fill={CAT.tile} {...ink} />
-            <CatKey x={56} y={60} size={11}>AVIATION ACCIDENT</CatKey>
+            <CatKey x={56} y={60} size={11}>Aviation accident</CatKey>
             <path d="M68 156L169 119L230 131L163 144L131 181L112 181L127 147L77 166Z" fill={ht(id, "dense")} {...ink} />
             <path d="M64 90H288M64 100H250M64 211H288M64 221H260" {...hair} />
             <rect x={457} y={31} width={308} height={218} fill={CAT.tile} {...ink} />
-            <CatKey x={479} y={60} size={11}>AIRLINE OFFER</CatKey>
+            <CatKey x={479} y={60} size={11}>Airline offer</CatKey>
             <path d="M500 156L596 119L661 131L592 144L560 181L541 181L557 147L506 166Z" fill={ht(id, "light")} {...ink} />
             <path d="M407 82V134" stroke={CAT.ink} strokeWidth={5} />
             <path d="M407 82V134" stroke={CAT.amber} strokeWidth={3} />
             <rect x={387} y={169} width={40} height={40} fill={CAT.tile} stroke={CAT.ink} strokeWidth={1.6} />
             <rect x={391} y={173} width={32} height={32} fill="none" {...hair} />
-            <CatKey x={407} y={192} size={7.5} anchor="middle">STOP</CatKey>
+            <CatKey x={407} y={192} size={7.5} anchor="middle">Stop</CatKey>
             <path d="M394 196L420 182" fill="none" {...ink} />
-            <CatKey x={400} y={231} size={8} anchor="middle">EXCLUDE</CatKey>
+            <CatKey x={400} y={231} size={8} anchor="middle">Exclude</CatKey>
           </g>
         ) : (
           <g>
@@ -638,8 +636,8 @@ export function VerificationLab() {
             })}
             <path d={`M31 215H${r2(31 + cap * 126 - 18)}`} stroke={CAT.ink} strokeWidth={5} />
             <path d={`M31 215H${r2(31 + cap * 126 - 18)}`} stroke={CAT.amber} strokeWidth={3} />
-            <CatKey x={31} y={250} size={11} fill={CAT.amberText}>{cap} ALLOWED</CatKey>
-            <CatKey x={769} y={250} size={11} anchor="end">SAME INDIVIDUAL</CatKey>
+            <CatKey x={31} y={250} size={11} fill={CAT.amberText}>{cap} allowed</CatKey>
+            <CatKey x={769} y={250} size={11} anchor="end">Same individual</CatKey>
           </g>
         )}
       </Frame>
@@ -692,7 +690,7 @@ export function SupplyPath() {
         <path d={head.right(158, 129, 6)} fill="none" {...ink} />
         <rect x={158} y={45} width={140} height={174} fill={CAT.tile} {...ink} />
         <rect x={161} y={48} width={134} height={168} fill="none" {...hair} />
-        <CatKey x={228} y={71} size={10} anchor="middle">SUPPLY PATH</CatKey>
+        <CatKey x={228} y={71} size={10} anchor="middle">Supply path</CatKey>
         {kept.map((f, k) => (
           <g key={f.id}>
             <line x1={176} y1={94 + k * 16} x2={225} y2={94 + k * 16} {...hair} />
@@ -702,16 +700,16 @@ export function SupplyPath() {
         <path d="M298 129H411" fill="none" {...ink} />
         <path d={head.right(411, 129, 6)} fill="none" {...ink} />
         <Shop id={id} x={435} y={67} w={136} h={122} />
-        <Price x={503} y={217} size={16} anchor="middle">PUBLISHER</Price>
+        <Price x={503} y={217} size={16} anchor="middle">Publisher</Price>
         <rect x={608} y={45} width={152} height={174} fill={CAT.amber} {...ink} />
         <rect x={611} y={48} width={146} height={168} fill="none" {...hair} />
-        <CatKey x={684} y={79} size={10} anchor="middle">NET PAYOUT</CatKey>
+        <CatKey x={684} y={79} size={10} anchor="middle">Net payout</CatKey>
         <Price x={684} y={145} size={46} anchor="middle">{net}¢</Price>
         <line x1={630} y1={164} x2={738} y2={164} {...ink} />
-        <Price x={684} y={193} size={16} anchor="middle">FEES {tax}¢</Price>
+        <Price x={684} y={193} size={16} anchor="middle">Fees {tax}¢</Price>
         <line x1={24} y1={241} x2={776} y2={241} {...hair} />
-        <CatKey x={24} y={255} size={8}>AUDIT + CONSOLIDATE</CatKey>
-        <CatKey x={776} y={255} size={8} anchor="end">DIRECT | LOWER FEE</CatKey>
+        <CatKey x={24} y={255} size={8}>Audit + consolidate</CatKey>
+        <CatKey x={776} y={255} size={8} anchor="end">Direct | Lower fee</CatKey>
       </Frame>
       <Toggles<string>
         label="Supply path"
@@ -720,53 +718,6 @@ export function SupplyPath() {
         options={[{ id: "reseller", label: "Bypass redundant reseller −10¢" }]}
       />
     </div>
-  );
-}
-
-/** A winter boot with a high cuff, engraved vamp and pale tread. */
-function WinterBoot({ id, cx, cy, s = 1 }: { id: string; cx: number; cy: number; s?: number }) {
-  return (
-    <g transform={`translate(${cx} ${cy}) scale(${s})`} strokeLinejoin="round">
-      <path d="M-18 -24H1V-2Q8 2 22 8V14H-18Z" fill={ht(id, "light")} {...ink} />
-      <path d="M-18 -24H-10V14H-18Z" fill={ht(id, "dense")} stroke="none" />
-      <path d="M-21 14H24V19H-21Z" fill={CAT.tile} {...ink} />
-      <path d="M-18 -25H1M-7 -17H0M-7 -11H0M-7 -5H0" fill="none" {...ink} />
-      <path d="M-14 15V19M-5 15V19M4 15V19M13 15V19" fill="none" {...hair} />
-    </g>
-  );
-}
-
-/** A frequency tally continues after an offline purchase, exposing the missing suppression signal. */
-export function SeventeenImpressions() {
-  const id = "w5-seventeen";
-  return (
-    <Frame
-      width={800}
-      height={236}
-      label="Seventeen identical winter-boot advertisement slips accumulate over forty-eight hours. After fifteen impressions, a parcel bought at a local mall interrupts the sequence. The sixteenth and seventeenth impressions still follow, highlighted in amber."
-      svgProps={{ "data-plate": "seventeen-impressions" }}
-    >
-      <HalftoneDefs id={id} />
-      {Array.from({ length: 17 }, (_, k) => {
-        const x = 22 + k * 35 + (k >= 15 ? 103 : 0);
-        const y = 34 + (k % 3) * 8;
-        return (
-          <g key={k}>
-            <rect x={x} y={y} width={42} height={100} fill={k >= 15 ? CAT.amber : CAT.tile} {...ink} />
-            <WinterBoot id={id} cx={x + 21} cy={y + 30} s={0.62} />
-            <NameLines x={x + 7} y={y + 61} w={28} gap={4} />
-            <Price x={x + 21} y={y + 88} size={12} anchor="middle">{k + 1}</Price>
-          </g>
-        );
-      })}
-      <Parcel id={id} x={570} y={69} w={42} h={44} />
-      <CatKey x={591} y={133} size={8} anchor="middle">LOCAL MALL</CatKey>
-      <path d="M591 151H634" fill="none" {...ink} />
-      <path d={head.right(634, 151, 6)} fill="none" {...ink} />
-      <line x1={24} y1={184} x2={738} y2={184} {...ink} />
-      <CatKey x={26} y={207} size={10}>48 HOURS</CatKey>
-      <Price x={738} y={211} size={22} anchor="end" fill={CAT.amberText}>17 ADS</Price>
-    </Frame>
   );
 }
 
@@ -792,7 +743,7 @@ export function BrokenCookieTrail() {
             <NameLines x={x + 23} y={151} w={93} gap={9} />
             <circle cx={x + 82} cy={42} r={23} fill={ht(id, "dense")} {...ink} />
             <path d={`M${x + 85} 18Q${x + 76} 27 ${x + 86} 34Q${x + 74} 41 ${x + 82} 48Q${x + 71} 56 ${x + 83} 64`} fill={CAT.paper} {...ink} />
-            <CatKey x={x + 82} y={219} size={10} anchor="middle">{k === 1 ? "MOBILE ID" : "3P COOKIE"}</CatKey>
+            <CatKey x={x + 82} y={219} size={10} anchor="middle">{k === 1 ? "Mobile ID" : "3P cookie"}</CatKey>
           </g>
         );
       })}
@@ -800,7 +751,7 @@ export function BrokenCookieTrail() {
       <path d="M246 120L262 150M518 120L534 150" stroke={CAT.ink} strokeWidth={6} />
       <path d="M246 120L262 150M518 120L534 150" stroke={CAT.amber} strokeWidth={3.5} />
       <rect x={330} y={10} width={140} height={41} fill={CAT.tile} {...ink} />
-      <CatKey x={400} y={35} size={10} anchor="middle">ALLOW TRACKING?</CatKey>
+      <CatKey x={400} y={35} size={10} anchor="middle">Allow tracking?</CatKey>
     </Frame>
   );
 }
@@ -824,18 +775,18 @@ export function PrivacyRoutes() {
           <g>
             <rect x={45} y={58} width={192} height={130} fill={CAT.tile} {...ink} />
             <rect x={49} y={62} width={184} height={122} fill="none" {...hair} />
-            <CatKey x={141} y={88} size={10} anchor="middle">COMMERCE SERVER</CatKey>
+            <CatKey x={141} y={88} size={10} anchor="middle">Commerce server</CatKey>
             <Receipt x={95} y={104} w={92} h={69} />
             <rect x={563} y={58} width={192} height={130} fill={CAT.tile} {...ink} />
             <rect x={567} y={62} width={184} height={122} fill="none" {...hair} />
-            <CatKey x={659} y={88} size={10} anchor="middle">PLATFORM SERVER</CatKey>
+            <CatKey x={659} y={88} size={10} anchor="middle">Platform server</CatKey>
             <Agent id={id} cx={659} cy={136} s={1.1} />
             <path d="M253 125H547" fill="none" stroke={CAT.amber} strokeWidth={3} />
             <path d={head.right(547, 125, 7)} fill="none" stroke={CAT.amber} strokeWidth={3} />
-            <CatKey x={400} y={108} size={10} anchor="middle" fill={CAT.amberText}>CONSENTED PURCHASE EVENT</CatKey>
+            <CatKey x={400} y={108} size={10} anchor="middle" fill={CAT.amberText}>Consented purchase event</CatKey>
             <path d="M282 216H518" stroke={CAT.ink} strokeWidth={0.6} strokeDasharray="2 4" />
             <rect x={366} y={204} width={68} height={24} fill={CAT.tile} {...ink} />
-            <CatKey x={400} y={220} size={8} anchor="middle">3P PIXEL</CatKey>
+            <CatKey x={400} y={220} size={8} anchor="middle">3P pixel</CatKey>
             <path d="M382 231L420 200" fill="none" {...ink} />
           </g>
         ) : route === "cleanroom" ? (
@@ -845,7 +796,7 @@ export function PrivacyRoutes() {
             <line x1={400} y1={43} x2={400} y2={224} stroke={CAT.ink} strokeWidth={1} strokeDasharray="3 4" />
             {[0, 1].map((side) => (
               <g key={side}>
-                <CatKey x={side ? 536 : 264} y={62} size={10} anchor="middle">{side ? "MEDIA PLATFORM" : "BRAND"}</CatKey>
+                <CatKey x={side ? 536 : 264} y={62} size={10} anchor="middle">{side ? "Media platform" : "Brand"}</CatKey>
                 {[0, 1, 2, 3].map((k) => <OrderForm key={k} x={side ? 450 : 182} y={80 + k * 24} w={168} h={18} />)}
               </g>
             ))}
@@ -854,8 +805,8 @@ export function PrivacyRoutes() {
             <circle cx={400} cy={124} r={4} fill={CAT.ink} />
             <path d="M672 135H747" fill="none" stroke={CAT.amber} strokeWidth={3} />
             <path d={head.right(747, 135, 7)} fill="none" stroke={CAT.amber} strokeWidth={3} />
-            <Price x={711} y={111} size={23} anchor="middle" fill={CAT.amberText}>OVERLAP</Price>
-            <CatKey x={400} y={258} size={10} anchor="middle">AGGREGATE RESULT | RAW ROWS STAY INSIDE</CatKey>
+            <Price x={711} y={111} size={23} anchor="middle" fill={CAT.amberText}>Overlap</Price>
+            <CatKey x={400} y={258} size={10} anchor="middle">Aggregate result | Raw rows stay inside</CatKey>
           </g>
         ) : (
           <g>
@@ -873,8 +824,8 @@ export function PrivacyRoutes() {
             <Sneaker id={id} cx={691} cy={127} s={1.35} />
             <NameLines x={638} y={178} w={106} />
             <Price x={638} y={210} size={14}>$84.00</Price>
-            <CatKey x={195} y={250} size={10} anchor="middle">FRAME MEANING + TONE</CatKey>
-            <CatKey x={691} y={250} size={10} anchor="middle" fill={CAT.amberText}>NO USER HISTORY</CatKey>
+            <CatKey x={195} y={250} size={10} anchor="middle">Frame meaning + tone</CatKey>
+            <CatKey x={691} y={250} size={10} anchor="middle" fill={CAT.amberText}>No user history</CatKey>
           </g>
         )}
       </Frame>
@@ -907,18 +858,18 @@ export function CreativeToBlackBox() {
       <NameLines x={177} y={134} w={88} />
       <Price x={177} y={158} size={13}>$18.00</Price>
       <Tile x={310} y={42} w={108} h={130} />
-      <CatKey x={364} y={76} size={9} anchor="middle">CONVERSION</CatKey>
-      <Price x={364} y={122} size={18} anchor="middle" fill={CAT.amberText}>PROFIT</Price>
+      <CatKey x={364} y={76} size={9} anchor="middle">Conversion</CatKey>
+      <Price x={364} y={122} size={18} anchor="middle" fill={CAT.amberText}>Profit</Price>
       <NameLines x={326} y={140} w={76} />
       <path d="M138 108H158M284 108H310M418 108H485" fill="none" {...ink} />
       <path d={head.right(485, 108, 7)} fill="none" {...ink} />
       <rect x={485} y={42} width={275} height={130} fill={CAT.tile} {...ink} />
       <rect x={489} y={46} width={267} height={122} fill="none" {...hair} />
       <Agent id={id} cx={622.5} cy={100} s={1.55} />
-      <CatKey x={622.5} y={149} size={10} anchor="middle">GOAL-BASED OPTIMIZATION</CatKey>
+      <CatKey x={622.5} y={149} size={10} anchor="middle">Goal-based optimization</CatKey>
       <path d="M622 172V212H180" fill="none" {...ink} />
       <path d={head.left(180, 212, 6)} fill="none" {...ink} />
-      <Price x={495} y={207} size={14} anchor="middle" fill={CAT.amberText}>MARGIN-ADJUSTED VALUE</Price>
+      <Price x={495} y={207} size={14} anchor="middle" fill={CAT.amberText}>Margin-adjusted value</Price>
     </Frame>
   );
 }
@@ -942,12 +893,12 @@ export function CreativeAssembler() {
       >
         <HalftoneDefs id={id} />
         <Tile x={26} y={34} w={174} h={214} />
-        <CatKey x={44} y={59} size={9}>PRODUCT FEED</CatKey>
+        <CatKey x={44} y={59} size={9}>Product feed</CatKey>
         <Sneaker id={id} cx={113} cy={103} s={1.05} />
         <NameLines x={48} y={141} w={130} />
         <Price x={48} y={177} size={18}>$84.00</Price>
-        <CatKey x={48} y={207} size={9}>{context === "runner" ? "RUN READY" : "CITY COMFORT"}</CatKey>
-        <CatKey x={48} y={230} size={9}>SHOP NOW</CatKey>
+        <CatKey x={48} y={207} size={9}>{context === "runner" ? "Run ready" : "City comfort"}</CatKey>
+        <CatKey x={48} y={230} size={9}>Shop now</CatKey>
         <path d="M216 142H296" fill="none" stroke={CAT.amber} strokeWidth={3} />
         <path d={head.right(296, 142, 7)} fill="none" stroke={CAT.amber} strokeWidth={3} />
         {wide ? (
@@ -955,21 +906,21 @@ export function CreativeAssembler() {
             <Tile x={312} y={54} w={460} h={178} />
             <Sneaker id={id} cx={459} cy={139} s={2.05} />
             <line x1={569} y1={78} x2={569} y2={208} {...hair} />
-            <Price x={595} y={108} size={22}>{context === "runner" ? "RUN READY" : "CITY COMFORT"}</Price>
-            <CatKey x={596} y={143} size={10}>{context === "runner" ? "EVERY MILE, LIGHTER" : "EVERY COMMUTE, EASIER"}</CatKey>
+            <Price x={595} y={108} size={22}>{context === "runner" ? "Run ready" : "City comfort"}</Price>
+            <CatKey x={596} y={143} size={10}>{context === "runner" ? "Every mile, lighter" : "Every commute, easier"}</CatKey>
             <Price x={595} y={182} size={20}>$84.00</Price>
             <rect x={674} y={191} width={74} height={23} fill={CAT.amber} {...ink} />
-            <CatKey x={711} y={206} size={8} anchor="middle">SHOP NOW</CatKey>
+            <CatKey x={711} y={206} size={8} anchor="middle">Shop now</CatKey>
           </g>
         ) : (
           <g>
             <Tile x={414} y={23} w={232} h={250} />
-            <Price x={530} y={53} size={17} anchor="middle">{context === "runner" ? "RUN READY" : "CITY COMFORT"}</Price>
+            <Price x={530} y={53} size={17} anchor="middle">{context === "runner" ? "Run ready" : "City comfort"}</Price>
             <Sneaker id={id} cx={530} cy={124} s={1.75} />
-            <CatKey x={530} y={182} size={8} anchor="middle">{context === "runner" ? "EVERY MILE, LIGHTER" : "EVERY COMMUTE, EASIER"}</CatKey>
+            <CatKey x={530} y={182} size={8} anchor="middle">{context === "runner" ? "Every mile, lighter" : "Every commute, easier"}</CatKey>
             <Price x={449} y={219} size={19}>$84.00</Price>
             <rect x={528} y={229} width={94} height={25} fill={CAT.amber} {...ink} />
-            <CatKey x={575} y={245} size={8} anchor="middle">SHOP NOW</CatKey>
+            <CatKey x={575} y={245} size={8} anchor="middle">Shop now</CatKey>
           </g>
         )}
       </Frame>
@@ -986,36 +937,6 @@ export function CreativeAssembler() {
         options={[{ id: "wide", label: "Wide display" }, { id: "square", label: "Square feed" }]}
       />
     </div>
-  );
-}
-
-/** A doubled platform report sits beside almost-flat warehouse orders and bank revenue. */
-export function ReportedVsBank() {
-  const id = "w5-reported";
-  return (
-    <Frame
-      width={800}
-      height={252}
-      label="The platform's conversion report doubles from 100 to 200 and reports acquisition cost down 40 percent. The warehouse dispatch ledger grows only from 100 to 104 orders and bank revenue grows 4 percent. The gap between the two ledgers is amber."
-      svgProps={{ "data-plate": "reported-vs-bank" }}
-    >
-      <HalftoneDefs id={id} />
-      <g transform="rotate(-3 188 124)">
-        <Tile x={65} y={26} w={246} h={180} />
-        <CatKey x={188} y={62} size={11} anchor="middle">PLATFORM REPORT</CatKey>
-        <Price x={188} y={109} size={39} anchor="middle">100 → 200</Price>
-        <CatKey x={188} y={146} size={10} anchor="middle">CONVERSIONS</CatKey>
-        <line x1={97} y1={155} x2={279} y2={155} {...hair} />
-        <Price x={188} y={184} size={19} anchor="middle">CPA −40%</Price>
-      </g>
-      <Warehouse id={id} x={438} y={58} w={198} h={130} />
-      {[0, 1, 2, 3].map((k) => <Parcel key={k} id={id} x={660 + k * 27} y={151 - (k % 2) * 8} w={21} h={22} />)}
-      <Price x={537} y={223} size={16} anchor="middle">100 → 104 ORDERS</Price>
-      <path d="M340 67V217" stroke={CAT.ink} strokeWidth={5} />
-      <path d="M340 67V217" stroke={CAT.amber} strokeWidth={3} />
-      <Price x={349} y={49} size={25} fill={CAT.amberText}>THE GAP</Price>
-      <Price x={710} y={218} size={19} anchor="middle" fill={CAT.amberText}>REVENUE +4%</Price>
-    </Frame>
   );
 }
 

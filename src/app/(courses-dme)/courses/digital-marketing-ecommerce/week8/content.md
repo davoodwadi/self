@@ -61,7 +61,8 @@ week: week8
 - Even when an unconditional incentive is offered, ethics and advertising law require disclosing inside the review that the reviewer received an incentive in exchange for their post.
 
 ## Discussion: Designing a Post-Purchase Review Program
-- Discussion: A Direct-to-Consumer cookware brand launches a new stainless-steel pan line and needs to build review volume quickly before the holiday season. The growth manager proposes emailing buyers three days after delivery with two offers, namely a 5 dollar store credit for any submitted review, plus an extra 20 dollar bonus if the review exceeds 200 words and lands in the top 10 percent of "helpful" votes. Drawing on research on altruism, motivation crowding out, and performance-contingent incentives, critique this proposal and design an alternative solicitation experiment.
+- A Direct-to-Consumer cookware brand launches a new stainless-steel pan line and needs to build review volume quickly before the holiday season. The growth manager proposes emailing buyers three days after delivery with two offers, namely a 5 dollar store credit for any submitted review, plus an extra 20 dollar bonus if the review exceeds 200 words and lands in the top 10 percent of "helpful" votes.
+- Drawing on research on altruism, motivation crowding out, and performance-contingent incentives, critique this proposal and design an alternative solicitation experiment.
 
 ## Part 4: Platform Reputation Systems, Fake Reviews, and Seller Responses [no-exercise]
 - Because a single star increase in average rating can shift conversion rates by 10 to 30 percent, bad actors face strong financial temptations to manipulate reputation systems.
@@ -90,7 +91,8 @@ week: week8
 - When consumers delegate shopping to an AI agent, the agent evaluates both the structured `AggregateRating` schema and sample review passages. However, under bounded algorithmic rationality, agents can over-weight salient summary statistics or vivid extreme reviews unless prompted to evaluate rating distributions and verified sample sizes systematically (Wadi & Ma, 2026a).
 
 ## Discussion: When the AI Summary Highlights a Flaw
-- Discussion: A travel backpack brand maintains a strong 4.6-star average across 1,400 reviews on a major marketplace. However, after the marketplace introduces an LLM-generated review summary paragraph above the reviews, the summary's final sentence states, "Several customers note that the water-bottle pocket is too tight for 32-ounce bottles," and conversion drops by 14 percent. How should the brand respond across product engineering, PDP expectation setting, and review management without violating platform manipulation rules?
+- A travel backpack brand maintains a strong 4.6-star average across 1,400 reviews on a major marketplace. However, after the marketplace introduces an LLM-generated review summary paragraph above the reviews, the summary's final sentence states, "Several customers note that the water-bottle pocket is too tight for 32-ounce bottles," and conversion drops by 14 percent.
+- How should the brand respond across product engineering, PDP expectation setting, and review management without violating platform manipulation rules?
 
 ## Key Takeaways
 - Online reviews overcome information asymmetry in digital markets, especially for experience goods whose quality cannot be verified from a specification table alone.

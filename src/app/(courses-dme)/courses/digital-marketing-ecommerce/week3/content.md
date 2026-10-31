@@ -84,7 +84,8 @@ week: week3
 - Non-branded search ads typically show lower raw conversion rates than branded ads, but generate genuine incremental customer acquisition among shoppers who had not yet chosen a brand.
 
 ## Discussion: Auditing a High-ROAS Search Agency Report
-- Discussion: A Direct-to-Consumer luggage brand hires a paid search agency that reports a 900 percent Return on Ad Spend (ROAS) after sixty days. Upon inspecting the search term report, the founder sees that 85 percent of the budget was spent on exact-match searches for the brand's own trademarked name, where the brand already ranks first organically and faces no competitor ads. Why is the agency's reported ROAS misleading, and how should the founder design a geo-holdout experiment to measure the true incremental lift of paid search?
+- A Direct-to-Consumer luggage brand hires a paid search agency that reports a 900 percent Return on Ad Spend (ROAS) after sixty days. Upon inspecting the search term report, the founder sees that 85 percent of the budget was spent on exact-match searches for the brand's own trademarked name, where the brand already ranks first organically and faces no competitor ads.
+- Why is the agency's reported ROAS misleading, and how should the founder design a geo-holdout experiment to measure the true incremental lift of paid search?
 
 ## Part 5: From Search Engines to AI Answer Engines [no-exercise]
 - Traditional search engines return a ranked list of ten links and leave the work of reading, comparing, and synthesizing across tabs to the human user.
@@ -98,7 +99,8 @@ week: week3
 - Sponsored placements are also migrating inside conversational answers, requiring marketers and auditors to track how paid insertions interact with organic citations when AI agents mediate search (Wadi & Ma, 2026c).
 
 ## Discussion: Winning the Conversational Shortlist
-- Discussion: A B2B project-management software firm notices that organic click traffic from traditional informational blog queries has fallen by 35 percent over the past year because prospective buyers now ask conversational AI assistants "Which project management tool is best for a 50-person engineering team?" However, buyers who are referred from AI assistant citations convert at three times the rate of traditional blog readers. How should the firm restructure its content and SEO strategy to optimize for retrieval-augmented AI answers rather than top-of-funnel keyword volume alone?
+- A B2B project-management software firm notices that organic click traffic from traditional informational blog queries has fallen by 35 percent over the past year because prospective buyers now ask conversational AI assistants "Which project management tool is best for a 50-person engineering team?" However, buyers who are referred from AI assistant citations convert at three times the rate of traditional blog readers.
+- How should the firm restructure its content and SEO strategy to optimize for retrieval-augmented AI answers rather than top-of-funnel keyword volume alone?
 
 ## Key Takeaways
 - Search marketing captures explicit user intent across informational, navigational, commercial investigation, and transactional queries.

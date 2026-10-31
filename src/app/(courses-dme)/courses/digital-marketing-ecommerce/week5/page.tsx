@@ -3,9 +3,9 @@
 import React from "react";
 import { SlideDeck, Slide, Title, Subtitle } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
-import { Plate, P, Term, Ruled, SlideHeading, Numbered, PartHead, Prompt } from "../_visuals/kit";
+import { Plate, P, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import { TitleAuction, ManualToMoment, BuySellDeadline, AuctionClock, DealAccess, SameSlotDifferentValue, DataProvenance, TargetingScenes, PaidWithoutViewer, VerificationLab, SupplyPath, SeventeenImpressions, BrokenCookieTrail, PrivacyRoutes, CreativeToBlackBox, CreativeAssembler, ReportedVsBank } from "./visuals";
+import { TitleAuction, ManualToMoment, BuySellDeadline, AuctionClock, DealAccess, SameSlotDifferentValue, DataProvenance, TargetingScenes, PaidWithoutViewer, VerificationLab, SupplyPath, BrokenCookieTrail, PrivacyRoutes, CreativeToBlackBox, CreativeAssembler } from "./visuals";
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading-snug";
@@ -22,7 +22,7 @@ export default function Week5Page() {
         </Plate>
         <p className="type-quote mt-7 max-w-[57ch] !text-[clamp(1.2rem,1.8vw,1.6rem)]">
           Programmatic advertising replaces human media negotiation with{" "}
-          <span className="text-[var(--signal)]">millisecond auctions</span> across interconnected demand, supply,
+          millisecond auctions across interconnected demand, supply,
           and customer data platforms.
         </p>
       </Slide>
@@ -30,22 +30,22 @@ export default function Week5Page() {
         <SlideHeading>From Manual Insertion Orders to Programmatic Exchanges</SlideHeading>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>Historically, buying display or video advertising resembled buying print magazine pages, in which human media buyers negotiated contracts (insertion orders) with human publisher sales teams weeks in advance.</P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>That manual model could not scale to an internet with millions of websites, mobile apps, and connected televisions generating billions of individual ad impressions every hour.</P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>Programmatic advertising automates the buying, selling, and targeting of digital ad inventory through software protocols and real-time financial auctions.</P>
             </Ruled>
           </div>
           <div className="grid content-start gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>Instead of buying a fixed banner slot on a newspaper website for an entire month regardless of who visits, programmatic systems allow an e-commerce brand to <Term>bid on a single impression shown to a specific user at a specific moment</Term>.</P>
             </Ruled>
             <Plate><ManualToMoment /></Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P>Understanding the AdTech information systems stack is essential because fees, latency, data leakage, and fraud can consume a large share of every advertising dollar along the supply chain.</P>
             </Ruled>
           </div>
@@ -65,10 +65,10 @@ export default function Week5Page() {
         <SlideHeading className="!mb-5">DSPs, SSPs, Ad Exchanges, and the 100-Millisecond RTB Auction</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <ol className="grid content-start gap-2">
-            <Numbered n={1}><Ruled weight="thin"><P>Step 1 is the ad request, triggered when a user loads a publisher&apos;s webpage or app and the user&apos;s browser sends an impression call containing context and user identifiers to the publisher&apos;s Supply-Side Platform (SSP).</P></Ruled></Numbered>
-            <Numbered n={2}><Ruled weight="thin"><P>Step 2 is the bid request broadcast, in which the SSP packages the available ad slot and user metadata and broadcasts a standardized OpenRTB bid request through an Ad Exchange to connected Demand-Side Platforms (DSPs).</P></Ruled></Numbered>
-            <Numbered n={3}><Ruled weight="thin"><P>Step 3 is buy-side valuation and bidding, in which each advertiser&apos;s DSP evaluates the user profile, predicts click or conversion probability, checks budget and frequency caps, and submits a monetary bid response within tens of milliseconds.</P></Ruled></Numbered>
-            <Numbered n={4}><Ruled weight="thin"><P>Step 4 is auction clearing and ad serving, in which the exchange and SSP select the winning bid, return the winning advertiser&apos;s ad markup to the user&apos;s browser, and fire tracking pixels to record the impression.</P></Ruled></Numbered>
+            <Numbered n={1}><Ruled><P>Step 1 is the ad request, triggered when a user loads a publisher&apos;s webpage or app and the user&apos;s browser sends an impression call containing context and user identifiers to the publisher&apos;s Supply-Side Platform (SSP).</P></Ruled></Numbered>
+            <Numbered n={2}><Ruled><P>Step 2 is the bid request broadcast, in which the SSP packages the available ad slot and user metadata and broadcasts a standardized OpenRTB bid request through an Ad Exchange to connected Demand-Side Platforms (DSPs).</P></Ruled></Numbered>
+            <Numbered n={3}><Ruled><P>Step 3 is buy-side valuation and bidding, in which each advertiser&apos;s DSP evaluates the user profile, predicts click or conversion probability, checks budget and frequency caps, and submits a monetary bid response within tens of milliseconds.</P></Ruled></Numbered>
+            <Numbered n={4}><Ruled><P>Step 4 is auction clearing and ad serving, in which the exchange and SSP select the winning bid, return the winning advertiser&apos;s ad markup to the user&apos;s browser, and fire tracking pixels to record the impression.</P></Ruled></Numbered>
           </ol>
           <Plate><AuctionClock /></Plate>
         </div>
@@ -77,13 +77,13 @@ export default function Week5Page() {
         <SlideHeading>Open Exchanges, Private Marketplaces, and Programmatic Guaranteed</SlideHeading>
         <div className="grid w-full gap-7 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin"><P>On an <Term tone="ink">Open Exchange</Term> (real-time bidding in the open market), any approved advertiser can bid on inventory across thousands of publishers, offering maximum scale and low prices but lower transparency into exact placement context.</P></Ruled>
-            <Ruled weight="thin"><P>In a <Term tone="ink">Private Marketplace (PMP)</Term>, a publisher invites a select group of advertisers into a closed auction using a Deal ID, giving brands priority access to premium inventory before it reaches the open exchange.</P></Ruled>
+            <Ruled><P>On an <Term>Open Exchange</Term> (real-time bidding in the open market), any approved advertiser can bid on inventory across thousands of publishers, offering maximum scale and low prices but lower transparency into exact placement context.</P></Ruled>
+            <Ruled><P>In a <Term>Private Marketplace (PMP)</Term>, a publisher invites a select group of advertisers into a closed auction using a Deal ID, giving brands priority access to premium inventory before it reaches the open exchange.</P></Ruled>
             <Plate><DealAccess /></Plate>
           </div>
           <div className="grid content-start gap-4">
-            <Ruled weight="thin"><P>In <Term tone="ink">Preferred Deals</Term>, an advertiser gets a fixed-price first look at a publisher&apos;s inventory via programmatic pipes and can choose whether to buy each impression before it falls to the auction.</P></Ruled>
-            <Ruled weight="thin"><P>In <Term>Programmatic Guaranteed</Term> (automated direct), the advertiser and publisher agree in advance on a fixed volume of impressions and a fixed price, using programmatic infrastructure to automate audience trafficking and frequency capping without an auction.</P></Ruled>
+            <Ruled><P>In <Term>Preferred Deals</Term>, an advertiser gets a fixed-price first look at a publisher&apos;s inventory via programmatic pipes and can choose whether to buy each impression before it falls to the auction.</P></Ruled>
+            <Ruled><P>In <Term>Programmatic Guaranteed</Term> (automated direct), the advertiser and publisher agree in advance on a fixed volume of impressions and a fixed price, using programmatic infrastructure to automate audience trafficking and frequency capping without an auction.</P></Ruled>
           </div>
         </div>
       </Slide>
@@ -101,13 +101,13 @@ export default function Week5Page() {
         <SlideHeading>First-Party, Second-Party, and Third-Party Data in Ad Targeting</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
           <div className="grid content-start gap-4">
-            <Ruled weight="thin"><P><Term tone="ink">First-party (1P) data</Term> are collected directly by the marketer from its own customers and site visitors with their consent, including CRM purchase records, email lists, app usage, and on-site cart events.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Second-party (2P) data</Term> are another organization&apos;s first-party data shared directly through a trusted strategic partnership, such as an airline sharing traveler intent data with a partner hotel chain or a retailer sharing category insights with a brand supplier.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Third-party (3P) data</Term> are aggregated from many external sources by commercial data brokers who do not have a direct relationship with the consumer, sold as pre-packaged demographic or interest segments.</P></Ruled>
+            <Ruled><P><Term>First-party (1P) data</Term> are collected directly by the marketer from its own customers and site visitors with their consent, including CRM purchase records, email lists, app usage, and on-site cart events.</P></Ruled>
+            <Ruled><P><Term>Second-party (2P) data</Term> are another organization&apos;s first-party data shared directly through a trusted strategic partnership, such as an airline sharing traveler intent data with a partner hotel chain or a retailer sharing category insights with a brand supplier.</P></Ruled>
+            <Ruled><P><Term>Third-party (3P) data</Term> are aggregated from many external sources by commercial data brokers who do not have a direct relationship with the consumer, sold as pre-packaged demographic or interest segments.</P></Ruled>
           </div>
           <div className="grid content-start gap-4">
             <Plate><DataProvenance /></Plate>
-            <Ruled weight="thin"><P>First-party data provide the <Term>highest accuracy, deterministic identity, and regulatory durability</Term>, whereas third-party broker segments often suffer from stale inferences, opaque provenance, and tightening privacy restrictions.</P></Ruled>
+            <Ruled><P>First-party data provide the <Term>highest accuracy, deterministic identity, and regulatory durability</Term>, whereas third-party broker segments often suffer from stale inferences, opaque provenance, and tightening privacy restrictions.</P></Ruled>
           </div>
         </div>
       </Slide>
@@ -115,13 +115,13 @@ export default function Week5Page() {
         <SlideHeading>Contextual Targeting, Retargeting, and Lookalike Modeling</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin"><P><Term tone="ink">Contextual targeting</Term> matches ads to the topic, keywords, and sentiment of the webpage or video currently being consumed (e.g., placing a running shoe ad alongside a marathon training article), requiring zero personal user history.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Behavioral retargeting</Term> (or remarketing) targets users who previously visited the advertiser&apos;s storefront, viewed a specific Product Detail Page, or abandoned a shopping cart, serving dynamic product ads that show the exact SKU left behind.</P></Ruled>
-            <Ruled weight="thin"><P>While retargeting often exhibits high apparent conversion rates, uncontrolled retargeting can <Term>waste budget chasing users who already bought the item elsewhere or who would have returned organically</Term>.</P></Ruled>
+            <Ruled><P><Term>Contextual targeting</Term> matches ads to the topic, keywords, and sentiment of the webpage or video currently being consumed (e.g., placing a running shoe ad alongside a marathon training article), requiring zero personal user history.</P></Ruled>
+            <Ruled><P><Term>Behavioral retargeting</Term> (or remarketing) targets users who previously visited the advertiser&apos;s storefront, viewed a specific Product Detail Page, or abandoned a shopping cart, serving dynamic product ads that show the exact SKU left behind.</P></Ruled>
+            <Ruled><P>While retargeting often exhibits high apparent conversion rates, uncontrolled retargeting can <Term>waste budget chasing users who already bought the item elsewhere or who would have returned organically</Term>.</P></Ruled>
           </div>
           <div className="grid content-start gap-4">
             <Plate><TargetingScenes /></Plate>
-            <Ruled weight="thin"><P><Term tone="ink">Lookalike (or actalike) modeling</Term> uses a seed list of the brand&apos;s highest-value first-party customers and trains a machine learning classifier inside a platform to find new prospective users whose behavioral profiles resemble the seed group.</P></Ruled>
+            <Ruled><P><Term>Lookalike (or actalike) modeling</Term> uses a seed list of the brand&apos;s highest-value first-party customers and trains a machine learning classifier inside a platform to find new prospective users whose behavioral profiles resemble the seed group.</P></Ruled>
           </div>
         </div>
       </Slide>
@@ -139,14 +139,14 @@ export default function Week5Page() {
         <SlideHeading>Viewability, Invalid Traffic (Ad Fraud), and Brand Safety</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin"><P><Term tone="ink">Ad viewability</Term> measures whether an ad served into the DOM actually entered the user&apos;s visible screen viewport. Under Media Rating Council (MRC) standards, a display ad counts as viewable only if <Term>at least 50 percent of its pixels remain on screen for at least one continuous second</Term> (two seconds for video).</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Invalid Traffic (IVT) and ad fraud</Term> occur when non-human bots, malware hijacks, hidden 1x1 pixel iframes, ad stacking, or spoofed domain names generate fake impressions and clicks to steal advertiser budgets.</P></Ruled>
+            <Ruled><P><Term>Ad viewability</Term> measures whether an ad served into the DOM actually entered the user&apos;s visible screen viewport. Under Media Rating Council (MRC) standards, a display ad counts as viewable only if <Term>at least 50 percent of its pixels remain on screen for at least one continuous second</Term> (two seconds for video).</P></Ruled>
+            <Ruled><P><Term>Invalid Traffic (IVT) and ad fraud</Term> occur when non-human bots, malware hijacks, hidden 1x1 pixel iframes, ad stacking, or spoofed domain names generate fake impressions and clicks to steal advertiser budgets.</P></Ruled>
           </div>
           <div className="grid content-start gap-3">
             <Plate><VerificationLab /></Plate>
             <div className="grid gap-4 md:grid-cols-2">
-              <Ruled weight="thin"><P><Term tone="ink">Brand safety and brand suitability controls</Term> prevent a company&apos;s advertisements from appearing adjacent to harmful, illegal, hate-filled, or contextually inappropriate content (such as an airline ad appearing next to news of an aviation accident).</P></Ruled>
-              <Ruled weight="thin"><P><Term tone="ink">Frequency capping</Term> limits the maximum number of times the same individual is shown the same advertisement within a day or week, preventing ad wear-out, budget waste, and consumer annoyance.</P></Ruled>
+              <Ruled><P><Term>Brand safety and brand suitability controls</Term> prevent a company&apos;s advertisements from appearing adjacent to harmful, illegal, hate-filled, or contextually inappropriate content (such as an airline ad appearing next to news of an aviation accident).</P></Ruled>
+              <Ruled><P><Term>Frequency capping</Term> limits the maximum number of times the same individual is shown the same advertisement within a day or week, preventing ad wear-out, budget waste, and consumer annoyance.</P></Ruled>
             </div>
           </div>
         </div>
@@ -155,19 +155,19 @@ export default function Week5Page() {
         <SlideHeading>The &quot;AdTech Tax&quot; and Supply Path Optimization</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-4">
-            <Ruled weight="thin"><P>In complex programmatic chains, multiple intermediaries (agency trading desks, DSPs, data providers, verification vendors, exchanges, and SSPs) each deduct a fee between the advertiser&apos;s dollar and the publisher&apos;s net payout.</P></Ruled>
-            <Ruled weight="thin"><P>Industry audits by advertising associations have shown that intermediary fees and unattributed discrepancies, often called the &quot;AdTech tax,&quot; can absorb <Term>30 to 50 percent of open-web programmatic spend</Term>.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Supply Path Optimization (SPO)</Term> is the practice by which advertisers audit and consolidate the SSPs and exchanges they bid through, cutting out redundant resellers to establish the most direct, transparent, and lowest-fee path to publisher inventory.</P></Ruled>
+            <Ruled><P>In complex programmatic chains, multiple intermediaries (agency trading desks, DSPs, data providers, verification vendors, exchanges, and SSPs) each deduct a fee between the advertiser&apos;s dollar and the publisher&apos;s net payout.</P></Ruled>
+            <Ruled><P>Industry audits by advertising associations have shown that intermediary fees and unattributed discrepancies, often called the &quot;AdTech tax,&quot; can absorb <Term>30 to 50 percent of open-web programmatic spend</Term>.</P></Ruled>
+            <Ruled><P><Term>Supply Path Optimization (SPO)</Term> is the practice by which advertisers audit and consolidate the SSPs and exchanges they bid through, cutting out redundant resellers to establish the most direct, transparent, and lowest-fee path to publisher inventory.</P></Ruled>
           </div>
           <Plate><SupplyPath /></Plate>
         </div>
       </Slide>
       <Slide id="discussion-retargeting-or-stalking" border className="!py-8">
-        <SlideHeading>Retargeting or Stalking?</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate><SeventeenImpressions /></Plate>
-          <Prompt className="[&_p]:!text-[clamp(1.05rem,1.55vw,1.35rem)] [&_p>span:first-child]:!inline [&_p>span:first-child]:!mb-0 [&_p>span:first-child]:!mr-3 [&_p>span:first-child]:!text-[0.8rem] [&_p>span:first-child]:!leading-normal">A consumer browses a pair of winter boots on an online shoe store, decides not to buy them, and then sees dynamic banner ads for those exact boots <Term>seventeen times over the next forty-eight hours</Term> across news sites, weather apps, and recipe blogs, including three days after buying a different pair at a local mall. Analyze this scenario from both an AdTech mechanics perspective and a marketing effectiveness perspective. Why did this happen, how does it affect brand equity and incremental ROAS, and what DSP controls should the marketer configure?</Prompt>
-        </div>
+        <SlideHeading>Discussion: Retargeting or Stalking?</SlideHeading>
+        <Discussion
+          scenario={"A consumer browses a pair of winter boots on an online shoe store, decides not to buy them, and then sees dynamic banner ads for those exact boots seventeen times over the next forty-eight hours across news sites, weather apps, and recipe blogs, including three days after buying a different pair at a local mall. Analyze this scenario from both an AdTech mechanics perspective and a marketing effectiveness perspective."}
+          question={"Why did this happen, how does it affect brand equity and incremental ROAS, and what DSP controls should the marketer configure?"}
+        />
       </Slide>
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="The Post-Cookie Transition and Privacy-Preserving AdTech" />
@@ -183,13 +183,13 @@ export default function Week5Page() {
         <SlideHeading>Navigating Signal Loss with Clean Rooms, Conversion APIs, and Contextual AI</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin"><P><Term tone="ink">Signal loss</Term> refers to the degradation of cross-site user identification, which shrinks retargeting pools, breaks frequency capping across domains, and blinds client-side pixel attribution.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Server-Side Conversion APIs (CAPI)</Term> replace fragile browser third-party pixels by sending consented first-party purchase events directly from the merchant&apos;s commerce server to the advertising platform&apos;s server.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Data Clean Rooms</Term> are secure, cryptographic computing environments in which a brand and a media platform (or retailer) join their respective first-party datasets to measure overlap and lift without either party exposing raw, row-level personal identifiers to the other.</P></Ruled>
+            <Ruled><P><Term>Signal loss</Term> refers to the degradation of cross-site user identification, which shrinks retargeting pools, breaks frequency capping across domains, and blinds client-side pixel attribution.</P></Ruled>
+            <Ruled><P><Term>Server-Side Conversion APIs (CAPI)</Term> replace fragile browser third-party pixels by sending consented first-party purchase events directly from the merchant&apos;s commerce server to the advertising platform&apos;s server.</P></Ruled>
+            <Ruled><P><Term>Data Clean Rooms</Term> are secure, cryptographic computing environments in which a brand and a media platform (or retailer) join their respective first-party datasets to measure overlap and lift without either party exposing raw, row-level personal identifiers to the other.</P></Ruled>
           </div>
           <div className="grid content-start gap-4">
             <Plate><PrivacyRoutes /></Plate>
-            <Ruled weight="thin"><P><Term tone="ink">Modern Contextual AI</Term> uses large language and vision models to analyze the granular frame-by-frame meaning, tone, and product suitability of webpage or video content in real time, delivering high relevance without tracking individual users across the web.</P></Ruled>
+            <Ruled><P><Term>Modern Contextual AI</Term> uses large language and vision models to analyze the granular frame-by-frame meaning, tone, and product suitability of webpage or video content in real time, delivering high relevance without tracking individual users across the web.</P></Ruled>
           </div>
         </div>
       </Slide>
@@ -207,22 +207,22 @@ export default function Week5Page() {
         <SlideHeading>Dynamic Creative Optimization and Autonomous Campaign Suites</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin"><P><Term tone="ink">Dynamic Creative Optimization (DCO)</Term> assembles personalized ad variations on the fly by combining modular headlines, product images, prices, and calls to action from a product feed based on the viewer&apos;s context or segment.</P></Ruled>
-            <Ruled weight="thin"><P>Generative AI extends DCO by generating background scenes, adapting aspect ratios across placements, translating copy, and tailoring value propositions to distinct buyer personas, subject to brand-safety and disclosure governance.</P></Ruled>
-            <Ruled weight="thin"><P><Term tone="ink">Autonomous cross-channel campaign systems</Term> (such as Meta Advantage+ and Google Performance Max) replace manual audience segmenting with goal-based optimization, where the marketer supplies creative assets, a product catalog feed, and a margin-adjusted conversion value target.</P></Ruled>
+            <Ruled><P><Term>Dynamic Creative Optimization (DCO)</Term> assembles personalized ad variations on the fly by combining modular headlines, product images, prices, and calls to action from a product feed based on the viewer&apos;s context or segment.</P></Ruled>
+            <Ruled><P>Generative AI extends DCO by generating background scenes, adapting aspect ratios across placements, translating copy, and tailoring value propositions to distinct buyer personas, subject to brand-safety and disclosure governance.</P></Ruled>
+            <Ruled><P><Term>Autonomous cross-channel campaign systems</Term> (such as Meta Advantage+ and Google Performance Max) replace manual audience segmenting with goal-based optimization, where the marketer supplies creative assets, a product catalog feed, and a margin-adjusted conversion value target.</P></Ruled>
           </div>
           <div className="grid content-start gap-4">
             <Plate><CreativeAssembler /></Plate>
-            <Ruled weight="thin"><P>In these black-box campaign systems, the marketer&apos;s role shifts from pulling manual bidding levers to feeding accurate first-party conversion profit signals and auditing whether the algorithm is buying <Term>incremental new customers or merely harvesting existing buyers</Term>.</P></Ruled>
+            <Ruled><P>In these black-box campaign systems, the marketer&apos;s role shifts from pulling manual bidding levers to feeding accurate first-party conversion profit signals and auditing whether the algorithm is buying <Term>incremental new customers or merely harvesting existing buyers</Term>.</P></Ruled>
           </div>
         </div>
       </Slide>
       <Slide id="discussion-trusting-the-black-box-ad-campaign" border className="!py-8">
-        <SlideHeading>Trusting the Black-Box Ad Campaign</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
-          <Plate><ReportedVsBank /></Plate>
-          <Prompt className="[&_p]:!text-[clamp(1.05rem,1.55vw,1.35rem)] [&_p>span:first-child]:!inline [&_p>span:first-child]:!mb-0 [&_p>span:first-child]:!mr-3 [&_p>span:first-child]:!text-[0.8rem] [&_p>span:first-child]:!leading-normal">An e-commerce skincare brand switches its programmatic and social budget into an automated AI campaign suite that promises to find conversions across display, video, search, and shopping placements automatically. Within a month, reported conversions double and cost per acquisition drops by 40 percent, yet the company&apos;s <Term>total warehouse orders and bank revenue grow by only 4 percent</Term>. What programmatic and attribution mechanisms explain the gap between the platform&apos;s reported conversions and total business revenue, and how can the brand verify what the black-box campaign is actually buying?</Prompt>
-        </div>
+        <SlideHeading>Discussion: Trusting the Black-Box Ad Campaign</SlideHeading>
+        <Discussion
+          scenario={"An e-commerce skincare brand switches its programmatic and social budget into an automated AI campaign suite that promises to find conversions across display, video, search, and shopping placements automatically. Within a month, reported conversions double and cost per acquisition drops by 40 percent, yet the company's total warehouse orders and bank revenue grow by only 4 percent."}
+          question={"What programmatic and attribution mechanisms explain the gap between the platform's reported conversions and total business revenue, and how can the brand verify what the black-box campaign is actually buying?"}
+        />
       </Slide>
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -235,7 +235,7 @@ export default function Week5Page() {
             "As third-party cookies and mobile tracking IDs deprecate, marketers preserve measurement and targeting through Server-Side Conversion APIs, cryptographic Data Clean Rooms, and Contextual AI.",
             "Dynamic Creative Optimization and autonomous AI campaign suites automate asset assembly and bidding, requiring marketers to govern them with profit-weighted first-party signals and incrementality audits.",
           ].map((takeaway, i) => (
-            <li key={i} className="min-w-0"><Numbered n={i + 1}><Ruled weight="thin"><P>{takeaway}</P></Ruled></Numbered></li>
+            <li key={i} className="min-w-0"><Numbered n={i + 1}><Ruled><P>{takeaway}</P></Ruled></Numbered></li>
           ))}
         </ol>
       </Slide>

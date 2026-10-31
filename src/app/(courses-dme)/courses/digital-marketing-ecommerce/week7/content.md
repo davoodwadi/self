@@ -74,7 +74,8 @@ week: week7
 - Strict list hygiene through confirmed opt-in, automated sunset policies that remove chronically unengaged subscribers, and granular preference centers protects long-term inbox placement.
 
 ## Discussion: Fixing a Broken Lifecycle Program
-- Discussion: An online kitchenware retailer sends a 15 percent promotional blast to its entire 400,000-person email list four times every week. Over the past six months, open rates have fallen below 8 percent, unsubscribe and spam complaint rates have spiked, and high-margin customers now refuse to buy anything at full price because they know another coupon arrives in forty-eight hours. Using RFM segmentation, event-driven lifecycle flows, and deliverability hygiene, design a restructuring plan to restore margin and inbox placement.
+- An online kitchenware retailer sends a 15 percent promotional blast to its entire 400,000-person email list four times every week. Over the past six months, open rates have fallen below 8 percent, unsubscribe and spam complaint rates have spiked, and high-margin customers now refuse to buy anything at full price because they know another coupon arrives in forty-eight hours.
+- Using RFM segmentation, event-driven lifecycle flows, and deliverability hygiene, design a restructuring plan to restore margin and inbox placement.
 
 ## Part 5: Hyper-Personalization at Scale and AI Lifecycle Agents [no-exercise]
 - Traditional marketing automation relies on rigid, human-authored decision trees (`if segment = A and viewed_category = B, send template_3`).
@@ -87,7 +88,8 @@ week: week7
 - Furthermore, as consumers begin using AI inbox filters and personal assistant agents that summarize promotional emails and manage subscriptions automatically, lifecycle messages must offer clear, structured value rather than clickbait subject lines.
 
 ## Discussion: The Personalization Creepiness Line
-- Discussion: A pet supply e-commerce store uses its CDP and a language model to send personalized follow-up emails. When a shopper browses an orthopedic dog bed for twelve seconds without buying, the system automatically sends an email two hours later reading, "We noticed you were looking at the Large Orthopedic Bed at 2:14 PM today, is your older dog having joint trouble?" Compare this message with a well-designed browse abandonment trigger. Why does the first message trigger customer reactance, and what governance rules should constrain generative CRM copy?
+- A pet supply e-commerce store uses its CDP and a language model to send personalized follow-up emails. When a shopper browses an orthopedic dog bed for twelve seconds without buying, the system automatically sends an email two hours later reading, "We noticed you were looking at the Large Orthopedic Bed at 2:14 PM today, is your older dog having joint trouble?" Compare this message with a well-designed browse abandonment trigger.
+- Why does the first message trigger customer reactance, and what governance rules should constrain generative CRM copy?
 
 ## Key Takeaways
 - Owned content and CRM channels convert expensive paid acquisition clicks into profitable long-term customer equity by lowering the marginal cost of repeat transactions.

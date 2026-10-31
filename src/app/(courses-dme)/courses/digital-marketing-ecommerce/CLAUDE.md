@@ -11,7 +11,7 @@ The style is a medium, not a scene template: each plate is invented for its sent
 - **Neutral page, white tiles.** Slides and plates sit on a neutral off-white page (`--paper` #FBFBF9) for comfortable long reading. Products sit in white tiles framed by a double rule (an outer 1-unit line and an inner 0.45-unit hairline, inset 3 units). Never tint the page sepia, cream or kraft.
 - **Engraved products in halftone.** Products are drawn in clean ink outline (`LINE.outline`) and shaded with the halftone dot screens in `HalftoneDefs`: `light` across the body, `dense` on the shaded side. White highlights (a rim, a handle's inner line) are drawn in paper over the ink. No grey fills, gradients or drop shadows.
 - **Ink marks.** Cursors, stars, counts and other small marks are solid ink. A mark becomes amber only when it is the slide's key idea.
-- **Listing furniture is part of the object.** A position numeral (Bodoni italic) in the tile's top-left, a price (Bodoni semibold) at the foot, and two hairlines for the product name. A word printed on a listing (SPONSORED, a −10% tag) is a catalogue key: Franklin semibold capitals, tracked.
+- **Listing furniture is part of the object.** A position numeral in the tile's top-left, a price (semibold) at the foot, and two hairlines for the product name. A word printed on a listing (Sponsored, a −10% tag) is a catalogue key in sentence case.
 - **Catalogue grammar.** Whatever is ranked, compared or offered is laid out as a catalogue would lay it out: a row or grid of tiles, a page spread, an order form, a price list, a mailing envelope, a parcel. Flows of attention, clicks or data run between tiles, never through them.
 
 ## Palette (`CAT` in `_visuals/kit.tsx`, tokens in `(courses-dme)/globals.css`)
@@ -23,16 +23,16 @@ The style is a medium, not a scene template: each plate is invented for its sent
 | `ink` | Every outline, halftone dot, mark, numeral and key | `#1E1C1A` |
 | `ink3` | Secondary notes on the page (not in plates) | `#5F5B57` |
 | `amber` | The accent mark in plates: the slide's key idea, one subject per plate, always with an ink outline | `#E0A100` |
-| `amberText` | The accent as text: the key phrase on a slide, and amber words in a plate | `#8A5A00` |
+| `amberText` | The accent as text: amber words in a plate | `#8A5A00` |
 | `purple` | The contrast colour: only on a plate that compares two cases students must tell apart (sponsored vs organic, human shopper vs AI agent) | `#6A2C70` |
 
 The bright amber reads at only about 2:1 on the page, so every amber mark carries an ink outline, and amber text always uses `amberText` (5.7:1). Purple (9.2:1) works as solid fill, line or text.
 
 ## Type
 
-- Headings and display: **Libre Bodoni** 400 (`--font-heading`).
-- Body, labels and controls: **Libre Franklin** (`--font-body`).
-- Inside plates: catalogue keys (concept names, words printed on a listing) are `CatKey`, Franklin 600 capitals tracked 0.14em. Position numerals are `Numeral`, Bodoni italic. Prices and quantities are `Price`, Bodoni 600. Nothing else.
+- One typeface: **Libre Franklin** (`--font-body`) for headings, body, labels, controls and plate text. Headings at 600, lead text at 400.
+- Slide text is ink only, with key terms in bold ink (`Term`).
+- Inside plates: catalogue keys (concept names, words printed on a listing) are `CatKey`, Franklin 600 in sentence case at normal letter spacing (acronyms and names keep their capitals, and the second line of a two-line key continues in lower case). Position numerals are `Numeral`, Franklin 500. Prices and quantities are `Price`, Franklin 600. Controls under a plate use the same sentence-case keys.
 - Size by what students see, not by viewBox units: measured at 1440×900 after `FitSlides` has run, keys read at 11 to 13px and numerals and prices at 13 to 16px. A column plate renders far smaller than a full-width one, so the same word needs bigger units there.
 
 ## Visual variety across a week

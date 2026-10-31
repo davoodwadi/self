@@ -78,7 +78,7 @@ function NameLines({ x, y, w, gap = 5 }: { x: number; y: number; w: number; gap?
 }
 
 /* --------------------------------------------------------------------------
-   02. Search as the Engine of Commercial Intent
+   Search as the Engine of Commercial Intent
    -------------------------------------------------------------------------- */
 
 /**
@@ -107,7 +107,7 @@ export function FeedVsQuery() {
         <rect x={98} y={114} width={136} height={76} fill={CAT.tile} stroke={CAT.ink} strokeWidth={1.4} />
         <rect x={101} y={117} width={130} height={70} fill="none" stroke={CAT.ink} strokeWidth={0.45} />
         <CatKey x={226} y={131} size={10.5} anchor="end">
-          SPONSORED
+          Sponsored
         </CatKey>
         <Sneaker id={id} cx={152} cy={158} s={1.15} />
         <Price x={226} y={180} size={12} anchor="end">
@@ -144,14 +144,14 @@ export function FeedVsQuery() {
 }
 
 /* --------------------------------------------------------------------------
-   03. Classifying Search Queries by Intent
+   Classifying Search Queries by Intent
    -------------------------------------------------------------------------- */
 
 const INTENTS: { key: string; q: [string, string]; cpc: string; coins: number }[] = [
-  { key: "INFORMATIONAL", q: ["how to descale an", "espresso machine"], cpc: "$0.45", coins: 2 },
-  { key: "NAVIGATIONAL", q: ["Breville support", "canada"], cpc: "$0.30", coins: 1 },
-  { key: "COMMERCIAL INVESTIGATION", q: ["best dual boiler espresso", "machine under 1500"], cpc: "$1.90", coins: 4 },
-  { key: "TRANSACTIONAL", q: ["buy Breville Bambino", "Plus free shipping"], cpc: "$3.40", coins: 7 },
+  { key: "Informational", q: ["how to descale an", "espresso machine"], cpc: "$0.45", coins: 2 },
+  { key: "Navigational", q: ["Breville support", "canada"], cpc: "$0.30", coins: 1 },
+  { key: "Commercial investigation", q: ["best dual boiler espresso", "machine under 1500"], cpc: "$1.90", coins: 4 },
+  { key: "Transactional", q: ["buy Breville Bambino", "Plus free shipping"], cpc: "$3.40", coins: 7 },
 ];
 
 /**
@@ -257,7 +257,7 @@ export function IntentLadder() {
               {t.cpc}
             </Price>
             <CatKey x={sx} y={pageTop + pageH - 14 - t.coins * 8 - 10} size={8.5} anchor="middle">
-              PER CLICK
+              per click
             </CatKey>
             {Array.from({ length: t.coins }, (_, c) => (
               <AmberCoin key={c} id={id} cx={sx} cy={r2(pageTop + pageH - 10 - c * 8)} amber={k === 3} />
@@ -270,7 +270,7 @@ export function IntentLadder() {
 }
 
 /* --------------------------------------------------------------------------
-   04. Part 1: How Search Engines Crawl, Index, and Rank
+   Part 1: How Search Engines Crawl, Index, and Rank
    -------------------------------------------------------------------------- */
 
 /** An engraved gooseneck kettle centred on (cx, cy): halftone body, dense side, white lid, long spout. About 50 × 34 at s = 1. */
@@ -322,7 +322,7 @@ export function OvernightDrop() {
         <HalftoneDefs id={id} />
         <SearchBar x={14} y={10} w={250} text="gooseneck kettle" size={13} go="ink" />
         <CatKey x={386} y={28} size={10} anchor="end">
-          {shipped ? "TUESDAY" : "MONDAY"}
+          {shipped ? "Tuesday" : "Monday"}
         </CatKey>
         {rows.map((k, i) => {
           const y = 50 + i * 49;
@@ -355,7 +355,7 @@ export function OvernightDrop() {
 }
 
 /* --------------------------------------------------------------------------
-   05. Crawling, Indexing, and Ranking Pipelines
+   Crawling, Indexing, and Ranking Pipelines
    -------------------------------------------------------------------------- */
 
 /** The kettle's product page as a small document at (x, y), 46 × 58: amber kettle and five stars for its quality. */
@@ -423,7 +423,7 @@ export function CrawlPipeline() {
         }
       >
         <HalftoneDefs id={id} />
-        {["1. CRAWL", "2. RENDER + INDEX", "3. RANK"].map((k, i) => (
+        {["1. Crawl", "2. Render + index", "3. Rank"].map((k, i) => (
           <CatKey key={k} x={cx[i]} y={16} size={10} anchor="middle">
             {k}
           </CatKey>
@@ -514,7 +514,7 @@ export function CrawlPipeline() {
 }
 
 /* --------------------------------------------------------------------------
-   06. Lexical Matching, Semantic Embeddings, and Authority Signals
+   Lexical Matching, Semantic Embeddings, and Authority Signals
    -------------------------------------------------------------------------- */
 
 type Signal = "lexical" | "semantic" | "authority" | "pogo";
@@ -561,12 +561,12 @@ export function RankSignals() {
         <SearchBar x={14} y={8} w={300} text="waterproof rain jacket" size={13} go="ink" />
         {level >= 2 ? (
           <CatKey x={392} y={52} size={9}>
-            LINKS IN
+            Links in
           </CatKey>
         ) : null}
         {level >= 3 ? (
           <CatKey x={544} y={52} size={9} anchor="end">
-            BOUNCE
+            Bounce
           </CatKey>
         ) : null}
         {order.map((_, i) => (
@@ -627,7 +627,7 @@ export function RankSignals() {
 }
 
 /* --------------------------------------------------------------------------
-   07. Part 2: Search Engine Optimization (SEO) Strategy
+   Part 2: Search Engine Optimization (SEO) Strategy
    -------------------------------------------------------------------------- */
 
 const ORGANIC = [0, 0, 0, 1, 1, 2, 2, 3, 4, 5, 6, 7];
@@ -654,10 +654,10 @@ export function CompoundingClicks() {
       >
         <HalftoneDefs id={id} />
         <CatKey x={12} y={16} size={10}>
-          PAID
+          Paid
         </CatKey>
         <CatKey x={12} y={136} size={10}>
-          ORGANIC
+          Organic
         </CatKey>
         <line x1={64} y1={88.5} x2={474} y2={88.5} {...hair} />
         <line x1={64} y1={226.5} x2={474} y2={226.5} {...hair} />
@@ -680,7 +680,7 @@ export function CompoundingClicks() {
           );
         })}
         <CatKey x={12} y={244} size={10}>
-          MONTH
+          Month
         </CatKey>
         <Price x={60} y={16} size={13}>
           {`${paidTotal},000 clicks`}
@@ -695,7 +695,7 @@ export function CompoundingClicks() {
 }
 
 /* --------------------------------------------------------------------------
-   08. On-Page, Technical, and Off-Page SEO
+   On-Page, Technical, and Off-Page SEO
    -------------------------------------------------------------------------- */
 
 /** A folded newspaper at (x, y), 44 × 34: masthead bar, a halftone photo and columns of copy. */
@@ -781,7 +781,7 @@ export function SeoLevers() {
         })}
         {banned ? (
           <CatKey x={92} y={306} size={9} anchor="middle">
-            DE-INDEXED
+            De-indexed
           </CatKey>
         ) : null}
         {/* the page */}
@@ -857,7 +857,7 @@ export function SeoLevers() {
 }
 
 /* --------------------------------------------------------------------------
-   09. The Long Tail of E-Commerce Search
+   The Long Tail of E-Commerce Search
    -------------------------------------------------------------------------- */
 
 const TAIL_N = 80;
@@ -921,14 +921,14 @@ export function LongTail() {
         </text>
         <line x1={x0 + 57 * step + 2} y1={146} x2={x0 + 57 * step + 2} y2={160} {...hair} />
         <CatKey x={12} y={18} size={10.5}>
-          SEARCHES PER MONTH, BY QUERY
+          Searches per month, by query
         </CatKey>
         {/* readouts: searches and orders, head against tail */}
         <CatKey x={12} y={218} size={10.5}>
-          SEARCHES
+          Searches
         </CatKey>
         <CatKey x={12} y={268} size={10.5}>
-          ORDERS
+          Orders
         </CatKey>
         {Array.from({ length: 20 }, (_, k) => (
           <Cursor key={k} x={110 + k * 19} y={204} scale={1.1} tone={k < nSearch ? "ink" : "amber"} />
@@ -949,7 +949,7 @@ export function LongTail() {
 }
 
 /* --------------------------------------------------------------------------
-   10. Part 3: Paid Search (SEM) and Auction Mechanics
+   Part 3: Paid Search (SEM) and Auction Mechanics
    -------------------------------------------------------------------------- */
 
 /** A hang-tag price tag pointing left, its hole at (x, y): the bid an advertiser offers per click. */
@@ -1001,7 +1001,7 @@ export function HighBidLoses() {
               <Mug id={id} cx={86} cy={y + 25} scale={0.8} />
             )}
             <CatKey x={130} y={y + 20} size={9}>
-              SPONSORED
+              Sponsored
             </CatKey>
             <NameLines x={130} y={y + 30} w={220} gap={6} />
             {Array.from({ length: [8, 3, 1][i] }, (_, c) => (
@@ -1013,14 +1013,14 @@ export function HighBidLoses() {
         );
       })}
       <CatKey x={714} y={30} size={9.5} anchor="middle">
-        BID PER CLICK
+        Bid per click
       </CatKey>
     </Frame>
   );
 }
 
 /* --------------------------------------------------------------------------
-   11. Generalized Second-Price Auctions and Quality Score
+   Generalized Second-Price Auctions and Quality Score
    -------------------------------------------------------------------------- */
 
 const RIVALS = [
@@ -1059,11 +1059,11 @@ export function AuctionDesk() {
           .join(". ")}.`}
       >
         <HalftoneDefs id={id} />
-        <CatKey x={22} y={16} size={9.5}>SLOT</CatKey>
-        <CatKey x={124} y={16} size={9.5}>BID</CatKey>
-        <CatKey x={178} y={16} size={9.5}>QUALITY SCORE</CatKey>
-        <CatKey x={308} y={16} size={9.5}>AD RANK</CatKey>
-        <CatKey x={548} y={16} size={9.5} anchor="end">PAYS PER CLICK</CatKey>
+        <CatKey x={22} y={16} size={9.5}>Slot</CatKey>
+        <CatKey x={124} y={16} size={9.5}>Bid</CatKey>
+        <CatKey x={178} y={16} size={9.5}>Quality score</CatKey>
+        <CatKey x={308} y={16} size={9.5}>Ad rank</CatKey>
+        <CatKey x={548} y={16} size={9.5} anchor="end">Pays per click</CatKey>
         {[0, 1, 2, 3].map((i) =>
           i < 3 ? (
             <g key={i}>
@@ -1076,7 +1076,7 @@ export function AuctionDesk() {
             <g key={i}>
               <rect x={10} y={rowY(i)} width={544} height={46} fill="none" stroke={CAT.ink} strokeWidth={0.6} strokeDasharray="3 3" />
               <CatKey x={544} y={rowY(i) + 28} size={9.5} anchor="end">
-                NO SLOT
+                No slot
               </CatKey>
             </g>
           ),
@@ -1116,7 +1116,7 @@ export function AuctionDesk() {
 }
 
 /* --------------------------------------------------------------------------
-   12. Keyword Match Types, Negative Keywords, and Automated Bidding
+   Keyword Match Types, Negative Keywords, and Automated Bidding
    -------------------------------------------------------------------------- */
 
 type Match = "exact" | "phrase" | "broad";
@@ -1162,17 +1162,17 @@ export function MatchTypes() {
       >
         <HalftoneDefs id={id} />
         <CatKey x={10} y={23} size={10.5}>
-          KEYWORD
+          Keyword
         </CatKey>
         <rect x={84} y={6} width={220} height={24} rx={4} fill={CAT.tile} {...ink} />
         <text x={96} y={23} fontFamily="ui-monospace, monospace" fontSize={13} fill={CAT.ink}>
           {KEYWORD_AS[match]}
         </text>
         <CatKey x={414} y={22} size={11} anchor="middle">
-          CLICK
+          Click
         </CatKey>
         <CatKey x={480} y={22} size={11} anchor="middle">
-          ORDER
+          Order
         </CatKey>
         {SEARCHES.map((q, i) => {
           const y = 42 + i * 30;
@@ -1188,7 +1188,7 @@ export function MatchTypes() {
                 <g>
                   <line x1={20} y1={y + 12} x2={300} y2={y + 12} stroke={CAT.ink} strokeWidth={1.4} />
                   <CatKey x={352} y={y + 16} size={8.5} anchor="end">
-                    NEGATIVE
+                    Negative
                   </CatKey>
                 </g>
               ) : null}
@@ -1234,7 +1234,7 @@ export function MatchTypes() {
 }
 
 /* --------------------------------------------------------------------------
-   13. Part 4: Search Cannibalization and Incrementality
+   Part 4: Search Cannibalization and Incrementality
    -------------------------------------------------------------------------- */
 
 /**
@@ -1261,7 +1261,7 @@ export function SameShopTwice() {
             <Tile x={10} y={y} w={236} h={54} />
             {paid ? (
               <CatKey x={238} y={y + 16} size={8.2} anchor="end">
-                SPONSORED
+                Sponsored
               </CatKey>
             ) : (
               <Numeral x={20} y={y + 22} size={14}>
@@ -1293,7 +1293,7 @@ export function SameShopTwice() {
 }
 
 /* --------------------------------------------------------------------------
-   14. Branded Keywords, Cannibalization, and Competitive Conquesting
+   Branded Keywords, Cannibalization, and Competitive Conquesting
    -------------------------------------------------------------------------- */
 
 type Rivals = "none" | "conquest";
@@ -1375,13 +1375,13 @@ export function PauseBrandAds() {
                   </g>
                   {sponsored ? (
                     <CatKey x={352} y={y + 14} size={10.5} anchor="end" fill={r === "rival" ? CAT.purple : CAT.ink}>
-                      SPONSORED
+                      Sponsored
                     </CatKey>
                   ) : null}
                   {r === "ours" || r === "ad" ? (
                     <g>
                       <CatKey x={58} y={y + 17} size={10.5}>
-                        PATAGONIA
+                        Patagonia
                       </CatKey>
                       <line x1={58} y1={y + 26} x2={120} y2={y + 26} {...hair} />
                     </g>
@@ -1398,18 +1398,18 @@ export function PauseBrandAds() {
         })}
         {/* readout */}
         <CatKey x={460} y={60} size={10.5} anchor="middle">
-          CLICKS THE AD ADDED
+          Clicks the ad added
         </CatKey>
         <Price x={460} y={100} size={28} anchor="middle" >
           {paused ? `${added}` : "?"}
         </Price>
         <CatKey x={460} y={120} size={10.5} anchor="middle">
-          OF 20
+          of 20
         </CatKey>
         {paused && after.lost ? (
           <g>
             <CatKey x={460} y={178} size={10.5} anchor="middle">
-              LEFT THE PAGE
+              Left the page
             </CatKey>
             <CursorGrid x={r2(460 - Math.min(10, after.lost) * 6 + 2)} y={188} n={after.lost} tone="ink" />
           </g>
@@ -1441,82 +1441,11 @@ export function PauseBrandAds() {
 }
 
 /* --------------------------------------------------------------------------
-   15. Discussion: Auditing a High-ROAS Search Agency Report
+   Discussion: Auditing a High-ROAS Search Agency Report
    -------------------------------------------------------------------------- */
 
-/** A hard-shell suitcase centred on (cx, cy): halftone shell with ribs, dense side, handle and wheels. */
-function Suitcase({ id, cx, cy, s = 1 }: { id: string; cx: number; cy: number; s?: number }) {
-  const w = r2(LINE.outline / s);
-  return (
-    <g transform={`translate(${r2(cx)} ${r2(cy)}) scale(${s})`} strokeLinejoin="round" strokeLinecap="round">
-      <path d="M-8 -30V-38H8V-30" fill="none" stroke={CAT.ink} strokeWidth={r2(2 / s)} />
-      <rect x={-18} y={-30} width={36} height={56} rx={5} fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={w} />
-      <path d="M10 -30H13Q18 -30 18 -25V21Q18 26 13 26H10Z" fill={ht(id, "dense")} />
-      {[-8, 0, 8].map((x) => (
-        <line key={x} x1={x} y1={-26} x2={x} y2={22} stroke={CAT.tile} strokeWidth={r2(1.2 / s)} />
-      ))}
-      <circle cx={-12} cy={29} r={2.6} fill={CAT.tile} stroke={CAT.ink} strokeWidth={w} />
-      <circle cx={12} cy={29} r={2.6} fill={CAT.tile} stroke={CAT.ink} strokeWidth={w} />
-    </g>
-  );
-}
-
-/**
- * The agency's sixty-day report as a printed sheet: the luggage brand's
- * suitcase in the masthead, ROAS printed large at 900%, and the search-term
- * spend laid out as a ledger strip of twenty coins, seventeen of them (85%)
- * spent on the brand's own name (amber).
- */
-export function AgencyReport() {
-  const id = "w3-agency";
-  return (
-    <Frame
-      width={400}
-      height={300}
-      label="A printed agency report for a luggage brand after sixty days: return on ad spend 900 percent, printed large. Below, the search term report: of the budget, 85 percent was spent on exact-match searches for the brand's own name, drawn as 17 amber coins of 20. The other 15 percent, 3 coins, went to all other searches."
-    >
-      <HalftoneDefs id={id} />
-      <rect x={30} y={8} width={340} height={284} fill={CAT.tile} {...ink} />
-      <rect x={30} y={8} width={340} height={30} fill={CAT.ink} />
-      <CatKey x={46} y={28} size={10.5} fill={CAT.tile}>
-        60-DAY REPORT
-      </CatKey>
-      <Suitcase id={id} cx={322} cy={88} s={1.1} />
-      <CatKey x={46} y={64} size={10.5}>
-        RETURN ON AD SPEND
-      </CatKey>
-      <Price x={46} y={118} size={50}>
-        900%
-      </Price>
-      <line x1={46} y1={142} x2={354} y2={142} {...hair} />
-      <CatKey x={46} y={164} size={10.5}>
-        SEARCH TERMS | SHARE OF BUDGET
-      </CatKey>
-      {Array.from({ length: 20 }, (_, k) => (
-        <g key={k}>
-          <path d={`M${r2(48 + (k % 10) * 31)} ${r2(184 + Math.floor(k / 10) * 18)}v3.5a12 3.6 0 0 0 24 0v-3.5`} fill={k < 17 ? CAT.amber : ht(id, "dense")} {...ink} />
-          <ellipse cx={r2(60 + (k % 10) * 31)} cy={r2(184 + Math.floor(k / 10) * 18)} rx={12} ry={3.6} fill={k < 17 ? CAT.amber : CAT.tile} {...ink} />
-        </g>
-      ))}
-      <text x={46} y={240} fontFamily="ui-monospace, monospace" fontSize={12} fill={CAT.amberText}>
-        [brand name]
-      </text>
-      <Price x={354} y={240} size={14} anchor="end" fill={CAT.amberText}>
-        85%
-      </Price>
-      <line x1={46} y1={250} x2={354} y2={250} {...hair} />
-      <text x={46} y={270} fontFamily={BODY_FONT} fontSize={12} fill={CAT.ink}>
-        all other searches
-      </text>
-      <Price x={354} y={270} size={14} anchor="end">
-        15%
-      </Price>
-    </Frame>
-  );
-}
-
 /* --------------------------------------------------------------------------
-   16. Part 5: From Search Engines to AI Answer Engines
+   Part 5: From Search Engines to AI Answer Engines
    -------------------------------------------------------------------------- */
 
 /** A web page at (x, y), 52 × 64: a kettle photo and lines of copy. */
@@ -1631,7 +1560,7 @@ export function WhoReads() {
 }
 
 /* --------------------------------------------------------------------------
-   17. Generative Engine Optimization (GEO) and the AI Shortlist
+   Generative Engine Optimization (GEO) and the AI Shortlist
    -------------------------------------------------------------------------- */
 
 type Evidence = "numbers" | "table" | "citations" | "schema";
@@ -1713,7 +1642,7 @@ export function ShortlistEvidence() {
         ) : null}
         {/* retrieval rank */}
         <CatKey x={206} y={18} size={11}>
-          RETRIEVED
+          Retrieved
         </CatKey>
         {Array.from({ length: 8 }, (_, k) => {
           const y = 26 + k * 28 + (k >= 3 ? 8 : 0);
@@ -1732,7 +1661,7 @@ export function ShortlistEvidence() {
         <line x1={202} y1={113} x2={330} y2={113} stroke={CAT.ink} strokeWidth={0.8} strokeDasharray="4 3" />
         {/* what the rank earns */}
         <CatKey x={348} y={18} size={11}>
-          TEN BLUE LINKS
+          Ten blue links
         </CatKey>
         <Price x={348} y={44} size={13}>
           {`${clicks} clicks per 100`}
@@ -1741,7 +1670,7 @@ export function ShortlistEvidence() {
           <Cursor key={k} x={r2(350 + (k % 10) * 20)} y={r2(54 + Math.floor(k / 10) * 17)} scale={0.95} />
         ))}
         <CatKey x={348} y={134} size={11}>
-          AI ANSWER
+          AI answer
         </CatKey>
         <rect x={348} y={142} width={204} height={112} fill={CAT.tile} {...ink} />
         <line x1={358} y1={154} x2={540} y2={154} {...hair} />
@@ -1797,10 +1726,10 @@ export function SponsoredInAnswer() {
   const [label, setLabel] = useState<"promoted" | "sponsored">("promoted");
   const id = "w3-paid";
   const share = PAID_SHARE[label];
-  const word = label === "promoted" ? "PROMOTED" : "SPONSORED";
+  const word = label === "promoted" ? "Promoted" : "Sponsored";
   const grids: { key: "traveler" | "platform"; x: number; title: string }[] = [
-    { key: "traveler", x: 22, title: "SERVES THE TRAVELER" },
-    { key: "platform", x: 212, title: "SERVES THE PLATFORM" },
+    { key: "traveler", x: 22, title: "Serves the traveler" },
+    { key: "platform", x: 212, title: "Serves the platform" },
   ];
   return (
     <div>
@@ -1860,7 +1789,7 @@ export function SponsoredInAnswer() {
           );
         })}
         <CatKey x={200} y={322} size={10.5} anchor="middle">
-          BOOKINGS THAT WENT TO THE PAID HOTEL
+          Bookings that went to the paid hotel
         </CatKey>
       </Frame>
       <Segmented<"promoted" | "sponsored">
@@ -1877,58 +1806,6 @@ export function SponsoredInAnswer() {
 }
 
 /* --------------------------------------------------------------------------
-   18. Discussion: Winning the Conversational Shortlist
+   Discussion: Winning the Conversational Shortlist
    -------------------------------------------------------------------------- */
 
-/**
- * The two facts in the case. Above: blog readers from informational
- * queries, twenty last year and thirteen this year, the seven missing drawn
- * as empty outlines (−35%). Below: twenty visitors from each source and the
- * orders they place: one from blog readers, three (amber) from AI
- * assistant citations.
- */
-export function ReferralQuality() {
-  const id = "w3-referral";
-  const cursorOutline = (x: number, y: number, k: number) => (
-    <path key={k} transform={`translate(${x} ${y}) scale(1.1)`} d="M0 0V13L3.5 9.8L6 15L8 14L5.6 9H10Z" fill="none" stroke={CAT.ink} strokeWidth={0.6} strokeDasharray="1.6 1.4" />
-  );
-  return (
-    <Frame
-      width={400}
-      height={232}
-      label="Above: blog readers from informational queries, 20 last year and 13 this year, with 7 missing, a fall of 35 percent. Below: out of 20 visitors each, blog readers place 1 order and visitors referred by AI assistant citations place 3 orders, shown in amber: three times the rate."
-    >
-      <HalftoneDefs id={id} />
-      <CatKey x={10} y={18} size={10.5}>
-        BLOG READERS, THIS YEAR
-      </CatKey>
-      {Array.from({ length: 20 }, (_, k) =>
-        k < 13 ? <Cursor key={k} x={12 + k * 15} y={28} scale={1.1} /> : cursorOutline(12 + k * 15, 28, k),
-      )}
-      <Price x={390} y={44} size={18} anchor="end">
-        −35%
-      </Price>
-      <line x1={10} y1={66.5} x2={390} y2={66.5} {...hair} />
-      {[
-        { key: "FROM THE BLOG", orders: 1, y: 88, agent: false },
-        { key: "FROM AI ASSISTANT CITATIONS", orders: 3, y: 160, agent: true },
-      ].map((r) => (
-        <g key={r.key}>
-          <CatKey x={10} y={r.y} size={10.5}>
-            {r.key}
-          </CatKey>
-          {Array.from({ length: 20 }, (_, k) => (
-            <Cursor key={k} x={12 + (k % 10) * 15} y={r.y + 10 + Math.floor(k / 10) * 18} scale={1.1} />
-          ))}
-          <Arrow x1={172} y1={r.y + 26} x2={204} y2={r.y + 26} />
-          {Array.from({ length: r.orders }, (_, k) => (
-            <Parcel key={k} id={id} x={216 + k * 30} y={r.y + 20} w={20} h={15} tone={r.agent ? "amber" : "ink"} />
-          ))}
-        </g>
-      ))}
-      <Price x={390} y={192} size={18} anchor="end" fill={CAT.amberText}>
-        3×
-      </Price>
-    </Frame>
-  );
-}

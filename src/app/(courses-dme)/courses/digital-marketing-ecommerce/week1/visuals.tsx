@@ -30,7 +30,6 @@ import {
   Espresso,
   Factory,
   House,
-  Jacket,
   Monitor,
   Mug,
   OrderForm,
@@ -56,7 +55,6 @@ import {
 const ink = { stroke: CAT.ink, strokeWidth: LINE.outline, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 const hair = { stroke: CAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" as const };
 
-
 /**
  * Growth by addition against growth by connection. Each step, the retailer
  * opens one more warehouse. The marketplace gains one more buyer and one
@@ -76,20 +74,20 @@ export function AddOneAtATime() {
       >
         <HalftoneDefs id={id} />
         <CatKey x={14} y={22} size={11}>
-          RETAILER
+          Retailer
         </CatKey>
         {Array.from({ length: n }, (_, k) => (
           <Warehouse key={k} id={id} x={14 + k * 50} y={34} w={42} h={36} stock={false} />
         ))}
         <CatKey x={466} y={22} size={11} anchor="end">
-          WAREHOUSES
+          Warehouses
         </CatKey>
         <Price x={466} y={46} size={16} anchor="end">
           {n}
         </Price>
         <line x1={14} y1={88.5} x2={466} y2={88.5} {...hair} />
         <CatKey x={14} y={110} size={11}>
-          MARKETPLACE
+          Marketplace
         </CatKey>
         {/* every buyer to every seller */}
         {Array.from({ length: n }, (_, b) =>
@@ -104,7 +102,7 @@ export function AddOneAtATime() {
           </g>
         ))}
         <CatKey x={466} y={110} size={11} anchor="end">
-          POSSIBLE MATCHES
+          Possible matches
         </CatKey>
         <Price x={466} y={136} size={20} anchor="end" fill={CAT.amberText}>
           {n * n}
@@ -112,41 +110,6 @@ export function AddOneAtATime() {
       </Frame>
       <Slider label="Steps of growth" value={n} min={1} max={8} step={1} onChange={setN} />
     </div>
-  );
-}
-
-/**
- * A hundred visits to the retailer's product pages, one mark each: 82
- * cursors from people and 18 agent heads (purple) fetching specifications
- * for someone else.
- */
-export function AgentShare() {
-  const id = "w1-share";
-  const agents = new Set([3, 11, 17, 24, 30, 38, 42, 49, 55, 61, 66, 72, 79, 84, 88, 93, 97, 26]);
-  return (
-    <Frame
-      width={400}
-      height={216}
-      label="One hundred product page visits in a 20 by 5 grid: 82 cursors from human shoppers and 18 purple AI agent heads."
-    >
-      <HalftoneDefs id={id} />
-      {Array.from({ length: 100 }, (_, k) => {
-        const cx = 24 + (k % 20) * 18.5;
-        const cy = 22 + Math.floor(k / 20) * 30;
-        return agents.has(k) ? (
-          <Agent key={k} id={id} cx={r2(cx)} cy={r2(cy + 2)} s={0.36} tone="purple" />
-        ) : (
-          <Cursor key={k} x={r2(cx - 4)} y={r2(cy - 8)} scale={1.05} />
-        );
-      })}
-      <line x1={12} y1={176.5} x2={388} y2={176.5} {...hair} />
-      <Price x={12} y={202} size={18} fill={CAT.purple}>
-        18
-      </Price>
-      <CatKey x={42} y={200} size={11} fill={CAT.purple}>
-        OF 100 PRODUCT PAGE VISITS
-      </CatKey>
-    </Frame>
   );
 }
 
@@ -172,19 +135,19 @@ export function ArchitectureChange() {
   const hw = 76;
   const hh = 58;
   // back-end parts
-  const engine = ["SEARCH", "CATALOG", "CART", "CHECKOUT", "ORDERS"];
+  const engine = ["Search", "Catalog", "Cart", "Checkout", "Orders"];
   const services = [
-    { key: "SEARCH", parts: ["SEARCH"] },
-    { key: "CONTENT", parts: ["CMS"] },
-    { key: "COMMERCE", parts: ["CATALOG", "CART", "ORDERS"] },
-    { key: "PAYMENTS", parts: ["CHECKOUT"] },
+    { key: "Search", parts: ["Search"] },
+    { key: "Content", parts: ["CMS"] },
+    { key: "Commerce", parts: ["Catalog", "Cart", "Orders"] },
+    { key: "Payments", parts: ["Checkout"] },
   ];
   // which heads exist
   const headsShown: Head[] = arch === "mono" ? (change === "agent" ? ["web", "agent"] : ["web"]) : change === "agent" ? HEADS : HEADS.filter((h) => h !== "agent");
   // what turns amber
   const headLit = (h: Head) => (arch === "mono" ? h === "web" || (h === "agent" && change === "agent") : (change === "page" && h === "web") || (change === "agent" && h === "agent"));
   const engineLit = arch === "mono" || (arch === "headless" && change === "search");
-  const serviceLit = (k: string) => arch === "composable" && change === "search" && k === "SEARCH";
+  const serviceLit = (k: string) => arch === "composable" && change === "search" && k === "Search";
   const total = headsShown.length + (arch === "composable" ? services.length : engine.length);
   const lit = headsShown.filter(headLit).length + (arch === "composable" ? services.filter((s) => serviceLit(s.key)).length : engineLit ? engine.length : 0);
   const amb = (on: boolean) => (on ? CAT.amber : CAT.tile);
@@ -246,7 +209,7 @@ export function ArchitectureChange() {
         )}
         <line x1={6} y1={214.5} x2={474} y2={214.5} {...hair} />
         <CatKey x={6} y={244} size={12}>
-          MODIFIED AND REDEPLOYED
+          Modified and redeployed
         </CatKey>
         <Price x={474} y={245} size={17} anchor="end" fill={CAT.amberText}>
           {`${lit} of ${total} parts`}
@@ -314,7 +277,6 @@ function HeadGlyph({ id, kind, cx, cy }: { id: string; kind: Head; cx: number; c
   return <Agent id={id} cx={cx} cy={cy} s={0.9} />;
 }
 
-
 /**
  * What one click on the buy button sets off: four stations in order. Switch
  * on a failure and the run stops at the station that catches it. The
@@ -328,8 +290,8 @@ export function CheckoutRun() {
   const id = "w1-checkout";
   const stopAt = fails.includes("stock") ? 0 : fails.includes("fraud") || fails.includes("decline") ? 2 : 4;
   const cx = (k: number) => 142 + k * 184;
-  const keys = ["INVENTORY AND TAX", "TOKENIZATION", "FRAUD AND AUTHORIZATION", "COMMIT AND CAPTURE"];
-  const lines = [["INVENTORY", "AND TAX"], ["TOKENIZATION"], ["FRAUD AND", "AUTHORIZATION"], ["COMMIT AND", "CAPTURE"]];
+  const keys = ["Inventory and tax", "Tokenization", "Fraud and authorization", "Commit and capture"];
+  const lines = [["Inventory", "and tax"], ["Tokenization"], ["Fraud and", "authorization"], ["Commit and", "capture"]];
   const reached = (k: number) => k <= stopAt;
   const state = (k: number): "ok" | "stop" | "off" => (k < stopAt ? "ok" : k === stopAt ? "stop" : "off");
   return (
@@ -343,7 +305,7 @@ export function CheckoutRun() {
         {/* buy button */}
         <rect x={6} y={66} width={44} height={22} rx={3} fill={CAT.tile} {...ink} />
         <CatKey x={28} y={81} anchor="middle" size={10}>
-          BUY
+          Buy
         </CatKey>
         <Cursor x={36} y={82} scale={1} />
         {[0, 1, 2, 3].map((k) => {
@@ -375,7 +337,7 @@ export function CheckoutRun() {
         })}
         <line x1={10} y1={190.5} x2={790} y2={190.5} {...hair} />
         <CatKey x={10} y={216} size={11}>
-          MONEY MOVED
+          Money moved
         </CatKey>
         <Price x={130} y={217} size={16} fill={CAT.amberText}>
           {stopAt === 4 ? "$64.80 captured" : "none"}
@@ -550,7 +512,7 @@ export function ColdStartSeed() {
                 <Cursor key={k} x={r2(px(t) + 10 + (k % 5) * 15)} y={r2(114 + Math.floor(k / 5) * 21)} scale={1} />
               ))}
               <CatKey x={px(t) + pw / 2 + 4} y={183} anchor="end" size={11}>
-                MONTH
+                Month
               </CatKey>
               <Numeral x={px(t) + pw / 2 + 8} y={184} size={14}>
                 {t + 1}
@@ -629,7 +591,7 @@ export function ConstraintFilter() {
                 {`${m.db} DB`}
               </CatKey>
               <CatKey x={x + 10} y={y + th - 9} size={10.5}>
-                {m.steel ? "STAINLESS" : "ALUMINUM"}
+                {m.steel ? "Stainless" : "Aluminum"}
               </CatKey>
             </g>
           ) : (
@@ -638,7 +600,7 @@ export function ConstraintFilter() {
         })}
         <line x1={8} y1={258.5} x2={472} y2={258.5} {...hair} />
         <CatKey x={8} y={282} size={12}>
-          LEFT TO CONSIDER
+          Left to consider
         </CatKey>
         <Price x={472} y={283} size={16} anchor="end" fill={CAT.amberText}>
           {`${kept} of 12`}
@@ -677,13 +639,13 @@ export function DirectLedger() {
   type Seg = { v: number; key: string; fill: string; above: boolean };
   const rows: { key: string; y: number; segs: Seg[]; kept: number }[] = [
     {
-      key: "WHOLESALE",
+      key: "Wholesale",
       y: 52,
       kept: keptW,
       segs: [
-        { v: SHOE.cost, key: "UNIT COST", fill: ht(id, "dense"), above: false },
-        { v: keptW, key: "KEPT", fill: CAT.amber, above: true },
-        { v: SHOE.price - SHOE.wholesale, key: "RETAILER", fill: ht(id, "light"), above: false },
+        { v: SHOE.cost, key: "Unit cost", fill: ht(id, "dense"), above: false },
+        { v: keptW, key: "Kept", fill: CAT.amber, above: true },
+        { v: SHOE.price - SHOE.wholesale, key: "Retailer", fill: ht(id, "light"), above: false },
       ],
     },
     {
@@ -691,10 +653,10 @@ export function DirectLedger() {
       y: 154,
       kept: keptD,
       segs: [
-        { v: SHOE.cost, key: "UNIT COST", fill: ht(id, "dense"), above: false },
-        { v: SHOE.ship, key: "FULFILLMENT", fill: ht(id, "light"), above: true },
-        { v: cac, key: "ACQUISITION", fill: ht(id, "light"), above: false },
-        { v: keptD, key: "KEPT", fill: CAT.amber, above: true },
+        { v: SHOE.cost, key: "Unit cost", fill: ht(id, "dense"), above: false },
+        { v: SHOE.ship, key: "Fulfillment", fill: ht(id, "light"), above: true },
+        { v: cac, key: "Acquisition", fill: ht(id, "light"), above: false },
+        { v: keptD, key: "Kept", fill: CAT.amber, above: true },
       ],
     },
   ];
@@ -721,10 +683,10 @@ export function DirectLedger() {
                 return (
                   <g key={k}>
                     <rect x={X(a)} y={r.y} width={r2(sg.v * u)} height={24} fill={sg.fill} {...ink} />
-                    <CatKey x={cx} y={sg.above ? r.y - 24 : r.y + 39} anchor="middle" size={11} fill={sg.key === "KEPT" ? CAT.amberText : CAT.ink}>
+                    <CatKey x={cx} y={sg.above ? r.y - 24 : r.y + 39} anchor="middle" size={11} fill={sg.key === "Kept" ? CAT.amberText : CAT.ink}>
                       {sg.key}
                     </CatKey>
-                    <Price x={cx} y={sg.above ? r.y - 6 : r.y + 58} anchor="middle" size={14} fill={sg.key === "KEPT" ? CAT.amberText : CAT.ink}>
+                    <Price x={cx} y={sg.above ? r.y - 6 : r.y + 58} anchor="middle" size={14} fill={sg.key === "Kept" ? CAT.amberText : CAT.ink}>
                       {`$${sg.v}`}
                     </Price>
                   </g>
@@ -739,7 +701,7 @@ export function DirectLedger() {
           $80
         </Price>
         <CatKey x={X(SHOE.price) - 34} y={17} anchor="end" size={11}>
-          SHELF PRICE
+          Shelf price
         </CatKey>
       </Frame>
       <Slider label="Acquisition cost per order" value={cac} min={0} max={45} step={1} onChange={setCac} formatValue={(v) => `$${v}`} />
@@ -765,8 +727,8 @@ export function DoubleMarkup() {
   const q = 100 - p;
   const joint = (p - c) * q;
   const cols = [
-    { key: "DIRECT", x: 20, price: direct.p, q: direct.q, profit: direct.profit, steps: [c, direct.p] },
-    { key: "THROUGH A RETAILER", x: 250, price: p, q, profit: joint, steps: [c, w, p] },
+    { key: "Direct", x: 20, price: direct.p, q: direct.q, profit: direct.profit, steps: [c, direct.p] },
+    { key: "Through a retailer", x: 250, price: p, q, profit: joint, steps: [c, w, p] },
   ];
   return (
     <div>
@@ -797,7 +759,7 @@ export function DoubleMarkup() {
                     {`$${v}`}
                   </Price>
                   <CatKey x={col.x + 72} y={y + 14} size={10.5}>
-                    {k === 0 ? "COST" : shelf ? "SHELF PRICE" : "WHOLESALE"}
+                    {k === 0 ? "Cost" : shelf ? "Shelf price" : "Wholesale"}
                   </CatKey>
                 </g>
               );
@@ -808,14 +770,14 @@ export function DoubleMarkup() {
               <Parcel key={k} id={id} x={r2(col.x + (k % 5) * 30)} y={r2(206 - Math.floor(k / 5) * 22)} w={22} h={16} />
             ))}
             <CatKey x={col.x} y={246} size={11}>
-              PAIRS SOLD
+              Pairs sold
             </CatKey>
             <Price x={col.x + 196} y={247} size={14} anchor="end">
               {col.q}
             </Price>
             <line x1={col.x} y1={258.5} x2={col.x + 196} y2={258.5} {...hair} />
             <CatKey x={col.x} y={282} size={11}>
-              {ci === 0 ? "BRAND EARNS" : "BOTH FIRMS EARN"}
+              {ci === 0 ? "Brand earns" : "Both firms earn"}
             </CatKey>
             <Price x={col.x + 196} y={283} size={14} anchor="end">
               {`$${col.profit.toLocaleString("en-US")}`}
@@ -886,7 +848,7 @@ export function Flywheel() {
           </Numeral>
         ))}
         <CatKey x={X(4)} y={292} anchor="middle" size={9}>
-          MONTH
+          Month
         </CatKey>
       </Frame>
       <Slider label="Shoppers left after month 1" value={left} min={20} max={80} step={5} onChange={setLeft} formatValue={(v) => `${v}%`} />
@@ -902,10 +864,10 @@ export function Flywheel() {
 export function FourQuestions() {
   const id = "w1-four";
   const rows = [
-    { key: "WHO SELLS", y: 52 },
-    { key: "WHO BUYS", y: 112 },
-    { key: "WHO OWNS THE INVENTORY", y: 172 },
-    { key: "HOW REVENUE IS EARNED", y: 232 },
+    { key: "Who sells", y: 52 },
+    { key: "Who buys", y: 112 },
+    { key: "Who owns the inventory", y: 172 },
+    { key: "How revenue is earned", y: 232 },
   ];
   return (
     <Frame
@@ -942,7 +904,6 @@ export function FourQuestions() {
     </Frame>
   );
 }
-
 
 /**
  * Four scenes, one under each scenario. The shoe maker's own web store sends
@@ -989,7 +950,7 @@ export function FourScenarios() {
         <line x1={px(1) + 78} y1={29} x2={px(1) + 122} y2={29} {...hair} />
         <line x1={px(1) + 78} y1={35} x2={px(1) + 110} y2={35} {...hair} />
         <CatKey x={px(1) + 100} y={54} anchor="middle" size={9}>
-          NET 30
+          Net 30
         </CatKey>
       </g>
       {/* 3. craft marketplace */}
@@ -1024,7 +985,7 @@ export function FourScenarios() {
               <line x1={px(3) + 52} y1={y + 19} x2={px(3) + 90} y2={y + 19} {...hair} />
               {j < 2 ? (
                 <CatKey x={px(3) + 174} y={y + 13} anchor="end" size={8}>
-                  SPONSORED
+                  Sponsored
                 </CatKey>
               ) : null}
               {j < 2 ? <line x1={px(3) + 16} y1={y + 33} x2={px(3) + 176} y2={y + 33} stroke={CAT.ink} strokeWidth={0.3} /> : null}
@@ -1036,7 +997,6 @@ export function FourScenarios() {
     </Frame>
   );
 }
-
 
 /** A hex-head bolt standing upright with its top at (x, y). */
 function Bolt({ x, y }: { x: number; y: number }) {
@@ -1050,7 +1010,6 @@ function Bolt({ x, y }: { x: number; y: number }) {
     </g>
   );
 }
-
 
 /**
  * Five scenes, one under each stage. A creator's video sends a shopper into
@@ -1110,7 +1069,6 @@ export function FunnelStages() {
   );
 }
 
-
 /**
  * Real data: Wadi & Ma (2026a), hotel search over a 100-listing results page.
  * Mean listings inspected per session, drawn as a row of listing tiles (the
@@ -1118,12 +1076,12 @@ export function FunnelStages() {
  * open about one. AI agents at their default reasoning effort open two to six.
  */
 const INSPECTIONS = [
-  { key: "HUMAN SHOPPERS", n: 1.12, human: true },
-  { key: "SONNET", n: 1.63 },
-  { key: "FLASH LITE", n: 3.12 },
-  { key: "LUNA", n: 4.0 },
-  { key: "FLASH", n: 4.25 },
-  { key: "PRO", n: 5.83 },
+  { key: "Human shoppers", n: 1.12, human: true },
+  { key: "Sonnet", n: 1.63 },
+  { key: "Flash Lite", n: 3.12 },
+  { key: "Luna", n: 4.0 },
+  { key: "Flash", n: 4.25 },
+  { key: "Pro", n: 5.83 },
 ];
 
 export function InspectionsReal() {
@@ -1146,7 +1104,7 @@ export function InspectionsReal() {
         ))}
       </defs>
       <CatKey x={x0} y={16} size={10}>
-        LISTINGS INSPECTED PER SESSION
+        Listings inspected per session
       </CatKey>
       {INSPECTIONS.map((r, i) => {
         const y = 32 + i * 37;
@@ -1207,7 +1165,7 @@ export function Leakage() {
       </Numeral>
       <Coin id={id} cx={262} cy={9} rx={9} ry={2.6} t={2.6} />
       <CatKey x={276} y={13} size={10}>
-        TAKE RATE
+        Take rate
       </CatKey>
       {/* repeat orders off the platform */}
       {[0, 1, 2].map((k) => {
@@ -1232,7 +1190,7 @@ export function Leakage() {
  * handoff, but its effect carries through every stage below it.
  */
 type Fix = "landing" | "checkout" | "delivery";
-const STAGES = ["VISITS", "PRODUCT VIEWS", "CARTS", "ORDERS", "REPEAT BUYERS"];
+const STAGES = ["Visits", "Product views", "Carts", "Orders", "Repeat buyers"];
 
 export function LeakyFunnel() {
   const [fixes, setFixes] = useState<Fix[]>([]);
@@ -1385,8 +1343,6 @@ export function OneVsThree() {
   );
 }
 
-
-
 /**
  * The platform's results page at (x, y): a white page of three ranked rows,
  * each with a numeral, a parcel and two name lines. `owners` colours each
@@ -1467,13 +1423,13 @@ export function OwnListingRank() {
         })}
         <line x1={14} y1={222.5} x2={466} y2={222.5} {...hair} />
         <CatKey x={14} y={246} size={11}>
-          PLATFORM EARNS
+          Platform earns
         </CatKey>
         <Price x={150} y={247} size={16} fill={CAT.amberText}>
           {`$${earns}`}
         </Price>
         <CatKey x={340} y={246} size={11} anchor="end">
-          {"SELLERS' SALES"}
+          {"Sellers' sales"}
         </CatKey>
         <Price x={350} y={247} size={16}>
           {sellerClicks}
@@ -1538,7 +1494,6 @@ function Catalogue({ id, cx, cy }: { id: string; cx: number; cy: number }) {
   );
 }
 
-
 /**
  * Left, outside the store: a web page's display ad aimed by a crumbled
  * third-party cookie, its clicks scattered off target. Right, inside the
@@ -1578,10 +1533,10 @@ export function RetailMediaLoop() {
       ))}
       <CrumbledCookie id={id} cx={212} cy={70} />
       <CatKey x={212} y={108} anchor="middle" size={10}>
-        THIRD-PARTY
+        Third-party
       </CatKey>
       <CatKey x={212} y={122} anchor="middle" size={10}>
-        COOKIES
+        cookies
       </CatKey>
       <line x1={260} y1={20} x2={260} y2={244} {...hair} />
       {/* inside: the marketplace */}
@@ -1609,7 +1564,7 @@ export function RetailMediaLoop() {
             <line x1={460} y1={y + 21} x2={496} y2={y + 21} {...hair} />
             {j < 2 ? (
               <CatKey x={572} y={y + 14} anchor="end" size={8}>
-                SPONSORED
+                Sponsored
               </CatKey>
             ) : null}
             {j < 3 ? <line x1={418} y1={y + 33} x2={572} y2={y + 33} stroke={CAT.ink} strokeWidth={0.3} /> : null}
@@ -1624,7 +1579,7 @@ export function RetailMediaLoop() {
       <path d="M702 112Q760 112 760 60Q760 30 640 30H596Q588 30 588 52V58" fill="none" stroke={CAT.amber} strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
       <path d="M580 50L588 62L596 50Z" fill={CAT.amber} stroke={CAT.ink} strokeWidth={0.8} strokeLinejoin="round" />
       <CatKey x={644} y={22} anchor="middle" size={10} fill={CAT.amberText}>
-        CLOSED-LOOP, FIRST-PARTY INTENT DATA
+        Closed-loop, first-party intent data
       </CatKey>
     </Frame>
   );
@@ -1648,7 +1603,6 @@ function CrumbledCookie({ id, cx, cy }: { id: string; cx: number; cy: number }) 
   );
 }
 
-
 /**
  * Four firms, one month. Each earns by its own model, drawn under its stack
  * of coins: a price tag (markup), a seller statement (take rate), a
@@ -1662,10 +1616,10 @@ export function RevenueDrivers() {
   const id = "w1-revenue";
   const v = visits * 1000;
   const models = [
-    { key: "RETAIL MARKUP", rev: v * 0.03 * 9 },
-    { key: "TAKE RATE", rev: v * 0.03 * 4.5 + 500 },
-    { key: "SUBSCRIPTION", rev: 1500 * (renew / 100) * 10 },
-    { key: "RETAIL MEDIA", rev: v * 0.06 },
+    { key: "Retail markup", rev: v * 0.03 * 9 },
+    { key: "Take rate", rev: v * 0.03 * 4.5 + 500 },
+    { key: "Subscription", rev: 1500 * (renew / 100) * 10 },
+    { key: "Retail media", rev: v * 0.06 },
   ];
   const cx = (k: number) => 76 + k * 136;
   const base = 178;
@@ -1703,7 +1657,7 @@ export function RevenueDrivers() {
             $14
           </Price>
           <CatKey x={cx(0) - 26} y={238} size={10}>
-            COST $5
+            Cost $5
           </CatKey>
         </g>
         {/* seller statement */}
@@ -1723,14 +1677,14 @@ export function RevenueDrivers() {
             $10
           </Price>
           <CatKey x={cx(2) + 26} y={228} anchor="end" size={9}>
-            MONTHLY
+            Monthly
           </CatKey>
         </g>
         {/* sponsored listing */}
         <g>
           <Tile x={cx(3) - 40} y={188} w={80} h={52} />
           <CatKey x={cx(3) + 35} y={202} anchor="end" size={9.5}>
-            SPONSORED
+            Sponsored
           </CatKey>
           <Mug id={id} cx={cx(3) - 10} cy={222} scale={0.6} />
           <Cursor x={cx(3) + 10} y={216} scale={0.9} />
@@ -1741,7 +1695,6 @@ export function RevenueDrivers() {
     </div>
   );
 }
-
 
 /**
  * Above, the shopper storefronts were built for: a person at a screen,
@@ -1784,7 +1737,6 @@ export function ScreenAssumption() {
   );
 }
 
-
 /**
  * Shoppers on the left, sellers on the right. Inside each side, the
  * same-side effect: one shopper's review helps the next. One seller's lower
@@ -1802,7 +1754,7 @@ export function SidesDiagram() {
       <HalftoneDefs id={id} />
       {/* buyers */}
       <CatKey x={80} y={56} anchor="middle" size={11}>
-        SAME-SIDE
+        Same-side
       </CatKey>
       <Person id={id} cx={46} cy={104} s={0.72} />
       <Person id={id} cx={46} cy={168} s={0.72} />
@@ -1817,7 +1769,7 @@ export function SidesDiagram() {
       <Arrow x1={104} y1={90} x2={112} y2={108} s={5} />
       {/* sellers */}
       <CatKey x={318} y={56} anchor="middle" size={11}>
-        SAME-SIDE
+        Same-side
       </CatKey>
       <Shop id={id} x={268} y={86} w={44} h={34} />
       <Shop id={id} x={268} y={150} w={44} h={34} />
@@ -1839,7 +1791,7 @@ export function SidesDiagram() {
       <path d="M264 186Q200 236 124 170" fill="none" stroke={CAT.ink} strokeWidth={LINE.bold} strokeLinecap="round" />
       <path d={headAlong(124, 170, -76, -66, 7)} fill="none" stroke={CAT.ink} strokeWidth={LINE.bold} strokeLinecap="round" strokeLinejoin="round" />
       <CatKey x={200} y={142} anchor="middle" size={11}>
-        CROSS-SIDE
+        Cross-side
       </CatKey>
     </Frame>
   );
@@ -1937,7 +1889,6 @@ export function SystemsOfRecord() {
   );
 }
 
-
 /**
  * Three routes, one under each sentence. B2C: the retailer's shop sells to a
  * shopper. B2B: one firm's plant ships crates to another firm. D2C: the
@@ -1989,7 +1940,6 @@ export function ThreeRoutes() {
   );
 }
 
-
 /**
  * Ad spend buys visitors. A slow page loses them before they order. Coins
  * on the left, a grid of visitor cursors, the product page with its load
@@ -2020,7 +1970,7 @@ export function TrafficTimesStore() {
           <Coin key={k} id={id} cx={38} cy={r2(150 - k * 9)} />
         ))}
         <CatKey x={38} y={186} anchor="middle" size={10}>
-          AD SPEND
+          Ad spend
         </CatKey>
         <Price x={38} y={204} anchor="middle" size={14}>
           {`$${spend.toLocaleString("en-US")}`}
@@ -2030,7 +1980,7 @@ export function TrafficTimesStore() {
           <Cursor key={k} x={r2(100 + (k % 4) * 15)} y={r2(144 - Math.floor(k / 4) * 22)} scale={0.95} />
         ))}
         <CatKey x={124} y={186} anchor="middle" size={10}>
-          VISITORS
+          Visitors
         </CatKey>
         <Price x={124} y={204} anchor="middle" size={14}>
           {visitors.toLocaleString("en-US")}
@@ -2046,7 +1996,7 @@ export function TrafficTimesStore() {
         </Price>
         <Stopwatch cx={224} cy={30} r={13} t={load} />
         <CatKey x={224} y={186} anchor="middle" size={10}>
-          PAGE LOAD
+          Page load
         </CatKey>
         <Price x={224} y={204} anchor="middle" size={14}>
           {`${load} s`}
@@ -2057,14 +2007,14 @@ export function TrafficTimesStore() {
           <Parcel key={k} id={id} x={r2(300 + (k % 4) * 23)} y={r2(144 - Math.floor(k / 4) * 18)} w={17} h={12} />
         ))}
         <CatKey x={346} y={186} anchor="middle" size={10}>
-          ORDERS
+          Orders
         </CatKey>
         <Price x={346} y={204} anchor="middle" size={14}>
           {orders}
         </Price>
         <line x1={12} y1={214.5} x2={388} y2={214.5} {...hair} />
         <CatKey x={200} y={231} anchor="end" size={10}>
-          COST PER ORDER
+          Cost per order
         </CatKey>
         <Price x={210} y={232} size={15} fill={CAT.amberText}>
           {cpo === null ? "no orders" : `$${cpo}`}
@@ -2075,50 +2025,6 @@ export function TrafficTimesStore() {
     </div>
   );
 }
-
-
-
-
-/**
- * The brand's trail jacket sits inside its all-in-one template. The three
- * channels the marketing director wants (a mobile configurator, a short-video
- * app and a conversational assistant) reach toward it on dashed lines that
- * stop at the template's closed wall.
- */
-export function TrailBrand() {
-  const id = "w1-trail";
-  const heads: Head[] = ["phone", "social", "agent"];
-  return (
-    <Frame
-      width={400}
-      height={300}
-      label="An engraved trail jacket in a listing tile, enclosed by a single heavy-ruled template block. On the right, a phone, a short-video screen and an AI agent each send a dashed line that stops at the block's wall."
-    >
-      <HalftoneDefs id={id} />
-      <rect x={16} y={20} width={200} height={260} fill={CAT.tile} stroke={CAT.ink} strokeWidth={LINE.bold} />
-      <Tile x={36} y={40} w={160} h={220} />
-      <Numeral x={48} y={64} size={16}>
-        1
-      </Numeral>
-      <Jacket id={id} cx={116} cy={136} />
-      <line x1={52} y1={214} x2={150} y2={214} {...hair} />
-      <line x1={52} y1={220} x2={130} y2={220} {...hair} />
-      <Price x={52} y={244} size={14}>
-        $189
-      </Price>
-      {heads.map((h, k) => {
-        const y = 60 + k * 90;
-        return (
-          <g key={h}>
-            <HeadGlyph id={id} kind={h} cx={340} cy={y} />
-            <line x1={308} y1={y} x2={226} y2={y} stroke={CAT.ink} strokeWidth={LINE.outline} strokeDasharray="4 4" />
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
-
 
 /**
  * A catalogue spread. The left page is digital marketing: a search result,
@@ -2142,10 +2048,10 @@ export function TwoPages() {
       <line x1={400} y1={13} x2={400} y2={56} {...hair} />
       <line x1={400} y1={196} x2={400} y2={235} {...hair} />
       <CatKey x={36} y={38} size={12}>
-        DIGITAL MARKETING
+        Digital marketing
       </CatKey>
       <CatKey x={764} y={38} size={12} anchor="end">
-        E-COMMERCE
+        E-commerce
       </CatKey>
       {/* left page: three channels */}
       <g>
@@ -2173,9 +2079,9 @@ export function TwoPages() {
       <Shop id={id} x={shopX - 66} y={64} w={132} h={122} />
       {/* right page: order, payment, fulfillment */}
       {[
-        { x: 520, key: "ORDER" },
-        { x: 620, key: "PAYMENT" },
-        { x: 720, key: "FULFILLMENT" },
+        { x: 520, key: "Order" },
+        { x: 620, key: "Payment" },
+        { x: 720, key: "Fulfillment" },
       ].map((s) => (
         <CatKey key={s.key} x={s.x} y={214} anchor="middle" size={10}>
           {s.key}
@@ -2190,10 +2096,6 @@ export function TwoPages() {
     </Frame>
   );
 }
-
-
-
-
 
 /**
  * One product page, read twice. The shopper sees the engraved photograph,
@@ -2245,7 +2147,7 @@ export function TwoReaders() {
             <line x1={210} y1={87} x2={266} y2={87} {...hair} />
             <Espresso id={id} cx={130} cy={150} />
             {/* listing text */}
-            <text x={306} y={84} fontFamily="var(--font-heading)" fontSize={26} fill={CAT.ink}>
+            <text x={306} y={84} fontFamily="var(--font-body)" fontSize={26} fill={CAT.ink}>
               Barista One
             </text>
             <line x1={306} y1={100} x2={460} y2={100} {...hair} />
@@ -2264,7 +2166,7 @@ export function TwoReaders() {
             </g>
             <rect x={306} y={214} width={150} height={34} fill={CAT.ink} />
             <CatKey x={381} y={235} anchor="middle" size={11} fill={CAT.tile}>
-              ADD TO CART
+              Add to cart
             </CatKey>
           </g>
         ) : (
@@ -2298,7 +2200,6 @@ export function TwoReaders() {
     </div>
   );
 }
-
 
 /**
  * Two rows on one page. Above, the physical store: a television commercial,
@@ -2336,7 +2237,7 @@ export function WeeksVsMilliseconds() {
         return <rect key={d} x={r2(100 + col * 25)} y={r2(26 + row * 15)} width={21} height={11} fill={CAT.tile} {...hair} />;
       })}
       <CatKey x={185} y={82} anchor="middle" size={11}>
-        WEEKS
+        Weeks
       </CatKey>
       {/* the shop */}
       <g>
@@ -2400,7 +2301,7 @@ export function WeeksVsMilliseconds() {
         <Arrow key={k} x1={row2[k] + (k === 0 ? 58 : 58)} y1={149} x2={row2[k + 1] - 16} y2={149} s={5} />
       ))}
       <CatKey x={200} y={113} anchor="middle" size={11}>
-        MILLISECONDS
+        Milliseconds
       </CatKey>
       {/* shared data layer */}
       {row2.map((x, k) => (
@@ -2408,7 +2309,7 @@ export function WeeksVsMilliseconds() {
       ))}
       <line x1={row2[0] + 21} y1={192.5} x2={row2[3] + 25} y2={192.5} stroke={CAT.ink} strokeWidth={LINE.bold} />
       <CatKey x={200} y={208} anchor="middle" size={11}>
-        SHARED DATA LAYER
+        Shared data layer
       </CatKey>
     </Frame>
   );

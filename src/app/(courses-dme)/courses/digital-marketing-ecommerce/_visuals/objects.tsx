@@ -100,7 +100,7 @@ export function Listing({
       </Numeral>
       {sponsored ? (
         <CatKey x={x + w - 10} y={y + 17} size={6.5} anchor="end">
-          SPONSORED
+          Sponsored
         </CatKey>
       ) : null}
       <line x1={x + 14} y1={y + 78} x2={x + 72} y2={y + 78} stroke={CAT.ink} strokeWidth={0.5} />

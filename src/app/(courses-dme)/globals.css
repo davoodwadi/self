@@ -7,8 +7,8 @@
    MAIL-ORDER CATALOGUE: design system for Digital Marketing & E-Commerce
    --------------------------------------------------------------------------
    The deck reads like a clean catalogue page: a neutral off-white page,
-   products engraved in halftone inside double-ruled white tiles, Bodoni
-   display with Libre Franklin text, and one amber accent for the key idea.
+   products engraved in halftone inside double-ruled white tiles, Libre
+   Franklin throughout, and one amber accent for the key idea in plates.
 
    Ink      #1E1C1A   headings, outlines, halftone, the default voice
    Signal   #8A5A00   amber as text (the key phrase). #E0A100 is the mark
@@ -32,10 +32,9 @@
   --color-background: var(--paper);
   --color-foreground: var(--ink);
 
-  --font-display: var(--font-bodoni);
+  --font-display: var(--font-franklin);
   --font-sans: var(--font-franklin);
   --font-mono: var(--font-franklin);
-  --font-serif: var(--font-bodoni);
 }
 
 @layer base {
@@ -71,7 +70,7 @@
     --affirm-tint: rgba(106, 44, 112, 0.08);
 
     /* --- Type ------------------------------------------------------------ */
-    --font-heading: var(--font-bodoni, "Libre Bodoni", "Bodoni Moda", Georgia, serif);
+    --font-heading: var(--font-body);
     --font-body: var(--font-franklin, "Libre Franklin", ui-sans-serif, system-ui, sans-serif);
     --font-label: var(--font-body);
 
@@ -109,7 +108,7 @@
   h4 {
     color: var(--ink);
     font-family: var(--font-heading);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.015em;
   }
@@ -132,7 +131,7 @@
 .type-display {
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -141,7 +140,7 @@
 .type-h1 {
   font-family: var(--font-heading);
   font-size: clamp(2.1rem, 4.6vw, 3.75rem);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -150,7 +149,7 @@
 .type-h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 2vw, 1.75rem);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.22;
   color: var(--ink);
 }
@@ -167,7 +166,7 @@
 
 .type-lead {
   font-size: clamp(1.125rem, 1.6vw, 1.35rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.55;
   color: var(--ink-2);
 }
@@ -178,13 +177,12 @@
   color: var(--ink-2);
 }
 
+/* Small labels stay in sentence case at normal letter spacing. */
 .type-label {
   font-family: var(--font-label);
   font-variant-numeric: lining-nums tabular-nums;
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--ink-3);
 }
 
@@ -193,7 +191,6 @@
   font-variant-numeric: lining-nums tabular-nums;
   font-size: 0.8125rem;
   color: var(--ink-3);
-  letter-spacing: 0.01em;
 }
 
 .type-quote {

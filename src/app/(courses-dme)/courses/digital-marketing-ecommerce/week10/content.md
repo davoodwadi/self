@@ -65,7 +65,8 @@ week: week10
 - Open-box, refurbished, and recommerce storefronts create a dedicated secondary channel to recover margin on returned goods without diluting the primary new-product channel.
 
 ## Discussion: Solving the 38 Percent Apparel Return Rate
-- Discussion: An online contemporary apparel brand offers free shipping and free 60-day returns on all orders. While gross revenue grew 50 percent this year, net profit turned negative because 38 percent of all shipped units are returned, and 30 percent of returned garments arrive wrinkled or out of season and must be liquidated below cost. Diagnose the behavioral and operational drivers of this return crisis, and design a combination of storefront PDP improvements, return-portal incentives, and policy segmentation to restore profitability without crashing conversion.
+- An online contemporary apparel brand offers free shipping and free 60-day returns on all orders. While gross revenue grew 50 percent this year, net profit turned negative because 38 percent of all shipped units are returned, and 30 percent of returned garments arrive wrinkled or out of season and must be liquidated below cost.
+- Diagnose the behavioral and operational drivers of this return crisis, and design a combination of storefront PDP improvements, return-portal incentives, and policy segmentation to restore profitability without crashing conversion.
 
 ## Part 4: Post-Purchase Experience and Proactive Customer Care [no-exercise]
 - The time between clicking "Place Order" and opening the delivered box is a period of heightened buyer anxiety.
@@ -86,7 +87,8 @@ week: week10
 - Post-purchase, machine-readable order status webhooks and standardized tracking schemas allow the consumer's personal AI assistant to monitor parcel arrivals, verify that refunds settled, and initiate authorized exchanges on the buyer's behalf.
 
 ## Discussion: When the AI Agent Cancels the Order Over Shipping Ambiguity
-- Discussion: During the December holiday rush, a specialty toy retailer has inventory in stock and can deliver within two days to local metro areas, but its product pages list only a generic "Standard Ground Shipping" note without a machine-readable delivery date estimate until the final checkout screen. Competing marketplace listings expose exact "Arrives before December 24" timestamps in their structured product metadata. Explain how both human last-minute shoppers and autonomous AI shopping agents will react to this information gap, and how connecting the OMS to the storefront's structured data layer fixes it.
+- During the December holiday rush, a specialty toy retailer has inventory in stock and can deliver within two days to local metro areas, but its product pages list only a generic "Standard Ground Shipping" note without a machine-readable delivery date estimate until the final checkout screen. Competing marketplace listings expose exact "Arrives before December 24" timestamps in their structured product metadata.
+- Explain how both human last-minute shoppers and autonomous AI shopping agents will react to this information gap, and how connecting the OMS to the storefront's structured data layer fixes it.
 
 ## Key Takeaways
 - Physical e-commerce profitability depends on integrating front-end marketing promises with back-end warehouse fulfillment, last-mile carrier networks, and reverse logistics.

@@ -72,7 +72,8 @@ week: week4
 - When too many slots become pay-to-play, third-party merchants face a prisoner's dilemma in which every seller bids up ad costs merely to defend their existing sales, compressing seller margins across the ecosystem.
 
 ## Discussion: The Sponsored Slot Dilemma
-- Discussion: A marketplace category manager proposes expanding the number of sponsored product slots at the top of mobile search results from two slots to four slots, which means mobile shoppers will see zero organic results on their first screen without scrolling. Ad-sales projections estimate a 28 percent jump in quarterly retail media revenue. What short-term and long-term effects will this change have on buyer conversion, organic seller retention, and search trust, and what experimental metrics should govern the decision?
+- A marketplace category manager proposes expanding the number of sponsored product slots at the top of mobile search results from two slots to four slots, which means mobile shoppers will see zero organic results on their first screen without scrolling. Ad-sales projections estimate a 28 percent jump in quarterly retail media revenue.
+- What short-term and long-term effects will this change have on buyer conversion, organic seller retention, and search trust, and what experimental metrics should govern the decision?
 
 ## Part 4: Position Bias When AI Agents Shop on Our Behalf [no-exercise]
 - A natural hypothesis about autonomous AI shopping agents is that because software can read an entire webpage of twenty or fifty listings in milliseconds, rank position and sponsored top slots should no longer matter.
@@ -97,7 +98,8 @@ week: week4
 - When prompted as a platform store assistant or given ambiguous dual mandates, the agent's resistance to sponsored top slots weakens, creating a structural conflict of duty that is invisible to the human shopper who sees only the final conversational recommendation.
 
 ## Discussion: Auditing a Marketplace Shopping Assistant
-- Discussion: Major online retailers now embed conversational AI assistants directly into their mobile apps, encouraging shoppers to ask "Pick the best car seat for my toddler" rather than scrolling search results. Suppose a consumer advocacy regulator asks you to audit whether a retailer's AI assistant is steering parents toward higher-margin sponsored listings over higher-rated organic alternatives ranked lower on the page. How would you design a controlled experiment varying rank position, sponsorship labels, and price to test the assistant's recommendations?
+- Major online retailers now embed conversational AI assistants directly into their mobile apps, encouraging shoppers to ask "Pick the best car seat for my toddler" rather than scrolling search results. Suppose a consumer advocacy regulator asks you to audit whether a retailer's AI assistant is steering parents toward higher-margin sponsored listings over higher-rated organic alternatives ranked lower on the page.
+- How would you design a controlled experiment varying rank position, sponsorship labels, and price to test the assistant's recommendations?
 
 ## Key Takeaways
 - E-commerce discovery combines "pull" search rankings with "push" recommender systems built on content-based filtering, collaborative filtering, and two-stage retrieval-ranking pipelines.

@@ -53,7 +53,8 @@ week: week9
 - High-performing e-commerce brands protect brand equity by limiting sitewide markdowns, using value-added gifts-with-purchase instead of percentage cuts, and targeting single-use retention incentives only to high-churn-risk cohorts.
 
 ## Discussion: Breaking the Sitewide Discount Addiction
-- Discussion: A Direct-to-Consumer home-fragrance brand has run a 25 percent sitewide flash sale at the end of every month for the past year to hit its monthly revenue targets. Today, 78 percent of its orders occur during the four sale days each month, full-price conversion on regular days has collapsed below 0.5 percent, and gross contribution after ad spend is negative. Propose a 90-day pricing and promotional transition plan to wean customers off monthly sitewide discounts without crashing cash flow.
+- A Direct-to-Consumer home-fragrance brand has run a 25 percent sitewide flash sale at the end of every month for the past year to hit its monthly revenue targets. Today, 78 percent of its orders occur during the four sale days each month, full-price conversion on regular days has collapsed below 0.5 percent, and gross contribution after ad spend is negative.
+- Propose a 90-day pricing and promotional transition plan to wean customers off monthly sitewide discounts without crashing cash flow.
 
 ## Part 4: Algorithmic Repricers and Marketplace Competition [no-exercise]
 - On multi-seller marketplaces where dozens of third-party merchants sell the exact same barcode (GTIN), the platform awards the prominent "Buy Box" (the default Add-to-Cart button) primarily on landed price, fulfillment speed, and seller rating.
@@ -77,7 +78,8 @@ week: week9
 - In business-to-agent (B2A) pricing, transparent all-in pricing, clear unit-price metrics, and verifiable value-tier differentiation outperform deceptive drip fees that cause an agent's checkout validation step to abort the purchase.
 
 ## Discussion: Pricing for Human Eyes and Algorithmic Filters
-- Discussion: An online electronics accessory brand sells a 65-watt USB-C charger for $29.99 with a strike-through reference price of $49.99 and a $5.99 shipping fee revealed at checkout. A competing brand sells an identical charger for $33.00 flat with free shipping and exposes the full price and specification breakdown in its Schema.org JSON-LD markup. Compare how an impulsive human shopper versus an autonomous AI shopping agent instructed to "find the best-value 65W charger under $35 total" will evaluate these two listings.
+- An online electronics accessory brand sells a 65-watt USB-C charger for $29.99 with a strike-through reference price of $49.99 and a $5.99 shipping fee revealed at checkout. A competing brand sells an identical charger for $33.00 flat with free shipping and exposes the full price and specification breakdown in its Schema.org JSON-LD markup.
+- Compare how an impulsive human shopper versus an autonomous AI shopping agent instructed to "find the best-value 65W charger under $35 total" will evaluate these two listings.
 
 ## Key Takeaways
 - Zero menu costs and high cross-store price transparency make e-commerce pricing a dynamic, data-driven discipline across subscriptions, freemium tiers, bundles, and real-time adjustments.

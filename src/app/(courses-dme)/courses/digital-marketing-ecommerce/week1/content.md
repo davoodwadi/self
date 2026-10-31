@@ -97,7 +97,8 @@ week: week1
 - Step 4 is order commit and capture, in which the confirmed order is written to the OMS for warehouse pick-and-pack and the authorized funds are captured for settlement.
 
 ## Discussion: Monolithic or Headless?
-- Discussion: A mid-sized outdoor apparel brand currently runs on an all-in-one monolithic e-commerce template. The marketing director wants to launch an interactive trail-gear configurator on mobile, sell directly inside short-form video apps, and expose a real-time catalog feed to conversational AI shopping assistants, but the engineering team warns that the current template cannot support custom API endpoints. What are the marketing and information systems trade-offs of migrating to a headless composable architecture versus staying on the monolithic platform?
+- A mid-sized outdoor apparel brand currently runs on an all-in-one monolithic e-commerce template. The marketing director wants to launch an interactive trail-gear configurator on mobile, sell directly inside short-form video apps, and expose a real-time catalog feed to conversational AI shopping assistants, but the engineering team warns that the current template cannot support custom API endpoints.
+- What are the marketing and information systems trade-offs of migrating to a headless composable architecture versus staying on the monolithic platform?
 
 ## Part 4: The Digital Customer Funnel and Channel Strategy [no-exercise]
 - Technology infrastructure creates value only when it moves buyers efficiently from initial awareness to repeat purchase.
@@ -133,7 +134,8 @@ week: week1
 - In checkout, headless APIs and agent payment protocols allow an authenticated agent to verify stock, apply promotional codes, and complete payment using delegated credentials without rendering a graphical checkout page.
 
 ## Discussion: Designing for Two Audiences at Once
-- Discussion: A consumer electronics retailer notices that 18 percent of its product page traffic now originates from automated AI shopping assistants fetching product specifications on behalf of users. The retailer's current pages rely heavily on lifestyle photography, promotional countdown banners, and specification tables embedded inside flat image files. How will an AI shopping agent perceive this storefront compared with a human shopper, and what changes to both marketing content and information systems architecture should the retailer prioritize?
+- A consumer electronics retailer notices that 18 percent of its product page traffic now originates from automated AI shopping assistants fetching product specifications on behalf of users. The retailer's current pages rely heavily on lifestyle photography, promotional countdown banners, and specification tables embedded inside flat image files.
+- How will an AI shopping agent perceive this storefront compared with a human shopper, and what changes to both marketing content and information systems architecture should the retailer prioritize?
 
 ## Key Takeaways
 - Digital marketing and e-commerce operate as a single socio-technical system in which customer acquisition channels and storefront software architecture jointly determine conversion and profitability.

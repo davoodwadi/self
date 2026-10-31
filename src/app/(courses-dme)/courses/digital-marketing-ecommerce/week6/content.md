@@ -75,7 +75,8 @@ week: week6
 - While native social checkout dramatically increases impulse conversion rates by removing redirect friction, the social platform retains control of the checkout screen, charges transaction commissions, and restricts the first-party customer data passed back to the merchant.
 
 ## Discussion: Owning the Customer Versus Renting the Feed
-- Discussion: A fast-growing cosmetics brand generates 60 percent of its monthly unit sales through a native social commerce shop where creators tag products in short videos and customers check out without ever leaving the social app. While order volume is booming, the brand's email list growth has stalled and repeat purchase rates are half those of customers who buy on the brand's own Direct-to-Consumer website. Evaluate the strategic risks of relying on native social commerce and propose how the brand can convert rented social shoppers into long-term first-party customers.
+- A fast-growing cosmetics brand generates 60 percent of its monthly unit sales through a native social commerce shop where creators tag products in short videos and customers check out without ever leaving the social app. While order volume is booming, the brand's email list growth has stalled and repeat purchase rates are half those of customers who buy on the brand's own Direct-to-Consumer website.
+- Evaluate the strategic risks of relying on native social commerce and propose how the brand can convert rented social shoppers into long-term first-party customers.
 
 ## Part 5: Virtual Influencers and AI-Generated Social Content [no-exercise]
 - Advances in generative image, video, and voice synthesis now allow brands and agencies to create synthetic social media assets and computer-generated virtual influencers.
@@ -88,7 +89,8 @@ week: week6
 - Consequently, virtual influencers perform more effectively for symbolic, hedonic, or fashion-oriented products than for experience or credence goods that rely on physical sensory trust, and undisclosed synthetic endorsements trigger severe consumer backlash when discovered.
 
 ## Discussion: When an AI Creator Endorses an Experience Good
-- Discussion: A nutritional supplement company creates a photorealistic AI fitness creator to post daily workout reels and endorse its recovery protein powder, without stating in the bio that the creator is computer-generated. After a viral post reveals the persona is synthetic, thousands of commenters accuse the brand of deception. Why does consumer backlash differ between a clearly labeled stylized virtual mascot and an undisclosed photorealistic AI influencer endorsing a health product, and what disclosure policy should govern AI-generated social marketing?
+- A nutritional supplement company creates a photorealistic AI fitness creator to post daily workout reels and endorse its recovery protein powder, without stating in the bio that the creator is computer-generated. After a viral post reveals the persona is synthetic, thousands of commenters accuse the brand of deception.
+- Why does consumer backlash differ between a clearly labeled stylized virtual mascot and an undisclosed photorealistic AI influencer endorsing a health product, and what disclosure policy should govern AI-generated social marketing?
 
 ## Key Takeaways
 - Modern social platforms have shifted from chronological social graphs (who you follow) to algorithmic interest graphs (what holds your attention), enabling discovery-based commerce for latent demand.

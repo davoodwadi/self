@@ -56,7 +56,8 @@ week: week12
 - Brand building remains vital in B2A markets for two reasons, namely that consumers frequently specify trusted brands directly inside their delegation prompts ("Buy me Sony or Bose noise-canceling headphones"), and foundation models rely on authoritative external brand reputation across the web when constructing candidate shortlists.
 
 ## Discussion: Designing a B2A Strategy for a Mid-Sized Brand
-- Discussion: Suppose you are the Chief Digital Officer of a mid-sized kitchen appliance manufacturer. Over the next three years, industry forecasts project that 30 percent of category discovery and product comparison will be conducted by consumers' personal AI agents rather than human browser sessions. How would you reallocate your budget across paid search, traditional display ads, structured product data engineering, review verification, and authorized agent checkout APIs to win in a Business-to-Agent market?
+- Suppose you are the Chief Digital Officer of a mid-sized kitchen appliance manufacturer. Over the next three years, industry forecasts project that 30 percent of category discovery and product comparison will be conducted by consumers' personal AI agents rather than human browser sessions.
+- How would you reallocate your budget across paid search, traditional display ads, structured product data engineering, review verification, and authorized agent checkout APIs to win in a Business-to-Agent market?
 
 ## Part 4: Auditing Storefronts and Marketing Algorithms [no-exercise]
 - Because both merchant algorithms (pricing, personalization, CRM triggers) and buyer-side AI agents operate stochastically at scale, managers cannot rely on intuition or single-prompt spot checks to verify system behavior.
@@ -79,7 +80,8 @@ week: week12
 - Operations, Measurement, and Governance (Weeks 10, 11, and 12) ground digital promises in omnichannel fulfillment and reverse logistics, evaluate performance through unit economics (CAC, CLV, contribution margin) and causal incrementality experiments, and govern the ecosystem under privacy law, fair platform competition, and Business-to-Agent readiness.
 
 ## Discussion: Building a Resilient Digital Commerce Organization
-- Discussion: Looking back across the entire course, consider an e-commerce company that excels at short-term paid acquisition hacks (aggressive retargeting, countdown dark patterns, sitewide discount codes, and incentivized 5-star reviews) versus a company that invests in headless structured data, incremental lift testing, authentic post-purchase lifecycle flows, and transparent unit economics. Why might the first company grow faster in its first six months, and why does the second architecture win over a five-year horizon across both human shoppers and AI shopping agents?
+- Looking back across the entire course, consider an e-commerce company that excels at short-term paid acquisition hacks (aggressive retargeting, countdown dark patterns, sitewide discount codes, and incentivized 5-star reviews) versus a company that invests in headless structured data, incremental lift testing, authentic post-purchase lifecycle flows, and transparent unit economics.
+- Why might the first company grow faster in its first six months, and why does the second architecture win over a five-year horizon across both human shoppers and AI shopping agents?
 
 ## Key Takeaways
 - Privacy regulations (GDPR, CCPA/CPRA, PIPEDA, CASL, and Quebec Law 25) require verifiable consent, honest Consent Management Platform (CMP) interfaces, server-side consent propagation, and data minimization.

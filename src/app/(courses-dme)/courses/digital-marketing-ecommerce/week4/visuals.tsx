@@ -176,10 +176,10 @@ export function ShelfToScreen() {
       ))}
       <AmberBracket x={110} y1={92} y2={146} />
       <CatKey x={102} y={115} size={11} anchor="end" fill={CAT.amberText}>
-        EYE
+        Eye
       </CatKey>
       <CatKey x={102} y={130} size={11} anchor="end" fill={CAT.amberText}>
-        LEVEL
+        level
       </CatKey>
       {/* the slotting fee */}
       {[0, 1, 2, 3].map((k) => (
@@ -187,10 +187,10 @@ export function ShelfToScreen() {
       ))}
       <Arrow x1={52} y1={182} x2={102} y2={148} />
       <CatKey x={52} y={240} size={11} anchor="middle">
-        SLOTTING
+        Slotting
       </CatKey>
       <CatKey x={52} y={254} size={11} anchor="middle">
-        FEE
+        fee
       </CatKey>
       <Price x={245} y={284} size={14} anchor="middle">
         ≈ 30,000 items
@@ -226,10 +226,10 @@ export function ShelfToScreen() {
       </g>
       <AmberBracket x={530} y1={36} y2={124} />
       <CatKey x={522} y={75} size={11} anchor="end" fill={CAT.amberText}>
-        EYE
+        Eye
       </CatKey>
       <CatKey x={522} y={90} size={11} anchor="end" fill={CAT.amberText}>
-        LEVEL
+        level
       </CatKey>
       <Price x={606} y={284} size={14} anchor="middle">
         hundreds of millions of SKUs
@@ -270,7 +270,7 @@ export function PullAndPush() {
       <HalftoneDefs id={id} />
       {/* PULL */}
       <CatKey x={10} y={20} size={11}>
-        PULL
+        Pull
       </CatKey>
       <Person id={id} cx={34} cy={84} s={1.05} />
       <Arrow x1={60} y1={78} x2={74} y2={78} />
@@ -297,7 +297,7 @@ export function PullAndPush() {
 
       {/* PUSH */}
       <CatKey x={10} y={164} size={11}>
-        PUSH
+        Push
       </CatKey>
       {/* homepage: a hero banner and a row of suggestions */}
       {page(10, 150)}
@@ -311,7 +311,7 @@ export function PullAndPush() {
         $249
       </Price>
       <CatKey x={180} y={247} size={8.6}>
-        FREQUENTLY BOUGHT TOGETHER
+        Frequently bought together
       </CatKey>
       {[0, 1, 2].map((k) => (
         <rect key={k} x={180 + k * 38} y={254} width={34} height={30} fill={CAT.tile} {...hair} />
@@ -335,14 +335,14 @@ export function PullAndPush() {
         <rect key={k} x={r2(10 + (k % 30) * 7.4)} y={r2(324 + Math.floor(k / 30) * 7.4)} width={5.4} height={5.4} fill={CAT.tile} stroke={CAT.ink} strokeWidth={0.5} />
       ))}
       <CatKey x={10} y={368} size={11}>
-        MILLIONS OF ITEMS
+        Millions of items
       </CatKey>
       <Arrow x1={238} y1={334} x2={276} y2={334} />
       {[0, 1, 2].map((k) => (
         <rect key={k} x={286 + k * 22} y={324} width={18} height={20} fill={CAT.amber} stroke={CAT.ink} strokeWidth={1} />
       ))}
       <CatKey x={286} y={368} size={11} fill={CAT.amberText}>
-        A HANDFUL
+        A handful
       </CatKey>
       <g>
         <rect x={397.5} y={319} width={5} height={4} fill={CAT.tile} {...ink} />
@@ -350,10 +350,10 @@ export function PullAndPush() {
         <path d="M400 336L400 326.5A9.5 9.5 0 0 1 408.2 331.2Z" fill={CAT.ink} />
       </g>
       <CatKey x={422} y={333} size={11}>
-        A FEW DOZEN
+        A few dozen
       </CatKey>
       <CatKey x={422} y={349} size={11}>
-        MILLISECONDS
+        Milliseconds
       </CatKey>
     </Frame>
   );
@@ -420,15 +420,15 @@ export function LedgerToPipeline() {
         )),
       )}
       <CatKey x={110} y={300} size={11} anchor="middle">
-        CO-OCCURRENCE TABLE
+        Co-occurrence table
       </CatKey>
 
       <Arrow x1={222} y1={160} x2={262} y2={160} />
       <CatKey x={242} y={146} size={9} anchor="middle">
-        TWO
+        Two
       </CatKey>
       <CatKey x={242} y={180} size={9} anchor="middle">
-        DECADES
+        decades
       </CatKey>
 
       {/* the two-stage pipeline */}
@@ -441,7 +441,7 @@ export function LedgerToPipeline() {
         <rect key={k} x={344 + k * 12} y={118} width={8} height={8} fill={CAT.tile} stroke={CAT.ink} strokeWidth={0.6} />
       ))}
       <CatKey x={472} y={100} size={10} anchor="end">
-        STAGE 1
+        Stage 1
       </CatKey>
       {/* the network */}
       {layers.slice(0, -1).map((ks, l) =>
@@ -454,7 +454,7 @@ export function LedgerToPipeline() {
       ))}
       {layers.map((ks, l) => ks.map((k) => <circle key={`${l}${k}`} cx={nx(l, k)} cy={ny(l)} r={4.5} fill={CAT.amber} stroke={CAT.ink} strokeWidth={1} />))}
       <CatKey x={472} y={182} size={10} anchor="end">
-        STAGE 2
+        Stage 2
       </CatKey>
       <Arrow x1={368} y1={212} x2={368} y2={228} />
       {[0, 1, 2].map((k) => (
@@ -467,7 +467,7 @@ export function LedgerToPipeline() {
         </g>
       ))}
       <CatKey x={370} y={300} size={11} anchor="middle" fill={CAT.amberText}>
-        TWO-STAGE PIPELINE
+        Two-stage pipeline
       </CatKey>
     </Frame>
   );
@@ -485,13 +485,13 @@ type Rec = "content" | "collab";
  * (amber).
  */
 const ITEMS = [
-  { key: "b1", kind: "book", tags: ["MYSTERY", "SCANDINAVIAN"], buyers: [1, 2, 3, 5] },
-  { key: "b2", kind: "book", tags: ["MYSTERY", "SCANDINAVIAN"], buyers: [2] },
-  { key: "lamp", kind: "lamp", tags: ["LAMP", "LED"], buyers: [1, 2, 3, 5] },
-  { key: "b3", kind: "book", tags: ["MYSTERY", "SCANDINAVIAN"], buyers: [3, 6] },
-  { key: "tea", kind: "tea", tags: ["TEA", "LOOSE LEAF"], buyers: [1, 3, 5] },
-  { key: "mug", kind: "mug", tags: ["MUG", "CERAMIC"], buyers: [4, 6] },
-  { key: "new", kind: "book", tags: ["MYSTERY", "SCANDINAVIAN"], buyers: [] as number[] },
+  { key: "b1", kind: "book", tags: ["Mystery", "Scandinavian"], buyers: [1, 2, 3, 5] },
+  { key: "b2", kind: "book", tags: ["Mystery", "Scandinavian"], buyers: [2] },
+  { key: "lamp", kind: "lamp", tags: ["Lamp", "LED"], buyers: [1, 2, 3, 5] },
+  { key: "b3", kind: "book", tags: ["Mystery", "Scandinavian"], buyers: [3, 6] },
+  { key: "tea", kind: "tea", tags: ["Tea", "Loose leaf"], buyers: [1, 3, 5] },
+  { key: "mug", kind: "mug", tags: ["Mug", "Ceramic"], buyers: [4, 6] },
+  { key: "new", kind: "book", tags: ["Mystery", "Scandinavian"], buyers: [] as number[] },
 ] as const;
 
 export function TwoRecommenders() {
@@ -503,7 +503,7 @@ export function TwoRecommenders() {
   const rows = ITEMS.slice(1).filter((it) => it.key !== "new" || showNew);
   const shared = (it: (typeof ITEMS)[number]) => it.buyers.filter((b) => (bought.buyers as readonly number[]).includes(b)).length;
   const picked = (it: (typeof ITEMS)[number]) =>
-    mode === "content" ? it.tags[0] === "MYSTERY" : ["lamp", "tea"].includes(it.key);
+    mode === "content" ? it.tags[0] === "Mystery" : ["lamp", "tea"].includes(it.key);
   const rowY = (k: number) => 72 + k * 36;
   const glyph = (it: (typeof ITEMS)[number], cx: number, cy: number) => {
     if (it.kind === "lamp") return <Lamp id={id} cx={cx} cy={cy} s={0.85} />;
@@ -555,7 +555,7 @@ export function TwoRecommenders() {
         {/* header */}
         {mode === "content" ? (
           <CatKey x={104} y={20} size={10.5}>
-            CATALOG METADATA
+            Catalog metadata
           </CatKey>
         ) : (
           <g>
@@ -563,19 +563,19 @@ export function TwoRecommenders() {
               <Person key={b} id={id} cx={121 + (b - 1) * 34} cy={16} s={0.36} />
             ))}
             <CatKey x={354} y={20} size={9} anchor="middle">
-              SHARED
+              Shared
             </CatKey>
           </g>
         )}
         <CatKey x={440} y={20} size={10.5} anchor="middle">
-          PICK
+          Pick
         </CatKey>
         {/* the purchase */}
         <Tile x={10} y={30} w={84} h={34} />
         <Book id={id} cx={52} cy={47} s={0.75} />
         <g transform="translate(0 0)">{right(bought, 47, true)}</g>
         <CatKey x={440} y={51} size={9} anchor="middle">
-          BOUGHT
+          Bought
         </CatKey>
         <line x1={10} y1={70} x2={470} y2={70} {...ink} />
         {/* the candidates */}
@@ -588,7 +588,7 @@ export function TwoRecommenders() {
               {glyph(it, 52, y)}
               {it.key === "new" ? (
                 <CatKey x={88} y={y + 12} size={7.5} anchor="end">
-                  NEW
+                  New
                 </CatKey>
               ) : null}
               {right(it, y)}
@@ -636,7 +636,7 @@ export function ColdStartTrio() {
       {/* item cold start */}
       <Tile x={14} y={20} w={92} h={110} />
       <CatKey x={98} y={36} size={9} anchor="end">
-        NEW
+        New
       </CatKey>
       <Mug id={id} cx={58} cy={68} scale={1.1} />
       <line x1={26} y1={98} x2={80} y2={98} {...hair} />
@@ -666,7 +666,7 @@ export function ColdStartTrio() {
         <line key={k} x1={364} y1={58 + k * 14} x2={440} y2={58 + k * 14} stroke={CAT.ink} strokeWidth={0.5} strokeDasharray="2 2.5" />
       ))}
       <CatKey x={300} y={128} size={10} anchor="middle">
-        FIRST VISIT
+        First visit
       </CatKey>
       <line x1={510} y1={14} x2={510} y2={136} {...hair} />
 
@@ -725,10 +725,10 @@ export function TwoStage() {
           <rect key={k} x={r2(10 + (k % 10) * 7)} y={r2(26 + Math.floor(k / 10) * 7)} width={5} height={5} fill={CAT.tile} stroke={CAT.ink} strokeWidth={0.45} />
         ))}
         <CatKey x={10} y={92} size={9}>
-          MILLIONS
+          Millions
         </CatKey>
         <CatKey x={128} y={22} size={10} anchor="middle">
-          STAGE 1
+          Stage 1
         </CatKey>
         <Arrow x1={88} y1={50} x2={166} y2={50} />
         {/* the candidates handed on */}
@@ -740,10 +740,10 @@ export function TwoStage() {
           {nText}
         </Price>
         <CatKey x={230} y={98} size={9} anchor="middle">
-          CANDIDATES
+          Candidates
         </CatKey>
         <CatKey x={330} y={22} size={10} anchor="middle">
-          STAGE 2
+          Stage 2
         </CatKey>
         <Arrow x1={294} y1={50} x2={366} y2={50} />
         {[0, 1, 2].map((k) => (
@@ -767,11 +767,11 @@ export function TwoStage() {
           </g>
         ))}
         <CatKey x={x1} y={186} size={9} anchor="end">
-          MILLISECONDS
+          Milliseconds
         </CatKey>
         <line x1={X(100)} y1={112} x2={X(100)} y2={150} stroke={CAT.ink} strokeWidth={LINE.bold} strokeDasharray="4 3" />
         <CatKey x={X(100) + 6} y={120} size={9}>
-          BUDGET
+          Budget
         </CatKey>
         <rect x={x0} y={128} width={r2(X(12) - x0)} height={16} fill={CAT.ink} />
         <rect x={X(12)} y={128} width={r2(X(ms) - X(12))} height={16} fill={ht(id, "dense")} stroke={CAT.ink} strokeWidth={0.8} />
@@ -781,13 +781,13 @@ export function TwoStage() {
           {timeText}
         </Price>
         <CatKey x={x0} y={228} size={9}>
-          {over ? "OVER BUDGET" : "WITHIN BUDGET"}
+          {over ? "Over budget" : "Within budget"}
         </CatKey>
         <Price x={x1} y={212} size={15} anchor="end">
           {`${recall}%`}
         </Price>
         <CatKey x={x1} y={228} size={9} anchor="end">
-          BEST MATCH KEPT IN STAGE 1
+          Best match kept in stage 1
         </CatKey>
       </Frame>
       <Slider
@@ -914,7 +914,7 @@ export function SearchCost() {
               </Numeral>
               {k === 0 ? (
                 <CatKey x={x + tw / 2} y={top + 94} size={8.5} anchor="middle">
-                  SPONSORED
+                  Sponsored
                 </CatKey>
               ) : null}
               <Mug id={id} cx={x + tw / 2} cy={top + 36} scale={0.82} />
@@ -926,7 +926,7 @@ export function SearchCost() {
           {`${top3}%`}
         </Price>
         <CatKey x={252} y={231} size={10}>
-          OF CLICKS GO TO THE TOP THREE
+          of clicks go to the top three
         </CatKey>
       </Frame>
       <Slider label="Effort to inspect each listing" value={e} min={0} max={4} onChange={setE} formatValue={(v) => EFFORT[v]} />
@@ -1004,7 +1004,7 @@ export function FeedbackLoop() {
           </Price>
         ))}
         <CatKey x={X(4)} y={236} size={9} anchor="middle">
-          WEEKS OF RETRAINING
+          Weeks of retraining
         </CatKey>
         {/* the order the model has learned */}
         {final.map((m, pos) => (
@@ -1015,7 +1015,7 @@ export function FeedbackLoop() {
           </g>
         ))}
         <CatKey x={396} y={222} size={9} anchor="middle">
-          {lockedTop ? "LOCKED AT THE TOP" : "TRUE ORDER RECOVERED"}
+          {lockedTop ? "Locked at the top" : "True order recovered"}
         </CatKey>
       </Frame>
       <Segmented<"raw" | "ipw">
@@ -1064,7 +1064,7 @@ export function PointOfPurchase() {
       ))}
       <rect x={18} y={70} width={108} height={58} fill={CAT.tile} stroke={CAT.ink} strokeWidth={1.4} />
       <CatKey x={120} y={81} size={8} anchor="end">
-        AD
+        Ad
       </CatKey>
       <Sneaker id={id} cx={62} cy={102} s={0.95} />
       {[0, 1, 2, 3].map((k) => (
@@ -1085,7 +1085,7 @@ export function PointOfPurchase() {
         1
       </Numeral>
       <CatKey x={452} y={68} size={8} anchor="end">
-        SPONSORED
+        Sponsored
       </CatKey>
       <Sneaker id={id} cx={330} cy={104} s={0.95} />
       <line x1={376} y1={92} x2={448} y2={92} {...hair} />
@@ -1173,7 +1173,7 @@ export function LaunchClimb() {
         {/* the results page */}
         <rect x={10} y={10} width={136} height={24} fill={CAT.tile} stroke={CAT.purple} strokeWidth={1.2} />
         <CatKey x={138} y={26} size={8} anchor="end" fill={CAT.purple}>
-          SPONSORED
+          Sponsored
         </CatKey>
         {Array.from({ length: 10 }, (_, k) => (
           <g key={k}>
@@ -1212,7 +1212,7 @@ export function LaunchClimb() {
         })}
         <line x1={164} y1={239} x2={396} y2={239} {...hair} />
         <CatKey x={280} y={274} size={9} anchor="middle">
-          WEEKLY SALES
+          Weekly sales
         </CatKey>
         <Star cx={176} cy={22} r={7} />
         <Price x={190} y={27} size={14}>
@@ -1305,14 +1305,14 @@ export function SponsoredSlots() {
               <line x1={66} y1={y + 18} x2={100} y2={y + 18} {...hair} />
               {sponsored ? (
                 <CatKey x={164} y={y + 26} size={7} anchor="end" fill={CAT.purple}>
-                  SPONSORED
+                  Sponsored
                 </CatKey>
               ) : null}
             </g>
           );
         })}
 
-        {rowKey(20, "BUYERS' ORDERS")}
+        {rowKey(20, "Buyers' orders")}
         {Array.from({ length: Math.round(orders / 2) }, (_, k) => (
           <Parcel key={k} id={id} x={204 + k * 16} y={36} w={13} h={10} />
         ))}
@@ -1320,7 +1320,7 @@ export function SponsoredSlots() {
           {`${Math.round(orders)}`}
         </Price>
 
-        {rowKey(84, "SHOPPERS WHO COME BACK")}
+        {rowKey(84, "Shoppers who come back")}
         {Array.from({ length: 10 }, (_, k) =>
           k < back ? (
             <Person key={k} id={id} cx={212 + k * 22} cy={110} s={0.42} />
@@ -1335,7 +1335,7 @@ export function SponsoredSlots() {
           {`${back} of 10`}
         </Price>
 
-        {rowKey(160, "ORGANIC SELLERS' ORDERS")}
+        {rowKey(160, "Organic sellers' orders")}
         {Array.from({ length: Math.round(organic / 2) }, (_, k) => (
           <Parcel key={k} id={id} x={204 + k * 16} y={176} w={13} h={10} />
         ))}
@@ -1343,10 +1343,10 @@ export function SponsoredSlots() {
           {`${Math.round(organic)}`}
         </Price>
 
-        {rowKey(226, "PLATFORM AD REVENUE")}
+        {rowKey(226, "Platform ad revenue")}
         {[
-          { v: revenue, x: 222, t: "NOW" },
-          { v: next, x: 330, t: "NEXT QUARTER" },
+          { v: revenue, x: 222, t: "Now" },
+          { v: next, x: 330, t: "Next quarter" },
         ].map((c) => (
           <g key={c.t}>
             {Array.from({ length: Math.round(c.v / 12) }, (_, k) => (
@@ -1404,12 +1404,12 @@ export function BidToDefend() {
       <HalftoneDefs id={id} />
       {seller(246, 6, "B")}
       {seller(8, 120, "A")}
-      {["BIDS", "DOES NOT"].map((t, c) => (
+      {["Bids", "Does not"].map((t, c) => (
         <CatKey key={t} x={cx(c) + 66} y={44} size={10} anchor="middle">
           {t}
         </CatKey>
       ))}
-      {["BIDS", "DOES NOT"].map((t, r) => (
+      {["Bids", "Does not"].map((t, r) => (
         <CatKey key={t} x={124} y={cy(r) + 50} size={10} anchor="end">
           {t}
         </CatKey>
@@ -1443,64 +1443,6 @@ export function BidToDefend() {
 }
 
 /**
- * The proposal on two phones. Today: two sponsored listings (purple) and two
- * organic listings above the fold. Proposed: four sponsored listings fill
- * the first screen and the organic results start below the fold. A tag
- * carries the projected +28% in retail media revenue.
- */
-export function FirstScreen() {
-  const id = "w4-first";
-  const phone = (x: number, ads: number, title: string) => (
-    <g>
-      <CatKey x={x + 66} y={16} size={10} anchor="middle">
-        {title}
-      </CatKey>
-      <rect x={x} y={26} width={132} height={262} rx={14} fill={CAT.tile} {...ink} />
-      <line x1={x + 50} y1={34} x2={x + 82} y2={34} stroke={CAT.ink} strokeWidth={2} strokeLinecap="round" />
-      <rect x={x + 10} y={42} width={112} height={18} rx={9} fill={CAT.tile} {...hair} />
-      {[0, 1, 2, 3].map((k) => {
-        const y = 68 + k * 52;
-        const sponsored = k < ads;
-        return (
-          <g key={k}>
-            <rect x={x + 10} y={y} width={112} height={46} fill={CAT.tile} stroke={sponsored ? CAT.purple : CAT.ink} strokeWidth={sponsored ? 1.4 : 0.8} />
-            <Mug id={id} cx={x + 32} cy={y + 22} scale={0.6} />
-            <line x1={x + 54} y1={y + 16} x2={x + 112} y2={y + 16} {...hair} />
-            <line x1={x + 54} y1={y + 22} x2={x + 94} y2={y + 22} {...hair} />
-            {sponsored ? (
-              <CatKey x={x + 116} y={y + 39} size={8.4} anchor="end" fill={CAT.purple}>
-                SPONSORED
-              </CatKey>
-            ) : null}
-          </g>
-        );
-      })}
-      <Price x={x + 66} y={312} size={14} anchor="middle">
-        {`${4 - ads} organic on screen`}
-      </Price>
-    </g>
-  );
-  return (
-    <Frame
-      width={400}
-      height={322}
-      label="Two phones. Today: two sponsored listings, in purple, and two organic listings on the first screen. Proposed: four sponsored listings fill the first screen and organic results begin only below the fold, with a tag for the projected 28 percent jump in retail media revenue."
-    >
-      <HalftoneDefs id={id} />
-      {phone(20, 2, "TODAY")}
-      {phone(248, 4, "PROPOSED")}
-      <Coin id={id} cx={200} cy={146} rx={16} ry={4.2} t={4} />
-      <Coin id={id} cx={200} cy={140} rx={16} ry={4.2} t={4} />
-      <Coin id={id} cx={200} cy={134} rx={16} ry={4.2} t={4} />
-      <Price x={200} y={180} size={20} anchor="middle">
-        +28%
-      </Price>
-      <Arrow x1={160} y1={196} x2={240} y2={196} />
-    </Frame>
-  );
-}
-
-/**
  * The hypothesis drawn: an AI agent takes in a whole page of twenty mug
  * listings at once, in milliseconds, and gives every slot the same single
  * look, so no position would stand out.
@@ -1517,7 +1459,7 @@ export function HypothesisPage() {
       <Agent id={id} cx={52} cy={128} s={1.7} />
       <Stopwatch cx={52} cy={206} r={14} t={0.6} />
       <CatKey x={52} y={240} size={10} anchor="middle">
-        MILLISECONDS
+        Milliseconds
       </CatKey>
       <Arrow x1={98} y1={146} x2={130} y2={146} />
       <rect x={140} y={10} width={330} height={272} fill={CAT.tile} {...ink} />
@@ -1622,7 +1564,7 @@ export function AgentInspections() {
           );
         })}
         <CatKey x={240} y={296} size={9.5} anchor="middle">
-          {human ? "RANK ON THE PAGE | THE HUMAN PAGE ENDS AT 27" : "RANK ON THE PAGE"}
+          {human ? "Rank on the page | The human page ends at 27" : "Rank on the page"}
         </CatKey>
       </Frame>
       <Segmented<Inspector>
@@ -1652,7 +1594,7 @@ export function PersuasionOrDelegation() {
         1
       </Numeral>
       <CatKey x={x + 106} y={y + 24} size={7.5} anchor="end">
-        SPONSORED
+        Sponsored
       </CatKey>
       <Mug id={id} cx={x + 42} cy={y + 44} scale={0.7} />
       <line x1={x + 64} y1={y + 42} x2={x + 104} y2={y + 42} {...hair} />
@@ -1695,7 +1637,7 @@ export function PersuasionOrDelegation() {
       <rect x={252} y={24} width={92} height={108} fill={CAT.tile} stroke={CAT.ink} strokeWidth={1} />
       <rect x={255} y={27} width={86} height={102} fill="none" stroke={CAT.amber} strokeWidth={2.4} />
       <CatKey x={298} y={46} size={9} anchor="middle" fill={CAT.amberText}>
-        SERVES
+        Serves
       </CatKey>
       {[0, 1].map((k) => (
         <g key={k}>
@@ -1726,7 +1668,7 @@ export function TwoPrincipals() {
       <Person id={id} cx={34} cy={176} s={1.25} />
       {/* the brief */}
       <rect x={10} y={20} width={86} height={92} fill={CAT.tile} {...ink} />
-      {["PRICE", "QUALITY", "FIT"].map((t, k) => (
+      {["Price", "Quality", "Fit"].map((t, k) => (
         <g key={t}>
           <rect x={18} y={34 + k * 24} width={10} height={10} fill={CAT.tile} {...ink} />
           <CatKey x={34} y={43 + k * 24} size={9.5}>
@@ -1741,7 +1683,7 @@ export function TwoPrincipals() {
       <Agent id={id} cx={196} cy={146} s={1.4} />
       <Tile x={268} y={40} w={110} h={86} />
       <CatKey x={370} y={56} size={8.4} anchor="end">
-        SPONSORED
+        Sponsored
       </CatKey>
       <Mug id={id} cx={300} cy={84} scale={0.85} />
       <Price x={334} y={112} size={12}>
@@ -1793,11 +1735,11 @@ export function RoleSwitch() {
         <rect x={10} y={20} width={120} height={84} fill={CAT.tile} {...ink} />
         <rect x={16} y={26} width={108} height={7} fill={CAT.ink} />
         <CatKey x={18} y={50} size={9}>
-          EMPLOYED BY
+          Employed by
         </CatKey>
         {role === "traveler" ? <Person id={id} cx={40} cy={78} s={0.62} /> : <Badge cx={40} cy={80} r={13} />}
         <CatKey x={62} y={84} size={9}>
-          {role === "traveler" ? "TRAVELER" : "PLATFORM"}
+          {role === "traveler" ? "Traveler" : "Platform"}
         </CatKey>
         <line x1={70} y1={104} x2={70} y2={152} {...ink} />
         <Agent id={id} cx={70} cy={182} s={1.25} />
@@ -1816,7 +1758,7 @@ export function RoleSwitch() {
               <Hotel id={id} cx={c.x + 4} cy={231} s={0.7} />
               {c.sponsored ? (
                 <CatKey x={c.x + 74} y={246} size={7.5} anchor="end">
-                  SPONSORED
+                  Sponsored
                 </CatKey>
               ) : null}
               <line x1={c.x + 26} y1={222} x2={c.x + 70} y2={222} {...hair} />
@@ -1831,7 +1773,7 @@ export function RoleSwitch() {
           {`−${penalty.toFixed(1)}`}
         </Price>
         <CatKey x={424} y={r2((top(d.organic) + top(d.sponsored)) / 2 + 16)} size={8}>
-          POINTS
+          Points
         </CatKey>
       </Frame>
       <Segmented<"traveler" | "platform">
@@ -1847,63 +1789,3 @@ export function RoleSwitch() {
   );
 }
 
-/** A toddler car seat in profile centred on (cx, cy): halftone shell, dense side wing, white harness strap and base. About 30 × 34 at s = 1. */
-function CarSeat({ id, cx, cy, s = 1 }: { id: string; cx: number; cy: number; s?: number }) {
-  const w = r2(LINE.outline / s);
-  return (
-    <g transform={`translate(${r2(cx)} ${r2(cy)}) scale(${s})`} strokeLinejoin="round" strokeLinecap="round">
-      <path d="M-8 -17Q-14 -17 -14 -10V6Q-14 12 -8 12H12Q16 12 16 8V4Q16 0 10 0H0V-10Q0 -17 -8 -17Z" fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={w} />
-      <path d="M-14 -10Q-14 -17 -8 -17Q-4 -17 -2 -14V4H-14Z" fill={ht(id, "dense")} stroke="none" />
-      <path d="M-4 -8L6 4" stroke={CAT.tile} strokeWidth={r2(2.4 / s)} />
-      <rect x={-12} y={12} width={26} height={5} rx={2} fill={CAT.tile} stroke={CAT.ink} strokeWidth={w} />
-    </g>
-  );
-}
-
-/**
- * The audit as a printed test sheet: the parent's request on a slip, then
- * eight versions of the same results page crossing rank position (1 or 8),
- * the label (Sponsored or none) and the price ($349 or $199) for the same
- * car seat. Each run records which seat the assistant picks.
- */
-export function AuditGrid() {
-  const id = "w4-audit";
-  const cells = [0, 1, 2, 3, 4, 5, 6, 7].map((k) => ({ rank: k & 1 ? 8 : 1, sponsored: !(k & 2), price: k & 4 ? "$199" : "$349" }));
-  return (
-    <Frame
-      width={400}
-      height={318}
-      label="An audit test sheet. A slip reads: Pick the best car seat for my toddler. Below, eight versions of the same results page for one car seat cross its rank position, 1 or 8, its label, Sponsored or none, and its price, $349 or $199. Each version records the assistant's pick."
-    >
-      <HalftoneDefs id={id} />
-      <rect x={10} y={8} width={380} height={30} rx={15} fill={CAT.tile} {...ink} />
-      <text x={26} y={28} fontFamily={BODY_FONT} fontSize={13} fill={CAT.ink}>
-        Pick the best car seat for my toddler
-      </text>
-      <Agent id={id} cx={368} cy={26} s={0.5} />
-      {cells.map((c, k) => {
-        const x = 10 + (k % 4) * 96;
-        const y = 52 + Math.floor(k / 4) * 132;
-        return (
-          <g key={k}>
-            <Tile x={x} y={y} w={88} h={124} />
-            <Numeral x={x + 9} y={y + 20} size={15}>
-              {c.rank}
-            </Numeral>
-            {c.sponsored ? (
-              <CatKey x={x + 82} y={y + 34} size={8.2} anchor="end">
-                SPONSORED
-              </CatKey>
-            ) : null}
-            <CarSeat id={id} cx={x + 44} cy={y + 64} s={1.2} />
-            <line x1={x + 12} y1={y + 92} x2={x + 70} y2={y + 92} {...hair} />
-            <line x1={x + 12} y1={y + 97} x2={x + 56} y2={y + 97} {...hair} />
-            <Price x={x + 12} y={y + 115} size={13}>
-              {c.price}
-            </Price>
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}

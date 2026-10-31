@@ -47,7 +47,8 @@ week: week11
 - Furthermore, average ROAS differs sharply from marginal ROAS. As an advertiser scales daily budget in an ad auction, the algorithm exhausts the highest-intent buyers first and must bid for progressively colder prospects, causing marginal return on the last dollar spent to fall well below the campaign average.
 
 ## Discussion: The Unprofitable 5x ROAS Campaign
-- Discussion: A Direct-to-Consumer footwear startup sells sneakers for $150 per pair. Manufacturing COGS is $52, outbound shipping and warehouse handling is $18, payment processing is $4.50, and 25 percent of orders are returned at a net reverse-logistics loss of $22 per returned order. The paid social agency reports a 4.5x gross ROAS (calculated on initial checkout revenue before returns) and asks to double the monthly ad budget. Calculate the true first-order contribution margin after returns and ad spend, and advise the CEO on whether to approve the budget increase.
+- A Direct-to-Consumer footwear startup sells sneakers for $150 per pair. Manufacturing COGS is $52, outbound shipping and warehouse handling is $18, payment processing is $4.50, and 25 percent of orders are returned at a net reverse-logistics loss of $22 per returned order. The paid social agency reports a 4.5x gross ROAS (calculated on initial checkout revenue before returns) and asks to double the monthly ad budget.
+- Calculate the true first-order contribution margin after returns and ad spend, and advise the CEO on whether to approve the budget increase.
 
 ## Part 3: Multi-Touch Attribution (MTA) Models [no-exercise]
 - A customer rarely buys a high-consideration product on the very first tap. Instead, they may see a creator video on Monday, click a paid search ad on Wednesday, read an email on Friday, and type the brand URL directly on Sunday.
@@ -80,7 +81,8 @@ week: week11
 - Forward-looking e-commerce teams instrument server-side HTTP request logs and API gateway telemetry to identify known AI crawler and shopping-agent user agents (such as `ChatGPT-User`, `PerplexityBot`, and `ClaudeBot`), pair checkout flows with post-purchase "How did you hear about us?" (HDYHAU) zero-party surveys, and run brand-search lift tests to capture dark-funnel influence.
 
 ## Discussion: Reconciling Conflicting Platform Dashboards
-- Discussion: At the monthly marketing review, a retailer's social ad platform claims credit for 4,200 orders, its search ad platform claims credit for 3,800 orders, and its email platform claims credit for 2,900 orders (10,900 attributed orders in total), yet the company's Order Management System recorded only 6,000 actual warehouse orders for the entire month. Explain to the executive team why the sum of platform-reported conversions exceeds reality, and outline a measurement framework combining server-side tracking, holdout lift tests, and contribution margin to allocate next quarter's budget.
+- At the monthly marketing review, a retailer's social ad platform claims credit for 4,200 orders, its search ad platform claims credit for 3,800 orders, and its email platform claims credit for 2,900 orders (10,900 attributed orders in total), yet the company's Order Management System recorded only 6,000 actual warehouse orders for the entire month.
+- Explain to the executive team why the sum of platform-reported conversions exceeds reality, and outline a measurement framework combining server-side tracking, holdout lift tests, and contribution margin to allocate next quarter's budget.
 
 ## Key Takeaways
 - Reliable e-commerce measurement begins with structured event schemas, disciplined UTM taxonomy, server-side tagging, and cohort retention tables that separate repeat customer health from top-line acquisition spikes.

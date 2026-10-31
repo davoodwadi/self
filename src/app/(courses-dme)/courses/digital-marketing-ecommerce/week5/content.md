@@ -64,7 +64,8 @@ week: week5
 - Supply Path Optimization (SPO) is the practice by which advertisers audit and consolidate the SSPs and exchanges they bid through, cutting out redundant resellers to establish the most direct, transparent, and lowest-fee path to publisher inventory.
 
 ## Discussion: Retargeting or Stalking?
-- Discussion: A consumer browses a pair of winter boots on an online shoe store, decides not to buy them, and then sees dynamic banner ads for those exact boots seventeen times over the next forty-eight hours across news sites, weather apps, and recipe blogs, including three days after buying a different pair at a local mall. Analyze this scenario from both an AdTech mechanics perspective and a marketing effectiveness perspective. Why did this happen, how does it affect brand equity and incremental ROAS, and what DSP controls should the marketer configure?
+- A consumer browses a pair of winter boots on an online shoe store, decides not to buy them, and then sees dynamic banner ads for those exact boots seventeen times over the next forty-eight hours across news sites, weather apps, and recipe blogs, including three days after buying a different pair at a local mall. Analyze this scenario from both an AdTech mechanics perspective and a marketing effectiveness perspective.
+- Why did this happen, how does it affect brand equity and incremental ROAS, and what DSP controls should the marketer configure?
 
 ## Part 4: The Post-Cookie Transition and Privacy-Preserving AdTech [no-exercise]
 - For two decades, cross-site behavioral targeting and attribution relied on third-party HTTP cookies and mobile device advertising identifiers (such as Apple's IDFA).
@@ -87,7 +88,8 @@ week: week5
 - In these black-box campaign systems, the marketer's role shifts from pulling manual bidding levers to feeding accurate first-party conversion profit signals and auditing whether the algorithm is buying incremental new customers or merely harvesting existing buyers.
 
 ## Discussion: Trusting the Black-Box Ad Campaign
-- Discussion: An e-commerce skincare brand switches its programmatic and social budget into an automated AI campaign suite that promises to find conversions across display, video, search, and shopping placements automatically. Within a month, reported conversions double and cost per acquisition drops by 40 percent, yet the company's total warehouse orders and bank revenue grow by only 4 percent. What programmatic and attribution mechanisms explain the gap between the platform's reported conversions and total business revenue, and how can the brand verify what the black-box campaign is actually buying?
+- An e-commerce skincare brand switches its programmatic and social budget into an automated AI campaign suite that promises to find conversions across display, video, search, and shopping placements automatically. Within a month, reported conversions double and cost per acquisition drops by 40 percent, yet the company's total warehouse orders and bank revenue grow by only 4 percent.
+- What programmatic and attribution mechanisms explain the gap between the platform's reported conversions and total business revenue, and how can the brand verify what the black-box campaign is actually buying?
 
 ## Key Takeaways
 - Programmatic advertising automates media buying through Demand-Side Platforms (DSPs), Supply-Side Platforms (SSPs), and Ad Exchanges executing real-time bidding (RTB) auctions in under 100 milliseconds.

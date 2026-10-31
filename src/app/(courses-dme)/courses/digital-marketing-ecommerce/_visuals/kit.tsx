@@ -73,28 +73,28 @@ export function Tile({ x, y, w, h }: { x: number; y: number; w: number; h: numbe
   );
 }
 
-/** Position numeral on a listing, in Bodoni italic. */
+/** Position numeral on a listing, in the body face. */
 export function Numeral({ x, y, children, size = 17, anchor = "start" }: { x: number; y: number; children: React.ReactNode; size?: number; anchor?: Anchor }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontStyle="italic" fontSize={size} fill={CAT.ink}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily={BODY} fontWeight={500} fontSize={size} fill={CAT.ink} style={{ fontVariantNumeric: "lining-nums tabular-nums" }}>
       {children}
     </text>
   );
 }
 
-/** A price or quantity in Bodoni semibold. */
+/** A price or quantity in the body face, semibold. */
 export function Price({ x, y, children, size = 12, anchor = "start", fill = CAT.ink }: { x: number; y: number; children: React.ReactNode; size?: number; anchor?: Anchor; fill?: string }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontWeight={600} fontSize={size} fill={fill} style={{ fontVariantNumeric: "lining-nums tabular-nums" }}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily={BODY} fontWeight={600} fontSize={size} fill={fill} style={{ fontVariantNumeric: "lining-nums tabular-nums" }}>
       {children}
     </text>
   );
 }
 
-/** Catalogue key: a concept name or a word printed on a listing, in tracked Franklin capitals. */
+/** Catalogue key: a concept name or a word printed on a listing, in sentence case. */
 export function CatKey({ x, y, children, size = 8, anchor = "start", fill = CAT.ink }: { x: number; y: number; children: React.ReactNode; size?: number; anchor?: Anchor; fill?: string }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily={LABEL} fontWeight={600} fontSize={size} letterSpacing="0.14em" fill={fill}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily={LABEL} fontWeight={600} fontSize={size} fill={fill}>
       {children}
     </text>
   );
@@ -102,14 +102,13 @@ export function CatKey({ x, y, children, size = 8, anchor = "start", fill = CAT.
 
 export const LABEL = "var(--font-label)";
 export const BODY = "var(--font-body)";
-export const SERIF = "var(--font-heading)";
 
 export type Anchor = "start" | "middle" | "end";
 
 /** Round a computed coordinate, so server and client render identical markup. */
 export const r2 = (n: number) => Math.round(n * 100) / 100;
 
-/** Uppercase tracked key: concept names, quantities, axis names. */
+/** Sentence-case key: concept names, quantities, axis names. */
 export function Key({
   x,
   y,
@@ -135,7 +134,6 @@ export function Key({
       fontFamily={LABEL}
       fontSize={size}
       fontWeight={weight}
-      letterSpacing="0.12em"
       fill={fill}
       style={{ fontVariantNumeric: "tabular-nums" }}
     >
@@ -180,7 +178,7 @@ export function Note({
   );
 }
 
-/** Display numeral or word in Libre Bodoni, for the few places a plate needs weight. */
+/** A larger numeral or word in the body face, for the few places a plate needs weight. */
 export function Display({
   x,
   y,
@@ -197,7 +195,7 @@ export function Display({
   size?: number;
 }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontSize={size} fontWeight={500} fill={fill}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily={BODY} fontSize={size} fontWeight={600} fill={fill} style={{ fontVariantNumeric: "tabular-nums" }}>
       {children}
     </text>
   );
@@ -262,17 +260,18 @@ export function Arrow({ x1, y1, x2, y2, color = CAT.ink, w = LINE.outline, s = 6
   );
 }
 
+/* Controls under a plate speak the plate's language: small sentence-case
+   keys in ink (as CatKey) and hairline ink rules. The chosen option is
+   marked by a filled ring, never by a flat block of fill. */
+const CONTROL_KEY = "shrink-0 text-[12px] font-semibold text-[var(--ink)]";
+const CONTROL_TEXT = "text-[12px] font-medium text-[var(--ink)]";
+
 /**
- * A quiet control under an interactive plate: a small uppercase key, a
+ * A quiet control under an interactive plate: a small key, a
  * hairline track with a small ink thumb, and the current value in tabular
  * numerals. It stays secondary to the plate it drives. The plate's
  * default value is the state the slide shows before anyone touches it.
  */
-/* Controls under a plate speak the plate's language: Franklin tracked capitals
-   in ink (as CatKey) and hairline ink rules. The chosen option is marked
-   by a filled ring, never by a flat block of fill. */
-const CONTROL_KEY = "shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink)]";
-const CONTROL_TEXT = "text-[11.5px] font-medium uppercase tracking-[0.1em] text-[var(--ink)]";
 
 export function Slider({
   label,
@@ -502,139 +501,70 @@ export function Lead({ children, className = "" }: { children: React.ReactNode; 
   return <p className={cn("type-lead max-w-[52ch]", className)}>{children}</p>;
 }
 
-/** A sentence set as a serif statement: the line a slide rests on. */
+/** A sentence set as a large statement: the line a slide rests on. */
 export function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <p className={cn("type-quote max-w-[32ch]", className)}>{children}</p>;
 }
 
-type Tone = "signal" | "counter" | "ink";
-
-/** A coloured term inside a sentence. */
-export function Term({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
+/** A term inside a sentence, set in bold ink. */
+export function Term({ children }: { children: React.ReactNode }) {
+  return <strong className="font-semibold text-[var(--ink)]">{children}</strong>;
 }
 
 /** A block under a hairline rule, the page's basic cell. */
-export function Ruled({
-  tone = "ink",
-  weight = "thick",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  weight?: "thin" | "thick";
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const border = {
-    signal: "border-[var(--signal)]",
-    counter: "border-[var(--counter)]",
-    ink: "border-[var(--ink)]",
-  }[tone];
-  return (
-    <div className={cn("min-w-0 pt-4", weight === "thick" ? "border-t-2" : "border-t", border, className)}>
-      {children}
-    </div>
-  );
+export function Ruled({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <div className={cn("min-w-0 border-t border-[var(--rule-2)] pt-4", className)}>{children}</div>;
 }
 
-/** Section heading with a hairline beneath. An optional kicker ("Discussion:") sits above the words. */
-export function SlideHeading({
-  children,
-  kicker,
-  tone = "signal",
-  className = "",
-}: {
-  children: React.ReactNode;
-  kicker?: string;
-  tone?: "signal" | "counter";
-  className?: string;
-}) {
+/** Section heading with a hairline beneath. */
+export function SlideHeading({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={cn("mb-7 w-full", className)}>
-      <h2 className="type-h1 max-w-[34ch] !text-[clamp(1.9rem,3.6vw,3rem)]">
-        {kicker ? (
-          <>
-            <span
-              className={cn("type-label mb-3 block !text-[0.8rem]", tone === "counter" && "!text-[var(--counter)]")}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
-        {children}
-      </h2>
+      <h2 className="type-h1 max-w-[34ch] !text-[clamp(1.9rem,3.6vw,3rem)]">{children}</h2>
       <div className="mt-5 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
 
 /** Numbered item: a small tabular numeral above its text. */
-export function Numbered({
-  n,
-  children,
-  tone = "ink",
-  className = "",
-}: {
-  n: number;
-  children: React.ReactNode;
-  tone?: Tone;
-  className?: string;
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink-3)]",
-  }[tone];
+export function Numbered({ n, children, className = "" }: { n: number; children: React.ReactNode; className?: string }) {
   return (
     <div className={cn("min-w-0", className)}>
-      <span aria-hidden className={cn("type-label mb-2 block tabular-nums", color)}>
-        {String(n).padStart(2, "0")}
+      <span aria-hidden className="mb-2 block text-[0.875rem] font-medium tabular-nums text-[var(--ink-3)]">
+        {n}
       </span>
       {children}
     </div>
   );
 }
 
-/** Part opener head: an outlined numeral beside "Part n:" and its title. */
+/** Part opener head: "Part n:" and its title. */
 export function PartHead({ n, title, className = "" }: { n: number; title: string; className?: string }) {
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex items-end gap-4 sm:gap-6 xl:gap-10">
-        <div
-          aria-hidden
-          className="select-none text-[3.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--ink)] sm:text-[5rem] xl:text-[7rem]"
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500 }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <h2 className="type-display min-w-0 max-w-[22ch] !text-[clamp(1.7rem,4vw,3.4rem)] [overflow-wrap:break-word]">
-          <span className="type-label mb-3 block !text-[0.8rem]">{`Part ${n}:`}</span> {title}
-        </h2>
-      </div>
+      <h2 className="type-display min-w-0 max-w-[22ch] !text-[clamp(1.7rem,4vw,3.4rem)] [overflow-wrap:break-word]">
+        {`Part ${n}: ${title}`}
+      </h2>
       <div className="mt-6 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
 
-/** Discussion prompt beside an ink rule. "Discussion:" stays in the sentence as a kicker. */
-export function Prompt({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+/** A discussion case under its "Discussion:" heading, set like any body slide: the scenario, then the question in bold. */
+export function Discussion({
+  scenario,
+  question,
+  className = "",
+}: {
+  scenario: string;
+  question: string;
+  className?: string;
+}) {
+  const line = "type-h2 max-w-[56ch] !font-normal !text-[clamp(1.2rem,1.7vw,1.45rem)] !leading-snug";
   return (
-    <div
-      className={cn(
-        "w-full border-l-2 border-[var(--ink)] px-7 py-7 md:px-11 md:py-9",
-        className,
-      )}
-    >
-      <p className="type-quote max-w-[44ch] !text-[clamp(1.3rem,2.1vw,1.85rem)]">
-        <span className="type-label mb-5 block !text-[0.8rem] !leading-none">Discussion:</span>{" "}
-        {children}
-      </p>
+    <div className={cn("w-full", className)}>
+      <p className={line}>{scenario}</p>
+      <p className={cn(line, "mt-6 !font-semibold")}>{question}</p>
     </div>
   );
 }
