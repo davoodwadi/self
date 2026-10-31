@@ -13,7 +13,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
@@ -65,13 +65,13 @@ export default function Week7() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 7: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
-          <span className="text-[var(--signal)]">Hypothesis Testing</span> and Group Differences
+          Hypothesis Testing and Group Differences
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[44ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[44ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Hypothesis testing assesses whether a difference observed in a{" "}
-          <span className="text-[var(--signal)]">sample</span> is likely to exist in the{" "}
-          <span className="text-[var(--signal)]">population</span>.
+          sample is likely to exist in the{" "}
+          population.
         </p>
       </Slide>
 
@@ -86,7 +86,7 @@ export default function Week7() {
         </Statement>
         <div className="mt-7 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 Samples vary by <Term>chance</Term>, so that two samples drawn from the same
                 population produce different results.
@@ -97,21 +97,21 @@ export default function Week7() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                A <Term tone="ink">population parameter</Term> is a characteristic of the
+                A <Term>population parameter</Term> is a characteristic of the
                 population, such as the true mean satisfaction of all customers. A{" "}
-                <Term tone="ink">sample statistic</Term> is the corresponding value
+                <Term>sample statistic</Term> is the corresponding value
                 calculated from a sample.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                <Term tone="ink">Statistical inference</Term> is the procedure by which
+                <Term>Statistical inference</Term> is the procedure by which
                 conclusions about population parameters are drawn from sample statistics.
               </P>
             </Ruled>
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 <Term>Hypothesis testing</Term> is the form of inference that assesses
                 whether an observed difference or association can reasonably be attributed
@@ -130,11 +130,11 @@ export default function Week7() {
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled>
             <p className={BIG}>
-              The <Term tone="ink">null hypothesis</Term>, denoted H0, states that there is
+              The <Term>null hypothesis</Term>, denoted H0, states that there is
               no difference or no association in the population.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The <Term>alternative hypothesis</Term>, denoted H1, states that a difference
               or association exists.
@@ -150,12 +150,12 @@ export default function Week7() {
             <p className="type-quote !text-[clamp(1.2rem,1.9vw,1.55rem)]">
               The test assesses the evidence against the null hypothesis. The null
               hypothesis is either rejected or not rejected. It is{" "}
-              <span className="text-[var(--counter)]">never proven true</span>.
+              never proven true.
             </p>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                A <Term tone="ink">two-tailed test</Term> examines a difference in either
-                direction. A <Term tone="ink">one-tailed test</Term> examines a difference in
+                A <Term>two-tailed test</Term> examines a difference in either
+                direction. A <Term>one-tailed test</Term> examines a difference in
                 a direction specified in advance, such as members spending more than
                 nonmembers.
               </P>
@@ -180,27 +180,27 @@ export default function Week7() {
         <ol className="grid w-full gap-x-8 gap-y-7 md:grid-cols-2 lg:grid-cols-4">
           {[
             <>
-              The researcher first <Term tone="ink">formulates</Term> the null and
+              The researcher first <Term>formulates</Term> the null and
               alternative hypotheses.
             </>,
             <>
-              The researcher then <Term tone="ink">selects</Term> the appropriate
+              The researcher then <Term>selects</Term> the appropriate
               statistical test.
             </>,
             <>
-              The researcher then <Term tone="ink">specifies the significance level</Term>,
+              The researcher then <Term>specifies the significance level</Term>,
               conventionally 0.05.
             </>,
             <>
-              The researcher then <Term tone="ink">collects the data</Term> and calculates
+              The researcher then <Term>collects the data</Term> and calculates
               the test statistic.
             </>,
             <>
-              The researcher then <Term tone="ink">determines the p-value</Term> associated
+              The researcher then <Term>determines the p-value</Term> associated
               with the test statistic.
             </>,
             <>
-              The researcher then <Term tone="ink">compares</Term> the p-value with the
+              The researcher then <Term>compares</Term> the p-value with the
               significance level, and rejects the null hypothesis if the p-value is
               smaller.
             </>,
@@ -210,8 +210,8 @@ export default function Week7() {
             </>,
           ].map((s, i) => (
             <li key={i} className={i === 6 ? "min-w-0 lg:col-span-2" : "min-w-0"}>
-              <Numbered n={i + 1} tone={i === 6 ? "signal" : "ink"}>
-                <Ruled tone={i === 6 ? "signal" : "ink"} weight={i < 3 ? "thick" : "thin"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={i === 6 ? `${BIG} max-w-[34ch]` : BIG}>{s}</p>
                 </Ruled>
               </Numbered>
@@ -231,23 +231,23 @@ export default function Week7() {
         </Statement>
         <div className="mt-7 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 A small p-value indicates that the observed result would be unlikely if the
                 null hypothesis were true.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                The <Term tone="ink">significance level</Term>, denoted alpha, is the
+                The <Term>significance level</Term>, denoted alpha, is the
                 threshold below which the p-value leads to the rejection of the null
                 hypothesis.
               </P>
             </Ruled>
-            <Ruled tone="counter">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                The p-value is <Term tone="counter">not</Term> the probability that the null
-                hypothesis is true, and it is <Term tone="counter">not</Term> the probability
+                The p-value is <Term>not</Term> the probability that the null
+                hypothesis is true, and it is <Term>not</Term> the probability
                 that the result occurred by chance.
               </P>
             </Ruled>
@@ -275,9 +275,9 @@ export default function Week7() {
       >
         <SlideHeading>Type I and Type II Errors</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
-              A <Term tone="counter">Type I error</Term> occurs when the null hypothesis is
+              A <Term>Type I error</Term> occurs when the null hypothesis is
               rejected although it is true, so that a difference is reported that does not
               exist in the population. When the null hypothesis is true, the probability of
               a Type I error equals the significance level.
@@ -285,21 +285,21 @@ export default function Week7() {
           </Ruled>
           <Ruled>
             <P className="!max-w-none !leading-snug">
-              A <Term tone="ink">Type II error</Term> occurs when the null hypothesis is not
+              A <Term>Type II error</Term> occurs when the null hypothesis is not
               rejected although it is false, so that a real difference is not detected.
             </P>
           </Ruled>
         </div>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 The <Term>power</Term> of a test is the probability of correctly rejecting a
                 false null hypothesis. Power increases with the sample size and with the size
                 of the true difference.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !text-[0.95em] !leading-snug">
                 For example, concluding that a new advertisement increases purchase intention
                 when it does not is a Type I error, and may lead the firm to spend its budget
@@ -329,20 +329,20 @@ export default function Week7() {
           same respondents.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-3 md:gap-10">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Tests of means</Term> are used for interval and ratio variables.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              <Term tone="counter">Tests of frequencies</Term> are used for nominal
+              <Term>Tests of frequencies</Term> are used for nominal
               variables.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Nonparametric tests</Term>, such as the Mann-Whitney U test
+              <Term>Nonparametric tests</Term>, such as the Mann-Whitney U test
               and the Wilcoxon signed-rank test, are used for ordinal variables.
             </p>
           </Ruled>
@@ -360,7 +360,7 @@ export default function Week7() {
               The <Term>independent-samples t-test</Term> compares the means of an interval
               or ratio variable between two groups of different respondents.
             </Statement>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 For example, it tests whether the mean monthly spending of loyalty program
                 members differs from that of nonmembers.
@@ -368,13 +368,13 @@ export default function Week7() {
             </Ruled>
             <Ruled>
               <P className="!max-w-none !leading-snug">
-                The test statistic, <Term tone="ink">t</Term>, is the difference between the
+                The test statistic, <Term>t</Term>, is the difference between the
                 two sample means divided by the standard error of that difference.
               </P>
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 A larger difference between the means, less variation within the groups,
                 and larger samples each produce a larger value of t and a smaller p-value.
@@ -393,19 +393,19 @@ export default function Week7() {
       <Slide id="the-paired-samples-t-test" border className="!py-8">
         <SlideHeading>The Paired-Samples t-Test</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled tone="signal">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               The <Term>paired-samples t-test</Term> compares two means obtained from the
               same respondents.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               It is used when respondents are measured twice, as in ratings of a brand
               before and after exposure to an advertisement.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               It is also used when the same respondents rate two objects, as in ratings of
               two package designs.
@@ -439,7 +439,7 @@ export default function Week7() {
             online, in store, and through a mobile application.
           </P>
         </div>
-        <Ruled tone="signal" className="mt-5 w-full">
+        <Ruled className="mt-5 w-full">
           <p className={BIG}>
             The <Term>F statistic</Term> compares the variation between the group means with
             the variation within the groups.
@@ -449,15 +449,15 @@ export default function Week7() {
           <BetweenWithin />
         </Plate>
         <div className="mt-5 grid w-full gap-6 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               A significant F statistic indicates that at least one group mean differs from
               the others, but not which one.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
-              <Term tone="ink">Post hoc tests</Term> then identify which pairs of groups
+              <Term>Post hoc tests</Term> then identify which pairs of groups
               differ, while controlling the overall probability of a Type I error.
             </P>
           </Ruled>
@@ -476,8 +476,8 @@ export default function Week7() {
         <div className="mt-7 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
             <P className="!max-w-none !leading-snug">
-              It compares the <Term tone="ink">observed frequency</Term> in each cell with
-              the <Term tone="ink">frequency expected</Term> if the two variables were
+              It compares the <Term>observed frequency</Term> in each cell with
+              the <Term>frequency expected</Term> if the two variables were
               unrelated. For example, it tests whether preferred shopping channel is
               associated with age group.
             </P>
@@ -486,13 +486,13 @@ export default function Week7() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 The larger the discrepancies between observed and expected frequencies, the
                 larger the chi-square statistic and the smaller the p-value.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 The test requires an adequate expected frequency in each cell,
                 conventionally at least five.
@@ -553,8 +553,8 @@ export default function Week7() {
             ] as const
           ).map(([kind, s], i) => (
             <li key={kind} className="flex min-w-0 flex-col gap-4">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled tone="signal" weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={BIG}>{s}</p>
                 </Ruled>
               </Numbered>
@@ -570,15 +570,11 @@ export default function Week7() {
           Discussion: Testing a Loyalty Program
           ================================================================ */}
       <Slide id="discussion-testing-a-loyalty-program" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Testing a Loyalty Program
-        </SlideHeading>
-        <Prompt>
-          A grocery chain reports that members of its loyalty program spend on average 18
-          percent more per month than nonmembers, and the difference is statistically
-          significant. Which hypotheses were tested, which test was appropriate, and does
-          the result establish that the program increases spending?
-        </Prompt>
+        <SlideHeading>Discussion: Testing a Loyalty Program</SlideHeading>
+        <Discussion
+          scenario={"A grocery chain reports that members of its loyalty program spend on average 18 percent more per month than nonmembers, and the difference is statistically significant."}
+          question={"Which hypotheses were tested, which test was appropriate, and does the result establish that the program increases spending?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -593,13 +589,13 @@ export default function Week7() {
               would be unlikely if no difference existed in the population.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              It does <Term tone="counter">not</Term> indicate that the difference is large
+              It does <Term>not</Term> indicate that the difference is large
               or that it matters for the decision.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Researchers therefore report the <Term>size of the difference</Term> in
               addition to its statistical significance.
@@ -619,7 +615,7 @@ export default function Week7() {
               With a sufficiently large sample, very small differences become statistically
               significant.
             </Statement>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 For example, in a test with two million website visitors divided equally
                 between two versions of a page, a conversion rate of 3.05 percent for one
@@ -633,20 +629,20 @@ export default function Week7() {
           </Plate>
         </div>
         <div className="mt-7 grid w-full gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled tone="signal">
+          <Ruled>
             <P className="!leading-snug">
               <Term>Practical significance</Term> is the extent to which a difference is
               large enough to affect a marketing decision.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
               Whether a difference is practically significant depends on the costs and
               benefits of acting on it, such as the cost of implementing the new page
               relative to the additional revenue it produces.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P className="!leading-snug">
               Conversely, a large and practically important difference may fail to reach
               statistical significance in a small sample.
@@ -678,13 +674,13 @@ export default function Week7() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 For differences between proportions, the effect size can be expressed as the
                 difference in percentage points or as the ratio between the proportions.
               </P>
             </Ruled>
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 Effect sizes allow findings to be compared across studies with different
                 sample sizes.
@@ -701,21 +697,21 @@ export default function Week7() {
         <SlideHeading>Confidence Intervals</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 A <Term>confidence interval</Term>, which extends the margin of error
                 introduced in Week 5, reports a range of plausible values for a population
                 parameter, such as a difference between two means.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 A 95 percent confidence interval for a difference in mean spending of 8 to 22
                 dollars indicates both the likely size of the difference and the uncertainty
                 of the estimate.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 If a 95 percent confidence interval for a difference excludes zero, the
                 difference is statistically significant at the 0.05 level.
@@ -726,7 +722,7 @@ export default function Week7() {
             <IntervalAndZero />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--signal)] pt-4`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-4`}>
           Confidence intervals are therefore more informative than p-values alone, and are
           reported together with them.
         </p>
@@ -742,13 +738,13 @@ export default function Week7() {
           reported.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               A number of published findings in psychology and consumer research have failed
               to replicate when other researchers repeated the studies.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               Among the causes identified are analytical practices that increase the
               probability of Type I errors.
@@ -766,7 +762,7 @@ export default function Week7() {
           <ol className="flex min-w-0 flex-col gap-3">
             {[
               <>
-                <Term tone="counter">p-Hacking</Term> is the practice of analyzing the data
+                <Term>p-Hacking</Term> is the practice of analyzing the data
                 in several ways and reporting only the analyses that produce statistically
                 significant results.
               </>,
@@ -776,25 +772,25 @@ export default function Week7() {
                 respondents until the result becomes significant.
               </>,
               <>
-                <Term tone="counter">Selective reporting of subgroups</Term> is the practice
+                <Term>Selective reporting of subgroups</Term> is the practice
                 of testing the effect in many segments and presenting only the segments in
                 which it is significant.
               </>,
               <>
-                <Term tone="counter">HARKing</Term>, or hypothesizing after the results are
+                <Term>HARKing</Term>, or hypothesizing after the results are
                 known, is the practice of presenting a hypothesis formulated after examining
                 the data as if it had been formulated in advance.
               </>,
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Ruled tone={i === 1 ? "ink" : "counter"} weight="thin" className="!pt-3">
+                <Ruled className="!pt-3">
                   <P className="!max-w-none !leading-snug">{s}</P>
                 </Ruled>
               </li>
             ))}
           </ol>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
                 Each practice increases the probability of reporting a difference that does
                 not exist in the population.
@@ -813,23 +809,23 @@ export default function Week7() {
       <Slide id="multiple-comparisons" border className="!py-8">
         <SlideHeading>Multiple Comparisons</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
               Each test conducted at a significance level of 0.05 has a five percent
               probability of producing a Type I error when the null hypothesis is true.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
               When many tests are conducted, the probability that at least one produces a
               Type I error increases rapidly.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P className="!leading-snug">
               With 20 independent tests of true null hypotheses, the probability of at least
               one statistically significant result is approximately{" "}
-              <Term tone="counter">64 percent</Term>.
+              <Term>64 percent</Term>.
             </P>
           </Ruled>
         </div>
@@ -838,13 +834,13 @@ export default function Week7() {
             <ManyTests />
           </Plate>
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 The <Term>Bonferroni correction</Term> divides the significance level by the
                 number of tests, so that 20 tests are each conducted at a level of 0.0025.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 Reports that present many significance tests, such as comparisons across
                 numerous customer segments, state how many tests were conducted and whether a
@@ -866,17 +862,17 @@ export default function Week7() {
       >
         <SlideHeading>Preregistration and Reproducible Analysis</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               <Term>Preregistration</Term> is the documentation of the hypotheses, sample
               size, exclusion criteria, and analysis plan before the data are collected.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
-              It distinguishes <Term tone="ink">confirmatory analyses</Term>, which test
+              It distinguishes <Term>confirmatory analyses</Term>, which test
               hypotheses specified in advance, from{" "}
-              <Term tone="ink">exploratory analyses</Term>, which generate hypotheses for
+              <Term>exploratory analyses</Term>, which generate hypotheses for
               future testing.
             </P>
           </Ruled>
@@ -885,21 +881,21 @@ export default function Week7() {
           <PreregistrationTimeline />
         </Plate>
         <div className="mt-5 grid w-full gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
               In commercial research, the equivalent practice is an analysis plan agreed
               with the client before data collection.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
-              <Term tone="ink">Reproducible analysis</Term> is conducted with documented
+              <Term>Reproducible analysis</Term> is conducted with documented
               code, so that another analyst can obtain the same results from the same data.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
-              <Term tone="ink">Complete reporting</Term> states every test conducted,
+              <Term>Complete reporting</Term> states every test conducted,
               including those that did not produce significant results.
             </P>
           </Ruled>
@@ -922,13 +918,13 @@ export default function Week7() {
               Comparisons of AI models and prompts are hypothesis tests, in which the
               responses to each model or prompt form a sample.
             </Statement>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 A t-test compares two models or prompts, and analysis of variance compares
                 several, with each response as an observation.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 Because additional responses cost little, very large samples are easily
                 obtained, and very small differences become statistically significant.
@@ -937,7 +933,7 @@ export default function Week7() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 Evaluations that compare many models, prompts, and products involve many
                 tests at once, and the corrections for multiple comparisons introduced in
@@ -949,7 +945,7 @@ export default function Week7() {
             </Plate>
           </div>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--signal)] pt-4`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-4`}>
           Claims that a newer model performs better are tested rather than assumed. In one
           evaluation, newer model generations were more susceptible to anchoring in price
           judgments than older generations (Wadi &amp; Fredette, 2025).
@@ -967,7 +963,7 @@ export default function Week7() {
         </Statement>
         <div className="mt-7 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 A reproducible evaluation records the exact model version, the date, the
                 generation settings, the complete prompts, and the number of responses per
@@ -979,13 +975,13 @@ export default function Week7() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled weight="thin">
+            <Ruled>
               <p className={BIG}>
                 The hypotheses, measures, and analyses are preregistered before the responses
                 are collected, as for research with human participants.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <p className={BIG}>
                 The prompts, responses, and analysis code are retained, so that the
                 evaluation can be repeated on newer models with the same design.
@@ -999,16 +995,11 @@ export default function Week7() {
           Discussion: Twenty Segments
           ================================================================ */}
       <Slide id="discussion-twenty-segments" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Twenty Segments
-        </SlideHeading>
-        <Prompt>
-          An analyst tests whether a new loyalty offer increased spending in each of 20
-          customer segments and finds a statistically significant increase in one segment.
-          The marketing director proposes to extend the offer to that segment immediately.
-          How should this result be interpreted, and what further evidence should be
-          obtained before the decision is taken?
-        </Prompt>
+        <SlideHeading>Discussion: Twenty Segments</SlideHeading>
+        <Discussion
+          scenario={"An analyst tests whether a new loyalty offer increased spending in each of 20 customer segments and finds a statistically significant increase in one segment. The marketing director proposes to extend the offer to that segment immediately."}
+          question={"How should this result be interpreted, and what further evidence should be obtained before the decision is taken?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1027,8 +1018,8 @@ export default function Week7() {
             "Comparisons of AI models and prompts are hypothesis tests that require effect sizes, corrections for multiple comparisons, and complete records of model versions and prompts.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

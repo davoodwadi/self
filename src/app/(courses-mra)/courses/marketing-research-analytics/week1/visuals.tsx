@@ -25,7 +25,6 @@ import {
   Frame,
   Key,
   Note,
-  Display,
   INK,
   INK3,
   RULE2,
@@ -88,10 +87,10 @@ export function UncertaintyNarrowing() {
         <path d={bellPath(narrow)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
         <line x1={x0} y1={base} x2={x1} y2={base} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(x1, base, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-        <Key x={36} y={112} fill={INK}>ASSUMPTIONS</Key>
+        <Key x={36} y={112} fill={INK}>Assumptions</Key>
         <line x1={70} y1={118} x2={78} y2={150} stroke={RULE2} strokeWidth={1} />
-        <Key x={r2(mean + 1.3 * sd + 6)} y={r2(base - peak * 0.75)} fill={SIGNAL}>EVIDENCE</Key>
-        <Key x={x1} y={192} anchor="end" fill={INK3}>LEVEL OF DEMAND</Key>
+        <Key x={r2(mean + 1.3 * sd + 6)} y={r2(base - peak * 0.75)} fill={SIGNAL}>Evidence</Key>
+        <Key x={x1} y={192} anchor="end" fill={INK3}>Level of demand</Key>
       </Frame>
       <Slider label="Respondents" value={n} min={20} max={600} step={10} onChange={setN} />
     </>
@@ -154,7 +153,7 @@ export function EvidenceLane({
         <rect x={bx} y={14} width={bw} height={axisY - 14} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
         {/* the question */}
         <circle cx={bx + 26} cy={52} r={13} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-        <text x={bx + 26} y={57.5} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={17} fontWeight={600} fill={SIGNAL}>?</text>
+        <text x={bx + 26} y={57.5} textAnchor="middle" fontFamily="var(--font-body)" fontSize={17} fontWeight={600} fill={SIGNAL}>?</text>
         {/* new respondents, one per tick of fieldwork */}
         {Array.from({ length: answered }, (_, i) => (
           <Person1 key={i} x={bx + 64 + i * 26} y={80} k={0.95} stroke={INK} fill={PAPER} />
@@ -182,7 +181,7 @@ export function EvidenceLane({
     const keyLeft = now >= 2;
     body = (
       <g>
-        <Key x={keyLeft ? cursorX - 8 : cursorX + 8} y={24} anchor={keyLeft ? "end" : "start"} fill={INK3} size={10}>NOW</Key>
+        <Key x={keyLeft ? cursorX - 8 : cursorX + 8} y={24} anchor={keyLeft ? "end" : "start"} fill={INK3} size={10}>Now</Key>
         <path d={line(past)} fill="none" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
         {future.length > 1 ? (
           <path d={line(future)} fill="none" stroke={INK} strokeWidth={2} strokeDasharray="5 4" strokeLinejoin="round" />
@@ -298,7 +297,7 @@ export function ShareTracking() {
       <line x1={24} y1={axisY} x2={388} y2={axisY} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(388, axisY, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={24} y1={20} x2={24} y2={axisY} stroke={INK} strokeWidth={1.25} />
-      <Key x={32} y={26} fill={INK3} size={10}>MARKET SHARE</Key>
+      <Key x={32} y={26} fill={INK3} size={10}>Market share</Key>
       {xs.map((x) => (
         <line key={x} x1={x} y1={axisY} x2={x} y2={axisY + 5} stroke={RULE} strokeWidth={1} />
       ))}
@@ -332,7 +331,7 @@ export function ChooseAmongAlternatives() {
       label="One known problem branching to three alternative prices, eight, ten and twelve dollars. The ten-dollar price is chosen"
     >
       <circle cx={sx} cy={sy} r={16} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <text x={sx} y={sy + 6} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={18} fontWeight={600} fill={INK}>!</text>
+      <text x={sx} y={sy + 6} textAnchor="middle" fontFamily="var(--font-body)" fontSize={18} fontWeight={600} fill={INK}>!</text>
       {opts.map(({ y, price, chosen }) => {
         const c = chosen ? SIGNAL : INK3;
         const ex = tx - 14;
@@ -430,7 +429,7 @@ export function JustifiedQuadrant() {
             />
             {on ? (
               <Key x={r2(c.x + c.w / 2)} y={r2(c.y + c.h / 2 + 4)} anchor="middle" fill={tone} size={12}>
-                {i === 1 ? "JUSTIFIED" : "NOT JUSTIFIED"}
+                {i === 1 ? "Justified" : "Not justified"}
               </Key>
             ) : null}
           </g>
@@ -442,9 +441,9 @@ export function JustifiedQuadrant() {
       <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L} y1={B} x2={L} y2={T} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L, T, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={R} y={B + 22} anchor="end" fill={INK3}>UNCERTAIN</Key>
+      <Key x={R} y={B + 22} anchor="end" fill={INK3}>Uncertain</Key>
       <g transform={`translate(${L - 14} ${T}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" fill={INK3}>CONSEQUENTIAL</Key>
+        <Key x={0} y={0} anchor="end" fill={INK3}>Consequential</Key>
       </g>
     </Frame>
   );
@@ -457,10 +456,10 @@ export function JustifiedQuadrant() {
 export function SymptomAndCauses() {
   const rows = [8, 7, 5, 4];
   const causes = [
-    { l1: "NEW", l2: "COMPETITOR", icon: "store" },
-    { l1: "PRICE", l2: "INCREASE", icon: "price" },
-    { l1: "SLOWER", l2: "SERVICE", icon: "clock" },
-    { l1: "COMMUTING", l2: "PATTERNS", icon: "train" },
+    { l1: "New", l2: "competitor", icon: "store" },
+    { l1: "Price", l2: "increase", icon: "price" },
+    { l1: "Slower", l2: "service", icon: "clock" },
+    { l1: "Commuting", l2: "patterns", icon: "train" },
   ] as const;
   const cx0 = 372;
   const step = 118;
@@ -475,7 +474,7 @@ export function SymptomAndCauses() {
       label="A coffee chain's cups sold per quarter falling from eight to four, the symptom, linked to four possible underlying causes: a new competitor, a price increase, slower service and a change in commuting patterns"
     >
       {/* the symptom: cups sold per quarter */}
-      <Key x={24} y={24} fill={COUNTER}>SYMPTOM</Key>
+      <Key x={24} y={24} fill={COUNTER}>Symptom</Key>
       {rows.map((n, r) => {
         const y = 66 + r * 36;
         return (
@@ -493,7 +492,7 @@ export function SymptomAndCauses() {
       <path d={head.left(blockR - 2, midY, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       {/* a bracket gathering all four quarters */}
       <path d={`M${blockR - 12} 42H${blockR - 6}V176H${blockR - 12}`} fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
-      <Key x={cx0 + step * 1.5} y={busY - 12} anchor="middle" fill={SIGNAL}>PROBLEM?</Key>
+      <Key x={cx0 + step * 1.5} y={busY - 12} anchor="middle" fill={SIGNAL}>Problem?</Key>
       {causes.map((c, i) => {
         const x = cx0 + i * step;
         return (
@@ -514,48 +513,6 @@ export function SymptomAndCauses() {
           </g>
         );
       })}
-    </Frame>
-  );
-}
-
-/**
- * Discussion: Symptom or Problem? Ten new members joining in each year.
- * The ones who cancel within three months are filled. Last year two, this
- * year four: twice the rate.
- */
-export function CancellationsDoubled() {
-  const rows = [
-    { year: "LAST YEAR", cancelled: 2, y: 78 },
-    { year: "THIS YEAR", cancelled: 4, y: 170 },
-  ];
-  return (
-    <Frame
-      width={400}
-      height={196}
-      label="Ten new members last year, two of them cancelling within three months. Ten new members this year, four of them cancelling: twice the rate"
-    >
-      <Key x={392} y={22} anchor="end" fill={COUNTER} size={10}>CANCEL WITHIN 3 MONTHS</Key>
-      {rows.map(({ year, cancelled, y }) => (
-        <g key={year}>
-          <Key x={16} y={y - 50} fill={INK3} size={10.5}>{year}</Key>
-          {Array.from({ length: 10 }, (_, i) => {
-            const gone = i >= 10 - cancelled;
-            return (
-              <Person1
-                key={i}
-                x={28 + i * 27}
-                y={y}
-                k={0.95}
-                stroke={gone ? COUNTER : INK}
-                fill={gone ? COUNTER : PAPER}
-              />
-            );
-          })}
-          <line x1={306} y1={y - 38} x2={306} y2={y} stroke={RULE} strokeWidth={1} />
-          <Display x={392} y={y - 8} anchor="end" fill={COUNTER} size={30}>{`${cancelled}`}</Display>
-          <Key x={392} y={y + 12} anchor="end" fill={INK3} size={10}>OF 10</Key>
-        </g>
-      ))}
     </Frame>
   );
 }
@@ -611,7 +568,7 @@ export function ResearchProcess({ ai = false }: { ai?: boolean }) {
                 ))}
               </g>
             )}
-            <Key x={x} y={cy + r + 22} anchor="middle" fill={INK3} size={11}>{String(i + 1).padStart(2, "0")}</Key>
+            <Key x={x} y={cy + r + 22} anchor="middle" fill={INK3} size={11}>{String(i + 1)}</Key>
             {ai ? <AiMark1 cx={x + r + 2} cy={cy - r - 2} s={20} fill={SIGNAL} /> : null}
           </g>
         );
@@ -649,8 +606,8 @@ export function SimulatedVersusReal() {
           <Key x={sx(v)} y={base + 20} anchor="middle" fill={INK3} size={10.5}>{`${v}`}</Key>
         </g>
       ))}
-      <Key x={sx(1.2)} y={base - 58} fill={INK}>REAL PEOPLE</Key>
-      <Key x={sx(5.2)} y={50} anchor="end" fill={COUNTER}>AI-SIMULATED</Key>
+      <Key x={sx(1.2)} y={base - 58} fill={INK}>Real people</Key>
+      <Key x={sx(5.2)} y={50} anchor="end" fill={COUNTER}>AI-simulated</Key>
     </Frame>
   );
 }
@@ -664,8 +621,8 @@ export function EffortShift() {
   const x = 16;
   const unit = 1.16;
   const rows = [
-    { key: "WITHOUT AI", y: 44, produce: 250, verify: 60, ai: false },
-    { key: "WITH AI", y: 124, produce: 70, verify: 150, ai: true },
+    { key: "Without AI", y: 44, produce: 250, verify: 60, ai: false },
+    { key: "With AI", y: 124, produce: 70, verify: 150, ai: true },
   ];
   const h = 30;
   return (
@@ -684,9 +641,9 @@ export function EffortShift() {
             <rect x={x} y={r.y} width={pw} height={h} fill={PAPER3} stroke={INK} strokeWidth={1.25} />
             <rect x={r2(x + pw)} y={r.y} width={vw} height={h} fill={SIGNAL} stroke={SIGNAL} strokeWidth={1.25} />
             {!r.ai ? (
-              <Key x={x + 10} y={r.y + 19.5} fill={INK} size={10.5}>PRODUCING</Key>
+              <Key x={x + 10} y={r.y + 19.5} fill={INK} size={10.5}>Producing</Key>
             ) : (
-              <Key x={r2(x + pw + 10)} y={r.y + 19.5} fill={PAPER} size={10.5}>VERIFYING</Key>
+              <Key x={r2(x + pw + 10)} y={r.y + 19.5} fill={PAPER} size={10.5}>Verifying</Key>
             )}
           </g>
         );
@@ -703,7 +660,7 @@ export function EffortShift() {
 export function Stakeholders() {
   const cx = [100, 300, 500, 700];
   const baseY = 64;
-  const keys = ["THE RESEARCHER", "THE CLIENT", "THE RESPONDENT", "THE PUBLIC"];
+  const keys = ["The researcher", "The client", "The respondent", "The public"];
   return (
     <Frame
       width={800}
@@ -775,8 +732,8 @@ export function PreciseWrongTarget() {
         </g>
       ))}
       {target(t2.x, t2.y, INK, PAPER3)}
-      <Key x={t1.x} y={128} anchor="middle" fill={COUNTER} size={10.5}>THE QUESTION AS DEFINED</Key>
-      <Key x={t2.x} y={128} anchor="middle" fill={INK} size={10.5}>THE ACTUAL PROBLEM</Key>
+      <Key x={t1.x} y={128} anchor="middle" fill={COUNTER} size={10.5}>The question as defined</Key>
+      <Key x={t2.x} y={128} anchor="middle" fill={INK} size={10.5}>The actual problem</Key>
     </Frame>
   );
 }
@@ -802,13 +759,13 @@ export function AgentMediatedPurchase() {
       <Person1 x={34} y={150} k={1.35} />
       <line x1={58} y1={104} x2={108} y2={104} stroke={INK} strokeWidth={1.5} />
       <path d={head.right(110, 104, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Key x={84} y={94} anchor="middle" fill={INK3} size={9.5}>GOAL</Key>
+      <Key x={84} y={94} anchor="middle" fill={INK3} size={9.5}>Goal</Key>
 
       <AiMark1 cx={134} cy={104} s={34} fill={SIGNAL} />
 
       <line x1={158} y1={104} x2={238} y2={104} stroke={SIGNAL} strokeWidth={1.5} />
       <path d={head.right(240, 104, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={199} y={94} anchor="middle" fill={SIGNAL} size={9.5}>ACQUIRES</Key>
+      <Key x={199} y={94} anchor="middle" fill={SIGNAL} size={9.5}>Acquires</Key>
 
       <rect x={page.x} y={page.y} width={page.w} height={page.h} fill={PAPER} stroke={RULE2} strokeWidth={1.25} />
       {rows.map((r) => (
@@ -819,7 +776,7 @@ export function AgentMediatedPurchase() {
           {r.sponsored ? (
             <g>
               <rect x={page.x + 58} y={r.y + 34} width={72} height={15} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
-              <Key x={page.x + 94} y={r.y + 45} anchor="middle" fill={COUNTER} size={8.5}>SPONSORED</Key>
+              <Key x={page.x + 94} y={r.y + 45} anchor="middle" fill={COUNTER} size={8.5}>Sponsored</Key>
             </g>
           ) : null}
           {r.chosen ? (
@@ -854,7 +811,7 @@ export function SamePromptResponses() {
       height={160}
       label="Twenty responses from one model to one prompt, stacked on a one-to-seven scale: they spread from 2 to 7, most at 4 and 5. A single response, at 6, is highlighted"
     >
-      <Key x={16} y={22} fill={INK3} size={10}>20 RESPONSES | SAME MODEL | SAME PROMPT</Key>
+      <Key x={16} y={22} fill={INK3} size={10}>20 responses | Same model | Same prompt</Key>
       {counts.map((c, k) =>
         Array.from({ length: c }, (_, i) => {
           const hit = k + 1 === one.v && i === one.i;
@@ -872,7 +829,7 @@ export function SamePromptResponses() {
         }),
       )}
       <line x1={r2(sx(one.v) + 9)} y1={r2(base - 10 - one.i * dot)} x2={r2(sx(one.v) + 22)} y2={r2(base - 10 - one.i * dot)} stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={r2(sx(one.v) + 26)} y={r2(base - 6 - one.i * dot)} fill={SIGNAL} size={9.5}>ONE</Key>
+      <Key x={r2(sx(one.v) + 26)} y={r2(base - 6 - one.i * dot)} fill={SIGNAL} size={9.5}>One</Key>
       <line x1={x0 - 14} y1={base} x2={x1 + 14} y2={base} stroke={INK} strokeWidth={1.25} />
       {[1, 2, 3, 4, 5, 6, 7].map((v) => (
         <g key={v}>

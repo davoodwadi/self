@@ -14,10 +14,10 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import { UncertaintyNarrowing, EvidenceLanes, ShareTracking, ChooseAmongAlternatives, JustifiedQuadrant, SymptomAndCauses, CancellationsDoubled, ResearchProcess, SimulatedVersusReal, EffortShift, Stakeholders, PreciseWrongTarget, AgentMediatedPurchase, SamePromptResponses } from "./visuals";
+import { UncertaintyNarrowing, EvidenceLanes, ShareTracking, ChooseAmongAlternatives, JustifiedQuadrant, SymptomAndCauses, ResearchProcess, SimulatedVersusReal, EffortShift, Stakeholders, PreciseWrongTarget, AgentMediatedPurchase, SamePromptResponses } from "./visuals";
 
 // ============================================================================
 // WEEK 1: RESEARCH FOR MARKETING DECISIONS
@@ -44,12 +44,12 @@ export default function Week1() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 1: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[16ch]">
-          Research for <span className="text-[var(--signal)]">Marketing Decisions</span>
+          Research for Marketing Decisions
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[36ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[36ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Marketing research provides{" "}
-          <span className="text-[var(--signal)]">evidence</span> that reduces
+          evidence that reduces
           uncertainty in managerial decisions.
         </p>
       </Slide>
@@ -61,16 +61,16 @@ export default function Week1() {
         <SlideHeading>The Purpose of Marketing Research</SlideHeading>
         <Statement className="!max-w-none">
           Marketing decisions are made under{" "}
-          <span className="text-[var(--counter)]">uncertainty</span>.
+          uncertainty.
         </Statement>
         <div className="mt-7 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               A manager who launches a product cannot know in advance the level
               of demand it will attract.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               A manager who changes a price cannot know in advance how
               customers will respond.
@@ -79,14 +79,14 @@ export default function Week1() {
         </div>
         <div className="mt-8 grid w-full items-center gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-6">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 Marketing research reduces this uncertainty by providing{" "}
-                <span className="text-[var(--signal)]">evidence</span> in place
+                evidence in place
                 of assumptions.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 The value of a study depends on the extent to which its findings
                 change, confirm, or refine a decision.
@@ -105,27 +105,27 @@ export default function Week1() {
       <Slide id="defining-marketing-research" border className="!py-8">
         <SlideHeading>Defining Marketing Research</SlideHeading>
         <Statement className="!max-w-[46ch] !text-[clamp(1.5rem,2.6vw,2.2rem)]">
-          Marketing research is the <Term tone="ink">systematic</Term> and{" "}
-          <Term tone="ink">objective</Term> identification, collection,
+          Marketing research is the <Term>systematic</Term> and{" "}
+          <Term>objective</Term> identification, collection,
           analysis, and dissemination of information for the purpose of{" "}
-          <span className="text-[var(--signal)]">improving marketing decisions</span>.
+          improving marketing decisions.
         </Statement>
         <div className="mt-10 grid w-full gap-8 md:grid-cols-3 md:gap-10">
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Systematic</Term> means that the research
+              <Term>Systematic</Term> means that the research
               follows a planned and documented procedure rather than relying on
               intuition.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Objective</Term> means that the researcher
+              <Term>Objective</Term> means that the researcher
               reports what the evidence shows, independent of the
               client&apos;s expectations.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The definition is oriented toward{" "}
               <Term>decisions</Term>: a study whose findings are not used in
@@ -158,13 +158,13 @@ export default function Week1() {
               subscriptions.
             </P>,
             <P key="a" className="!max-w-none">
-              <Term tone="ink">Marketing analytics</Term> is ongoing. It
+              <Term>Marketing analytics</Term> is ongoing. It
               involves the analysis of data that the firm already generates,
               such as sales, web traffic, and customer records, in order to
               monitor and predict performance.
             </P>,
             <P key="i" className="!max-w-none">
-              <Term tone="counter">Marketing intelligence</Term> is the
+              <Term>Marketing intelligence</Term> is the
               continuous monitoring of the external environment, including
               competitor prices, regulatory changes, and industry developments.
             </P>,
@@ -190,9 +190,9 @@ export default function Week1() {
         </SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
-                <span className="text-[var(--counter)]">Problem-identification research</span>{" "}
+                Problem-identification research{" "}
                 detects problems that are not yet apparent.
               </p>
             </Ruled>
@@ -205,9 +205,9 @@ export default function Week1() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
-                <span className="text-[var(--signal)]">Problem-solving research</span>{" "}
+                Problem-solving research{" "}
                 informs the choice among alternative courses of action for a
                 known problem.
               </p>
@@ -221,7 +221,7 @@ export default function Week1() {
             </Plate>
           </div>
         </div>
-        <p className="type-quote mt-8 w-full border-t-2 border-[var(--ink)] pt-6 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
+        <p className="type-quote mt-8 w-full border-t border-[var(--rule-2)] pt-6 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
           A single project may combine both types. Identifying the type
           required determines the design of the study.
         </p>
@@ -243,9 +243,9 @@ export default function Week1() {
         </Lead>
         <div className="mt-7 grid w-full items-start gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
-                Research is <span className="text-[var(--signal)]">justified</span>{" "}
+                Research is justified{" "}
                 when the decision is consequential and the appropriate course of
                 action is uncertain.
               </p>
@@ -255,30 +255,30 @@ export default function Week1() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <P>
-                Research is <Term tone="counter">not justified</Term> when the
+                Research is <Term>not justified</Term> when the
                 decision has already been made and the study would serve only to
                 legitimize it.
               </P>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P>
-                Research is <Term tone="counter">not justified</Term> when its
+                Research is <Term>not justified</Term> when its
                 cost exceeds the value of the decision it is intended to inform.
               </P>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P>
-                Research is <Term tone="counter">not justified</Term> when its
+                Research is <Term>not justified</Term> when its
                 findings would become available only after the decision must be
                 made.
               </P>
             </Ruled>
           </div>
         </div>
-        <p className="type-quote mt-8 w-full border-l-2 border-[var(--signal)] bg-[var(--signal-tint)] px-7 py-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
-          The <span className="text-[var(--signal)]">value of information</span>{" "}
+        <p className="type-quote mt-8 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+          The value of information{" "}
           is the expected improvement in the decision that the research makes
           possible.
         </p>
@@ -293,7 +293,7 @@ export default function Week1() {
           <Numbered n={1}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Internal research departments</Term>, often
+                <Term>Internal research departments</Term>, often
                 called insights teams, operate within the firm and have direct
                 knowledge of its data and decisions.
               </p>
@@ -302,7 +302,7 @@ export default function Week1() {
           <Numbered n={2}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Full-service agencies</Term> design and conduct
+                <Term>Full-service agencies</Term> design and conduct
                 entire projects on behalf of clients.
               </p>
             </Ruled>
@@ -310,7 +310,7 @@ export default function Week1() {
           <Numbered n={3}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Syndicated services</Term> collect data once
+                <Term>Syndicated services</Term> collect data once
                 and sell it to multiple firms, as in retail sales panels and
                 media audience measurement.
               </p>
@@ -319,16 +319,16 @@ export default function Week1() {
           <Numbered n={4}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Specialized suppliers</Term> provide a single
+                <Term>Specialized suppliers</Term> provide a single
                 component of the process, such as online panels, field
                 interviewing, or data analysis.
               </p>
             </Ruled>
           </Numbered>
-          <Numbered n={5} tone="counter" className="lg:col-span-2">
-            <Ruled tone="counter">
+          <Numbered n={5} className="lg:col-span-2">
+            <Ruled>
               <p className={BIG}>
-                <span className="text-[var(--counter)]">Self-service platforms</span>{" "}
+                Self-service platforms{" "}
                 now enable managers to conduct surveys and experiments
                 independently, which increases speed but does not in itself
                 ensure quality.
@@ -345,12 +345,12 @@ export default function Week1() {
         <PartHead n={2} title="Defining the Problem" />
         <Statement className="mt-8 !max-w-none">
           Problem definition is the{" "}
-          <span className="text-[var(--signal)]">most consequential step</span>{" "}
+          most consequential step{" "}
           in any research project.
         </Statement>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-6">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
                 A precise answer to an incorrectly defined question produces
                 unwarranted confidence in a flawed decision.
@@ -383,14 +383,14 @@ export default function Week1() {
           Decision makers typically present a symptom rather than a problem.
         </Lead>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              A <Term tone="counter">symptom</Term> is an observable change,
+              A <Term>symptom</Term> is an observable change,
               such as declining sales, increasing complaints, or fewer repeat
               visits.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               A <Term>problem</Term> is the underlying cause that produces the
               symptom.
@@ -404,7 +404,7 @@ export default function Week1() {
         <Plate className="mt-4 max-w-[60rem]">
           <SymptomAndCauses />
         </Plate>
-        <p className="type-quote mt-6 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-6 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Each cause requires a different decision. The researcher must
           therefore identify the underlying cause before designing the study.
         </p>
@@ -420,7 +420,7 @@ export default function Week1() {
           decision situation, conducted by the researcher together with the
           decision maker.
         </Lead>
-        <ol className="mt-8 grid w-full gap-x-10 gap-y-6 border-t-2 border-[var(--ink)] pt-6 md:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-8 grid w-full gap-x-10 gap-y-6 border-t border-[var(--rule-2)] pt-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             "It establishes the event that created the need for action and the history of the problem.",
             "It identifies the courses of action under consideration.",
@@ -434,10 +434,10 @@ export default function Week1() {
             </li>
           ))}
           <li className="lg:col-span-2">
-            <Numbered n={5} tone="signal">
+            <Numbered n={5}>
               <p className={BIG}>
                 It records the decision maker&apos;s existing beliefs, so that
-                the research <span className="text-[var(--signal)]">tests</span>{" "}
+                the research tests{" "}
                 those beliefs rather than confirms them.
               </p>
             </Numbered>
@@ -458,14 +458,14 @@ export default function Week1() {
           Management Decision Problem Versus Marketing Research Problem
         </SlideHeading>
         <div className="grid w-full gap-x-4 gap-y-4 md:grid-cols-[minmax(0,1fr)_7rem_minmax(0,1fr)] md:gap-x-6">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              The <Term tone="counter">management decision problem</Term>{" "}
+              The <Term>management decision problem</Term>{" "}
               concerns what the decision maker should do. It is action-oriented.
             </p>
           </Ruled>
           <span aria-hidden className="hidden md:block" />
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The <Term>marketing research problem</Term> concerns what
               information is required and how it can be obtained. It is
@@ -517,7 +517,7 @@ export default function Week1() {
                 questions.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <p className={BIG}>
                 Each research question specifies one element of the information
                 the decision requires.
@@ -525,20 +525,20 @@ export default function Week1() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
-                A <span className="text-[var(--signal)]">hypothesis</span> is a
+                A hypothesis is a
                 testable statement that proposes an answer to a research
                 question.
               </p>
             </Ruled>
-            <p className="type-quote border-l-2 border-[var(--signal)] bg-[var(--signal-tint)] px-6 py-5 !text-[clamp(1.2rem,1.8vw,1.5rem)]">
+            <p className="type-quote border-t border-[var(--rule-2)] pt-5 !text-[clamp(1.2rem,1.8vw,1.5rem)]">
               &ldquo;Subscribers under 30 are more willing to pay for premium
               features than subscribers over 30&rdquo; is a hypothesis.
             </p>
           </div>
         </div>
-        <p className="type-quote mt-8 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-8 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Hypotheses increase the precision of a study, because the data can
           either support or contradict them.
         </p>
@@ -548,22 +548,11 @@ export default function Week1() {
           Discussion: Symptom or Problem?
           ================================================================ */}
       <Slide id="discussion-symptom-or-problem" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Symptom or Problem?
-        </SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-          <Prompt>
-            A fitness club reports that new members now cancel within three
-            months at twice the rate of the previous year. The general manager
-            requests a survey of member satisfaction. Which other causes could
-            account for this symptom, and how should the management decision
-            problem and the marketing research problem be formulated before the
-            survey is commissioned?
-          </Prompt>
-          <Plate>
-            <CancellationsDoubled />
-          </Plate>
-        </div>
+        <SlideHeading>Discussion: Symptom or Problem?</SlideHeading>
+        <Discussion
+          scenario={"A fitness club reports that new members now cancel within three months at twice the rate of the previous year. The general manager requests a survey of member satisfaction."}
+          question={"Which other causes could account for this symptom, and how should the management decision problem and the marketing research problem be formulated before the survey is commissioned?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -574,10 +563,10 @@ export default function Week1() {
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.5rem,2.4vw,2.1rem)]">
             Rigorous research follows a{" "}
-            <span className="text-[var(--signal)]">structured sequence</span> of
+            structured sequence of
             steps.
           </Statement>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               The steps are presented in sequence, although in practice
               researchers return to earlier steps when new evidence changes the
@@ -629,7 +618,7 @@ export default function Week1() {
           <ResearchProcess ai />
         </Plate>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               AI increases the speed at which research can be conducted. It
               does not alter the criteria by which the validity of research is
@@ -667,7 +656,7 @@ export default function Week1() {
               <Numbered n={i + 1}>
                 <Ruled>
                   <p className={BIG}>
-                    In <Term tone="ink">{stage}</Term>, {rest}
+                    In <Term>{stage}</Term>, {rest}
                   </p>
                 </Ruled>
               </Numbered>
@@ -705,7 +694,7 @@ export default function Week1() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
                 Responses from AI-simulated consumers are not observations of
                 real consumers. They may appear plausible while differing
@@ -717,7 +706,7 @@ export default function Week1() {
             </Plate>
           </div>
         </div>
-        <p className="type-quote mt-7 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-7 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           AI output is expressed with the same apparent confidence whether it
           is accurate or not, so its fluency provides no evidence of its
           accuracy.
@@ -730,7 +719,7 @@ export default function Week1() {
       <Slide id="the-researchers-accountability" border className="!py-8">
         <SlideHeading>The Researcher&apos;s Accountability</SlideHeading>
         <Statement className="!max-w-none">
-          The <span className="text-[var(--signal)]">researcher</span>, not the
+          The researcher, not the
           tool, is responsible for every finding in the report.
         </Statement>
         <div className="mt-8 grid w-full gap-8 lg:grid-cols-2 lg:gap-12">
@@ -749,7 +738,7 @@ export default function Week1() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 The use of AI shifts the researcher&apos;s effort from producing
                 the work to verifying it.
@@ -768,7 +757,7 @@ export default function Week1() {
       <Slide id="ai-agents-as-a-subject-of-marketing-research" border className="!py-8">
         <SlideHeading>AI Agents as a Subject of Marketing Research</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
-          An <span className="text-[var(--signal)]">AI agent</span> is a system built on a large language model that
+          An AI agent is a system built on a large language model that
           can search for information, compare alternatives, and complete transactions on behalf of a person.
         </Statement>
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
@@ -780,7 +769,7 @@ export default function Week1() {
                 information and selects an alternative.
               </p>
             </Ruled>
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
                 In agent-mediated purchasing, the agent rather than the consumer encounters the product page, the
                 price presentation, and the sponsorship label.
@@ -792,13 +781,13 @@ export default function Week1() {
           </Plate>
         </div>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Research questions therefore extend from consumers to their agents: which information agents
               acquire, how they weight product attributes, and whose interests their recommendations serve.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               New management decision problems follow, such as how to present product information to AI agents,
               and whether an agent is suitable for deployment to the firm&apos;s customers.
@@ -822,13 +811,13 @@ export default function Week1() {
           interest, measures it under controlled conditions, and estimates it with known precision.
         </Statement>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P>
               Standard AI benchmarks report accuracy on large sets of general questions, such as mathematics or
               programming. They do not establish how a model behaves in a specific marketing task.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P>
               A <Term>behavioral evaluation</Term> applies the methods of this course to the AI system: validated
               measures (Week 4), adequate samples of responses (Week 5), hypothesis tests (Week 7), and controlled
@@ -844,7 +833,7 @@ export default function Week1() {
                 not a reliable basis for conclusions about its behavior (Wadi &amp; Fredette, 2025).
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 The researcher who evaluates an AI system is accountable for the evidence in the same way as for
                 research on consumers.
@@ -873,7 +862,7 @@ export default function Week1() {
           <Ruled>
             <p className={BIG}>Each stakeholder holds rights and bears obligations.</p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Ethical violations reduce public trust in research, on which all
               researchers depend.
@@ -895,14 +884,14 @@ export default function Week1() {
         <div className="grid w-full gap-x-10 gap-y-7 md:grid-cols-2 lg:grid-cols-3">
           <Ruled>
             <p className={BIG}>
-              Respondents give <Term tone="ink">informed consent</Term>: they
+              Respondents give <Term>informed consent</Term>: they
               are told the purpose of the study and how their data will be
               used, and that they may withdraw at any time.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              Respondents&apos; <Term tone="ink">privacy</Term> is protected:
+              Respondents&apos; <Term>privacy</Term> is protected:
               personal data are kept confidential and reported only in
               aggregate or anonymized form.
             </p>
@@ -913,18 +902,18 @@ export default function Week1() {
               pressured to participate.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Research is never used as a pretext for selling. Soliciting sales
               under the guise of research is known as{" "}
-              <Term tone="counter">sugging</Term> and constitutes an ethical
+              <Term>sugging</Term> and constitutes an ethical
               violation.
             </p>
           </Ruled>
-          <Ruled tone="signal" className="lg:col-span-2">
+          <Ruled className="lg:col-span-2">
             <p className={BIG}>
               Uploading respondent data to an external{" "}
-              <span className="text-[var(--signal)]">AI tool</span> constitutes
+              AI tool constitutes
               a use of those data and must therefore fall within the scope of
               the consent that respondents gave.
             </p>
@@ -938,26 +927,26 @@ export default function Week1() {
       <Slide id="obligations-to-clients-and-the-public" border className="!py-8">
         <SlideHeading>Obligations to Clients and the Public</SlideHeading>
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <div className="flex min-w-0 flex-col gap-5 border-t-2 border-[var(--signal)] pt-5">
+          <div className="flex min-w-0 flex-col gap-5 border-t border-[var(--rule-2)] pt-5">
             <p className={BIG}>
-              <span className="text-[var(--signal)]">Researchers</span> report
+              Researchers report
               findings accurately, including findings that are unfavorable to
               the client.
             </p>
             <p className={BIG}>
-              <span className="text-[var(--signal)]">Researchers</span> disclose
+              Researchers disclose
               the limitations of the method, the sample, and the tools used,
               including AI.
             </p>
           </div>
-          <div className="flex min-w-0 flex-col gap-5 border-t-2 border-[var(--counter)] pt-5">
+          <div className="flex min-w-0 flex-col gap-5 border-t border-[var(--rule-2)] pt-5">
             <p className={BIG}>
-              <span className="text-[var(--counter)]">Clients</span> do not
+              Clients do not
               misrepresent findings to the public, for example by citing results
               out of context in advertising.
             </p>
             <p className={BIG}>
-              <span className="text-[var(--counter)]">Clients</span> do not
+              Clients do not
               commission studies designed to reach a predetermined conclusion.
             </p>
           </div>
@@ -968,28 +957,11 @@ export default function Week1() {
           Discussion: AI in the Research Function
           ================================================================ */}
       <Slide id="discussion-ai-in-the-research-function" border className="!py-8">
-        <div className="flex w-full flex-col items-center text-center">
-          <h2 className="type-h1">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            AI in the Research Function
-          </h2>
-          <div className="mt-10 w-full max-w-5xl border-y-2 border-[var(--counter)] px-4 py-9 md:px-12">
-            <p className="type-quote mx-auto !max-w-[44ch] !text-[clamp(1.4rem,2.4vw,2.1rem)]">
-              <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">
-                Discussion:
-              </span>{" "}
-              A marketing manager proposes to replace a planned focus group
-              study with a set of AI-generated personas that respond to the same
-              questions within minutes. What would the firm{" "}
-              <span className="text-[var(--signal)]">gain</span>, what might it{" "}
-              <span className="text-[var(--counter)]">lose</span>, and under
-              what conditions, if any, would the substitution be
-              methodologically defensible?
-            </p>
-          </div>
-        </div>
+        <SlideHeading>Discussion: AI in the Research Function</SlideHeading>
+        <Discussion
+          scenario={"A marketing manager proposes to replace a planned focus group study with a set of AI-generated personas that respond to the same questions within minutes."}
+          question={"What would the firm gain, what might it lose, and under what conditions, if any, would the substitution be methodologically defensible?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1008,8 +980,8 @@ export default function Week1() {
             "AI agents that acquire information and select products on consumers' behalf are a new subject of marketing research, and the evaluation of AI systems applies the methods of measurement, sampling, and experimentation developed in this course.",
           ].map((s, i) => (
             <li key={i} className={cn("min-w-0")}>
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={BIG}>{s}</p>
                 </Ruled>
               </Numbered>

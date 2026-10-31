@@ -87,7 +87,8 @@ week: week7
 - To compare two groups on an ordinal variable, a nonparametric test such as the Mann-Whitney U test is used.
 
 ## Discussion: Testing a Loyalty Program
-- Discussion: A grocery chain reports that members of its loyalty program spend on average 18 percent more per month than nonmembers, and the difference is statistically significant. Which hypotheses were tested, which test was appropriate, and does the result establish that the program increases spending?
+- A grocery chain reports that members of its loyalty program spend on average 18 percent more per month than nonmembers, and the difference is statistically significant.
+- Which hypotheses were tested, which test was appropriate, and does the result establish that the program increases spending?
 
 ## Part 3: Statistical and Practical Significance [no-exercise]
 - A statistically significant result indicates that the observed difference would be unlikely if no difference existed in the population.
@@ -154,7 +155,8 @@ week: week7
 - The prompts, responses, and analysis code are retained, so that the evaluation can be repeated on newer models with the same design.
 
 ## Discussion: Twenty Segments
-- Discussion: An analyst tests whether a new loyalty offer increased spending in each of 20 customer segments and finds a statistically significant increase in one segment. The marketing director proposes to extend the offer to that segment immediately. How should this result be interpreted, and what further evidence should be obtained before the decision is taken?
+- An analyst tests whether a new loyalty offer increased spending in each of 20 customer segments and finds a statistically significant increase in one segment. The marketing director proposes to extend the offer to that segment immediately.
+- How should this result be interpreted, and what further evidence should be obtained before the decision is taken?
 
 ## Key Takeaways
 - Hypothesis testing assesses whether a sample result provides sufficient evidence against the null hypothesis of no difference or no association.

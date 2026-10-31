@@ -115,7 +115,7 @@ export function QualQuantData() {
       height={196}
       label="Two kinds of data. Qualitative: four participants, each answering in several lines of words. Quantitative: four hundred respondents, 152 of whom are counted, reported as 38 percent"
     >
-      <Key x={20} y={20} fill={SIGNAL}>QUALITATIVE</Key>
+      <Key x={20} y={20} fill={SIGNAL}>Qualitative</Key>
       <Key x={380} y={20} anchor="end" fill={INK3}>n = 4</Key>
       {people.map((x, i) => (
         <g key={x}>
@@ -126,7 +126,7 @@ export function QualQuantData() {
 
       <line x1={410} y1={12} x2={410} y2={184} stroke={RULE} strokeWidth={1} />
 
-      <Key x={gx} y={20} fill={INK}>QUANTITATIVE</Key>
+      <Key x={gx} y={20} fill={INK}>Quantitative</Key>
       <Key x={780} y={20} anchor="end" fill={INK3}>n = 400</Key>
       {Array.from({ length: cols * rows }, (_, i) => {
         const c = Math.floor(i / rows);
@@ -205,7 +205,7 @@ export function FocusGroupAirtime() {
         height={270}
         label={`Minutes each speaker talks in a 90-minute focus group with ${n} participants: the moderator 20, the dominant participant ${fmt(loud)}, and the quietest ${fmt(quiet)}`}
       >
-        <Key x={20} y={18} fill={INK3}>MINUTES SPOKEN IN A 90-MINUTE SESSION</Key>
+        <Key x={20} y={18} fill={INK3}>Minutes spoken in a 90-minute session</Key>
 
         {/* baseline */}
         <line x1={16} y1={base} x2={386} y2={base} stroke={INK} strokeWidth={1.25} />
@@ -214,7 +214,7 @@ export function FocusGroupAirtime() {
         {/* the moderator */}
         {bar(mx, MODERATOR, PAPER3, INK3, INK3, "mod")}
         <Person1 x={mx} y={base + 40} k={0.9} fill={INK} stroke={INK} />
-        <Key x={mx} y={base + 55} anchor="middle" fill={INK3} size={9}>MODERATOR</Key>
+        <Key x={mx} y={base + 55} anchor="middle" fill={INK3} size={9}>Moderator</Key>
 
         {/* the participants */}
         {mins.map((m, i) => {
@@ -229,7 +229,7 @@ export function FocusGroupAirtime() {
           );
         })}
         <Key x={r2(x0 + step * 0.5 + bw / 2 + 6)} y={r2(base - loud * unit + 12)} fill={COUNTER} size={9.5}>
-          DOMINATES
+          Dominates
         </Key>
       </Frame>
       <Slider label="Participants" value={n} min={4} max={12} onChange={setN} />
@@ -248,10 +248,10 @@ export function FocusGroupAirtime() {
  */
 export function Laddering() {
   const rungs = [
-    { key: "ATTRIBUTE", note: "lightweight", Icon: Sneaker },
-    { key: "CONSEQUENCE", note: "faster running", Icon: PersonSimpleRun },
-    { key: "CONSEQUENCE", note: "a sense of achievement", Icon: Medal },
-    { key: "PERSONAL VALUE", note: "self-esteem", Icon: null },
+    { key: "Attribute", note: "lightweight", Icon: Sneaker },
+    { key: "Consequence", note: "faster running", Icon: PersonSimpleRun },
+    { key: "Consequence", note: "a sense of achievement", Icon: Medal },
+    { key: "Personal value", note: "self-esteem", Icon: null },
   ];
   const L = 74;
   const R = 122;
@@ -296,79 +296,6 @@ export function Laddering() {
    Discussion: Choosing the Method
    -------------------------------------------------------------------------- */
 
-/** A leaf, the mark for environmentally friendly, centred on (cx, cy). S is its span. */
-function LeafMark({ cx, cy, s = 14, fill = SIGNAL }: { cx: number; cy: number; s?: number; fill?: string }) {
-  const h = s / 2;
-  return (
-    <g>
-      <path
-        d={`M${r2(cx - h)} ${r2(cy + h)}Q${r2(cx - h)} ${r2(cy - h)} ${r2(cx + h)} ${r2(cy - h)}Q${r2(cx + h)} ${r2(cy + h)} ${r2(cx - h)} ${r2(cy + h)}Z`}
-        fill={fill}
-      />
-      <line x1={r2(cx - h * 0.55)} y1={r2(cy + h * 0.55)} x2={r2(cx + h * 0.6)} y2={r2(cy - h * 0.6)} stroke={PAPER} strokeWidth={1} />
-    </g>
-  );
-}
-
-/** A trigger spray bottle of cleaner standing on (x, y), 44 units tall. Eco carries a leaf on its label. */
-function SprayBottle1({ x, y, eco = false }: { x: number; y: number; eco?: boolean }) {
-  return (
-    <g>
-      <rect x={x - 10} y={y - 30} width={20} height={30} rx={3} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <rect x={x - 4} y={y - 36} width={8} height={6} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <path d={`M${x - 7} ${y - 36}V${y - 44}H${x + 12}V${y - 40}H${x + 3}V${y - 36}Z`} fill={INK} stroke={INK} strokeWidth={1} strokeLinejoin="round" />
-      <line x1={x + 4} y1={y - 36} x2={x + 8} y2={y - 30} stroke={INK} strokeWidth={1.5} strokeLinecap="round" />
-      {eco ? <LeafMark cx={x} cy={y - 15} s={12} /> : null}
-    </g>
-  );
-}
-
-/**
- * Discussion: Choosing the Method: ten consumers, each above the cleaner
- * they bought. Eight state a preference for environmentally friendly
- * products (the leaf beside them). Only three of the bottles carry the leaf.
- */
-export function SayDoGap() {
-  const prefers = [true, true, true, false, true, true, true, false, true, true];
-  const bought = [false, true, false, false, false, true, false, false, true, false];
-  const x = (i: number) => 38 + i * 36;
-  const personY = 104;
-  const bottleY = 206;
-  return (
-    <Frame
-      width={400}
-      height={222}
-      label="Ten consumers. Eight state a preference for environmentally friendly products, marked with a leaf. Beneath each one is the cleaner they purchased, and only three of those ten bottles are environmentally friendly"
-    >
-      <Key x={20} y={18} fill={INK3}>STATED PREFERENCE</Key>
-      <Key x={380} y={18} anchor="end" fill={SIGNAL}>8 OF 10</Key>
-      {prefers.map((p, i) => (
-        <g key={i}>
-          {p ? (
-            <>
-              <path
-                d={`M${x(i) - 10} 30H${x(i) + 10}Q${x(i) + 13} 30 ${x(i) + 13} 33V${49}Q${x(i) + 13} 52 ${x(i) + 10} 52H${x(i) + 4}L${x(i) + 1} 59L${x(i) - 3} 52H${x(i) - 10}Q${x(i) - 13} 52 ${x(i) - 13} 49V33Q${x(i) - 13} 30 ${x(i) - 10} 30Z`}
-                fill={PAPER}
-                stroke={INK}
-                strokeWidth={1.1}
-                strokeLinejoin="round"
-              />
-              <LeafMark cx={x(i)} cy={41} s={13} />
-            </>
-          ) : null}
-          <Person1 x={x(i)} y={personY} k={0.95} />
-        </g>
-      ))}
-      <line x1={20} y1={122} x2={380} y2={122} stroke={RULE} strokeWidth={1} />
-      <Key x={20} y={144} fill={INK3}>PURCHASED</Key>
-      <Key x={380} y={144} anchor="end" fill={SIGNAL}>3 OF 10</Key>
-      {bought.map((b, i) => (
-        <SprayBottle1 key={i} x={x(i)} y={bottleY} eco={b} />
-      ))}
-    </Frame>
-  );
-}
-
 /* --------------------------------------------------------------------------
    Coding
    -------------------------------------------------------------------------- */
@@ -394,9 +321,9 @@ export function CodedTranscript() {
   const lh = 23;
   const ly = (i: number) => top + i * lh;
   const segments = [
-    { from: 0, to: 1, code: "compares prices online", kind: "DEDUCTIVE", tone: INK, tint: PAPER3 },
-    { from: 4, to: 5, code: "waits for promotions", kind: "DEDUCTIVE", tone: INK, tint: PAPER3 },
-    { from: 6, to: 7, code: "avoids self-checkout", kind: "INDUCTIVE", tone: SIGNAL, tint: SIGNAL_TINT },
+    { from: 0, to: 1, code: "compares prices online", kind: "Deductive", tone: INK, tint: PAPER3 },
+    { from: 4, to: 5, code: "waits for promotions", kind: "Deductive", tone: INK, tint: PAPER3 },
+    { from: 6, to: 7, code: "avoids self-checkout", kind: "Inductive", tone: SIGNAL, tint: SIGNAL_TINT },
   ];
   const sx = 12;
   const sw = 232;
@@ -471,7 +398,7 @@ export function CodesToThemes() {
       height={176}
       label="Three codes, compares prices online, waits for promotions, and buys store brands, converge on one theme, price vigilance. A participant's quotation supports the theme. Another participant's quotation does not fit it"
     >
-      <Key x={20} y={18} fill={INK3}>CODES</Key>
+      <Key x={20} y={18} fill={INK3}>Codes</Key>
       {codes.map((c, i) => (
         <g key={c}>
           <rect x={20} y={cy[i] - 16} width={cw} height={30} fill={PAPER3} />
@@ -489,7 +416,7 @@ export function CodesToThemes() {
       <line x1={274} y1={mid} x2={tx - 4} y2={mid} stroke={SIGNAL} strokeWidth={1.5} />
       <path d={head.right(tx - 4, mid, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
-      <Key x={tx} y={18} fill={SIGNAL}>THEME</Key>
+      <Key x={tx} y={18} fill={SIGNAL}>Theme</Key>
       <rect x={tx} y={mid - 30} width={tw} height={60} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <Display x={tx + tw / 2} y={mid + 8} anchor="middle" fill={SIGNAL} size={24}>
         price vigilance
@@ -502,7 +429,7 @@ export function CodesToThemes() {
       <line x1={qx - 44} y1={140} x2={qx - 28} y2={140} stroke={RULE2} strokeWidth={1} />
 
       <Person1 x={qx - 12} y={66} k={0.85} stroke={SIGNAL} />
-      <Key x={qx + 8} y={30} fill={SIGNAL} size={10}>REPRESENTATIVE QUOTATION</Key>
+      <Key x={qx + 8} y={30} fill={SIGNAL} size={10}>Representative quotation</Key>
       <Note x={qx + 8} y={52} size={13.5} italic fill={INK}>
         &ldquo;I never buy anything before I have
       </Note>
@@ -511,7 +438,7 @@ export function CodesToThemes() {
       </Note>
 
       <Person1 x={qx - 12} y={154} k={0.85} stroke={COUNTER} />
-      <Key x={qx + 8} y={118} fill={COUNTER} size={10}>DOES NOT FIT</Key>
+      <Key x={qx + 8} y={118} fill={COUNTER} size={10}>Does not fit</Key>
       <Note x={qx + 8} y={140} size={13.5} italic fill={INK}>
         &ldquo;I buy the brand my mother bought,
       </Note>
@@ -564,10 +491,10 @@ export function SaturationCurve() {
   const bx = (i: number) => L + 8 + i * slot;
   const cy = (n: number) => r2(base - n * cell);
   const current = done - 1;
-  const plural = (n: number) => (n === 1 ? "1 NEW CODE" : `${n} NEW CODES`);
+  const plural = (n: number) => (n === 1 ? "1 new code" : `${n} new codes`);
   const status = saturated
-    ? `NO NEW CODES IN INTERVIEWS ${lastNew + 2}n/a${lastNew + 1 + CONFIRM}`
-    : `INTERVIEW ${done}: ${plural(seq[current])}`;
+    ? `No new codes in interviews ${lastNew + 2}n/a${lastNew + 1 + CONFIRM}`
+    : `Interview ${done}: ${plural(seq[current])}`;
   const satX = r2(bx(lastNew) + bw + (slot - bw) / 2);
 
   return (
@@ -577,7 +504,7 @@ export function SaturationCurve() {
         height={272}
         label={`Distinct codes found after each of ${done} interviews with ${sample} participants: ${cum[current]} codes so far, the last interview adding ${seq[current]}.${saturated ? ` Saturation was reached after interview ${lastNew + 1}.` : ""}`}
       >
-        <Key x={L} y={18} fill={INK3}>CODES FOUND SO FAR</Key>
+        <Key x={L} y={18} fill={INK3}>Codes found so far</Key>
         <Key x={388} y={44} anchor="end" fill={SIGNAL} size={10}>{status}</Key>
 
         {/* axes */}
@@ -594,7 +521,7 @@ export function SaturationCurve() {
         {[1, 6, 12, 18, 24].map((v) => (
           <Key key={v} x={r2(bx(v - 1) + bw / 2)} y={base + 16} anchor="middle" fill={INK3} size={9.5}>{v}</Key>
         ))}
-        <Key x={392} y={base + 30} anchor="end" fill={INK3}>INTERVIEWS</Key>
+        <Key x={392} y={base + 30} anchor="end" fill={INK3}>Interviews</Key>
 
         {/* one bar per interview conducted */}
         {Array.from({ length: done }, (_, i) => {
@@ -627,7 +554,7 @@ export function SaturationCurve() {
         {saturated ? (
           <g>
             <line x1={satX} y1={base} x2={satX} y2={54} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
-            <Key x={r2(satX + 6)} y={64} fill={SIGNAL} size={10.5}>SATURATION</Key>
+            <Key x={r2(satX + 6)} y={64} fill={SIGNAL} size={10.5}>Saturation</Key>
           </g>
         ) : null}
       </Frame>
@@ -664,9 +591,9 @@ export function SaturationCurve() {
 
 type Source = "interviews" | "observation" | "posts";
 const SOURCES: { id: Source; label: string; key: string; Icon: typeof Eye }[] = [
-  { id: "interviews", label: "Interviews", key: "INTERVIEWS", Icon: Microphone },
-  { id: "observation", label: "Observation", key: "OBSERVATION", Icon: Eye },
-  { id: "posts", label: "Online posts", key: "ONLINE POSTS", Icon: ChatsCircle },
+  { id: "interviews", label: "Interviews", key: "Interviews", Icon: Microphone },
+  { id: "observation", label: "Observation", key: "Observation", Icon: Eye },
+  { id: "posts", label: "Online posts", key: "Online posts", Icon: ChatsCircle },
 ];
 /** Whether each source supports (true) or contradicts (false) each theme of a grocery study. */
 const EVIDENCE: { theme: string; by: Record<Source, boolean> }[] = [
@@ -692,9 +619,9 @@ export function Triangulation() {
   const rowY = [110, 160, 210];
   const verdict = (by: Record<Source, boolean>) => {
     const used = on.map((id) => by[id]);
-    if (used.some((v) => !v)) return { text: "NOT CORROBORATED", fill: COUNTER };
-    if (used.length === 1) return { text: "ONE SOURCE ONLY", fill: INK3 };
-    return { text: `CORROBORATED BY ${used.length} SOURCES`, fill: SIGNAL };
+    if (used.some((v) => !v)) return { text: "Not corroborated", fill: COUNTER };
+    if (used.length === 1) return { text: "One source only", fill: INK3 };
+    return { text: `Corroborated by ${used.length} sources`, fill: SIGNAL };
   };
   const summary = EVIDENCE.map((e) => `${e.theme}: ${verdict(e.by).text.toLowerCase()}`).join(". ");
 
@@ -773,9 +700,9 @@ export function AgreementCheck() {
   const X = (p: number) => r2(x0 + (p / 100) * (x1 - x0));
   const bench = 84;
   const rows = [
-    { y: 62, value: 84, key: "HUMAN vs HUMAN", tone: INK, tint: PAPER3, ai: false },
-    { y: 142, value: 67, key: "AI vs HUMANS | FIRST", tone: COUNTER, tint: COUNTER_TINT, ai: true },
-    { y: 222, value: 81, key: "AI vs HUMANS | REVISED", tone: SIGNAL, tint: SIGNAL_TINT, ai: true },
+    { y: 62, value: 84, key: "Human vs human", tone: INK, tint: PAPER3, ai: false },
+    { y: 142, value: 67, key: "AI vs humans | First", tone: COUNTER, tint: COUNTER_TINT, ai: true },
+    { y: 222, value: 81, key: "AI vs humans | Revised", tone: SIGNAL, tint: SIGNAL_TINT, ai: true },
   ];
   const bh = 26;
   return (
@@ -784,7 +711,7 @@ export function AgreementCheck() {
       height={278}
       label="Agreement on the same sample of coded segments: two human coders agree on 84 percent. The AI tool agrees with them on 67 percent with its first instructions, and on 81 percent after the codebook and instructions are revised, comparable to the human coders"
     >
-      <Key x={x0} y={16} fill={INK3}>AGREEMENT</Key>
+      <Key x={x0} y={16} fill={INK3}>Agreement</Key>
 
       {rows.map((r) => (
         <g key={r.key}>
@@ -803,7 +730,7 @@ export function AgreementCheck() {
       {/* the revision between the two AI runs */}
       <path d={`M62 168V196`} fill="none" stroke={INK3} strokeWidth={1.25} />
       <path d={head.down(62, 197, 6)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={70} y={186} fill={INK3} size={9}>REVISE</Key>
+      <Key x={70} y={186} fill={INK3} size={9}>Revise</Key>
 
       {/* the human benchmark, carried down to the AI rows */}
       <line x1={X(bench)} y1={62 + bh / 2} x2={X(bench)} y2={248} stroke={INK} strokeWidth={1.25} strokeDasharray="4 3" />
@@ -849,8 +776,8 @@ export function CommunityVoices() {
       height={176}
       label="Sixty customers stacked by satisfaction, from low to high, most of them in the middle. The twelve who post in the online community are filled. Most of them are at the two extremes, very dissatisfied or very satisfied"
     >
-      <Key x={20} y={16} fill={INK3}>CUSTOMERS</Key>
-      <Key x={780} y={16} anchor="end" fill={COUNTER}>POST IN THE COMMUNITY: 12 OF 60</Key>
+      <Key x={20} y={16} fill={INK3}>Customers</Key>
+      <Key x={780} y={16} anchor="end" fill={COUNTER}>Post in the community: 12 of 60</Key>
       {SATISFACTION.map((g, c) => (
         <g key={c}>
           {Array.from({ length: g.all }, (_, i) => {
@@ -873,9 +800,9 @@ export function CommunityVoices() {
       ))}
       <line x1={20} y1={base + 8} x2={772} y2={base + 8} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(780, base + 8, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={20} y={base + 28} fill={INK3}>LOW</Key>
-      <Key x={400} y={base + 28} anchor="middle" fill={INK3}>SATISFACTION</Key>
-      <Key x={780} y={base + 28} anchor="end" fill={INK3}>HIGH</Key>
+      <Key x={20} y={base + 28} fill={INK3}>Low</Key>
+      <Key x={400} y={base + 28} anchor="middle" fill={INK3}>Satisfaction</Key>
+      <Key x={780} y={base + 28} anchor="end" fill={INK3}>High</Key>
     </Frame>
   );
 }
@@ -903,8 +830,8 @@ export function CodedTrace() {
   const lh = 22;
   const ly = (i: number) => top + i * lh;
   const segments = [
-    { from: 0, to: 2, kind: "OBJECTIVE", code: "lowest total price" },
-    { from: 5, to: 6, kind: "SKEPTICISM", code: "paid placement" },
+    { from: 0, to: 2, kind: "Objective", code: "lowest total price" },
+    { from: 5, to: 6, kind: "Skepticism", code: "paid placement" },
   ];
   const sx = 12;
   const sw = 240;
@@ -917,7 +844,7 @@ export function CodedTrace() {
     >
       <rect x={sx} y={10} width={sw} height={192} fill={PAPER} stroke={RULE2} strokeWidth={1} />
       <AiMark1 cx={sx + 16} cy={27} s={14} fill={SIGNAL} />
-      <Key x={sx + 30} y={31} fill={INK3} size={9}>REASONING TRACE</Key>
+      <Key x={sx + 30} y={31} fill={INK3} size={9}>Reasoning trace</Key>
       {segments.map((g, i) => (
         <rect
           key={i}

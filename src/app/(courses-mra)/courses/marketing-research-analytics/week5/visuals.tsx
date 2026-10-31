@@ -63,8 +63,8 @@ export function ErrorsAndSampleSize() {
   const x1 = 760;
   const X = (p: number) => r2(x0 + ((p - 0.15) / 0.7) * (x1 - x0));
   const rows = [
-    { key: "all", y: 86, share: TRUE_SHARE, z: Z_ALL, label: ["ALL", "CUSTOMERS"], tone: SIGNAL },
-    { key: "frame", y: 178, share: FRAME_SHARE, z: Z_FRAME, label: ["EMAIL", "SUBSCRIBERS"], tone: COUNTER },
+    { key: "all", y: 86, share: TRUE_SHARE, z: Z_ALL, label: ["All", "customers"], tone: SIGNAL },
+    { key: "frame", y: 178, share: FRAME_SHARE, z: Z_FRAME, label: ["Email", "subscribers"], tone: COUNTER },
   ];
   const axisY = 238;
   const se = Math.sqrt((TRUE_SHARE * (1 - TRUE_SHARE)) / n);
@@ -81,11 +81,11 @@ export function ErrorsAndSampleSize() {
         label={`Twenty-four samples of ${n} customers drawn from the complete customer list scatter around the true share of 40 percent, within about ${Math.round(196 * se)} points of it. Twenty-four samples of ${n} drawn from the email subscriber list scatter around 55 percent. As the sample size grows both clusters narrow, but the email samples stay centred 15 points away from the true value`}
       >
         <Display x={20} y={30} fill={INK} size={24}>{`n = ${n.toLocaleString("en-US")}`}</Display>
-        <Key x={20} y={48} fill={INK3} size={9.5}>24 SAMPLES PER LIST</Key>
+        <Key x={20} y={48} fill={INK3} size={9.5}>24 samples per list</Key>
 
         {/* the true value, through both rows */}
         <line x1={X(TRUE_SHARE)} y1={30} x2={X(TRUE_SHARE)} y2={axisY} stroke={INK} strokeWidth={1.25} strokeDasharray="4 4" />
-        <Key x={X(TRUE_SHARE)} y={20} anchor="middle" fill={INK} size={10}>TRUE VALUE 40%</Key>
+        <Key x={X(TRUE_SHARE)} y={20} anchor="middle" fill={INK} size={10}>True value 40%</Key>
 
         {rows.map((row) => {
           const s = Math.sqrt((row.share * (1 - row.share)) / n);
@@ -105,13 +105,13 @@ export function ErrorsAndSampleSize() {
 
         {/* the spread the sample size narrows */}
         <path d={`M${lo} ${bY - 5}V${bY}H${hi}V${bY - 5}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-        <Key x={r2(hi + 10)} y={bY + 4} fill={SIGNAL} size={10}>SAMPLING ERROR</Key>
+        <Key x={r2(hi + 10)} y={bY + 4} fill={SIGNAL} size={10}>Sampling error</Key>
 
         {/* the gap the sample size cannot close */}
         <line x1={X(TRUE_SHARE)} y1={fY} x2={X(FRAME_SHARE)} y2={fY} stroke={COUNTER} strokeWidth={1.5} />
         <path d={head.left(X(TRUE_SHARE), fY, 6)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
         <path d={head.right(X(FRAME_SHARE), fY, 6)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-        <Key x={r2(X(FRAME_SHARE) + 10)} y={fY + 4} fill={COUNTER} size={10}>FRAME ERROR</Key>
+        <Key x={r2(X(FRAME_SHARE) + 10)} y={fY + 4} fill={COUNTER} size={10}>Frame error</Key>
 
         <line x1={x0 - 6} y1={axisY} x2={x1 + 12} y2={axisY} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(x1 + 12, axisY, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
@@ -121,7 +121,7 @@ export function ErrorsAndSampleSize() {
             <Key x={X(p)} y={axisY + 20} anchor="middle" fill={INK3} size={10}>{`${Math.round(p * 100)}%`}</Key>
           </g>
         ))}
-        <Key x={20} y={axisY + 4} fill={INK3} size={10}>WOULD RECOMMEND</Key>
+        <Key x={20} y={axisY + 4} fill={INK3} size={10}>Would recommend</Key>
       </Frame>
       <Slider label="Sample size" value={i} min={0} max={SIZES.length - 1} onChange={setI} showValue={false} />
     </>
@@ -132,7 +132,7 @@ export function ErrorsAndSampleSize() {
    Simple Random and Systematic Sampling
    -------------------------------------------------------------------------- */
 
-const DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const WEEKS = 10;
 /** A store's daily sales over ten weeks: a list with a weekly pattern. */
 const DAILY = (() => {
@@ -186,7 +186,7 @@ export function PeriodicList() {
         height={350}
         label={`Seventy days of a store's sales laid out by weekday, with Saturdays highest. Every ${K}th day from day ${s + 1} is selected: ${picks.length} days, averaging ${Math.round(est)} against a true daily average of ${Math.round(DAILY_MEAN)}. The other possible starts give averages from ${Math.round(Math.min(...others))} to ${Math.round(Math.max(...others))}`}
       >
-        <Key x={gx} y={16} fill={INK3} size={10}>SAMPLING FRAME: 70 DAYS OF SALES</Key>
+        <Key x={gx} y={16} fill={INK3} size={10}>Sampling frame: 70 days of sales</Key>
         {DAYS.map((d, i) => (
           <Key key={d} x={r2(gx + i * cw + cw / 2)} y={34} anchor="middle" fill={INK3} size={9}>{d}</Key>
         ))}
@@ -205,9 +205,9 @@ export function PeriodicList() {
         })}
 
         {/* the estimate of average daily sales */}
-        <Key x={gx} y={250} fill={INK3} size={10}>AVERAGE DAILY SALES</Key>
+        <Key x={gx} y={250} fill={INK3} size={10}>Average daily sales</Key>
         <line x1={A(DAILY_MEAN)} y1={258} x2={A(DAILY_MEAN)} y2={axY} stroke={INK} strokeWidth={1.25} strokeDasharray="4 4" />
-        <Key x={r2(A(DAILY_MEAN) + 6)} y={268} fill={INK} size={9}>{`TRUE ${Math.round(DAILY_MEAN)}`}</Key>
+        <Key x={r2(A(DAILY_MEAN) + 6)} y={268} fill={INK} size={9}>{`True ${Math.round(DAILY_MEAN)}`}</Key>
         {others.map((v, i) => (
           <circle key={i} cx={A(v)} cy={axY - 12} r={4} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
         ))}
@@ -289,9 +289,9 @@ const range = (a: number, b: number) => Array.from({ length: b - a }, (_, i) => 
 
 type Technique = "random" | "stratified" | "cluster";
 const TECHNIQUES: { id: Technique; label: string; key: string }[] = [
-  { id: "random", label: "Simple random", key: "SIMPLE RANDOM" },
-  { id: "stratified", label: "Stratified", key: "STRATIFIED" },
-  { id: "cluster", label: "Cluster", key: "CLUSTER" },
+  { id: "random", label: "Simple random", key: "Simple random" },
+  { id: "stratified", label: "Stratified", key: "Stratified" },
+  { id: "cluster", label: "Cluster", key: "Cluster" },
 ];
 /** Twenty-four samples of twenty drawn with each technique. */
 const SAMPLES: Record<Technique, number[][]> = (() => {
@@ -345,7 +345,7 @@ export function StrataAndClusters() {
         height={322}
         label={`A population of 160 customers in sixteen city blocks, four to each of four regions. The share who would buy ranges from about 5 percent in one region to about 95 percent in another, 50 percent overall. A ${tech === "random" ? "simple random" : tech} sample of twenty is marked, which estimates ${Math.round(shareOf(members) * 100)} percent. Across twenty-four samples of twenty, stratified estimates lie closest to 50 percent, simple random estimates spread wider, and cluster estimates spread widest`}
       >
-        <Key x={bx0} y={22} fill={INK3} size={10}>{`${POP} CUSTOMERS | 16 BLOCKS | 4 REGIONS`}</Key>
+        <Key x={bx0} y={22} fill={INK3} size={10}>{`${POP} customers | 16 blocks | 4 regions`}</Key>
         {BLOCK_BUYERS.map((row, r) => (
           <g key={r}>
             <rect x={bx0 - 6} y={blockY(r) - 4} width={4 * bw + 3 * bg + 12} height={bh + 8} fill="none" stroke={tech === "stratified" ? SIGNAL : RULE} strokeWidth={tech === "stratified" ? 1.25 : 1} />
@@ -373,10 +373,10 @@ export function StrataAndClusters() {
 
         {/* estimates from twenty-four samples with each technique */}
         <Key x={sx0} y={22} fill={INK3} size={10}>
-          <tspan fill={COUNTER}>WOULD BUY</tspan>: 24 SAMPLES OF 20
+          <tspan fill={COUNTER}>Would buy</tspan>: 24 samples of 20
         </Key>
         <line x1={S(0.5)} y1={36} x2={S(0.5)} y2={axisY} stroke={INK} strokeWidth={1.25} strokeDasharray="4 4" />
-        <Key x={r2(S(0.5) + 6)} y={44} fill={INK} size={9.5}>TRUE 50%</Key>
+        <Key x={r2(S(0.5) + 6)} y={44} fill={INK} size={9.5}>True 50%</Key>
         {TECHNIQUES.map((t, ti) => {
           const stacks = new Map<number, number>();
           const on = t.id === tech;
@@ -499,7 +499,7 @@ export function SampleSizeCurve() {
           },
         }}
       >
-        <Key x={16} y={22} fill={INK3} size={10}>REQUIRED SAMPLE</Key>
+        <Key x={16} y={22} fill={INK3} size={10}>Required sample</Key>
         {[0, 1000, 2000].map((v) => (
           <g key={v}>
             <line x1={x0 - 4} y1={Y(v)} x2={x0} y2={Y(v)} stroke={INK} strokeWidth={1} />
@@ -513,7 +513,7 @@ export function SampleSizeCurve() {
         {N < 1_000_000 ? (
           <>
             <path d={curve(100_000_000)} fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
-            <Key x={x0 + 12} y={Y(2380)} fill={INK3} size={9}>100 MILLION</Key>
+            <Key x={x0 + 12} y={Y(2380)} fill={INK3} size={9}>100 million</Key>
           </>
         ) : null}
         <path d={curve(N)} fill="none" stroke={INK} strokeWidth={1.75} />
@@ -528,7 +528,7 @@ export function SampleSizeCurve() {
           </>
         ) : null}
         <circle cx={ex} cy={Y(n)} r={6} fill={SIGNAL} />
-        <Key x={x1} y={30} anchor="end" fill={SIGNAL} size={10}>{`SAMPLE FOR \u00b1${pts(e)}`}</Key>
+        <Key x={x1} y={30} anchor="end" fill={SIGNAL} size={10}>{`Sample for \u00b1${pts(e)}`}</Key>
         <Display x={x1} y={60} anchor="end" fill={SIGNAL} size={30}>{fmt(n)}</Display>
         {showHalf ? (
           <Key x={x1} y={84} anchor="end" fill={INK} size={10}>
@@ -547,7 +547,7 @@ export function SampleSizeCurve() {
             ) : null}
           </g>
         ))}
-        <Key x={x1 + 14} y={yBase + 48} anchor="end" fill={INK3} size={10}>MARGIN OF ERROR, POINTS</Key>
+        <Key x={x1 + 14} y={yBase + 48} anchor="end" fill={INK3} size={10}>Margin of error, points</Key>
         <g
           role="slider"
           tabIndex={0}
@@ -588,9 +588,9 @@ export function ContactFunnel() {
   const x1 = 376;
   const W = (v: number) => r2((v / 1925) * (x1 - x0));
   const rows = [
-    { key: "CONTACTED", v: 1925, y: 30, fill: PAPER, stroke: INK },
-    { key: "QUALIFY", v: 962.5, y: 104, fill: PAPER3, stroke: INK, rate: "INCIDENCE RATE 50%" },
-    { key: "COMPLETE", v: 385, y: 178, fill: SIGNAL, stroke: SIGNAL, rate: "COMPLETION RATE 40%" },
+    { key: "Contacted", v: 1925, y: 30, fill: PAPER, stroke: INK },
+    { key: "Qualify", v: 962.5, y: 104, fill: PAPER3, stroke: INK, rate: "Incidence rate 50%" },
+    { key: "Complete", v: 385, y: 178, fill: SIGNAL, stroke: SIGNAL, rate: "Completion rate 40%" },
   ];
   const h = 30;
   return (
@@ -631,11 +631,11 @@ export function ContactFunnel() {
 
 type Check = "time" | "attention" | "consistency" | "open" | "technical";
 const CHECKS: { id: Check; label: string; tag: string }[] = [
-  { id: "time", label: "Completion time", tag: "TOO FAST" },
-  { id: "attention", label: "Attention check", tag: "ATTENTION" },
-  { id: "consistency", label: "Consistency", tag: "CONTRADICTS" },
-  { id: "open", label: "Open-ended review", tag: "GENERIC TEXT" },
-  { id: "technical", label: "Technical", tag: "SAME DEVICE" },
+  { id: "time", label: "Completion time", tag: "Too fast" },
+  { id: "attention", label: "Attention check", tag: "Attention" },
+  { id: "consistency", label: "Consistency", tag: "Contradicts" },
+  { id: "open", label: "Open-ended review", tag: "Generic text" },
+  { id: "technical", label: "Technical", tag: "Same device" },
 ];
 /**
  * Thirty completed questionnaires. Twenty come from genuine respondents, ten
@@ -698,7 +698,7 @@ export function QualityChecks() {
         label={`Thirty completed questionnaires. With ${on.length ? on.map((c) => CHECKS.find((k) => k.id === c)!.label.toLowerCase()).join(", ") : "no checks"} applied, ${removed} are removed, and ${Math.round(share * 100)} percent of the remaining respondents are satisfied, against 50 percent among the twenty genuine respondents`}
       >
         <Key x={ax0} y={16} fill={INK3} size={10}>
-          30 QUESTIONNAIRES | <tspan fill={COUNTER}>SATISFIED</tspan>
+          30 questionnaires | <tspan fill={COUNTER}>Satisfied</tspan>
         </Key>
         {BATCH.map((r, i) => {
           const cx = r2(gx + (i % cols) * cw + cw / 2);
@@ -713,7 +713,7 @@ export function QualityChecks() {
                 <>
                   <path d={`M${r2(cx - 12)} ${top + 6}L${r2(cx + 12)} ${top + 34}M${r2(cx + 12)} ${top + 6}L${r2(cx - 12)} ${top + 34}`} stroke={SIGNAL} strokeWidth={2} strokeLinecap="round" />
                   <Key x={cx} y={top + 49} anchor="middle" fill={SIGNAL} size={7} weight={700}>
-                    {i === BOT_ON_DEVICE && flag.id === "technical" ? "AUTOMATED" : flag.tag}
+                    {i === BOT_ON_DEVICE && flag.id === "technical" ? "Automated" : flag.tag}
                   </Key>
                 </>
               ) : null}
@@ -722,10 +722,10 @@ export function QualityChecks() {
         })}
 
         {/* the estimate from the questionnaires that are kept */}
-        <Key x={ax0} y={240} fill={INK3} size={10}>{`SATISFIED AMONG ${kept.length} KEPT`}</Key>
-        <Key x={ax1} y={240} anchor="end" fill={SIGNAL} size={10} weight={700}>{`REMOVED ${removed} OF 30`}</Key>
+        <Key x={ax0} y={240} fill={INK3} size={10}>{`Satisfied among ${kept.length} kept`}</Key>
+        <Key x={ax1} y={240} anchor="end" fill={SIGNAL} size={10} weight={700}>{`Removed ${removed} OF 30`}</Key>
         <line x1={A(0.5)} y1={248} x2={A(0.5)} y2={axY} stroke={INK} strokeWidth={1.25} strokeDasharray="4 4" />
-        <Key x={r2(A(0.5) - 6)} y={260} anchor="end" fill={INK} size={9}>GENUINE 50%</Key>
+        <Key x={r2(A(0.5) - 6)} y={260} anchor="end" fill={INK} size={9}>Genuine 50%</Key>
         <circle cx={A(share)} cy={axY - 12} r={6} fill={SIGNAL} />
         <Key x={r2(A(share) + 10)} y={axY - 8} fill={SIGNAL} size={11} weight={700}>{`${Math.round(share * 100)}%`}</Key>
         <line x1={ax0} y1={axY} x2={ax1 + 10} y2={axY} stroke={INK} strokeWidth={1.25} />
@@ -802,7 +802,7 @@ export function SyntheticSpread() {
         height={304}
         label={`Purchase intention on a 7-point scale. Thirty real respondents spread from 1 to 7, standard deviation ${real.sd.toFixed(1)}. Thirty synthetic respondents prompted with ${wording.prompt} cluster around ${syn.mean.toFixed(1)}, standard deviation ${syn.sd.toFixed(1)}. Each wording moves the cluster to a different point`}
       >
-        <Key x={x0 - 24} y={18} fill={COUNTER} size={10}>30 REAL RESPONDENTS</Key>
+        <Key x={x0 - 24} y={18} fill={COUNTER} size={10}>30 real respondents</Key>
         <Key x={376} y={18} anchor="end" fill={INK} size={10}>{`SD ${real.sd.toFixed(1)}`}</Key>
         {stack(REAL_COUNTS, realBase, (x, y, key) => (
           <Person1 key={key} x={x} y={y} k={0.36} stroke={COUNTER} fill={COUNTER} width={1} />
@@ -811,7 +811,7 @@ export function SyntheticSpread() {
         {meanMark(real.mean, realBase, COUNTER)}
         <line x1={x0 - 24} y1={104} x2={376} y2={104} stroke={RULE} strokeWidth={1} />
 
-        <Key x={x0 - 24} y={128} fill={SIGNAL} size={10}>30 SYNTHETIC RESPONDENTS</Key>
+        <Key x={x0 - 24} y={128} fill={SIGNAL} size={10}>30 synthetic respondents</Key>
         <Key x={376} y={128} anchor="end" fill={INK} size={10}>{`SD ${syn.sd.toFixed(1)}`}</Key>
         <Note x={x0 - 24} y={148} fill={INK2} size={12} italic>{wording.prompt}</Note>
         {stack(wording.counts, synBase, (x, y, key) => (
@@ -824,7 +824,7 @@ export function SyntheticSpread() {
         {REAL_COUNTS.map((_, i) => (
           <Key key={i} x={cx(i)} y={axisY + 17} anchor="middle" fill={INK3} size={10}>{i + 1}</Key>
         ))}
-        <Key x={x0 + 7 * colW + 12} y={axisY + 30} anchor="end" fill={INK3} size={9.5}>PURCHASE INTENTION</Key>
+        <Key x={x0 + 7 * colW + 12} y={axisY + 30} anchor="end" fill={INK3} size={9.5}>Purchase intention</Key>
       </Frame>
       <Segmented label="Prompt" options={WORDINGS.map(({ id, label }) => ({ id, label }))} value={w} onChange={setW} />
     </>
@@ -874,7 +874,7 @@ export function ResponsesPerPrompt() {
         height={212}
         label={`Willingness to pay stated by one model in ${k} ${k === 1 ? "response" : "responses"} to the same prompt${k > 1 ? `, spread from ${money(Math.min(...draws.map((d) => d.v)))} to ${money(Math.max(...draws.map((d) => d.v)))}` : ""}. The mean is ${money(mean)}${k > 1 ? `, with a 95 percent confidence interval of plus or minus ${money(half)}` : ". A single response gives no estimate of variation"}`}
       >
-        <Key x={16} y={20} fill={INK3} size={9.5}>{`${k} ${k === 1 ? "RESPONSE" : "RESPONSES"} | SAME PROMPT`}</Key>
+        <Key x={16} y={20} fill={INK3} size={9.5}>{`${k} ${k === 1 ? "Response" : "Responses"} | same prompt`}</Key>
         {draws.map((d, i) => (
           <circle key={i} cx={sx(d.v)} cy={r2(44 + d.j * 66)} r={k > 60 ? 3 : 4} fill={PAPER3} stroke={INK} strokeWidth={1} />
         ))}
@@ -894,7 +894,7 @@ export function ResponsesPerPrompt() {
         ) : null}
         <circle cx={sx(mean)} cy={yMean} r={5} fill={SIGNAL} />
         <Key x={16} y={yMean + 34} fill={SIGNAL} size={10}>
-          {k > 1 ? `MEAN ${money(mean)} | 95% INTERVAL ± ${money(half)}` : `ONE RESPONSE ${money(mean)} | NO ESTIMATE OF VARIATION`}
+          {k > 1 ? `Mean ${money(mean)} | 95% interval ± ${money(half)}` : `One response ${money(mean)} | no estimate of variation`}
         </Key>
       </Frame>
       <Slider label="Responses" value={k} min={1} max={WTP_MAX_K} onChange={setK} />

@@ -145,7 +145,7 @@ export function CorrelationStrength() {
         r === 0 ? ", no linear relationship" : Math.abs(r) === 1 ? `, a perfect ${r < 0 ? "negative" : "positive"} relationship` : ""
       }. A scale from −1 to +1 can be dragged to change r. Beside it, stores whose weekly units rise and then fall with shelf height: a strong nonlinear relationship with r = 0.00`}
     >
-      <Key x={L} y={22}>WEEKLY UNITS BY PRICE</Key>
+      <Key x={L} y={22}>Weekly units by price</Key>
       <Display x={R} y={50} anchor="end" size={26} fill={SIGNAL}>{`r = ${fmt(r, 2)}`}</Display>
 
       {/* axes */}
@@ -153,9 +153,9 @@ export function CorrelationStrength() {
       <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L, T - 6, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={R} y={B + 18} anchor="end" size={10}>PRICE</Key>
+      <Key x={R} y={B + 18} anchor="end" size={10}>Price</Key>
       <g transform={`translate(${L - 12} ${T}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" size={10}>UNITS</Key>
+        <Key x={0} y={0} anchor="end" size={10}>Units</Key>
       </g>
 
       {STORE_X.map((x, i) => (
@@ -193,30 +193,30 @@ export function CorrelationStrength() {
       <Key x={sx0} y={sy - 16} anchor="middle" size={10}>{"\u22121"}</Key>
       <Key x={SX(0)} y={sy - 16} anchor="middle" size={10}>0</Key>
       <Key x={sx1} y={sy - 16} anchor="middle" size={10}>+1</Key>
-      <Key x={sx0 - 12} y={sy + 22} size={9}>PERFECT</Key>
-      <Key x={sx0 - 12} y={sy + 34} size={9}>NEGATIVE</Key>
-      <Key x={SX(0)} y={sy + 22} anchor="middle" size={9}>NO LINEAR</Key>
-      <Key x={SX(0)} y={sy + 34} anchor="middle" size={9}>RELATIONSHIP</Key>
-      <Key x={sx1 + 12} y={sy + 22} anchor="end" size={9}>PERFECT</Key>
-      <Key x={sx1 + 12} y={sy + 34} anchor="end" size={9}>POSITIVE</Key>
+      <Key x={sx0 - 12} y={sy + 22} size={9}>Perfect</Key>
+      <Key x={sx0 - 12} y={sy + 34} size={9}>negative</Key>
+      <Key x={SX(0)} y={sy + 22} anchor="middle" size={9}>No linear</Key>
+      <Key x={SX(0)} y={sy + 34} anchor="middle" size={9}>relationship</Key>
+      <Key x={sx1 + 12} y={sy + 22} anchor="end" size={9}>Perfect</Key>
+      <Key x={sx1 + 12} y={sy + 34} anchor="end" size={9}>positive</Key>
 
       {/* right panel: rises, then falls */}
       <line x1={452} y1={14} x2={452} y2={336} stroke={RULE} strokeWidth={1} />
-      <Key x={L2} y={22}>WEEKLY UNITS BY SHELF HEIGHT</Key>
+      <Key x={L2} y={22}>Weekly units by shelf height</Key>
       <Display x={R2} y={50} anchor="end" size={26}>r = 0.00</Display>
       <line x1={L2} y1={B} x2={R2} y2={B} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(R2, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L2} y1={B} x2={L2} y2={T - 6} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L2, T - 6, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={R2} y={B + 18} anchor="end" size={10}>SHELF HEIGHT</Key>
+      <Key x={R2} y={B + 18} anchor="end" size={10}>Shelf height</Key>
       <g transform={`translate(${L2 - 12} ${T}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" size={10}>UNITS</Key>
+        <Key x={0} y={0} anchor="end" size={10}>Units</Key>
       </g>
       {SHELF.map((h, i) => (
         <Store1 key={i} cx={X2(h)} cy={Y2(1 - h * h + SHELF_NOISE[i])} k={0.62} />
       ))}
-      <Key x={r2((L2 + R2) / 2)} y={sy - 4} anchor="middle" size={9.5}>STRONG NONLINEAR</Key>
-      <Key x={r2((L2 + R2) / 2)} y={sy + 11} anchor="middle" size={9.5}>RELATIONSHIP</Key>
+      <Key x={r2((L2 + R2) / 2)} y={sy - 4} anchor="middle" size={9.5}>Strong nonlinear</Key>
+      <Key x={r2((L2 + R2) / 2)} y={sy + 11} anchor="middle" size={9.5}>relationship</Key>
     </Frame>
   );
 }
@@ -313,16 +313,16 @@ export function LeastSquares() {
         atMin ? ", the minimum: this is the least squares line" : `, against a minimum of ${Math.round(ADS_MIN)} for the least squares line`
       }. Either end of the line can be dragged`}
     >
-      <Key x={L} y={16}>WEEKLY SALES BY ADVERTISING</Key>
+      <Key x={L} y={16}>Weekly sales by advertising</Key>
 
       {/* axes */}
       <line x1={L} y1={B} x2={R + 10} y2={B} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(R + 10, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L} y1={B} x2={L} y2={T - 4} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L, T - 4, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={R + 10} y={B + 18} anchor="end" size={10}>ADVERTISING</Key>
+      <Key x={R + 10} y={B + 18} anchor="end" size={10}>Advertising</Key>
       <g transform={`translate(${L - 12} ${T + 2}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" size={10}>SALES</Key>
+        <Key x={0} y={0} anchor="end" size={10}>Sales</Key>
       </g>
 
       {/* the squared differences */}
@@ -345,15 +345,15 @@ export function LeastSquares() {
 
       {/* the equation and the sum of squares */}
       <Key x={L} y={B + 40} fill={tone} size={11}>
-        {`SALES = ${a.toFixed(1)} ${b < 0 ? "\u2212" : "+"} ${Math.abs(b).toFixed(2)} \u00d7 ADVERTISING`}
+        {`Sales = ${a.toFixed(1)} ${b < 0 ? "\u2212" : "+"} ${Math.abs(b).toFixed(2)} \u00d7 advertising`}
       </Key>
-      <Key x={L} y={B + 66} size={10}>SUM OF SQUARED DIFFERENCES</Key>
+      <Key x={L} y={B + 66} size={10}>Sum of squared differences</Key>
       <rect x={bx0} y={B + 76} width={r2(BX(total) - bx0)} height={12} fill={atMin ? SIGNAL : PAPER3} stroke={atMin ? SIGNAL : INK3} strokeWidth={1} />
       <Key x={r2(Math.min(BX(total) + 8, 500))} y={B + 86} size={10} fill={tone}>{Math.round(total).toLocaleString("en-US")}</Key>
       <line x1={BX(ADS_MIN)} y1={B + 72} x2={BX(ADS_MIN)} y2={B + 98} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={BX(ADS_MIN)} y={B + 112} anchor="middle" size={9.5} fill={SIGNAL}>MINIMUM</Key>
+      <Key x={BX(ADS_MIN)} y={B + 112} anchor="middle" size={9.5} fill={SIGNAL}>Minimum</Key>
       {atMin ? (
-        <Key x={540} y={B + 40} anchor="end" size={10} fill={SIGNAL}>ORDINARY LEAST SQUARES</Key>
+        <Key x={540} y={B + 40} anchor="end" size={10} fill={SIGNAL}>Ordinary least squares</Key>
       ) : null}
     </Frame>
   );
@@ -372,9 +372,9 @@ type UnitView = (typeof UNIT_VIEWS)[number]["id"];
 
 /** Across the stores: SD of price $0.50, of advertising $20,000, of weekly sales 1,000 units. */
 const COEFS: Record<UnitView, { price: number; ads: number; priceUnit: string; adsUnit: string }> = {
-  estimated: { price: -800, ads: 25, priceUnit: "UNITS PER $1 OF PRICE", adsUnit: "UNITS PER $1,000 OF ADVERTISING" },
-  cents: { price: -8, ads: 25, priceUnit: "UNITS PER 1\u00a2 OF PRICE", adsUnit: "UNITS PER $1,000 OF ADVERTISING" },
-  standardized: { price: -0.4, ads: 0.5, priceUnit: "SD OF SALES PER SD OF PRICE", adsUnit: "SD OF SALES PER SD OF ADVERTISING" },
+  estimated: { price: -800, ads: 25, priceUnit: "Units per $1 of price", adsUnit: "Units per $1,000 of advertising" },
+  cents: { price: -8, ads: 25, priceUnit: "Units per 1\u00a2 of price", adsUnit: "Units per $1,000 of advertising" },
+  standardized: { price: -0.4, ads: 0.5, priceUnit: "SD of sales per SD of price", adsUnit: "SD of sales per SD of advertising" },
 };
 
 /**
@@ -426,7 +426,7 @@ export function CoefficientUnits() {
           );
         })}
         {std ? (
-          <Key x={300} y={266} anchor="middle" size={9}>SD OF PRICE $0.50 | SD OF ADVERTISING $20,000 | SD OF SALES 1,000 UNITS</Key>
+          <Key x={300} y={266} anchor="middle" size={9}>SD of price $0.50 | SD of advertising $20,000 | SD of sales 1,000 units</Key>
         ) : null}
       </Frame>
       <Segmented label="Coefficients" options={[...UNIT_VIEWS]} value={view} onChange={setView} />
@@ -512,7 +512,7 @@ export function AddedVariables() {
           added ? ` and ${added} variable${added > 1 ? "s" : ""} of random numbers` : ""
         }. R² is ${now.r2.toFixed(3)} and adjusted R² is ${now.adj.toFixed(3)}`}
       >
-        <Key x={L} y={16}>MODEL OF 40 WEEKS OF SALES</Key>
+        <Key x={L} y={16}>Model of 40 weeks of sales</Key>
         <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -526,7 +526,7 @@ export function AddedVariables() {
         {Array.from({ length: FIT_MAX + 1 }, (_, j) => (
           <Key key={j} x={X(j + 2)} y={B + 16} anchor="middle" size={9.5} fill={j <= added ? INK2 : RULE2}>{j + 2}</Key>
         ))}
-        <Key x={R} y={B + 30} anchor="end" size={9.5}>INDEPENDENT VARIABLES</Key>
+        <Key x={R} y={B + 30} anchor="end" size={9.5}>Independent variables</Key>
 
         <path d={line("r2")} fill="none" stroke={INK} strokeWidth={1.75} />
         <path d={line("adj")} fill="none" stroke={SIGNAL} strokeWidth={2} />
@@ -537,7 +537,7 @@ export function AddedVariables() {
           </g>
         ))}
         <Key x={r2(X(now.k) + 10)} y={r2(Y(now.r2) + (now.k === 2 ? -4 : 4))} size={10}>{`R\u00b2 ${now.r2.toFixed(3)}`}</Key>
-        <Key x={r2(X(now.k) + 10)} y={r2(Y(now.adj) + (now.k === 2 ? 10 : 4))} size={10} fill={SIGNAL}>{`ADJUSTED R\u00b2 ${now.adj.toFixed(3)}`}</Key>
+        <Key x={r2(X(now.k) + 10)} y={r2(Y(now.adj) + (now.k === 2 ? 10 : 4))} size={10} fill={SIGNAL}>{`Adjusted R\u00b2 ${now.adj.toFixed(3)}`}</Key>
       </Frame>
       <div className="mt-2 flex flex-wrap items-center gap-2 px-1">
         <PlateButton onClick={() => setAdded((a) => Math.min(FIT_MAX, a + 1))}>Add a variable of random numbers</PlateButton>
@@ -567,10 +567,10 @@ const RESID = (() => {
  */
 export function ResidualPatterns() {
   const panels = [
-    { id: "none", key: ["NO PATTERN"], x: "PREDICTED", tone: INK3 },
-    { id: "curve", key: ["NONLINEAR", "RELATIONSHIP"], x: "PREDICTED", tone: INK },
-    { id: "fan", key: ["UNEQUAL", "VARIANCE"], x: "PREDICTED", tone: INK },
-    { id: "waves", key: ["DEPENDENCE BETWEEN", "OBSERVATIONS"], x: "WEEK", tone: INK },
+    { id: "none", key: ["No pattern"], x: "Predicted", tone: INK3 },
+    { id: "curve", key: ["Nonlinear", "relationship"], x: "Predicted", tone: INK },
+    { id: "fan", key: ["Unequal", "variance"], x: "Predicted", tone: INK },
+    { id: "waves", key: ["Dependence between", "observations"], x: "Week", tone: INK },
   ];
   const w = 176;
   const h = 100;
@@ -580,7 +580,7 @@ export function ResidualPatterns() {
       height={330}
       label="Four residual plots. With no pattern, residuals scatter evenly around zero. A curved band indicates a nonlinear relationship. A fan that widens indicates unequal variance. Long runs above and below zero across weeks indicate dependence between observations"
     >
-      <Key x={12} y={14} size={10}>RESIDUALS</Key>
+      <Key x={12} y={14} size={10}>Residuals</Key>
       {panels.map((p, k) => {
         const x0 = 12 + (k % 2) * (w + 24);
         const top = 28 + Math.floor(k / 2) * 154;
@@ -639,7 +639,7 @@ export function CollinearEstimates() {
   const X = (v: number) => r2(x0 + ((Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo)) * (x1 - x0));
   const rows = [
     { key: "TV", v: tv, truth: TV_TRUE, y: 70, Icon: Television },
-    { key: "ONLINE VIDEO", v: video, truth: VIDEO_TRUE, y: 150, Icon: MonitorPlay },
+    { key: "Online video", v: video, truth: VIDEO_TRUE, y: 150, Icon: MonitorPlay },
   ];
   const jitter = [0, -8, 8, -4, 4, -12, 12, 0, -8, 8, -4, 4, -12, 12, 0, -8, 8, -4, 4, 0];
 
@@ -658,15 +658,15 @@ export function CollinearEstimates() {
           wrong ? `${wrong} of the 40 estimates take a negative sign` : "every estimate has the expected positive sign"
         }`}
       >
-        <Key x={20} y={22}>COEFFICIENT ESTIMATED ON 20 SAMPLES</Key>
-        <Key x={580} y={22} anchor="end">{`SPEND CORRELATION r = ${rho.toFixed(2)}`}</Key>
+        <Key x={20} y={22}>Coefficient estimated on 20 samples</Key>
+        <Key x={580} y={22} anchor="end">{`Spend correlation r = ${rho.toFixed(2)}`}</Key>
         <rect x={x0} y={36} width={r2(X(0) - x0)} height={150} fill={COUNTER_TINT} />
         <line x1={X(0)} y1={36} x2={X(0)} y2={190} stroke={INK3} strokeWidth={1} />
         <Key x={X(0)} y={204} anchor="middle" size={9.5}>0</Key>
         {[-2, 2, 4].map((v) => (
           <Key key={v} x={X(v)} y={204} anchor="middle" size={9.5} fill={INK3}>{minus(String(v))}</Key>
         ))}
-        <Key x={r2((x0 + X(0)) / 2)} y={182} anchor="middle" size={9} fill={COUNTER}>IMPLAUSIBLE SIGN</Key>
+        <Key x={r2((x0 + X(0)) / 2)} y={182} anchor="middle" size={9} fill={COUNTER}>Implausible sign</Key>
         {rows.map((r) => (
           <g key={r.key}>
             <r.Icon x={20} y={r.y - 16} size={30} weight="regular" color={INK} />
@@ -678,7 +678,7 @@ export function CollinearEstimates() {
             ))}
           </g>
         ))}
-        <Key x={X(TV_TRUE)} y={40} anchor="middle" size={9}>TRUE EFFECT</Key>
+        <Key x={X(TV_TRUE)} y={40} anchor="middle" size={9}>True effect</Key>
 
         {/* VIF meter */}
         <Key x={20} y={250} size={10}>VIF</Key>
@@ -694,7 +694,7 @@ export function CollinearEstimates() {
         <path d={`M${MX(vif)} 238L${r2(MX(vif) - 6)} 228H${r2(MX(vif) + 6)}Z`} fill={SIGNAL} />
         <Display x={580} y={256} anchor="end" size={26} fill={SIGNAL}>{vif.toFixed(1)}</Display>
         <Key x={580} y={280} anchor="end" size={9} fill={vif > 10 ? COUNTER : INK3}>
-          {vif > 10 ? "ABOVE 10" : vif > 5 ? "ABOVE 5" : "BELOW 5"}
+          {vif > 10 ? "Above 10" : vif > 5 ? "Above 5" : "Below 5"}
         </Key>
       </Frame>
       <Slider
@@ -755,22 +755,22 @@ export function OmittedHoliday() {
             : `With advertising alone, the coefficient is ${slope.toFixed(1)} units per thousand dollars, which includes the holiday lift`
         }`}
       >
-        <Key x={L} y={22}>WEEKLY SALES BY ADVERTISING</Key>
+        <Key x={L} y={22}>Weekly sales by advertising</Key>
         <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
         <path d={head.up(L, T - 6, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-        <Key x={R} y={B + 18} anchor="end" size={10}>ADVERTISING</Key>
+        <Key x={R} y={B + 18} anchor="end" size={10}>Advertising</Key>
         <g transform={`translate(${L - 12} ${T}) rotate(-90)`}>
-          <Key x={0} y={0} anchor="end" size={10}>SALES</Key>
+          <Key x={0} y={0} anchor="end" size={10}>Sales</Key>
         </g>
 
         {withHol ? (
           <g>
             <path d={seg(HOL_WITH[0], HOL_WITH[1], 4, 15)} stroke={INK} strokeWidth={2} fill="none" />
             <path d={seg(HOL_WITH[0] + HOL_WITH[2], HOL_WITH[1], 12, 21)} stroke={COUNTER} strokeWidth={2} fill="none" />
-            <Key x={r2(X(21) + 6)} y={r2(Y(HOL_WITH[0] + HOL_WITH[2] + HOL_WITH[1] * 21) + 4)} size={9.5} fill={COUNTER}>HOLIDAY</Key>
-            <Key x={r2(X(15) + 6)} y={r2(Y(HOL_WITH[0] + HOL_WITH[1] * 15) + 4)} size={9.5}>OTHER WEEKS</Key>
+            <Key x={r2(X(21) + 6)} y={r2(Y(HOL_WITH[0] + HOL_WITH[2] + HOL_WITH[1] * 21) + 4)} size={9.5} fill={COUNTER}>Holiday</Key>
+            <Key x={r2(X(15) + 6)} y={r2(Y(HOL_WITH[0] + HOL_WITH[1] * 15) + 4)} size={9.5}>Other weeks</Key>
           </g>
         ) : (
           <path d={seg(HOL_OMIT[0], HOL_OMIT[1], 7.5, 21)} stroke={INK} strokeWidth={2} fill="none" />
@@ -781,14 +781,14 @@ export function OmittedHoliday() {
         })}
 
         <line x1={466} y1={36} x2={466} y2={270} stroke={RULE} strokeWidth={1} />
-        <Key x={482} y={60} size={9.5}>ADVERTISING</Key>
-        <Key x={482} y={74} size={9.5}>COEFFICIENT</Key>
+        <Key x={482} y={60} size={9.5}>Advertising</Key>
+        <Key x={482} y={74} size={9.5}>coefficient</Key>
         <Display x={482} y={112} size={34} fill={SIGNAL}>{`+${slope.toFixed(1)}`}</Display>
-        <Key x={482} y={134} size={9}>UNITS PER $1,000</Key>
+        <Key x={482} y={134} size={9}>Units per $1,000</Key>
         {!withHol ? (
           <>
-            <Key x={482} y={176} size={9} fill={COUNTER}>INCLUDES THE</Key>
-            <Key x={482} y={189} size={9} fill={COUNTER}>HOLIDAY LIFT</Key>
+            <Key x={482} y={176} size={9} fill={COUNTER}>Includes the</Key>
+            <Key x={482} y={189} size={9} fill={COUNTER}>holiday lift</Key>
           </>
         ) : null}
       </Frame>
@@ -844,9 +844,9 @@ export function LinearProbability() {
       <Key x={L - 10} y={r2(Y(1) + 4)} anchor="end" size={10}>1</Key>
       <Key x={L - 10} y={r2(Y(0) + 4)} anchor="end" size={10}>0</Key>
       <g transform={`translate(${L - 30} ${Y(0.5)}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="middle" size={10}>PROBABILITY OF PURCHASE</Key>
+        <Key x={0} y={0} anchor="middle" size={10}>Probability of purchase</Key>
       </g>
-      <Key x={R} y={282} anchor="end" size={10}>PAGES VIEWED</Key>
+      <Key x={R} y={282} anchor="end" size={10}>Pages viewed</Key>
 
       {VISITS.map(([x, y], i) => (
         <Person1 key={i} x={X(x)} y={r2(Y(y) - 1)} k={0.48} fill={y ? INK : PAPER} />
@@ -854,8 +854,8 @@ export function LinearProbability() {
       <path d={`M${X(zero)} ${Y(0)}L${X(one)} ${Y(1)}`} stroke={INK} strokeWidth={2} />
       <path d={`M${X(xLo)} ${Y(pAt(xLo))}L${X(zero)} ${Y(0)}`} stroke={COUNTER} strokeWidth={3} />
       <path d={`M${X(one)} ${Y(1)}L${X(xHi)} ${Y(pAt(xHi))}`} stroke={COUNTER} strokeWidth={3} />
-      <Key x={X(26)} y={r2(Y(pAt(26)) - 10)} anchor="end" size={9.5} fill={COUNTER}>ABOVE ONE</Key>
-      <Key x={r2(X(xLo) + 18)} y={r2(Y(pAt(xLo)) + 6)} size={9.5} fill={COUNTER}>BELOW ZERO</Key>
+      <Key x={X(26)} y={r2(Y(pAt(26)) - 10)} anchor="end" size={9.5} fill={COUNTER}>Above one</Key>
+      <Key x={r2(X(xLo) + 18)} y={r2(Y(pAt(xLo)) + 6)} size={9.5} fill={COUNTER}>Below zero</Key>
     </Frame>
   );
 }
@@ -894,7 +894,7 @@ export function LogOddsCurve() {
   const X2 = (v: number) => r2(L2 + 14 + (v / 30) * (R2 - L2 - 28));
   const Y2 = (p: number) => r2(B - 14 - p * (B - T - 28));
   const prob = (x: number) => 1 / (1 + Math.exp(-(a + b * x)));
-  const pct = (p: number) => (p > 0.99 ? "OVER 99%" : p < 0.01 ? "UNDER 1%" : `${Math.round(p * 100)}%`);
+  const pct = (p: number) => (p > 0.99 ? "Over 99%" : p < 0.01 ? "Under 1%" : `${Math.round(p * 100)}%`);
   const curve = Array.from({ length: 61 }, (_, i) => {
     const x = i / 2;
     return `${i === 0 ? "M" : "L"}${X2(x)} ${Y2(prob(x))}`;
@@ -935,7 +935,7 @@ export function LogOddsCurve() {
       label={`The model drawn twice. In log odds, a straight line from ${fmt(ends.ya, 2)} at 0 pages to ${fmt(ends.yb, 2)} at 30 pages. Either end can be dragged. In probability, the same model is an S-shaped curve from ${pct(prob(0)).toLowerCase()} to ${pct(prob(30)).toLowerCase()}, always between zero and one`}
     >
       {/* left: log odds */}
-      <Key x={L1} y={20}>LOG ODDS OF PURCHASE</Key>
+      <Key x={L1} y={20}>Log odds of purchase</Key>
       <line x1={L1} y1={B} x2={L1} y2={T - 12} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L1, T - 12, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L1} y1={Y1(0)} x2={R1} y2={Y1(0)} stroke={INK} strokeWidth={1.25} />
@@ -947,18 +947,18 @@ export function LogOddsCurve() {
         </g>
       ))}
       <Key x={L1 - 8} y={r2(Y1(0) + 3.5)} anchor="end" size={9.5}>0</Key>
-      <Key x={R1} y={B + 22} anchor="end" size={10}>PAGES VIEWED</Key>
+      <Key x={R1} y={B + 22} anchor="end" size={10}>Pages viewed</Key>
       <line x1={X1(xa)} y1={Y1(ends.ya)} x2={X1(xb)} y2={Y1(ends.yb)} stroke={INK} strokeWidth={2} />
       {handle("ya", xa)}
       {handle("yb", xb)}
-      <Key x={L1} y={B + 46} size={10}>{`LOG ODDS = ${fmt(a, 2)} ${b < 0 ? "\u2212" : "+"} ${Math.abs(b).toFixed(2)} \u00d7 PAGES`}</Key>
+      <Key x={L1} y={B + 46} size={10}>{`Log odds = ${fmt(a, 2)} ${b < 0 ? "\u2212" : "+"} ${Math.abs(b).toFixed(2)} \u00d7 pages`}</Key>
 
       {/* the mapping */}
       <path d={`M344 ${(T + B) / 2}H376`} stroke={INK3} strokeWidth={1.25} />
       <path d={head.right(376, (T + B) / 2, 7)} fill="none" stroke={INK3} strokeWidth={1.25} />
 
       {/* right: probability */}
-      <Key x={L2} y={20}>PROBABILITY OF PURCHASE</Key>
+      <Key x={L2} y={20}>Probability of purchase</Key>
       <line x1={L2} y1={B} x2={L2} y2={T - 12} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L2, T - 12, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L2} y1={B} x2={R2} y2={B} stroke={INK} strokeWidth={1.25} />
@@ -969,9 +969,9 @@ export function LogOddsCurve() {
       <Key x={L2 - 8} y={r2(Y2(0.5) + 3.5)} anchor="end" size={9.5}>0.5</Key>
       <Key x={L2 - 8} y={r2(Y2(0) + 3.5)} anchor="end" size={9.5}>0</Key>
       <line x1={L2 - 4} y1={Y2(0.5)} x2={L2} y2={Y2(0.5)} stroke={INK} strokeWidth={1.25} />
-      <Key x={R2} y={B + 22} anchor="end" size={10}>PAGES VIEWED</Key>
+      <Key x={R2} y={B + 22} anchor="end" size={10}>Pages viewed</Key>
       <path d={curve} fill="none" stroke={SIGNAL} strokeWidth={2.25} />
-      <Key x={L2} y={B + 46} size={10} fill={SIGNAL}>{`FROM ${pct(prob(0))} TO ${pct(prob(30))}`}</Key>
+      <Key x={L2} y={B + 46} size={10} fill={SIGNAL}>{`From ${pct(prob(0))} TO ${pct(prob(30))}`}</Key>
     </Frame>
   );
 }
@@ -1015,25 +1015,25 @@ export function OddsToProbability() {
         height={300}
         label={`A hundred customers without the email and a hundred with it. Without the email, ${n0} buy (odds ${odds0.toFixed(2)}). With an odds ratio of 1.5, the odds become ${odds1.toFixed(2)} and ${n1} buy, a change of ${gain.toFixed(1)} percentage points`}
       >
-        <Key x={20} y={18}>WITHOUT THE EMAIL</Key>
+        <Key x={20} y={18}>Without the email</Key>
         {grid(48, n0, 0)}
-        <Key x={20} y={160}>WITH THE EMAIL</Key>
+        <Key x={20} y={160}>With the email</Key>
         {grid(190, n1, n1 - n0)}
 
         <line x1={316} y1={10} x2={316} y2={290} stroke={RULE} strokeWidth={1} />
-        <Key x={334} y={34} size={9.5}>PROBABILITY</Key>
+        <Key x={334} y={34} size={9.5}>Probability</Key>
         <Display x={334} y={64} size={26} fill={COUNTER}>{`${(p0 * 100).toFixed(0)}%`}</Display>
-        <Key x={334} y={84} size={9.5}>{`ODDS ${odds0.toFixed(2)}`}</Key>
+        <Key x={334} y={84} size={9.5}>{`Odds ${odds0.toFixed(2)}`}</Key>
 
-        <Key x={334} y={176} size={9.5}>PROBABILITY</Key>
+        <Key x={334} y={176} size={9.5}>Probability</Key>
         <Display x={334} y={206} size={26} fill={INK}>{`${(p1 * 100).toFixed(1)}%`}</Display>
-        <Key x={334} y={226} size={9.5}>{`ODDS ${odds0.toFixed(2)} \u00d7 1.5 = ${odds1.toFixed(2)}`}</Key>
+        <Key x={334} y={226} size={9.5}>{`Odds ${odds0.toFixed(2)} \u00d7 1.5 = ${odds1.toFixed(2)}`}</Key>
 
-        <Key x={512} y={34} size={9.5}>ODDS RATIO</Key>
+        <Key x={512} y={34} size={9.5}>Odds ratio</Key>
         <Display x={512} y={64} size={26}>1.5</Display>
-        <Key x={512} y={176} size={9.5} fill={SIGNAL}>CHANGE</Key>
+        <Key x={512} y={176} size={9.5} fill={SIGNAL}>Change</Key>
         <Display x={512} y={206} size={26} fill={SIGNAL}>{`+${gain.toFixed(1)}`}</Display>
-        <Key x={512} y={226} size={9.5} fill={SIGNAL}>POINTS</Key>
+        <Key x={512} y={226} size={9.5} fill={SIGNAL}>Points</Key>
       </Frame>
       <Slider label="Purchase probability without the email (%)" value={base} min={1} max={95} onChange={setBase} />
     </div>
@@ -1059,10 +1059,10 @@ const MIX = (() => {
   const search = weeks.map((t) => 44 + 10 * Math.sin((t / 52) * 2 * Math.PI + 1) + 0.25 * tv[t]);
   const social = weeks.map((t) => 26 + 6 * Math.sin((t / 13) * Math.PI));
   const layers = [
-    { id: "base", key: "BASE", v: season.map((v) => 150 + v), fill: PAPER3 },
-    { id: "tv", key: "TELEVISION", v: tv, fill: "rgba(44, 74, 140, 0.62)" },
-    { id: "search", key: "SEARCH", v: search, fill: "rgba(44, 74, 140, 0.38)" },
-    { id: "social", key: "SOCIAL MEDIA", v: social, fill: "rgba(44, 74, 140, 0.18)" },
+    { id: "base", key: "Base", v: season.map((v) => 150 + v), fill: PAPER3 },
+    { id: "tv", key: "Television", v: tv, fill: "rgba(44, 74, 140, 0.62)" },
+    { id: "search", key: "Search", v: search, fill: "rgba(44, 74, 140, 0.38)" },
+    { id: "social", key: "Social media", v: social, fill: "rgba(44, 74, 140, 0.18)" },
   ];
   const total = weeks.map((t) => layers.reduce((acc, l) => acc + l.v[t], 0));
   const actual = total.map((v, t) => v + 8 * z[t]);
@@ -1106,7 +1106,7 @@ export function MixDecomposition() {
       height={300}
       label="Two years of weekly sales decomposed by a marketing mix model into stacked contributions: the base with seasonality, television, search and social media, with the observed sales drawn as a line over them. Estimated return per dollar: television $1.40, search $2.10, social media $0.70"
     >
-      <Key x={L} y={18}>WEEKLY SALES, DECOMPOSED</Key>
+      <Key x={L} y={18}>Weekly sales, decomposed</Key>
       {MIX.layers.map((l, j) => (
         <path key={l.id} d={band(j)} fill={l.fill} />
       ))}
@@ -1114,11 +1114,11 @@ export function MixDecomposition() {
       <line x1={L} y1={B} x2={R + 8} y2={B} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(R + 8, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={X(52)} y1={B} x2={X(52)} y2={B + 6} stroke={INK} strokeWidth={1.25} />
-      <Key x={r2((L + X(52)) / 2)} y={B + 20} anchor="middle" size={9.5}>YEAR 1</Key>
-      <Key x={r2((X(52) + R) / 2)} y={B + 20} anchor="middle" size={9.5}>YEAR 2</Key>
-      <Key x={r2(X(70))} y={r2(Y(cum[0][70] / 2) + 4)} anchor="middle" size={9.5}>BASE AND SEASONALITY</Key>
+      <Key x={r2((L + X(52)) / 2)} y={B + 20} anchor="middle" size={9.5}>Year 1</Key>
+      <Key x={r2((X(52) + R) / 2)} y={B + 20} anchor="middle" size={9.5}>Year 2</Key>
+      <Key x={r2(X(70))} y={r2(Y(cum[0][70] / 2) + 4)} anchor="middle" size={9.5}>Base and seasonality</Key>
 
-      <Key x={R + 30} y={36} size={9}>RETURN PER $1</Key>
+      <Key x={R + 30} y={36} size={9}>Return per $1</Key>
       {ids.map((id, i) => {
         const j = MIX.layers.findIndex((l) => l.id === id);
         return (
@@ -1156,11 +1156,11 @@ export function AdstockDecay() {
       label="One week of advertising and its effect on sales in that week and the five that follow, at a decay rate of 0.5: 100, 50, 25, 13, 6 and 3 percent of the first week's effect"
     >
       <Megaphone x={x0 + w / 2 - 15} y={4} size={30} weight="regular" color={INK} />
-      <Key x={x0 + w + 12} y={24} size={9.5}>ADVERTISING IN WEEK 1 ONLY</Key>
+      <Key x={x0 + w + 12} y={24} size={9.5}>Advertising in week 1 only</Key>
       <g transform={`translate(22 ${base}) rotate(-90)`}>
-        <Key x={0} y={0} size={9}>EFFECT ON SALES</Key>
+        <Key x={0} y={0} size={9}>Effect on sales</Key>
       </g>
-      <Key x={460} y={24} anchor="end" size={10} fill={SIGNAL}>DECAY RATE 0.5</Key>
+      <Key x={460} y={24} anchor="end" size={10} fill={SIGNAL}>Decay rate 0.5</Key>
       {Array.from({ length: weeks }, (_, i) => {
         const v = 0.5 ** i;
         const x = x0 + i * (w + gap);
@@ -1169,14 +1169,14 @@ export function AdstockDecay() {
           <g key={i}>
             <rect x={x} y={r2(base - h)} width={w} height={h} fill={i === 0 ? INK : SIGNAL} />
             <Key x={x + w / 2} y={r2(base - h - 6)} anchor="middle" size={10} fill={i === 0 ? INK : SIGNAL}>{`${Math.round(v * 100)}%`}</Key>
-            <Key x={x + w / 2} y={base + 18} anchor="middle" size={9.5}>{`WEEK ${i + 1}`}</Key>
+            <Key x={x + w / 2} y={base + 18} anchor="middle" size={9.5}>{`Week ${i + 1}`}</Key>
           </g>
         );
       })}
       <line x1={x0 - 10} y1={base} x2={x0 + weeks * (w + gap)} y2={base} stroke={INK} strokeWidth={1.25} />
       <path d={`M${x0 + w + gap} ${base + 26}v5H${x0 + weeks * (w + gap) - gap}v-5`} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <Key x={r2((x0 + w + gap + x0 + weeks * (w + gap) - gap) / 2)} y={base + 46} anchor="middle" size={9.5} fill={SIGNAL}>
-        CARRYOVER
+        Carryover
       </Key>
     </Frame>
   );
@@ -1184,8 +1184,8 @@ export function AdstockDecay() {
 
 /** Response curves (thousands of dollars of sales against thousands spent): sales = A(1 − e^(−spend/k)). */
 const CURVES = {
-  tv: { A: 3000, k: 600, key: "TELEVISION" },
-  search: { A: 1400, k: 150, key: "SEARCH" },
+  tv: { A: 3000, k: 600, key: "Television" },
+  search: { A: 1400, k: 150, key: "Search" },
 };
 const BUDGET = 1000;
 const resp = (c: { A: number; k: number }, x: number) => c.A * (1 - Math.exp(-x / c.k));
@@ -1237,7 +1237,7 @@ export function BudgetSplit() {
         height={322}
         label={`A $1 million budget split ${100 - pct}% to television and ${pct}% to search. Television: average return $${rows[0].avg.toFixed(2)}, marginal return $${rows[0].m.toFixed(2)} per dollar. Search: average return $${rows[1].avg.toFixed(2)}, marginal return $${rows[1].m.toFixed(2)}. Total sales $${Math.round(total).toLocaleString("en-US")} thousand, highest when the two marginal returns are equal`}
       >
-        <Key x={L} y={18}>SALES BY EXPENDITURE</Key>
+        <Key x={L} y={18}>Sales by expenditure</Key>
         <line x1={L} y1={B} x2={R + 8} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R + 8, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -1245,7 +1245,7 @@ export function BudgetSplit() {
         {[0, 500, 1000].map((v) => (
           <Key key={v} x={X(v)} y={B + 16} anchor="middle" size={9.5}>{v === 0 ? "$0" : v === 500 ? "$0.5M" : "$1M"}</Key>
         ))}
-        <Key x={R + 8} y={B + 32} anchor="end" size={9.5}>EXPENDITURE</Key>
+        <Key x={R + 8} y={B + 32} anchor="end" size={9.5}>Expenditure</Key>
         {[1000, 2000, 3000].map((v) => (
           <Key key={v} x={L - 8} y={r2(Y(v) + 3.5)} anchor="end" size={9.5}>{`$${v / 1000}M`}</Key>
         ))}
@@ -1273,10 +1273,10 @@ export function BudgetSplit() {
         <line x1={400} y1={10} x2={400} y2={312} stroke={RULE} strokeWidth={1} />
         <line x1={430} y1={20} x2={452} y2={20} stroke={INK3} strokeWidth={1} strokeDasharray="4 3" />
         <line x1={542} y1={20} x2={562} y2={20} stroke={SIGNAL} strokeWidth={2} />
-        <Key x={500} y={24} anchor="end" size={9}>AVERAGE</Key>
-        <Key x={620} y={24} anchor="end" size={9} fill={SIGNAL}>MARGINAL</Key>
-        <Key x={500} y={36} anchor="end" size={9}>RETURN</Key>
-        <Key x={620} y={36} anchor="end" size={9} fill={SIGNAL}>RETURN</Key>
+        <Key x={500} y={24} anchor="end" size={9}>Average</Key>
+        <Key x={620} y={24} anchor="end" size={9} fill={SIGNAL}>Marginal</Key>
+        <Key x={500} y={36} anchor="end" size={9}>return</Key>
+        <Key x={620} y={36} anchor="end" size={9} fill={SIGNAL}>return</Key>
         {rows.map((r, i) => (
           <g key={r.id}>
             <Key x={420} y={64 + i * 60} size={9.5}>{`${r.c.key} | $${Math.round(r.x)}K`}</Key>
@@ -1285,13 +1285,13 @@ export function BudgetSplit() {
           </g>
         ))}
 
-        <Key x={420} y={194} size={9.5}>TOTAL SALES</Key>
+        <Key x={420} y={194} size={9.5}>Total sales</Key>
         <Display x={620} y={198} anchor="end" size={22}>{`$${(total / 1000).toFixed(2)}M`}</Display>
         <path d={totalPath} fill="none" stroke={INK3} strokeWidth={1.25} />
         <line x1={mx0} y1={my0} x2={mx1} y2={my0} stroke={INK} strokeWidth={1} />
         <circle cx={MX(share)} cy={MY(total)} r={4.5} fill={SIGNAL} />
-        <Key x={mx0} y={my0 + 14} size={8.5}>ALL TV</Key>
-        <Key x={mx1} y={my0 + 14} anchor="end" size={8.5}>ALL SEARCH</Key>
+        <Key x={mx0} y={my0 + 14} size={8.5}>All TV</Key>
+        <Key x={mx1} y={my0 + 14} anchor="end" size={8.5}>All search</Key>
       </Frame>
       <Slider label="Share of the budget to search (%)" value={pct} min={0} max={100} step={5} onChange={setPct} />
     </div>
@@ -1303,10 +1303,10 @@ export function BudgetSplit() {
    -------------------------------------------------------------------------- */
 
 const CHANNELS = {
-  display: { key: "DISPLAY", Icon: Browser },
-  social: { key: "SOCIAL", Icon: ShareNetwork },
-  email: { key: "EMAIL", Icon: Envelope },
-  search: { key: "SEARCH", Icon: MagnifyingGlass },
+  display: { key: "Display", Icon: Browser },
+  social: { key: "Social", Icon: ShareNetwork },
+  email: { key: "Email", Icon: Envelope },
+  search: { key: "Search", Icon: MagnifyingGlass },
 } as const;
 type Channel = keyof typeof CHANNELS;
 
@@ -1367,7 +1367,7 @@ export function AttributionRules() {
           .map((id) => `${CHANNELS[id].key.toLowerCase()} ${totals[id].toFixed(2)}`)
           .join(", ")}`}
       >
-        <Key x={20} y={20}>FOUR PATHS TO PURCHASE</Key>
+        <Key x={20} y={20}>Four paths to purchase</Key>
         {PATHS.map((path, r) => {
           const cy = y0 + r * rowH + 14;
           const end = x0 + path.length * step;
@@ -1393,7 +1393,7 @@ export function AttributionRules() {
         })}
 
         <line x1={372} y1={10} x2={372} y2={308} stroke={RULE} strokeWidth={1} />
-        <Key x={392} y={20}>CREDIT FOR 4 CONVERSIONS</Key>
+        <Key x={392} y={20}>Credit for 4 conversions</Key>
         {ids.map((id, i) => {
           const cy = 66 + i * 62;
           const { Icon } = CHANNELS[id];
@@ -1437,20 +1437,20 @@ export function BrandSearchHoldout() {
       label="Twenty purchases that followed a click on a search advertisement for the brand's own name. Last-click attribution credits all twenty to the advertisement. A holdout test finds that seventeen would have occurred without it, so three are incremental"
     >
       <MagnifyingGlass x={x0 - 18} y={10} size={26} weight="regular" color={INK} />
-      <Key x={x0 + 16} y={28}>LAST-CLICK ATTRIBUTION</Key>
+      <Key x={x0 + 16} y={28}>Last-click attribution</Key>
       {Array.from({ length: n }, (_, i) => (
         <Person1 key={i} x={x0 + i * dx} y={84} k={0.95} fill={COUNTER} stroke={COUNTER} />
       ))}
-      <Key x={x0 - 10} y={106} size={10} fill={COUNTER}>20 PURCHASES CREDITED TO BRAND SEARCH</Key>
+      <Key x={x0 - 10} y={106} size={10} fill={COUNTER}>20 purchases credited to brand search</Key>
 
       <line x1={16} y1={124} x2={544} y2={124} stroke={RULE} strokeWidth={1} />
-      <Key x={x0 - 10} y={146}>HOLDOUT TEST</Key>
+      <Key x={x0 - 10} y={146}>Holdout test</Key>
       {Array.from({ length: n }, (_, i) => {
         const inc = incremental.includes(i);
         return <Person1 key={i} x={x0 + i * dx} y={202} k={0.95} fill={inc ? SIGNAL : PAPER} stroke={inc ? SIGNAL : INK3} />;
       })}
-      <Key x={x0 - 10} y={224} size={10} fill={SIGNAL}>3 INCREMENTAL</Key>
-      <Key x={540} y={224} anchor="end" size={10} fill={INK3}>17 WOULD HAVE OCCURRED WITHOUT THE AD</Key>
+      <Key x={x0 - 10} y={224} size={10} fill={SIGNAL}>3 incremental</Key>
+      <Key x={540} y={224} anchor="end" size={10} fill={INK3}>17 would have occurred without the ad</Key>
     </Frame>
   );
 }
@@ -1520,7 +1520,7 @@ export function Overfitting() {
             <rect x={L} y={T} width={R - L} height={B - T} />
           </clipPath>
         </defs>
-        <Key x={L} y={20}>WEEKLY SALES</Key>
+        <Key x={L} y={20}>Weekly sales</Key>
         <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -1533,25 +1533,25 @@ export function Overfitting() {
           <circle key={`t${i}`} cx={X(x)} cy={Y(OVER.yt[i])} r={4} fill={INK} />
         ))}
         <circle cx={L + 8} cy={B + 22} r={4} fill={INK} />
-        <Key x={L + 18} y={B + 26} size={9}>ESTIMATION DATA</Key>
+        <Key x={L + 18} y={B + 26} size={9}>Estimation data</Key>
         <circle cx={L + 160} cy={B + 22} r={4} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-        <Key x={L + 170} y={B + 26} size={9} fill={SIGNAL}>HOLDOUT DATA</Key>
+        <Key x={L + 170} y={B + 26} size={9} fill={SIGNAL}>Holdout data</Key>
 
         <line x1={372} y1={10} x2={372} y2={290} stroke={RULE} strokeWidth={1} />
-        <Key x={eL - 20} y={20}>PREDICTION ERROR</Key>
+        <Key x={eL - 20} y={20}>Prediction error</Key>
         <line x1={eL} y1={eB} x2={eR} y2={eB} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(eR, eB, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={eL} y1={eB} x2={eL} y2={eT - 8} stroke={INK} strokeWidth={1.25} />
         <path d={head.up(eL, eT - 8, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-        <Key x={eR} y={eB + 18} anchor="end" size={9.5}>FLEXIBILITY</Key>
+        <Key x={eR} y={eB + 18} anchor="end" size={9.5}>Flexibility</Key>
         <path d={line("train")} fill="none" stroke={INK} strokeWidth={1.5} />
         <path d={line("hold")} fill="none" stroke={SIGNAL} strokeWidth={2} />
         <line x1={EX(d)} y1={eT - 4} x2={EX(d)} y2={eB} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
         <circle cx={EX(d)} cy={EY(fit.train)} r={4.5} fill={INK} />
         <circle cx={EX(d)} cy={EY(fit.hold)} r={4.5} fill={SIGNAL} />
-        <Key x={EX(10)} y={r2(EY(OVER.fits[9].train) - 8)} anchor="end" size={9}>ESTIMATION</Key>
-        <Key x={r2(EX(10) - 6)} y={r2(EY(OVER.fits[9].hold) - 2)} anchor="end" size={9} fill={SIGNAL}>HOLDOUT</Key>
-        <Key x={eL - 20} y={262} size={9.5}>{`ESTIMATION ${fit.train.toFixed(2)}`}</Key>
+        <Key x={EX(10)} y={r2(EY(OVER.fits[9].train) - 8)} anchor="end" size={9}>Estimation</Key>
+        <Key x={r2(EX(10) - 6)} y={r2(EY(OVER.fits[9].hold) - 2)} anchor="end" size={9} fill={SIGNAL}>Holdout</Key>
+        <Key x={eL - 20} y={262} size={9.5}>{`Estimation ${fit.train.toFixed(2)}`}</Key>
         <Display x={eL - 20} y={290} size={20} fill={SIGNAL}>{`Holdout ${fit.hold.toFixed(2)}`}</Display>
       </Frame>
       <Slider label="Model flexibility" value={d} min={1} max={10} onChange={setD} />
@@ -1601,7 +1601,7 @@ export function TreeVersusLine() {
       height={280}
       label={`Forty stores' weekly units by price: steady up to about $4.50, then falling. Linear regression fits one straight line with a slope of ${Math.round(b)} units per dollar. A tree ensemble fits a stepped curve that follows the bend, without a coefficient`}
     >
-      <Key x={L} y={18}>WEEKLY UNITS BY PRICE</Key>
+      <Key x={L} y={18}>Weekly units by price</Key>
       <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -1610,7 +1610,7 @@ export function TreeVersusLine() {
         <Key key={p} x={X(p)} y={B + 16} anchor="middle" size={9.5}>{`$${p}.00`}</Key>
       ))}
       <g transform={`translate(${L - 12} ${T}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" size={10}>UNITS</Key>
+        <Key x={0} y={0} anchor="end" size={10}>Units</Key>
       </g>
       {TREE.price.map((p, i) => (
         <Store1 key={i} cx={X(p)} cy={Y(TREE.units[i])} k={0.6} stroke={INK3} />
@@ -1620,14 +1620,14 @@ export function TreeVersusLine() {
 
       <line x1={490} y1={30} x2={490} y2={262} stroke={RULE} strokeWidth={1} />
       <line x1={504} y1={62} x2={530} y2={62} stroke={INK} strokeWidth={2} />
-      <Key x={504} y={84} size={9}>LINEAR</Key>
-      <Key x={504} y={96} size={9}>REGRESSION</Key>
+      <Key x={504} y={84} size={9}>Linear</Key>
+      <Key x={504} y={96} size={9}>regression</Key>
       <Display x={504} y={126} size={20}>{minus(String(Math.round(b)))}</Display>
-      <Key x={504} y={142} size={9}>UNITS PER $1</Key>
+      <Key x={504} y={142} size={9}>Units per $1</Key>
       <path d="M504 178h9v-8h9v-8h8" fill="none" stroke={SIGNAL} strokeWidth={2.5} />
-      <Key x={504} y={198} size={9} fill={SIGNAL}>TREE</Key>
-      <Key x={504} y={210} size={9} fill={SIGNAL}>ENSEMBLE</Key>
-      <Key x={504} y={236} size={9} fill={SIGNAL}>NO COEFFICIENT</Key>
+      <Key x={504} y={198} size={9} fill={SIGNAL}>Tree</Key>
+      <Key x={504} y={210} size={9} fill={SIGNAL}>ensemble</Key>
+      <Key x={504} y={236} size={9} fill={SIGNAL}>No coefficient</Key>
     </Frame>
   );
 }
@@ -1637,11 +1637,11 @@ export function TreeVersusLine() {
    -------------------------------------------------------------------------- */
 
 const IMPORTANCE = [
-  { key: "DISCOUNT RECEIVED", v: 0.34, lead: true },
-  { key: "PAST PURCHASES", v: 0.27, lead: false },
-  { key: "MONTHS AS A CUSTOMER", v: 0.18, lead: false },
-  { key: "EMAILS OPENED", v: 0.12, lead: false },
-  { key: "REGION", v: 0.05, lead: false },
+  { key: "Discount received", v: 0.34, lead: true },
+  { key: "Past purchases", v: 0.27, lead: false },
+  { key: "Months as a customer", v: 0.18, lead: false },
+  { key: "Emails opened", v: 0.12, lead: false },
+  { key: "Region", v: 0.05, lead: false },
 ];
 
 /**
@@ -1658,7 +1658,7 @@ export function DiscountImportance() {
       height={300}
       label="A purchase model's variable importance: discount received 0.34, past purchases 0.27, months as a customer 0.18, emails opened 0.12, region 0.05. Below, sixteen customers from the historical data: the discounts went to the six most loyal"
     >
-      <Key x={20} y={20}>VARIABLE IMPORTANCE</Key>
+      <Key x={20} y={20}>Variable importance</Key>
       {IMPORTANCE.map((r, i) => {
         const y = 40 + i * 26;
         return (
@@ -1671,7 +1671,7 @@ export function DiscountImportance() {
       })}
 
       <line x1={20} y1={180} x2={580} y2={180} stroke={RULE} strokeWidth={1} />
-      <Key x={20} y={200}>WHO RECEIVED DISCOUNTS</Key>
+      <Key x={20} y={200}>Who received discounts</Key>
       {Array.from({ length: 16 }, (_, i) => {
         const loyal = i < 6;
         const x = 40 + i * 34 + (loyal ? 0 : 20);
@@ -1683,7 +1683,7 @@ export function DiscountImportance() {
         );
       })}
       <path d="M28 276v6H222v-6" fill="none" stroke={COUNTER} strokeWidth={1.25} />
-      <Key x={125} y={296} anchor="middle" size={9.5} fill={COUNTER}>MOST LOYAL CUSTOMERS</Key>
+      <Key x={125} y={296} anchor="middle" size={9.5} fill={COUNTER}>Most loyal customers</Key>
     </Frame>
   );
 }
@@ -1731,11 +1731,11 @@ export function CentDollarRatio() {
         (m) => `${m.key} ${m.r.toFixed(2)} [${m.lo.toFixed(2)}, ${m.hi.toFixed(2)}]`,
       ).join(". ")}. Seven intervals include 1. Flash's lies below 1. The normative optimizer's own estimate is 1.11 [0.94, 1.27]`}
     >
-      <Key x={20} y={20}>CENT COEFFICIENT ÷ DOLLAR COEFFICIENT</Key>
+      <Key x={20} y={20}>Cent coefficient ÷ dollar coefficient</Key>
       <rect x={lx} y={34} width={r2(X(1) - lx)} height={bottom + 30 - 34} fill={COUNTER_TINT} />
-      <Key x={lx + 8} y={48} size={9} fill={COUNTER}>CENTS DISCOUNTED</Key>
+      <Key x={lx + 8} y={48} size={9} fill={COUNTER}>Cents discounted</Key>
       <line x1={X(1)} y1={34} x2={X(1)} y2={bottom + 30} stroke={INK} strokeWidth={1.5} />
-      <Key x={r2(X(1) + 6)} y={48} size={9}>NORMATIVE VALUE 1</Key>
+      <Key x={r2(X(1) + 6)} y={48} size={9}>Normative value 1</Key>
 
       {CENT_RATIO.map((m, i) => {
         const y = rowY(i) + 14;
@@ -1837,14 +1837,14 @@ export function SkepticismMediation() {
         height={318}
         label={`Mediation when the agent is told it serves ${who === "traveler" ? "the traveler" : "the platform"}: the sponsorship label raises skepticism by ${m.a.toFixed(2)} points (a). Each point of skepticism changes the log odds of choosing the listing by ${fmt(m.b, 3)} (b). The indirect effect a × b is ${fmt(m.ab, 2)}. The direct effect is ${fmt(m.direct, 2)}${m.directSig ? "" : ", not significant"}`}
       >
-        {box(X0.x, X0.y, ["SPONSORSHIP", "LABEL"])}
+        {box(X0.x, X0.y, ["Sponsorship", "label"])}
         <g>
           <rect x={M0.x - 78} y={M0.y - 26} width={156} height={52} rx={3} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
           <AiMark1 cx={M0.x - 56} cy={M0.y} s={18} fill={SIGNAL} />
-          <Key x={M0.x + 10} y={M0.y - 2} anchor="middle" size={9.5} fill={SIGNAL}>SKEPTICISM IN</Key>
-          <Key x={M0.x + 10} y={M0.y + 11} anchor="middle" size={9.5} fill={SIGNAL}>THE TRACE</Key>
+          <Key x={M0.x + 10} y={M0.y - 2} anchor="middle" size={9.5} fill={SIGNAL}>Skepticism in</Key>
+          <Key x={M0.x + 10} y={M0.y + 11} anchor="middle" size={9.5} fill={SIGNAL}>the trace</Key>
         </g>
-        {box(Y0.x, Y0.y, ["CHOICE OF THE", "SPONSORED LISTING"])}
+        {box(Y0.x, Y0.y, ["Choice of the", "sponsored listing"])}
 
         {arrow(X0.x + 30, X0.y - 28, M0.x - 70, M0.y + 28, r2(1 + m.a * 0.9), SIGNAL)}
         {arrow(M0.x + 70, M0.y + 28, Y0.x - 30, Y0.y - 28, r2(1 + Math.abs(m.b) * 0.9), SIGNAL)}
@@ -1854,15 +1854,15 @@ export function SkepticismMediation() {
         <Display x={150} y={110} anchor="end" size={22} fill={SIGNAL}>{`+${m.a.toFixed(2)}`}</Display>
         <Key x={470} y={84} size={10} fill={SIGNAL}>b</Key>
         <Display x={470} y={110} size={22} fill={SIGNAL}>{fmt(m.b, 3)}</Display>
-        <Key x={310} y={218} anchor="middle" size={9.5}>DIRECT EFFECT</Key>
-        <Key x={310} y={186} anchor="middle" size={11}>{`${fmt(m.direct, 2)}${m.directSig ? "" : ", NOT SIGNIFICANT"}`}</Key>
+        <Key x={310} y={218} anchor="middle" size={9.5}>Direct effect</Key>
+        <Key x={310} y={186} anchor="middle" size={11}>{`${fmt(m.direct, 2)}${m.directSig ? "" : ", not significant"}`}</Key>
 
         <line x1={20} y1={244} x2={600} y2={244} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={270} size={10} fill={SIGNAL}>INDIRECT EFFECT a × b</Key>
+        <Key x={20} y={270} size={10} fill={SIGNAL}>Indirect effect a × b</Key>
         <Display x={20} y={302} size={30} fill={SIGNAL}>{fmt(m.ab, 2)}</Display>
-        <Key x={130} y={298} size={9.5}>LOG ODDS</Key>
-        <Key x={600} y={270} anchor="end" size={9.5} fill={INK3}>{`TRAVELER ${fmt(MEDIATION.traveler.ab, 2)} | PLATFORM ${fmt(MEDIATION.platform.ab, 2)}`}</Key>
-        <Key x={600} y={298} anchor="end" size={9} fill={INK3}>N = 2,000 SESSIONS</Key>
+        <Key x={130} y={298} size={9.5}>Log odds</Key>
+        <Key x={600} y={270} anchor="end" size={9.5} fill={INK3}>{`Traveler ${fmt(MEDIATION.traveler.ab, 2)} | platform ${fmt(MEDIATION.platform.ab, 2)}`}</Key>
+        <Key x={600} y={298} anchor="end" size={9} fill={INK3}>N = 2,000 sessions</Key>
       </Frame>
       <Segmented label="The agent is told it serves" options={[...PRINCIPALS]} value={who} onChange={setWho} />
     </div>

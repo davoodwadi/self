@@ -59,7 +59,7 @@ export function BrandsOnScale() {
       height={198}
       label="Three coffee brands, A, B and C, located on a scale of perceived quality from 1 to 7, at average ratings of 2.6, 4.5 and 6.2"
     >
-      <Key x={x0} y={20} fill={INK3}>PERCEIVED QUALITY</Key>
+      <Key x={x0} y={20} fill={INK3}>Perceived quality</Key>
       {/* the continuum */}
       <line x1={x0 - 14} y1={axisY} x2={x1 + 22} y2={axisY} stroke={INK} strokeWidth={1.5} />
       <path d={head.right(x1 + 22, axisY, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
@@ -77,7 +77,7 @@ export function BrandsOnScale() {
         return (
           <g key={b.mark}>
             <Cup1 x={x} y={100} k={2.2} />
-            <text x={x} y={94} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={17} fontWeight={600} fill={INK}>
+            <text x={x} y={94} textAnchor="middle" fontFamily="var(--font-body)" fontSize={17} fontWeight={600} fill={INK}>
               {b.mark}
             </text>
             <line x1={x} y1={134} x2={x} y2={axisY - 9} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
@@ -123,9 +123,9 @@ export function OperationalDefinition() {
         strokeWidth={1.25}
       />
       <path d={head.right(right + 44, rows[1] + 12, 7)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={right + 56} y={rows[1] - 18} fill={INK3} size={10}>AVERAGE</Key>
+      <Key x={right + 56} y={rows[1] - 18} fill={INK3} size={10}>Average</Key>
       <Display x={right + 54} y={rows[1] + 24} fill={SIGNAL} size={40}>6.0</Display>
-      <Key x={right + 56} y={rows[1] + 46} fill={SIGNAL} size={10}>SATISFACTION</Key>
+      <Key x={right + 56} y={rows[1] + 46} fill={SIGNAL} size={10}>Satisfaction</Key>
     </Frame>
   );
 }
@@ -153,18 +153,18 @@ export function RanksHideGaps() {
       height={214}
       label="A consumer ranks three coffee brands A, B and C first, second and third, in equal steps. On the continuum of preference beneath, A is far ahead, while B and C are close together: the ranks show the order but not how much more A is preferred"
     >
-      <Key x={20} y={22} fill={INK3}>RANK</Key>
-      <Key x={20} y={axisY - 14} fill={INK3}>PREFERENCE</Key>
+      <Key x={20} y={22} fill={INK3}>Rank</Key>
+      <Key x={20} y={axisY - 14} fill={INK3}>Preference</Key>
       {/* the continuum: more preferred to the left */}
       <line x1={30} y1={axisY} x2={770} y2={axisY} stroke={INK} strokeWidth={1.5} />
       <path d={head.left(30, axisY, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Key x={36} y={axisY + 22} fill={INK3} size={10}>MORE</Key>
-      <Key x={770} y={axisY + 22} anchor="end" fill={INK3} size={10}>LESS</Key>
+      <Key x={36} y={axisY + 22} fill={INK3} size={10}>More</Key>
+      <Key x={770} y={axisY + 22} anchor="end" fill={INK3} size={10}>Less</Key>
 
       {top.map((b) => (
         <g key={b.mark}>
           <Cup1 x={b.x} y={66} k={2.3} />
-          <text x={b.x} y={60} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={16} fontWeight={600} fill={INK}>
+          <text x={b.x} y={60} textAnchor="middle" fontFamily="var(--font-body)" fontSize={16} fontWeight={600} fill={INK}>
             {b.mark}
           </text>
           <Key x={b.x} y={90} anchor="middle" fill={INK} size={13} weight={700}>
@@ -172,14 +172,14 @@ export function RanksHideGaps() {
           </Key>
           <line x1={b.x} y1={100} x2={b.at} y2={axisY - 8} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
           <circle cx={b.at} cy={axisY} r={5.5} fill={INK} />
-          <text x={b.at} y={axisY + 24} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={15} fontWeight={600} fill={INK}>
+          <text x={b.at} y={axisY + 24} textAnchor="middle" fontFamily="var(--font-body)" fontSize={15} fontWeight={600} fill={INK}>
             {b.mark}
           </text>
         </g>
       ))}
       {/* the gaps the ranks do not show */}
       <path d={`M${top[0].at} 186V194H${top[1].at}V186`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={r2((top[0].at + top[1].at) / 2)} y={210} anchor="middle" fill={SIGNAL} size={10.5}>HOW MUCH MORE</Key>
+      <Key x={r2((top[0].at + top[1].at) / 2)} y={210} anchor="middle" fill={SIGNAL} size={10.5}>How much more</Key>
       <path d={`M${top[1].at} 186V194H${top[2].at}V186`} fill="none" stroke={INK3} strokeWidth={1.25} />
     </Frame>
   );
@@ -251,8 +251,8 @@ export function ArbitraryZero() {
       }}
     >
       {/* ---------------- interval: temperature ---------------- */}
-      <Key x={L} y={18} fill={INK}>INTERVAL SCALE</Key>
-      <Key x={L + 128} y={18} fill={INK3}>TEMPERATURE</Key>
+      <Key x={L} y={18} fill={INK}>Interval scale</Key>
+      <Key x={L + 128} y={18} fill={INK3}>Temperature</Key>
       {bars.map((b) => (
         <g key={b.t}>
           <rect x={zx} y={b.y} width={r2(T(b.t) - zx)} height={bh} fill={PAPER3} stroke={INK} strokeWidth={1.25} />
@@ -291,18 +291,18 @@ export function ArbitraryZero() {
         <path d={`M${r2(zx - 13)} ${tAxis - 4}L${r2(zx - 18)} ${tAxis}L${r2(zx - 13)} ${tAxis + 4}Z`} fill={COUNTER} />
         <path d={`M${r2(zx + 13)} ${tAxis - 4}L${r2(zx + 18)} ${tAxis}L${r2(zx + 13)} ${tAxis + 4}Z`} fill={COUNTER} />
       </g>
-      <Key x={zx} y={44} anchor="middle" fill={COUNTER} size={11} weight={700}>ZERO</Key>
+      <Key x={zx} y={44} anchor="middle" fill={COUNTER} size={11} weight={700}>Zero</Key>
 
-      <Key x={RX} y={58} fill={INK3} size={10}>DIFFERENCE</Key>
+      <Key x={RX} y={58} fill={INK3} size={10}>Difference</Key>
       <Display x={RX} y={86} fill={INK} size={26}>10°</Display>
-      <Key x={RX + 92} y={58} fill={COUNTER} size={10}>RATIO</Key>
+      <Key x={RX + 92} y={58} fill={COUNTER} size={10}>Ratio</Key>
       <Display x={RX + 92} y={86} fill={COUNTER} size={26}>{`${ratio.toFixed(2)}×`}</Display>
 
       <line x1={20} y1={166} x2={780} y2={166} stroke={RULE} strokeWidth={1} />
 
       {/* ---------------- ratio: spending ---------------- */}
-      <Key x={L} y={192} fill={INK}>RATIO SCALE</Key>
-      <Key x={L + 110} y={192} fill={INK3}>SPENDING</Key>
+      <Key x={L} y={192} fill={INK}>Ratio scale</Key>
+      <Key x={L + 110} y={192} fill={INK3}>Spending</Key>
       {spend.map((b) => (
         <g key={b.v}>
           <rect x={M(0)} y={b.y} width={r2(M(b.v) - M(0))} height={bh} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
@@ -321,9 +321,9 @@ export function ArbitraryZero() {
           </Key>
         </g>
       ))}
-      <Key x={RX} y={208} fill={INK3} size={10}>DIFFERENCE</Key>
+      <Key x={RX} y={208} fill={INK3} size={10}>Difference</Key>
       <Display x={RX} y={236} fill={INK} size={26}>$100</Display>
-      <Key x={RX + 92} y={208} fill={SIGNAL} size={10}>RATIO</Key>
+      <Key x={RX + 92} y={208} fill={SIGNAL} size={10}>Ratio</Key>
       <Display x={RX + 92} y={236} fill={SIGNAL} size={26}>2.00×</Display>
     </Frame>
   );
@@ -334,10 +334,10 @@ export function ArbitraryZero() {
    -------------------------------------------------------------------------- */
 
 const REGIONS = [
-  { name: "NORTH", n: 8 },
-  { name: "EAST", n: 5 },
-  { name: "SOUTH", n: 4 },
-  { name: "WEST", n: 3 },
+  { name: "North", n: 8 },
+  { name: "East", n: 5 },
+  { name: "South", n: 4 },
+  { name: "West", n: 3 },
 ];
 /** Ways of numbering the four regions, each as valid as the others. */
 const NUMBERINGS = [
@@ -403,9 +403,9 @@ export function RegionCodes() {
           );
         })}
         <line x1={12} y1={132} x2={388} y2={132} stroke={RULE} strokeWidth={1} />
-        <Key x={12} y={154} fill={SIGNAL} size={10}>MODE</Key>
+        <Key x={12} y={154} fill={SIGNAL} size={10}>Mode</Key>
         <Display x={12} y={188} fill={SIGNAL} size={30}>North</Display>
-        <Key x={202} y={154} fill={COUNTER} size={10}>AVERAGE REGION CODE</Key>
+        <Key x={202} y={154} fill={COUNTER} size={10}>Average region code</Key>
         <Display x={202} y={188} fill={COUNTER} size={30}>{mean.toFixed(2)}</Display>
         <Key x={286} y={184} fill={COUNTER} size={10}>{`\u2248 ${nearest}?`}</Key>
       </Frame>
@@ -427,7 +427,7 @@ function Brand({ x, y, mark, k = 1.9, tone = INK, fill = PAPER }: { x: number; y
   return (
     <g>
       <Cup1 x={x} y={y} k={k} stroke={tone} fill={fill} />
-      <text x={x} y={r2(y - 5.5 * (k / 1.9))} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={r2(8 * k)} fontWeight={600} fill={tone}>
+      <text x={x} y={r2(y - 5.5 * (k / 1.9))} textAnchor="middle" fontFamily="var(--font-body)" fontSize={r2(8 * k)} fontWeight={600} fill={tone}>
         {mark}
       </text>
     </g>
@@ -449,9 +449,9 @@ export function ComparativeForms() {
     { m: "E", r: 3 },
   ];
   const split = [
-    { key: "TASTE", v: 50 },
-    { key: "PRICE", v: 30 },
-    { key: "AROMA", v: 20 },
+    { key: "Taste", v: 50 },
+    { key: "Price", v: 30 },
+    { key: "Aroma", v: 20 },
   ];
   const sx = 566;
   const sw = 214;
@@ -506,7 +506,7 @@ export function ComparativeForms() {
           </g>
         );
       })}
-      <Key x={sx + sw} y={40} anchor="end" fill={INK} size={11} weight={700}>= 100 POINTS</Key>
+      <Key x={sx + sw} y={40} anchor="end" fill={INK} size={11} weight={700}>= 100 points</Key>
     </Frame>
   );
 }
@@ -533,10 +533,10 @@ export function LikertItems() {
       height={214}
       label="Three Likert statements about the same construct, each rated on five categories from strongly disagree to strongly agree, answered 4, 5 and 4, and combined into a single score: a sum of 13 or an average of 4.3"
     >
-      <Key x={x} y={18} fill={INK3} size={9}>STRONGLY</Key>
-      <Key x={x} y={29} fill={INK3} size={9}>DISAGREE</Key>
-      <Key x={right} y={18} anchor="end" fill={INK3} size={9}>STRONGLY</Key>
-      <Key x={right} y={29} anchor="end" fill={INK3} size={9}>AGREE</Key>
+      <Key x={x} y={18} fill={INK3} size={9}>Strongly</Key>
+      <Key x={x} y={29} fill={INK3} size={9}>disagree</Key>
+      <Key x={right} y={18} anchor="end" fill={INK3} size={9}>Strongly</Key>
+      <Key x={right} y={29} anchor="end" fill={INK3} size={9}>agree</Key>
       {rows.map((y, i) => (
         <RatingRow key={y} x={x} y={y} n={5} box={box} gap={gap} pick={picks[i]} stem={[196, 150, 176][i]} />
       ))}
@@ -547,9 +547,9 @@ export function LikertItems() {
         strokeWidth={1.25}
       />
       <path d={head.right(right + 44, rows[1] + 16, 7)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={right + 58} y={rows[1] - 30} fill={INK3} size={10}>SUM</Key>
+      <Key x={right + 58} y={rows[1] - 30} fill={INK3} size={10}>Sum</Key>
       <Display x={right + 57} y={rows[1] - 4} fill={INK} size={28}>13</Display>
-      <Key x={right + 58} y={rows[1] + 26} fill={SIGNAL} size={10}>AVERAGE</Key>
+      <Key x={right + 58} y={rows[1] + 26} fill={SIGNAL} size={10}>Average</Key>
       <Display x={right + 57} y={rows[1] + 58} fill={SIGNAL} size={36}>4.3</Display>
     </Frame>
   );
@@ -596,8 +596,8 @@ export function HabitProfile() {
   const bxEnd = bxs(6) + box;
   const rowH = 26;
   const forms = [
-    { y: 30, key: "A DELIGHTED GUEST", tone: SIGNAL, tint: SIGNAL_TINT, pick: (r: number) => (favLeft[r] ? 0 : 6) },
-    { y: 140, key: "ANSWERS BY HABIT", tone: COUNTER, tint: COUNTER_TINT, pick: () => 0 },
+    { y: 30, key: "A delighted guest", tone: SIGNAL, tint: SIGNAL_TINT, pick: (r: number) => (favLeft[r] ? 0 : 6) },
+    { y: 140, key: "Answers by habit", tone: COUNTER, tint: COUNTER_TINT, pick: () => 0 },
   ];
   const differ = PAIRS.filter((_, r) => forms[0].pick(r) !== forms[1].pick(r)).length;
 
@@ -636,7 +636,7 @@ export function HabitProfile() {
         ))}
         <line x1={16} y1={226} x2={384} y2={226} stroke={RULE} strokeWidth={1} />
         <Key x={16} y={248} fill={differ === 0 ? COUNTER : SIGNAL} size={10.5}>
-          {differ === 0 ? "THE TWO FORMS ARE IDENTICAL" : `THE FORMS DIFFER ON ${differ} OF 3 PAIRS`}
+          {differ === 0 ? "The two forms are identical" : `The forms differ on ${differ} of 3 pairs`}
         </Key>
       </Frame>
       <Segmented
@@ -727,7 +727,7 @@ export function ScaleDecisions() {
         height={236}
         label={`Forty customers rate a new app feature on a scale of ${n} categories${odd ? " with a neutral midpoint" : " with no midpoint"}${dk ? ', plus a "no opinion" option' : ""}. ${dk ? 'The twelve who have not used the feature choose "no opinion".' : odd ? "The twelve who have not used it mostly choose the midpoint." : "The twelve who have not used it lean one way or the other."} ${pct}% of those who rated are favorable`}
       >
-        <Key x={x0} y={20} fill={INK3} size={10}>{`FAVORABLE, OF ${rated} WHO RATED`}</Key>
+        <Key x={x0} y={20} fill={INK3} size={10}>{`Favorable, of ${rated} who rated`}</Key>
         <Display x={x0} y={56} fill={SIGNAL} size={36}>{`${pct}%`}</Display>
 
         {counts.map((c, i) => (
@@ -740,7 +740,7 @@ export function ScaleDecisions() {
           </Key>
         ))}
         {odd ? (
-          <Key x={cx(2)} y={base + 31} anchor="middle" fill={INK3} size={9}>NEUTRAL</Key>
+          <Key x={cx(2)} y={base + 31} anchor="middle" fill={INK3} size={9}>Neutral</Key>
         ) : null}
         {!dk ? (
           <Key
@@ -749,19 +749,19 @@ export function ScaleDecisions() {
             fill={COUNTER}
             size={9.5}
           >
-            HAVE NOT USED IT
+            Have not used it
           </Key>
         ) : null}
         {/* the favorable categories */}
         <path d={`M${r2(favL)} ${base + 36}V${base + 42}H${r2(favR)}V${base + 36}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-        <Key x={r2((favL + favR) / 2)} y={base + 56} anchor="middle" fill={SIGNAL} size={9.5}>FAVORABLE</Key>
+        <Key x={r2((favL + favR) / 2)} y={base + 56} anchor="middle" fill={SIGNAL} size={9.5}>Favorable</Key>
 
         {/* the way out */}
         {dk ? (
           <g>
             <line x1={dkX - 34} y1={base} x2={dkX + 34} y2={base} stroke={INK} strokeWidth={1.25} strokeDasharray="4 3" />
             {stack(dkX, 0, UNINFORMED, "dk")}
-            <Key x={dkX} y={base + 17} anchor="middle" fill={COUNTER} size={9.5}>NO OPINION</Key>
+            <Key x={dkX} y={base + 17} anchor="middle" fill={COUNTER} size={9.5}>No opinion</Key>
           </g>
         ) : null}
       </Frame>
@@ -861,9 +861,9 @@ export function MultiItemAccuracy() {
             <Key x={sx0 - 8} y={r2(SY(v) + 3.5)} anchor="end" fill={INK3} size={9.5}>{v}</Key>
           </g>
         ))}
-        <Key x={sx1 + 14} y={sy0 + 32} anchor="end" fill={INK3} size={10}>SATISFACTION</Key>
+        <Key x={sx1 + 14} y={sy0 + 32} anchor="end" fill={INK3} size={10}>Satisfaction</Key>
         <g transform={`translate(${sx0 - 30} ${sy1 - 12}) rotate(-90)`}>
-          <Key x={0} y={0} anchor="end" fill={INK3} size={10}>SCALE SCORE</Key>
+          <Key x={0} y={0} anchor="end" fill={INK3} size={10}>Scale score</Key>
         </g>
         <line x1={SX(1)} y1={SY(1)} x2={SX(7)} y2={SY(7)} stroke={INK3} strokeWidth={1} strokeDasharray="4 4" />
         {RESPONDENTS.map((p, i) => (
@@ -871,7 +871,7 @@ export function MultiItemAccuracy() {
         ))}
 
         {/* ---------------- accuracy by number of items ---------------- */}
-        <Key x={cx0 - 34} y={20} fill={INK3} size={10}>CORRELATION WITH SATISFACTION</Key>
+        <Key x={cx0 - 34} y={20} fill={INK3} size={10}>Correlation with satisfaction</Key>
         <line x1={cx0 - 10} y1={cy0} x2={cx1 + 14} y2={cy0} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(cx1 + 14, cy0, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={cx0 - 10} y1={cy0} x2={cx0 - 10} y2={cy1 - 10} stroke={INK} strokeWidth={1.25} />
@@ -886,7 +886,7 @@ export function MultiItemAccuracy() {
             {i + 1}
           </Key>
         ))}
-        <Key x={cx1 + 14} y={cy0 + 32} anchor="end" fill={INK3} size={10}>ITEMS</Key>
+        <Key x={cx1 + 14} y={cy0 + 32} anchor="end" fill={INK3} size={10}>Items</Key>
         <path d={curve} fill="none" stroke={INK} strokeWidth={1.5} />
         {R_BY_ITEMS.map((v, i) => (
           <circle key={i} cx={CX(i + 1)} cy={CY(v)} r={i + 1 === k ? 6.5 : 3} fill={i + 1 === k ? SIGNAL : INK} />
@@ -952,18 +952,18 @@ export function TestRetest() {
       {RETEST.map((p, i) => (
         <circle key={i} cx={X(p.a)} cy={Y(p.b)} r={4} fill={SIGNAL} fillOpacity={0.8} />
       ))}
-      <Key x={x1 + 12} y={y0 + 18} anchor="end" fill={INK3} size={9.5}>FIRST TIME</Key>
+      <Key x={x1 + 12} y={y0 + 18} anchor="end" fill={INK3} size={9.5}>First time</Key>
       <g transform={`translate(${x0 - 12} ${y1 - 4}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" fill={INK3} size={9.5}>SECOND TIME</Key>
+        <Key x={0} y={0} anchor="end" fill={INK3} size={9.5}>Second time</Key>
       </g>
-      <Key x={284} y={90} fill={INK3} size={10}>TEST-RETEST</Key>
-      <Key x={284} y={104} fill={INK3} size={10}>CORRELATION</Key>
+      <Key x={284} y={90} fill={INK3} size={10}>Test-retest</Key>
+      <Key x={284} y={104} fill={INK3} size={10}>correlation</Key>
       <Display x={282} y={138} fill={SIGNAL} size={34}>{RETEST_R.toFixed(2)}</Display>
 
       {/* coefficient alpha */}
-      <Key x={a0} y={aY - 26} fill={INK3} size={10}>COEFFICIENT ALPHA</Key>
+      <Key x={a0} y={aY - 26} fill={INK3} size={10}>Coefficient alpha</Key>
       <rect x={A(0.7)} y={aY - 12} width={r2(A(1) - A(0.7))} height={24} fill={PAPER3} stroke={RULE2} strokeWidth={1} />
-      <Key x={A(1)} y={aY - 18} anchor="end" fill={INK3} size={9}>ACCEPTABLE</Key>
+      <Key x={A(1)} y={aY - 18} anchor="end" fill={INK3} size={9}>Acceptable</Key>
       <line x1={a0} y1={aY} x2={a1} y2={aY} stroke={INK} strokeWidth={1.25} />
       {[0.5, 0.7, 1].map((v) => (
         <g key={v}>
@@ -1030,9 +1030,9 @@ export function ValidityEvidence() {
   const hy = hub.y + hub.h / 2;
   const tx = 206;
   const links = [
-    { y: 50, r: 0.78, key: "CONVERGENT", lines: ["another measure of", "satisfaction"], tone: SIGNAL, w: 5, dash: undefined },
-    { y: 138, r: 0.52, key: "CRITERION", lines: ["actual purchases"], tone: INK, w: 3, dash: undefined },
-    { y: 222, r: 0.08, key: "DISCRIMINANT", lines: ["price consciousness"], tone: COUNTER, w: 1.25, dash: "4 4" },
+    { y: 50, r: 0.78, key: "Convergent", lines: ["another measure of", "satisfaction"], tone: SIGNAL, w: 5, dash: undefined },
+    { y: 138, r: 0.52, key: "Criterion", lines: ["actual purchases"], tone: INK, w: 3, dash: undefined },
+    { y: 222, r: 0.08, key: "Discriminant", lines: ["price consciousness"], tone: COUNTER, w: 1.25, dash: "4 4" },
   ];
   return (
     <Frame
@@ -1040,7 +1040,7 @@ export function ValidityEvidence() {
       height={262}
       label="Evidence for the validity of a new satisfaction scale: it correlates 0.78 with another measure of satisfaction (convergent validity), 0.52 with actual purchases (criterion validity), and only 0.08 with price consciousness, a different construct (discriminant validity)"
     >
-      <Key x={hub.x} y={hub.y - 12} fill={INK} size={10}>NEW SCALE</Key>
+      <Key x={hub.x} y={hub.y - 12} fill={INK} size={10}>New scale</Key>
       <FormSheet x={hub.x} y={hub.y} w={hub.w} h={hub.h} />
       {links.map((l, i) => {
         const ex = tx - 8;
@@ -1118,15 +1118,15 @@ export function BathroomScale() {
       ))}
       {/* the true weight */}
       <line x1={X(70)} y1={60} x2={X(70)} y2={axisY} stroke={INK} strokeWidth={1.25} strokeDasharray="4 3" />
-      <Key x={r2(X(70) - 8)} y={66} anchor="end" fill={INK} size={10.5}>TRUE WEIGHT</Key>
+      <Key x={r2(X(70) - 8)} y={66} anchor="end" fill={INK} size={10.5}>True weight</Key>
       {readings.map((v, i) => (
         <circle key={i} cx={X(v)} cy={axisY - 12 - i * 13} r={5.5} fill={SIGNAL} />
       ))}
-      <Key x={r2(X(73) + 16)} y={axisY - 44} fill={SIGNAL} size={10.5}>FIVE WEIGHINGS</Key>
-      <Key x={r2(X(73) + 16)} y={axisY - 30} fill={SIGNAL} size={10.5}>CONSISTENT</Key>
+      <Key x={r2(X(73) + 16)} y={axisY - 44} fill={SIGNAL} size={10.5}>Five weighings</Key>
+      <Key x={r2(X(73) + 16)} y={axisY - 30} fill={SIGNAL} size={10.5}>consistent</Key>
       {/* the systematic error */}
       <path d={`M${X(70)} 40V32H${X(73)}V40`} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={r2((X(70) + X(73)) / 2)} y={22} anchor="middle" fill={COUNTER} size={10.5}>3 KG TOO HIGH</Key>
+      <Key x={r2((X(70) + X(73)) / 2)} y={22} anchor="middle" fill={COUNTER} size={10.5}>3 kg too high</Key>
     </Frame>
   );
 }
@@ -1186,7 +1186,7 @@ export function QuestionForms() {
 
       {/* dichotomous */}
       {stem(cols[2], 140)}
-      {["YES", "NO"].map((t, i) => {
+      {["Yes", "NO"].map((t, i) => {
         const x = cols[2] + 30 + i * 80;
         const on = i === 0;
         return (
@@ -1231,7 +1231,7 @@ export function QuestionnaireFunnel() {
     <rect x={L} y={y} width={R - L} height={h} fill={fill} stroke={stroke} strokeWidth={1.25} />
   );
   const num = (n: number, y: number) => (
-    <Key x={20} y={y} fill={INK3} size={11} weight={700}>{String(n).padStart(2, "0")}</Key>
+    <Key x={20} y={y} fill={INK3} size={11} weight={700}>{String(n)}</Key>
   );
   return (
     <Frame
@@ -1245,11 +1245,11 @@ export function QuestionnaireFunnel() {
 
       {num(1, 42)}
       {band(18, 40, PAPER, INK)}
-      <Key x={L + 14} y={43} fill={INK} size={11}>SCREENING</Key>
+      <Key x={L + 14} y={43} fill={INK} size={11}>Screening</Key>
 
       {num(2, 94)}
       {band(70, 40, PAPER, INK)}
-      <Key x={L + 14} y={95} fill={INK} size={11}>SIMPLE, INTERESTING</Key>
+      <Key x={L + 14} y={95} fill={INK} size={11}>Simple, interesting</Key>
 
       {num(3, 146)}
       <path
@@ -1259,15 +1259,15 @@ export function QuestionnaireFunnel() {
         strokeWidth={1.5}
         strokeLinejoin="round"
       />
-      <Key x={cx} y={fTop + 22} anchor="middle" fill={SIGNAL} size={11}>GENERAL</Key>
+      <Key x={cx} y={fTop + 22} anchor="middle" fill={SIGNAL} size={11}>General</Key>
       {[160, 180, 200].map((y) => (
         <line key={y} x1={r2(cx - fx(y) + 18)} y1={y} x2={r2(cx + fx(y) - 18)} y2={y} stroke={SIGNAL} strokeOpacity={0.45} strokeWidth={3} strokeLinecap="round" />
       ))}
-      <Key x={cx} y={fBot - 12} anchor="middle" fill={SIGNAL} size={11}>SPECIFIC</Key>
+      <Key x={cx} y={fBot - 12} anchor="middle" fill={SIGNAL} size={11}>Specific</Key>
 
       {num(4, 274)}
       {band(250, 58, PAPER3, INK3)}
-      <Key x={L + 14} y={274} fill={INK} size={11}>SENSITIVE, CLASSIFICATION</Key>
+      <Key x={L + 14} y={274} fill={INK} size={11}>Sensitive, classification</Key>
       <Note x={L + 14} y={295} fill={INK2} size={13}>income</Note>
     </Frame>
   );
@@ -1284,7 +1284,7 @@ export function QuestionnaireFunnel() {
  * fixed instruction asks for a single scale point.
  */
 export function ScaleForModel() {
-  const countries = ["USA", "CHINA", "CANADA", "FRANCE"];
+  const countries = ["USA", "China", "Canada", "France"];
   const on = 2;
   const cw = 84;
   const card = { x: 16, y: 72, w: 368, h: 124 };
@@ -1294,7 +1294,7 @@ export function ScaleForModel() {
       height={210}
       label="A consumer ethnocentrism item put to an AI model: the country in the wording is varied across four conditions, the United States, China, Canada and France. Here it reads Canadians should always buy Canadian-made products instead of imports. A fixed instruction asks for only the digit, and the model answers with one point on a seven-point scale"
     >
-      <Key x={16} y={22} fill={INK3} size={9.5}>CONDITION</Key>
+      <Key x={16} y={22} fill={INK3} size={9.5}>Condition</Key>
       {countries.map((c, i) => {
         const x = 16 + i * (cw + 10);
         const hit = i === on;
@@ -1362,7 +1362,7 @@ export function ResponseDraws() {
         height={226}
         label={`Probabilities a model assigns to the seven points of one Likert item: 2, 5, 12, 30, 33, 14 and 4 percent. The latest generated answer is ${last}. Answers so far: ${shown.join(", ")}`}
       >
-        <Key x={16} y={20} fill={INK3} size={9.5}>PROBABILITY OF EACH POINT</Key>
+        <Key x={16} y={20} fill={INK3} size={9.5}>Probability of each point</Key>
         {ITEM_PMF.map((p, i) => {
           const v = i + 1;
           const h = r2(p * scale);
@@ -1377,7 +1377,7 @@ export function ResponseDraws() {
         })}
         <line x1={x0 - 26} y1={base} x2={x1 + 26} y2={base} stroke={INK} strokeWidth={1.25} />
         <line x1={16} y1={base + 32} x2={384} y2={base + 32} stroke={RULE2} strokeWidth={1} />
-        <Key x={16} y={base + 54} fill={INK3} size={9.5}>GENERATED ANSWERS</Key>
+        <Key x={16} y={base + 54} fill={INK3} size={9.5}>Generated answers</Key>
         {shown.map((a, i) => {
           const latest = i === shown.length - 1;
           return (

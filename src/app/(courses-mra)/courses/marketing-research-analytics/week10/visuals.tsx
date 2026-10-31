@@ -118,10 +118,10 @@ const HIGH = 0.6;
 /** A factor's name, read from the items that load highly on it. */
 function factorName(col: number[]): [string, string?] {
   const hi = col.map((v, i) => (Math.abs(v) >= HIGH ? i : -1)).filter((i) => i >= 0);
-  if (hi.length === 1) return ["ONE ITEM", "ONLY"];
-  if (hi.every((i) => i < 3)) return ["SERVICE", "QUALITY"];
-  if (hi.every((i) => i >= 3)) return ["VALUE"];
-  return ["SERVICE AND", "VALUE MIXED"];
+  if (hi.length === 1) return ["One item", "only"];
+  if (hi.every((i) => i < 3)) return ["Service", "quality"];
+  if (hi.every((i) => i >= 3)) return ["Value"];
+  return ["Service and", "value mixed"];
 }
 
 /**
@@ -162,7 +162,7 @@ export function FactorRetention() {
           (_, c) => factorName(L.map((r) => r[c])).join(" "),
         ).join(", ")}`}
       >
-        <Key x={sx0 - 20} y={22}>SCREE PLOT</Key>
+        <Key x={sx0 - 20} y={22}>Scree plot</Key>
 
         {/* axes */}
         <line x1={sx0} y1={sB} x2={sx1 + 8} y2={sB} stroke={INK} strokeWidth={1.25} />
@@ -175,9 +175,9 @@ export function FactorRetention() {
           </Key>
         ))}
         <g transform={`translate(${sx0 - 28} ${sT - 8}) rotate(-90)`}>
-          <Key x={0} y={0} anchor="end" size={9.5}>EIGENVALUE</Key>
+          <Key x={0} y={0} anchor="end" size={9.5}>Eigenvalue</Key>
         </g>
-        <Key x={sx1 + 8} y={sB + 36} anchor="end" size={9.5}>FACTOR</Key>
+        <Key x={sx1 + 8} y={sB + 36} anchor="end" size={9.5}>Factor</Key>
 
         {/* the eigenvalue-one line */}
         <line x1={sx0} y1={SY(1)} x2={sx1} y2={SY(1)} stroke={INK3} strokeWidth={1} strokeDasharray="4 3" />
@@ -200,15 +200,15 @@ export function FactorRetention() {
             </g>
           );
         })}
-        <Key x={SX(5) + 4} y={r2(SY(1) - 7)} anchor="end" size={9}>EIGENVALUE 1</Key>
+        <Key x={SX(5) + 4} y={r2(SY(1) - 7)} anchor="end" size={9}>Eigenvalue 1</Key>
 
         {/* loadings */}
         <line x1={262} y1={12} x2={262} y2={318} stroke={RULE} strokeWidth={1} />
-        <Key x={tx} y={22}>LOADINGS</Key>
-        <Key x={tx} y={ty0 - 16} size={9.5}>ITEM</Key>
+        <Key x={tx} y={22}>Loadings</Key>
+        <Key x={tx} y={ty0 - 16} size={9.5}>Item</Key>
         {Array.from({ length: k }, (_, c) => (
           <Key key={c} x={cx0 + c * cw + cw / 2} y={ty0 - 16} anchor="middle" size={9.5}>
-            {`FACTOR ${c + 1}`}
+            {`Factor ${c + 1}`}
           </Key>
         ))}
         {BANK_ITEMS.map((item, r) => {
@@ -235,11 +235,11 @@ export function FactorRetention() {
         <line x1={tx} y1={ty0 + 6 * rowH - 8} x2={cx0 + 4 * cw} y2={ty0 + 6 * rowH - 8} stroke={INK3} strokeWidth={1} />
 
         {/* each factor, named from the items that load highly on it */}
-        <Key x={tx} y={ty0 + 6 * rowH + 16} size={9.5}>NAMED</Key>
+        <Key x={tx} y={ty0 + 6 * rowH + 16} size={9.5}>Named</Key>
         {Array.from({ length: k }, (_, c) => {
           const [a, b] = factorName(L.map((row) => row[c]));
           const x = cx0 + c * cw + cw / 2;
-          const clean = a === "SERVICE" || a === "VALUE";
+          const clean = a === "Service" || a === "Value";
           return (
             <g key={c}>
               <Key x={x} y={ty0 + 6 * rowH + 16} anchor="middle" size={9} fill={clean ? INK : COUNTER} weight={700}>
@@ -290,10 +290,10 @@ function MapAxes({ cx, cy, h }: { cx: number; cy: number; h: number }) {
       <line x1={cx} y1={cy - h} x2={cx} y2={cy + h} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(cx, cy - h, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <path d={head.down(cx, cy + h, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={cx + h} y={cy + 20} anchor="end" size={11}>HIGHER SERVICE QUALITY</Key>
-      <Key x={cx - h} y={cy + 20} size={11}>LOWER</Key>
-      <Key x={cx + 10} y={cy - h + 6} size={11}>BETTER VALUE</Key>
-      <Key x={cx + 10} y={cy + h} size={11}>POORER VALUE</Key>
+      <Key x={cx + h} y={cy + 20} anchor="end" size={11}>Higher service quality</Key>
+      <Key x={cx - h} y={cy + 20} size={11}>Lower</Key>
+      <Key x={cx + 10} y={cy - h + 6} size={11}>Better value</Key>
+      <Key x={cx + 10} y={cy + h} size={11}>Poorer value</Key>
     </g>
   );
 }
@@ -359,8 +359,8 @@ export function BankMap() {
         stroke={SIGNAL}
         strokeWidth={1.5}
       />
-      <Key x={r2(d.x + 44)} y={r2(d.y + 4)} size={10.5} fill={SIGNAL}>PERCEIVED AS SIMILAR:</Key>
-      <Key x={r2(d.x + 44)} y={r2(d.y + 18)} size={10.5} fill={SIGNAL}>COMPETE DIRECTLY</Key>
+      <Key x={r2(d.x + 44)} y={r2(d.y + 4)} size={10.5} fill={SIGNAL}>Perceived as similar:</Key>
+      <Key x={r2(d.x + 44)} y={r2(d.y + 18)} size={10.5} fill={SIGNAL}>Compete directly</Key>
 
       {/* the segment's ideal point and its nearest bank */}
       <line
@@ -373,7 +373,7 @@ export function BankMap() {
         strokeDasharray="4 3"
       />
       <IdealMark x={ideal.x} y={ideal.y} />
-      <Key x={r2(ideal.x)} y={r2(ideal.y - 20)} anchor="middle" size={11}>IDEAL POINT</Key>
+      <Key x={r2(ideal.x)} y={r2(ideal.y - 20)} anchor="middle" size={11}>Ideal point</Key>
 
       {BANKS.map((b) => {
         const p = P(b);
@@ -464,7 +464,7 @@ export function NewEntrant() {
       y: Math.round(Math.max(-0.9, Math.min(0.9, (cy - y) / s)) * 100) / 100,
     });
 
-  const all = [...BANKS, { id: "NEW", ...pos }];
+  const all = [...BANKS, { id: "New", ...pos }];
   const choice = CONSUMERS.map((c) => nearest(c, all));
   const before = CONSUMERS.map((c) => nearest(c, BANKS));
   const won = choice.filter((i) => i === BANKS.length).length;
@@ -522,13 +522,13 @@ export function NewEntrant() {
 
       {/* what the position wins */}
       <line x1={478} y1={14} x2={478} y2={442} stroke={RULE} strokeWidth={1} />
-      <Key x={498} y={40}>NEW BANK</Key>
-      <Key x={498} y={56}>IS NEAREST TO</Key>
+      <Key x={498} y={40}>New bank</Key>
+      <Key x={498} y={56}>is nearest to</Key>
       <Display x={498} y={104} size={44} fill={SIGNAL}>{String(won)}</Display>
       <Key x={r2(504 + String(won).length * 24)} y={104} size={11}>OF 60</Key>
-      <Key x={498} y={130} size={9.5}>IDEAL POINTS</Key>
+      <Key x={498} y={130} size={9.5}>Ideal points</Key>
 
-      <Key x={498} y={174}>TAKEN FROM</Key>
+      <Key x={498} y={174}>Taken from</Key>
       {BANKS.map((b, i) => {
         const n = lost.find((l) => l.id === b.id)?.n ?? 0;
         const y = 196 + i * 30;
@@ -598,7 +598,7 @@ export function StandardizeFirst() {
           scale === "raw" ? "raw values: spending carries 99.99% of the distance, and the clusters divide the customers by spending only" : "standardized values: both variables count equally, and the clusters separate frequent from occasional visitors"
         }`}
       >
-        <Key x={L - 20} y={22}>CUSTOMERS IN TWO CLUSTERS</Key>
+        <Key x={L - 20} y={22}>Customers in two clusters</Key>
 
         <line x1={L} y1={B} x2={R + 8} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R + 8, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
@@ -607,12 +607,12 @@ export function StandardizeFirst() {
         {[0, 1000, 2000].map((v) => (
           <Key key={v} x={X(v)} y={B + 16} anchor="middle" size={9.5}>{`$${v.toLocaleString("en-US")}`}</Key>
         ))}
-        <Key x={R + 8} y={B + 34} anchor="end" size={9.5}>ANNUAL SPENDING</Key>
+        <Key x={R + 8} y={B + 34} anchor="end" size={9.5}>Annual spending</Key>
         {[0, 5, 10, 15].map((v) => (
           <Key key={v} x={L - 8} y={r2(Y(v) + 3.5)} anchor="end" size={9.5}>{v}</Key>
         ))}
         <g transform={`translate(${L - 30} ${T - 4}) rotate(-90)`}>
-          <Key x={0} y={0} anchor="end" size={9.5}>VISITS PER MONTH</Key>
+          <Key x={0} y={0} anchor="end" size={9.5}>Visits per month</Key>
         </g>
 
         {SHOPPERS.map(([sp, v], i) => {
@@ -622,15 +622,15 @@ export function StandardizeFirst() {
 
         {/* what the distance measure weighs */}
         <line x1={508} y1={12} x2={508} y2={324} stroke={RULE} strokeWidth={1} />
-        <Key x={528} y={44}>SPENDING&apos;S SHARE</Key>
-        <Key x={528} y={60}>OF THE DISTANCE</Key>
+        <Key x={528} y={44}>Spending&apos;s share</Key>
+        <Key x={528} y={60}>of the distance</Key>
         <Display x={528} y={110} size={40} fill={SIGNAL}>{SPEND_SHARE[scale]}</Display>
         <rect x={528} y={128} width={130} height={10} fill={PAPER} stroke={INK3} strokeWidth={1} />
         <rect x={528} y={128} width={scale === "raw" ? 130 : 65} height={10} fill={SIGNAL} />
-        <Key x={528} y={156} size={9.5}>SPENDING</Key>
-        <Key x={658} y={156} anchor="end" size={9.5}>VISITS</Key>
+        <Key x={528} y={156} size={9.5}>Spending</Key>
+        <Key x={658} y={156} anchor="end" size={9.5}>Visits</Key>
 
-        <Key x={528} y={208}>CLUSTERS SPLIT BY</Key>
+        <Key x={528} y={208}>Clusters split by</Key>
         <Note x={528} y={232} size={14} weight={600} fill={INK}>
           {scale === "raw" ? "Spending only" : "Visits per month"}
         </Note>
@@ -752,14 +752,14 @@ export function DendrogramCut() {
       height={340}
       label={`Dendrogram of twelve customers merged by average linkage. A cut line, which can be dragged, crosses the tree at a distance of ${fmt(cut)} and gives ${groups.length} cluster${groups.length > 1 ? "s" : ""}`}
     >
-      <Key x={L - 70} y={22}>DENDROGRAM</Key>
+      <Key x={L - 70} y={22}>Dendrogram</Key>
 
       {/* distance axis */}
       <line x1={L - 30} y1={base} x2={L - 30} y2={T - 14} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L - 30, T - 14, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       {[0, 1, 2, 3].map((v) => (v <= top ? <Key key={v} x={L - 38} y={r2(Y(v) + 3.5)} anchor="end" size={9.5}>{v}</Key> : null))}
       <g transform={`translate(${L - 56} ${T - 8}) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" size={9.5}>MERGE DISTANCE</Key>
+        <Key x={0} y={0} anchor="end" size={9.5}>Merge distance</Key>
       </g>
 
       {/* the tree */}
@@ -940,18 +940,18 @@ export function ClustersFromNothing() {
         height={330}
         label={`Sixty customers ${data === "none" ? "with no group structure" : "in three real groups"}, clustered into three segments by k-means on half-sample ${draw}. ${share}% of customers stay in the same segment as on the previous half-sample`}
       >
-        <Key x={L} y={22}>{`THREE CLUSTERS FROM HALF-SAMPLE ${draw}`}</Key>
+        <Key x={L} y={22}>{`Three clusters from half-sample ${draw}`}</Key>
         <rect x={L - 10} y={T - 14} width={W + 20} height={H + 28} fill="none" stroke={RULE2} strokeWidth={1} />
         {pts.map((p, i) => (
           <Person1 key={i} x={X(p[0])} y={r2(Y(p[1]) + 7)} k={0.42} width={1.1} {...look[lab[i]]} />
         ))}
 
         <line x1={466} y1={12} x2={466} y2={318} stroke={RULE} strokeWidth={1} />
-        <Key x={486} y={56}>SAME SEGMENT AS</Key>
-        <Key x={486} y={72}>PREVIOUS HALF</Key>
+        <Key x={486} y={56}>Same segment as</Key>
+        <Key x={486} y={72}>previous half</Key>
         <Display x={486} y={124} size={44} fill={SIGNAL}>{`${share}%`}</Display>
-        <Key x={486} y={146} size={9.5}>OF CUSTOMERS</Key>
-        <Key x={486} y={204}>VERDICT</Key>
+        <Key x={486} y={146} size={9.5}>Of customers</Key>
+        <Key x={486} y={204}>Verdict</Key>
         <Note x={486} y={228} size={14} weight={600} fill={INK}>
           {share >= 90 ? "Stable" : "Unstable:"}
         </Note>
@@ -1061,8 +1061,8 @@ export function ChoiceTask() {
       label="Conjoint design for a laptop: brand with levels A, B and C. Battery life of 8, 12 or 16 hours. Price of $900, $1,100 or $1,300. One choice task shows three profiles (A, 8 hours, $900, B, 16 hours, $1,300, C, 12 hours, $1,100) and the option to choose none. The respondent chooses brand C with 12 hours at $1,100"
     >
       {/* attributes and levels */}
-      <Key x={30} y={22}>ATTRIBUTES AND LEVELS</Key>
-      {["BRAND", "BATTERY LIFE", "PRICE"].map((a, r) => (
+      <Key x={30} y={22}>Attributes and levels</Key>
+      {["Brand", "Battery life", "Price"].map((a, r) => (
         <g key={a}>
           <Key x={30} y={rowY[r] + 4} size={10}>{a}</Key>
           {r < 2 ? <line x1={30} y1={rowY[r] + 22} x2={650} y2={rowY[r] + 22} stroke={RULE} strokeWidth={1} /> : null}
@@ -1080,7 +1080,7 @@ export function ChoiceTask() {
 
       {/* one choice task */}
       <line x1={30} y1={170} x2={650} y2={170} stroke={INK3} strokeWidth={1} />
-      <Key x={30} y={188} size={10}>ONE CHOICE TASK OF MANY</Key>
+      <Key x={30} y={188} size={10}>One choice task of many</Key>
       {TASK.map((t, i) => {
         const on = i === PICKED;
         const x = cardX(i);
@@ -1095,8 +1095,8 @@ export function ChoiceTask() {
         );
       })}
       <rect x={cardX(3)} y={cardY} width={cardW - 24} height={cardH} fill={PAPER} stroke={INK} strokeWidth={1.25} strokeDasharray="5 4" />
-      <Key x={r2(cardX(3) + (cardW - 24) / 2)} y={cardY + 60} anchor="middle" size={10.5}>NONE OF</Key>
-      <Key x={r2(cardX(3) + (cardW - 24) / 2)} y={cardY + 75} anchor="middle" size={10.5}>THESE</Key>
+      <Key x={r2(cardX(3) + (cardW - 24) / 2)} y={cardY + 60} anchor="middle" size={10.5}>None of</Key>
+      <Key x={r2(cardX(3) + (cardW - 24) / 2)} y={cardY + 75} anchor="middle" size={10.5}>these</Key>
     </Frame>
   );
 }
@@ -1162,20 +1162,20 @@ export function ProfileCount() {
           nAttr > 6 ? ". With seven attributes the profiles exceed the six that respondents can weigh" : ""
         }`}
       >
-        <Key x={20} y={26}>{`${nAttr} ATTRIBUTES`}</Key>
+        <Key x={20} y={26}>{`${nAttr} attributes`}</Key>
         <Note x={20} y={45} size={12.5} fill={INK3}>{levels.join(" × ") + " levels"}</Note>
 
-        <Key x={20} y={80}>POSSIBLE PROFILES</Key>
+        <Key x={20} y={80}>Possible profiles</Key>
         <Display x={20} y={116} size={36}>{full.toLocaleString("en-US")}</Display>
 
-        <Key x={20} y={150} fill={SIGNAL}>FRACTIONAL DESIGN</Key>
+        <Key x={20} y={150} fill={SIGNAL}>Fractional design</Key>
         <Display x={20} y={186} size={36} fill={SIGNAL}>{String(frac)}</Display>
-        <Key x={r2(28 + String(frac).length * 20)} y={186} size={10} fill={SIGNAL}>PROFILES</Key>
+        <Key x={r2(28 + String(frac).length * 20)} y={186} size={10} fill={SIGNAL}>Profiles</Key>
 
         {nAttr > 6 ? (
           <g>
-            <Key x={20} y={214} fill={COUNTER}>OVER SIX ATTRIBUTES:</Key>
-            <Key x={20} y={229} fill={COUNTER}>RESPONDENTS SIMPLIFY</Key>
+            <Key x={20} y={214} fill={COUNTER}>Over six attributes:</Key>
+            <Key x={20} y={229} fill={COUNTER}>Respondents simplify</Key>
           </g>
         ) : null}
 
@@ -1247,9 +1247,9 @@ export function PriceRangeImportance() {
   const unit = 32;
   const Y = (u: number) => r2(zero - u * unit);
   const panels = [
-    { key: "BRAND", x0: 76, x1: 216, pts: BRAND_PW },
-    { key: "BATTERY LIFE", x0: 268, x1: 408, pts: BATTERY_PW },
-    { key: "PRICE", x0: 460, x1: 600, pts: pricePw },
+    { key: "Brand", x0: 76, x1: 216, pts: BRAND_PW },
+    { key: "Battery life", x0: 268, x1: 408, pts: BATTERY_PW },
+    { key: "Price", x0: 460, x1: 600, pts: pricePw },
   ];
   const px = (p: (typeof panels)[number], i: number) => r2(p.x0 + 10 + (i * (p.x1 - p.x0 - 20)) / 2);
 
@@ -1266,7 +1266,7 @@ export function PriceRangeImportance() {
         )}. Relative importance: brand ${share[0]}%, battery life ${share[1]}%, price ${share[2]}%`}
       >
         <g transform={`translate(18 ${Y(3.3)}) rotate(-90)`}>
-          <Key x={0} y={0} anchor="end" size={9.5}>PART-WORTH</Key>
+          <Key x={0} y={0} anchor="end" size={9.5}>Part-worth</Key>
         </g>
         {/* utility scale */}
         <line x1={52} y1={Y(-3.1)} x2={52} y2={Y(3.3)} stroke={INK} strokeWidth={1.25} />
@@ -1317,7 +1317,7 @@ export function PriceRangeImportance() {
         })}
 
         {/* relative importance */}
-        <Key x={20} y={by - 10}>RELATIVE IMPORTANCE</Key>
+        <Key x={20} y={by - 10}>Relative importance</Key>
         {ranges.map((r, i) => {
           const x0 = r2(bx + (ranges.slice(0, i).reduce((a, b) => a + b, 0) / total) * bw);
           const w = r2((r / total) * bw);
@@ -1326,7 +1326,7 @@ export function PriceRangeImportance() {
             <g key={i}>
               <rect x={x0} y={by} width={r2(w - 2)} height={34} fill={isPrice ? SIGNAL : PAPER} stroke={isPrice ? SIGNAL : INK3} strokeWidth={1} />
               <Key x={r2(x0 + w / 2 - 1)} y={by + 14} anchor="middle" size={9.5} fill={isPrice ? PAPER : INK3}>
-                {["BRAND", "BATTERY", "PRICE"][i]}
+                {["Brand", "Battery", "Price"][i]}
               </Key>
               <Key x={r2(x0 + w / 2 - 1)} y={by + 28} anchor="middle" size={11} fill={isPrice ? PAPER : INK} weight={700}>
                 {`${share[i]}%`}
@@ -1389,7 +1389,7 @@ export function MarketSimulator() {
           "en-US",
         )}) ${pct[1]}%, and C (16 hours, $1,150) ${pct[2]}%${gap === 30 ? ". A and B tie when B is $30 cheaper, the willingness to pay for four more hours" : ""}`}
       >
-        <Key x={20} y={22}>SHARES OF PREFERENCE</Key>
+        <Key x={20} y={22}>Shares of preference</Key>
         {items.map((it, i) => {
           const x = colX[i];
           const c = i === 0 ? SIGNAL : i === 1 ? COUNTER : INK;
@@ -1400,7 +1400,7 @@ export function MarketSimulator() {
               <TagOf x={x - 36} y={136} price={it.price} color={c} />
               {i === 1 ? (
                 <Key x={x} y={166} anchor="middle" size={9.5} fill={COUNTER}>
-                  {gap === 0 ? "SAME PRICE AS A" : gap > 0 ? `$${gap} BELOW A` : `$${-gap} ABOVE A`}
+                  {gap === 0 ? "Same price as a" : gap > 0 ? `$${gap} below a` : `$${-gap} above a`}
                 </Key>
               ) : null}
               <Display x={x} y={210} anchor="middle" size={32} fill={c}>{`${pct[i]}%`}</Display>
@@ -1443,8 +1443,8 @@ export function MarketSimulator() {
  * on target choice.
  */
 const SPONSOR_PW = [
-  { key: "TRAVELER", pw: -6.49 },
-  { key: "PLATFORM", pw: -2.5 },
+  { key: "Traveler", pw: -6.49 },
+  { key: "Platform", pw: -2.5 },
 ];
 
 /**
@@ -1482,22 +1482,22 @@ export function SponsorPartWorths() {
   const X = (pw: number) => r2(zx + (pw / 7) * 400);
   const sx = 240;
   const S = (v: number) => r2(sx + (v / 50) * 370);
-  const look = { traveler: { c: INK, key: "TRAVELER" }, platform: { c: SIGNAL, key: "PLATFORM" } };
+  const look = { traveler: { c: INK, key: "Traveler" }, platform: { c: SIGNAL, key: "Platform" } };
   return (
     <Frame
       width={680}
       height={348}
       label="Part-worth of a sponsorship label for AI agents in hotel booking (Wadi & Ma, 2026c): −6.49 for agents told they serve the traveler and −2.50 for agents told they serve the booking platform. Share of tasks in which the agent chose the paid listing: with the label Promoted, 28.8% (traveler) and 39.6% (platform). With the label Sponsored, 0.8% and 1.4%"
     >
-      <Key x={20} y={22}>PART-WORTH OF A SPONSORSHIP LABEL</Key>
+      <Key x={20} y={22}>Part-worth of a sponsorship label</Key>
       {SPONSOR_PW.map((r, i) => {
         const y = 56 + i * 40;
         const c = i === 1 ? SIGNAL : INK;
         return (
           <g key={r.key}>
             <AiMark1 cx={30} cy={y} s={20} fill={c} />
-            <Key x={48} y={y - 2} size={9.5} fill={c}>AGENT SERVES</Key>
-            <Key x={48} y={y + 11} size={9.5} fill={c} weight={700}>{`THE ${r.key}`}</Key>
+            <Key x={48} y={y - 2} size={9.5} fill={c}>Agent serves</Key>
+            <Key x={48} y={y + 11} size={9.5} fill={c} weight={700}>{`the ${r.key.toLowerCase()}`}</Key>
             <rect x={X(r.pw)} y={y - 10} width={r2(zx - X(r.pw))} height={20} fill={c} />
             <Key x={r2(X(r.pw) - 8)} y={y + 4} anchor="end" size={11} fill={c} weight={700}>{fmt(r.pw)}</Key>
           </g>
@@ -1514,7 +1514,7 @@ export function SponsorPartWorths() {
       <line x1={X(-7)} y1={120} x2={zx} y2={120} stroke={INK} strokeWidth={1.25} />
 
       <line x1={20} y1={158} x2={660} y2={158} stroke={RULE} strokeWidth={1} />
-      <Key x={20} y={184}>PAID LISTING CHOSEN, SHARE OF 500 TASKS</Key>
+      <Key x={20} y={184}>Paid listing chosen, share of 500 tasks</Key>
       {LABEL_SHARE.map((r, gi) => {
         const y0 = 214 + gi * 64;
         return (
@@ -1609,7 +1609,7 @@ export function EmbeddingNeighbors() {
           by === "meaning" ? "embedding" : "shared words"
         }: ${ranked.map((r) => `"${ANSWERS[r.i].t}" (${by === "meaning" ? `similarity ${r.sim.toFixed(2)}` : `${r.shared.length} shared words`})`).join(" and ")}`}
       >
-        <Key x={20} y={24}>ANSWERS PLACED BY THEIR EMBEDDINGS</Key>
+        <Key x={20} y={24}>Answers placed by their embeddings</Key>
 
         {ANSWERS.map((a, i) => {
           const on = i === sel;
@@ -1660,7 +1660,7 @@ export function EmbeddingNeighbors() {
 
         {/* the two nearest, scored */}
         <line x1={524} y1={12} x2={524} y2={310} stroke={RULE} strokeWidth={1} />
-        <Key x={538} y={50}>{by === "meaning" ? "NEAREST BY EMBEDDING" : "NEAREST BY SHARED WORDS"}</Key>
+        <Key x={538} y={50}>{by === "meaning" ? "Nearest by embedding" : "Nearest by shared words"}</Key>
         {ranked.map((r, k) => {
           const y = 90 + k * 92;
           return (
@@ -1671,19 +1671,19 @@ export function EmbeddingNeighbors() {
               </Key>
               {by === "meaning" ? (
                 <>
-                  <Key x={562} y={y} size={9.5}>SIMILARITY</Key>
+                  <Key x={562} y={y} size={9.5}>Similarity</Key>
                   <Display x={562} y={y + 34} size={28} fill={SIGNAL}>{r.sim.toFixed(2)}</Display>
                 </>
               ) : (
                 <>
-                  <Key x={562} y={y} size={9.5}>SHARED WORDS</Key>
+                  <Key x={562} y={y} size={9.5}>Shared words</Key>
                   <Display x={562} y={y + 34} size={28} fill={SIGNAL}>{String(r.shared.length)}</Display>
                   <Note x={r2(562 + String(r.shared.length).length * 16 + 8)} y={y + 30} size={12} fill={INK3} italic>
                     {r.shared.map((w) => (w === "i" ? "I" : w)).join(", ")}
                   </Note>
                 </>
               )}
-              <Key x={562} y={y + 56} size={9}>{by === "meaning" ? `${r.shared.length} SHARED WORDS` : `SIMILARITY ${r.sim.toFixed(2)}`}</Key>
+              <Key x={562} y={y + 56} size={9}>{by === "meaning" ? `${r.shared.length} shared words` : `Similarity ${r.sim.toFixed(2)}`}</Key>
             </g>
           );
         })}
@@ -1706,9 +1706,9 @@ export function EmbeddingNeighbors() {
 
 /** Three clusters of customers on their answers' embeddings, with a sample of the texts read in each. */
 const TEXT_CLUSTERS = [
-  { cx: 0.24, cy: 0.76, texts: ["Grab-and-go on my way to the office", "I eat in the car most mornings"], name: "SPEED" },
-  { cx: 0.78, cy: 0.64, texts: ["More protein after the gym", "Less sugar in the pastries, please"], name: "HEALTH" },
-  { cx: 0.42, cy: 0.2, texts: ["Prices went up again this year", "A meal deal would bring me back"], name: "PRICE" },
+  { cx: 0.24, cy: 0.76, texts: ["Grab-and-go on my way to the office", "I eat in the car most mornings"], name: "Speed" },
+  { cx: 0.78, cy: 0.64, texts: ["More protein after the gym", "Less sugar in the pastries, please"], name: "Health" },
+  { cx: 0.42, cy: 0.2, texts: ["Prices went up again this year", "A meal deal would bring me back"], name: "Price" },
 ];
 
 const TEXT_POINTS: { x: number; y: number; c: number }[] = (() => {
@@ -1751,7 +1751,7 @@ export function TextClusters() {
       label="Thirty-six customers clustered by k-means on the embeddings of their answers into three clusters. A person reads a sample of each cluster's texts and names it: SPEED (Grab-and-go on my way to the office, I eat in the car most mornings), HEALTH (More protein after the gym, Less sugar in the pastries, please) and PRICE (Prices went up again this year, A meal deal would bring me back)"
     >
       <AiMark1 cx={L + 7} cy={18} s={16} fill={SIGNAL} />
-      <Key x={L + 22} y={22}>CLUSTERED ON EMBEDDINGS</Key>
+      <Key x={L + 22} y={22}>Clustered on embeddings</Key>
       <rect x={L - 8} y={T - 12} width={W + 16} height={H + 24} fill="none" stroke={RULE2} strokeWidth={1} />
       {TEXT_POINTS.map((p, i) => (
         <Person1 key={i} x={X(p.x)} y={r2(Y(p.y) + 8)} k={0.5} width={1.2} {...look[p.c]} />
@@ -1759,7 +1759,7 @@ export function TextClusters() {
 
       <line x1={290} y1={10} x2={290} y2={308} stroke={RULE} strokeWidth={1} />
       <Eye x={306} y={6} size={24} weight="regular" color={INK} />
-      <Key x={338} y={22}>READ AND NAMED</Key>
+      <Key x={338} y={22}>Read and named</Key>
       {TEXT_CLUSTERS.map((g, i) => {
         const y = 62 + i * 86;
         return (
@@ -1810,9 +1810,9 @@ export function PersonaTrace() {
       height={322}
       label="A segment's data (median age 31, 72% visit before 8 a.m., 64% order in the app, main answer theme speed) beside the persona a language model generated from it. Four persona lines trace to the data. The occupation (works as a nurse), the family situation (mother of two) and the quotation are not supported by any data"
     >
-      <Key x={lx} y={26}>SEGMENT DATA</Key>
+      <Key x={lx} y={26}>Segment data</Key>
       <AiMark1 cx={rx + 8} cy={21} s={16} fill={INK} />
-      <Key x={rx + 24} y={26}>GENERATED PERSONA</Key>
+      <Key x={rx + 24} y={26}>Generated persona</Key>
       <rect x={rx - 10} y={44} width={rw + 10} height={rowY(6) - 26} fill={PAPER} stroke={INK3} strokeWidth={1} />
 
       {PERSONA.map((p, i) => {
@@ -1829,7 +1829,7 @@ export function PersonaTrace() {
                 <path d={head.right(rx - 16, y, 6)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
               </>
             ) : (
-              <Key x={rx - 18} y={y + 4} anchor="end" size={9.5} fill={COUNTER} weight={700}>NO DATA</Key>
+              <Key x={rx - 18} y={y + 4} anchor="end" size={9.5} fill={COUNTER} weight={700}>No data</Key>
             )}
             <Note
               x={rx + 6}

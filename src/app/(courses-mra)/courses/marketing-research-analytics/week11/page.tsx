@@ -12,7 +12,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
@@ -65,10 +65,10 @@ const CLOSE = "type-quote w-full !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]
 const CELL = "!max-w-none !leading-snug";
 
 /** One numbered step of a procedure, under a hairline. */
-function Step({ n, children, tone = "ink" }: { n: number; children: React.ReactNode; tone?: "ink" | "signal" }) {
+function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
     <Numbered n={n}>
-      <Ruled tone={tone} weight="thin">
+      <Ruled>
         <P className={CELL}>{children}</P>
       </Ruled>
     </Numbered>
@@ -78,15 +78,13 @@ function Step({ n, children, tone = "ink" }: { n: number; children: React.ReactN
 /** A thin ruled cell holding one body sentence. */
 function Cell({
   children,
-  tone = "ink",
   className = "",
 }: {
   children: React.ReactNode;
-  tone?: "ink" | "signal" | "counter";
   className?: string;
 }) {
   return (
-    <Ruled tone={tone} weight="thin" className={className}>
+    <Ruled className={className}>
       <P className={CELL}>{children}</P>
     </Ruled>
   );
@@ -101,12 +99,12 @@ export default function Week11() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 11: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">
-          Customer Analytics and <span className="text-[var(--signal)]">Predictive Modeling</span>
+          Customer Analytics and Predictive Modeling
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[46ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[46ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Customer analytics estimates the value and predicts the behavior of{" "}
-          <span className="text-[var(--signal)]">individual customers</span>, to inform decisions on
+          individual customers, to inform decisions on
           acquisition, retention, and personalization.
         </p>
       </Slide>
@@ -117,13 +115,13 @@ export default function Week11() {
       <Slide id="customer-analytics" border className="!py-8">
         <SlideHeading>Customer Analytics</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.25rem,2vw,1.65rem)]">
-          <Term tone="ink">Customer analytics</Term> is the analysis of customer-level data, such as
+          <Term>Customer analytics</Term> is the analysis of customer-level data, such as
           transactions, interactions, and service records, to guide marketing decisions about
           individual customers.
         </Statement>
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Cell tone="signal">
+            <Cell>
               It treats <Term>the customer</Term>, rather than the product or the campaign, as the
               unit of analysis.
             </Cell>
@@ -149,7 +147,7 @@ export default function Week11() {
       <Slide id="part-1-customer-value" border className="!py-8">
         <PartHead n={1} title="Customer Value" />
         <div className="mt-9 grid w-full gap-8 md:grid-cols-3 md:gap-10">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Customers differ substantially in <Term>the profit they generate</Term> over the
               course of their relationship with the firm.
@@ -178,14 +176,14 @@ export default function Week11() {
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Statement className="!max-w-none !text-[clamp(1.15rem,1.7vw,1.4rem)]">
-              <Term tone="ink">Customer lifetime value</Term>, CLV, is the present value of the
+              <Term>Customer lifetime value</Term>, CLV, is the present value of the
               future profits expected from a customer over the duration of the relationship.
             </Statement>
             <Cell>
               In its simplest form, with a constant annual margin m, an annual retention rate r, and
               a discount rate d, CLV equals <strong className="font-semibold text-[var(--ink)]">m × r / (1 + d − r)</strong>.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               For example, a customer who generates an annual margin of 100 dollars, with a retention
               rate of 80 percent and a discount rate of 10 percent, has a CLV of 100 × 0.8 / 0.3, or{" "}
               <Term>approximately 267 dollars</Term>.
@@ -226,7 +224,7 @@ export default function Week11() {
             CLV increases with the margin per customer, with the retention rate, and with a lower
             discount rate.
           </Statement>
-          <Ruled tone="signal">
+          <Ruled>
             <P className={`${CELL} !text-[1.08em]`}>
               CLV is <Term>particularly sensitive to the retention rate</Term>. In the previous
               example, an increase in retention from 80 to 90 percent raises CLV from approximately
@@ -261,9 +259,9 @@ export default function Week11() {
           <div className="flex min-w-0 flex-col gap-3">
             <Cell>RFM analysis ranks customers on three measures of past purchasing behavior.</Cell>
             <Cell>
-              <Term tone="ink">Recency</Term> is the time since the customer&rsquo;s most recent
-              purchase. <Term tone="ink">Frequency</Term> is the number of purchases within a given
-              period. <Term tone="ink">Monetary value</Term> is the amount the customer has spent
+              <Term>Recency</Term> is the time since the customer&rsquo;s most recent
+              purchase. <Term>Frequency</Term> is the number of purchases within a given
+              period. <Term>Monetary value</Term> is the amount the customer has spent
               within that period.
             </Cell>
             <Cell>
@@ -273,7 +271,7 @@ export default function Week11() {
             </Cell>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Cell tone="signal">
+            <Cell>
               Customers with high scores on all three measures are the most likely to respond to
               future offers. <Term>Recency is typically the strongest single predictor</Term> of
               response.
@@ -317,8 +315,8 @@ export default function Week11() {
             <RfmProfiles />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--signal)] pt-4`}>
-          Each profile calls for <span className="text-[var(--signal)]">a different action</span>:
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-4`}>
+          Each profile calls for a different action:
           rewarding the most valuable customers, contacting those at risk, developing new customers,
           and limiting spending on lapsed customers.
         </p>
@@ -331,7 +329,7 @@ export default function Week11() {
         <PartHead n={2} title="Predicting Customer Behavior" />
         <Statement className="mt-9 !max-w-[46ch] !text-[clamp(1.3rem,2.1vw,1.75rem)]">
           Predictive models estimate, for each customer, the{" "}
-          <span className="text-[var(--signal)]">probability of a future behavior</span>.
+          probability of a future behavior.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled>
@@ -356,22 +354,22 @@ export default function Week11() {
         <SlideHeading>Churn and Response Models</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3 md:gap-10">
           <Cell>
-            <Term tone="ink">Churn</Term> is the termination of a customer&rsquo;s relationship with
+            <Term>Churn</Term> is the termination of a customer&rsquo;s relationship with
             the firm, such as the cancellation of a subscription or the closure of an account.
           </Cell>
           <Cell>
-            A <Term tone="ink">churn model</Term> estimates each customer&rsquo;s probability of
+            A <Term>churn model</Term> estimates each customer&rsquo;s probability of
             churning within a specified period, on the basis of variables such as usage, recent
             changes in usage, complaints, and contract type.
           </Cell>
           <Cell>
-            A <Term tone="ink">response model</Term> estimates each customer&rsquo;s probability of
+            A <Term>response model</Term> estimates each customer&rsquo;s probability of
             responding to an offer, such as a promotion or an upgrade.
           </Cell>
         </div>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.15rem,1.7vw,1.4rem)]">
-            The predicted probabilities are used <span className="text-[var(--signal)]">to rank customers</span>,
+            The predicted probabilities are used to rank customers,
             so that retention efforts and offers are directed to those with the highest scores.
           </Statement>
           <Plate>
@@ -385,8 +383,8 @@ export default function Week11() {
           ================================================================ */}
       <Slide id="decision-trees" border className="!py-8">
         <SlideHeading>Decision Trees</SlideHeading>
-        <Cell tone="signal" className="w-full">
-          A <Term tone="ink">decision tree</Term> divides the customers repeatedly into subgroups, at
+        <Cell className="w-full">
+          A <Term>decision tree</Term> divides the customers repeatedly into subgroups, at
           each step using <Term>the variable and the split that best separate</Term> customers who
           churn from those who do not.
         </Cell>
@@ -416,24 +414,24 @@ export default function Week11() {
       <Slide id="ensemble-models" border className="!py-8">
         <SlideHeading>Ensemble Models</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.2rem,1.9vw,1.55rem)]">
-          An <Term tone="ink">ensemble model</Term> combines the predictions of many models to
+          An <Term>ensemble model</Term> combines the predictions of many models to
           produce a single, more accurate prediction.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Cell tone="signal">
-              A <Term tone="ink">random forest</Term> estimates many decision trees, each on a random
+            <Cell>
+              A <Term>random forest</Term> estimates many decision trees, each on a random
               sample of customers and variables, and <Term>averages their predictions</Term>.
             </Cell>
             <Cell>
-              <Term tone="ink">Gradient boosting</Term> estimates trees in sequence, with each tree
+              <Term>Gradient boosting</Term> estimates trees in sequence, with each tree
               designed to correct the errors of the trees before it.
             </Cell>
             <Cell>
               Ensemble models are among the most accurate methods for predicting customer behavior
               from structured data.
             </Cell>
-            <Cell tone="counter">
+            <Cell>
               Their predictions cannot be expressed as a simple set of rules, which makes the reasons
               for an individual prediction more difficult to establish.
             </Cell>
@@ -450,7 +448,7 @@ export default function Week11() {
       <Slide id="part-3-evaluating-predictive-models" border className="!py-8">
         <PartHead n={3} title="Evaluating Predictive Models" />
         <div className="mt-9 grid w-full gap-8 md:grid-cols-3 md:gap-10">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               A predictive model is evaluated by the accuracy of its predictions for{" "}
               <Term>customers whose outcomes were not used to estimate it</Term>.
@@ -476,11 +474,11 @@ export default function Week11() {
         <div className="grid w-full items-start gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Cell>
-              The data are divided into a <Term tone="ink">training sample</Term>, used to estimate
-              the model, and a <Term tone="ink">holdout sample</Term>, used to evaluate it.
+              The data are divided into a <Term>training sample</Term>, used to estimate
+              the model, and a <Term>holdout sample</Term>, used to evaluate it.
             </Cell>
             <Cell>
-              <Term tone="ink">Cross-validation</Term> repeats this division several times and
+              <Term>Cross-validation</Term> repeats this division several times and
               averages the results, which provides a more stable estimate of accuracy.
             </Cell>
             <Cell>
@@ -493,8 +491,8 @@ export default function Week11() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Cell tone="signal">
-              <Term tone="ink">Data leakage</Term> occurs when the model uses information that would
+            <Cell>
+              <Term>Data leakage</Term> occurs when the model uses information that would
               not be available at the time of prediction, such as a record that the customer has
               requested a cancellation form. Leakage produces{" "}
               <Term>an accuracy on holdout data that cannot be achieved in practice</Term>.
@@ -514,23 +512,23 @@ export default function Week11() {
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-2.5">
             <Cell>
-              A <Term tone="ink">confusion matrix</Term> compares the predicted outcomes with the
+              A <Term>confusion matrix</Term> compares the predicted outcomes with the
               actual outcomes for the holdout sample.
             </Cell>
             <Cell>
-              <Term tone="ink">True positives</Term> are churners correctly predicted to churn.{" "}
-              <Term tone="ink">False positives</Term> are customers predicted to churn who did not.{" "}
-              <Term tone="ink">False negatives</Term> are churners whom the model did not identify.{" "}
-              <Term tone="ink">True negatives</Term> are customers correctly predicted to stay.
+              <Term>True positives</Term> are churners correctly predicted to churn.{" "}
+              <Term>False positives</Term> are customers predicted to churn who did not.{" "}
+              <Term>False negatives</Term> are churners whom the model did not identify.{" "}
+              <Term>True negatives</Term> are customers correctly predicted to stay.
             </Cell>
             <Cell>
-              <Term tone="ink">Precision</Term> is the proportion of customers predicted to churn who
-              actually churned. <Term tone="ink">Recall</Term> is the proportion of actual churners
+              <Term>Precision</Term> is the proportion of customers predicted to churn who
+              actually churned. <Term>Recall</Term> is the proportion of actual churners
               whom the model identified.
             </Cell>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <Cell tone="signal">
+            <Cell>
               For example, among 1,000 customers of whom 100 churn, a model identifies 150 customers
               as likely to churn, and 60 of them do churn. Its precision is{" "}
               <Term>40 percent</Term> and its recall is <Term>60 percent</Term>.
@@ -562,10 +560,10 @@ export default function Week11() {
           <div className="flex min-w-0 flex-col gap-3">
             <Cell>
               Customers are ranked by their predicted probability and divided into ten groups of
-              equal size, called <Term tone="ink">deciles</Term>.
+              equal size, called <Term>deciles</Term>.
             </Cell>
             <Cell>
-              <Term tone="ink">Lift</Term> is the rate of the outcome in a decile divided by the rate
+              <Term>Lift</Term> is the rate of the outcome in a decile divided by the rate
               in the customer base as a whole.
             </Cell>
             <Cell>
@@ -573,12 +571,12 @@ export default function Week11() {
               customers ranked by the model, the lift of the top decile is 3.5.
             </Cell>
             <Cell>
-              A <Term tone="ink">gains chart</Term> displays the cumulative percentage of churners
+              A <Term>gains chart</Term> displays the cumulative percentage of churners
               captured as successive deciles are targeted.
             </Cell>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Cell tone="signal">
+            <Cell>
               Lift informs how many customers to target: contact continues through successive
               deciles <Term>as long as the expected benefit exceeds the cost</Term>.
             </Cell>
@@ -601,24 +599,24 @@ export default function Week11() {
         <SlideHeading>Predicting Churn and Preventing Churn</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.2rem,1.9vw,1.55rem)]">
           A churn model identifies the customers most likely to leave, not the customers{" "}
-          <span className="text-[var(--signal)]">whose decision an intervention would change</span>.
+          whose decision an intervention would change.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-2.5">
             <Cell>
-              <Term tone="ink">Persuadables</Term> are customers who would leave without an
+              <Term>Persuadables</Term> are customers who would leave without an
               intervention and stay with it.
             </Cell>
             <Cell>
-              <Term tone="ink">Sure things</Term> are customers who would stay regardless, so that an
+              <Term>Sure things</Term> are customers who would stay regardless, so that an
               intervention produces a cost without a benefit.
             </Cell>
             <Cell>
-              <Term tone="ink">Lost causes</Term> are customers who would leave regardless of the
+              <Term>Lost causes</Term> are customers who would leave regardless of the
               intervention.
             </Cell>
             <Cell>
-              <Term tone="ink">Sleeping dogs</Term> are customers who would stay without contact but
+              <Term>Sleeping dogs</Term> are customers who would stay without contact but
               are prompted to leave by it, for example by a reminder of their contract terms.
             </Cell>
           </div>
@@ -627,7 +625,7 @@ export default function Week11() {
               <UpliftTargeting />
             </Plate>
             <Cell>
-              <Term tone="ink">Uplift modeling</Term> estimates the effect of the intervention on
+              <Term>Uplift modeling</Term> estimates the effect of the intervention on
               each customer, using data from a randomized experiment of the kind introduced in Week
               8, and directs the intervention to the persuadables.
             </Cell>
@@ -643,11 +641,11 @@ export default function Week11() {
         <div className="mt-9 grid w-full gap-8 md:grid-cols-3 md:gap-10">
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Personalization</Term> is the tailoring of content, offers, prices, or
+              <Term>Personalization</Term> is the tailoring of content, offers, prices, or
               products to the individual customer.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               It depends on <Term>predictions of what each customer is likely to value</Term>.
             </p>
@@ -668,12 +666,12 @@ export default function Week11() {
         <SlideHeading>Recommendation Systems</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Cell>
-            <Term tone="ink">Content-based recommendation</Term> suggests items similar to those the
+            <Term>Content-based recommendation</Term> suggests items similar to those the
             customer has previously purchased or rated highly, on the basis of the items&rsquo;
             attributes.
           </Cell>
           <Cell>
-            <Term tone="ink">Collaborative filtering</Term> suggests items purchased or rated highly
+            <Term>Collaborative filtering</Term> suggests items purchased or rated highly
             by customers whose past behavior is similar to that of the customer, as in
             &ldquo;customers who bought this item also bought.&rdquo;
           </Cell>
@@ -687,12 +685,12 @@ export default function Week11() {
               Hybrid systems combine both approaches, and many current systems use deep learning
               models trained on sequences of customer behavior.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               The <Term>cold-start problem</Term> arises when a new customer or a new product has too
               little history for collaborative filtering to produce recommendations.
             </Cell>
             <Cell>
-              <Term tone="ink">Popularity bias</Term> arises when recommendations concentrate on items
+              <Term>Popularity bias</Term> arises when recommendations concentrate on items
               that are already popular, which reduces exposure for new or specialized items and
               narrows the range of products customers encounter.
             </Cell>
@@ -716,13 +714,13 @@ export default function Week11() {
               credit, and service.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Such models can treat groups of customers systematically differently, including groups
               protected by anti-discrimination law.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Firms are therefore expected to <Term>assess their models for bias</Term>, and to
               explain the decisions the models inform.
@@ -737,29 +735,29 @@ export default function Week11() {
       <Slide id="algorithmic-bias" border className="!py-8">
         <SlideHeading>Algorithmic Bias</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.2rem,1.9vw,1.55rem)]">
-          <Term tone="ink">Algorithmic bias</Term> is a systematic difference in a model&rsquo;s
+          <Term>Algorithmic bias</Term> is a systematic difference in a model&rsquo;s
           predictions or errors across groups of customers that is not justified by the purpose of the
           model.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-2.5">
             <Cell>
-              <Term tone="ink">Historical bias</Term> arises when the training data reflect past
+              <Term>Historical bias</Term> arises when the training data reflect past
               discrimination, so that the model reproduces it.
             </Cell>
             <Cell>
-              <Term tone="ink">Representation bias</Term> arises when some groups are underrepresented
+              <Term>Representation bias</Term> arises when some groups are underrepresented
               in the training data, so that predictions for them are less accurate.
             </Cell>
             <Cell>
-              <Term tone="ink">Proxy variables</Term> can reproduce the effect of a protected
+              <Term>Proxy variables</Term> can reproduce the effect of a protected
               characteristic that is excluded from the model, as when a postal code is correlated
               with ethnicity.
             </Cell>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Cell tone="signal">
-              <Term tone="ink">Feedback loops</Term> arise when the model&rsquo;s decisions determine
+            <Cell>
+              <Term>Feedback loops</Term> arise when the model&rsquo;s decisions determine
               the data on which it is later retrained, as when customers who never receive an offer{" "}
               <Term>never generate evidence that they would have responded to it</Term>.
             </Cell>
@@ -777,22 +775,22 @@ export default function Week11() {
         <SlideHeading>Fairness Criteria</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3 md:gap-10">
           <Cell>
-            <Term tone="ink">Demographic parity</Term> requires that the rate of a favorable outcome,
+            <Term>Demographic parity</Term> requires that the rate of a favorable outcome,
             such as receiving an offer, is equal across groups.
           </Cell>
           <Cell>
-            <Term tone="ink">Equal opportunity</Term> requires that, among customers who would
+            <Term>Equal opportunity</Term> requires that, among customers who would
             qualify for the favorable outcome, the rate at which the model correctly identifies them
             is equal across groups.
           </Cell>
           <Cell>
-            <Term tone="ink">Calibration</Term> requires that customers who receive the same
+            <Term>Calibration</Term> requires that customers who receive the same
             predicted probability have the same actual rate of the outcome, regardless of group.
           </Cell>
         </div>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Cell tone="signal">
+            <Cell>
               When the underlying rates of the outcome differ across groups,{" "}
               <Term>these criteria cannot all be satisfied at once</Term>.
             </Cell>
@@ -815,16 +813,16 @@ export default function Week11() {
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-2.5">
             <Cell>
-              <Term tone="ink">Global explanations</Term> describe how a model uses its variables
+              <Term>Global explanations</Term> describe how a model uses its variables
               across all customers, such as measures of variable importance.
             </Cell>
             <Cell>
-              <Term tone="ink">Local explanations</Term> describe why the model produced a particular
+              <Term>Local explanations</Term> describe why the model produced a particular
               prediction for a particular customer. SHAP values, for example, estimate the
               contribution of each variable to an individual prediction.
             </Cell>
-            <Cell tone="signal">
-              <Term tone="ink">Counterfactual explanations</Term> state{" "}
+            <Cell>
+              <Term>Counterfactual explanations</Term> state{" "}
               <Term>the smallest change</Term> in a customer&rsquo;s characteristics that would have
               changed the prediction, such as a higher account balance that would have qualified the
               customer for an offer.
@@ -880,7 +878,7 @@ export default function Week11() {
             The analyst then revises the model, the data, or the decision rule, and repeats the
             comparison.
           </Step>
-          <Step n={6} tone="signal">
+          <Step n={6}>
             Finally, the analyst documents the audit and{" "}
             <Term>monitors the model&rsquo;s outcomes across groups after deployment</Term>.
           </Step>
@@ -905,15 +903,15 @@ export default function Week11() {
         <div className="mt-5 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-2.5">
             <Cell>
-              <Term tone="ink">Position bias</Term> is the tendency to select an alternative because
+              <Term>Position bias</Term> is the tendency to select an alternative because
               of its place in a list (Wadi &amp; Ma, 2026a).
             </Cell>
             <Cell>
-              <Term tone="ink">Sponsorship bias</Term> arises when the party an agent is told it
+              <Term>Sponsorship bias</Term> arises when the party an agent is told it
               serves changes the penalty it applies to paid listings (Wadi &amp; Ma, 2026c).
             </Cell>
-            <Cell tone="signal">
-              <Term tone="ink">Country-of-origin bias</Term> arises when a model&rsquo;s evaluations
+            <Cell>
+              <Term>Country-of-origin bias</Term> arises when a model&rsquo;s evaluations
               shift for particular pairings of the model&rsquo;s country of development and the
               country being evaluated. A fully crossed factorial design{" "}
               <Term>separates this interaction from each model&rsquo;s baseline tendency</Term>{" "}
@@ -943,7 +941,7 @@ export default function Week11() {
               The analyst first defines the task, the population of queries, and the normative
               standard against which the agent&rsquo;s behavior is judged.
             </Step>
-            <Step n={2} tone="signal">
+            <Step n={2}>
               The analyst then designs controlled variations of the prompts and the alternatives,
               with <Term>positions and orders randomized</Term>.
             </Step>
@@ -978,16 +976,11 @@ export default function Week11() {
           Discussion: A Discount Model
           ================================================================ */}
       <Slide id="discussion-a-discount-model" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          A Discount Model
-        </SlideHeading>
-        <Prompt>
-          A retailer&rsquo;s model directs its largest discounts to the customers predicted to be most
-          price-sensitive. An audit reveals that customers in lower-income postal codes receive
-          smaller discounts on average than customers in higher-income postal codes. Which sources of
-          bias could explain this result, which fairness criterion is relevant, and what should the
-          retailer do?
-        </Prompt>
+        <SlideHeading>Discussion: A Discount Model</SlideHeading>
+        <Discussion
+          scenario={"A retailer's model directs its largest discounts to the customers predicted to be most price-sensitive. An audit reveals that customers in lower-income postal codes receive smaller discounts on average than customers in higher-income postal codes."}
+          question={"Which sources of bias could explain this result, which fairness criterion is relevant, and what should the retailer do?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1006,8 +999,8 @@ export default function Week11() {
             "Language models and AI agents are audited for position, sponsorship, and country-of-origin biases with controlled designs, and each audit applies to the specific model version deployed.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

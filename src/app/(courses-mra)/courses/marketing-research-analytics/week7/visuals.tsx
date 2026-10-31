@@ -185,8 +185,8 @@ export function SameSourceDifferences() {
         height={392}
         label={`A population of 48 customers with a mean monthly spending of ${Math.round(POP_MEAN)} dollars. Two samples of eight are drawn from it: their means are ${now.ma} and ${now.mb} dollars, a difference of ${now.diff} dollars. After ${draws} pairs of samples, the differences between sample means scatter on both sides of zero`}
       >
-        <Key x={20} y={22}>POPULATION</Key>
-        <Key x={620} y={22} anchor="end">{`MEAN $${Math.round(POP_MEAN)} | PARAMETER`}</Key>
+        <Key x={20} y={22}>Population</Key>
+        <Key x={620} y={22} anchor="end">{`Mean $${Math.round(POP_MEAN)} | parameter`}</Key>
         {POPULATION.map((_, i) => (
           <Person1
             key={i}
@@ -201,15 +201,15 @@ export function SameSourceDifferences() {
 
         {/* the two sample means */}
         <line x1={20} y1={138} x2={620} y2={138} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={162} fill={INK}>SAMPLE 1. MEAN</Key>
+        <Key x={20} y={162} fill={INK}>Sample 1. mean</Key>
         <Display x={20} y={192} size={26}>{`$${now.ma}`}</Display>
-        <Key x={230} y={162} fill={COUNTER}>SAMPLE 2. MEAN</Key>
+        <Key x={230} y={162} fill={COUNTER}>Sample 2. mean</Key>
         <Display x={230} y={192} size={26} fill={COUNTER}>{`$${now.mb}`}</Display>
-        <Key x={620} y={162} anchor="end" fill={SIGNAL}>DIFFERENCE | STATISTIC</Key>
+        <Key x={620} y={162} anchor="end" fill={SIGNAL}>Difference | Statistic</Key>
         <Display x={620} y={192} anchor="end" size={26} fill={SIGNAL}>{signed(now.diff)}</Display>
 
         {/* strip of differences, one dot per pair of samples */}
-        <Key x={20} y={226}>{`DIFFERENCE BETWEEN THE TWO MEANS | ${draws} PAIRS OF SAMPLES`}</Key>
+        <Key x={20} y={226}>{`Difference between the two means | ${draws} pairs of samples`}</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={d.last ? 4 : 3.1} fill={d.last ? SIGNAL : INK3} fillOpacity={d.last ? 1 : 0.65} />
         ))}
@@ -247,8 +247,8 @@ export function TailDirections() {
   const x1 = 496;
   const zx = 260;
   const rows = [
-    { y: 74, name: "TWO-TAILED TEST", left: true },
-    { y: 176, name: "ONE-TAILED TEST", left: false },
+    { y: 74, name: "Two-tailed test", left: true },
+    { y: 176, name: "One-tailed test", left: false },
   ];
   return (
     <Frame
@@ -263,12 +263,12 @@ export function TailDirections() {
           {/* H1: arrows away from the point of no difference */}
           <path d={`M${zx + 14} ${r.y}H${x1}`} stroke={SIGNAL} strokeWidth={3} />
           <path d={head.right(x1, r.y, 11)} fill="none" stroke={SIGNAL} strokeWidth={3} />
-          <Key x={x1} y={r.y + 26} anchor="end" fill={SIGNAL}>MEMBERS SPEND MORE</Key>
+          <Key x={x1} y={r.y + 26} anchor="end" fill={SIGNAL}>Members spend more</Key>
           {r.left ? (
             <>
               <path d={`M${zx - 14} ${r.y}H${x0}`} stroke={SIGNAL} strokeWidth={3} />
               <path d={head.left(x0, r.y, 11)} fill="none" stroke={SIGNAL} strokeWidth={3} />
-              <Key x={x0} y={r.y + 26} fill={SIGNAL}>MEMBERS SPEND LESS</Key>
+              <Key x={x0} y={r.y + 26} fill={SIGNAL}>Members spend less</Key>
             </>
           ) : null}
           <Key x={390} y={r.y - 12} anchor="middle" fill={SIGNAL} size={12} weight={700}>H1</Key>
@@ -276,7 +276,7 @@ export function TailDirections() {
           {/* H0: the single point of no difference */}
           <circle cx={zx} cy={r.y} r={6.5} fill={INK} />
           <Key x={zx} y={r.y - 16} anchor="middle" fill={INK} size={12} weight={700}>H0</Key>
-          <Key x={zx} y={r.y + 26} anchor="middle">NO DIFFERENCE</Key>
+          <Key x={zx} y={r.y + 26} anchor="middle">No difference</Key>
         </g>
       ))}
     </Frame>
@@ -363,7 +363,7 @@ export function PValueTail() {
         <path d={area(t, lim)} fill={SIGNAL} fillOpacity={0.5} stroke="none" />
         <path d={area(-lim, -t)} fill={SIGNAL} fillOpacity={0.5} stroke="none" />
         <path d={curve} fill="none" stroke={INK} strokeWidth={1.5} />
-        <Key x={X(0)} y={Y(0) - 12} anchor="middle">IF H0 WERE TRUE</Key>
+        <Key x={X(0)} y={Y(0) - 12} anchor="middle">If H0 were true</Key>
 
         {/* the 0.05 threshold */}
         {[-crit, crit].map((c) => (
@@ -374,16 +374,16 @@ export function PValueTail() {
         <line x1={X(-t)} y1={base} x2={X(-t)} y2={r2(base - peak - 6)} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
         <line x1={X(t)} y1={base} x2={X(t)} y2={r2(base - peak - 6)} stroke={SIGNAL} strokeWidth={1.75} />
         <Key x={labelRight ? r2(X(t) + 8) : r2(X(t) - 8)} y={r2(base - peak + 6)} anchor={labelRight ? "start" : "end"} fill={SIGNAL}>
-          OBSERVED
+          Observed
         </Key>
 
         <line x1={x0 - 6} y1={base} x2={x1 + 6} y2={base} stroke={INK} strokeWidth={1.25} />
         <Key x={X(0)} y={base + 20} anchor="middle" fill={INK3} size={9.5}>0</Key>
         <Key x={X(-crit)} y={base + 20} anchor="middle" fill={INK3} size={9.5}>{"\u22121.96"}</Key>
         <Key x={X(crit)} y={base + 20} anchor="middle" fill={INK3} size={9.5}>+1.96</Key>
-        <Key x={X(0)} y={base + 38} anchor="middle" fill={INK3} size={9.5}>TEST STATISTIC</Key>
-        <Key x={X(-crit)} y={base + 38} anchor="middle" fill={INK3} size={9.5}>0.05 THRESHOLD</Key>
-        <Key x={X(crit)} y={base + 38} anchor="middle" fill={INK3} size={9.5}>0.05 THRESHOLD</Key>
+        <Key x={X(0)} y={base + 38} anchor="middle" fill={INK3} size={9.5}>Test statistic</Key>
+        <Key x={X(-crit)} y={base + 38} anchor="middle" fill={INK3} size={9.5}>0.05 threshold</Key>
+        <Key x={X(crit)} y={base + 38} anchor="middle" fill={INK3} size={9.5}>0.05 threshold</Key>
         <g
           role="slider"
           tabIndex={0}
@@ -405,7 +405,7 @@ export function PValueTail() {
         {/* the readout */}
         <Display x={x0} y={36} size={30} fill={SIGNAL}>{fmtP(p)}</Display>
         <Key x={x0} y={58} fill={reject ? SIGNAL : INK2}>
-          {reject ? "BELOW 0.05 | H0 REJECTED" : "ABOVE 0.05 | H0 NOT REJECTED"}
+          {reject ? "Below 0.05 | H0 rejected" : "Above 0.05 | H0 not rejected"}
         </Key>
       </Frame>
     </div>
@@ -475,15 +475,15 @@ export function ErrorTradeoff() {
         <path d={area(c, hi, 0)} fill={COUNTER} fillOpacity={0.6} />
         <path d={line(lo, hi, 0)} fill="none" stroke={INK} strokeWidth={1.5} />
         <path d={line(lo, hi, delta)} fill="none" stroke={INK} strokeWidth={1.5} />
-        <Key x={r2(X(0) + 20)} y={base - peak - 12} anchor="end" fill={INK}>IF H0 IS TRUE</Key>
-        <Key x={r2(X(delta) - 20)} y={base - peak - 12} fill={INK}>IF H1 IS TRUE</Key>
+        <Key x={r2(X(0) + 20)} y={base - peak - 12} anchor="end" fill={INK}>If H0 is true</Key>
+        <Key x={r2(X(delta) - 20)} y={base - peak - 12} fill={INK}>If H1 is true</Key>
 
         {/* critical value */}
         <line x1={cx} y1={base} x2={cx} y2={r2(base - peak - 2)} stroke={INK} strokeWidth={1.5} />
         <line x1={x0 - 4} y1={base} x2={x1 + 4} y2={base} stroke={INK} strokeWidth={1.25} />
-        <Key x={r2(cx - 12)} y={base + 24} anchor="end" fill={INK3} size={9.5}>H0 NOT REJECTED</Key>
-        <Key x={r2(cx + 12)} y={base + 24} fill={INK} size={9.5}>H0 REJECTED</Key>
-        <Key x={x1} y={base + 46} anchor="end" fill={INK3} size={9.5}>TEST STATISTIC</Key>
+        <Key x={r2(cx - 12)} y={base + 24} anchor="end" fill={INK3} size={9.5}>H0 not rejected</Key>
+        <Key x={r2(cx + 12)} y={base + 24} fill={INK} size={9.5}>H0 rejected</Key>
+        <Key x={x1} y={base + 46} anchor="end" fill={INK3} size={9.5}>Test statistic</Key>
         <g
           role="slider"
           tabIndex={0}
@@ -504,9 +504,9 @@ export function ErrorTradeoff() {
 
         {/* readouts */}
         {[
-          { k: "TYPE I ERROR", v: typeI, tone: COUNTER, x: 20 },
-          { k: "TYPE II ERROR", v: typeII, tone: INK2, x: 230 },
-          { k: "POWER", v: power, tone: SIGNAL, x: 440 },
+          { k: "Type I error", v: typeI, tone: COUNTER, x: 20 },
+          { k: "Type II error", v: typeII, tone: INK2, x: 230 },
+          { k: "Power", v: power, tone: SIGNAL, x: 440 },
         ].map((r) => (
           <g key={r.k}>
             <Key x={r.x} y={27} fill={r.tone}>{r.k}</Key>
@@ -559,8 +559,8 @@ export function TLevers() {
   const x1 = 610;
   const X = (v: number) => r2(x0 + (Math.max(0, Math.min(200, v)) / 200) * (x1 - x0));
   const groups = [
-    { name: "MEMBERS", mean: base + diff, z: standardised(LEVER_Z[0], n), y: 130, tone: COUNTER },
-    { name: "NONMEMBERS", mean: base, z: standardised(LEVER_Z[1], n), y: 214, tone: INK3 },
+    { name: "Members", mean: base + diff, z: standardised(LEVER_Z[0], n), y: 130, tone: COUNTER },
+    { name: "Nonmembers", mean: base, z: standardised(LEVER_Z[1], n), y: 214, tone: INK3 },
   ];
   const axis = 262;
   const sig = p < 0.05;
@@ -572,7 +572,7 @@ export function TLevers() {
         height={300}
         label={`Monthly spending of ${n} members and ${n} nonmembers. Members spend ${diff} dollars more on average, with a standard deviation of ${sd} dollars within each group. The standard error of the difference is ${se.toFixed(2)} dollars, so t is ${t.toFixed(2)} and ${fmtP(p)}`}
       >
-        <Key x={20} y={24}>t = DIFFERENCE BETWEEN THE MEANS ÷ ITS STANDARD ERROR</Key>
+        <Key x={20} y={24}>t = difference between the means ÷ its standard error</Key>
         <Display x={20} y={60} size={26}>{`$${diff} ÷ $${se.toFixed(2)}`}</Display>
         <Display x={300} y={60} size={26} fill={SIGNAL}>{`t = ${t.toFixed(2)}`}</Display>
         <Display x={620} y={60} size={26} anchor="end" fill={sig ? SIGNAL : INK2}>{fmtP(p)}</Display>
@@ -598,7 +598,7 @@ export function TLevers() {
           <g>
             <path d={`M${X(base)} 172H${X(base + diff)}`} stroke={SIGNAL} strokeWidth={1.75} />
             <path d={`M${X(base)} 166V178M${X(base + diff)} 166V178`} stroke={SIGNAL} strokeWidth={1.75} />
-            <Key x={r2(X(base + diff) + 8)} y={176} fill={SIGNAL} size={9.5}>DIFFERENCE</Key>
+            <Key x={r2(X(base + diff) + 8)} y={176} fill={SIGNAL} size={9.5}>Difference</Key>
           </g>
         ) : null}
 
@@ -670,15 +670,15 @@ export function PairedVersusIndependent() {
         height={300}
         label={`Twelve respondents rate a brand from 0 to 100 before and after an advertisement. Every rating rises by 4 to 7 points, 5 on average. ${paired ? "Analysed as pairs, each respondent is compared with themselves" : "Analysed as two independent groups, the rise is small beside the spread between respondents"}: t = ${t.toFixed(2)}, ${fmtP(p)}`}
       >
-        <Key x={xb} y={22} anchor="middle" fill={INK}>BEFORE THE AD</Key>
-        <Key x={xa} y={22} anchor="middle" fill={INK}>AFTER THE AD</Key>
+        <Key x={xb} y={22} anchor="middle" fill={INK}>Before the ad</Key>
+        <Key x={xa} y={22} anchor="middle" fill={INK}>After the ad</Key>
         {[20, 40, 60, 80, 100].map((v) => (
           <g key={v}>
             <line x1={62} y1={Y(v)} x2={440} y2={Y(v)} stroke={RULE} strokeWidth={1} />
             <Key x={54} y={r2(Y(v) + 4)} anchor="end" fill={INK3} size={9.5}>{v}</Key>
           </g>
         ))}
-        <Key x={20} y={22} fill={INK3} size={9.5}>RATING</Key>
+        <Key x={20} y={22} fill={INK3} size={9.5}>Rating</Key>
 
         {paired
           ? BRAND_BEFORE.map((v, i) => (
@@ -701,13 +701,13 @@ export function PairedVersusIndependent() {
             <line x1={g.x + 14} y1={Y(g.m)} x2={g.x + 40} y2={Y(g.m)} stroke={COUNTER} strokeWidth={2.5} />
           </g>
         ))}
-        <Key x={r2(xa + 46)} y={r2(Y(a.m) + 4)} fill={COUNTER} size={9.5}>MEAN</Key>
+        <Key x={r2(xa + 46)} y={r2(Y(a.m) + 4)} fill={COUNTER} size={9.5}>Mean</Key>
 
         {/* the verdict */}
         <line x1={470} y1={44} x2={470} y2={272} stroke={RULE} strokeWidth={1} />
-        <Key x={492} y={70}>DIFFERENCE IN MEANS</Key>
+        <Key x={492} y={70}>Difference in means</Key>
         <Display x={492} y={104} size={28}>+5</Display>
-        <Key x={492} y={160} fill={paired ? SIGNAL : INK2}>{paired ? "PAIRED t-TEST" : "INDEPENDENT t-TEST"}</Key>
+        <Key x={492} y={160} fill={paired ? SIGNAL : INK2}>{paired ? "Paired t-test" : "Independent t-test"}</Key>
         <Display x={492} y={196} size={28} fill={paired ? SIGNAL : INK2}>{`t = ${t.toFixed(2)}`}</Display>
         <Display x={492} y={234} size={28} fill={paired ? SIGNAL : INK2}>{fmtP(p)}</Display>
       </Frame>
@@ -753,8 +753,8 @@ function ChannelIcon({ i, cx, cy }: { i: number; cx: number; cy: number }) {
  */
 export function BetweenWithin() {
   const panels = [
-    { sd: 4, x: 20, name: "LITTLE VARIATION WITHIN GROUPS" },
-    { sd: 14, x: 420, name: "MUCH VARIATION WITHIN GROUPS" },
+    { sd: 4, x: 20, name: "Little variation within groups" },
+    { sd: 14, x: 420, name: "Much variation within groups" },
   ];
   const grand = CHANNEL_MEANS.reduce((a, b) => a + b, 0) / 3;
   const msb = (CHANNEL_N * CHANNEL_MEANS.reduce((a, m) => a + (m - grand) ** 2, 0)) / 2;
@@ -795,7 +795,7 @@ export function BetweenWithin() {
             {/* between: the spread of the three means */}
             <path d={`M${pn.x + 58} ${Y(CHANNEL_MEANS[0])}V${Y(CHANNEL_MEANS[2])}`} stroke={SIGNAL} strokeWidth={1.75} />
             <path d={`M${pn.x + 53} ${Y(CHANNEL_MEANS[0])}H${pn.x + 63}M${pn.x + 53} ${Y(CHANNEL_MEANS[2])}H${pn.x + 63}`} stroke={SIGNAL} strokeWidth={1.75} />
-            <Key x={pn.x + 52} y={r2(Y(CHANNEL_MEANS[2]) - 10)} anchor="middle" fill={SIGNAL} size={9.5}>BETWEEN</Key>
+            <Key x={pn.x + 52} y={r2(Y(CHANNEL_MEANS[2]) - 10)} anchor="middle" fill={SIGNAL} size={9.5}>Between</Key>
             {/* the verdict */}
             <Display x={pn.x + 370} y={24} anchor="end" size={22} fill={stats[k].p < 0.05 ? SIGNAL : INK2}>
               {`F = ${stats[k].f.toFixed(1)}`}
@@ -812,7 +812,7 @@ export function BetweenWithin() {
               return (
                 <g>
                   <path d={`M${bx} ${y0}V${y1}M${bx - 4} ${y0}H${bx + 4}M${bx - 4} ${y1}H${bx + 4}`} stroke={INK3} strokeWidth={1.5} />
-                  <Key x={r2(bx + 8)} y={r2((y0 + y1) / 2 + 4)} fill={INK3} size={9.5}>WITHIN</Key>
+                  <Key x={r2(bx + 8)} y={r2((y0 + y1) / 2 + 4)} fill={INK3} size={9.5}>Within</Key>
                 </g>
               );
             })()}
@@ -869,7 +869,7 @@ export function ObservedExpected() {
       {[0, 1, 2].map((j) => (
         <ChannelIcon key={j} i={j} cx={r2(cx0 + cw * j + cw / 2)} cy={34} />
       ))}
-      <Key x={516} y={38} anchor="middle" fill={INK3} size={9.5}>TOTAL</Key>
+      <Key x={516} y={38} anchor="middle" fill={INK3} size={9.5}>Total</Key>
       {CHANNEL_BY_AGE.map((r, i) => {
         const y = ry0 + i * rh;
         return (
@@ -881,7 +881,7 @@ export function ObservedExpected() {
                 <g key={j}>
                   <rect x={x + 2} y={y + 2} width={cw - 4} height={rh - 4} fill={SIGNAL} fillOpacity={r2(0.04 + 0.4 * (c.part / maxPart))} />
                   <Display x={r2(x + cw / 2 - 8)} y={r2(y + rh / 2 + 9)} anchor="end" size={24}>{c.o}</Display>
-                  <Key x={r2(x + cw / 2 + 2)} y={r2(y + rh / 2 - 3)} fill={INK3} size={9.5}>EXPECTED</Key>
+                  <Key x={r2(x + cw / 2 + 2)} y={r2(y + rh / 2 - 3)} fill={INK3} size={9.5}>Expected</Key>
                   <Key x={r2(x + cw / 2 + 2)} y={r2(y + rh / 2 + 13)} fill={INK2} size={11}>{c.e.toFixed(1)}</Key>
                 </g>
               );
@@ -895,7 +895,7 @@ export function ObservedExpected() {
         <Key key={j} x={r2(cx0 + cw * j + cw / 2)} y={ry0 + 3 * rh + 26} anchor="middle" fill={INK3}>{c}</Key>
       ))}
       <Key x={516} y={ry0 + 3 * rh + 26} anchor="middle" fill={INK3}>{total}</Key>
-      <Key x={20} y={ry0 + 3 * rh + 26} fill={INK3} size={9.5}>TOTAL</Key>
+      <Key x={20} y={ry0 + 3 * rh + 26} fill={INK3} size={9.5}>Total</Key>
       <Display x={cx0} y={308} size={24} fill={SIGNAL}>{`\u03c7\u00b2 = ${chi.toFixed(1)}`}</Display>
       <Key x={r2(cx0 + 120)} y={302} fill={SIGNAL}>{fmtP(p)}</Key>
     </Frame>
@@ -1070,7 +1070,7 @@ export function SignificanceAndSize() {
         height={290}
         label={`Two versions of a web page convert 3.05 and 3.00 percent of visitors. With ${shown.toLocaleString("en-US")} visitors divided equally between them, ${fmtP(p)}: ${sig ? "statistically significant at the 0.05 level" : "not statistically significant"}. The p-value falls as the number of visitors grows and crosses 0.05 at about 1.8 million, while the difference stays at 0.05 percentage points`}
       >
-        <Key x={20} y={24} fill={INK}>CONVERSION RATE</Key>
+        <Key x={20} y={24} fill={INK}>Conversion rate</Key>
         {bars.map((b) => (
           <g key={b.letter}>
             <rect x={b.x - 26} y={BY(b.v)} width={52} height={r2(barBase - BY(b.v))} fill={b.letter === "A" ? SIGNAL : INK3} fillOpacity={b.letter === "A" ? 0.85 : 0.6} />
@@ -1083,7 +1083,7 @@ export function SignificanceAndSize() {
         <line x1={220} y1={14} x2={220} y2={278} stroke={RULE} strokeWidth={1} />
 
         {/* p against the number of visitors */}
-        <Key x={gx0 - 10} y={24} fill={INK}>p-VALUE</Key>
+        <Key x={gx0 - 10} y={24} fill={INK}>p-value</Key>
         {[0.01, 0.25, 0.5, 1].map((v) => (
           <g key={v}>
             <line x1={gx0} y1={GY(v)} x2={gx1} y2={GY(v)} stroke={RULE} strokeWidth={1} />
@@ -1097,14 +1097,14 @@ export function SignificanceAndSize() {
         {[100_000, 1_000_000].map((n) => (
           <g key={n}>
             <line x1={GX(n)} y1={gy1} x2={GX(n)} y2={gy1 + 4} stroke={INK} strokeWidth={1} />
-            <Key x={GX(n)} y={gy1 + 18} anchor="middle" fill={INK3} size={9}>{n === 100_000 ? "100,000" : "1 MILLION"}</Key>
+            <Key x={GX(n)} y={gy1 + 18} anchor="middle" fill={INK3} size={9}>{n === 100_000 ? "100,000" : "1 million"}</Key>
           </g>
         ))}
-        <Key x={gx1} y={gy1 + 36} anchor="end" fill={INK3} size={9.5}>VISITORS IN THE TEST</Key>
+        <Key x={gx1} y={gy1 + 36} anchor="end" fill={INK3} size={9.5}>Visitors in the test</Key>
         <circle cx={GX(shown)} cy={GY(p)} r={6} fill={sig ? SIGNAL : INK} stroke={PAPER} strokeWidth={2} />
 
         <Display x={gx1} y={32} anchor="end" size={24} fill={sig ? SIGNAL : INK2}>{fmtP(p)}</Display>
-        <Key x={gx1} y={52} anchor="end" fill={INK2}>{`${shown.toLocaleString("en-US")} VISITORS`}</Key>
+        <Key x={gx1} y={52} anchor="end" fill={INK2}>{`${shown.toLocaleString("en-US")} visitors`}</Key>
       </Frame>
       <Slider label="Visitors in the test" value={step} min={0} max={VISITOR_STEPS.length - 1} onChange={setStep} showValue={false} />
     </div>
@@ -1116,9 +1116,9 @@ export function SignificanceAndSize() {
    -------------------------------------------------------------------------- */
 
 const EFFECTS = [
-  { id: "0.2", label: "0.2", name: "SMALL" },
-  { id: "0.5", label: "0.5", name: "MEDIUM" },
-  { id: "0.8", label: "0.8", name: "LARGE" },
+  { id: "0.2", label: "0.2", name: "Small" },
+  { id: "0.5", label: "0.5", name: "Medium" },
+  { id: "0.8", label: "0.8", name: "Large" },
 ] as const;
 type EffectId = (typeof EFFECTS)[number]["id"];
 
@@ -1162,12 +1162,12 @@ export function EffectOverlap() {
 
         {/* numerator: the difference between the means */}
         <path d={`M${X(0)} ${top - 14}H${X(d)}M${X(0)} ${top - 20}V${top - 8}M${X(d)} ${top - 20}V${top - 8}`} stroke={SIGNAL} strokeWidth={2} />
-        <Key x={r2(X(d) + 10)} y={top - 10} fill={SIGNAL}>DIFFERENCE BETWEEN THE MEANS</Key>
+        <Key x={r2(X(d) + 10)} y={top - 10} fill={SIGNAL}>Difference between the means</Key>
 
         <line x1={x0 - 4} y1={base} x2={x1 + 4} y2={base} stroke={INK} strokeWidth={1.25} />
         {/* denominator: one pooled standard deviation */}
         <path d={`M${X(0)} ${base + 18}H${X(1)}M${X(0)} ${base + 12}V${base + 24}M${X(1)} ${base + 12}V${base + 24}`} stroke={INK} strokeWidth={2} />
-        <Key x={r2(X(1) + 10)} y={base + 22} fill={INK}>ONE POOLED STANDARD DEVIATION</Key>
+        <Key x={r2(X(1) + 10)} y={base + 22} fill={INK}>One pooled standard deviation</Key>
 
         <Display x={20} y={36} size={28} fill={SIGNAL}>{`d = ${d.toFixed(1)}`}</Display>
         <Key x={20} y={58} fill={SIGNAL}>{e.name}</Key>
@@ -1217,7 +1217,7 @@ export function IntervalAndZero() {
     >
       {/* no difference */}
       <line x1={X(0)} y1={y - 18} x2={X(0)} y2={axis} stroke={INK} strokeWidth={1.25} strokeDasharray="4 3" />
-      <Key x={X(0)} y={y - 26} anchor="middle" fill={INK}>NO DIFFERENCE</Key>
+      <Key x={X(0)} y={y - 26} anchor="middle" fill={INK}>No difference</Key>
 
       <g
         role="slider"
@@ -1239,7 +1239,7 @@ export function IntervalAndZero() {
       </g>
       <Key x={X(lo)} y={y + 32} anchor="middle" fill={tone}>{dollars(lo)}</Key>
       <Key x={X(hi)} y={y + 32} anchor="middle" fill={tone}>{dollars(hi)}</Key>
-      <Key x={X(m)} y={y - 50} anchor="middle" fill={tone}>95% CONFIDENCE INTERVAL</Key>
+      <Key x={X(m)} y={y - 50} anchor="middle" fill={tone}>95% confidence interval</Key>
 
       <line x1={x0 - 6} y1={axis} x2={x1 + 8} y2={axis} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(x1 + 8, axis, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
@@ -1249,11 +1249,11 @@ export function IntervalAndZero() {
           <Key x={X(v)} y={axis + 18} anchor="middle" fill={INK3} size={9.5}>{dollars(v)}</Key>
         </g>
       ))}
-      <Key x={x1 + 8} y={axis + 36} anchor="end" fill={INK3} size={9.5}>DIFFERENCE IN MEAN SPENDING</Key>
+      <Key x={x1 + 8} y={axis + 36} anchor="end" fill={INK3} size={9.5}>Difference in mean spending</Key>
 
       <Display x={20} y={36} size={26} fill={tone}>{fmtP(p)}</Display>
       <Key x={480} y={30} anchor="end" fill={tone}>
-        {excludes ? "EXCLUDES ZERO | SIGNIFICANT AT 0.05" : "INCLUDES ZERO | NOT SIGNIFICANT AT 0.05"}
+        {excludes ? "Excludes zero | significant at 0.05" : "Includes zero | not significant at 0.05"}
       </Key>
     </Frame>
   );
@@ -1315,7 +1315,7 @@ export function ForkingPaths() {
         height={196}
         label={`One hundred studies of a difference that does not exist. ${on.length === 0 ? "With one planned test" : `With ${on.length} practice${on.length > 1 ? "s" : ""} applied`}, ${count} of the 100 report a statistically significant difference`}
       >
-        <Key x={20} y={22}>100 STUDIES | NO DIFFERENCE EXISTS</Key>
+        <Key x={20} y={22}>100 studies | No difference exists</Key>
         {Array.from({ length: 100 }, (_, i) => {
           const x = 20 + (i % cols) * (w + gx);
           const y = 40 + Math.floor(i / cols) * (h + gy);
@@ -1328,7 +1328,7 @@ export function ForkingPaths() {
           );
         })}
         <Display x={620} y={104} anchor="end" size={40} fill={COUNTER}>{`${count}`}</Display>
-        <Key x={620} y={128} anchor="end" fill={COUNTER}>OF 100 REPORT</Key>
+        <Key x={620} y={128} anchor="end" fill={COUNTER}>Of 100 report</Key>
         <Key x={620} y={146} anchor="end" fill={COUNTER}>p &lt; 0.05</Key>
       </Frame>
       <Toggles label="Practices" options={[...PRACTICES]} value={on} onChange={setOn} allowNone />
@@ -1394,8 +1394,8 @@ export function ManyTests() {
         height={262}
         label={`${k} tests of true null hypotheses at a level of ${fmtLevel(level)} per test${bonf ? " after the Bonferroni correction" : ""}. In this run ${hits} of the ${k} tests ${hits === 1 ? "is" : "are"} significant. The probability of at least one significant result is ${Math.round(prob * 100)} percent`}
       >
-        <Key x={20} y={22} fill={INK}>{`${k} TEST${k > 1 ? "S" : ""} | NO REAL DIFFERENCES`}</Key>
-        <Key x={20} y={42} fill={INK3}>{`LEVEL PER TEST ${fmtLevel(level)}`}</Key>
+        <Key x={20} y={22} fill={INK}>{`${k} test${k > 1 ? "S" : ""} | no real differences`}</Key>
+        <Key x={20} y={42} fill={INK3}>{`Level per test ${fmtLevel(level)}`}</Key>
         {NULL_PS.slice(0, k).map((p, i) => {
           const x = gx0 + (i % 10) * (tile + gap);
           const y = gy0 + Math.floor(i / 10) * (tile + gap);
@@ -1415,7 +1415,7 @@ export function ManyTests() {
         <line x1={400} y1={14} x2={400} y2={250} stroke={RULE} strokeWidth={1} />
 
         {/* probability of at least one Type I error */}
-        <Key x={cx0 - 10} y={22} fill={INK}>AT LEAST ONE SIGNIFICANT RESULT</Key>
+        <Key x={cx0 - 10} y={22} fill={INK}>At least one significant result</Key>
         {[0, 0.5, 1].map((v) => (
           <g key={v}>
             <line x1={cx0} y1={CY(v)} x2={cx1} y2={CY(v)} stroke={RULE} strokeWidth={1} />
@@ -1431,7 +1431,7 @@ export function ManyTests() {
             <Key x={CX(n)} y={cy1 + 18} anchor="middle" fill={INK3} size={9}>{n}</Key>
           </g>
         ))}
-        <Key x={cx1} y={cy1 + 36} anchor="end" fill={INK3} size={9.5}>NUMBER OF TESTS</Key>
+        <Key x={cx1} y={cy1 + 36} anchor="end" fill={INK3} size={9.5}>Number of tests</Key>
         <circle cx={CX(k)} cy={CY(prob)} r={6} fill={bonf ? SIGNAL : COUNTER} stroke={PAPER} strokeWidth={2} />
         <Display x={cx1} y={50} anchor="end" size={28} fill={bonf ? SIGNAL : COUNTER}>{`${Math.round(prob * 100)}%`}</Display>
       </Frame>
@@ -1462,7 +1462,7 @@ function PlanDoc({ x, y, w, h, tone = INK, dashed = false }: { x: number; y: num
  * produce ideas that become hypotheses for the next preregistered study.
  */
 export function PreregistrationTimeline() {
-  const items = ["HYPOTHESES", "SAMPLE SIZE", "EXCLUSION CRITERIA", "ANALYSIS PLAN"];
+  const items = ["Hypotheses", "Sample size", "Exclusion criteria", "Analysis plan"];
   const mid = 112;
   return (
     <Frame
@@ -1471,7 +1471,7 @@ export function PreregistrationTimeline() {
       label="Before the data are collected, a preregistration document lists the hypotheses, sample size, exclusion criteria and analysis plan. The data are then collected from respondents. Confirmatory analyses test the preregistered hypotheses. Exploratory analyses generate new ideas, which become hypotheses for a future preregistered study"
     >
       {/* the plan */}
-      <Key x={20} y={22} fill={SIGNAL}>PREREGISTRATION</Key>
+      <Key x={20} y={22} fill={SIGNAL}>Preregistration</Key>
       <PlanDoc x={20} y={36} w={176} h={144} tone={SIGNAL} />
       {items.map((t, i) => (
         <g key={t}>
@@ -1483,14 +1483,14 @@ export function PreregistrationTimeline() {
 
       {/* before | after */}
       <line x1={232} y1={14} x2={232} y2={184} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
-      <Key x={20} y={204} fill={INK3} size={9.5}>BEFORE THE DATA ARE COLLECTED</Key>
-      <Key x={246} y={204} fill={INK3} size={9.5}>AFTER</Key>
+      <Key x={20} y={204} fill={INK3} size={9.5}>Before the data are collected</Key>
+      <Key x={246} y={204} fill={INK3} size={9.5}>After</Key>
 
       <path d={`M204 ${mid}H258`} stroke={INK} strokeWidth={1.5} />
       <path d={head.right(258, mid, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
 
       {/* data collection */}
-      <Key x={322} y={60} anchor="middle" fill={INK}>DATA COLLECTION</Key>
+      <Key x={322} y={60} anchor="middle" fill={INK}>Data collection</Key>
       {[282, 308, 334, 360].map((x) => (
         <Person1 key={x} x={x} y={mid + 16} k={0.8} />
       ))}
@@ -1505,16 +1505,16 @@ export function PreregistrationTimeline() {
       <PlanDoc x={480} y={34} w={40} h={46} tone={SIGNAL} />
       <rect x={490} y={50} width={20} height={20} fill={SIGNAL} />
       <Tick1 cx={500} cy={60} s={6} />
-      <Key x={534} y={54} fill={SIGNAL}>CONFIRMATORY</Key>
-      <Key x={534} y={72} fill={INK3} size={9.5}>HYPOTHESES SPECIFIED IN ADVANCE</Key>
+      <Key x={534} y={54} fill={SIGNAL}>Confirmatory</Key>
+      <Key x={534} y={72} fill={INK3} size={9.5}>Hypotheses specified in advance</Key>
 
       {/* exploratory: a new idea, tested in a future study */}
       <Lightbulb x={484} y={152} size={32} weight="regular" color={COUNTER} />
-      <Key x={534} y={166} fill={COUNTER}>EXPLORATORY</Key>
+      <Key x={534} y={166} fill={COUNTER}>Exploratory</Key>
       <path d={`M640 ${162}H700`} stroke={COUNTER} strokeWidth={1.5} />
       <path d={head.right(700, 162, 7)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <PlanDoc x={712} y={138} w={40} h={46} tone={COUNTER} dashed />
-      <Key x={780} y={204} anchor="end" fill={COUNTER} size={9.5}>FUTURE TESTING</Key>
+      <Key x={780} y={204} anchor="end" fill={COUNTER} size={9.5}>Future testing</Key>
     </Frame>
   );
 }
@@ -1568,23 +1568,23 @@ export function ModelComparisons() {
           </g>
         ))}
 
-        <Key x={rx} y={40} fill={INK}>PAIRS OF MODELS</Key>
+        <Key x={rx} y={40} fill={INK}>Pairs of models</Key>
         <Display x={rx} y={72} size={28}>{`${pairs}`}</Display>
-        <Key x={rx + 150} y={40} fill={INK}>{`\u00d7 ${PRODUCT_ICONS.length} PRODUCTS`}</Key>
+        <Key x={rx + 150} y={40} fill={INK}>{`\u00d7 ${PRODUCT_ICONS.length} products`}</Key>
         {PRODUCT_ICONS.map((Icon, i) => (
           <Icon key={i} x={rx + 150 + i * 30} y={51} size={26} weight="regular" color={INK} />
         ))}
 
         <line x1={rx} y1={100} x2={588} y2={100} stroke={RULE} strokeWidth={1} />
-        <Key x={rx} y={126} fill={INK}>TESTS</Key>
+        <Key x={rx} y={126} fill={INK}>Tests</Key>
         <Display x={588} y={130} anchor="end" size={28}>{tests.toLocaleString("en-US")}</Display>
 
-        <Key x={rx} y={172} fill={COUNTER}>SIGNIFICANT BY CHANCE AT 0.05</Key>
-        <Key x={rx} y={188} fill={COUNTER} size={9.5}>IF NO MODEL DIFFERS</Key>
+        <Key x={rx} y={172} fill={COUNTER}>Significant by chance at 0.05</Key>
+        <Key x={rx} y={188} fill={COUNTER} size={9.5}>If no model differs</Key>
         <Display x={588} y={186} anchor="end" size={28} fill={COUNTER}>{`\u2248 ${expected < 10 ? expected.toFixed(1) : Math.round(expected)}`}</Display>
 
-        <Key x={rx} y={228} fill={SIGNAL}>BONFERRONI LEVEL</Key>
-        <Key x={rx} y={244} fill={SIGNAL} size={9.5}>PER TEST</Key>
+        <Key x={rx} y={228} fill={SIGNAL}>Bonferroni level</Key>
+        <Key x={rx} y={244} fill={SIGNAL} size={9.5}>Per test</Key>
         <Display x={588} y={242} anchor="end" size={28} fill={SIGNAL}>{fmtBonf}</Display>
       </Frame>
       <Slider label="Models compared" value={k} min={2} max={16} onChange={setK} />
@@ -1597,11 +1597,11 @@ export function ModelComparisons() {
    -------------------------------------------------------------------------- */
 
 const RECORD_ROWS = [
-  { key: "MODEL VERSION", value: "gpt-4.1-2025-04-14" },
-  { key: "DATE", value: "2025-06-12" },
-  { key: "GENERATION SETTINGS", value: "temperature 1.0 | max tokens 300" },
-  { key: "COMPLETE PROMPTS", value: null },
-  { key: "RESPONSES PER CONDITION", value: "100" },
+  { key: "Model version", value: "gpt-4.1-2025-04-14" },
+  { key: "Date", value: "2025-06-12" },
+  { key: "Generation settings", value: "temperature 1.0 | max tokens 300" },
+  { key: "Complete prompts", value: null },
+  { key: "Responses per condition", value: "100" },
 ];
 
 /**

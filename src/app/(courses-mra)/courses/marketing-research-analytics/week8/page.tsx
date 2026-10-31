@@ -12,7 +12,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
@@ -69,12 +69,12 @@ export default function Week8() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 8: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
-          <span className="text-[var(--signal)]">Experiments</span> and A/B Testing
+          Experiments and A/B Testing
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[44ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[44ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Experimentation is the principal method by which marketing research establishes{" "}
-          <span className="text-[var(--signal)]">cause and effect</span>.
+          cause and effect.
         </p>
       </Slide>
 
@@ -89,13 +89,13 @@ export default function Week8() {
         </Statement>
         <div className="mt-7 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Descriptive research, introduced in Week 2, can establish that two variables are
                 associated, but not that one causes the other.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Marketing outcomes typically have several causes, so that research establishes
                 whether a particular factor is one of them and estimates the size of its effect.
@@ -103,7 +103,7 @@ export default function Week8() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 In the scientific sense, causality is <Term>probabilistic</Term>: a cause makes
                 an effect more likely, but does not guarantee it.
@@ -133,7 +133,7 @@ export default function Week8() {
           <Numbered n={1}>
             <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Concomitant variation</Term>: the presumed cause and the
+                <Term>Concomitant variation</Term>: the presumed cause and the
                 presumed effect vary together, as when stores with more in-store promotion have
                 higher sales.
               </P>
@@ -142,15 +142,15 @@ export default function Week8() {
           <Numbered n={2}>
             <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Time order</Term>: the cause occurs before or at the same time
+                <Term>Time order</Term>: the cause occurs before or at the same time
                 as the effect, and not after it.
               </P>
             </Ruled>
           </Numbered>
-          <Numbered n={3} tone="counter">
-            <Ruled tone="counter">
+          <Numbered n={3}>
+            <Ruled>
               <P className={CELL}>
-                <Term tone="counter">Elimination of other possible causes</Term>: other factors
+                <Term>Elimination of other possible causes</Term>: other factors
                 that could explain the effect are ruled out, such as the possibility that stores
                 with more promotion are also located in busier areas.
               </P>
@@ -160,7 +160,7 @@ export default function Week8() {
         <Plate className="mt-5">
           <ThreeConditions />
         </Plate>
-        <p className={`${CLOSE} mt-5 border-t-2 border-[var(--signal)] pt-4`}>
+        <p className={`${CLOSE} mt-5 border-t border-[var(--rule-2)] pt-4`}>
           Satisfying all three conditions does not prove causality with certainty, but it
           provides strong evidence for it.
         </p>
@@ -178,27 +178,27 @@ export default function Week8() {
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 <Term>Independent variables</Term>, also called treatments, are the variables
                 manipulated by the researcher, such as price level or advertising message.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Dependent variables</Term> are the outcomes measured, such as
+                <Term>Dependent variables</Term> are the outcomes measured, such as
                 sales, click-through rate, or purchase intention.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Test units</Term> are the entities exposed to the treatments,
+                <Term>Test units</Term> are the entities exposed to the treatments,
                 such as consumers, stores, or geographic regions.
               </P>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={CELL}>
-                <Term tone="counter">Extraneous variables</Term> are variables other than the
+                <Term>Extraneous variables</Term> are variables other than the
                 treatments that could affect the dependent variable, such as the season or the
                 characteristics of the test units.
               </P>
@@ -207,14 +207,14 @@ export default function Week8() {
           <div className="flex min-w-0 flex-col gap-4">
             <p className={BIG}>
               The <Term>treatment group</Term> receives the treatment, and the{" "}
-              <Term tone="ink">control group</Term> does not, or receives the current version.
+              <Term>control group</Term> does not, or receives the current version.
             </p>
             <Plate>
               <ExperimentAnatomy />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                A <Term tone="ink">manipulation check</Term> is a measure that verifies whether
+                A <Term>manipulation check</Term> is a measure that verifies whether
                 participants perceived the treatment as intended, such as asking participants
                 which price they saw.
               </P>
@@ -235,13 +235,13 @@ export default function Week8() {
               unit, and each test unit has a known, planned probability of being assigned to
               each group, usually an equal one.
             </Statement>
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 Random assignment makes the groups equivalent, on average, on all
                 characteristics, including characteristics that the researcher has not measured.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 A difference in the dependent variable between randomly assigned groups can
                 therefore be attributed to the treatment, within the limits of sampling
@@ -253,7 +253,7 @@ export default function Week8() {
             <Plate>
               <RandomBalance />
             </Plate>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={`${CELL} !text-[0.95em]`}>
                 Random assignment differs from the random sampling introduced in Week 5. Random
                 sampling determines who is studied and supports generalization to the
@@ -274,15 +274,15 @@ export default function Week8() {
           An experiment is evaluated by two criteria: internal validity and external validity.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Internal validity</Term> concerns whether the observed effect was caused by
               the treatment.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              <Term tone="counter">External validity</Term> concerns whether the effect
+              <Term>External validity</Term> concerns whether the effect
               generalizes beyond the experiment.
             </p>
           </Ruled>
@@ -303,41 +303,41 @@ export default function Week8() {
           <ol className="grid min-w-0 gap-x-6 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-1">
             {[
               <>
-                <Term tone="ink">History</Term> refers to external events that occur during the
+                <Term>History</Term> refers to external events that occur during the
                 experiment and affect the dependent variable, such as a competitor&rsquo;s price
                 reduction during a test of a new promotion.
               </>,
               <>
-                <Term tone="ink">Maturation</Term> refers to changes within the test units over
+                <Term>Maturation</Term> refers to changes within the test units over
                 time, such as growing fatigue or familiarity with the product.
               </>,
               <>
-                <Term tone="ink">Testing effects</Term> occur when an initial measurement
+                <Term>Testing effects</Term> occur when an initial measurement
                 influences later measurements, as when a pretest questionnaire draws
                 respondents&rsquo; attention to the advertisement being tested.
               </>,
               <>
-                <Term tone="ink">Instrumentation</Term> refers to changes in the measurement
+                <Term>Instrumentation</Term> refers to changes in the measurement
                 procedure, such as a change in the definition of a conversion during the test.
               </>,
               <>
-                <Term tone="ink">Selection bias</Term> occurs when the groups differ before the
+                <Term>Selection bias</Term> occurs when the groups differ before the
                 treatment, as when stores volunteer to take part in a test.
               </>,
               <>
-                <Term tone="ink">Mortality</Term>, or attrition, occurs when test units leave the
+                <Term>Mortality</Term>, or attrition, occurs when test units leave the
                 experiment at different rates across groups.
               </>,
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Ruled weight="thin" className="!pt-2.5">
+                <Ruled className="!pt-2.5">
                   <P className="!max-w-none !text-[0.92em] !leading-snug">{s}</P>
                 </Ruled>
               </li>
             ))}
           </ol>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 Random assignment and a control group address most of these threats.
               </p>
@@ -355,30 +355,30 @@ export default function Week8() {
       <Slide id="external-validity" border className="!py-8">
         <SlideHeading>External Validity</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.35rem,2.2vw,1.85rem)]">
-          <Term tone="counter">External validity</Term> is the extent to which the results of an
+          <Term>External validity</Term> is the extent to which the results of an
           experiment can be generalized to other people, settings, and times.
         </Statement>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               Results obtained with student participants may not generalize to the consumers in
               the target market.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               Results obtained in an artificial setting may not generalize to the conditions
               under which consumers actually make decisions.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>Results obtained in one season or market may not hold in another.</P>
           </Ruled>
         </div>
         <Plate className="mt-4">
           <GeneralizeThreeWays />
         </Plate>
-        <p className={`${CLOSE} mt-5 border-t-2 border-[var(--counter)] pt-4`}>
+        <p className={`${CLOSE} mt-5 border-t border-[var(--rule-2)] pt-4`}>
           Measures taken to increase internal validity, such as tightly controlling the setting,
           often reduce external validity.
         </p>
@@ -396,14 +396,14 @@ export default function Week8() {
         <SlideHeading>Laboratory and Field Experiments</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 A <Term>laboratory experiment</Term> is conducted in an artificial environment
                 constructed by the researcher, such as a simulated store or an online study with
                 a panel of respondents.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Laboratory experiments offer strong control over extraneous variables, and
                 therefore high internal validity, at relatively low cost.
@@ -411,21 +411,21 @@ export default function Week8() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="counter">
+            <Ruled>
               <P className={CELL}>
-                A <Term tone="counter">field experiment</Term> is conducted in a natural setting,
+                A <Term>field experiment</Term> is conducted in a natural setting,
                 such as actual stores, websites, or markets, often without participants being
                 aware of the experiment.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Field experiments conducted without participants&rsquo; awareness raise the
                 questions of informed consent and harm introduced in Week 1, and are subject to
                 the same ethical standards as other research.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Field experiments offer higher external validity, since behavior is observed
                 under real conditions, but less control over extraneous variables.
@@ -453,27 +453,27 @@ export default function Week8() {
         <SlideHeading>Experimental Designs</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                In a <Term tone="ink">posttest-only control group design</Term>, test units are
+                In a <Term>posttest-only control group design</Term>, test units are
                 randomly assigned to a treatment group and a control group, and the dependent
                 variable is measured once, after the treatment.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                In a <Term tone="ink">pretest-posttest control group design</Term>, the dependent
+                In a <Term>pretest-posttest control group design</Term>, the dependent
                 variable is also measured before the treatment, which allows change to be
                 measured but introduces the possibility of testing effects.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 In a <Term>factorial design</Term>, two or more independent variables are
                 manipulated simultaneously, and every combination of their levels is tested.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 For example, a two-by-two factorial design tests two price levels combined with
                 two advertising messages, producing four treatment conditions.
@@ -484,7 +484,7 @@ export default function Week8() {
             <Plate>
               <DesignRows />
             </Plate>
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 Factorial designs reveal <Term>interactions</Term>, in which the effect of one
                 independent variable depends on the level of another, as when a quality-focused
@@ -499,14 +499,11 @@ export default function Week8() {
           Discussion: Testing a New Package
           ================================================================ */}
       <Slide id="discussion-testing-a-new-package" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Testing a New Package
-        </SlideHeading>
-        <Prompt>
-          A beverage company must choose between two new package designs before a national
-          launch. Should the choice be based on a laboratory experiment, a field experiment, or
-          both? Which threats to internal and external validity would each design face?
-        </Prompt>
+        <SlideHeading>Discussion: Testing a New Package</SlideHeading>
+        <Discussion
+          scenario={"A beverage company must choose between two new package designs before a national launch."}
+          question={"Should the choice be based on a laboratory experiment, a field experiment, or both? Which threats to internal and external validity would each design face?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -519,7 +516,7 @@ export default function Week8() {
           scale.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               A/B testing is now the most widely used form of field experimentation in digital
               marketing.
@@ -545,7 +542,7 @@ export default function Week8() {
         </Statement>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Version A is usually the current version and serves as the control. Version B
                 contains the change being tested.
@@ -556,19 +553,19 @@ export default function Week8() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 Each test has a <Term>primary metric</Term>, such as the conversion rate, the
                 click-through rate, or the average order value, specified before the test begins.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because users are randomly assigned, a statistically significant difference in
                 the primary metric can be attributed to the change.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>The difference is tested with the procedures introduced in Week 7.</P>
             </Ruled>
           </div>
@@ -597,15 +594,15 @@ export default function Week8() {
             ].map((s, i) =>
               s ? (
                 <li key={i} className="flex min-w-0 gap-4">
-                  <span className="type-label w-6 shrink-0 pt-2.5 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-                  <Ruled weight="thin" className="!pt-2 flex-1">
+                  <span className="type-label w-6 shrink-0 pt-2.5 tabular-nums">{String(i + 1)}</span>
+                  <Ruled className="!pt-2 flex-1">
                     <P className="!max-w-none !text-[0.95em] !leading-snug">{s}</P>
                   </Ruled>
                 </li>
               ) : (
                 <li key={i} className="flex min-w-0 gap-4">
-                  <span className="type-label w-6 shrink-0 pt-2.5 tabular-nums !text-[var(--signal)]">02</span>
-                  <Ruled tone="signal" weight="thin" className="!pt-2 flex-1">
+                  <span className="type-label w-6 shrink-0 pt-2.5 tabular-nums">2</span>
+                  <Ruled className="!pt-2 flex-1">
                     <P className="!max-w-none !text-[0.95em] !leading-snug">
                       The analyst then determines the <Term>required sample size and duration</Term>,
                       according to the smallest effect that would be of practical importance and
@@ -633,10 +630,10 @@ export default function Week8() {
               A <Term>multivariate test</Term> changes several elements of a page or message
               simultaneously and tests every combination of their versions.
             </Statement>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>It is the digital application of the factorial design.</P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Multivariate testing reveals interactions among elements, which a sequence of
                 separate A/B tests cannot reveal.
@@ -651,7 +648,7 @@ export default function Week8() {
             <Plate>
               <CombinationGrid />
             </Plate>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because traffic is divided among many combinations, multivariate tests require
                 much larger samples than A/B tests.
@@ -668,10 +665,10 @@ export default function Week8() {
         <SlideHeading>Common Errors in A/B Testing</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
                 Stopping a test as soon as the result becomes significant, known as{" "}
-                <Term tone="counter">peeking</Term>, increases the probability of a Type I error,
+                <Term>peeking</Term>, increases the probability of a Type I error,
                 in the same manner as the p-hacking practices introduced in Week 7.
               </p>
             </Ruled>
@@ -680,26 +677,26 @@ export default function Week8() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Examining many metrics and reporting the one that differs increases the
                 probability of a false finding.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                A <Term tone="ink">novelty effect</Term> occurs when users respond to a change
+                A <Term>novelty effect</Term> occurs when users respond to a change
                 because it is new, so that the effect declines over time.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                A <Term tone="ink">sample ratio mismatch</Term> occurs when the numbers of users
+                A <Term>sample ratio mismatch</Term> occurs when the numbers of users
                 in the two groups differ substantially from the planned allocation, which
                 indicates a fault in the random assignment.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Tests that run for only a few days may not represent the behavior of users across
                 the full weekly cycle.
@@ -724,7 +721,7 @@ export default function Week8() {
               or launch a national television campaign that reaches every consumer.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               In such cases, the researcher uses a <Term>quasi-experimental design</Term>, which
               applies experimental logic without full control over the assignment of treatments.
@@ -745,21 +742,21 @@ export default function Week8() {
         <SlideHeading>Quasi-Experimental Designs</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                In a <Term tone="ink">time series design</Term>, the dependent variable is
+                In a <Term>time series design</Term>, the dependent variable is
                 measured repeatedly before and after the treatment, and a change in its level or
                 trend at the time of the treatment is taken as evidence of an effect.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                In a <Term tone="ink">nonequivalent control group design</Term>, the treatment
+                In a <Term>nonequivalent control group design</Term>, the treatment
                 group is compared with a group that did not receive the treatment but was not
                 randomly assigned.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 In a <Term>difference-in-differences design</Term>, the change in the treatment
                 group before and after the treatment is compared with the change in a control
@@ -791,19 +788,19 @@ export default function Week8() {
         <SlideHeading>Limitations of Quasi-Experiments</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because the groups are not randomly assigned, they may differ in ways that affect
                 the dependent variable.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Events that affect only one group during the study period, such as the opening
                 of a competitor&rsquo;s store in Region A, threaten the validity of the estimate.
               </P>
             </Ruled>
-            <Ruled tone="counter">
+            <Ruled>
               <P className={CELL}>
                 Quasi-experiments therefore provide weaker evidence of causality than randomized
                 experiments, and their assumptions are stated in the report.
@@ -811,7 +808,7 @@ export default function Week8() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 The difference-in-differences design assumes that, without the treatment, both
                 groups would have followed the same trend. This assumption is examined by
@@ -834,16 +831,16 @@ export default function Week8() {
           AI is used in experimentation in two distinct ways.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Numbered n={1} tone="signal">
-            <Ruled tone="signal">
+          <Numbered n={1}>
+            <Ruled>
               <p className={BIG}>
                 AI agents can serve as simulated subjects for piloting an experiment before it is
                 conducted with real participants.
               </p>
             </Ruled>
           </Numbered>
-          <Numbered n={2} tone="signal">
-            <Ruled tone="signal">
+          <Numbered n={2}>
+            <Ruled>
               <p className={BIG}>
                 Adaptive algorithms can allocate users among versions during a test, according
                 to their performance.
@@ -865,26 +862,26 @@ export default function Week8() {
         <SlideHeading>Piloting Experiments With Simulated Subjects</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 An AI agent is instructed to respond as a participant with a specified profile,
                 and is presented with the experimental instructions, the stimuli, and the
                 measures.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Such pilots can reveal unclear instructions, stimuli that fail to convey the
                 intended difference, and manipulation checks that do not work.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Pilots with simulated subjects are fast and inexpensive, and can be repeated with
                 many variations of the design.
               </P>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The responses of simulated subjects are not evidence of how consumers respond.
                 They share the limitations of the synthetic respondents introduced in Week 5.
@@ -892,7 +889,7 @@ export default function Week8() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <P className={CELL}>
                 The experimental materials may also reveal the hypothesis to the model, so that
                 its responses conform to the expected result, which can exaggerate or distort
@@ -921,20 +918,20 @@ export default function Week8() {
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 As evidence accumulates, the algorithm directs more users to the versions that
                 perform better and fewer to those that perform worse.
               </P>
             </Ruled>
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 The algorithm balances <Term>exploration</Term>, which gathers information about
                 every version, with <Term>exploitation</Term>, which directs users to the version
                 that currently appears best.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Many advertising and personalization platforms use bandit algorithms to select
                 among creative versions automatically.
@@ -959,20 +956,20 @@ export default function Week8() {
         <SlideHeading>A/B Tests and Bandits Compared</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 A bandit reduces the number of users exposed to inferior versions during the
                 test, and therefore reduces its cost.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 A bandit is appropriate when the objective is to maximize performance during a
                 short period, as with the headline of a news article or a promotion that lasts a
                 few days.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 A fixed A/B test is appropriate when the objective is an accurate estimate of the
                 size of an effect, or an understanding of why one version performs better.
@@ -983,7 +980,7 @@ export default function Week8() {
             <Plate>
               <CostAndPrecision />
             </Plate>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because a bandit allocates users unequally and changes the allocation over time,
                 its results do not support the same statistical inferences as a fixed A/B test.
@@ -991,7 +988,7 @@ export default function Week8() {
             </Ruled>
           </div>
         </div>
-        <p className={`${CLOSE} mt-5 border-t-2 border-[var(--counter)] pt-4`}>
+        <p className={`${CLOSE} mt-5 border-t border-[var(--rule-2)] pt-4`}>
           A version selected by a bandit is the best performer on the platform&rsquo;s chosen
           metric, which may differ from the firm&rsquo;s broader objectives, such as brand
           building or long-term customer value.
@@ -1002,16 +999,11 @@ export default function Week8() {
           Discussion: The Platform Has Chosen
           ================================================================ */}
       <Slide id="discussion-the-platform-has-chosen" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          The Platform Has Chosen
-        </SlideHeading>
-        <Prompt>
-          An advertising platform&rsquo;s bandit algorithm selects one of five creative versions
-          after two days and allocates nearly all impressions to it. The brand manager proposes
-          to use this version in the firm&rsquo;s national television campaign. What does the
-          platform&rsquo;s result establish, what does it not establish, and which additional
-          evidence should be obtained?
-        </Prompt>
+        <SlideHeading>Discussion: The Platform Has Chosen</SlideHeading>
+        <Discussion
+          scenario={"An advertising platform's bandit algorithm selects one of five creative versions after two days and allocates nearly all impressions to it. The brand manager proposes to use this version in the firm's national television campaign."}
+          question={"What does the platform's result establish, what does it not establish, and which additional evidence should be obtained?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1020,7 +1012,7 @@ export default function Week8() {
       <Slide id="part-6-experiments-on-ai-agents" border className="!py-8">
         <PartHead n={6} title="Experiments on AI Agents" />
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               AI agents are also the subject of experiments, when the research question concerns
               how the agents themselves search, evaluate, and choose.
@@ -1051,14 +1043,14 @@ export default function Week8() {
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                The <Term tone="ink">system prompt</Term> is the set of instructions given to an
+                The <Term>system prompt</Term> is the set of instructions given to an
                 agent before the consumer&rsquo;s request, usually by the firm or the researcher
                 that deploys it.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={`${CELL} !text-[0.95em]`}>
                 The factors manipulated in such experiments include the system prompt, such as
                 the party the agent is told it serves. The consumer&rsquo;s instruction, such as
@@ -1067,7 +1059,7 @@ export default function Week8() {
                 sponsorship label.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Factorial designs cross these factors to estimate their main effects and
                 interactions.
@@ -1084,7 +1076,7 @@ export default function Week8() {
             <Plate>
               <AgentFactorial />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The order of alternatives and attributes is randomized across sessions, and the
                 design is replicated across models, providers, and wordings of the prompt.
@@ -1106,27 +1098,27 @@ export default function Week8() {
         <SlideHeading>Process Tracing With AI Agents</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                An <Term tone="ink">information board</Term> is a process-tracing method in which
+                An <Term>information board</Term> is a process-tracing method in which
                 product attributes are hidden in the cells of a matrix, and the participant opens
                 cells one at a time before choosing (Payne, Bettman, &amp; Johnson, 1993).
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                A <Term tone="ink">tool</Term> is a function that an AI agent can call to retrieve
+                A <Term>tool</Term> is a function that an AI agent can call to retrieve
                 information or perform an action, such as looking up the price of a product.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The same method can be applied to AI agents by placing each attribute behind a
                 tool that the agent must call to reveal it, at a cost that the researcher sets
                 (Wadi &amp; Ma, 2026b).
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The record of tool calls shows which attributes the agent acquired, in which
                 order, and which it omitted before choosing.
@@ -1134,11 +1126,11 @@ export default function Week8() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 Process tracing separates two sources of a poor choice:{" "}
-                <Term tone="counter">failure to acquire</Term> the necessary information and{" "}
-                <Term tone="counter">failure to use it</Term> correctly.
+                <Term>failure to acquire</Term> the necessary information and{" "}
+                <Term>failure to use it</Term> correctly.
               </P>
             </Ruled>
             <Plate>
@@ -1146,7 +1138,7 @@ export default function Week8() {
             </Plate>
           </div>
         </div>
-        <p className={`${CLOSE} mt-5 border-t-2 border-[var(--signal)] pt-4 !text-[clamp(1.05rem,1.5vw,1.3rem)]`}>
+        <p className={`${CLOSE} mt-5 border-t border-[var(--rule-2)] pt-4 !text-[clamp(1.05rem,1.5vw,1.3rem)]`}>
           In a validation study, seven of eight agents given a fixed set of attributes selected
           the alternative implied by those attributes in nearly all sessions, and no agent made
           an arithmetic error when asked to calculate unit prices. Most poor choices therefore
@@ -1170,8 +1162,8 @@ export default function Week8() {
             "Controlled experiments on AI agents manipulate prompts, roles, and information environments in factorial designs, and process tracing separates failures of information acquisition from failures of information use.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

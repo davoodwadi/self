@@ -13,14 +13,13 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
   QualQuantData,
   FocusGroupAirtime,
   Laddering,
-  SayDoGap,
   CodedTranscript,
   CodesToThemes,
   SaturationCurve,
@@ -60,12 +59,12 @@ export default function Week3() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 3: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
-          <span className="text-[var(--signal)]">Qualitative</span> Research
+          Qualitative Research
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[40ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[40ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Qualitative research examines the{" "}
-          <span className="text-[var(--signal)]">reasons, meanings, and motives</span>{" "}
+          reasons, meanings, and motives{" "}
           that underlie consumer behavior.
         </p>
       </Slide>
@@ -81,7 +80,7 @@ export default function Week3() {
       >
         <SlideHeading>Qualitative and Quantitative Research</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--signal)] pt-4">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule-2)] pt-4">
             <P className="!max-w-none">
               <Term>Qualitative research</Term> is unstructured and exploratory,
               and is based on small samples. It provides insight into the reasons
@@ -91,9 +90,9 @@ export default function Week3() {
               Qualitative data consist of words, images, and observations.
             </P>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-4">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule-2)] pt-4">
             <P className="!max-w-none">
-              <Term tone="ink">Quantitative research</Term> is structured, and is
+              <Term>Quantitative research</Term> is structured, and is
               based on larger samples, typically chosen to represent a
               population. It measures how often and to what extent a behavior or
               attitude occurs.
@@ -108,13 +107,13 @@ export default function Week3() {
           <QualQuantData />
         </Plate>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Qualitative findings cannot be generalized to a population, because
               the samples are small and are not selected to be representative.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               The two approaches are complementary. Qualitative research
               frequently precedes quantitative research, and is also used
@@ -140,7 +139,7 @@ export default function Week3() {
             "It is used to examine topics that consumers are unable or unwilling to report accurately in a structured questionnaire, such as emotional, habitual, or socially sensitive behavior.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
+              <Numbered n={i + 1}>
                 <Ruled>
                   <p className={BIG}>{s}</p>
                 </Ruled>
@@ -161,23 +160,23 @@ export default function Week3() {
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled>
             <p className={BIG}>
-              In a <Term tone="ink">direct approach</Term>, the purpose of the
+              In a <Term>direct approach</Term>, the purpose of the
               research is disclosed to participants, or is evident from the
               questions asked. Focus groups and depth interviews are direct
               approaches.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              In an <Term tone="counter">indirect approach</Term>, the purpose of
+              In an <Term>indirect approach</Term>, the purpose of
               the research is disguised. Projective techniques are indirect
               approaches.
             </p>
           </Ruled>
         </div>
-        <p className="type-quote mt-10 w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-5 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
+        <p className="type-quote mt-10 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
           Indirect approaches are used when participants are unlikely to express
-          their <span className="text-[var(--counter)]">true motives</span> in
+          their true motives in
           response to direct questions.
         </p>
       </Slide>
@@ -188,8 +187,8 @@ export default function Week3() {
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Interview-Based Methods" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
-          <Term tone="ink">Focus groups</Term>, <Term tone="ink">depth interviews</Term>, and{" "}
-          <Term tone="counter">projective techniques</Term> obtain data by
+          <Term>Focus groups</Term>, <Term>depth interviews</Term>, and{" "}
+          <Term>projective techniques</Term> obtain data by
           questioning participants.
         </Statement>
         <Ruled className="mt-9 w-full">
@@ -211,26 +210,26 @@ export default function Week3() {
         </Lead>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 A session typically lasts between one and two hours and follows a
                 discussion guide that lists the topics to be covered.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Participants are usually selected to be similar in relevant
                 characteristics, such as product usage or life stage, so that
                 differences in background do not inhibit discussion.
               </P>
             </Ruled>
-            <Ruled weight="thin" tone="signal">
+            <Ruled>
               <P>
                 The interaction among participants can produce ideas and
                 reactions that would not emerge in individual interviews.
               </P>
             </Ruled>
-            <Ruled weight="thin" tone="counter">
+            <Ruled>
               <P>
                 The group setting also has limitations: some participants may
                 dominate the discussion, others may conform to the majority view,
@@ -242,7 +241,7 @@ export default function Week3() {
             <FocusGroupAirtime />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Focus groups are increasingly conducted online, which reduces cost and
           allows participants in different locations to take part.
         </p>
@@ -266,14 +265,14 @@ export default function Week3() {
               typically lasting between thirty minutes and more than an hour.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               The interviewer asks follow-up questions, known as{" "}
-              <Term tone="ink">probes</Term>, to uncover underlying
+              <Term>probes</Term>, to uncover underlying
               motivations, beliefs, and feelings.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Depth interviews are appropriate for sensitive topics, for complex
               decisions, and for participants such as senior professionals, who
@@ -283,7 +282,7 @@ export default function Week3() {
         </div>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5 lg:order-2">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 <Term>Laddering</Term> is a depth interviewing technique that
                 moves from a product attribute to its consequences and finally to
@@ -301,7 +300,7 @@ export default function Week3() {
             <Laddering />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Laddering reveals the connections between product attributes and
           personal values, which can inform positioning and advertising.
         </p>
@@ -319,10 +318,10 @@ export default function Week3() {
         <SlideHeading>Projective Techniques</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-            <Term tone="counter">Projective techniques</Term> present
+            <Term>Projective techniques</Term> present
             participants with ambiguous stimuli and ask them to interpret them.
           </Statement>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Participants are expected to project their own motives, beliefs,
               and feelings into their interpretation.
@@ -354,10 +353,10 @@ export default function Week3() {
           ].map(([term, pre, rest], i) => (
             <li key={term} className="min-w-0">
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P className="!leading-snug">
                     {pre}
-                    <Term tone="ink">{term}</Term>
+                    <Term>{term}</Term>
                     {rest}
                   </P>
                 </Ruled>
@@ -365,10 +364,10 @@ export default function Week3() {
             </li>
           ))}
         </ol>
-        <p className="type-quote mt-9 w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           The interpretation of projective responses requires trained analysts,
           and different analysts may interpret the{" "}
-          <span className="text-[var(--counter)]">same response</span>{" "}
+          same response{" "}
           differently.
         </p>
       </Slide>
@@ -381,7 +380,7 @@ export default function Week3() {
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.5rem,2.4vw,2.1rem)]">
             Observation-based methods{" "}
-            <span className="text-[var(--signal)]">record behavior</span> rather
+            record behavior rather
             than asking participants to report it.
           </Statement>
           <Ruled>
@@ -403,40 +402,40 @@ export default function Week3() {
           of people, objects, and events.
         </Statement>
         <div className="mt-8 grid w-full gap-x-12 gap-y-6 md:grid-cols-2">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              Observation can be <Term tone="ink">structured</Term>, with a
+              Observation can be <Term>structured</Term>, with a
               predefined list of behaviors to record, or{" "}
-              <Term tone="ink">unstructured</Term>, with the observer recording
+              <Term>unstructured</Term>, with the observer recording
               all relevant aspects of the situation.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              Observation can be <Term tone="ink">disguised</Term>, when
+              Observation can be <Term>disguised</Term>, when
               participants are unaware that they are being observed, or{" "}
-              <Term tone="ink">undisguised</Term>.
+              <Term>undisguised</Term>.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              Observation can be conducted in a <Term tone="ink">natural</Term>{" "}
+              Observation can be conducted in a <Term>natural</Term>{" "}
               setting, such as a store, or in a{" "}
-              <Term tone="ink">contrived</Term> setting, such as a test kitchen.
+              <Term>contrived</Term> setting, such as a test kitchen.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              Observation can be <Term tone="ink">personal</Term>, conducted by a
-              human observer, or <Term tone="ink">mechanical</Term>, conducted
+              Observation can be <Term>personal</Term>, conducted by a
+              human observer, or <Term>mechanical</Term>, conducted
               with devices such as eye-tracking equipment or in-store cameras.
             </P>
           </Ruled>
         </div>
-        <p className={`${CLOSE} mt-9 border-t-2 border-[var(--counter)] pt-5`}>
+        <p className={`${CLOSE} mt-9 border-t border-[var(--rule-2)] pt-5`}>
           Observation records what people{" "}
-          <span className="text-[var(--signal)]">do</span>, but not{" "}
-          <span className="text-[var(--counter)]">why</span> they do it.
+          do, but not{" "}
+          why they do it.
         </p>
       </Slide>
 
@@ -466,14 +465,14 @@ export default function Week3() {
           </Ruled>
         </div>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Ethnography can reveal needs that consumers do not articulate, such
-              as the <span className="text-[var(--signal)]">workarounds</span>{" "}
+              as the workarounds{" "}
               they use when a product does not meet their requirements.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               It requires considerable time and expertise, and its findings
               depend on the interpretation of the researcher.
@@ -492,19 +491,19 @@ export default function Week3() {
           communities.
         </Statement>
         <div className="mt-8 grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               The researcher examines the interactions of consumers in forums,
               social media groups, and review platforms.
             </P>
           </Ruled>
-          <Ruled weight="thin" tone="signal">
+          <Ruled>
             <P>
               Netnography is unobtrusive, since the conversations occur without
               the involvement of the researcher.
             </P>
           </Ruled>
-          <Ruled weight="thin" tone="counter">
+          <Ruled>
             <P>
               It is limited to consumers who participate in online communities,
               who may differ from the broader population of customers.
@@ -514,12 +513,12 @@ export default function Week3() {
         <Plate className="mt-5">
           <CommunityVoices />
         </Plate>
-        <Ruled tone="counter" className="mt-7 w-full">
+        <Ruled className="mt-7 w-full">
           <p className={`${BIG} !max-w-none`}>
             It raises ethical questions concerning the distinction between{" "}
-            <span className="text-[var(--counter)]">public and private spaces</span>,
-            the need for <span className="text-[var(--counter)]">consent</span>,
-            and the <span className="text-[var(--counter)]">quotation of posts</span>{" "}
+            public and private spaces,
+            the need for consent,
+            and the quotation of posts{" "}
             that can identify their authors.
           </p>
         </Ruled>
@@ -543,11 +542,11 @@ export default function Week3() {
             ["Observation", "is appropriate when the behavior itself is the object of study and participants cannot accurately report it."],
             ["Ethnography", "is appropriate when the research requires an understanding of behavior in its everyday context."],
             ["Netnography", "is appropriate when the relevant consumers discuss the topic in online communities."],
-          ].map(([term, rest], i) => (
+          ].map(([term, rest]) => (
             <li key={term} className="min-w-0">
-              <Ruled tone={i < 3 ? "ink" : "signal"}>
+              <Ruled>
                 <p className={BIG}>
-                  <Term tone={i < 3 ? "ink" : "signal"}>{term}</Term> {rest}
+                  <Term>{term}</Term> {rest}
                 </p>
               </Ruled>
             </li>
@@ -559,21 +558,11 @@ export default function Week3() {
           Discussion: Choosing the Method
           ================================================================ */}
       <Slide id="discussion-choosing-the-method" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Choosing the Method
-        </SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <Prompt>
-            A manufacturer of home cleaning products seeks to understand why
-            consumers who state a preference for environmentally friendly
-            products continue to purchase conventional products. Which
-            qualitative methods are appropriate for this problem, and what are
-            the limitations of each?
-          </Prompt>
-          <Plate>
-            <SayDoGap />
-          </Plate>
-        </div>
+        <SlideHeading>Discussion: Choosing the Method</SlideHeading>
+        <Discussion
+          scenario={"A manufacturer of home cleaning products seeks to understand why consumers who state a preference for environmentally friendly products continue to purchase conventional products."}
+          question={"Which qualitative methods are appropriate for this problem, and what are the limitations of each?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -586,10 +575,10 @@ export default function Week3() {
           as interview transcripts, field notes, images, and online posts.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Analysis reduces these data to a set of{" "}
-              <span className="text-[var(--signal)]">themes</span> that address
+              themes that address
               the research questions.
             </p>
           </Ruled>
@@ -613,22 +602,22 @@ export default function Week3() {
         </Lead>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                In <Term tone="ink">deductive coding</Term>, the codes are
+                In <Term>deductive coding</Term>, the codes are
                 defined in advance, often on the basis of theory or previous
                 research, and are listed in a codebook.
               </P>
             </Ruled>
-            <Ruled weight="thin" tone="signal">
+            <Ruled>
               <P>
                 In <Term>inductive coding</Term>, the codes are developed from
                 the data during analysis.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                A <Term tone="ink">codebook</Term> defines each code and provides
+                A <Term>codebook</Term> defines each code and provides
                 examples of segments to which the code applies and segments to
                 which it does not.
               </P>
@@ -638,7 +627,7 @@ export default function Week3() {
             <CodedTranscript />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Many projects combine the two approaches, beginning with a codebook
           and adding codes as new ideas emerge from the data.
         </p>
@@ -654,7 +643,7 @@ export default function Week3() {
             Related codes are grouped into categories, and categories are
             developed into themes.
           </Statement>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               A <Term>theme</Term> is a pattern of meaning across the data that
               addresses a research question.
@@ -670,13 +659,13 @@ export default function Week3() {
           <CodesToThemes />
         </Plate>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin" tone="signal">
+          <Ruled>
             <P className="!max-w-none">
               Themes are supported by representative quotations from
               participants.
             </P>
           </Ruled>
-          <Ruled weight="thin" tone="counter">
+          <Ruled>
             <P className="!max-w-none">
               The analyst also reports cases that do not fit the themes, since
               they may indicate limits to the findings.
@@ -696,13 +685,13 @@ export default function Week3() {
               Qualitative samples are not determined by statistical calculation.
             </p>
             <p className={BIG}>Data collection continues until saturation is reached.</p>
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 <Term>Saturation</Term> is the point at which additional
                 interviews or observations no longer produce new codes or themes.
               </p>
             </Ruled>
-            <Ruled weight="thin" tone="counter">
+            <Ruled>
               <P>
                 The number of interviews required for saturation depends on the
                 diversity of the participants and the breadth of the research
@@ -714,7 +703,7 @@ export default function Week3() {
             <SaturationCurve />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           The researcher reports how saturation was assessed, for example by
           recording the number of new codes that each additional interview
           produced.
@@ -734,9 +723,9 @@ export default function Week3() {
           <ol className="flex min-w-0 flex-col gap-4">
             <li>
               <Numbered n={1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P>
-                    <Term tone="ink">Intercoder reliability</Term> is the extent
+                    <Term>Intercoder reliability</Term> is the extent
                     to which two or more coders, working independently, assign
                     the same codes to the same data.
                   </P>
@@ -744,8 +733,8 @@ export default function Week3() {
               </Numbered>
             </li>
             <li>
-              <Numbered n={2} tone="signal">
-                <Ruled weight="thin" tone="signal">
+              <Numbered n={2}>
+                <Ruled>
                   <P>
                     <Term>Triangulation</Term> is the use of several data
                     sources, methods, or analysts to examine the same question.
@@ -755,9 +744,9 @@ export default function Week3() {
             </li>
             <li>
               <Numbered n={3}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P>
-                    <Term tone="ink">Member checking</Term> is the practice of
+                    <Term>Member checking</Term> is the practice of
                     presenting preliminary findings to participants to confirm
                     that they reflect their views.
                   </P>
@@ -766,9 +755,9 @@ export default function Week3() {
             </li>
             <li>
               <Numbered n={4}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P>
-                    An <Term tone="ink">audit trail</Term> documents the decisions
+                    An <Term>audit trail</Term> documents the decisions
                     taken during the analysis, so that others can evaluate them.
                   </P>
                 </Ruled>
@@ -790,7 +779,7 @@ export default function Week3() {
           AI tools are now used both to collect and to analyze qualitative data.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               They allow qualitative research to be conducted at a larger scale
               and at lower cost.
@@ -817,19 +806,19 @@ export default function Week3() {
           participant&apos;s answers, and records the conversation.
         </Lead>
         <div className="mt-8 grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P>
               Such interviews can be conducted with many participants
               simultaneously, at any time of day, and in several languages.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               Some participants may disclose more to an AI interviewer on
               sensitive topics, while others may disclose less.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P>
               An AI interviewer cannot observe nonverbal cues in text-based
               interviews, may fail to pursue an unexpected but relevant answer,
@@ -837,7 +826,7 @@ export default function Week3() {
             </P>
           </Ruled>
         </div>
-        <p className="type-quote mt-9 w-full border-l-2 border-[var(--signal)] bg-[var(--signal-tint)] px-7 py-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Participants are informed that the interviewer is an AI system, and
           their consent covers the processing of their responses by that system.
         </p>
@@ -849,14 +838,14 @@ export default function Week3() {
       <Slide id="ai-assisted-coding" border className="!py-8">
         <SlideHeading>AI-Assisted Coding</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Large language models can be used to apply a codebook to
               transcripts, to propose inductive codes, and to summarize themes
               across many interviews.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               They reduce the time required to code large volumes of text
               considerably.
@@ -865,14 +854,14 @@ export default function Week3() {
         </div>
         <Statement className="mt-9 !max-w-none !text-[clamp(1.4rem,2.3vw,1.95rem)]">
           They can also assign codes that the text{" "}
-          <span className="text-[var(--counter)]">does not support</span>,
+          does not support,
           overlook views expressed by{" "}
-          <span className="text-[var(--counter)]">only a few participants</span>,
+          only a few participants,
           and produce{" "}
-          <span className="text-[var(--counter)]">different results</span> when
+          different results when
           the instructions are worded differently.
         </Statement>
-        <Ruled tone="counter" className="mt-9 w-full">
+        <Ruled className="mt-9 w-full">
           <p className={`${BIG} !max-w-none`}>
             The quotations that an AI tool presents as evidence for a theme are
             verified against the original transcripts, since they may be altered
@@ -901,8 +890,8 @@ export default function Week3() {
               "The researcher then examines the segments on which the AI and the human coders disagree, and revises the codebook or the instructions to the AI tool.",
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Numbered n={i + 1} tone="signal">
-                  <Ruled weight="thin">
+                <Numbered n={i + 1}>
+                  <Ruled>
                     <P className="!max-w-none !leading-snug">{s}</P>
                   </Ruled>
                 </Numbered>
@@ -913,7 +902,7 @@ export default function Week3() {
             <AgreementCheck />
           </Plate>
         </div>
-        <Ruled tone="signal" className="mt-7 w-full">
+        <Ruled className="mt-7 w-full">
           <p className={`${BIG} !max-w-none`}>
             The AI tool is used for the full dataset only when its agreement with
             the human coders is comparable to the agreement among the human
@@ -933,7 +922,7 @@ export default function Week3() {
       >
         <SlideHeading>Reasoning Traces as Verbal Protocols</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Some language models generate text that describes their reasoning before they produce a final
               answer. This text is called a <Term>reasoning trace</Term>.
@@ -941,27 +930,27 @@ export default function Week3() {
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              In human decision research, a <Term tone="ink">think-aloud protocol</Term> records what participants
+              In human decision research, a <Term>think-aloud protocol</Term> records what participants
               say while they decide, and researchers code these verbal protocols.
             </p>
           </Ruled>
         </div>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Reasoning traces can be coded in the same way, with a codebook that defines each category, such as
                 the objective the agent states or the skepticism it expresses toward a sponsored listing.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In a study of AI shopping agents, traces that stated the lowest total price, rather than the lowest
                 price per unit, as the objective preceded less complete information acquisition and less frequent
                 choice of the better-value product (Wadi &amp; Ma, 2026b).
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In a study of sponsored listings, skepticism in the traces was coded by an AI coder that had been
                 validated against a human coder, as introduced in this week (Wadi &amp; Ma, 2026c).
@@ -981,25 +970,25 @@ export default function Week3() {
         <SlideHeading>Limits of Reasoning-Trace Evidence</SlideHeading>
         <Statement className="!max-w-none">
           A reasoning trace is text generated by the model. It is not a record of the{" "}
-          <span className="text-[var(--counter)]">computation</span> that produced the model&apos;s choice.
+          computation that produced the model&apos;s choice.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Like a think-aloud report, a trace may omit considerations that influenced the choice or offer
               reasons after the fact.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Not all providers expose complete reasoning traces, which limits the set of models that can be
               studied in this way.
             </p>
           </Ruled>
         </div>
-        <p className="type-quote mt-10 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-10 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Coded traces therefore provide evidence consistent with an explanation, while conclusions about behavior
-          rest on the agent&apos;s observed <span className="text-[var(--signal)]">choices</span>.
+          rest on the agent&apos;s observed choices.
         </p>
       </Slide>
 
@@ -1007,27 +996,11 @@ export default function Week3() {
           Discussion: AI in the Interview Room
           ================================================================ */}
       <Slide id="discussion-ai-in-the-interview-room" border className="!py-8">
-        <div className="flex w-full flex-col items-center text-center">
-          <h2 className="type-h1">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            AI in the Interview Room
-          </h2>
-          <div className="mt-10 w-full max-w-5xl border-y-2 border-[var(--counter)] px-4 py-9 md:px-12">
-            <p className="type-quote mx-auto !max-w-[46ch] !text-[clamp(1.4rem,2.4vw,2.1rem)]">
-              <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">
-                Discussion:
-              </span>{" "}
-              A research agency proposes to replace twenty depth interviews
-              conducted by experienced interviewers with two hundred AI-moderated
-              interviews, coded by a large language model. What would the client
-              gain and lose in terms of depth, scale, and trustworthiness, and
-              which validation procedures should the agency be required to
-              report?
-            </p>
-          </div>
-        </div>
+        <SlideHeading>Discussion: AI in the Interview Room</SlideHeading>
+        <Discussion
+          scenario={"A research agency proposes to replace twenty depth interviews conducted by experienced interviewers with two hundred AI-moderated interviews, coded by a large language model."}
+          question={"What would the client gain and lose in terms of depth, scale, and trustworthiness, and which validation procedures should the agency be required to report?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1046,8 +1019,8 @@ export default function Week3() {
             "The reasoning traces of AI agents can be coded as verbal protocols, but they describe the model's stated reasoning, not the computation that produced its choice.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

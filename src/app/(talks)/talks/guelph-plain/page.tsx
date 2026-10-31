@@ -652,8 +652,8 @@ export default function Page() {
                 </>
               ),
             },
-          ].map((c, i) => (
-            <Ruled key={c.t} tone={i === 0 ? "signal" : undefined}>
+          ].map((c) => (
+            <Ruled key={c.t}>
               <p className="type-h2 !text-[1.5rem]">
                 <strong className="font-semibold">{c.t}:</strong>
               </p>
@@ -715,8 +715,8 @@ export default function Page() {
               t: "Fine-tuning on human respondents",
               d: "Kev decision models trained to minimize KL divergence on ISSP 2015 to 2024 (14,356 respondents, 16 demographic attributes)",
             },
-          ].map((c, i) => (
-            <Ruled key={c.t} tone={i === 2 ? "signal" : undefined}>
+          ].map((c) => (
+            <Ruled key={c.t}>
               <p className="type-h2 !text-[1.5rem]">
                 <strong className="font-semibold">{c.t}:</strong>
               </p>
@@ -776,8 +776,8 @@ export default function Page() {
               t: "Algorithmic Audits",
               d: "Process-level audits of principal-agent conflicts and disclosure remedies in retail media (Marketing Analytics Centre)",
             },
-          ].map((c, i) => (
-            <Ruled key={c.t} tone={i === 0 ? "signal" : undefined}>
+          ].map((c) => (
+            <Ruled key={c.t}>
               <p className="type-h2 !text-[1.5rem]">
                 <strong className="font-semibold">{c.t}:</strong>
               </p>

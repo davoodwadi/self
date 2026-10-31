@@ -197,7 +197,8 @@ week: week4
 - The distribution shows both the model's typical response and its certainty, which a single answer cannot show.
 
 ## Discussion: A Questionnaire in Ten Minutes
-- Discussion: A product manager uses an AI tool to produce a complete customer satisfaction questionnaire in ten minutes and proposes to launch it the same day. Which checks should the questionnaire undergo before launch, and which of them cannot be performed by an AI tool?
+- A product manager uses an AI tool to produce a complete customer satisfaction questionnaire in ten minutes and proposes to launch it the same day.
+- Which checks should the questionnaire undergo before launch, and which of them cannot be performed by an AI tool?
 
 ## Key Takeaways
 - Measurement assigns numbers to characteristics of objects according to rules, and constructs are measured through operational definitions.

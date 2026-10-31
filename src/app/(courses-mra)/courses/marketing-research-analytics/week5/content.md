@@ -116,7 +116,8 @@ week: week5
 - The criteria for removing respondents are specified before data collection, and the number of respondents removed is reported.
 
 ## Discussion: A Sample for a Launch Decision
-- Discussion: A meal-kit company plans to estimate the proportion of households in a city that would subscribe to a new service. The marketing team proposes a survey of the company's social media followers. Which errors could this sample introduce, and which alternative sampling design would support a more accurate estimate?
+- A meal-kit company plans to estimate the proportion of households in a city that would subscribe to a new service. The marketing team proposes a survey of the company's social media followers.
+- Which errors could this sample introduce, and which alternative sampling design would support a more accurate estimate?
 
 ## Part 5: Synthetic Respondents [no-exercise]
 - Synthetic respondents are AI-generated answers to survey questions, produced by prompting a large language model to respond as a person with specified characteristics.
@@ -157,7 +158,8 @@ week: week5
 - Models are sampled as well. A result obtained with one model does not generalize to other models, so evaluations include several models from several providers.
 
 ## Discussion: A Synthetic Panel
-- Discussion: A vendor offers a synthetic panel of 10,000 respondents, delivered within one hour at a fraction of the cost of a human sample, and states that its results are "95 percent accurate." Which questions should the research team ask the vendor, and for which decisions, if any, would such a panel be appropriate?
+- A vendor offers a synthetic panel of 10,000 respondents, delivered within one hour at a fraction of the cost of a human sample, and states that its results are "95 percent accurate."
+- Which questions should the research team ask the vendor, and for which decisions, if any, would such a panel be appropriate?
 
 ## Key Takeaways
 - A sample is selected from a sampling frame to draw conclusions about a defined target population.

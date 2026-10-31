@@ -57,7 +57,8 @@ week: week2
 - The sequence is not fixed. A well-defined problem may begin with descriptive or causal research.
 
 ## Discussion: Designing the Study
-- Discussion: A manufacturer of electric bicycles observes that inquiries from its website rarely result in purchases. Management has no explanation for this pattern. Which research design is appropriate at this stage, and how might the design change as the problem becomes better understood?
+- A manufacturer of electric bicycles observes that inquiries from its website rarely result in purchases. Management has no explanation for this pattern.
+- Which research design is appropriate at this stage, and how might the design change as the problem becomes better understood?
 
 ## Part 2: Secondary Data [no-exercise]
 - Data are classified as primary or secondary according to the purpose for which they were collected.
@@ -144,7 +145,8 @@ week: week2
 - Internal secondary data are uploaded to an external AI tool only when the firm's data policies and the terms of the tool permit it.
 
 ## Discussion: Desk Research With AI
-- Discussion: An analyst preparing a market entry report asks an AI tool for the size of the plant-based dairy market in three countries. The tool returns three precise figures, each with a citation. Which steps should the analyst take before the figures are included in the report, and what should the report disclose about their origin?
+- An analyst preparing a market entry report asks an AI tool for the size of the plant-based dairy market in three countries. The tool returns three precise figures, each with a citation.
+- Which steps should the analyst take before the figures are included in the report, and what should the report disclose about their origin?
 
 ## Part 5: Research Designs for Studying AI Agents [no-exercise]
 - The research designs introduced in Part 1 also apply when the subject of research is an AI agent rather than a consumer.

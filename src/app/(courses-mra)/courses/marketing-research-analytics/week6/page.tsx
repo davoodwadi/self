@@ -13,7 +13,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import { AiMark1 } from "../_visuals/objects";
 import exercisesData from "./exercises.json";
@@ -31,7 +31,6 @@ import {
   ChartThumb,
   TruncatedAxis,
   TwoValueAxes,
-  TwoChartsOneDataset,
   MissingCode,
   ConsensusVersusEntropy,
 } from "./visuals";
@@ -74,12 +73,12 @@ export default function Week6() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 6: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
-          <span className="text-[var(--signal)]">Data Preparation</span> and Descriptive Analysis
+          Data Preparation and Descriptive Analysis
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[44ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[44ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           The validity of an analysis depends on the{" "}
-          <span className="text-[var(--signal)]">preparation of the data</span> on
+          preparation of the data on
           which it is performed.
         </p>
       </Slide>
@@ -101,20 +100,20 @@ export default function Week6() {
         <ol className="mt-10 grid w-full gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-5">
           {[
             <>
-              The researcher first <Term tone="ink">checks</Term> the responses for
+              The researcher first <Term>checks</Term> the responses for
               completeness and for the data quality criteria specified before data
               collection, introduced in Week 5.
             </>,
             <>
-              The researcher then <Term tone="ink">codes</Term> the responses and
+              The researcher then <Term>codes</Term> the responses and
               records them in a data matrix.
             </>,
             <>
-              The researcher then <Term tone="ink">cleans</Term> the data,
+              The researcher then <Term>cleans</Term> the data,
               correcting or removing errors and inconsistencies.
             </>,
             <>
-              The researcher then <Term tone="ink">treats missing values</Term> and,
+              The researcher then <Term>treats missing values</Term> and,
               where necessary, applies statistical adjustments such as weighting.
             </>,
             <>
@@ -124,8 +123,8 @@ export default function Week6() {
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone={i === 4 ? "signal" : "ink"}>
-                <Ruled tone={i === 4 ? "signal" : "ink"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>
@@ -141,30 +140,30 @@ export default function Week6() {
         <SlideHeading>Coding and the Data Matrix</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3.5">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 <Term>Coding</Term> is the assignment of a numeric code to each
                 possible response, such as 1 for &ldquo;strongly disagree&rdquo;
                 through 5 for &ldquo;strongly agree.&rdquo;
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                A <Term tone="ink">codebook</Term> records, for each variable, its
+                A <Term>codebook</Term> records, for each variable, its
                 name, the question from which it derives, its codes and their
                 meanings, its level of measurement, and the code used for missing
                 values.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 Open-ended responses are coded into categories through the coding
                 procedures introduced in Week 3.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                A <Term tone="ink">multiple-response question</Term>, in which
+                A <Term>multiple-response question</Term>, in which
                 respondents may select several options, is coded as a separate
                 variable for each option, with 1 indicating selection and 0
                 indicating no selection.
@@ -172,7 +171,7 @@ export default function Week6() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 The coded data are arranged in a <Term>data matrix</Term>, in which
                 each row represents a respondent and each column represents a
@@ -198,24 +197,24 @@ export default function Week6() {
         <ol className="mt-6 grid w-full gap-x-10 gap-y-5 md:grid-cols-3">
           {[
             <>
-              <Term tone="counter">Out-of-range values</Term> are values that are
+              <Term>Out-of-range values</Term> are values that are
               not permitted by the codebook, such as a 7 on a five-point scale.
             </>,
             <>
-              <Term tone="counter">Logical inconsistencies</Term> are combinations of
+              <Term>Logical inconsistencies</Term> are combinations of
               answers that cannot both be true, such as a respondent who reports
               never having used a service but rates its customer support.
             </>,
             <>
-              <Term tone="counter">Extreme values, or outliers</Term>, are values far
+              <Term>Extreme values, or outliers</Term>, are values far
               from the rest of the distribution, such as a reported monthly spending
               of 90,000 dollars at a coffee chain. They are investigated before any
               decision is taken to correct, retain, or remove them.
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="counter">
-                <Ruled tone="counter" weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>
@@ -225,9 +224,9 @@ export default function Week6() {
         <Plate className="mt-5">
           <CleaningMatrix />
         </Plate>
-        <p className={`${CLOSE} mt-5 border-t-2 border-[var(--ink)] pt-4`}>
+        <p className={`${CLOSE} mt-5 border-t border-[var(--rule-2)] pt-4`}>
           Every change made during cleaning is{" "}
-          <span className="text-[var(--signal)]">documented</span>, so that the
+          documented, so that the
           analysis can be reproduced.
         </p>
       </Slide>
@@ -249,7 +248,7 @@ export default function Week6() {
               when an answer is removed during cleaning.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               Missing values are least problematic when they occur at random. They
               are most problematic when the likelihood of a missing answer is
@@ -262,28 +261,28 @@ export default function Week6() {
           <ol className="flex min-w-0 flex-col gap-2.5">
             {[
               <>
-                In <Term tone="ink">casewise deletion</Term>, respondents with any
+                In <Term>casewise deletion</Term>, respondents with any
                 missing value are excluded from the analysis, which can
                 substantially reduce the sample size.
               </>,
               <>
-                In <Term tone="ink">pairwise deletion</Term>, each calculation uses
+                In <Term>pairwise deletion</Term>, each calculation uses
                 all respondents with complete data for the variables involved, so
                 that different statistics are based on different respondents.
               </>,
               <>
-                In <Term tone="ink">mean substitution</Term>, each missing value is
+                In <Term>mean substitution</Term>, each missing value is
                 replaced by the mean of the variable, which preserves the sample
                 size but understates the variability of the data.
               </>,
               <>
-                In <Term tone="ink">model-based imputation</Term>, missing values
+                In <Term>model-based imputation</Term>, missing values
                 are estimated from the respondent&apos;s other answers. The method
                 selected and the extent of missing data are reported.
               </>,
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Ruled weight="thin">
+                <Ruled>
                   <P className="!max-w-none !leading-snug">{s}</P>
                 </Ruled>
               </li>
@@ -302,19 +301,19 @@ export default function Week6() {
         <SlideHeading>Weighting</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 <Term>Weighting</Term> assigns each respondent a weight so that the
                 sample matches the population on known characteristics, such as
                 age, gender, and region.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none">
                 For example, if women represent{" "}
-                <span className="text-[var(--counter)]">51 percent</span> of the
+                51 percent of the
                 population but{" "}
-                <span className="text-[var(--counter)]">40 percent</span> of the
+                40 percent of the
                 sample, each woman in the sample receives a weight greater than
                 one.
               </P>
@@ -331,7 +330,7 @@ export default function Week6() {
             "Large weights increase the variability of estimates, and the weighting procedure is therefore reported.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Ruled tone={i === 1 ? "counter" : "ink"} weight="thin">
+              <Ruled>
                 <P className="!leading-snug">{s}</P>
               </Ruled>
             </li>
@@ -355,7 +354,7 @@ export default function Week6() {
               remained after cleaning.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The appropriate statistics depend on the{" "}
               <Term>level of measurement</Term> of each variable, introduced in
@@ -373,12 +372,12 @@ export default function Week6() {
         <ol className="grid w-full gap-x-10 gap-y-4 md:grid-cols-3">
           {[
             <>
-              A <Term tone="ink">frequency distribution</Term> reports the number
+              A <Term>frequency distribution</Term> reports the number
               and the percentage of respondents who gave each response to a
               question.
             </>,
             <>
-              <Term tone="ink">Valid percentages</Term> are calculated on the
+              <Term>Valid percentages</Term> are calculated on the
               respondents who answered the question, excluding missing values.
             </>,
             <>
@@ -388,14 +387,14 @@ export default function Week6() {
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Ruled tone={i === 2 ? "signal" : "ink"}>
+              <Ruled>
                 <P className="!leading-snug">{s}</P>
               </Ruled>
             </li>
           ))}
         </ol>
         <p className={`${BIG} mt-6 w-full border-t border-[var(--rule-2)] pt-4`}>
-          A <Term tone="ink">histogram</Term> displays the frequency distribution
+          A <Term>histogram</Term> displays the frequency distribution
           of a quantitative variable, and reveals its shape, including skewness and
           extreme values.
         </p>
@@ -412,7 +411,7 @@ export default function Week6() {
         <ol className="grid w-full gap-x-10 gap-y-4 md:grid-cols-3">
           {[
             <>
-              The <Term tone="ink">mode</Term> is the most frequently occurring
+              The <Term>mode</Term> is the most frequently occurring
               value, and is the only measure of central tendency appropriate for
               nominal data.
             </>,
@@ -422,12 +421,12 @@ export default function Week6() {
               data and for skewed distributions.
             </>,
             <>
-              The <Term tone="counter">mean</Term> is the arithmetic average, and is
+              The <Term>mean</Term> is the arithmetic average, and is
               appropriate for interval and ratio data.
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Ruled tone={(["ink", "signal", "counter"] as const)[i]}>
+              <Ruled>
                 <P className="!leading-snug">{s}</P>
               </Ruled>
             </li>
@@ -438,14 +437,14 @@ export default function Week6() {
             In a skewed distribution, the mean is drawn toward the extreme values.
             For example, if a small number of customers spend very large amounts,
             the mean monthly spending may be{" "}
-            <span className="text-[var(--counter)]">80 dollars</span> while the
-            median is <span className="text-[var(--signal)]">35 dollars</span>.
+            80 dollars while the
+            median is 35 dollars.
           </p>
           <Plate>
             <MeanMedian />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--signal)] pt-4`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-4`}>
           For skewed variables such as income and spending, the median therefore
           describes the typical respondent more accurately than the mean.
         </p>
@@ -463,36 +462,36 @@ export default function Week6() {
         <ol className="mt-6 grid w-full gap-x-10 gap-y-4 md:grid-cols-3">
           {[
             <>
-              The <Term tone="ink">range</Term> is the difference between the
+              The <Term>range</Term> is the difference between the
               largest and the smallest values, and is highly sensitive to extreme
               values.
             </>,
             <>
-              The <Term tone="ink">interquartile range</Term> is the range of the
+              The <Term>interquartile range</Term> is the range of the
               middle 50 percent of values, and is not affected by extreme values.
             </>,
             <>
-              The <Term tone="ink">variance</Term> is the average squared deviation
-              from the mean, and the <Term tone="ink">standard deviation</Term> is
+              The <Term>variance</Term> is the average squared deviation
+              from the mean, and the <Term>standard deviation</Term> is
               its square root, expressed in the original units of the variable.
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>
             </li>
           ))}
         </ol>
-        <div className="mt-7 grid w-full items-center gap-8 border-t-2 border-[var(--ink)] pt-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+        <div className="mt-7 grid w-full items-center gap-8 border-t border-[var(--rule-2)] pt-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <p className={BIG}>
             Two brands may each have a mean satisfaction rating of 4.0, one with a
             standard deviation of{" "}
-            <span className="text-[var(--signal)]">0.5</span> and the other with a
+            0.5 and the other with a
             standard deviation of{" "}
-            <span className="text-[var(--counter)]">1.5</span>. Customers&apos;
+            1.5. Customers&apos;
             evaluations of the second brand are considerably more dispersed than
             those of the first.
           </p>
@@ -572,13 +571,13 @@ export default function Week6() {
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Cross-Tabulation" />
         <div className="mt-9 grid w-full gap-8 md:grid-cols-3 md:gap-10">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Descriptive analysis of single variables does not reveal how
               variables are related to one another.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Cross-tabulation</Term> describes two or more variables
               simultaneously.
@@ -600,20 +599,20 @@ export default function Week6() {
         <SlideHeading>Constructing a Cross-Tabulation</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3.5">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 A <Term>cross-tabulation</Term> is a table that shows the joint
                 distribution of two or more variables with a limited number of
                 categories.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 Each cell reports the number and percentage of respondents who share
                 a particular combination of categories.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
                 For example, a cross-tabulation of age group by preferred shopping
                 channel reports, for each age group, the percentage who prefer
@@ -625,7 +624,7 @@ export default function Week6() {
             <CrossTabDirection />
           </Plate>
         </div>
-        <div className="mt-6 grid w-full gap-8 border-t-2 border-[var(--ink)] pt-5 md:grid-cols-2 md:gap-12">
+        <div className="mt-6 grid w-full gap-8 border-t border-[var(--rule-2)] pt-5 md:grid-cols-2 md:gap-12">
           <P className="!max-w-none !leading-snug">
             Percentages are calculated in the direction of the variable considered
             to be the <Term>influencing variable</Term>, so that the categories of
@@ -650,13 +649,13 @@ export default function Week6() {
       >
         <SlideHeading>Interpreting Cross-Tabulations</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               A difference in percentages across groups indicates an{" "}
               <Term>association</Term> between the two variables.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               An association does not establish causation, as introduced in the
               discussion of descriptive research in Week 2.
@@ -665,7 +664,7 @@ export default function Week6() {
         </div>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <p className={BIG}>
-            The introduction of a <Term tone="counter">third variable</Term> can
+            The introduction of a <Term>third variable</Term> can
             reveal that an apparent association is spurious. For example, users of a
             retailer&apos;s mobile application may spend more than other customers
             because they tend to have higher incomes, not because they use the
@@ -676,14 +675,14 @@ export default function Week6() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               The introduction of a third variable can also reveal an association
               that was concealed in the original table, or show that the
               association holds only for some groups.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !leading-snug">
               Whether a difference in a cross-tabulation is statistically
               significant is assessed with the chi-square test, introduced in
@@ -705,7 +704,7 @@ export default function Week6() {
               and tables.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               A chart is designed to communicate a <Term>specific finding</Term>,
               not to display all available data.
@@ -736,8 +735,8 @@ export default function Week6() {
               "Color is used to distinguish categories or to highlight the principal finding, and is applied consistently across charts.",
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Numbered n={i + 1} tone="signal">
-                  <Ruled weight="thin">
+                <Numbered n={i + 1}>
+                  <Ruled>
                     <P className="!leading-snug">{s}</P>
                   </Ruled>
                 </Numbered>
@@ -772,7 +771,7 @@ export default function Week6() {
             ] as const
           ).map(([kind, s]) => (
             <li key={kind} className="flex min-w-0 flex-col justify-between gap-3">
-              <Ruled weight="thin">
+              <Ruled>
                 <P className="!leading-snug">{s}</P>
               </Ruled>
               <Plate className="!p-3">
@@ -790,9 +789,9 @@ export default function Week6() {
         <SlideHeading>Misleading Visualizations</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="counter">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                A <Term tone="counter">truncated value axis</Term> exaggerates small
+                A <Term>truncated value axis</Term> exaggerates small
                 differences, as when a bar chart of satisfaction scores begins at
                 3.8 rather than zero.
               </P>
@@ -802,9 +801,9 @@ export default function Week6() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="counter">
+            <Ruled>
               <P className="!max-w-none !leading-snug">
-                A chart with <Term tone="counter">two value axes</Term> can suggest a
+                A chart with <Term>two value axes</Term> can suggest a
                 relationship that depends only on the scaling of the axes.
               </P>
             </Ruled>
@@ -820,7 +819,7 @@ export default function Week6() {
             "Misleading visualizations can result from inattention as well as from intent, and the researcher is responsible for either.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Ruled tone={i === 2 ? "ink" : "counter"} weight="thin">
+              <Ruled>
                 <P className="!leading-snug">{s}</P>
               </Ruled>
             </li>
@@ -832,19 +831,11 @@ export default function Week6() {
           Discussion: One Dataset, Two Charts
           ================================================================ */}
       <Slide id="discussion-one-dataset-two-charts" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          One Dataset, Two Charts
-        </SlideHeading>
-        <Prompt>
-          Two analysts receive the same dataset on customer satisfaction across
-          four regions. One presents a bar chart with an axis from zero to five, and
-          the other presents a bar chart with an axis from 3.5 to 4.5. What would a
-          regional manager conclude from each chart, and which design communicates
-          the data accurately?
-        </Prompt>
-        <Plate className="mt-6">
-          <TwoChartsOneDataset />
-        </Plate>
+        <SlideHeading>Discussion: One Dataset, Two Charts</SlideHeading>
+        <Discussion
+          scenario={"Two analysts receive the same dataset on customer satisfaction across four regions. One presents a bar chart with an axis from zero to five, and the other presents a bar chart with an axis from 3.5 to 4.5."}
+          question={"What would a regional manager conclude from each chart, and which design communicates the data accurately?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -863,7 +854,7 @@ export default function Week6() {
               and visualization.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The standards of data preparation and analysis introduced in this week
               apply to their output in the same way as to analyses performed by
@@ -883,25 +874,25 @@ export default function Week6() {
           the average satisfaction rating by region?&rdquo;
         </Lead>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <AiStep /> Many assistants generate analysis code, execute it on the
               dataset, and report the result together with the code.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               <AiStep /> Some assistants generate answers from the text of the
               question and the data without executing code. Their numerical answers
               are{" "}
-              <span className="text-[var(--counter)]">
+              
                 not the result of a calculation
-              </span>{" "}
+              {" "}
               and are particularly prone to error.
             </p>
           </Ruled>
         </div>
-        <div className="mt-8 grid w-full gap-8 border-t-2 border-[var(--ink)] pt-5 md:grid-cols-2 md:gap-12">
+        <div className="mt-8 grid w-full gap-8 border-t border-[var(--rule-2)] pt-5 md:grid-cols-2 md:gap-12">
           <P className="!max-w-none !leading-snug">
             AI assistants can be used to produce frequency tables, descriptive
             statistics, cross-tabulations, and charts, and to explain statistical
@@ -925,7 +916,7 @@ export default function Week6() {
             {[
               <>
                 The coding of a variable may be misread, so that the code{" "}
-                <span className="text-[var(--counter)]">99</span>, which denotes a
+                99, which denotes a
                 missing value, is treated as a valid response.
               </>,
               <>
@@ -942,8 +933,8 @@ export default function Week6() {
               </>,
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Numbered n={i + 1} tone="counter">
-                  <Ruled tone="counter" weight="thin">
+                <Numbered n={i + 1}>
+                  <Ruled>
                     <P className="!max-w-none !leading-snug">{s}</P>
                   </Ruled>
                 </Numbered>
@@ -954,7 +945,7 @@ export default function Week6() {
             <MissingCode />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--counter)] pt-4`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-4`}>
           The output is presented fluently and with apparent confidence, whether or
           not it is correct.
         </p>
@@ -980,8 +971,8 @@ export default function Week6() {
             "Finally, the analyst documents the questions asked and the code executed, so that the analysis can be reproduced.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled tone="signal" weight={i === 0 ? "thick" : "thin"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={BIG}>{s}</p>
                 </Ruled>
               </Numbered>
@@ -1005,13 +996,13 @@ export default function Week6() {
           frequency distributions, measures of central tendency, and measures of dispersion.
         </Statement>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              The <Term tone="ink">coefficient of variation</Term>, the standard deviation divided by the mean,
+              The <Term>coefficient of variation</Term>, the standard deviation divided by the mean,
               compares the variability of responses across models and products measured on different scales.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               A mean response alone can conceal important differences. Two models with the same mean on a Likert
               item may differ in whether their responses concentrate on one point or spread across the scale.
@@ -1020,14 +1011,14 @@ export default function Week6() {
         </div>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 For ordinal responses, a <Term>consensus</Term> measure summarizes how concentrated the distribution
                 is, from complete agreement on one scale point to an even split between the two extremes (Wadi,
                 Ghodrat, &amp; Philp, 2026).
               </p>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P>
                 Entropy, a common measure of uncertainty in AI research, treats the scale points as unordered
                 categories, and therefore does not distinguish a split between adjacent points from a split between
@@ -1039,7 +1030,7 @@ export default function Week6() {
             <ConsensusVersusEntropy />
           </Plate>
         </div>
-        <p className="type-quote mt-7 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]">
+        <p className="type-quote mt-7 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]">
           Charts of full response distributions for each model, rather than a single bar for each mean, show both
           the level and the variability of model behavior.
         </p>
@@ -1049,15 +1040,11 @@ export default function Week6() {
           Discussion: An Answer in Seconds
           ================================================================ */}
       <Slide id="discussion-an-answer-in-seconds" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          An Answer in Seconds
-        </SlideHeading>
-        <Prompt>
-          A brand manager uploads a survey dataset to an AI assistant and asks which
-          customer segment is most satisfied. The assistant replies within seconds
-          with a segment name, a mean score, and a chart. Which checks should the
-          brand manager perform before presenting the result to senior management?
-        </Prompt>
+        <SlideHeading>Discussion: An Answer in Seconds</SlideHeading>
+        <Discussion
+          scenario={"A brand manager uploads a survey dataset to an AI assistant and asks which customer segment is most satisfied. The assistant replies within seconds with a segment name, a mean score, and a chart."}
+          question={"Which checks should the brand manager perform before presenting the result to senior management?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1076,8 +1063,8 @@ export default function Week6() {
             "The responses of AI models are described by their full distributions, including dispersion and, for ordinal scales, consensus, rather than by a single typical answer.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

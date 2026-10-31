@@ -73,7 +73,8 @@ week: week10
 - Cluster analysis produces clusters even when the data contain no meaningful group structure. A solution that fails these criteria, or is unstable across samples, is not used for targeting.
 
 ## Discussion: Segmenting Gym Members
-- Discussion: A fitness chain holds data on the visit frequency, class attendance, time of visits, and survey-reported goals of 50,000 members. Which variables should be used to cluster the members, which should be used to profile the clusters, and how should the resulting segments be evaluated before a targeting decision is taken?
+- A fitness chain holds data on the visit frequency, class attendance, time of visits, and survey-reported goals of 50,000 members.
+- Which variables should be used to cluster the members, which should be used to profile the clusters, and how should the resulting segments be evaluated before a targeting decision is taken?
 
 ## Part 3: Conjoint Analysis [no-exercise]
 - Customers rarely find a product that is best on every attribute, and must therefore make trade-offs.
@@ -141,7 +142,8 @@ week: week10
 - Every characteristic of a persona is therefore traceable to the data describing the segment, and the persona is used to communicate evidence, not as a source of evidence.
 
 ## Discussion: A Persona in the Meeting Room
-- Discussion: A product team uses an AI tool to create a conversational persona for each of five customer segments, and begins to test new feature ideas by asking the personas for their reactions. What does this practice offer the team, which risks does it introduce, and which evidence should replace the personas' answers before a feature is built?
+- A product team uses an AI tool to create a conversational persona for each of five customer segments, and begins to test new feature ideas by asking the personas for their reactions.
+- What does this practice offer the team, which risks does it introduce, and which evidence should replace the personas' answers before a feature is built?
 
 ## Key Takeaways
 - Factor analysis reduces many correlated attributes to a few underlying dimensions, and perceptual maps display brands and ideal points on those dimensions.

@@ -75,7 +75,8 @@ week: week12
 - Finally, the analyst repeats the validation periodically, since the language of consumers and the behavior of the model change over time.
 
 ## Discussion: Ten Thousand Reviews
-- Discussion: A hotel chain holds 10,000 online reviews from the past year and seeks to identify the causes of declining ratings. Which text analytics methods are appropriate, how should their results be validated, and which limitations of review data should qualify the conclusions?
+- A hotel chain holds 10,000 online reviews from the past year and seeks to identify the causes of declining ratings.
+- Which text analytics methods are appropriate, how should their results be validated, and which limitations of review data should qualify the conclusions?
 
 ## Part 3: Privacy and Data Protection [no-exercise]
 - Every week of this course has involved data that describe people.
@@ -168,7 +169,8 @@ week: week12
 - The methods of this course apply directly: audits describe agent behavior, controlled experiments test its causes, and validated measures and adequate samples make the evidence reliable.
 
 ## Discussion: The Insights Team of the Future
-- Discussion: A chief executive proposes to reduce the firm's insights team to two people, and to rely on AI tools and self-service platforms for all other research. Which research activities could such an arrangement perform adequately, which would be at risk, and how should the insights function be organized to use AI tools while maintaining the validity of its evidence?
+- A chief executive proposes to reduce the firm's insights team to two people, and to rely on AI tools and self-service platforms for all other research.
+- Which research activities could such an arrangement perform adequately, which would be at risk, and how should the insights function be organized to use AI tools while maintaining the validity of its evidence?
 
 ## The Course in Review [no-exercise]
 - Marketing research provides evidence that reduces uncertainty in managerial decisions, beginning with the precise definition of the research problem.

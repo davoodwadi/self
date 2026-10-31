@@ -106,7 +106,7 @@ export function CodedMatrix() {
       <path d={head.right(mx0 - 8, meY, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
       {/* the data matrix */}
-      <Key x={mx0} y={20} fill={INK3} size={9.5}>{"VARIABLES \u2192"}</Key>
+      <Key x={mx0} y={20} fill={INK3} size={9.5}>{"Variables \u2192"}</Key>
       {MATRIX_COLS.map((c, j) => (
         <Key key={c.key} x={r2(colX[j] + c.w / 2)} y={hy} anchor="middle" fill={INK} size={9}>{c.key}</Key>
       ))}
@@ -135,7 +135,7 @@ export function CodedMatrix() {
       {colX.slice(1).map((x) => (
         <line key={x} x1={x} y1={hy - 14} x2={x} y2={rowY(4) + rh} stroke={RULE} strokeWidth={1} />
       ))}
-      <Key x={mx0} y={rowY(4) + rh + 22} fill={INK3} size={9.5}>{"\u2193 RESPONDENTS"}</Key>
+      <Key x={mx0} y={rowY(4) + rh + 22} fill={INK3} size={9.5}>{"\u2193 Respondents"}</Key>
     </Frame>
   );
 }
@@ -155,16 +155,16 @@ const CLEAN_ROWS = [
 ];
 const CLEAN_COLS = [
   { key: "ID", code: "", w: 70 },
-  { key: "SATISFACTION", code: "CODES 1 TO 5", w: 150 },
-  { key: "USED SUPPORT", code: "0 NEVER | 1 YES", w: 160 },
-  { key: "SUPPORT RATING", code: "CODES 1 TO 5", w: 160 },
-  { key: "MONTHLY SPENDING", code: "DOLLARS", w: 170 },
+  { key: "Satisfaction", code: "Codes 1 to 5", w: 150 },
+  { key: "Used support", code: "0 never | 1 yes", w: 160 },
+  { key: "Support rating", code: "Codes 1 to 5", w: 160 },
+  { key: "Monthly spending", code: "Dollars", w: 170 },
 ];
 /** Flagged cells: [row, column]. */
 const FLAGS = [
-  { row: 1, cells: [1], key: "OUT-OF-RANGE VALUE" },
-  { row: 3, cells: [2, 3], key: "LOGICAL INCONSISTENCY" },
-  { row: 4, cells: [4], key: "EXTREME VALUE" },
+  { row: 1, cells: [1], key: "Out-of-range value" },
+  { row: 3, cells: [2, 3], key: "Logical inconsistency" },
+  { row: 4, cells: [4], key: "Extreme value" },
 ];
 
 /**
@@ -265,7 +265,7 @@ const SURVEY: (number | null)[][] = [
   [null, 47, 5, 4],
   [33, 23, 4, null],
 ];
-const SURVEY_VARS = ["INCOME", "AGE", "SATISF.", "VISITS"];
+const SURVEY_VARS = ["Income", "Age", "Satisf.", "Visits"];
 /** Estimates from the respondent's other answers: income from age, the others from income. */
 const MODEL_ESTIMATE = (row: (number | null)[], j: number) => {
   const inc = row[0] ?? Math.round(1.25 * (row[1] as number) + 3);
@@ -397,10 +397,10 @@ export function MissingTreatments() {
         <Key x={mx + 4 * cw + 8} y={foot - 1} fill={SIGNAL} size={10}>N</Key>
 
         {/* income, as each treatment leaves it */}
-        <Key x={sx0} y={hy} fill={INK} size={9.5}>INCOME, $ THOUSANDS</Key>
+        <Key x={sx0} y={hy} fill={INK} size={9.5}>Income, $ thousands</Key>
         {[
           { k: "N", v: String(inc.n), x: sx0 },
-          { k: "MEAN", v: String(Math.round(inc.m)), x: sx0 + 90 },
+          { k: "Mean", v: String(Math.round(inc.m)), x: sx0 + 90 },
           { k: "SD", v: inc.sd.toFixed(1), x: sx0 + 180 },
         ].map((r) => (
           <g key={r.k}>
@@ -455,8 +455,8 @@ export function WeightedSample() {
   const bx1 = 540;
   const B = (v: number) => r2(bx0 + v * (bx1 - bx0));
   const bars = [
-    { key: "POPULATION", y: 18, v: POP_WOMEN },
-    { key: `SAMPLE OF ${WEIGHT_N}`, y: 50, v: share },
+    { key: "Population", y: 18, v: POP_WOMEN },
+    { key: `Sample of ${WEIGHT_N}`, y: 50, v: share },
   ];
 
   const base = 214;
@@ -488,9 +488,9 @@ export function WeightedSample() {
             <rect x={bx0} y={b.y + 3} width={r2(B(b.v) - bx0)} height={16} fill={COUNTER} />
             <rect x={B(b.v)} y={b.y + 3} width={r2(bx1 - B(b.v))} height={16} fill={PAPER} stroke={INK3} strokeWidth={1} />
             {B(b.v) - bx0 > 96 ? (
-              <Key x={bx0 + 6} y={b.y + 15} fill={PAPER} size={9.5} weight={700}>{`${Math.round(b.v * 100)}% WOMEN`}</Key>
+              <Key x={bx0 + 6} y={b.y + 15} fill={PAPER} size={9.5} weight={700}>{`${Math.round(b.v * 100)}% women`}</Key>
             ) : (
-              <Key x={r2(B(b.v) + 6)} y={b.y + 15} fill={COUNTER} size={9.5} weight={700}>{`${Math.round(b.v * 100)}% WOMEN`}</Key>
+              <Key x={r2(B(b.v) + 6)} y={b.y + 15} fill={COUNTER} size={9.5} weight={700}>{`${Math.round(b.v * 100)}% women`}</Key>
             )}
           </g>
         ))}
@@ -503,22 +503,22 @@ export function WeightedSample() {
         <line x1={16} y1={base + 1} x2={544} y2={base + 1} stroke={INK3} strokeWidth={1} />
         {women > 0 ? (
           <Key x={r2((people[0].x + people[women - 1].x) / 2)} y={r2(base - 34 * glyph * wW - 12)} anchor="middle" fill={COUNTER} size={10.5} weight={700}>
-            {`WEIGHT ${wW.toFixed(2)}`}
+            {`Weight ${wW.toFixed(2)}`}
           </Key>
         ) : null}
         {women < 20 ? (
           <Key x={r2((people[women].x + people[19].x) / 2)} y={r2(base - 34 * glyph * wM - 12)} anchor="middle" fill={INK} size={10.5} weight={700}>
-            {`WEIGHT ${wM.toFixed(2)}`}
+            {`Weight ${wM.toFixed(2)}`}
           </Key>
         ) : null}
 
         {/* the margin of error of the weighted estimate */}
-        <Key x={16} y={ey + 4} fill={INK3} size={9.5}>MARGIN OF ERROR</Key>
+        <Key x={16} y={ey + 4} fill={INK3} size={9.5}>Margin of error</Key>
         <path d={`M${r2(cx - e0 * unit)} ${ey - 10}V${ey}H${r2(cx + e0 * unit)}V${ey - 10}`} fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="3 3" />
         <path d={`M${r2(cx - e * unit)} ${ey + 10}V${ey}H${r2(cx + e * unit)}V${ey + 10}`} fill="none" stroke={SIGNAL} strokeWidth={2} />
         <circle cx={cx} cy={ey} r={3.5} fill={SIGNAL} />
-        <Key x={r2(cx - Math.max(e, e0) * unit - 10)} y={ey - 3} anchor="end" fill={INK3} size={9}>{`UNWEIGHTED \u00b1${e0.toFixed(1)}`}</Key>
-        <Key x={r2(cx - Math.max(e, e0) * unit - 10)} y={ey + 12} anchor="end" fill={SIGNAL} size={10} weight={700}>{`WEIGHTED \u00b1${e.toFixed(1)}`}</Key>
+        <Key x={r2(cx - Math.max(e, e0) * unit - 10)} y={ey - 3} anchor="end" fill={INK3} size={9}>{`Unweighted \u00b1${e0.toFixed(1)}`}</Key>
+        <Key x={r2(cx - Math.max(e, e0) * unit - 10)} y={ey + 12} anchor="end" fill={SIGNAL} size={10} weight={700}>{`Weighted \u00b1${e.toFixed(1)}`}</Key>
       </Frame>
       <Slider label="Women in sample, %" value={pct} min={15} max={75} step={5} onChange={setPct} />
     </>
@@ -555,11 +555,11 @@ const VISITS_VALID = VISITS_TOTAL - VISITS_MISSING;
  */
 export function FrequencyTable() {
   const cols = [
-    { key: "VISITS", x: 70 },
+    { key: "Visits", x: 70 },
     { key: "N", x: 150 },
     { key: "%", x: 225 },
-    { key: "VALID %", x: 315 },
-    { key: "CUMULATIVE %", x: 425 },
+    { key: "Valid %", x: 315 },
+    { key: "Cumulative %", x: 425 },
   ];
   const tx0 = 20;
   const tx1 = 480;
@@ -595,7 +595,7 @@ export function FrequencyTable() {
     >
       {/* the table */}
       {cols.map((c) => (
-        <Key key={c.key} x={c.x} y={hy} anchor="middle" fill={c.key === "CUMULATIVE %" ? SIGNAL : INK} size={9.5}>{c.key}</Key>
+        <Key key={c.key} x={c.x} y={hy} anchor="middle" fill={c.key === "Cumulative %" ? SIGNAL : INK} size={9.5}>{c.key}</Key>
       ))}
       <line x1={tx0} y1={top - 3} x2={tx1} y2={top - 3} stroke={INK} strokeWidth={1.25} />
       {rows.map((r, i) => {
@@ -634,8 +634,8 @@ export function FrequencyTable() {
         <rect key={r.v} x={r2(X(r.v) - bw / 2)} y={r2(base - H(r.n))} width={bw} height={H(r.n)} fill={r.v <= mark ? SIGNAL : INK3} fillOpacity={r.v <= mark ? 1 : 0.55} />
       ))}
       <path d={`M${r2(X(0) - bw / 2)} ${r2(base - H(44) - 16)}V${r2(base - H(44) - 22)}H${r2(X(mark) + bw / 2)}V${r2(base - H(44) - 16)}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={r2(X(mark) + bw / 2 + 8)} y={r2(base - H(44) - 17)} fill={SIGNAL} size={10} weight={700}>{`${markRow.cum.toFixed(1)}% AT 3 OR FEWER`}</Key>
-      <Key x={X(20)} y={r2(base - H(2) - 10)} anchor="middle" fill={INK} size={9.5}>EXTREME VALUE</Key>
+      <Key x={r2(X(mark) + bw / 2 + 8)} y={r2(base - H(44) - 17)} fill={SIGNAL} size={10} weight={700}>{`${markRow.cum.toFixed(1)}% at 3 or fewer`}</Key>
+      <Key x={X(20)} y={r2(base - H(2) - 10)} anchor="middle" fill={INK} size={9.5}>Extreme value</Key>
       <line x1={hx0 - 6} y1={base} x2={hx1 + 12} y2={base} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(hx1 + 12, base, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       {[0, 5, 10, 15, 20].map((v) => (
@@ -644,7 +644,7 @@ export function FrequencyTable() {
           <Key x={X(v)} y={base + 18} anchor="middle" fill={INK3} size={9.5}>{v}</Key>
         </g>
       ))}
-      <Key x={hx1 + 12} y={base + 34} anchor="end" fill={INK3} size={9.5}>VISITS IN THE PAST MONTH</Key>
+      <Key x={hx1 + 12} y={base + 34} anchor="end" fill={INK3} size={9.5}>Visits in the past month</Key>
     </Frame>
   );
 }
@@ -716,10 +716,10 @@ export function MeanMedian() {
     >
       {/* median and mean */}
       <path d={`M${X(median)} 52V${tip}${head.down(X(median), tip, 7)}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={r2(X(median) - 8)} y={20} anchor="end" fill={SIGNAL} size={9.5}>MEDIAN</Key>
+      <Key x={r2(X(median) - 8)} y={20} anchor="end" fill={SIGNAL} size={9.5}>Median</Key>
       <Display x={r2(X(median) - 8)} y={44} anchor="end" fill={SIGNAL} size={24}>{`$${median}`}</Display>
       <path d={`M${X(mean)} 52V${tip}${head.down(X(mean), tip, 7)}`} fill="none" stroke={COUNTER} strokeWidth={1.75} />
-      <Key x={r2(X(mean) + 8)} y={20} fill={COUNTER} size={9.5}>MEAN</Key>
+      <Key x={r2(X(mean) + 8)} y={20} fill={COUNTER} size={9.5}>Mean</Key>
       <Display x={r2(X(mean) + 8)} y={44} fill={COUNTER} size={24}>{`$${Math.round(mean)}`}</Display>
 
       {regular.map((p, i) => (
@@ -758,7 +758,7 @@ export function MeanMedian() {
           <Key x={X(v)} y={base + 18} anchor="middle" fill={INK3} size={9.5}>{`$${v}`}</Key>
         </g>
       ))}
-      <Key x={x1 + 12} y={base + 36} anchor="end" fill={INK3} size={9.5}>MONTHLY SPENDING</Key>
+      <Key x={x1 + 12} y={base + 36} anchor="end" fill={INK3} size={9.5}>Monthly spending</Key>
     </Frame>
   );
 }
@@ -796,7 +796,7 @@ export function TwoBrandsSpread() {
     >
       {panels.map((b, i) => (
         <g key={i}>
-          <Key x={16} y={b.base - 72} fill={b.tone} size={10} weight={700}>{`MEAN ${b.m.toFixed(1)}`}</Key>
+          <Key x={16} y={b.base - 72} fill={b.tone} size={10} weight={700}>{`Mean ${b.m.toFixed(1)}`}</Key>
           <Key x={16} y={b.base - 56} fill={b.tone} size={10} weight={700}>{`SD ${b.sd.toFixed(1)}`}</Key>
           {b.counts.flatMap((c, v) =>
             Array.from({ length: c }, (_, j) => {
@@ -825,7 +825,7 @@ export function TwoBrandsSpread() {
       {[1, 2, 3, 4, 5].map((v) => (
         <Key key={v} x={cx(v)} y={280} anchor="middle" fill={INK3} size={10}>{v}</Key>
       ))}
-      <Key x={16} y={280} fill={INK3} size={9.5}>RATING</Key>
+      <Key x={16} y={280} fill={INK3} size={9.5}>Rating</Key>
     </Frame>
   );
 }
@@ -842,7 +842,7 @@ function describeCounts(counts: number[]) {
    -------------------------------------------------------------------------- */
 
 const AGES = ["18 to 34", "35 to 54", "55+"];
-const CHANNELS = ["ONLINE", "IN-STORE", "MOBILE"];
+const CHANNELS = ["Online", "In-store", "Mobile"];
 /** Respondents by age group (rows) and preferred channel (columns). */
 const CHANNEL_COUNTS = [
   [60, 30, 110],
@@ -888,7 +888,7 @@ export function CrossTabDirection() {
         {CHANNELS.map((c, j) => (
           <Key key={c} x={r2(cellX(j) + cw / 2)} y={hy} anchor="middle" fill={INK} size={10}>{c}</Key>
         ))}
-        <Key x={r2(tx + tw / 2)} y={hy} anchor="middle" fill={INK3} size={10}>TOTAL</Key>
+        <Key x={r2(tx + tw / 2)} y={hy} anchor="middle" fill={INK3} size={10}>Total</Key>
         <line x1={lx} y1={y0 - 4} x2={tx + tw} y2={y0 - 4} stroke={INK} strokeWidth={1.25} />
 
         {AGES.map((a, i) => (
@@ -910,7 +910,7 @@ export function CrossTabDirection() {
           </g>
         ))}
         <line x1={lx} y1={by + 2} x2={tx + tw} y2={by + 2} stroke={INK} strokeWidth={1.25} />
-        <Key x={lx} y={by + 32} fill={INK3} size={10}>TOTAL</Key>
+        <Key x={lx} y={by + 32} fill={INK3} size={10}>Total</Key>
         {CHANNELS.map((_, j) => (
           <Display key={j} x={r2(cellX(j) + cw / 2)} y={by + 34} anchor="middle" fill={dir === "channel" ? SIGNAL : INK3} size={dir === "channel" ? 22 : 17}>
             {dir === "channel" ? "100%" : String(colT[j])}
@@ -938,10 +938,10 @@ export function CrossTabDirection() {
 
 /** Twenty customers per group, by income. `high` of them are high spenders. */
 const APP_GROUPS = [
-  { key: "APP USERS", strata: [{ n: 15, high: 9 }, { n: 5, high: 1 }] },
-  { key: "OTHER CUSTOMERS", strata: [{ n: 5, high: 3 }, { n: 15, high: 3 }] },
+  { key: "App users", strata: [{ n: 15, high: 9 }, { n: 5, high: 1 }] },
+  { key: "Other customers", strata: [{ n: 5, high: 3 }, { n: 15, high: 3 }] },
 ];
-const INCOME_LABELS = ["HIGHER INCOME", "LOWER INCOME"];
+const INCOME_LABELS = ["Higher income", "Lower income"];
 
 /**
  * A spurious association: half of the app users are high spenders against
@@ -962,7 +962,7 @@ export function ThirdVariable() {
   const pctLabel = (x: number, y: number, v: number, tone: string, key: string) => (
     <g key={key}>
       <Display x={x} y={y} fill={tone} size={26}>{`${Math.round(v * 100)}%`}</Display>
-      <Key x={x} y={y + 19} fill={INK3} size={8.5}>HIGH SPENDERS</Key>
+      <Key x={x} y={y + 19} fill={INK3} size={8.5}>High spenders</Key>
     </g>
   );
   const grid = (n: number, high: number, x0: number, top: number, key: string) =>
@@ -1075,7 +1075,7 @@ export function ChartPrinciples() {
     >
       {/* to avoid */}
       <Verdict cx={16} cy={15} ok={false} />
-      <text x={34} y={20} fontFamily="var(--font-heading)" fontSize={14} fill={INK2}>Customer Satisfaction by Region</text>
+      <text x={34} y={20} fontFamily="var(--font-body)" fontSize={14} fill={INK2}>Customer Satisfaction by Region</text>
       {[50, 55, 60, 65, 70, 75].map((v) => (
         <g key={v}>
           <line x1={ax} y1={Y(v)} x2={262} y2={Y(v)} stroke={INK3} strokeWidth={1.5} />
@@ -1105,7 +1105,7 @@ export function ChartPrinciples() {
 
       {/* to follow */}
       <Verdict cx={16} cy={193} ok />
-      <text x={34} y={198} fontFamily="var(--font-heading)" fontSize={14} fill={INK}>The North has the most satisfied customers</text>
+      <text x={34} y={198} fontFamily="var(--font-body)" fontSize={14} fill={INK}>The North has the most satisfied customers</text>
       {REGION_SAT.map((d, i) => {
         const y = cy0 + i * 29;
         const hi = i === 0;
@@ -1255,8 +1255,8 @@ function ScatterThumb() {
       {REGION_AD_SALES.map(([a, s], i) => (
         <circle key={i} cx={X(a)} cy={Y(s)} r={5} fill={SIGNAL} fillOpacity={0.8} />
       ))}
-      <Key x={x1} y={base + 17} anchor="end" fill={INK3} size={9.5}>ADVERTISING</Key>
-      <Key x={x0 + 10} y={20} fill={INK3} size={9.5}>SALES</Key>
+      <Key x={x1} y={base + 17} anchor="end" fill={INK3} size={9.5}>Advertising</Key>
+      <Key x={x0 + 10} y={20} fill={INK3} size={9.5}>Sales</Key>
     </g>
   );
 }
@@ -1442,7 +1442,7 @@ export function TruncatedAxis() {
       {/* what the eye compares, and what the data say */}
       <Key x={392} y={70} anchor="end" fill={INK3} size={8.5}>{"BAR C \u00f7 BAR A"}</Key>
       <Display x={392} y={98} anchor="end" fill={barRatio > 1.5 ? COUNTER : INK} size={28}>{`\u00d7${barRatio.toFixed(1)}`}</Display>
-      <Key x={392} y={150} anchor="end" fill={INK3} size={8.5}>{"SCORE C \u00f7 SCORE A"}</Key>
+      <Key x={392} y={150} anchor="end" fill={INK3} size={8.5}>{"Score C \u00f7 score A"}</Key>
       <Display x={392} y={178} anchor="end" fill={INK} size={28}>{`\u00d7${scoreRatio.toFixed(1)}`}</Display>
     </Frame>
   );
@@ -1484,8 +1484,8 @@ export function TwoValueAxes() {
         height={262}
         label={`Twelve months of advertising spending, rising from 20 to 24.2 thousand dollars on the left axis, and website visits, rising from 50.1 to 51.2 thousand on a right axis from ${r.lo} to ${r.hi} thousand. ${ax === "wide" ? "The visits line is flat" : ax === "mid" ? "The visits line rises slightly" : "The visits line rises alongside spending"}`}
       >
-        <Key x={x0 - 8} y={22} fill={INK} size={9}>AD SPENDING, $K</Key>
-        <Key x={x1 + 8} y={22} anchor="end" fill={COUNTER} size={9}>VISITS, THOUSANDS</Key>
+        <Key x={x0 - 8} y={22} fill={INK} size={9}>Ad spending, $K</Key>
+        <Key x={x1 + 8} y={22} anchor="end" fill={COUNTER} size={9}>Visits, thousands</Key>
         <line x1={x0} y1={y0} x2={x0} y2={y1 - 10} stroke={INK} strokeWidth={1.25} />
         <line x1={x1} y1={y0} x2={x1} y2={y1 - 10} stroke={COUNTER} strokeWidth={1.25} />
         <line x1={x0} y1={y0} x2={x1} y2={y0} stroke={INK} strokeWidth={1.25} />
@@ -1509,64 +1509,11 @@ export function TwoValueAxes() {
         {SITE_VISITS.map((v, i) => (
           <circle key={`v${i}`} cx={X(i)} cy={YR(v)} r={2.5} fill={COUNTER} />
         ))}
-        <Key x={X(0)} y={y0 + 16} anchor="middle" fill={INK3} size={9}>JAN</Key>
-        <Key x={X(11)} y={y0 + 16} anchor="middle" fill={INK3} size={9}>DEC</Key>
+        <Key x={X(0)} y={y0 + 16} anchor="middle" fill={INK3} size={9}>Jan</Key>
+        <Key x={X(11)} y={y0 + 16} anchor="middle" fill={INK3} size={9}>Dec</Key>
       </Frame>
       <Segmented label="Right axis" options={RIGHT_AXES.map(({ id, label }) => ({ id, label }))} value={ax} onChange={setAx} />
     </>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   Discussion: One Dataset, Two Charts
-   -------------------------------------------------------------------------- */
-
-const REGION_SCORES = [
-  { r: "North", v: 4.2 },
-  { r: "East", v: 4.0 },
-  { r: "South", v: 3.9 },
-  { r: "West", v: 4.1 },
-];
-
-/** The discussion's two charts: the same four regional scores on axes from 0 to 5 and from 3.5 to 4.5. */
-export function TwoChartsOneDataset() {
-  const panels = [
-    { x: 40, lo: 0, hi: 5, ticks: [0, 1, 2, 3, 4, 5] },
-    { x: 440, lo: 3.5, hi: 4.5, ticks: [3.5, 3.75, 4, 4.25, 4.5] },
-  ];
-  const y0 = 166;
-  const y1 = 16;
-  return (
-    <Frame
-      width={800}
-      height={190}
-      label="The same satisfaction scores for four regions, North 4.2, East 4.0, South 3.9 and West 4.1, charted twice: on an axis from zero to five the bars look nearly equal. On an axis from 3.5 to 4.5 North's bar looks almost twice as long as South's"
-    >
-      {panels.map((p) => {
-        const Y = (v: number) => r2(y0 - ((v - p.lo) / (p.hi - p.lo)) * (y0 - y1));
-        return (
-          <g key={p.x}>
-            <line x1={p.x + 40} y1={y0} x2={p.x + 40} y2={y1} stroke={INK} strokeWidth={1.25} />
-            {p.ticks.map((t) => (
-              <g key={t}>
-                <line x1={p.x + 36} y1={Y(t)} x2={p.x + 40} y2={Y(t)} stroke={INK} strokeWidth={1} />
-                <Key x={p.x + 32} y={r2(Y(t) + 3.5)} anchor="end" fill={INK3} size={9}>{t}</Key>
-              </g>
-            ))}
-            {REGION_SCORES.map((d, i) => {
-              const x = p.x + 60 + i * 72;
-              return (
-                <g key={d.r}>
-                  <rect x={x} y={Y(d.v)} width={46} height={r2(y0 - Y(d.v))} fill={INK3} fillOpacity={0.55} />
-                  <Note x={x + 23} y={y0 + 17} anchor="middle" size={12} fill={INK2}>{d.r}</Note>
-                </g>
-              );
-            })}
-            <line x1={p.x + 40} y1={y0} x2={p.x + 350} y2={y0} stroke={INK} strokeWidth={1.25} />
-          </g>
-        );
-      })}
-    </Frame>
   );
 }
 
@@ -1625,7 +1572,7 @@ export function MissingCode() {
         {coded ? null : (
           <>
             <rect x={r2(bx + W(5))} y={top - 4} width={r2(W(max) - W(5))} height={4 * rh} fill={COUNTER_TINT} />
-            <Key x={r2(bx + W(5) + 6)} y={top - 10} fill={COUNTER} size={9}>ABOVE THE SCALE MAXIMUM OF 5</Key>
+            <Key x={r2(bx + W(5) + 6)} y={top - 10} fill={COUNTER} size={9}>Above the scale maximum of 5</Key>
           </>
         )}
         {rows.map((d, i) => {
@@ -1641,7 +1588,7 @@ export function MissingCode() {
           );
         })}
         <line x1={bx} y1={top - 4} x2={bx} y2={top + 4 * rh - 4} stroke={INK} strokeWidth={1.25} />
-        <Key x={530} y={top - 10} anchor="end" fill={INK3} size={9}>RESPONDENTS</Key>
+        <Key x={530} y={top - 10} anchor="end" fill={INK3} size={9}>Respondents</Key>
       </Frame>
       <Toggles label="Codebook" options={[{ id: "codebook" as const, label: "99 = missing" }]} value={on} onChange={setOn} allowNone />
     </>
@@ -1671,8 +1618,8 @@ function entropy(pmf: number[]) {
  */
 export function ConsensusVersusEntropy() {
   const rows = [
-    { key: "MODEL A", pmf: [0, 0, 0, 0.5, 0.5, 0, 0], base: 92 },
-    { key: "MODEL B", pmf: [0.5, 0, 0, 0, 0, 0, 0.5], base: 210 },
+    { key: "Model A", pmf: [0, 0, 0, 0.5, 0.5, 0, 0], base: 92 },
+    { key: "Model B", pmf: [0.5, 0, 0, 0, 0, 0, 0.5], base: 210 },
   ];
   const x0 = 34;
   const step = 30;
@@ -1702,9 +1649,9 @@ export function ConsensusVersusEntropy() {
             );
           })}
           <line x1={x0 - 16} y1={r.base} x2={sx(7) + 16} y2={r.base} stroke={INK} strokeWidth={1.25} />
-          <Key x={cx} y={r.base - 44} fill={SIGNAL} size={9}>CONSENSUS</Key>
+          <Key x={cx} y={r.base - 44} fill={SIGNAL} size={9}>Consensus</Key>
           <Display x={cx} y={r.base - 18} fill={SIGNAL} size={24}>{consensus(r.pmf).toFixed(2)}</Display>
-          <Key x={cx} y={r.base + 4} fill={INK3} size={9}>{`ENTROPY ${entropy(r.pmf).toFixed(2)} BITS`}</Key>
+          <Key x={cx} y={r.base + 4} fill={INK3} size={9}>{`Entropy ${entropy(r.pmf).toFixed(2)} bits`}</Key>
         </g>
       ))}
       <line x1={16} y1={120} x2={384} y2={120} stroke={RULE2} strokeWidth={1} />

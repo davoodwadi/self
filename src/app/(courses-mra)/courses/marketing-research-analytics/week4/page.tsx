@@ -13,7 +13,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import { AiMark1 } from "../_visuals/objects";
 import exercisesData from "./exercises.json";
@@ -76,13 +76,13 @@ export default function Week4() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 4: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
-          <span className="text-[var(--signal)]">Measurement</span> and Questionnaire Design
+          Measurement and Questionnaire Design
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[44ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[44ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           The quality of survey findings depends on the quality of the{" "}
-          <span className="text-[var(--signal)]">measures</span> and the{" "}
-          <span className="text-[var(--signal)]">questions</span> from which they
+          measures and the{" "}
+          questions from which they
           are derived.
         </p>
       </Slide>
@@ -98,7 +98,7 @@ export default function Week4() {
         </Statement>
         <div className="mt-8 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 The objects of measurement are consumers, brands, stores, or
                 advertisements. What is measured is a characteristic of these
@@ -106,7 +106,7 @@ export default function Week4() {
                 perceived quality.
               </P>
             </Ruled>
-            <Ruled weight="thin" tone="signal">
+            <Ruled>
               <P>
                 <Term>Scaling</Term> is the creation of a continuum on which
                 measured objects are located, such as a scale from 1 to 7 on
@@ -118,7 +118,7 @@ export default function Week4() {
             <BrandsOnScale />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           The rules of assignment must be consistent, so that the same
           characteristic always receives the same number.
         </p>
@@ -139,11 +139,11 @@ export default function Week4() {
             <div className="grid gap-8 md:grid-cols-2">
               <Ruled>
                 <p className={BIG}>
-                  A <Term tone="ink">conceptual definition</Term> states the
+                  A <Term>conceptual definition</Term> states the
                   meaning of a construct in words.
                 </p>
               </Ruled>
-              <Ruled tone="signal">
+              <Ruled>
                 <p className={BIG}>
                   An <Term>operational definition</Term> specifies the procedure
                   by which the construct is measured, including the questions
@@ -161,10 +161,10 @@ export default function Week4() {
             <OperationalDefinition />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--counter)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           A single construct can be operationalized in several ways, and the
           choice of operational definition{" "}
-          <span className="text-[var(--counter)]">affects the findings</span>.
+          affects the findings.
         </p>
       </Slide>
 
@@ -175,11 +175,11 @@ export default function Week4() {
         <PartHead n={1} title="Levels of Measurement" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           Every measure has a level of measurement:{" "}
-          <Term tone="ink">nominal</Term>, <Term tone="ink">ordinal</Term>,{" "}
-          <Term tone="ink">interval</Term>, or <Term tone="ink">ratio</Term>.
+          <Term>nominal</Term>, <Term>ordinal</Term>,{" "}
+          <Term>interval</Term>, or <Term>ratio</Term>.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The level of measurement determines which statistical analyses are
               appropriate.
@@ -203,7 +203,7 @@ export default function Week4() {
           <div className="flex min-w-0 flex-col gap-4">
             <Ruled>
               <p className={BIG}>
-                A <Term tone="ink">nominal scale</Term> uses numbers only as
+                A <Term>nominal scale</Term> uses numbers only as
                 labels to identify or classify objects.
               </p>
             </Ruled>
@@ -214,7 +214,7 @@ export default function Week4() {
             </P>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 An <Term>ordinal scale</Term> indicates the relative position of
                 objects, but not the magnitude of the differences between them.
@@ -227,7 +227,7 @@ export default function Week4() {
           </div>
         </div>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <p className={BIG}>
               A consumer who ranks three brands first, second, and third reveals
               an order of preference, but not how much more the first brand is
@@ -249,14 +249,14 @@ export default function Week4() {
           <div className="flex min-w-0 flex-col gap-3">
             <Ruled>
               <P className="!max-w-none">
-                An <Term tone="ink">interval scale</Term> has equal distances
+                An <Term>interval scale</Term> has equal distances
                 between adjacent points, so that differences between values can
                 be compared.
               </P>
             </Ruled>
             <P className="!max-w-none">
               The zero point of an interval scale is{" "}
-              <span className="text-[var(--counter)]">arbitrary</span>.
+              arbitrary.
               Temperature in degrees Celsius is an interval scale: 20 degrees is
               not twice as warm as 10 degrees.
             </P>
@@ -266,7 +266,7 @@ export default function Week4() {
             </P>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none">
                 A <Term>ratio scale</Term> has all the properties of an interval
                 scale, together with an absolute zero point.
@@ -303,9 +303,9 @@ export default function Week4() {
               ["Ratio", " data additionally permit statements of proportion, such as “twice as much.”"],
             ].map(([term, rest], i) => (
               <li key={term} className="min-w-0" style={{ paddingLeft: `${i * 1.25}rem` }}>
-                <Ruled weight={i === 0 ? "thick" : "thin"}>
+                <Ruled>
                   <p className={BIG}>
-                    <Term tone="ink">{term}</Term>
+                    <Term>{term}</Term>
                     {rest}
                   </p>
                 </Ruled>
@@ -313,14 +313,14 @@ export default function Week4() {
             ))}
           </ol>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <P className="!max-w-none">
                 An analysis that assumes a higher level of measurement than the
                 data possess produces results that cannot be meaningfully
                 interpreted, such as the{" "}
-                <span className="text-[var(--counter)]">
+                
                   average of respondents&apos; region codes
-                </span>
+                
                 .
               </P>
             </Ruled>
@@ -338,16 +338,16 @@ export default function Week4() {
         <PartHead n={2} title="Scaling Techniques" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           Scaling techniques are classified as{" "}
-          <Term>comparative</Term> or <Term tone="counter">noncomparative</Term>.
+          <Term>comparative</Term> or <Term>noncomparative</Term>.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               In comparative scales, respondents compare objects directly with
               one another.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               In noncomparative scales, each object is evaluated independently of
               the others.
@@ -362,23 +362,23 @@ export default function Week4() {
       <Slide id="comparative-scales" border className="!py-8">
         <SlideHeading>Comparative Scales</SlideHeading>
         <div className="grid w-full gap-x-10 gap-y-5 md:grid-cols-3">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              In a <Term tone="ink">paired comparison scale</Term>, respondents
+              In a <Term>paired comparison scale</Term>, respondents
               choose one of two objects according to a stated criterion, such as
               preference.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              In a <Term tone="ink">rank-order scale</Term>, respondents rank
+              In a <Term>rank-order scale</Term>, respondents rank
               several objects according to a criterion, such as ranking five
               coffee brands from most to least preferred.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
-              In a <Term tone="ink">constant sum scale</Term>, respondents divide
+              In a <Term>constant sum scale</Term>, respondents divide
               a fixed number of points, typically 100, among several attributes
               or objects to indicate their relative importance.
             </P>
@@ -388,13 +388,13 @@ export default function Week4() {
           <ComparativeForms />
         </Plate>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="ink" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Comparative scales produce ordinal data, with the exception of
               constant sum scales, which are often treated as interval data.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Comparative scales detect small differences between objects, but
               their results cannot be generalized beyond the objects included in
@@ -411,7 +411,7 @@ export default function Week4() {
         <SlideHeading>Likert Scales</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 A <Term>Likert scale</Term> presents a series of statements, and
                 respondents indicate their degree of agreement or disagreement
@@ -429,7 +429,7 @@ export default function Week4() {
             </P>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none">
                 The ratings for several statements measuring the same construct
                 are summed or averaged to produce a single score.
@@ -440,7 +440,7 @@ export default function Week4() {
             </Plate>
           </div>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--counter)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Likert scales are easy to construct and to administer, but respondents
           must read each statement carefully, which increases the time required
           to complete the questionnaire.
@@ -459,7 +459,7 @@ export default function Week4() {
         <SlideHeading>Semantic Differential Scales</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <P>
                 A <Term>semantic differential scale</Term> presents pairs of
                 adjectives with opposite meanings at the two ends of a scale,
@@ -476,13 +476,13 @@ export default function Week4() {
               &ldquo;friendly&rdquo; and &ldquo;unfriendly,&rdquo; and
               &ldquo;expensive&rdquo; and &ldquo;inexpensive.&rdquo;
             </P>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Semantic differential scales are widely used to compare the
                 images of brands, stores, and companies.
               </P>
             </Ruled>
-            <Ruled tone="counter">
+            <Ruled>
               <P>
                 The adjective pairs are presented with the favorable adjective on
                 the left for some pairs and on the right for others, so that
@@ -516,10 +516,10 @@ export default function Week4() {
               ["Verbal labels", ": labels may be provided for every category or only for the endpoints."],
             ].map(([term, rest], i) => (
               <li key={term} className="min-w-0">
-                <Numbered n={i + 1} tone={i === 2 || i === 3 ? "signal" : "ink"}>
-                  <Ruled weight="thin" tone={i === 2 || i === 3 ? "signal" : "ink"}>
+                <Numbered n={i + 1}>
+                  <Ruled>
                     <P className="!max-w-none !leading-snug">
-                      <Term tone={i === 2 || i === 3 ? "signal" : "ink"}>{term}</Term>
+                      <Term>{term}</Term>
                       {rest}
                     </P>
                   </Ruled>
@@ -545,11 +545,11 @@ export default function Week4() {
               single question.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Each item captures part of the construct, and the combined score
               measures the construct{" "}
-              <span className="text-[var(--signal)]">more accurately</span> than
+              more accurately than
               any single item.
             </p>
           </Ruled>
@@ -558,14 +558,14 @@ export default function Week4() {
           <MultiItemAccuracy />
         </Plate>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Many multi-item scales have been developed and validated in
               published research, for constructs such as satisfaction, brand
               attitude, and service quality.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               A validated scale is used in its published form. Changing the
               wording of its items can change what the scale measures.
@@ -585,19 +585,19 @@ export default function Week4() {
           </Statement>
           <Statement className="!max-w-none !text-[clamp(1.4rem,2.3vw,1.95rem)]">
             The observed score equals the true score plus{" "}
-            <span className="text-[var(--counter)]">systematic error</span> plus{" "}
-            <span className="text-[var(--signal)]">random error</span>.
+            systematic error plus{" "}
+            random error.
           </Statement>
         </div>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              <Term tone="counter">Systematic error</Term> affects every
+              <Term>Systematic error</Term> affects every
               measurement in the same way, such as a question that consistently
               encourages favorable answers.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Random error</Term> varies unpredictably from one measurement
               to the next, such as errors caused by a respondent&apos;s fatigue or
@@ -605,7 +605,7 @@ export default function Week4() {
             </p>
           </Ruled>
         </div>
-        <p className={`${CLOSE} mt-9 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-9 border-t border-[var(--rule-2)] pt-5`}>
           Reliability and validity are the criteria by which the extent of these
           errors is evaluated.
         </p>
@@ -623,28 +623,28 @@ export default function Week4() {
         </Lead>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin" tone="signal">
+            <Ruled>
               <P className="!max-w-none">
                 <Term>Test-retest reliability</Term> is assessed by administering
                 the same scale to the same respondents at two points in time and
                 correlating the results.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none">
-                <Term tone="ink">Alternative-forms reliability</Term> is assessed
+                <Term>Alternative-forms reliability</Term> is assessed
                 by administering two equivalent versions of the scale and
                 correlating the results.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none">
-                <Term tone="ink">Internal consistency reliability</Term> is
+                <Term>Internal consistency reliability</Term> is
                 assessed by examining whether the items of a multi-item scale
                 produce consistent results.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className="!max-w-none">
                 Coefficient alpha, also known as Cronbach&apos;s alpha, is the
                 most widely used measure of internal consistency. A value of 0.70
@@ -670,31 +670,31 @@ export default function Week4() {
         </Statement>
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                <Term tone="ink">Content validity</Term> is the extent to which
+                <Term>Content validity</Term> is the extent to which
                 the items cover the full domain of the construct, as judged by
                 experts.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                <Term tone="ink">Criterion validity</Term> is the extent to which
+                <Term>Criterion validity</Term> is the extent to which
                 the scale is related to other variables with which it should
                 theoretically be related, such as actual purchases.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
-                <Term tone="ink">Construct validity</Term> is the extent to which
+                <Term>Construct validity</Term> is the extent to which
                 the scale behaves as theory predicts.
               </P>
             </Ruled>
-            <Ruled weight="thin" tone="signal">
+            <Ruled>
               <P>
                 <Term>Convergent validity</Term> is shown when the scale
                 correlates with other measures of the same construct.{" "}
-                <Term tone="counter">Discriminant validity</Term> is shown when it
+                <Term>Discriminant validity</Term> is shown when it
                 does not correlate strongly with measures of different
                 constructs.
               </P>
@@ -719,7 +719,7 @@ export default function Week4() {
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.45rem,2.4vw,2rem)]">
             A measure can be <Term>reliable</Term> without being{" "}
-            <Term tone="counter">valid</Term>.
+            <Term>valid</Term>.
           </Statement>
           <Ruled>
             <p className={BIG}>
@@ -733,13 +733,13 @@ export default function Week4() {
           <BathroomScale />
         </Plate>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               A measure cannot be valid without being reliable, since
               inconsistent results cannot accurately reflect the true score.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={`${BIG} !max-w-none`}>
               Reliability is therefore a necessary but not a sufficient condition
               for validity.
@@ -764,7 +764,7 @@ export default function Week4() {
               into questions that respondents are able and willing to answer.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               It also motivates respondents to complete the questionnaire and
               minimizes response error.
@@ -779,28 +779,28 @@ export default function Week4() {
       <Slide id="types-of-questions" border className="!py-8">
         <SlideHeading>Types of Questions</SlideHeading>
         <div className="grid w-full gap-x-8 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
-              <Term tone="ink">Open-ended questions</Term> allow respondents to
+              <Term>Open-ended questions</Term> allow respondents to
               answer in their own words. They provide rich information but
               require coding before analysis.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
-              <Term tone="ink">Multiple-choice questions</Term> offer a list of
+              <Term>Multiple-choice questions</Term> offer a list of
               response options, from which respondents select one or more.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
-              <Term tone="ink">Dichotomous questions</Term> offer only two
+              <Term>Dichotomous questions</Term> offer only two
               response options, such as yes and no.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!leading-snug">
-              <Term tone="ink">Scaled questions</Term> use the rating scales
+              <Term>Scaled questions</Term> use the rating scales
               introduced earlier in this week.
             </P>
           </Ruled>
@@ -808,10 +808,10 @@ export default function Week4() {
         <Plate className="mt-5">
           <QuestionForms />
         </Plate>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--counter)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Structured questions are faster to answer and to analyze, but they
           limit responses to the options the researcher has{" "}
-          <span className="text-[var(--counter)]">anticipated</span>.
+          anticipated.
         </p>
       </Slide>
 
@@ -835,8 +835,8 @@ export default function Week4() {
             "Questions ask only for information that respondents are able to provide, such as recent rather than distant purchases.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone={i === 0 || i === 5 ? "ink" : "counter"}>
-                <Ruled weight="thin" tone={i === 0 || i === 5 ? "ink" : "counter"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={BIG}>{s}</p>
                 </Ruled>
               </Numbered>
@@ -859,7 +859,7 @@ export default function Week4() {
               "Sensitive questions and classification questions, such as income, are placed near the end.",
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Ruled weight="thin" tone={i === 2 ? "signal" : "ink"}>
+                <Ruled>
                   <P className="!max-w-none">{s}</P>
                 </Ruled>
               </li>
@@ -870,9 +870,9 @@ export default function Week4() {
           </Plate>
         </div>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              <Term tone="counter">Order effects</Term> occur when earlier
+              <Term>Order effects</Term> occur when earlier
               questions influence answers to later questions. Rating a
               brand&apos;s safety, for example, can raise the importance that
               respondents later assign to safety.
@@ -893,40 +893,40 @@ export default function Week4() {
       <Slide id="response-bias" border className="!py-8" exercise={exercise["response-bias"]}>
         <SlideHeading>Response Bias</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.4rem,2.3vw,1.95rem)]">
-          <Term tone="counter">Response bias</Term> is the systematic tendency of
+          <Term>Response bias</Term> is the systematic tendency of
           respondents to answer in a way that does not reflect their true
           opinions or behavior.
         </Statement>
         <div className="mt-8 grid w-full gap-x-10 gap-y-6 md:grid-cols-2">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              <Term tone="ink">Social desirability bias</Term> is the tendency to
+              <Term>Social desirability bias</Term> is the tendency to
               give answers that present the respondent favorably, such as
               overstating recycling or understating alcohol consumption.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              <Term tone="ink">Acquiescence bias</Term> is the tendency to agree
+              <Term>Acquiescence bias</Term> is the tendency to agree
               with statements regardless of their content.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              <Term tone="ink">Extreme responding</Term> and{" "}
-              <Term tone="ink">midpoint responding</Term> are the tendencies to
+              <Term>Extreme responding</Term> and{" "}
+              <Term>midpoint responding</Term> are the tendencies to
               select the endpoints or the middle of a scale regardless of the
               question.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
-              <Term tone="ink">Interviewer bias</Term> occurs when the presence or
+              <Term>Interviewer bias</Term> occurs when the presence or
               behavior of an interviewer influences responses.
             </P>
           </Ruled>
         </div>
-        <p className="type-quote mt-9 w-full border-l-2 border-[var(--signal)] bg-[var(--signal-tint)] px-7 py-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Response bias is reduced through careful wording, balanced scales,
           assurances of anonymity, and self-administered questionnaires for
           sensitive topics.
@@ -944,7 +944,7 @@ export default function Week4() {
           identify and eliminate problems before data collection.
         </Statement>
         <div className="mt-9 grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               In <Term>cognitive interviewing</Term>, respondents explain aloud how
               they interpret each question and arrive at their answers.
@@ -976,7 +976,7 @@ export default function Week4() {
           survey questions.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               They reduce the time required to produce a first draft of a
               questionnaire.
@@ -998,14 +998,14 @@ export default function Week4() {
       <Slide id="applications-and-risks-of-ai-in-item-development" border className="!py-8">
         <SlideHeading>Applications and Risks of AI in Item Development</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               AI can be used to generate candidate items for a construct, to
               propose response options, and to produce alternative wordings of a
               question.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               AI can be used to review a draft questionnaire for leading,
               double-barreled, or ambiguous wording, and to translate it into
@@ -1018,21 +1018,21 @@ export default function Week4() {
             <>
               AI-generated items may appear appropriate while failing to cover the
               full domain of the construct, which reduces{" "}
-              <Term tone="counter">content validity</Term>.
+              <Term>content validity</Term>.
             </>,
             <>
               AI tools may present items as coming from a published, validated
               scale when the items have been{" "}
-              <Term tone="counter">altered or invented</Term>.
+              <Term>altered or invented</Term>.
             </>,
             <>
               AI tools may also rephrase the items of a validated scale, which{" "}
-              <Term tone="counter">changes what the scale measures</Term>.
+              <Term>changes what the scale measures</Term>.
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="counter">
-                <Ruled tone="counter" weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>
@@ -1052,13 +1052,13 @@ export default function Week4() {
           the questionnaire is shown to real respondents.
         </Lead>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               This procedure can identify some ambiguous wording and missing
               response options at low cost.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               AI-simulated respondents do not share the knowledge, experiences,
               and interpretations of the target population, and cannot reveal all
@@ -1066,8 +1066,8 @@ export default function Week4() {
             </p>
           </Ruled>
         </div>
-        <p className={`${CLOSE} mt-9 border-t-2 border-[var(--ink)] pt-5`}>
-          AI pretesting therefore <span className="text-[var(--signal)]">supplements</span>{" "}
+        <p className={`${CLOSE} mt-9 border-t border-[var(--rule-2)] pt-5`}>
+          AI pretesting therefore supplements{" "}
           pretesting with real respondents and does not replace it.
         </p>
       </Slide>
@@ -1093,8 +1093,8 @@ export default function Week4() {
             { s: "Finally, the scale is administered to a pilot sample, and its reliability and validity are assessed.", wide: true },
           ].map(({ s, ai, wide }, i) => (
             <li key={i} className={wide ? "min-w-0 lg:col-span-2" : "min-w-0"}>
-              <Numbered n={i + 1} tone={ai ? "signal" : "ink"}>
-                <Ruled weight="thin" tone={ai ? "signal" : "ink"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={BIG}>
                     {ai ? (
                       <>
@@ -1132,20 +1132,20 @@ export default function Week4() {
                 reliability and validity.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 For example, the 17 items of the Consumer Ethnocentrism Tendencies Scale (CETSCALE) have been
                 administered to language models, with the name of the country varied across conditions (Wadi,
                 Ghodrat, &amp; Philp, 2026).
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 A fixed instruction requires the model to answer with a single scale point, because open-ended
                 answers can be evasive, such as &quot;As an AI, I do not have a country.&quot;
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>Each item is administered separately, with the name of the country inserted into the wording of the item.</P>
             </Ruled>
           </div>
@@ -1162,13 +1162,13 @@ export default function Week4() {
         <SlideHeading>Response Distributions in Place of Single Answers</SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 A language model does not hold one fixed answer to a Likert item. It assigns a probability to each
                 point of the scale, and a generated answer is one draw from this distribution.
               </p>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P>A single generated answer can therefore misrepresent the model&apos;s position on the item.</P>
             </Ruled>
           </div>
@@ -1177,14 +1177,14 @@ export default function Week4() {
           </Plate>
         </div>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               With open-weight models, the researcher can read the probability that the model assigns to each
               scale point directly, and so obtain the exact response distribution without repeated sampling (Wadi,
               Ghodrat, &amp; Philp, 2026).
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               The distribution shows both the model&apos;s typical response and its certainty, which a single
               answer cannot show.
@@ -1197,15 +1197,11 @@ export default function Week4() {
           Discussion: A Questionnaire in Ten Minutes
           ================================================================ */}
       <Slide id="discussion-a-questionnaire-in-ten-minutes" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          A Questionnaire in Ten Minutes
-        </SlideHeading>
-        <Prompt>
-          A product manager uses an AI tool to produce a complete customer
-          satisfaction questionnaire in ten minutes and proposes to launch it the
-          same day. Which checks should the questionnaire undergo before launch,
-          and which of them cannot be performed by an AI tool?
-        </Prompt>
+        <SlideHeading>Discussion: A Questionnaire in Ten Minutes</SlideHeading>
+        <Discussion
+          scenario={"A product manager uses an AI tool to produce a complete customer satisfaction questionnaire in ten minutes and proposes to launch it the same day."}
+          question={"Which checks should the questionnaire undergo before launch, and which of them cannot be performed by an AI tool?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -1224,8 +1220,8 @@ export default function Week4() {
             "Validated scales can be administered to AI models in their exact form, and a model's response to an item is a distribution over the scale points rather than a single answer.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

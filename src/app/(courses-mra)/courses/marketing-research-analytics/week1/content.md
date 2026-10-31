@@ -87,7 +87,8 @@ week: week1
 - Hypotheses increase the precision of a study, because the data can either support or contradict them.
 
 ## Discussion: Symptom or Problem?
-- Discussion: A fitness club reports that new members now cancel within three months at twice the rate of the previous year. The general manager requests a survey of member satisfaction. Which other causes could account for this symptom, and how should the management decision problem and the marketing research problem be formulated before the survey is commissioned?
+- A fitness club reports that new members now cancel within three months at twice the rate of the previous year. The general manager requests a survey of member satisfaction.
+- Which other causes could account for this symptom, and how should the management decision problem and the marketing research problem be formulated before the survey is commissioned?
 
 ## Part 3: The Marketing Research Process [no-exercise]
 - Rigorous research follows a structured sequence of steps.
@@ -160,7 +161,8 @@ week: week1
 - Clients do not commission studies designed to reach a predetermined conclusion.
 
 ## Discussion: AI in the Research Function
-- Discussion: A marketing manager proposes to replace a planned focus group study with a set of AI-generated personas that respond to the same questions within minutes. What would the firm gain, what might it lose, and under what conditions, if any, would the substitution be methodologically defensible?
+- A marketing manager proposes to replace a planned focus group study with a set of AI-generated personas that respond to the same questions within minutes.
+- What would the firm gain, what might it lose, and under what conditions, if any, would the substitution be methodologically defensible?
 
 ## Key Takeaways
 - Marketing research provides evidence for decisions made under uncertainty, and it is justified only when its findings can inform a decision in time.

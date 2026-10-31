@@ -6,7 +6,7 @@
 
 import React, { useState } from "react";
 import { RotateCw } from "lucide-react";
-import { Lightbulb, ChartBar, Flask, Envelope, Bicycle, Buildings, Globe, Database, Bed } from "@phosphor-icons/react";
+import { Lightbulb, ChartBar, Flask, Buildings, Globe, Database, Bed } from "@phosphor-icons/react";
 import {
   Frame,
   Key,
@@ -105,8 +105,8 @@ export function PilotSamples() {
         height={298}
         label={`A population of sixty people, eighteen of whom hold a view. A pilot sample of six in which ${current.holds} hold it, and the shares found by the last ${draws.length} pilot samples scattered around the population's thirty percent`}
       >
-        <Key x={30} y={18} fill={INK3}>POPULATION</Key>
-        <Key x={370} y={18} anchor="end" fill={COUNTER}>{`${POP_HOLD} OF ${POP_N} HOLD THE VIEW`}</Key>
+        <Key x={30} y={18} fill={INK3}>Population</Key>
+        <Key x={370} y={18} anchor="end" fill={COUNTER}>{`${POP_HOLD} OF ${POP_N} hold the view`}</Key>
         {Array.from({ length: POP_N }, (_, i) => {
           const c = i % POP_COLS;
           const r = Math.floor(i / POP_COLS);
@@ -133,9 +133,9 @@ export function PilotSamples() {
         })}
 
         {/* the strip of pilot estimates */}
-        <Key x={30} y={194} fill={SIGNAL}>{`THIS PILOT: ${current.holds} OF ${PILOT_N}`}</Key>
+        <Key x={30} y={194} fill={SIGNAL}>{`This pilot: ${current.holds} OF ${PILOT_N}`}</Key>
         <line x1={truth} y1={axisY} x2={truth} y2={204} stroke={COUNTER} strokeWidth={1.25} strokeDasharray="3 3" />
-        <Key x={r2(truth + 6)} y={212} fill={COUNTER} size={10}>POPULATION 30%</Key>
+        <Key x={r2(truth + 6)} y={212} fill={COUNTER} size={10}>Population 30%</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={4.5} fill={d.latest ? SIGNAL : PAPER} stroke={d.latest ? SIGNAL : INK} strokeWidth={1.25} />
         ))}
@@ -229,14 +229,14 @@ export function AssociationNotCause() {
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
         <path d={head.up(L, T - 6, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-        <Key x={R} y={B + 22} anchor="end" fill={INK3}>ADVERTISING SPEND</Key>
+        <Key x={R} y={B + 22} anchor="end" fill={INK3}>Advertising spend</Key>
         <g transform={`translate(${L - 12} ${T - 4}) rotate(-90)`}>
-          <Key x={0} y={0} anchor="end" fill={INK3}>SALES</Key>
+          <Key x={0} y={0} anchor="end" fill={INK3}>Sales</Key>
         </g>
         {/* the fitted line for the stores in view, behind them */}
         <line x1={X(lx0)} y1={Y(a + b * lx0)} x2={lineEnd.x} y2={lineEnd.y} stroke={tone} strokeWidth={2.25} strokeLinecap="round" />
         <Key x={labelAt.x} y={labelAt.y} anchor={labelAt.anchor} fill={tone} size={10.5}>
-          {flat ? "NO ASSOCIATION" : "ASSOCIATED"}
+          {flat ? "No association" : "Associated"}
         </Key>
         {/* stores, drawn at their size */}
         {SMALL_STORES.map(([x, y], i) => (
@@ -323,12 +323,12 @@ export function SwitchingPanel() {
         label={`Two waves of ten brand buyers. Left, a multiple cross-sectional design: a different sample at each wave, four of ten buying brand B both times. Right, a longitudinal panel: the same ten people at both waves, ${switchers} of whom switched brand, while four of ten still buy brand B`}
       >
         {/* row keys shared by both designs */}
-        <Key x={20} y={row[0] - 10} fill={INK3}>WAVE 1</Key>
-        <Key x={20} y={row[1] - 10} fill={INK3}>WAVE 2</Key>
+        <Key x={20} y={row[0] - 10} fill={INK3}>Wave 1</Key>
+        <Key x={20} y={row[1] - 10} fill={INK3}>Wave 2</Key>
 
         {/* multiple cross-sectional: a new sample at each wave */}
-        <Key x={left.title} y={20} fill={INK}>CROSS-SECTIONAL</Key>
-        <Key x={left.count} y={20} anchor="end" fill={COUNTER} size={10}>BRAND B</Key>
+        <Key x={left.title} y={20} fill={INK}>Cross-sectional</Key>
+        <Key x={left.count} y={20} anchor="end" fill={COUNTER} size={10}>Brand B</Key>
         {row.map((y, w) =>
           Array.from({ length: 10 }, (_, i) => person(px(left.x0, i), y, CROSS_B[w].includes(i), `c${w}-${i}`)),
         )}
@@ -339,8 +339,8 @@ export function SwitchingPanel() {
         <line x1={400} y1={8} x2={400} y2={194} stroke={RULE} strokeWidth={1} />
 
         {/* longitudinal: the same people at both waves */}
-        <Key x={right.title} y={20} fill={SIGNAL}>LONGITUDINAL</Key>
-        <Key x={right.count} y={20} anchor="end" fill={COUNTER} size={10}>BRAND B</Key>
+        <Key x={right.title} y={20} fill={SIGNAL}>Longitudinal</Key>
+        <Key x={right.count} y={20} anchor="end" fill={COUNTER} size={10}>Brand B</Key>
         {Array.from({ length: 10 }, (_, i) => {
           const x = px(right.x0, i);
           const s = switched.has(i);
@@ -363,7 +363,7 @@ export function SwitchingPanel() {
           <Key key={`pc${w}`} x={right.count} y={y - 10} anchor="end" fill={COUNTER}>4 OF 10</Key>
         ))}
         <Key x={right.count} y={r2((row[0] + row[1]) / 2 - 12)} anchor="end" fill={SIGNAL}>
-          {`${switchers} SWITCHED`}
+          {`${switchers} switched`}
         </Key>
       </Frame>
       <Slider label="Switchers" value={switchers} min={0} max={6} step={2} onChange={setSwitchers} />
@@ -437,12 +437,12 @@ export function ControlledEffect() {
       <line x1={L} y1={axisY} x2={L} y2={12} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(L, 12, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <g transform={`translate(${L - 12} 16) rotate(-90)`}>
-        <Key x={0} y={0} anchor="end" fill={INK3}>SALES</Key>
+        <Key x={0} y={0} anchor="end" fill={INK3}>Sales</Key>
       </g>
-      <Key x={bx} y={axisY + 20} anchor="middle" fill={INK3}>BEFORE</Key>
-      <Key x={ax} y={axisY + 20} anchor="middle" fill={INK3}>AFTER</Key>
+      <Key x={bx} y={axisY + 20} anchor="middle" fill={INK3}>Before</Key>
+      <Key x={ax} y={axisY + 20} anchor="middle" fill={INK3}>After</Key>
       <line x1={138} y1={axisY} x2={138} y2={24} stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
-      <Key x={138} y={18} anchor="middle" fill={INK3} size={10}>PRICE CUT</Key>
+      <Key x={138} y={18} anchor="middle" fill={INK3} size={10}>Price cut</Key>
 
       {/* the level before, carried across */}
       <line x1={bx} y1={by} x2={ax + 8} y2={by} stroke={INK3} strokeWidth={1} strokeDasharray="4 3" />
@@ -476,14 +476,14 @@ export function ControlledEffect() {
 
       {/* the effect: the gap between the two groups after the cut */}
       <path d={`M${ax + 16} ${ty}H${ax + 22}V${cy}H${ax + 16}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={ax + 32} y={r2(ty + 4)} fill={SIGNAL} size={10}>PRICE REDUCED</Key>
-      <Key x={ax + 32} y={r2(cy + 4)} fill={COUNTER} size={10}>PRICE UNCHANGED</Key>
+      <Key x={ax + 32} y={r2(ty + 4)} fill={SIGNAL} size={10}>Price reduced</Key>
+      <Key x={ax + 32} y={r2(cy + 4)} fill={COUNTER} size={10}>Price unchanged</Key>
 
       {/* the two comparisons */}
       <line x1={L} y1={232} x2={380} y2={232} stroke={RULE} strokeWidth={1} />
-      <Key x={L} y={252} fill={INK3} size={10}>BEFORE-AFTER</Key>
+      <Key x={L} y={252} fill={INK3} size={10}>Before-after</Key>
       <Display x={L} y={280} fill={INK} size={28}>{sign(change)}</Display>
-      <Key x={ax + 16} y={252} fill={SIGNAL} size={10}>REDUCED VS UNCHANGED</Key>
+      <Key x={ax + 16} y={252} fill={SIGNAL} size={10}>Reduced vs unchanged</Key>
       <Display x={ax + 16} y={280} fill={SIGNAL} size={28}>{sign(EFFECT)}</Display>
     </Frame>
   );
@@ -504,16 +504,16 @@ export function DesignSequence() {
   const r = 30;
   const xs = [250, 460, 670];
   const stations = [
-    { key: "EXPLORATORY", sub: "HYPOTHESES", Icon: Lightbulb },
-    { key: "DESCRIPTIVE", sub: "MAGNITUDE", Icon: ChartBar },
-    { key: "CAUSAL", sub: "EFFECT OF AN ACTION", Icon: Flask },
+    { key: "Exploratory", sub: "Hypotheses", Icon: Lightbulb },
+    { key: "Descriptive", sub: "Magnitude", Icon: ChartBar },
+    { key: "Causal", sub: "Effect of an action", Icon: Flask },
   ];
   const q = { x: 70, y: cy };
   const bang = { x: 565, y: 34 };
   const mark = (x: number, y: number, ch: string, tone: string) => (
     <g>
       <circle cx={x} cy={y} r={16} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      <text x={x} y={y + 6} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={18} fontWeight={600} fill={tone}>
+      <text x={x} y={y + 6} textAnchor="middle" fontFamily="var(--font-body)" fontSize={18} fontWeight={600} fill={tone}>
         {ch}
       </text>
     </g>
@@ -538,8 +538,8 @@ export function DesignSequence() {
     >
       {/* the usual sequence */}
       {mark(q.x, q.y, "?", INK)}
-      <Key x={q.x} y={cy + 42} anchor="middle" fill={INK3} size={10}>AMBIGUOUS</Key>
-      <Key x={q.x} y={cy + 56} anchor="middle" fill={INK3} size={10}>PROBLEM</Key>
+      <Key x={q.x} y={cy + 42} anchor="middle" fill={INK3} size={10}>Ambiguous</Key>
+      <Key x={q.x} y={cy + 56} anchor="middle" fill={INK3} size={10}>problem</Key>
       {[q.x + 22, ...xs.slice(0, -1).map((x) => x + r + 6)].map((x0, i) => {
         const x1 = xs[i] - r - 6;
         return (
@@ -560,43 +560,9 @@ export function DesignSequence() {
 
       {/* the shortcut for a well-defined problem */}
       {mark(bang.x, bang.y, "!", COUNTER)}
-      <Key x={bang.x - 26} y={bang.y + 4} anchor="end" fill={COUNTER} size={10}>WELL-DEFINED PROBLEM</Key>
+      <Key x={bang.x - 26} y={bang.y + 4} anchor="end" fill={COUNTER} size={10}>Well-defined problem</Key>
       {entry(xs[1])}
       {entry(xs[2])}
-    </Frame>
-  );
-}
-
-/* --------------------------------------------------------------------------
-   Discussion: Designing the Study
-   -------------------------------------------------------------------------- */
-
-/**
- * Discussion: many website inquiries, one purchase of an electric bicycle,
- * and an unexplained gap between them.
- */
-export function InquiriesToPurchases() {
-  const cols = 6;
-  const rows = 4;
-  const base = 70;
-  return (
-    <Frame
-      width={400}
-      height={212}
-      label="Twenty-four people who sent an inquiry from the website, and only one who bought an electric bicycle, with a question mark over the gap between them"
-    >
-      <Envelope x={20} y={10} size={26} color={INK} />
-      <Key x={54} y={29} fill={INK3}>24 INQUIRIES</Key>
-      {Array.from({ length: cols * rows }, (_, i) => (
-        <Person1 key={i} x={32 + (i % cols) * 26} y={base + Math.floor(i / cols) * 40} k={0.85} />
-      ))}
-      <line x1={196} y1={124} x2={292} y2={124} stroke={INK} strokeWidth={1.25} />
-      <path d={head.right(292, 124, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <circle cx={244} cy={92} r={15} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
-      <text x={244} y={98} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={17} fontWeight={600} fill={COUNTER}>?</text>
-      <Person1 x={316} y={150} k={1.1} stroke={INK} fill={INK} />
-      <Bicycle x={336} y={112} size={40} color={INK} />
-      <Key x={340} y={96} anchor="middle" fill={INK3}>1 PURCHASE</Key>
     </Frame>
   );
 }
@@ -667,7 +633,7 @@ export function DefinitionShift() {
     >
       {/* the definition: a band from 18 to the upper age */}
       <rect x={band0} y={top - 8} width={r2(edge - band0)} height={axisY - top + 8} fill={SIGNAL_TINT} />
-      <Key x={band0} y={top - 28} fill={SIGNAL}>{`YOUNG ADULTS ${18}n/a${upper}`}</Key>
+      <Key x={band0} y={top - 28} fill={SIGNAL}>{`Young adults ${18}n/a${upper}`}</Key>
 
       {/* buyers at each age */}
       {BUYERS_BY_AGE.map((v, i) => {
@@ -688,7 +654,7 @@ export function DefinitionShift() {
 
       {/* the share the source would report */}
       <Display x={R} y={top + 4} anchor="end" fill={SIGNAL} size={34}>{`${share}%`}</Display>
-      <Key x={R} y={top + 26} anchor="end" fill={INK3} size={10}>OF BUYERS</Key>
+      <Key x={R} y={top + 26} anchor="end" fill={INK3} size={10}>Of buyers</Key>
 
       {/* the draggable edge */}
       <g
@@ -721,7 +687,7 @@ export function DefinitionShift() {
           <Key x={r2(X(a) + bw / 2)} y={axisY + 19} anchor="middle" fill={INK3} size={10}>{`${a}`}</Key>
         </g>
       ))}
-      <Key x={R + 8} y={axisY + 34} anchor="end" fill={INK3} size={10}>AGE</Key>
+      <Key x={R + 8} y={axisY + 34} anchor="end" fill={INK3} size={10}>Age</Key>
     </Frame>
   );
 }
@@ -737,9 +703,9 @@ export function DefinitionShift() {
  */
 export function InternalCoverage() {
   const groups = [
-    { cx: 72, stroke: SIGNAL, fill: SIGNAL, l1: "THE FIRM'S", l2: "CUSTOMERS", tone: SIGNAL },
-    { cx: 206, stroke: COUNTER, fill: COUNTER, l1: "COMPETITORS'", l2: "CUSTOMERS", tone: COUNTER },
-    { cx: 336, stroke: COUNTER, fill: PAPER, l1: "NEVER", l2: "PURCHASED", tone: COUNTER },
+    { cx: 72, stroke: SIGNAL, fill: SIGNAL, l1: "The firm's", l2: "customers", tone: SIGNAL },
+    { cx: 206, stroke: COUNTER, fill: COUNTER, l1: "Competitors'", l2: "customers", tone: COUNTER },
+    { cx: 336, stroke: COUNTER, fill: PAPER, l1: "Never", l2: "purchased", tone: COUNTER },
   ];
   const rowY = [66, 104, 142];
   const colDx = [-26, 0, 26];
@@ -750,7 +716,7 @@ export function InternalCoverage() {
       label="A market of three groups of nine people: the firm's customers, enclosed by the firm's internal data. Competitors' customers. And people who have never purchased, both outside it"
     >
       <rect x={20} y={10} width={104} height={146} rx={4} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={72} y={29} anchor="middle" fill={SIGNAL} size={10}>INTERNAL DATA</Key>
+      <Key x={72} y={29} anchor="middle" fill={SIGNAL} size={10}>Internal data</Key>
       {groups.map((g) => (
         <g key={g.l1}>
           {rowY.map((y) =>
@@ -788,10 +754,10 @@ export function DataRelationships() {
   const firm = (x: number, y: number, tone = SIGNAL) => <Buildings x={x - s / 2} y={y - s / 2} size={s} color={tone} />;
   const cols = [0, 200, 400, 600];
   const keys = [
-    { t: "FIRST-PARTY", tone: SIGNAL },
-    { t: "ZERO-PARTY", tone: SIGNAL },
-    { t: "SECOND-PARTY", tone: INK },
-    { t: "THIRD-PARTY", tone: COUNTER },
+    { t: "First-party", tone: SIGNAL },
+    { t: "Zero-party", tone: SIGNAL },
+    { t: "Second-party", tone: INK },
+    { t: "Third-party", tone: COUNTER },
   ];
   const fan = [30, 70, 110];
   return (
@@ -875,7 +841,7 @@ export function AuditLog() {
       height={yTally + 12}
       label="An audit log of six product questions put to an AI assistant, with the three brands it listed for each, in order. Brand B appears first in four questions, second in one and third in none"
     >
-      <Key x={16} y={24} fill={INK3} size={9.5}>QUESTION</Key>
+      <Key x={16} y={24} fill={INK3} size={9.5}>Question</Key>
       {["1ST", "2ND", "3RD"].map((h, c) => (
         <Key key={h} x={cols[c]} y={24} anchor="middle" fill={INK3} size={9.5}>{h}</Key>
       ))}
@@ -898,7 +864,7 @@ export function AuditLog() {
         );
       })}
       <line x1={16} y1={yTally - 18} x2={384} y2={yTally - 18} stroke={INK} strokeWidth={1.25} />
-      <Key x={16} y={yTally} fill={SIGNAL} size={9.5}>BRAND B</Key>
+      <Key x={16} y={yTally} fill={SIGNAL} size={9.5}>Brand B</Key>
       {tally.map((n, c) => (
         <Key key={c} x={cols[c]} y={yTally} anchor="middle" fill={SIGNAL} size={11} weight={700}>{`${n} OF 6`}</Key>
       ))}
@@ -943,7 +909,7 @@ export function ListingExperiment() {
             {c.sponsored ? (
               <g>
                 <rect x={c.x + 12} y={top + 70} width={78} height={16} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
-                <Key x={c.x + 51} y={top + 81.5} anchor="middle" fill={COUNTER} size={8.5}>SPONSORED</Key>
+                <Key x={c.x + 51} y={top + 81.5} anchor="middle" fill={COUNTER} size={8.5}>Sponsored</Key>
               </g>
             ) : null}
             {Array.from({ length: 6 }, (_, i) => (
@@ -954,8 +920,8 @@ export function ListingExperiment() {
         );
       })}
       <line x1={cards[0].x + w / 2} y1={yBracket} x2={cards[1].x + w / 2} y2={yBracket} stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={200} y={yBracket + 22} anchor="middle" fill={SIGNAL} size={10}>CHOICES COMPARED</Key>
-      <Key x={200} y={yRuns + 4} anchor="middle" fill={INK3} size={9}>SESSIONS</Key>
+      <Key x={200} y={yBracket + 22} anchor="middle" fill={SIGNAL} size={10}>Choices compared</Key>
+      <Key x={200} y={yRuns + 4} anchor="middle" fill={INK3} size={9}>Sessions</Key>
     </Frame>
   );
 }

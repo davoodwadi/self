@@ -13,7 +13,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import { AiMark1 } from "../_visuals/objects";
 import exercisesData from "./exercises.json";
@@ -57,13 +57,13 @@ export default function Week5() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 5: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
-          <span className="text-[var(--signal)]">Sampling</span> and Data Collection
+          Sampling and Data Collection
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[44ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[44ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           The conclusions of a survey extend only as far as the{" "}
-          <span className="text-[var(--signal)]">population</span> that its{" "}
-          <span className="text-[var(--signal)]">sample</span> represents.
+          population that its{" "}
+          sample represents.
         </p>
       </Slide>
 
@@ -73,18 +73,18 @@ export default function Week5() {
       <Slide id="populations-samples-and-censuses" border className="!py-8">
         <SlideHeading>Populations, Samples, and Censuses</SlideHeading>
         <Lead className="!max-w-none">
-          The <Term tone="ink">population</Term> is the complete set of elements
+          The <Term>population</Term> is the complete set of elements
           about which the researcher seeks information, such as all households
           in a city or all customers of a firm.
         </Lead>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled>
             <p className={BIG}>
-              A <Term tone="ink">census</Term> collects data from every element
+              A <Term>census</Term> collects data from every element
               of the population.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               A <Term>sample</Term> is a subset of the population, selected to
               draw conclusions about the population as a whole.
@@ -92,14 +92,14 @@ export default function Week5() {
           </Ruled>
         </div>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none !text-[1.1rem] !leading-relaxed">
               A census is appropriate when the population is small, as in many
               business-to-business markets, or when the variation among elements
               is large.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P className="!max-w-none !text-[1.1rem] !leading-relaxed">
               Samples are used rather than censuses when the population is large,
               when time and budget are limited, and when a census would not
@@ -127,7 +127,7 @@ export default function Week5() {
               period.
             </>,
             <>
-              The researcher then determines the <Term tone="ink">sampling frame</Term>,
+              The researcher then determines the <Term>sampling frame</Term>,
               which is the list or procedure from which the sample is drawn, such
               as a customer database or a panel of registered respondents.
             </>,
@@ -139,22 +139,22 @@ export default function Week5() {
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone={i === 0 ? "signal" : "ink"}>
-                <Ruled tone={i === 0 ? "signal" : "ink"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>
             </li>
           ))}
         </ol>
-        <div className="mt-10 w-full border-l-2 border-[var(--signal)] bg-[var(--signal-tint)] px-7 py-6 md:px-10">
+        <div className="mt-10 w-full border-t border-[var(--rule-2)] pt-6">
           <p className="type-quote max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
             For example, the target population of a study for a regional bank may
             be defined as{" "}
-            <span className="text-[var(--signal)]">account holders</span> aged{" "}
-            <span className="text-[var(--signal)]">18 or older</span> who used the
-            bank&apos;s <span className="text-[var(--signal)]">mobile application</span>{" "}
-            in the <span className="text-[var(--signal)]">past three months</span>.
+            account holders aged{" "}
+            18 or older who used the
+            bank&apos;s mobile application{" "}
+            in the past three months.
           </p>
         </div>
       </Slide>
@@ -170,7 +170,7 @@ export default function Week5() {
       >
         <SlideHeading>Sampling and Nonsampling Error</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <P className="!max-w-none">
               <Term>Sampling error</Term> is the difference between a sample
               result and the true population value that arises because only a
@@ -181,9 +181,9 @@ export default function Week5() {
               estimated for probability samples.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P className="!max-w-none">
-              <Term tone="counter">Nonsampling error</Term> arises from sources
+              <Term>Nonsampling error</Term> arises from sources
               other than sampling, and does not decrease as the sample size
               increases.
             </P>
@@ -195,22 +195,22 @@ export default function Week5() {
         <ol className="mt-5 grid w-full gap-x-10 gap-y-4 md:grid-cols-3">
           {[
             <>
-              <Term tone="counter">Frame error</Term> occurs when the sampling
+              <Term>Frame error</Term> occurs when the sampling
               frame does not correspond to the target population, as when a list
               of email subscribers is used to represent all customers.
             </>,
             <>
-              <Term tone="counter">Nonresponse error</Term> occurs when the people
+              <Term>Nonresponse error</Term> occurs when the people
               who respond differ systematically from those who do not.
             </>,
             <>
-              <Term tone="counter">Response error</Term> occurs when respondents
+              <Term>Response error</Term> occurs when respondents
               give inaccurate answers, whether because of poorly worded questions,
               faulty recall, or the response biases introduced in Week 4.
             </>,
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Ruled tone="counter" weight="thin">
+              <Ruled>
                 <P className="!leading-snug">{s}</P>
               </Ruled>
             </li>
@@ -225,16 +225,16 @@ export default function Week5() {
         <PartHead n={2} title="Sampling Techniques" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           Sampling techniques are classified as <Term>probability</Term> or{" "}
-          <Term tone="counter">nonprobability</Term> techniques.
+          <Term>nonprobability</Term> techniques.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               In probability sampling, every element of the population has a
               known, nonzero chance of selection.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               In nonprobability sampling, selection depends on the judgment of the
               researcher or the convenience of access, and the chance of selection
@@ -242,9 +242,9 @@ export default function Week5() {
             </p>
           </Ruled>
         </div>
-        <p className={`${CLOSE} mt-9 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-9 border-t border-[var(--rule-2)] pt-5`}>
           Only probability samples permit the statistical estimation of{" "}
-          <span className="text-[var(--signal)]">sampling error</span>.
+          sampling error.
         </p>
       </Slide>
 
@@ -257,7 +257,7 @@ export default function Week5() {
           <div className="flex min-w-0 flex-col gap-4">
             <Ruled>
               <P>
-                In <Term tone="ink">simple random sampling</Term>, every element of
+                In <Term>simple random sampling</Term>, every element of
                 the population has an equal chance of selection, and every
                 possible sample of a given size is equally likely.
               </P>
@@ -266,18 +266,18 @@ export default function Week5() {
               Simple random sampling requires a complete sampling frame, from
               which elements are selected by a random procedure.
             </P>
-            <Ruled tone="signal">
+            <Ruled>
               <P>
                 In <Term>systematic sampling</Term>, the researcher selects a
                 random starting point in the sampling frame and then selects every
                 kth element, such as every 20th customer on a list.
               </P>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P>
                 Systematic sampling is simpler to execute than simple random
                 sampling, but it produces a{" "}
-                <span className="text-[var(--counter)]">biased sample</span> if the
+                biased sample if the
                 list follows a pattern that coincides with the sampling interval.
               </P>
             </Ruled>
@@ -295,7 +295,7 @@ export default function Week5() {
         <SlideHeading>Stratified and Cluster Sampling</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none">
                 In <Term>stratified sampling</Term>, the population is divided into
                 subgroups, called strata, and a random sample is drawn from each
@@ -312,9 +312,9 @@ export default function Week5() {
             </P>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="counter">
+            <Ruled>
               <P className="!max-w-none">
-                In <Term tone="counter">cluster sampling</Term>, the population is
+                In <Term>cluster sampling</Term>, the population is
                 divided into clusters, such as city blocks or stores, a random
                 sample of clusters is selected, and elements are studied within
                 the selected clusters.
@@ -340,41 +340,41 @@ export default function Week5() {
         <div className="grid w-full gap-x-12 gap-y-7 md:grid-cols-2">
           {[
             <>
-              In <Term tone="counter">convenience sampling</Term>, elements are
+              In <Term>convenience sampling</Term>, elements are
               selected because they are easily accessible, such as shoppers
               intercepted in a mall.
             </>,
             <>
-              In <Term tone="counter">judgmental sampling</Term>, the researcher
+              In <Term>judgmental sampling</Term>, the researcher
               selects elements believed to be representative or especially
               informative, such as expert users of a product.
             </>,
             <>
-              In <Term tone="counter">quota sampling</Term>, the researcher sets
+              In <Term>quota sampling</Term>, the researcher sets
               quotas for subgroups, such as age and gender, in proportion to the
               population, and fills each quota by convenience or judgment.
             </>,
             <>
-              In <Term tone="counter">snowball sampling</Term>, initial respondents
+              In <Term>snowball sampling</Term>, initial respondents
               identify further respondents, which is useful for rare or
               hard-to-reach populations.
             </>,
           ].map((s, i) => (
-            <Numbered key={i} n={i + 1} tone="counter">
-              <Ruled tone="counter" weight="thin">
+            <Numbered key={i} n={i + 1}>
+              <Ruled>
                 <p className={BIG}>{s}</p>
               </Ruled>
             </Numbered>
           ))}
         </div>
-        <div className="mt-9 grid w-full gap-8 border-t-2 border-[var(--ink)] pt-5 md:grid-cols-2 md:gap-12">
+        <div className="mt-9 grid w-full gap-8 border-t border-[var(--rule-2)] pt-5 md:grid-cols-2 md:gap-12">
           <P className="!max-w-none">
             Nonprobability samples are faster and less expensive than probability
             samples, and are appropriate for exploratory research and pretesting.
           </P>
           <P className="!max-w-none">
             Their results{" "}
-            <span className="text-[var(--counter)]">cannot be projected</span> to
+            cannot be projected to
             the population with a known level of precision.
           </P>
         </div>
@@ -395,32 +395,27 @@ export default function Week5() {
             {
               term: "Probability sampling",
               rest: " is appropriate when the findings must be projected to the population with a known level of precision, as in estimates of market size.",
-              tone: "signal" as const,
             },
             {
               term: "Nonprobability sampling",
               rest: " is appropriate for exploratory research, for pretesting, and when no sampling frame is available.",
-              tone: "counter" as const,
             },
             {
               term: "Stratified sampling",
               rest: " is appropriate when subgroups differ substantially and each must be estimated accurately.",
-              tone: "signal" as const,
             },
             {
               term: "Cluster sampling",
               rest: " is appropriate when the population is geographically dispersed and in-person data collection is required.",
-              tone: "signal" as const,
             },
             {
               term: "Snowball sampling",
               rest: " is appropriate when the population is rare and its members know one another.",
-              tone: "counter" as const,
             },
-          ].map(({ term, rest, tone }) => (
+          ].map(({ term, rest }) => (
             <li key={term} className="min-w-0 border-t border-[var(--rule-2)] py-4 last:border-b">
               <p className={BIG}>
-                <Term tone={tone}>{term}</Term>
+                <Term>{term}</Term>
                 {rest}
               </p>
             </li>
@@ -435,17 +430,17 @@ export default function Week5() {
         <PartHead n={3} title="Determining the Sample Size" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           The sample size is determined by <Term>statistical</Term> and{" "}
-          <Term tone="counter">practical</Term> considerations.
+          <Term>practical</Term> considerations.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Larger samples are required for important decisions, for
               descriptive and causal research, for analyses of many variables,
               and for separate estimates of subgroups.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               The sample size is also constrained by the available budget and
               time, and by the proportion of contacted people who qualify for and
@@ -467,7 +462,7 @@ export default function Week5() {
         <SlideHeading>Precision and Confidence</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <P className="!max-w-none">
                 The <Term>precision</Term> of an estimate is expressed as a margin
                 of error, such as plus or minus five percentage points.
@@ -475,7 +470,7 @@ export default function Week5() {
             </Ruled>
             <Ruled>
               <P className="!max-w-none">
-                The <Term tone="ink">confidence level</Term> is the probability
+                The <Term>confidence level</Term> is the probability
                 that the interval formed by the estimate and its margin of error
                 contains the true population value, conventionally 95 percent.
               </P>
@@ -490,7 +485,7 @@ export default function Week5() {
                 proportion, and e is the margin of error.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className="!max-w-none">
                 With p set to 0.5, the most conservative assumption, a margin of
                 error of five percentage points at 95 percent confidence requires
@@ -498,13 +493,13 @@ export default function Week5() {
               </P>
             </Ruled>
             <div className="grid gap-x-8 gap-y-4 md:grid-cols-2">
-              <Ruled tone="signal" weight="thin">
+              <Ruled>
                 <P className="!leading-snug">
                   Halving the margin of error requires approximately{" "}
                   <Term>four times</Term> the sample size.
                 </P>
               </Ruled>
-              <Ruled weight="thin">
+              <Ruled>
                 <P className="!leading-snug">
                   For large populations, the required sample size depends on the
                   desired precision, not on the size of the population.
@@ -527,17 +522,17 @@ export default function Week5() {
           <div className="flex min-w-0 flex-col gap-5">
             <Ruled>
               <p className={BIG}>
-                The <Term tone="ink">incidence rate</Term> is the proportion of
+                The <Term>incidence rate</Term> is the proportion of
                 contacted people who qualify for the study.
               </p>
             </Ruled>
             <Ruled>
               <p className={BIG}>
-                The <Term tone="ink">completion rate</Term> is the proportion of
+                The <Term>completion rate</Term> is the proportion of
                 qualified people who complete it.
               </p>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className="!max-w-none">
                 The number of people who must be contacted equals the required
                 sample size divided by the product of the incidence rate and the
@@ -549,11 +544,11 @@ export default function Week5() {
             <ContactFunnel />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--signal)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           For example, a study that requires 385 completed questionnaires, with an
           incidence rate of 50 percent and a completion rate of 40 percent,
           requires approximately{" "}
-          <span className="text-[var(--signal)]">1,925 contacts</span>.
+          1,925 contacts.
         </p>
       </Slide>
 
@@ -569,7 +564,7 @@ export default function Week5() {
               method.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               The method affects the <Term>cost</Term> and <Term>speed</Term> of
               the study, the <Term>population</Term> that can be reached, and the{" "}
@@ -587,22 +582,22 @@ export default function Week5() {
         <div className="grid w-full gap-x-10 gap-y-7 md:grid-cols-2 lg:grid-cols-4">
           {[
             <>
-              <Term tone="ink">Online surveys</Term> are the least expensive and
+              <Term>Online surveys</Term> are the least expensive and
               fastest method, but they reach only people with internet access who
               are willing to participate, and they provide no control over who
               completes the questionnaire.
             </>,
             <>
-              <Term tone="ink">Telephone surveys</Term> allow an interviewer to
+              <Term>Telephone surveys</Term> allow an interviewer to
               clarify questions, but response rates have declined substantially.
             </>,
             <>
-              <Term tone="ink">In-person surveys</Term> allow complex questions,
+              <Term>In-person surveys</Term> allow complex questions,
               product demonstrations, and the highest level of control, at the
               highest cost.
             </>,
             <>
-              <Term tone="ink">Self-administered surveys</Term>, whether online or
+              <Term>Self-administered surveys</Term>, whether online or
               by mail, reduce interviewer bias and social desirability bias on
               sensitive topics.
             </>,
@@ -628,9 +623,9 @@ export default function Week5() {
         </Lead>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
-                Most online panels are <Term tone="counter">opt-in panels</Term>,
+                Most online panels are <Term>opt-in panels</Term>,
                 recruited through advertising and referrals. They are
                 nonprobability samples, even when quotas are applied.
               </p>
@@ -641,7 +636,7 @@ export default function Week5() {
               consumers.
             </P>
           </div>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Probability-based panels</Term> recruit members through random
               sampling, such as the random selection of residential addresses,
@@ -666,7 +661,7 @@ export default function Week5() {
           ].map(([term, rest]) => (
             <li key={term} className="border-t border-[var(--rule-2)] py-3.5 last:border-b">
               <p className={BIG}>
-                <Term tone="counter">{term}</Term>
+                <Term>{term}</Term>
                 {rest}
               </p>
             </li>
@@ -694,7 +689,7 @@ export default function Week5() {
               "Technical checks identify duplicate responses from the same device and automated activity.",
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Ruled weight="thin">
+                <Ruled>
                   <P className="!max-w-none !leading-snug">{s}</P>
                 </Ruled>
               </li>
@@ -704,9 +699,9 @@ export default function Week5() {
             <QualityChecks />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--signal)] pt-5`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-5`}>
           The criteria for removing respondents are specified{" "}
-          <span className="text-[var(--signal)]">before data collection</span>, and
+          before data collection, and
           the number of respondents removed is reported.
         </p>
       </Slide>
@@ -715,16 +710,11 @@ export default function Week5() {
           Discussion: A Sample for a Launch Decision
           ================================================================ */}
       <Slide id="discussion-a-sample-for-a-launch-decision" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          A Sample for a Launch Decision
-        </SlideHeading>
-        <Prompt>
-          A meal-kit company plans to estimate the proportion of households in a
-          city that would subscribe to a new service. The marketing team proposes
-          a survey of the company&apos;s social media followers. Which errors
-          could this sample introduce, and which alternative sampling design would
-          support a more accurate estimate?
-        </Prompt>
+        <SlideHeading>Discussion: A Sample for a Launch Decision</SlideHeading>
+        <Discussion
+          scenario={"A meal-kit company plans to estimate the proportion of households in a city that would subscribe to a new service. The marketing team proposes a survey of the company's social media followers."}
+          question={"Which errors could this sample introduce, and which alternative sampling design would support a more accurate estimate?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -741,10 +731,10 @@ export default function Week5() {
           <Ruled>
             <p className={BIG}>
               A set of synthetic respondents is sometimes called a{" "}
-              <Term tone="ink">silicon sample</Term>.
+              <Term>silicon sample</Term>.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Commercial vendors now offer synthetic respondents as a faster and
               less expensive alternative to human samples.
@@ -765,8 +755,8 @@ export default function Week5() {
             { s: "Many profiles are generated to match the composition of the target population, and the answers are aggregated.", ai: true },
           ].map(({ s, ai }, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone={ai ? "signal" : "ink"}>
-                <Ruled tone={ai ? "signal" : "ink"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <p className={BIG}>
                     {ai ? (
                       <>
@@ -780,7 +770,7 @@ export default function Week5() {
             </li>
           ))}
         </ol>
-        <p className={`${CLOSE} mt-10 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-10 border-t border-[var(--rule-2)] pt-5`}>
           Studies have found that synthetic respondents can reproduce some
           aggregate patterns of real survey responses, such as differences in
           opinion between broad demographic groups.
@@ -808,8 +798,8 @@ export default function Week5() {
               "The margin of error and confidence level introduced in this week cannot be meaningfully calculated for a synthetic sample.",
             ].map((s, i) => (
               <li key={i} className="min-w-0">
-                <Numbered n={i + 1} tone={i === 1 || i === 3 ? "signal" : "counter"}>
-                  <Ruled tone={i === 1 || i === 3 ? "signal" : "counter"} weight="thin">
+                <Numbered n={i + 1}>
+                  <Ruled>
                     <P className="!leading-snug">{s}</P>
                   </Ruled>
                 </Numbered>
@@ -829,28 +819,28 @@ export default function Week5() {
         <SlideHeading>Appropriate Uses of Synthetic Respondents</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 Synthetic respondents can be used to pretest questionnaires, as
                 introduced in Week 4.
               </p>
             </Ruled>
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 They can be used in exploratory research to generate hypotheses
                 for testing with real respondents.
               </p>
             </Ruled>
           </div>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              They are <span className="text-[var(--counter)]">not</span> used as
+              They are not used as
               a substitute for real respondents when the findings inform
               consequential decisions.
             </p>
           </Ruled>
         </div>
-        <p className={`${CLOSE} mt-9 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-9 border-t border-[var(--rule-2)] pt-5`}>
           Where synthetic respondents are used, their results are compared with
           those of a real sample on the same questions, and their use is
           disclosed in the report.
@@ -874,7 +864,7 @@ export default function Week5() {
               yield different responses.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Each response is therefore a draw from the model&apos;s response distribution, in the way that each
               respondent is a draw from a population.
@@ -883,16 +873,16 @@ export default function Week5() {
         </div>
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P>The common practice of evaluating a model on a single response to each prompt ignores this variation.</P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 In one evaluation, the willingness to pay that language models stated for the same product under the
                 same prompt varied with a coefficient of variation of up to 0.44 (Wadi &amp; Fredette, 2025).
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 The mean of many responses to the same prompt is an unbiased estimate of the model&apos;s typical
                 behavior, and its standard error decreases as the number of responses increases (Wadi &amp;
@@ -913,11 +903,11 @@ export default function Week5() {
         <SlideHeading>Determining the Number of Responses</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
           The number of responses per prompt is determined in the same way as a sample size: by the required{" "}
-          <span className="text-[var(--signal)]">precision</span>, or by the{" "}
-          <span className="text-[var(--signal)]">power</span> to detect an effect of a given size.
+          precision, or by the{" "}
+          power to detect an effect of a given size.
         </Statement>
         <div className="mt-8 w-full">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               For example, a power analysis can determine the number of responses required to detect a small
               difference among several models or prompts (Wadi &amp; Fredette, 2025).
@@ -928,7 +918,7 @@ export default function Week5() {
           <Numbered n={1}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Prompts</Term> are also sampled. Because results can change with minor changes in
+                <Term>Prompts</Term> are also sampled. Because results can change with minor changes in
                 wording, conclusions are more general when they hold across several wordings of the same
                 instruction.
               </p>
@@ -937,7 +927,7 @@ export default function Week5() {
           <Numbered n={2}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Models</Term> are sampled as well. A result obtained with one model does not
+                <Term>Models</Term> are sampled as well. A result obtained with one model does not
                 generalize to other models, so evaluations include several models from several providers.
               </p>
             </Ruled>
@@ -949,16 +939,11 @@ export default function Week5() {
           Discussion: A Synthetic Panel
           ================================================================ */}
       <Slide id="discussion-a-synthetic-panel" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          A Synthetic Panel
-        </SlideHeading>
-        <Prompt>
-          A vendor offers a synthetic panel of 10,000 respondents, delivered
-          within one hour at a fraction of the cost of a human sample, and states
-          that its results are &ldquo;95 percent accurate.&rdquo; Which questions
-          should the research team ask the vendor, and for which decisions, if
-          any, would such a panel be appropriate?
-        </Prompt>
+        <SlideHeading>Discussion: A Synthetic Panel</SlideHeading>
+        <Discussion
+          scenario={"A vendor offers a synthetic panel of 10,000 respondents, delivered within one hour at a fraction of the cost of a human sample, and states that its results are \"95 percent accurate.\""}
+          question={"Which questions should the research team ask the vendor, and for which decisions, if any, would such a panel be appropriate?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -977,8 +962,8 @@ export default function Week5() {
             "A single model response is not a measurement: AI evaluations sample many responses per prompt, determine their number by precision or power, and vary prompts and models.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

@@ -109,10 +109,10 @@ export function CustomerLedger() {
   const top = 66;
   const rh = 40;
   const cols = [
-    { key: "VALUE", x: 96, w: 124 },
-    { key: "LIKELY TO LEAVE", x: 286, w: 110 },
-    { key: "LIKELY TO RESPOND", x: 436, w: 110 },
-    { key: "NEXT OFFER", x: 590, w: 70 },
+    { key: "Value", x: 96, w: 124 },
+    { key: "Likely to leave", x: 286, w: 110 },
+    { key: "Likely to respond", x: 436, w: 110 },
+    { key: "Next offer", x: 590, w: 70 },
   ];
   const lit = 2;
   return (
@@ -199,9 +199,9 @@ export function ProfitStream() {
     >
       {/* in-place labels for the three layers of year 1 */}
       {[
-        { y: yTop, t: "$100 MARGIN", c: INK3 },
-        { y: yKept, t: "× STILL A CUSTOMER", c: INK3 },
-        { y: yPv, t: "PRESENT VALUE", c: SIGNAL },
+        { y: yTop, t: "$100 margin", c: INK3 },
+        { y: yKept, t: "× still a customer", c: INK3 },
+        { y: yPv, t: "Present value", c: SIGNAL },
       ].map((l, i) => (
         <g key={i}>
           <line x1={r2(x0 - 10)} y1={r2(l.y + (i === 2 ? 12 : 0))} x2={r2(x0 - 4)} y2={r2(l.y + (i === 2 ? 12 : 0))} stroke={l.c} strokeWidth={1} />
@@ -222,10 +222,10 @@ export function ProfitStream() {
         );
       })}
       <line x1={x0 - 6} y1={base} x2={r2(x0 + years * step - 6)} y2={base} stroke={INK} strokeWidth={1.25} />
-      <Key x={r2(x0 + years * step - 6)} y={base + 30} anchor="end" size={9.5}>YEAR</Key>
+      <Key x={r2(x0 + years * step - 6)} y={base + 30} anchor="end" size={9.5}>Year</Key>
 
       {/* the present values end to end */}
-      <Key x={r2(sx - 14)} y={232} anchor="end" size={10} fill={SIGNAL} weight={700}>SUM</Key>
+      <Key x={r2(sx - 14)} y={232} anchor="end" size={10} fill={SIGNAL} weight={700}>Sum</Key>
       {pv.map((v, i) => (
         <rect key={i} x={r2(sx + starts[i] * sk)} y={220} width={r2(Math.max(0.6, v * sk - 1.5))} height={16} fill={SIGNAL} />
       ))}
@@ -272,21 +272,21 @@ export function ObservedEnd() {
     >
       {/* today */}
       <line x1={X(12)} y1={86} x2={X(12)} y2={196} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
-      <Key x={X(12)} y={210} anchor="middle" size={9}>TODAY</Key>
+      <Key x={X(12)} y={210} anchor="middle" size={9}>Today</Key>
 
       {/* contractual */}
-      <Key x={20} y={44} size={10} weight={700} fill={INK}>CONTRACTUAL</Key>
+      <Key x={20} y={44} size={10} weight={700} fill={INK}>Contractual</Key>
       <line x1={x0} y1={50} x2={X(8)} y2={50} stroke={INK} strokeWidth={1.25} />
       {pay.map((m, i) => (
         <rect key={i} x={r2(X(m) - 6)} y={38} width={12} height={8} rx={1} fill={PAPER} stroke={INK} strokeWidth={1.1} />
       ))}
       <line x1={X(8)} y1={30} x2={X(8)} y2={60} stroke={SIGNAL} strokeWidth={2.5} />
-      <Key x={r2(X(8) + 10)} y={46} size={9.5} fill={SIGNAL} weight={700}>CANCELLED: END OBSERVED</Key>
+      <Key x={r2(X(8) + 10)} y={46} size={9.5} fill={SIGNAL} weight={700}>Cancelled: end observed</Key>
 
       <line x1={20} y1={76} x2={660} y2={76} stroke={RULE} strokeWidth={1} />
 
       {/* noncontractual */}
-      <Key x={20} y={116} size={10} weight={700} fill={INK}>NONCONTRACTUAL</Key>
+      <Key x={20} y={116} size={10} weight={700} fill={INK}>Noncontractual</Key>
       {[
         { y: 130, buys: often, p: 15 },
         { y: 176, buys: seldom, p: 80 },
@@ -299,13 +299,13 @@ export function ObservedEnd() {
             {row.buys.map((m, i) => (
               <BagMark key={i} x={X(m)} y={row.y - 3} s={13} />
             ))}
-            <Key x={r2(X(12) + 8)} y={row.y - 6} size={9} fill={SIGNAL}>STILL ACTIVE?</Key>
+            <Key x={r2(X(12) + 8)} y={row.y - 6} size={9} fill={SIGNAL}>Still active?</Key>
             <Key x={r2(X(12) + 8)} y={row.y + 8} size={11} fill={SIGNAL} weight={700}>{`${row.p}%`}</Key>
           </g>
         );
       })}
       <path d={`M${r2(X(9) + 6)} 108v-6H${r2(X(12) - 6)}v6`} fill="none" stroke={INK3} strokeWidth={1} />
-      <Key x={r2(X(12) - 10)} y={98} anchor="end" size={9}>NO PURCHASE FOR 3 MONTHS</Key>
+      <Key x={r2(X(12) - 10)} y={98} anchor="end" size={9}>No purchase for 3 months</Key>
     </Frame>
   );
 }
@@ -331,8 +331,8 @@ export function RetentionLever() {
   const now = clvOf(m, r, d);
   const up = clvOf(m, r + 0.1, d);
   const gains = [
-    { key: "MARGIN +10%", sub: `$100 → $110`, v: now * 0.1, c: INK },
-    { key: "RETENTION +10 POINTS", sub: `${Math.round(r * 100)}% → ${Math.round(r * 100) + 10}%`, v: up - now, c: SIGNAL },
+    { key: "Margin +10%", sub: `$100 → $110`, v: now * 0.1, c: INK },
+    { key: "Retention +10 points", sub: `${Math.round(r * 100)}% → ${Math.round(r * 100) + 10}%`, v: up - now, c: SIGNAL },
   ];
   const bx = 452;
   const B = (v: number) => r2((v / 340) * 196);
@@ -350,7 +350,7 @@ export function RetentionLever() {
       <line x1={cx0} y1={base} x2={cx0} y2={26} stroke={INK} strokeWidth={1.25} />
       <path d={head.up(cx0, 26, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <Key x={cx0 + 8} y={30} size={10}>CLV</Key>
-      <Key x={cx1 + 14} y={base + 30} anchor="end" size={10}>RETENTION RATE</Key>
+      <Key x={cx1 + 14} y={base + 30} anchor="end" size={10}>Retention rate</Key>
       {[0.5, 0.6, 0.7, 0.8, 0.9].map((v) => (
         <g key={v}>
           <line x1={X(v)} y1={base} x2={X(v)} y2={base + 4} stroke={INK} strokeWidth={1.25} />
@@ -380,7 +380,7 @@ export function RetentionLever() {
       <Key x={r2(X(r) - 16)} y={r2(Y(now) - 4)} anchor="end" size={10.5} weight={700} fill={INK}>{usd(now)}</Key>
 
       {/* what each lever adds */}
-      <Key x={bx} y={70} size={10}>WHAT EACH LEVER ADDS</Key>
+      <Key x={bx} y={70} size={10}>What each lever adds</Key>
       {gains.map((g, i) => {
         const y = 112 + i * 84;
         return (
@@ -476,15 +476,15 @@ export function RfmRanking() {
         height={350}
         label={`Twenty customers ranked by ${names[by]} and grouped into quintiles. Customers who responded to the next offer, from the top quintile down: ${counts.join(", ")} of 4`}
       >
-        <Key x={tx0} y={30} size={9.5}>PURCHASES, LAST 12 MONTHS</Key>
-        <Key x={tx1} y={30} anchor="end" size={9.5}>TODAY</Key>
+        <Key x={tx0} y={30} size={9.5}>Purchases, last 12 months</Key>
+        <Key x={tx1} y={30} anchor="end" size={9.5}>Today</Key>
         {(["R", "F", "M"] as Rfm[]).map((k) => (
           <Key key={k} x={scoreX[k]} y={30} anchor="middle" size={11} weight={700} fill={k === by ? INK : INK3}>
             {k}
           </Key>
         ))}
-        <Key x={respX} y={30} anchor="middle" size={9.5}>RESPONDED</Key>
-        <Key x={516} y={30} size={9.5}>PER QUINTILE</Key>
+        <Key x={respX} y={30} anchor="middle" size={9.5}>Responded</Key>
+        <Key x={516} y={30} size={9.5}>Per quintile</Key>
         <line x1={tx1} y1={38} x2={tx1} y2={rowY(19) + 10} stroke={RULE2} strokeWidth={1} />
         {order.map((ci, rank) => {
           const c = RFM_CUSTOMERS[ci];
@@ -540,10 +540,10 @@ export function RfmRanking() {
  */
 export function RfmProfiles() {
   const cells = [
-    { col: 1, row: 0, name: "MOST VALUABLE", s: [5, 5, 5], buys: [[0.6, 90], [1.8, 120], [3, 80], [4.1, 140], [5.4, 100], [6.5, 90], [7.7, 130], [8.8, 110], [10, 120], [11.1, 140]], act: "REWARD" },
-    { col: 1, row: 1, name: "AT RISK", s: [1, 5, 5], buys: [[0.4, 120], [1.2, 90], [2.1, 140], [2.9, 110], [3.8, 130], [4.6, 100], [5.5, 120]], act: "CONTACT" },
-    { col: 0, row: 0, name: "NEW", s: [5, 1, 1], buys: [[11.2, 60]], act: "DEVELOP" },
-    { col: 0, row: 1, name: "LAPSED", s: [1, 1, 1], buys: [[1.5, 30]], act: "LIMIT SPENDING" },
+    { col: 1, row: 0, name: "Most valuable", s: [5, 5, 5], buys: [[0.6, 90], [1.8, 120], [3, 80], [4.1, 140], [5.4, 100], [6.5, 90], [7.7, 130], [8.8, 110], [10, 120], [11.1, 140]], act: "Reward" },
+    { col: 1, row: 1, name: "At risk", s: [1, 5, 5], buys: [[0.4, 120], [1.2, 90], [2.1, 140], [2.9, 110], [3.8, 130], [4.6, 100], [5.5, 120]], act: "Contact" },
+    { col: 0, row: 0, name: "New", s: [5, 1, 1], buys: [[11.2, 60]], act: "Develop" },
+    { col: 0, row: 1, name: "Lapsed", s: [1, 1, 1], buys: [[1.5, 30]], act: "Limit spending" },
   ];
   const gx = [128, 404];
   const gy = [56, 196];
@@ -555,12 +555,12 @@ export function RfmProfiles() {
       height={340}
       label="Four RFM profiles drawn as twelve-month purchase histories. High recency with high frequency and spending: most valuable, reward. Low recency with high frequency and spending: at risk, contact. High recency with low frequency: new, develop. Low on all three: lapsed, limit spending"
     >
-      <Key x={r2(gx[0] + cw / 2)} y={36} anchor="middle" size={10}>LOW FREQUENCY AND SPENDING</Key>
-      <Key x={r2(gx[1] + cw / 2)} y={36} anchor="middle" size={10}>HIGH FREQUENCY AND SPENDING</Key>
-      <Key x={110} y={r2(gy[0] + ch / 2 - 2)} anchor="end" size={10}>RECENT</Key>
-      <Key x={110} y={r2(gy[0] + ch / 2 + 12)} anchor="end" size={9} fill={INK3}>HIGH R</Key>
-      <Key x={110} y={r2(gy[1] + ch / 2 - 2)} anchor="end" size={10}>NOT RECENT</Key>
-      <Key x={110} y={r2(gy[1] + ch / 2 + 12)} anchor="end" size={9} fill={INK3}>LOW R</Key>
+      <Key x={r2(gx[0] + cw / 2)} y={36} anchor="middle" size={10}>Low frequency and spending</Key>
+      <Key x={r2(gx[1] + cw / 2)} y={36} anchor="middle" size={10}>High frequency and spending</Key>
+      <Key x={110} y={r2(gy[0] + ch / 2 - 2)} anchor="end" size={10}>Recent</Key>
+      <Key x={110} y={r2(gy[0] + ch / 2 + 12)} anchor="end" size={9} fill={INK3}>High R</Key>
+      <Key x={110} y={r2(gy[1] + ch / 2 - 2)} anchor="end" size={10}>Not recent</Key>
+      <Key x={110} y={r2(gy[1] + ch / 2 + 12)} anchor="end" size={9} fill={INK3}>Low R</Key>
       {cells.map((c) => {
         const x = gx[c.col];
         const y = gy[c.row];
@@ -578,7 +578,7 @@ export function RfmProfiles() {
             {c.buys.map(([mo, amt], j) => (
               <circle key={j} cx={X(mo)} cy={ty} r={r2(1.4 + Math.sqrt(amt) * 0.36)} fill={INK} fillOpacity={0.85} stroke={PAPER} strokeWidth={0.8} />
             ))}
-            <Key x={t1} y={ty + 22} anchor="end" size={8.5} fill={INK3}>TODAY</Key>
+            <Key x={t1} y={ty + 22} anchor="end" size={8.5} fill={INK3}>Today</Key>
             <path d={`M${x + 16} ${y + ch - 18}h14`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
             <path d={head.right(x + 32, y + ch - 18, 6)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
             <Key x={x + 40} y={y + ch - 14} size={10.5} weight={700} fill={SIGNAL}>{c.act}</Key>
@@ -610,7 +610,7 @@ export function ChurnRanking() {
       height={290}
       label={`Twelve customers ranked by predicted probability of churning, from ${probs[0]}% to ${probs[11]}%. The four with the highest scores (${probs.slice(0, reach).join(", ")}%) receive the retention offer`}
     >
-      <Key x={20} y={24} size={10}>PREDICTED PROBABILITY OF CHURNING</Key>
+      <Key x={20} y={24} size={10}>Predicted probability of churning</Key>
       <line x1={x0 - 26} y1={base} x2={r2(x0 + 11 * step + 26)} y2={base} stroke={INK} strokeWidth={1.25} />
       {probs.map((p, i) => {
         const x = x0 + i * step;
@@ -626,9 +626,9 @@ export function ChurnRanking() {
       })}
       <path d={`M${x0 - 16} 252v6H${r2(x0 + (reach - 1) * step + 16)}v-6`} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <Envelope x={r2(x0 + ((reach - 1) * step) / 2 - 46)} y={262} size={24} weight="regular" color={SIGNAL} />
-      <Key x={r2(x0 + ((reach - 1) * step) / 2 - 16)} y={279} size={10} weight={700} fill={SIGNAL}>RETENTION OFFER</Key>
+      <Key x={r2(x0 + ((reach - 1) * step) / 2 - 16)} y={279} size={10} weight={700} fill={SIGNAL}>Retention offer</Key>
       <path d={`M${r2(x0 + reach * step - 16)} 252v6H${r2(x0 + 11 * step + 16)}v-6`} fill="none" stroke={INK3} strokeWidth={1} />
-      <Key x={r2(x0 + ((reach + 11) * step) / 2)} y={279} anchor="middle" size={10} fill={INK3}>NO OFFER</Key>
+      <Key x={r2(x0 + ((reach + 11) * step) / 2)} y={279} anchor="middle" size={10} fill={INK3}>No offer</Key>
     </Frame>
   );
 }
@@ -646,36 +646,36 @@ type TreeNode = { n: number; churn: number; label: string };
  */
 const SPLITS: Record<SplitVar, { name: string; kids: [TreeNode, TreeNode]; grand: [TreeNode, TreeNode] }> = {
   contract: {
-    name: "CONTRACT",
+    name: "Contract",
     kids: [
-      { n: 400, churn: 80, label: "MONTHLY" },
-      { n: 600, churn: 20, label: "ANNUAL" },
+      { n: 400, churn: 80, label: "Monthly" },
+      { n: 600, churn: 20, label: "Annual" },
     ],
     grand: [
-      { n: 100, churn: 45, label: "NO USE IN 30 DAYS" },
-      { n: 300, churn: 35, label: "USED" },
+      { n: 100, churn: 45, label: "No use in 30 days" },
+      { n: 300, churn: 35, label: "Used" },
     ],
   },
   complaint: {
-    name: "COMPLAINT",
+    name: "Complaint",
     kids: [
-      { n: 100, churn: 25, label: "COMPLAINED" },
-      { n: 900, churn: 75, label: "NONE" },
+      { n: 100, churn: 25, label: "Complained" },
+      { n: 900, churn: 75, label: "None" },
     ],
     grand: [
-      { n: 30, churn: 14, label: "NO USE IN 30 DAYS" },
-      { n: 70, churn: 11, label: "USED" },
+      { n: 30, churn: 14, label: "No use in 30 days" },
+      { n: 70, churn: 11, label: "Used" },
     ],
   },
   age: {
-    name: "AGE",
+    name: "Age",
     kids: [
-      { n: 500, churn: 55, label: "UNDER 35" },
-      { n: 500, churn: 45, label: "35 AND OVER" },
+      { n: 500, churn: 55, label: "Under 35" },
+      { n: 500, churn: 45, label: "35 and over" },
     ],
     grand: [
-      { n: 120, churn: 40, label: "NO USE IN 30 DAYS" },
-      { n: 380, churn: 15, label: "USED" },
+      { n: 120, churn: 40, label: "No use in 30 days" },
+      { n: 380, churn: 15, label: "Used" },
     ],
   },
 };
@@ -711,8 +711,8 @@ export function FirstSplit() {
       <g>
         <rect x={r2(x - w / 2)} y={y} width={w} height={16} fill={PAPER3} />
         <rect x={r2(x - w / 2)} y={y} width={cw} height={16} fill={COUNTER} />
-        <Key x={x} y={y + 32} anchor="middle" size={9.5} fill={INK3}>{`${t.n.toLocaleString("en-US")} CUSTOMERS`}</Key>
-        <Key x={x} y={y + 46} anchor="middle" size={10.5} weight={700} fill={lit ? SIGNAL : INK}>{`${pct}% CHURN`}</Key>
+        <Key x={x} y={y + 32} anchor="middle" size={9.5} fill={INK3}>{`${t.n.toLocaleString("en-US")} customers`}</Key>
+        <Key x={x} y={y + 46} anchor="middle" size={10.5} weight={700} fill={lit ? SIGNAL : INK}>{`${pct}% churn`}</Key>
       </g>
     );
   };
@@ -730,8 +730,8 @@ export function FirstSplit() {
         label={`A decision tree on 1,000 customers with 10% churn, first split on ${s.name.toLowerCase()}: ${s.kids[0].label.toLowerCase()} ${s.kids[0].n} customers, ${Math.round((s.kids[0].churn / s.kids[0].n) * 100)}% churn. ${s.kids[1].label.toLowerCase()} ${s.kids[1].n}, ${Math.round((s.kids[1].churn / s.kids[1].n) * 100)}% churn. Then no use in 30 days: ${Math.round((s.grand[0].churn / s.grand[0].n) * 100)}% churn. Contract separates churners best`}
       >
         {node({ n: 1000, churn: 100, label: "" }, pos.root.x, pos.root.y)}
-        <Key x={r2(pos.root.x - 120)} y={pos.root.y - 7} size={9.5} weight={700} fill={COUNTER}>CHURNERS</Key>
-        <Key x={r2(pos.root.x + 120)} y={pos.root.y - 7} anchor="end" size={9.5} fill={INK3}>ALL CUSTOMERS</Key>
+        <Key x={r2(pos.root.x - 120)} y={pos.root.y - 7} size={9.5} weight={700} fill={COUNTER}>Churners</Key>
+        <Key x={r2(pos.root.x + 120)} y={pos.root.y - 7} anchor="end" size={9.5} fill={INK3}>All customers</Key>
         {s.kids.map((t, i) => (
           <g key={`${v}-k${i}`}>
             {edge(pos.root, pos.kids[i], t.label)}
@@ -747,8 +747,8 @@ export function FirstSplit() {
 
         {/* the candidates compared */}
         <line x1={448} y1={20} x2={448} y2={316} stroke={RULE} strokeWidth={1} />
-        <Key x={468} y={40} size={10}>HOW WELL THE FIRST</Key>
-        <Key x={468} y={54} size={10}>SPLIT SEPARATES CHURNERS</Key>
+        <Key x={468} y={40} size={10}>How well the first</Key>
+        <Key x={468} y={54} size={10}>split separates churners</Key>
         {sep.map((c, i) => {
           const y = 92 + i * 52;
           const on = c.k === v;
@@ -758,7 +758,7 @@ export function FirstSplit() {
               <Key x={468} y={y} size={10} weight={on ? 700 : 500} fill={on ? INK : INK3}>{SPLITS[c.k].name}</Key>
               <rect x={468} y={y + 8} width={Math.max(2, w)} height={14} fill={c.k === best ? SIGNAL : on ? INK : PAPER3} />
               {c.k === best ? (
-                <Key x={r2(468 + w + 8)} y={y + 19} size={9.5} weight={700} fill={SIGNAL}>BEST</Key>
+                <Key x={r2(468 + w + 8)} y={y + 19} size={9.5} weight={700} fill={SIGNAL}>Best</Key>
               ) : null}
             </g>
           );
@@ -836,7 +836,7 @@ export function ForestAverage() {
         height={352}
         label={`A random forest of ${n} tree${n > 1 ? "s" : ""}: the trees' predictions for one customer's churn probability range from ${Math.round(Math.min(...votes) * 100)}% to ${Math.round(Math.max(...votes) * 100)}%, and their average is ${Math.round(mean * 100)}%. The forest's holdout error is ${(forestError(n) * 100).toFixed(1)}%, falling quickly with the first trees and then flattening`}
       >
-        <Key x={20} y={22} size={10}>{"ONE CUSTOMER’S PREDICTED CHURN PROBABILITY"}</Key>
+        <Key x={20} y={22} size={10}>{"One customer’s predicted churn probability"}</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={2.1} fill={INK3} />
         ))}
@@ -848,7 +848,7 @@ export function ForestAverage() {
             <g>
               <line x1={far.x} y1={r2(far.y - 5)} x2={far.x} y2={r2(far.y - 22)} stroke={INK3} strokeWidth={1} />
               <Key x={far.x} y={r2(far.y - 27)} anchor={right ? "start" : "end"} size={9.5} fill={INK3}>
-                ONE TREE
+                One tree
               </Key>
             </g>
           );
@@ -861,10 +861,10 @@ export function ForestAverage() {
           </g>
         ))}
         <line x1={X(mean)} y1={46} x2={X(mean)} y2={base} stroke={SIGNAL} strokeWidth={2} />
-        <Key x={X(mean)} y={40} anchor="middle" size={10.5} weight={700} fill={SIGNAL}>{n === 1 ? `ONE TREE: ${Math.round(mean * 100)}%` : `AVERAGE OF ${n} TREES: ${Math.round(mean * 100)}%`}</Key>
+        <Key x={X(mean)} y={40} anchor="middle" size={10.5} weight={700} fill={SIGNAL}>{n === 1 ? `One tree: ${Math.round(mean * 100)}%` : `Average of ${n} trees: ${Math.round(mean * 100)}%`}</Key>
 
         <line x1={20} y1={188} x2={660} y2={188} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={208} size={10}>HOLDOUT ERROR</Key>
+        <Key x={20} y={208} size={10}>Holdout error</Key>
         <line x1={ex0} y1={eb} x2={ex1} y2={eb} stroke={INK} strokeWidth={1.25} />
         <line x1={ex0} y1={eb} x2={ex0} y2={218} stroke={INK} strokeWidth={1.25} />
         {[0.2, 0.25].map((e) => (
@@ -879,7 +879,7 @@ export function ForestAverage() {
             <Key x={L(t)} y={eb + 16} anchor="middle" size={9}>{t}</Key>
           </g>
         ))}
-        <Key x={ex1} y={eb + 32} anchor="end" size={9.5}>TREES</Key>
+        <Key x={ex1} y={eb + 32} anchor="end" size={9.5}>Trees</Key>
         <path d={curve} fill="none" stroke={INK} strokeWidth={1.5} />
         <circle cx={L(n)} cy={E(forestError(n))} r={5} fill={SIGNAL} />
         <Key x={r2(L(n) + (n >= 100 ? -10 : 10))} y={r2(E(forestError(n)) - 10)} anchor={n >= 100 ? "end" : "start"} size={10.5} weight={700} fill={SIGNAL}>
@@ -914,18 +914,18 @@ export function DataSplits() {
       label="Three ways to divide the data. A random split: most customers form the training sample and about three in ten the holdout sample. Cross-validation: five folds, each taking a turn as the holdout, with the five results averaged. A split in time: the model is estimated on the earlier months and evaluated on the later months"
     >
       {/* random split */}
-      <Key x={20} y={36} size={10} weight={700} fill={INK}>RANDOM SPLIT</Key>
+      <Key x={20} y={36} size={10} weight={700} fill={INK}>Random split</Key>
       {held.map((h, i) => (
         <Person1 key={i} x={r2(x0 + i * cell + cell / 2)} y={42} k={0.5} width={1} stroke={h ? SIGNAL : INK3} fill={h ? SIGNAL : PAPER} />
       ))}
-      <Key x={x0} y={58} size={9.5} fill={INK3}>TRAINING</Key>
-      <Key x={x1} y={58} anchor="end" size={9.5} fill={SIGNAL} weight={700}>HOLDOUT</Key>
+      <Key x={x0} y={58} size={9.5} fill={INK3}>Training</Key>
+      <Key x={x1} y={58} anchor="end" size={9.5} fill={SIGNAL} weight={700}>Holdout</Key>
 
       <line x1={20} y1={72} x2={540} y2={72} stroke={RULE} strokeWidth={1} />
 
       {/* cross-validation */}
-      <Key x={20} y={100} size={10} weight={700} fill={INK}>CROSS-</Key>
-      <Key x={20} y={114} size={10} weight={700} fill={INK}>VALIDATION</Key>
+      <Key x={20} y={100} size={10} weight={700} fill={INK}>Cross-</Key>
+      <Key x={20} y={114} size={10} weight={700} fill={INK}>Validation</Key>
       {[0, 1, 2, 3, 4].map((run) => (
         <g key={run}>
           {[0, 1, 2, 3, 4].map((f) => (
@@ -934,22 +934,22 @@ export function DataSplits() {
         </g>
       ))}
       <path d={`M${r2(x1 - 30)} 86h8V${86 + 4 * 16 + 12}h-8`} fill="none" stroke={INK3} strokeWidth={1} />
-      <Key x={x1} y={r2(86 + 2 * 16 + 10)} anchor="end" size={9.5} fill={INK3}>AVG</Key>
+      <Key x={x1} y={r2(86 + 2 * 16 + 10)} anchor="end" size={9.5} fill={INK3}>Avg</Key>
 
       <line x1={20} y1={180} x2={540} y2={180} stroke={RULE} strokeWidth={1} />
 
       {/* split in time */}
-      <Key x={20} y={214} size={10} weight={700} fill={INK}>OVER TIME</Key>
+      <Key x={20} y={214} size={10} weight={700} fill={INK}>Over time</Key>
       {Array.from({ length: 12 }, (_, m) => {
         const w = (x1 - x0) / 12;
         const later = m >= 9;
         return <rect key={m} x={r2(x0 + m * w + 1)} y={200} width={r2(w - 2)} height={18} fill={later ? SIGNAL : INK3} />;
       })}
-      <Key x={x0} y={236} size={9.5} fill={INK3}>EARLIER MONTHS: ESTIMATE</Key>
-      <Key x={x1} y={236} anchor="end" size={9.5} fill={SIGNAL} weight={700}>LATER: EVALUATE</Key>
+      <Key x={x0} y={236} size={9.5} fill={INK3}>Earlier months: estimate</Key>
+      <Key x={x1} y={236} anchor="end" size={9.5} fill={SIGNAL} weight={700}>Later: evaluate</Key>
       <line x1={x0} y1={250} x2={x1} y2={250} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(x1, 250, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={x1} y={264} anchor="end" size={9} fill={INK3}>TIME</Key>
+      <Key x={x1} y={264} anchor="end" size={9} fill={INK3}>Time</Key>
     </Frame>
   );
 }
@@ -967,8 +967,8 @@ export function LeakageCheck() {
   const t1 = 520;
   const pd = 330;
   const acc = [
-    { key: "ON HOLDOUT DATA", v: leak ? 96 : 74 },
-    { key: "IN PRACTICE", v: 74 },
+    { key: "On holdout data", v: leak ? 96 : 74 },
+    { key: "In practice", v: 74 },
   ];
   const B = (v: number) => r2((v / 100) * 330);
   return (
@@ -983,17 +983,17 @@ export function LeakageCheck() {
         {/* the record */}
         <line x1={t0} y1={92} x2={t1} y2={92} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(t1, 92, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
-        <Key x={t1} y={110} anchor="end" size={9} fill={INK3}>TIME</Key>
+        <Key x={t1} y={110} anchor="end" size={9} fill={INK3}>Time</Key>
         {[60, 100, 140, 180, 220, 260, 296].map((x, i) => (
           <rect key={x} x={x - 4} y={r2(92 - (26 - i * 3))} width={8} height={r2(26 - i * 3)} fill={INK3} />
         ))}
-        <Key x={60} y={110} size={9} fill={INK3}>USAGE</Key>
+        <Key x={60} y={110} size={9} fill={INK3}>Usage</Key>
         <line x1={pd} y1={22} x2={pd} y2={118} stroke={SIGNAL} strokeWidth={2} />
-        <Key x={r2(pd - 6)} y={30} anchor="end" size={9.5} weight={700} fill={SIGNAL}>DATE OF PREDICTION</Key>
+        <Key x={r2(pd - 6)} y={30} anchor="end" size={9.5} weight={700} fill={SIGNAL}>Date of prediction</Key>
         <FileText x={392} y={58} size={28} weight="regular" color={leak ? COUNTER : INK} />
-        <Key x={406} y={110} anchor="middle" size={9} fill={leak ? COUNTER : INK3}>FORM REQUEST</Key>
+        <Key x={406} y={110} anchor="middle" size={9} fill={leak ? COUNTER : INK3}>Form request</Key>
         <path d={`M470 92v-22`} fill="none" stroke={INK} strokeWidth={1.5} />
-        <Key x={470} y={60} anchor="middle" size={9.5} weight={700} fill={INK}>CHURNS</Key>
+        <Key x={470} y={60} anchor="middle" size={9.5} weight={700} fill={INK}>Churns</Key>
         {/* what the model is given */}
         <path
           d={`M${t0 + 4} 132v6H${leak ? 424 : pd - 6}v-6`}
@@ -1002,11 +1002,11 @@ export function LeakageCheck() {
           strokeWidth={1.25}
         />
         <Key x={t0 + 4} y={154} size={9.5} fill={leak ? COUNTER : INK3} weight={leak ? 700 : 600}>
-          {leak ? "MODEL'S VARIABLES: INCLUDE INFORMATION FROM AFTER THE DATE" : "MODEL'S VARIABLES"}
+          {leak ? "Model's variables: include information from after the date" : "Model's variables"}
         </Key>
 
         <line x1={20} y1={174} x2={540} y2={174} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={198} size={10}>ACCURACY</Key>
+        <Key x={20} y={198} size={10}>Accuracy</Key>
         {acc.map((a, i) => {
           const y = 214 + i * 34;
           const c = i === 0 && leak ? COUNTER : INK;
@@ -1086,19 +1086,19 @@ export function ThresholdMatrix() {
   const cut = RX(flagged);
   const pct = (v: number) => `${Math.round(v * 100)}%`;
   const cells = [
-    { k: "TRUE POSITIVES", v: tp, x: 0, y: 0, lit: true },
-    { k: "FALSE NEGATIVES", v: fn, x: 1, y: 0 },
-    { k: "FALSE POSITIVES", v: fp, x: 0, y: 1 },
-    { k: "TRUE NEGATIVES", v: tn, x: 1, y: 1 },
+    { k: "True positives", v: tp, x: 0, y: 0, lit: true },
+    { k: "False negatives", v: fn, x: 1, y: 0 },
+    { k: "False positives", v: fp, x: 0, y: 1 },
+    { k: "True negatives", v: tn, x: 1, y: 1 },
   ];
   const mx = 152;
   const my = 222;
   const cw = 132;
   const ch = 50;
   const metrics = [
-    { k: "PRECISION", v: precision, sub: `${tp} OF ${flagged}`, c: SIGNAL },
-    { k: "RECALL", v: recall, sub: `${tp} OF 100`, c: SIGNAL },
-    { k: "ACCURACY", v: accuracy, sub: `${tp + tn} OF 1,000`, c: INK },
+    { k: "Precision", v: precision, sub: `${tp} OF ${flagged}`, c: SIGNAL },
+    { k: "Recall", v: recall, sub: `${tp} OF 100`, c: SIGNAL },
+    { k: "Accuracy", v: accuracy, sub: `${tp + tn} OF 1,000`, c: INK },
   ];
   return (
     <Frame
@@ -1107,7 +1107,7 @@ export function ThresholdMatrix() {
       label={`Holdout customers ranked by predicted churn probability, with a threshold of ${t}%: ${flagged} customers predicted to churn. True positives ${tp}, false positives ${fp}, false negatives ${fn}, true negatives ${tn}. Precision ${pct(precision)}, recall ${pct(recall)}, accuracy ${pct(accuracy)}`}
       svgProps={{ style: { touchAction: "none" } }}
     >
-      <Key x={20} y={18} size={10}>PREDICTED PROBABILITY OF CHURNING</Key>
+      <Key x={20} y={18} size={10}>Predicted probability of churning</Key>
       <rect x={x0} y={24} width={r2(cut - x0)} height={r2(yb - 24)} fill={SIGNAL_TINT} />
       <line x1={x0} y1={yb} x2={x1} y2={yb} stroke={INK} strokeWidth={1.25} />
       <line x1={x0} y1={yb} x2={x0} y2={24} stroke={INK} strokeWidth={1.25} />
@@ -1120,9 +1120,9 @@ export function ThresholdMatrix() {
       <path d={curve} fill="none" stroke={INK} strokeWidth={1.5} />
       {/* churners, in rank order */}
       {RANKED.map((r, i) => (r.churn ? <line key={i} x1={RX(i + 0.5)} y1={yb + 6} x2={RX(i + 0.5)} y2={yb + 18} stroke={COUNTER} strokeWidth={1} /> : null))}
-      <Key x={x1} y={yb + 32} anchor="end" size={9} fill={COUNTER}>CHURNERS, BY RANK</Key>
+      <Key x={x1} y={yb + 32} anchor="end" size={9} fill={COUNTER}>Churners, by rank</Key>
       <line x1={cut} y1={24} x2={cut} y2={yb + 22} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 3" />
-      <Key x={r2(Math.max(cut, x0 + 4) + 6)} y={38} size={9.5} weight={700} fill={SIGNAL}>{flagged ? `${flagged} PREDICTED TO CHURN` : "NONE PREDICTED TO CHURN"}</Key>
+      <Key x={r2(Math.max(cut, x0 + 4) + 6)} y={38} size={9.5} weight={700} fill={SIGNAL}>{flagged ? `${flagged} predicted to churn` : "None predicted to churn"}</Key>
       {/* the threshold, dragged up and down */}
       <g {...drag} style={{ cursor: "ns-resize" }}>
         <rect x={x0} y={20} width={x1 - x0} height={r2(yb - 20)} fill="transparent" />
@@ -1130,13 +1130,13 @@ export function ThresholdMatrix() {
         <circle cx={x1 - 12} cy={PY(t / 100)} r={10} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
         <path d={`M${x1 - 12} ${r2(PY(t / 100) - 6)}V${r2(PY(t / 100) + 6)}${head.up(x1 - 12, r2(PY(t / 100) - 6), 4)}${head.down(x1 - 12, r2(PY(t / 100) + 6), 4)}`} fill="none" stroke={SIGNAL} strokeWidth={1.4} />
       </g>
-      <Key x={x1 - 28} y={r2(PY(t / 100) + (PY(t / 100) < 60 ? 17 : -6))} anchor="end" size={10.5} weight={700} fill={SIGNAL}>{`THRESHOLD ${t}%`}</Key>
+      <Key x={x1 - 28} y={r2(PY(t / 100) + (PY(t / 100) < 60 ? 17 : -6))} anchor="end" size={10.5} weight={700} fill={SIGNAL}>{`Threshold ${t}%`}</Key>
 
       {/* the confusion matrix */}
-      <Key x={r2(mx + cw / 2)} y={my - 10} anchor="middle" size={9.5}>PREDICTED CHURN</Key>
-      <Key x={r2(mx + cw * 1.5)} y={my - 10} anchor="middle" size={9.5}>PREDICTED STAY</Key>
-      <Key x={mx - 10} y={r2(my + ch / 2 + 4)} anchor="end" size={9.5}>ACTUAL CHURN</Key>
-      <Key x={mx - 10} y={r2(my + ch * 1.5 + 4)} anchor="end" size={9.5}>ACTUAL STAY</Key>
+      <Key x={r2(mx + cw / 2)} y={my - 10} anchor="middle" size={9.5}>Predicted churn</Key>
+      <Key x={r2(mx + cw * 1.5)} y={my - 10} anchor="middle" size={9.5}>Predicted stay</Key>
+      <Key x={mx - 10} y={r2(my + ch / 2 + 4)} anchor="end" size={9.5}>Actual churn</Key>
+      <Key x={mx - 10} y={r2(my + ch * 1.5 + 4)} anchor="end" size={9.5}>Actual stay</Key>
       {cells.map((c) => (
         <g key={c.k}>
           <rect x={mx + c.x * cw} y={my + c.y * ch} width={cw} height={ch} fill={PAPER} stroke={RULE2} strokeWidth={1} />
@@ -1156,7 +1156,7 @@ export function ThresholdMatrix() {
             <Key x={430} y={y + 23} size={8.5} fill={INK3}>{m.sub}</Key>
             <rect x={bx} y={y} width={90} height={16} fill="none" stroke={RULE2} strokeWidth={1} />
             <rect x={bx} y={y} width={r2(m.v * 90)} height={16} fill={m.c} />
-            <Key x={bx + 96} y={y + 12.5} size={10.5} weight={700} fill={m.c}>{m.k === "PRECISION" && !flagged ? "n/a" : pct(m.v)}</Key>
+            <Key x={bx + 96} y={y + 12.5} size={10.5} weight={700} fill={m.c}>{m.k === "Precision" && !flagged ? "n/a" : pct(m.v)}</Key>
           </g>
         );
       })}
@@ -1212,16 +1212,16 @@ export function GainsChart() {
         label={`Gains chart and lift for 10,000 customers ranked by a churn model. Targeting the top ${depth} decile${depth > 1 ? "s" : ""} (${depth * 10}% of customers) captures ${cum[depth - 1]}% of churners. The top decile's lift is 3.5. Each decile costs $10,000 to contact. The expected benefit exceeds the cost through the third decile. Net expected benefit of this campaign: ${signed(net)}`}
       >
         {/* gains chart */}
-        <Key x={20} y={26} size={10}>GAINS CHART</Key>
+        <Key x={20} y={26} size={10}>Gains chart</Key>
         <rect x={gx0} y={gy1} width={r2(GX(depth * 10) - gx0)} height={gy0 - gy1} fill={SIGNAL_TINT} />
         <line x1={gx0} y1={gy0} x2={gx1} y2={gy1} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
-        <Key x={r2(GX(30))} y={r2(GY(19))} size={9} fill={INK3}>RANDOM</Key>
+        <Key x={r2(GX(30))} y={r2(GY(19))} size={9} fill={INK3}>Random</Key>
         <path d={pts} fill="none" stroke={INK} strokeWidth={1.5} />
         {cum.map((v, i) => (
           <circle key={i} cx={GX((i + 1) * 10)} cy={GY(v)} r={i < depth ? 4 : 3} fill={i < depth ? SIGNAL : INK} />
         ))}
         <Key x={r2(GX(depth * 10) + (depth > 7 ? -8 : 8))} y={r2(GY(cum[depth - 1]) + (depth > 7 ? 18 : 16))} anchor={depth > 7 ? "end" : "start"} size={10.5} weight={700} fill={SIGNAL}>
-          {`${Math.round(cum[depth - 1])}% OF CHURNERS`}
+          {`${Math.round(cum[depth - 1])}% of churners`}
         </Key>
         <line x1={gx0} y1={gy0} x2={gx1} y2={gy0} stroke={INK} strokeWidth={1.25} />
         <line x1={gx0} y1={gy0} x2={gx0} y2={gy1} stroke={INK} strokeWidth={1.25} />
@@ -1231,13 +1231,13 @@ export function GainsChart() {
             <Key x={gx0 - 8} y={r2(GY(p) + 3.5)} anchor="end" size={9.5}>{`${p}%`}</Key>
           </g>
         ))}
-        <Key x={gx1} y={gy0 + 32} anchor="end" size={9.5}>CUSTOMERS TARGETED</Key>
-        <Key x={gx0 + 6} y={gy1 - 8} size={9.5}>CHURNERS CAPTURED</Key>
+        <Key x={gx1} y={gy0 + 32} anchor="end" size={9.5}>Customers targeted</Key>
+        <Key x={gx0 + 6} y={gy1 - 8} size={9.5}>Churners captured</Key>
 
         <line x1={326} y1={20} x2={326} y2={312} stroke={RULE} strokeWidth={1} />
 
         {/* each decile: lift, benefit and cost */}
-        <Key x={346} y={26} size={10}>EACH DECILE: BENEFIT AGAINST COST</Key>
+        <Key x={346} y={26} size={10}>Each decile: benefit against cost</Key>
         {benefit.map((b, i) => {
           const x = bx0 + i * bstep;
           const on = i < depth;
@@ -1246,7 +1246,7 @@ export function GainsChart() {
             <g key={i}>
               <rect x={x} y={BY(b)} width={bw} height={r2(bb - BY(b))} fill={on ? (pays ? SIGNAL : COUNTER) : PAPER3} />
               {i === 0 ? (
-                <Key x={x} y={r2(BY(b) - 6)} size={9} weight={700} fill={on ? SIGNAL : INK3}>{`${usd(b)} BENEFIT`}</Key>
+                <Key x={x} y={r2(BY(b) - 6)} size={9} weight={700} fill={on ? SIGNAL : INK3}>{`${usd(b)} benefit`}</Key>
               ) : null}
               <Key x={r2(x + bw / 2)} y={bb + 32} anchor="middle" size={9} weight={700} fill={on ? (pays ? SIGNAL : COUNTER) : INK3}>
                 {String(+(DECILE_SHARE[i] / 10).toFixed(2))}
@@ -1255,12 +1255,12 @@ export function GainsChart() {
             </g>
           );
         })}
-        <Key x={bx0 - 12} y={bb + 15} anchor="end" size={9}>DECILE</Key>
-        <Key x={bx0 - 12} y={bb + 32} anchor="end" size={9} weight={700} fill={INK}>LIFT</Key>
+        <Key x={bx0 - 12} y={bb + 15} anchor="end" size={9}>Decile</Key>
+        <Key x={bx0 - 12} y={bb + 32} anchor="end" size={9} weight={700} fill={INK}>Lift</Key>
         <line x1={bx0 - 6} y1={BY(cost)} x2={r2(bx0 + 10 * bstep)} y2={BY(cost)} stroke={INK} strokeWidth={1.25} strokeDasharray="5 3" />
-        <Key x={r2(bx0 + 10 * bstep)} y={r2(BY(cost) - 6)} anchor="end" size={9} fill={INK}>{`COST ${usd(cost)}`}</Key>
+        <Key x={r2(bx0 + 10 * bstep)} y={r2(BY(cost) - 6)} anchor="end" size={9} fill={INK}>{`Cost ${usd(cost)}`}</Key>
         <line x1={bx0 - 6} y1={bb} x2={r2(bx0 + 10 * bstep)} y2={bb} stroke={INK} strokeWidth={1.25} />
-        <Key x={346} y={bb + 66} size={10} weight={700} fill={INK}>NET EXPECTED BENEFIT</Key>
+        <Key x={346} y={bb + 66} size={10} weight={700} fill={INK}>Net expected benefit</Key>
         <Display x={r2(bx0 + 10 * bstep)} y={bb + 72} anchor="end" size={22} fill={net >= 0 ? SIGNAL : COUNTER}>
           {signed(net)}
         </Display>
@@ -1282,10 +1282,10 @@ type Target = "all" | "churn" | "uplift";
  * by churn score and the top 10 by estimated uplift contain.
  */
 const UPLIFT_GROUPS = [
-  { key: "PERSUADABLES", n: 7, col: 0, row: 0, effect: 1, pick: { all: 7, churn: 4, uplift: 7 } },
-  { key: "SURE THINGS", n: 20, col: 1, row: 0, effect: 0, pick: { all: 20, churn: 0, uplift: 3 } },
-  { key: "LOST CAUSES", n: 8, col: 0, row: 1, effect: 0, pick: { all: 8, churn: 6, uplift: 0 } },
-  { key: "SLEEPING DOGS", n: 5, col: 1, row: 1, effect: -1, pick: { all: 5, churn: 0, uplift: 0 } },
+  { key: "Persuadables", n: 7, col: 0, row: 0, effect: 1, pick: { all: 7, churn: 4, uplift: 7 } },
+  { key: "Sure things", n: 20, col: 1, row: 0, effect: 0, pick: { all: 20, churn: 0, uplift: 3 } },
+  { key: "Lost causes", n: 8, col: 0, row: 1, effect: 0, pick: { all: 8, churn: 6, uplift: 0 } },
+  { key: "Sleeping dogs", n: 5, col: 1, row: 1, effect: -1, pick: { all: 5, churn: 0, uplift: 0 } },
 ];
 
 /**
@@ -1315,13 +1315,13 @@ export function UpliftTargeting() {
           by === "all" ? "Calling everyone" : by === "churn" ? "Calling the ten highest churn scores" : "Calling the ten highest uplift estimates"
         }: ${called} calls, ${kept} customers kept by the call, ${lost} lost because of it, ${wasted} calls with no effect. Net ${net >= 0 ? "+" : "−"}${Math.abs(net)}`}
       >
-        <Key x={r2(gx[0] + cw)} y={20} anchor="middle" size={9.5} fill={INK3}>WITHOUT A CALL, THE CUSTOMER</Key>
-        <Key x={r2(gx[0] + cw / 2)} y={42} anchor="middle" size={10} weight={700} fill={INK}>LEAVES</Key>
-        <Key x={r2(gx[1] + cw / 2)} y={42} anchor="middle" size={10} weight={700} fill={INK}>STAYS</Key>
-        <Key x={20} y={r2(gy[0] + ch / 2 - 18)} size={9.5} fill={INK3}>WITH A CALL,</Key>
-        <Key x={20} y={r2(gy[0] + ch / 2 - 4)} size={9.5} fill={INK3}>THE CUSTOMER</Key>
-        <Key x={20} y={r2(gy[0] + ch / 2 + 14)} size={10} weight={700} fill={INK}>STAYS</Key>
-        <Key x={20} y={r2(gy[1] + ch / 2 + 4)} size={10} weight={700} fill={INK}>LEAVES</Key>
+        <Key x={r2(gx[0] + cw)} y={20} anchor="middle" size={9.5} fill={INK3}>Without a call, the customer</Key>
+        <Key x={r2(gx[0] + cw / 2)} y={42} anchor="middle" size={10} weight={700} fill={INK}>Leaves</Key>
+        <Key x={r2(gx[1] + cw / 2)} y={42} anchor="middle" size={10} weight={700} fill={INK}>Stays</Key>
+        <Key x={20} y={r2(gy[0] + ch / 2 - 18)} size={9.5} fill={INK3}>With a call,</Key>
+        <Key x={20} y={r2(gy[0] + ch / 2 - 4)} size={9.5} fill={INK3}>The customer</Key>
+        <Key x={20} y={r2(gy[0] + ch / 2 + 14)} size={10} weight={700} fill={INK}>Stays</Key>
+        <Key x={20} y={r2(gy[1] + ch / 2 + 4)} size={10} weight={700} fill={INK}>Leaves</Key>
         {UPLIFT_GROUPS.map((g) => {
           const x = gx[g.col];
           const y = gy[g.row];
@@ -1348,12 +1348,12 @@ export function UpliftTargeting() {
             </g>
           );
         })}
-        <Key x={20} y={302} size={9.5} fill={INK3}>FILLED: CALLED</Key>
+        <Key x={20} y={302} size={9.5} fill={INK3}>Filled: called</Key>
         {[
-          { k: "CALLS", v: `${called}`, c: INK },
-          { k: "KEPT BY THE CALL", v: `+${kept}`, c: SIGNAL },
-          { k: "LOST BECAUSE OF IT", v: lost ? `−${lost}` : "0", c: COUNTER },
-          { k: "NO EFFECT", v: `${wasted}`, c: INK3 },
+          { k: "Calls", v: `${called}`, c: INK },
+          { k: "Kept by the call", v: `+${kept}`, c: SIGNAL },
+          { k: "Lost because of it", v: lost ? `−${lost}` : "0", c: COUNTER },
+          { k: "No effect", v: `${wasted}`, c: INK3 },
         ].map((m, i) => (
           <g key={m.k}>
             <Key x={r2(150 + i * 127)} y={302} size={9} fill={m.c}>{m.k}</Key>
@@ -1382,15 +1382,15 @@ type Method = "content" | "collab";
 
 /** Nine products with one attribute each. The bicycle is new and has no purchases yet. */
 const PRODUCTS: { icon: Icon; name: string; tag: string; isNew?: boolean }[] = [
-  { icon: Sneaker, name: "running shoes", tag: "SPORT" },
-  { icon: Watch, name: "sports watch", tag: "SPORT" },
-  { icon: Bicycle, name: "bicycle", tag: "SPORT", isNew: true },
-  { icon: Tent, name: "tent", tag: "CAMPING" },
-  { icon: Backpack, name: "backpack", tag: "CAMPING" },
-  { icon: Headphones, name: "headphones", tag: "AUDIO" },
-  { icon: Coffee, name: "coffee", tag: "KITCHEN" },
-  { icon: CookingPot, name: "cooking pot", tag: "KITCHEN" },
-  { icon: Book, name: "book", tag: "READING" },
+  { icon: Sneaker, name: "running shoes", tag: "Sport" },
+  { icon: Watch, name: "sports watch", tag: "Sport" },
+  { icon: Bicycle, name: "bicycle", tag: "Sport", isNew: true },
+  { icon: Tent, name: "tent", tag: "Camping" },
+  { icon: Backpack, name: "backpack", tag: "Camping" },
+  { icon: Headphones, name: "headphones", tag: "Audio" },
+  { icon: Coffee, name: "coffee", tag: "Kitchen" },
+  { icon: CookingPot, name: "cooking pot", tag: "Kitchen" },
+  { icon: Book, name: "book", tag: "Reading" },
 ];
 
 /** Who bought what (product indexes). The last customer is new. */
@@ -1400,7 +1400,7 @@ const BOUGHT: { id: string; items: number[] }[] = [
   { id: "C", items: [6, 8] },
   { id: "D", items: [0, 1, 3] },
   { id: "E", items: [6, 7, 5] },
-  { id: "NEW", items: [] },
+  { id: "New", items: [] },
 ];
 
 /** Up to two recommendations, and for collaborative filtering the similar customers. */
@@ -1446,12 +1446,12 @@ export function Recommender() {
   const recText = recs.length ? recs.map((i) => PRODUCTS[i].name).join(" and ") : "nothing";
   const why =
     me.items.length === 0
-      ? "NO PURCHASE HISTORY: NOTHING TO RECOMMEND"
+      ? "No purchase history: nothing to recommend"
       : recs.length === 0
-        ? "NO UNBOUGHT PRODUCT SHARES AN ATTRIBUTE"
+        ? "No unbought product shares an attribute"
         : method === "content"
-          ? `SAME ATTRIBUTE AS WHAT ${me.id} BOUGHT`
-          : `BOUGHT BY CUSTOMERS LIKE ${me.id}: ${peers.map((j) => BOUGHT[j].id).join(", ")}`;
+          ? `Same attribute as what ${me.id} bought`
+          : `Bought by customers like ${me.id}: ${peers.map((j) => BOUGHT[j].id).join(", ")}`;
   return (
     <div>
       <Frame
@@ -1466,13 +1466,13 @@ export function Recommender() {
           const rec = recs.includes(i);
           return (
             <g key={i}>
-              {p.isNew ? <Key x={PX(i)} y={18} anchor="middle" size={9} weight={700} fill={INK}>NEW</Key> : null}
+              {p.isNew ? <Key x={PX(i)} y={18} anchor="middle" size={9} weight={700} fill={INK}>New</Key> : null}
               <Ic x={PX(i) - 15} y={26} size={30} weight="regular" color={rec ? SIGNAL : INK} />
               <Key x={PX(i)} y={76} anchor="middle" size={8.5} fill={INK3}>{p.tag}</Key>
             </g>
           );
         })}
-        <Key x={20} y={60} size={8.5} fill={INK3}>PICK A CUSTOMER</Key>
+        <Key x={20} y={60} size={8.5} fill={INK3}>Pick a customer</Key>
         <line x1={20} y1={88} x2={660} y2={88} stroke={INK} strokeWidth={1.25} />
         {BOUGHT.map((b, j) => {
           const y = RY(j);
@@ -1497,13 +1497,13 @@ export function Recommender() {
           );
         })}
         <line x1={20} y1={r2(RY(5) + 20)} x2={660} y2={r2(RY(5) + 20)} stroke={INK} strokeWidth={1.25} />
-        <Key x={20} y={r2(RY(5) + 40)} size={9}>BUYERS</Key>
+        <Key x={20} y={r2(RY(5) + 40)} size={9}>Buyers</Key>
         {buyers.map((n, i) => (
           <Key key={i} x={PX(i)} y={r2(RY(5) + 40)} anchor="middle" size={10} weight={700} fill={n ? INK : COUNTER}>{n}</Key>
         ))}
         <circle cx={28} cy={r2(RY(5) + 60)} r={7} fill="none" stroke={SIGNAL} strokeWidth={2} strokeDasharray="3 2" />
-        <Key x={42} y={r2(RY(5) + 64)} size={10} weight={700} fill={SIGNAL}>{recs.length ? `RECOMMENDED FOR ${me.id}` : `NOTHING FOR ${me.id}`}</Key>
-        <Key x={r2(42 + ((recs.length ? `RECOMMENDED FOR ${me.id}` : `NOTHING FOR ${me.id}`).length + 2) * 7.6)} y={r2(RY(5) + 64)} size={9.5} fill={INK2}>{why}</Key>
+        <Key x={42} y={r2(RY(5) + 64)} size={10} weight={700} fill={SIGNAL}>{recs.length ? `Recommended for ${me.id}` : `Nothing for ${me.id}`}</Key>
+        <Key x={r2(42 + ((recs.length ? `Recommended for ${me.id}` : `Nothing for ${me.id}`).length + 2) * 7.6)} y={r2(RY(5) + 64)} size={9.5} fill={INK2}>{why}</Key>
       </Frame>
       <Segmented<Method>
         label="Method"
@@ -1567,7 +1567,7 @@ export function FeedbackLoop() {
           ex ? `, with random offers, reaches ${b[t].toFixed(1)}%` : "never receives an offer, so its estimate stays at 14%"
         }`}
       >
-        <Key x={20} y={22} size={10}>ESTIMATED RESPONSE RATE</Key>
+        <Key x={20} y={22} size={10}>Estimated response rate</Key>
         {[10, 15, 20, 25].map((v) => (
           <g key={v}>
             <line x1={x0 - 4} y1={Y(v)} x2={x0} y2={Y(v)} stroke={INK} strokeWidth={1.25} />
@@ -1579,23 +1579,23 @@ export function FeedbackLoop() {
         {Array.from({ length: rounds + 1 }, (_, r) => (
           <Key key={r} x={X(r)} y={y0 + 16} anchor="middle" size={9.5} fill={r <= t ? INK : RULE2}>{r}</Key>
         ))}
-        <Key x={x1 + 10} y={y0 + 32} anchor="end" size={9.5}>RETRAININGS</Key>
+        <Key x={x1 + 10} y={y0 + 32} anchor="end" size={9.5}>Retrainings</Key>
         <line x1={x0} y1={Y(20)} x2={x1 + 10} y2={Y(20)} stroke={INK3} strokeWidth={1} strokeDasharray="1.5 3" />
-        <Key x={x0 + 8} y={r2(Y(20) + 13)} size={9} fill={INK3}>TRUE RATE, BOTH GROUPS</Key>
+        <Key x={x0 + 8} y={r2(Y(20) + 13)} size={9} fill={INK3}>True rate, both groups</Key>
         <line x1={x0} y1={Y(18)} x2={x1 + 10} y2={Y(18)} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="5 3" />
-        <Key x={x0 + 8} y={r2(Y(18) + 14)} size={9} weight={700} fill={SIGNAL}>OFFER THRESHOLD</Key>
+        <Key x={x0 + 8} y={r2(Y(18) + 14)} size={9} weight={700} fill={SIGNAL}>Offer threshold</Key>
         <rect x={x0 + 1} y={Y(25)} width={r2(x1 + 9 - x0)} height={r2(Y(18) - Y(25))} fill={SIGNAL_TINT} />
-        <Key x={x0 + 8} y={r2(Y(25) + 14)} size={9} fill={SIGNAL}>RECEIVES OFFERS</Key>
+        <Key x={x0 + 8} y={r2(Y(25) + 14)} size={9} fill={SIGNAL}>Receives offers</Key>
 
         <path d={path(a)} fill="none" stroke={INK} strokeWidth={2} />
         <path d={path(b)} fill="none" stroke={COUNTER} strokeWidth={2} />
         {a.map((v, r) => <circle key={`a${r}`} cx={X(r)} cy={Y(v)} r={3.5} fill={INK} />)}
         {b.map((v, r) => <circle key={`b${r}`} cx={X(r)} cy={Y(v)} r={3.5} fill={COUNTER} />)}
-        <Key x={r2(X(t) + 10)} y={r2(Y(a[t]) - 8)} size={10} weight={700} fill={INK}>{`GROUP A ${a[t].toFixed(1)}%`}</Key>
-        <Key x={r2(X(t) + 10)} y={r2(Y(b[t]) + 16)} size={10} weight={700} fill={COUNTER}>{`GROUP B ${b[t].toFixed(1)}%`}</Key>
+        <Key x={r2(X(t) + 10)} y={r2(Y(a[t]) - 8)} size={10} weight={700} fill={INK}>{`Group A ${a[t].toFixed(1)}%`}</Key>
+        <Key x={r2(X(t) + 10)} y={r2(Y(b[t]) + 16)} size={10} weight={700} fill={COUNTER}>{`Group B ${b[t].toFixed(1)}%`}</Key>
 
         {/* evidence the model has gathered */}
-        <Key x={516} y={196} size={9.5}>OFFERS SENT SO FAR</Key>
+        <Key x={516} y={196} size={9.5}>Offers sent so far</Key>
         {[
           { k: "A", n: t, c: INK },
           { k: "B", n: ex ? t : offersB, c: COUNTER },
@@ -1670,9 +1670,9 @@ export function FairnessThresholds() {
   const a = fairRates(FAIR_A, 0);
   const b = fairRates(FAIR_B, shift / 100);
   const crit = [
-    { k: "DEMOGRAPHIC PARITY", sub: "OFFER RATE", av: a.offer, bv: b.offer, ok: Math.abs(a.offer - b.offer) <= 1.5 },
-    { k: "EQUAL OPPORTUNITY", sub: "RESPONDERS WHO GET THE OFFER", av: a.tpr, bv: b.tpr, ok: Math.abs(a.tpr - b.tpr) <= 1.5 },
-    { k: "CALIBRATION", sub: "PREDICTED MINUS ACTUAL RATE", av: 0, bv: shift, ok: shift === 0, pts: true },
+    { k: "Demographic parity", sub: "Offer rate", av: a.offer, bv: b.offer, ok: Math.abs(a.offer - b.offer) <= 1.5 },
+    { k: "Equal opportunity", sub: "Responders who get the offer", av: a.tpr, bv: b.tpr, ok: Math.abs(a.tpr - b.tpr) <= 1.5 },
+    { k: "Calibration", sub: "Predicted minus actual rate", av: 0, bv: shift, ok: shift === 0, pts: true },
   ];
   const met = crit.filter((c) => c.ok).length;
   const hx0 = 40;
@@ -1686,8 +1686,8 @@ export function FairnessThresholds() {
     return bins;
   };
   const panels = [
-    { k: "GROUP A", base: 32, bins: hist(FAIR_A, 0), y: 140, c: INK },
-    { k: "GROUP B", base: 20, bins: hist(FAIR_B, shift / 100), y: 278, c: COUNTER },
+    { k: "Group A", base: 32, bins: hist(FAIR_A, 0), y: 140, c: INK },
+    { k: "Group B", base: 20, bins: hist(FAIR_B, shift / 100), y: 278, c: COUNTER },
   ];
   const pc = (v: number) => `${Math.round(v)}%`;
   return (
@@ -1700,7 +1700,7 @@ export function FairnessThresholds() {
         {panels.map((p) => (
           <g key={p.k}>
             <Key x={hx0} y={p.y - 96} size={10} weight={700} fill={p.c}>{p.k}</Key>
-            <Key x={hx0} y={p.y - 82} size={9} fill={INK3}>{`RESPONDS AT ${p.base}%`}</Key>
+            <Key x={hx0} y={p.y - 82} size={9} fill={INK3}>{`Responds at ${p.base}%`}</Key>
             {p.bins.map((v, i) => {
               const h = r2(v * 420);
               const lo = i / 20;
@@ -1714,8 +1714,8 @@ export function FairnessThresholds() {
           </g>
         ))}
         <line x1={HX(FAIR_T)} y1={24} x2={HX(FAIR_T)} y2={282} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="4 3" />
-        <Key x={r2(HX(FAIR_T) + 6)} y={20} size={9} weight={700} fill={SIGNAL}>OFFER AT 40% OR MORE</Key>
-        <Key x={hx1} y={312} anchor="end" size={9} fill={INK3}>{shift ? `PREDICTED PROBABILITY (B RAISED +${shift})` : "PREDICTED PROBABILITY"}</Key>
+        <Key x={r2(HX(FAIR_T) + 6)} y={20} size={9} weight={700} fill={SIGNAL}>Offer at 40% or more</Key>
+        <Key x={hx1} y={312} anchor="end" size={9} fill={INK3}>{shift ? `Predicted probability (B raised +${shift})` : "Predicted probability"}</Key>
 
         <line x1={384} y1={20} x2={384} y2={304} stroke={RULE} strokeWidth={1} />
         {crit.map((c, i) => {
@@ -1736,7 +1736,7 @@ export function FairnessThresholds() {
           );
         })}
         <line x1={404} y1={268} x2={660} y2={268} stroke={RULE} strokeWidth={1} />
-        <Key x={404} y={292} size={10} weight={700} fill={INK}>CRITERIA MET</Key>
+        <Key x={404} y={292} size={10} weight={700} fill={INK}>Criteria met</Key>
         <Display x={660} y={296} anchor="end" size={24} fill={INK}>{`${met} of 3`}</Display>
       </Frame>
       <Slider label={`Raise group B's scores: +${shift} points`} value={shift} min={0} max={20} onChange={setShift} showValue={false} />
@@ -1749,11 +1749,11 @@ export function FairnessThresholds() {
 
 /** Average size of each variable's contribution across all customers, in points (simulated). */
 const GLOBAL_IMPORTANCE = [
-  { k: "PURCHASES, LAST 90 DAYS", v: 9.1 },
-  { k: "ACCOUNT BALANCE", v: 6.4 },
-  { k: "TENURE", v: 4.2 },
-  { k: "SUPPORT CALLS", v: 2.7 },
-  { k: "EMAIL OPENS", v: 1.6 },
+  { k: "Purchases, last 90 days", v: 9.1 },
+  { k: "Account balance", v: 6.4 },
+  { k: "Tenure", v: 4.2 },
+  { k: "Support calls", v: 2.7 },
+  { k: "Email opens", v: 1.6 },
 ];
 const OFFER_BASE = 30;
 const OFFER_CUT = 40;
@@ -1771,10 +1771,10 @@ const balanceShap = (b: number) => (b - 1200) / 50;
 export function ExplainOffer() {
   const [bal, setBal] = useState(800);
   const parts = [
-    { k: "PURCHASES", v: 12 },
-    { k: "BALANCE", v: balanceShap(bal), lit: true },
-    { k: "TENURE", v: 5 },
-    { k: "SUPPORT CALLS", v: -4 },
+    { k: "Purchases", v: 12 },
+    { k: "Balance", v: balanceShap(bal), lit: true },
+    { k: "Tenure", v: 5 },
+    { k: "Support calls", v: -4 },
   ];
   const starts = parts.reduce<number[]>((acc, p, i) => {
     acc.push(i ? acc[i - 1] + parts[i - 1].v : OFFER_BASE);
@@ -1798,8 +1798,8 @@ export function ExplainOffer() {
         }. Counterfactual: a balance of ${usd(cfBalance)} or more would qualify the customer`}
       >
         {/* global */}
-        <Key x={20} y={26} size={10} weight={700} fill={INK}>GLOBAL</Key>
-        <Key x={20} y={41} size={9} fill={INK3}>ALL CUSTOMERS</Key>
+        <Key x={20} y={26} size={10} weight={700} fill={INK}>Global</Key>
+        <Key x={20} y={41} size={9} fill={INK3}>All customers</Key>
         {GLOBAL_IMPORTANCE.map((g, i) => {
           const y = 70 + i * 40;
           return (
@@ -1810,16 +1810,16 @@ export function ExplainOffer() {
             </g>
           );
         })}
-        <Key x={20} y={290} size={9} fill={INK3}>AVERAGE CONTRIBUTION, POINTS</Key>
+        <Key x={20} y={290} size={9} fill={INK3}>Average contribution, points</Key>
 
         <line x1={262} y1={20} x2={262} y2={300} stroke={RULE} strokeWidth={1} />
 
         {/* local */}
-        <Key x={282} y={26} size={10} weight={700} fill={INK}>LOCAL</Key>
-        <Key x={282} y={41} size={9} fill={INK3}>ONE CUSTOMER</Key>
+        <Key x={282} y={26} size={10} weight={700} fill={INK}>Local</Key>
+        <Key x={282} y={41} size={9} fill={INK3}>One customer</Key>
         <line x1={LX(OFFER_CUT)} y1={40} x2={LX(OFFER_CUT)} y2={rowY(5) + 20} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
-        <Key x={r2(LX(OFFER_CUT) + 6)} y={40} size={9} weight={700} fill={SIGNAL}>OFFER AT 40%</Key>
-        <Key x={282} y={rowY(0) + 4} size={9.5} fill={INK2}>AVERAGE</Key>
+        <Key x={r2(LX(OFFER_CUT) + 6)} y={40} size={9} weight={700} fill={SIGNAL}>Offer at 40%</Key>
+        <Key x={282} y={rowY(0) + 4} size={9.5} fill={INK2}>Average</Key>
         <line x1={LX(OFFER_BASE)} y1={rowY(0) - 9} x2={LX(OFFER_BASE)} y2={rowY(0) + 9} stroke={INK} strokeWidth={2} />
         <Key x={r2(LX(OFFER_BASE) - 8)} y={rowY(0) + 4} anchor="end" size={9.5} weight={700}>30%</Key>
         {parts.map((p, i) => {
@@ -1836,11 +1836,11 @@ export function ExplainOffer() {
             </g>
           );
         })}
-        <Key x={282} y={rowY(5) + 4} size={9.5} weight={700} fill={INK}>PREDICTION</Key>
+        <Key x={282} y={rowY(5) + 4} size={9.5} weight={700} fill={INK}>Prediction</Key>
         <line x1={LX(starts[3] + parts[3].v)} y1={r2(rowY(4) + 9)} x2={LX(starts[3] + parts[3].v)} y2={rowY(5) - 9} stroke={RULE2} strokeWidth={1} />
         <line x1={LX(pred)} y1={rowY(5) - 9} x2={LX(pred)} y2={rowY(5) + 9} stroke={qualifies ? SIGNAL : INK} strokeWidth={3} />
         <Key x={660} y={rowY(5) + 4} anchor="end" size={10} weight={700} fill={qualifies ? SIGNAL : INK}>
-          {`${Math.round(pred)}%: ${qualifies ? "OFFER" : "NO OFFER"}`}
+          {`${Math.round(pred)}%: ${qualifies ? "Offer" : "No offer"}`}
         </Key>
         <line x1={lx0} y1={rowY(5) + 22} x2={lx1} y2={rowY(5) + 22} stroke={INK} strokeWidth={1.25} />
         {[20, 40, 60].map((v) => (
@@ -1849,7 +1849,7 @@ export function ExplainOffer() {
             <Key x={LX(v)} y={rowY(5) + 38} anchor="middle" size={9}>{`${v}%`}</Key>
           </g>
         ))}
-        <Key x={282} y={292} size={9} fill={INK3}>{`COUNTERFACTUAL: BALANCE OF ${usd(cfBalance)} OR MORE QUALIFIES`}</Key>
+        <Key x={282} y={292} size={9} fill={INK3}>{`Counterfactual: balance of ${usd(cfBalance)} or more qualifies`}</Key>
       </Frame>
       <Slider label={`This customer's account balance: ${usd(bal)}`} value={bal} min={400} max={1600} step={50} onChange={setBal} showValue={false} />
     </div>
@@ -1870,15 +1870,15 @@ const COO_GRAND = 66.25;
 const COO_MODELS = [
   { name: "Llama 3.3", home: "USA", effect: 0.31 },
   { name: "Gemma 3", home: "USA", effect: -11.99 },
-  { name: "Qwen3", home: "CHINA", effect: -14.63 },
-  { name: "Aya Expanse", home: "CANADA", effect: 21.19 },
-  { name: "Ministral", home: "FRANCE", effect: 5.11 },
+  { name: "Qwen3", home: "China", effect: -14.63 },
+  { name: "Aya Expanse", home: "Canada", effect: 21.19 },
+  { name: "Ministral", home: "France", effect: 5.11 },
 ];
 const COO_TARGETS = [
   { name: "USA", effect: 2.84, pair: [2.59, 3.21, -0.61, -1.18, -4.0] },
-  { name: "CANADA", effect: 4.62, pair: [5.2, 2.14, -0.57, -3.77, -2.99] },
-  { name: "CHINA", effect: -6.46, pair: [-4.29, -5.4, -0.2, 5.35, 4.54] },
-  { name: "FRANCE", effect: -1.0, pair: [-3.5, 0.05, 1.39, -0.39, 2.45] },
+  { name: "Canada", effect: 4.62, pair: [5.2, 2.14, -0.57, -3.77, -2.99] },
+  { name: "China", effect: -6.46, pair: [-4.29, -5.4, -0.2, 5.35, 4.54] },
+  { name: "France", effect: -1.0, pair: [-3.5, 0.05, 1.39, -0.39, 2.45] },
 ];
 
 /**
@@ -1916,9 +1916,9 @@ export function CountryPairing() {
   const text = (v: number) => (view === "score" ? v.toFixed(1) : `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(1)}`);
   const dark = (v: number) => (view === "score" ? v > 72 : Math.abs(v) > 6.5);
   const title = {
-    score: "EXPECTED CETSCALE SCORE (17 to 119)",
-    noModel: "SCORE MINUS THE MODEL’S BASELINE",
-    pairing: "PAIRING EFFECT ONLY: COUNTRY-OF-ORIGIN BIAS",
+    score: "Expected CETSCALE score (17 to 119)",
+    noModel: "Score minus the model’s baseline",
+    pairing: "Pairing effect only: country-of-origin bias",
   }[view];
   return (
     <div>
@@ -1930,7 +1930,7 @@ export function CountryPairing() {
         ).join(". ")}. Outlined cells pair a model with its own country of development`}
       >
         <Key x={20} y={22} size={10} weight={700} fill={view === "pairing" ? SIGNAL : INK}>{title}</Key>
-        <Key x={20} y={r2(ry0 - 12)} size={9} fill={INK3}>STATEMENTS ABOUT</Key>
+        <Key x={20} y={r2(ry0 - 12)} size={9} fill={INK3}>Statements about</Key>
         {COO_MODELS.map((m, mi) => {
           const x = r2(cx0 + mi * cw + cw / 2);
           return (
@@ -1963,8 +1963,8 @@ export function CountryPairing() {
           );
         })}
         <rect x={20} y={290} width={14} height={14} fill="none" stroke={INK} strokeWidth={2} />
-        <Key x={42} y={301} size={9} fill={INK3}>{"MODEL’S OWN COUNTRY"}</Key>
-        <Key x={660} y={301} anchor="end" size={9} fill={INK3}>{"WADI, GHODRAT & PHILP (2026)"}</Key>
+        <Key x={42} y={301} size={9} fill={INK3}>{"Model’s own country"}</Key>
+        <Key x={660} y={301} anchor="end" size={9} fill={INK3}>{"Wadi, Ghodrat & Philp (2026)"}</Key>
       </Frame>
       <Segmented<PairView>
         label="Show"
@@ -2039,7 +2039,7 @@ export function OrderRandomization() {
             : "With the order randomized in every task, the agent chooses A in 20% of 400 tasks, B 16%, C 48%, D 16%. By position, 46% of choices go to the first listing, 23% the second, 17% the third, 14% the fourth"
         }`}
       >
-        <Key x={20} y={22} size={10}>THREE OF THE TASKS</Key>
+        <Key x={20} y={22} size={10}>Three of the tasks</Key>
         {EXAMPLE_ORDERS[mode].map((order, ti) => {
           const x = 20 + ti * 104;
           return (
@@ -2064,12 +2064,12 @@ export function OrderRandomization() {
             </g>
           );
         })}
-        <Key x={20} y={218} size={9} fill={INK3}>{mode === "fixed" ? "SAME ORDER IN EVERY TASK" : "A NEW ORDER IN EVERY TASK"}</Key>
-        <Key x={20} y={232} size={9} fill={INK3}>SAME PRICE FOR ALL FOUR</Key>
+        <Key x={20} y={218} size={9} fill={INK3}>{mode === "fixed" ? "Same order in every task" : "A new order in every task"}</Key>
+        <Key x={20} y={232} size={9} fill={INK3}>Same price for all four</Key>
 
         <line x1={334} y1={20} x2={334} y2={300} stroke={RULE} strokeWidth={1} />
 
-        <Key x={bx} y={22} size={10}>{"AGENT’S CHOICES, 400 TASKS"}</Key>
+        <Key x={bx} y={22} size={10}>{"Agent’s choices, 400 tasks"}</Key>
         {shares.map((v, i) => {
           const y = 42 + i * 34;
           const isC = i === 2;
@@ -2079,14 +2079,14 @@ export function OrderRandomization() {
               <Key x={bx} y={y + 15} size={11} weight={700} fill={isC ? SIGNAL : INK}>{LISTINGS[i].id}</Key>
               <rect x={bx + 22} y={y + 2} width={B(v)} height={18} fill={c} />
               <Key x={r2(bx + 28 + B(v))} y={y + 15} size={10.5} weight={700} fill={c}>{`${v}%`}</Key>
-              {isC ? <Key x={660} y={y + 15} anchor="end" size={9} weight={700} fill={SIGNAL}>BEST RATED</Key> : null}
-              {i === 0 && mode === "fixed" ? <Key x={660} y={y + 15} anchor="end" size={9} weight={700} fill={COUNTER}>ALWAYS FIRST</Key> : null}
+              {isC ? <Key x={660} y={y + 15} anchor="end" size={9} weight={700} fill={SIGNAL}>Best rated</Key> : null}
+              {i === 0 && mode === "fixed" ? <Key x={660} y={y + 15} anchor="end" size={9} weight={700} fill={COUNTER}>Always first</Key> : null}
             </g>
           );
         })}
         {mode === "random" ? (
           <g>
-            <Key x={bx} y={202} size={10}>CHOICES BY POSITION IN THE LIST</Key>
+            <Key x={bx} y={202} size={10}>Choices by position in the list</Key>
             {ORDER_SHARES.random.bySlot.map((v, k) => {
               const x = bx + k * 74;
               const h = r2(v * 1.2);
@@ -2101,7 +2101,7 @@ export function OrderRandomization() {
           </g>
         ) : (
           <g>
-            <Key x={bx} y={202} size={10}>CHOICES BY POSITION IN THE LIST</Key>
+            <Key x={bx} y={202} size={10}>Choices by position in the list</Key>
             {[0, 1, 2, 3].map((k) => (
               <g key={k}>
                 <rect x={bx + k * 74} y={244} width={40} height={40} fill="none" stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
@@ -2109,7 +2109,7 @@ export function OrderRandomization() {
                 <Key x={bx + k * 74 + 20} y={298} anchor="middle" size={9}>{["1ST", "2ND", "3RD", "4TH"][k]}</Key>
               </g>
             ))}
-            <Key x={bx} y={224} size={9} fill={INK3}>NOT SEPARABLE FROM THE LISTINGS</Key>
+            <Key x={bx} y={224} size={9} fill={INK3}>Not separable from the listings</Key>
           </g>
         )}
       </Frame>

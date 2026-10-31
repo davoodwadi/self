@@ -125,7 +125,8 @@ week: week6
 - Misleading visualizations can result from inattention as well as from intent, and the researcher is responsible for either.
 
 ## Discussion: One Dataset, Two Charts
-- Discussion: Two analysts receive the same dataset on customer satisfaction across four regions. One presents a bar chart with an axis from zero to five, and the other presents a bar chart with an axis from 3.5 to 4.5. What would a regional manager conclude from each chart, and which design communicates the data accurately?
+- Two analysts receive the same dataset on customer satisfaction across four regions. One presents a bar chart with an axis from zero to five, and the other presents a bar chart with an axis from 3.5 to 4.5.
+- What would a regional manager conclude from each chart, and which design communicates the data accurately?
 
 ## Part 5: AI Data-Analysis Assistants [no-exercise]
 - AI data-analysis assistants allow analysts to ask questions of a dataset in natural language.
@@ -163,7 +164,8 @@ week: week6
 - Charts of full response distributions for each model, rather than a single bar for each mean, show both the level and the variability of model behavior.
 
 ## Discussion: An Answer in Seconds
-- Discussion: A brand manager uploads a survey dataset to an AI assistant and asks which customer segment is most satisfied. The assistant replies within seconds with a segment name, a mean score, and a chart. Which checks should the brand manager perform before presenting the result to senior management?
+- A brand manager uploads a survey dataset to an AI assistant and asks which customer segment is most satisfied. The assistant replies within seconds with a segment name, a mean score, and a chart.
+- Which checks should the brand manager perform before presenting the result to senior management?
 
 ## Key Takeaways
 - Data preparation consists of checking, coding, cleaning, treating missing values, and weighting, and every step is documented.

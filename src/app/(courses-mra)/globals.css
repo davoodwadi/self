@@ -31,10 +31,9 @@
   --color-background: var(--paper);
   --color-foreground: var(--ink);
 
-  --font-display: var(--font-newsreader);
+  --font-display: var(--font-plex-sans);
   --font-sans: var(--font-plex-sans);
   --font-mono: var(--font-plex-sans);
-  --font-serif: var(--font-newsreader);
 }
 
 @layer base {
@@ -68,7 +67,7 @@
     --affirm-tint: rgba(46, 106, 74, 0.08);
 
     /* --- Type ------------------------------------------------------------ */
-    --font-heading: var(--font-newsreader, Georgia, "Times New Roman", serif);
+    --font-heading: var(--font-body);
     --font-body: var(--font-plex-sans, ui-sans-serif, system-ui, sans-serif);
     --font-label: var(--font-body);
 
@@ -106,7 +105,7 @@
   h4 {
     color: var(--ink);
     font-family: var(--font-heading);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.015em;
   }
@@ -129,7 +128,7 @@
 .type-display {
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -138,7 +137,7 @@
 .type-h1 {
   font-family: var(--font-heading);
   font-size: clamp(2.1rem, 4.6vw, 3.75rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -147,7 +146,7 @@
 .type-h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 2vw, 1.75rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.22;
   color: var(--ink);
 }
@@ -164,7 +163,7 @@
 
 .type-lead {
   font-size: clamp(1.125rem, 1.6vw, 1.35rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.55;
   color: var(--ink-2);
 }
@@ -175,13 +174,12 @@
   color: var(--ink-2);
 }
 
+/* Small labels stay in sentence case at normal spacing. */
 .type-label {
   font-family: var(--font-label);
   font-variant-numeric: lining-nums tabular-nums;
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--ink-3);
 }
 

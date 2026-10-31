@@ -169,7 +169,8 @@ week: week11
 - Finally, the analyst documents the audit and repeats it whenever the provider updates the model.
 
 ## Discussion: A Discount Model
-- Discussion: A retailer's model directs its largest discounts to the customers predicted to be most price-sensitive. An audit reveals that customers in lower-income postal codes receive smaller discounts on average than customers in higher-income postal codes. Which sources of bias could explain this result, which fairness criterion is relevant, and what should the retailer do?
+- A retailer's model directs its largest discounts to the customers predicted to be most price-sensitive. An audit reveals that customers in lower-income postal codes receive smaller discounts on average than customers in higher-income postal codes.
+- Which sources of bias could explain this result, which fairness criterion is relevant, and what should the retailer do?
 
 ## Key Takeaways
 - Customer lifetime value estimates the present value of future profits from a customer, and is particularly sensitive to the retention rate.

@@ -74,7 +74,8 @@ week: week8
 - Factorial designs reveal interactions, in which the effect of one independent variable depends on the level of another, as when a quality-focused message is effective only at the higher price.
 
 ## Discussion: Testing a New Package
-- Discussion: A beverage company must choose between two new package designs before a national launch. Should the choice be based on a laboratory experiment, a field experiment, or both? Which threats to internal and external validity would each design face?
+- A beverage company must choose between two new package designs before a national launch.
+- Should the choice be based on a laboratory experiment, a field experiment, or both? Which threats to internal and external validity would each design face?
 
 ## Part 3: A/B and Multivariate Testing [no-exercise]
 - Digital channels allow firms to conduct field experiments continuously and at large scale.
@@ -155,7 +156,8 @@ week: week8
 - A version selected by a bandit is the best performer on the platform's chosen metric, which may differ from the firm's broader objectives, such as brand building or long-term customer value.
 
 ## Discussion: The Platform Has Chosen
-- Discussion: An advertising platform's bandit algorithm selects one of five creative versions after two days and allocates nearly all impressions to it. The brand manager proposes to use this version in the firm's national television campaign. What does the platform's result establish, what does it not establish, and which additional evidence should be obtained?
+- An advertising platform's bandit algorithm selects one of five creative versions after two days and allocates nearly all impressions to it. The brand manager proposes to use this version in the firm's national television campaign.
+- What does the platform's result establish, what does it not establish, and which additional evidence should be obtained?
 
 ## Part 6: Experiments on AI Agents [no-exercise]
 - AI agents are also the subject of experiments, when the research question concerns how the agents themselves search, evaluate, and choose.

@@ -12,7 +12,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
@@ -57,10 +57,10 @@ const CLOSE = "type-quote w-full !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]
 const CELL = "!max-w-none !leading-snug";
 
 /** One numbered step of a procedure, under a hairline. */
-function Step({ n, children, tone = "ink" }: { n: number; children: React.ReactNode; tone?: "ink" | "signal" }) {
+function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
     <Numbered n={n}>
-      <Ruled tone={tone} weight="thin">
+      <Ruled>
         <P className={CELL}>{children}</P>
       </Ruled>
     </Numbered>
@@ -76,12 +76,12 @@ export default function Week10() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 10: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">
-          Segmentation, Positioning, and <span className="text-[var(--signal)]">Preference Analysis</span>
+          Segmentation, Positioning, and Preference Analysis
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[46ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[46ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Multivariate analysis provides the evidence on which{" "}
-          <span className="text-[var(--signal)]">segmentation, positioning, and product design decisions</span>{" "}
+          segmentation, positioning, and product design decisions{" "}
           are based.
         </p>
       </Slide>
@@ -93,11 +93,11 @@ export default function Week10() {
         <SlideHeading>Multivariate Methods for Marketing Strategy</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.25rem,2vw,1.65rem)]">
-            <Term tone="ink">Segmentation</Term> divides a market into groups of customers with
-            similar needs or behavior. <Term tone="ink">Positioning</Term> determines how a brand
+            <Term>Segmentation</Term> divides a market into groups of customers with
+            similar needs or behavior. <Term>Positioning</Term> determines how a brand
             is perceived relative to competitors in the minds of target customers.
           </Statement>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Both decisions depend on data that involve{" "}
               <Term>many variables at once</Term>, such as ratings of brands on numerous
@@ -109,7 +109,7 @@ export default function Week10() {
           <Numbered n={1}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Factor analysis</Term> reduces a large set of attributes to a
+                <Term>Factor analysis</Term> reduces a large set of attributes to a
                 small number of underlying dimensions, on which perceptual maps are based.
               </p>
             </Ruled>
@@ -117,14 +117,14 @@ export default function Week10() {
           <Numbered n={2}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Cluster analysis</Term> groups customers into segments.
+                <Term>Cluster analysis</Term> groups customers into segments.
               </p>
             </Ruled>
           </Numbered>
           <Numbered n={3}>
             <Ruled>
               <p className={BIG}>
-                <Term tone="ink">Conjoint analysis</Term> measures how customers trade off
+                <Term>Conjoint analysis</Term> measures how customers trade off
                 product attributes against one another and against price.
               </p>
             </Ruled>
@@ -144,7 +144,7 @@ export default function Week10() {
               correlated with one another.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Factor analysis identifies the <Term>smaller number of dimensions</Term> that
               underlie these ratings.
@@ -161,22 +161,22 @@ export default function Week10() {
           ================================================================ */}
       <Slide id="factor-analysis" border className="!py-8" exercise={exercise["factor-analysis"]}>
         <SlideHeading>Factor Analysis</SlideHeading>
-        <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
+        <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                Factor analysis is an <Term tone="ink">interdependence technique</Term>: it
+                Factor analysis is an <Term>interdependence technique</Term>: it
                 examines the relationships among a set of variables, without distinguishing
                 dependent from independent variables.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                It identifies <Term tone="ink">factors</Term>, which are underlying dimensions that
+                It identifies <Term>factors</Term>, which are underlying dimensions that
                 account for the correlations among the observed variables.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 For example, ratings of banks on &ldquo;friendly staff,&rdquo; &ldquo;helpful
                 advice,&rdquo; and &ldquo;courteous service&rdquo; may reflect a single factor of
@@ -185,16 +185,16 @@ export default function Week10() {
                 value.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                A <Term tone="ink">factor loading</Term> is the correlation between a variable and
+                A <Term>factor loading</Term> is the correlation between a variable and
                 a factor. Each factor is interpreted and named according to the variables that
                 load highly on it.
               </P>
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The number of factors is commonly determined by retaining factors with an{" "}
                 <Term>eigenvalue greater than one</Term>, by examining a scree plot, and by the
@@ -204,7 +204,7 @@ export default function Week10() {
             <Plate>
               <FactorRetention />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Factor analysis is also used to assess the convergent and discriminant validity of
                 multi-item scales, introduced in Week 4.
@@ -222,25 +222,25 @@ export default function Week10() {
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Statement className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
-              A <Term tone="ink">perceptual map</Term> is a graphical representation of
+              A <Term>perceptual map</Term> is a graphical representation of
               consumers&rsquo; perceptions of competing brands on two or more dimensions.
             </Statement>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The dimensions may be derived by factor analysis of attribute ratings, or by{" "}
-                <Term tone="ink">multidimensional scaling</Term> of judgments of the similarity
+                <Term>multidimensional scaling</Term> of judgments of the similarity
                 between brands.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Brands positioned close together are perceived as similar, and are therefore{" "}
                 <Term>likely to compete directly</Term>.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                An <Term tone="ink">ideal point</Term> represents the combination of attributes
+                An <Term>ideal point</Term> represents the combination of attributes
                 most preferred by a segment of consumers. Brands closer to the ideal point are
                 expected to be preferred by that segment.
               </P>
@@ -268,13 +268,13 @@ export default function Week10() {
         <SlideHeading>Interpreting a Perceptual Map</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The proximity of two brands indicates the degree of perceived similarity, and
                 therefore the intensity of competition between them.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The distance between a brand and a segment&rsquo;s ideal point indicates how well
                 the brand&rsquo;s perceived position matches the preferences of that segment.
@@ -282,7 +282,7 @@ export default function Week10() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={`${CELL} !text-[1.1em]`}>
                 An unoccupied region of the map may indicate a positioning opportunity, but only
                 if a <Term>sufficient number of consumers have an ideal point</Term> in that
@@ -293,13 +293,13 @@ export default function Week10() {
               <NewEntrant />
             </Plate>
             <div className="grid gap-6 md:grid-cols-2">
-              <Ruled weight="thin">
+              <Ruled>
                 <P className={CELL}>
                   A brand may be repositioned by changing the product itself, or by changing
                   consumers&rsquo; perceptions of it through communication.
                 </P>
               </Ruled>
-              <Ruled weight="thin">
+              <Ruled>
                 <P className={CELL}>
                   A perceptual map describes perceptions at the time of measurement, and is
                   updated as the market changes.
@@ -326,7 +326,7 @@ export default function Week10() {
               variables at once, such as needs, attitudes, and purchase behavior.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Cluster analysis</Term> is the principal method of data-driven segmentation.
             </p>
@@ -340,35 +340,35 @@ export default function Week10() {
       <Slide id="cluster-analysis" border className="!py-8">
         <SlideHeading>Cluster Analysis</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.25rem,2vw,1.65rem)]">
-          <Term tone="ink">Cluster analysis</Term> classifies objects into groups, called clusters,
+          <Term>Cluster analysis</Term> classifies objects into groups, called clusters,
           so that objects within a cluster are similar to one another and different from objects
           in other clusters.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Similarity is measured by a distance measure, most commonly the{" "}
-                <Term tone="ink">Euclidean distance</Term> between the objects&rsquo; values on the
+                <Term>Euclidean distance</Term> between the objects&rsquo; values on the
                 clustering variables.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Variables measured on different scales are <Term>standardized</Term> before
                 clustering, so that variables with larger numerical ranges do not dominate the
                 distance measure.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Hierarchical methods</Term> combine objects into progressively
+                <Term>Hierarchical methods</Term> combine objects into progressively
                 larger clusters, and display the result in a tree diagram called a dendrogram.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Nonhierarchical methods</Term>, such as k-means clustering,
+                <Term>Nonhierarchical methods</Term>, such as k-means clustering,
                 assign objects to a number of clusters specified in advance, and are suited to
                 large datasets.
               </P>
@@ -399,7 +399,7 @@ export default function Week10() {
           <Step n={3}>The researcher then selects a distance measure and a clustering method.</Step>
         </div>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
-          <Step n={4} tone="signal">
+          <Step n={4}>
             The researcher then determines the number of clusters, according to{" "}
             <Term>statistical criteria and the interpretability</Term> of the solution.
           </Step>
@@ -446,7 +446,7 @@ export default function Week10() {
             ))}
           </dl>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal">
+            <Ruled>
               <P className={CELL}>
                 Cluster analysis <Term>produces clusters even when the data contain no meaningful
                 group structure</Term>. A solution that fails these criteria, or is unstable across
@@ -464,15 +464,11 @@ export default function Week10() {
           Discussion: Segmenting Gym Members
           ================================================================ */}
       <Slide id="discussion-segmenting-gym-members" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Segmenting Gym Members
-        </SlideHeading>
-        <Prompt>
-          A fitness chain holds data on the visit frequency, class attendance, time of visits, and
-          survey-reported goals of 50,000 members. Which variables should be used to cluster the
-          members, which should be used to profile the clusters, and how should the resulting
-          segments be evaluated before a targeting decision is taken?
-        </Prompt>
+        <SlideHeading>Discussion: Segmenting Gym Members</SlideHeading>
+        <Discussion
+          scenario={"A fitness chain holds data on the visit frequency, class attendance, time of visits, and survey-reported goals of 50,000 members."}
+          question={"Which variables should be used to cluster the members, which should be used to profile the clusters, and how should the resulting segments be evaluated before a targeting decision is taken?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -487,13 +483,13 @@ export default function Week10() {
               make trade-offs.
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Asking customers directly how important each attribute is tends to produce answers
               in which every attribute appears important.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Conjoint analysis <Term>infers the importance of attributes from the choices</Term>{" "}
               customers make among complete products.
@@ -512,7 +508,7 @@ export default function Week10() {
             Conjoint analysis treats a product as a bundle of attributes, each with a set of
             levels.
           </Statement>
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               For example, a laptop may be described by brand, with three levels, battery life,
               with levels of 8, 12, and 16 hours, and price, with levels of 900, 1,100, and 1,300
@@ -522,20 +518,20 @@ export default function Week10() {
         </div>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                Respondents evaluate a series of <Term tone="ink">product profiles</Term>, each
+                Respondents evaluate a series of <Term>product profiles</Term>, each
                 combining one level of every attribute.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                In <Term tone="ink">choice-based conjoint</Term>, the most widely used form,
+                In <Term>choice-based conjoint</Term>, the most widely used form,
                 respondents repeatedly choose one profile from a small set, often with the option
                 to choose none.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The analysis estimates a <Term>part-worth utility</Term> for each level of each
                 attribute, representing its contribution to the overall preference for a product.
@@ -554,26 +550,26 @@ export default function Week10() {
       <Slide id="designing-a-conjoint-study" border className="!py-8">
         <SlideHeading>Designing a Conjoint Study</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               Attributes are selected because they are relevant to customers&rsquo; choices and
               actionable for the firm, often on the basis of prior qualitative research.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               Levels are realistic, cover the range the firm is considering, and are unambiguous
               to respondents.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               The number of attributes is limited, typically to six or fewer, since respondents
               simplify their choices when profiles become too complex.
             </P>
           </Ruled>
         </div>
-        <Ruled tone="signal" className="mt-6 w-full">
+        <Ruled className="mt-6 w-full">
           <P className={`${CELL} !text-[1.05em]`}>
             Because the number of possible profiles grows rapidly with the number of attributes
             and levels, a <Term>fractional factorial design</Term> presents a subset of profiles
@@ -597,18 +593,18 @@ export default function Week10() {
         <SlideHeading>Interpreting Part-Worth Utilities</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Within each attribute, a higher part-worth indicates a more preferred level.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                The <Term tone="ink">relative importance</Term> of an attribute is the range of its
+                The <Term>relative importance</Term> of an attribute is the range of its
                 part-worths divided by the sum of the ranges across all attributes.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 For example, if the ranges of the part-worths are 1.0 for brand, 2.0 for battery
                 life, and 3.0 for price, the relative importance of price is 3.0 divided by 6.0,
@@ -617,7 +613,7 @@ export default function Week10() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Relative importance <Term>depends on the levels included</Term> in the study. A
                 wider range of prices increases the apparent importance of price.
@@ -626,7 +622,7 @@ export default function Week10() {
             <Plate>
               <PriceRangeImportance />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Part-worths can be estimated for each respondent, which allows segments to be
                 formed on the basis of their preferences.
@@ -643,20 +639,20 @@ export default function Week10() {
         <SlideHeading>Willingness to Pay and Market Simulation</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because price is included as an attribute, part-worths can be converted into
                 monetary values.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                The <Term tone="ink">willingness to pay</Term> for an improvement in an attribute
+                The <Term>willingness to pay</Term> for an improvement in an attribute
                 is the gain in utility from the improvement divided by the utility of one dollar,
                 derived from the price part-worths.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 For example, if an increase in battery life from 8 to 12 hours adds 1.2 units of
                 utility, and each dollar of price reduces utility by 0.04 units, the willingness
@@ -665,9 +661,9 @@ export default function Week10() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
-                <Term tone="ink">Market simulators</Term> use the estimated part-worths to predict
+                <Term>Market simulators</Term> use the estimated part-worths to predict
                 the shares of preference for competing products under alternative scenarios, such
                 as a new product launch or a competitor&rsquo;s price change.
               </P>
@@ -675,7 +671,7 @@ export default function Week10() {
             <Plate>
               <MarketSimulator />
             </Plate>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because conjoint choices are hypothetical, they may overstate willingness to pay.
                 Estimates are therefore compared with market data where possible.
@@ -696,14 +692,14 @@ export default function Week10() {
       >
         <SlideHeading>Conjoint Designs for AI Agents</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               A conjoint design can be administered to an AI agent in the same form as to a
               consumer: the agent chooses among profiles whose attributes vary according to an
               experimental design.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P className={CELL}>
               The part-worths estimated from the agent&rsquo;s choices show how much each attribute
               level contributes to the agent&rsquo;s selection.
@@ -712,13 +708,13 @@ export default function Week10() {
         </div>
         <div className="mt-5 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 For example, a sponsorship label can be included as an attribute, so that its
                 negative part-worth measures the penalty the agent applies to paid listings.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The part-worths can be compared across conditions of the agent&rsquo;s
                 instructions. In hotel-booking choice experiments, agents told they served the
@@ -726,7 +722,7 @@ export default function Week10() {
                 they served the traveler (Wadi &amp; Ma, 2026c).
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The wording of the label can be varied as an attribute level. The label
                 &ldquo;Sponsored&rdquo; reduced choice of the paid listing more than the label
@@ -738,7 +734,7 @@ export default function Week10() {
             <Plate>
               <SponsorPartWorths />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because AI agents show position effects, the order of the profiles in each choice
                 task is randomized (Wadi &amp; Ma, 2026a).
@@ -766,7 +762,7 @@ export default function Week10() {
               text, such as open-ended survey responses, reviews, and service conversations.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Language models allow such text to be <Term>represented numerically</Term>, so that
               it can be used as a basis for segmentation.
@@ -781,26 +777,26 @@ export default function Week10() {
       <Slide id="embeddings" border className="!py-8">
         <SlideHeading>Embeddings</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.25rem,2vw,1.65rem)]">
-          An <Term tone="ink">embedding</Term> is a numerical representation of a piece of text,
+          An <Term>embedding</Term> is a numerical representation of a piece of text,
           produced by a language model, in which texts with similar meanings receive similar
           values.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,9fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 For example, the responses &ldquo;I need something quick before work&rdquo; and
                 &ldquo;breakfast has to take five minutes&rdquo; receive embeddings that are{" "}
                 <Term>close to each other</Term>, although they share almost no words.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Embeddings can represent open-ended responses, reviews, product descriptions, and
                 sequences of customer behavior.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The individual dimensions of an embedding have no direct interpretation, unlike the
                 factors of a factor analysis.
@@ -820,19 +816,19 @@ export default function Week10() {
         <SlideHeading>Clustering Customers With Embeddings</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Customers are clustered on the embeddings of the texts they have written, using
                 the clustering methods introduced in this week, such as k-means.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The resulting segments are based on the needs and concerns customers express in
                 their own words, rather than on attributes selected in advance by the researcher.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The approach can be applied to very large volumes of text, and can be combined
                 with behavioral data in the same analysis.
@@ -840,7 +836,7 @@ export default function Week10() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Because the dimensions are not interpretable, each cluster is interpreted by{" "}
                 <Term>reading a sample of the texts</Term> assigned to it.
@@ -849,7 +845,7 @@ export default function Week10() {
             <Plate>
               <TextClusters />
             </Plate>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 The results depend on the language model used and on the preparation of the texts,
                 and are subject to the same stability tests and segment evaluation criteria as any
@@ -866,26 +862,26 @@ export default function Week10() {
       <Slide id="ai-generated-personas" border className="!py-8" exercise={exercise["ai-generated-personas"]}>
         <SlideHeading>AI-Generated Personas</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.2rem,1.9vw,1.55rem)]">
-          A <Term tone="ink">persona</Term> is a narrative description of a typical member of a
+          A <Term>persona</Term> is a narrative description of a typical member of a
           segment, with a name, a context, goals, and frustrations, used to communicate the
           segment to managers and designers.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 Language models can be used to generate personas from the profile of each cluster,
                 and some tools allow managers to converse with a persona as a simulated customer.
               </P>
             </Ruled>
-            <Ruled tone="counter" weight="thin">
+            <Ruled>
               <P className={CELL}>
                 A generated persona may contain details that are not supported by the segment
                 data, such as an occupation, a family situation, or a quotation, and these details
                 may reflect stereotypes.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P className={CELL}>
                 A persona that answers questions in conversation is a synthetic respondent, and is
                 subject to the limitations introduced in Week 5.
@@ -896,9 +892,9 @@ export default function Week10() {
             <PersonaTrace />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--signal)] pt-4`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-4`}>
           Every characteristic of a persona is therefore{" "}
-          <span className="text-[var(--signal)]">traceable to the data describing the segment</span>, and
+          traceable to the data describing the segment, and
           the persona is used to communicate evidence, not as a source of evidence.
         </p>
       </Slide>
@@ -907,15 +903,11 @@ export default function Week10() {
           Discussion: A Persona in the Meeting Room
           ================================================================ */}
       <Slide id="discussion-a-persona-in-the-meeting-room" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          A Persona in the Meeting Room
-        </SlideHeading>
-        <Prompt>
-          A product team uses an AI tool to create a conversational persona for each of five
-          customer segments, and begins to test new feature ideas by asking the personas for their
-          reactions. What does this practice offer the team, which risks does it introduce, and
-          which evidence should replace the personas&rsquo; answers before a feature is built?
-        </Prompt>
+        <SlideHeading>Discussion: A Persona in the Meeting Room</SlideHeading>
+        <Discussion
+          scenario={"A product team uses an AI tool to create a conversational persona for each of five customer segments, and begins to test new feature ideas by asking the personas for their reactions."}
+          question={"What does this practice offer the team, which risks does it introduce, and which evidence should replace the personas' answers before a feature is built?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -934,8 +926,8 @@ export default function Week10() {
             "Conjoint designs administered to AI agents estimate the part-worths agents assign to attributes such as price and sponsorship, and these part-worths can be compared across the instructions the agents receive.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

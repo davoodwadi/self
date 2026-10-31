@@ -13,10 +13,10 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import { PilotSamples, AssociationNotCause, SwitchingPanel, ControlledEffect, DesignSequence, InquiriesToPurchases, DefinitionShift, InternalCoverage, DataRelationships, AuditLog, ListingExperiment } from "./visuals";
+import { PilotSamples, AssociationNotCause, SwitchingPanel, ControlledEffect, DesignSequence, DefinitionShift, InternalCoverage, DataRelationships, AuditLog, ListingExperiment } from "./visuals";
 
 // ============================================================================
 // WEEK 2: RESEARCH DESIGN AND SECONDARY DATA
@@ -48,12 +48,12 @@ export default function Week2() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 2: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
-          Research Design and <span className="text-[var(--signal)]">Secondary Data</span>
+          Research Design and Secondary Data
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[40ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[40ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           The research design specifies the{" "}
-          <span className="text-[var(--signal)]">procedures</span> by which the
+          procedures by which the
           information required for a decision is obtained.
         </p>
       </Slide>
@@ -82,9 +82,9 @@ export default function Week2() {
             </p>
           </Ruled>
         </div>
-        <p className="type-quote mt-9 w-full border-l-2 border-[var(--signal)] bg-[var(--signal-tint)] px-7 py-5 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
           The choice of design determines which{" "}
-          <span className="text-[var(--signal)]">conclusions</span> the findings
+          conclusions the findings
           can support.
         </p>
       </Slide>
@@ -96,7 +96,7 @@ export default function Week2() {
         <PartHead n={1} title="Types of Research Design" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           Research designs are classified by their purpose into three types:{" "}
-          <Term tone="counter">exploratory</Term>, <Term tone="ink">descriptive</Term>, and{" "}
+          <Term>exploratory</Term>, <Term>descriptive</Term>, and{" "}
           <Term>causal</Term>.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
@@ -119,19 +119,19 @@ export default function Week2() {
         <SlideHeading>Exploratory Research</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
-                <span className="text-[var(--counter)]">Exploratory research</span>{" "}
+                Exploratory research{" "}
                 is conducted when the problem is not yet well understood.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Its purpose is to define the problem more precisely, to identify
                 relevant variables, and to develop hypotheses.
               </P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Its methods include expert interviews, reviews of secondary
                 data, pilot studies, and qualitative research.
@@ -139,7 +139,7 @@ export default function Week2() {
             </Ruled>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
                 Its procedures are flexible, and its samples are small and not
                 representative of the population.
@@ -150,7 +150,7 @@ export default function Week2() {
             </Plate>
           </div>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Its findings are therefore treated as tentative. They inform further
           research rather than support final decisions.
         </p>
@@ -162,34 +162,34 @@ export default function Week2() {
       <Slide id="descriptive-research" border className="!py-8">
         <SlideHeading>Descriptive Research</SlideHeading>
         <Lead className="!max-w-none">
-          <Term tone="ink">Descriptive research</Term> is conducted to describe
+          <Term>Descriptive research</Term> is conducted to describe
           the characteristics of a market or a group, such as the profile of
           customers, their usage behavior, or their perceptions of a brand.
         </Lead>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 md:grid-cols-3">
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               It requires a clear statement of the problem and specific
               hypotheses before data collection begins.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>
               The design specifies who is studied, what information is
               obtained, when and where the data are collected, and how.
             </P>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <P>Its methods include surveys, panels, and the analysis of existing records.</P>
           </Ruled>
         </div>
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Descriptive research can establish that two variables are{" "}
-              <span className="text-[var(--signal)]">associated</span>, but it
+              associated, but it
               cannot establish that one{" "}
-              <span className="text-[var(--counter)]">causes</span> the other.
+              causes the other.
             </p>
           </Ruled>
           <Plate>
@@ -210,9 +210,9 @@ export default function Week2() {
         <SlideHeading>Cross-Sectional and Longitudinal Designs</SlideHeading>
         <Lead className="!max-w-none">Descriptive designs differ in how they treat time.</Lead>
         <div className="mt-5 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-4">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule-2)] pt-4">
             <P className="!max-w-none">
-              A <Term tone="ink">cross-sectional design</Term> collects data
+              A <Term>cross-sectional design</Term> collects data
               from a sample of the population once.
             </P>
             <P className="!max-w-none">
@@ -221,7 +221,7 @@ export default function Week2() {
               once.
             </P>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--signal)] pt-4">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule-2)] pt-4">
             <P className="!max-w-none">
               A <Term>longitudinal design</Term> measures the same sample
               repeatedly over time.
@@ -236,7 +236,7 @@ export default function Week2() {
         <p className={`${CLOSE} mt-6`}>
           Cross-sectional designs describe a population at one point in time.
           Longitudinal designs reveal how individual behavior changes over time,
-          such as <span className="text-[var(--signal)]">switching between brands</span>.
+          such as switching between brands.
         </p>
         <Plate className="mt-4">
           <SwitchingPanel />
@@ -249,14 +249,14 @@ export default function Week2() {
       <Slide id="causal-research" border className="!py-8">
         <SlideHeading>Causal Research</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
-              <span className="text-[var(--signal)]">Causal research</span> is
+              Causal research is
               conducted to determine whether a change in one variable produces a
               change in another.
             </p>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <p className={BIG}>
               It addresses questions such as whether a price reduction increases
               sales, or whether a new package design increases purchase
@@ -267,11 +267,11 @@ export default function Week2() {
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
             <p className={BIG}>
-              Its principal method is the <Term tone="ink">experiment</Term>, in
+              Its principal method is the <Term>experiment</Term>, in
               which the researcher manipulates one or more independent variables
               and measures their effect on a dependent variable.
             </p>
-            <Ruled tone="signal">
+            <Ruled>
               <p className={BIG}>
                 The researcher controls other variables that could influence the
                 outcome, so that the observed effect can be attributed to the
@@ -283,7 +283,7 @@ export default function Week2() {
             <ControlledEffect />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-5`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-5`}>
           Causal research requires the greatest prior knowledge of the problem
           and the greatest control over the research setting.
         </p>
@@ -302,20 +302,20 @@ export default function Week2() {
         <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
           <Ruled>
             <P>
-              <Term tone="ink">Exploratory research</Term> is appropriate
+              <Term>Exploratory research</Term> is appropriate
               when the problem is ambiguous and little is known about it.
             </P>
           </Ruled>
           <Ruled>
             <P>
-              <Term tone="ink">Descriptive research</Term> is appropriate when
+              <Term>Descriptive research</Term> is appropriate when
               the problem is defined and the decision requires an accurate
               description of a market or a group.
             </P>
           </Ruled>
           <Ruled>
             <P>
-              <Term tone="ink">Causal research</Term> is appropriate when the decision
+              <Term>Causal research</Term> is appropriate when the decision
               depends on the effect of a specific marketing action.
             </P>
           </Ruled>
@@ -328,7 +328,7 @@ export default function Week2() {
         </p>
         <p className="type-body mt-3 w-full !max-w-none">
           The sequence is not fixed. A{" "}
-          <span className="text-[var(--counter)]">well-defined problem</span>{" "}
+          well-defined problem{" "}
           may begin with descriptive or causal research.
         </p>
         <Plate className="mt-5">
@@ -340,21 +340,11 @@ export default function Week2() {
           Discussion: Designing the Study
           ================================================================ */}
       <Slide id="discussion-designing-the-study" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Designing the Study
-        </SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <Prompt>
-            A manufacturer of electric bicycles observes that inquiries from its
-            website rarely result in purchases. Management has no explanation
-            for this pattern. Which research design is appropriate at this
-            stage, and how might the design change as the problem becomes
-            better understood?
-          </Prompt>
-          <Plate>
-            <InquiriesToPurchases />
-          </Plate>
-        </div>
+        <SlideHeading>Discussion: Designing the Study</SlideHeading>
+        <Discussion
+          scenario={"A manufacturer of electric bicycles observes that inquiries from its website rarely result in purchases. Management has no explanation for this pattern."}
+          question={"Which research design is appropriate at this stage, and how might the design change as the problem becomes better understood?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -363,22 +353,22 @@ export default function Week2() {
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Secondary Data" />
         <Statement className="mt-8 !max-w-none !text-[clamp(1.5rem,2.5vw,2.1rem)]">
-          Data are classified as <Term tone="ink">primary</Term> or{" "}
+          Data are classified as <Term>primary</Term> or{" "}
           <Term>secondary</Term> according to the purpose for which they were
           collected.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Secondary data are examined{" "}
-              <span className="text-[var(--signal)]">before</span> any primary
+              before any primary
               data are collected.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
               The analysis of secondary data is often called{" "}
-              <Term tone="ink">desk research</Term>.
+              <Term>desk research</Term>.
             </p>
           </Ruled>
         </div>
@@ -392,12 +382,12 @@ export default function Week2() {
         <div className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2">
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Primary data</Term> are collected by the
+              <Term>Primary data</Term> are collected by the
               researcher for the specific purpose of the current research
               problem.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               <Term>Secondary data</Term> were collected previously, for a
               purpose other than the current problem.
@@ -405,16 +395,16 @@ export default function Week2() {
           </Ruled>
         </div>
         <div className="mt-8 grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
-          <Numbered n={1} tone="signal">
-            <Ruled weight="thin">
+          <Numbered n={1}>
+            <Ruled>
               <P>
                 Secondary data can be obtained more quickly and at lower cost
                 than primary data.
               </P>
             </Ruled>
           </Numbered>
-          <Numbered n={2} tone="signal">
-            <Ruled weight="thin">
+          <Numbered n={2}>
+            <Ruled>
               <P>
                 Secondary data can clarify the problem, suggest hypotheses,
                 inform the research design, and in some cases answer the
@@ -422,8 +412,8 @@ export default function Week2() {
               </P>
             </Ruled>
           </Numbered>
-          <Numbered n={3} tone="counter">
-            <Ruled weight="thin" tone="counter">
+          <Numbered n={3}>
+            <Ruled>
               <P>
                 Because secondary data were collected for another purpose, they
                 may be incomplete, outdated, or defined in ways that do not
@@ -455,9 +445,9 @@ export default function Week2() {
             ].map(([term, rest], i) => (
               <li key={term}>
                 <Numbered n={i + 1}>
-                  <Ruled weight="thin">
+                  <Ruled>
                     <p className={BIG}>
-                      <Term tone="ink">{term}</Term>: {rest}
+                      <Term>{term}</Term>: {rest}
                     </p>
                   </Ruled>
                 </Numbered>
@@ -466,8 +456,8 @@ export default function Week2() {
           </ol>
           <ol start={5} className="flex min-w-0 flex-col gap-4">
             <li>
-              <Numbered n={5} tone="signal">
-                <Ruled weight="thin" tone="signal">
+              <Numbered n={5}>
+                <Ruled>
                   <p className={BIG}>
                     <Term>Definitions</Term>: how key variables were defined and
                     measured, such as the age groups used or the definition of a
@@ -481,9 +471,9 @@ export default function Week2() {
             </li>
             <li>
               <Numbered n={6}>
-                <Ruled weight="thin">
+                <Ruled>
                   <p className={BIG}>
-                    <Term tone="ink">Dependability</Term>: the expertise,
+                    <Term>Dependability</Term>: the expertise,
                     credibility, and reputation of the source.
                   </p>
                 </Ruled>
@@ -503,14 +493,14 @@ export default function Week2() {
           the course of its operations.
         </Statement>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Sources include sales records, customer relationship management
               systems, loyalty program records, website and application
               analytics, and customer service logs.
             </P>
           </Ruled>
-          <Ruled weight="thin" tone="signal">
+          <Ruled>
             <P className="!max-w-none">
               Internal data are readily available, inexpensive, and specific to
               the firm&apos;s own customers.
@@ -518,13 +508,13 @@ export default function Week2() {
           </Ruled>
         </div>
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Internal data describe only the firm&apos;s own customers, and
               therefore provide no information about{" "}
-              <span className="text-[var(--counter)]">competitors&apos; customers</span>{" "}
+              competitors&apos; customers{" "}
               or about people who have{" "}
-              <span className="text-[var(--counter)]">never purchased</span>.
+              never purchased.
             </p>
           </Ruled>
           <Plate>
@@ -545,22 +535,22 @@ export default function Week2() {
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Government sources</Term> include censuses, labor
+              <Term>Government sources</Term> include censuses, labor
               statistics, and trade statistics.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Nongovernment sources</Term> include trade
+              <Term>Nongovernment sources</Term> include trade
               associations, industry reports, academic journals, and the
               financial reports of publicly listed companies.
             </p>
           </Ruled>
         </div>
-        <p className="type-quote mt-9 w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Many government sources are available free of charge and are based on
           large samples, although they are often published with a{" "}
-          <span className="text-[var(--counter)]">delay</span>.
+          delay.
         </p>
       </Slide>
 
@@ -588,7 +578,7 @@ export default function Week2() {
               <Numbered n={i + 1}>
                 <Ruled>
                   <p className={BIG}>
-                    <Term tone="ink">{term}</Term> {rest}
+                    <Term>{term}</Term> {rest}
                   </p>
                 </Ruled>
               </Numbered>
@@ -596,14 +586,14 @@ export default function Week2() {
           ))}
         </ol>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Syndicated data allow a firm to compare its performance with that
               of competitors, at a lower cost than collecting the same data
               independently.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               Because the data are standardized, they cannot be adapted to the
               specific needs of a single client.
@@ -620,7 +610,7 @@ export default function Week2() {
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.5rem,2.4vw,2.1rem)]">
             Customer data are also classified by their{" "}
-            <span className="text-[var(--signal)]">relationship</span> to the
+            relationship to the
             firm that uses them.
           </Statement>
           <Ruled>
@@ -644,14 +634,14 @@ export default function Week2() {
       >
         <SlideHeading>Types of Customer Data</SlideHeading>
         <div className="grid w-full gap-x-10 gap-y-5 md:grid-cols-2">
-          <Ruled tone="signal">
+          <Ruled>
             <P className="!max-w-none">
               <Term>First-party data</Term> are collected by the firm directly
               from its own customers, such as purchase histories, account
               information, and interactions with its website.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P className="!max-w-none">
               <Term>Zero-party data</Term> are a subset of first-party data that
               customers provide intentionally, such as stated preferences in a
@@ -660,15 +650,15 @@ export default function Week2() {
           </Ruled>
           <Ruled>
             <P className="!max-w-none">
-              <Term tone="ink">Second-party data</Term> are another
+              <Term>Second-party data</Term> are another
               organization&apos;s first-party data, obtained directly from that
               organization through a partnership, such as data shared between an
               airline and a hotel group.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P className="!max-w-none">
-              <Term tone="counter">Third-party data</Term> are collected by
+              <Term>Third-party data</Term> are collected by
               organizations that have no direct relationship with the consumers
               concerned, and are aggregated from many sources and sold to
               multiple buyers.
@@ -691,8 +681,8 @@ export default function Week2() {
       <Slide id="the-decline-of-third-party-data" border className="!py-8">
         <SlideHeading>The Decline of Third-Party Data</SlideHeading>
         <div className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2">
-          <Numbered n={1} tone="counter">
-            <Ruled tone="counter" weight="thin">
+          <Numbered n={1}>
+            <Ruled>
               <p className={BIG}>
                 Privacy regulation now restricts the collection and use of
                 personal data, as in the European Union&apos;s General Data
@@ -700,8 +690,8 @@ export default function Week2() {
               </p>
             </Ruled>
           </Numbered>
-          <Numbered n={2} tone="counter">
-            <Ruled tone="counter" weight="thin">
+          <Numbered n={2}>
+            <Ruled>
               <p className={BIG}>
                 Several web browsers block third-party cookies by default, and
                 mobile operating systems require user permission for tracking
@@ -712,13 +702,13 @@ export default function Week2() {
         </div>
         <Statement className="mt-9 !max-w-none !text-[clamp(1.45rem,2.4vw,2rem)]">
           As a result, the availability and reliability of{" "}
-          <span className="text-[var(--counter)]">third-party data</span> have
+          third-party data have
           declined.
         </Statement>
-        <Ruled tone="signal" className="mt-8 w-full">
+        <Ruled className="mt-8 w-full">
           <p className={`${BIG} !max-w-none`}>
             Firms have responded by investing in{" "}
-            <span className="text-[var(--signal)]">first-party data</span>, for
+            first-party data, for
             example through loyalty programs, customer accounts, and direct
             relationships with customers.
           </p>
@@ -735,10 +725,10 @@ export default function Week2() {
           secondary sources.
         </Statement>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>They reduce the time required for desk research considerably.</p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               They also introduce errors that are difficult to detect, because
               their output is fluent and appears authoritative.
@@ -761,18 +751,18 @@ export default function Week2() {
           ].map((rest, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <p className={BIG}>AI can be used to {rest}</p>
                 </Ruled>
               </Numbered>
             </li>
           ))}
         </ol>
-        <p className="type-quote mt-9 w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           Tools that retrieve sources from the web and cite them in their
           answers make verification easier, but they do not ensure that the
           cited source{" "}
-          <span className="text-[var(--counter)]">supports the claim</span>.
+          supports the claim.
         </p>
       </Slide>
 
@@ -782,32 +772,32 @@ export default function Week2() {
       <Slide id="fabricated-references-and-figures" border className="!py-8">
         <SlideHeading>Fabricated References and Figures</SlideHeading>
         <div className="grid w-full gap-x-10 gap-y-6 md:grid-cols-3">
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               Language models can generate references to reports and articles
               that do not exist, with plausible titles, authors, and publication
               years.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               They can generate statistics that are not reported in any source,
               or attribute a real statistic to the wrong source, year, or
               population.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               A summary can omit qualifications that the original source stated,
               such as the sample size or the definition of the market.
             </P>
           </Ruled>
         </div>
-        <p className="type-quote mt-9 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.35rem,2.2vw,1.85rem)]">
+        <p className="type-quote mt-9 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.35rem,2.2vw,1.85rem)]">
           Such errors are most frequent for{" "}
-          <span className="text-[var(--counter)]">specialized topics</span>,{" "}
-          <span className="text-[var(--counter)]">recent events</span>, and{" "}
-          <span className="text-[var(--counter)]">precise numerical values</span>.
+          specialized topics,{" "}
+          recent events, and{" "}
+          precise numerical values.
         </p>
       </Slide>
 
@@ -830,15 +820,15 @@ export default function Week2() {
             "Finally, the researcher evaluates the source against the criteria for secondary data: methodology, accuracy, currency, purpose, definitions, and dependability.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>
             </li>
           ))}
         </ol>
-        <Ruled tone="counter" className="mt-9 w-full">
+        <Ruled className="mt-9 w-full">
           <p className={`${BIG} !max-w-none`}>
             Internal secondary data are uploaded to an external AI tool only
             when the firm&apos;s data policies and the terms of the tool permit
@@ -851,26 +841,11 @@ export default function Week2() {
           Discussion: Desk Research With AI
           ================================================================ */}
       <Slide id="discussion-desk-research-with-ai" border className="!py-8">
-        <div className="flex w-full flex-col items-center text-center">
-          <h2 className="type-h1">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            Desk Research With AI
-          </h2>
-          <div className="mt-10 w-full max-w-5xl border-y-2 border-[var(--counter)] px-4 py-9 md:px-12">
-            <p className="type-quote mx-auto !max-w-[46ch] !text-[clamp(1.4rem,2.4vw,2.1rem)]">
-              <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">
-                Discussion:
-              </span>{" "}
-              An analyst preparing a market entry report asks an AI tool for the
-              size of the plant-based dairy market in three countries. The tool
-              returns three precise figures, each with a citation. Which steps
-              should the analyst take before the figures are included in the
-              report, and what should the report disclose about their origin?
-            </p>
-          </div>
-        </div>
+        <SlideHeading>Discussion: Desk Research With AI</SlideHeading>
+        <Discussion
+          scenario={"An analyst preparing a market entry report asks an AI tool for the size of the plant-based dairy market in three countries. The tool returns three precise figures, each with a citation."}
+          question={"Which steps should the analyst take before the figures are included in the report, and what should the report disclose about their origin?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -883,10 +858,10 @@ export default function Week2() {
           than a consumer.
         </Statement>
         <div className="mt-9 w-full">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
-              Two designs predominate: <Term tone="ink">descriptive audits</Term> of agent outputs and{" "}
-              <Term tone="ink">causal experiments</Term> on agent choice.
+              Two designs predominate: <Term>descriptive audits</Term> of agent outputs and{" "}
+              <Term>causal experiments</Term> on agent choice.
             </p>
           </Ruled>
         </div>
@@ -905,7 +880,7 @@ export default function Week2() {
                 queries, such as the brands an assistant recommends in response to 500 product questions.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>Audits describe what agents do: which brands appear, how often, and in which position.</P>
             </Ruled>
           </div>
@@ -914,13 +889,13 @@ export default function Week2() {
           </Plate>
         </div>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <P>
               Audits of AI shopping agents have documented position effects, in which an alternative&apos;s place
               in a list influences whether the agent selects it (Wadi &amp; Ma, 2026a).
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled>
             <P>
               An audit observes only the final output. Because the queries differ in many respects at once, an
               audit cannot attribute a pattern in the outputs to a particular cause.
@@ -951,10 +926,10 @@ export default function Week2() {
                 agent&apos;s choices are compared across the two conditions.
               </p>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>The order of alternatives and attributes is randomized across sessions, to control for position effects.</P>
             </Ruled>
-            <Ruled weight="thin">
+            <Ruled>
               <P>
                 Each condition can be repeated many times at low cost, and each session can be run independently
                 of the others, so that no carryover occurs between conditions.
@@ -965,7 +940,7 @@ export default function Week2() {
             <ListingExperiment />
           </Plate>
         </div>
-        <p className="type-quote mt-7 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+        <p className="type-quote mt-7 w-full border-t border-[var(--rule-2)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
           A descriptive audit identifies a pattern in agent behavior. A causal experiment tests whether a specific
           factor produces it.
         </p>
@@ -988,8 +963,8 @@ export default function Week2() {
             "Descriptive audits record what AI agents recommend and select, while causal experiments manipulate one factor at a time to establish why they do so.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s}</P>
                 </Ruled>
               </Numbered>

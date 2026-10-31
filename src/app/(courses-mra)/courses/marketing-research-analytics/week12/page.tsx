@@ -12,7 +12,7 @@ import {
   SlideHeading,
   Numbered,
   PartHead,
-  Prompt,
+  Discussion,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
@@ -57,10 +57,10 @@ const CLOSE = "type-quote w-full !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]
 const CELL = "!max-w-none !leading-snug";
 
 /** One numbered step of a procedure, under a hairline. */
-function Step({ n, children, tone = "ink" }: { n: number; children: React.ReactNode; tone?: "ink" | "signal" }) {
+function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
     <Numbered n={n}>
-      <Ruled tone={tone} weight="thin">
+      <Ruled>
         <P className={CELL}>{children}</P>
       </Ruled>
     </Numbered>
@@ -70,15 +70,13 @@ function Step({ n, children, tone = "ink" }: { n: number; children: React.ReactN
 /** A thin ruled cell holding one body sentence. */
 function Cell({
   children,
-  tone = "ink",
   className = "",
 }: {
   children: React.ReactNode;
-  tone?: "ink" | "signal" | "counter";
   className?: string;
 }) {
   return (
-    <Ruled tone={tone} weight="thin" className={className}>
+    <Ruled className={className}>
       <P className={CELL}>{children}</P>
     </Ruled>
   );
@@ -103,13 +101,13 @@ export default function Week12() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 12: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[26ch]">
-          Text Analytics, AI-Driven Insights, and <span className="text-[var(--signal)]">Reporting</span>
+          Text Analytics, AI-Driven Insights, and Reporting
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <p className="type-quote mt-14 max-w-[48ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
+        <p className="type-quote mt-10 max-w-[48ch] !text-[clamp(1.35rem,2.2vw,1.9rem)]">
           Research informs decisions only when its findings are valid, obtained lawfully, and
           communicated in a form that{" "}
-          <span className="text-[var(--signal)]">decision makers can act upon</span>.
+          decision makers can act upon.
         </p>
       </Slide>
 
@@ -117,7 +115,7 @@ export default function Week12() {
           Part 1: Text as Research Data
           ================================================================ */}
       <PartSlide id="part-1-text-as-research-data" n={1} title="Text as Research Data">
-        <Ruled tone="signal">
+        <Ruled>
           <p className={BIG}>
             A large proportion of the information available about customers exists as{" "}
             <Term>text rather than numbers</Term>.
@@ -145,7 +143,7 @@ export default function Week12() {
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Statement className="!max-w-none !text-[clamp(1.15rem,1.7vw,1.4rem)]">
-              <Term tone="ink">User-generated content</Term> is material created and published by
+              <Term>User-generated content</Term> is material created and published by
               consumers, such as online reviews, social media posts, and forum discussions.
             </Statement>
             <Cell>
@@ -158,7 +156,7 @@ export default function Week12() {
           </Plate>
         </div>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Cell tone="signal">
+          <Cell>
             Such text is <Term>unsolicited, expressed in consumers&rsquo; own language</Term>,
             available in large volumes, and generated continuously.
           </Cell>
@@ -175,16 +173,16 @@ export default function Week12() {
       <Slide id="social-listening" border className="!py-8">
         <SlideHeading>Social Listening</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.2rem,1.9vw,1.55rem)]">
-          <Term tone="ink">Social listening</Term> is the systematic monitoring and analysis of online
+          <Term>Social listening</Term> is the systematic monitoring and analysis of online
           conversations about a brand, its competitors, and its category.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Cell>
-              <Term tone="ink">Share of voice</Term> is the proportion of conversations in a category
+              <Term>Share of voice</Term> is the proportion of conversations in a category
               that mention a particular brand.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               Social listening tracks changes in the volume and sentiment of conversations over time,
               identifies emerging issues, and <Term>provides early warning of potential crises</Term>.
             </Cell>
@@ -217,7 +215,7 @@ export default function Week12() {
               customers, and the findings cannot be projected to the customer base with a known
               precision, as introduced in Week 5.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               Consumers with extreme experiences are more likely to post than those with moderate
               experiences, so that <Term>ratings are concentrated at the highest and lowest values</Term>.
             </Cell>
@@ -240,7 +238,7 @@ export default function Week12() {
             collected may not represent all the content published.
           </Cell>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--ink)] pt-4`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-4`}>
           Findings from user-generated content are therefore compared with evidence from surveys and
           customer records before they inform decisions.
         </p>
@@ -250,9 +248,9 @@ export default function Week12() {
           Part 2: Methods of Text Analytics
           ================================================================ */}
       <PartSlide id="part-2-methods-of-text-analytics" n={2} title="Methods of Text Analytics">
-        <Ruled tone="signal">
+        <Ruled>
           <p className={BIG}>
-            <Term tone="ink">Text analytics</Term> is the use of computational methods to{" "}
+            <Term>Text analytics</Term> is the use of computational methods to{" "}
             <Term>extract structured information from unstructured text</Term>.
           </p>
         </Ruled>
@@ -277,11 +275,11 @@ export default function Week12() {
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Cell>
-              <Term tone="ink">Sentiment analysis</Term> assigns a polarity, positive, negative, or
+              <Term>Sentiment analysis</Term> assigns a polarity, positive, negative, or
               neutral, and sometimes an intensity, to a text.
             </Cell>
             <Cell>
-              <Term tone="ink">Lexicon-based methods</Term> score texts according to lists of words
+              <Term>Lexicon-based methods</Term> score texts according to lists of words
               associated with positive and negative sentiment.
             </Cell>
             <Cell>
@@ -289,11 +287,11 @@ export default function Week12() {
               and large language models can classify sentiment from instructions alone.
             </Cell>
             <Cell>
-              <Term tone="ink">Aspect-based sentiment analysis</Term> identifies the sentiment
+              <Term>Aspect-based sentiment analysis</Term> identifies the sentiment
               expressed toward each attribute mentioned in a text. A review of a phone may be
               positive about the battery and negative about the camera.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               Sentiment analysis is complicated by <Term>sarcasm, negation, and domain-specific
               meaning</Term>. &ldquo;Unpredictable&rdquo; is favorable in a review of a film and
               unfavorable in a review of a car&rsquo;s steering.
@@ -312,11 +310,11 @@ export default function Week12() {
         <SlideHeading>Topic Modeling</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3 md:gap-10">
           <Cell>
-            <Term tone="ink">Topic modeling</Term> identifies the themes present in a large collection
+            <Term>Topic modeling</Term> identifies the themes present in a large collection
             of texts, without categories specified in advance.
           </Cell>
           <Cell>
-            Latent Dirichlet allocation, <Term tone="ink">LDA</Term>, the most established method,
+            Latent Dirichlet allocation, <Term>LDA</Term>, the most established method,
             represents each text as a mixture of topics and each topic as a distribution over words.
           </Cell>
           <Cell>
@@ -330,7 +328,7 @@ export default function Week12() {
               Methods based on the embeddings introduced in Week 10 cluster texts by meaning, and
               frequently produce more coherent topics for short texts such as social media posts.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               <Term>The number of topics is chosen by the analyst</Term>, and the interpretation of
               each topic is a judgment that is documented.
             </Cell>
@@ -348,13 +346,13 @@ export default function Week12() {
         <SlideHeading>Text Classification With Large Language Models</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Cell>
-            <Term tone="ink">Text classification</Term> assigns each text to one or more predefined
+            <Term>Text classification</Term> assigns each text to one or more predefined
             categories, such as the type of complaint expressed.
           </Cell>
           <Cell>
-            In <Term tone="ink">zero-shot classification</Term>, categories are assigned by a large
+            In <Term>zero-shot classification</Term>, categories are assigned by a large
             language model on the basis of written instructions alone. In{" "}
-            <Term tone="ink">few-shot classification</Term>, the instructions include a small number
+            <Term>few-shot classification</Term>, the instructions include a small number
             of coded examples.
           </Cell>
         </div>
@@ -368,7 +366,7 @@ export default function Week12() {
               Language models can also extract specific information from texts, such as the product
               mentioned, the problem described, and the resolution requested.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               The classifications <Term>can vary with the wording of the instructions</Term> and
               between versions of the model, and are therefore validated before use.
             </Cell>
@@ -392,27 +390,27 @@ export default function Week12() {
         <div className="grid w-full gap-x-12 gap-y-9 md:grid-cols-2">
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Sentiment analysis</Term> is appropriate when the decision requires the
+              <Term>Sentiment analysis</Term> is appropriate when the decision requires the
               overall favorability of the conversation, such as the trend in sentiment toward a brand
               after a campaign.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Aspect-based sentiment analysis</Term> is appropriate when the decision
+              <Term>Aspect-based sentiment analysis</Term> is appropriate when the decision
               concerns specific product attributes, such as which features of a product generate
               complaints.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Topic modeling</Term> is appropriate when the relevant themes are not
+              <Term>Topic modeling</Term> is appropriate when the relevant themes are not
               known in advance, as in exploratory analysis of reasons for cancellation.
             </p>
           </Ruled>
           <Ruled>
             <p className={BIG}>
-              <Term tone="ink">Text classification</Term> is appropriate when the categories are known
+              <Term>Text classification</Term> is appropriate when the categories are known
               in advance and each text must be assigned to them, as in the routing of customer service
               messages.
             </p>
@@ -444,7 +442,7 @@ export default function Week12() {
               The analyst then compares the automated coding with the human coding, reporting
               precision and recall for each category, as introduced in Week 11.
             </Step>
-            <Step n={5} tone="signal">
+            <Step n={5}>
               The analyst then examines whether{" "}
               <Term>accuracy differs across products, customer groups, or languages</Term>.
             </Step>
@@ -463,14 +461,11 @@ export default function Week12() {
           Discussion: Ten Thousand Reviews
           ================================================================ */}
       <Slide id="discussion-ten-thousand-reviews" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          Ten Thousand Reviews
-        </SlideHeading>
-        <Prompt>
-          A hotel chain holds 10,000 online reviews from the past year and seeks to identify the
-          causes of declining ratings. Which text analytics methods are appropriate, how should their
-          results be validated, and which limitations of review data should qualify the conclusions?
-        </Prompt>
+        <SlideHeading>Discussion: Ten Thousand Reviews</SlideHeading>
+        <Discussion
+          scenario={"A hotel chain holds 10,000 online reviews from the past year and seeks to identify the causes of declining ratings."}
+          question={"Which text analytics methods are appropriate, how should their results be validated, and which limitations of review data should qualify the conclusions?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -480,7 +475,7 @@ export default function Week12() {
         <Ruled>
           <p className={BIG}>Every week of this course has involved data that describe people.</p>
         </Ruled>
-        <Ruled tone="signal">
+        <Ruled>
           <p className={BIG}>
             <Term>Data protection law</Term> governs the collection, use, and storage of personal
             data in many jurisdictions.
@@ -510,9 +505,9 @@ export default function Week12() {
           ].map(([term, rest], i) => (
             <li key={term} className="min-w-0">
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <p className={BIG}>
-                    <Term tone="ink">{term}:</Term> {rest}
+                    <Term>{term}:</Term> {rest}
                   </p>
                 </Ruled>
               </Numbered>
@@ -552,7 +547,7 @@ export default function Week12() {
               Quotations used in reports are therefore paraphrased or used with permission when their
               authors could be identified.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               Combinations of characteristics that are individually harmless, such as postal code,
               age, and occupation, <Term>can identify an individual</Term>.
             </Cell>
@@ -561,7 +556,7 @@ export default function Week12() {
             <ReIdentification />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--ink)] pt-4`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-4`}>
           Special categories of data, such as health, religion, and sexual orientation, require
           additional protection.
         </p>
@@ -582,7 +577,7 @@ export default function Week12() {
               The terms of the service determine whether submitted data are retained, and whether
               they are used to train future models.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               Personal data are therefore <Term>removed or replaced before submission</Term> where
               the analysis permits it.
             </Cell>
@@ -607,7 +602,7 @@ export default function Week12() {
           Part 4: Communicating Findings
           ================================================================ */}
       <PartSlide id="part-4-communicating-findings" n={4} title="Communicating Findings">
-        <Ruled tone="signal">
+        <Ruled>
           <p className={BIG}>
             The value of research is realized only when its findings{" "}
             <Term>inform a decision</Term>.
@@ -633,12 +628,12 @@ export default function Week12() {
       <Slide id="the-research-report" border className="!py-8">
         <SlideHeading>The Research Report</SlideHeading>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <Ruled tone="signal" className="self-start">
-            <span className="type-label mb-3 block tabular-nums !text-[var(--signal)]">01</span>
+          <Ruled className="self-start">
+            <span className="type-label mb-3 block tabular-nums">1</span>
             <p className="type-quote !max-w-none !text-[clamp(1.25rem,2vw,1.65rem)]">
               The executive summary states the problem, the principal findings, the conclusions, and
               the recommendations, and is{" "}
-              <span className="text-[var(--signal)]">intelligible without the rest of the report</span>.
+              intelligible without the rest of the report.
             </p>
           </Ruled>
           <ol className="grid min-w-0 gap-x-10 gap-y-5 md:grid-cols-2">
@@ -670,14 +665,14 @@ export default function Week12() {
         <div className="grid w-full gap-8 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] md:gap-5">
           <Ruled>
             <p className={BIG}>
-              A <Term tone="ink">finding</Term> states what the data show: &ldquo;42 percent of
+              A <Term>finding</Term> states what the data show: &ldquo;42 percent of
               customers who cancelled cited the price increase as their main reason.&rdquo;
             </p>
           </Ruled>
           <ChainArrow />
           <Ruled>
             <p className={BIG}>
-              A <Term tone="ink">conclusion</Term> interprets the findings in relation to the research
+              A <Term>conclusion</Term> interprets the findings in relation to the research
               problem: &ldquo;The price increase is the principal cause of the rise in cancellations
               among long-standing customers.&rdquo;
             </p>
@@ -685,7 +680,7 @@ export default function Week12() {
           <ChainArrow />
           <Ruled>
             <p className={BIG}>
-              A <Term tone="ink">recommendation</Term> proposes an action on the basis of the
+              A <Term>recommendation</Term> proposes an action on the basis of the
               conclusions: &ldquo;Offer long-standing customers a loyalty rate for twelve months, and
               test its effect on cancellations in a randomized experiment before extending it.&rdquo;
             </p>
@@ -693,7 +688,7 @@ export default function Week12() {
         </div>
         <div className="mt-9 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Cell>Each recommendation is supported by conclusions, and each conclusion by findings.</Cell>
-          <Cell tone="signal">
+          <Cell>
             The report distinguishes the three clearly, so that the decision maker can{" "}
             <Term>assess the strength of the evidence behind each recommendation</Term>.
           </Cell>
@@ -706,7 +701,7 @@ export default function Week12() {
       <Slide id="data-storytelling" border className="!py-8">
         <SlideHeading>Data Storytelling</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.15rem,1.7vw,1.4rem)]">
-          <Term tone="ink">Data storytelling</Term> is the organization of findings into a coherent
+          <Term>Data storytelling</Term> is the organization of findings into a coherent
           argument that leads from the decision to the evidence and to the recommended action.
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
@@ -719,7 +714,7 @@ export default function Week12() {
               Each chart communicates one finding, as introduced in Week 6, and its title states that
               finding.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               <Term>Uncertainty is stated explicitly</Term>, for example through confidence intervals,
               as introduced in Week 7.
             </Cell>
@@ -751,7 +746,7 @@ export default function Week12() {
               The report states where AI tools were used in the research, for example in drafting the
               questionnaire, moderating interviews, coding responses, or analyzing data.
             </Cell>
-            <Cell tone="signal">
+            <Cell>
               It describes <Term>how the output of each tool was verified</Term>, such as the
               agreement between AI coding and human coding.
             </Cell>
@@ -765,7 +760,7 @@ export default function Week12() {
             <AiDisclosure />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-7 border-t-2 border-[var(--ink)] pt-4`}>
+        <p className={`${CLOSE} mt-7 border-t border-[var(--rule-2)] pt-4`}>
           Disclosure allows decision makers to evaluate the evidence, and allows other researchers to
           reproduce the work.
         </p>
@@ -781,11 +776,11 @@ export default function Week12() {
       >
         <Ruled>
           <p className={BIG}>
-            The <Term tone="ink">insights function</Term> is the part of the organization responsible
+            The <Term>insights function</Term> is the part of the organization responsible
             for marketing research and analytics.
           </p>
         </Ruled>
-        <Ruled tone="signal">
+        <Ruled>
           <p className={BIG}>
             AI tools have changed <Term>the cost and speed</Term> of nearly every step of the research
             process covered in this course.
@@ -822,11 +817,11 @@ export default function Week12() {
             real people, with the limitations examined in Weeks 5 and 8.
           </Cell>
         </div>
-        <p className={`${CLOSE} mt-9 border-t-2 border-[var(--signal)] pt-5 !text-[clamp(1.3rem,2.2vw,1.85rem)]`}>
+        <p className={`${CLOSE} mt-9 border-t border-[var(--rule-2)] pt-5 !text-[clamp(1.3rem,2.2vw,1.85rem)]`}>
           As the volume of research output increases,{" "}
-          <span className="text-[var(--signal)]">
+          
             the ability to distinguish valid evidence from plausible but unfounded output
-          </span>{" "}
+          {" "}
           becomes more valuable.
         </p>
       </Slide>
@@ -846,15 +841,15 @@ export default function Week12() {
           ].map((s, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1}>
-                <Ruled weight="thin">
+                <Ruled>
                   <p className={BIG}>{s}</p>
                 </Ruled>
               </Numbered>
             </li>
           ))}
           <li className="min-w-0">
-            <Numbered n={6} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={6}>
+              <Ruled>
                 <p className={BIG}>
                   The researcher <Term>remains accountable for every finding</Term> in the report, as
                   introduced in Week 1.
@@ -881,19 +876,19 @@ export default function Week12() {
         </Statement>
         <div className="mt-6 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
-            <Cell tone="signal">
-              <Term tone="ink">How agents choose:</Term> which product information agents acquire,
+            <Cell>
+              <Term>How agents choose:</Term> which product information agents acquire,
               how they weight attributes, and{" "}
               <Term>how the presentation of information in the storefront affects their choices</Term>{" "}
               (Wadi &amp; Ma, 2026b).
             </Cell>
             <Cell>
-              <Term tone="ink">Whom agents serve:</Term> whether the agent&rsquo;s recommendations
+              <Term>Whom agents serve:</Term> whether the agent&rsquo;s recommendations
               change with the party it is told it serves, and whether sponsorship disclosures protect
               consumers when the agent rather than the consumer reads them (Wadi &amp; Ma, 2026c).
             </Cell>
             <Cell>
-              <Term tone="ink">How brands appear to agents:</Term> whether the brand is included in the
+              <Term>How brands appear to agents:</Term> whether the brand is included in the
               alternatives that AI assistants present, in which position, and with which attributes.
             </Cell>
           </div>
@@ -901,7 +896,7 @@ export default function Week12() {
             <AgentSearch />
           </Plate>
         </div>
-        <p className={`${CLOSE} mt-6 border-t-2 border-[var(--ink)] pt-4`}>
+        <p className={`${CLOSE} mt-6 border-t border-[var(--rule-2)] pt-4`}>
           The methods of this course apply directly: audits describe agent behavior, controlled
           experiments test its causes, and validated measures and adequate samples make the evidence
           reliable.
@@ -912,16 +907,11 @@ export default function Week12() {
           Discussion: The Insights Team of the Future
           ================================================================ */}
       <Slide id="discussion-the-insights-team-of-the-future" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
-          The Insights Team of the Future
-        </SlideHeading>
-        <Prompt>
-          A chief executive proposes to reduce the firm&rsquo;s insights team to two people, and to
-          rely on AI tools and self-service platforms for all other research. Which research
-          activities could such an arrangement perform adequately, which would be at risk, and how
-          should the insights function be organized to use AI tools while maintaining the validity of
-          its evidence?
-        </Prompt>
+        <SlideHeading>Discussion: The Insights Team of the Future</SlideHeading>
+        <Discussion
+          scenario={"A chief executive proposes to reduce the firm's insights team to two people, and to rely on AI tools and self-service platforms for all other research."}
+          question={"Which research activities could such an arrangement perform adequately, which would be at risk, and how should the insights function be organized to use AI tools while maintaining the validity of its evidence?"}
+        />
       </Slide>
 
       {/* ================================================================
@@ -940,8 +930,8 @@ export default function Week12() {
             "AI models and AI agents are also subjects of research, evaluated with the same standards of measurement, sampling, and experimental design that apply to human respondents.",
           ].map((s, i) => (
             <li key={i} className={i === 6 ? "min-w-0 lg:col-span-2" : "min-w-0"}>
-              <Numbered n={i + 1} tone={i === 6 ? "signal" : "ink"}>
-                <Ruled weight="thin" tone={i === 6 ? "signal" : "ink"}>
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s.replace("researcher's", "researcher’s")}</P>
                 </Ruled>
               </Numbered>
@@ -966,8 +956,8 @@ export default function Week12() {
             "In agent-mediated markets, the insights function studies how AI agents choose, whom they serve, and how brands appear to them, with the methods of measurement, sampling, and experimentation developed in this course.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
-              <Numbered n={i + 1} tone="signal">
-                <Ruled weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled>
                   <P className="!leading-snug">{s.replace("researcher's", "researcher’s")}</P>
                 </Ruled>
               </Numbered>

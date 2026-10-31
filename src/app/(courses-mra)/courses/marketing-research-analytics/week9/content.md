@@ -120,7 +120,8 @@ week: week9
 - Neither approach establishes causal effects on its own. Both are validated with incrementality experiments, such as holdout tests and geographic experiments, which apply the experimental designs introduced in Week 8.
 
 ## Discussion: The Search Budget
-- Discussion: A retailer's last-click attribution report assigns 60 percent of online sales to search advertising, and the chief marketing officer proposes to move the television budget into search. Which limitations of attribution bear on this proposal, and which evidence should be obtained before the budget is reallocated?
+- A retailer's last-click attribution report assigns 60 percent of online sales to search advertising, and the chief marketing officer proposes to move the television budget into search.
+- Which limitations of attribution bear on this proposal, and which evidence should be obtained before the budget is reallocated?
 
 ## Part 5: Explanation and Prediction [no-exercise]
 - Regression models serve two distinct purposes: to explain and to predict.
@@ -154,7 +155,8 @@ week: week9
 - Many decisions combine the approaches: a predictive model identifies the customers at risk, and an experiment estimates the effect of an intervention on those customers.
 
 ## Discussion: Accuracy or Understanding?
-- Discussion: A data science team presents a machine learning model that predicts weekly sales more accurately than the firm's marketing mix model, and proposes to use it to set next year's advertising budget. What can the new model contribute to the budget decision, and what can it not contribute?
+- A data science team presents a machine learning model that predicts weekly sales more accurately than the firm's marketing mix model, and proposes to use it to set next year's advertising budget.
+- What can the new model contribute to the budget decision, and what can it not contribute?
 
 ## Part 6: Choice Models for AI Agents [no-exercise]
 - When AI agents select products, their choices can be analyzed with the models used for consumer choice.

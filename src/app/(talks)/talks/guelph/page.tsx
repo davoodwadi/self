@@ -355,7 +355,7 @@ export default function Page() {
               </p>
               <ul className="grid gap-5 sm:grid-cols-2">
                 <li>
-                  <Ruled weight="thin">
+                  <Ruled>
                     <p className={BODY}>
                       <strong>Coffee A:</strong> $4.99, 10 oz ($0.499/oz,
                       just-below price cue)
@@ -363,7 +363,7 @@ export default function Page() {
                   </Ruled>
                 </li>
                 <li>
-                  <Ruled tone="signal" weight="thin">
+                  <Ruled>
                     <p className={BODY}>
                       <strong>Coffee B:</strong> $5.00, 11 oz (
                       <strong className={`font-semibold ${KEY}`}>
@@ -378,7 +378,7 @@ export default function Page() {
           }
         />
         <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <p className={`${BODY} !text-[0.97rem]`}>
               <strong>
                 Study 2 (Promotional Discount Framing, $0 vs. $50 cost, 3
@@ -389,7 +389,7 @@ export default function Page() {
               0.86 to 0.48 (vs. 0.88 under a specific goal prompt)
             </p>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <p className={`${BODY} !text-[0.97rem]`}>
               <strong>Multilevel Moderated Mediation:</strong> Acquisition cost
               × vague goal prompt reduces choice optimality via diagnostic
@@ -422,7 +422,7 @@ export default function Page() {
         </p>
         <SponsorStudy />
         <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
-          <Ruled tone="signal" weight="thin">
+          <Ruled>
             <p className={`${BODY} !text-[0.95rem]`}>
               <strong>Moderated Mediation (PROCESS Model 8):</strong> Platform
               delegation reduces pre-choice skepticism toward sponsored listings
@@ -431,7 +431,7 @@ export default function Page() {
               &lt; .001)
             </p>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <p className={`${BODY} !text-[0.95rem]`}>
               <strong>
                 Beneficiary Remedy (extending <em>JECR</em> 2026 beneficiary
@@ -444,7 +444,7 @@ export default function Page() {
               <em>&quot;Promoted&quot;</em>, Study 3) does not close the gap
             </p>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <p className={`${BODY} !text-[0.95rem]`}>
               <strong>Study 2 (System-One Decision Models):</strong> Replicates
               on exact log-odds across{" "}
@@ -526,7 +526,7 @@ export default function Page() {
                 ))}
               </tbody>
             </table>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <p className={`${BODY} !text-[0.95rem]`}>
                 <strong>Choice &amp; Reasoning Effort:</strong> Higher reasoning
                 effort{" "}
@@ -564,7 +564,7 @@ export default function Page() {
           <LikertPlate />
         </div>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled weight="thin">
+          <Ruled>
             <h3 className="type-h2 !text-[1.15rem]">
               Monte-Carlo Behavioral Evaluation of LLMs (
               <em>Findings of EMNLP 2025</em>, with Marc Fredette)
@@ -580,7 +580,7 @@ export default function Page() {
               </li>
             </ul>
           </Ruled>
-          <Ruled weight="thin">
+          <Ruled>
             <h3 className="type-h2 !text-[1.15rem]">
               Exact Token-Level Likert Distributions (
               <em>Every Token Counts</em>, <em>arXiv:2608.10503</em>, for{" "}
@@ -619,7 +619,7 @@ export default function Page() {
         </p>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-3">
-            <Ruled weight="thin">
+            <Ruled>
               <h3 className="type-h2 !text-[1.05rem]">
                 Dynamic Respondent-Level Training Pipeline (US ISSP 2015 to
                 2024):
@@ -646,7 +646,7 @@ export default function Page() {
                 </li>
               </ul>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled>
               <h3 className="type-h2 !text-[1.05rem]">
                 Out-of-Distribution Evaluation (SubPOP / US General Social
                 Survey, 2,926 subpopulation targets):
@@ -679,7 +679,7 @@ export default function Page() {
           </div>
           <PartyPlate />
         </div>
-        <Ruled weight="thin" className="mt-4 w-full">
+        <Ruled className="mt-4 w-full">
           <h3 className="type-h2 !text-[1.05rem]">
             Marketing Generalization (Grummon et al. 2025 Front-of-Package
             Nutrition RCT, <em>N</em> = 5,636 shoppers, 114,899 responses):

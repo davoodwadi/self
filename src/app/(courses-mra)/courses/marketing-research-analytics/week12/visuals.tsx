@@ -153,8 +153,8 @@ export function TextSources() {
       height={318}
       label="Two columns of customer text. Published by consumers: an online review with four of five stars, a social media post with a like, and a forum thread with two replies. The firm's own channels: a chat log between a customer and an agent, a transcript of a customer service call, and an open-ended survey answer written in a large text box"
     >
-      <Key x={L} y={24}>PUBLISHED BY CONSUMERS</Key>
-      <Key x={R} y={24}>{"THE FIRM’S OWN CHANNELS"}</Key>
+      <Key x={L} y={24}>Published by consumers</Key>
+      <Key x={R} y={24}>{"The firm’s own channels"}</Key>
       <line x1={340} y1={14} x2={340} y2={306} stroke={RULE} strokeWidth={1} />
 
       {/* review */}
@@ -263,7 +263,7 @@ export function ShareOfVoice() {
         height={372}
         label={`Weekly mentions in a category over 26 weeks: our brand, with its negative mentions in ochre, under brands B and C. Our negative mentions surge from week 18. A window covers weeks ${start + 1} to ${start + span}: our share of voice there is ${pct(sov)}, and ${pct(neg)} of our mentions are negative`}
       >
-        <Key x={20} y={22} size={10}>WEEKLY MENTIONS IN THE CATEGORY</Key>
+        <Key x={20} y={22} size={10}>Weekly mentions in the category</Key>
         {[0, 500, 1000].map((v) => (
           <g key={v}>
             <line x1={x0 - 6} y1={Y(v)} x2={x0 + 26 * bw} y2={Y(v)} stroke={v ? RULE : INK} strokeWidth={v ? 1 : 1.25} />
@@ -292,17 +292,17 @@ export function ShareOfVoice() {
           const mid = (a: number, b: number) => r2((Y(a) + Y(b)) / 2 + 3.5);
           return (
             <g>
-              <Key x={lx} y={mid(last.neg + last.rest + last.c, last.neg + last.rest + last.c + last.b)} size={9.5}>BRAND B</Key>
-              <Key x={lx} y={mid(last.neg + last.rest, last.neg + last.rest + last.c)} size={9.5}>BRAND C</Key>
-              <Key x={lx} y={mid(last.neg, last.neg + last.rest)} size={9.5} fill={INK}>OUR BRAND</Key>
-              <Key x={lx} y={mid(0, last.neg)} size={9.5} fill={COUNTER}>NEGATIVE</Key>
+              <Key x={lx} y={mid(last.neg + last.rest + last.c, last.neg + last.rest + last.c + last.b)} size={9.5}>Brand B</Key>
+              <Key x={lx} y={mid(last.neg + last.rest, last.neg + last.rest + last.c)} size={9.5}>Brand C</Key>
+              <Key x={lx} y={mid(last.neg, last.neg + last.rest)} size={9.5} fill={INK}>Our brand</Key>
+              <Key x={lx} y={mid(0, last.neg)} size={9.5} fill={COUNTER}>Negative</Key>
             </g>
           );
         })()}
         {[1, 5, 10, 15, 20, 26].map((wk) => (
           <Key key={wk} x={r2(x0 + (wk - 0.5) * bw)} y={base + 16} anchor="middle" size={9.5}>{wk}</Key>
         ))}
-        <Key x={x0} y={base + 32} size={9.5}>WEEK</Key>
+        <Key x={x0} y={base + 32} size={9.5}>Week</Key>
         <rect
           x={x0}
           y={top - 8}
@@ -321,7 +321,7 @@ export function ShareOfVoice() {
         </g>
 
         <line x1={20} y1={272} x2={660} y2={272} stroke={RULE} strokeWidth={1} />
-        <Key x={rb0} y={294} size={10}>{`SHARE OF VOICE, WEEKS ${start + 1}n/a${start + span}`}</Key>
+        <Key x={rb0} y={294} size={10}>{`Share of voice, weeks ${start + 1}n/a${start + span}`}</Key>
         {shares.map((f, i) => {
           const a = shares.slice(0, i).reduce((p, q) => p + q, 0);
           return (
@@ -335,7 +335,7 @@ export function ShareOfVoice() {
         })}
         <Display x={rb0} y={358} size={26} fill={SIGNAL}>{pct(sov)}</Display>
         <Note x={rb0 + 58} y={354} size={12.5} fill={INK2}>of mentions are of our brand</Note>
-        <Key x={470} y={294} size={10}>OF OUR MENTIONS</Key>
+        <Key x={470} y={294} size={10}>Of our mentions</Key>
         <Display x={470} y={330} size={26} fill={COUNTER}>{pct(neg)}</Display>
         <Note x={528} y={326} size={12.5} fill={INK2}>negative</Note>
       </Frame>
@@ -371,7 +371,7 @@ function RatingBars({ x, shares, fill, stroke, keyText, mean, keyFill = INK3 }: 
           </g>
         );
       })}
-      <Key x={x} y={base + 50} size={10}>MEAN RATING</Key>
+      <Key x={x} y={base + 50} size={10}>Mean rating</Key>
       <Display x={x + 98} y={base + 54} size={24} fill={keyFill === INK3 ? INK : keyFill}>{mean.toFixed(2)}</Display>
     </g>
   );
@@ -397,8 +397,8 @@ export function WhoPosts() {
         height={322}
         label={`Ratings of 1 to 5 stars. All customers: 4%, 8%, 22%, 41% and 25%, a mean of 3.75. Posted reviews, when extreme experiences are ${k} times as likely to be posted: ${shares.map(pct).join(", ")}, a mean of ${mean(shares).toFixed(2)}. ${pct(ends)} of posted reviews are 1 or 5 stars, against 29% of customers`}
       >
-        <RatingBars x={36} shares={EXPERIENCE} fill={PAPER3} stroke={INK3} keyText="ALL 1,000 CUSTOMERS" mean={mean(EXPERIENCE)} />
-        <RatingBars x={388} shares={shares} fill={SIGNAL_TINT} stroke={SIGNAL} keyText={`THE ${Math.round(posted * 1000)} WHO POST A REVIEW`} mean={mean(shares)} keyFill={SIGNAL} />
+        <RatingBars x={36} shares={EXPERIENCE} fill={PAPER3} stroke={INK3} keyText="All 1,000 customers" mean={mean(EXPERIENCE)} />
+        <RatingBars x={388} shares={shares} fill={SIGNAL_TINT} stroke={SIGNAL} keyText={`The ${Math.round(posted * 1000)} who post a review`} mean={mean(shares)} keyFill={SIGNAL} />
         <path d={`M318 140H359${head.right(360, 140)}`} fill="none" stroke={INK3} strokeWidth={1.5} />
       </Frame>
       <Slider label="Times as likely to post, 1 or 5 stars" value={k} min={1} max={10} onChange={setK} />
@@ -410,7 +410,7 @@ export function WhoPosts() {
    Sentiment Analysis
    -------------------------------------------------------------------------- */
 
-type Polarity = "POSITIVE" | "NEGATIVE" | "NEUTRAL";
+type Polarity = "Positive" | "Negative" | "Neutral";
 type ReviewId = "phone" | "hotel" | "flight" | "film" | "car";
 
 /**
@@ -429,40 +429,40 @@ const REVIEWS: Record<
   }
 > = {
   phone: {
-    domain: "A PHONE",
+    domain: "A phone",
     words: [{ w: "The battery is " }, { w: "great", score: 1 }, { w: " but the camera is " }, { w: "awful", score: -1 }, { w: "." }],
-    reading: "NEUTRAL",
+    reading: "Neutral",
     aspects: [
-      { name: "BATTERY", polarity: "POSITIVE" },
-      { name: "CAMERA", polarity: "NEGATIVE" },
+      { name: "Battery", polarity: "Positive" },
+      { name: "Camera", polarity: "Negative" },
     ],
   },
   hotel: {
-    domain: "A HOTEL",
+    domain: "A hotel",
     words: [{ w: "The room was not " }, { w: "clean", score: 1 }, { w: " and not " }, { w: "quiet", score: 1 }, { w: "." }],
-    reading: "NEGATIVE",
-    missed: "NEGATION",
+    reading: "Negative",
+    missed: "Negation",
   },
   flight: {
-    domain: "AN AIRLINE",
+    domain: "An airline",
     words: [{ w: "Great", score: 1 }, { w: ", another delayed flight. Just " }, { w: "perfect", score: 1 }, { w: "." }],
-    reading: "NEGATIVE",
-    missed: "SARCASM",
+    reading: "Negative",
+    missed: "Sarcasm",
   },
   film: {
-    domain: "A FILM",
+    domain: "A film",
     words: [{ w: "The plot is " }, { w: "unpredictable", score: -1 }, { w: " to the very end." }],
-    reading: "POSITIVE",
-    missed: "DOMAIN-SPECIFIC MEANING",
+    reading: "Positive",
+    missed: "Domain-specific meaning",
   },
   car: {
-    domain: "A CAR",
+    domain: "A car",
     words: [{ w: "The steering is " }, { w: "unpredictable", score: -1 }, { w: " on wet roads." }],
-    reading: "NEGATIVE",
+    reading: "Negative",
   },
 };
 
-const polarityOf = (score: number): Polarity => (score > 0 ? "POSITIVE" : score < 0 ? "NEGATIVE" : "NEUTRAL");
+const polarityOf = (score: number): Polarity => (score > 0 ? "Positive" : score < 0 ? "Negative" : "Neutral");
 
 /**
  * A lexicon against a reader: choose a review. The words the lexicon knows
@@ -489,8 +489,8 @@ export function LexiconReader() {
         height={300}
         label={`A review of ${r.domain.toLowerCase()}: "${r.words.map((w) => w.w).join("")}" The lexicon finds ${known.map((w) => `${w.w} (${sign(w.score ?? 0)})`).join(" and ")}, a score of ${sign(total)}, ${lex.toLowerCase()}. A person reads it as ${r.aspects ? r.aspects.map((a) => `${a.polarity.toLowerCase()} about the ${a.name.toLowerCase()}`).join(" and ") : r.reading.toLowerCase()}${r.missed ? `. The lexicon misses the ${r.missed.toLowerCase()}` : ""}`}
       >
-        <Key x={L} y={30} size={10}>{`A REVIEW OF ${r.domain}`}</Key>
-        <text x={L} y={74} fontFamily="var(--font-heading)" fontSize={25} fill={INK}>
+        <Key x={L} y={30} size={10}>{`A review of ${r.domain}`}</Key>
+        <text x={L} y={74} fontFamily="var(--font-body)" fontSize={25} fill={INK}>
           {"\u201C"}
           {r.words.map((w, i) =>
             w.score === undefined ? (
@@ -505,7 +505,7 @@ export function LexiconReader() {
         </text>
         <line x1={20} y1={104} x2={660} y2={104} stroke={RULE} strokeWidth={1} />
 
-        <Key x={L} y={134} size={10}>LEXICON-BASED SCORE</Key>
+        <Key x={L} y={134} size={10}>Lexicon-based score</Key>
         {known.map((w, i) => (
           <g key={i}>
             <Note x={L} y={168 + i * 28} size={16} weight={600} fill={(w.score ?? 0) > 0 ? INK : COUNTER}>{w.w.toLowerCase()}</Note>
@@ -516,12 +516,12 @@ export function LexiconReader() {
         <Key x={L} y={256} size={13} weight={700} fill={INK}>{lex}</Key>
         <Key x={L + 250} y={256} anchor="end" size={13} weight={700} fill={INK}>{sign(total)}</Key>
         {r.missed ? (
-          <Key x={L} y={284} size={10} fill={COUNTER}>{`MISSES THE ${r.missed}`}</Key>
+          <Key x={L} y={284} size={10} fill={COUNTER}>{`Misses the ${r.missed}`}</Key>
         ) : null}
 
         <line x1={340} y1={120} x2={340} y2={288} stroke={RULE} strokeWidth={1} />
         <Person1 x={R + 10} y={146} k={0.8} />
-        <Key x={R + 30} y={134} size={10}>{r.aspects ? "A PERSON’S READING, BY ASPECT" : "A PERSON’S READING"}</Key>
+        <Key x={R + 30} y={134} size={10}>{r.aspects ? "A person’s reading, by aspect" : "A person’s reading"}</Key>
         {r.aspects ? (
           r.aspects.map((a, i) => (
             <g key={a.name}>
@@ -532,7 +532,7 @@ export function LexiconReader() {
         ) : (
           <Key x={R} y={200} size={16} weight={700} fill={SIGNAL}>{r.reading}</Key>
         )}
-        {!wrong ? <Key x={R} y={284} size={10} fill={INK3}>THE LEXICON AGREES</Key> : null}
+        {!wrong ? <Key x={R} y={284} size={10} fill={INK3}>The lexicon agrees</Key> : null}
       </Frame>
       <Segmented<ReviewId>
         label="Review"
@@ -580,14 +580,14 @@ function topicLabel(g: Theme[]) {
   const k = g.join("+");
   return (
     {
-      "rise+budget": "PRICE",
-      "series+library": "CONTENT",
-      quality: "QUALITY",
-      billing: "BILLING",
-      series: "SERIES",
-      library: "LIBRARY",
-      rise: "PRICE RISE",
-      budget: "BUDGET",
+      "rise+budget": "Price",
+      "series+library": "Content",
+      quality: "Quality",
+      billing: "Billing",
+      series: "Series",
+      library: "Library",
+      rise: "Price rise",
+      budget: "Budget",
     } as Record<string, string>
   )[k];
 }
@@ -627,7 +627,7 @@ export function TopicCount() {
         height={374}
         label={`Topics found in 8,400 cancellation comments with ${k} topics: ${topics.map((t, i) => `topic ${i + 1}, ${t.label ?? "mixed"} (${t.words.map((w) => w[0]).join(", ")})`).join(". ")}. Three comments are shown as mixtures of these topics`}
       >
-        <Key x={20} y={22} size={10}>{`${k} TOPICS IN 8,400 CANCELLATION COMMENTS`}</Key>
+        <Key x={20} y={22} size={10}>{`${k} topics in 8,400 cancellation comments`}</Key>
         {topics.map((t, i) => {
           const x = 20 + i * colW;
           return (
@@ -635,7 +635,7 @@ export function TopicCount() {
               {i > 0 ? <line x1={x - 6} y1={42} x2={x - 6} y2={196} stroke={RULE} strokeWidth={1} /> : null}
               <rect x={x} y={42} width={18} height={18} fill={TOPIC_FILL[i]} stroke={INK3} strokeWidth={i === 5 ? 1 : 0} />
               <Key x={x + 9} y={55} anchor="middle" size={10} weight={700} fill={TOPIC_TEXT[i]}>{i + 1}</Key>
-              <Key x={x + 24} y={56} size={10} weight={700} fill={t.label ? INK : COUNTER}>{t.label ?? "MIXED"}</Key>
+              <Key x={x + 24} y={56} size={10} weight={700} fill={t.label ? INK : COUNTER}>{t.label ?? "Mixed"}</Key>
               {t.words.map(([w], j) => (
                 <Note key={w} x={x} y={90 + j * 23} size={14} fill={INK}>{w}</Note>
               ))}
@@ -643,7 +643,7 @@ export function TopicCount() {
           );
         })}
         <line x1={20} y1={212} x2={660} y2={212} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={234} size={10}>EACH COMMENT AS A MIXTURE OF TOPICS</Key>
+        <Key x={20} y={234} size={10}>Each comment as a mixture of topics</Key>
         {COMMENTS.map((c, i) => {
           const y = 262 + i * 40;
           const shares = new Map<number, number>();
@@ -682,7 +682,7 @@ const WORDINGS: Record<Wording, string> = {
   c: "As in B, followed by three complaints already coded by the team.",
 };
 
-const COMPLAINT_TYPES = ["DELIVERY", "BILLING", "PRODUCT\nFAULT", "ACCOUNT"];
+const COMPLAINT_TYPES = ["Delivery", "Billing", "Product\nfault", "Account"];
 
 /** Twelve messages and the category each version of the instructions assigns (simulated). */
 const MESSAGES: { text: string; a: number; b: number; c: number }[] = [
@@ -720,7 +720,7 @@ export function WordingFlips() {
         height={420}
         label={`A language model classifies twelve customer messages into delivery, billing, product fault or account. Instructions: ${WORDINGS[v]} ${v === "a" ? "This is the reference wording." : `${changed} of 12 messages receive a different category than under wording A.`}`}
       >
-        <Key x={20} y={22} size={10}>{v === "c" ? "INSTRUCTIONS, FEW-SHOT" : `INSTRUCTIONS ${v.toUpperCase()}, ZERO-SHOT`}</Key>
+        <Key x={20} y={22} size={10}>{v === "c" ? "Instructions, few-shot" : `Instructions ${v.toUpperCase()}, zero-shot`}</Key>
         <rect x={20} y={34} width={640} height={40} fill={PAPER} stroke={INK3} strokeWidth={1} />
         <AiMark1 cx={42} cy={54} s={22} fill={SIGNAL} />
         <Note x={64} y={59} size={13.5} italic fill={INK}>{WORDINGS[v]}</Note>
@@ -796,7 +796,7 @@ export function ValidationByLanguage() {
   const x0 = 170;
   const x1 = 600;
   const X = (v: number) => r2(x0 + v * (x1 - x0));
-  const cats = ["DELIVERY", "BILLING", "PRODUCT FAULT", "ACCOUNT"];
+  const cats = ["Delivery", "Billing", "Product fault", "Account"];
   const low = (v: number) => v < 0.7;
   return (
     <div>
@@ -805,7 +805,7 @@ export function ValidationByLanguage() {
         height={356}
         label={`Precision and recall of an automated classification against human coding of ${d.n} ${lang === "all" ? "sampled texts in all languages" : `${{ en: "English", es: "Spanish", fr: "French" }[lang]} texts`}: ${cats.map((c, i) => `${c.toLowerCase()} ${pct(d.rows[i][0])} and ${pct(d.rows[i][1])}`).join(". ")}`}
       >
-        <Key x={20} y={22} size={10}>{`${d.n} SAMPLED TEXTS${lang === "all" ? "" : `, ${{ en: "ENGLISH", es: "SPANISH", fr: "FRENCH" }[lang]}`}`}</Key>
+        <Key x={20} y={22} size={10}>{`${d.n} sampled texts${lang === "all" ? "" : `, ${{ en: "English", es: "Spanish", fr: "French" }[lang]}`}`}</Key>
         <Person1 x={34} y={66} k={0.75} />
         <Person1 x={54} y={66} k={0.75} />
         <Note x={72} y={56} size={12.5} fill={INK2}>Two people agree on 92% of texts.</Note>
@@ -829,7 +829,7 @@ export function ValidationByLanguage() {
                   <rect x={x0} y={y + j * 17} width={r2(X(v) - x0)} height={13} fill={low(v) ? SIGNAL : j ? INK3 : INK2} />
                   <Key x={r2(X(v) + 6)} y={y + j * 17 + 10.5} size={10.5} weight={700} fill={low(v) ? SIGNAL : INK2}>{pct(v)}</Key>
                   {i === 0 ? (
-                    <Key x={x0 + 8} y={y + j * 17 + 10} size={9} fill={PAPER}>{j ? "RECALL" : "PRECISION"}</Key>
+                    <Key x={x0 + 8} y={y + j * 17 + 10} size={9} fill={PAPER}>{j ? "Recall" : "Precision"}</Key>
                   ) : null}
                 </g>
               ))}
@@ -885,10 +885,10 @@ export function ReIdentification() {
   const [on, setOn] = useState<Quasi[]>(["postal"]);
   const n = matching(on);
   const fields: { id: Quasi | "name"; key: string; value: string }[] = [
-    { id: "name", key: "NAME", value: "" },
-    { id: "postal", key: "POSTAL CODE", value: "H2X 1Y4" },
-    { id: "age", key: "AGE", value: "34" },
-    { id: "job", key: "OCCUPATION", value: "Pharmacist" },
+    { id: "name", key: "Name", value: "" },
+    { id: "postal", key: "Postal code", value: "H2X 1Y4" },
+    { id: "age", key: "Age", value: "34" },
+    { id: "job", key: "Occupation", value: "Pharmacist" },
   ];
   const lx0 = 344;
   const lx1 = 652;
@@ -901,7 +901,7 @@ export function ReIdentification() {
         height={318}
         label={`A respondent's record with the name removed, keeping ${on.length ? on.map((q) => ({ postal: "postal code", age: "age", job: "occupation" })[q]).join(", ") : "no characteristics"}. In a city of 40,000 adults, ${n.toLocaleString("en-US")} ${n === 1 ? "resident matches: the respondent is identified" : "residents match"}`}
       >
-        <Key x={20} y={22} size={10}>{"ONE RESPONDENT’S RECORD"}</Key>
+        <Key x={20} y={22} size={10}>{"One respondent’s record"}</Key>
         <rect x={20} y={36} width={264} height={236} fill={PAPER} stroke={INK3} strokeWidth={1.1} />
         {fields.map((f, i) => {
           const y = 76 + i * 56;
@@ -911,7 +911,7 @@ export function ReIdentification() {
               {i > 0 ? <line x1={32} y1={y - 30} x2={272} y2={y - 30} stroke={RULE} strokeWidth={1} /> : null}
               <Key x={34} y={y} size={9.5}>{f.key}</Key>
               {f.id === "name" ? (
-<Key x={144} y={y} size={10} fill={INK3}>REMOVED</Key>
+<Key x={144} y={y} size={10} fill={INK3}>Removed</Key>
               ) : kept ? (
                 <Note x={144} y={y + 1} size={15} weight={600} fill={INK}>{f.value}</Note>
               ) : (
@@ -921,7 +921,7 @@ export function ReIdentification() {
           );
         })}
 
-        <Key x={344} y={22} size={10}>RESIDENTS WHO MATCH, CITY OF 40,000</Key>
+        <Key x={344} y={22} size={10}>Residents who match, city of 40,000</Key>
         <Display x={344} y={76} size={40} fill={n === 1 ? SIGNAL : INK}>{n.toLocaleString("en-US")}</Display>
         {n === 1 ? (
           <Note x={r2(344 + 30)} y={70} size={14} weight={600} fill={SIGNAL}>the respondent, identified</Note>
@@ -1003,8 +1003,8 @@ export function Redaction() {
       label="Inside the firm, a customer's chat message: Hi, this is Maria Lopez, 514-555-0182. My order to 22 Rue Saint-Denis never arrived. Below it, the same message with the personal data replaced: Hi, this is [NAME], [PHONE]. My order to [ADDRESS] never arrived. Only the replaced message crosses the firm's boundary to an external AI service"
     >
       <rect x={14} y={30} width={452} height={220} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={26} y={22} size={10}>INSIDE THE FIRM</Key>
-      <Key x={510} y={22} size={10}>EXTERNAL AI SERVICE</Key>
+      <Key x={26} y={22} size={10}>Inside the firm</Key>
+      <Key x={510} y={22} size={10}>External AI service</Key>
 
       <rect x={30} y={46} width={420} height={70} rx={3} fill={PAPER} stroke={INK3} strokeWidth={1} />
       <MarkedLine x={44} y={74} parts={["Hi, this is ", ["Maria Lopez"], ", ", ["514-555-0182"], ". My order to"]} color={COUNTER} />
@@ -1013,8 +1013,8 @@ export function Redaction() {
       <path d={`M240 122V${158 - 1}${head.down(240, 158)}`} fill="none" stroke={INK3} strokeWidth={1.5} />
 
       <rect x={30} y={164} width={420} height={70} rx={3} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <MarkedLine x={44} y={192} parts={["Hi, this is ", ["[NAME]"], ", ", ["[PHONE]"], ". My order to"]} color={SIGNAL} />
-      <MarkedLine x={44} y={216} parts={[["[ADDRESS]"], " never arrived."]} color={SIGNAL} />
+      <MarkedLine x={44} y={192} parts={["Hi, this is ", ["[Name]"], ", ", ["[Phone]"], ". My order to"]} color={SIGNAL} />
+      <MarkedLine x={44} y={216} parts={[["[Address]"], " never arrived."]} color={SIGNAL} />
 
       <rect x={510} y={30} width={150} height={220} fill={PAPER3} />
       <path d={`M450 199H${560 - 1}${head.right(560, 199)}`} fill="none" stroke={INK} strokeWidth={1.5} />
@@ -1121,10 +1121,10 @@ export function AiDisclosure() {
       label="A page from a research report, section 3.4, Use of AI tools: a table of steps and how each was verified. Drafting the questionnaire: revised by the research team and pretested with 12 customers. Coding 2,400 open-ended responses: agreement with two human coders on 300 responses, 89%. Synthetic respondents: used to pilot the questionnaire, not the source of any finding. Limitations: coding agreement is lower for Spanish responses, 78%"
     >
       <rect x={20} y={10} width={560} height={340} fill={PAPER} stroke={INK3} strokeWidth={1} />
-      <Key x={44} y={40} size={9.5}>3. METHOD</Key>
+      <Key x={44} y={40} size={9.5}>3. Method</Key>
       <Display x={44} y={70} size={21}>3.4 Use of AI tools</Display>
-      <Key x={44} y={102} size={9}>STEP</Key>
-      <Key x={290} y={102} size={9}>VERIFICATION AND LIMITS</Key>
+      <Key x={44} y={102} size={9}>Step</Key>
+      <Key x={290} y={102} size={9}>Verification and limits</Key>
       <line x1={44} y1={110} x2={556} y2={110} stroke={INK} strokeWidth={1.25} />
       {DISCLOSURE.map((r, i) => {
         const y = 134 + i * 54;
@@ -1182,9 +1182,9 @@ export function AgentSearch() {
   const [goal, setGoal] = useState<Goal>("vague");
   const d = TOOL_LAB[goal][cost];
   const rows: { key: string; a: string; b: string; v: number }[] = [
-    { key: "DOLLARS", a: "$4", b: "$5", v: d.dollars / 2 },
-    { key: "CENTS", a: "99\u00A2", b: "00\u00A2", v: d.cents / 2 },
-    { key: "WEIGHT", a: "10 oz", b: "11 oz", v: d.weight / 2 },
+    { key: "Dollars", a: "$4", b: "$5", v: d.dollars / 2 },
+    { key: "Cents", a: "99\u00A2", b: "00\u00A2", v: d.cents / 2 },
+    { key: "Weight", a: "10 oz", b: "11 oz", v: d.weight / 2 },
   ];
   const bx0 = 470;
   const bx1 = 640;
@@ -1202,11 +1202,11 @@ export function AgentSearch() {
         </Note>
         <Note x={52} y={57} size={13} fill={INK2}>{cost === "0" ? "Inspecting an attribute is free." : "Each inspection costs the user $10."}</Note>
 
-        <Key x={230} y={96} anchor="middle" size={10} fill={INK}>COFFEE A</Key>
-        <Key x={370} y={96} anchor="middle" size={10} fill={INK}>COFFEE B</Key>
-        <Key x={230} y={112} anchor="middle" size={9} fill={INK3}>$0.499 PER OZ</Key>
-        <Key x={370} y={112} anchor="middle" size={9} fill={INK3}>$0.455 PER OZ</Key>
-        <Key x={bx0} y={112} size={9}>SESSIONS THAT OPENED IT</Key>
+        <Key x={230} y={96} anchor="middle" size={10} fill={INK}>Coffee a</Key>
+        <Key x={370} y={96} anchor="middle" size={10} fill={INK}>Coffee B</Key>
+        <Key x={230} y={112} anchor="middle" size={9} fill={INK3}>$0.499 per oz</Key>
+        <Key x={370} y={112} anchor="middle" size={9} fill={INK3}>$0.455 per oz</Key>
+        <Key x={bx0} y={112} size={9}>Sessions that opened it</Key>
         {rows.map((r, i) => {
           const y = 124 + i * 50;
           return (
@@ -1224,11 +1224,11 @@ export function AgentSearch() {
           );
         })}
         <line x1={20} y1={284} x2={660} y2={284} stroke={RULE} strokeWidth={1} />
-        <Key x={40} y={308} size={10}>CHOSE COFFEE B, THE LOWER PRICE PER OUNCE</Key>
+        <Key x={40} y={308} size={10}>Chose coffee B, the lower price per ounce</Key>
         <rect x={40} y={318} width={400} height={18} fill={PAPER3} />
         <rect x={40} y={318} width={r2(400 * d.optimal)} height={18} fill={SIGNAL} />
         <Display x={456} y={336} size={28} fill={SIGNAL}>{pct(d.optimal)}</Display>
-        <Key x={660} y={364} anchor="end" size={9} fill={INK3}>{"WADI & MA (2026B), TABLE 1. 3,200 SESSIONS, 8 MODELS"}</Key>
+        <Key x={660} y={364} anchor="end" size={9} fill={INK3}>{"Wadi & Ma (2026b), Table 1. 3,200 sessions, 8 models"}</Key>
       </Frame>
       <div className="flex flex-wrap gap-x-6">
         <Segmented<Cost>

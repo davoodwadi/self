@@ -22,6 +22,7 @@ export const COUNTER_TINT = "rgba(165, 98, 27, 0.13)";
 
 export const LABEL = "var(--font-label)";
 export const BODY = "var(--font-body)";
+/** The heading face. The course sets it to Plex Sans. The talks that borrow this kit may set their own. */
 export const SERIF = "var(--font-heading)";
 
 export type Anchor = "start" | "middle" | "end";
@@ -29,7 +30,7 @@ export type Anchor = "start" | "middle" | "end";
 /** Round a computed coordinate, so server and client render identical markup. */
 export const r2 = (n: number) => Math.round(n * 100) / 100;
 
-/** Uppercase tracked key: concept names, quantities, axis names. */
+/** Sentence-case key: concept names, quantities, axis names. */
 export function Key({
   x,
   y,
@@ -55,7 +56,6 @@ export function Key({
       fontFamily={LABEL}
       fontSize={size}
       fontWeight={weight}
-      letterSpacing="0.12em"
       fill={fill}
       style={{ fontVariantNumeric: "tabular-nums" }}
     >
@@ -100,7 +100,7 @@ export function Note({
   );
 }
 
-/** Display numeral or word in Newsreader, for the few places a plate needs weight. */
+/** A larger numeral or word in the body face, for the few places a plate needs weight. */
 export function Display({
   x,
   y,
@@ -117,7 +117,7 @@ export function Display({
   size?: number;
 }) {
   return (
-    <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontSize={size} fontWeight={500} fill={fill}>
+    <text x={x} y={y} textAnchor={anchor} fontFamily={BODY} fontSize={size} fontWeight={600} fill={fill} style={{ fontVariantNumeric: "tabular-nums" }}>
       {children}
     </text>
   );
@@ -204,7 +204,7 @@ export function bellPath({
 }
 
 /**
- * A quiet control under an interactive plate: a small uppercase key, a
+ * A quiet control under an interactive plate: a small key, a
  * hairline track with a small ink thumb, and the current value in tabular
  * numerals. It stays secondary to the plate it drives. The plate's
  * default value is the state the slide shows before anyone touches it.
@@ -232,7 +232,7 @@ export function Slider({
     <div className="mt-2 flex items-center gap-3 px-1">
       <label
         htmlFor={id}
-        className="shrink-0 text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--ink-3)]"
+        className="shrink-0 text-[10px] font-medium text-[var(--ink-3)]"
         style={{ fontFamily: LABEL }}
       >
         {label}
@@ -290,7 +290,7 @@ export function PlateButton({
       onClick={onClick}
       className={cn(
         "inline-flex items-center gap-2 border border-[var(--rule-2)] bg-[var(--paper)] px-3 py-1.5",
-        "text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-2)]",
+        "text-[11px] font-semibold text-[var(--ink-2)]",
         "transition-colors hover:border-[var(--ink-3)] hover:text-[var(--ink)] active:bg-[var(--paper-3)]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]",
         className,
@@ -321,7 +321,7 @@ export function Segmented<T extends string>({
   return (
     <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
       <span
-        className="shrink-0 text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--ink-3)]"
+        className="shrink-0 text-[10px] font-medium text-[var(--ink-3)]"
         style={{ fontFamily: LABEL }}
       >
         {label}
@@ -337,7 +337,7 @@ export function Segmented<T extends string>({
               onClick={() => onChange(o.id)}
               className={cn(
                 "border-l border-[var(--rule-2)] px-3 py-1.5 first:border-l-0",
-                "text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                "text-[11px] font-semibold transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--rule-2)]",
                 on
                   ? "bg-[var(--ink)] text-[var(--paper)]"
@@ -376,7 +376,7 @@ export function Toggles<T extends string>({
   return (
     <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
       <span
-        className="shrink-0 text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--ink-3)]"
+        className="shrink-0 text-[10px] font-medium text-[var(--ink-3)]"
         style={{ fontFamily: LABEL }}
       >
         {label}
@@ -395,7 +395,7 @@ export function Toggles<T extends string>({
               }}
               className={cn(
                 "inline-flex items-center gap-1.5 border px-3 py-1.5",
-                "text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                "text-[11px] font-semibold transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]",
                 on
                   ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
@@ -443,71 +443,26 @@ export function Lead({ children, className = "" }: { children: React.ReactNode; 
   return <p className={cn("type-lead max-w-[52ch]", className)}>{children}</p>;
 }
 
-/** A sentence set as a serif statement: the line a slide rests on. */
+/** A sentence set as a large statement: the line a slide rests on. */
 export function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <p className={cn("type-quote max-w-[32ch]", className)}>{children}</p>;
 }
 
-type Tone = "signal" | "counter" | "ink";
-
-/** A coloured term inside a sentence. */
-export function Term({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink)]",
-  }[tone];
-  return <strong className={cn("font-semibold", color)}>{children}</strong>;
+/** A term inside a sentence, set in bold ink. */
+export function Term({ children }: { children: React.ReactNode }) {
+  return <strong className="font-semibold text-[var(--ink)]">{children}</strong>;
 }
 
 /** A block under a hairline rule, the ledger's basic cell. */
-export function Ruled({
-  tone = "ink",
-  weight = "thick",
-  children,
-  className = "",
-}: {
-  tone?: Tone;
-  weight?: "thin" | "thick";
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const border = {
-    signal: "border-[var(--signal)]",
-    counter: "border-[var(--counter)]",
-    ink: "border-[var(--ink)]",
-  }[tone];
-  return (
-    <div className={cn("min-w-0 pt-4", weight === "thick" ? "border-t-2" : "border-t", border, className)}>
-      {children}
-    </div>
-  );
+export function Ruled({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <div className={cn("min-w-0 border-t border-[var(--rule-2)] pt-4", className)}>{children}</div>;
 }
 
-/** Section heading with a hairline beneath. An optional kicker ("Discussion:") sits above the words. */
-export function SlideHeading({
-  children,
-  kicker,
-  tone = "signal",
-  className = "",
-}: {
-  children: React.ReactNode;
-  kicker?: string;
-  tone?: "signal" | "counter";
-  className?: string;
-}) {
+/** Section heading with a hairline beneath. */
+export function SlideHeading({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={cn("mb-7 w-full", className)}>
       <h2 className="type-h1 max-w-[34ch] !text-[clamp(1.9rem,3.6vw,3rem)]">
-        {kicker ? (
-          <>
-            <span
-              className={cn("type-label mb-3 block !text-[0.8rem]", tone === "counter" && "!text-[var(--counter)]")}
-            >
-              {kicker}
-            </span>{" "}
-          </>
-        ) : null}
         {children}
       </h2>
       <div className="mt-5 h-px w-full bg-[var(--rule)]" />
@@ -516,66 +471,42 @@ export function SlideHeading({
 }
 
 /** Numbered ledger item: a small tabular numeral above its text. */
-export function Numbered({
-  n,
-  children,
-  tone = "ink",
-  className = "",
-}: {
-  n: number;
-  children: React.ReactNode;
-  tone?: Tone;
-  className?: string;
-}) {
-  const color = {
-    signal: "text-[var(--signal)]",
-    counter: "text-[var(--counter)]",
-    ink: "text-[var(--ink-3)]",
-  }[tone];
+export function Numbered({ n, children, className = "" }: { n: number; children: React.ReactNode; className?: string }) {
   return (
     <div className={cn("min-w-0", className)}>
-      <span aria-hidden className={cn("type-label mb-2 block tabular-nums", color)}>
-        {String(n).padStart(2, "0")}
+      <span aria-hidden className="mb-2 block text-[0.875rem] font-medium tabular-nums text-[var(--ink-3)]">
+        {n}
       </span>
       {children}
     </div>
   );
 }
 
-/** Part opener head: an outlined numeral beside "Part n:" and its title. */
+/** Part opener head: "Part n:" and its title. */
 export function PartHead({ n, title, className = "" }: { n: number; title: string; className?: string }) {
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex items-end gap-4 sm:gap-6 xl:gap-10">
-        <div
-          aria-hidden
-          className="select-none text-[3.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] sm:text-[5rem] xl:text-[7rem]"
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500 }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <h2 className="type-display max-w-[22ch] !text-[clamp(2.1rem,4vw,3.4rem)]">
-          <span className="type-label mb-3 block !text-[0.8rem]">{`Part ${n}:`}</span> {title}
-        </h2>
-      </div>
+      <h2 className="type-display max-w-[22ch] !text-[clamp(2.1rem,4vw,3.4rem)]">{`Part ${n}: ${title}`}</h2>
       <div className="mt-6 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
 
-/** Discussion prompt on an ochre-tinted panel. "Discussion:" stays in the sentence as a kicker. */
-export function Prompt({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+/** A discussion case under its "Discussion:" heading, set like any body slide: the scenario, then the question in bold. */
+export function Discussion({
+  scenario,
+  question,
+  className = "",
+}: {
+  scenario: string;
+  question: string;
+  className?: string;
+}) {
+  const line = "type-h2 max-w-[56ch] !font-normal !text-[clamp(1.2rem,1.7vw,1.45rem)] !leading-snug";
   return (
-    <div
-      className={cn(
-        "w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-7 md:px-11 md:py-9",
-        className,
-      )}
-    >
-      <p className="type-quote max-w-[44ch] !text-[clamp(1.35rem,2.3vw,2rem)]">
-        <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">Discussion:</span>{" "}
-        {children}
-      </p>
+    <div className={cn("w-full", className)}>
+      <p className={line}>{scenario}</p>
+      <p className={cn(line, "mt-6 !font-semibold")}>{question}</p>
     </div>
   );
 }

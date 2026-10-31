@@ -2,7 +2,9 @@
 
 This course is a master's course. Its decks read like a clear analyst's notebook: calm, precise and evidence-first, never corporate-dashboard glossy.
 
-The reference plate is `UncertaintyNarrowing` in `week1/visuals.tsx` (The Purpose of Marketing Research): flat fills, 1.25 to 1.75 hairline strokes, an ink axis with an open arrowhead, and tracked uppercase keys set in place beside what they name. Every later plate matches it.
+The reference plate is `UncertaintyNarrowing` in `week1/visuals.tsx` (The Purpose of Marketing Research): flat fills, 1.25 to 1.75 hairline strokes, an ink axis with an open arrowhead, and small sentence-case keys at normal letter spacing set in place beside what they name. Every later plate matches it.
+
+Slide text stays plain: headings and labels in sentence case, sentences in ink with key terms in bold ink, thin grey rules between blocks, and Part and discussion headings written as ordinary headings. Colour belongs to the data in the plates.
 
 ## Palette
 
@@ -18,7 +20,7 @@ Defined in `(courses-mra)/globals.css` ("Field Ledger"):
 | `--signal` | the finding: what the data shows, the chosen answer | `#2C4A8C` |
 | `--counter` | the contrast case, a second group, discussion | `#A5621B` |
 
-Type: Newsreader for headings, IBM Plex Sans for body, labels and figures (tabular numerals).
+Type: IBM Plex Sans throughout (headings, body, labels and figures, with tabular numerals). Headings take their weight from 600 semibold, not from a second typeface.
 
 ## The feel
 

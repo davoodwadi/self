@@ -92,7 +92,8 @@ week: week3
 - Netnography is appropriate when the relevant consumers discuss the topic in online communities.
 
 ## Discussion: Choosing the Method
-- Discussion: A manufacturer of home cleaning products seeks to understand why consumers who state a preference for environmentally friendly products continue to purchase conventional products. Which qualitative methods are appropriate for this problem, and what are the limitations of each?
+- A manufacturer of home cleaning products seeks to understand why consumers who state a preference for environmentally friendly products continue to purchase conventional products.
+- Which qualitative methods are appropriate for this problem, and what are the limitations of each?
 
 ## Part 3: Analyzing Qualitative Data [no-exercise]
 - Qualitative research produces large volumes of unstructured data, such as interview transcripts, field notes, images, and online posts.
@@ -167,7 +168,8 @@ week: week3
 - Coded traces therefore provide evidence consistent with an explanation, while conclusions about behavior rest on the agent's observed choices.
 
 ## Discussion: AI in the Interview Room
-- Discussion: A research agency proposes to replace twenty depth interviews conducted by experienced interviewers with two hundred AI-moderated interviews, coded by a large language model. What would the client gain and lose in terms of depth, scale, and trustworthiness, and which validation procedures should the agency be required to report?
+- A research agency proposes to replace twenty depth interviews conducted by experienced interviewers with two hundred AI-moderated interviews, coded by a large language model.
+- What would the client gain and lose in terms of depth, scale, and trustworthiness, and which validation procedures should the agency be required to report?
 
 ## Key Takeaways
 - Qualitative research examines the reasons for behavior through small, nonrepresentative samples, and complements quantitative research.
