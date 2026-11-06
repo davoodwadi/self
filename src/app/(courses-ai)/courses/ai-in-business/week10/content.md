@@ -111,7 +111,7 @@ week: "week10"
 - Discussion: A global retail bank handles 20 million customer service messages per month. Currently, every incoming message, including simple account-balance inquiries, branch-hour lookups, FAQ questions, and complex mortgage restructuring requests, is sent to a single frontier reasoning model hosted in a coal-heavy, water-stressed cloud region. How should the engineering and sustainability teams redesign this system using model right-sizing, semantic caching, quantization, and carbon-aware scheduling to cut both monthly cloud spend and environmental footprint?
 
 ## Part 4: AI for Climate Mitigation and Decarbonization [no-exercise]
-- Beyond reducing its own compute footprint, artificial intelligence serves as a high-leverage analytical tool for decarbonizing physical industries, energy infrastructure, and supply chains.
+- Beyond reducing its own compute footprint, artificial intelligence serves as an analytical tool for decarbonizing physical industries, energy infrastructure, and supply chains.
 - Evaluating AI-for-sustainability projects requires distinguishing genuine physical emissions reductions from rebound effects and unverified greenwashing claims.
 
 ## Renewable Grid Integration and Building Energy Optimization [no-exercise]

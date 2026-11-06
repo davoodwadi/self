@@ -220,7 +220,7 @@
   },
   {
     "type": "order",
-    "slide_id": "data-value-chain-interpretation-to-feedback",
+    "slide_id": "data-value-chain",
     "prompt": "A coffee chain wants to know why some stores sell less in the afternoon. Put its work in the order of the Data Value Chain.",
     "steps": [
       {

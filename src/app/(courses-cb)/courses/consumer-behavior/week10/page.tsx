@@ -387,9 +387,9 @@ export default function Week10() {
         <PartHead n={2} title="Bases of Social Power and AI Assistants" />
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="">
-            Why do certain individuals, institutions, or algorithms{" "}
+            Certain individuals, institutions, and algorithms{" "}
             <Tint>possess the capacity to alter a consumer&apos;s choices</Tint>
-            ?
+            .
           </Statement>
           <Ruled>
             <Lead>
@@ -1221,7 +1221,7 @@ export default function Week10() {
             "French and Raven's five bases of social power (referent, expert, legitimate, reward, coercive) explain interpersonal influence, and consumers frequently attribute high expert power to conversational AI assistants based on linguistic fluency.",
             "Word of mouth is more credible than paid advertising, exhibits a negativity bias, and flows through category-specific opinion leaders, broad market mavens, and weak-tie digital networks.",
             "AI-generated review summaries compress eWOM but can propagate biases from incentivized reviews, while synthetic fake reviews erode market trust and violate regulatory prohibitions such as the 2024 FTC rule.",
-            "Influencer marketing leverages parasocial relationships across macro- and micro-creators, whereas virtual influencers lack lived product experience and require careful category matching and transparent sponsorship disclosure.",
+            "Influencer marketing relies on parasocial relationships across macro- and micro-creators, whereas virtual influencers lack lived product experience and require careful category matching and transparent sponsorship disclosure.",
           ].map((item, i) => (
             <Numbered key={i} n={i + 1}>
               <P>{item}</P>

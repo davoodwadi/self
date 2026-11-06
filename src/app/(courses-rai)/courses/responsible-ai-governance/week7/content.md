@@ -100,7 +100,7 @@ week: week7
 - Mitigating sycophancy requires decoupling reward models from naive user agreement, training explicitly on corrective feedback examples, and instructing decision-support agents to evaluate options against objective criteria before reading the user's stated leanings.
 
 ## Part 4: Manipulating the Surrogate Consumer: Heuristics and Storefront Architecture [no-exercise]
-- As consumers delegate search and purchasing to autonomous AI shopping agents, a fundamental governance question emerges: does delegating a purchase to an algorithm immunize the shopper against marketing heuristics and storefront dark patterns, or can AI agents be manipulated too?
+- As consumers delegate search and purchasing to autonomous AI shopping agents, a central governance question is whether delegating a purchase to an algorithm protects the shopper against marketing heuristics and storefront dark patterns, or whether AI agents can be manipulated as well.
 - Recent behavioral research demonstrates that AI shopping agents exhibit predictable heuristic vulnerabilities governed by their computational resource constraints and the storefront's information architecture (Wadi & Ma, 2026b).
 
 ## Do AI Shopping Agents Fall for Human Marketing Heuristics? [no-exercise]
@@ -144,7 +144,7 @@ week: week7
 ## Designing Agent-Ready and Autonomy-Preserving Storefronts [exercise]
 - Symmetrical friction requires that cancelling a subscription, rejecting tracking, or declining an add-on takes no more clicks, tool calls, or conversational turns than enrolling.
 - Upfront all-in and unit pricing requires that mandatory fees, package quantities, and standardized prices per unit be visible on the initial listing card and in structured machine-readable metadata without requiring secondary tool lookups.
-- Epistemic independence in AI assistants requires configuring decision-support prompts and reward models to evaluate options against objective consumer utility criteria before incorporating the user's stated hunch, preventing sycophantic confirmation bias.
+- Epistemic independence in AI assistants requires configuring decision-support prompts and reward models to evaluate options against objective consumer utility criteria before incorporating the user's stated preference, preventing sycophantic confirmation bias.
 - Context-data separation in shopping agents requires sandboxing untrusted storefront text and third-party reviews from the agent's system instructions so that indirect prompt injections cannot override the consumer's goal.
 
 ## Discussion: Hiding the Unit Price From the Agent

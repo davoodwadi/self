@@ -102,7 +102,7 @@ week: "week3"
 ## Market Structure and Derived Demand [exercise]
 - Business marketers typically interact with far fewer but much larger buyers than consumer marketers do: a tire manufacturer may sell millions of replacement tires to individual drivers, but sells original-equipment tires to only a handful of global automakers.
 - Business demand is derived demand, meaning it ultimately derives from consumer demand for finished goods: if household purchases of new automobiles fall, automaker demand for sheet steel and tires falls in turn.
-- In the short run, B2B demand is also more price-inelastic than B2C demand: a shoe manufacturer will not buy substantially more leather merely because leather prices drop slightly, nor can it easily substitute leather overnight if prices rise.
+- In the short run, B2B demand is also more price-inelastic than B2C demand: a shoe manufacturer will not buy substantially more leather merely because leather prices drop slightly, nor can it quickly substitute another material for leather if prices rise.
 - B2B demand also exhibits greater volatility (the acceleration effect), whereby a small percentage change in consumer retail demand triggers a much larger percentage swing in business orders for factory equipment.
 
 ## The Organizational Buying Unit and Decision Roles [no-exercise]

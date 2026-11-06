@@ -28,11 +28,6 @@ import {
   Code,
   IdentificationCard,
   FirstAid,
-  ShoppingCart,
-  Bank,
-  GraduationCap,
-  GlobeHemisphereWest,
-  Play,
   Hourglass,
   BellRinging,
   Lightning,
@@ -55,6 +50,9 @@ import {
   MiniScreen,
   Pointer,
   Knob,
+  Row,
+  Stack,
+  PlateWell,
 } from "../_visuals/kit";
 import { Person, Shop } from "../_visuals/objects";
 
@@ -513,7 +511,17 @@ const MODELS = [
   { name: "SaaS", rented: 3 },
 ];
 
-export function ServiceStack({ upTo = 3 }: { upTo?: 1 | 2 | 3 }) {
+export function ServiceStack({
+  upTo = 3,
+  selected,
+  onSelect,
+  selectable = [],
+}: {
+  upTo?: 1 | 2 | 3;
+  selected?: number;
+  onSelect?: (i: number) => void;
+  selectable?: number[];
+}) {
   const X0 = 124;
   const sw = 86;
   const gap = 4;
@@ -551,9 +559,30 @@ export function ServiceStack({ upTo = 3 }: { upTo?: 1 | 2 | 3 }) {
       ))}
       {rows.map((m, i) => {
         const y = Y0 + i * (rh + 10);
-        const current = i === upTo;
+        const current = i === (selected ?? upTo);
+        const live = !!onSelect && selectable.includes(i);
+        const pick = () => onSelect?.(i);
         return (
-          <g key={m.name}>
+          <g
+            key={m.name}
+            {...(live
+              ? {
+                  role: "button",
+                  tabIndex: 0,
+                  "aria-pressed": current,
+                  "aria-label": m.name,
+                  style: { cursor: "pointer" },
+                  onClick: pick,
+                  onKeyDown: (e: React.KeyboardEvent) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      pick();
+                    }
+                  },
+                }
+              : {})}
+          >
+            {live && <rect x={0} y={y - 5} width={X0 + 3 * sw + 2 * gap + 6} height={rh + 10} fill={WHITE} fillOpacity={0} />}
             <text x={X0 - 14} y={y + rh / 2 + 7} textAnchor="end" {...HEAD} fontSize={18} fill={INK}>
               {m.name}
             </text>
@@ -601,6 +630,30 @@ export function ServiceStackIaaS() {
 }
 export function ServiceStackPaaS() {
   return <ServiceStack upTo={2} />;
+}
+
+/** PaaS and SaaS on one table: select a row and its panel shows beside it.
+    panels[0] is PaaS (row 2), panels[1] is SaaS (row 3). */
+export function ServiceModelsExplorer({ panels }: { panels: React.ReactNode[] }) {
+  const [sel, setSel] = React.useState(2);
+  return (
+    <Row cols="lg:grid-cols-[1fr_1fr]">
+      <Stack>
+        {panels.map((p, k) => (
+          <div
+            key={k}
+            aria-hidden={sel !== k + 2}
+            className={`transition-opacity duration-200 ${sel === k + 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+          >
+            {p}
+          </div>
+        ))}
+      </Stack>
+      <PlateWell>
+        <ServiceStack upTo={3} selected={sel} onSelect={setSel} selectable={[2, 3]} />
+      </PlateWell>
+    </Row>
+  );
 }
 
 /* ==========================================================================
@@ -685,52 +738,10 @@ export function AnyDevice() {
    IaaS discussion: an on-premise server moves to the cloud. Four industries
    ========================================================================== */
 
-export function MigrateIndustries() {
-  const icons = [FirstAid, ShoppingCart, Bank, GraduationCap];
-  return (
-    <Plate
-      h={262}
-      title="An on-premise server rack moves along a red arrow to the cloud on a screen. Below, four industry badges: healthcare, e-commerce, government and education"
-    >
-      <Server x={56} y={30} />
-      <Pointer x1={136} y1={63} x2={232} y2={63} w={5} color={SIGNAL} />
-      <CloudScreen x={246} y={14} w={110} h={72} />
-      {icons.map((Icon, i) => {
-        const cx = 62 + i * 92;
-        return (
-          <g key={i}>
-            <circle cx={cx} cy={204} r={38} fill={INK} />
-            <Icon x={cx - 23} y={204 - 23} size={46} weight="fill" color={WHITE} />
-          </g>
-        );
-      })}
-    </Plate>
-  );
-}
-
 /* ==========================================================================
    Netflix discussion: one streaming service, played on screens around the
    world
    ========================================================================== */
-
-export function GlobalStreaming() {
-  const screens = [
-    { x: 8, y: 30 },
-    { x: 308, y: 30 },
-    { x: 8, y: 168 },
-    { x: 308, y: 168 },
-  ];
-  return (
-    <Plate h={246} title="A globe in the middle, with four screens around it, each playing a video">
-      <GlobeHemisphereWest x={105} y={28} size={190} weight="fill" color={INK} />
-      {screens.map(({ x, y }) => (
-        <MiniScreen key={`${x}-${y}`} x={x} y={y}>
-          <Play x={x + 42 - 15} y={y + 28 - 15} size={30} weight="fill" color={SIGNAL} />
-        </MiniScreen>
-      ))}
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    HealthGuard: a patient's wearable sends every reading on the long trip to

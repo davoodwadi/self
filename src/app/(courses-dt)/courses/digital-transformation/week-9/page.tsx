@@ -19,19 +19,12 @@ import {
 } from "../_visuals/kit";
 import {
   HeroFourRevolutionsEngine,
-  Canada1759Interactive,
   SteamMillCrossSectionInteractive,
-  FirstRevSocietySimulatorInteractive,
-  Transition1890BridgeInteractive,
   SecondRevolutionPowerGridInteractive,
-  InventionsWorkbenchInteractive,
   MegacitySkylineInteractive,
-  WorkerBalance1932Interactive,
   SiliconWaferCircuitInteractive,
   InnovationWaveInteractive,
-  Workflow2006AdapterInteractive,
   CyberPhysicalConvergenceInteractive,
-  Industry4ImpactDialInteractive,
 } from "./visuals";
 
 const SECTIONS = [
@@ -47,7 +40,7 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 const BODY_BASE =
   "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
-const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
+const BODY = `${BODY_BASE} text-lg md:text-[1.25rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
@@ -65,9 +58,9 @@ function Bullets({ items, className = "" }: { items: React.ReactNode[]; classNam
   );
 }
 
-function Dashes({ items }: { items: React.ReactNode[] }) {
+function Dashes({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
-    <ul className={SUBLIST}>
+    <ul className={`${SUBLIST} ${className}`}>
       {items.map((it, i) => (
         <li key={i}>
           <span>{it}</span>
@@ -79,14 +72,11 @@ function Dashes({ items }: { items: React.ReactNode[] }) {
 
 export default function DigitalTransformationWeek9() {
   const [activeFirstPillar, setActiveFirstPillar] = useState(0);
-  const [activeFirstImpact, setActiveFirstImpact] = useState(0);
   const [activeSecondPillar, setActiveSecondPillar] = useState(0);
-  const [activeSecondInvention, setActiveSecondInvention] = useState(0);
   const [activeSecondImpact, setActiveSecondImpact] = useState(0);
   const [activeThirdPillar, setActiveThirdPillar] = useState(0);
   const [activeThirdInnovation, setActiveThirdInnovation] = useState(0);
   const [activeFourthTech, setActiveFourthTech] = useState(0);
-  const [activeFourthImpact, setActiveFourthImpact] = useState(0);
 
   return (
     <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
@@ -118,26 +108,36 @@ export default function DigitalTransformationWeek9() {
       {/* ================================================================
           CHAPTER 1: THE FIRST INDUSTRIAL REVOLUTION
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="The First Industrial Revolution" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="The First Industrial Revolution"
+        description={[
+          "This part examines the First Industrial Revolution, which began in Britain around 1760 and mechanized production with water and steam power.",
+          "It considers how the factory system changed work and society.",
+        ]}
+        topics={[
+          "Impact on Society",
+        ]}
+      />
 
       <Slide id="question-1759" label="QUESTION" title="Question">
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-2 gap-10`}>
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>Place yourself in 1759.</>,
               <>You are in Canada.</>,
             ]}
           />
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>As an individual, what jobs are available to you?</>,
               <>Which career path would you choose?</>,
             ]}
           />
         </div>
-        <PlateWell>
-          <Canada1759Interactive />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -211,10 +211,7 @@ export default function DigitalTransformationWeek9() {
       </Slide>
 
       <Slide id="first-revolution-impact-on-society" label="SOCIETAL SHIFT" title="Impact on Society">
-        <PlateWell>
-          <FirstRevSocietySimulatorInteractive active={activeFirstImpact} onSelect={setActiveFirstImpact} />
-        </PlateWell>
-        <ol className={`${BODY} grid gap-4`}>
+        <ol className={`${BODY} md:!text-xl grid gap-4`}>
           {[
             {
               title: "1. Urbanization",
@@ -236,19 +233,15 @@ export default function DigitalTransformationWeek9() {
               title: "5. Environmental Effects",
               desc: "Increased pollution and deforestation due to industrial activity.",
             },
-          ].map((it, i) => {
-            const isLit = i === activeFirstImpact;
+          ].map((it) => {
             return (
               <li
                 key={it.title}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
+                className="border-t border-[var(--dt-ink)]/15 pt-4"
               >
-                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
-                <div className="text-lg md:text-xl mt-1">
-                  <Dashes items={[it.desc]} />
+                <p className="font-sans font-bold text-[1.5rem] md:text-2xl">{it.title}</p>
+                <div className="text-xl md:text-[1.5rem] mt-1">
+                  <Dashes className="[&>li]:!text-xl" items={[it.desc]} />
                 </div>
               </li>
             );
@@ -259,26 +252,37 @@ export default function DigitalTransformationWeek9() {
       {/* ================================================================
           CHAPTER 2: THE SECOND INDUSTRIAL REVOLUTION
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="The Second Industrial Revolution" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="The Second Industrial Revolution"
+        description={[
+          "This part examines the Second Industrial Revolution of the late nineteenth century, which was driven by electricity, steel, and mass production.",
+          "It reviews the key inventions of the period and their effects on society.",
+        ]}
+        topics={[
+          "The Second Industrial Revolution: Key Inventions",
+          "Impact on Society",
+        ]}
+      />
 
       <Slide id="question-1890" label="QUESTION" title="Question">
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-2 gap-10`}>
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>It is 1890.</>,
               <>The Industrial Revolution has just happened.</>,
             ]}
           />
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>How would you transition from your current job to a new one.</>,
               <>Which career path would you take?</>,
             ]}
           />
         </div>
-        <PlateWell>
-          <Transition1890BridgeInteractive />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -362,11 +366,8 @@ export default function DigitalTransformationWeek9() {
         title="The Second Industrial Revolution"
         exercise={exercise["second-revolution-key-inventions"]}
       >
-        <p className="font-sans font-bold text-xl border-l-2 border-[var(--dt-ink)]/25 pl-4">Key inventions</p>
-        <PlateWell>
-          <InventionsWorkbenchInteractive active={activeSecondInvention} onSelect={setActiveSecondInvention} />
-        </PlateWell>
-        <ol className={`${BODY} grid gap-4`}>
+        <p className="font-sans font-bold text-[1.5rem] border-l-2 border-[var(--dt-ink)]/25 pl-4">Key inventions</p>
+        <ol className={`${BODY} md:!text-xl grid gap-4`}>
           {[
             {
               title: "1. Electric Light Bulb",
@@ -388,19 +389,15 @@ export default function DigitalTransformationWeek9() {
               title: "4. Automobile Production Line",
               desc: "Henry Ford’s innovation made cars affordable for the masses.",
             },
-          ].map((it, i) => {
-            const isLit = i === activeSecondInvention;
+          ].map((it) => {
             return (
               <li
                 key={it.title}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
+                className="border-t border-[var(--dt-ink)]/15 pt-4"
               >
-                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
-                <div className="text-lg md:text-xl mt-1">
-                  <Dashes items={[it.desc]} />
+                <p className="font-sans font-bold text-[1.5rem] md:text-2xl">{it.title}</p>
+                <div className="text-xl md:text-[1.5rem] mt-1">
+                  <Dashes className="[&>li]:!text-xl" items={[it.desc]} />
                 </div>
               </li>
             );
@@ -461,26 +458,36 @@ export default function DigitalTransformationWeek9() {
       {/* ================================================================
           CHAPTER 3: THE THIRD INDUSTRIAL REVOLUTION (DIGITAL REVOLUTION)
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="The Third Industrial Revolution (Digital Revolution)" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="The Third Industrial Revolution (Digital Revolution)"
+        description={[
+          "This part examines the Third Industrial Revolution, in which electronics and information technology automated production from the mid-twentieth century onward.",
+          "It traces the key innovations from the first computers to the internet and the smartphone.",
+        ]}
+        topics={[
+          "Key Innovations",
+        ]}
+      />
 
       <Slide id="questions-1932" label="QUESTIONS" title="Questions">
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-2 gap-10`}>
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>It is 1932.</>,
               <>How is your job impacted now?</>,
             ]}
           />
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>In what aspects has it improved?</>,
               <>In what aspects has it worsened?</>,
             ]}
           />
         </div>
-        <PlateWell>
-          <WorkerBalance1932Interactive />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -606,16 +613,30 @@ export default function DigitalTransformationWeek9() {
       {/* ================================================================
           CHAPTER 4: THE FOURTH INDUSTRIAL REVOLUTION (INDUSTRY 4.0)
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="The Fourth Industrial Revolution (Industry 4.0)" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="The Fourth Industrial Revolution (Industry 4.0)"
+        description={[
+          "This part examines the Fourth Industrial Revolution, or Industry 4.0, in which cyber-physical systems connect machines, data, and people.",
+          "It considers the consequences for society and business, including changes in employment and the need for reskilling.",
+        ]}
+        topics={[
+          "Impact on Society and Business",
+        ]}
+      />
 
       <Slide id="question-2006" label="QUESTION" title="Question">
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
-          <Bullets items={[<>It is 2006.</>]} />
-          <Bullets items={[<>How would your job adapt to the Third Industrial Revolution.</>]} />
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-2 gap-10`}>
+          <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
+            items={[<>It is 2006.</>]}
+          />
+          <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
+            items={[<>How would your job adapt to the Third Industrial Revolution.</>]}
+          />
         </div>
-        <PlateWell>
-          <Workflow2006AdapterInteractive />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -701,7 +722,7 @@ export default function DigitalTransformationWeek9() {
         title="Impact on Society and Business"
         exercise={exercise["fourth-revolution-impact-on-society-and-business"]}
       >
-        <div className={`${BODY} flex flex-wrap items-center justify-between gap-4 text-sm md:text-base`}>
+        <div className={`${BODY} md:!text-xl flex flex-wrap items-center justify-between gap-4 text-sm md:text-base`}>
           <a
             href="https://www.youtube.com/watch?v=hfqD5aW0X5U"
             target="_blank"
@@ -711,10 +732,7 @@ export default function DigitalTransformationWeek9() {
             Ready for Brain Transparency? - WEF
           </a>
         </div>
-        <PlateWell>
-          <Industry4ImpactDialInteractive active={activeFourthImpact} onSelect={setActiveFourthImpact} />
-        </PlateWell>
-        <ol className={`${BODY} grid gap-4`}>
+        <ol className={`${BODY} md:!text-xl grid gap-4`}>
           {[
             {
               title: "1. Hyper-Personalized Products & Services",
@@ -744,19 +762,15 @@ export default function DigitalTransformationWeek9() {
               title: "7. Ethical Challenges",
               desc: "AI bias, surveillance, and job displacement concerns.",
             },
-          ].map((it, i) => {
-            const isLit = i === activeFourthImpact;
+          ].map((it) => {
             return (
               <li
                 key={it.title}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
+                className="border-t border-[var(--dt-ink)]/15 pt-4"
               >
-                <p className="font-sans font-bold text-xl md:text-2xl">{it.title}</p>
-                <div className="text-lg md:text-xl mt-1">
-                  <Dashes items={[it.desc]} />
+                <p className="font-sans font-bold text-[1.5rem] md:text-2xl">{it.title}</p>
+                <div className="text-xl md:text-[1.5rem] mt-1">
+                  <Dashes className="[&>li]:!text-xl" items={[it.desc]} />
                 </div>
               </li>
             );

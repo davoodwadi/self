@@ -20,7 +20,6 @@ import {
 } from "../_visuals/kit";
 import {
   HeroImmersivePlate,
-  PilotTrainingInteractive,
   SimulatingPlate,
   InteractingPlate,
   BlendingPlate,
@@ -31,11 +30,9 @@ import {
   ProgressBarComparisonInteractive,
   OverjustificationInteractive,
   ExcessiveFreedomPlate,
-  FlightSimCaseInteractive,
   GuitarHeroCurveInteractive,
   ZombiesRunPlate,
   MilitaryControllerPlate,
-  BusinessQuestionsPlate,
 } from "./visuals";
 
 const SECTIONS = [
@@ -52,7 +49,7 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 /* Body copy in upright sans-serif. */
 const BODY_BASE =
   "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
-const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
+const BODY = `${BODY_BASE} text-lg md:text-[1.25rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
@@ -84,8 +81,6 @@ function Dashes({ items }: { items: React.ReactNode[] }) {
 
 export default function DigitalTransformationWeek8() {
   const [activeElement, setActiveElement] = useState(0);
-  const [activeFlightFeature, setActiveFlightFeature] = useState(0);
-  const [activeBizQuestion, setActiveBizQuestion] = useState(0);
 
   return (
     <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
@@ -116,26 +111,36 @@ export default function DigitalTransformationWeek8() {
       {/* ================================================================
           CHAPTER 1: IMMERSIVE TECHNOLOGIES
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="Immersive Technologies" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="Immersive Technologies"
+        description={[
+          "This part defines immersive technologies as digital tools that create or enhance user experiences by simulating or augmenting the physical world.",
+          "It distinguishes virtual reality from augmented reality and surveys the hardware that delivers them.",
+        ]}
+        topics={[
+          "Virtual Reality (VR) and Augmented Reality (AR)",
+        ]}
+      />
 
       <Slide id="question-becoming-a-pilot" label="QUESTION" title="Question">
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+        <div className={`${BODY} md:!text-xl md:text-2xl leading-[1.5] grid md:grid-cols-2 gap-8 md:gap-12`}>
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>Think of becoming a pilot.</>,
               <>Why is it deemed a difficult task? Why are there more people with driver&apos;s license than with pilot&apos;s license?</>,
             ]}
           />
           <Bullets
+            className="[&>li]:!text-[1.75rem] [&>li]:leading-snug flex flex-col gap-4"
             items={[
               <>&ldquo;It takes 10,000 hours to become proficient with flying.&rdquo;</>,
               <>What solutions do we have to this problem?</>,
             ]}
           />
         </div>
-        <PlateWell>
-          <PilotTrainingInteractive />
-        </PlateWell>
       </Slide>
 
       <Slide id="immersive-technologies" label="CORE CONCEPT" title="Immersive technologies">
@@ -242,7 +247,19 @@ export default function DigitalTransformationWeek8() {
       {/* ================================================================
           CHAPTER 2: GAMIFICATION
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Gamification" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Gamification"
+        description={[
+          "This part defines gamification as the application of game-design elements in non-game contexts.",
+          "It examines the elements of gamification, the design of progress feedback, and the risks of relying on extrinsic rewards.",
+        ]}
+        topics={[
+          "Elements of Gamification",
+          "Challenges of Gamification",
+        ]}
+      />
 
       <Slide id="gamification" label="BEHAVIORAL DESIGN" title="Gamification">
         <Row cols="lg:grid-cols-[1.15fr_1fr]">
@@ -419,36 +436,40 @@ export default function DigitalTransformationWeek8() {
       {/* ================================================================
           CHAPTER 3: BUSINESS CASES
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="Business Cases" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="Business Cases"
+        description={[
+          "This part examines three products that combine immersive technology and game design: Microsoft Flight Simulator, Guitar Hero, and Zombies, Run!",
+          "Each case shows how simulation or game mechanics change the way people learn or practice an activity.",
+        ]}
+        topics={[
+          "The Case of Microsoft Flight Simulator",
+          "Guitar Hero",
+          "Zombies, Run!",
+        ]}
+      />
 
       <Slide
         id="the-case-of-microsoft-flight-simulator"
         label="CASE STUDY"
         title="The Case of Microsoft Flight Simulator"
       >
-        <div className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-3 gap-4`}>
+        <div className={`${BODY} md:!text-xl grid sm:grid-cols-2 gap-x-10`}>
           {[
             <>Realistic Graphics and Simulated Environments</>,
             <>Virtual Cockpit Experiences</>,
             <>VR Support</>,
             <>Dynamic Weather and Air Traffic</>,
             <>Community and Multiplayer Features</>,
-          ].map((item, i) => {
-            const isLit = i === activeFlightFeature;
-            return (
-              <div
-                key={i}
-                onClick={() => setActiveFlightFeature(i)}
-                className={`cursor-pointer border-t border-[var(--dt-ink)]/15 pt-3 flex items-baseline gap-2.5 transition-colors ${
-                  isLit ? "font-sans font-bold" : ""
-                }`}
-              >
-                <span className="font-sans text-sm shrink-0">{i + 1}.</span>
-                <span>{item}</span>
-              </div>
-            );
-          })}
-          <div className="border-t border-[var(--dt-ink)]/15 pt-3">
+          ].map((item, i) => (
+            <div key={i} className="border-t border-[var(--dt-ink)]/15 py-4 flex items-baseline gap-3">
+              <span className="font-sans font-bold shrink-0">{i + 1}.</span>
+              <span>{item}</span>
+            </div>
+          ))}
+          <div className="border-t border-[var(--dt-ink)]/15 py-4">
             <a
               href="https://www.youtube.com/watch?v=LPoZx88OQQg"
               target="_blank"
@@ -459,9 +480,6 @@ export default function DigitalTransformationWeek8() {
             </a>
           </div>
         </div>
-        <PlateWell>
-          <FlightSimCaseInteractive active={activeFlightFeature} onSelect={setActiveFlightFeature} />
-        </PlateWell>
       </Slide>
 
       <Slide id="guitar-hero" label="CASE STUDY" title="Guitar Hero">
@@ -515,7 +533,19 @@ export default function DigitalTransformationWeek8() {
       {/* ================================================================
           CHAPTER 4: ETHICAL CONCERNS & BUSINESS STRATEGY
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Ethical Concerns & Business Strategy" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Ethical Concerns & Business Strategy"
+        description={[
+          "This part examines the ethical concerns raised by immersive and gamified systems, including their use in military settings.",
+          "It closes with the questions a manager should ask before adopting these technologies in a business.",
+        ]}
+        topics={[
+          "Ethical Concerns",
+          "Can Immersive Technology and Gamification Help My Business?",
+        ]}
+      />
 
       <Slide id="ethical-concerns" label="ETHICAL CONCERNS" title="Ethical Concerns" exercise={exercise["ethical-concerns"]}>
         <div className={`${BODY} text-lg border-l-2 border-[var(--dt-ink)]/25 pl-4`}>
@@ -551,35 +581,23 @@ export default function DigitalTransformationWeek8() {
         title="Can Immersive Technology and Gamification Help My Business?"
         exercise={exercise["can-immersive-technology-and-gamification-help-my-business"]}
       >
-        <Row cols="lg:grid-cols-[1.25fr_1fr]">
+        <Row cols="max-w-4xl">
           <div className="flex flex-col gap-4">
-            <p className="font-sans font-bold text-xl">Questions to ask</p>
-            <ol className={`${BODY} flex flex-col gap-3`}>
+            <p className="font-sans font-bold text-2xl">Questions to ask</p>
+            <ol className={`${BODY} flex flex-col`}>
               {[
                 <>Do my users struggle with intrinsic motivation?</>,
                 <>How can you induce intrinsic motivation using a story?</>,
                 <>How to properly balance extrinsic vs. intrinsic motivation?</>,
                 <>Is replacing the actual intrinsic motivation with the fabricated one going to hurt the person?</>,
-              ].map((q, i) => {
-                const isLit = i === activeBizQuestion;
-                return (
-                  <li
-                    key={i}
-                    onClick={() => setActiveBizQuestion(i)}
-                    className={`cursor-pointer border-t border-[var(--dt-ink)]/15 pt-3 flex items-baseline gap-3 text-lg transition-colors ${
-                      isLit ? "font-sans font-bold" : ""
-                    }`}
-                  >
-                    <span className="font-sans text-sm shrink-0">{i + 1}.</span>
-                    <span>{q}</span>
-                  </li>
-                );
-              })}
+              ].map((q, i) => (
+                <li key={i} className="border-t border-[var(--dt-ink)]/15 py-4 flex items-baseline gap-4 text-xl">
+                  <span className="font-sans font-bold shrink-0">{i + 1}.</span>
+                  <span>{q}</span>
+                </li>
+              ))}
             </ol>
           </div>
-          <PlateWell>
-            <BusinessQuestionsPlate active={activeBizQuestion} onSelect={setActiveBizQuestion} />
-          </PlateWell>
         </Row>
       </Slide>
 

@@ -70,7 +70,7 @@ week: "week11"
 ## Discussion: Allocating a Startup Budget Across Paid Search, SEO Content, and Email
 - Discussion: A direct-to-consumer ergonomic desk manufacturer has a 15,000-dollar monthly digital marketing budget and needs both immediate first-quarter sales to pay suppliers and lower customer acquisition costs over the next two years. Using SEO, SEM (pay-per-click), content marketing, and permission-based email automation, design a phased allocation of the budget and explain how each channel supports the others across the customer journey.
 
-## Part 3: Leveraging Social Media for Customer Engagement [no-exercise]
+## Part 3: Social Media and Customer Engagement [no-exercise]
 - Social media are independent and commercial online communities where people congregate to socialize and share messages, opinions, pictures, videos, and other content.
 - Marketers participate in social networks to build brand communities, listen to customer sentiment, and partner with credible creators.
 

@@ -218,10 +218,33 @@ export function UnstructuredHeap() {
    ========================================================================== */
 
 export function Volume() {
+  const tw = 36;
+  const th = 27;
+  const gap = 6;
+  const cols = 7;
+  const rows = 5;
+  const x0 = 96;
+  const base = 212;
+  const y0 = base - (rows * th + (rows - 1) * gap);
   return (
-    <Plate h={230} title="A small two-disc storage stack beside a towering nine-disc database stack">
-      <Database cx={120} bottom={218} w={96} n={2} disc={19} />
-      <Database cx={268} bottom={218} w={132} n={9} disc={19} tone={SIGNAL} />
+    <Plate
+      h={230}
+      title="One small table beside a wall of thirty-five identical tables: the same kind of data at a far larger volume"
+    >
+      <Table x={24} y={base - 30} w={40} h={30} rows={2} cols={2} />
+      {Array.from({ length: rows }, (_, r) =>
+        Array.from({ length: cols }, (_, c) => (
+          <Table
+            key={`${r}-${c}`}
+            x={x0 + c * (tw + gap)}
+            y={y0 + r * (th + gap)}
+            w={tw}
+            h={th}
+            rows={2}
+            cols={2}
+          />
+        )),
+      )}
     </Plate>
   );
 }
@@ -242,23 +265,24 @@ function Streak({ x, y }: { x: number; y: number }) {
 }
 
 export function Velocity() {
-  const xs = [42, 128, 214];
-  const y = 158;
+  // each table trails its own speed lines, with clear space before the next
+  const xs = [44, 134, 224];
+  const y = 160;
   return (
     <Plate
       h={230}
-      title="A stopwatch above a line of small tables racing, with speed lines behind each, into a screen showing a live signal"
+      title="A stopwatch above a stream of tables, each with speed lines, racing into a screen showing a live signal"
     >
-      <Timer x={168} y={20} size={72} weight="fill" color={INK} />
+      <Timer x={144} y={36} size={76} weight="fill" color={INK} />
       {xs.map((x) => (
         <g key={x}>
           <Streak x={x} y={y} />
-          <Table x={x} y={y - 17} w={46} h={34} rows={2} cols={2} />
+          <Table x={x} y={y - 19} w={50} h={38} rows={2} cols={2} />
         </g>
       ))}
-      <Arrow x1={268} x2={300} y={y} />
-      <MiniScreen x={306} y={y - 28}>
-        <Unit kind="signal" cx={348} cy={y} s={38} />
+      <Arrow x1={280} x2={302} y={y} />
+      <MiniScreen x={308} y={y - 28}>
+        <Unit kind="signal" cx={350} cy={y} s={38} />
       </MiniScreen>
     </Plate>
   );
@@ -269,18 +293,20 @@ export function Velocity() {
    ========================================================================== */
 
 export function Variety() {
-  const xs = [84, 200, 316];
+  const xs = [70, 200, 330];
+  const top = 86;
+  const bottom = 176;
   return (
     <Plate
       h={230}
       title="Six formats side by side: a table, a photo, a video, an email, a web page and a social post"
     >
-      <Table x={xs[0] - 34} y={44} w={68} h={52} rows={3} cols={3} />
-      <Unit kind="photo" cx={xs[1]} cy={70} s={72} />
-      <Unit kind="video" cx={xs[2]} cy={70} s={72} />
-      <Unit kind="email" cx={xs[0]} cy={162} s={72} />
-      <Unit kind="web" cx={xs[1]} cy={162} s={72} />
-      <Unit kind="post" cx={xs[2]} cy={162} s={72} />
+      <Table x={xs[0] - 34} y={top - 26} w={68} h={52} rows={3} cols={3} />
+      <Unit kind="photo" cx={xs[1]} cy={top} s={68} />
+      <Unit kind="video" cx={xs[2]} cy={top} s={68} />
+      <Unit kind="email" cx={xs[0]} cy={bottom} s={68} />
+      <Unit kind="web" cx={xs[1]} cy={bottom} s={68} />
+      <Unit kind="post" cx={xs[2]} cy={bottom} s={68} />
     </Plate>
   );
 }
@@ -466,7 +492,47 @@ const PRIMARY = [
   ["Service"],
 ];
 
-export function ValueChain() {
+/** A clickable zone on a plate: whole area selects, Enter and Space too. */
+function Hit({
+  label,
+  pressed,
+  onSelect,
+  children,
+}: {
+  label: string;
+  pressed: boolean;
+  onSelect?: () => void;
+  children: React.ReactNode;
+}) {
+  if (!onSelect) return <>{children}</>;
+  return (
+    <g
+      role="button"
+      tabIndex={0}
+      aria-label={label}
+      aria-pressed={pressed}
+      onClick={onSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
+      className="cursor-pointer outline-none focus:outline-none"
+    >
+      {children}
+    </g>
+  );
+}
+
+export function ValueChain({
+  selected,
+  onSelect,
+}: {
+  /** support bars 0 to 3 (top down), then primary columns 4 to 8 (left to right) */
+  selected?: number;
+  onSelect?: (i: number) => void;
+} = {}) {
   const L = 20;
   const R = 640;
   const top = 10;
@@ -476,7 +542,7 @@ export function ValueChain() {
   const bottom = 216;
   const cw = (R - L - 4 * gap) / 5;
   const word = (x: number, y: number, s: string, fill: string, size = 16) => (
-    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={size} fill={INK}>
+    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={600} fontSize={size} fill={fill}>
       {s}
     </text>
   );
@@ -488,28 +554,30 @@ export function ValueChain() {
     >
       {SUPPORT.map((s, i) => {
         const y = top + i * (bh + gap);
+        const on = selected === i;
         return (
-          <g key={s}>
-            <rect x={L} y={y} width={R - L} height={bh} fill={COUNTER_FILL} />
-            {word((L + R) / 2, y + 18.5, s, INK)}
-          </g>
+          <Hit key={s} label={s} pressed={on} onSelect={onSelect ? () => onSelect(i) : undefined}>
+            <rect x={L} y={y} width={R - L} height={bh} fill={on ? SIGNAL : COUNTER_FILL} />
+            {word((L + R) / 2, y + 18.5, s, on ? WHITE : INK)}
+          </Hit>
         );
       })}
       {PRIMARY.map((lines, i) => {
         const x = r2(L + i * (cw + gap));
         const cy = (pTop + bottom) / 2;
+        const on = selected === i + 4;
         return (
-          <g key={i}>
-            <rect x={x} y={pTop} width={r2(cw)} height={bottom - pTop} fill={INK} />
+          <Hit key={i} label={lines.join(" ")} pressed={on} onSelect={onSelect ? () => onSelect(i + 4) : undefined}>
+            <rect x={x} y={pTop} width={r2(cw)} height={bottom - pTop} fill={on ? SIGNAL : INK} />
             {lines.map((s, j) => (
               <React.Fragment key={s}>
                 {word(r2(x + cw / 2), r2(cy + 6 + (j - (lines.length - 1) / 2) * 22), s, WHITE)}
               </React.Fragment>
             ))}
-          </g>
+          </Hit>
         );
       })}
-      <path d={`M ${R + gap} ${top} L 780 ${(top + bottom) / 2} L ${R + gap} ${bottom} Z`} fill={SIGNAL} />
+      <path d={`M ${R + gap} ${top} L 780 ${(top + bottom) / 2} L ${R + gap} ${bottom} Z`} fill={onSelect ? INK : SIGNAL} />
       {word(R + 44, (top + bottom) / 2 + 7, "Value", WHITE, 20)}
     </Plate>
   );
@@ -591,9 +659,9 @@ export function PeopleAndTechnology() {
   return (
     <Plate
       h={242}
-      title="Two people (the social system) and a screen with a gear (the technical system), with arrows running both ways between them, all held inside one red frame"
+      title="Two people (the social system) and a screen with a gear (the technical system), with arrows running both ways between them, all held inside one frame"
     >
-      <rect x={10} y={10} width={380} height={222} fill="none" stroke={SIGNAL} strokeWidth={5} />
+      <rect x={10} y={10} width={380} height={222} fill="none" stroke={INK} strokeOpacity={0.35} strokeWidth={1.5} />
       <Person x={58} y={64} k={0.92} variant={4} />
       <Person x={142} y={64} k={0.92} variant={9} />
       <Monitor x={244} y={54} w={112} h={84}>
@@ -705,12 +773,22 @@ function ChainGlyph({
   }
 }
 
-export function DataChain({ active }: { active: number }) {
+export function DataChain({
+  active = 0,
+  selected,
+  onSelect,
+}: {
+  /** first of three lit stages (static use) */
+  active?: number;
+  /** one lit stage, 0 to 7, or 8 for the feedback loop (interactive use) */
+  selected?: number;
+  onSelect?: (i: number) => void;
+}) {
   const cy = 80;
   const r = 26;
   const x = (i: number) => 52 + i * 99.4;
-  const lit = (i: number) => i >= active && i < active + 3;
-  const loopLit = active === 6;
+  const lit = (i: number) => (selected !== undefined ? i === selected : i >= active && i < active + 3);
+  const loopLit = selected !== undefined ? selected === 8 : active === 6;
   const loopTone = loopLit ? SIGNAL : INK;
   const loopY = 30;
   const names = CHAIN.map((n, i) => `${i + 1}. data ${n.toLowerCase()}`).join(", ");
@@ -723,7 +801,8 @@ export function DataChain({ active }: { active: number }) {
       }`}
     >
       {CHAIN.map((name, i) => (
-        <g key={name}>
+        <Hit key={name} label={`Data ${name.toLowerCase()}`} pressed={lit(i)} onSelect={onSelect ? () => onSelect(i) : undefined}>
+          <rect x={r2(x(i) - 48)} y={cy - r - 10} width={96} height={r * 2 + 44} fill="transparent" />
           <circle cx={r2(x(i))} cy={cy} r={r} fill={lit(i) ? SIGNAL : WHITE} stroke={lit(i) ? SIGNAL : INK} strokeWidth={4} />
           <g transform={`translate(${r2(x(i))} ${cy}) scale(0.82) translate(${r2(-x(i))} ${-cy})`}>
             <ChainGlyph i={i} cx={r2(x(i))} cy={cy} color={lit(i) ? WHITE : INK} ground={lit(i) ? SIGNAL : WHITE} />
@@ -742,10 +821,12 @@ export function DataChain({ active }: { active: number }) {
           {i < CHAIN.length - 1 && (
             <Pointer x1={r2(x(i) + r + 7)} y1={cy} x2={r2(x(i + 1) - r - 7)} y2={cy} w={3} head={12} />
           )}
-        </g>
+        </Hit>
       ))}
       {/* feedback and iteration: up out of the last stage, back over the row,
           and down into the first */}
+      <Hit label="Feedback and iteration" pressed={loopLit} onSelect={onSelect ? () => onSelect(8) : undefined}>
+      <rect x={r2(x(0) - 10)} y={0} width={r2(x(7) - x(0) + 20)} height={cy - r - 12} fill="transparent" />
       <path
         d={`M ${r2(x(7))} ${cy - r - 6} V ${loopY} H ${r2(x(0))} V ${cy - r - 18}`}
         fill="none"
@@ -767,6 +848,7 @@ export function DataChain({ active }: { active: number }) {
       >
         Feedback and Iteration
       </text>
+      </Hit>
     </Plate>
   );
 }

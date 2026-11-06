@@ -6,6 +6,7 @@ week: week-1
 ---
 
 ## Title Slide
+[figure: a shop front beside the same shop front shown on a screen]
 - Week 1
 - Introduction to digital transformation
 - Foundations of Digital Transformation
@@ -15,9 +16,13 @@ week: week-1
 - Digitization, Digitalization, and Digital Transformation
 - The Digital Transformation Pyramid
 
-# Chapter 01: Introduction to Digital Transformation
+# Part 1: Introduction to Digital Transformation
+
+- This part defines digital transformation as the integration of digital technology into all areas of a business.
+- It identifies the key components that a transformation must address and asks which company best exemplifies them.
 
 ## Digital Transformation [exercise]
+[figure: a laptop, a person, and a gear drawn at equal size, standing for technology, people, and processes]
 - Digital transformation is the integration of digital technology into all areas of a business.
 - It fundamentally changes how businesses operate and deliver value to customers.
 - It requires a cultural shift that challenges the status quo.
@@ -25,6 +30,7 @@ week: week-1
 - Data-driven decision-making is essential for successful transformation.
 
 ## Key Components of Digital Transformation [exercise]
+[figure: the six key components of digital transformation arranged around one business]
 1. **Technology Integration**: This involves the adoption of advanced technologies such as cloud computing, artificial intelligence (AI), big data analytics, the Internet of Things (IoT), and automation. These technologies enable organizations to streamline processes, enhance decision-making, and improve efficiency.
 2. **Cultural Change**: Digital transformation requires a shift in organizational culture. It encourages a mindset of innovation, agility, and collaboration. Employees at all levels must be willing to embrace change, experiment with new ideas, and adapt to evolving market conditions.
 3. **Customer-Centric Approach**: Understanding and meeting customer needs is at the heart of digital transformation. Organizations must leverage data and analytics to gain insights into customer behavior, preferences, and pain points, allowing them to deliver personalized experiences and build stronger relationships.
@@ -35,9 +41,13 @@ week: week-1
 ## Discussion Question [no-exercise]
 - Which company exemplifies Digital Transformation?
 
-# Chapter 02: Digitization, Digitalization, and Digital Transformation
+# Part 2: Digitization, Digitalization, and Digital Transformation
+
+- This part distinguishes three terms that are often used interchangeably: digitization, digitalization, and digital transformation.
+- Each term describes a different scope of change, from converting records into digital form to rethinking how the whole organization creates value.
 
 ## Digitization, Digitalization, and Digital Transformation [exercise]
+[figure: three rising steps, from digitization (converting records into digital form) through digitalization (automating processes) to digital transformation (redesigning the business)]
 1. **Digitization**
    - **Definition**: Digitization is the process of converting analog information into a digital format. This involves transforming physical objects, documents, or processes into a digital representation that can be easily stored, accessed, and manipulated by computers.
    - **Examples**:
@@ -60,9 +70,13 @@ week: week-1
 ## Discussion Question [no-exercise]
 - How can organizations ensure that their digitization efforts align with their overall digital transformation strategy?
 
-# Chapter 03: The Digital Transformation Pyramid
+# Part 3: The Digital Transformation Pyramid
+
+- This part presents the digital transformation pyramid, which arranges the layers of a transformation from technology infrastructure at the base to culture and leadership at the top.
+- Each layer depends on the layers beneath it, so investment in technology alone does not complete a transformation.
 
 ## The Digital Transformation Pyramid [exercise]
+[figure: the digital transformation pyramid, from technology infrastructure at the base through data, process, customer experience, and culture and leadership, with an optional innovation layer at the top]
 1. **Foundation Layer (Technology Infrastructure)**
    - **Description**: This is the base of the pyramid and includes the essential technology infrastructure that supports digital initiatives. It encompasses hardware, software, networks, and data management systems.
    - **Key Components**: Cloud computing, data storage solutions, cybersecurity measures, and network infrastructure.

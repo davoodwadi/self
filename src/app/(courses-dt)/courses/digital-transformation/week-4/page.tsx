@@ -19,24 +19,14 @@ import {
   Summary,
 } from "../_visuals/kit";
 import {
-  HeroAcceptance,
   TamFlowDiagram,
   ExternalVariablesInteractive,
   TamBeliefsInteractive,
-  BestBuyAssistantPlate,
-  BestBuyFeatureTradeoff,
-  BestBuyCatalogBridgePlate,
   HospitalTriageFlow,
-  HospitalPeakSimulator,
-  HospitalEhrIntegrationPlate,
   IkeaKioskReturn,
-  IkeaKioskStepsPlate,
   UtautSynthesisPlate,
-  UtautModelInteractive,
-  IkeaUtautDriversPlate,
   IkeaModeratorsInteractive,
   IotLoopInteractive,
-  IotSecurityPractices,
   IotDeviceLifecycle,
   CloudComputingHub,
   EdgeFogCloudInteractive,
@@ -56,12 +46,12 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 /* Body copy in upright sans-serif. */
 const BODY =
-  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+  "font-sans text-lg md:text-[1.25rem] leading-[1.55] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 const SMALL =
-  "font-sans text-[0.95rem] leading-[1.55] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+  "font-sans text-[1.0625rem] leading-[1.5] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
-const SUB = "font-sans font-semibold text-sm tracking-normal text-[var(--ink-3)]";
+const SUB = "font-sans font-semibold text-lg text-[var(--dt-ink)] tracking-normal";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -79,8 +69,8 @@ function Step({ n, name, children }: { n: number; name: React.ReactNode; childre
   return (
     <div className="border-t border-[var(--dt-ink)]/15 pt-3">
       <p className="font-sans font-semibold text-base text-[var(--dt-ink)] leading-snug mb-2 flex items-baseline gap-2.5">
-        <span className="font-sans font-medium text-xs text-[var(--ink-3)] tabular-nums">
-          {String(n).padStart(2, "0")}
+        <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums">
+          {n}
         </span>
         <span>{name}</span>
       </p>
@@ -113,16 +103,28 @@ export default function DigitalTransformationWeek4() {
           "Conclusion",
           "Q&A",
         ]}
-        plate={<HeroAcceptance />}
       />
 
       {/* ================================================================
           CHAPTER 1: TECHNOLOGY ACCEPTANCE MODEL (TAM)
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="Technology Acceptance Model (TAM)" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="Technology Acceptance Model (TAM)"
+        description={[
+          "This part introduces the Technology Acceptance Model, which explains and predicts whether users accept and use a new technology.",
+          "The model links external variables to perceived usefulness and perceived ease of use, and through them to attitude, intention, and use.",
+        ]}
+        topics={[
+          "Components of TAM: External Variables",
+          "Components of TAM: Beliefs, Attitude, and Intention",
+        ]}
+      />
 
       <DiscussionList
         id="question-opening"
+        title="Question"
         questions={[
           "Think of a time you adopted a new app or tool (e.g., TikTok, Zoom, ChatGPT, a fitness tracker). What specific factors convinced you to use it? Was it because it solved a problem quickly, was easy to learn, or because peers recommended it? If you avoided a tool (e.g., Twitter/X, a new software update), what turned you off?",
           "Did you care more about how intuitive it was or how much value it added? For example, did you stick with Instagram Reels because it felt familiar, or switch to TikTok for better features?",
@@ -292,14 +294,30 @@ export default function DigitalTransformationWeek4() {
       {/* ================================================================
           CHAPTER 2: APPLICATIONS OF TAM
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Applications of TAM" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Applications of TAM"
+        description={[
+          "This part applies the Technology Acceptance Model to three new technologies: an AI shopping assistant at Best Buy, an AI triage chatbot in a hospital, and a self-return kiosk at IKEA.",
+          "Each case examines how perceived usefulness and perceived ease of use shape adoption and which benefits adoption brings.",
+        ]}
+        topics={[
+          "Example: Application of TAM in E-Commerce",
+          "TAM for BestBuy: Adoption and Benefits",
+          "Example: TAM for AI Chatbots in a Hospital",
+          "TAM for AI Chatbots in a Hospital: Adoption and Benefits",
+          "Example: TAM for IKEA’s Self-Return Kiosk",
+          "TAM for IKEA’s Self-Return Kiosk: Adoption and Benefits",
+        ]}
+      />
 
       <Slide
         id="example-application-of-tam-in-e-commerce"
         label="CASE STUDY 01: E-COMMERCE"
         title="Example: Application of TAM in E-Commerce"
       >
-        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 border-b border-[var(--dt-ink)]/15 pb-4`}>
+        <div className={`${BODY} md:!text-lg grid md:grid-cols-2 gap-6 border-b border-[var(--dt-ink)]/15 pb-4`}>
           <p>
             BestBuy is introducing a new AI-powered virtual shopping assistant to improve the
             online shopping experience.
@@ -309,13 +327,10 @@ export default function DigitalTransformationWeek4() {
             technology.
           </p>
         </div>
-        <Row cols="lg:grid-cols-[1fr_1.35fr]" className="!items-center">
-          <PlateWell>
-            <BestBuyAssistantPlate />
-          </PlateWell>
+        <Row cols="max-w-6xl" className="!items-center">
           <div>
             <p className={`${SUB} mb-3`}>External Variables</p>
-            <div className={`${BODY} grid sm:grid-cols-2 gap-5`}>
+            <div className={`${BODY} md:!text-lg grid sm:grid-cols-2 lg:grid-cols-4 gap-6`}>
               <Step n={1} name="System Features:">
                 <p>
                   The virtual assistant provides personalized product recommendations and fast
@@ -420,8 +435,8 @@ export default function DigitalTransformationWeek4() {
                 </>,
               ].map((item, i) => (
                 <li key={i} className="flex items-baseline gap-3">
-                  <span className="font-sans font-medium text-xs text-[var(--ink-3)] tabular-nums shrink-0">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums shrink-0">
+                    {i + 1}
                   </span>
                   <span>{item}</span>
                 </li>
@@ -429,9 +444,6 @@ export default function DigitalTransformationWeek4() {
             </ol>
           </div>
         </div>
-        <PlateWell>
-          <BestBuyFeatureTradeoff />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -439,7 +451,7 @@ export default function DigitalTransformationWeek4() {
         label="CLASS DISCUSSION: BESTBUY"
         title="Discussion & Research Questions"
       >
-        <Row cols="lg:grid-cols-[1.4fr_1fr]">
+        <Row cols="max-w-4xl">
           <div className="flex flex-col gap-6">
             <div>
               <p className={`${SUB} mb-2`}>Discussion Questions</p>
@@ -469,8 +481,8 @@ export default function DigitalTransformationWeek4() {
             <div className="border-t border-[var(--dt-ink)]/15 pt-4">
               <p className={`${SUB} mb-2`}>Research Questions</p>
               <div className="flex items-baseline gap-4">
-                <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums w-6 shrink-0">
-                  04
+                <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums w-6 shrink-0">
+                  4
                 </span>
                 <p className="font-sans font-medium text-lg leading-snug text-[var(--dt-ink)]">
                   What AI tool can be incorporated to give the chatbot access to BestBuy&apos;s product catalog and
@@ -479,9 +491,6 @@ export default function DigitalTransformationWeek4() {
               </div>
             </div>
           </div>
-          <PlateWell>
-            <BestBuyCatalogBridgePlate />
-          </PlateWell>
         </Row>
       </Slide>
 
@@ -606,10 +615,7 @@ export default function DigitalTransformationWeek4() {
             </p>
           </div>
         </div>
-        <Row cols="lg:grid-cols-[1fr_1.35fr]" className="!items-center">
-          <PlateWell>
-            <HospitalPeakSimulator />
-          </PlateWell>
+        <Row cols="max-w-6xl" className="!items-center">
           <div className="border border-[var(--dt-ink)]/15 p-4 sm:p-5">
             <p className="font-sans font-semibold text-lg mb-3 text-[var(--dt-ink)]">Benefits for the Hospital</p>
             <div className={`${SMALL} grid sm:grid-cols-3 gap-4`}>
@@ -634,10 +640,7 @@ export default function DigitalTransformationWeek4() {
         label="CLASS DISCUSSION: HOSPITAL CHATBOT"
         title="Discussion & Research Questions"
       >
-        <Row cols="lg:grid-cols-[1fr_1.4fr]">
-          <PlateWell>
-            <HospitalEhrIntegrationPlate />
-          </PlateWell>
+        <Row cols="max-w-4xl">
           <div className="flex flex-col gap-6">
             <div>
               <p className={`${SUB} mb-2`}>Discussion Questions</p>
@@ -660,8 +663,8 @@ export default function DigitalTransformationWeek4() {
             <div className="border-t border-[var(--dt-ink)]/15 pt-4">
               <p className={`${SUB} mb-2`}>Research Question</p>
               <div className="flex items-baseline gap-4">
-                <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums w-6 shrink-0">
-                  04
+                <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums w-6 shrink-0">
+                  4
                 </span>
                 <p className="font-sans font-medium text-lg leading-snug text-[var(--dt-ink)]">
                   What AI tool can help integrate electronic health records (EHRs) into the chatbot?
@@ -729,7 +732,7 @@ export default function DigitalTransformationWeek4() {
         title="TAM for IKEA’s Self-Return Kiosk: Adoption and Benefits"
         exercise={exercise["tam-for-ikeas-self-return-kiosk-adoption-and-benefits"]}
       >
-        <Row cols="lg:grid-cols-[1.35fr_1fr]" className="!items-center">
+        <Row cols="max-w-6xl" className="!items-center">
           <div className={`${SMALL} flex flex-col gap-4`}>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
@@ -798,9 +801,6 @@ export default function DigitalTransformationWeek4() {
               </div>
             </div>
           </div>
-          <PlateWell>
-            <IkeaKioskStepsPlate />
-          </PlateWell>
         </Row>
       </Slide>
 
@@ -851,8 +851,17 @@ export default function DigitalTransformationWeek4() {
           ================================================================ */}
       <ChapterBand
         id="ch3"
-        number="03"
+        number={3}
         title="The Unified Theory of Acceptance and Use of Technology (UTAUT)"
+        description={[
+          "This part introduces the Unified Theory of Acceptance and Use of Technology, which extends the Technology Acceptance Model to explain adoption in organizational settings.",
+          "The theory adds social influence and facilitating conditions, and it identifies moderating variables such as age, gender, experience, and voluntariness of use.",
+        ]}
+        topics={[
+          "Moderating Variables",
+          "UTAUT for IKEA's Self-Return Kiosk",
+          "UTAUT for IKEA's Self-Return Kiosk: Moderating Variables",
+        ]}
       />
 
       <DiscussionSlide
@@ -938,9 +947,6 @@ export default function DigitalTransformationWeek4() {
             <p>Whether the use of the technology is mandatory or voluntary can affect acceptance.</p>
           </div>
         </div>
-        <PlateWell>
-          <UtautModelInteractive />
-        </PlateWell>
       </Slide>
 
       <Slide id="utaut-for-ikeas-self-return-kiosk" label="CASE STUDY: UTAUT" title="UTAUT for IKEA's Self-Return Kiosk">
@@ -990,9 +996,6 @@ export default function DigitalTransformationWeek4() {
             />
           </div>
         </div>
-        <PlateWell>
-          <IkeaUtautDriversPlate />
-        </PlateWell>
         <div className={`${SMALL} grid md:grid-cols-2 gap-6`}>
           <div className="border-t border-[var(--dt-ink)]/15 pt-2.5">
             <p className="font-sans font-semibold text-base mb-1 text-[var(--dt-ink)]">Behavioral Intention</p>
@@ -1076,7 +1079,23 @@ export default function DigitalTransformationWeek4() {
       {/* ================================================================
           CHAPTER 4: INTRODUCTION TO IOT, CLOUD, EDGE, AND FOG COMPUTING
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Introduction to IoT, Cloud, Edge, and Fog Computing" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Introduction to IoT, Cloud, Edge, and Fog Computing"
+        description={[
+          "This part introduces the Internet of Things and the three computing models that process its data: cloud, edge, and fog computing.",
+          "It closes by distinguishing the three models by where the data is processed.",
+        ]}
+        topics={[
+          "What is IoT?",
+          "IoT Privacy and Security",
+          "IIoT and IoT Device Management Process",
+          "What is Cloud Computing?",
+          "What is Edge and Fog Computing?",
+          "Disambiguating the Terms",
+        ]}
+      />
 
       <Slide id="what-is-iot" label="INTERNET OF THINGS" title="What is IoT?">
         <div className={`${BODY} text-lg grid md:grid-cols-3 gap-6`}>
@@ -1138,9 +1157,6 @@ export default function DigitalTransformationWeek4() {
             </p>
           </Step>
         </div>
-        <PlateWell>
-          <IotSecurityPractices />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -1160,7 +1176,7 @@ export default function DigitalTransformationWeek4() {
             <li key={stage} className="border-t border-[var(--dt-ink)]/15 pt-3">
               <p className="font-sans font-semibold text-base text-[var(--dt-ink)] leading-snug">
                 <span className="font-sans font-medium text-xs mr-2 text-[var(--ink-3)] tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
+                  {i + 1}
                 </span>
                 <strong>{stage}</strong>
               </p>
@@ -1269,7 +1285,7 @@ export default function DigitalTransformationWeek4() {
       >
         <Row cols="lg:grid-cols-[1.35fr_1fr]" className="!items-center">
           <div className="overflow-x-auto border border-[var(--dt-ink)]/15">
-            <table className="w-full text-left border-collapse font-sans">
+            <table className="w-full text-left border-collapse font-sans text-lg">
               <thead>
                 <tr className="bg-[var(--dt-ink)] text-[var(--dt-white)] font-sans text-lg">
                   <th className="py-3 px-4">Concept</th>

@@ -24,7 +24,7 @@ week: week3
 
 ## Part 1: How Search Engines Crawl, Index, and Rank [no-exercise]
 - Before a webpage can appear in organic search results, the search engine must discover its existence, parse and store its content, and score its relevance and trustworthiness against millions of competing pages.
-- Understanding this three-stage information retrieval pipeline explains why technical site failures can erase a brand from search results overnight.
+- Understanding this three-stage information retrieval pipeline explains why technical site failures can remove a brand from search results within days.
 
 ## Crawling, Indexing, and Ranking Pipelines [exercise]
 - Stage 1 is crawling, in which automated bots (spiders) follow hyperlinks across the web and read XML sitemaps to fetch new or updated pages, bounded by the site's crawl budget and `robots.txt` directives.

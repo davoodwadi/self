@@ -14,6 +14,7 @@ import {
   PosterHero,
   ChapterBand,
   Slide,
+  Stack,
   Row,
   PlateWell,
   DiscussionList,
@@ -29,14 +30,8 @@ import {
   NetflixConsiderations,
   AlignedChange,
   KotterStairs,
-  KotterSteps1To4,
-  KotterSteps5To8,
   BoxToCloud,
-  MicrosoftKotter1To4,
-  MicrosoftKotter5To8,
   AdkarOverview,
-  AdkarFirstThree,
-  AdkarLastTwo,
   SmallReleases,
   TwoPaths,
   TradVsAgileInteractive,
@@ -63,10 +58,10 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 /* Body copy in upright sans-serif. */
 const BODY =
-  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+  "font-sans text-lg md:text-[1.25rem] leading-[1.55] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
-const SUB = "font-sans font-semibold text-sm tracking-normal text-[var(--ink-3)]";
+const SUB = "font-sans font-semibold text-lg text-[var(--dt-ink)] tracking-normal";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -83,7 +78,7 @@ function Bullets({ items, className = "" }: { items: React.ReactNode[]; classNam
 /* A discussion question set under the points it belongs to. */
 function Ask({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mt-3 pt-3 border-t border-[var(--dt-ink)]/15 font-sans text-base leading-relaxed text-[var(--dt-ink)] [&_strong]:font-semibold">
+    <p className="mt-3 pt-3 border-t border-[var(--dt-ink)]/15 font-sans text-lg leading-relaxed text-[var(--dt-ink)] [&_strong]:font-semibold">
       <span className={`${SUB} block mb-1`}>Question:</span> {children}
     </p>
   );
@@ -105,20 +100,24 @@ export default function DigitalTransformationWeek3() {
   const [activeAnalytics, setActiveAnalytics] = useState(0);
   const [activeTimeline, setActiveTimeline] = useState(0);
   const [activeChallenge, setActiveChallenge] = useState(0);
-  const [activeKotter14, setActiveKotter14] = useState(0);
-  const [activeKotter58, setActiveKotter58] = useState(0);
-  const [activeMs14, setActiveMs14] = useState(0);
-  const [activeMs58, setActiveMs58] = useState(0);
-  const [activeAdkarOverview, setActiveAdkarOverview] = useState(0);
-  const [activeAdkar13, setActiveAdkar13] = useState(0);
-  const [activeAdkar45, setActiveAdkar45] = useState(0);
+  const [kotterSel, setKotterSel] = useState(0);
+  const activeKotter14 = kotterSel < 4 ? kotterSel : -1;
+  const activeKotter58 = kotterSel >= 4 ? kotterSel - 4 : -1;
+  const [msSel, setMsSel] = useState(0);
+  const activeMs14 = msSel < 4 ? msSel : -1;
+  const activeMs58 = msSel >= 4 ? msSel - 4 : -1;
+  const [adkarSel, setAdkarSel] = useState(0);
+  const activeAdkarOverview = adkarSel;
+  const activeAdkar13 = adkarSel < 3 ? adkarSel : -1;
+  const activeAdkar45 = adkarSel >= 3 ? adkarSel - 3 : -1;
   const [activeTradAgile, setActiveTradAgile] = useState(0);
   const [activeScrum13, setActiveScrum13] = useState(0);
   const [activeScrum46, setActiveScrum46] = useState(0);
   const [activeScrumRole, setActiveScrumRole] = useState(0);
-  const [activeScrumEvent1, setActiveScrumEvent1] = useState(0);
-  const [activeScrumEvent2, setActiveScrumEvent2] = useState(0);
-  const [activeScrumArtifact, setActiveScrumArtifact] = useState(0);
+  const [scrumSel, setScrumSel] = useState(0);
+  const activeScrumEvent1 = scrumSel < 2 ? scrumSel : -1;
+  const activeScrumEvent2 = scrumSel >= 2 && scrumSel < 5 ? scrumSel - 2 : -1;
+  const activeScrumArtifact = scrumSel >= 5 ? scrumSel - 5 : -1;
 
   return (
     <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
@@ -152,7 +151,21 @@ export default function DigitalTransformationWeek3() {
       {/* ================================================================
           CHAPTER 1: THE CASE OF NETFLIX
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="The Case of Netflix" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="The Case of Netflix"
+        description={[
+          "This part follows Netflix from a pay-per-rental service to a global streaming platform.",
+          "The case shows how data analytics and repeated changes to the business model support a digital transformation, and which challenges those changes raise.",
+        ]}
+        topics={[
+          "How Netflix Transformed The Movie Industry",
+          "Data analytics - Four key types",
+          "Netflix Timeline",
+          "Challenges and Considerations",
+        ]}
+      />
 
       <Slide
         id="how-netflix-transformed-the-movie-industry"
@@ -176,7 +189,7 @@ export default function DigitalTransformationWeek3() {
                   className="flex items-baseline gap-4 py-4 border-t border-[var(--dt-ink)]/15 first:border-t-0 font-sans text-lg md:text-xl leading-[1.45] text-[var(--dt-ink)]"
                 >
                   <span className="font-sans text-sm font-semibold text-[var(--ink-3)] w-6 shrink-0 tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
+                    {i + 1}
                   </span>
                   <span>{q}</span>
                 </li>
@@ -257,12 +270,9 @@ export default function DigitalTransformationWeek3() {
                     <strong>{item.name}</strong>: {item.q}
                   </span>
                 </p>
-                <div className="border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-baseline">
-                  <p className="font-sans font-bold text-xl">{item.name} Analytics</p>
-                  <div>
-                    <p className={`${SUB} mb-1`}>Definition:</p>
-                    <p className="text-lg">{item.def}</p>
-                  </div>
+                <div className="border-t border-[var(--dt-ink)]/15 pt-4 max-w-4xl">
+                  <p className={`${SUB} mb-1`}>Definition:</p>
+                  <p className="text-xl leading-[1.5] text-[var(--dt-ink)]">{item.def}</p>
                 </div>
               </li>
             );
@@ -359,9 +369,24 @@ export default function DigitalTransformationWeek3() {
       {/* ================================================================
           CHAPTER 2: CHANGE MANAGEMENT
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Change Management" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Change Management"
+        description={[
+          "This part examines change management, the discipline of moving people, processes, and technology through an organizational transition.",
+          "It presents Kotter's eight-step model and the Prosci ADKAR model, and it applies Kotter's steps to Microsoft's transformation under Satya Nadella.",
+        ]}
+        topics={[
+          "Kotter's 8 Step Change Management",
+          "The Case of Microsoft",
+          "Microsoft’s transformation and Kotter’s 8 Steps",
+          "Prosci - ADKAR Change Management Model",
+        ]}
+      />
 
       <DiscussionList
+        title="Questions"
         questions={[
           "What challenges do organizations face when undergoing major changes?",
           "Why do employees often resist change?",
@@ -380,7 +405,12 @@ export default function DigitalTransformationWeek3() {
         </PlateWell>
       </Slide>
 
-      <Slide id="kotters-8-step-change-management" label="FRAMEWORK" title="Kotter's 8 Step Change Management">
+      <Slide
+        id="kotters-8-step-change-management"
+        label="FRAMEWORK"
+        title="Kotter's 8 Step Change Management"
+        exercise={exercise["kotters-8-step-change-management"]}
+      >
         <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 md:gap-10`}>
           <p className="border-t border-[var(--dt-ink)]/15 pt-3">
             Kotter&apos;s 8-Step Change Management Model is a framework developed by Dr. John Kotter, a professor at
@@ -392,206 +422,191 @@ export default function DigitalTransformationWeek3() {
           </p>
         </div>
         <PlateWell>
-          <KotterStairs />
+          <KotterStairs selected={kotterSel} onSelect={setKotterSel} />
         </PlateWell>
-      </Slide>
-
-      <Slide id="the-eight-steps-1-to-4" label="KOTTER'S 8 STEPS" title="The Eight Steps: 1 to 4">
-        <PlateWell>
-          <KotterSteps1To4 active={activeKotter14} onSelect={setActiveKotter14} />
-        </PlateWell>
-        <div className={`${BODY} grid gap-4`}>
-          {[
-            {
-              n: 1,
-              name: "Create a Sense of Urgency",
-              points: [
-                <>
-                  Highlight the importance of change and the potential{" "}
-                  risks of not changing.
-                </>,
-                <>
-                  This step involves communicating the need for change to motivate{" "}
-                  stakeholders and create a sense of urgency.
-                </>,
-              ],
-              ask: (
-                <>
-                  How can leaders effectively create urgency without causing panic or{" "}
-                  resistance?
-                </>
-              ),
-            },
-            {
-              n: 2,
-              name: "Build a Guiding Coalition",
-              points: [
-                <>
-                  Form a group of influential people within the organization who can lead the change
-                  effort.
-                </>,
-                <>
-                  This coalition should have the authority, expertise, and{" "}
-                  credibility to drive the change process.
-                </>,
-              ],
-              ask: <>What qualities should leaders look for when forming a guiding coalition?</>,
-            },
-            {
-              n: 3,
-              name: "Form a Strategic Vision and Initiatives",
-              points: [
-                <>
-                  Develop a clear vision for the future and outline the initiatives{" "}
-                  that will help achieve that vision.
-                </>,
-                <>
-                  This step involves articulating the desired outcomes and how the
-                  change will benefit the organization.
-                </>,
-              ],
-              ask: <>How can a compelling vision help unify and motivate employees during digital transformation?</>,
-            },
-            {
-              n: 4,
-              name: "Communicate the Vision",
-              points: [
-                <>
-                  Share the vision and strategy with all stakeholders.
-                </>,
-                <>
-                  Effective communication is crucial to ensure that everyone understands the
-                  change and is aligned with the vision.
-                </>,
-              ],
-              ask: (
-                <>
-                  What communication methods are most effective for ensuring employees understand and support the
-                  vision?
-                </>
-              ),
-            },
-          ].map((s, i) => {
-            const isLit = i === activeKotter14;
-            return (
-              <div
-                key={s.n}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <div>
-                  <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
-                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
-                    <span>{s.name}:</span>
-                  </p>
-                  <Bullets items={s.points} />
+        <Stack>
+  <div className={`${BODY} grid gap-4`}>
+            {[
+              {
+                n: 1,
+                name: "Create a Sense of Urgency",
+                points: [
+                  <>
+                    Highlight the importance of change and the potential{" "}
+                    risks of not changing.
+                  </>,
+                  <>
+                    This step involves communicating the need for change to motivate{" "}
+                    stakeholders and create a sense of urgency.
+                  </>,
+                ],
+                ask: (
+                  <>
+                    How can leaders effectively create urgency without causing panic or{" "}
+                    resistance?
+                  </>
+                ),
+              },
+              {
+                n: 2,
+                name: "Build a Guiding Coalition",
+                points: [
+                  <>
+                    Form a group of influential people within the organization who can lead the change
+                    effort.
+                  </>,
+                  <>
+                    This coalition should have the authority, expertise, and{" "}
+                    credibility to drive the change process.
+                  </>,
+                ],
+                ask: <>What qualities should leaders look for when forming a guiding coalition?</>,
+              },
+              {
+                n: 3,
+                name: "Form a Strategic Vision and Initiatives",
+                points: [
+                  <>
+                    Develop a clear vision for the future and outline the initiatives{" "}
+                    that will help achieve that vision.
+                  </>,
+                  <>
+                    This step involves articulating the desired outcomes and how the
+                    change will benefit the organization.
+                  </>,
+                ],
+                ask: <>How can a compelling vision help unify and motivate employees during digital transformation?</>,
+              },
+              {
+                n: 4,
+                name: "Communicate the Vision",
+                points: [
+                  <>
+                    Share the vision and strategy with all stakeholders.
+                  </>,
+                  <>
+                    Effective communication is crucial to ensure that everyone understands the
+                    change and is aligned with the vision.
+                  </>,
+                ],
+                ask: (
+                  <>
+                    What communication methods are most effective for ensuring employees understand and support the
+                    vision?
+                  </>
+                ),
+              },
+            ].map((s, i) => {
+              const isLit = i === activeKotter14;
+              return (
+                <div
+                  key={s.n}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <div>
+                    <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                      <span className="font-sans font-bold tabular-nums">{s.n}.</span>
+                      <span>{s.name}:</span>
+                    </p>
+                    <Bullets items={s.points} />
+                  </div>
+                  <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
+                    <Ask>{s.ask}</Ask>
+                  </div>
                 </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
-                  <Ask>{s.ask}</Ask>
+              );
+            })}
+          </div>
+  <div className={`${BODY} grid gap-4`}>
+            {[
+              {
+                n: 5,
+                name: "Empower Broad-Based Action",
+                points: [
+                  <>
+                    Remove obstacles that may hinder change and empower employees to take{" "}
+                    action.
+                  </>,
+                  <>
+                    This may involve providing training, resources, and{" "}
+                    support to help individuals contribute to the change effort.
+                  </>,
+                ],
+                ask: "What challenges might organizations face when empowering employees to act on the change vision?",
+              },
+              {
+                n: 6,
+                name: "Generate Short-Term Wins",
+                points: [
+                  <>
+                    Create and celebrate short-term successes to build momentum and{" "}
+                    demonstrate the benefits of the change.
+                  </>,
+                  <>
+                    Recognizing and rewarding achievements can help maintain motivation
+                    and support for the change initiative.
+                  </>,
+                ],
+                ask: "Why are short-term wins important for sustaining long-term change?",
+              },
+              {
+                n: 7,
+                name: "Consolidate Gains and Produce More Change",
+                points: [
+                  <>
+                    Use the credibility gained from short-term wins to tackle{" "}
+                    larger change initiatives.
+                  </>,
+                  <>
+                    This step involves reinforcing the change and ensuring that it becomes part
+                    of the organizational culture.
+                  </>,
+                ],
+                ask: "How can organizations avoid complacency after achieving initial success in change initiatives?",
+              },
+              {
+                n: 8,
+                name: "Anchor New Approaches in the Culture",
+                points: [
+                  <>
+                    Ensure that the changes are integrated into the organization&apos;s culture{" "}
+                    and practices.
+                  </>,
+                  <>
+                    This involves reinforcing the new behaviors and values through policies,{" "}
+                    procedures, and ongoing communication.
+                  </>,
+                ],
+                ask: "What strategies can leaders use to ensure changes become permanent and part of the organizational culture?",
+              },
+            ].map((s, i) => {
+              const isLit = i === activeKotter58;
+              return (
+                <div
+                  key={s.n}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <div>
+                    <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                      <span className="font-sans font-bold tabular-nums">{s.n}.</span>
+                      <span>{s.name}:</span>
+                    </p>
+                    <Bullets items={s.points} />
+                  </div>
+                  <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
+                    <Ask>{s.ask}</Ask>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </Slide>
-
-      <Slide
-        id="the-eight-steps-5-to-8"
-        label="KOTTER'S 8 STEPS"
-        title="The Eight Steps: 5 to 8"
-        exercise={exercise["the-eight-steps-5-to-8"]}
-      >
-        <PlateWell>
-          <KotterSteps5To8 active={activeKotter58} onSelect={setActiveKotter58} />
-        </PlateWell>
-        <div className={`${BODY} grid gap-4`}>
-          {[
-            {
-              n: 5,
-              name: "Empower Broad-Based Action",
-              points: [
-                <>
-                  Remove obstacles that may hinder change and empower employees to take{" "}
-                  action.
-                </>,
-                <>
-                  This may involve providing training, resources, and{" "}
-                  support to help individuals contribute to the change effort.
-                </>,
-              ],
-              ask: "What challenges might organizations face when empowering employees to act on the change vision?",
-            },
-            {
-              n: 6,
-              name: "Generate Short-Term Wins",
-              points: [
-                <>
-                  Create and celebrate short-term successes to build momentum and{" "}
-                  demonstrate the benefits of the change.
-                </>,
-                <>
-                  Recognizing and rewarding achievements can help maintain motivation
-                  and support for the change initiative.
-                </>,
-              ],
-              ask: "Why are short-term wins important for sustaining long-term change?",
-            },
-            {
-              n: 7,
-              name: "Consolidate Gains and Produce More Change",
-              points: [
-                <>
-                  Use the credibility gained from short-term wins to tackle{" "}
-                  larger change initiatives.
-                </>,
-                <>
-                  This step involves reinforcing the change and ensuring that it becomes part
-                  of the organizational culture.
-                </>,
-              ],
-              ask: "How can organizations avoid complacency after achieving initial success in change initiatives?",
-            },
-            {
-              n: 8,
-              name: "Anchor New Approaches in the Culture",
-              points: [
-                <>
-                  Ensure that the changes are integrated into the organization&apos;s culture{" "}
-                  and practices.
-                </>,
-                <>
-                  This involves reinforcing the new behaviors and values through policies,{" "}
-                  procedures, and ongoing communication.
-                </>,
-              ],
-              ask: "What strategies can leaders use to ensure changes become permanent and part of the organizational culture?",
-            },
-          ].map((s, i) => {
-            const isLit = i === activeKotter58;
-            return (
-              <div
-                key={s.n}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <div>
-                  <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
-                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
-                    <span>{s.name}:</span>
-                  </p>
-                  <Bullets items={s.points} />
-                </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
-                  <Ask>{s.ask}</Ask>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </Stack>
       </Slide>
 
       <Slide id="the-case-of-microsoft" label="CASE STUDY" title="The Case of Microsoft">
@@ -623,188 +638,174 @@ export default function DigitalTransformationWeek3() {
       </Slide>
 
       <Slide
-        id="microsoft-kotter-1-to-4"
+        id="microsoft-kotter"
         label="THE CASE OF MICROSOFT"
-        title="Microsoft’s transformation and Kotter’s 8 Steps: 1 to 4"
+        title="Microsoft’s transformation and Kotter’s 8 Steps"
       >
-        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-12 items-center">
-          <PlateWell>
-            <MicrosoftKotter1To4 active={activeMs14} onSelect={setActiveMs14} />
-          </PlateWell>
-          <div className={`${BODY} grid gap-4`}>
-            {[
-              {
-                n: 1,
-                name: "Create a Sense of Urgency",
-                items: [
-                  <>
-                    Nadella&apos;s emphasis on adapting to a rapidly changing technology landscape
-                  </>,
-                  <>
-                    the rise of cloud computing and mobile technology
-                  </>,
-                  <>
-                    He communicated the urgency of evolving from a traditional software company to a{" "}
-                    cloud-first, mobile-first organization.
-                  </>,
-                ],
-              },
-              {
-                n: 2,
-                name: "Build a Guiding Coalition",
-                items: [
-                  <>
-                    Nadella built a strong leadership team that included executives from{" "}
-                    various divisions.
-                  </>,
-                ],
-              },
-              {
-                n: 3,
-                name: "Form a Strategic Vision and Initiatives",
-                items: [
-                  <>
-                    Nadella articulated a clear vision for Microsoft’s future:
-                    <Bullets
-                      className="mt-1"
-                      items={["cloud services", "artificial intelligence", "collaboration tools"]}
-                    />
-                  </>,
-                  <>
-                    Introduced initiatives like Microsoft Azure and Office 365 to
-                    support this vision
-                  </>,
-                ],
-              },
-              {
-                n: 4,
-                name: "Communicate the Vision",
-                items: [
-                  <>
-                    Through various channels:
-                    <Bullets className="mt-1" items={["company-wide meetings,", "emails,", "public appearances"]} />
-                  </>,
-                  <>
-                    He encouraged open dialogue and feedback, fostering a{" "}
-                    culture of transparency.
-                  </>,
-                ],
-              },
-            ].map((s, i) => {
-              const isLit = i === activeMs14;
-              return (
-                <div
-                  key={s.n}
-                  aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-                >
-                  <p className="font-sans font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
-                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
-                    <span>{s.name}:</span>
-                  </p>
-                  <Bullets className="gap-2" items={s.items} />
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <PlateWell>
+          <KotterStairs selected={msSel} onSelect={setMsSel} />
+        </PlateWell>
+        <Stack>
+  <div className={`${BODY} grid gap-4`}>
+              {[
+                {
+                  n: 1,
+                  name: "Create a Sense of Urgency",
+                  items: [
+                    <>
+                      Nadella&apos;s emphasis on adapting to a rapidly changing technology landscape
+                    </>,
+                    <>
+                      the rise of cloud computing and mobile technology
+                    </>,
+                    <>
+                      He communicated the urgency of evolving from a traditional software company to a{" "}
+                      cloud-first, mobile-first organization.
+                    </>,
+                  ],
+                },
+                {
+                  n: 2,
+                  name: "Build a Guiding Coalition",
+                  items: [
+                    <>
+                      Nadella built a strong leadership team that included executives from{" "}
+                      various divisions.
+                    </>,
+                  ],
+                },
+                {
+                  n: 3,
+                  name: "Form a Strategic Vision and Initiatives",
+                  items: [
+                    <>
+                      Nadella articulated a clear vision for Microsoft’s future:
+                      <Bullets
+                        className="mt-1"
+                        items={["cloud services", "artificial intelligence", "collaboration tools"]}
+                      />
+                    </>,
+                    <>
+                      Introduced initiatives like Microsoft Azure and Office 365 to
+                      support this vision
+                    </>,
+                  ],
+                },
+                {
+                  n: 4,
+                  name: "Communicate the Vision",
+                  items: [
+                    <>
+                      Through various channels:
+                      <Bullets className="mt-1" items={["company-wide meetings,", "emails,", "public appearances"]} />
+                    </>,
+                    <>
+                      He encouraged open dialogue and feedback, fostering a{" "}
+                      culture of transparency.
+                    </>,
+                  ],
+                },
+              ].map((s, i) => {
+                const isLit = i === activeMs14;
+                return (
+                  <div
+                    key={s.n}
+                    aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                  >
+                    <p className="font-sans font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
+                      <span className="font-sans font-bold tabular-nums">{s.n}.</span>
+                      <span>{s.name}:</span>
+                    </p>
+                    <Bullets className="gap-2" items={s.items} />
+                  </div>
+                );
+              })}
+            </div>
+  <div className={`${BODY} !text-lg grid`}>
+              {[
+                {
+                  n: 5,
+                  name: "Empower Broad-Based Action",
+                  items: [
+                    <>
+                      Nadella encouraged employees to take risks and innovate.
+                    </>,
+                    <>
+                      He removed bureaucratic obstacles and promoted a growth mindset,
+                      allowing teams to experiment and learn from failures.
+                    </>,
+                  ],
+                },
+                {
+                  n: 6,
+                  name: "Generate Short-Term Wins",
+                  items: [
+                    <>
+                      Microsoft saw significant early successes with the adoption of Azure and the growth of
+                      Office 365.
+                    </>,
+                    <>
+                      These wins were celebrated and communicated throughout the
+                      organization.
+                    </>,
+                  ],
+                },
+                {
+                  n: 7,
+                  name: "Consolidate Gains and Produce More Change",
+                  items: [
+                    <>
+                      Building on the initial successes, Microsoft continued to invest in cloud
+                      technology and expand its product offerings.
+                    </>,
+                    <>
+                      Nadella’s leadership helped to solidify the company’s position in the{" "}
+                      cloud market.
+                    </>,
+                  ],
+                },
+                {
+                  n: 8,
+                  name: "Anchor New Approaches in the Culture",
+                  items: [
+                    <>
+                      Nadella worked to embed a culture of collaboration, inclusivity,
+                      and continuous learning within Microsoft.
+                    </>,
+                    <>
+                      He emphasized values such as empathy and teamwork
+                    </>,
+                    <>
+                      Ensuring that the new approaches became part of the organizational culture.
+                    </>,
+                  ],
+                },
+              ].map((s, i) => {
+                const isLit = i === activeMs58;
+                return (
+                  <div
+                    key={s.n}
+                    aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                  >
+                    <p className="font-sans font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
+                      <span className="font-sans font-bold tabular-nums">{s.n}.</span>
+                      <span>{s.name}:</span>
+                    </p>
+                    <Bullets className="gap-2" items={s.items} />
+                  </div>
+                );
+              })}
+            </div>
+        </Stack>
       </Slide>
 
-      <Slide
-        id="microsoft-kotter-5-to-8"
-        label="THE CASE OF MICROSOFT"
-        title="Microsoft’s transformation and Kotter’s 8 Steps: 5 to 8"
-      >
-        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-8 lg:gap-12 items-center">
-          <div className={`${BODY} !text-lg grid order-2 lg:order-1`}>
-            {[
-              {
-                n: 5,
-                name: "Empower Broad-Based Action",
-                items: [
-                  <>
-                    Nadella encouraged employees to take risks and innovate.
-                  </>,
-                  <>
-                    He removed bureaucratic obstacles and promoted a growth mindset,
-                    allowing teams to experiment and learn from failures.
-                  </>,
-                ],
-              },
-              {
-                n: 6,
-                name: "Generate Short-Term Wins",
-                items: [
-                  <>
-                    Microsoft saw significant early successes with the adoption of Azure and the growth of
-                    Office 365.
-                  </>,
-                  <>
-                    These wins were celebrated and communicated throughout the
-                    organization.
-                  </>,
-                ],
-              },
-              {
-                n: 7,
-                name: "Consolidate Gains and Produce More Change",
-                items: [
-                  <>
-                    Building on the initial successes, Microsoft continued to invest in cloud
-                    technology and expand its product offerings.
-                  </>,
-                  <>
-                    Nadella’s leadership helped to solidify the company’s position in the{" "}
-                    cloud market.
-                  </>,
-                ],
-              },
-              {
-                n: 8,
-                name: "Anchor New Approaches in the Culture",
-                items: [
-                  <>
-                    Nadella worked to embed a culture of collaboration, inclusivity,
-                    and continuous learning within Microsoft.
-                  </>,
-                  <>
-                    He emphasized values such as empathy and teamwork
-                  </>,
-                  <>
-                    Ensuring that the new approaches became part of the organizational culture.
-                  </>,
-                ],
-              },
-            ].map((s, i) => {
-              const isLit = i === activeMs58;
-              return (
-                <div
-                  key={s.n}
-                  aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-5 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-                >
-                  <p className="font-sans font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
-                    <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{s.n}.</span>
-                    <span>{s.name}:</span>
-                  </p>
-                  <Bullets className="gap-2" items={s.items} />
-                </div>
-              );
-            })}
-          </div>
-          <div className="order-1 lg:order-2">
-            <PlateWell>
-              <MicrosoftKotter5To8 active={activeMs58} onSelect={setActiveMs58} />
-            </PlateWell>
-          </div>
-        </div>
-      </Slide>
-
-      <Slide id="prosci-adkar-change-management-model" label="FRAMEWORK" title="Prosci - ADKAR Change Management Model">
+      <Slide exercise={exercise["prosci-adkar-change-management-model"]} id="prosci-adkar-change-management-model" label="FRAMEWORK" title="Prosci - ADKAR Change Management Model">
         <div className={`${BODY} grid md:grid-cols-2 gap-x-10 gap-y-2`}>
           <Bullets
             className="gap-2"
@@ -830,7 +831,7 @@ export default function DigitalTransformationWeek3() {
           />
         </div>
         <PlateWell>
-          <AdkarOverview active={activeAdkarOverview} onSelect={setActiveAdkarOverview} />
+          <AdkarOverview active={activeAdkarOverview} onSelect={setAdkarSel} />
         </PlateWell>
         <ol className="grid">
           {[
@@ -857,174 +858,170 @@ export default function DigitalTransformationWeek3() {
             );
           })}
         </ol>
-      </Slide>
-
-      <Slide id="adkar-awareness-desire-knowledge" label="PROSCI - ADKAR" title="ADKAR: Awareness, Desire, Knowledge">
-        <PlateWell>
-          <AdkarFirstThree active={activeAdkar13} onSelect={setActiveAdkar13} />
-        </PlateWell>
-        <div className={`${BODY} grid gap-4`}>
-          {[
-            {
-              l: "A",
-              name: "Awareness",
-              points: [
-                <>
-                  Individuals must be aware of the need for change.
-                </>,
-                <>
-                  This involves understanding why the change is necessary and what the{" "}
-                  drivers behind it are.
-                </>,
-                <>
-                  Effective communication is crucial at this stage to ensure that everyone understands
-                  the reasons for the change.
-                </>,
-              ],
-              ask: "Why is it important for employees to understand the reasons behind a change initiative?",
-            },
-            {
-              l: "D",
-              name: "Desire",
-              points: [
-                <>
-                  Once individuals are aware of the change, they need to have the desire to support and{" "}
-                  participate in it.
-                </>,
-                <>
-                  This involves addressing any concerns or resistance and fostering a{" "}
-                  positive attitude towards the change.
-                </>,
-                <>
-                  Engaging stakeholders and addressing their motivations can help build this desire.
-                </>,
-              ],
-              ask: "How can personal motivations and emotions influence an individual’s willingness to support change?",
-            },
-            {
-              l: "K",
-              name: "Knowledge",
-              points: [
-                <>
-                  Individuals must have the knowledge of how to change.
-                </>,
-                <>
-                  This includes understanding the new processes, systems, or{" "}
-                  behaviors that will be implemented.
-                </>,
-                <>
-                  Training and resources are essential to equip individuals with the
-                  necessary skills and information.
-                </>,
-              ],
-              ask: "What happens if employees understand the need for change but lack the necessary knowledge to implement it?",
-            },
-          ].map((e, i) => {
-            const isLit = i === activeAdkar13;
-            return (
-              <div
-                key={e.name}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <div>
-                  <div className="flex items-center gap-4 mb-3">
-                    <Letter l={e.l} size="w-10 h-10 text-xl" />
-                    <p className="font-sans font-bold text-2xl">
-                      <span className="font-sans text-base mr-2">{i + 1}.</span>
-                      {e.name}:
+        <Stack>
+  <div className={`${BODY} grid gap-4`}>
+            {[
+              {
+                l: "A",
+                name: "Awareness",
+                points: [
+                  <>
+                    Individuals must be aware of the need for change.
+                  </>,
+                  <>
+                    This involves understanding why the change is necessary and what the{" "}
+                    drivers behind it are.
+                  </>,
+                  <>
+                    Effective communication is crucial at this stage to ensure that everyone understands
+                    the reasons for the change.
+                  </>,
+                ],
+                ask: "Why is it important for employees to understand the reasons behind a change initiative?",
+              },
+              {
+                l: "D",
+                name: "Desire",
+                points: [
+                  <>
+                    Once individuals are aware of the change, they need to have the desire to support and{" "}
+                    participate in it.
+                  </>,
+                  <>
+                    This involves addressing any concerns or resistance and fostering a{" "}
+                    positive attitude towards the change.
+                  </>,
+                  <>
+                    Engaging stakeholders and addressing their motivations can help build this desire.
+                  </>,
+                ],
+                ask: "How can personal motivations and emotions influence an individual’s willingness to support change?",
+              },
+              {
+                l: "K",
+                name: "Knowledge",
+                points: [
+                  <>
+                    Individuals must have the knowledge of how to change.
+                  </>,
+                  <>
+                    This includes understanding the new processes, systems, or{" "}
+                    behaviors that will be implemented.
+                  </>,
+                  <>
+                    Training and resources are essential to equip individuals with the
+                    necessary skills and information.
+                  </>,
+                ],
+                ask: "What happens if employees understand the need for change but lack the necessary knowledge to implement it?",
+              },
+            ].map((e, i) => {
+              const isLit = i === activeAdkar13;
+              return (
+                <div
+                  key={e.name}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center gap-4 mb-3">
+                      <Letter l={e.l} size="w-10 h-10 text-xl" />
+                      <p className="font-sans font-bold text-2xl">
+                        <span className="font-sans text-base mr-2">{i + 1}.</span>
+                        {e.name}:
+                      </p>
+                    </div>
+                    <Bullets items={e.points} />
+                  </div>
+                  <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
+                    <Ask>{e.ask}</Ask>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+  <div className={`${BODY} md:!text-lg grid`}>
+            {[
+              {
+                l: "A",
+                n: 4,
+                name: "Ability",
+                points: [
+                  <>Having the knowledge is not enough</>,
+                  <>
+                    individuals must also be able to implement the change.
+                  </>,
+                  <>
+                    This involves practicing new skills, overcoming obstacles
+                  </>,
+                ],
+                ask: "Why is practical application of skills essential for successful change implementation?",
+              },
+              {
+                l: "R",
+                n: 5,
+                name: "Reinforcement",
+                points: [
+                  <>
+                    Individuals need reinforcement to ensure that the change is maintained over time.
+                  </>,
+                  <>
+                    This can include recognition, rewards, and{" "}
+                    ongoing support to encourage continued adherence to the new ways of working.
+                  </>,
+                ],
+                ask: "What risks do organizations face if they fail to reinforce changes after implementation?",
+              },
+            ].map((e, i) => {
+              const isLit = i === activeAdkar45;
+              return (
+                <div
+                  key={e.name}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 grid md:grid-cols-[auto_1.4fr_1fr] gap-x-8 gap-y-3 items-start pt-5 border-t border-[var(--dt-ink)]/15 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <Letter l={e.l} size="w-16 h-16 text-5xl" />
+                    <p className="font-sans font-bold text-2xl md:hidden">
+                      {e.n}. {e.name}:
                     </p>
                   </div>
-                  <Bullets items={e.points} />
+                  <div>
+                    <p className="font-sans font-bold text-2xl mb-2 hidden md:block">
+                      <span className="font-sans text-base mr-2">{e.n}.</span>
+                      {e.name}:
+                    </p>
+                    <Bullets items={e.points} />
+                  </div>
+                  <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
+                    <Ask>{e.ask}</Ask>
+                  </div>
                 </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
-                  <Ask>{e.ask}</Ask>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </Slide>
-
-      <Slide
-        id="adkar-ability-reinforcement"
-        label="PROSCI - ADKAR"
-        title="ADKAR: Ability, Reinforcement"
-        exercise={exercise["adkar-ability-reinforcement"]}
-      >
-        <PlateWell>
-          <AdkarLastTwo active={activeAdkar45} onSelect={setActiveAdkar45} />
-        </PlateWell>
-        <div className={`${BODY} md:!text-lg grid`}>
-          {[
-            {
-              l: "A",
-              n: 4,
-              name: "Ability",
-              points: [
-                <>Having the knowledge is not enough</>,
-                <>
-                  individuals must also be able to implement the change.
-                </>,
-                <>
-                  This involves practicing new skills, overcoming obstacles
-                </>,
-              ],
-              ask: "Why is practical application of skills essential for successful change implementation?",
-            },
-            {
-              l: "R",
-              n: 5,
-              name: "Reinforcement",
-              points: [
-                <>
-                  Individuals need reinforcement to ensure that the change is maintained over time.
-                </>,
-                <>
-                  This can include recognition, rewards, and{" "}
-                  ongoing support to encourage continued adherence to the new ways of working.
-                </>,
-              ],
-              ask: "What risks do organizations face if they fail to reinforce changes after implementation?",
-            },
-          ].map((e, i) => {
-            const isLit = i === activeAdkar45;
-            return (
-              <div
-                key={e.name}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 grid md:grid-cols-[auto_1.4fr_1fr] gap-x-8 gap-y-3 items-start pt-5 border-t border-[var(--dt-ink)]/15 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <Letter l={e.l} size="w-16 h-16 text-5xl" />
-                  <p className="font-sans font-bold text-2xl md:hidden">
-                    {e.n}. {e.name}:
-                  </p>
-                </div>
-                <div>
-                  <p className="font-sans font-bold text-2xl mb-2 hidden md:block">
-                    <span className="font-sans text-base mr-2">{e.n}.</span>
-                    {e.name}:
-                  </p>
-                  <Bullets items={e.points} />
-                </div>
-                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l md:border-[var(--dt-ink)]/15 md:pl-6">
-                  <Ask>{e.ask}</Ask>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </Stack>
       </Slide>
 
       {/* ================================================================
           CHAPTER 3: AGILE PROJECT MANAGEMENT
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="Agile Project Management" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="Agile Project Management"
+        description={[
+          "This part introduces agile project management, which delivers work in short iterations and adapts the plan as requirements change.",
+          "It contrasts the agile approach with traditional, sequential project management.",
+        ]}
+        topics={[
+          "Traditional vs. Agile Project Management",
+        ]}
+      />
 
       <Slide id="agile-project-management" title="Agile Project Management">
         <Row cols="lg:grid-cols-[1fr_1.2fr]">
@@ -1177,7 +1174,7 @@ export default function DigitalTransformationWeek3() {
                 }`}
               >
                 <p className="font-sans font-bold text-2xl mb-4 flex items-baseline gap-3">
-                  <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{r.n}.</span>
+                  <span className="font-sans font-bold tabular-nums">{r.n}.</span>
                   <span>{r.name}:</span>
                 </p>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-10">
@@ -1199,7 +1196,21 @@ export default function DigitalTransformationWeek3() {
       {/* ================================================================
           CHAPTER 4: SCRUM
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Scrum" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Scrum"
+        description={[
+          "This part presents Scrum, a widely used agile framework for managing complex projects.",
+          "It covers the origins and principles of Scrum and the roles, events, and artifacts through which a Scrum team organizes its work.",
+        ]}
+        topics={[
+          "Scrum: From Rugby to Software",
+          "Principles of Scrum",
+          "Scrum Methodology",
+          "Roles in Scrum",
+        ]}
+      />
 
       <Slide id="scrum" title="Scrum">
         <p className="font-sans text-lg md:text-xl leading-[1.5] text-[var(--dt-ink)] max-w-4xl">
@@ -1298,7 +1309,7 @@ export default function DigitalTransformationWeek3() {
             }`}
           >
             <p className="font-sans font-bold text-2xl mb-3 flex items-baseline gap-3">
-              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">1.</span>
+              <span className="font-sans font-bold tabular-nums">1.</span>
               <span>Empirical Process Control:</span>
             </p>
             <div className="grid md:grid-cols-[1fr_1.3fr] gap-x-10 gap-y-3 items-start">
@@ -1365,7 +1376,7 @@ export default function DigitalTransformationWeek3() {
             }`}
           >
             <p className="font-sans font-bold text-2xl mb-3 flex items-baseline gap-3">
-              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">2.</span>
+              <span className="font-sans font-bold tabular-nums">2.</span>
               <span>Self-Organization:</span>
             </p>
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
@@ -1410,7 +1421,7 @@ export default function DigitalTransformationWeek3() {
             }`}
           >
             <p className="font-sans font-bold text-2xl mb-3 flex items-baseline gap-3">
-              <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">3.</span>
+              <span className="font-sans font-bold tabular-nums">3.</span>
               <span>Collaboration:</span>
             </p>
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
@@ -1517,7 +1528,7 @@ export default function DigitalTransformationWeek3() {
                 }`}
               >
                 <p className="font-sans font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
-                  <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums">{p.n}.</span>
+                  <span className="font-sans font-bold tabular-nums">{p.n}.</span>
                   <span>{p.name}</span>
                 </p>
                 <div className={`grid ${p.app ? "md:grid-cols-2" : "md:grid-cols-1"} gap-6 md:gap-10`}>
@@ -1538,13 +1549,210 @@ export default function DigitalTransformationWeek3() {
         </div>
       </Slide>
 
-      <Slide id="scrum-methodology" title="Scrum Methodology">
+      <Slide id="scrum-methodology"
+        exercise={exercise["scrum-methodology"]} title="Scrum Methodology">
         <PlateWell>
-          <ScrumProcess />
+          <ScrumProcess mode="all" active={scrumSel} onSelect={setScrumSel} />
         </PlateWell>
         <p className="font-sans text-base text-[var(--ink-3)]">
           Note. backlog refers to a prioritized list of work items or tasks that need to be completed for a project
         </p>
+        <Stack>
+  <div className={`${BODY} grid`}>
+            {[
+              {
+                name: "Sprint",
+                items: [
+                  <>
+                    A time-boxed iteration, usually lasting 1 to 4 weeks
+                  </>,
+                  <>
+                    A potentially shippable product increment is created.
+                  </>,
+                  <>
+                    Each sprint begins with a planning session and ends with a{" "}
+                    review and retrospective.
+                  </>,
+                ],
+              },
+              {
+                name: "Sprint Planning",
+                items: [
+                  <>
+                    A meeting held at the beginning of each sprint where the team decides{" "}
+                    what work will be done.
+                  </>,
+                  <>
+                    The team selects items from the product backlog to include in the{" "}
+                    sprint backlog based on priority and team capacity.
+                  </>,
+                  <>
+                    The team defines the sprint goal, which is a clear objective for the sprint.
+                  </>,
+                ],
+              },
+            ].map((ev, i) => {
+              const isLit = i === activeScrumEvent1;
+              return (
+                <div
+                  key={ev.name}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <p className="font-sans font-bold text-2xl mb-2">{ev.name}:</p>
+                  <Bullets items={ev.items} />
+                </div>
+              );
+            })}
+          </div>
+  <div className={`${BODY} grid`}>
+            <div
+              aria-hidden={activeScrumEvent2 !== 0}
+              className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
+                activeScrumEvent2 === 0 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+              }`}
+            >
+              <p className="font-sans font-bold text-2xl mb-2">Daily Scrum (Stand-up):</p>
+              <div className="grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-10 items-start">
+                <div>
+                  <Bullets
+                    items={[
+                      <>
+                        A short, time-boxed meeting (usually 15 minutes) held
+                        every day during the sprint.
+                      </>,
+                      <>Team members answer three questions:</>,
+                      <>
+                        The purpose is to synchronize activities and identify any{" "}
+                        impediments.
+                      </>,
+                    ]}
+                  />
+                </div>
+                <ol className="flex flex-col gap-1 bg-[var(--paper-2)] p-4">
+                  {["What did I do yesterday?", "What will I do today?", "What obstacles are in my way?"].map((q) => (
+                    <li key={q} className="font-sans font-bold text-lg">
+                      {q}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+
+            <div
+              aria-hidden={activeScrumEvent2 !== 1}
+              className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
+                activeScrumEvent2 === 1 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+              }`}
+            >
+              <p className="font-sans font-bold text-2xl mb-2">Sprint Review:</p>
+              <Bullets
+                items={[
+                  <>
+                    A meeting held at the end of the sprint to demonstrate the{" "}
+                    completed work to stakeholders.
+                  </>,
+                  <>
+                    The team presents the product increment and gathers feedback.
+                  </>,
+                  <>
+                    The product backlog may be adjusted based on feedback received.
+                  </>,
+                ]}
+              />
+            </div>
+
+            <div
+              aria-hidden={activeScrumEvent2 !== 2}
+              className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
+                activeScrumEvent2 === 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+              }`}
+            >
+              <p className="font-sans font-bold text-2xl mb-2">Sprint Retrospective:</p>
+              <Bullets
+                items={[
+                  <>
+                    A meeting held after the sprint review to reflect on the sprint process.
+                  </>,
+                  <>
+                    The team discusses
+                    <Bullets
+                      className="mt-1"
+                      items={[
+                        <>
+                          what went well,
+                        </>,
+                        <>
+                          what could be improved,
+                        </>,
+                        <>
+                          how to implement changes in the next sprint.
+                        </>,
+                      ]}
+                    />
+                  </>,
+                ]}
+              />
+            </div>
+          </div>
+  <div className={`${BODY} grid gap-4`}>
+            {[
+              {
+                name: "Product Backlog",
+                items: [
+                  <>
+                    An ordered list of all desired work on the project,
+                    <span className="block mt-1 font-sans text-[var(--ink-3)]">
+                      features, enhancements, bug fixes, technical tasks.
+                    </span>
+                  </>,
+                  <>
+                    The product owner is responsible for maintaining and prioritizing the backlog.
+                  </>,
+                ],
+              },
+              {
+                name: "Sprint Backlog",
+                items: [
+                  <>
+                    A subset of the product backlog items selected for the current sprint,
+                  </>,
+                  <>
+                    The development team is responsible for managing the sprint backlog.
+                  </>,
+                ],
+              },
+              {
+                name: "Increment",
+                items: [
+                  <>
+                    The sum of all completed product backlog items at the end of a sprint.
+                  </>,
+                  <>
+                    The increment must meet the team&apos;s definition of &quot;done,&quot;{" "}
+                    which includes quality criteria and acceptance criteria.
+                  </>,
+                ],
+              },
+            ].map((ar, i) => {
+              const isLit = i === activeScrumArtifact;
+              return (
+                <div
+                  key={ar.name}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <p className="font-sans font-bold text-2xl mb-2">{ar.name}:</p>
+                  <Bullets items={ar.items} />
+                </div>
+              );
+            })}
+          </div>
+        </Stack>
       </Slide>
 
       <Slide id="roles-in-scrum" label="1. ROLES IN SCRUM" title="Roles in Scrum" exercise={exercise["roles-in-scrum"]}>
@@ -1613,244 +1821,6 @@ export default function DigitalTransformationWeek3() {
               >
                 <p className="font-sans font-bold text-2xl">{r.name}:</p>
                 <Bullets items={r.points} />
-              </div>
-            );
-          })}
-        </div>
-      </Slide>
-
-      <Slide
-        id="events-in-scrum-sprint-and-sprint-planning"
-        label="2. EVENTS IN SCRUM"
-        title="Events in Scrum: Sprint and Sprint Planning"
-      >
-        <div className="grid lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-12 items-start">
-          <div className="flex flex-col gap-5">
-            <p className="font-sans text-lg leading-[1.5] text-[var(--dt-ink)] [&_strong]:font-semibold">
-              <span className={`${SUB} block mb-2`}>Question:</span>
-              How can regular events like daily meetings improve team collaboration and accountability?
-            </p>
-            <p className="font-sans font-semibold text-lg text-[var(--dt-ink)]">Events (ceremonies) that structure the workflow:</p>
-          </div>
-          <PlateWell>
-            <ScrumProcess mode="events-first" active={activeScrumEvent1} onSelect={setActiveScrumEvent1} />
-          </PlateWell>
-        </div>
-        <div className={`${BODY} grid`}>
-          {[
-            {
-              name: "Sprint",
-              items: [
-                <>
-                  A time-boxed iteration, usually lasting 1 to 4 weeks
-                </>,
-                <>
-                  A potentially shippable product increment is created.
-                </>,
-                <>
-                  Each sprint begins with a planning session and ends with a{" "}
-                  review and retrospective.
-                </>,
-              ],
-            },
-            {
-              name: "Sprint Planning",
-              items: [
-                <>
-                  A meeting held at the beginning of each sprint where the team decides{" "}
-                  what work will be done.
-                </>,
-                <>
-                  The team selects items from the product backlog to include in the{" "}
-                  sprint backlog based on priority and team capacity.
-                </>,
-                <>
-                  The team defines the sprint goal, which is a clear objective for the sprint.
-                </>,
-              ],
-            },
-          ].map((ev, i) => {
-            const isLit = i === activeScrumEvent1;
-            return (
-              <div
-                key={ev.name}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <p className="font-sans font-bold text-2xl mb-2">{ev.name}:</p>
-                <Bullets items={ev.items} />
-              </div>
-            );
-          })}
-        </div>
-      </Slide>
-
-      <Slide
-        id="events-in-scrum-daily-scrum-review-retrospective"
-        label="2. EVENTS IN SCRUM"
-        title="Events in Scrum: Daily Scrum, Review, Retrospective"
-        exercise={exercise["events-in-scrum-daily-scrum-review-retrospective"]}
-      >
-        <PlateWell>
-          <ScrumProcess mode="events-second" active={activeScrumEvent2} onSelect={setActiveScrumEvent2} />
-        </PlateWell>
-        <div className={`${BODY} grid`}>
-          <div
-            aria-hidden={activeScrumEvent2 !== 0}
-            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-              activeScrumEvent2 === 0 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-            }`}
-          >
-            <p className="font-sans font-bold text-2xl mb-2">Daily Scrum (Stand-up):</p>
-            <div className="grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-10 items-start">
-              <div>
-                <Bullets
-                  items={[
-                    <>
-                      A short, time-boxed meeting (usually 15 minutes) held
-                      every day during the sprint.
-                    </>,
-                    <>Team members answer three questions:</>,
-                    <>
-                      The purpose is to synchronize activities and identify any{" "}
-                      impediments.
-                    </>,
-                  ]}
-                />
-              </div>
-              <ol className="flex flex-col gap-1 bg-[var(--paper-2)] p-4">
-                {["What did I do yesterday?", "What will I do today?", "What obstacles are in my way?"].map((q) => (
-                  <li key={q} className="font-sans font-bold text-lg">
-                    {q}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-
-          <div
-            aria-hidden={activeScrumEvent2 !== 1}
-            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-              activeScrumEvent2 === 1 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-            }`}
-          >
-            <p className="font-sans font-bold text-2xl mb-2">Sprint Review:</p>
-            <Bullets
-              items={[
-                <>
-                  A meeting held at the end of the sprint to demonstrate the{" "}
-                  completed work to stakeholders.
-                </>,
-                <>
-                  The team presents the product increment and gathers feedback.
-                </>,
-                <>
-                  The product backlog may be adjusted based on feedback received.
-                </>,
-              ]}
-            />
-          </div>
-
-          <div
-            aria-hidden={activeScrumEvent2 !== 2}
-            className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-              activeScrumEvent2 === 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-            }`}
-          >
-            <p className="font-sans font-bold text-2xl mb-2">Sprint Retrospective:</p>
-            <Bullets
-              items={[
-                <>
-                  A meeting held after the sprint review to reflect on the sprint process.
-                </>,
-                <>
-                  The team discusses
-                  <Bullets
-                    className="mt-1"
-                    items={[
-                      <>
-                        what went well,
-                      </>,
-                      <>
-                        what could be improved,
-                      </>,
-                      <>
-                        how to implement changes in the next sprint.
-                      </>,
-                    ]}
-                  />
-                </>,
-              ]}
-            />
-          </div>
-        </div>
-      </Slide>
-
-      <Slide
-        id="artifacts-in-scrum"
-        label="3. ARTIFACTS IN SCRUM"
-        title="Artifacts in Scrum"
-        exercise={exercise["artifacts-in-scrum"]}
-      >
-        <p className="font-sans text-xl md:text-2xl leading-snug">
-          Scrum uses specific artifacts to manage work and provide transparency:
-        </p>
-        <PlateWell>
-          <ScrumProcess mode="artifacts" active={activeScrumArtifact} onSelect={setActiveScrumArtifact} />
-        </PlateWell>
-        <div className={`${BODY} grid gap-4`}>
-          {[
-            {
-              name: "Product Backlog",
-              items: [
-                <>
-                  An ordered list of all desired work on the project,
-                  <span className="block mt-1 font-sans text-[var(--ink-3)]">
-                    features, enhancements, bug fixes, technical tasks.
-                  </span>
-                </>,
-                <>
-                  The product owner is responsible for maintaining and prioritizing the backlog.
-                </>,
-              ],
-            },
-            {
-              name: "Sprint Backlog",
-              items: [
-                <>
-                  A subset of the product backlog items selected for the current sprint,
-                </>,
-                <>
-                  The development team is responsible for managing the sprint backlog.
-                </>,
-              ],
-            },
-            {
-              name: "Increment",
-              items: [
-                <>
-                  The sum of all completed product backlog items at the end of a sprint.
-                </>,
-                <>
-                  The increment must meet the team&apos;s definition of &quot;done,&quot;{" "}
-                  which includes quality criteria and acceptance criteria.
-                </>,
-              ],
-            },
-          ].map((ar, i) => {
-            const isLit = i === activeScrumArtifact;
-            return (
-              <div
-                key={ar.name}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <p className="font-sans font-bold text-2xl mb-2">{ar.name}:</p>
-                <Bullets items={ar.items} />
               </div>
             );
           })}

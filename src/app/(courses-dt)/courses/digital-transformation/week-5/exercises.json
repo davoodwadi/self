@@ -62,7 +62,7 @@
   },
   {
     "type": "sort",
-    "slide_id": "cloud-service-models-saas",
+    "slide_id": "cloud-service-models-paas-saas",
     "prompt": "Sort each cloud service into the model it belongs to.",
     "bins": [
       { "id": "iaas", "label": "IaaS" },

@@ -6,6 +6,7 @@ week: week-6
 ---
 
 ## Title Slide
+[figure: artificial intelligence containing machine learning, which contains deep learning]
 - Week 6: AI/ML/DL
 
 ## Agenda
@@ -18,7 +19,10 @@ week: week-6
 - Conclusion
 - Q&A
 
-# Chapter 01: Artificial Intelligence
+# Part 1: Artificial Intelligence
+
+- This part defines artificial intelligence as intelligence shown by machines and compares it with animal and human intelligence.
+- It then asks which everyday systems qualify as artificial intelligence.
 
 ## Discussion [no-exercise]
 - When you hear ‘Artificial Intelligence,’ what’s the first example that comes to mind?
@@ -29,6 +33,7 @@ week: week-6
 - If you trained an AI using only your social media posts, what might it ‘learn’ about people?
 
 ## Artificial Intelligence [no-exercise]
+[figure: animal, human, and artificial intelligence, each shown through a typical behavior]
 - **Artificial Intelligence**: Intelligence shown by machines.
 - **Intelligence**:
   - Animal: Instinctual survival behaviors (e.g., birds migrating, bees building hives).
@@ -45,9 +50,13 @@ week: week-6
   - Microsoft Word gives you recommendations on potential spelling errors based on a dictionary.
   - ElevenLabs turns your text into realistic speech.
 
-# Chapter 02: Machine Learning
+# Part 2: Machine Learning
+
+- This part introduces machine learning, a technique that uses data and a performance metric to find how to perform a task.
+- It contrasts machine learning with rule-based expert systems and explains the conditions behind its rise in the twenty-first century.
 
 ## Machine Learning [no-exercise]
+[figure: interactive: a rule-based system whose performance stays fixed compared with a machine learning model whose performance rises as it receives more data]
 - A technique that uses Data and Performance Metric to automatically find how to solve a Task.
 - Contrasted with Rules-Based Expert Systems.
 - Gained popularity in the 21st century.
@@ -57,23 +66,30 @@ week: week-6
 - Increase in Data (Big Data)
 - Decrease in Storage Costs
 
-# Chapter 03: Machine Learning Algorithms
+# Part 3: Machine Learning Algorithms
+
+- This part presents five widely used machine learning algorithms: decision trees, linear regression, logistic regression, ensemble learning, and random forests.
+- Each algorithm is introduced through a concrete prediction problem.
 
 ## Decision Trees [no-exercise]
+[figure: interactive: a decision tree for playing tennis that splits on outlook, humidity, and wind]
 - Imagine you are decision whether to go outside to play tennis.
 - To make your decision you use a mentally formed Decision Tree.
 
 ## Linear Regression [no-exercise]
+[figure: interactive: weekly sales against price with a fitted line, where the student sets a price and reads the predicted sales]
 - Imagine you have recorded transaction data for a retail store.
 - You have the price of the items and their sales.
 - You wish to predict sales based on the prices.
 
 ## Logistic Regression [exercise]
+[figure: interactive: an S-shaped curve giving the probability that a customer clicks, where the student sets the customer and product match]
 - Imagine you have recorded historical click data for a retail website.
 - You have product and customer characteristics in a database.
 - You wish to predict whether a given customer will click on the product.
 
 ## Ensemble Learning [no-exercise]
+[figure: interactive: three weather apps each forecasting rain or no rain, combined by majority vote]
 - Ensemble learning combines multiple models to improve prediction accuracy,
 - Much like seeking advice from several experts to make a better decision.
 - The idea is that the collective "wisdom" of diverse models reduces individual errors.
@@ -89,6 +105,7 @@ week: week-6
     - If only one says "rain," ensemble says "no rain."
 
 ## Random Forest [exercise]
+[figure: a random forest as many decision trees trained on different samples whose votes are combined]
 - Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve predictive accuracy and control overfitting. It is widely used for both classification and regression tasks.
 - **Ensemble Method**: Builds a "forest" of decision trees, each trained on a random subset of the data and features.
 - **Diversity**: Each tree is trained independently, leading to diverse models that capture different patterns in the data.
@@ -99,9 +116,13 @@ week: week-6
   - Handles large datasets with higher dimensionality well.
   - Provides feature importance scores, aiding interpretability.
 
-# Chapter 04: Supervised vs. Unsupervised Learning
+# Part 4: Supervised vs. Unsupervised Learning
+
+- This part distinguishes supervised learning, which learns from labeled outcomes, from unsupervised learning, which finds structure in unlabeled data.
+- It compares their algorithms, uses, and challenges, and it closes with case studies of each.
 
 ## Supervised vs. Unsupervised Learning [no-exercise]
+[figure: labeled data separated by a boundary (supervised learning) compared with unlabeled data grouped into clusters (unsupervised learning)]
 - **Supervised Learning**: Algorithms learn from **labeled data**, where each input example is paired with a corresponding output (target). The model aims to map inputs to outputs for prediction or classification.
   - Example: Customer classification into hedonic vs. utility consumers
 - **Unsupervised Learning**: Algorithms analyze **unlabeled data** to discover hidden patterns, groupings, or structures without predefined outcomes.
@@ -138,6 +159,7 @@ week: week-6
 | **Evaluation Metrics** | Accuracy, Precision, Recall, F1-Score, RMSE | Silhouette Score, Elbow Method, Reconstruction Error |
 
 ## Case Studies: Supervised vs. Unsupervised Learning [exercise]
+[figure: ten business cases, each classified as supervised or unsupervised learning]
 - Test your understanding by classifying these scenarios into Supervised vs. Unsupervised Learning
 - **Case 1**
   - *A company wants to predict customer churn (whether a customer will stop using their service) based on usage patterns and demographics. They have historical data showing which customers churned in the past.*

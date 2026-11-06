@@ -553,8 +553,7 @@ export default function Week11Page() {
         <div className="grid w-full gap-x-6 gap-y-3 md:grid-cols-3">
           <Ruled>
             <P>
-              <Term>Unsubstantiated AI capability claims</Term> (AI hype and snake
-              oil) violate Section 5 when a vendor markets an algorithm as
+              <Term>Unsubstantiated AI capability claims</Term> violate Section 5 when a vendor markets an algorithm as
               predicting human behavior, detecting fraud, or eliminating bias
               without rigorous, independent scientific evidence supporting that
               claim.

@@ -514,7 +514,7 @@ export default function Week11() {
       </Slide>
 
       {/* ================================================================
-          Part 3: Leveraging Social Media for Customer Engagement
+          Part 3: Social Media and Customer Engagement
           ================================================================ */}
       <Slide
         className={TIGHT}
@@ -523,7 +523,7 @@ export default function Week11() {
       >
         <PartHead
           n={3}
-          title="Leveraging Social Media for Customer Engagement"
+          title="Social Media and Customer Engagement"
         />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
           <Statement>

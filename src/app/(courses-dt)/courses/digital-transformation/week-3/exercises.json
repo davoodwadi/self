@@ -103,7 +103,7 @@
   },
   {
     "type": "order",
-    "slide_id": "the-eight-steps-5-to-8",
+    "slide_id": "kotters-8-step-change-management",
     "prompt": "A hospital moves from paper charts to electronic patient records. Put its change effort in the order of Kotter's eight steps.",
     "steps": [
       {
@@ -150,7 +150,7 @@
   },
   {
     "type": "identify",
-    "slide_id": "adkar-ability-reinforcement",
+    "slide_id": "prosci-adkar-change-management-model",
     "prompt": "A bank's branch staff are moving to a new customer system. For each person, name the ADKAR outcome they have not yet reached.",
     "options": [
       { "id": "awareness", "label": "Awareness" },
@@ -340,7 +340,7 @@
   },
   {
     "type": "order",
-    "slide_id": "events-in-scrum-daily-scrum-review-retrospective",
+    "slide_id": "scrum-methodology",
     "prompt": "A team runs a two-week sprint on a food-delivery app. Put its events in order.",
     "steps": [
       {
@@ -369,31 +369,5 @@
         "explanation": "The Sprint Retrospective is held after the review."
       }
     ]
-  },
-  {
-    "type": "quiz",
-    "slide_id": "artifacts-in-scrum",
-    "question_text": "At the end of a sprint, a team has built a search bar that works but has not been tested, and a filter that is built and tested to the team's quality and acceptance criteria. What belongs in this sprint's increment?",
-    "hint": "The increment must meet the team's definition of \"done\".",
-    "correct_answer_citation": "Increment: The sum of all completed product backlog items at the end of a sprint. The increment must meet the team's definition of \"done,\" which includes quality criteria and acceptance criteria.",
-    "options": [
-      {
-        "option_text": "Only the filter",
-        "option_explanation": "Right. Only the filter meets the definition of \"done\", so only it is part of the increment."
-      },
-      {
-        "option_text": "Both the filter and the search bar",
-        "option_explanation": "The search bar has not met the quality criteria, so it is not done and not part of the increment."
-      },
-      {
-        "option_text": "Neither: the increment is the list of work still to do",
-        "option_explanation": "The list of work still to do is the product backlog. The increment is the completed work."
-      },
-      {
-        "option_text": "Everything the team selected for this sprint",
-        "option_explanation": "That is the sprint backlog. The increment holds only the items that are completed and done."
-      }
-    ],
-    "correct_answer_index": 0
   }
 ]

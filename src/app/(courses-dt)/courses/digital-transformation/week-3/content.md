@@ -6,6 +6,7 @@ week: week-3
 ---
 
 ## Title Slide
+[figure: a shop climbing a staircase of change toward its digital form on a screen]
 - Week 3
 - Change Management, Project Management
 
@@ -18,15 +19,20 @@ week: week-3
 - Conclusion
 - Q&A
 
-# Chapter 01: The Case of Netflix
+# Part 1: The Case of Netflix
+
+- This part follows Netflix from a pay-per-rental service to a global streaming platform.
+- The case shows how data analytics and repeated changes to the business model support a digital transformation, and which challenges those changes raise.
 
 ## How Netflix Transformed The Movie Industry [no-exercise]
+[figure: a mailed DVD envelope turning into a streaming play button]
 - **Prescriptive** Analytics for Strategic Decision-Making in Business
 - Question:
   - What is **Prescriptive** Analytics?
   - What other types of analytics do we have?
 
 ## Data analytics - Four key types [exercise]
+[figure: a sales line divided into descriptive, diagnostic, predictive, and prescriptive analytics]
 1. **Descriptive**: What happened?
    - Definition:
    - **Descriptive analytics** is the process of summarizing *historical data* to understand **what has happened** in the past.
@@ -41,12 +47,14 @@ week: week-3
    - **Predictive analytics** is the process of using *historical data and statistical models* to **forecast** what might happen in the future.
 
 ## Netflix Timeline [no-exercise]
+[figure: a timeline of Netflix milestones from DVD rental by mail in 1997 to streaming in 2007]
 - 1997: **Netflix founded**: Pay-per-rental model
 - 1999: **Change in business model**: Monthly subscription
 - 2003: **Growth in user base**: 1 million subscribers
 - 2007: **Streaming service**: Complete transformation of business into digital
 
 ## Challenges and Considerations [exercise]
+[figure: the technology factors and the business factors that Netflix had to consider, both feeding its streaming service]
 - What Netflix needs to consider for digital transformation
 - **Technology**
   - **Cloud infrastructure** to support demand
@@ -56,7 +64,10 @@ week: week-3
   - **Competition** and **Piracy**
   - Consumer **engagement** and **loyalty**
 
-# Chapter 02: Change Management
+# Part 2: Change Management
+
+- This part examines change management, the discipline of moving people, processes, and technology through an organizational transition.
+- It presents Kotter's eight-step model and the Prosci ADKAR model, and it applies Kotter's steps to Microsoft's transformation under Satya Nadella.
 
 ## Questions [no-exercise]
 - What challenges do organizations face when undergoing major changes?
@@ -65,13 +76,14 @@ week: week-3
 - How can leaders align people and processes during transformation?
 
 ## Change Management [no-exercise]
+[figure: people, processes, and technology aligned toward the transformed business]
 - Change management ensures that organizations smoothly transition to digital transformation by aligning **people**, **processes**, and **technology**.
 
-## Kotter's 8 Step Change Management [no-exercise]
+## Kotter's 8 Step Change Management [exercise]
+[figure: interactive: Kotter's eight steps as a rising staircase, where selecting a step shows what it involves and a question for discussion]
 - Kotter's 8-Step Change Management Model is a framework developed by Dr. John Kotter, a professor at Harvard Business School, to help organizations implement **successful change initiatives**.
 - The model outlines a **step-by-step** process for leading change and is widely used in various industries.
 
-## The Eight Steps: 1 to 4 [no-exercise]
 1. **Create a Sense of Urgency**:
    - Highlight the **importance of change** and the potential **risks of not changing**.
    - This step involves **communicating** the need for change to **motivate** stakeholders and create a sense of urgency.
@@ -89,7 +101,6 @@ week: week-3
    - Effective communication is crucial to ensure that *everyone* **understands** the change and is **aligned** with the vision.
    - Question: What communication methods are most effective for ensuring employees understand and support the vision?
 
-## The Eight Steps: 5 to 8 [exercise]
 5. **Empower Broad-Based Action**:
    - Remove **obstacles** that may *hinder change* and empower employees to take **action**.
    - This may involve providing **training**, **resources**, and **support** to help individuals contribute to the change effort.
@@ -108,13 +119,15 @@ week: week-3
    - Question: What strategies can leaders use to ensure changes become permanent and part of the organizational culture?
 
 ## The Case of Microsoft [no-exercise]
+[figure: a software disc turning into a cloud, marking Microsoft's shift from packaged software to cloud computing]
 - Microsoft under CEO Satya Nadella
 - around 2014 when he took over leadership
 - Nadella's approach to change management aligns well with Kotter's framework
 - He sought to shift the company's **culture**
 - Focus towards **cloud computing**
 
-## Microsoft’s transformation and Kotter’s 8 Steps: 1 to 4 [no-exercise]
+## Microsoft’s transformation and Kotter’s 8 Steps [no-exercise]
+[figure: interactive: Kotter's eight steps as a staircase, where selecting a step shows how Microsoft carried it out]
 1. **Create a Sense of Urgency**:
    - Nadella's emphasis on adapting to a **rapidly changing** technology landscape
    - the rise of **cloud computing** and **mobile** technology
@@ -134,7 +147,6 @@ week: week-3
      - public appearances
    - He encouraged **open dialogue** and **feedback**, fostering a *culture of transparency*.
 
-## Microsoft’s transformation and Kotter’s 8 Steps: 5 to 8 [no-exercise]
 5. **Empower Broad-Based Action**:
    - Nadella encouraged employees to **take risks** and **innovate**.
    - He removed **bureaucratic obstacles** and promoted a **growth mindset**, allowing teams to experiment and *learn from failures*.
@@ -149,7 +161,8 @@ week: week-3
    - He emphasized values such as **empathy** and **teamwork**
    - Ensuring that the new approaches became part of the **organizational culture**.
 
-## Prosci - ADKAR Change Management Model [no-exercise]
+## Prosci - ADKAR Change Management Model [exercise]
+[figure: interactive: the five ADKAR stages in sequence, where selecting a stage shows what it involves and a question for discussion]
 - The **Prosci ADKAR Model** is a widely recognized framework for change management
 - Developed by Prosci, a research and training organization focused on change management practices.
 - The model is designed to help organizations **manage change effectively** by focusing on the **individual aspects of change**.
@@ -160,7 +173,6 @@ week: week-3
 - Ability: To implement required skills and behaviors
 - Reinforcement: To sustain the change
 
-## ADKAR: Awareness, Desire, Knowledge [no-exercise]
 1. **Awareness**:
    - Individuals must be aware of the **need for change**.
    - This involves understanding *why the change is necessary* and what the *drivers behind it* are.
@@ -177,7 +189,6 @@ week: week-3
    - **Training** and **resources** are essential to equip individuals with the necessary skills and information.
    - Question: What happens if employees understand the need for change but lack the necessary knowledge to implement it?
 
-## ADKAR: Ability, Reinforcement [exercise]
 4. **Ability**:
    - Having the knowledge is not enough
    - individuals must also be able to **implement** the change.
@@ -188,9 +199,13 @@ week: week-3
    - This can include **recognition**, **rewards**, and **ongoing support** to encourage continued adherence to the new ways of working.
    - Question: What risks do organizations face if they fail to reinforce changes after implementation?
 
-# Chapter 03: Agile Project Management
+# Part 3: Agile Project Management
+
+- This part introduces agile project management, which delivers work in short iterations and adapts the plan as requirements change.
+- It contrasts the agile approach with traditional, sequential project management.
 
 ## Agile Project Management [no-exercise]
+[figure: agile delivery as a series of small releases to the customer, and a straight traditional path compared with an agile path that corrects its course toward the goal]
 - Question: Why do traditional project management methods often struggle to adapt to rapidly changing requirements?
 - A flexible and iterative approach to **managing projects**
 - Particularly in software development
@@ -199,6 +214,7 @@ week: week-3
 - Designed to **accommodate change** and **deliver value** to customers more *efficiently*.
 
 ## Traditional vs. Agile Project Management [exercise]
+[figure: traditional and agile projects compared on goal setting, initial steps, execution, and focus]
 1. **Goal Setting**:
    - **Traditional**:
      - Define a **fixed target**
@@ -232,9 +248,13 @@ week: week-3
      - Evolve towards the target with **iterative refinements**.
      - Success is measured by **delivering value incrementally**, even if the *end goal shifts* over time.
 
-# Chapter 04: Scrum
+# Part 4: Scrum
+
+- This part presents Scrum, a widely used agile framework for managing complex projects.
+- It covers the origins and principles of Scrum and the roles, events, and artifacts through which a Scrum team organizes its work.
 
 ## Scrum [no-exercise]
+[figure: a rugby scrum]
 - Question: What challenges might arise when managing complex projects with multiple stakeholders?
 - Scrum is an Agile framework
 - **iterative and incremental development**
@@ -255,6 +275,7 @@ week: week-3
 - Iterative development, continuous feedback, and adaptability.
 
 ## Principles of Scrum: 1 to 3 [no-exercise]
+[figure: the first three principles of Scrum]
 1. **Empirical Process Control**
    - **Definition**:
      - This principle is based on the idea that **knowledge comes from experience**
@@ -286,6 +307,7 @@ week: week-3
        - **Retrospectives**,
 
 ## Principles of Scrum: 4 to 6 [exercise]
+[figure: the last three principles of Scrum]
 4. **Value-Based Prioritization**
    - **Definition**:
      - Work should be prioritized based on the **value** it delivers to the customer and the business.
@@ -299,25 +321,10 @@ week: week-3
    - **Definition**:
      - Development is carried out in **small**, **incremental cycles**, allowing for regular **feedback and adjustments**.
 
-## Scrum Methodology [no-exercise]
+## Scrum Methodology [exercise]
+[figure: interactive: the Scrum cycle, from the product backlog through sprint planning and the sprint with its daily scrum to the sprint review, retrospective, and increment, where selecting an event or artifact shows its description]
 - *Note. backlog refers to a prioritized list of work items or tasks that need to be completed for a project*
 
-## Roles in Scrum [exercise]
-- Scrum defines three primary roles, each with specific responsibilities:
-- **Product Owner**:
-  - Represents the **stakeholders** and the voice of the **customer**.
-  - Responsible for defining the **product vision** and managing the **product backlog**.
-  - Ensures that the **team understands** the *items in the backlog*.
-- **Scrum Master**:
-  - Acts as a *facilitator* and *coach* for the Scrum team.
-  - **Removes impediments** that may hinder the team's progress.
-  - Shields the team from **external distractions** and **interruptions**.
-- **Development Team**:
-  - A **cross-functional** group of professionals who work collaboratively to deliver the product increment.
-  - Typically consists of **3 to 9 members** with various skills (e.g., *developers*, *testers*, *designers*).
-  - **Self-organizes** to determine how to accomplish the work in the sprint.
-
-## Events in Scrum: Sprint and Sprint Planning [no-exercise]
 - Question: How can **regular events** like daily meetings improve team collaboration and accountability?
 - Events (ceremonies) that structure the workflow:
 - **Sprint**:
@@ -329,7 +336,6 @@ week: week-3
   - The team selects **items from the product backlog** to include in the **sprint backlog** based on priority and team capacity.
   - The team defines the **sprint goal**, which is a clear objective for the sprint.
 
-## Events in Scrum: Daily Scrum, Review, Retrospective [exercise]
 - **Daily Scrum (Stand-up)**:
   - A **short**, **time-boxed** meeting (*usually 15 minutes*) held every day during the sprint.
   - Team members answer three questions:
@@ -348,7 +354,6 @@ week: week-3
     - *what could be improved*,
     - *how to implement changes* in the next sprint.
 
-## Artifacts in Scrum [exercise]
 - Scrum uses specific artifacts to *manage* work and provide *transparency*:
 - **Product Backlog**:
   - An **ordered** list of all desired work on the project,
@@ -363,6 +368,22 @@ week: week-3
 - **Increment**:
   - The **sum of all completed** product backlog items at the end of a sprint.
   - The increment must meet the team's *definition* of **"done,"** which includes **quality** criteria and **acceptance** criteria.
+
+## Roles in Scrum [exercise]
+[figure: the three Scrum roles: the product owner with the backlog, the Scrum master, and the development team]
+- Scrum defines three primary roles, each with specific responsibilities:
+- **Product Owner**:
+  - Represents the **stakeholders** and the voice of the **customer**.
+  - Responsible for defining the **product vision** and managing the **product backlog**.
+  - Ensures that the **team understands** the *items in the backlog*.
+- **Scrum Master**:
+  - Acts as a *facilitator* and *coach* for the Scrum team.
+  - **Removes impediments** that may hinder the team's progress.
+  - Shields the team from **external distractions** and **interruptions**.
+- **Development Team**:
+  - A **cross-functional** group of professionals who work collaboratively to deliver the product increment.
+  - Typically consists of **3 to 9 members** with various skills (e.g., *developers*, *testers*, *designers*).
+  - **Self-organizes** to determine how to accomplish the work in the sprint.
 
 ## Conclusion
 - Kotter's 8 Step Change Management

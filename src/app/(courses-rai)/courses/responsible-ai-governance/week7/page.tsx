@@ -709,10 +709,10 @@ export default function Week7Page() {
             <Ruled>
               <p className={BIG}>
                 As consumers delegate search and purchasing to autonomous AI
-                shopping agents, a fundamental governance question emerges: does
-                delegating a purchase to an algorithm immunize the shopper against
-                marketing heuristics and storefront dark patterns, or{" "}
-                <Term>can AI agents be manipulated too</Term>?
+                shopping agents, a central governance question is whether
+                delegating a purchase to an algorithm protects the shopper against
+                marketing heuristics and storefront dark patterns, or whether{" "}
+                <Term>AI agents can be manipulated as well</Term>.
               </p>
             </Ruled>
             <Ruled>
@@ -1043,7 +1043,7 @@ export default function Week7Page() {
                   <Term>Epistemic independence</Term> in AI assistants
                   requires configuring decision-support prompts and reward models to
                   evaluate options against objective consumer utility criteria
-                  before incorporating the user&apos;s stated hunch, preventing
+                  before incorporating the user&apos;s stated preference, preventing
                   sycophantic confirmation bias.
                 </>,
               ],

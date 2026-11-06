@@ -21,7 +21,10 @@ week: week-10
 4. What was the Fourth Industrial Revolution?
 5. What changes are expected in Industry 4.0?
 
-# Chapter 01: The Evolving Threat Landscape
+# Part 1: The Evolving Threat Landscape
+
+- This part reviews the cyber threats that digitally transformed organizations face, including state-sponsored attacks, ransomware, and supply chain vulnerabilities.
+- It also sets out how to evaluate sources when researching a recent security breach.
 
 ## The Evolving Threat Landscape [exercise]
 - Emergence of sophisticated cyber threats (**state-sponsored attacks**, **ransomware**, **supply chain vulnerabilities**)
@@ -39,10 +42,13 @@ week: week-10
 - Not all internet sources are viable
 - Especially in GenAI era, there has been numerous fake/hallucinated reports (e.g., [2024 in Review: The Most Notable Data Breaches in North America](https://www.etechcomputing.com/2024-in-review-the-most-notable-data-breaches-in-north-america/) talking about data breaches that did not happen!)
 
-# Chapter 02: Case Study: Canadian Revenue Agency (CRA) Data Leak
+# Part 2: Case Study: Canada Revenue Agency (CRA) Data Leak
 
-## Case Study: Canadian Revenue Agency (CRA) Data Leak [exercise]
-- Canadian Revenue Agency (CRA)
+- This part examines a data leak at the Canada Revenue Agency as a case study in public-sector cybersecurity.
+- It considers the causes of the leak and the governance lessons it holds for public institutions.
+
+## Case Study: Canada Revenue Agency (CRA) Data Leak [exercise]
+- Canada Revenue Agency (CRA)
 - Dating back to 2020
 - Hackers obtained confidential data used by **H&R Block Canada**, one of the country's largest tax preparation firms
 - Unauthorized access allowed imposters to change **direct deposit information**, submit false tax returns, and steal over $6 million in fraudulent refunds
@@ -51,7 +57,10 @@ week: week-10
 - An investigation is ongoing
 - Office of the Privacy Commissioner of Canada (OPC) is examining whether the CRA met its obligations under the **Privacy Act**
 
-# Chapter 03: Ethics in Digital Transformation
+# Part 3: Ethics in Digital Transformation
+
+- This part examines the ethical issues that digital transformation raises for organizations.
+- It covers privacy by design, algorithmic bias and governance, and the integrity of digital information in an era of synthetic media.
 
 ## Ethics in Digital Transformation [exercise]
 - Privacy by design methodologies
@@ -76,15 +85,20 @@ week: week-10
 - Corporate responsibility in content moderation
   - The balance between battling misinformation and censorship
 
-# Chapter 04: Sustainability & Platform Power
+# Part 4: Sustainability & Platform Power
+
+- This part examines two broader consequences of digital transformation: its environmental footprint and the concentration of market power in digital platforms.
+- It considers the energy cost of training large AI models and the network effects that produce winner-takes-all markets.
 
 ## Environmental Sustainability [no-exercise]
+[figure: estimated training costs of the Transformer (2017), GPT-4 (2023), and Gemini Ultra (2023) on one scale]
 - Carbon footprint of digital technologies
 - GPT-3 (2020): Estimated training cost ranged from $2 million to $4.6 million.
 - GPT-4 (2023): Training costs were estimated between $41 million and $78.4 million. OpenAI CEO Sam Altman suggested the total cost exceeded $100 million when including staff salaries.
 - Gemini Ultra (2023): Google's advanced AI model had estimated training costs between $30 million and $191 million, not including staff salaries.
 
 ## Environmental Sustainability [exercise]
+[figure: interactive: frontier model training costs from 2017 to 2023 projected forward at a growth factor the student sets]
 - From 2017 to 2023, costs rose from $930 for the **Transformer model** to over $78 million for **GPT-4**.
 - Training costs for frontier AI models have grown by a factor of **2x** to **3x** per year for the past eight years.
 - If this trend continues, the largest training runs could cost more than a billion dollars by 2027.

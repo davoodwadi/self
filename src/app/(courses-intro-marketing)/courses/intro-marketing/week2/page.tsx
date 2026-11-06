@@ -357,7 +357,7 @@ export default function Week2() {
               <P className="mt-3">
                 A sudden change in <Term>import tariffs</Term> or domestic
                 industrial subsidies can alter the cost structure of an entire
-                supply chain overnight.
+                supply chain within weeks.
               </P>
             </Ruled>
             <Ruled>

@@ -10,7 +10,7 @@ week: week12
 - Effective algorithmic governance embeds cross-functional accountability, pre-launch dossiers, adversarial red-teaming, incident response playbooks, and resource-rational efficiency into the permanent operating structure of the organization.
 
 ## From Principles and Audits to Institutional Architecture [no-exercise]
-- Across the preceding eleven weeks, we examined ethical frameworks, fairness metrics, cultural alignment, statistical and exact-PMF behavioral audits, explainability, privacy, dark patterns, fiduciary duty in agentic commerce, algorithmic pricing, accessibility, and global regulation.
+- The preceding eleven weeks examined ethical frameworks, fairness metrics, cultural alignment, statistical and exact-PMF behavioral audits, explainability, privacy, dark patterns, fiduciary duty in agentic commerce, algorithmic pricing, accessibility, and global regulation.
 - None of those methods protect consumers or the firm if they remain isolated inside a research lab or an unread policy binder.
 - Organizational AI governance is the institutional architecture that determines who holds veto power over a model release, how third-party systems are procured, how production failures are contained, and how computational resources are budgeted responsibly.
 
@@ -42,7 +42,7 @@ week: week12
 [figure: interactive stage gates from scoping approval through data-provenance clearance and pre-deployment sign-off to monitoring readiness, where a release cannot pass a gate until its audit results meet the threshold for its risk tier]
 - Inspired by high-reliability manufacturing, stage-gate governance divides the AI lifecycle into mandatory checkpoints: scoping approval, data-provenance clearance, pre-deployment behavioral and red-team sign-off, and production monitoring readiness.
 - A system cannot advance to production traffic until its audit dossier satisfies the quantitative release thresholds defined for its risk tier.
-- Stop-the-line authority empowers any engineer, auditor, or human-on-the-loop operator who detects a severe safety breach, discriminatory disparity, or data leak to halt deployment or trigger an automated fallback without retaliation.
+- Stop-the-line authority allows any engineer, auditor, or human-on-the-loop operator who detects a severe safety breach, discriminatory disparity, or data leak to halt deployment or trigger an automated fallback without retaliation.
 
 ## Part 2: Pre-Launch Documentation and Impact Dossiers [no-exercise]
 - Before the Second Line of Defense authorizes a launch, the project team compiles a standardized governance dossier that links data lineage, model behavior, and operational guardrails into an auditable record.
@@ -112,7 +112,7 @@ week: week12
 - Sustainable, resource-rational governance therefore matches model size and deliberation effort to the complexity and stakes of the decision, and trains agents via reinforcement learning to execute optimal, parsimonious tool-calling policies.
 
 ## Part 5: Designing an Organizational Governance Charter for Human and Agent-Mediated Markets [no-exercise]
-- In the final synthesis of this course, we integrate ethical principles, statistical auditing, interface design, regulatory compliance, and resource rationality into a unified enterprise governance charter.
+- The final synthesis of this course integrates ethical principles, statistical auditing, interface design, regulatory compliance, and resource rationality into a unified enterprise governance charter.
 
 ## Core Pillars of an Enterprise AI Governance Charter [exercise]
 - Pillar 1 is Scope, Risk Tiering, and RACI Authority: classifying every predictive, generative, and agentic system by risk tier and assigning a single Accountable executive and independent Second-Line sign-off gate.

@@ -140,7 +140,7 @@ week: "week11"
 - Shimp and Sharma (1987) developed the 17-item CETSCALE (Consumer Ethnocentrism Tendencies Scale) to measure this construct across international markets.
 
 ## Part 5: Cultural and Country-of-Origin Bias in AI Models [no-exercise]
-- As consumers delegate product search and evaluation to AI assistants around the world, a critical question arises: do large language models carry cultural and country-of-origin biases of their own?
+- As consumers delegate product search and evaluation to AI assistants around the world, a central research question is whether large language models carry cultural and country-of-origin biases of their own.
 - Empirical research administering cross-cultural scales to frontier AI models reveals systematic differences across developers and target countries.
 
 ## Training Corpus Imbalance and Cultural Representation in LLMs [no-exercise]

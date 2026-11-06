@@ -36,17 +36,21 @@ export function Plate({
   title: string;
   children: React.ReactNode;
 }) {
+  /* On a phone a wide plate keeps three quarters of its drawn size, so its
+     labels stay readable, and scrolls sideways inside its own box. */
   return (
-    <svg
-      viewBox={`0 0 ${w} ${h}`}
-      role="img"
-      aria-label={title}
-      className="block w-full h-auto select-none [&_*]:outline-none [&_*:focus]:outline-none [&_*:focus-visible]:outline-none"
-      style={{ background: WHITE }}
-    >
-      <title>{title}</title>
-      {children}
-    </svg>
+    <div className="w-full overflow-x-auto [contain:inline-size] md:overflow-visible md:[contain:none]">
+      <svg
+        viewBox={`0 0 ${w} ${h}`}
+        role="img"
+        aria-label={title}
+        className="block w-full h-auto select-none min-w-[var(--plate-min)] md:min-w-0 [&_*]:outline-none [&_*:focus]:outline-none [&_*:focus-visible]:outline-none"
+        style={{ background: WHITE, ["--plate-min" as string]: `${Math.round(w * 0.75)}px` }}
+      >
+        <title>{title}</title>
+        {children}
+      </svg>
+    </div>
   );
 }
 
@@ -391,7 +395,7 @@ export function PosterHero({
   author: string;
   date?: string;
   institution: string;
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   /** The lecture's agenda, listed under the subtitle. */
   agenda?: string[];
 }) {
@@ -401,8 +405,10 @@ export function PosterHero({
       id="hero"
       className="min-h-svh flex items-center px-6 lg:px-12 py-10 md:py-12"
     >
-      <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
-        <div>
+      <div
+        className={`w-full max-w-6xl mx-auto grid gap-10 lg:gap-14 items-center ${plate ? "lg:grid-cols-[1.1fr_0.9fr]" : ""}`}
+      >
+        <div className={plate ? "" : "max-w-4xl"}>
           <div className={MICRO}>{category}</div>
           <h1 className="mt-4 font-sans font-bold text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
             {title}
@@ -438,7 +444,7 @@ export function PosterHero({
                     }`}
                   >
                     <span className={`${MICRO} w-6 shrink-0`}>
-                      {String(i + 1).padStart(2, "0")}
+                      {i + 1}
                     </span>
                     <span className="font-sans font-medium text-base leading-snug text-[var(--dt-ink)]">
                       {item}
@@ -455,7 +461,7 @@ export function PosterHero({
             </span>
           </div>
         </div>
-        <div className="w-full max-w-xl mx-auto">{plate}</div>
+        {plate && <div className="w-full max-w-xl mx-auto">{plate}</div>}
       </div>
     </section>
   );
@@ -463,36 +469,59 @@ export function PosterHero({
 
 /* -- chapter band --------------------------------------------------------- */
 
+/**
+ * Part opener: the part's number and title, the sentences from content.md that
+ * say what the part covers, and the topics it contains, so the screen tells
+ * students where the lecture is going next.
+ */
 export function ChapterBand({
   id,
   number,
   title,
   description,
+  topics = [],
 }: {
   id: string;
-  number: string;
+  number: number;
   title: string;
-  description?: string;
+  description: string[];
+  topics?: string[];
 }) {
+  // A single topic only repeats the next slide's heading, so it is left out.
+  const list = topics.length > 1 ? topics : [];
   return (
     <section
       data-slide
       id={id}
-      className="border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12 min-h-svh flex items-center"
+      className="border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12 min-h-svh flex flex-col justify-center"
     >
       <div className="max-w-6xl w-full mx-auto">
-        <div className="w-full max-w-4xl">
-          <div className="font-sans text-[0.875rem] font-semibold tracking-normal text-[var(--dt-signal)] [font-variant-numeric:tabular-nums]">
-            Part {number}
+        <p className="font-sans text-lg md:text-xl font-semibold text-[var(--ink-3)] [font-variant-numeric:tabular-nums]">
+          Part {number}
+        </p>
+        <h2 className="mt-2 max-w-4xl font-sans font-bold text-[2.25rem] md:text-[3.25rem] leading-[1.1] tracking-[-0.015em] text-[var(--dt-ink)]">
+          {title}
+        </h2>
+        <div className="mt-8 h-px w-full bg-[var(--dt-ink)]/15" />
+        <div
+          className={`mt-8 grid gap-10 md:gap-16 ${list.length > 0 ? "md:grid-cols-[1.25fr_1fr]" : "max-w-4xl"}`}
+        >
+          <div className="flex flex-col gap-4 font-sans text-xl md:text-[1.5rem] leading-[1.45] text-[var(--dt-ink)]">
+            {description.map((s) => (
+              <p key={s}>{s}</p>
+            ))}
           </div>
-          <h2 className="mt-3 font-sans font-bold text-[2rem] md:text-[2.75rem] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
-            {title}
-          </h2>
-          <div className="mt-6 h-px w-full bg-[var(--dt-ink)]/15" />
-          {description && (
-            <p className="mt-6 font-sans text-lg md:text-xl font-normal leading-relaxed text-[var(--ink-2)] max-w-3xl">
-              {description}
-            </p>
+          {list.length > 0 && (
+            <ol className="flex flex-col self-start border-t border-[var(--dt-ink)]/15">
+              {list.map((t) => (
+                <li
+                  key={t}
+                  className="border-b border-[var(--dt-ink)]/15 py-4 font-sans text-xl leading-snug text-[var(--ink-2)]"
+                >
+                  {t}
+                </li>
+              ))}
+            </ol>
           )}
         </div>
       </div>
@@ -512,8 +541,8 @@ export function Slide({
   id?: string;
   label?: string;
   title?: string;
-  /** The exercise that follows this slide, on its own screen (any type). */
-  exercise?: CourseExercise;
+  /** The exercise(s) that follow this slide, each on its own screen (any type). */
+  exercise?: CourseExercise | (CourseExercise | undefined)[];
   /** Drawings for the exercise's cards, keyed by card or pair id. */
   exerciseArt?: Record<string, React.ReactNode>;
   children: React.ReactNode;
@@ -539,19 +568,26 @@ export function Slide({
       </section>
       {/* The exercise follows its slide on a screen of its own, from a fixed top
         so the prompt stays put while cards move and feedback opens below. */}
-      {exercise && (
+      {(Array.isArray(exercise) ? exercise : [exercise]).filter(Boolean).map((ex, i) => (
         <section
+          key={i}
           data-slide
           aria-label="Exercise"
           className="min-h-svh flex flex-col justify-start border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 pt-[14svh] pb-16 bg-[var(--paper-2)]"
         >
           <div className="max-w-6xl w-full mx-auto">
-            <Exercise data={exercise} art={exerciseArt} />
+            <Exercise data={ex as CourseExercise} art={exerciseArt} />
           </div>
         </section>
-      )}
+      ))}
     </>
   );
+}
+
+/* Click-through panels stacked in one cell: every panel keeps its height, so
+   the slide never moves when the selection changes. */
+export function Stack({ children }: { children: React.ReactNode }) {
+  return <div className="grid [&>*]:col-start-1 [&>*]:row-start-1">{children}</div>;
 }
 
 /* A row of cells. `cols` sets the wide-screen split. Phones stack in order. */
@@ -573,32 +609,41 @@ export function Row({
 
 /* -- class discussion ----------------------------------------------------- */
 
+const SLIDE_SECTION =
+  "min-h-svh flex flex-col justify-center border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12";
+
+function SlideHead({ title }: { title: string }) {
+  return (
+    <header className="mb-8 md:mb-10">
+      <h2 className="max-w-4xl font-sans font-bold text-[1.75rem] md:text-[2.375rem] leading-[1.2] tracking-[-0.015em] text-[var(--dt-ink)]">
+        {title}
+      </h2>
+      <div className="h-px w-full bg-[var(--dt-ink)]/12 mt-5" />
+    </header>
+  );
+}
+
+/** One open question for the class, set large under the slide's heading. */
 export function DiscussionSlide({
   quote,
   author,
   plate,
 }: {
   quote: string;
+  /** the slide's heading from content.md */
   author: string;
   plate?: React.ReactNode;
 }) {
   return (
-    <section
-      data-slide
-      className="border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12 min-h-svh flex items-center"
-    >
-      <div
-        className={`max-w-6xl w-full mx-auto ${
-          plate ? "grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center" : ""
-        }`}
-      >
-        <aside className="max-w-4xl border border-[var(--dt-ink)]/15 p-6 md:p-8">
-          <div className={MICRO}>{author || "Discussion"}</div>
-          <p className="mt-3 font-sans text-xl md:text-[1.5rem] font-semibold leading-[1.4] tracking-[-0.01em] text-[var(--dt-ink)]">
+    <section data-slide className={SLIDE_SECTION}>
+      <div className="max-w-6xl w-full mx-auto">
+        <SlideHead title={author} />
+        <div className={plate ? "grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center" : ""}>
+          <p className="max-w-4xl font-sans text-[1.75rem] md:text-[2.5rem] font-semibold leading-[1.25] tracking-[-0.01em] text-[var(--dt-ink)]">
             {quote}
           </p>
-        </aside>
-        {plate && <div className="max-w-sm w-full mx-auto">{plate}</div>}
+          {plate && <div className="max-w-sm w-full mx-auto">{plate}</div>}
+        </div>
       </div>
     </section>
   );
@@ -606,6 +651,7 @@ export function DiscussionSlide({
 
 /* -- summary -------------------------------------------------------------- */
 
+/** The closing slide: every point from content.md as one numbered list. */
 export function Summary({
   id,
   title,
@@ -617,42 +663,24 @@ export function Summary({
   summary?: string;
   takeaways: string[];
 }) {
+  const points = summary ? [summary, ...takeaways] : takeaways;
   return (
-    <section
-      data-slide
-      id={id}
-      className="min-h-svh flex flex-col justify-center border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12"
-    >
+    <section data-slide id={id} className={SLIDE_SECTION}>
       <div className="w-full max-w-6xl mx-auto">
-        <header className="mb-6 md:mb-8">
-          <div className={MICRO}>Summary</div>
-          <h2 className="mt-2 max-w-4xl font-sans font-bold text-[1.75rem] md:text-[2.375rem] leading-[1.2] tracking-[-0.015em] text-[var(--dt-ink)]">
-            {title}
-          </h2>
-          {summary && (
-            <p className="mt-4 font-sans text-lg leading-[1.6] text-[var(--ink-2)] max-w-3xl">
-              {summary}
-            </p>
-          )}
-        </header>
-        <div className="border-t border-[var(--dt-ink)]/15 pt-6">
-          <h3 className={MICRO}>Key takeaways</h3>
-          <ol className="mt-4">
-            {takeaways.map((t, i) => (
-              <li
-                key={t}
-                className="flex items-baseline gap-5 py-4 border-t border-[var(--dt-ink)]/12 first:border-t-0 first:pt-0 last:pb-0"
-              >
-                <span className="font-sans text-[0.875rem] font-semibold text-[var(--dt-signal)] w-6 shrink-0 [font-variant-numeric:tabular-nums]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-sans text-lg leading-[1.6] text-[var(--dt-ink)]">
-                  {t}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <SlideHead title={title} />
+        <ol className={points.length > 5 ? "md:columns-2 md:gap-14" : "max-w-4xl"}>
+          {points.map((t, i) => (
+            <li
+              key={t}
+              className="break-inside-avoid flex items-baseline gap-5 py-4 border-t border-[var(--dt-ink)]/15"
+            >
+              <span className="font-sans text-xl font-bold text-[var(--dt-ink)] w-6 shrink-0 [font-variant-numeric:tabular-nums]">
+                {i + 1}
+              </span>
+              <span className="font-sans text-xl leading-[1.5] text-[var(--dt-ink)]">{t}</span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
@@ -662,43 +690,38 @@ export function Summary({
 
 export function DiscussionList({
   id,
+  title,
   questions,
   plate,
 }: {
   id?: string;
+  /** the slide's heading from content.md */
+  title: string;
   questions: string[];
   plate?: React.ReactNode;
 }) {
   return (
-    <section
-      data-slide
-      id={id}
-      className="min-h-svh flex items-center border-t border-[var(--dt-ink)]/10 px-6 lg:px-12 py-10 md:py-12"
-    >
-      <div
-        className={`max-w-6xl w-full mx-auto ${
-          plate ? "grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center" : ""
-        }`}
-      >
-        <aside className="max-w-4xl border border-[var(--dt-ink)]/15 p-6 md:p-8">
-          <div className={MICRO}>Discussion</div>
-          <ol className="mt-4">
+    <section data-slide id={id} className={SLIDE_SECTION}>
+      <div className="max-w-6xl w-full mx-auto">
+        <SlideHead title={title} />
+        <div className={plate ? "grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center" : ""}>
+          <ol className="max-w-4xl">
             {questions.map((q, i) => (
               <li
                 key={q}
-                className="flex items-baseline gap-4 py-4 border-t border-[var(--dt-ink)]/12 first:border-t-0 first:pt-0 last:pb-0"
+                className="flex items-baseline gap-5 py-5 border-t border-[var(--dt-ink)]/15 first:border-t-0 first:pt-0"
               >
-                <span className="font-sans text-[0.875rem] font-semibold text-[var(--ink-3)] w-6 shrink-0 [font-variant-numeric:tabular-nums]">
-                  {String(i + 1).padStart(2, "0")}
+                <span className="font-sans text-2xl font-bold text-[var(--dt-ink)] w-7 shrink-0 [font-variant-numeric:tabular-nums]">
+                  {i + 1}
                 </span>
-                <span className="font-sans text-lg md:text-[1.1875rem] font-normal leading-relaxed text-[var(--dt-ink)]">
+                <span className="font-sans text-[1.5rem] md:text-[1.75rem] font-semibold leading-[1.3] text-[var(--dt-ink)]">
                   {q}
                 </span>
               </li>
             ))}
           </ol>
-        </aside>
-        {plate && <div className="max-w-sm w-full mx-auto">{plate}</div>}
+          {plate && <div className="max-w-sm w-full mx-auto">{plate}</div>}
+        </div>
       </div>
     </section>
   );

@@ -31,11 +31,10 @@ import {
   BatchProcessing,
   StreamProcessing,
   AnalyticsTimeline,
-  ValueChain,
-  DataChain,
   PeopleAndTechnology,
   SocialNetwork,
 } from "./visuals";
+import { DataChainExplorer, ValueChainExplorer } from "./explorers";
 
 const SECTIONS = [
   { id: "hero", label: "Introduction" },
@@ -55,7 +54,7 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 /* Body copy in upright sans-serif. */
 const BODY =
-  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+  "font-sans text-lg md:text-[1.25rem] leading-[1.55] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 
@@ -84,7 +83,18 @@ export default function DigitalTransformationWeek2() {
       {/* ================================================================
           CHAPTER 1: DATA STRUCTURES
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="Data Structures" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="Data Structures"
+        description={[
+          "This part introduces the two primary categories of data that organizations collect: structured data and unstructured data.",
+          "The distinction determines how easily data can be stored, searched, and analyzed.",
+        ]}
+        topics={[
+          "Structured and Unstructured Data",
+        ]}
+      />
 
       <Slide
         id="structured-and-unstructured-data"
@@ -137,6 +147,7 @@ export default function DigitalTransformationWeek2() {
       </Slide>
 
       <DiscussionList
+        title="Class Discussion"
         questions={[
           "Why is it important to distinguish between Structured and Unstructured Data?",
           "How to distinguish between Structured and Unstructured Data?",
@@ -147,23 +158,31 @@ export default function DigitalTransformationWeek2() {
       {/* ================================================================
           CHAPTER 2: BIG DATA
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Big Data" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Big Data"
+        description={[
+          "This part defines Big Data and the three characteristics that distinguish it from conventional data sets: volume, velocity, and variety.",
+          "These characteristics explain why Big Data requires different storage and processing technologies.",
+        ]}
+        topics={[
+          "Big Data and the Three Vs",
+        ]}
+      />
 
       <Slide
         id="big-data-and-the-three-vs"
         title="Big Data and the Three Vs"
         exercise={exercise["big-data-and-the-three-vs"]}
       >
-        <p className="font-sans text-xl md:text-2xl leading-[1.4] text-[var(--dt-ink)] max-w-5xl">
+        <p className="font-sans text-[1.5rem] md:text-[1.75rem] leading-[1.4] text-[var(--dt-ink)] max-w-5xl">
           <strong className="font-semibold">Big Data</strong> refers to the vast volumes of structured and unstructured data that are
           generated at high velocity from various sources, including social media, sensors, devices,
-          transactions, and more.
-        </p>
-        <p className={BODY}>
-          Big Data is often characterized by the{" "}
+          transactions, and more. Big Data is often characterized by the{" "}
           <strong className="font-semibold">&ldquo;Three Vs&rdquo;</strong>:
         </p>
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
           {[
             {
               name: "Volume",
@@ -180,16 +199,13 @@ export default function DigitalTransformationWeek2() {
               text: "Data comes in various formats, including structured data (like databases), and unstructured data (like text, images, and videos).",
               plate: <Variety />,
             },
-          ].map((v, i) => (
-            <div key={v.name} className={`${BODY} flex flex-col gap-3 border-t border-[var(--dt-ink)]/15 pt-4`}>
-              <p className="font-sans font-semibold text-xl leading-snug text-[var(--dt-ink)] flex items-baseline gap-3">
-                <span className="text-sm font-medium text-[var(--ink-3)] tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {v.name}
-              </p>
-              <p className="md:min-h-[6.4em]">{v.text}</p>
+          ].map((v) => (
+            <div key={v.name} className="flex flex-col">
               <PlateWell>{v.plate}</PlateWell>
+              <div className="mt-5 border-t border-[var(--dt-ink)]/15 pt-4">
+                <p className="font-sans font-bold text-[1.75rem] leading-tight text-[var(--dt-ink)]">{v.name}</p>
+                <p className="mt-2 font-sans text-lg leading-[1.5] text-[var(--ink-2)]">{v.text}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -198,7 +214,20 @@ export default function DigitalTransformationWeek2() {
       {/* ================================================================
           CHAPTER 3: BIG DATA ANALYTICS TECHNOLOGY
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="Big Data Analytics Technology" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="Big Data Analytics Technology"
+        description={[
+          "This part examines the technologies that organizations use to store, process, and analyze Big Data.",
+          "It covers data lakes and data warehouses, batch and stream processing, and descriptive, predictive, and prescriptive analytics.",
+        ]}
+        topics={[
+          "Data Storage",
+          "Data Processing Frameworks",
+          "Analytics Tools",
+        ]}
+      />
 
       <Slide id="data-storage" title="Data Storage" exercise={exercise["data-storage"]}>
         <Row className="!items-start">
@@ -269,7 +298,18 @@ export default function DigitalTransformationWeek2() {
       {/* ================================================================
           CHAPTER 4: PORTER'S VALUE CHAIN
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Porter's Value Chain" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Porter's Value Chain"
+        description={[
+          "This part presents Porter's value chain, a framework for analyzing the internal activities through which a firm creates value.",
+          "The framework separates primary activities, which produce and deliver the product, from support activities, which enable them.",
+        ]}
+        topics={[
+          "Primary and Support Activities",
+        ]}
+      />
 
       <Slide id="porters-value-chain" title="Porter's Value Chain">
         <ol className="flex flex-col max-w-4xl">
@@ -301,7 +341,22 @@ export default function DigitalTransformationWeek2() {
         title="Primary and Support Activities"
         exercise={exercise["primary-and-support-activities"]}
       >
-        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
+        <div className="hidden md:flex flex-col gap-6">
+          <ValueChainExplorer
+            activities={[
+              { group: "Support Activities", name: "Firm Infrastructure", text: "Organizational structure, management, planning, finance, and quality control systems that support the entire value chain." },
+              { group: "Support Activities", name: "Human Resource Management", text: "Activities related to recruiting, hiring, training, and developing the workforce." },
+              { group: "Support Activities", name: "Technology Development", text: "Activities related to managing and developing technology, including research and development, process automation, and product design." },
+              { group: "Support Activities", name: "Procurement", text: "The process of acquiring the goods and services a company needs to carry out its operations." },
+              { group: "Primary Activities", name: "Inbound Logistics", text: "Receiving, warehousing, and inventory management of raw materials." },
+              { group: "Primary Activities", name: "Operations", text: "Processes that transform inputs into the final product or service." },
+              { group: "Primary Activities", name: "Outbound Logistics", text: "Activities required to get the finished product to the customer, including storage and order fulfillment." },
+              { group: "Primary Activities", name: "Marketing and Sales", text: "Strategies and activities to promote and sell the product or service." },
+              { group: "Primary Activities", name: "Service", text: "Activities related to maintaining and enhancing the product's value after purchase." },
+            ]}
+          />
+        </div>
+        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10 md:hidden`}>
           <div>
             <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-2">Primary Activities</p>
             <ul className={LIST}>
@@ -322,76 +377,57 @@ export default function DigitalTransformationWeek2() {
             </ul>
           </div>
         </div>
-        <div className="hidden sm:block">
-          <PlateWell>
-            <ValueChain />
-          </PlateWell>
-        </div>
       </Slide>
 
       {/* ================================================================
           CHAPTER 5: DATA VALUE CHAIN
           ================================================================ */}
-      <ChapterBand id="ch5" number="05" title="Data Value Chain" />
+      <ChapterBand
+        id="ch5"
+        number={5}
+        title="Data Value Chain"
+        description={[
+          "This part applies the logic of the value chain to data itself.",
+          "The data value chain traces the stages through which raw data becomes insight and, eventually, business action.",
+        ]}
+        topics={[
+          "Data Value Chain",
+        ]}
+      />
 
-      {[
-        {
-          id: "data-value-chain-generation-to-storage",
-          title: "Data Value Chain: Generation to Storage",
-          lead: "The Data Value Chain is a conceptual framework that outlines the various stages involved in transforming raw data into valuable insights and actionable outcomes.",
-          from: 0,
-          stages: [
-            ["Data Generation", "This is the initial stage where data is created or collected. Data can come from various sources, including sensors, transactions, social media, surveys, etc."],
-            ["Data Collection", "In this stage, the generated data is gathered and stored. This may involve data entry (manual), data scraping, or automated data collection methods."],
-            ["Data Storage", "Once collected, data needs to be stored in a way that allows for easy access and retrieval. This can involve databases, data lakes, or cloud storage solutions."],
-          ],
-        },
-        {
-          id: "data-value-chain-processing-to-visualization",
-          title: "Data Value Chain: Processing to Visualization",
-          from: 3,
-          stages: [
-            ["Data Processing", "This stage involves cleaning, transforming, and organizing the data to make it suitable for analysis. Data processing may include removing duplicates, handling missing values, and converting data into a standardized format."],
-            ["Data Analysis", "In this phase, analytical techniques are applied to the processed data to extract insights. This can involve statistical analysis, machine learning, data mining, and other analytical methods to identify patterns, trends, and correlations."],
-            ["Data Visualization", "The insights gained from data analysis are often presented through visualizations, such as charts, graphs, and dashboards. This helps stakeholders understand the findings and make informed decisions."],
-          ],
-        },
-        {
-          id: "data-value-chain-interpretation-to-feedback",
-          title: "Data Value Chain: Interpretation to Feedback",
-          from: 6,
-          stages: [
-            ["Data Interpretation", "This stage involves interpreting the visualized data and insights to derive meaningful conclusions. It requires domain knowledge and expertise to understand the implications of the data."],
-            ["Data Utilization", "Finally, the insights are used to inform decision-making, drive strategy, improve processes, or create new products and services. This stage emphasizes the practical application of data insights to achieve business objectives."],
-            ["Feedback and Iteration", "The Data Value Chain is often iterative, meaning that feedback from the utilization stage can lead to new data generation, collection, and analysis efforts. This continuous cycle helps organizations adapt and improve their data strategies over time."],
-          ],
-        },
-      ].map((s) => (
-        <Slide key={s.id} id={s.id} title={s.title} exercise={exercise[s.id]}>
-          {s.lead && <p className="font-sans text-lg md:text-xl leading-[1.5] text-[var(--dt-ink)] max-w-4xl">{s.lead}</p>}
-          <PlateWell>
-            <DataChain active={s.from} />
-          </PlateWell>
-          <ol className={`${BODY} grid md:grid-cols-3 gap-6 md:gap-8`}>
-            {s.stages.map(([name, text], i) => (
-              <li key={name} className="border-t border-[var(--dt-ink)]/15 pt-3">
-                <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-1 flex items-baseline gap-3">
-                  <span className="font-sans font-medium text-sm text-[var(--ink-3)] tabular-nums">
-                    {String(s.from + i + 1).padStart(2, "0")}
-                  </span>
-                  {name}
-                </p>
-                <p>{text}</p>
-              </li>
-            ))}
-          </ol>
-        </Slide>
-      ))}
+      <Slide id="data-value-chain" title="Data Value Chain" exercise={exercise["data-value-chain"]}>
+        <p className="font-sans text-xl md:text-[1.5rem] leading-[1.45] text-[var(--dt-ink)] max-w-5xl">The Data Value Chain is a conceptual framework that outlines the various stages involved in transforming raw data into valuable insights and actionable outcomes.</p>
+        <DataChainExplorer
+          stages={[
+              ["Data Generation", "This is the initial stage where data is created or collected. Data can come from various sources, including sensors, transactions, social media, surveys, etc."],
+              ["Data Collection", "In this stage, the generated data is gathered and stored. This may involve data entry (manual), data scraping, or automated data collection methods."],
+              ["Data Storage", "Once collected, data needs to be stored in a way that allows for easy access and retrieval. This can involve databases, data lakes, or cloud storage solutions."],
+              ["Data Processing", "This stage involves cleaning, transforming, and organizing the data to make it suitable for analysis. Data processing may include removing duplicates, handling missing values, and converting data into a standardized format."],
+              ["Data Analysis", "In this phase, analytical techniques are applied to the processed data to extract insights. This can involve statistical analysis, machine learning, data mining, and other analytical methods to identify patterns, trends, and correlations."],
+              ["Data Visualization", "The insights gained from data analysis are often presented through visualizations, such as charts, graphs, and dashboards. This helps stakeholders understand the findings and make informed decisions."],
+              ["Data Interpretation", "This stage involves interpreting the visualized data and insights to derive meaningful conclusions. It requires domain knowledge and expertise to understand the implications of the data."],
+              ["Data Utilization", "Finally, the insights are used to inform decision-making, drive strategy, improve processes, or create new products and services. This stage emphasizes the practical application of data insights to achieve business objectives."],
+              ["Feedback and Iteration", "The Data Value Chain is often iterative, meaning that feedback from the utilization stage can lead to new data generation, collection, and analysis efforts. This continuous cycle helps organizations adapt and improve their data strategies over time."],
+          ]}
+        />
+      </Slide>
 
       {/* ================================================================
           CHAPTER 6: SOCIO-TECHNICAL SYSTEMS
           ================================================================ */}
-      <ChapterBand id="ch6" number="06" title="Socio-Technical Systems" />
+      <ChapterBand
+        id="ch6"
+        number={6}
+        title="Socio-Technical Systems"
+        description={[
+          "This part introduces socio-technical systems theory, which treats people and technology as interacting parts of one organizational system.",
+          "It describes the characteristics of the social system and the components of the technical system in turn.",
+        ]}
+        topics={[
+          "Social System",
+          "Technical System",
+        ]}
+      />
 
       <Slide id="socio-technical-systems" title="Socio-Technical Systems">
         <Row cols="lg:grid-cols-[1fr_1.1fr]">
@@ -466,7 +502,7 @@ export default function DigitalTransformationWeek2() {
         </p>
         <div>
           <p className="font-sans font-semibold text-lg text-[var(--dt-ink)] mb-3">Components of a Technical System</p>
-          <ol className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5`}>
+          <ol>
             {[
               ["Hardware", "This includes the physical devices and equipment used in the system, such as computers, servers, machinery, and other tools."],
               ["Software", "Software encompasses the programs and applications that run on hardware. This includes operating systems, productivity software, specialized applications, and databases that support various functions within the organization."],
@@ -476,11 +512,12 @@ export default function DigitalTransformationWeek2() {
               ["User Interfaces", "The design of user interfaces (UIs) is crucial for ensuring that users can effectively interact with the technical system. Good UI design enhances usability and user experience, making it easier for individuals to perform their tasks."],
               ["Support and Maintenance", "troubleshooting, updates, training for users to keep the system running smoothly."],
             ].map(([name, text], i) => (
-              <li key={name} className="border-t border-[var(--dt-ink)]/15 pt-3">
-                <p className="font-sans font-semibold text-base text-[var(--dt-ink)] mb-1 flex items-baseline gap-2">
-                  <span className="font-sans font-medium text-xs text-[var(--ink-3)] tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+              <li
+                key={name}
+                className="grid md:grid-cols-[16rem_1fr] gap-x-8 gap-y-1 border-t border-[var(--dt-ink)]/15 py-2.5 font-sans text-lg leading-[1.5] text-[var(--ink-2)]"
+              >
+                <p className="font-semibold text-lg text-[var(--dt-ink)] flex items-baseline gap-2">
+                  <span className="tabular-nums">{i + 1}</span>
                   {name}
                 </p>
                 <p>{text}</p>

@@ -21,8 +21,6 @@ import {
   Thermometer,
   Watch,
   Car,
-  LockKey,
-  ShieldCheck,
   ArrowsClockwise,
   Database,
   Factory,
@@ -32,8 +30,6 @@ import {
   Key,
   Gear,
   Star,
-  Barcode,
-  Clock,
 } from "@phosphor-icons/react";
 import {
   WHITE,
@@ -55,22 +51,6 @@ import { Person, Shop, Doc, Coins } from "../_visuals/objects";
    1. Hero: A user in profile accepts and uses a connected digital system
    on a framed screen
    ========================================================================== */
-
-export function HeroAcceptance() {
-  return (
-    <Plate
-      w={560}
-      h={240}
-      title="A physical shop silhouette on the left, a red arrow showing technology acceptance and use, and a connected digital system on a framed screen on the right"
-    >
-      <Shop x={40} y={38} k={0.92} />
-      <Arrow x1={206} x2={294} y={112} color={SIGNAL} />
-      <Monitor x={312} y={24} w={216} h={164}>
-        <Shop x={357.6} y={48.5} k={0.78} />
-      </Monitor>
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    2. TAM Flow Diagram: Fred Davis (1986) Technology Acceptance Model
@@ -400,162 +380,16 @@ export function TamBeliefsInteractive() {
    feeding BestBuy's AI-powered virtual shopping assistant on a framed screen
    ========================================================================== */
 
-export function BestBuyAssistantPlate() {
-  const rows = [36, 92, 148, 204];
-  return (
-    <Plate
-      w={400}
-      h={244}
-      title="Four numbered external variable badges on the left (1 interface sliders, 2 a tech-savvy shopper, 3 a review star, 4 a tutorial document) point to a framed screen holding a digital shop and a red chat assistant bubble"
-    >
-      {rows.map((cy, i) => (
-        <g key={cy}>
-          <rect x={16} y={cy - 20} width={96} height={40} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
-          <rect x={16} y={cy - 20} width={28} height={40} fill={INK} fillOpacity={0.06} stroke={INK} strokeWidth={1.5} />
-          <text
-            x={30}
-            y={cy + 6}
-            textAnchor="middle"
-            fontFamily="var(--font-sans)"
-            fontWeight={700}
-            fontSize={16}
-            fill={INK}
-          >
-            {i + 1}
-          </text>
-          {i === 0 && <SlidersHorizontal x={58} y={cy - 15} size={30} weight="fill" color={INK} />}
-          {i === 1 && <ChatCircle x={58} y={cy - 15} size={30} weight="fill" color={INK} />}
-          {i === 2 && <Star x={58} y={cy - 15} size={30} weight="fill" color={INK} />}
-          {i === 3 && <Doc x={60} y={cy - 17} k={0.29} />}
-          <Pointer x1={118} y1={cy} x2={198} y2={r2(84 + i * 22)} w={3} head={11} />
-        </g>
-      ))}
-
-      <Monitor x={208} y={40} w={176} h={134}>
-        <Shop x={232} y={70} k={0.52} />
-        <ChatCircle x={320} y={58} size={44} weight="fill" color={SIGNAL} />
-      </Monitor>
-    </Plate>
-  );
-}
-
 /* ==========================================================================
    4. BestBuy Feature Trade-Off (Interactive): "How is adding more features
    reducing the ease of use?"
    ========================================================================== */
 
-const BB_USEFULNESS = [48, 74, 88, 92, 94, 95];
-const BB_EASE = [92, 86, 78, 56, 36, 22];
-const BB_ADOPTION = [64, 79, 85, 70, 54, 42];
-
-export function BestBuyFeatureTradeoff() {
-  const [features, setFeatures] = React.useState(3);
-  const idx = features - 1;
-  const u = BB_USEFULNESS[idx];
-  const e = BB_EASE[idx];
-  const use = BB_ADOPTION[idx];
-
-  const barX = 396;
-  const barW = 280;
-
-  return (
-    <Plate
-      w={800}
-      h={246}
-      title={`Interactive feature trade-off for BestBuy's virtual shopping assistant: with ${features} ${features === 1 ? "feature" : "features"} on the screen, Perceived Usefulness is ${u}%, Perceived Ease of Use is ${e}%, and Actual System Use is ${use}%`}
-    >
-      {/* Left: Framed screen showing the chat assistant + feature modules */}
-      <Monitor x={28} y={16} w={184} h={120}>
-        <ChatCircle x={50} y={36} size={42} weight="fill" color={INK} />
-        {Array.from({ length: features }, (_, i) => {
-          const col = i % 3;
-          const row = Math.floor(i / 3);
-          return (
-            <rect
-              key={i}
-              x={102 + col * 30}
-              y={40 + row * 36}
-              width={24}
-              height={26}
-              fill={i >= 3 ? SIGNAL : INK}
-            />
-          );
-        })}
-      </Monitor>
-
-      {/* Feature count slider under the screen */}
-      <text x={28} y={200} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        {`System Features: ${features}`}
-      </text>
-      <rect x={28} y={210} width={240} height={12} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={28} y={210} width={r2(((features - 1) / 5) * 240)} height={12} fill={INK} />
-      <DragKnob
-        x={28}
-        y={216}
-        value={features}
-        min={1}
-        max={6}
-        onChange={setFeatures}
-        label="Number of system features in the virtual assistant"
-      />
-
-      <Pointer x1={232} y1={84} x2={372} y2={84} w={3.5} head={12} />
-
-      {/* Right: Three resulting bars */}
-      <text x={barX} y={40} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Perceived Usefulness (E)
-      </text>
-      <rect x={barX} y={48} width={barW} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={barX} y={48} width={r2((u / 100) * barW)} height={20} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
-      <text x={barX + barW + 16} y={64} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        {`${u}%`}
-      </text>
-
-      <text x={barX} y={108} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Perceived Ease of Use (U)
-      </text>
-      <rect x={barX} y={116} width={barW} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={barX} y={116} width={r2((e / 100) * barW)} height={20} fill={COUNTER} />
-      <text x={barX + barW + 16} y={132} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        {`${e}%`}
-      </text>
-
-      <text x={barX} y={176} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Actual System Use
-      </text>
-      <rect x={barX} y={184} width={barW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={barX} y={184} width={r2((use / 100) * barW)} height={22} fill={SIGNAL} />
-      <text x={barX + barW + 16} y={201} fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
-        {`${use}%`}
-      </text>
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    4b | BestBuy Catalog & Manuals Bridge (Column Plate, w=400): product
    catalog database and manuals feed into the AI chatbot on a framed screen
    ========================================================================== */
-
-export function BestBuyCatalogBridgePlate() {
-  return (
-    <Plate
-      w={400}
-      h={200}
-      title="Left: a product catalog database above a manual document. Right: a red arrow connects them into a framed screen holding a chat bubble and digital shop"
-    >
-      <Database x={42} y={24} size={52} weight="fill" color={INK} />
-      <Doc x={44} y={96} k={0.54} />
-
-      <Arrow x1={116} x2={188} y={86} color={SIGNAL} />
-
-      <Monitor x={204} y={24} w={164} h={116}>
-        <ChatCircle x={228} y={54} size={44} weight="fill" color={SIGNAL} />
-        <Shop x={286} y={66} k={0.36} />
-      </Monitor>
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    5. Hospital Triage Chatbot: patients consult a chatbot on a framed screen,
@@ -620,100 +454,11 @@ export function HospitalTriageFlow() {
    Staff focus on critical patients rise
    ========================================================================== */
 
-export function HospitalPeakSimulator() {
-  const [filterPct, setFilterPct] = React.useState(65);
-  const waitPct = Math.round(92 - filterPct * 0.78);
-  const criticalFocus = Math.round(28 + filterPct * 0.85);
-
-  const trackX = 24;
-  const trackW = 240;
-
-  return (
-    <Plate
-      w={400}
-      h={256}
-      title={`Interactive hospital triage simulator: when the chatbot filters ${filterPct}% of non-urgent cases, Waiting times drop to ${waitPct}% and Staff focus on critical patients rises to ${criticalFocus}%`}
-    >
-      {/* Draggable input: Non-urgent cases filtered by chatbot */}
-      <text x={trackX} y={42} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Non-urgent cases filtered
-      </text>
-      <rect x={trackX} y={54} width={trackW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={trackX} y={54} width={r2((filterPct / 100) * trackW)} height={22} fill={INK} />
-      <DragKnob
-        x={trackX}
-        y={65}
-        value={filterPct}
-        min={10}
-        max={85}
-        onChange={setFilterPct}
-        label="Percentage of non-urgent cases filtered by the hospital chatbot"
-      />
-      <text x={trackX + trackW + 22} y={71} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        {`${filterPct}%`}
-      </text>
-
-      <Pointer x1={144} y1={86} x2={144} y2={114} w={3.5} color={SIGNAL} head={11} />
-
-      {/* Outcome 1: Waiting times */}
-      <text x={trackX} y={138} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Waiting times
-      </text>
-      <rect x={trackX} y={148} width={trackW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={trackX} y={148} width={r2((waitPct / 100) * trackW)} height={22} fill={COUNTER} />
-      <text x={trackX + trackW + 22} y={165} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        {`${waitPct}%`}
-      </text>
-
-      {/* Outcome 2: Critical patient focus */}
-      <text x={trackX} y={204} fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Focus on critical patients
-      </text>
-      <rect x={trackX} y={214} width={trackW} height={22} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={trackX} y={214} width={r2((criticalFocus / 100) * trackW)} height={22} fill={SIGNAL} />
-      <text
-        x={trackX + trackW + 22}
-        y={231}
-        fontFamily="var(--font-sans)"
-        fontWeight={700}
-        fontSize={16}
-        fill={INK}
-      >
-        {`${criticalFocus}%`}
-      </text>
-    </Plate>
-  );
-}
-
 /* ==========================================================================
    5c | Hospital EHR Integration Plate (Column Plate, w=400): an Electronic
    Health Record (EHR) screen on the left links via a red arrow into the
    hospital chatbot screen on the right
    ========================================================================== */
-
-export function HospitalEhrIntegrationPlate() {
-  return (
-    <Plate
-      w={400}
-      h={212}
-      title="Left: a framed screen holding a patient health record document, labeled EHR. Center: a red arrow connects it into a second framed screen holding a chatbot bubble and medical cross"
-    >
-      <Monitor x={20} y={24} w={132} h={108}>
-        <Doc x={64} y={46} k={0.48} />
-      </Monitor>
-      <text x={86} y={188} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={18} fill={INK}>
-        EHR
-      </text>
-
-      <Arrow x1={164} x2={236} y={78} color={SIGNAL} />
-
-      <Monitor x={248} y={24} w={132} h={108}>
-        <ChatCircle x={266} y={58} size={38} weight="fill" color={INK} />
-        <MedicalCross x={314} y={58} k={0.74} tone={SIGNAL} />
-      </Monitor>
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    6. IKEA Self-Return Kiosk: contrasts waiting in a queue of customers with
@@ -767,40 +512,6 @@ export function IkeaKioskReturn() {
    barcode return on a framed kiosk screen. Bottom row shows staff freed for
    complex issues and cost savings
    ========================================================================== */
-
-export function IkeaKioskStepsPlate() {
-  return (
-    <Plate
-      w={400}
-      h={260}
-      title="Top: a framed kiosk screen holding a barcode and package points to a fast clock, labeled Faster returns. Bottom: a staff member works on complex gears beside a red stack of coins, labeled Cost savings"
-    >
-      {/* Top: Routine return on kiosk -> Faster returns */}
-      <Monitor x={20} y={12} w={156} h={92}>
-        <Barcode x={44} y={36} size={42} weight="fill" color={INK} />
-        <Package x={102} y={38} size={40} weight="fill" color={INK} />
-      </Monitor>
-      <Arrow x1={190} x2={254} y={60} color={SIGNAL} />
-      <Clock x={282} y={24} size={56} weight="fill" color={SIGNAL} />
-      <text x={310} y={104} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Faster returns
-      </text>
-
-      <path d="M 20 152 H 380" stroke={INK} strokeWidth={1.5} strokeDasharray="5 5" />
-
-      {/* Bottom: Staff focus on complex issues + Cost savings */}
-      <Gear x={62} y={172} size={46} weight="fill" color={INK} />
-      <Gear x={114} y={194} size={36} weight="fill" color={INK} />
-      <Coins x={262} y={240} n={4} />
-      <text x={340} y={210} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        Cost
-      </text>
-      <text x={340} y={234} textAnchor="middle" fontFamily="var(--font-sans)" fontWeight={700} fontSize={16} fill={INK}>
-        savings
-      </text>
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    6c | UTAUT Synthesis Plate (Column Plate, w=400): TAM, TPB, and the
@@ -864,154 +575,6 @@ export function UtautSynthesisPlate() {
 
 type ModeratorId = "gender" | "age" | "experience" | "voluntariness";
 
-const MODERATORS: {
-  id: ModeratorId;
-  label: string;
-  x: number;
-  w: number;
-  paths: ("pe" | "ee" | "si" | "fc")[];
-}[] = [
-  { id: "gender", label: "Gender", x: 16, w: 172, paths: ["pe", "ee", "si"] },
-  { id: "age", label: "Age", x: 206, w: 172, paths: ["pe", "ee", "si", "fc"] },
-  { id: "experience", label: "Experience", x: 396, w: 172, paths: ["ee", "si", "fc"] },
-  { id: "voluntariness", label: "Voluntariness of Use", x: 586, w: 198, paths: ["si"] },
-];
-
-export function UtautModelInteractive() {
-  const [mod, setMod] = React.useState<ModeratorId>("experience");
-  const active = MODERATORS.find((m) => m.id === mod)!;
-  const isLit = (p: "pe" | "ee" | "si" | "fc") => active.paths.includes(p);
-
-  const constructs: { id: "pe" | "ee" | "si" | "fc"; label: string; y: number }[] = [
-    { id: "pe", label: "Performance Expectancy", y: 14 },
-    { id: "ee", label: "Effort Expectancy", y: 68 },
-    { id: "si", label: "Social Influence", y: 122 },
-    { id: "fc", label: "Facilitating Conditions", y: 176 },
-  ];
-
-  return (
-    <Plate
-      w={800}
-      h={284}
-      title={`The UTAUT model (Venkatesh et al., 2003): Performance Expectancy, Effort Expectancy, and Social Influence point to Behavioral Intention, which together with Facilitating Conditions points to Use Behavior. Bottom row shows four moderating variables (Gender, Age, Experience, Voluntariness of Use). ${active.label} is selected in red, highlighting the ${active.paths.length} paths it moderates`}
-    >
-      {/* Four primary constructs */}
-      {constructs.map((c) => {
-        const lit = isLit(c.id);
-        const tone = lit ? SIGNAL : INK;
-        return (
-          <g key={c.id}>
-            <rect x={16} y={c.y} width={212} height={42} fill={INK} fillOpacity={lit ? 0.08 : 0.04} stroke={INK} strokeWidth={1.5} />
-            <text
-              x={122}
-              y={c.y + 27}
-              textAnchor="middle"
-              fontFamily="var(--font-sans)"
-              fontWeight={600}
-              fontSize={15.5}
-              fill={INK}
-            >
-              {c.label}
-            </text>
-          </g>
-        );
-      })}
-
-      {/* Behavioral Intention */}
-      <rect x={368} y={56} width={164} height={68} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
-      <BoxLines cx={450} cy={90} lines={["Behavioral", "Intention"]} />
-
-      {/* Use Behavior */}
-      <rect x={620} y={114} width={164} height={68} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
-      <BoxLines cx={702} cy={148} lines={["Use", "Behavior"]} />
-
-      {/* Construct -> Outcome arrows */}
-      <Pointer
-        x1={232}
-        y1={35}
-        x2={362}
-        y2={72}
-        w={isLit("pe") ? 5 : 3}
-        color={isLit("pe") ? SIGNAL : INK}
-        head={13}
-      />
-      <Pointer
-        x1={232}
-        y1={89}
-        x2={362}
-        y2={89}
-        w={isLit("ee") ? 5 : 3}
-        color={isLit("ee") ? SIGNAL : INK}
-        head={13}
-      />
-      <Pointer
-        x1={232}
-        y1={143}
-        x2={362}
-        y2={106}
-        w={isLit("si") ? 5 : 3}
-        color={isLit("si") ? SIGNAL : INK}
-        head={13}
-      />
-      <Pointer
-        x1={232}
-        y1={197}
-        x2={614}
-        y2={162}
-        w={isLit("fc") ? 5 : 3}
-        color={isLit("fc") ? SIGNAL : INK}
-        head={13}
-      />
-
-      {/* Behavioral Intention -> Use Behavior */}
-      <Pointer x1={536} y1={90} x2={614} y2={134} w={3.5} color={INK} head={13} />
-
-      {/* Interactive Moderating Variables row */}
-      {MODERATORS.map((m) => {
-        const on = m.id === mod;
-        return (
-          <g
-            key={m.id}
-            role="button"
-            tabIndex={0}
-            aria-pressed={on}
-            aria-label={`Moderator: ${m.label}`}
-            style={{ cursor: "pointer" }}
-            onClick={() => setMod(m.id)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setMod(m.id);
-              }
-            }}
-          >
-            <rect
-              x={m.x}
-              y={234}
-              width={m.w}
-              height={36}
-              fill={INK}
-              fillOpacity={on ? 0.1 : 0.04}
-              stroke={INK}
-              strokeWidth={1.5}
-            />
-            <text
-              x={r2(m.x + m.w / 2)}
-              y={257}
-              textAnchor="middle"
-              fontFamily="var(--font-sans)"
-              fontWeight={600}
-              fontSize={15}
-              fill={INK}
-            >
-              {m.label}
-            </text>
-          </g>
-        );
-      })}
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    7b | IKEA UTAUT Drivers Plate (Full-width, w=800): four visual scenes
@@ -1020,40 +583,6 @@ export function UtautModelInteractive() {
    4 support staff with guidance doc), pointing down to Behavioral Intention
    and Actual Use
    ========================================================================== */
-
-export function IkeaUtautDriversPlate() {
-  const cx = [104, 301, 499, 696];
-  return (
-    <Plate
-      w={800}
-      h={168}
-      title="Four visual stations for IKEA's kiosk under the four UTAUT constructs: 1 a clock for saving time, 2 a framed touch screen for ease of use, 3 two shoppers talking for word-of-mouth social influence, and 4 a support staff member with a guidance document for facilitating conditions. Arrows point down to the outcomes below"
-    >
-      {/* 1. Performance Expectancy: saving time */}
-      <Clock x={cx[0] - 28} y={20} size={56} weight="fill" color={INK} />
-
-      {/* 2. Effort Expectancy: intuitive touch screen */}
-      <MiniScreen x={cx[1] - 42} y={14}>
-        <SlidersHorizontal x={cx[1] - 18} y={24} size={36} weight="fill" color={INK} />
-      </MiniScreen>
-
-      {/* 3. Social Influence: observing other customers & word-of-mouth */}
-      <ChatCircle x={cx[2] - 42} y={24} size={46} weight="fill" color={INK} />
-      <ChatCircle x={cx[2] - 2} y={36} size={46} weight="fill" color={SIGNAL} />
-
-      {/* 4. Facilitating Conditions: on-site support & clear guidance */}
-      <Doc x={cx[3] - 18} y={22} k={0.56} />
-
-      {/* Shared horizontal collector bar & downward arrows to outcomes */}
-      <path d="M 104 114 H 696" stroke={INK} strokeWidth={3.5} />
-      {cx.map((x) => (
-        <path key={x} d={`M ${x} 94 V 114`} stroke={INK} strokeWidth={3.5} />
-      ))}
-      <Pointer x1={250} y1={114} x2={250} y2={154} w={4.5} color={SIGNAL} head={13} />
-      <Pointer x1={550} y1={114} x2={550} y2={154} w={4.5} color={SIGNAL} head={13} />
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    7c | IKEA Moderating Variables Interactive (Column Plate, w=400): select any
@@ -1278,85 +807,6 @@ export function IotLoopInteractive() {
    9. IoT Privacy and Security: five visual stations aligned under the five
    best practices
    ========================================================================== */
-
-export function IotSecurityPractices() {
-  const cx = [86, 243, 400, 557, 714];
-  return (
-    <Plate
-      w={800}
-      h={184}
-      title="Five numbered security stations aligned across a rail: 1, a key inside a framed screen for device authentication. 2, a lock on a network link for secure communications. 3, an update cycle on a framed screen for firmware updates. 4, one kept data block beside two crossed-out blocks for limiting data collection. 5, a person with a red shield for educating users"
-    >
-      {/* 1. Strong device authentication */}
-      <MiniScreen x={cx[0] - 42} y={24}>
-        <Key x={cx[0] - 18} y={34} size={36} weight="fill" color={INK} />
-      </MiniScreen>
-
-      {/* 2. Secure network communications */}
-      <path d={`M ${cx[1] - 54} 58 H ${cx[1] + 54}`} stroke={INK} strokeWidth={5} />
-      <circle cx={cx[1] - 54} cy={58} r={8} fill={INK} />
-      <circle cx={cx[1] + 54} cy={58} r={8} fill={INK} />
-      <circle cx={cx[1]} cy={58} r={26} fill={SIGNAL} stroke={INK} strokeWidth={3.5} />
-      <LockKey x={cx[1] - 18} y={40} size={36} weight="fill" color={INK} />
-
-      {/* 3. Keep software and firmware updated */}
-      <MiniScreen x={cx[2] - 42} y={24}>
-        <ArrowsClockwise x={cx[2] - 19} y={33} size={38} weight="fill" color={INK} />
-      </MiniScreen>
-
-      {/* 4. Limit data collection and storage */}
-      <rect x={cx[3] - 44} y={66} width={88} height={22} rx={4} fill={INK} />
-      <rect
-        x={cx[3] - 44}
-        y={38}
-        width={88}
-        height={20}
-        rx={4}
-        fill={COUNTER_FILL}
-        stroke={INK}
-        strokeWidth={2}
-        strokeDasharray="4 4"
-      />
-      <rect
-        x={cx[3] - 44}
-        y={12}
-        width={88}
-        height={20}
-        rx={4}
-        fill={COUNTER_FILL}
-        stroke={INK}
-        strokeWidth={2}
-        strokeDasharray="4 4"
-      />
-
-      {/* 5. Educate users on IoT security */}
-      <Doc x={cx[4] - 32} y={24} k={0.48} />
-      <ShieldCheck x={cx[4] + 2} y={32} size={44} weight="fill" color={SIGNAL} />
-
-      {/* Shared plinth rail & numerals */}
-      <path d="M 24 128 H 776" stroke={INK} strokeWidth={2} />
-      {cx.map((x, i) => {
-        const tone = i === 4 ? SIGNAL : INK;
-        return (
-          <g key={x}>
-            <rect x={x - 18} y={128} width={36} height={36} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
-            <text
-              x={x}
-              y={153}
-              textAnchor="middle"
-              fontFamily="var(--font-sans)"
-              fontWeight={700}
-              fontSize={20}
-              fill={INK}
-            >
-              {i + 1}
-            </text>
-          </g>
-        );
-      })}
-    </Plate>
-  );
-}
 
 /* ==========================================================================
    10. IoT Device Management Process: five connected lifecycle stages

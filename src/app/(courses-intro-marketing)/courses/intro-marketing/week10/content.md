@@ -17,7 +17,7 @@ week: "week10"
 
 ## Why Media Fragmentation Demands Integrated Marketing Communications [no-exercise]
 [figure: Integrated Marketing Communications (IMC) model coordinating advertising, personal selling, sales promotion, public relations, and direct and digital marketing around a consistent brand message]
-- Over the past several decades, mass-market broadcasting has given way to a fragmented landscape of hundreds of streaming services, social feeds, podcasts, search engines, mobile apps, and AI assistants.
+- Over the past several decades, mass-market broadcasting has given way to a fragmented media environment of hundreds of streaming services, social feeds, podcasts, search engines, mobile apps, and AI assistants.
 - In this fragmented environment, consumers are bombarded by commercial messages from many organizational departments: an advertising agency creates television and video spots, a public relations firm handles press releases, a sales promotion specialist designs digital coupons, and an e-commerce team manages website banners.
 - When these functional specialists operate in silos, conflicting messages can result in confused company images, inconsistent brand positions, and wasted promotional spending.
 - Integrated Marketing Communications (IMC) solves this problem by carefully integrating and coordinating the company's many communications channels to deliver a clear, consistent, and compelling message about the organization and its products.

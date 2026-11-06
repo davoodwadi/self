@@ -13,7 +13,7 @@ week: week12
 - For its first quarter-century, commercial growth on the web relied on two permissive defaults, namely frictionless cross-site surveillance of human clicks and self-regulated platform marketplaces.
 - Today, both defaults have ended, as comprehensive data privacy statutes and digital competition laws enforce strict boundaries on how customer data are collected and how dominant platforms rank products.
 - Simultaneously, the interface of commerce is undergoing its most profound shift since the mobile smartphone, moving from human-operated web browsers to autonomous AI agents that search, negotiate, and transact on the buyer's behalf.
-- In this final week, we synthesize how privacy governance, marketplace regulation, and business-to-agent (B2A) architecture define the next era of digital marketing and e-commerce.
+- This final week synthesizes how privacy governance, marketplace regulation, and business-to-agent (B2A) architecture define the next era of digital marketing and e-commerce.
 
 ## Part 1: Privacy Regulation and Consent Architectures [no-exercise]
 - Personal data in CRM systems, CDPs, and ad networks are not unregulated corporate property. They are subject to statutory rights held by the individuals those records describe.
@@ -41,7 +41,7 @@ week: week12
 - Regulatory frameworks such as the European Union's Digital Markets Act (DMA) and Digital Services Act (DSA), alongside antitrust enforcement in North America, designate dominant platforms as gatekeepers, prohibiting self-preferencing and misuse of third-party seller data while mandating algorithmic ranking transparency.
 
 ## Part 3: Business-to-Agent (B2A) Commerce Architecture [no-exercise]
-- Throughout this course, we have tracked how AI shopping agents interact with each layer of digital marketing, from storefront markup and search answers to rankings, reviews, pricing, and delivery promises.
+- Throughout this course, the lectures have traced how AI shopping agents interact with each layer of digital marketing, from storefront markup and search answers to rankings, reviews, pricing, and delivery promises.
 - As agentic commerce matures, leading merchants are moving from passively allowing bots to scrape HTML pages to building dedicated Business-to-Agent (B2A) commercial interfaces.
 
 ## Authenticated Delegation, Agent APIs, and Machine-to-Machine Checkout [exercise]
@@ -70,7 +70,7 @@ week: week12
 - Continuous monitoring dashboards track both human conversion metrics and agentic retrieval share, alerting teams when catalog schema errors or model updates shift how AI assistants recommend the brand.
 
 ## Part 5: Course Synthesis and the Integrated Digital Commerce System [no-exercise]
-- Across twelve weeks, we have examined digital marketing and e-commerce not as a loose checklist of social media tips, but as an integrated socio-technical system combining marketing science and information systems engineering.
+- Across twelve weeks, the course has examined digital marketing and e-commerce as an integrated socio-technical system combining marketing science and information systems engineering.
 - Every layer of the system depends on the integrity of the layers beneath it.
 
 ## Connecting the Twelve Weeks of Digital Marketing and E-Commerce [no-exercise]

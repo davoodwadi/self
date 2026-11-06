@@ -17,17 +17,22 @@ week: week-4
 - Conclusion
 - Q&A
 
-# Chapter 01: Technology Acceptance Model (TAM)
+# Part 1: Technology Acceptance Model (TAM)
+
+- This part introduces the Technology Acceptance Model, which explains and predicts whether users accept and use a new technology.
+- The model links external variables to perceived usefulness and perceived ease of use, and through them to attitude, intention, and use.
 
 ## Question [no-exercise]
 - Think of a time you adopted a new app or tool (e.g., TikTok, Zoom, ChatGPT, a fitness tracker). What specific factors convinced you to use it? Was it because it solved a problem quickly, was easy to learn, or because peers recommended it? If you avoided a tool (e.g., Twitter/X, a new software update), what turned you off?
 - Did you care more about how intuitive it was or how much value it added? For example, did you stick with Instagram Reels because it felt familiar, or switch to TikTok for better features?
 
 ## Technology Acceptance Model (TAM) [no-exercise]
+[figure: the Technology Acceptance Model, from external variables through perceived usefulness and perceived ease of use to attitude, behavioral intention, and actual use]
 - The Technology Acceptance Model (TAM) is a theoretical framework that helps to *explain* and *predict* how users come to **accept and use** a technology.
 - Developed by Fred Davis in 1986, TAM is widely used in *information systems* research to understand user behavior regarding technology adoption.
 
 ## Components of TAM: External Variables [no-exercise]
+[figure: each external variable shown with its effect on perceived usefulness and perceived ease of use]
 - **External variables**:
   - Factors outside the model that influence **perceived usefulness (U)** and **perceived ease of use (E)**.
   1. **System Features**:
@@ -42,6 +47,7 @@ week: week-4
      - **Complexity** and **relevance** of the tasks the technology is designed to support.
 
 ## Components of TAM: Beliefs, Attitude, and Intention [exercise]
+[figure: interactive: perceived usefulness and perceived ease of use set by the student, raising or lowering attitude toward use and behavioral intention]
 1. **Perceived Usefulness (PU)**:
    - The degree to which a person believes that using a particular technology will enhance their **job performance or productivity**.
    - If users perceive a technology as useful, they are **more likely** to adopt it.
@@ -53,7 +59,10 @@ week: week-4
   - A positive attitude can lead to a higher likelihood of **technology adoption**.
 - **Behavioral Intention to Use**: The attitude toward use affects the behavioral intention to use the technology.
 
-# Chapter 02: Applications of TAM
+# Part 2: Applications of TAM
+
+- This part applies the Technology Acceptance Model to three new technologies: an AI shopping assistant at Best Buy, an AI triage chatbot in a hospital, and a self-return kiosk at IKEA.
+- Each case examines how perceived usefulness and perceived ease of use shape adoption and which benefits adoption brings.
 
 ## Example: Application of TAM in E-Commerce [no-exercise]
 - **BestBuy** is introducing a new *AI-powered virtual shopping assistant* to improve the online shopping experience.
@@ -91,6 +100,7 @@ week: week-4
   4. What AI tool can be incorporated to give the chatbot access to BestBuy's product catalog and manuals?
 
 ## Example: TAM for AI Chatbots in a Hospital [no-exercise]
+[figure: a triage chatbot sending each patient either home or to urgent care]
 - A hospital adopts an AI-powered chatbot to assist patients in **triage**,
 - offering **preliminary medical advice**
 - determining whether they need **urgent care** or can manage their symptoms **at home**.
@@ -136,6 +146,7 @@ week: week-4
   4. What AI tool can help integrate electronic health records (EHRs) into the chatbot?
 
 ## Example: TAM for IKEA’s Self-Return Kiosk [no-exercise]
+[figure: a customer waiting in line at a returns desk compared with a customer using a self-return kiosk]
 - IKEA has introduced a self-return kiosk at its stores
 - Customers **should** process product returns without staff assistance.
 - Let's apply TAM to understand how customers would accept this technology.
@@ -182,12 +193,16 @@ week: week-4
   2. How can IKEA promote the kiosk to customers **hesitant** about using technology?
   3. What features could make the kiosk even more useful (e.g., integrating loyalty rewards during returns)?
 
-# Chapter 03: The Unified Theory of Acceptance and Use of Technology (UTAUT)
+# Part 3: The Unified Theory of Acceptance and Use of Technology (UTAUT)
+
+- This part introduces the Unified Theory of Acceptance and Use of Technology, which extends the Technology Acceptance Model to explain adoption in organizational settings.
+- The theory adds social influence and facilitating conditions, and it identifies moderating variables such as age, gender, experience, and voluntariness of use.
 
 ## Question: Beyond TAM [no-exercise]
 - Your company recently rolled out a new collaboration platform (e.g., Slack, Asana, or a mandatory AI tool). While TAM focuses on perceived usefulness and ease of use, what one factor outside of these two do you think most influenced adoption or resistance? For example, was it pressure from leadership, lack of training, or compatibility with existing workflows? Use a real-world case to argue why this factor mattered more than pure ‘usefulness’ or ‘ease of use’.
 
 ## The Unified Theory of Acceptance and Use of Technology (UTAUT) [exercise]
+[figure: TAM, the theory of planned behavior, and the motivational model combining into UTAUT and its four constructs]
 - The Unified Theory of Acceptance and Use of Technology (UTAUT) is a theoretical framework developed to understand the factors that influence individuals' **acceptance and use** of technology.
 - It was introduced by Venkatesh et al. in **2003**
 - integrates elements from several existing models of technology acceptance,
@@ -235,6 +250,7 @@ week: week-4
   - Over time, increased confidence and trust lead to **higher adoption rates**, resulting in **streamlined operations** and **reduced staff workload**.
 
 ## UTAUT for IKEA's Self-Return Kiosk: Moderating Variables [exercise]
+[figure: interactive: the five moderating variables, where selecting one compares kiosk adoption between the two customer groups it separates]
 1. **Age:**
    - Younger customers may adopt the kiosk more quickly due to greater familiarity with technology.
 2. **Gender:**
@@ -246,9 +262,13 @@ week: week-4
 5. **Cultural Context:**
    - Acceptance may vary based on regional or cultural familiarity with **self-service technology**.
 
-# Chapter 04: Introduction to IoT, Cloud, Edge, and Fog Computing
+# Part 4: Introduction to IoT, Cloud, Edge, and Fog Computing
+
+- This part introduces the Internet of Things and the three computing models that process its data: cloud, edge, and fog computing.
+- It closes by distinguishing the three models by where the data is processed.
 
 ## What is IoT? [no-exercise]
+[figure: a connected device that collects data, shares it, and acts on it]
 - **Internet of Things (IoT)** refers to a network of *interconnected devices* that **collect, share, and act** on data.
 - smart thermostats, wearable fitness trackers, and connected cars.
 - **Discussion Question**
@@ -268,6 +288,7 @@ week: week-4
    - Provide clear guidelines and training to users on securely setting up, configuring, and using IoT devices, and encourage them to report suspicious activities or potential vulnerabilities.
 
 ## IIoT and IoT Device Management Process [exercise]
+[figure: the device management cycle, from provisioning and configuration through monitoring and updates to decommissioning]
 - **IIoT (Industrial Internet of Things)**
 - **IoT Device Management Process**
   1. **Provisioning and Authentication**
@@ -277,6 +298,7 @@ week: week-4
   5. **Decommissioning**
 
 ## What is Cloud Computing? [no-exercise]
+[figure: a business and its documents connected to storage, processing, and software in a central data center]
 - **Cloud computing** delivers **computing resources** (storage, processing, and software) over the **internet**.
 - Google Drive, Amazon Web Services (AWS).
   - **scalability**
@@ -286,6 +308,7 @@ week: week-4
   - What are the benefits and challenges of cloud computing for businesses?
 
 ## What is Edge and Fog Computing? [no-exercise]
+[figure: interactive: data processed at the edge, in the fog, or in the cloud, with latency and bandwidth use rising with distance from the source]
 - **What is Edge Computing?**
   - **Edge computing** processes data near its **source** (e.g., on *IoT devices* or *local servers*).
   - Reduces **latency** and **bandwidth usage**,
@@ -298,6 +321,7 @@ week: week-4
   - **Discussion Question**: How does fog computing **complement** both cloud and edge computing?
 
 ## Disambiguating the Terms [exercise]
+[figure: the layers from IoT devices through edge and fog to the cloud]
 | **Concept** | **Definition** | **Use Case** |
 |---|---|---|
 | **IoT** | Devices connected to the internet that collect and transmit data. | Smart home appliances |

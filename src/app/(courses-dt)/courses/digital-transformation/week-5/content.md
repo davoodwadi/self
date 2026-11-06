@@ -6,6 +6,7 @@ week: week-5
 ---
 
 ## Title Slide
+[figure: edge devices sending data to a fog node, which passes it to the cloud]
 - Week 5: Cloud/Fog/Edge Computing
 
 ## Agenda
@@ -18,9 +19,13 @@ week: week-5
 - Conclusion
 - Q&A
 
-# Chapter 01: Cloud Computing
+# Part 1: Cloud Computing
+
+- This part introduces cloud computing through the case of FreshBake, a bakery chain whose growth strains its existing IT infrastructure.
+- It then sets out the key characteristics that distinguish cloud services from on-premise computing.
 
 ## The Growing Pains of FreshBake Bakery [no-exercise]
+[figure: ten bakery stores all connected to one on-premise server]
 - FreshBake Bakery is a small but rapidly expanding business with **10 physical stores** in Vancouver.
 - They currently **host** their website, inventory system, and customer loyalty program on an aging **on-premise** server.
 - During **peak holiday seasons**, their website crashes due to traffic spikes, inventory updates lag, and IT maintenance costs are eating into profits.
@@ -35,6 +40,7 @@ week: week-5
      3. Expected improvements in outcomes
 
 ## What is Cloud Computing? [no-exercise]
+[figure: a business owning its servers compared with a business renting storage, software, and processing from a cloud provider]
 - Cloud computing delivers **on-demand computing services**:
   - storage,
   - software,
@@ -43,6 +49,7 @@ week: week-5
 - Instead of owning physical servers, companies **rent resources** from cloud providers like AWS, Microsoft Azure, or Google Cloud.
 
 ## Key Characteristics of Cloud Computing [exercise]
+[figure: interactive: a year of demand against fixed on-premise capacity, which crashes at the December peak, compared with cloud capacity that scales with demand]
 1. **Scalability**
    - Resources can be scaled **up** or **down** based on demand.
    - E-commerce platforms handle **traffic spikes** during sales.
@@ -54,9 +61,13 @@ week: week-5
 4. **Flexibility and Innovation**
    - Supports **rapid deployment** of applications and services, fostering **innovation**.
 
-# Chapter 02: Cloud Service Models
+# Part 2: Cloud Service Models
+
+- This part distinguishes the three cloud service models: infrastructure as a service, platform as a service, and software as a service.
+- Cases from Airbnb, Snapchat, and Coca-Cola Enterprises illustrate the models, followed by the benefits and risks of cloud adoption.
 
 ## Airbnb [no-exercise]
+[figure: server capacity rising and falling with peak travel seasons across the year]
 - **Scenario:** Airbnb hosts millions of listings worldwide, requiring scalable infrastructure to handle **fluctuating demand**.
 - **Solution:** Airbnb uses AWS EC2 to:
   - Scale server capacity during **peak travel seasons**.
@@ -64,6 +75,7 @@ week: week-5
   - Ensure **high availability** for its global user base.
 
 ## Cloud Service Models [no-exercise]
+[figure: who manages servers, platforms, and applications on premise compared with infrastructure as a service]
 1. **Infrastructure as a Service (IaaS):**
    - Provides virtualized computing resources (e.g., servers, storage).
    - Example: AWS EC2.
@@ -84,20 +96,21 @@ week: week-5
     - Are there universal IaaS adoption principles across industries, or do priorities fundamentally differ?
 
 ## Snapchat [no-exercise]
+[figure: engineers freed from managing servers to focus on writing the application]
 - **Scenario:** Snapchat needed a platform to support rapid user growth and enable its engineers to **focus on app development** (company's main focus) rather than server management.
 - **Solution:** Snapchat used Google App Engine to:
   - **Deploy its app quickly** without worrying about server provisioning.
   - **Automatically scale** resources as its user base expanded.
   - Simplify **backend management** with integrated tools and APIs.
 
-## Cloud Service Models [no-exercise]
+## Cloud Service Models [exercise]
+[figure: interactive: who manages servers, platforms, and applications on premise and under infrastructure, platform, and software as a service, where selecting platform or software as a service shows its description and example]
 2. **Platform as a Service (PaaS):**
    - Offers tools and platforms for developers to build applications.
    - Google App Engine.
 - **Google App Engine (GAE)**
   - **Google App Engine (GAE)** is a PaaS that enables developers to **build, deploy, and scale** applications without managing the **underlying infrastructure**.
 
-## Cloud Service Models [exercise]
 3. **Software as a Service (SaaS):**
    - Delivers **fully functional applications** over the internet.
      - Salesforce,
@@ -106,6 +119,7 @@ week: week-5
   - **Salesforce** is a leading SaaS platform offering Customer Relationship Management (CRM) tools that help businesses **manage customer interactions**, **sales**, and **marketing activities**.
 
 ## Use Case: Coca-Cola Enterprises [no-exercise]
+[figure: one cloud application reaching a sales team's phones, laptops, and tablets]
 - **Scenario:** Coca-Cola Enterprises needed a centralized solution to **manage sales** processes across its global workforce.
 - **Solution:** By adopting Salesforce CRM, Coca-Cola was able to:
   - Provide *sales teams* with **real-time access** to customer data from any device.
@@ -137,9 +151,13 @@ week: week-5
 - How has Netflix leveraged cloud computing to transform its global streaming service?
 - Consider **scalability**, **content delivery**, and **customer experience** in your answer.
 
-# Chapter 03: Edge Computing
+# Part 3: Edge Computing
+
+- This part introduces edge computing, which processes data close to its source rather than in a distant data center.
+- A hospital that monitors patients in real time and Walmart's retail operations show when this proximity matters.
 
 ## The Real-Time Dilemma at HealthGuard Hospital [no-exercise]
+[figure: a patient's wearable sending vital signs to a distant cloud before the alert reaches the medical team]
 - HealthGuard Hospital uses IoT-enabled wearable devices to monitor patients’ vital signs (e.g., heart rate, oxygen levels) in real time.
 - Currently, all data from these devices is sent to a centralized cloud server for processing.
 - However, during emergencies, doctors experience **delays in alerts**, and network congestion during peak hours causes critical data to arrive too late.
@@ -154,6 +172,7 @@ week: week-5
 3. What **practical steps** should the hospital take to implement edge computing? Consider hardware/software needs, hybrid cloud-edge integration, and staff training.
 
 ## What is Edge Computing? [no-exercise]
+[figure: interactive: as network traffic grows, an alert routed through the cloud slows down while an alert processed at the edge stays fast]
 - **Edge computing** processes data **close to its source**,
   - IoT devices
   - local servers
@@ -164,6 +183,7 @@ week: week-5
 - for **time-sensitive** applications.
 
 ## Edge Computing [exercise]
+[figure: four small scenes: processing beside the source, low latency, less data sent to the cloud, and operation without a connection]
 1. **Proximity to Data Source**
    - Data is processed **at or near** the device generating it, reducing delays.
 2. **Low Latency**
@@ -178,15 +198,20 @@ week: week-5
    - Systems can continue to function even with **limited** or **no internet** connectivity.
 
 ## Edge Computing in Retail [no-exercise]
+[figure: store devices such as shelves, freezers, lights, and cameras connected to an edge server inside the store]
 - **Company:** Walmart
 - **Scenario:** Walmart uses IoT sensors and edge computing in its stores to:
   - **Monitor inventory** in real-time.
   - **Optimize energy usage** for refrigeration and lighting systems.
   - Process **customer data locally** for personalized shopping experiences.
 
-# Chapter 04: Fog Computing
+# Part 4: Fog Computing
+
+- This part introduces fog computing, an intermediate layer of processing between edge devices and the cloud.
+- Factory operations and smart city infrastructure illustrate how the fog layer coordinates many devices across a site or a city.
 
 ## Running a Factory [no-exercise]
+[figure: a factory floor of many machines, each producing sensor data]
 - Imagine you are managing a factory.
 - It has dozens of machines operating simultaneously.
 - Each machine produces sensor data about its speed, components, and production
@@ -195,10 +220,12 @@ week: week-5
 - Discuss the pros and cons of your model.
 
 ## Fog Computing [no-exercise]
+[figure: edge devices sending data to fog nodes, which pass a summary to the cloud]
 - **Fog computing** is a **decentralized** computing model that extends cloud computing by bringing data processing closer to the network's edge.
 - It bridges the gap between **cloud computing** (centralized) and **edge computing** (localized), enabling more efficient and scalable data processing across distributed systems.
 
 ## Key Characteristics of Fog Computing [exercise]
+[figure: interactive: as the number of devices grows, data sent straight to the cloud exceeds its capacity while data filtered through fog nodes stays within it]
 1. **Intermediate Layer**
    - Sits between edge devices and the cloud, handling data **locally** but still connecting to the cloud for large-scale analysis.
 2. **Distributed Processing**
@@ -209,6 +236,7 @@ week: week-5
    - Offers low-latency processing for applications like **smart cities** and **industrial IoT**.
 
 ## Fog Computing in Smart Cities [exercise]
+[figure: traffic lights, cameras, and utility meters connected to a fog node that reports to the cloud]
 - **Company:** Cisco
 - **Scenario:** Cisco enables smart cities to use fog computing for applications like:
   - Managing *traffic lights* based on **real-time traffic** conditions.

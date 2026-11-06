@@ -43,7 +43,7 @@ week: "week8"
 - The availability heuristic estimates the frequency or probability of an event by the ease with which instances can be retrieved from memory.
 - Vivid media coverage of a single product recall or aircraft incident makes the event highly accessible in memory, causing consumers to overestimate the objective risk of that brand.
 - The representativeness heuristic judges the probability that an object belongs to a category by how closely its surface features resemble the category prototype.
-- Private-label packages that mimic the typography and color palette of a national brand leader leverage representativeness to imply comparable manufacturing quality.
+- Private-label packages that mimic the typography and color palette of a national brand leader exploit the representativeness heuristic to imply comparable manufacturing quality.
 
 ## Market Beliefs and Price-Quality Inferences [no-exercise]
 [figure: price-quality inference comparing a low-priced and a high-priced bottle of wine]
@@ -134,7 +134,7 @@ week: "week8"
 
 ## Distinguishing Reasoning Errors from Information Deficits [no-exercise]
 [figure: AI agent selecting a 4.99-dollar product over a 5.00-dollar product when package weight is hidden]
-- Why do AI shopping agents sometimes make choices that resemble human heuristic errors in realistic digital storefronts?
+- AI shopping agents in realistic digital storefronts sometimes make choices that resemble human heuristic errors.
 - Research by Wadi and Ma (2026b) demonstrates that apparent heuristic behavior in AI agents usually stems from incomplete information acquisition rather than flawed arithmetic reasoning.
 - When agents were explicitly given all package weights and prices and instructed to compute unit prices, zero agents made a calculation error (Wadi & Ma, 2026b).
 - However, when package weights were hidden behind costly secondary lookups and the user's goal was stated vaguely, agents frequently skipped the weight lookup and selected the option with the lower headline dollar price or larger promotional badge (Wadi & Ma, 2026b).

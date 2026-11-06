@@ -22,17 +22,13 @@ import {
 import {
   HeroAiLayers,
   IntelligenceTypesInteractive,
-  WhichOneIsAiInteractive,
   RulesVsMlInteractive,
-  RiseOfMlInteractive,
   DecisionTreeInteractive,
   LinearRegressionInteractive,
   LogisticRegressionInteractive,
   EnsembleWeatherInteractive,
   RandomForestInteractive,
   SupervisedVsUnsupervisedInteractive,
-  ParadigmLensInteractive,
-  ComparisonAspectPlate,
   CaseStudiesInteractive,
 } from "./visuals";
 
@@ -50,7 +46,7 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 /* Body copy in upright sans-serif. */
 const BODY_BASE =
   "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
-const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
+const BODY = `${BODY_BASE} text-lg md:text-[1.25rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
@@ -82,12 +78,8 @@ function Dashes({ items }: { items: React.ReactNode[] }) {
 
 export default function DigitalTransformationWeek6() {
   const [activeIntel, setActiveIntel] = useState(0);
-  const [activeCandidate, setActiveCandidate] = useState(0);
-  const [activeDriver, setActiveDriver] = useState(0);
   const [activeRf, setActiveRf] = useState(0);
   const [activeParadigm, setActiveParadigm] = useState(0);
-  const [activeLens, setActiveLens] = useState(0);
-  const [activeAspect, setActiveAspect] = useState(0);
   const [activeCase, setActiveCase] = useState(0);
   return (
     <main className="relative w-full overflow-x-hidden min-h-screen font-sans" style={DECK_THEME}>
@@ -122,10 +114,22 @@ export default function DigitalTransformationWeek6() {
       {/* ================================================================
           CHAPTER 1: ARTIFICIAL INTELLIGENCE
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="Artificial Intelligence" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="Artificial Intelligence"
+        description={[
+          "This part defines artificial intelligence as intelligence shown by machines and compares it with animal and human intelligence.",
+          "It then asks which everyday systems qualify as artificial intelligence.",
+        ]}
+        topics={[
+          "Artificial Intelligence: Which One Is AI?",
+        ]}
+      />
 
       <DiscussionList
         id="discussion-1"
+        title="Discussion"
         questions={[
           "When you hear ‘Artificial Intelligence,’ what’s the first example that comes to mind?",
           "Have you interacted with AI today without realizing it? Let’s brainstorm hidden AI in daily life.",
@@ -135,6 +139,7 @@ export default function DigitalTransformationWeek6() {
 
       <DiscussionList
         id="discussion-2"
+        title="Discussion"
         questions={[
           "If you asked ChatGPT for advice, would you trust it more than a human? Why or why not?",
           "What kind of topics do you post on your social media?",
@@ -210,10 +215,7 @@ export default function DigitalTransformationWeek6() {
         exercise={exercise["artificial-intelligence-which-one-is-ai"]}
       >
         <p className="font-sans font-bold text-2xl">Which one is AI?</p>
-        <PlateWell>
-          <WhichOneIsAiInteractive active={activeCandidate} onSelect={setActiveCandidate} />
-        </PlateWell>
-        <ol className={`${BODY} grid gap-4`}>
+        <ol className={`${BODY} grid md:grid-cols-2 gap-x-10 gap-y-2`}>
           {[
             <>
               A computer chess game playing against humans beats a human player. It uses rules-based algorithms to
@@ -222,28 +224,30 @@ export default function DigitalTransformationWeek6() {
             <>A machine uses historical music listened by you to recommend a new song that you might like.</>,
             <>Microsoft Word gives you recommendations on potential spelling errors based on a dictionary.</>,
             <>ElevenLabs turns your text into realistic speech.</>,
-          ].map((item, i) => {
-            const isLit = i === activeCandidate;
-            return (
-              <li
-                key={i}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 flex items-baseline gap-4 text-xl transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
-              >
-                <span className="font-sans font-bold text-2xl shrink-0">{i + 1}.</span>
-                <span>{item}</span>
-              </li>
-            );
-          })}
+          ].map((item, i) => (
+            <li key={i} className="border-t border-[var(--dt-ink)]/15 py-5 flex items-baseline gap-4 text-xl">
+              <span className="font-sans font-bold text-2xl shrink-0">{i + 1}.</span>
+              <span>{item}</span>
+            </li>
+          ))}
         </ol>
       </Slide>
 
       {/* ================================================================
           CHAPTER 2: MACHINE LEARNING
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Machine Learning" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Machine Learning"
+        description={[
+          "This part introduces machine learning, a technique that uses data and a performance metric to find how to perform a task.",
+          "It contrasts machine learning with rule-based expert systems and explains the conditions behind its rise in the twenty-first century.",
+        ]}
+        topics={[
+          "Rise of Machine Learning",
+        ]}
+      />
 
       <Slide id="machine-learning" label="DEFINITION" title="Machine Learning">
         <div className={`${BODY} text-lg grid md:grid-cols-3 gap-6`}>
@@ -266,32 +270,37 @@ export default function DigitalTransformationWeek6() {
       >
         <ol className={`${BODY} grid md:grid-cols-3 gap-6`}>
           {[<>Increase in Compute Power</>, <>Increase in Data (Big Data)</>, <>Decrease in Storage Costs</>].map(
-            (item, i) => {
-              const isLit = i === activeDriver;
-              return (
-                <li
-                  key={i}
-                  onClick={() => setActiveDriver(i)}
-                  className={`cursor-pointer border-t-2 pt-4 flex items-baseline gap-3 font-sans font-bold text-xl transition-colors ${
-                    isLit ? "border-[var(--dt-signal)]" : "border-[var(--dt-ink)]"
-                  }`}
-                >
-                  <span className="font-sans text-base">{i + 1}.</span>
-                  <span>{item}</span>
-                </li>
-              );
-            },
+            (item, i) => (
+              <li key={i} className="border-t-2 border-[var(--dt-ink)] pt-5">
+                <p aria-hidden className="font-sans font-bold text-[5rem] leading-[0.85] mb-4">
+                  {i + 1}
+                </p>
+                <p className="font-sans font-bold text-[1.75rem] leading-tight text-[var(--dt-ink)]">{item}</p>
+              </li>
+            ),
           )}
         </ol>
-        <PlateWell>
-          <RiseOfMlInteractive active={activeDriver} onSelect={setActiveDriver} />
-        </PlateWell>
       </Slide>
 
       {/* ================================================================
           CHAPTER 3: MACHINE LEARNING ALGORITHMS
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="Machine Learning Algorithms" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="Machine Learning Algorithms"
+        description={[
+          "This part presents five widely used machine learning algorithms: decision trees, linear regression, logistic regression, ensemble learning, and random forests.",
+          "Each algorithm is introduced through a concrete prediction problem.",
+        ]}
+        topics={[
+          "Decision Trees",
+          "Linear Regression",
+          "Logistic Regression",
+          "Ensemble Learning",
+          "Random Forest",
+        ]}
+      />
 
       <Slide id="decision-trees" label="ML ALGORITHMS" title="Decision Trees">
         <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 md:gap-10`}>
@@ -462,7 +471,20 @@ export default function DigitalTransformationWeek6() {
       {/* ================================================================
           CHAPTER 4: SUPERVISED VS. UNSUPERVISED LEARNING
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Supervised vs. Unsupervised Learning" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Supervised vs. Unsupervised Learning"
+        description={[
+          "This part distinguishes supervised learning, which learns from labeled outcomes, from unsupervised learning, which finds structure in unlabeled data.",
+          "It compares their algorithms, uses, and challenges, and it closes with case studies of each.",
+        ]}
+        topics={[
+          "Popular Algorithms, When to Use, and Challenges",
+          "Supervised vs. Unsupervised Learning: Comparison",
+          "Case Studies: Supervised vs. Unsupervised Learning",
+        ]}
+      />
 
       <Slide id="supervised-vs-unsupervised-learning" label="LEARNING PARADIGMS" title="Supervised vs. Unsupervised Learning">
         <PlateWell>
@@ -534,10 +556,7 @@ export default function DigitalTransformationWeek6() {
         label="LEARNING PARADIGMS"
         title="Popular Algorithms, When to Use, and Challenges"
       >
-        <PlateWell>
-          <ParadigmLensInteractive active={activeLens} onSelect={setActiveLens} />
-        </PlateWell>
-        <div className={`${BODY} grid gap-4`}>
+        <div className={`${BODY} flex flex-col`}>
           {[
             {
               title: "Popular Algorithms",
@@ -559,19 +578,13 @@ export default function DigitalTransformationWeek6() {
               sup: <>Requires high-quality labeled data (time-consuming/costly to acquire). Risk of overfitting.</>,
               unsup: <>Results can be subjective. Harder to evaluate without ground truth.</>,
             },
-          ].map((item, i) => {
-            const isLit = i === activeLens;
+          ].map((item) => {
             return (
               <div
                 key={item.title}
-                aria-hidden={!isLit}
-                className={`col-start-1 row-start-1 border-t border-[var(--dt-ink)]/15 pt-4 transition-opacity duration-200 ${
-                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
-                }`}
+                className="border-t border-[var(--dt-ink)]/15 py-5 grid md:grid-cols-[12rem_1fr] gap-4 md:gap-8"
               >
-                <p className="font-sans font-bold text-2xl mb-3">
-                  <strong>{item.title}</strong>
-                </p>
+                <p className="font-sans font-bold text-2xl text-[var(--dt-ink)]">{item.title}</p>
                 <div className="grid md:grid-cols-2 gap-6 md:gap-10 text-lg">
                   <div className="border-l-2 border-[var(--dt-signal)]/60 pl-4">
                     <p>
@@ -596,8 +609,8 @@ export default function DigitalTransformationWeek6() {
         title="Supervised vs. Unsupervised Learning: Comparison"
         exercise={exercise["supervised-vs-unsupervised-learning-comparison"]}
       >
-        <Row cols="lg:grid-cols-[1.35fr_1fr]">
-          <div className={BODY}>
+        <Row cols="max-w-5xl">
+          <div className={`${BODY} md:!text-lg overflow-x-auto`}>
             <table className="w-full border-collapse border border-[var(--dt-ink)]/15">
               <thead>
                 <tr className="bg-[var(--dt-ink)] text-[var(--dt-white)] text-left">
@@ -639,16 +652,9 @@ export default function DigitalTransformationWeek6() {
                     sup: "Accuracy, Precision, Recall, F1-Score, RMSE",
                     unsup: "Silhouette Score, Elbow Method, Reconstruction Error",
                   },
-                ].map((r, i) => {
-                  const isLit = i === activeAspect;
+                ].map((r) => {
                   return (
-                    <tr
-                      key={r.aspect}
-                      onClick={() => setActiveAspect(i)}
-                      className={`border-t border-[var(--dt-ink)]/15 cursor-pointer transition-colors ${
-                        isLit ? "bg-[var(--paper-2)]" : ""
-                      }`}
-                    >
+                    <tr key={r.aspect} className="border-t border-[var(--dt-ink)]/15">
                       <td className="p-3 font-sans font-bold">
                         <strong>{r.aspect}</strong>
                       </td>
@@ -660,9 +666,6 @@ export default function DigitalTransformationWeek6() {
               </tbody>
             </table>
           </div>
-          <PlateWell>
-            <ComparisonAspectPlate active={activeAspect} onSelect={setActiveAspect} />
-          </PlateWell>
         </Row>
       </Slide>
 

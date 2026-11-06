@@ -70,7 +70,7 @@ week: week10
 
 ## Part 4: Post-Purchase Experience and Proactive Customer Care [no-exercise]
 - The time between clicking "Place Order" and opening the delivered box is a period of heightened buyer anxiety.
-- Leaving the customer in the dark during transit generates "Where Is My Order?" (WISMO) support tickets that overwhelm customer service teams and erode repeat purchase intent.
+- Withholding shipment updates during transit generates "Where Is My Order?" (WISMO) support tickets that overwhelm customer service teams and erode repeat purchase intent.
 
 ## Order Tracking, Delivery Transparency, and AI Customer Service Triage [exercise]
 - Branded order-tracking pages and proactive event notifications (order confirmed, shipped, out for delivery, and delivered, plus immediate alerts if a weather delay occurs) reduce WISMO inquiries and turn tracking check-ins into high-engagement brand impressions.

@@ -60,31 +60,6 @@ export function EqualFooting() {
    Data-driven decision-making
    ========================================================================== */
 
-export function DataDecision() {
-  const bars = [48, 76, 112, 68];
-  const base = 156;
-  return (
-    <Plate
-      h={196}
-      title="A screen showing four bars of data. The tallest bar, the one chosen, is red"
-    >
-      <Monitor x={76} y={24} w={248} h={152}>
-        {bars.map((hgt, i) => (
-          <rect
-            key={i}
-            x={108 + i * 52}
-            y={base - hgt}
-            width={30}
-            height={hgt}
-            fill={i === 2 ? SIGNAL : INK}
-          />
-        ))}
-        <rect x={96} y={base + 2} width={208} height={2.5} fill={INK} />
-      </Monitor>
-    </Plate>
-  );
-}
-
 /* ==========================================================================
    Six key components of digital transformation: six stations flanking and
    feeding into the central digital business (a Shop on a framed Monitor)

@@ -735,8 +735,8 @@ export default function Week3() {
               In the short run, B2B demand is also more{" "}
               <Term>price-inelastic</Term> than B2C demand: a shoe manufacturer
               will not buy substantially more leather merely because leather
-              prices drop slightly, nor can it easily substitute leather
-              overnight if prices rise.
+              prices drop slightly, nor can it quickly substitute another
+              material for leather if prices rise.
             </P>
           </Numbered>
           <Numbered n={4}>

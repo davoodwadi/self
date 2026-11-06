@@ -604,7 +604,14 @@ const KOTTER: string[][] = [
   ["Anchor New", "Approaches", "in the", "Culture"],
 ];
 
-export function KotterStairs() {
+export function KotterStairs({
+  selected,
+  onSelect,
+}: {
+  /** one lit step, 0 to 7, when the staircase is a selector */
+  selected?: number;
+  onSelect?: (i: number) => void;
+} = {}) {
   const base = 292;
   const w = 94;
   const gap = 4;
@@ -615,9 +622,31 @@ export function KotterStairs() {
         const x = 10 + i * (w + gap);
         const h = 40 + i * 22;
         const top = base - h;
+        const on = selected === i;
+        const tone = on ? SIGNAL : INK;
+        const pick = onSelect ? () => onSelect(i) : undefined;
         return (
-          <g key={i}>
-            <rect x={x} y={top} width={w} height={h} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
+          <g
+            key={i}
+            role={pick ? "button" : undefined}
+            tabIndex={pick ? 0 : undefined}
+            aria-pressed={pick ? on : undefined}
+            aria-label={pick ? `Step ${i + 1}: ${lines.join(" ")}` : undefined}
+            onClick={pick}
+            onKeyDown={
+              pick
+                ? (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      pick();
+                    }
+                  }
+                : undefined
+            }
+            className={pick ? "cursor-pointer outline-none focus:outline-none" : undefined}
+          >
+            <rect x={x} y={top - 70} width={w} height={h + 70} fill="transparent" />
+            <rect x={x} y={top} width={w} height={h} fill={on ? SIGNAL : INK} fillOpacity={on ? 1 : 0.07} stroke={tone} strokeWidth={1.5} />
             <text
               x={x + w / 2}
               y={base - 12}
@@ -625,7 +654,7 @@ export function KotterStairs() {
               fontFamily="var(--font-sans)"
               fontWeight={700}
               fontSize={22}
-              fill={INK}
+              fill={on ? WHITE : INK}
               style={{ fontVariantNumeric: "lining-nums" }}
             >
               {i + 1}
@@ -637,7 +666,7 @@ export function KotterStairs() {
                 y={r2(top - 10 - (lines.length - 1 - j) * 19.6)}
                 textAnchor="middle"
                 fontFamily="var(--font-sans)"
-                fontWeight={600}
+                fontWeight={on ? 700 : 600}
                 fontSize={14}
                 fill={INK}
               >
@@ -2560,20 +2589,31 @@ export function ScrumProcess({
   active = 0,
   onSelect,
 }: {
-  mode?: "events-first" | "events-second" | "artifacts";
+  /** "all": every element selectable, in content order: Sprint, Sprint Planning,
+      Daily Scrum, Sprint Review, Sprint Retrospective, Product Backlog,
+      Sprint Backlog, Increment (0 to 7) */
+  mode?: "events-first" | "events-second" | "artifacts" | "all";
   active?: number;
   onSelect?: (i: number) => void;
 }) {
-  const isProdBacklog = mode === "artifacts" && active === 0;
-  const isSprintBacklog = mode === "artifacts" && active === 1;
-  const isIncrement = mode === "artifacts" && active === 2;
+  const ALL: Record<string, number[]> = {
+    "events-first": [0, 1],
+    "events-second": [2, 3, 4],
+    artifacts: [5, 6, 7],
+  };
+  const sel = (m: string, i: number) => (mode === "all" ? active === ALL[m][i] : mode === m && active === i);
+  const on = (m: string) => mode === m || mode === "all";
+  const ix = (m: string, i: number) => (mode === "all" ? ALL[m][i] : i);
+  const isProdBacklog = sel("artifacts", 0);
+  const isSprintBacklog = sel("artifacts", 1);
+  const isIncrement = sel("artifacts", 2);
 
-  const isSprint = mode === "events-first" && active === 0;
-  const isPlanning = mode === "events-first" && active === 1;
+  const isSprint = sel("events-first", 0);
+  const isPlanning = sel("events-first", 1);
 
-  const isDaily = mode === "events-second" && active === 0;
-  const isReview = mode === "events-second" && active === 1;
-  const isRetro = mode === "events-second" && active === 2;
+  const isDaily = sel("events-second", 0);
+  const isReview = sel("events-second", 1);
+  const isRetro = sel("events-second", 2);
 
   const pbTone = isProdBacklog ? SIGNAL : INK;
   const sbTone = isSprintBacklog ? SIGNAL : INK;
@@ -2615,7 +2655,9 @@ export function ScrumProcess({
       : {};
 
   const activeDesc =
-    mode === "artifacts"
+    mode === "all"
+      ? ["Sprint", "Sprint Planning", "Daily Scrum", "Sprint Review", "Sprint Retrospective", "Product Backlog", "Sprint Backlog", "Increment"][active]
+      : mode === "artifacts"
       ? ["Product Backlog", "Sprint Backlog", "Increment"][active]
       : mode === "events-first"
         ? ["Sprint", "Sprint Planning"][active]
@@ -2632,7 +2674,7 @@ export function ScrumProcess({
       }`}
     >
       {/* Artifact 1: Product Backlog */}
-      <g {...btnProps(mode === "artifacts", 0, "Product Backlog", isProdBacklog)}>
+      <g {...btnProps(on("artifacts"), ix("artifacts", 0), "Product Backlog", isProdBacklog)}>
         <rect x={12} y={62} width={108} height={224} fill="transparent" />
         <Backlog x={20} y={70} w={92} n={7} tone={pbTone} />
         {word(66, 252, "Product", pbTone)}
@@ -2642,7 +2684,7 @@ export function ScrumProcess({
       <Pointer x1={122} y1={150} x2={160} y2={150} w={4} />
 
       {/* Artifact 2: Sprint Backlog */}
-      <g {...btnProps(mode === "artifacts", 1, "Sprint Backlog", isSprintBacklog)}>
+      <g {...btnProps(on("artifacts"), ix("artifacts", 1), "Sprint Backlog", isSprintBacklog)}>
         <rect x={162} y={100} width={90} height={146} fill="transparent" />
         <Backlog x={170} y={110} w={74} n={3} tone={sbTone} />
         {word(207, 212, "Sprint", sbTone)}
@@ -2650,14 +2692,14 @@ export function ScrumProcess({
       </g>
 
       {/* Artifact 3: Increment */}
-      <g {...btnProps(mode === "artifacts", 2, "Increment", isIncrement)}>
+      <g {...btnProps(on("artifacts"), ix("artifacts", 2), "Increment", isIncrement)}>
         <rect x={668} y={100} width={108} height={134} fill="transparent" />
         <Package x={676} y={108} size={88} weight="fill" color={incTone} />
         {word(720, 222, "Increment", incTone)}
       </g>
 
       {/* Event: Sprint (the main loop) */}
-      <g {...btnProps(mode === "events-first", 0, "Sprint", isSprint)}>
+      <g {...btnProps(on("events-first"), ix("events-first", 0), "Sprint", isSprint)}>
         <circle cx={cx} cy={cy} r={R} fill="transparent" stroke={sprintTone} strokeWidth={12} />
         <Head x={cx + 14} y={cy - R} a={0} size={22} tone={sprintTone} />
         <Head x={cx - 14} y={cy + R} a={Math.PI} size={22} tone={sprintTone} />
@@ -2676,7 +2718,7 @@ export function ScrumProcess({
       </g>
 
       {/* Event: Sprint Planning (entry arrow + node) */}
-      <g {...btnProps(mode === "events-first", 1, "Sprint Planning", isPlanning)}>
+      <g {...btnProps(on("events-first"), ix("events-first", 1), "Sprint Planning", isPlanning)}>
         <rect x={250} y={96} width={118} height={74} fill="transparent" />
         <Pointer x1={254} y1={cy} x2={cx - R - 14} y2={cy} w={isPlanning ? 5 : 4} color={planTone} />
         {word(296, 118, "Sprint", planTone, "middle", 14)}
@@ -2685,7 +2727,7 @@ export function ScrumProcess({
       </g>
 
       {/* Event: Daily Scrum */}
-      <g {...btnProps(mode === "events-second", 0, "Daily Scrum", isDaily)}>
+      <g {...btnProps(on("events-second"), ix("events-second", 0), "Daily Scrum", isDaily)}>
         <rect x={daily[0] - 32} y={daily[1] - 32} width={172} height={64} fill="transparent" />
         <circle cx={daily[0]} cy={daily[1]} r={24} fill="none" stroke={dailyTone} strokeWidth={isDaily ? 7 : 6} />
         <Head x={daily[0] + 6} y={daily[1] - 24} a={0} size={13} tone={dailyTone} />
@@ -2693,14 +2735,14 @@ export function ScrumProcess({
       </g>
 
       {/* Event: Sprint Review */}
-      <g {...btnProps(mode === "events-second", 1, "Sprint Review", isReview)}>
+      <g {...btnProps(on("events-second"), ix("events-second", 1), "Sprint Review", isReview)}>
         <rect x={revX - 18} y={revY - 18} width={148} height={42} fill="transparent" />
         <circle cx={revX} cy={revY} r={isReview ? 14 : 12} fill={reviewTone} stroke={WHITE} strokeWidth={3} />
         {word(at(40, R + 20)[0], at(40, R + 20)[1] + 8, "Sprint Review", reviewTone, "start", 14)}
       </g>
 
       {/* Event: Sprint Retrospective */}
-      <g {...btnProps(mode === "events-second", 2, "Sprint Retrospective", isRetro)}>
+      <g {...btnProps(on("events-second"), ix("events-second", 2), "Sprint Retrospective", isRetro)}>
         <rect x={retX - 86} y={retY - 18} width={172} height={66} fill="transparent" />
         <circle cx={retX} cy={retY} r={isRetro ? 14 : 12} fill={retroTone} stroke={WHITE} strokeWidth={3} />
         {word(at(100, R + 24)[0], at(100, R + 24)[1] + 12, "Sprint Retrospective", retroTone, "middle", 14)}

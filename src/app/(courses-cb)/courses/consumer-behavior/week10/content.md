@@ -54,7 +54,7 @@ week: "week10"
 - Conformity increases when the choice is ambiguous, the consumer lacks prior category confidence, the reference group is highly cohesive, and the final purchase is publicly observable.
 
 ## Part 2: Bases of Social Power and AI Assistants [no-exercise]
-- Why do certain individuals, institutions, or algorithms possess the capacity to alter a consumer's choices?
+- Certain individuals, institutions, and algorithms possess the capacity to alter a consumer's choices.
 - French and Raven's taxonomy of social power explains both interpersonal influence and the authority consumers attribute to conversational AI assistants.
 
 ## French and Raven's Five Bases of Social Power [exercise]
@@ -176,4 +176,4 @@ week: "week10"
 - French and Raven's five bases of social power (referent, expert, legitimate, reward, coercive) explain interpersonal influence, and consumers frequently attribute high expert power to conversational AI assistants based on linguistic fluency.
 - Word of mouth is more credible than paid advertising, exhibits a negativity bias, and flows through category-specific opinion leaders, broad market mavens, and weak-tie digital networks.
 - AI-generated review summaries compress eWOM but can propagate biases from incentivized reviews, while synthetic fake reviews erode market trust and violate regulatory prohibitions such as the 2024 FTC rule.
-- Influencer marketing leverages parasocial relationships across macro- and micro-creators, whereas virtual influencers lack lived product experience and require careful category matching and transparent sponsorship disclosure.
+- Influencer marketing relies on parasocial relationships across macro- and micro-creators, whereas virtual influencers lack lived product experience and require careful category matching and transparent sponsorship disclosure.

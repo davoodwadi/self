@@ -19,19 +19,8 @@ import {
   Summary,
 } from "../_visuals/kit";
 import {
-  HeroGovernanceCompassInteractive,
-  ReviewRevolutionsDialInteractive,
-  ThreatLandscapeDefenseDomeInteractive,
-  NorthAmericaBreachLabInteractive,
-  HallucinatedReportScannerInteractive,
-  CraBreachForensicTimelineInteractive,
-  PrivacyMinimizationApertureInteractive,
-  AlgorithmGovernanceXrayInteractive,
-  InformationIntegrityFulcrumInteractive,
   AiTrainingFootprintComparatorInteractive,
   ExponentialCostForecasterInteractive,
-  CloudMonopolyGravityInteractive,
-  WeaponsOfMathDestructionInteractive,
 } from "./visuals";
 
 const SECTIONS = [
@@ -48,7 +37,7 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 const BODY_BASE =
   "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
-const BODY = `${BODY_BASE} text-base md:text-[1.0625rem]`;
+const BODY = `${BODY_BASE} text-lg md:text-[1.25rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
@@ -66,9 +55,9 @@ function Bullets({ items, className = "" }: { items: React.ReactNode[]; classNam
   );
 }
 
-function Dashes({ items }: { items: React.ReactNode[] }) {
+function Dashes({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
-    <ul className={SUBLIST}>
+    <ul className={`${SUBLIST} ${className}`}>
       {items.map((it, i) => (
         <li key={i}>
           <span>{it}</span>
@@ -79,10 +68,6 @@ function Dashes({ items }: { items: React.ReactNode[] }) {
 }
 
 export default function DigitalTransformationWeek10() {
-  const [activeReviewQ, setActiveReviewQ] = useState(0);
-  const [activeThreat, setActiveThreat] = useState(0);
-  const [activeCraStage, setActiveCraStage] = useState(0);
-  const [activeBias, setActiveBias] = useState(0);
   const [activeAiModel, setActiveAiModel] = useState(1);
 
   return (
@@ -108,14 +93,13 @@ export default function DigitalTransformationWeek10() {
           "Develop strategies to address social challenges arising from digital transformation",
           "Create balanced approaches that drive innovation while managing risks responsibly",
         ]}
-        plate={<HeroGovernanceCompassInteractive />}
       />
 
       {/* ================================================================
           REVIEW OF LAST WEEK
           ================================================================ */}
       <Slide id="review-of-last-week" label="RECAP | INDUSTRY 4.0" title="Review of Last Week">
-        <ol className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-5 gap-3`}>
+        <ol className={`${BODY} md:!text-xl grid sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-4`}>
           {[
             "What was the First Industrial Revolution?",
             "What was the Second Industrial Revolution?",
@@ -123,34 +107,32 @@ export default function DigitalTransformationWeek10() {
             "What was the Fourth Industrial Revolution?",
             "What changes are expected in Industry 4.0?",
           ].map((q, i) => {
-            const isLit = i === activeReviewQ;
             return (
               <li key={q}>
-                <button
-                  type="button"
-                  onClick={() => setActiveReviewQ(i)}
-                  className={`w-full h-full text-left p-3.5 border-t-2 transition-colors cursor-pointer ${
-                    isLit
-                      ? "border-[var(--dt-signal)] bg-[var(--paper-2)]"
-                      : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/60"
-                  }`}
-                >
-                  <span className="font-sans font-bold text-lg block mb-1">{i + 1}.</span>
-                  <span className="font-sans font-bold text-[0.98rem] leading-snug block">{q}</span>
-                </button>
+                <div className="h-full pt-4 border-t-2 border-[var(--dt-ink)]">
+                  <span className="font-sans font-bold text-[1.75rem] block mb-2">{i + 1}.</span>
+                  <span className="font-sans font-bold text-xl leading-snug block">{q}</span>
+                </div>
               </li>
             );
           })}
         </ol>
-        <PlateWell>
-          <ReviewRevolutionsDialInteractive active={activeReviewQ} onSelect={setActiveReviewQ} />
-        </PlateWell>
       </Slide>
 
       {/* ================================================================
           CHAPTER 1: THE EVOLVING THREAT LANDSCAPE
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="The Evolving Threat Landscape" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="The Evolving Threat Landscape"
+        description={[
+          "This part reviews the cyber threats that digitally transformed organizations face, including state-sponsored attacks, ransomware, and supply chain vulnerabilities.",
+          "It also sets out how to evaluate sources when researching a recent security breach.",
+        ]}
+        topics={[
+        ]}
+      />
 
       <Slide
         id="the-evolving-threat-landscape"
@@ -158,43 +140,19 @@ export default function DigitalTransformationWeek10() {
         title="The Evolving Threat Landscape"
         exercise={exercise["the-evolving-threat-landscape"]}
       >
-        <Row cols="lg:grid-cols-[1fr_1.18fr]">
-          <div className={`${BODY} flex flex-col gap-4`}>
+        <Row cols="max-w-6xl">
+          <div className={`${BODY} md:!text-xl flex flex-col gap-4`}>
             <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-              <Bullets
+              <Bullets className="[&>li]:!text-xl"
                 items={[
                   <>
-                    Emergence of sophisticated cyber threats (
-                    <button
-                      type="button"
-                      onClick={() => setActiveThreat(0)}
-                      className="underline decoration-2 underline-offset-2 cursor-pointer"
-                    >
-                      state-sponsored attacks
-                    </button>
-                    ,{" "}
-                    <button
-                      type="button"
-                      onClick={() => setActiveThreat(1)}
-                      className="underline decoration-2 underline-offset-2 cursor-pointer"
-                    >
-                      ransomware
-                    </button>
-                    ,{" "}
-                    <button
-                      type="button"
-                      onClick={() => setActiveThreat(2)}
-                      className="underline decoration-2 underline-offset-2 cursor-pointer"
-                    >
-                      supply chain vulnerabilities
-                    </button>
-                    )
+                    Emergence of sophisticated cyber threats (state-sponsored attacks, ransomware, supply chain vulnerabilities)
                   </>,
                 ]}
               />
             </div>
             <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-              <Bullets
+              <Bullets className="[&>li]:!text-xl"
                 items={[
                   <>
                     Attack surface expansion through IoT (e.g., Device Manipulation), cloud adoption, and remote work
@@ -204,52 +162,43 @@ export default function DigitalTransformationWeek10() {
               />
             </div>
             <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-              <Bullets
+              <Bullets className="[&>li]:!text-xl"
                 items={[
                   <>Economic impact of cybersecurity breaches on business operations and reputation</>,
                 ]}
               />
             </div>
           </div>
-          <PlateWell>
-            <ThreatLandscapeDefenseDomeInteractive
-              activeThreat={activeThreat}
-              onSelectThreat={setActiveThreat}
-            />
-          </PlateWell>
         </Row>
       </Slide>
 
       <Slide id="question-north-america-breach" label="CLASS INVESTIGATION" title="Question">
-        <div className={`${BODY} grid md:grid-cols-3 gap-5 items-start`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-3 gap-5 items-start`}>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets items={[<>Research a recent cyber security breaches in North America.</>]} />
+            <Bullets className="[&>li]:!text-xl" items={[<>Research a recent cyber security breaches in North America.</>]} />
           </div>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets
+            <Bullets className="[&>li]:!text-xl"
               items={[
                 <>
                   Find out why the breach happened.
-                  <Dashes items={[<>Who caused it?</>, <>What vulnerability enabled it?</>]} />
+                  <Dashes className="[&>li]:!text-xl" items={[<>Who caused it?</>, <>What vulnerability enabled it?</>]} />
                 </>,
               ]}
             />
           </div>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets items={[<>How could the organization/business prevented the breach?</>]} />
+            <Bullets className="[&>li]:!text-xl" items={[<>How could the organization/business prevented the breach?</>]} />
           </div>
         </div>
-        <PlateWell>
-          <NorthAmericaBreachLabInteractive />
-        </PlateWell>
       </Slide>
 
       <Slide id="note-on-research" label="INFORMATION LITERACY" title="Note on Research">
-        <Row cols="lg:grid-cols-[1.05fr_1.15fr]">
-          <div className={`${BODY} flex flex-col gap-5`}>
+        <Row cols="max-w-6xl">
+          <div className={`${BODY} md:!text-xl flex flex-col gap-5`}>
             <div className="border-l-2 border-[var(--dt-ink)]/25 pl-5 py-1">
               <Bullets
-                className="text-lg md:text-xl gap-4"
+                className="[&>li]:!text-xl text-xl md:text-[1.5rem] gap-4"
                 items={[
                   <>Not all internet sources are viable</>,
                   <>
@@ -268,9 +217,6 @@ export default function DigitalTransformationWeek10() {
               />
             </div>
           </div>
-          <PlateWell>
-            <HallucinatedReportScannerInteractive />
-          </PlateWell>
         </Row>
       </Slide>
 
@@ -279,28 +225,28 @@ export default function DigitalTransformationWeek10() {
           ================================================================ */}
       <ChapterBand
         id="ch2"
-        number="02"
-        title="Case Study: Canadian Revenue Agency (CRA) Data Leak"
+        number={2}
+        title="Case Study: Canada Revenue Agency (CRA) Data Leak"
+        description={[
+          "This part examines a data leak at the Canada Revenue Agency as a case study in public-sector cybersecurity.",
+          "It considers the causes of the leak and the governance lessons it holds for public institutions.",
+        ]}
+        topics={[
+        ]}
       />
 
       <Slide
         id="case-study-cra-data-leak"
         label="CASE STUDY"
-        title="Case Study: Canadian Revenue Agency (CRA) Data Leak"
+        title="Case Study: Canada Revenue Agency (CRA) Data Leak"
         exercise={exercise["case-study-cra-data-leak"]}
       >
-        <PlateWell>
-          <CraBreachForensicTimelineInteractive
-            activeStage={activeCraStage}
-            onSelectStage={setActiveCraStage}
-          />
-        </PlateWell>
-        <div className={`${BODY} grid md:grid-cols-3 gap-5 items-stretch`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-3 gap-5 items-stretch`}>
           {[
             {
               stage: 0,
               items: [
-                <>Canadian Revenue Agency (CRA)</>,
+                <>Canada Revenue Agency (CRA)</>,
                 <>Dating back to 2020</>,
                 <>
                   Hackers obtained confidential data used by H&amp;R Block Canada, one of the
@@ -336,26 +282,9 @@ export default function DigitalTransformationWeek10() {
               ],
             },
           ].map((col) => {
-            const isLit = activeCraStage === col.stage;
             return (
-              <div
-                key={col.stage}
-                role="button"
-                tabIndex={0}
-                onClick={() => setActiveCraStage(col.stage)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setActiveCraStage(col.stage);
-                  }
-                }}
-                className={`p-3 border-t-2 text-[0.95rem] leading-[1.48] transition-colors cursor-pointer ${
-                  isLit
-                    ? "border-[var(--dt-signal)] bg-[var(--paper-2)]"
-                    : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/50"
-                }`}
-              >
-                <Bullets items={col.items} />
+              <div key={col.stage} className="pt-4 border-t-2 text-xl leading-[1.5] border-[var(--dt-ink)]">
+                <Bullets className="[&>li]:!text-xl" items={col.items} />
               </div>
             );
           })}
@@ -365,7 +294,19 @@ export default function DigitalTransformationWeek10() {
       {/* ================================================================
           CHAPTER 3: ETHICS IN DIGITAL TRANSFORMATION
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="Ethics in Digital Transformation" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="Ethics in Digital Transformation"
+        description={[
+          "This part examines the ethical issues that digital transformation raises for organizations.",
+          "It covers privacy by design, algorithmic bias and governance, and the integrity of digital information in an era of synthetic media.",
+        ]}
+        topics={[
+          "Ethical AI and Algorithm Governance",
+          "Truth, Trust and Digital Information Integrity",
+        ]}
+      />
 
       <Slide
         id="ethics-in-digital-transformation"
@@ -373,26 +314,26 @@ export default function DigitalTransformationWeek10() {
         title="Ethics in Digital Transformation"
         exercise={exercise["ethics-in-digital-transformation"]}
       >
-        <div className={`${BODY} grid md:grid-cols-3 gap-5 items-start`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-3 gap-5 items-start`}>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets items={[<>Privacy by design methodologies</>]} />
+            <Bullets className="[&>li]:!text-xl" items={[<>Privacy by design methodologies</>]} />
           </div>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets
+            <Bullets className="[&>li]:!text-xl"
               items={[
                 <>
                   Data minimization vs. data-driven business models
-                  <Dashes items={[<>Instead of protecting the collected data, do not collect data at all.</>]} />
+                  <Dashes className="[&>li]:!text-xl" items={[<>Instead of protecting the collected data, do not collect data at all.</>]} />
                 </>,
               ]}
             />
           </div>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets
+            <Bullets className="[&>li]:!text-xl"
               items={[
                 <>
                   Balancing personalization and privacy rights
-                  <Dashes
+                  <Dashes className="[&>li]:!text-xl"
                     items={[<>Personalization needs personal data.</>, <>Privacy needs little data collection.</>]}
                   />
                 </>,
@@ -400,9 +341,6 @@ export default function DigitalTransformationWeek10() {
             />
           </div>
         </div>
-        <PlateWell>
-          <PrivacyMinimizationApertureInteractive />
-        </PlateWell>
       </Slide>
 
       <Slide
@@ -411,29 +349,18 @@ export default function DigitalTransformationWeek10() {
         title="Ethical AI and Algorithm Governance"
         exercise={exercise["ethical-ai-and-algorithm-governance"]}
       >
-        <Row cols="lg:grid-cols-[0.95fr_1.25fr]">
-          <div className={`${BODY} flex flex-col gap-5`}>
+        <Row cols="max-w-6xl">
+          <div className={`${BODY} md:!text-xl flex flex-col gap-5`}>
             <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-              <Bullets
+              <Bullets className="[&>li]:!text-xl"
                 items={[
                   <>
                     Algorithmic bias and fairness considerations
                     <ul className="list-none flex flex-col gap-1.5 mt-2 pl-4">
-                      {["Social bias", "Racial bias", "Gender bias", "Cognitive bias"].map((b, i) => {
-                        const isLit = i === activeBias;
+                      {["Social bias", "Racial bias", "Gender bias", "Cognitive bias"].map((b) => {
                         return (
                           <li key={b}>
-                            <button
-                              type="button"
-                              onClick={() => setActiveBias(i)}
-                              className={`w-full text-left px-3 py-1.5 border-l-2 transition-colors cursor-pointer ${
-                                isLit
-                                  ? "border-[var(--dt-signal)] bg-[var(--paper-2)] font-sans font-bold"
-                                  : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/50"
-                              }`}
-                            >
-                              - {b}
-                            </button>
+                            <span className="block px-3 py-1.5 border-l-2 border-[var(--dt-ink)]">{b}</span>
                           </li>
                         );
                       })}
@@ -443,19 +370,16 @@ export default function DigitalTransformationWeek10() {
               />
             </div>
             <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-              <Bullets
+              <Bullets className="[&>li]:!text-xl"
                 items={[
                   <>
                     Transparency and explainability requirements
-                    <Dashes items={[<>How is the AI model making decisions?</>]} />
+                    <Dashes className="[&>li]:!text-xl" items={[<>How is the AI model making decisions?</>]} />
                   </>,
                 ]}
               />
             </div>
           </div>
-          <PlateWell>
-            <AlgorithmGovernanceXrayInteractive activeBias={activeBias} onSelectBias={setActiveBias} />
-          </PlateWell>
         </Row>
       </Slide>
 
@@ -464,13 +388,13 @@ export default function DigitalTransformationWeek10() {
         label="INFORMATION INTEGRITY"
         title="Truth, Trust and Digital Information Integrity"
       >
-        <div className={`${BODY} grid md:grid-cols-2 gap-6 items-start`}>
+        <div className={`${BODY} md:!text-xl grid md:grid-cols-2 gap-6 items-start`}>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets
+            <Bullets className="[&>li]:!text-xl"
               items={[
                 <>
                   Misinformation and synthetic media challenges
-                  <Dashes
+                  <Dashes className="[&>li]:!text-xl"
                     items={[
                       <>
                         e.g.,{" "}
@@ -491,25 +415,34 @@ export default function DigitalTransformationWeek10() {
             />
           </div>
           <div className="border-t border-[var(--dt-ink)]/15 pt-3">
-            <Bullets
+            <Bullets className="[&>li]:!text-xl"
               items={[
                 <>
                   Corporate responsibility in content moderation
-                  <Dashes items={[<>The balance between battling misinformation and censorship</>]} />
+                  <Dashes className="[&>li]:!text-xl" items={[<>The balance between battling misinformation and censorship</>]} />
                 </>,
               ]}
             />
           </div>
         </div>
-        <PlateWell>
-          <InformationIntegrityFulcrumInteractive />
-        </PlateWell>
       </Slide>
 
       {/* ================================================================
           CHAPTER 4: SUSTAINABILITY & PLATFORM POWER
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Environmental Sustainability & Platform Power" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Sustainability & Platform Power"
+        description={[
+          "This part examines two broader consequences of digital transformation: its environmental footprint and the concentration of market power in digital platforms.",
+          "It considers the energy cost of training large AI models and the network effects that produce winner-takes-all markets.",
+        ]}
+        topics={[
+          "Environmental Sustainability",
+          "Platform Power and Digital Monopolies",
+        ]}
+      />
 
       <Slide
         id="environmental-sustainability"
@@ -614,14 +547,14 @@ export default function DigitalTransformationWeek10() {
         title="Platform Power and Digital Monopolies"
         exercise={exercise["platform-power-and-digital-monopolies"]}
       >
-        <Row cols="lg:grid-cols-[0.95fr_1.25fr]">
-          <div className={`${BODY} border-t border-[var(--dt-ink)]/15 pt-4`}>
+        <Row cols="max-w-6xl">
+          <div className={`${BODY} md:!text-xl border-t border-[var(--dt-ink)]/15 pt-4`}>
             <Bullets
-              className="text-lg md:text-xl"
+              className="[&>li]:!text-xl text-xl md:text-[1.5rem]"
               items={[
                 <>
                   Network effects and winner-takes-all dynamics
-                  <Dashes
+                  <Dashes className="[&>li]:!text-xl"
                     items={[
                       <>
                         In 2024, if you were to host your website, you had to go through one of top five cloud
@@ -633,15 +566,12 @@ export default function DigitalTransformationWeek10() {
               ]}
             />
           </div>
-          <PlateWell>
-            <CloudMonopolyGravityInteractive />
-          </PlateWell>
         </Row>
       </Slide>
 
       <Slide id="further-readings" label="RECOMMENDED LITERATURE" title="Further Readings">
-        <div className={`${BODY} border-l-2 border-[var(--dt-ink)]/25 pl-5 text-lg md:text-xl`}>
-          <Bullets
+        <div className={`${BODY} md:!text-xl border-l-2 border-[var(--dt-ink)]/25 pl-5 text-xl md:text-[1.5rem]`}>
+          <Bullets className="[&>li]:!text-xl"
             items={[
               <>
                 O&apos;Neil, C. (2016). Weapons of Math Destruction: How Big Data Increases Inequality and Threatens
@@ -650,9 +580,6 @@ export default function DigitalTransformationWeek10() {
             ]}
           />
         </div>
-        <PlateWell>
-          <WeaponsOfMathDestructionInteractive />
-        </PlateWell>
       </Slide>
 
       {/* ================================================================

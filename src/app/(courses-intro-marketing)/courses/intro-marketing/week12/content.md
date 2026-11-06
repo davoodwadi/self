@@ -111,15 +111,15 @@ week: "week12"
 - A major operational shift in sustainable marketing is moving from a linear "take-make-dispose" economy to a circular economy that minimizes waste by designing products from the start for durability, repair, refurbishment, resale, and material recycling.
 - Outdoor apparel brands that operate trade-in and repair programs and electronics firms that recover rare-earth metals from returned devices turn reverse logistics into both environmental stewardship and customer loyalty.
 
-## Immersive Experiences (AR and VR) and Seamless Omnichannel Journeys [no-exercise]
+## Immersive Experiences (AR and VR) and Integrated Omnichannel Experiences [no-exercise]
 - Augmented reality (AR) and virtual reality (VR) technologies bridge the sensory gap between physical in-store inspection and digital e-commerce convenience.
 - Augmented reality overlays digital 3D models onto the consumer's real physical environment through a smartphone camera or headset, allowing a shopper to see how a sofa fits in their living room or how eyeglasses look on their face before ordering.
 - Virtual reality immerses the user in a simulated three-dimensional environment, used for virtual real-estate walkthroughs, travel previews, and industrial B2B equipment training.
 - Together with mobile wallets and unified inventory systems, these tools reduce pre-purchase uncertainty and product return rates across the omnichannel journey.
 
 ## Part 5: Whom Do AI Agents Serve? The Future of Marketing [no-exercise]
-- Throughout this twelve-week course, we have seen AI shopping agents enter every stage of marketing: interpreting wants, navigating dark patterns, taking over consumer search and B2B buying-center roles, building positioning shortlists, comparing unit prices, and acting as channel intermediaries.
-- We close the course with a foundational question for the future of marketing: when a consumer delegates a purchase to an AI agent built and hosted by a commercial platform, whose interests does that agent actually serve?
+- Across the twelve weeks of the course, AI shopping agents have appeared in every stage of marketing: interpreting wants, navigating dark patterns, taking over consumer search and B2B buying-center roles, building positioning shortlists, comparing unit prices, and acting as channel intermediaries.
+- The course closes with a foundational question for the future of marketing: when a consumer delegates a purchase to an AI agent built and hosted by a commercial platform, whose interests does that agent actually serve?
 
 ## Principal-Agent Conflict Between the Consumer and the Platform [exercise]
 [figure: principal-agent triangle showing the AI shopping agent positioned between the consumer (seeking the best product value) and the platform operator (earning revenue from seller sponsorships)]

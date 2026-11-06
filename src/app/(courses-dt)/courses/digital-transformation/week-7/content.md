@@ -6,6 +6,7 @@ week: week-7
 ---
 
 ## Title Slide
+[figure: records added as linked blocks to a shared ledger]
 - Week 7: Blockchain Technology
 
 ## Agenda
@@ -13,7 +14,10 @@ week: week-7
 - Smart Contracts
 - Business use cases of blockchain and smart contracts
 
-# Chapter 01: Blockchain
+# Part 1: Blockchain
+
+- This part defines blockchain as a shared digital record that is distributed across a network and difficult to alter.
+- It describes the features that make blockchain records trustworthy without a central authority.
 
 ## Discussion Questions [no-exercise]
 - How can we ensure that our digital transactions are secure and that the products we buy are genuine?
@@ -31,15 +35,20 @@ week: week-7
 - **Efficiency**: Streamlines processes by eliminating intermediaries and reducing fraud.
 
 ## Features of Blockchain [exercise]
+[figure: the four features of blockchain: a decentralized network, a permanent record, consensus among all parties, and programmable contracts]
 - **Decentralized**: No single point of control. Data is distributed across a network.
   - Contrast with cloud computing
 - **Immutable**: Transactions are permanent and cannot be altered.
 - **Consensus**: All parties agree on the validity of transactions.
 - **Programmable**: Smart contracts can settle transactions based on complex situations.
 
-# Chapter 02: Smart Contracts
+# Part 2: Smart Contracts
+
+- This part introduces smart contracts, self-executing programs stored on a blockchain that carry out an agreement when its conditions are met.
+- Their immutability and programmability are the basis for the applications in the parts that follow.
 
 ## Smart Contracts [no-exercise]
+[figure: an agreement written as code, stored on a blockchain, and executed automatically when its conditions are met]
 - A smart contract is a self-executing program
 - Contains the terms of an agreement written directly into lines of code.
 - It is stored and replicated on a blockchain.
@@ -55,7 +64,10 @@ week: week-7
   - Insurance
   - Education
 
-# Chapter 03: Supply Chain Management
+# Part 3: Supply Chain Management
+
+- This part applies smart contracts to supply chain management, where many parties must agree on the location of goods and the timing of payments.
+- A case study of Amazon shows how payments triggered by delivery confirmation can address delays with suppliers.
 
 ## Smart Contracts in Supply Chain Management [no-exercise]
 - Traditional Issues in Supply Chain Management
@@ -67,6 +79,7 @@ week: week-7
 - **Trust**: Ensure all parties adhere to agreed terms without intermediaries.
 
 ## Case Study: Amazon [exercise]
+[figure: an order moving through tracking, delivery, recording, and payment under a smart contract]
 - Background:
   - Amazon faces delivery delays and payment issues in their supply chain, affecting supplier relationships and cash flow.
 - Implementation: Integrating smart contracts with IoT sensors to monitor shipments and automate payments.
@@ -77,7 +90,10 @@ week: week-7
   - **Documentation**: All transactions and terms are recorded immutably on the blockchain.
   - **Post-purchase Services**: Product support, returns, etc.
 
-# Chapter 04: Real Estate & NFTs
+# Part 4: Real Estate & NFTs
+
+- This part introduces non-fungible tokens, which record ownership of a unique digital or physical asset on a blockchain.
+- It applies the idea to real estate, where proof of ownership and the transfer of property depend on slow and costly intermediaries.
 
 ## NFTs [no-exercise]
 - Non-Fungible Tokens
@@ -101,7 +117,10 @@ week: week-7
 | **Dispute Resolution** | Generally requires legal action or mediation in case of disputes. | Built-in mechanisms can provide automated dispute resolution. |
 | **Data Security** | Vulnerable to forgery and data manipulation. | High security with immutable records on the blockchain. |
 
-# Chapter 05: Financial Services & Legal Contracts
+# Part 5: Financial Services & Legal Contracts
+
+- This part applies smart contracts to financial services and legal agreements.
+- A bank loan approval process shows how predefined conditions can automate disbursements, claims, and the enforcement of contract terms.
 
 ## Smart Contracts in Financial Services: Questions [no-exercise]
 - Imagine you are planning on buying a home.
@@ -122,6 +141,7 @@ week: week-7
   - Enhance Transparency: All parties have access to the same information, **reducing disputes**.
 
 ## Bank Loan Approval Process [exercise]
+[figure: interactive: a loan application checked by a smart contract against a credit-score threshold and paid out automatically when it passes]
 - A bank uses smart contracts to streamline the loan approval process.
 - Process:
   - Customer submits loan application.
@@ -153,7 +173,10 @@ week: week-7
 - Built-in Mechanisms:
   - Automatically resolve disputes through defined algorithms without needing to resort to courts.
 
-# Chapter 06: Voting, Intellectual Property & Other Use Cases
+# Part 6: Voting, Intellectual Property & Other Use Cases
+
+- This part examines smart contracts in voting systems and intellectual property management, two areas that depend on tamper-proof records.
+- It closes with further use cases, such as crowdfunding.
 
 ## Smart Contracts in Voting Systems: Questions [no-exercise]
 - What are the issues the in the traditional voting systems?

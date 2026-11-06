@@ -60,7 +60,7 @@ week: "week7"
 [figure: comparison of traditional software engineering (human writes and inspects source code directly) versus vibe coding (creator steers application behavior through natural-language prompts and live preview feedback)]
 - Vibe coding is the practice of building functional software by prompting a language model in natural language and evaluating the running application visually, without manually reading or editing the underlying code.
 - In a vibe-coding workflow, the creator describes a desired screen or calculation, runs the generated program, pastes any error message back into the model, and iterates until the interface works.
-- This approach empowers non-engineers, including product managers, marketers, and financial analysts, to turn abstract ideas into working interactive tools in a single afternoon.
+- This approach enables non-engineers, including product managers, marketers, and financial analysts, to turn abstract ideas into working interactive tools in a single afternoon.
 - Vibe coding differs fundamentally from AI-assisted software engineering, in which professional developers use models to speed up typing and refactoring while inspecting and owning every line of source code.
 - Treating vibe coding and production software engineering as interchangeable is one of the most common organizational errors in enterprise AI adoption.
 
@@ -173,4 +173,4 @@ week: "week7"
 - Vibe coding enables non-engineers to build functional prototypes in hours to test usability, but a working prototype lacks the security, concurrency, and reliability required for production deployment.
 - Agentic software engineering pairs language models with compilers, type checkers, and automated unit and integration tests in a closed loop, elevating the engineer's role to architecture and spec-driven review.
 - Unchecked machine code generation accelerates code duplication, comprehension debt, security vulnerabilities, and hallucinated package risks, requiring automated static analysis and sandboxed execution.
-- Organizations balance speed and safety through a three-tier governance model that empowers domain experts to build local tools in IT-managed sandboxes while reserving core systems for professional engineering rigor.
+- Organizations balance speed and safety through a three-tier governance model that allows domain experts to build local tools in IT-managed sandboxes while reserving core systems for professional engineering rigor.

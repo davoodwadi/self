@@ -21,7 +21,6 @@ import {
 import {
   HeroShopScreen,
   EqualFooting,
-  DataDecision,
   KeyComponentsHub,
   TransformationSteps,
   Pyramid,
@@ -42,7 +41,7 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 /* Body copy in upright sans-serif. */
 const BODY =
-  "font-sans text-base md:text-[1.0625rem] leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
+  "font-sans text-lg md:text-[1.25rem] leading-[1.55] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
 
 const COMPONENTS: [string, React.ReactNode][] = [
   [
@@ -147,7 +146,19 @@ export default function DigitalTransformationWeek1() {
       {/* ================================================================
           CHAPTER 1: INTRODUCTION TO DIGITAL TRANSFORMATION
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="Introduction to Digital Transformation" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="Introduction to Digital Transformation"
+        description={[
+          "This part defines digital transformation as the integration of digital technology into all areas of a business.",
+          "It identifies the key components that a transformation must address and asks which company best exemplifies them.",
+        ]}
+        topics={[
+          "Digital Transformation",
+          "Key Components of Digital Transformation",
+        ]}
+      />
 
       <Slide
         id="digital-transformation"
@@ -161,31 +172,24 @@ export default function DigitalTransformationWeek1() {
           
           .
         </p>
-        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
-            It fundamentally changes how businesses operate and deliver value to customers.
-          </p>
-          <p className="border-t border-[var(--dt-ink)]/15 pt-3">
-            It requires a cultural shift that challenges the status quo.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
-          <div className={`${BODY} flex flex-col gap-3`}>
-            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
+        <div className="grid md:grid-cols-[1.1fr_1fr] gap-8 md:gap-12 items-center">
+          <div className={`${BODY} md:!text-lg md:text-xl flex flex-col`}>
+            <p className="border-t border-[var(--dt-ink)]/15 py-4">
+              It fundamentally changes how businesses operate and deliver value to customers.
+            </p>
+            <p className="border-t border-[var(--dt-ink)]/15 py-4">
+              It requires a cultural shift that challenges the status quo.
+            </p>
+            <p className="border-t border-[var(--dt-ink)]/15 py-4">
               Technology is a key enabler, but people and processes are equally important.
             </p>
-            <PlateWell>
-              <EqualFooting />
-            </PlateWell>
-          </div>
-          <div className={`${BODY} flex flex-col gap-3`}>
-            <p className="border-t border-[var(--dt-ink)]/15 pt-3">
+            <p className="border-t border-[var(--dt-ink)]/15 py-4">
               Data-driven decision-making is essential for successful transformation.
             </p>
-            <PlateWell>
-              <DataDecision />
-            </PlateWell>
           </div>
+          <PlateWell>
+            <EqualFooting />
+          </PlateWell>
         </div>
       </Slide>
 
@@ -209,8 +213,8 @@ export default function DigitalTransformationWeek1() {
                 }`}
               >
                 <p className="flex items-baseline gap-3">
-                  <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums">
+                    {i + 1}
                   </span>
                   <strong className="text-lg md:text-xl leading-snug text-[var(--dt-ink)]">{name}:</strong>
                 </p>
@@ -229,7 +233,17 @@ export default function DigitalTransformationWeek1() {
       {/* ================================================================
           CHAPTER 2: DIGITIZATION, DIGITALIZATION, AND DIGITAL TRANSFORMATION
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Digitization, Digitalization, and Digital Transformation" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Digitization, Digitalization, and Digital Transformation"
+        description={[
+          "This part distinguishes three terms that are often used interchangeably: digitization, digitalization, and digital transformation.",
+          "Each term describes a different scope of change, from converting records into digital form to rethinking how the whole organization creates value.",
+        ]}
+        topics={[
+        ]}
+      />
 
       <Slide
         id="digitization-digitalization-transformation"
@@ -252,8 +266,8 @@ export default function DigitalTransformationWeek1() {
               >
                 <div className="flex flex-col gap-2">
                   <p className="flex items-baseline gap-3">
-                    <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
+                    <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums">
+                      {i + 1}
                     </span>
                     <strong className="text-lg md:text-xl leading-snug text-[var(--dt-ink)]">{name}</strong>
                   </p>
@@ -262,7 +276,7 @@ export default function DigitalTransformationWeek1() {
                   </p>
                 </div>
                 <div className="border-t lg:border-t-0 lg:border-l border-[var(--dt-ink)]/15 pt-3 lg:pt-0 lg:pl-8">
-                  <p className="mb-1.5 font-sans text-sm font-semibold text-[var(--ink-3)]">
+                  <p className="mb-1.5 font-sans font-bold text-[var(--dt-ink)]">
                     Examples:
                   </p>
                   <ul className={LIST}>
@@ -287,7 +301,17 @@ export default function DigitalTransformationWeek1() {
       {/* ================================================================
           CHAPTER 3: THE DIGITAL TRANSFORMATION PYRAMID
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="The Digital Transformation Pyramid" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="The Digital Transformation Pyramid"
+        description={[
+          "This part presents the digital transformation pyramid, which arranges the layers of a transformation from technology infrastructure at the base to culture and leadership at the top.",
+          "Each layer depends on the layers beneath it, so investment in technology alone does not complete a transformation.",
+        ]}
+        topics={[
+        ]}
+      />
 
       <Slide
         id="pyramid"
@@ -310,8 +334,8 @@ export default function DigitalTransformationWeek1() {
                 }`}
                 >
                   <p className="flex items-baseline gap-3">
-                    <span className="font-sans font-semibold text-sm text-[var(--ink-3)] tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
+                    <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums">
+                      {i + 1}
                     </span>
                     <strong className="text-xl md:text-2xl leading-snug text-[var(--dt-ink)]">
                       {name}

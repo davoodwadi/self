@@ -43,7 +43,7 @@ week: week4
 - Understanding position bias is fundamental to both marketplace algorithm design and digital marketing strategy.
 
 ## Why Rank Position Shapes Sales [no-exercise]
-- Shoppers rarely look past the first few results, so clicks fall steeply with each step down the list.
+- Shoppers rarely examine results beyond the first few positions, so clicks fall steeply with each step down the list.
 - A sponsored listing that buys the top slot therefore wins attention that a better product further down never receives.
 - Eye-tracking and clickstream studies consistently show a steep, convex decay in attention from Position 1 to Position 10, with the vast majority of clicks concentrated in the top three to five results.
 - This pattern reflects rational search costs under time constraints, because inspecting every listing requires cognitive effort and scrolling, so shoppers use high rank position as a mental shortcut (a trust bias) assuming the platform placed the best matches at the top.
@@ -75,7 +75,7 @@ week: week4
 - A marketplace category manager proposes expanding the number of sponsored product slots at the top of mobile search results from two slots to four slots, which means mobile shoppers will see zero organic results on their first screen without scrolling. Ad-sales projections estimate a 28 percent jump in quarterly retail media revenue.
 - What short-term and long-term effects will this change have on buyer conversion, organic seller retention, and search trust, and what experimental metrics should govern the decision?
 
-## Part 4: Position Bias When AI Agents Shop on Our Behalf [no-exercise]
+## Part 4: Position Bias When AI Agents Shop on Behalf of Consumers [no-exercise]
 - A natural hypothesis about autonomous AI shopping agents is that because software can read an entire webpage of twenty or fifty listings in milliseconds, rank position and sponsored top slots should no longer matter.
 - Empirical research testing foundation models and tool-using shopping agents reveals a very different reality (Wadi & Ma, 2026b).
 

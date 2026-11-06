@@ -96,6 +96,6 @@ week: week6
 - Modern social platforms have shifted from chronological social graphs (who you follow) to algorithmic interest graphs (what holds your attention), enabling discovery-based commerce for latent demand.
 - Social feed algorithms rank content using weighted predictions of watch completion, shares via direct messages, saves, comments, and likes across staged audience test cohorts.
 - Paid social strategy pairs full-funnel campaign structures (prospecting, consideration, and dynamic catalog retargeting) with continuous creative testing to combat rapid ad fatigue.
-- Influencer marketing leverages parasocial trust across creator tiers, requiring rigorous vetting of audience engagement quality, balanced base-plus-affiliate contracts, and strict regulatory disclosure of material connections.
+- Influencer marketing relies on parasocial trust across creator tiers, requiring rigorous vetting of audience engagement quality, balanced base-plus-affiliate contracts, and strict regulatory disclosure of material connections.
 - Social commerce and livestream shopping collapse discovery and purchase into native in-app checkouts, raising impulse conversion while creating platform dependence and first-party data trade-offs.
 - Virtual influencers and AI-generated social content offer brand control and scale, but require transparent disclosure and careful matching to product categories that do not depend on human physical experience.

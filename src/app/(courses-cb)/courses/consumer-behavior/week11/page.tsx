@@ -1019,11 +1019,12 @@ export default function Week11() {
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-[34ch] !text-[clamp(1.25rem,1.9vw,1.65rem)]">
             As consumers delegate product search and evaluation to AI assistants
-            around the world, a critical question arises:{" "}
+            around the world, a central research question is{" "}
             <Tint>
-              do large language models carry cultural and country-of-origin
-              biases of their own?
+              whether large language models carry cultural and country-of-origin
+              biases of their own
             </Tint>
+            .
           </Statement>
           <Ruled>
             <Lead>

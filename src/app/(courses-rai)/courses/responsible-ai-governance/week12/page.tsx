@@ -45,7 +45,7 @@ export default function Week12Page() {
         <div className="grid w-full gap-x-6 gap-y-4 md:grid-cols-3">
           <Ruled>
             <p className={BIG}>
-              Across the preceding eleven weeks, we examined ethical frameworks,
+              The preceding eleven weeks examined ethical frameworks,
               fairness metrics, cultural alignment, statistical and exact-PMF
               behavioral audits, explainability, privacy, dark patterns, fiduciary
               duty in agentic commerce, algorithmic pricing, accessibility, and
@@ -264,7 +264,7 @@ export default function Week12Page() {
         </div>
         <Ruled className="mt-5 w-full">
           <P className="!max-w-none">
-            <Term>Stop-the-line authority</Term> empowers any engineer, auditor, or
+            <Term>Stop-the-line authority</Term> allows any engineer, auditor, or
             human-on-the-loop operator who detects a severe safety breach,
             discriminatory disparity, or data leak to halt deployment or trigger an
             automated fallback without retaliation.
@@ -743,7 +743,7 @@ export default function Week12Page() {
         <div className="mt-8 w-full max-w-[56rem]">
           <Ruled>
             <p className={BIG}>
-              In the final synthesis of this course, we integrate ethical
+              The final synthesis of this course integrates ethical
               principles, statistical auditing, interface design, regulatory
               compliance, and resource rationality into{" "}
               <Term>a unified enterprise governance charter</Term>.

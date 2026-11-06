@@ -319,7 +319,7 @@ export default function Week8() {
           <Ruled>
             <P>
               Private-label packages that mimic the typography and color palette
-              of a national brand leader leverage representativeness to imply
+              of a national brand leader exploit the representativeness heuristic to imply
               comparable manufacturing quality.
             </P>
           </Ruled>
@@ -967,8 +967,8 @@ export default function Week8() {
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
             <Lead>
-              Why do AI shopping agents sometimes make choices that resemble
-              human heuristic errors in realistic digital storefronts?
+              AI shopping agents in realistic digital storefronts sometimes make
+              choices that resemble human heuristic errors.
             </Lead>
             <Ruled>
               <P>

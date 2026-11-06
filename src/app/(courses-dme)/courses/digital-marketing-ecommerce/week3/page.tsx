@@ -161,7 +161,7 @@ export default function Week3Page() {
             <Ruled>
               <p className={BIG}>
                 Understanding this three-stage information retrieval pipeline explains why technical site failures{" "}
-                <Term>can erase a brand from search results overnight</Term>.
+                <Term>can remove a brand from search results within days</Term>.
               </p>
             </Ruled>
           </div>

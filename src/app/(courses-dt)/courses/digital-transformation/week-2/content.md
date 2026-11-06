@@ -6,13 +6,18 @@ week: week-2
 ---
 
 ## Title Slide
+[figure: data in many formats (tables, images, messages, video) flowing into one data store]
 - Week 2
 - Big Data, Porter's Value Chain, and Socio-Technical Systems
 - Exploring data structures, Big Data concepts, and organizational frameworks.
 
-# Chapter 01: Data Structures
+# Part 1: Data Structures
+
+- This part introduces the two primary categories of data that organizations collect: structured data and unstructured data.
+- The distinction determines how easily data can be stored, searched, and analyzed.
 
 ## Structured and Unstructured Data [exercise]
+[figure: a table of rows and columns beside a loose heap of photos, messages, videos, and web pages]
 - Structured and unstructured data are two primary categories of data that differ in their organization, format, and ease of analysis.
 - **Structured data** refers to information that is organized in a predefined manner, typically in rows and columns, making it easily searchable and analyzable.
 - Examples:
@@ -33,31 +38,44 @@ week: week-2
 - How to distinguish between Structured and Unstructured Data?
 - Why did companies focus more on Structured data vs. Unstructured data?
 
-# Chapter 02: Big Data
+# Part 2: Big Data
+
+- This part defines Big Data and the three characteristics that distinguish it from conventional data sets: volume, velocity, and variety.
+- These characteristics explain why Big Data requires different storage and processing technologies.
 
 ## Big Data and the Three Vs [exercise]
+[figure: volume as a small and a large stack of data, velocity as records arriving in a fast stream, and variety as data in many formats]
 - Big Data refers to the vast volumes of structured and unstructured data that are generated at high velocity from various sources, including social media, sensors, devices, transactions, and more.
 - Big Data is often characterized by the "Three Vs":
 - **Volume**: The amount of data generated is enormous, often measured in terabytes or petabytes.
 - **Velocity**: Data is generated and processed at an unprecedented speed (e.g., Real-time).
 - **Variety**: Data comes in various formats, including structured data (like databases), and unstructured data (like text, images, and videos).
 
-# Chapter 03: Big Data Analytics Technology
+# Part 3: Big Data Analytics Technology
+
+- This part examines the technologies that organizations use to store, process, and analyze Big Data.
+- It covers data lakes and data warehouses, batch and stream processing, and descriptive, predictive, and prescriptive analytics.
 
 ## Data Storage [exercise]
+[figure: a data lake holding raw data in many formats beside a data warehouse whose floors hold structured tables loaded from several sources]
 - **Data Lakes**: Repositories that store vast amounts of raw data in its native format until it is needed for analysis.
 - **Data Warehouses**: Centralized repositories that store structured data from multiple sources, optimized for query and analysis.
 
 ## Data Processing Frameworks [no-exercise]
+[figure: batch processing as a block of records processed at once, contrasted with stream processing as records processed one by one as they arrive]
 - **Batch Processing**: Techniques that process large volumes of data at once, such as Apache Hadoop.
 - **Stream Processing**: Techniques that analyze data in real-time as it is generated, such as Apache Kafka and Apache Flink.
 
 ## Analytics Tools [exercise]
+[figure: a sales line over time divided into the past (descriptive analytics), a forecast with an uncertainty band (predictive analytics), and alternative recommended paths (prescriptive analytics)]
 - **Descriptive Analytics**: Tools that summarize historical data to understand what has happened (e.g., dashboards, reporting tools).
 - **Predictive Analytics**: Techniques that use statistical models and machine learning to forecast future outcomes based on historical data.
 - **Prescriptive Analytics**: Advanced analytics that recommends actions based on data analysis, often using optimization algorithms.
 
-# Chapter 04: Porter's Value Chain
+# Part 4: Porter's Value Chain
+
+- This part presents Porter's value chain, a framework for analyzing the internal activities through which a firm creates value.
+- The framework separates primary activities, which produce and deliver the product, from support activities, which enable them.
 
 ## Porter's Value Chain [no-exercise]
 - The Porter Value Chain is a concept developed by Michael E. Porter in his 1985 book.
@@ -66,6 +84,7 @@ week: week-2
 - allowing organizations to understand how each contributes to the overall value delivered to customers.
 
 ## Primary and Support Activities [exercise]
+[figure: interactive: Porter's value chain, with four support activities spanning five primary activities that together produce value, where selecting an activity shows its definition]
 - **Primary Activities**
   - **Inbound Logistics**: Receiving, warehousing, and inventory management of raw materials.
   - **Operations**: Processes that transform inputs into the final product or service.
@@ -78,31 +97,36 @@ week: week-2
   - **Human Resource Management**: Activities related to recruiting, hiring, training, and developing the workforce.
   - **Firm Infrastructure**: Organizational structure, management, planning, finance, and quality control systems that support the entire value chain.
 
-# Chapter 05: Data Value Chain
+# Part 5: Data Value Chain
 
-## Data Value Chain: Generation to Storage [no-exercise]
+- This part applies the logic of the value chain to data itself.
+- The data value chain traces the stages through which raw data becomes insight and, eventually, business action.
+
+## Data Value Chain [exercise]
+[figure: interactive: the nine stages of the data value chain in a row with a feedback loop, where selecting a stage shows its description]
 - The Data Value Chain is a conceptual framework that outlines the various stages involved in transforming raw data into valuable insights and actionable outcomes.
 - **Data Generation**: This is the initial stage where data is created or collected. Data can come from various sources, including sensors, transactions, social media, surveys, etc.
 - **Data Collection**: In this stage, the generated data is gathered and stored. This may involve data entry (manual), data scraping, or automated data collection methods.
 - **Data Storage**: Once collected, data needs to be stored in a way that allows for easy access and retrieval. This can involve databases, data lakes, or cloud storage solutions.
-
-## Data Value Chain: Processing to Visualization [no-exercise]
 - **Data Processing**: This stage involves cleaning, transforming, and organizing the data to make it suitable for analysis. Data processing may include removing duplicates, handling missing values, and converting data into a standardized format.
 - **Data Analysis**: In this phase, analytical techniques are applied to the processed data to extract insights. This can involve statistical analysis, machine learning, data mining, and other analytical methods to identify patterns, trends, and correlations.
 - **Data Visualization**: The insights gained from data analysis are often presented through visualizations, such as charts, graphs, and dashboards. This helps stakeholders understand the findings and make informed decisions.
-
-## Data Value Chain: Interpretation to Feedback [exercise]
 - **Data Interpretation**: This stage involves interpreting the visualized data and insights to derive meaningful conclusions. It requires domain knowledge and expertise to understand the implications of the data.
 - **Data Utilization**: Finally, the insights are used to inform decision-making, drive strategy, improve processes, or create new products and services. This stage emphasizes the practical application of data insights to achieve business objectives.
 - **Feedback and Iteration**: The Data Value Chain is often iterative, meaning that feedback from the utilization stage can lead to new data generation, collection, and analysis efforts. This continuous cycle helps organizations adapt and improve their data strategies over time.
 
-# Chapter 06: Socio-Technical Systems
+# Part 6: Socio-Technical Systems
+
+- This part introduces socio-technical systems theory, which treats people and technology as interacting parts of one organizational system.
+- It describes the characteristics of the social system and the components of the technical system in turn.
 
 ## Socio-Technical Systems [no-exercise]
+[figure: people (the social system) and technology (the technical system) linked in both directions]
 - Socio-Technical Systems (STS) refer to an approach to complex organizational work design that recognizes the interaction between people (the social system) and technology (the technical system).
 - The concept emphasizes that both social and technical elements must be considered together to optimize performance, enhance productivity, and improve overall system effectiveness.
 
 ## Social System [no-exercise]
+[figure: a network of people linked by relationships]
 - A **social system** refers to the network of relationships, interactions, and structures that exist among individuals and groups within a society or organization.
 - It encompasses the social dynamics, norms, values, roles, and behaviors that shape how people relate to one another and work together.
 - Characteristics of a Social System

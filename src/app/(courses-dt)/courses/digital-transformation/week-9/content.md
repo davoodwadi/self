@@ -6,6 +6,7 @@ week: week-9
 ---
 
 ## Title Slide
+[figure: the four industrial revolutions as rising steps, from steam to cyber-physical systems]
 - Week 9: Industry 4.0
 
 ## Agenda
@@ -15,7 +16,10 @@ week: week-9
 - The Fourth Industrial Revolution (Industry 4.0)
 - Impact on Society and Business
 
-# Chapter 01: The First Industrial Revolution
+# Part 1: The First Industrial Revolution
+
+- This part examines the First Industrial Revolution, which began in Britain around 1760 and mechanized production with water and steam power.
+- It considers how the factory system changed work and society.
 
 ## Question [no-exercise]
 - Place yourself in 1759.
@@ -24,6 +28,7 @@ week: week-9
 - Which career path would you choose?
 
 ## The First Industrial Revolution [exercise]
+[figure: the key developments of the First Industrial Revolution: mechanization, steam power, the factory system, textiles, iron and coal, and rail and canals]
 - [The Industrial Revolution (18-19th Century)](https://www.youtube.com/watch?v=xLhNP0qp38Q)
 1. Mechanization of Production
    - Introduction of machines to replace human and animal labor, significantly increasing productivity.
@@ -50,7 +55,10 @@ week: week-9
 5. Environmental Effects
    - Increased pollution and deforestation due to industrial activity.
 
-# Chapter 02: The Second Industrial Revolution
+# Part 2: The Second Industrial Revolution
+
+- This part examines the Second Industrial Revolution of the late nineteenth century, which was driven by electricity, steel, and mass production.
+- It reviews the key inventions of the period and their effects on society.
 
 ## Question [no-exercise]
 - It is 1890.
@@ -59,6 +67,7 @@ week: week-9
 - Which career path would you take?
 
 ## The Second Industrial Revolution [no-exercise]
+[figure: the key developments of the Second Industrial Revolution: the assembly line, electrification, steel, chemicals, and transport and communication]
 - [The Second Industrial Revolution](https://www.youtube.com/watch?v=aLvJ8p9KIH8)
 1. Mass Production & Assembly Line
    - Standardized manufacturing processes made products cheaper and more widely available.
@@ -90,6 +99,7 @@ week: week-9
      Henry Ford’s innovation made cars affordable for the masses.
 
 ## Impact on Society [no-exercise]
+[figure: the social effects of the Second Industrial Revolution: megacities, consumerism, corporate jobs, living standards, labor movements, and pollution]
 1. Urban Growth & Megacities
    - Expansion of cities, improved sanitation, and the rise of skyscrapers.
 2. Rise of Consumer Culture
@@ -103,7 +113,10 @@ week: week-9
 6. Environmental Consequences
    - Increased pollution from coal, steel, and chemical industries.
 
-# Chapter 03: The Third Industrial Revolution (Digital Revolution)
+# Part 3: The Third Industrial Revolution (Digital Revolution)
+
+- This part examines the Third Industrial Revolution, in which electronics and information technology automated production from the mid-twentieth century onward.
+- It traces the key innovations from the first computers to the internet and the smartphone.
 
 ## Questions [no-exercise]
 - It is 1932.
@@ -112,6 +125,7 @@ week: week-9
 - In what aspects has it worsened?
 
 ## The Third Industrial Revolution (Digital Revolution) [no-exercise]
+[figure: the key developments of the Third Industrial Revolution: microprocessors, robotics, the internet, renewables, and big data and AI]
 - The First Industrial Revolution (1760-1840) introduced steam-powered machines and mechanization.
 - The Second Industrial Revolution (1870-1914) advanced with electricity, mass production, and telecommunications.
 - The Third Industrial Revolution (1960s-Present) leverages digital computing, automation, and the internet to transform industries.
@@ -127,6 +141,7 @@ week: week-9
    - Growth in data collection, cloud computing, and artificial intelligence allows for smarter decision-making and automation.
 
 ## Key Innovations [exercise]
+[figure: the invention of the silicon chip followed by the platform innovations built on it: personal computers, the internet, mobile technology, e-commerce, and AI]
 - Innovation replaces invention
 1. Personal Computers (1970s-1980s)
    - Enabled businesses and individuals access to computers (democratization).
@@ -139,13 +154,17 @@ week: week-9
 5. Artificial Intelligence & Machine Learning (2010s-Present)
    - Automation of decision-making and business processes.
 
-# Chapter 04: The Fourth Industrial Revolution (Industry 4.0)
+# Part 4: The Fourth Industrial Revolution (Industry 4.0)
+
+- This part examines the Fourth Industrial Revolution, or Industry 4.0, in which cyber-physical systems connect machines, data, and people.
+- It considers the consequences for society and business, including changes in employment and the need for reskilling.
 
 ## Question [no-exercise]
 - It is 2006.
 - How would your job adapt to the Third Industrial Revolution.
 
 ## The Fourth Industrial Revolution (Industry 4.0) [exercise]
+[figure: the technologies of the Fourth Industrial Revolution, from AI and the Internet of Things to robotics and quantum computing]
 - [The Fourth Industrial Revolution - WEF](https://www.youtube.com/watch?v=SCGV1tNBoeU)
 1. Artificial Intelligence (AI) & Machine Learning
    - Examples: Chatbots, self-learning algorithms, recommendation systems (Netflix, Amazon).

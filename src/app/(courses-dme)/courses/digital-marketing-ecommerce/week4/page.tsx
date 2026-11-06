@@ -298,7 +298,7 @@ export default function Week4Page() {
       <Slide id="why-rank-position-shapes-sales" border className="!py-8">
         <SlideHeading>Why Rank Position Shapes Sales</SlideHeading>
         <Statement className="!max-w-[46ch]">
-          Shoppers rarely look past the first few results, so{" "}
+          Shoppers rarely examine results beyond the first few positions, so{" "}
           clicks fall steeply with each step down the list.
         </Statement>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
@@ -522,10 +522,10 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          Part 4: Position Bias When AI Agents Shop on Our Behalf [no-exercise]
+          Part 4: Position Bias When AI Agents Shop on Behalf of Consumers [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
-        <PartHead n={4} title="Position Bias When AI Agents Shop on Our Behalf" />
+        <PartHead n={4} title="Position Bias When AI Agents Shop on Behalf of Consumers" />
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
           <Plate>
             <HypothesisPage />

@@ -286,7 +286,7 @@ export default function Week7Page() {
             works.
           </p>
           <p className={BODY}>
-            This approach empowers non-engineers, including product managers, marketers, and financial
+            This approach enables non-engineers, including product managers, marketers, and financial
             analysts, to turn abstract ideas into working interactive tools in a single afternoon.
           </p>
           <p className={BODY}>
@@ -734,7 +734,7 @@ export default function Week7Page() {
             "Vibe coding enables non-engineers to build functional prototypes in hours to test usability, but a working prototype lacks the security, concurrency, and reliability required for production deployment.",
             "Agentic software engineering pairs language models with compilers, type checkers, and automated unit and integration tests in a closed loop, elevating the engineer's role to architecture and spec-driven review.",
             "Unchecked machine code generation accelerates code duplication, comprehension debt, security vulnerabilities, and hallucinated package risks, requiring automated static analysis and sandboxed execution.",
-            "Organizations balance speed and safety through a three-tier governance model that empowers domain experts to build local tools in IT-managed sandboxes while reserving core systems for professional engineering rigor.",
+            "Organizations balance speed and safety through a three-tier governance model that allows domain experts to build local tools in IT-managed sandboxes while reserving core systems for professional engineering rigor.",
           ]}
         />
       </Slide>

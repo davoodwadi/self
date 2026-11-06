@@ -133,7 +133,7 @@ export default function Week10() {
             <Ruled>
               <P>
                 Over the past several decades, mass-market broadcasting has
-                given way to a <Term>fragmented landscape</Term> of hundreds of
+                given way to a <Term>fragmented media environment</Term> of hundreds of
                 streaming services, social feeds, podcasts, search engines,
                 mobile apps, and AI assistants.
               </P>

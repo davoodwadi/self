@@ -51,7 +51,7 @@ week: "week2"
 ## Political and Economic Forces [exercise]
 [figure: six macroenvironmental forces of the PESTLE framework surrounding the firm's microenvironment]
 - Political forces encompass government stability, trade policy, taxation, public infrastructure spending, and advocacy groups that influence or restrict business operations.
-- A sudden change in import tariffs or domestic industrial subsidies can alter the cost structure of an entire supply chain overnight.
+- A sudden change in import tariffs or domestic industrial subsidies can alter the cost structure of an entire supply chain within weeks.
 - Economic forces consist of macroeconomic factors that affect consumer purchasing power and spending patterns, including inflation, interest rates, unemployment, and income distribution.
 - During periods of high inflation and rising interest rates, consumers postpone discretionary durable purchases and shift toward value-oriented store brands.
 

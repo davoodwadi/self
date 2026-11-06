@@ -841,7 +841,7 @@ export default function Week12() {
       </Slide>
 
       {/* ================================================================
-          Immersive Experiences (AR and VR) and Seamless Omnichannel Journeys
+          Immersive Experiences (AR and VR) and Integrated Omnichannel Experiences
           ================================================================ */}
       <Slide
         className={TIGHT}
@@ -849,7 +849,7 @@ export default function Week12() {
         border
       >
         <SlideHeading>
-          Immersive Experiences (AR and VR) and Seamless Omnichannel Journeys
+          Immersive Experiences (AR and VR) and Integrated Omnichannel Experiences
         </SlideHeading>
         <Statement>
           <Term>Augmented reality (AR)</Term> and{" "}
@@ -899,15 +899,15 @@ export default function Week12() {
         />
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-12">
           <Lead>
-            Throughout this twelve-week course, we have seen{" "}
-            <Term>AI shopping agents</Term> enter every stage of marketing:
+            Across the twelve weeks of the course,{" "}
+            <Term>AI shopping agents</Term> have appeared in every stage of marketing:
             interpreting wants, navigating dark patterns, taking over consumer
             search and B2B buying-center roles, building positioning shortlists,
             comparing unit prices, and acting as channel intermediaries.
           </Lead>
           <Ruled>
             <Statement>
-              We close the course with a foundational question for the future of
+              The course closes with a foundational question for the future of
               marketing: when a consumer delegates a purchase to an AI agent
               built and hosted by a commercial platform, whose interests does
               that agent actually serve?

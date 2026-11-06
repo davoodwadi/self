@@ -14,12 +14,9 @@ import {
   CapacityPlanner,
   SeasonalServers,
   ServiceStackIaaS,
-  MigrateIndustries,
   FocusOnApp,
-  ServiceStackPaaS,
-  ServiceStack,
+  ServiceModelsExplorer,
   AnyDevice,
-  GlobalStreaming,
   LateAlert,
   AlertDelay,
   EdgeProximity,
@@ -47,12 +44,12 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 /* Body copy in upright sans-serif. */
 const BODY_BASE =
   "font-sans leading-[1.6] text-[var(--ink-2)] [&_strong]:font-semibold [&_strong]:text-[var(--dt-ink)]";
-const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
+const BODY = `${BODY_BASE} text-lg md:text-[1.25rem]`;
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rounded-full [&>li]:before:shrink-0 [&>li]:before:bg-[var(--ink-3)]";
 const SUBLIST =
   "list-none flex flex-col gap-0.5 mt-1 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
-const SUB = "font-sans font-semibold text-sm tracking-normal text-[var(--ink-3)]";
+const SUB = "font-sans font-semibold text-lg text-[var(--dt-ink)] tracking-normal";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -96,8 +93,8 @@ function Item({
       <p
         className={`font-sans font-semibold text-[var(--dt-ink)] leading-snug flex items-baseline gap-2.5 ${big ? "text-xl mb-3" : "text-lg mb-2"}`}
       >
-        <span className="font-sans font-medium text-sm text-[var(--ink-3)] tabular-nums">
-          {String(n).padStart(2, "0")}
+        <span className="font-sans font-bold text-[var(--dt-ink)] tabular-nums">
+          {n}
         </span>
         <span>{name}</span>
       </p>
@@ -145,7 +142,20 @@ export default function DigitalTransformationWeek5() {
       {/* ================================================================
           CHAPTER 1: CLOUD COMPUTING
           ================================================================ */}
-      <ChapterBand id="ch1" number="01" title="Cloud Computing" />
+      <ChapterBand
+        id="ch1"
+        number={1}
+        title="Cloud Computing"
+        description={[
+          "This part introduces cloud computing through the case of FreshBake, a bakery chain whose growth strains its existing IT infrastructure.",
+          "It then sets out the key characteristics that distinguish cloud services from on-premise computing.",
+        ]}
+        topics={[
+          "The Growing Pains of FreshBake Bakery",
+          "What is Cloud Computing?",
+          "Key Characteristics of Cloud Computing",
+        ]}
+      />
 
       <Slide
         id="the-growing-pains-of-freshbake-bakery"
@@ -291,7 +301,22 @@ export default function DigitalTransformationWeek5() {
       {/* ================================================================
           CHAPTER 2: CLOUD SERVICE MODELS
           ================================================================ */}
-      <ChapterBand id="ch2" number="02" title="Cloud Service Models" />
+      <ChapterBand
+        id="ch2"
+        number={2}
+        title="Cloud Service Models"
+        description={[
+          "This part distinguishes the three cloud service models: infrastructure as a service, platform as a service, and software as a service.",
+          "Cases from Airbnb, Snapchat, and Coca-Cola Enterprises illustrate the models, followed by the benefits and risks of cloud adoption.",
+        ]}
+        topics={[
+          "Airbnb",
+          "Snapchat",
+          "Use Case: Coca-Cola Enterprises",
+          "Benefits of Cloud Computing",
+          "Risks and Challenges",
+        ]}
+      />
 
       <Slide id="airbnb" label="CASE STUDY" title="Airbnb">
         <p className={`${BODY_BASE} text-lg md:text-[1.25rem] border-b border-[var(--dt-ink)]/15 pb-5`}>
@@ -350,7 +375,7 @@ export default function DigitalTransformationWeek5() {
       </Slide>
 
       <Slide id="discussion-question-iaas" label="CLASS DISCUSSION" title="Discussion Question">
-        <Row cols="lg:grid-cols-[1.6fr_1fr]" className="!items-start">
+        <Row cols="max-w-4xl" className="!items-start">
           <div className={`${BODY} flex flex-col gap-4`}>
             <div>
               <p>
@@ -398,9 +423,6 @@ export default function DigitalTransformationWeek5() {
               ))}
             </ol>
           </div>
-          <PlateWell>
-            <MigrateIndustries />
-          </PlateWell>
         </Row>
       </Slide>
 
@@ -440,62 +462,53 @@ export default function DigitalTransformationWeek5() {
         </Row>
       </Slide>
 
-      <Slide id="cloud-service-models-paas" label="SERVICE MODEL 2" title="Cloud Service Models">
-        <Row cols="lg:grid-cols-[1fr_1fr]">
-          <div className={`${BODY_BASE} text-lg md:text-[1.25rem] flex flex-col gap-6`}>
-            <Item n={2} name="Platform as a Service (PaaS):">
-              <Bullets
-                items={[<>Offers tools and platforms for developers to build applications.</>, <>Google App Engine.</>]}
-              />
-            </Item>
-            <div className="bg-[var(--paper-2)] p-5">
-              <p className="font-sans font-bold text-lg mb-2">Google App Engine (GAE)</p>
-              <p>
-                Google App Engine (GAE) is a PaaS that enables developers to{" "}
-                build, deploy, and scale applications without managing the{" "}
-                underlying infrastructure.
-              </p>
-            </div>
-          </div>
-          <PlateWell>
-            <ServiceStackPaaS />
-          </PlateWell>
-        </Row>
-      </Slide>
-
       <Slide
-        id="cloud-service-models-saas"
-        label="SERVICE MODEL 3"
+        id="cloud-service-models-paas-saas"
+        label="SERVICE MODELS 2 AND 3"
         title="Cloud Service Models"
-        exercise={exercise["cloud-service-models-saas"]}
+        exercise={exercise["cloud-service-models-paas-saas"]}
       >
-        <Row cols="lg:grid-cols-[1fr_1fr]">
-          <div className={`${BODY_BASE} text-lg md:text-[1.25rem] flex flex-col gap-6`}>
-            <Item n={3} name="Software as a Service (SaaS):">
-              <Bullets
-                items={[
-                  <>
-                    <span>
-                      Delivers fully functional applications over the internet.
-                    </span>
-                    <Dashes items={["Salesforce,", "Microsoft Office 365."]} />
-                  </>,
-                ]}
-              />
-            </Item>
-            <div className="bg-[var(--paper-2)] p-5">
-              <p className="font-sans font-bold text-lg mb-2">Salesforce CRM</p>
-              <p>
-                Salesforce is a leading SaaS platform offering Customer Relationship Management (CRM)
-                tools that help businesses manage customer interactions, sales, and{" "}
-                marketing activities.
-              </p>
-            </div>
-          </div>
-          <PlateWell>
-            <ServiceStack />
-          </PlateWell>
-        </Row>
+        <ServiceModelsExplorer
+          panels={[
+            <div className={`${BODY_BASE} text-lg md:text-[1.25rem] flex flex-col gap-6`}>
+              <Item n={2} name="Platform as a Service (PaaS):">
+                <Bullets
+                  items={[<>Offers tools and platforms for developers to build applications.</>, <>Google App Engine.</>]}
+                />
+              </Item>
+              <div className="bg-[var(--paper-2)] p-5">
+                <p className="font-sans font-bold text-lg mb-2">Google App Engine (GAE)</p>
+                <p>
+                  Google App Engine (GAE) is a PaaS that enables developers to{" "}
+                  build, deploy, and scale applications without managing the{" "}
+                  underlying infrastructure.
+                </p>
+              </div>
+            </div>,
+            <div className={`${BODY_BASE} text-lg md:text-[1.25rem] flex flex-col gap-6`}>
+              <Item n={3} name="Software as a Service (SaaS):">
+                <Bullets
+                  items={[
+                    <>
+                      <span>
+                        Delivers fully functional applications over the internet.
+                      </span>
+                      <Dashes items={["Salesforce,", "Microsoft Office 365."]} />
+                    </>,
+                  ]}
+                />
+              </Item>
+              <div className="bg-[var(--paper-2)] p-5">
+                <p className="font-sans font-bold text-lg mb-2">Salesforce CRM</p>
+                <p>
+                  Salesforce is a leading SaaS platform offering Customer Relationship Management (CRM)
+                  tools that help businesses manage customer interactions, sales, and{" "}
+                  marketing activities.
+                </p>
+              </div>
+            </div>,
+          ]}
+        />
       </Slide>
 
       <Slide id="use-case-coca-cola-enterprises" label="USE CASE" title="Use Case: Coca-Cola Enterprises">
@@ -623,7 +636,7 @@ export default function DigitalTransformationWeek5() {
       </Slide>
 
       <Slide id="discussion-question-netflix" label="CLASS DISCUSSION" title="Discussion Question">
-        <Row cols="lg:grid-cols-[1.4fr_1fr]">
+        <Row cols="max-w-4xl">
           <div className="flex flex-col gap-6">
             <p className="font-sans font-bold text-[clamp(1.5rem,2.6vw,2.2rem)] leading-[1.25]">
               How has Netflix leveraged cloud computing to transform its global streaming service?
@@ -633,16 +646,26 @@ export default function DigitalTransformationWeek5() {
               customer experience in your answer.
             </p>
           </div>
-          <PlateWell>
-            <GlobalStreaming />
-          </PlateWell>
         </Row>
       </Slide>
 
       {/* ================================================================
           CHAPTER 3: EDGE COMPUTING
           ================================================================ */}
-      <ChapterBand id="ch3" number="03" title="Edge Computing" />
+      <ChapterBand
+        id="ch3"
+        number={3}
+        title="Edge Computing"
+        description={[
+          "This part introduces edge computing, which processes data close to its source rather than in a distant data center.",
+          "A hospital that monitors patients in real time and Walmart's retail operations show when this proximity matters.",
+        ]}
+        topics={[
+          "The Real-Time Dilemma at HealthGuard Hospital",
+          "What is Edge Computing?",
+          "Edge Computing in Retail",
+        ]}
+      />
 
       <Slide
         id="the-real-time-dilemma-at-healthguard-hospital"
@@ -708,7 +731,7 @@ export default function DigitalTransformationWeek5() {
             ].map((q, i) => (
               <li key={i} className="flex items-baseline gap-4 py-3 border-b border-[var(--dt-ink)]/15 last:border-b-0">
                 <span className="font-sans text-sm font-semibold text-[var(--ink-3)] tabular-nums w-6 shrink-0">
-                  {String(i + 1).padStart(2, "0")}
+                  {i + 1}
                 </span>
                 <p className="text-[1.1rem]">{q}</p>
               </li>
@@ -862,7 +885,20 @@ export default function DigitalTransformationWeek5() {
       {/* ================================================================
           CHAPTER 4: FOG COMPUTING
           ================================================================ */}
-      <ChapterBand id="ch4" number="04" title="Fog Computing" />
+      <ChapterBand
+        id="ch4"
+        number={4}
+        title="Fog Computing"
+        description={[
+          "This part introduces fog computing, an intermediate layer of processing between edge devices and the cloud.",
+          "Factory operations and smart city infrastructure illustrate how the fog layer coordinates many devices across a site or a city.",
+        ]}
+        topics={[
+          "Running a Factory",
+          "Key Characteristics of Fog Computing",
+          "Fog Computing in Smart Cities",
+        ]}
+      />
 
       <Slide id="running-a-factory" label="CLASS DISCUSSION" title="Running a Factory">
         <Row cols="lg:grid-cols-[1.2fr_0.8fr]">

@@ -603,7 +603,7 @@ export default function Week9() {
           </Ruled>
           <Ruled>
             <P>
-              Because modern buyers move seamlessly across web, mobile, and
+              Because modern buyers move routinely across web, mobile, and
               physical stores, <Term>omni-channel retailing</Term> integrates all
               channels into a single unified shopping experience, such as buying
               online and picking up in store.

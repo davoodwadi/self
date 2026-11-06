@@ -504,7 +504,7 @@ export default function Week10Page() {
         numeral="4"
         title="AI for Climate Mitigation and Decarbonization"
         lines={[
-          "Beyond reducing its own compute footprint, artificial intelligence serves as a high-leverage analytical tool for decarbonizing physical industries, energy infrastructure, and supply chains.",
+          "Beyond reducing its own compute footprint, artificial intelligence serves as an analytical tool for decarbonizing physical industries, energy infrastructure, and supply chains.",
           "Evaluating AI-for-sustainability projects requires distinguishing genuine physical emissions reductions from rebound effects and unverified greenwashing claims.",
         ]}
       />

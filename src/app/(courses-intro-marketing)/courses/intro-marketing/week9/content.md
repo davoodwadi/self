@@ -79,7 +79,7 @@ week: "week9"
 - Retailing includes all the activities involved in selling goods or services directly to final consumers for their personal, nonbusiness use.
 - Retail stores are classified along four dimensions: the amount of service they offer (self-service, limited-service, or full-service), the breadth and depth of their product lines (specialty stores, department stores, supermarkets, convenience stores, and superstores), the relative prices they charge (discount stores, off-price retailers, and factory outlets), and how they are organized (corporate chains, voluntary chains, and franchises).
 - Shopper marketing focuses the entire marketing process, from product and brand development to logistics, promotion, and merchandising, toward turning shoppers into buyers as they approach the point of sale, whether in a physical aisle or on a digital screen.
-- Because modern buyers move seamlessly across web, mobile, and physical stores, omni-channel retailing integrates all channels into a single unified shopping experience, such as buying online and picking up in store.
+- Because modern buyers move routinely across web, mobile, and physical stores, omni-channel retailing integrates all channels into a single unified shopping experience, such as buying online and picking up in store.
 
 ## Retailer Marketing Decisions [no-exercise]
 - Like manufacturers, retailers must make strategic decisions regarding segmentation and targeting, store differentiation and positioning, and the retail marketing mix.
