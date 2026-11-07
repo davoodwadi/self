@@ -18,7 +18,7 @@ import {
   ht,
   r2,
 } from "../_visuals/kit";
-import { Agent, AmberCoin, Coin, Cursor, Hotel, Jacket, Parcel, Person, Sneaker, Star, Stopwatch } from "../_visuals/objects";
+import { Agent, AmberCoin, Coin, Cursor, Hotel, Jacket, Kettle, Padlock, Parcel, Person, Sneaker, Star, Stopwatch } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 3 PLATES: MAIL-ORDER CATALOGUE
@@ -146,22 +146,6 @@ export function FeedVsQuery() {
 /* --------------------------------------------------------------------------
    Classifying Search Queries by Intent
    -------------------------------------------------------------------------- */
-
-/** An engraved gooseneck kettle centred on (cx, cy): halftone body, dense side, white lid, long spout. About 50 × 34 at s = 1. */
-function Kettle({ id, cx, cy, s = 1, amber = false }: { id: string; cx: number; cy: number; s?: number; amber?: boolean }) {
-  const w = r2(LINE.outline / s);
-  return (
-    <g transform={`translate(${r2(cx)} ${r2(cy)}) scale(${s})`} strokeLinejoin="round" strokeLinecap="round">
-      <path d="M-15 8C-24 6 -22 -8 -31 -12" fill="none" stroke={CAT.ink} strokeWidth={r2(2.6 / s)} />
-      <path d="M13 -6C25 -6 25 10 15 10" fill="none" stroke={CAT.ink} strokeWidth={r2(3 / s)} />
-      <path d="M13 -6C25 -6 25 10 15 10" fill="none" stroke={CAT.tile} strokeWidth={r2(1.1 / s)} />
-      <path d="M-13 -10H13L17 14H-17Z" fill={amber ? CAT.amber : ht(id, "light")} stroke={CAT.ink} strokeWidth={w} />
-      <path d="M6 -10H13L17 14H9Z" fill={ht(id, "dense")} />
-      <ellipse cx={0} cy={-10} rx={13} ry={2.6} fill={CAT.tile} stroke={CAT.ink} strokeWidth={w} />
-      <circle cx={0} cy={-14} r={2.2} fill={CAT.ink} />
-    </g>
-  );
-}
 
 /** The kettle's product page as a small document at (x, y), 46 × 58: amber kettle and five stars for its quality. */
 function KettlePage({ id, x, y, amber = true }: { id: string; x: number; y: number; amber?: boolean }) {
@@ -514,17 +498,6 @@ function Newspaper({ id, x, y }: { id: string; x: number; y: number }) {
         <line key={k} x1={x + 24} y1={y + 14 + k * 5} x2={x + 40} y2={y + 14 + k * 5} {...hair} />
       ))}
       <line x1={x + 4} y1={y + 29} x2={x + 40} y2={y + 29} {...hair} />
-    </g>
-  );
-}
-
-/** A padlock centred on (cx, cy), shut or open. */
-function Padlock({ cx, cy, shut }: { cx: number; cy: number; shut: boolean }) {
-  return (
-    <g>
-      <path d={shut ? `M${cx - 6} ${cy - 2}V${cy - 7}Q${cx - 6} ${cy - 13} ${cx} ${cy - 13}Q${cx + 6} ${cy - 13} ${cx + 6} ${cy - 7}V${cy - 2}` : `M${cx - 6} ${cy - 2}V${cy - 7}Q${cx - 6} ${cy - 13} ${cx} ${cy - 13}Q${cx + 6} ${cy - 13} ${cx + 6} ${cy - 9}`} fill="none" stroke={CAT.ink} strokeWidth={1.8} strokeLinecap="round" />
-      <rect x={cx - 9} y={cy - 2} width={18} height={14} rx={2} fill={CAT.ink} />
-      <circle cx={cx} cy={cy + 4} r={1.8} fill={CAT.tile} />
     </g>
   );
 }

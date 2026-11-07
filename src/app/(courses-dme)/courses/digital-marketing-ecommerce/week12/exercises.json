@@ -1,0 +1,65 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "gdpr-ccpa-cpra-pipeda-and-quebec-law-25",
+    "prompt": "A skincare brand sells online in Europe, California and Canada. Name the rule or practice each case describes.",
+    "options": [
+      { "id": "gdpr", "label": "GDPR opt-in consent" },
+      { "id": "ccpa", "label": "CCPA/CPRA opt-out of sale or sharing" },
+      { "id": "casl", "label": "CASL opt-in for commercial messages" },
+      { "id": "law25", "label": "Quebec Law 25 privacy by design" },
+      { "id": "dark", "label": "Dark pattern" }
+    ],
+    "cases": [
+      { "id": "paris", "text": "For visitors in France, the store keeps its advertising pixel switched off until the visitor actively agrees to marketing cookies.", "answer": "gdpr", "explanation": "The GDPR requires a valid legal basis, such as freely given consent, before non-essential tracking starts." },
+      { "id": "gpc", "text": "A shopper in Los Angeles browses with Global Privacy Control turned on, so the store stops sharing her browsing data with ad networks.", "answer": "ccpa", "explanation": "California law gives consumers the right to opt out of sharing for cross-context behavioral advertising, including through GPC signals." },
+      { "id": "newsletter", "text": "Before emailing promotions to a customer in Toronto, the store needs a box she ticked herself saying she wants marketing emails.", "answer": "casl", "explanation": "Canada's Anti-Spam Legislation sets strict opt-in rules for commercial electronic messages." },
+      { "id": "montreal", "text": "New accounts created from Montreal start with every optional data-sharing setting switched off, and a privacy impact assessment was completed before launch.", "answer": "law25", "explanation": "Quebec's Law 25 requires privacy impact assessments and privacy-protective default settings." },
+      { "id": "banner", "text": "The banner shows a large gold Accept button, and declining requires opening Preferences, then Partners, then a link at the bottom of a long list.", "answer": "dark", "explanation": "Making acceptance easy while burying refusal manipulates consent and is increasingly prosecuted as unlawful." }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "self-preferencing-seller-data-appropriation-and-gatekeeper-regulation",
+    "prompt": "Independent sellers on a large marketplace file complaints. Name the practice each complaint describes.",
+    "options": [
+      { "id": "self", "label": "Self-preferencing" },
+      { "id": "data", "label": "Seller data appropriation" },
+      { "id": "tying", "label": "Tying" },
+      { "id": "steer", "label": "Anti-steering rule" }
+    ],
+    "cases": [
+      { "id": "carousel", "text": "The platform's own brand of phone chargers always fills the first three spots in the recommendation carousel, even when sellers' chargers have better ratings and lower prices.", "answer": "self", "explanation": "The platform bends its ranking to favor its own private-label goods over competing sellers." },
+      { "id": "yoga", "text": "Months after a small seller's cork yoga blocks became a top seller, the platform launches a near-identical block under its own label, having studied the seller's sales and search data.", "answer": "data", "explanation": "The marketplace used non-public seller data to find a profitable niche and launch a replica." },
+      { "id": "fulfil", "text": "Sellers notice their listings rank on the first page only after they pay for the platform's warehouse and delivery service.", "answer": "tying", "explanation": "Organic visibility is conditioned on buying the platform's own fulfillment service." },
+      { "id": "insert", "text": "A tea seller is told to remove a card from its parcels that says the same tins cost 10 percent less on the seller's own website.", "answer": "steer", "explanation": "The platform prohibits the merchant from telling customers about lower prices on its own D2C site." }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "authenticated-delegation-agent-apis-and-machine-to-machine-checkout",
+    "prompt": "A grocery delivery company is preparing for customers' AI shopping agents. Match each piece of its setup with what it does.",
+    "term_label": "Piece of the setup",
+    "match_label": "What happens",
+    "pairs": [
+      { "id": "captcha", "term": "Anti-bot firewall (CAPTCHA)", "match": "Every automated visitor is asked to pick out traffic lights in a photo grid, which stops a customer's assistant as often as a bot trying stolen passwords.", "explanation": "A firewall cannot tell a legitimate assistant from a malicious bot when both impersonate browsers." },
+      { "id": "token", "term": "Authenticated delegation token", "match": "An agent presents a signed proof that a verified customer allowed it to spend up to $80 a week on fruit and vegetables.", "explanation": "The token proves the agent acts for a verified human principal with bounded authority." },
+      { "id": "api", "term": "Catalog API", "match": "An agent asks for today's price per kilogram and stock level of oat milk and receives a short structured answer instead of the full product page.", "explanation": "Machine-readable catalog endpoints give agents live inventory and exact unit prices without parsing visual templates." },
+      { "id": "card", "term": "Delegated payment credential", "match": "The payment network creates a card number that works for this one $46 order only and then expires.", "explanation": "A single-use virtual card token makes the agent's checkout secure and auditable." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "behavioral-auditing-of-digital-marketing-and-agentic-systems",
+    "question_text": "A brand manager at a cookware company types \"What is the best non-stick frying pan under $60?\" into an AI shopping assistant once. The assistant recommends a rival's pan, and the manager proposes cutting next year's product-data budget because \"the AI ignores us\". What should the audit team do first?",
+    "hint": "Think about what one response from a language model actually measures.",
+    "correct_answer_citation": "Auditing how external AI answer engines and shopping agents represent the firm's brand requires repeated Monte-Carlo sampling and controlled factorial experiments across prompts, roles, and ranking contexts, because a single LLM response is a noisy draw from a probability distribution rather than a stable measurement (Wadi & Fredette, 2025).",
+    "correct_answer_index": 1,
+    "options": [
+      { "option_text": "Accept the result, because the assistant gave a clear answer to a realistic question.", "option_explanation": "One response is a single random draw, so it cannot show how often the assistant recommends the brand." },
+      { "option_text": "Send the same prompt and controlled variations many times and estimate how often the brand is recommended, with a range around that rate.", "option_explanation": "Correct. Repeated sampling across varied prompts turns noisy single answers into a measurable recommendation rate." },
+      { "option_text": "Ask the assistant once more and keep whichever answer comes up on the second try.", "option_explanation": "Two draws are still far too few to estimate a rate, and keeping the preferred answer biases the result." },
+      { "option_text": "Compare the brand's monthly human conversion rate with last year's.", "option_explanation": "Human conversion metrics do not measure how AI assistants represent the brand." }
+    ]
+  }
+]

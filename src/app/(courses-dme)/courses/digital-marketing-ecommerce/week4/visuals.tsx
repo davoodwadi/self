@@ -20,7 +20,7 @@ import {
   ht,
   r2,
 } from "../_visuals/kit";
-import { Agent, Badge, Coin, Cursor, Hotel, Mug, Parcel, Person, Shop, Sneaker, Star, Stopwatch } from "../_visuals/objects";
+import { Agent, Badge, Coin, Cursor, Headphones, Hotel, Mug, Parcel, Person, Shop, Sneaker, Star, Stopwatch } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 4 PLATES: MAIL-ORDER CATALOGUE
@@ -47,23 +47,6 @@ function SearchBar({ x, y, w, text, size = 12 }: { x: number; y: number; w: numb
       <circle cx={x + w - 14} cy={y + 14} r={10} fill={CAT.ink} />
       <circle cx={x + w - 15.5} cy={y + 12.5} r={3.6} fill="none" stroke={CAT.tile} strokeWidth={1.3} />
       <line x1={x + w - 12.8} y1={y + 15.2} x2={x + w - 10} y2={y + 18} stroke={CAT.tile} strokeWidth={1.3} strokeLinecap="round" />
-    </g>
-  );
-}
-
-/** Over-ear headphones centred on (cx, cy): ink headband, halftone ear cups with a dense shaded side. About 40 × 38 at s = 1. */
-function Headphones({ id, cx, cy, s = 1 }: { id: string; cx: number; cy: number; s?: number }) {
-  const w = r2(LINE.outline / s);
-  return (
-    <g transform={`translate(${r2(cx)} ${r2(cy)}) scale(${s})`} strokeLinejoin="round">
-      <path d="M-15 2V-4Q-15 -19 0 -19Q15 -19 15 -4V2" fill="none" stroke={CAT.ink} strokeWidth={r2(3.4 / s)} />
-      <path d="M-15 2V-4Q-15 -19 0 -19Q15 -19 15 -4V2" fill="none" stroke={CAT.tile} strokeWidth={r2(1.2 / s)} />
-      {[-1, 1].map((d) => (
-        <g key={d}>
-          <rect x={d < 0 ? -21 : 11} y={-3} width={10} height={20} rx={4} fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={w} />
-          <rect x={d < 0 ? -15 : 15} y={-1} width={4} height={16} rx={2} fill={ht(id, "dense")} stroke="none" />
-        </g>
-      ))}
     </g>
   );
 }

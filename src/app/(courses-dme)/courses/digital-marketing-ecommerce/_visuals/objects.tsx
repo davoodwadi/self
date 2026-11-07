@@ -473,11 +473,11 @@ export function Hotel({ id, cx, cy, s = 1, amber = false }: { id: string; cx: nu
 }
 
 /** An engraved backpack centred on (cx, cy): halftone body, dense side, white front pocket. About 52 wide and 76 tall. */
-export function Backpack({ id, cx, cy }: { id: string; cx: number; cy: number }) {
+export function Backpack({ id, cx, cy, amber = false }: { id: string; cx: number; cy: number; amber?: boolean }) {
   return (
     <g transform={`translate(${cx} ${cy})`} strokeLinejoin="round">
       <path d="M-8 -34Q0 -42 8 -34" fill="none" stroke={CAT.ink} strokeWidth={2.4} />
-      <rect x={-26} y={-34} width={52} height={66} rx={12} fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={LINE.outline} />
+      <rect x={-26} y={-34} width={52} height={66} rx={12} fill={amber ? CAT.amber : ht(id, "light")} stroke={CAT.ink} strokeWidth={LINE.outline} />
       <path d="M14 -33Q26 -32 26 -22V20Q26 32 14 32Z" fill={ht(id, "dense")} stroke="none" />
       <rect x={-18} y={4} width={30} height={22} rx={5} fill={CAT.tile} stroke={CAT.ink} strokeWidth={LINE.outline} />
       <line x1={-14} y1={10} x2={8} y2={10} stroke={CAT.ink} strokeWidth={LINE.hair} />
@@ -512,6 +512,50 @@ export function CoffeeBag({ id, cx, cy, level = 1 }: { id: string; cx: number; c
       <rect x={cx - 20} y={cy - 30} width={40} height={8} fill={CAT.tile} {...ink} />
       <ellipse cx={cx} cy={cy - 6} rx={9} ry={6} fill={CAT.tile} {...ink} />
       <line x1={cx} y1={cy - 11} x2={cx} y2={cy - 1} {...hair} />
+    </g>
+  );
+}
+
+/** An engraved gooseneck kettle centred on (cx, cy): halftone body, dense side, white lid, long spout. About 50 × 34 at s = 1. */
+export function Kettle({ id, cx, cy, s = 1, amber = false }: { id: string; cx: number; cy: number; s?: number; amber?: boolean }) {
+  const w = r2(LINE.outline / s);
+  return (
+    <g transform={`translate(${r2(cx)} ${r2(cy)}) scale(${s})`} strokeLinejoin="round" strokeLinecap="round">
+      <path d="M-15 8C-24 6 -22 -8 -31 -12" fill="none" stroke={CAT.ink} strokeWidth={r2(2.6 / s)} />
+      <path d="M13 -6C25 -6 25 10 15 10" fill="none" stroke={CAT.ink} strokeWidth={r2(3 / s)} />
+      <path d="M13 -6C25 -6 25 10 15 10" fill="none" stroke={CAT.tile} strokeWidth={r2(1.1 / s)} />
+      <path d="M-13 -10H13L17 14H-17Z" fill={amber ? CAT.amber : ht(id, "light")} stroke={CAT.ink} strokeWidth={w} />
+      <path d="M6 -10H13L17 14H9Z" fill={ht(id, "dense")} />
+      <ellipse cx={0} cy={-10} rx={13} ry={2.6} fill={CAT.tile} stroke={CAT.ink} strokeWidth={w} />
+      <circle cx={0} cy={-14} r={2.2} fill={CAT.ink} />
+    </g>
+  );
+}
+
+/** Over-ear headphones centred on (cx, cy): ink headband, halftone ear cups with a dense shaded side. About 40 × 38 at s = 1. */
+export function Headphones({ id, cx, cy, s = 1 }: { id: string; cx: number; cy: number; s?: number }) {
+  const w = r2(LINE.outline / s);
+  return (
+    <g transform={`translate(${r2(cx)} ${r2(cy)}) scale(${s})`} strokeLinejoin="round">
+      <path d="M-15 2V-4Q-15 -19 0 -19Q15 -19 15 -4V2" fill="none" stroke={CAT.ink} strokeWidth={r2(3.4 / s)} />
+      <path d="M-15 2V-4Q-15 -19 0 -19Q15 -19 15 -4V2" fill="none" stroke={CAT.tile} strokeWidth={r2(1.2 / s)} />
+      {[-1, 1].map((d) => (
+        <g key={d}>
+          <rect x={d < 0 ? -21 : 11} y={-3} width={10} height={20} rx={4} fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={w} />
+          <rect x={d < 0 ? -15 : 15} y={-1} width={4} height={16} rx={2} fill={ht(id, "dense")} stroke="none" />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+/** A padlock centred on (cx, cy), shut or open. */
+export function Padlock({ cx, cy, shut }: { cx: number; cy: number; shut: boolean }) {
+  return (
+    <g>
+      <path d={shut ? `M${cx - 6} ${cy - 2}V${cy - 7}Q${cx - 6} ${cy - 13} ${cx} ${cy - 13}Q${cx + 6} ${cy - 13} ${cx + 6} ${cy - 7}V${cy - 2}` : `M${cx - 6} ${cy - 2}V${cy - 7}Q${cx - 6} ${cy - 13} ${cx} ${cy - 13}Q${cx + 6} ${cy - 13} ${cx + 6} ${cy - 9}`} fill="none" stroke={CAT.ink} strokeWidth={1.8} strokeLinecap="round" />
+      <rect x={cx - 9} y={cy - 2} width={18} height={14} rx={2} fill={CAT.ink} />
+      <circle cx={cx} cy={cy + 4} r={1.8} fill={CAT.tile} />
     </g>
   );
 }
