@@ -1,0 +1,80 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "dynamic-pricing-personalized-pricing-subscriptions-freemium-and-bundling",
+    "prompt": "Name the pricing architecture each online business is using.",
+    "options": [
+      { "id": "dynamic", "label": "Dynamic pricing" },
+      { "id": "personalized", "label": "Personalized pricing" },
+      { "id": "subscription", "label": "Subscription and auto-replenishment" },
+      { "id": "freemium", "label": "Freemium and tiered pricing" },
+      { "id": "bundling", "label": "Bundling" }
+    ],
+    "cases": [
+      { "id": "concert", "text": "A ticket site raises the price of the remaining concert seats as the show date approaches and sales pick up, and everyone browsing at the same moment sees the same price.", "answer": "dynamic", "explanation": "The price changes over time with demand, but not between shoppers checking at once." },
+      { "id": "litter", "text": "A pet store gives 12% off cat litter when the buyer agrees to receive a bag every four weeks.", "answer": "subscription", "explanation": "A recurring delivery discount is traded for predictable repeat orders." },
+      { "id": "notes", "text": "A note-taking app is free for up to three notebooks and charges a monthly fee for unlimited notebooks and offline access.", "answer": "freemium", "explanation": "A functional free tier drives adoption, and users who hit the limit pay." },
+      { "id": "hotel-app", "text": "A travel app shows a shopper on a new phone a higher hotel rate than a shopper on an older laptop searching for the same room at the same time.", "answer": "personalized", "explanation": "Two shoppers at the same moment get different prices based on an inferred willingness to pay." },
+      { "id": "camping", "text": "An outdoor store sells a tent, two sleeping pads and a lantern together for $40 less than the four items bought separately.", "answer": "bundling", "explanation": "Complementary items are packaged at a combined price below the sum of their prices." },
+      { "id": "rideshare", "text": "A delivery app adds a fee to every order placed during a rainstorm, when couriers are scarce, and drops it when the rain stops.", "answer": "dynamic", "explanation": "Market-level supply and demand set the price, the same for every customer at that moment." }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "reference-prices-just-below-pricing-flash-sales-and-free-shipping-thresholds",
+    "prompt": "Match each pricing cue with the listing or cart message that uses it.",
+    "term_label": "Pricing cue",
+    "match_label": "On the storefront",
+    "pairs": [
+      { "id": "reference", "term": "Strike-through reference pricing", "match": "A rain jacket shown as \"Was $150, Now $109\".", "explanation": "The earlier price is an anchor that makes the current price feel like a deal." },
+      { "id": "charm", "term": "Just-below pricing", "match": "A phone case listed at $14.99 instead of $15.00.", "explanation": "Shoppers weight the left digit, so $14.99 reads as noticeably cheaper than $15." },
+      { "id": "partitioned", "term": "Partitioned pricing", "match": "A lamp listed at $39 with a $12 handling fee added at checkout.", "explanation": "The base price and a mandatory surcharge are shown separately." },
+      { "id": "threshold", "term": "Minimum-spend threshold", "match": "A cart banner reading \"You are $9 away from free delivery\".", "explanation": "The message nudges the shopper to add an item and raise the basket value." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "margin-erosion-deal-waiting-and-promotional-guardrails",
+    "question_text": "A skincare brand sells a serum for $50. Product cost and fulfillment come to $30 per unit. It usually sells 300 units a month. The team proposes a 25% sitewide discount. How many units must it sell at the discount to earn the same total contribution?",
+    "hint": "Work out the contribution per unit before and after the discount first.",
+    "correct_answer_citation": "If the marketer runs a 20 percent sitewide discount, the selling price drops to $80 while the unit cost remains $60, cutting the contribution margin per unit in half from $40 to $20. The store must now sell twice as many units just to earn the same total dollar contribution.",
+    "correct_answer_index": 3,
+    "options": [
+      { "option_text": "375 units, 25% more, because the price fell by 25%.", "option_explanation": "The unit cost does not fall with the price, so the margin shrinks far more than 25%." },
+      { "option_text": "400 units, because the price is now three quarters of the original.", "option_explanation": "This scales by the price, not by the contribution left after the $30 cost." },
+      { "option_text": "600 units, because the margin per unit is cut in half.", "option_explanation": "The margin drops from $20 to $7.50, which is less than half." },
+      { "option_text": "800 units, because the margin per unit falls from $20 to $7.50.", "option_explanation": "Correct. The original contribution is 300 × $20 = $6,000, and $6,000 ÷ $7.50 = 800 units." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "algorithmic-repricing-loops-and-tacit-coordination-risks",
+    "prompt": "Several marketplace sellers describe their pricing software. Sort each description into the kind of algorithm it describes.",
+    "bins": [
+      { "id": "rule", "label": "Rule-based repricer" },
+      { "id": "rl", "label": "Reinforcement-learning pricing agent" }
+    ],
+    "cards": [
+      { "id": "match-lowest", "text": "Match the lowest seller with a rating above 95%, but never go below $18.50.", "bin": "rule", "explanation": "A fixed instruction written by the seller, with a hard floor." },
+      { "id": "trial", "text": "Tries different prices on a blender over thousands of rounds and keeps the pattern that earned the most profit over time.", "bin": "rl", "explanation": "It experiments and learns a policy that maximizes cumulative profit." },
+      { "id": "raise-out", "text": "Raise the price by $1 whenever the cheapest rival is out of stock.", "bin": "rule", "explanation": "A deterministic if-then instruction set in advance." },
+      { "id": "punish", "text": "After a rival cut its price last month, the software dropped prices sharply for a few days, then returned to the earlier high price once the rival raised its own.", "bin": "rl", "explanation": "Punishing a price cut and returning to high prices is the learned pattern behind tacit algorithmic collusion." },
+      { "id": "penny", "text": "Undercut the Buy Box winner by one cent every five minutes.", "bin": "rule", "explanation": "A naive undercut rule, the kind that can spiral into a price war." },
+      { "id": "long-run", "text": "Gives up a sale today at a higher price because its past experience shows rivals keep their prices high when it does.", "bin": "rl", "explanation": "It weighs long-term profit from repeated interactions rather than following a fixed rule." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "price-heuristics-anchoring-and-attribute-trade-offs-in-ai-agents",
+    "question_text": "Two shoppers send an AI shopping agent to buy a backpack. One writes \"get me a nice backpack\". The other writes \"find a backpack under $80 total, at least 30 litres, waterproof, with a lifetime warranty\". One listing shows \"Was $140, Now $79\" and a \"Best deal\" badge, but holds 25 litres and is not waterproof. Which outcome is most likely?",
+    "hint": "Think about how much each prompt gives the agent to check against.",
+    "correct_answer_citation": "A vague prompt (\"Buy me a good toaster\") leaves the agent susceptible to framing and rank cues, whereas a constraint-specific prompt (\"Find a two-slice stainless toaster under $60 with at least a 2-year warranty\") anchors the agent on verifiable attribute cutoffs.",
+    "correct_answer_index": 1,
+    "options": [
+      { "option_text": "Both agents ignore the reference price and badge, because AI agents compute prices exactly.", "option_explanation": "Agents compute visible prices well, but they still respond to anchors and badges under ambiguity." },
+      { "option_text": "The badge and the $140 anchor are more likely to sway the agent with the vague prompt, while the agent with the specific prompt rules the listing out on capacity and waterproofing.", "option_explanation": "Correct. Verifiable cutoffs anchor the specific agent, and the vague prompt leaves room for framing cues." },
+      { "option_text": "The agent with the specific prompt is more likely to pick the listing, because it is under $80.", "option_explanation": "Price is only one cutoff. The listing fails the capacity and waterproof requirements." },
+      { "option_text": "Neither agent can compare the listings, because promotional badges are written for humans.", "option_explanation": "Agents read badges and anchors, which is why framing can affect them." }
+    ]
+  }
+]

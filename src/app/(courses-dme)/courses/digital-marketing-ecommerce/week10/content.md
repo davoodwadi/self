@@ -10,6 +10,7 @@ week: week10
 - A digital order is only a promise until physical fulfillment, last-mile delivery, and reverse logistics complete the customer experience.
 
 ## Where Digital Atoms Meet Physical Boxes [no-exercise]
+[figure: two order paths from the same checkout click, a digital service order that ends at a database credential at near-zero cost, and a physical order that runs through warehouse picking, packing, carrier sorting, last-mile van delivery and a possible return, with the cost adding up at each stage]
 - In pure digital services (such as streaming video or cloud software), fulfilling an order requires only provisioning a database credential at near-zero marginal cost.
 - In physical e-commerce, clicking the checkout button initiates an expensive chain of warehouse picking, protective packing, parcel carrier sorting, last-mile van delivery, and potential return processing.
 - Logistics and fulfillment are not merely back-office cost centers. Delivery speed, shipping fees, and return convenience sit directly on the Product Detail Page and heavily drive upfront conversion rates.
@@ -20,6 +21,7 @@ week: week10
 - Omnichannel retailing unifies digital and physical touchpoints around a single view of inventory and a single view of the customer.
 
 ## BOPIS, Ship-from-Store, and Real-Time Inventory Visibility [exercise]
+[figure: interactive map of an online order routed by the order management system to a store five miles from the buyer or a central warehouse two thousand miles away, where lowering the accuracy of store inventory records raises the share of pickup orders accepted for items that are not on the shelf and must be cancelled]
 - Buy-Online-Pick-Up-in-Store (BOPIS), including curbside pickup, allows a shopper to lock in stock and pay online while picking up the item at a local store within hours, eliminating last-mile parcel shipping fees for the retailer and generating incremental in-store impulse purchases when the customer walks inside.
 - Ship-from-Store (SFS) turns physical retail locations into micro-fulfillment nodes, allowing the Order Management System (OMS) to fulfill an online order from a store five miles away from the buyer rather than a central warehouse two thousand miles away.
 - Endless-aisle kiosks inside physical stores allow sales associates to order out-of-stock sizes or colors from the central warehouse for direct home delivery before the shopper walks out empty-handed.
@@ -36,22 +38,28 @@ week: week10
 - E-commerce fulfillment must pick individual units ("eaches"), pack millions of custom single-item boxes, and deliver them to millions of individual residential doorsteps.
 
 ## Warehouse Automation, Zone Skipping, and the Last-Mile Bottleneck [exercise]
+[figure: interactive map where adding regional fulfillment nodes moves stock closer to buyers, lowering the average shipping zone and raising the share of buyers reachable by one- or two-day ground delivery]
+[figure: interactive last-mile delivery route where the number of residential stops per route and the rate of failed first attempts change the cost of each parcel and the last mile's share of total shipping cost]
 - Inside an e-commerce fulfillment center (FC), labor and walking time dominate unit handling costs, driving the adoption of goods-to-person autonomous mobile robots, automated storage and retrieval systems, and algorithmic slotting that places frequently co-ordered items in adjacent bins.
 - Splitting inventory across multiple regional fulfillment nodes places stock closer to population centers, reducing transit zones and enabling one- or two-day ground delivery without expensive air freight.
 - The "last mile" (the final leg from the local parcel sorting depot to the customer's front door) typically accounts for more than 50 percent of total shipping cost because residential stops have low drop density, traffic delays, and failed first-attempt deliveries.
 - Third-Party Logistics (3PL) providers and marketplace fulfillment networks (such as Fulfillment by Amazon or Shopify Fulfillment Network) allow smaller brands to rent distributed warehouse scale and negotiated carrier rates without building their own warehouses.
 
 ## Designing Shipping Fee Structures on the Storefront [no-exercise]
+[figure: interactive free-shipping threshold set against a store's distribution of basket values, where moving the threshold relative to the average order value changes how many shoppers add an extra unit to qualify, how many baskets ship free below cost, and the shipping margin per order]
 - Unconditional free shipping on every order maximizes conversion rate, but destroys contribution margin on low-priced single items where the parcel carrier fee exceeds the product's gross profit.
 - Flat-rate or tiered shipping passes part of the carrier cost to the buyer, but creates cart abandonment when small baskets face high proportional fees.
 - Contingent free-shipping thresholds (e.g., "Free shipping on orders over $75") set roughly 15 to 25 percent above the store's baseline Average Order Value simultaneously protect shipping margin and induce shoppers to add an extra unit to their cart.
 
 ## Part 3: Reverse Logistics and the E-Commerce Returns Problem [no-exercise]
+[figure: share of purchased items returned in physical stores (8 to 10 percent), in e-commerce overall (18 to 25 percent) and in online fashion apparel and footwear (30 to 40 percent), drawn as rows of parcels]
 - In physical brick-and-mortar retail, roughly 8 to 10 percent of purchased items are returned to the store.
 - In e-commerce, average return rates reach 18 to 25 percent across categories, and frequently exceed 30 to 40 percent in fashion apparel and footwear.
 - Managing reverse logistics is therefore a first-order determinant of whether an online retailer is profitable.
 
 ## Return Policy Leniency, Bracketing, and Reverse Logistics Costs [exercise]
+[figure: interactive return policy where lengthening the return window and making returns free raises orders and returns together, so net profit rises and then falls as reverse-logistics cost overtakes the extra sales]
+[figure: one returned parcel moving through receiving, opening and inspection, condition grading, cleaning or repackaging and write-off, with the cost of each step added up as a share of the item's original retail price, from 20 to 65 percent]
 - Return policy leniency operates on two fronts, namely reducing upfront purchase risk (increasing gross conversion and initial orders) while simultaneously increasing moral hazard and return volume (increasing reverse shipping, inspection, and liquidation costs).
 - Bracketing occurs when an uncertain online shopper intentionally orders three sizes or colors of the same garment with the premeditated plan to keep one and return the other two for free.
 - Wardrobing (or opportunistic renting) occurs when a buyer purchases a special-occasion garment, camera, or tool, uses it once with the tags hidden, and returns it for a full refund.
@@ -73,6 +81,7 @@ week: week10
 - Withholding shipment updates during transit generates "Where Is My Order?" (WISMO) support tickets that overwhelm customer service teams and erode repeat purchase intent.
 
 ## Order Tracking, Delivery Transparency, and AI Customer Service Triage [exercise]
+[figure: interactive support queue where an AI agent connected to the order and return systems resolves routine requests and a confidence threshold sends complex, emotional or high-value cases to a human with the transcript, so moving the threshold trades the share resolved in seconds against the share of cases the agent gets wrong]
 - Branded order-tracking pages and proactive event notifications (order confirmed, shipped, out for delivery, and delivered, plus immediate alerts if a weather delay occurs) reduce WISMO inquiries and turn tracking check-ins into high-engagement brand impressions.
 - In customer support operations, conversational AI agents integrated directly with the Order Management System (OMS) and Return Management System (RMS) can resolve routine transactional requests (checking tracking status, updating a delivery address before dispatch, or generating a return QR code) autonomously in seconds.
 - Effective support architecture uses confidence-based human-in-the-loop escalation, routing complex, emotional, or high-lifetime-value customer issues (such as a damaged wedding gift or a lost high-value parcel) immediately to an empowered human representative with the full conversation transcript attached.
@@ -82,6 +91,7 @@ week: week10
 - Machine-readable logistics metadata therefore directly determines whether a merchant wins or loses agentic orders.
 
 ## Machine-Readable Delivery Promises and Post-Purchase Agent Protocols [no-exercise]
+[figure: interactive constraint check by an AI agent told to deliver a birthday gift to Toronto by Friday, where switching on the merchant's structured delivery-by date, exact shipping cost and return-window fields turns its offer from failing the check on unknown values to passing it alongside competing offers]
 - A human shopper might tolerate a vague banner reading "Fast Standard Shipping (Usually 3 to 7 Business Days)," whereas an AI agent instructed to "Order a birthday gift that arrives in Toronto by Friday" requires a deterministic, guaranteed delivery-by date exposed in structured offer markup (`shippingDetails` and `hasMerchantReturnPolicy` in Schema.org).
 - Merchants that expose real-time zip-code delivery cutoffs, exact shipping costs, and structured return-window schemas via API or JSON-LD allow AI shopping agents to verify feasibility without failing the constraint check.
 - Post-purchase, machine-readable order status webhooks and standardized tracking schemas allow the consumer's personal AI assistant to monitor parcel arrivals, verify that refunds settled, and initiate authorized exchanges on the buyer's behalf.

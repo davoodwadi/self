@@ -10,6 +10,7 @@ week: week3
 - Search marketing captures high-intent demand at the moment a shopper or an AI assistant formulates a question.
 
 ## Search as the Engine of Commercial Intent [no-exercise]
+[figure: contrast of an ad pushed into a shopper's video feed with the same shopper typing an explicit query and receiving matching results]
 - Most advertising interrupts people while they are doing something else, such as watching a video, reading news, or scrolling a social feed.
 - Search marketing is fundamentally different because the user initiates the interaction by typing or speaking an explicit query.
 - A query reveals what the user wants right now, allowing marketers to match offers to immediate intent rather than inferred demographics.
@@ -27,28 +28,33 @@ week: week3
 - Understanding this three-stage information retrieval pipeline explains why technical site failures can remove a brand from search results within days.
 
 ## Crawling, Indexing, and Ranking Pipelines [exercise]
+[figure: interactive crawling, indexing and ranking pipeline for one product page, where switching on a robots.txt block, a noindex tag or unrenderable JavaScript stops the page at the stage that fails]
 - Stage 1 is crawling, in which automated bots (spiders) follow hyperlinks across the web and read XML sitemaps to fetch new or updated pages, bounded by the site's crawl budget and `robots.txt` directives.
 - Stage 2 is rendering and indexing, in which the search engine executes page code, extracts text, links, and Schema.org structured data, and stores the canonical version of the document in a massive inverted index.
 - Stage 3 is query processing and ranking, in which the search engine parses the user's query, retrieves candidate documents from the index, and orders them using hundreds of lexical, semantic, and authority signals within milliseconds.
 - If a page is blocked in `robots.txt`, marked with a `noindex` meta tag, or trapped behind unrenderable client-side scripts, it fails at Stages 1 or 2 and can never be ranked at Stage 3 regardless of its quality.
 
 ## Lexical Matching, Semantic Embeddings, and Authority Signals [no-exercise]
+[figure: interactive results page that re-sorts as lexical matching, semantic embeddings, backlinks and user engagement signals are added one at a time]
 - Classical information retrieval scored documents using lexical term frequency and inverse document frequency (TF-IDF and BM25), rewarding pages that repeated the exact words in the query.
 - Modern search engines pair lexical matching with dense transformer embeddings that represent queries and documents in a shared semantic vector space, matching meaning even when exact words differ.
 - Because thousands of pages may be topically relevant to a query, search engines break ties using authority and trust signals derived from the web's link graph, originally formalized in PageRank.
 - In commercial and health or financial categories, ranking systems also weight experience, expertise, authoritativeness, and trustworthiness (E-E-A-T) alongside user interaction signals such as pogo-sticking (when a user clicks a result and immediately bounces back to the SERP).
 
 ## Part 2: Search Engine Optimization (SEO) Strategy [no-exercise]
+[figure: interactive comparison over months of paid clicks that stop when the ad budget stops and organic clicks that keep compounding]
 - Search Engine Optimization (SEO) is the discipline of engineering a website's content, technical architecture, and external reputation to maximize qualified organic traffic.
 - Because organic clicks carry zero marginal media cost per click, SEO builds a compounding asset, though results take months to materialize.
 
 ## On-Page, Technical, and Off-Page SEO [exercise]
+[figure: interactive page whose on-page, technical and off-page improvements raise its rank, while buying links from a link farm gets it de-indexed]
 - On-page SEO aligns individual pages with target query intent through descriptive title tags, heading hierarchy, comprehensive body content, internal anchor links, and keyword research covering both head terms and long-tail queries.
 - Technical SEO ensures that search engines can crawl, render, and index the site efficiently by optimizing Core Web Vitals (loading speed, interactivity, and visual stability), mobile responsiveness, HTTPS security, XML sitemaps, and canonical tags that prevent duplicate URL dilution across faceted e-commerce filters.
 - Off-page SEO builds domain authority outside the firm's own servers through earned editorial backlinks from reputable publications, digital public relations, brand mentions, and local citations.
 - Black-hat practices, such as buying link farms, stuffing hidden text, or spinning automated doorway pages, violate search engine guidelines and risk manual or algorithmic de-indexing.
 
 ## The Long Tail of E-Commerce Search [no-exercise]
+[figure: interactive distribution of searches per month by query, where cutting off the head terms shows the share of searches and orders that sits in the long tail]
 - In e-commerce catalogs, search demand follows a heavy-tailed power law distribution.
 - A small number of short head queries (e.g., "running shoes") generate massive search volume but reflect vague intent, low conversion rates, and extreme competition from major aggregators.
 - Millions of specific long-tail queries (e.g., "women's wide waterproof trail running shoes size 8") each receive modest monthly volume, but collectively account for a large share of total search traffic.
@@ -59,6 +65,7 @@ week: week3
 - Critically, search engines do not simply award the top slot to the advertiser who bids the highest dollar amount per click.
 
 ## Generalized Second-Price Auctions and Quality Score [exercise]
+[figure: interactive auction where changing an advertiser's bid and quality score re-orders ad rank (bid times quality score) and shows each winner's price as the next ad rank divided by its own quality score plus one cent]
 - Search engines allocate ad slots using a Generalized Second-Price (GSP) auction modified by ad quality, rather than a pure highest-bid auction.
 - Why search engines weight quality alongside bid is straightforward, because an irrelevant ad with a high bid that nobody clicks generates zero revenue for a pay-per-click platform.
 - Each advertiser is assigned a Quality Score (typically on a 1 to 10 scale) determined by three components, namely expected click-through rate (CTR), ad relevance to the query, and landing page experience.
@@ -66,6 +73,7 @@ week: week3
 - The actual CPC paid by a winning advertiser is the minimum amount needed to beat the Ad Rank of the next advertiser immediately below, calculated as the next advertiser's Ad Rank divided by the winner's own Quality Score, plus one cent.
 
 ## Keyword Match Types, Negative Keywords, and Automated Bidding [no-exercise]
+[figure: interactive keyword set to exact, phrase or broad match, showing which search queries trigger the ad, how much spend is wasted on irrelevant queries, and how negative keywords remove them]
 - Exact match triggers an ad only when a search shares the tight specific meaning of the target keyword, offering maximum control over conversion intent.
 - Phrase match triggers when a query includes the meaning of the keyword phrase alongside additional modifier words before or after it.
 - Broad match allows the platform's language models to match the ad to any related query in the broader category, expanding reach but risking wasted spend without guardrails.
@@ -77,6 +85,7 @@ week: week3
 - Answering this question requires distinguishing correlation from causal incrementality.
 
 ## Branded Keywords, Cannibalization, and Competitive Conquesting [exercise]
+[figure: interactive pause of a brand's own search ads, where the presence of rival bidders and the brand's organic position decide how many clicks the paid ad actually added]
 - Branded keywords contain the advertiser's own brand name (e.g., "Patagonia fleece"), whereas non-branded keywords describe a generic category or problem (e.g., "recycled fleece jacket").
 - Advertising on branded keywords often shows extraordinarily high accounting ROAS in platform dashboards because users typing the brand name already intend to buy from that brand.
 - Controlled field experiments (such as Blake, Nosko, and Tadelis at eBay) demonstrate that when a dominant brand with the top organic result and no rival ads pauses its branded search ads, almost all lost paid clicks simply click the organic link below, revealing heavy cannibalization.
@@ -88,10 +97,13 @@ week: week3
 - Why is the agency's reported ROAS misleading, and how should the founder design a geo-holdout experiment to measure the true incremental lift of paid search?
 
 ## Part 5: From Search Engines to AI Answer Engines [no-exercise]
+[figure: interactive contrast of a ranked list of ten links read by a human with retrieval-augmented generation, where an AI reads the pages and returns one answer citing a short list of products]
 - Traditional search engines return a ranked list of ten links and leave the work of reading, comparing, and synthesizing across tabs to the human user.
 - Generative AI search interfaces (such as AI Overviews, Perplexity, and conversational shopping assistants) perform retrieval-augmented generation (RAG) to read candidate pages and present a single synthesized answer with a small shortlist of cited products.
 
 ## Generative Engine Optimization (GEO) and the AI Shortlist [exercise]
+[figure: interactive evidence on a product page (specifications, lab tests, reviews, structured data) that raises its retrieval rank and decides whether it enters a three-product AI answer]
+[figure: share of choices for a promoted and a sponsored product when an AI assistant answers on behalf of a platform, from Study 2 of Wadi and Ma (2026c)]
 - In traditional search, ranking fourth or fifth on page one still captures a meaningful trickle of comparison clicks from thorough shoppers.
 - In conversational answer engines, visibility becomes sharply concentrated because the language model typically synthesizes only two or three recommended brands into its narrative response, creating a winner-take-most shortlist.
 - Generative Engine Optimization (GEO) is the practice of structuring brand and product evidence so retrieval-augmented language models select, cite, and recommend the brand accurately.

@@ -1,0 +1,89 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "mapping-content-formats-to-funnel-stages",
+    "prompt": "A bicycle shop plans its content calendar. Name the funnel stage each piece serves.",
+    "options": [
+      { "id": "top", "label": "Top: awareness and problem recognition" },
+      { "id": "middle", "label": "Middle: evaluation and consideration" },
+      { "id": "bottom", "label": "Bottom: conversion" },
+      { "id": "post", "label": "Post-purchase: onboarding and retention" }
+    ],
+    "cases": [
+      { "id": "commute-study", "text": "An original survey of 2,000 city commuters on how long their trips to work take by car, bus and bike.", "answer": "top", "explanation": "Original research attracts people exploring a problem, not yet a brand." },
+      { "id": "finder", "text": "A five-question quiz that recommends a frame type for the rider's terrain and budget.", "answer": "middle", "explanation": "An interactive product finder helps shoppers narrow their consideration set." },
+      { "id": "frame-size", "text": "A height and inseam calculator beside the add-to-cart button that names the right frame size.", "answer": "bottom", "explanation": "A sizing calculator resolves final purchase hesitation." },
+      { "id": "returns", "text": "A short page explaining that unridden bikes can be returned free within 30 days.", "answer": "bottom", "explanation": "A return-policy explainer reduces risk at the point of purchase." },
+      { "id": "chain", "text": "A monthly chain-cleaning checklist emailed to people who bought a bike.", "answer": "post", "explanation": "Maintenance checklists help owners get full value from the product." },
+      { "id": "e-bike-vs", "text": "A side-by-side table of three e-bikes' range, weight and motor torque.", "answer": "middle", "explanation": "A specification comparison matrix supports evaluation." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "crm-systems-versus-customer-data-platforms-cdps",
+    "prompt": "A furniture retailer is deciding which system should handle each job. Sort each job into the CRM or the CDP.",
+    "bins": [
+      { "id": "crm", "label": "CRM" },
+      { "id": "cdp", "label": "CDP" }
+    ],
+    "cards": [
+      { "id": "ticket", "text": "Logging a customer's complaint about a scratched table and the replies the support team sent.", "bin": "crm", "explanation": "Support tickets and communication history with known customers live in the CRM." },
+      { "id": "b2b", "text": "Tracking a hotel chain's bulk order for 300 chairs through quote, negotiation and signature.", "bin": "crm", "explanation": "Sales pipelines are a core CRM function." },
+      { "id": "clicks", "text": "Ingesting two million anonymous product-page views per hour from the website and app.", "bin": "cdp", "explanation": "Real-time anonymous clickstreams are what a CDP is built to ingest." },
+      { "id": "merge", "text": "Joining an anonymous visitor's sofa views to her existing profile when she types her email at checkout.", "bin": "cdp", "explanation": "The CDP resolves identity when an anonymous visitor identifies herself." },
+      { "id": "sync", "text": "Sending a segment of recent lamp browsers to the ad network and the email platform every hour.", "bin": "cdp", "explanation": "A CDP syncs audience segments outward to other systems." },
+      { "id": "contact", "text": "Storing the phone number and delivery address of a customer who ordered by phone.", "bin": "crm", "explanation": "Contact records of known customers are CRM data." }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "core-automated-e-commerce-lifecycle-flows",
+    "prompt": "An online tea shop has set up its automated flows. Name the flow each message belongs to.",
+    "options": [
+      { "id": "welcome", "label": "Welcome series" },
+      { "id": "abandon", "label": "Browse or cart abandonment" },
+      { "id": "post", "label": "Post-purchase onboarding and cross-sell" },
+      { "id": "replenish", "label": "Replenishment" },
+      { "id": "winback", "label": "Win-back" }
+    ],
+    "cases": [
+      { "id": "brew-guide", "text": "The day the parcel arrives, a short guide on water temperature and steeping time for the green tea inside.", "answer": "post", "explanation": "Delivery triggers care instructions before the product is used." },
+      { "id": "story", "text": "Minutes after someone joins the newsletter, an email on how the founder sources tea from three family farms, with the five best sellers.", "answer": "welcome", "explanation": "Subscribing triggers the brand story and best sellers." },
+      { "id": "refill", "text": "Twenty-six days after a customer bought a 30-day pouch of breakfast tea, a one-click reorder link.", "answer": "replenish", "explanation": "The message is timed just before the predicted run-out date." },
+      { "id": "oolong", "text": "A logged-in shopper puts a tin of oolong in the cart and leaves, and three hours later gets a reminder that only four tins are left.", "answer": "abandon", "explanation": "An unfinished checkout triggers a timely reminder with stock status." },
+      { "id": "lapsed", "text": "A customer who used to order every six weeks has not ordered in five months and receives a 15 percent offer.", "answer": "winback", "explanation": "Exceeding the expected inter-purchase window triggers a targeted incentive." },
+      { "id": "teapot", "text": "Three weeks after a first order of loose-leaf tea, a suggestion for a glass teapot with a built-in strainer.", "answer": "post", "explanation": "Complementary recommendations after the item has been used are cross-sell." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "segmentation-by-recency-frequency-and-monetary-value-rfm",
+    "question_text": "An outdoor-gear store reviews one customer: she ordered nine times in the previous two years and spent 2,400 dollars in total, but her last order was eleven months ago. Which segment and treatment fit her best?",
+    "hint": "Read each of R, F and M separately before naming the segment.",
+    "correct_answer_citation": "Grouping customers into RFM segments (such as Champions with high R, F, and M, At-Risk Big Spenders with low R but high historical F and M, and Price-Sensitive One-Timers) allows marketers to reserve VIP early access for Champions while directing win-back interventions to At-Risk high-value buyers.",
+    "correct_answer_index": 2,
+    "options": [
+      { "option_text": "Champion, so she should get VIP early access to the new collection.", "option_explanation": "Her frequency and spend are high, but eleven months without an order means recency is low." },
+      { "option_text": "Price-Sensitive One-Timer, so she should get only the general newsletter.", "option_explanation": "Nine orders and 2,400 dollars rule out a one-time, low-value buyer." },
+      { "option_text": "At-Risk Big Spender, so she should get a targeted win-back intervention.", "option_explanation": "Correct. Low recency with high historical frequency and monetary value is the at-risk, high-value profile." },
+      { "option_text": "No segment can be assigned until she orders again, because recency is unknown.", "option_explanation": "Recency is known: it is the eleven months since her last purchase." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "ai-driven-personalization-versus-customer-reactance",
+    "prompt": "A running-shoe store's language model drafts follow-up emails. Sort each line by whether it stays useful or crosses into perceived surveillance.",
+    "bins": [
+      { "id": "helpful", "label": "Useful personalization" },
+      { "id": "creepy", "label": "Likely to trigger reactance" }
+    ],
+    "cards": [
+      { "id": "cushion", "text": "\"Shoes with extra cushioning for long road runs\", sent to a buyer who filters for cushioned shoes.", "bin": "helpful", "explanation": "It highlights the attribute the customer said she cares about." },
+      { "id": "gps", "text": "\"Your 6 a.m. route along the river looked tough this morning\", based on location data from the store's app.", "bin": "creepy", "explanation": "It reveals tracking the customer did not knowingly share." },
+      { "id": "size", "text": "\"Your size 9 in the trail model is back in stock\", after the shopper signed up for a restock alert.", "bin": "helpful", "explanation": "The customer asked for this alert, so the detail is expected." },
+      { "id": "minutes", "text": "\"You looked at the red racing flats for 47 seconds on Tuesday at 10:18 p.m.\"", "bin": "creepy", "explanation": "An exact viewing time and duration signals granular behavioral tracking." },
+      { "id": "injury", "text": "\"Is your knee still hurting?\", inferred from searches for knee braces on the store's site.", "bin": "creepy", "explanation": "Inferring a health condition from browsing feels like surveillance." },
+      { "id": "light", "text": "\"Our lightest racing shoe, 180 grams\", for a buyer whose past orders are all lightweight models.", "bin": "helpful", "explanation": "Attribute framing based on visible purchase history stays within expectations." }
+    ]
+  }
+]

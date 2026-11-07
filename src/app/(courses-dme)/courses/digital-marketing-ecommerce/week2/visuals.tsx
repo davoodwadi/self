@@ -21,8 +21,8 @@ import {
 } from "../_visuals/kit";
 import {
   Agent,
+  Backpack,
   Cart,
-  Coin,
   Cursor,
   Espresso,
   Jacket,
@@ -31,7 +31,6 @@ import {
   Person,
   Sneaker,
   Star,
-  Stopwatch,
   Warehouse,
 } from "../_visuals/objects";
 
@@ -185,233 +184,6 @@ export function CatalogDepth() {
       </Frame>
       <Slider label="Catalogue size" value={step} min={0} max={SIZES.length - 1} step={1} onChange={setStep} formatValue={(v) => SIZES[v].toLocaleString("en-US")} />
     </div>
-  );
-}
-
-/**
- * The order summary as the shopper sees it on each checkout screen. The
- * cart and address screens show $48.00. Only the payment screen adds
- * shipping, tax and handling (amber), and the total jumps to $64.55.
- */
-export function CheckoutFriction() {
-  const id = "w2-surprise";
-  const steps = ["Cart", "Address", "Payment"];
-  return (
-    <Frame
-      width={400}
-      height={196}
-      label="Three order summaries for the cart, address and payment screens. The first two show a $48.00 total. The payment screen adds shipping $9.95, tax $4.10 and handling $2.50 in amber, for a $64.55 total."
-    >
-      <HalftoneDefs id={id} />
-      {steps.map((s, k) => {
-        const x = 10 + k * 132;
-        const last = k === 2;
-        return (
-          <g key={s}>
-            <rect x={x} y={10} width={116} height={152} fill={CAT.tile} {...ink} />
-            <Mug id={id} cx={x + 20} cy={34} scale={0.5} />
-            <line x1={x + 34} y1={30} x2={x + 58} y2={30} {...hair} />
-            <Price x={x + 108} y={38} size={11} anchor="end">
-              $48.00
-            </Price>
-            {last
-              ? [
-                  ["Shipping", "$9.95"],
-                  ["Tax", "$4.10"],
-                  ["Handling", "$2.50"],
-                ].map(([t, v], j) => (
-                  <g key={t}>
-                    <rect x={x + 6} y={50 + j * 20} width={104} height={17} fill={CAT.amber} stroke={CAT.ink} strokeWidth={0.6} />
-                    <text x={x + 12} y={62 + j * 20} fontFamily={BODY_FONT} fontSize={10} fill={CAT.ink}>
-                      {t}
-                    </text>
-                    <Price x={x + 104} y={62 + j * 20} size={11} anchor="end">
-                      {v}
-                    </Price>
-                  </g>
-                ))
-              : null}
-            <line x1={x + 8} y1={118.5} x2={x + 108} y2={118.5} {...ink} />
-            <Price x={x + 108} y={142} size={16} anchor="end">
-              {last ? "$64.55" : "$48.00"}
-            </Price>
-            <Numeral x={x} y={186} size={14}>
-              {k + 1}
-            </Numeral>
-            <CatKey x={x + 14} y={185} size={10}>
-              {s}
-            </CatKey>
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
-
-/**
- * The same three options set out three ways. Order: the first row draws
- * the most clicks. Default: the pre-selected shipping tier is the one most
- * people keep. Framing: a ribbon and a heavier frame lift the middle tier.
- */
-export function ChoiceLevers() {
-  const id = "w2-levers";
-  const px = (k: number) => 8 + k * 146;
-  return (
-    <Frame
-      width={440}
-      height={226}
-      label="Three panels. Order: three ranked mug rows, with five cursors beside the first, two beside the second and one beside the third. Default: three shipping options with the standard tier pre-selected. Framing: three price tiers with the middle one in a heavy frame under a most popular ribbon."
-    >
-      <HalftoneDefs id={id} />
-      {["Order", "Default", "Framing"].map((k, i) => (
-        <CatKey key={k} x={px(i) + 64} y={218} anchor="middle" size={11}>
-          {k}
-        </CatKey>
-      ))}
-      {[1, 2].map((k) => (
-        <line key={k} x1={px(k) - 9} y1={8} x2={px(k) - 9} y2={204} {...hair} />
-      ))}
-      {/* order */}
-      {[5, 2, 1].map((c, k) => {
-        const y = 22 + k * 60;
-        return (
-          <g key={k}>
-            <Tile x={px(0)} y={y} w={74} h={50} />
-            <Numeral x={px(0) + 7} y={y + 16} size={12}>
-              {k + 1}
-            </Numeral>
-            <Mug id={id} cx={px(0) + 44} cy={y + 25} scale={0.6} />
-            {Array.from({ length: c }, (_, j) => (
-              <Cursor key={j} x={r2(px(0) + 82 + (j % 3) * 14)} y={r2(y + 8 + Math.floor(j / 3) * 20)} scale={0.95} />
-            ))}
-          </g>
-        );
-      })}
-      {/* default */}
-      {[
-        ["Standard", "Free", true],
-        ["Express", "$12", false],
-        ["Pickup", "Free", false],
-      ].map(([t, p, on], k) => {
-        const y = 30 + k * 52;
-        return (
-          <g key={t as string}>
-            <rect x={px(1)} y={y} width={128} height={40} fill={CAT.tile} stroke={CAT.ink} strokeWidth={on ? LINE.bold : 0.6} />
-            <circle cx={px(1) + 16} cy={y + 20} r={6} fill={CAT.tile} {...ink} />
-            {on ? <circle cx={px(1) + 16} cy={y + 20} r={3.2} fill={CAT.ink} /> : null}
-            <text x={px(1) + 30} y={y + 24} fontFamily={BODY_FONT} fontSize={11} fill={CAT.ink}>
-              {t as string}
-            </text>
-            <Price x={px(1) + 120} y={y + 25} size={12} anchor="end">
-              {p as string}
-            </Price>
-          </g>
-        );
-      })}
-      {/* framing */}
-      {["$10", "$25", "$60"].map((p, k) => {
-        const y = 22 + k * 60;
-        const mid = k === 1;
-        return (
-          <g key={p}>
-            <rect x={px(2) + (mid ? 0 : 8)} y={y} width={mid ? 136 : 120} height={50} fill={CAT.tile} stroke={CAT.ink} strokeWidth={mid ? 2.4 : 0.8} />
-            <Price x={px(2) + 20} y={y + 31} size={mid ? 20 : 15}>
-              {p}
-            </Price>
-            <line x1={px(2) + 70} y1={y + 20} x2={px(2) + 116} y2={y + 20} {...hair} />
-            <line x1={px(2) + 70} y1={y + 28} x2={px(2) + 104} y2={y + 28} {...hair} />
-            {mid ? (
-              <g>
-                <rect x={px(2) + 34} y={y - 10} width={100} height={16} fill={CAT.ink} />
-                <CatKey x={px(2) + 86} y={y + 2.5} anchor="middle" size={8.5} fill={CAT.tile}>
-                  Most popular
-                </CatKey>
-              </g>
-            ) : null}
-          </g>
-        );
-      })}
-    </Frame>
-  );
-}
-
-/**
- * An AI agent working through a storefront: the results page, a product
- * page, an expanded spec tab, the returns policy. Under each step, what it
- * has spent so far: tokens read (stacked sheets), seconds (stopwatch) and
- * inference cost (coins), all growing with every click.
- */
-export function ClickMeter() {
-  const id = "w2-meter";
-  const steps = [
-    { tokens: 2, t: 1, coins: 1, cost: "0.4¢" },
-    { tokens: 4, t: 3, coins: 2, cost: "0.9¢" },
-    { tokens: 6, t: 5, coins: 3, cost: "1.5¢" },
-    { tokens: 8, t: 7, coins: 4, cost: "2.2¢" },
-  ];
-  const px = (k: number) => 92 + k * 120;
-  return (
-    <Frame
-      width={560}
-      height={252}
-      label="An AI agent clicks through four pages: a results page, a product page, an expanded spec tab and a returns policy. Under each, the running spend grows: stacks of token sheets from 2 to 8, a stopwatch filling, and coins from 1 to 4, costing 0.4 to 2.2 cents."
-    >
-      <HalftoneDefs id={id} />
-      <Agent id={id} cx={34} cy={60} s={1.1} />
-      {steps.map((s, k) => {
-        const x = px(k);
-        return (
-          <g key={k}>
-            <Arrow x1={x - 24} y1={60} x2={x - 6} y2={60} s={5} />
-            <rect x={x} y={14} width={92} height={92} fill={CAT.tile} {...ink} />
-            {k === 0 ? (
-              [0, 1, 2].map((j) => (
-                <g key={j}>
-                  <rect x={x + 8} y={22 + j * 27} width={22} height={22} fill={CAT.tile} {...hair} />
-                  <Mug id={id} cx={x + 19} cy={33 + j * 27} scale={0.38} />
-                  <line x1={x + 36} y1={30 + j * 27} x2={x + 82} y2={30 + j * 27} {...hair} />
-                </g>
-              ))
-            ) : k === 1 ? (
-              <g>
-                <Mug id={id} cx={x + 24} cy={50} scale={0.95} />
-                <line x1={x + 56} y1={30} x2={x + 84} y2={30} {...ink} />
-                <Price x={x + 56} y={54} size={12}>
-                  $14
-                </Price>
-                <line x1={x + 8} y1={84} x2={x + 84} y2={84} {...hair} />
-              </g>
-            ) : k === 2 ? (
-              <g>
-                {[0, 1, 2].map((j) => (
-                  <rect key={j} x={x + 8 + j * 26} y={22} width={24} height={12} fill={j === 1 ? CAT.ink : CAT.tile} {...hair} />
-                ))}
-                {[0, 1, 2, 3].map((j) => (
-                  <line key={j} x1={x + 10} y1={48 + j * 12} x2={x + 82} y2={48 + j * 12} {...hair} />
-                ))}
-              </g>
-            ) : (
-              <g>
-                {[0, 1, 2, 3, 4, 5].map((j) => (
-                  <line key={j} x1={x + 10} y1={26 + j * 11} x2={j % 2 ? x + 70 : x + 82} y2={26 + j * 11} {...hair} />
-                ))}
-              </g>
-            )}
-            {/* spend so far */}
-            {Array.from({ length: s.tokens }, (_, j) => (
-              <rect key={j} x={x + 8 + j * 1.5} y={r2(196 - j * 6)} width={30} height={20} fill={CAT.tile} {...hair} />
-            ))}
-            <Stopwatch cx={x + 62} cy={150} r={13} t={s.t} />
-            {Array.from({ length: s.coins }, (_, j) => (
-              <Coin key={j} id={id} cx={x + 70} cy={r2(208 - j * 6)} rx={14} ry={3.6} t={3.6} />
-            ))}
-            <Price x={x + 46} y={242} size={13} anchor="middle" fill={k === 3 ? CAT.amberText : CAT.ink}>
-              {s.cost}
-            </Price>
-          </g>
-        );
-      })}
-    </Frame>
   );
 }
 
@@ -1061,38 +833,6 @@ function Blender({ id, cx, cy }: { id: string; cx: number; cy: number }) {
 }
 
 /**
- * A hundred carts filled in one day. Two-thirds of them (ink carts) are left
- * before payment, up to three-quarters counting the open carts at the edge
- * of the range. The rest end as paid parcels.
- */
-export function HundredCarts() {
-  const id = "w2-carts";
-  return (
-    <Frame
-      width={400}
-      height={170}
-      label="One hundred carts in five rows of twenty: 67 solid ink carts abandoned, 8 open carts at the edge of the two-thirds to three-quarters range, and 25 parcels for carts that were paid."
-    >
-      <HalftoneDefs id={id} />
-      {Array.from({ length: 100 }, (_, k) => {
-        const cx = r2(19 + (k % 20) * 19.2);
-        const cy = r2(18 + Math.floor(k / 20) * 25);
-        if (k < 67) return <Cart key={k} id={id} cx={cx} cy={cy} s={0.55} />;
-        if (k < 75) return <Cart key={k} id={id} cx={cx} cy={cy} s={0.55} tone="open" />;
-        return <Parcel key={k} id={id} x={r2(cx - 6)} y={r2(cy - 3)} w={11} h={8} />;
-      })}
-      <line x1={10} y1={140.5} x2={390} y2={140.5} {...hair} />
-      <Price x={10} y={162} size={16}>
-        67 to 75
-      </Price>
-      <CatKey x={66} y={160} size={10}>
-        of 100 carts abandoned before payment
-      </CatKey>
-    </Frame>
-  );
-}
-
-/**
  * Four bags of coffee on a results page. The cheapest-looking bag is the
  * smallest. The best value per 100 g is bag 2. Choose where the store puts
  * the unit price, and how many clicks the agent can afford. It reads the
@@ -1469,17 +1209,6 @@ export function QueryEngine() {
 }
 
 /** A travel backpack centred on (cx, cy): halftone body, dense side, white front pocket and a top handle. */
-function Backpack({ id, cx, cy }: { id: string; cx: number; cy: number }) {
-  return (
-    <g transform={`translate(${cx} ${cy})`} strokeLinejoin="round">
-      <path d="M-8 -34Q0 -42 8 -34" fill="none" stroke={CAT.ink} strokeWidth={2.4} />
-      <rect x={-26} y={-34} width={52} height={66} rx={12} fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={LINE.outline} />
-      <path d="M14 -33Q26 -32 26 -22V20Q26 32 14 32Z" fill={ht(id, "dense")} stroke="none" />
-      <rect x={-18} y={4} width={30} height={22} rx={5} fill={CAT.tile} stroke={CAT.ink} strokeWidth={LINE.outline} />
-      <line x1={-14} y1={10} x2={8} y2={10} stroke={CAT.ink} strokeWidth={LINE.hair} />
-    </g>
-  );
-}
 
 /**
  * Six months of cart-recovery emails, with and without a discount code.
@@ -1994,99 +1723,6 @@ export function StoreToPage() {
       <CatKey x={672} y={rows[2] + 17} size={10}>
         Data
       </CatKey>
-    </Frame>
-  );
-}
-
-/**
- * The three templates in order: a listing page full of candidates, the
- * product detail page of the one chosen, and the cart holding it. A cursor
- * moves the shopper from each to the next.
- */
-export function ThreeTemplates() {
-  const id = "w2-templates";
-  const page = (x: number) => (
-    <g>
-      <rect x={x} y={10} width={210} height={150} fill={CAT.tile} {...ink} />
-      <rect x={x + 3} y={13} width={204} height={144} fill="none" stroke={CAT.ink} strokeWidth={0.45} />
-    </g>
-  );
-  return (
-    <Frame
-      width={800}
-      height={192}
-      label="Three catalogue pages joined by arrows: a listing page with a filter column and a grid of twelve mug tiles, one clicked. A product detail page with a large mug, price and add-to-cart button, clicked. A shopping cart with the mug as a line item, a total and a checkout button."
-    >
-      <HalftoneDefs id={id} />
-      {/* listing page */}
-      {page(10)}
-      {[0, 1, 2, 3, 4].map((k) => (
-        <g key={k}>
-          <rect x={22} y={28 + k * 22} width={8} height={8} fill={k % 2 ? CAT.ink : CAT.tile} {...hair} />
-          <line x1={34} y1={32 + k * 22} x2={56} y2={32 + k * 22} {...hair} />
-        </g>
-      ))}
-      {Array.from({ length: 12 }, (_, k) => {
-        const x = 66 + (k % 4) * 37;
-        const y = 24 + Math.floor(k / 4) * 44;
-        return (
-          <g key={k}>
-            <rect x={x} y={y} width={33} height={40} fill={CAT.tile} {...hair} />
-            <Mug id={id} cx={x + 16} cy={y + 16} scale={0.42} />
-            <line x1={x + 5} y1={y + 32} x2={x + 25} y2={y + 32} {...hair} />
-          </g>
-        );
-      })}
-      <Cursor x={128} y={84} scale={1.1} />
-      <Arrow x1={228} y1={85} x2={290} y2={85} s={7} />
-      {/* product detail page */}
-      {page(298)}
-      <rect x={312} y={24} width={96} height={104} fill={CAT.tile} {...hair} />
-      <Mug id={id} cx={358} cy={76} scale={1.6} />
-      <line x1={420} y1={34} x2={492} y2={34} {...ink} />
-      <line x1={420} y1={42} x2={478} y2={42} {...hair} />
-      {[0, 1, 2, 3, 4].map((k) => (
-        <Star key={k} cx={424 + k * 10} cy={56} r={3.8} />
-      ))}
-      <Price x={420} y={82} size={18}>
-        $14
-      </Price>
-      <rect x={420} y={98} width={74} height={22} fill={CAT.ink} />
-      <CatKey x={457} y={112} anchor="middle" size={8} fill={CAT.tile}>
-        Add to cart
-      </CatKey>
-      <line x1={312} y1={140} x2={494} y2={140} {...hair} />
-      <line x1={312} y1={147} x2={460} y2={147} {...hair} />
-      <Cursor x={482} y={114} scale={1.1} />
-      <Arrow x1={516} y1={85} x2={578} y2={85} s={7} />
-      {/* cart */}
-      {page(586)}
-      <rect x={600} y={26} width={36} height={34} fill={CAT.tile} {...hair} />
-      <Mug id={id} cx={618} cy={43} scale={0.55} />
-      <line x1={646} y1={36} x2={706} y2={36} {...hair} />
-      <line x1={646} y1={44} x2={690} y2={44} {...hair} />
-      <Price x={782} y={48} size={13} anchor="end">
-        $14
-      </Price>
-      <line x1={600} y1={74.5} x2={782} y2={74.5} {...hair} />
-      <line x1={600} y1={92} x2={650} y2={92} {...hair} />
-      <Price x={782} y={97} size={13} anchor="end">
-        $14
-      </Price>
-      <line x1={600} y1={106.5} x2={782} y2={106.5} {...ink} />
-      <rect x={680} y={118} width={102} height={24} fill={CAT.ink} />
-      <CatKey x={731} y={134} anchor="middle" size={9} fill={CAT.tile}>
-        Checkout
-      </CatKey>
-      {[
-        [115, "Listing page"],
-        [403, "Product detail page"],
-        [691, "Shopping cart"],
-      ].map(([x, k]) => (
-        <CatKey key={k as string} x={x as number} y={184} anchor="middle" size={11}>
-          {k}
-        </CatKey>
-      ))}
     </Frame>
   );
 }

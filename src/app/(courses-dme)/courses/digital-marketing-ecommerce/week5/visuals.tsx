@@ -24,7 +24,6 @@ import {
   Coin,
   Cursor,
   Envelope,
-  Mug,
   OrderForm,
   Person,
   Receipt,
@@ -42,145 +41,6 @@ function NameLines({ x, y, w, gap = 5 }: { x: number; y: number; w: number; gap?
       <line x1={x} y1={y} x2={r2(x + w)} y2={y} {...hair} />
       <line x1={x} y1={r2(y + gap)} x2={r2(x + w * 0.72)} y2={r2(y + gap)} {...hair} />
     </g>
-  );
-}
-
-/** A printed bid slip, with a catalogue key and a monetary offer. */
-function BidSlip({ x, y, price, winner = false }: { x: number; y: number; price: string; winner?: boolean }) {
-  return (
-    <g>
-      <rect x={x} y={y} width={116} height={55} fill={winner ? CAT.amber : CAT.tile} {...ink} />
-      <rect x={x + 3} y={y + 3} width={110} height={49} fill="none" {...hair} />
-      <CatKey x={x + 11} y={y + 18} size={8}>Bid</CatKey>
-      <Price x={x + 104} y={y + 41} size={22} anchor="end">{price}</Price>
-    </g>
-  );
-}
-
-/** Three sealed offers converge on one impression, resolved inside a 100 ms auction watch. */
-export function TitleAuction() {
-  const id = "w5-title";
-  return (
-    <Frame
-      width={800}
-      height={205}
-      label="Three printed bid slips travel from advertisers toward a catalogue impression. A large auction watch reads 100 milliseconds. The winning bid is picked out in amber beside the engraved product listing."
-      svgProps={{ "data-plate": "title-auction" }}
-    >
-      <HalftoneDefs id={id} />
-      <BidSlip x={22} y={18} price="$1.20" />
-      <BidSlip x={22} y={81} price="$3.40" winner />
-      <BidSlip x={22} y={144} price="$0.80" />
-      <path d="M138 45H210L250 78M138 108H250M138 171H210L250 137" fill="none" {...ink} />
-      <path d="M250 77H272M250 108H272M250 138H272" fill="none" {...ink} />
-      <g transform="translate(360 103)">
-        <rect x={-6} y={-81} width={12} height={9} fill={CAT.tile} {...ink} />
-        <line x1={0} y1={-82} x2={0} y2={-88} {...ink} />
-        <circle r={67} fill={CAT.tile} {...ink} />
-        <circle r={61} fill="none" {...hair} />
-        {Array.from({ length: 12 }, (_, k) => {
-          const a = (k * Math.PI) / 6;
-          return <line key={k} x1={r2(50 * Math.sin(a))} y1={r2(-50 * Math.cos(a))} x2={r2(56 * Math.sin(a))} y2={r2(-56 * Math.cos(a))} {...ink} />;
-        })}
-        <path d="M0 7L-30 -30" fill="none" stroke={CAT.ink} strokeWidth={3} strokeLinecap="round" />
-        <circle r={5} fill={CAT.amber} {...ink} />
-        <Price x={0} y={38} size={24} anchor="middle">100 ms</Price>
-      </g>
-      <path d="M435 108H530" fill="none" {...ink} />
-      <path d={head.right(530, 108, 8)} fill="none" {...ink} />
-      <Tile x={548} y={20} w={230} h={165} />
-      <Numeral x={565} y={43}>1</Numeral>
-      <CatKey x={760} y={41} size={8} anchor="end">One impression</CatKey>
-      <Sneaker id={id} cx={663} cy={96} s={1.35} />
-      <NameLines x={580} y={139} w={166} />
-      <Price x={580} y={169} size={17}>$24.00</Price>
-      <Price x={750} y={169} size={15} anchor="end" fill={CAT.amberText}>Sold</Price>
-    </Frame>
-  );
-}
-
-/** A single parcel-sized impression bought beside an insertion order for a whole month's banner slot. */
-export function ManualToMoment() {
-  const id = "w5-manual";
-  return (
-    <Frame
-      width={800}
-      height={266}
-      label="A human-negotiated insertion order reserves a newspaper banner for a whole month. Beside it, one auction stamp selects one impression for one visitor at one moment, highlighted in amber."
-      svgProps={{ "data-plate": "manual-to-moment" }}
-    >
-      <HalftoneDefs id={id} />
-      <g transform="rotate(-3 164 132)">
-        <OrderForm x={30} y={26} w={268} h={208} />
-        <CatKey x={48} y={42} size={12} fill={CAT.tile}>Insertion order</CatKey>
-        <CatKey x={48} y={76} size={9}>One month</CatKey>
-        <Price x={280} y={205} size={16} anchor="end">Signed</Price>
-      </g>
-      <rect x={312} y={48} width={104} height={154} fill={CAT.tile} {...ink} />
-      <rect x={320} y={58} width={88} height={16} fill={ht(id, "light")} {...hair} />
-      <rect x={320} y={85} width={88} height={72} fill={CAT.tile} {...ink} />
-      <NameLines x={325} y={169} w={77} />
-      <NameLines x={325} y={184} w={65} />
-      <CatKey x={364} y={115} size={10} anchor="middle">Fixed</CatKey>
-      <CatKey x={364} y={135} size={10} anchor="middle">banner</CatKey>
-      <g transform="rotate(-9 481 130)">
-        <circle cx={481} cy={130} r={48} fill={CAT.tile} stroke={CAT.amber} strokeWidth={4} />
-        <circle cx={481} cy={130} r={42} fill="none" {...ink} />
-        <CatKey x={481} y={125} size={11} anchor="middle" fill={CAT.amberText}>One</CatKey>
-        <CatKey x={481} y={145} size={9} anchor="middle">impression</CatKey>
-      </g>
-      <path d="M536 130H576" fill="none" {...ink} />
-      <path d={head.right(576, 130, 7)} fill="none" {...ink} />
-      <Person id={id} cx={646} cy={117} s={1.55} />
-      <Tile x={596} y={183} w={172} h={52} />
-      <CatKey x={609} y={202} size={8}>Specific user</CatKey>
-      <Price x={609} y={222} size={12}>Specific moment</Price>
-    </Frame>
-  );
-}
-
-/** Buy-side offers and sell-side inventory meet at one exchange before the page finishes rendering. */
-export function BuySellDeadline() {
-  const id = "w5-sides";
-  return (
-    <Frame
-      width={800}
-      height={224}
-      label="Buy-side bid slips on the left and sell-side catalogue inventory on the right meet at an ad exchange. A 100 millisecond deadline sits above the exchange, highlighted in amber."
-      svgProps={{ "data-plate": "buy-sell-deadline" }}
-    >
-      <HalftoneDefs id={id} />
-      <Tile x={30} y={58} w={214} h={134} />
-      <Numeral x={44} y={80}>1</Numeral>
-      <CatKey x={225} y={79} size={10} anchor="end">Buy side</CatKey>
-      <g>
-        <rect x={49} y={97} width={175} height={34} fill={CAT.tile} {...ink} />
-        <CatKey x={60} y={119} size={9}>Bid</CatKey>
-        <Price x={211} y={120} size={20} anchor="end">$2.80</Price>
-        <rect x={49} y={143} width={175} height={34} fill={CAT.tile} {...ink} />
-        <CatKey x={60} y={165} size={9}>Bid</CatKey>
-        <Price x={211} y={166} size={20} anchor="end">$3.10</Price>
-      </g>
-      <Tile x={556} y={58} w={214} h={134} />
-      <Numeral x={570} y={80}>2</Numeral>
-      <CatKey x={751} y={79} size={10} anchor="end">Sell side</CatKey>
-      <rect x={578} y={98} width={72} height={72} fill={CAT.tile} {...ink} />
-      <Sneaker id={id} cx={614} cy={126} s={0.62} />
-      <NameLines x={587} y={151} w={54} />
-      <rect x={674} y={98} width={72} height={72} fill={CAT.tile} {...ink} />
-      <Mug id={id} cx={710} cy={126} scale={0.85} />
-      <NameLines x={683} y={151} w={54} />
-      <path d="M244 124H327M473 124H556" fill="none" {...ink} />
-      <path d={head.right(327, 124, 7)} fill="none" {...ink} />
-      <path d={head.left(473, 124, 7)} fill="none" {...ink} />
-      <rect x={327} y={91} width={146} height={66} fill={CAT.tile} {...ink} />
-      <rect x={330} y={94} width={140} height={60} fill="none" {...hair} />
-      <CatKey x={400} y={118} size={10} anchor="middle">Ad</CatKey>
-      <CatKey x={400} y={139} size={10} anchor="middle">exchange</CatKey>
-      <Stopwatch cx={400} cy={52} r={30} t={0.1} />
-      <rect x={365} y={7} width={70} height={22} fill={CAT.tile} />
-      <Price x={400} y={23} size={17} anchor="middle" fill={CAT.amberText}>100 ms</Price>
-    </Frame>
   );
 }
 
@@ -208,7 +68,7 @@ export function AuctionClock() {
         <HalftoneDefs id={id} />
         {RTB_STAGES.map((s, k) => (
           <g key={s.name}>
-            <Price x={35 + k * 197} y={28} size={14} fill={k === stage ? CAT.amberText : CAT.ink}>{`0${k + 1}`}</Price>
+            <Price x={35 + k * 197} y={28} size={14} fill={k === stage ? CAT.amberText : CAT.ink}>{k + 1}</Price>
             <CatKey x={61 + k * 197} y={27} size={10} fill={k === stage ? CAT.amberText : CAT.ink}>{s.name}</CatKey>
             <line x1={35 + k * 197} y1={38} x2={212 + k * 197} y2={38} stroke={k === stage ? CAT.amber : CAT.ink} strokeWidth={k === stage ? 2.5 : 0.5} />
           </g>
@@ -321,38 +181,6 @@ export function DealAccess() {
         ]}
       />
     </div>
-  );
-}
-
-/** One viewer and one impression, appraised differently at three advertisers' desks. */
-export function SameSlotDifferentValue() {
-  const id = "w5-value";
-  const bids = ["$0.40", "$3.80", "$1.10"];
-  return (
-    <Frame
-      width={800}
-      height={258}
-      label="The same shopper and the same blank ad slot connect to three advertiser valuation desks. Their offers differ: 40 cents, 3 dollars 80 highlighted in amber, and 1 dollar 10."
-      svgProps={{ "data-plate": "same-slot-different-value" }}
-    >
-      <HalftoneDefs id={id} />
-      <Person id={id} cx={118} cy={104} s={1.8} />
-      <Tile x={54} y={178} w={128} h={54} />
-      <CatKey x={118} y={199} size={9} anchor="middle">One viewer</CatKey>
-      <Price x={118} y={221} size={13} anchor="middle">One impression</Price>
-      {[0, 1, 2].map((k) => {
-        const y = 27 + k * 88;
-        return (
-          <g key={k}>
-            <path d={`M181 127H250V${y + 33}H370`} fill="none" {...ink} />
-            <path d={head.right(370, y + 33, 6)} fill="none" {...ink} />
-            <BidSlip x={370} y={y} price={bids[k]} winner={k === 1} />
-            <OrderForm x={558} y={y} w={70} h={55} />
-            <Price x={698} y={y + 35} size={18}>{bids[k]}</Price>
-          </g>
-        );
-      })}
-    </Frame>
   );
 }
 
@@ -512,39 +340,6 @@ export function TargetingScenes() {
   );
 }
 
-/** An empty reader's chair beside a receipt paid for an ad stack nobody could see. */
-export function PaidWithoutViewer() {
-  const id = "w5-unseen";
-  return (
-    <Frame
-      width={800}
-      height={216}
-      label="An empty reader's chair faces a stack of concealed advertisements. Coins buy a receipt for one million impressions, but no person is present to see them. The receipt is amber."
-      svgProps={{ "data-plate": "paid-without-viewer" }}
-    >
-      <HalftoneDefs id={id} />
-      <g transform="translate(84 111)">
-        <path d="M-48 20V-36Q-48 -49 -35 -49H35Q48 -49 48 -36V20M-48 5H48M-36 20V47M36 20V47" fill={ht(id, "light")} {...ink} />
-        <rect x={-33} y={-34} width={66} height={25} fill={CAT.tile} {...hair} />
-      </g>
-      <rect x={244} y={48} width={174} height={128} fill={CAT.tile} {...ink} />
-      <rect x={257} y={34} width={174} height={128} fill={CAT.tile} {...ink} />
-      <rect x={270} y={20} width={174} height={128} fill={CAT.tile} {...ink} />
-      <rect x={273} y={23} width={168} height={122} fill="none" {...hair} />
-      <rect x={285} y={35} width={10} height={10} fill={CAT.ink} />
-      <CatKey x={357} y={122} size={10} anchor="middle">1 × 1</CatKey>
-      <path d="M454 112H529" fill="none" {...ink} />
-      <path d={head.right(529, 112, 7)} fill="none" {...ink} />
-      <Receipt x={546} y={26} w={118} h={168} />
-      <CatKey x={605} y={63} size={9} anchor="middle">1,000,000</CatKey>
-      <Price x={605} y={88} size={12} anchor="middle">impressions</Price>
-      <NameLines x={562} y={108} w={86} />
-      <Price x={605} y={158} size={24} anchor="middle" fill={CAT.amberText}>Paid</Price>
-      {[0, 1, 2].map((k) => <Coin key={k} id={id} cx={730} cy={129 - k * 10} rx={30} ry={7} t={7} />)}
-    </Frame>
-  );
-}
-
 type Verification = "viewable" | "fraud" | "safety" | "frequency";
 
 /** The MRC threshold is a two-part instrument. Verification modes expose four different failures and controls. */
@@ -629,7 +424,7 @@ export function VerificationLab() {
                   <Tile x={x} y={42} w={108} h={148} />
                   <Sneaker id={id} cx={x + 54} cy={100} s={0.8} />
                   <NameLines x={x + 16} y={143} w={76} />
-                  <Price x={x + 16} y={173} size={13}>{on ? k + 1 : "n/a"}</Price>
+                  <Price x={x + 16} y={173} size={13}>{on ? k + 1 : ""}</Price>
                   {!on ? <g><path d={`M${x + 10} 180L${x + 98} 52`} stroke={CAT.tile} strokeWidth={12} /><path d={`M${x + 10} 180L${x + 98} 52`} stroke={CAT.ink} strokeWidth={2} /></g> : null}
                 </g>
               );
@@ -721,41 +516,6 @@ export function SupplyPath() {
   );
 }
 
-/** Once-linked websites lose their shared identifier as browser, OS and privacy restrictions intervene. */
-export function BrokenCookieTrail() {
-  const id = "w5-cookie";
-  return (
-    <Frame
-      width={800}
-      height={236}
-      label="A trail of cookie tags and mobile advertising identifiers once connected three websites. Browser restrictions, an opt-in prompt and privacy rules interrupt the trail. The broken link is amber."
-      svgProps={{ "data-plate": "broken-cookie-trail" }}
-    >
-      <HalftoneDefs id={id} />
-      {[0, 1, 2].map((k) => {
-        const x = 40 + k * 272;
-        return (
-          <g key={k}>
-            <rect x={x} y={72} width={164} height={122} fill={CAT.tile} {...ink} />
-            <rect x={x + 5} y={77} width={154} height={112} fill="none" {...hair} />
-            <rect x={x + 12} y={86} width={140} height={10} fill={CAT.ink} />
-            <NameLines x={x + 23} y={119} w={118} gap={9} />
-            <NameLines x={x + 23} y={151} w={93} gap={9} />
-            <circle cx={x + 82} cy={42} r={23} fill={ht(id, "dense")} {...ink} />
-            <path d={`M${x + 85} 18Q${x + 76} 27 ${x + 86} 34Q${x + 74} 41 ${x + 82} 48Q${x + 71} 56 ${x + 83} 64`} fill={CAT.paper} {...ink} />
-            <CatKey x={x + 82} y={219} size={10} anchor="middle">{k === 1 ? "Mobile ID" : "3P cookie"}</CatKey>
-          </g>
-        );
-      })}
-      <path d="M205 135H299M477 135H571" fill="none" {...ink} />
-      <path d="M246 120L262 150M518 120L534 150" stroke={CAT.ink} strokeWidth={6} />
-      <path d="M246 120L262 150M518 120L534 150" stroke={CAT.amber} strokeWidth={3.5} />
-      <rect x={330} y={10} width={140} height={41} fill={CAT.tile} {...ink} />
-      <CatKey x={400} y={35} size={10} anchor="middle">Allow tracking?</CatKey>
-    </Frame>
-  );
-}
-
 type PrivacyRoute = "capi" | "cleanroom" | "contextual";
 
 /** Privacy-preserving mechanisms, drawn as documents, secure joins and content frames rather than tracking identifiers. */
@@ -836,41 +596,6 @@ export function PrivacyRoutes() {
         options={[{ id: "capi", label: "Conversion API" }, { id: "cleanroom", label: "Data clean room" }, { id: "contextual", label: "Contextual AI" }]}
       />
     </div>
-  );
-}
-
-/** Creative assets and profit signals enter one automated campaign suite. */
-export function CreativeToBlackBox() {
-  const id = "w5-blackbox-intro";
-  return (
-    <Frame
-      width={800}
-      height={238}
-      label="Modular headlines, a product catalogue, creative variations and a margin-adjusted conversion-value receipt feed an automated campaign console. A single amber profit signal enters the black-box system."
-      svgProps={{ "data-plate": "creative-to-blackbox" }}
-    >
-      <HalftoneDefs id={id} />
-      <OrderForm x={32} y={42} w={106} h={130} />
-      <NameLines x={47} y={87} w={75} />
-      <NameLines x={47} y={110} w={62} />
-      <Tile x={158} y={42} w={126} h={130} />
-      <Mug id={id} cx={221} cy={95} scale={1.45} />
-      <NameLines x={177} y={134} w={88} />
-      <Price x={177} y={158} size={13}>$18.00</Price>
-      <Tile x={310} y={42} w={108} h={130} />
-      <CatKey x={364} y={76} size={9} anchor="middle">Conversion</CatKey>
-      <Price x={364} y={122} size={18} anchor="middle" fill={CAT.amberText}>Profit</Price>
-      <NameLines x={326} y={140} w={76} />
-      <path d="M138 108H158M284 108H310M418 108H485" fill="none" {...ink} />
-      <path d={head.right(485, 108, 7)} fill="none" {...ink} />
-      <rect x={485} y={42} width={275} height={130} fill={CAT.tile} {...ink} />
-      <rect x={489} y={46} width={267} height={122} fill="none" {...hair} />
-      <Agent id={id} cx={622.5} cy={100} s={1.55} />
-      <CatKey x={622.5} y={149} size={10} anchor="middle">Goal-based optimization</CatKey>
-      <path d="M622 172V212H180" fill="none" {...ink} />
-      <path d={head.left(180, 212, 6)} fill="none" {...ink} />
-      <Price x={495} y={207} size={14} anchor="middle" fill={CAT.amberText}>Margin-adjusted value</Price>
-    </Frame>
   );
 }
 

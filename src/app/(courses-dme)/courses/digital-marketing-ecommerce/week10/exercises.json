@@ -1,0 +1,79 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "bopis-ship-from-store-and-real-time-inventory-visibility",
+    "prompt": "A home-goods chain runs several omnichannel services. Name the model behind each case.",
+    "options": [
+      { "id": "bopis", "label": "BOPIS" },
+      { "id": "sfs", "label": "Ship-from-store" },
+      { "id": "aisle", "label": "Endless aisle" }
+    ],
+    "cases": [
+      { "id": "lamp", "text": "A shopper pays for a desk lamp on the app at noon and collects it from the branch near the office at five.", "answer": "bopis", "explanation": "The item is paid online and picked up at a local store within hours." },
+      { "id": "rug", "text": "An online rug order from a buyer in Halifax is packed in the Halifax branch instead of the warehouse in Calgary.", "answer": "sfs", "explanation": "The OMS fulfills the online order from a nearby store acting as a fulfillment node." },
+      { "id": "chair", "text": "A clerk orders the green version of a chair on a tablet in the showroom, to be shipped to the customer's home.", "answer": "aisle", "explanation": "An out-of-stock colour is ordered from the central warehouse for home delivery before the shopper leaves." },
+      { "id": "curbside", "text": "A parent orders paint online and an associate loads it into the car boot in the store's parking lot.", "answer": "bopis", "explanation": "Curbside pickup is a form of BOPIS." },
+      { "id": "towels", "text": "A towel set ordered on the website leaves by courier from a mall store three kilometres from the buyer.", "answer": "sfs", "explanation": "A physical store ships the online order directly to the buyer." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "showrooming-webrooming-and-channel-incentive-alignment",
+    "prompt": "Sort each shopper's journey into showrooming or webrooming.",
+    "bins": [
+      { "id": "show", "label": "Showrooming" },
+      { "id": "web", "label": "Webrooming" }
+    ],
+    "cards": [
+      { "id": "mattress", "text": "Lies on three mattresses in a bedding store, then orders the same model from an online-only seller for 120 dollars less.", "bin": "show", "explanation": "The product is inspected in the store and bought online at a lower price." },
+      { "id": "drill", "text": "Compares drill reviews online, sees one is in stock at the hardware store nearby, and drives there to buy it that afternoon.", "bin": "web", "explanation": "Research happens online and the purchase is completed in the store to avoid waiting." },
+      { "id": "boots", "text": "Tries on hiking boots in an outdoor shop to find the right size, then scans the barcode and buys them from a web retailer.", "bin": "show", "explanation": "The store is used for the try-on and the purchase goes to an online competitor." },
+      { "id": "tv", "text": "Reads a specification comparison of two televisions on a phone and then buys one at the electronics store on the way home.", "bin": "web", "explanation": "Online research precedes an in-store purchase." },
+      { "id": "perfume", "text": "Smells several perfumes at a department store counter and later orders the favourite from a discount website.", "bin": "show", "explanation": "In-person inspection leads to a cheaper online purchase." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "warehouse-automation-zone-skipping-and-the-last-mile-bottleneck",
+    "question_text": "A pet-food brand ships everything from one warehouse. Its carrier reports that delivery vans in rural areas make only 40 stops per route and that one in seven first attempts fails because nobody is home. Which change targets the largest part of the brand's shipping cost?",
+    "hint": "Ask which leg of the parcel's trip carries most of the cost, and why.",
+    "correct_answer_citation": "The \"last mile\" (the final leg from the local parcel sorting depot to the customer's front door) typically accounts for more than 50 percent of total shipping cost because residential stops have low drop density, traffic delays, and failed first-attempt deliveries.",
+    "correct_answer_index": 1,
+    "options": [
+      { "option_text": "Negotiating a cheaper rate on the long-haul truck from the warehouse to the regional sorting depots.", "option_explanation": "Line haul matters, but the last mile usually accounts for more than half of shipping cost." },
+      { "option_text": "Raising drop density and cutting failed first attempts, for example with pickup lockers and delivery-time choices.", "option_explanation": "Correct. Low drop density and failed first attempts are what make the last mile the costliest leg." },
+      { "option_text": "Adding goods-to-person robots in the warehouse to cut walking time.", "option_explanation": "Robots lower unit handling cost inside the FC, not the cost of the doorstep leg." },
+      { "option_text": "Switching to air freight so parcels reach the depot faster.", "option_explanation": "Air freight raises cost, and it does nothing about stops per route or failed attempts." }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "return-policy-leniency-bracketing-and-reverse-logistics-costs",
+    "prompt": "Match each return behaviour or cost to the case that shows it.",
+    "term_label": "Concept",
+    "match_label": "Case",
+    "pairs": [
+      { "id": "bracket", "term": "Bracketing", "match": "A customer orders the same running jacket in small, medium and large, planning to send two back.", "explanation": "Several sizes are ordered on purpose with the plan to keep one." },
+      { "id": "wardrobe", "term": "Wardrobing", "match": "A buyer wears a formal suit to one wedding with the tags tucked inside and returns it the next week for a full refund.", "explanation": "The item is used once and returned as if new." },
+      { "id": "risk", "term": "Lower upfront purchase risk", "match": "After a store extends its return window to 90 days, more first-time visitors place an order.", "explanation": "Leniency increases gross conversion and initial orders." },
+      { "id": "hazard", "term": "Moral hazard", "match": "After free returns are introduced, customers buy more items they are unsure about, and the share sent back rises.", "explanation": "Leniency also raises return volume and reverse-logistics cost." },
+      { "id": "reverse", "term": "Reverse-logistics handling", "match": "A warehouse worker opens each returned parcel, checks the item for stains and steams it before restocking.", "explanation": "Returns arrive as individual parcels that are inspected, graded and cleaned by hand." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "order-tracking-delivery-transparency-and-ai-customer-service-triage",
+    "prompt": "A furniture retailer's AI support agent is connected to its OMS and RMS. Sort each request into what the agent should resolve alone and what it should escalate to a human.",
+    "bins": [
+      { "id": "agent", "label": "AI agent resolves alone" },
+      { "id": "human", "label": "Escalate to a human" }
+    ],
+    "cards": [
+      { "id": "where", "text": "A customer asks which day the bookshelf ordered last week will arrive.", "bin": "agent", "explanation": "Checking tracking status is a routine transactional request." },
+      { "id": "address", "text": "A customer wants to change the delivery address on a sofa that has not left the warehouse yet.", "bin": "agent", "explanation": "Updating an address before dispatch is routine and the OMS holds the order." },
+      { "id": "qr", "text": "A customer needs a return code for an unopened lamp.", "bin": "agent", "explanation": "Generating a return QR code is a routine RMS task." },
+      { "id": "broken", "text": "A furious customer reports that the dining table bought for a family reunion this weekend arrived split in two.", "bin": "human", "explanation": "A damaged, time-critical and emotional case should go to an empowered human." },
+      { "id": "lost", "text": "A long-standing customer says a 4,000-dollar sectional sofa shows as delivered but never arrived.", "bin": "human", "explanation": "A lost high-value parcel for a high-lifetime-value customer needs a human with the transcript." }
+    ]
+  }
+]

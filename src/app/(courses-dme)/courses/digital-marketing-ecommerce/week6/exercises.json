@@ -1,0 +1,100 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "paid-owned-and-earned-media-on-social-platforms",
+    "prompt": "A small hot-sauce brand reviews last month's social activity. Sort each item into paid, owned or earned media.",
+    "bins": [
+      { "id": "paid", "label": "Paid" },
+      { "id": "owned", "label": "Owned" },
+      { "id": "earned", "label": "Earned" }
+    ],
+    "cards": [
+      { "id": "recipe-reel", "text": "A recipe reel posted on the brand's own profile.", "bin": "owned", "explanation": "The brand published it on its own channel, at no media cost." },
+      { "id": "broadcast", "text": "A weekly update sent to the brand's broadcast channel subscribers.", "bin": "owned", "explanation": "Broadcast channels the brand runs are owned media." },
+      { "id": "carousel", "text": "A catalog carousel bought in the auction manager to reach non-followers who like spicy food.", "bin": "paid", "explanation": "It was bought through the platform's self-serve auction to reach non-followers." },
+      { "id": "vertical-ad", "text": "A sponsored vertical video shown to food lovers in three cities.", "bin": "paid", "explanation": "A sponsored in-feed video is paid media." },
+      { "id": "taste-test", "text": "A customer's unprompted taste-test video that friends share widely.", "bin": "earned", "explanation": "Voluntary, uncompensated mentions cannot be bought directly." },
+      { "id": "forum", "text": "A community thread where strangers argue about which of its sauces is hottest.", "bin": "earned", "explanation": "Organic community discussion is earned media." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "social-graphs-versus-interest-graphs",
+    "question_text": "A pottery student with 40 followers posts a short wheel-throwing video that most early viewers watch to the end. On the same day, a homeware chain with 900,000 followers posts a product clip that most early viewers skip. On an interest-graph video platform, what should we expect?",
+    "hint": "Ask what the interest graph uses to decide distribution.",
+    "correct_answer_citation": "In an interest-graph feed (pioneered at scale by short-form vertical video platforms), an account with zero followers can achieve massive organic distribution if its video holds viewer attention in early test cohorts.",
+    "correct_answer_index": 2,
+    "options": [
+      { "option_text": "The chain's clip reaches far more people, because reach follows follower count.", "option_explanation": "That describes a social-graph feed. Here follower count guarantees little reach." },
+      { "option_text": "Both reach about the same number of people, because each is shown only to its followers.", "option_explanation": "An interest graph distributes content independent of whether the viewer follows the creator." },
+      { "option_text": "The student's video can reach far more people, because it held attention in early test viewers.", "option_explanation": "Correct. Watch time in early cohorts, not followers, drives distribution." },
+      { "option_text": "Neither is distributed, because the platform waits for likes from followers.", "option_explanation": "Interest-graph ranking leans on watch time, replays, shares and comments from any viewer." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "full-funnel-paid-social-and-creative-led-targeting",
+    "prompt": "A sleep-mask brand plans its paid social campaigns. Place each ad in the funnel stage it serves.",
+    "bins": [
+      { "id": "top", "label": "Top: prospecting" },
+      { "id": "mid", "label": "Mid: consideration" },
+      { "id": "bottom", "label": "Bottom: conversion and DPA" }
+    ],
+    "cards": [
+      { "id": "story", "text": "A broad-audience video about lying awake at 3 a.m. under streetlight glare.", "bin": "top", "explanation": "A narrative hook introducing the problem to cold audiences." },
+      { "id": "hook-test", "text": "Five short opening hooks tested on people who have never visited the store.", "bin": "top", "explanation": "Prospecting creative aimed at cold audiences." },
+      { "id": "demo", "text": "A blackout demonstration shown to people who watched the 3 a.m. video.", "bin": "mid", "explanation": "Demonstrations go to users who engaged with prospecting content." },
+      { "id": "compare", "text": "A comparison carousel of the mask against foam earplugs, shown to profile visitors.", "bin": "mid", "explanation": "Comparison carousels serve consideration audiences." },
+      { "id": "cart", "text": "The exact silk mask and its current price, pulled from the catalog feed for cart abandoners.", "bin": "bottom", "explanation": "Dynamic product ads use the catalog feed to retarget high-intent users." },
+      { "id": "promo", "text": "A personalized 10 percent offer on the colour a site visitor viewed twice.", "bin": "bottom", "explanation": "Personalized SKUs and promotions for high-intent visitors are bottom-of-funnel." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "creator-tiers-parasocial-trust-and-partner-selection",
+    "question_text": "A climbing-chalk brand compares two creators for the same fee. Creator A has 600,000 followers, and her recent videos average 9,000 views with generic one-word comments. Creator B has 25,000 followers who are mostly climbers, and his videos average 14,000 views with detailed gear questions. Which choice follows good partner selection?",
+    "hint": "Look past the follower totals to the signals marketers audit.",
+    "correct_answer_citation": "Selecting creator partners by follower count alone is a classic digital marketing error, because follower totals can be inflated by inactive accounts or bots. Marketers instead audit audience demographic fit, comment quality, average view-to-follower ratios, and past conversion performance.",
+    "correct_answer_index": 1,
+    "options": [
+      { "option_text": "Creator A, because 600,000 followers guarantees broader reach.", "option_explanation": "Her views are only 1.5 percent of her followers, and the comments suggest inactive or bot accounts." },
+      { "option_text": "Creator B, because his audience fits, his comments are substantive and his views are over half his followers.", "option_explanation": "Correct. Audience fit, comment quality and view-to-follower ratio all favour B." },
+      { "option_text": "Creator A, because macro-influencers always have higher engagement rates.", "option_explanation": "Macro-influencers typically have lower average engagement rates." },
+      { "option_text": "Either one, because parasocial trust depends only on how often a creator posts.", "option_explanation": "Parasocial trust grows over time, but partner selection still requires auditing the audience." }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "native-in-app-checkout-and-livestream-shopping",
+    "prompt": "A homeware brand describes four moments in its social commerce work. Name the concept each one shows.",
+    "options": [
+      { "id": "sync", "label": "Native storefront sync" },
+      { "id": "tag", "label": "Shoppable tag" },
+      { "id": "live", "label": "Livestream shopping" },
+      { "id": "control", "label": "Platform control of checkout" }
+    ],
+    "cases": [
+      { "id": "api", "text": "When a lamp sells out in the warehouse, its stock count inside the social app drops to zero within seconds through an API link.", "answer": "sync", "explanation": "The merchant's PIM and OMS sync inventory and pricing with the in-app shop." },
+      { "id": "tap", "text": "A viewer taps the throw blanket in a living-room photo, picks the grey one and pays with a card saved in the app.", "answer": "tag", "explanation": "A shoppable tag lets the viewer select and pay in two taps." },
+      { "id": "broadcast", "text": "A host demonstrates a kettle on camera, answers chat questions, and announces a coupon that expires in ten minutes.", "answer": "live", "explanation": "Live video, chat, demonstration and a time-limited coupon make livestream shopping." },
+      { "id": "data", "text": "Orders double, but the brand receives no email addresses for the new buyers and pays a commission on each sale.", "answer": "control", "explanation": "The platform keeps the checkout, charges commission and restricts the customer data passed back." }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "virtual-influencers-synthetic-content-and-consumer-reactance",
+    "prompt": "A brand considers a clearly disclosed virtual influencer for several products. Sort each product by how well a virtual endorser fits it.",
+    "bins": [
+      { "id": "fits", "label": "Virtual endorser fits" },
+      { "id": "poor", "label": "Needs lived experience" }
+    ],
+    "cards": [
+      { "id": "sunglasses", "text": "Designer sunglasses for a summer lookbook.", "bin": "fits", "explanation": "A symbolic, fashion-oriented product does not rely on physical sensory trust." },
+      { "id": "nails", "text": "A limited-edition nail polish colour.", "bin": "fits", "explanation": "Appeal is aesthetic and hedonic." },
+      { "id": "game-skin", "text": "A collectible outfit for a video game character.", "bin": "fits", "explanation": "A symbolic product that a synthetic persona can model." },
+      { "id": "mattress", "text": "A mattress claimed to ease lower-back pain.", "bin": "poor", "explanation": "The claim depends on a body that felt the relief." },
+      { "id": "probiotic", "text": "A probiotic said to settle digestion.", "bin": "poor", "explanation": "A credence good: buyers rely on trust that someone experienced the effect." },
+      { "id": "insoles", "text": "Running insoles that reduce knee strain.", "bin": "poor", "explanation": "An AI persona cannot authentically claim relief from joint pain." }
+    ]
+  }
+]

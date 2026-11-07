@@ -471,3 +471,47 @@ export function Hotel({ id, cx, cy, s = 1, amber = false }: { id: string; cx: nu
     </g>
   );
 }
+
+/** An engraved backpack centred on (cx, cy): halftone body, dense side, white front pocket. About 52 wide and 76 tall. */
+export function Backpack({ id, cx, cy }: { id: string; cx: number; cy: number }) {
+  return (
+    <g transform={`translate(${cx} ${cy})`} strokeLinejoin="round">
+      <path d="M-8 -34Q0 -42 8 -34" fill="none" stroke={CAT.ink} strokeWidth={2.4} />
+      <rect x={-26} y={-34} width={52} height={66} rx={12} fill={ht(id, "light")} stroke={CAT.ink} strokeWidth={LINE.outline} />
+      <path d="M14 -33Q26 -32 26 -22V20Q26 32 14 32Z" fill={ht(id, "dense")} stroke="none" />
+      <rect x={-18} y={4} width={30} height={22} rx={5} fill={CAT.tile} stroke={CAT.ink} strokeWidth={LINE.outline} />
+      <line x1={-14} y1={10} x2={8} y2={10} stroke={CAT.ink} strokeWidth={LINE.hair} />
+    </g>
+  );
+}
+
+/** A laptop at (x, y): a 56 × 36 screen over a keyboard base. */
+export function Laptop({ x, y, tone = CAT.ink }: { x: number; y: number; tone?: string }) {
+  return (
+    <g>
+      <rect x={x} y={y} width={56} height={36} rx={2} fill={CAT.tile} stroke={tone} strokeWidth={LINE.outline} />
+      <rect x={x + 4} y={y + 4} width={48} height={28} fill="none" stroke={tone} strokeWidth={LINE.hair} />
+      {[0, 1, 2].map((k) => (
+        <rect key={k} x={x + 8 + k * 14} y={y + 8} width={12} height={12} fill="none" stroke={tone} strokeWidth={LINE.hair} />
+      ))}
+      <line x1={x + 8} y1={y + 25} x2={x + 34} y2={y + 25} stroke={tone} strokeWidth={LINE.hair} />
+      <path d={`M${x - 6} ${y + 36}H${x + 62}L${x + 58} ${y + 42}H${x - 2}Z`} fill={CAT.tile} stroke={tone} strokeWidth={LINE.outline} strokeLinejoin="round" />
+    </g>
+  );
+}
+
+/** A bag of coffee beans centred on (cx, cy), about 44 wide and 60 tall. `level` (0 to 1) is how full it is. */
+export function CoffeeBag({ id, cx, cy, level = 1 }: { id: string; cx: number; cy: number; level?: number }) {
+  const top = r2(cy + 26 - 44 * level);
+  return (
+    <g strokeLinejoin="round">
+      <path d={`M${cx - 20} ${cy - 22}L${cx - 22} ${cy + 28}H${cx + 22}L${cx + 20} ${cy - 22}Z`} fill={CAT.tile} {...ink} />
+      {level > 0 ? <path d={`M${r2(cx - 21.5)} ${top}H${r2(cx + 21.5)}L${cx + 22} ${cy + 28}H${cx - 22}Z`} fill={ht(id, "light")} stroke="none" /> : null}
+      {level > 0 ? <path d={`M${r2(cx + 10)} ${top}H${r2(cx + 21.5)}L${cx + 22} ${cy + 28}H${cx + 10}Z`} fill={ht(id, "dense")} stroke="none" /> : null}
+      <path d={`M${cx - 20} ${cy - 22}L${cx - 22} ${cy + 28}H${cx + 22}L${cx + 20} ${cy - 22}Z`} fill="none" {...ink} />
+      <rect x={cx - 20} y={cy - 30} width={40} height={8} fill={CAT.tile} {...ink} />
+      <ellipse cx={cx} cy={cy - 6} rx={9} ry={6} fill={CAT.tile} {...ink} />
+      <line x1={cx} y1={cy - 11} x2={cx} y2={cy - 1} {...hair} />
+    </g>
+  );
+}

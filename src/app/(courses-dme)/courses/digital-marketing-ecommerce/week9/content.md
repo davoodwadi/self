@@ -20,6 +20,7 @@ week: week9
 - Different architectures suit physical goods, replenishable consumables, and digital software or content.
 
 ## Dynamic Pricing, Personalized Pricing, Subscriptions, Freemium, and Bundling [exercise]
+[figure: one winter jacket quoted to two shoppers on a quiet Monday and on the first snowy Friday, where under dynamic pricing both shoppers see the same price and it rises on Friday, while under personalized pricing the two shoppers see different prices at the same moment]
 - Dynamic pricing adjusts the price of a product over time in response to market-level supply and demand conditions (e.g., airline seats, ride-share surge multipliers, or seasonal outdoor gear), while quoting the same price to any two shoppers checking at the exact same moment.
 - Personalized (or first-degree) pricing quotes different prices or discount depths to different individual shoppers at the same moment based on their inferred willingness to pay, browsing history, device, or location.
 - Subscription and auto-replenishment pricing offers a recurring delivery discount (e.g., "Subscribe and Save 10%") in exchange for predictable repeat orders and higher Customer Lifetime Value.
@@ -27,6 +28,7 @@ week: week9
 - Pure and mixed bundling packages multiple complementary items together at a combined price lower than the sum of the individual items, increasing Average Order Value (AOV) and reducing unit fulfillment costs per item shipped.
 
 ## Consumer Fairness Perceptions and the Risks of Personalized Pricing [no-exercise]
+[figure: two price increases from Kahneman, Knetsch, and Thaler (1986) with each price split into unit cost and profit, a grocer passing on a 30 cent rise in the wholesale cost of lettuce and a hardware store raising snow shovels from $15 to $20 the morning after a snowstorm, with the share of respondents who judged each increase unfair]
 - Under dual-entitlement theory (Kahneman, Knetsch, and Thaler), consumers generally accept price increases that reflect genuine increases in the seller's costs, but judge price increases that merely exploit a buyer's urgency or profile as unfair.
 - When shoppers discover that an online retailer charged them a higher price than another shopper based on their postal code, desktop operating system, or loyalty history, trust collapses and brand backlash follows.
 - Rather than varying the public list price on the Product Detail Page across individuals, sophisticated e-commerce firms maintain a uniform public list price and deliver personalized price variation through targeted private coupons, loyalty tier rewards, or bundle discounts in CRM channels.
@@ -36,6 +38,7 @@ week: week9
 - Digital storefronts deploy behavioral pricing cues that interact with human cognitive heuristics.
 
 ## Reference Prices, Just-Below Pricing, Flash Sales, and Free-Shipping Thresholds [exercise]
+[figure: interactive spread of 200 shopping baskets where moving the free-shipping threshold shows which shoppers add an item to reach it, and how Average Order Value rises and then falls as the threshold moves beyond most baskets]
 - Strike-through reference pricing displays an anchor price (e.g., "Was $120, Now $89") next to the current selling price to create transaction utility, the psychological satisfaction of getting a deal. Under deceptive pricing laws, the strike-through anchor must be a bona fide price at which the item was genuinely offered for a reasonable period.
 - Just-below (or charm) pricing sets prices at $19.99 or $49.95 rather than $20.00 or $50.00, exploiting left-digit anchoring in which shoppers disproportionately weight the leftmost digit when encoding price magnitude.
 - Partitioned pricing separates the base product price from mandatory surcharges (such as shipping and handling), which can lower initial price perception on the listing card but triggers cart abandonment at checkout if fees feel excessive.
@@ -46,6 +49,7 @@ week: week9
 - Understanding the mathematics of gross margin shows why a 20 percent discount requires far more than a 20 percent increase in unit volume to break even.
 
 ## Margin Erosion, Deal-Waiting, and Promotional Guardrails [exercise]
+[figure: interactive discount on a $100 product with a $60 unit cost, where deepening the discount shrinks the contribution margin per unit and raises the number of units needed to earn the same total contribution as 100 full-price sales]
 - Consider a product that sells for $100 with a variable cost of goods sold and fulfillment of $60, yielding a $40 gross contribution margin (40 percent margin).
 - If the marketer runs a 20 percent sitewide discount, the selling price drops to $80 while the unit cost remains $60, cutting the contribution margin per unit in half from $40 to $20. The store must now sell twice as many units just to earn the same total dollar contribution.
 - Furthermore, frequent sitewide sales train customers in forward-buying (stockpiling during sales) and strategic deal-waiting, where loyal buyers delay full-price purchases until the next holiday code arrives.
@@ -61,6 +65,7 @@ week: week9
 - To compete at machine speed, merchants deploy automated repricing algorithms that monitor rival prices and adjust their own quotes continuously.
 
 ## Algorithmic Repricing Loops and Tacit Coordination Risks [exercise]
+[figure: interactive price trace for two sellers of the same product, where penny-undercut repricers spiral down until they reach a floor or cost, while two learning pricing agents trained in the market of Calvano et al. (2020) hold prices near the monopoly level, answer a forced price cut with a price war, and return to the high price]
 - Rule-based repricers follow deterministic instructions set by the seller, such as "Undercut the lowest FBA competitor by $0.05, down to a hard floor of $24.00."
 - When two sellers both deploy naive undercut-by-a-penny rules without proper floors, they can trigger a high-speed price war spiral that drives prices down to cost within minutes.
 - Reinforcement-learning (RL) pricing algorithms go beyond fixed rules by experimenting with prices and learning policies that maximize long-term cumulative profit in repeated marketplace interactions.
@@ -72,6 +77,7 @@ week: week9
 - Controlled experimental studies on AI shopping agents show that models both mitigate some framing traps and exhibit their own distinct heuristic sensitivities (Wadi & Ma, 2026a).
 
 ## Price Heuristics, Anchoring, and Attribute Trade-Offs in AI Agents [exercise]
+[figure: rise in the chance that an inspected hotel listing is booked when it carries a visible discount badge, for human shoppers and for two AI shopping agents (Wadi & Ma, 2026a)]
 - When all price components (item price, shipping fee, and unit quantity) are visible in structured text, an AI shopping agent can compute total landed unit price accurately, reducing the effectiveness of simple partitioned-pricing tricks.
 - However, because foundation models are trained on vast corpora of human commercial text, they internalize human-like decision heuristics and respond to reference-price anchors, promotional badges, and just-below pricing cues when evaluating options under ambiguity (Wadi & Ma, 2026a).
 - Moreover, the specificity of the consumer's delegation prompt strongly moderates how the agent weights price against quality. A vague prompt ("Buy me a good toaster") leaves the agent susceptible to framing and rank cues, whereas a constraint-specific prompt ("Find a two-slice stainless toaster under $60 with at least a 2-year warranty") anchors the agent on verifiable attribute cutoffs.

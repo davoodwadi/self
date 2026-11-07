@@ -10,30 +10,20 @@ import {
   ArchitectureChange,
   CheckoutRun,
   ColdStartSeed,
-  ConstraintFilter,
   DirectLedger,
   DoubleMarkup,
   Flywheel,
-  FourQuestions,
-  FourScenarios,
-  FunnelStages,
   InspectionsReal,
   Leakage,
   LeakyFunnel,
-  MultiHoming,
   OneVsThree,
   OwnListingRank,
-  RecordCabinet,
   RetailMediaLoop,
-  RevenueDrivers,
-  ScreenAssumption,
   SidesDiagram,
-  SystemsOfRecord,
   ThreeRoutes,
   TrafficTimesStore,
   TwoPages,
   TwoReaders,
-  WeeksVsMilliseconds,
 } from "./visuals";
 
 // ============================================================================
@@ -84,9 +74,6 @@ export default function Week1Page() {
                 connected by milliseconds and a shared data layer.
               </P>
             </Ruled>
-            <Plate>
-              <WeeksVsMilliseconds />
-            </Plate>
             <Ruled>
               <P>
                 Furthermore, the software architecture of the store directly determines what marketers can test,
@@ -159,8 +146,7 @@ export default function Week1Page() {
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Digital Commerce Models" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 Online businesses organize exchange through distinct commercial models that differ in{" "}
@@ -173,10 +159,6 @@ export default function Week1Page() {
                 requirements, and its control over the buyer relationship.
               </p>
             </Ruled>
-          </div>
-          <Plate>
-            <FourQuestions />
-          </Plate>
         </div>
       </Slide>
 
@@ -283,8 +265,7 @@ export default function Week1Page() {
         exercise={exercise["revenue-models-in-digital-commerce"]}
       >
         <SlideHeading>Revenue Models in Digital Commerce</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <ol className="grid gap-4">
+        <ol className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2 [&_p]:!text-[1.2rem]">
             <li>
               <Ruled>
                 <P>
@@ -320,11 +301,7 @@ export default function Week1Page() {
                 </P>
               </Ruled>
             </li>
-          </ol>
-          <Plate>
-            <RevenueDrivers />
-          </Plate>
-        </div>
+        </ol>
       </Slide>
 
       {/* ================================================================
@@ -337,7 +314,7 @@ export default function Week1Page() {
         exercise={exercise["matching-commercial-scenarios-to-digital-business-models"]}
       >
         <SlideHeading>Matching Commercial Scenarios to Digital Business Models</SlideHeading>
-        <div className="grid w-full gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2 [&_p]:!text-[1.2rem]">
           <Ruled>
             <P>
               A footwear manufacturer that launches its own web store to capture buyer email addresses and test new
@@ -367,9 +344,6 @@ export default function Week1Page() {
             </P>
           </Ruled>
         </div>
-        <Plate className="mt-4">
-          <FourScenarios />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -483,9 +457,6 @@ export default function Week1Page() {
                 weakens any single platform&apos;s pricing power.
               </P>
             </Ruled>
-            <Plate>
-              <MultiHoming />
-            </Plate>
           </div>
           <div className="grid content-start gap-3">
             <Ruled>
@@ -547,8 +518,7 @@ export default function Week1Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="The E-Commerce Information Systems Stack" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 Behind every digital storefront sits an information systems architecture that manages product
@@ -561,10 +531,6 @@ export default function Week1Page() {
                 launch new channels, run experiments, and adapt to new interfaces.
               </p>
             </Ruled>
-          </div>
-          <Plate>
-            <RecordCabinet />
-          </Plate>
         </div>
       </Slide>
 
@@ -626,7 +592,7 @@ export default function Week1Page() {
           ================================================================ */}
       <Slide id="core-systems-of-record-in-e-commerce" border className="!py-8">
         <SlideHeading>Core Systems of Record in E-Commerce</SlideHeading>
-        <ol className="grid w-full gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-4">
+        <ol className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2 [&_p]:!text-[1.2rem]">
           <li className="min-w-0">
             <Numbered n={1}>
               <Ruled>
@@ -671,9 +637,6 @@ export default function Week1Page() {
             </Numbered>
           </li>
         </ol>
-        <Plate className="mt-5">
-          <SystemsOfRecord />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -830,11 +793,7 @@ export default function Week1Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="From Web Browsers to Autonomous Shopping Agents" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <ScreenAssumption />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 For three decades, e-commerce storefronts were designed around a single assumption, namely that a
@@ -848,7 +807,6 @@ export default function Week1Page() {
                 <Term>autonomous intermediaries</Term> between the consumer and the storefront.
               </p>
             </Ruled>
-          </div>
         </div>
       </Slide>
 
@@ -905,7 +863,7 @@ export default function Week1Page() {
         exercise={exercise["how-agentic-commerce-reshapes-the-digital-funnel"]}
       >
         <SlideHeading>How Agentic Commerce Reshapes the Digital Funnel</SlideHeading>
-        <div className="grid w-full gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
           <div className="grid content-start gap-4">
             <Ruled>
               <P>
@@ -914,11 +872,6 @@ export default function Week1Page() {
                 boiler) instead of typing short keywords into a search bar.
               </P>
             </Ruled>
-            <Plate>
-              <ConstraintFilter />
-            </Plate>
-          </div>
-          <div className="grid content-start gap-4">
             <Ruled>
               <P>
                 In <Term>evaluation</Term>, the AI agent reads product specifications, shipping cutoffs, and
@@ -927,10 +880,10 @@ export default function Week1Page() {
                 (Wadi &amp; Ma, 2026a).
               </P>
             </Ruled>
-            <Plate>
-              <InspectionsReal />
-            </Plate>
           </div>
+          <Plate>
+            <InspectionsReal />
+          </Plate>
         </div>
         <div className="mt-5 grid w-full gap-6 md:grid-cols-2 md:gap-12">
           <Ruled>
@@ -1027,9 +980,6 @@ function FunnelStagesBlock() {
           </li>
         ))}
       </ol>
-      <Plate className="mt-4">
-        <FunnelStages />
-      </Plate>
     </div>
   );
 }

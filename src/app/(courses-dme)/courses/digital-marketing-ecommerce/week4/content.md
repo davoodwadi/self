@@ -10,6 +10,7 @@ week: week4
 - Marketplace ranking and recommendation algorithms determine which products win attention and sales across both human shoppers and AI shopping agents.
 
 ## The Algorithm as the Digital Shelf [no-exercise]
+[figure: a supermarket shelf of about thirty thousand items where a slotting fee buys the eye-level shelf, beside a phone results page drawn from hundreds of millions of SKUs where the first few slots are the eye-level endcap]
 - A physical supermarket holds roughly thirty thousand items, and consumer packaged goods brands pay slotting fees to place their boxes at eye level on the shelf.
 - A major online marketplace hosts hundreds of millions of stock-keeping units (SKUs), far more than any human or agent can inspect.
 - On a digital screen, the ranking and recommendation algorithm is the shelf, and the first few slots on the screen are the eye-level endcap.
@@ -26,6 +27,7 @@ week: week4
 - Over the past two decades, industrial recommenders have evolved from simple co-occurrence tables to deep two-stage neural pipelines.
 
 ## Content-Based Filtering Versus Collaborative Filtering [exercise]
+[figure: interactive comparison of a content-based recommender that matches item attribute tags with a collaborative recommender that matches buyers through a purchase matrix, where listing a new novel shows that only the content-based recommender can place it]
 - Content-based filtering recommends items whose structured attributes, text descriptions, or image embeddings match the attributes of items the user has liked or viewed in the past.
 - If a shopper buys a mystery novel by a Scandinavian author, a content-based system recommends other Scandinavian mystery novels using catalog metadata.
 - Collaborative filtering recommends items based on patterns in the user-item interaction matrix (views, cart additions, ratings, and purchases) across the entire population of shoppers, without requiring item metadata.
@@ -33,22 +35,26 @@ week: week4
 - Content-based filtering can recommend brand-new items that have no purchase history yet, whereas collaborative filtering discovers unexpected cross-category complements that share no text attributes.
 
 ## Cold Start, Filter Bubbles, and Two-Stage Retrieval-Ranking Pipelines [exercise]
+[figure: interactive two-stage pipeline where changing how many candidates retrieval passes to ranking trades the chance of keeping the best match against the 100 millisecond time budget]
 - The item cold-start problem occurs when a newly listed product has zero clicks or purchases, starving collaborative filtering models of interaction signals unless the platform uses content features or exploration bandits.
 - The user cold-start problem occurs when an anonymous or first-time visitor arrives with no historical profile, requiring the system to rely on session-based behavior or contextual popularity.
 - Over-specialization (or the filter bubble) occurs when a recommender shows only narrow variations of what a shopper already bought, suppressing catalog discovery and cross-selling.
 - To score millions of items in under 100 milliseconds, production marketplaces use a two-stage architecture, where Stage 1 (candidate retrieval) rapidly narrows millions of SKUs down to a few hundred using approximate nearest-neighbor vector search, and Stage 2 (ranking) scores those few hundred candidates with a heavy deep-learning model that predicts click, add-to-cart, and purchase probabilities.
 
 ## Part 2: Why Rank Position Shapes Sales [no-exercise]
+[figure: interactive results page where swapping two products between slots shows that the clicks stay with the slot rather than following the product]
 - Once a ranking algorithm orders a list of products, the position an item occupies on the page exerts a powerful causal effect on whether it is clicked and bought.
 - Understanding position bias is fundamental to both marketplace algorithm design and digital marketing strategy.
 
 ## Why Rank Position Shapes Sales [no-exercise]
+[figure: interactive row of five ranked mug listings with a stack of click cursors above each, falling steeply from Position 1, where raising the effort of inspecting a listing concentrates clicks in the top three]
 - Shoppers rarely examine results beyond the first few positions, so clicks fall steeply with each step down the list.
 - A sponsored listing that buys the top slot therefore wins attention that a better product further down never receives.
 - Eye-tracking and clickstream studies consistently show a steep, convex decay in attention from Position 1 to Position 10, with the vast majority of clicks concentrated in the top three to five results.
 - This pattern reflects rational search costs under time constraints, because inspecting every listing requires cognitive effort and scrolling, so shoppers use high rank position as a mental shortcut (a trust bias) assuming the platform placed the best matches at the top.
 
 ## Disentangling Intrinsic Quality from Position Bias [exercise]
+[figure: interactive ranking over time trained on raw clicks, where items placed at the top lock themselves in, compared with inverse propensity weighting, which recovers the true quality order]
 - A central mistake in naive e-commerce analytics is assuming that the top-ranked item gets the most clicks solely because it is the most attractive product.
 - Observed Click-Through Rate (CTR) is the product of two distinct probabilities, namely the probability that the user examines the slot at Position k (examination probability) and the probability that the user clicks the item given that they examined it (intrinsic relevance).
 - If a ranking model is trained naively on raw historical clicks without correcting for position bias, it creates a rich-get-richer feedback loop in which items placed at the top accumulate clicks simply due to their position and become permanently locked into top ranks.
@@ -59,12 +65,15 @@ week: week4
 - Retail media has become one of the fastest-growing segments of digital advertising because it places ads directly at the point of purchase.
 
 ## Organic Rank Versus Sponsored Slots on the Marketplace Shelf [no-exercise]
+[figure: interactive launch of a new product over several weeks, comparing an organic-only launch that stays buried with a launch that buys sponsored top slots for its first weeks and then climbs the organic ranking]
 - On a modern marketplace results page, organic listings ranked by conversion probability sit interleaved with sponsored product listings paid for by merchants or brands.
 - Sponsored slots are allocated through real-time second-price or first-price auctions triggered by the shopper's search query or category browse event.
 - Unlike traditional display banners that take the user away to another website, a sponsored marketplace listing looks nearly identical to an organic product card, differing only by a small "Sponsored" or "Ad" disclosure label.
 - For a newly launched product suffering from the item cold-start problem, buying sponsored top-slot placement is often the only way to generate the initial sales velocity and reviews required to climb the organic ranking later.
 
 ## The Platform's Three-Way Trade-Off in Retail Media [exercise]
+[figure: interactive results page where adding sponsored slots and setting a relevance floor changes orders, returning shoppers, organic sellers' orders and ad revenue this quarter and next]
+[figure: payoff sheet for two rival sellers deciding whether to bid for the sponsored slot, where both bidding leaves each with a smaller margin than if neither had bid]
 - Every marketplace operating a retail media network manages a delicate three-way optimization problem across buyers, third-party sellers, and the platform's own balance sheet.
 - If the platform fills the top of the page with low-relevance, high-bidding sponsored products, it earns immediate advertising revenue, but shopper conversion falls and buyers lose trust in the platform's search utility.
 - Conversely, if the platform shows only organic results, it maximizes short-term buyer relevance but forfeits high-margin advertising revenue.
@@ -80,6 +89,7 @@ week: week4
 - Empirical research testing foundation models and tool-using shopping agents reveals a very different reality (Wadi & Ma, 2026b).
 
 ## Does Rank Still Matter in Agent-Mediated Shopping? [exercise]
+[figure: listings inspected by rank position for several AI shopping agents, in blocks of ten ranks, beside the point at which a human shopper's page ends, from Wadi and Ma (2026b)]
 - Even when an AI shopping agent receives the full list of search results in its context window or through a browsing tool, it exhibits systematic position bias rather than uniform evaluation (Wadi & Ma, 2026b).
 - First, in interactive browsing environments where inspecting a product's full details requires sequential tool calls, agents conserve steps by disproportionately inspecting candidates near the top of the ranked list.
 - Second, even when all candidate attributes are visible simultaneously inside a single prompt, transformer attention patterns and pre-trained linguistic priors produce primacy, recency, and non-monotonic position effects across the list order.
@@ -91,6 +101,7 @@ week: week4
 - When an AI shopping assistant mediates the purchase, how it treats sponsored listings depends on both its behavioral priors and whom the agent is configured to serve (Wadi & Ma, 2026c).
 
 ## Principal-Agent Conflicts and Role Framing in AI Shopping Assistants [exercise]
+[figure: how an AI shopping agent treats a sponsored listing when its system prompt says it is employed by the traveler compared with employed by the platform, with the penalty on the sponsored listing that shrinks under the platform role, from Study 1 of Wadi and Ma (2026c)]
 - In agentic commerce, a consumer (the principal) delegates product evaluation to an AI agent, expecting the agent to maximize consumer surplus by trading off price, quality, and fit objectively.
 - However, many conversational shopping assistants are built and deployed directly by advertising-funded marketplaces whose profit margins depend on sponsored ad clicks and higher-margin items.
 - Experimental evidence shows that an LLM agent's sensitivity to "Sponsored" disclosures and price-quality trade-offs shifts significantly depending on the institutional role assigned in its system prompt (Wadi & Ma, 2026c).

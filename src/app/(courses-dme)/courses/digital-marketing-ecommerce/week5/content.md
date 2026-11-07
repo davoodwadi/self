@@ -21,12 +21,14 @@ week: week5
 - This ecosystem separates software that represents advertisers (the buy side) from software that represents publishers (the sell side).
 
 ## DSPs, SSPs, Ad Exchanges, and the 100-Millisecond RTB Auction [exercise]
+[figure: interactive auction clock that steps through the ad request, the bid request broadcast through the exchange, the DSPs' bids and the winning ad served, all inside 100 milliseconds]
 - Step 1 is the ad request, triggered when a user loads a publisher's webpage or app and the user's browser sends an impression call containing context and user identifiers to the publisher's Supply-Side Platform (SSP).
 - Step 2 is the bid request broadcast, in which the SSP packages the available ad slot and user metadata and broadcasts a standardized OpenRTB bid request through an Ad Exchange to connected Demand-Side Platforms (DSPs).
 - Step 3 is buy-side valuation and bidding, in which each advertiser's DSP evaluates the user profile, predicts click or conversion probability, checks budget and frequency caps, and submits a monetary bid response within tens of milliseconds.
 - Step 4 is auction clearing and ad serving, in which the exchange and SSP select the winning bid, return the winning advertiser's ad markup to the user's browser, and fire tracking pixels to record the impression.
 
 ## Open Exchanges, Private Marketplaces, and Programmatic Guaranteed [exercise]
+[figure: interactive comparison of the open exchange, private marketplace, preferred deal and programmatic guaranteed, showing who may buy, whether an auction runs, and the price and volume each arrangement fixes]
 - On an Open Exchange (real-time bidding in the open market), any approved advertiser can bid on inventory across thousands of publishers, offering maximum scale and low prices but lower transparency into exact placement context.
 - In a Private Marketplace (PMP), a publisher invites a select group of advertisers into a closed auction using a Deal ID, giving brands priority access to premium inventory before it reaches the open exchange.
 - In Preferred Deals, an advertiser gets a fixed-price first look at a publisher's inventory via programmatic pipes and can choose whether to buy each impression before it falls to the auction.
@@ -37,12 +39,14 @@ week: week5
 - Marketers combine contextual signals from the page with behavioral identity data to decide how much to bid.
 
 ## First-Party, Second-Party, and Third-Party Data in Ad Targeting [exercise]
+[figure: interactive data trail from consumer to marketer for first-party data (own customers, consented), second-party data (a partner's customers shared directly) and third-party data (many opaque sources aggregated by a broker)]
 - First-party (1P) data are collected directly by the marketer from its own customers and site visitors with their consent, including CRM purchase records, email lists, app usage, and on-site cart events.
 - Second-party (2P) data are another organization's first-party data shared directly through a trusted strategic partnership, such as an airline sharing traveler intent data with a partner hotel chain or a retailer sharing category insights with a brand supplier.
 - Third-party (3P) data are aggregated from many external sources by commercial data brokers who do not have a direct relationship with the consumer, sold as pre-packaged demographic or interest segments.
 - First-party data provide the highest accuracy, deterministic identity, and regulatory durability, whereas third-party broker segments often suffer from stale inferences, opaque provenance, and tightening privacy restrictions.
 
 ## Contextual Targeting, Retargeting, and Lookalike Modeling [no-exercise]
+[figure: interactive comparison of contextual targeting by the current page topic, retargeting of the exact product a visitor left behind, and lookalike modeling from seed customers, including retargeting that reaches people who already bought]
 - Contextual targeting matches ads to the topic, keywords, and sentiment of the webpage or video currently being consumed (e.g., placing a running shoe ad alongside a marathon training article), requiring zero personal user history.
 - Behavioral retargeting (or remarketing) targets users who previously visited the advertiser's storefront, viewed a specific Product Detail Page, or abandoned a shopping cart, serving dynamic product ads that show the exact SKU left behind.
 - While retargeting often exhibits high apparent conversion rates, uncontrolled retargeting can waste budget chasing users who already bought the item elsewhere or who would have returned organically.
@@ -53,12 +57,14 @@ week: week5
 - Without independent verification, an advertiser can pay for millions of impressions that no human ever saw.
 
 ## Viewability, Invalid Traffic (Ad Fraud), and Brand Safety [exercise]
+[figure: interactive verification checks on served ads: whether a display or video ad meets the MRC viewability test, which impressions are fake, which placements sit next to unsafe content, and where a frequency cap stops repeat exposures]
 - Ad viewability measures whether an ad served into the DOM actually entered the user's visible screen viewport. Under Media Rating Council (MRC) standards, a display ad counts as viewable only if at least 50 percent of its pixels remain on screen for at least one continuous second (two seconds for video).
 - Invalid Traffic (IVT) and ad fraud occur when non-human bots, malware hijacks, hidden 1x1 pixel iframes, ad stacking, or spoofed domain names generate fake impressions and clicks to steal advertiser budgets.
 - Brand safety and brand suitability controls prevent a company's advertisements from appearing adjacent to harmful, illegal, hate-filled, or contextually inappropriate content (such as an airline ad appearing next to news of an aviation accident).
 - Frequency capping limits the maximum number of times the same individual is shown the same advertisement within a day or week, preventing ad wear-out, budget waste, and consumer annoyance.
 
 ## The "AdTech Tax" and Supply Path Optimization [no-exercise]
+[figure: interactive supply path from the advertiser's dollar through the trading desk, DSP, data provider, verification, exchange and SSP to the publisher's net payout, where auditing and consolidating the path removes redundant resellers]
 - In complex programmatic chains, multiple intermediaries (agency trading desks, DSPs, data providers, verification vendors, exchanges, and SSPs) each deduct a fee between the advertiser's dollar and the publisher's net payout.
 - Industry audits by advertising associations have shown that intermediary fees and unattributed discrepancies, often called the "AdTech tax," can absorb 30 to 50 percent of open-web programmatic spend.
 - Supply Path Optimization (SPO) is the practice by which advertisers audit and consolidate the SSPs and exchanges they bid through, cutting out redundant resellers to establish the most direct, transparent, and lowest-fee path to publisher inventory.
@@ -72,6 +78,7 @@ week: week5
 - Browser restrictions, operating system opt-in prompts (such as Apple's App Tracking Transparency), and privacy statutes have dismantled unrestricted cross-site tracking.
 
 ## Navigating Signal Loss with Clean Rooms, Conversion APIs, and Contextual AI [exercise]
+[figure: interactive privacy-preserving routes: a conversion API sending a consented purchase event from the commerce server, a data clean room returning only an aggregate overlap while raw rows stay inside, and contextual AI reading the meaning and tone of the page with no user history]
 - Signal loss refers to the degradation of cross-site user identification, which shrinks retargeting pools, breaks frequency capping across domains, and blinds client-side pixel attribution.
 - Server-Side Conversion APIs (CAPI) replace fragile browser third-party pixels by sending consented first-party purchase events directly from the merchant's commerce server to the advertising platform's server.
 - Data Clean Rooms are secure, cryptographic computing environments in which a brand and a media platform (or retailer) join their respective first-party datasets to measure overlap and lift without either party exposing raw, row-level personal identifiers to the other.
@@ -82,6 +89,7 @@ week: week5
 - Platforms increasingly bundle targeting, bidding, and creative assembly into end-to-end automated campaign suites.
 
 ## Dynamic Creative Optimization and Autonomous Campaign Suites [no-exercise]
+[figure: interactive ad assembled from a product feed, where changing the viewer and the placement swaps the headline, image and format of the same running shoe ad]
 - Dynamic Creative Optimization (DCO) assembles personalized ad variations on the fly by combining modular headlines, product images, prices, and calls to action from a product feed based on the viewer's context or segment.
 - Generative AI extends DCO by generating background scenes, adapting aspect ratios across placements, translating copy, and tailoring value propositions to distinct buyer personas, subject to brand-safety and disclosure governance.
 - Autonomous cross-channel campaign systems (such as Meta Advantage+ and Google Performance Max) replace manual audience segmenting with goal-based optimization, where the marketer supplies creative assets, a product catalog feed, and a margin-adjusted conversion value target.

@@ -5,7 +5,7 @@ import { SlideDeck, Slide, Title, Subtitle } from "@/components/slide-components
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { Plate, P, Term, Ruled, SlideHeading, Numbered, PartHead, Discussion } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import { TitleAuction, ManualToMoment, BuySellDeadline, AuctionClock, DealAccess, SameSlotDifferentValue, DataProvenance, TargetingScenes, PaidWithoutViewer, VerificationLab, SupplyPath, BrokenCookieTrail, PrivacyRoutes, CreativeToBlackBox, CreativeAssembler } from "./visuals";
+import { AuctionClock, DealAccess, DataProvenance, TargetingScenes, VerificationLab, SupplyPath, PrivacyRoutes, CreativeAssembler } from "./visuals";
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading-snug";
@@ -17,10 +17,7 @@ export default function Week5Page() {
         <Subtitle variant="hero">Week 5: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[25ch]">Programmatic Advertising and AdTech Infrastructure</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
-        <Plate className="mt-8 !max-w-4xl !p-2 sm:!p-3">
-          <TitleAuction />
-        </Plate>
-        <p className="type-quote mt-7 max-w-[57ch] !text-[clamp(1.2rem,1.8vw,1.6rem)]">
+        <p className="type-quote mt-10 max-w-[57ch] !text-[clamp(1.2rem,1.8vw,1.6rem)]">
           Programmatic advertising replaces human media negotiation with{" "}
           millisecond auctions across interconnected demand, supply,
           and customer data platforms.
@@ -44,7 +41,6 @@ export default function Week5Page() {
             <Ruled>
               <P>Instead of buying a fixed banner slot on a newspaper website for an entire month regardless of who visits, programmatic systems allow an e-commerce brand to <Term>bid on a single impression shown to a specific user at a specific moment</Term>.</P>
             </Ruled>
-            <Plate><ManualToMoment /></Plate>
             <Ruled>
               <P>Understanding the AdTech information systems stack is essential because fees, latency, data leakage, and fraud can consume a large share of every advertising dollar along the supply chain.</P>
             </Ruled>
@@ -53,12 +49,9 @@ export default function Week5Page() {
       </Slide>
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="The Programmatic AdTech Stack and Real-Time Bidding" />
-        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled><p className={BIG}>When a user opens a content website or mobile app that supports programmatic ads, an automated auction takes place behind the scenes in <Term>roughly 100 milliseconds</Term> before the page finishes rendering.</p></Ruled>
-            <Ruled><p className={BIG}>This ecosystem separates software that represents advertisers (the buy side) from software that represents publishers (the sell side).</p></Ruled>
-          </div>
-          <Plate><BuySellDeadline /></Plate>
+        <div className="mt-7 grid w-full max-w-[64rem] gap-6">
+          <Ruled><p className={BIG}>When a user opens a content website or mobile app that supports programmatic ads, an automated auction takes place behind the scenes in <Term>roughly 100 milliseconds</Term> before the page finishes rendering.</p></Ruled>
+          <Ruled><p className={BIG}>This ecosystem separates software that represents advertisers (the buy side) from software that represents publishers (the sell side).</p></Ruled>
         </div>
       </Slide>
       <Slide id="dsps-ssps-ad-exchanges-and-the-100-millisecond-rtb-auction" border className="!py-4" exercise={exercise["dsps-ssps-ad-exchanges-and-the-100-millisecond-rtb-auction"]}>
@@ -89,12 +82,9 @@ export default function Week5Page() {
       </Slide>
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Audience Data and Behavioral Targeting" />
-        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled><p className={BIG}>The economic premise of programmatic advertising is that <Term>an ad slot is worth different amounts to different advertisers</Term> depending on who is viewing the screen.</p></Ruled>
-            <Ruled><p className={BIG}>Marketers combine contextual signals from the page with behavioral identity data to decide how much to bid.</p></Ruled>
-          </div>
-          <Plate><SameSlotDifferentValue /></Plate>
+        <div className="mt-7 grid w-full max-w-[64rem] gap-6">
+          <Ruled><p className={BIG}>The economic premise of programmatic advertising is that <Term>an ad slot is worth different amounts to different advertisers</Term> depending on who is viewing the screen.</p></Ruled>
+          <Ruled><p className={BIG}>Marketers combine contextual signals from the page with behavioral identity data to decide how much to bid.</p></Ruled>
         </div>
       </Slide>
       <Slide id="first-party-second-party-and-third-party-data-in-ad-targeting" border className="!py-8" exercise={exercise["first-party-second-party-and-third-party-data-in-ad-targeting"]}>
@@ -127,12 +117,9 @@ export default function Week5Page() {
       </Slide>
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Ad Verification, Viewability, Fraud, and Brand Safety" />
-        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled><p className={BIG}>Because open programmatic auctions route ads across millions of third-party websites and apps automatically, advertisers face severe principal-agent and information asymmetry problems.</p></Ruled>
-            <Ruled><p className={BIG}>Without independent verification, an advertiser can <Term>pay for millions of impressions that no human ever saw</Term>.</p></Ruled>
-          </div>
-          <Plate><PaidWithoutViewer /></Plate>
+        <div className="mt-7 grid w-full max-w-[64rem] gap-6">
+          <Ruled><p className={BIG}>Because open programmatic auctions route ads across millions of third-party websites and apps automatically, advertisers face severe principal-agent and information asymmetry problems.</p></Ruled>
+          <Ruled><p className={BIG}>Without independent verification, an advertiser can <Term>pay for millions of impressions that no human ever saw</Term>.</p></Ruled>
         </div>
       </Slide>
       <Slide id="viewability-invalid-traffic-ad-fraud-and-brand-safety" border className="!py-8" exercise={exercise["viewability-invalid-traffic-ad-fraud-and-brand-safety"]}>
@@ -171,12 +158,9 @@ export default function Week5Page() {
       </Slide>
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="The Post-Cookie Transition and Privacy-Preserving AdTech" />
-        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled><p className={BIG}>For two decades, cross-site behavioral targeting and attribution relied on third-party HTTP cookies and mobile device advertising identifiers (such as Apple&apos;s IDFA).</p></Ruled>
-            <Ruled><p className={BIG}>Browser restrictions, operating system opt-in prompts (such as Apple&apos;s App Tracking Transparency), and privacy statutes have <Term>dismantled unrestricted cross-site tracking</Term>.</p></Ruled>
-          </div>
-          <Plate><BrokenCookieTrail /></Plate>
+        <div className="mt-7 grid w-full max-w-[64rem] gap-6">
+          <Ruled><p className={BIG}>For two decades, cross-site behavioral targeting and attribution relied on third-party HTTP cookies and mobile device advertising identifiers (such as Apple&apos;s IDFA).</p></Ruled>
+          <Ruled><p className={BIG}>Browser restrictions, operating system opt-in prompts (such as Apple&apos;s App Tracking Transparency), and privacy statutes have <Term>dismantled unrestricted cross-site tracking</Term>.</p></Ruled>
         </div>
       </Slide>
       <Slide id="navigating-signal-loss-with-clean-rooms-conversion-apis-and-contextual-ai" border className="!py-8" exercise={exercise["navigating-signal-loss-with-clean-rooms-conversion-apis-and-contextual-ai"]}>
@@ -195,12 +179,9 @@ export default function Week5Page() {
       </Slide>
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Generative AI and Autonomous Media Buying" />
-        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled><p className={BIG}>As cross-site tracking signals tighten, creative quality and algorithmic portfolio optimization have become the primary levers of paid media performance.</p></Ruled>
-            <Ruled><p className={BIG}>Platforms increasingly bundle targeting, bidding, and creative assembly into <Term>end-to-end automated campaign suites</Term>.</p></Ruled>
-          </div>
-          <Plate><CreativeToBlackBox /></Plate>
+        <div className="mt-7 grid w-full max-w-[64rem] gap-6">
+          <Ruled><p className={BIG}>As cross-site tracking signals tighten, creative quality and algorithmic portfolio optimization have become the primary levers of paid media performance.</p></Ruled>
+          <Ruled><p className={BIG}>Platforms increasingly bundle targeting, bidding, and creative assembly into <Term>end-to-end automated campaign suites</Term>.</p></Ruled>
         </div>
       </Slide>
       <Slide id="dynamic-creative-optimization-and-autonomous-campaign-suites" border className="!py-8">

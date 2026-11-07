@@ -1,0 +1,80 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "event-tracking-schemas-utm-parameters-and-server-side-tagging",
+    "prompt": "An outdoor-gear store is auditing its tracking setup. Name the piece of the setup each case describes.",
+    "options": [
+      { "id": "event", "label": "Named event" },
+      { "id": "param", "label": "Event parameter" },
+      { "id": "utm", "label": "UTM parameter" },
+      { "id": "client", "label": "Client-side tag" },
+      { "id": "server", "label": "Server-side tagging" }
+    ],
+    "cases": [
+      { "id": "tent", "text": "When a shopper presses the button to put a tent in the basket, the analytics log records add_to_cart.", "answer": "event", "explanation": "A meaningful interaction is recorded as a named event." },
+      { "id": "price", "text": "The purchase record for the tent carries the value 349 and the currency CAD.", "answer": "param", "explanation": "Price and currency are structured parameters attached to the event." },
+      { "id": "newsletter", "text": "The link in the spring newsletter ends with ?utm_source=newsletter&utm_campaign=spring_tents.", "answer": "utm", "explanation": "Query parameters on the inbound URL tell analytics which channel and campaign referred the visitor." },
+      { "id": "blocked", "text": "A pixel that runs in the shopper's browser never fires for visitors who use a privacy browser.", "answer": "client", "explanation": "Client-side tags execute in the browser and can be blocked there." },
+      { "id": "cloud", "text": "Order events are sent from the store's own cloud server to the ad platform, so blocked browser scripts no longer lose purchases.", "answer": "server", "explanation": "Server-side tagging routes events from the merchant's first-party server to the endpoints." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "customer-acquisition-cost-cac-contribution-margin-and-customer-lifetime-value-clv",
+    "question_text": "A tea subscription brand spent $60,000 on paid ads last quarter. It gained 1,500 new customers: 1,000 through paid channels and 500 through word of mouth and organic search. The founder wants to know what one more paid customer will cost before raising the ad budget. Which figure answers that question?",
+    "hint": "Ask which customers the ad money actually bought.",
+    "correct_answer_citation": "Managers must distinguish blended CAC (which averages paid and organic new buyers together) from paid CAC (paid spend divided by customers acquired through paid channels).",
+    "correct_answer_index": 2,
+    "options": [
+      { "option_text": "Blended CAC of $40, because it covers every new customer.", "option_explanation": "Blended CAC spreads the paid spend over organic buyers the ads did not bring in, so it understates the cost of a paid customer." },
+      { "option_text": "$20, the spend divided by the 500 organic customers.", "option_explanation": "Organic customers were not acquired with the paid spend." },
+      { "option_text": "Paid CAC of $60, the paid spend divided by the 1,000 paid customers.", "option_explanation": "Correct. Paid CAC is the relevant cost when deciding whether to scale paid media." },
+      { "option_text": "Customer lifetime value, because it already includes acquisition cost.", "option_explanation": "CLV measures the contribution margin a customer generates, not what the customer cost to acquire." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "return-on-ad-spend-roas-versus-marginal-profit",
+    "question_text": "A candle brand earns a 25 percent contribution margin after shipping and returns, so it breaks even at a 4.0x ROAS. Its campaign averages 5.0x ROAS this month, but the extra $2,000 a day added last week brought in only 2.5x. What should the brand do with that extra $2,000?",
+    "hint": "Compare the return on the last dollars, not the campaign average, with the break-even ROAS.",
+    "correct_answer_citation": "As an advertiser scales daily budget in an ad auction, the algorithm exhausts the highest-intent buyers first and must bid for progressively colder prospects, causing marginal return on the last dollar spent to fall well below the campaign average.",
+    "correct_answer_index": 1,
+    "options": [
+      { "option_text": "Keep it, because the campaign's 5.0x average is above the 4.0x break-even.", "option_explanation": "The average hides that the last increment returns less than break-even." },
+      { "option_text": "Cut it back, because each extra dollar returns 2.5x in revenue, which is only about 62 cents of margin.", "option_explanation": "Correct. At 25 percent margin, 2.5x revenue yields $0.625 of margin per dollar of spend, a loss on the increment." },
+      { "option_text": "Double it, because a 2.5x ROAS still means revenue exceeds ad spend.", "option_explanation": "Revenue above spend is not profit when only 25 percent of revenue is margin." },
+      { "option_text": "Keep it, because marginal ROAS always rises again once the algorithm learns.", "option_explanation": "Scaling exhausts high-intent buyers first, so marginal returns tend to keep falling." }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "rule-based-heuristics-versus-data-driven-attribution",
+    "prompt": "A shopper buys a bicycle after a podcast ad, a comparison-site click, a retargeting banner and a branded search. Match each attribution model to the credit it gives.",
+    "term_label": "Model",
+    "match_label": "Credit for the bicycle",
+    "pairs": [
+      { "id": "last", "term": "Last touch", "match": "All of the credit goes to the branded search that came right before the purchase.", "explanation": "Last-touch gives 100 percent to the final touchpoint." },
+      { "id": "first", "term": "First touch", "match": "All of the credit goes to the podcast ad that introduced the shopper to the brand.", "explanation": "First-touch gives 100 percent to the initial touchpoint." },
+      { "id": "linear", "term": "Linear", "match": "Each of the four touches gets 25 percent.", "explanation": "Linear spreads credit equally with fixed weights." },
+      { "id": "u", "term": "U-shaped", "match": "The podcast and the branded search get 40 percent each and the two middle touches share 20 percent.", "explanation": "Position-based rules favour the first and last touches." },
+      { "id": "data", "term": "Data-driven (Shapley)", "match": "Credit is set by comparing how often journeys with and without each channel end in a purchase.", "explanation": "Algorithmic MTA estimates each channel's marginal contribution from observed paths." }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "incrementality-experiments-geo-lift-tests-and-marketing-mix-modeling",
+    "prompt": "Name the measurement method each team is using.",
+    "options": [
+      { "id": "lift", "label": "Conversion lift test" },
+      { "id": "geo", "label": "Geo-lift test" },
+      { "id": "mmm", "label": "Marketing Mix Modeling" }
+    ],
+    "cases": [
+      { "id": "ghost", "text": "Inside the ad platform, a random 10 percent of a pet store's target audience is held out and never shown its ads, and purchases are compared across the two groups.", "answer": "lift", "explanation": "Users are randomized into treatment and holdout groups inside the platform." },
+      { "id": "cities", "text": "A furniture retailer pauses its TV and online video ads in eight randomly chosen metro areas and compares sales with matched metros where ads keep running.", "answer": "geo", "explanation": "Whole regions are randomized into treatment and control." },
+      { "id": "weekly", "text": "An analyst regresses three years of weekly sales on spend by channel, price changes, holidays and unemployment to estimate each channel's elasticity.", "answer": "mmm", "explanation": "MMM uses aggregated time series without individual user tracking." },
+      { "id": "cookieless", "text": "A grocery delivery app cannot track users across sites, so it switches radio ads off in half of its randomly chosen delivery zones for six weeks.", "answer": "geo", "explanation": "Randomizing regions gives causal measurement without user-level IDs." },
+      { "id": "seasons", "text": "A swimwear brand separates the effect of summer weather from its search spend using a model of weekly sales and spend across all channels.", "answer": "mmm", "explanation": "MMM controls for seasonality with top-down econometric regression." }
+    ]
+  }
+]

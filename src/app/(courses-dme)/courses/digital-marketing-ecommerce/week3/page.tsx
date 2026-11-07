@@ -10,14 +10,10 @@ import {
   CompoundingClicks,
   CrawlPipeline,
   FeedVsQuery,
-  HighBidLoses,
-  IntentLadder,
   LongTail,
   MatchTypes,
-  OvernightDrop,
   PauseBrandAds,
   RankSignals,
-  SameShopTwice,
   SeoLevers,
   ShortlistEvidence,
   SponsoredInAnswer,
@@ -109,7 +105,7 @@ export default function Week3Page() {
         exercise={exercise["classifying-search-queries-by-intent"]}
       >
         <SlideHeading>Classifying Search Queries by Intent</SlideHeading>
-        <div className="grid w-full gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2 [&_p]:!text-[1.2rem]">
           <Ruled>
             <P>
               <Term>Informational queries</Term> seek knowledge, explanations, or how-to guidance (e.g.,
@@ -139,9 +135,6 @@ export default function Week3Page() {
             </P>
           </Ruled>
         </div>
-        <Plate className="mt-5">
-          <IntentLadder />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -149,8 +142,7 @@ export default function Week3Page() {
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="How Search Engines Crawl, Index, and Rank" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 Before a webpage can appear in organic search results, the search engine must discover its existence,
@@ -164,10 +156,6 @@ export default function Week3Page() {
                 <Term>can remove a brand from search results within days</Term>.
               </p>
             </Ruled>
-          </div>
-          <Plate>
-            <OvernightDrop />
-          </Plate>
         </div>
       </Slide>
 
@@ -377,7 +365,7 @@ export default function Week3Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Paid Search (SEM) and Auction Mechanics" />
-        <div className="mt-8 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
           <Ruled>
             <p className={BIG}>
               <Term>Search Engine Marketing (SEM)</Term>, or paid search, allows advertisers to buy immediate
@@ -392,9 +380,6 @@ export default function Week3Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <HighBidLoses />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -505,8 +490,7 @@ export default function Week3Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Search Cannibalization and Incrementality" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 Because paid search ads appear directly above organic search results on the same page, marketers face a
@@ -518,10 +502,6 @@ export default function Week3Page() {
             <Ruled>
               <p className={BIG}>Answering this question requires distinguishing correlation from causal incrementality.</p>
             </Ruled>
-          </div>
-          <Plate>
-            <SameShopTwice />
-          </Plate>
         </div>
       </Slide>
 

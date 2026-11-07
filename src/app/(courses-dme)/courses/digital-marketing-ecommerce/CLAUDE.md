@@ -61,7 +61,7 @@ Vary the camera distance, subject and drawing grammar so neighbouring slides fee
 | `Person`, `Agent`, `Badge` | The shopper (head and shoulders), the AI shopping agent (console head, purple when contrasted with a human) and the platform's ringed-star badge. |
 | `Shop`, `Warehouse`, `Factory`, `House`, `Monitor`, `Van` | Places and routes: the shop front, the warehouse, the plant, the buyer's house, a screen showing a page of tiles, the delivery van. |
 | `Parcel`, `Coin`, `AmberCoin`, `PayCard`, `OrderForm`, `Receipt`, `Envelope`, `Cart`, `Stopwatch` | Orders, money, documents and time: parcels (ink, amber or purple), coins seen edge-on in stacks, payment card, order form, till receipt, mailed envelope, shopping cart, stopwatch. |
-| `Sneaker`, `Bottle`, `Espresso`, `Jacket` | Engraved products beyond the mug. |
+| `Sneaker`, `Bottle`, `Espresso`, `Jacket`, `Backpack`, `CoffeeBag`, `Laptop` | Engraved products beyond the mug. |
 
 New objects are drawn in the week's `visuals.tsx` and move to `_visuals/objects.tsx` when a second week needs them.
 

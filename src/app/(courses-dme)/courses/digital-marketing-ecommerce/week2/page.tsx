@@ -8,15 +8,11 @@ import exercisesData from "./exercises.json";
 import {
   AgentCostReal,
   CatalogDepth,
-  CheckoutFriction,
-  ChoiceLevers,
-  ClickMeter,
   ConversionMultiplier,
   DarkCheckout,
   FacetFilter,
   FrictionFixes,
   HiddenAttributes,
-  HundredCarts,
   InspectionBudget,
   MugBanner,
   PdpAnatomy,
@@ -26,7 +22,6 @@ import {
   RichResult,
   SessionLog,
   StoreToPage,
-  ThreeTemplates,
   TierFraming,
   TrustLedger,
 } from "./visuals";
@@ -146,7 +141,7 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Storefront Taxonomy, Navigation, and Product Page Design" />
-        <div className="mt-8 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
           <Ruled>
             <p className={BIG}>
               Before a shopper can evaluate a product, the storefront must guide them from a broad need to a specific
@@ -160,9 +155,6 @@ export default function Week2Page() {
             </p>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <ThreeTemplates />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -387,7 +379,7 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="sources-of-shopping-cart-abandonment" border className="!py-8">
         <SlideHeading>Sources of Shopping Cart Abandonment</SlideHeading>
-        <div className="grid w-full gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid w-full gap-8 lg:grid-cols-2 lg:gap-12 [&_p]:!text-[1.2rem]">
           <div className="grid content-start gap-4">
             <Ruled>
               <P>
@@ -395,9 +387,6 @@ export default function Week2Page() {
                 abandoned before payment is completed.
               </P>
             </Ruled>
-            <Plate>
-              <HundredCarts />
-            </Plate>
             <Ruled>
               <P>
                 A portion of cart abandonment reflects natural browsing behavior, in which shoppers use the cart as a
@@ -413,9 +402,6 @@ export default function Week2Page() {
                 only at the final step).
               </P>
             </Ruled>
-            <Plate>
-              <CheckoutFriction />
-            </Plate>
             <Ruled>
               <P>
                 Other major preventable causes include mandatory account registration before checkout, overly long
@@ -503,8 +489,7 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Digital Choice Architecture and Dark Patterns" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 Every storefront layout is a <Term>choice architecture</Term> because{" "}
@@ -518,10 +503,6 @@ export default function Week2Page() {
                 patterns that manipulate them against their interests.
               </p>
             </Ruled>
-          </div>
-          <Plate>
-            <ChoiceLevers />
-          </Plate>
         </div>
       </Slide>
 
@@ -753,11 +734,7 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Information Acquisition Costs in Agentic Shopping" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <ClickMeter />
-          </Plate>
-          <div className="grid gap-6">
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
             <Ruled>
               <p className={BIG}>
                 Even when an AI shopping agent can browse interactive webpages, reading and clicking through a
@@ -770,7 +747,6 @@ export default function Week2Page() {
                 essential for business-to-agent (B2A) conversion.
               </p>
             </Ruled>
-          </div>
         </div>
       </Slide>
 

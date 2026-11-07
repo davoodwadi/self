@@ -10,6 +10,7 @@ week: week11
 - Digital telemetry, unit economics, and causal attribution separate marketing spend that genuinely grows profit from spend that merely takes credit for existing demand.
 
 ## The Measurement Paradox of Digital Marketing [no-exercise]
+[figure: one month of real warehouse orders set beside the order counts that a social ad platform, a search ad platform and an email platform each report for the same month, where the same orders are claimed by two or three platforms at once and the platform totals add up to far more than the orders shipped]
 - A century ago, retail pioneer John Wanamaker famously remarked that half the money he spent on advertising was wasted, and the trouble was he did not know which half.
 - Digital marketing promised to solve Wanamaker's dilemma permanently by logging every impression, click, session, and checkout in database tables.
 - Paradoxically, modern e-commerce leaders often drown in tracking dashboards while still misallocating millions of dollars in ad spend.
@@ -21,12 +22,14 @@ week: week11
 - Modern analytics platforms have moved away from simple pageview counters toward structured, event-driven data models.
 
 ## Event Tracking Schemas, UTM Parameters, and Server-Side Tagging [exercise]
+[figure: interactive record of one shopper's visit arriving from a tagged campaign link and moving through page_view, view_item, add_to_cart, begin_checkout and purchase events with their parameters, where raising the share of shoppers who block browser tags lowers the purchases counted by client-side tracking while server-side tagging keeps counting them]
 - In an event-based analytics schema, every meaningful user interaction is recorded as a named event (e.g., `page_view`, `view_item`, `add_to_cart`, `begin_checkout`, and `purchase`) accompanied by a dictionary of structured parameters (such as `item_id`, `price`, `currency`, and `coupon`).
 - Urchin Tracking Module (UTM) query parameters appended to inbound destination URLs (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, and `utm_term`) tell the analytics system which external channel, campaign, and creative asset referred the visitor.
 - Client-side tracking relies on JavaScript tags and pixels executing inside the shopper's browser, which can be blocked by privacy browsers, ad blockers, or network timeouts.
 - Server-side tagging routes measurement events from the merchant's own first-party cloud server directly to analytics and advertising endpoints, improving page load speed, data governance control, and conversion count accuracy.
 
 ## Cohort Retention Analysis Versus Aggregate Averages [no-exercise]
+[figure: interactive cohort retention table of monthly acquisition cohorts, where faster paid acquisition makes the total of active customers keep rising while each newer cohort row keeps fewer of its customers in Month 1, Month 2 and Month 3]
 - Aggregate metrics (such as overall monthly conversion rate or total active customers) often mask deteriorating underlying health when rapid paid acquisition hides high customer churn.
 - A cohort is a group of customers who share a common starting event within a specific time window, most commonly the month or week of their first purchase (an acquisition cohort).
 - A cohort retention table tracks the percentage of customers or repeat revenue retained from each cohort in Month 1, Month 2, Month 3, and beyond, allowing managers to see whether product changes or new acquisition channels bring in loyal buyers or one-time deal hunters.
@@ -36,12 +39,15 @@ week: week11
 - Unit economics evaluates profitability at the level of a single order and a single acquired customer.
 
 ## Customer Acquisition Cost (CAC), Contribution Margin, and Customer Lifetime Value (CLV) [exercise]
+[figure: interactive payback chart of one acquired customer's cumulative contribution margin month by month against the acquisition cost paid upfront, where changing the acquisition cost and the monthly repeat rate moves the payback month and the LTV-to-CAC ratio]
 - Customer Acquisition Cost (CAC) is total sales and marketing acquisition spend divided by the number of new customers acquired in that period. Managers must distinguish blended CAC (which averages paid and organic new buyers together) from paid CAC (paid spend divided by customers acquired through paid channels).
 - Order Contribution Margin (CM1/CM2) equals net order revenue (after discounts and expected returns) minus variable Cost of Goods Sold (COGS), packaging, warehouse pick-pack labor, outbound shipping, and payment processing fees.
 - Customer Lifetime Value (CLV or LTV) is the present value of the total net contribution margin (not gross revenue) a customer generates across all purchases before churning.
 - The LTV-to-CAC ratio and the CAC payback period (how many months of repeat contribution margin are required to recover the initial acquisition cost) govern how aggressively an e-commerce firm can scale paid media without running out of working capital.
 
 ## Return on Ad Spend (ROAS) Versus Marginal Profit [exercise]
+[figure: $1,000 of ad spend producing $4,000 of attributed revenue, of which a 20 percent contribution margin leaves $800, a loss of $200 against the ad spend]
+[figure: interactive daily ad budget where each extra block of spend reaches colder prospects, so the campaign's average ROAS falls slowly while the marginal ROAS on the last dollar falls quickly below the break-even line set by the contribution margin]
 - Return on Ad Spend (ROAS) is defined as attributed gross revenue divided by advertising spend (e.g., spending $1,000 on ads to generate $4,000 in attributed revenue equals a 4.0x or 400 percent ROAS).
 - A common managerial error is celebrating a high ROAS number without checking the product's gross margin and return rate. On a product with a 20 percent net contribution margin after shipping and returns, a 4.0x gross revenue ROAS yields only $800 in contribution margin on $1,000 of ad spend, losing $200 before fixed overhead.
 - Furthermore, average ROAS differs sharply from marginal ROAS. As an advertiser scales daily budget in an ad auction, the algorithm exhausts the highest-intent buyers first and must bid for progressively colder prospects, causing marginal return on the last dollar spent to fall well below the campaign average.
@@ -55,6 +61,7 @@ week: week11
 - Multi-Touch Attribution (MTA) determines how to assign fractional conversion credit across that sequence of touchpoints.
 
 ## Rule-Based Heuristics Versus Data-Driven Attribution [exercise]
+[figure: interactive customer journey of a creator video on Monday, a paid search click on Wednesday, an email on Friday and a direct visit on Sunday before the purchase, where choosing last-touch, first-touch, linear, time-decay, U-shaped or Shapley-value attribution redistributes the order's credit across the four touches]
 - Last-touch (or last-click) attribution assigns 100 percent of the credit to the final touchpoint immediately preceding the purchase, systematically over-crediting bottom-of-funnel channels (branded search and retargeting) and starving top-of-funnel discovery.
 - First-touch attribution assigns 100 percent of the credit to the initial touchpoint that introduced the customer to the site, rewarding awareness channels while ignoring conversion closers.
 - Linear, time-decay, and U-shaped (position-based) rules distribute fractional credit across multiple touches using fixed weights (e.g., 40 percent to first touch, 40 percent to last touch, and 20 percent split across middle touches), improving on single-touch rules but relying on arbitrary human weights.
@@ -65,6 +72,7 @@ week: week11
 - If a retargeting bot serves a banner ad to loyal customers ten minutes before they were going to buy anyway, observational MTA sees the ad in the winning path and assigns it credit.
 
 ## Incrementality Experiments, Geo-Lift Tests, and Marketing Mix Modeling [exercise]
+[figure: interactive holdout experiment with a treatment group that sees retargeting ads and a randomized control group that does not, where raising the share of targeted customers who would buy anyway leaves the conversions attributed to the ads almost unchanged while the incremental lift, the difference between the two groups, shrinks toward zero]
 - Incremental lift is the causal difference between the conversions achieved when an ad campaign is shown (the treatment state) and the counterfactual conversions that would have occurred if the campaign had been withheld (the control state).
 - Conversion Lift (or ghost-ad) experiments randomize target users into treatment and holdout control groups inside the ad platform, measuring the exact incremental sales generated by the ads.
 - Geo-lift (or matched-market) experiments randomize entire geographic regions (such as Designated Market Areas or census metro areas) into treatment and holdout control groups, enabling causal measurement even when user-level cookies and cross-site IDs are unavailable.
@@ -76,6 +84,7 @@ week: week11
 - Today, a rapidly growing share of product discovery and evaluation happens off-site inside conversational AI assistants, private messaging apps, and autonomous shopping agents.
 
 ## Dark Social, Zero-Click Discovery, and Agentic Telemetry [no-exercise]
+[figure: interactive month of orders where raising the share of buyers who first discovered the product in a group chat, a podcast or an AI assistant swells the Direct and Branded Search rows of the analytics report, while server logs of AI shopping-agent visits and the post-purchase "How did you hear about us?" survey show where those buyers actually came from]
 - Dark social and dark-funnel discovery occur when a buyer learns about a product through word-of-mouth, a podcast, a private group chat, or a multi-turn conversation with an LLM assistant, and then visits the merchant's site directly to buy, appearing in web analytics as "Direct" or "Branded Search" traffic.
 - When an autonomous AI shopping agent queries a merchant's catalog API or fetches product pages via headless HTTP requests before presenting a single recommendation to the user, traditional browser JavaScript pixels often fail to fire altogether.
 - Forward-looking e-commerce teams instrument server-side HTTP request logs and API gateway telemetry to identify known AI crawler and shopping-agent user agents (such as `ChatGPT-User`, `PerplexityBot`, and `ClaudeBot`), pair checkout flows with post-purchase "How did you hear about us?" (HDYHAU) zero-party surveys, and run brand-search lift tests to capture dark-funnel influence.

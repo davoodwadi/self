@@ -10,6 +10,7 @@ week: week1
 - Digital marketing and e-commerce unite demand generation with the information systems that catalog, rank, price, and fulfill every transaction across human and agent-mediated markets.
 
 ## Why Digital Marketing and E-Commerce Are Inseparable [no-exercise]
+[figure: interactive chain from ad spend to visitors, page load time and orders, where changing spend or load time shows the cost per order rising when a slow store wastes paid traffic]
 - In physical retail, advertising and store operations often functioned as separate departments because weeks could pass between a television commercial and a trip to the store.
 - In digital commerce, an advertisement, a search result, a product page, and a payment terminal are connected by milliseconds and a shared data layer.
 - A marketing campaign that drives paid traffic to a slow, poorly structured storefront wastes acquisition spend, while a well-engineered storefront without discoverability attracts no buyers.
@@ -17,6 +18,7 @@ week: week1
 - Studying digital marketing alongside e-commerce information systems therefore connects how firms attract attention with how their platforms convert that attention into revenue.
 
 ## Defining Digital Marketing and E-Commerce [no-exercise]
+[figure: two-page spread in which marketing channels (a search result, an email, an ad) send attention into a storefront on the left page, and the storefront hands off to order, payment and fulfillment on the right page]
 - Digital marketing is the use of networked digital channels, algorithms, and customer data to acquire, engage, and retain buyers in measurable ways.
 - Electronic commerce (e-commerce) is the execution of commercial transactions, including product discovery, ordering, payment, and fulfillment orchestration, over digital networks.
 - Whereas digital marketing governs the flow of attention and persuasion into the storefront, e-commerce governs the transactional and operational infrastructure that completes the exchange.
@@ -27,12 +29,16 @@ week: week1
 - Choosing a business model defines the firm's customer acquisition economics, its technology requirements, and its control over the buyer relationship.
 
 ## B2C, B2B, and Direct-to-Consumer (D2C) Commerce [no-exercise]
+[figure: three routes from producer to buyer: a manufacturer selling through a shop to a shopper (B2C), one firm's plant supplying another firm's plant (B2B), and a manufacturer bypassing the shop to reach the shopper directly (D2C)]
+[figure: interactive ledger comparing what a manufacturer keeps per unit selling wholesale versus direct, where raising the acquisition cost per order erodes the direct channel's higher margin]
 - Business-to-consumer (B2C) e-commerce sells finished goods or digital services directly to individual shoppers through online retailers, category specialists, or digital storefronts.
 - Business-to-business (B2B) e-commerce handles transactions between organizations, such as wholesale supply portals, negotiated contract catalogs, and automated procurement systems.
 - Direct-to-consumer (D2C) commerce occurs when a manufacturer bypasses traditional wholesale and retail intermediaries to sell its own brand directly to end consumers online.
 - Selling direct gives a manufacturer first-party customer data, control over brand presentation, and higher gross margins per unit, but requires the firm to fund its own customer acquisition and single-item fulfillment.
 
 ## First-Party Retailers Versus Two-Sided Marketplaces [no-exercise]
+[figure: contrast of a first-party retailer selling its own warehouse stock on its results page with a marketplace whose listings come from independent sellers' stock]
+[figure: interactive results page of a hybrid platform, where moving the platform's own mug up the ranking raises what the platform earns and lowers third-party sellers' sales]
 - A first-party (1P) online retailer takes wholesale title to inventory, holds stock in its own fulfillment network, sets the retail price, and sells to the shopper as the merchant of record.
 - A third-party (3P) two-sided marketplace does not own the goods it lists. Instead, it provides the discovery, ranking, checkout, and trust infrastructure that connects independent sellers with buyers.
 - Hybrid platforms combine both models within the same storefront, operating as a first-party retailer in high-velocity categories while hosting third-party merchants to expand assortment breadth.
@@ -51,22 +57,28 @@ week: week1
 - A grocery app that sells ad slots at the top of its "sparkling water" search results to beverage brands on a cost-per-click basis operates a retail media revenue model.
 
 ## Part 2: Multi-Sided Platform Economics [no-exercise]
+[figure: interactive comparison as participants are added one at a time: a retailer's warehouses grow in a straight line while the possible buyer and seller matches on a marketplace grow with the square]
 - Two-sided marketplaces do not scale like traditional retailers that add one warehouse or store at a time.
 - Their growth and defensibility are governed by network effects, switching costs, and the rules by which the platform matches supply with demand.
 
 ## Same-Side and Cross-Side Network Effects [no-exercise]
+[figure: shoppers helping shoppers with reviews and sellers competing on price as same-side effects, with arcs between the buyer side and the seller side as cross-side effects]
+[figure: interactive flywheel over eight months, where the share of shoppers left after a shock decides whether merchant numbers recover or spiral downward]
 - A network effect exists when the value of a platform to a user depends on the number of other users participating on the platform.
 - Same-side (or direct) network effects occur when users on one side of the market directly benefit from or compete with more users on that same side, as when additional shopper reviews help other shoppers or when additional sellers intensify price competition.
 - Cross-side (or indirect) network effects occur when growth on one side of the market makes the platform more valuable to the other side, as when more buyers attract more merchants and a wider merchant assortment attracts more buyers.
 - Positive cross-side network effects create a self-reinforcing flywheel, but they can also run in reverse if falling buyer traffic causes merchants to abandon the marketplace.
 
 ## The Cold-Start Problem, Multi-Homing, and Disintermediation [exercise]
+[figure: interactive launch over six months comparing no seeding, first-party stock first, and zero-commission marquee sellers, showing which strategy fills the empty marketplace pages]
+[figure: first order between a buyer and a seller running through the platform, which keeps its take rate, while the repeat orders bypass the platform]
 - The cold-start (or chicken-and-egg) problem arises at launch because buyers will not visit a marketplace without listings, and sellers will not list inventory on a marketplace without buyers.
 - Platforms overcome the cold-start problem by seeding one side first, such as operating as a first-party retailer before opening to third-party sellers, or subsidizing marquee sellers with zero-commission periods.
 - Multi-homing occurs when buyers or sellers participate on several competing platforms simultaneously, such as a merchant listing the same catalog on multiple marketplaces, which weakens any single platform's pricing power.
 - Platform leakage (or disintermediation) occurs when buyers and sellers use the marketplace to discover each other once and then move repeat transactions off-platform to avoid paying the take rate.
 
 ## Why Retail Media Networks Emerged Inside Marketplaces [no-exercise]
+[figure: contrast of a display ad on an external page losing its cookie signal with a marketplace results page whose sponsored slots, clicks and receipts form a closed loop of first-party intent data]
 - As third-party marketplaces grew to host millions of competing stock-keeping units (SKUs), organic shelf space on the first page of search results became scarce.
 - At the same time, privacy regulations and the deprecation of third-party tracking cookies reduced the accuracy of advertising on external social and display networks.
 - Retailers and marketplaces realized that their own search queries and purchase logs constitute closed-loop, first-party intent data captured at the exact moment a shopper is ready to buy.
@@ -77,6 +89,7 @@ week: week1
 - How these systems are coupled determines how rapidly a marketing team can launch new channels, run experiments, and adapt to new interfaces.
 
 ## Monolithic Suites Versus Headless and Composable Commerce [exercise]
+[figure: interactive comparison of monolithic, headless and composable architectures, where launching a new channel (web, phone, kiosk, social, agent) shows which parts must be modified and redeployed]
 - In a monolithic e-commerce architecture, the customer-facing presentation layer (the front-end storefront) and the back-end commerce engine (catalog, cart, checkout, and order logic) are tightly coupled inside a single software application.
 - Monolithic platforms simplify initial setup for standard web stores, but any change to the user interface requires modifying and redeploying the underlying back-end system.
 - In a headless commerce architecture, the front-end presentation layer (the "head") is decoupled from the back-end commerce engine, and the two communicate exclusively through application programming interfaces (APIs).
@@ -90,6 +103,7 @@ week: week1
 - A Customer Data Platform (CDP) and Customer Relationship Management (CRM) system unify behavioral events and transaction histories into persistent customer profiles for segmentation and lifecycle messaging.
 
 ## APIs, Checkout Orchestration, and Payment Gateways [exercise]
+[figure: interactive run of a purchase through the four checkout steps (inventory and tax, tokenization, fraud screening and authorization, commit and capture), where switching on a failure shows the step at which the order stops]
 - When a shopper clicks the buy button, the storefront does not move money directly. It initiates a sequence of synchronous API calls across specialized financial and operational services.
 - Step 1 is inventory reservation and tax calculation, in which the commerce engine verifies stock availability in the OMS and queries a tax engine for jurisdiction-specific duties and sales tax.
 - Step 2 is payment tokenization, in which the payment gateway replaces sensitive card or wallet credentials with a cryptographic token so raw card numbers never touch the merchant's servers.
@@ -101,6 +115,7 @@ week: week1
 - What are the marketing and information systems trade-offs of migrating to a headless composable architecture versus staying on the monolithic platform?
 
 ## Part 4: The Digital Customer Funnel and Channel Strategy [no-exercise]
+[figure: interactive funnel from visitors to repeat buyers, where fixing one handoff shows how a loss at any stage reduces every later stage]
 - Technology infrastructure creates value only when it moves buyers efficiently from initial awareness to repeat purchase.
 - Marketers model this progression as a funnel and track conversion losses at every handoff between channels and systems.
 
@@ -112,6 +127,7 @@ week: week1
 - Retention and advocacy occur when satisfied buyers write online reviews, subscribe to replenishment flows, and return for repeat purchases without requiring another paid acquisition click.
 
 ## Channel Conflict and Omnichannel Integration [no-exercise]
+[figure: interactive demand curve comparing a manufacturer selling direct with a manufacturer and retailer each adding a markup, where raising the wholesale price shows the higher final price and lower combined profit of double marginalization]
 - When a brand adds a direct-to-consumer web store alongside existing wholesale retail partners, it risks channel conflict if retail partners view the brand's own website as undercutting their floor traffic and margins.
 - Double marginalization arises in indirect wholesale channels when both the manufacturer and the independent retailer add their own markups, resulting in a higher final price than an integrated direct channel would set.
 - Firms mitigate channel conflict through minimum advertised price (MAP) policies, channel-exclusive product bundles, or routing online orders to local retail partners for fulfillment.
@@ -122,12 +138,14 @@ week: week1
 - Large language models and tool-using AI agents break that assumption by acting as autonomous intermediaries between the consumer and the storefront.
 
 ## The AI Shopping Agent as a Surrogate Consumer [no-exercise]
+[figure: interactive product page read two ways, as a human shopper sees its photography and typography and as an AI agent reads its text, structure and data]
 - An AI shopping agent is a software system built on a foundation model that accepts a natural-language goal from a consumer, queries search engines or commerce APIs, evaluates candidate products, and recommends or executes a purchase.
 - In consumer behavior theory, the agent functions as a surrogate consumer to whom the human principal delegates information search, attribute comparison, and transaction execution.
 - Whereas a human shopper experiences a storefront through visual typography, color contrast, and photography, an AI agent experiences the storefront as tokens of text, HTML structure, JSON schemas, and ranked API responses.
 - Consequently, digital marketing expands from business-to-consumer (B2C) communication to business-to-agent (B2A) optimization, where product data must be legible and verifiable to machine readers.
 
 ## How Agentic Commerce Reshapes the Digital Funnel [exercise]
+[figure: product listings inspected per shopping session by human shoppers and by several AI agents, from the Wadi and Ma (2026a) study]
 - In discovery, consumers increasingly state multi-constraint goals in a conversational interface (e.g., a quiet espresso machine under 400 dollars with a stainless-steel boiler) instead of typing short keywords into a search bar.
 - In evaluation, the AI agent reads product specifications, shipping cutoffs, and aggregated customer reviews across multiple merchants in parallel, compressing the consideration set before the human sees a single webpage (Wadi & Ma, 2026a).
 - In ranking and retail media, position effects and sponsored placements now act on the agent's information acquisition process rather than on human eye movements alone (Wadi & Ma, 2026b, 2026c).

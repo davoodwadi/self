@@ -1,0 +1,226 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "search-experience-and-credence-goods-in-online-reviews",
+    "prompt": "A home-goods marketplace is deciding what evidence to show beside each product claim. Name the kind of attribute each claim describes.",
+    "options": [
+      { "id": "search", "label": "Search attribute" },
+      { "id": "experience", "label": "Experience attribute" },
+      { "id": "credence", "label": "Credence attribute" }
+    ],
+    "cases": [
+      {
+        "id": "towel-size",
+        "text": "A bath towel measures 70 by 140 centimeters.",
+        "answer": "search",
+        "explanation": "Dimensions can be checked from the specification table before buying."
+      },
+      {
+        "id": "pillow",
+        "text": "A memory-foam pillow stays comfortable through a whole night of side sleeping.",
+        "answer": "experience",
+        "explanation": "Comfort is only known after sleeping on it, which is where buyers' reviews help."
+      },
+      {
+        "id": "organic",
+        "text": "The cotton in a set of bed sheets was grown without synthetic pesticides.",
+        "answer": "credence",
+        "explanation": "A buyer cannot verify how the cotton was farmed even after using the sheets, so a third-party certification is needed."
+      },
+      {
+        "id": "pan-weight",
+        "text": "A frying pan weighs 1.2 kilograms.",
+        "answer": "search",
+        "explanation": "Weight is an objective specification available before purchase."
+      },
+      {
+        "id": "candle",
+        "text": "A scented candle fills a living room with a pleasant smell without smoking.",
+        "answer": "experience",
+        "explanation": "Scent and burn quality are learned only by lighting the candle."
+      },
+      {
+        "id": "carbon",
+        "text": "A rug's maker offset all the carbon emitted while shipping it.",
+        "answer": "credence",
+        "explanation": "No amount of use reveals the offset, so it rests on audits and certification."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "volume-valence-variance-and-recency-of-reviews",
+    "prompt": "A shopper compares four blenders on a marketplace. Match each review dimension with the observation that reflects it.",
+    "term_label": "Review dimension",
+    "match_label": "What the shopper notices",
+    "pairs": [
+      {
+        "id": "volume",
+        "term": "Volume",
+        "match": "One blender has 3,100 reviews while another has only nine.",
+        "explanation": "Volume is the count of posted reviews, a cue of popularity and statistical reliability."
+      },
+      {
+        "id": "valence",
+        "term": "Valence",
+        "match": "One blender averages 4.4 stars and another averages 3.2 stars.",
+        "explanation": "Valence is the average star rating or overall sentiment."
+      },
+      {
+        "id": "variance",
+        "term": "Variance",
+        "match": "Half of one blender's ratings are 5 stars and most of the rest are 1 star.",
+        "explanation": "Variance is how spread out ratings are, and a split between the extremes signals a polarizing product."
+      },
+      {
+        "id": "recency",
+        "term": "Recency",
+        "match": "A blender's reviews from the previous month mention a new motor that overheats.",
+        "explanation": "Recency tracks how fresh the latest reviews are and can reveal a recent change in the product."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "intrinsic-altruism-versus-extrinsic-financial-incentives",
+    "question_text": "An outdoor-clothing retailer will add a 10 dollar credit to its review request email and wants as many buyers as possible to write a review. Which message should it pair with the credit?",
+    "hint": "Think about whom the review is said to help and how that fits with a payment from the retailer.",
+    "correct_answer_citation": "When a solicitation message frames review writing around helping other shoppers, it activates intrinsic pro-social norms, whereas pairing mismatched financial framing with altruistic appeals can dull the marginal lift of both levers.",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "\"Your review helps us improve our business, and we will thank you with a 10 dollar credit.\"",
+        "option_explanation": "Paying the buyer to help the company that pays turns the request into a low-paid transaction, which dulls the credit's lift."
+      },
+      {
+        "option_text": "\"Your review helps other shoppers like you choose the right jacket, and we will thank you with a 10 dollar credit.\"",
+        "option_explanation": "Correct. Framing the review around helping fellow shoppers keeps the pro-social motive while the credit adds an extrinsic one."
+      },
+      {
+        "option_text": "\"Write a review and receive a 10 dollar credit,\" with no reason given.",
+        "option_explanation": "A credit alone works, but it leaves out the altruistic appeal that can add to its effect."
+      },
+      {
+        "option_text": "It does not matter, because a financial incentive overrides whatever the message says.",
+        "option_explanation": "The effect of the incentive depends on how the message frames it, so the two levers interact."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "how-contingent-incentives-distort-review-effort-sentiment-and-credibility",
+    "prompt": "A skincare brand is drafting review offers. Sort each offer into the kind of incentive it is.",
+    "bins": [
+      { "id": "flat", "label": "Flat incentive" },
+      { "id": "contingent", "label": "Performance-contingent incentive" },
+      { "id": "positive", "label": "Conditioned on positivity (illegal)" }
+    ],
+    "cards": [
+      {
+        "id": "any",
+        "text": "A 5 dollar credit for every honest review, whatever its rating.",
+        "bin": "flat",
+        "explanation": "The reward is paid simply for completing a review."
+      },
+      {
+        "id": "entry",
+        "text": "One entry into a monthly gift-card draw for each submitted review.",
+        "bin": "flat",
+        "explanation": "The entry does not depend on the review's rating, length or votes."
+      },
+      {
+        "id": "photo",
+        "text": "An extra 3 dollars when the review includes a photo of the product in use.",
+        "bin": "contingent",
+        "explanation": "The payout rises with a media attachment, a performance metric."
+      },
+      {
+        "id": "votes",
+        "text": "A 15 dollar bonus once the review collects 25 helpful votes.",
+        "bin": "contingent",
+        "explanation": "The payout depends on helpfulness votes cast by readers."
+      },
+      {
+        "id": "five",
+        "text": "A full refund for buyers who post a 5-star rating.",
+        "bin": "positive",
+        "explanation": "Rewarding only a 5-star rating biases valence and breaks consumer protection rules."
+      },
+      {
+        "id": "edit",
+        "text": "A free sample for customers who raise a 3-star rating to 4 stars or more.",
+        "bin": "positive",
+        "explanation": "The reward depends on the review becoming more positive."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "fake-reviews-brushing-scams-and-reputation-governance",
+    "prompt": "A marketplace's trust team reviews flagged cases. Name the manipulation in each one.",
+    "options": [
+      { "id": "astroturf", "label": "Astroturfing" },
+      { "id": "hijack", "label": "Review hijacking" },
+      { "id": "brushing", "label": "Brushing" },
+      { "id": "bombing", "label": "Negative review bombing" }
+    ],
+    "cases": [
+      {
+        "id": "pens",
+        "text": "A listing that once sold ballpoint pens, with 6,000 ratings, now sells a cordless drill and still shows all 6,000 ratings.",
+        "answer": "hijack",
+        "explanation": "Swapping the variation keeps the old rating count for an unrelated new product."
+      },
+      {
+        "id": "group",
+        "text": "Shoppers in a chat group are refunded through a payment app after posting 5-star reviews of a phone case.",
+        "answer": "astroturf",
+        "explanation": "The seller is buying fabricated positive reviews and paying for them off the platform."
+      },
+      {
+        "id": "seeds",
+        "text": "Residents receive unordered packets of seeds, and each address soon appears beside a verified 5-star review.",
+        "answer": "brushing",
+        "explanation": "Cheap parcels to real addresses create verified purchase records for fake reviews."
+      },
+      {
+        "id": "flood",
+        "text": "Within one night, 300 new accounts give a rival's yoga mat 1 star, and the mat drops off the first results page.",
+        "answer": "bombing",
+        "explanation": "A coordinated flood of 1-star ratings is used to sink a competitor's rank."
+      },
+      {
+        "id": "lamp",
+        "text": "A desk lamp's page is changed to list a coffee grinder, keeping the lamp's 4.7-star average.",
+        "answer": "hijack",
+        "explanation": "The new item inherits the rating earned by a different product."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "ai-generated-review-summaries-and-agent-evaluation-of-ewom",
+    "question_text": "A shopper asks an AI agent to buy a well-rated electric toothbrush. Brush A shows 5.0 stars from 6 reviews, and Brush B shows 4.5 stars from 2,800 reviews with a rating breakdown and verified purchases. What risk does bounded algorithmic rationality create here?",
+    "hint": "Consider what the agent may pay attention to if it is not told to examine the evidence behind each average.",
+    "correct_answer_citation": "However, under bounded algorithmic rationality, agents can over-weight salient summary statistics or vivid extreme reviews unless prompted to evaluate rating distributions and verified sample sizes systematically (Wadi & Ma, 2026a).",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The agent will refuse to choose because the two averages differ.",
+        "option_explanation": "Differing averages do not stop an agent from choosing. The risk is how it weighs them."
+      },
+      {
+        "option_text": "The agent will always pick Brush B, because agents read every review.",
+        "option_explanation": "Agents read sample passages and summary statistics, not every review."
+      },
+      {
+        "option_text": "The agent may favor Brush A's salient 5.0 average unless it is prompted to weigh the six-review sample against the large, verified distribution of Brush B.",
+        "option_explanation": "Correct. Without prompting to check distributions and sample sizes, the salient summary statistic can dominate."
+      },
+      {
+        "option_text": "The agent will ignore the AggregateRating schema and rely only on product photographs.",
+        "option_explanation": "Agents evaluate the structured AggregateRating schema along with review passages."
+      }
+    ]
+  }
+]

@@ -8,21 +8,13 @@ import exercisesData from "./exercises.json";
 import {
   AgentInspections,
   BidToDefend,
-  ColdStartTrio,
   FeedbackLoop,
-  HypothesisPage,
   LaunchClimb,
-  LedgerToPipeline,
-  LookAlikeCards,
-  PersuasionOrDelegation,
-  PointOfPurchase,
-  PullAndPush,
   RoleSwitch,
   SearchCost,
   ShelfToScreen,
   SlotSwap,
   SponsoredSlots,
-  TwoPrincipals,
   TwoRecommenders,
   TwoStage,
 } from "./visuals";
@@ -100,39 +92,34 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="search-versus-recommendation-in-e-commerce" border className="!py-8">
         <SlideHeading>Search Versus Recommendation in E-Commerce</SlideHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
-          <div className="grid gap-4">
-            <Ruled>
-              <P>
-                E-commerce discovery relies on two complementary algorithmic systems, namely{" "}
-                <Term>search ranking</Term> (&quot;pull&quot; discovery) and{" "}
-                <Term>recommender systems</Term> (&quot;push&quot; discovery).
-              </P>
-            </Ruled>
-            <Ruled>
-              <P>
-                In search ranking, the shopper provides an explicit query (e.g., &quot;wireless noise-canceling
-                headphones&quot;), and the platform orders matching items from its catalog.
-              </P>
-            </Ruled>
-            <Ruled>
-              <P>
-                In recommendation, no explicit query is needed. The platform proactively suggests items on the
-                homepage, on product pages (&quot;frequently bought together&quot; or &quot;similar items&quot;), and in
-                the cart based on browsing context and purchase history.
-              </P>
-            </Ruled>
-            <Ruled>
-              <P>
-                Both systems share the same engineering objective, which is to{" "}
-                <Term>select a handful of high-probability candidates from millions of items</Term>{" "}
-                within a few dozen milliseconds.
-              </P>
-            </Ruled>
-          </div>
-          <Plate>
-            <PullAndPush />
-          </Plate>
+        <div className="grid w-full gap-x-12 gap-y-6 md:grid-cols-2 [&_p]:!text-[1.2rem]">
+          <Ruled>
+            <P>
+              E-commerce discovery relies on two complementary algorithmic systems, namely{" "}
+              <Term>search ranking</Term> (&quot;pull&quot; discovery) and{" "}
+              <Term>recommender systems</Term> (&quot;push&quot; discovery).
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In search ranking, the shopper provides an explicit query (e.g., &quot;wireless noise-canceling
+              headphones&quot;), and the platform orders matching items from its catalog.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              In recommendation, no explicit query is needed. The platform proactively suggests items on the
+              homepage, on product pages (&quot;frequently bought together&quot; or &quot;similar items&quot;), and in
+              the cart based on browsing context and purchase history.
+            </P>
+          </Ruled>
+          <Ruled>
+            <P>
+              Both systems share the same engineering objective, which is to{" "}
+              <Term>select a handful of high-probability candidates from millions of items</Term>{" "}
+              within a few dozen milliseconds.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
@@ -141,21 +128,16 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Recommender System Architectures" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled>
-              <p className={BIG}>Recommender systems predict a user&apos;s affinity for items they have not yet purchased.</p>
-            </Ruled>
-            <Ruled>
-              <p className={BIG}>
-                Over the past two decades, industrial recommenders have evolved from simple co-occurrence tables to{" "}
-                <Term>deep two-stage neural pipelines</Term>.
-              </p>
-            </Ruled>
-          </div>
-          <Plate>
-            <LedgerToPipeline />
-          </Plate>
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
+          <Ruled>
+            <p className={BIG}>Recommender systems predict a user&apos;s affinity for items they have not yet purchased.</p>
+          </Ruled>
+          <Ruled>
+            <p className={BIG}>
+              Over the past two decades, industrial recommenders have evolved from simple co-occurrence tables to{" "}
+              <Term>deep two-stage neural pipelines</Term>.
+            </p>
+          </Ruled>
         </div>
       </Slide>
 
@@ -247,9 +229,6 @@ export default function Week4Page() {
             </P>
           </Ruled>
         </div>
-        <Plate className="mt-3">
-          <ColdStartTrio />
-        </Plate>
         <div className="mt-5 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <Ruled>
             <P>
@@ -383,24 +362,19 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Retail Media Networks and Sponsored Rankings" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled>
-              <p className={BIG}>
-                Because top rank positions command disproportionate shopper attention, marketplaces monetize the top of
-                their search results and category grids through <Term>Retail Media Networks (RMNs)</Term>.
-              </p>
-            </Ruled>
-            <Ruled>
-              <p className={BIG}>
-                Retail media has become one of the fastest-growing segments of digital advertising because it places
-                ads <Term>directly at the point of purchase</Term>.
-              </p>
-            </Ruled>
-          </div>
-          <Plate>
-            <PointOfPurchase />
-          </Plate>
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
+          <Ruled>
+            <p className={BIG}>
+              Because top rank positions command disproportionate shopper attention, marketplaces monetize the top of
+              their search results and category grids through <Term>Retail Media Networks (RMNs)</Term>.
+            </p>
+          </Ruled>
+          <Ruled>
+            <p className={BIG}>
+              Retail media has become one of the fastest-growing segments of digital advertising because it places
+              ads <Term>directly at the point of purchase</Term>.
+            </p>
+          </Ruled>
         </div>
       </Slide>
 
@@ -430,9 +404,6 @@ export default function Week4Page() {
                 &quot;Sponsored&quot; or &quot;Ad&quot; disclosure label.
               </P>
             </Ruled>
-            <Plate>
-              <LookAlikeCards />
-            </Plate>
           </div>
           <div className="grid content-start gap-4">
             <Ruled>
@@ -526,25 +497,20 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Position Bias When AI Agents Shop on Behalf of Consumers" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <Plate>
-            <HypothesisPage />
-          </Plate>
-          <div className="grid gap-6">
-            <Ruled>
-              <p className={BIG}>
-                A natural hypothesis about autonomous AI shopping agents is that because software can read an entire
-                webpage of twenty or fifty listings in milliseconds, rank position and sponsored top slots should no
-                longer matter.
-              </p>
-            </Ruled>
-            <Ruled>
-              <p className={BIG}>
-                Empirical research testing foundation models and tool-using shopping agents reveals{" "}
-                <Term>a very different reality</Term> (Wadi &amp; Ma, 2026b).
-              </p>
-            </Ruled>
-          </div>
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
+          <Ruled>
+            <p className={BIG}>
+              A natural hypothesis about autonomous AI shopping agents is that because software can read an entire
+              webpage of twenty or fifty listings in milliseconds, rank position and sponsored top slots should no
+              longer matter.
+            </p>
+          </Ruled>
+          <Ruled>
+            <p className={BIG}>
+              Empirical research testing foundation models and tool-using shopping agents reveals{" "}
+              <Term>a very different reality</Term> (Wadi &amp; Ma, 2026b).
+            </p>
+          </Ruled>
         </div>
       </Slide>
 
@@ -610,26 +576,21 @@ export default function Week4Page() {
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Sponsorship, Delegation, and Conflicts of Duty in Agentic Commerce" />
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-12">
-          <div className="grid gap-6">
-            <Ruled>
-              <p className={BIG}>
-                When a human shopper sees a &quot;Sponsored&quot; label on Position 1,{" "}
-                <Term>persuasion knowledge</Term> helps the shopper recognize that the seller paid for that
-                placement.
-              </p>
-            </Ruled>
-            <Ruled>
-              <p className={BIG}>
-                When an AI shopping assistant mediates the purchase, how it treats sponsored listings depends on both its
-                behavioral priors and <Term>whom the agent is configured to serve</Term> (Wadi &amp; Ma,
-                2026c).
-              </p>
-            </Ruled>
-          </div>
-          <Plate>
-            <PersuasionOrDelegation />
-          </Plate>
+        <div className="mt-8 grid w-full max-w-[64rem] gap-6">
+          <Ruled>
+            <p className={BIG}>
+              When a human shopper sees a &quot;Sponsored&quot; label on Position 1,{" "}
+              <Term>persuasion knowledge</Term> helps the shopper recognize that the seller paid for that
+              placement.
+            </p>
+          </Ruled>
+          <Ruled>
+            <p className={BIG}>
+              When an AI shopping assistant mediates the purchase, how it treats sponsored listings depends on both its
+              behavioral priors and <Term>whom the agent is configured to serve</Term> (Wadi &amp; Ma,
+              2026c).
+            </p>
+          </Ruled>
         </div>
       </Slide>
 
@@ -658,9 +619,6 @@ export default function Week4Page() {
                 marketplaces whose profit margins depend on sponsored ad clicks and higher-margin items.
               </P>
             </Ruled>
-            <Plate>
-              <TwoPrincipals />
-            </Plate>
           </div>
           <div className="grid content-start gap-4">
             <Ruled>

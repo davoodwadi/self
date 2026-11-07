@@ -26,12 +26,14 @@ week: week6
 - Information systems researchers distinguish platforms anchored in social graphs from platforms anchored in interest graphs.
 
 ## Social Graphs Versus Interest Graphs [exercise]
+[figure: interactive comparison of the same new video posted by a zero-follower account and a large legacy account, where switching between a social-graph feed and an interest-graph feed and changing early viewer retention shows which post reaches more people]
 - A social graph maps explicit interpersonal connections (who knows or follows whom), so feed distribution depends primarily on the size of an account's follower base and shares among connected peers.
 - An interest graph maps behavioral affinity between users and content items based on watch time, replays, shares, and comments, independent of whether the viewer follows the creator.
 - In an interest-graph feed (pioneered at scale by short-form vertical video platforms), an account with zero followers can achieve massive organic distribution if its video holds viewer attention in early test cohorts.
 - Conversely, having a large legacy follower count provides little guaranteed reach on an interest-graph platform if a new post fails early engagement thresholds.
 
 ## How Algorithmic Feeds Score and Distribute Content [no-exercise]
+[figure: interactive staged cohort test in which a new video is shown to a few hundred matched viewers and promoted to successively larger pools only while its completion and share rates beat the category baseline]
 - Feed ranking algorithms evaluate candidate posts using a weighted multi-objective formula that predicts the probability of distinct user actions, including completion rate, watch duration, shares via direct message, saves, comments, and likes.
 - Passive signals such as percentage of video watched and three-second thumb-stop rate carry heavy weight because users cannot easily fake time spent watching.
 - High-effort active signals, such as sending a post to a friend in a private message or bookmarking a product tutorial, indicate stronger value than a low-effort double-tap like.
@@ -42,6 +44,7 @@ week: week6
 - Who stops scrolling to watch the first three seconds of an ad trains the platform's delivery algorithm on which audience segment to pursue next.
 
 ## Full-Funnel Paid Social and Creative-Led Targeting [exercise]
+[figure: interactive creative fatigue curve showing click rate falling as the same audience sees one ad more times per week, and recovering when a new hook is rotated in]
 - Top-of-funnel prospecting campaigns use broad targeting and narrative video hooks to introduce the problem the product solves to cold audiences who have never visited the storefront.
 - Mid-funnel consideration campaigns serve product demonstrations, customer testimonials, and comparison carousels to users who watched a prospecting video or engaged with the brand's social profile.
 - Bottom-of-funnel conversion and dynamic product ad (DPA) campaigns pull directly from the merchant's product catalog feed to show personalized SKUs, prices, and promotions to high-intent site visitors and cart abandoners.
@@ -52,6 +55,7 @@ week: week6
 - Influencer marketing formalizes this parasocial trust into a scalable customer acquisition and content production channel.
 
 ## Creator Tiers, Parasocial Trust, and Partner Selection [exercise]
+[figure: interactive split of one fixed creator budget between a single macro-influencer and several micro-influencers, showing reach, engaged viewers and orders for each split, and how a bot-inflated follower count shrinks real reach]
 - Mega- and macro-influencers (hundreds of thousands to millions of followers) deliver broad top-of-funnel reach and cultural signaling, but command high flat fees and lower average engagement rates.
 - Micro- and nano-influencers (roughly one thousand to one hundred thousand followers) operate within tight niche communities (e.g., ultralight backpacking, specialty baking, or mechanical keyboards), typically generating higher engagement rates and stronger conversion per dollar spent.
 - Creators build persuasive power through parasocial interaction, the one-sided sense of familiarity and friendship that audience members develop when watching a creator talk directly to the camera over time.
@@ -59,6 +63,7 @@ week: week6
 - In creator licensing (or whitelisting), a brand pays to run paid social ads directly through the creator's handle rather than the brand's corporate handle, combining the credibility of a creator's voice with the targeting control of paid media.
 
 ## Contracting, Compensation, and Disclosure Compliance [no-exercise]
+[figure: interactive comparison of flat-fee, affiliate and hybrid creator contracts, where changing the number of attributed sales shows what the creator earns and what each sale costs the brand]
 - Flat-fee sponsorship contracts pay the creator a fixed sum for delivering agreed content deliverables, placing the conversion risk on the brand.
 - Affiliate and performance-contingent contracts pay the creator a commission percentage of attributed sales tracked via unique promo codes or UTM links, aligning incentives around conversion.
 - Hybrid contracts combine a modest base production fee with a performance bonus or revenue share, balancing creator compensation with merchant acquisition cost targets.
@@ -69,6 +74,7 @@ week: week6
 - Social commerce eliminates that handoff by embedding the product catalog, shopping cart, and payment processor natively inside the social platform.
 
 ## Native In-App Checkout and Livestream Shopping [exercise]
+[figure: interactive comparison of a shopper who taps a tagged product and leaves for an external website with one who checks out natively in the app, showing how many shoppers finish each step and what customer data reaches the merchant]
 - In native social commerce storefronts (such as TikTok Shop, Instagram Shop, and Pinterest Shopping), the merchant syncs its Product Information Management (PIM) and Order Management System (OMS) via API so inventory, pricing, and checkout execute entirely within the social app.
 - Shoppable tags on videos and photos allow a viewer to tap a tagged garment, select a size, and pay in two taps using credentials already stored in the social platform.
 - Livestream shopping combines live video broadcasting, real-time audience chat, live product demonstrations, and time-limited flash coupons to create an interactive, high-urgency buying environment.
@@ -83,6 +89,7 @@ week: week6
 - Deploying synthetic personas in social channels introduces distinct trade-offs between operational control and consumer authenticity.
 
 ## Virtual Influencers, Synthetic Content, and Consumer Reactance [exercise]
+[figure: two by two grid of a human creator and a virtual influencer endorsing a fashion jacket and a skincare serum, marking the one pairing where the virtual endorser cannot claim lived experience]
 - Virtual influencers are computer-generated characters with scripted personalities and social media profiles that partner with brands to model apparel, endorse products, and interact with followers.
 - For brand managers, virtual influencers offer complete scheduling reliability, zero risk of personal off-platform scandals, and instant adaptation across global languages and campaigns.
 - However, behavioral consumer research shows that virtual influencers lack genuine lived experience, meaning an AI persona cannot authentically claim that a skincare serum healed its skin or that a running shoe relieved its joint pain.
